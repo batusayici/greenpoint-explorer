@@ -336,7 +336,10 @@
       "trustRisk": "low",
       "createdAt": "2026-07-02",
       "updatedAt": "2026-08-08",
-      "kicker": "Contemporary art gallery"
+      "kicker": "Contemporary art gallery",
+      "relatedCardIds": [
+        "dreams-on-command-there-are-people-here"
+      ]
     },
     {
       "id": "falu-tinned-fish-club",
@@ -1096,7 +1099,8 @@
       "updatedAt": "2026-08-06",
       "address": "162 Noble St, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "flower-cat-subscription"
+        "flower-cat-subscription",
+        "flowercat-love-unfolded-0823"
       ],
       "lat": 40.728678,
       "lng": -73.954258
@@ -6681,6 +6685,193 @@
       "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-24T13:00:00.000Z\nend_at: 2026-08-24T19:00:00.000Z\n\nname: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-25T13:00:00.000Z\nend_at: 2026-08-25T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
       "lat": 40.736575,
       "lng": -73.952327
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "id": "flowercat-love-unfolded-0823",
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "title": "Chai and Churn Presents: Love Unfolded",
+      "kicker": "Fold first, ask questions later",
+      "summary": "A mixer for people off the apps, built around making paper fortune tellers so nobody has to open with small talk.",
+      "locationName": "Flower Cat",
+      "address": "162 Noble Street, Brooklyn, NY 11222",
+      "lat": 40.729972,
+      "lng": -73.955595,
+      "free": false,
+      "startsAt": "2026-08-23T19:00:00-04:00",
+      "endsAt": "2026-08-23T20:00:00-04:00",
+      "relatedCardIds": [
+        "flower-cat"
+      ],
+      "actions": [
+        {
+          "label": "Event page",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat events",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-08-11"
+        }
+      ],
+      "sourceQuote": "Chai and Churn Presents: Love Unfolded\nSunday, August 23, 2026\n7:00 PM\n8:00 PM\nFlower Cat\nDo you hope to split the rent on a one bedroom with someone one day? Are you in or approaching your late 20s or early 30s and your liberal parents are starting to get concerned? Look no further!\nJoin us for a night of awkwardness and add to the lore you’ve been missing whilst you’ve been trying to stay off of hinge. Worried about starting a conversation with the love of your life? We’re making fortune tellers. Why? Because we’re #cool 😎 Fold first, ask questions later."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "id": "greek-kitchen-daily-specials",
+      "category": "discount",
+      "filters": [
+        "food_drink",
+        "deals_memberships"
+      ],
+      "recurring": true,
+      "endsAt": "2026-08-25T23:59:00-04:00",
+      "title": "Lunch and dinner specials at Greek Kitchen",
+      "kicker": "$14.95 midday, $24.95 evening",
+      "summary": "A standing rota on Manhattan Avenue: any pita sandwich with a side and a soda at lunch, or a full platter with salad, pita, tzatziki, a drink and dessert. None of the evening deal on Saturday or Sunday.",
+      "locationName": "Greek Kitchen",
+      "address": "912 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "912 Manhattan Ave, Brooklyn, NY 11222",
+      "free": false,
+      "actions": [
+        {
+          "label": "See the specials",
+          "type": "learn_more",
+          "url": "https://greekkitchen.nyc/specials"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greek Kitchen specials",
+          "url": "https://greekkitchen.nyc/specials",
+          "publisher": "Greek Kitchen",
+          "date": "2026-08-11"
+        }
+      ],
+      "sourceQuote": "Daily Lunch Special! Any Pita Sandwich with choice of Fries or Rice and Can Soda. $14.95\n11:00 AM - 04:00 PM\nComplete Dinner Special – $24.95 at Greek Kitchen\nChoose any platter from our menu — Beef & Lamb Gyro, Chicken Gyro, Pork Gyro, Souvlaki, Falafel, Moussaka, Pastichio, Shrimp, Salmon, and more.\nEach platter comes with fresh salad, warm pita bread, tzatziki, and your choice of French fries, rice, or lemon potatoes.\nYour dinner also includes a soft drink and dessert.\nUpgrade to beer or wine for +$3 (21+).\n06:00 PM - 10:00 PM",
+      "lat": 40.730608,
+      "lng": -73.954071
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor",
+        "creator"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "id": "dreams-on-command-there-are-people-here",
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "title": "“There Are People Here” at Dreams On Command",
+      "kicker": "Free admission, up through September",
+      "summary": "The West Street gallery's current group show, hung since the middle of July and running well past the end of summer.",
+      "locationName": "Dreams On Command",
+      "address": "42 West St, Suite 105, Brooklyn, NY 11222",
+      "lat": 40.728078,
+      "lng": -73.958665,
+      "free": true,
+      "startsAt": "2026-07-11T00:00:00-04:00",
+      "endsAt": "2026-09-08T23:59:00-04:00",
+      "relatedCardIds": [
+        "dreams-on-command"
+      ],
+      "actions": [
+        {
+          "label": "Gallery site",
+          "type": "learn_more",
+          "url": "https://www.dreamsoncommand.com/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Dreams On Command",
+          "url": "https://www.dreamsoncommand.com/",
+          "publisher": "Dreams On Command",
+          "date": "2026-08-11"
+        }
+      ],
+      "sourceQuote": "On View\nThere Are People Here\nJuly 11 – September 8, 2026\n...\nFree admission unless stated otherwise\nHours\nW-F (2-7pm) SAT/SUN (1-6pm)"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "id": "bios-apothecary-herbalist-consultation",
+      "category": "discount",
+      "filters": [
+        "deals_memberships"
+      ],
+      "recurring": true,
+      "endsAt": "2026-08-25T23:59:00-04:00",
+      "title": "Herbalist consultation at no extra cost, Bios Apothecary",
+      "kicker": "Custom formula, consult included",
+      "summary": "The West Street apothecary blends toners, masks, serums and creams to order from 300+ ingredients; the herbalist session that shapes the formula now carries no separate charge.",
+      "locationName": "Bios Apothecary",
+      "address": "61 West Street, Brooklyn, NY 11222",
+      "geocodeQuery": "61 West St, Brooklyn, NY 11222",
+      "free": false,
+      "actions": [
+        {
+          "label": "Book a consult",
+          "type": "learn_more",
+          "url": "https://www.biosapothecary.com/products/book-a-consultation?variant=31794879463508"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Bios Apothecary — “Bespoke Skincare”, 2026-08-10",
+          "url": "https://www.biosapothecary.com/",
+          "publisher": "Bios Apothecary",
+          "date": "2026-08-10"
+        }
+      ],
+      "sourceQuote": "Book a Consultation\nWould you like to consult with our in-house herbalist and have a custom product created just for you? Now available to you at no extra cost!",
+      "lat": 40.728475,
+      "lng": -73.959146
     }
   ]
 }

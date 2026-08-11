@@ -367,12 +367,17 @@ test("seed has exactly 75 cards across the six layers", () => {
   // kids rule and the bcc-kids-sewing-camp precedent. Two further Moon Bunny
   // sessions were NOT carded: their first day precedes the API window, so
   // their span would have been inferred. 140 − 1 + 5 = 144.
-  assert.equal(seed.cards.length, 144);
+  // REVIEW BRANCH ingest/daily-2026-08-11: +4 HELD cards on top of the 144
+  // shipped to main — flowercat-love-unfolded-0823, greek-kitchen-daily-specials,
+  // dreams-on-command-there-are-people-here and
+  // bios-apothecary-herbalist-consultation. See the PR body for each hold's
+  // reason and what would resolve it. 144 + 4 = 148.
+  assert.equal(seed.cards.length, 148);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 74, "73 + the 8/21 library Sensory Garden Hour (2026-08-10)");
-  assert.equal(count((c) => c.category === "discount"), 7, "5 + Maison Jar bulk refills and the Selformer summer promo (2026-08-10)");
+  assert.equal(count((c) => c.category === "event"), 76, "74 + the 2 held event cards on this review branch");
+  assert.equal(count((c) => c.category === "discount"), 9, "7 + the 2 held discount cards on this review branch");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 23, "21 + the 2 salvaged Troost nights");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
@@ -444,7 +449,11 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // never a date, which the no-stated-end-date rule fills rather than holds)
   // and Selformer's Summer Fling promo, whose endsAt is the source's own
   // "available through Aug 15" rather than an edition-window default.
-  assert.equal(deals.length, 7);
+  // REVIEW BRANCH 2026-08-11: +2 HELD deals — greek-kitchen-daily-specials and
+  // bios-apothecary-herbalist-consultation. Both are recurring/verified-through
+  // (neither source states a closing date); both are held for other reasons,
+  // spelled out in the PR body.
+  assert.equal(deals.length, 9);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -518,6 +527,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
+    // REVIEW BRANCH 2026-08-11: the gallery's own Visit block states "Free
+    // admission unless stated otherwise" beside the on-view dates.
+    "dreams-on-command-there-are-people-here",
     "greenpoint-trash-club",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
     // "teen interns are running a free scavenger hunt" and "You can get free
@@ -772,6 +784,8 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // 2026-08-03: the ballet trial double-files family_kids + deals_memberships,
     // the same shape as moon-bunny-back-to-school — "kids events go in kids"
     // bars double-filing into arts_culture/games, not into a deals lens.
+    // REVIEW BRANCH 2026-08-11: two HELD standing offers.
+    "bios-apothecary-herbalist-consultation",
     "bk-youth-ballet-trial-class",
     "carcosa-membership-guest-pass",
     // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
@@ -783,6 +797,7 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "driftaway-coffee-subscriptions",
     "falu-tinned-fish-club",
     "flower-cat-subscription",
+    "greek-kitchen-daily-specials", // REVIEW BRANCH 2026-08-11, HELD
     "hana-bottomless-makgeolli",
     "hana-sool-club",
     "held-space-membership",
