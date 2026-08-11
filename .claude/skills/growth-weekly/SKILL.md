@@ -239,3 +239,22 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   denominator. Clean funnel tracking begins with Wave 1, when tagged traffic
   starts arriving. Report pre-Wave-1 rates as directional only, and never cite
   them as a gate read.
+- **(2026-08-11, cycle 4 — operator-derived, pending Batu; drop if unwanted)**
+  **Before attributing a rate change to behavior, split the population by geo
+  and by engagement.** A cohort that fires only `$pageview` + `return_visit`,
+  arrives in same-day clusters from one non-local city, and carries
+  `visitCount = 1` is automated traffic, not users. On 2026-08-11, **83 of 103
+  production "people" were passive-only and 62 of those were non-local** (Paris
+  11 on one day, Warsaw 6 on another, plus Council Bluffs / Boardman / Ashburn /
+  Falkenstein — Google, AWS and Hetzner datacenters); they halved three headline
+  rates in a week while **every numerator rose**. Report the split as a
+  diagnostic; **never retro-clean the data** (Batu, 2026-08-06). Note which
+  metrics are structurally immune: the WRL proxy needs `weekIndex ≥ 1`, which a
+  stateless fetcher can never produce, so the demand gate's own metric is clean
+  even when the activation proxy is not.
+- **(2026-08-11, cycle 4 — operator-derived, pending Batu; drop if unwanted)**
+  **Since the 2026-08-06 rename, every outbound draft must name "Stoopwise
+  Greenpoint" in the body.** The old origin told the recipient what they were
+  about to open; `stoopwise.com` does not, and CLAUDE.md requires the
+  neighborhood on every surface because that keyword is what search and answer
+  engines match on. A link alone is now an unlabelled link.
