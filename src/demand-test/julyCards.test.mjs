@@ -352,7 +352,22 @@ test("seed has exactly 75 cards across the six layers", () => {
   // (term enrolment, so the AUDIENCE lens and never deals_memberships), and
   // library-sensory-garden-0821 (8/21 carried no library card at all).
   // 141 + 4 = 145.
-  assert.equal(seed.cards.length, 145);
+  // 2026-08-11 daily thin refresh. Expiry took the five past 8/10 events
+  // (145 → 140). Then −1: `dreams-on-command-there-are-people-here-0808` was
+  // DELETED as unsubstantiated, not expired. Its sourceQuote read "July
+  // 11–August 8, 2026" and its whole premise was "closes today"; the gallery's
+  // snapshot — byte-identical to the last-ingested baseline, so this was never
+  // a source change — states "July 11 – September 8, 2026". A quote that is
+  // not in the source cannot hold a card up, and the show was still running.
+  // Re-authoring it as an on-view-through-September card is HELD (no dated
+  // exhibition-span precedent in the deck). +5: film-noir-film-club-0813,
+  // troost-lumens-0825 (the 8/25 back-of-window night the coverage script had
+  // flagged as troost's only gap), and three Moon Bunny circus camps
+  // (8/13–14, 8/17–21, 8/24–25) — kids programming, so `family_kids` per the
+  // kids rule and the bcc-kids-sewing-camp precedent. Two further Moon Bunny
+  // sessions were NOT carded: their first day precedes the API window, so
+  // their span would have been inferred. 140 − 1 + 5 = 144.
+  assert.equal(seed.cards.length, 144);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");

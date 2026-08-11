@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-10T17:40:00-04:00",
+  "lastRunAt": "2026-08-11T14:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1181,6 +1181,27 @@
       "publisher": "Track V ingest (Monday full)",
       "processedAt": "2026-08-10",
       "outcome": "FIRST NON-DEGRADED RUN since the environment faults were found: reach 51/58, 12% error, under the 15% ceiling, exit 0. Allowlist round 2 (www.jumpcomedy.com, kindrednyc.co, www.leavesbookstore.com, www.happy-medium.co) landed, which took the roster from 22 errors this morning to 7 — all 7 now the Chromium CONNECT fault alone. 16 sources produced a first-ever snapshot, i.e. the SSG-sweep sources onboarded 8/8 were read for the first time ever. Shipped 4: maison-jar-refill-happy-hour (standing monthly 20%-off bulk refill, recurring + verified-through per the no-stated-end-date rule), selformer-summer-fling-0815 ($249/mo promo, endsAt from the source's own \"available through Aug 15\"), clay-space-fall-2026-semester (term enrolment → audience lens, never deals_memberships), library-sensory-garden-0821 (8/21 had no library card at all). Price audit of held-space, selformer and clay-space-membership — the three cards nobody had ever re-verified — came back MATCHING on every figure. holds: 2 new-judgment · 0 rule-miss · 1 source-blocked."
+    },
+    {
+      "id": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-11",
+      "outcome": "R1 RE-VERIFICATION of the expiry-FLAGGED recurring deal `poochs-parlor-first-groom`. The sponsored article still carries the offer verbatim today — \"[Sponsored] Mention Greenpointers for 20% off your first appointment at Pooch's Parlor (128 India St)!\" — so endsAt bumped to 2026-08-25 under the no-stated-end-date rule (recurring + verified-through). Also backfilled the card's missing sourceQuote from that line; the card predates the 2026-08-02 substantiation gate so it was exempt, but the line exists now."
+    },
+    {
+      "id": "https://marianella.co/pages/store",
+      "kind": "web",
+      "publisher": "Marianella Market",
+      "processedAt": "2026-08-11",
+      "outcome": "R1 RE-VERIFICATION of the expiry-FLAGGED recurring deal `marianella-19th-anniversary-sale`. The store page still leads with \"UP TO 50% OFF / 19 YEAR ANNIVERSARY SALE / FREE SHIPPING\", so endsAt bumped to 2026-08-25 and the sourceQuote refreshed to today's page rather than the 8/2 email. NOTE for the allowlist record: marianella.co plain-fetches fine through the proxy now — the 2026-08-07 hold that recorded it as unreachable no longer applies."
+    },
+    {
+      "id": "run:2026-08-11-daily-thin",
+      "kind": "run",
+      "publisher": "Track V ingest (daily thin)",
+      "processedAt": "2026-08-11",
+      "outcome": "Reach 51/58 (12% error, under the 15% ceiling), fetch exit 0. All 7 errors are the Chromium CONNECT fault alone — 4 browser-only by construction plus happy-medium, sunshine-laundromat and brooklyn-youth-ballet falling through from `auto`. 9 sources changed. Expiry took 5 (145 → 140). SHIPPED 5 adds, 2 re-verified deals, 1 delete. The delete is the notable one: `dreams-on-command-there-are-people-here-0808` carried a sourceQuote (\"July 11–August 8, 2026\") that is NOT in the source — the snapshot, byte-identical to the last-ingested baseline, states \"July 11 – September 8, 2026\" — so the card's whole premise (\"closes today\") was false AND the show was still running. Deleted as unsubstantiated, not expired. Adds: film-noir-film-club-0813, troost-lumens-0825 (closed the only troost coverage GAP, 8/25), and three Moon Bunny circus camps. Gmail pass RAN: 1 registry hit (Bios Apothecary 8/10), 0 new senders from the discovery pass. holds: 3 new-judgment · 0 rule-miss · 1 source-blocked."
     }
   ],
   "senderRegistry": [
@@ -1518,13 +1539,33 @@
       "name": "Go Green lists 'Keep Calm and Carry Yarn' at Greenpoint Library 8/11, but the library's own calendar does not",
       "note": "SOURCE CONFLICT recorded 2026-08-10. gogreenbk.org's index carries \"11 August 2026 / Keep Calm and Carry Yarn (Greenpoint Library) / Free\", but the BPL Solr events index for the Greenpoint branch — the authoritative source for that branch's programmes, and fetched clean this run — contains no such entry on any date. Not carded: under the conflicting-sources rule the dedicated source wins, and here that is the library's own calendar. Most likely a stale aggregator listing. UNBLOCKS if the branch calendar starts carrying it.",
       "addedAt": "2026-08-10"
+    },
+    {
+      "name": "Brooklyn Youth Ballet $40 trial class — verified-through lapsed, source unreadable",
+      "note": "SOURCE-BLOCKED 2026-08-11. `bk-youth-ballet-trial-class` was FLAGGED by expiry (verified-through 2026-08-09) and could not be re-verified: bkyouthballet.com/calendar/ answers HTTP 202 with a ZERO-BYTE body to plain fetch, and the browser path is down with the Chromium CONNECT fault, so there is no route to the page. Deliberately NOT bumped — bumping endsAt without reading the source would be inventing the verification the field exists to record — and deliberately NOT deleted, because deleting real supply on OUR fetch failure is the degraded-run shrink this skill warns about. The card stays live and stays flagged. UNBLOCKS when the browser path is fixed, or from an interactive session where egress is unrestricted.",
+      "addedAt": "2026-08-11"
+    },
+    {
+      "name": "www.biosapothecary.com — R1 resolution fetch egress-denied at the proxy",
+      "note": "SOURCE FACT 2026-08-11, and a live instance of the R1 allowlist blind spot already recorded on 2026-08-10. Bios Apothecary (61 West Street, a registry sender) emailed 2026-08-10 with a standing offer: verbatim \"Would you like to consult with our in-house herbalist and have a custom product created just for you? Now available to you at no extra cost!\" The one field that decides whether it can ship is whether the consultation is in-store at 61 West Street or online — a storefront pin implies you can walk there for it. The booking page https://www.biosapothecary.com/products/book-a-consultation?variant=31794879463508 would state it, and the proxy refuses the tunnel: \"Proxy response (403) !== 200 when HTTP Tunneling\". The host is NOT a roster entry, so it can never appear in the run's EGRESS DENIED block. ASK: allowlist www.biosapothecary.com. UNBLOCKS the held bios-apothecary-herbalist-consultation card.",
+      "addedAt": "2026-08-11"
+    },
+    {
+      "name": "Flower Cat — Live Band Karaoke: Summer of Soul, Fri 8/28 (past the 14-day window)",
+      "note": "Fully sourced and in area, just beyond the horizon (window ends 8/25). Verbatim: \"Live Band Karaoke: Summer of Soul / Friday, August 28, 2026 / 7:30 PM / 11:00 PM / Flower Cat\" and \"Outside musicians are welcomed and encouraged to come jam along as well! Sub in on drums, bass, piano, guitar or bring your own. Free entry! 2 drink minimum! Tip your musicians & bartender!\" Flower Cat is a normal re-snapshotted web source, so this rolls in on its own once 8/28 enters the horizon (a run on or after 8/14) — recorded here only so a free event is not lost if the listing moves. FREE ENTRY is stated outright, so `free: true` is available when it is carded.",
+      "addedAt": "2026-08-11"
+    },
+    {
+      "name": "Moon Bunny Aerial — two in-progress camp sessions whose first day predates the API window",
+      "note": "SOURCE FACT 2026-08-11. The feather.rsvp API returns UPCOMING instances only, so a multi-day session already underway shows a truncated span. On 2026-08-11 \"Weekday Camp 13-16 yrs old\" listed four days (8/11–8/14) where a Mon–Fri week needs five, and \"Two Day Camp 8-12 yrs old\" listed exactly one (8/11) where the name promises two. Both therefore started 8/10 and their real spans are INFERRED, not stated — so they were not carded, while the three sessions whose full span the API does carry (4-7 on 8/13–14, 8-12 on 8/17–21, 8-12 on 8/24–25) shipped. Not a hold and not a loss: this is a permanent property of the endpoint, and it only ever affects sessions that began before the run. Recorded so a later run does not re-litigate it.",
+      "addedAt": "2026-08-11"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-07-25",
     "greenpointers": "2026-08-04",
     "greenpoint-comedy-club": "2026-08-06",
-    "film-noir-cinema": "2026-08-09",
+    "film-noir-cinema": "2026-08-10",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-05",
     "greenpoint-library": "2026-08-09",
@@ -1539,7 +1580,7 @@
     "dance-space-ny": "2026-07-24",
     "yaro-studios": "2026-08-07",
     "yaro-kids-clay": "2026-08-07",
-    "moon-bunny-aerial": "2026-08-07",
+    "moon-bunny-aerial": "2026-08-10",
     "brooklyn-craft-company": "2026-08-07",
     "last-place-on-earth": "2026-07-26",
     "greenpoint-star": "2026-07-26",
@@ -1547,7 +1588,7 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-02",
     "nycparks-greenpoint": "2026-08-06",
-    "troost": "2026-08-09",
+    "troost": "2026-08-10",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-06",
     "town-square-bk": "2026-08-06",
@@ -1579,142 +1620,149 @@
     {
       "sourceId": "dashi-okume",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "epa-meeker-plume",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "nyc-dot-mcguinness",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "grownyc-mccarren-greenmarket",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "nyc-open-data-farmers-markets",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "greenpoint-ymca",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "sparrow-nesting",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "brooklyn-hearts-club",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "driftaway-subscriptions",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "marianella-subscription-box",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so it was not attempted. The fetch report lists it verbatim under `skipped_monthly`, and the run line reads \"68 sources → 13 changed, 16 new, 22 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "greenpoint-comedy-club",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Evidence, re-verified by hand this run: curl reaches the preflight control URL through the proxy at status 200 with no relay failures recorded for it, while headless Chromium's own CONNECT to that same URL dies with net::ERR_CONNECTION_RESET both with and without an explicit --proxy-server argument; `npx playwright install firefox` fails (download blocked), so the documented Firefox fallback is inert here. Reported to platform support; NOT an allowlist gap — this host is reachable by plain fetch. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness. Re-earn this explanation next run rather than inheriting it.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "word-bookstore",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Evidence, re-verified by hand this run: curl reaches the preflight control URL through the proxy at status 200 with no relay failures recorded for it, while headless Chromium's own CONNECT to that same URL dies with net::ERR_CONNECTION_RESET both with and without an explicit --proxy-server argument; `npx playwright install firefox` fails (download blocked), so the documented Firefox fallback is inert here. Reported to platform support; NOT an allowlist gap — this host is reachable by plain fetch. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness. Re-earn this explanation next run rather than inheriting it.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "brooklyn-youth-ballet",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Evidence, re-verified by hand this run: curl reaches the preflight control URL through the proxy at status 200 with no relay failures recorded for it, while headless Chromium's own CONNECT to that same URL dies with net::ERR_CONNECTION_RESET both with and without an explicit --proxy-server argument; `npx playwright install firefox` fails (download blocked), so the documented Firefox fallback is inert here. Reported to platform support; NOT an allowlist gap — this host is reachable by plain fetch. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness. Re-earn this explanation next run rather than inheriting it.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "greenpoint-trash-club",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Evidence, re-verified by hand this run: curl reaches the preflight control URL through the proxy at status 200 with no relay failures recorded for it, while headless Chromium's own CONNECT to that same URL dies with net::ERR_CONNECTION_RESET both with and without an explicit --proxy-server argument; `npx playwright install firefox` fails (download blocked), so the documented Firefox fallback is inert here. Reported to platform support; NOT an allowlist gap — this host is reachable by plain fetch. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness. Re-earn this explanation next run rather than inheriting it.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "leaves-bookstore",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Evidence, re-verified by hand this run: curl reaches the preflight control URL through the proxy at status 200 with no relay failures recorded for it, while headless Chromium's own CONNECT to that same URL dies with net::ERR_CONNECTION_RESET both with and without an explicit --proxy-server argument; `npx playwright install firefox` fails (download blocked), so the documented Firefox fallback is inert here. Reported to platform support; NOT an allowlist gap — this host is reachable by plain fetch. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness. Re-earn this explanation next run rather than inheriting it.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "happy-medium",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Evidence, re-verified by hand this run: curl reaches the preflight control URL through the proxy at status 200 with no relay failures recorded for it, while headless Chromium's own CONNECT to that same URL dies with net::ERR_CONNECTION_RESET both with and without an explicit --proxy-server argument; `npx playwright install firefox` fails (download blocked), so the documented Firefox fallback is inert here. Reported to platform support; NOT an allowlist gap — this host is reachable by plain fetch. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness. Re-earn this explanation next run rather than inheriting it.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "nycparks-greenpoint",
       "gapKey": "GAP",
-      "reason": "All 8 flagged dates carry ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule. Parsed the snapshot record-by-record: every entry on 8/10, 8/11, 8/12, 8/13, 8/17, 8/18, 8/20 and 8/24 is McCarren Pool swimming or Shape Up NYC, e.g. verbatim \"## McCarren Pool: Lap Swim ... location: McCarren Park Pool (in McCarren Park) / categories: Fitness | Swimming/Aquatics\" and \"categories: Fitness | Shape Up NYC | Recreation Center Programming\". The three dates the deck DOES cover (8/14, 8/19, 8/21) are exactly the feed's non-rec items — the Free Summer Movies — all carded. No one-off happening on any flagged date is uncarded.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "All 8 flagged dates carry ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule. Re-checked against this run's snapshot: every entry on 8/11, 8/12, 8/13, 8/17, 8/18, 8/20, 8/24 and 8/25 is McCarren Pool swimming or Shape Up NYC — verbatim \"## McCarren Pool: Lap Swim ... location: McCarren Park Pool (in McCarren Park) / categories: Fitness | Swimming/Aquatics\". The single line this run's diff added was the 2026-08-25 instance of \"McCarren Pool: Lap Swim\", i.e. the new flagged date is itself standing rec programming. The three dates the deck DOES cover (8/14, 8/19, 8/21) are exactly the feed's non-rec items — the Free Summer Movies — all carded. No one-off happening on any flagged date is uncarded.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "lockwood",
       "gapKey": "GAP",
-      "reason": "Both flagged dates (8/14, 8/16) are the two ends of ONE item, \"Tote-ally 20 Sale!\", and it is HELD rather than uncarded — see the review PR. The entire snapshot for it is six lines: \"name: Tote-ally 20 Sale!\\nstart_date_raw: 2026-08-14\\nstart_time: 11:00 am\\nend_date_raw: 2026-08-16\\nend_time: 8:00 pm\\nhtml_link: https://www.facebook.com/events/1097877372807949\". No venue, no address, no discount terms — and the only link is a Facebook event page, which is not fetchable, so R1 cannot resolve it. Carding it would require inventing both the location and what the offer actually is.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Both flagged dates (8/14, 8/16) are the two ends of ONE item, \"Tote-ally 20 Sale!\", and it is HELD rather than uncarded — carried forward from the 2026-08-10 review. The entire snapshot for it is six lines: \"name: Tote-ally 20 Sale!\\nstart_date_raw: 2026-08-14\\nstart_time: 11:00 am\\nend_date_raw: 2026-08-16\\nend_time: 8:00 pm\\nhtml_link: https://www.facebook.com/events/1097877372807949\". No venue, no address, no discount terms — and the only link is a Facebook event page, which is not fetchable, so R1 cannot resolve it. Carding it would require inventing both the location and what the offer actually is.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "cibone-ote",
       "gapKey": "GAP",
-      "reason": "The 8/13 date is the closing day of \"HOZUBAG LIMITED EVENT\", verbatim \"July 11 – August 13, 2026\" — a retail pop-up that opened a month before this edition window and before the source was onboarded. It is HELD on a genuine lens conflict, not missed: SKILL.md's markets/vendor rule says general-goods retail \"carries no lens and shows in All only\", but the repo test `no card is lens-less` asserts zero lens-less cards, so the answer the rule gives cannot ship. Needs Batu to reconcile the two before this class of item can be carded.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "The 8/13 date is the closing day of \"HOZUBAG LIMITED EVENT\", verbatim \"July 11 – August 13, 2026\" — a retail pop-up that opened a month before this edition window. It is HELD on a genuine lens conflict, not missed: SKILL.md's markets/vendor rule says general-goods retail \"carries no lens and shows in All only\", but the repo test `no card is lens-less` asserts zero lens-less cards, so the answer the rule gives cannot ship. Needs Batu to reconcile the two before this class of item can be carded.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     },
     {
       "sourceId": "macha-studio",
       "gapKey": "UNMARKED STANDING?",
-      "reason": "Correctly flagged, and it resolves to a roster change this run cannot make. The Atom feed's two current entries are titled \"Summer Fridays listening party\" (published 2026-08-05) and \"Summer Fridays After Hours\", and their bodies state NO date, NO time and no recurrence sentence — the first reads in full \"Join us for an evening of records, conversation and try on's, discover something new or simply enjoy the tunes. RSVP\" and the second's body is empty. \"Fridays\" appears only inside the titles, which is too thin for `recurrence.days`. So the page states a series but never a schedule: nothing here is cardable without inventing a time. Proposed in the review PR as a roster `standing` decision, which is human-gated.",
-      "addedAt": "2026-08-10",
-      "expiresAt": "2026-08-24"
+      "reason": "Correctly flagged, and it resolves to a roster change this run cannot make. The Atom feed is `unchanged` this run and its two entries are still titled \"Summer Fridays listening party\" and \"Summer Fridays After Hours\", with NO date, NO time and no recurrence sentence in either body — the first reads in full \"Join us for an evening of records, conversation and try on's, discover something new or simply enjoy the tunes. RSVP\" and the second's body is empty. \"Fridays\" appears only inside the titles, which is too thin for `recurrence.days`. The page states a series but never a schedule, so nothing here is cardable without inventing a time. Proposed again in the review PR as a roster `standing` decision, which is human-gated.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
+    },
+    {
+      "sourceId": "sunshine-laundromat",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
+      "addedAt": "2026-08-11",
+      "expiresAt": "2026-08-25"
     }
   ]
 }

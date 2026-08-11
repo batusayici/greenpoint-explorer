@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-10",
+  "version": "2026-08-11",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -336,10 +336,7 @@
       "trustRisk": "low",
       "createdAt": "2026-07-02",
       "updatedAt": "2026-08-08",
-      "kicker": "Contemporary art gallery",
-      "relatedCardIds": [
-        "dreams-on-command-there-are-people-here-0808"
-      ]
+      "kicker": "Contemporary art gallery"
     },
     {
       "id": "falu-tinned-fish-club",
@@ -987,7 +984,8 @@
         "film-noir-support",
         "film-noir-cult-cinema-0811",
         "film-noir-watch-me-0813",
-        "film-noir-watch-me-0821"
+        "film-noir-watch-me-0821",
+        "film-noir-film-club-0813"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -2354,7 +2352,7 @@
       ],
       "corridor": null,
       "recurring": true,
-      "endsAt": "2026-08-08T23:59:00-04:00",
+      "endsAt": "2026-08-25T23:59:00-04:00",
       "actions": [
         {
           "label": "Details",
@@ -2371,7 +2369,7 @@
           "title": "Pup need a summer cut? Get 'em groomed at Pooch's Parlor (sponsored)",
           "publisher": "Greenpointers",
           "url": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
-          "date": "2026-06-01"
+          "date": "2026-08-11"
         }
       ],
       "evidenceStrength": "medium_high",
@@ -2379,12 +2377,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-08-01",
+      "updatedAt": "2026-08-11",
       "lat": 40.732156,
       "lng": -73.955048,
       "relatedCardIds": [
         "poochs-parlor"
-      ]
+      ],
+      "sourceQuote": "[Sponsored] Mention Greenpointers for 20% off your first appointment at Pooch's Parlor (128 India St)!"
     },
     {
       "id": "community-yoga-transmitter-tuesdays",
@@ -2443,7 +2442,7 @@
       "category": "discount",
       "title": "Marianella's 19th-anniversary sale",
       "kicker": "Up to 50% off sitewide, plus bundles",
-      "endsAt": "2026-08-09T23:59:00-04:00",
+      "endsAt": "2026-08-25T23:59:00-04:00",
       "recurring": true,
       "locationName": "Marianella Market",
       "address": "83 West St, Brooklyn, NY 11222",
@@ -2466,19 +2465,19 @@
       ],
       "sourceLinks": [
         {
-          "title": "Marianella Market email, 2026-08-02",
+          "title": "Marianella store page",
           "url": "https://marianella.co/pages/store",
           "publisher": "Marianella Market",
-          "date": "2026-08-02"
+          "date": "2026-08-11"
         }
       ],
-      "sourceQuote": "Our anniversary sale continues, and we've added something special. Discover new curated bundles with savings up to 60%, alongside up to 50% off sitewide and free shipping. ... Thoughtfully made. Beautifully priced. For a little while.",
+      "sourceQuote": "UP TO 50% OFF\n19 YEAR ANNIVERSARY SALE\nFREE SHIPPING",
       "evidenceStrength": "medium",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
+      "updatedAt": "2026-08-11"
     },
     {
       "id": "bk-youth-ballet-adult-term",
@@ -2630,48 +2629,6 @@
           "thu"
         ]
       }
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "threes-chi-ba-bakery-0810",
-      "title": "Chi Ba Bakery pop-up at Threes",
-      "kicker": "Cakes and cookies with drink specials",
-      "category": "event",
-      "filters": [
-        "food_drink"
-      ],
-      "free": false,
-      "startsAt": "2026-08-10T17:00:00-04:00",
-      "endsAt": "2026-08-10T20:00:00-04:00",
-      "locationName": "Threes Brewing",
-      "address": "113 Franklin St, Brooklyn, NY 11222",
-      "summary": "One evening of the Franklin Street taproom's collaborative series, this time with a guest bakery. Walk-in only, no reservations.",
-      "actions": [
-        {
-          "label": "Pop-up series",
-          "type": "learn_more",
-          "url": "https://threesbrewing.com/pages/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Chi Ba Bakery @ Threes Brewing, 5 p.m. to 8 p.m: Threes is hosting Chi Ba Bakery with specialty desserts like cookies and cakes alongside drink specials during its collaborative pop-up series . Walk-in only, no reservations.",
-      "evidenceStrength": "medium_high",
-      "lat": 40.73024,
-      "lng": -73.957805
     },
     {
       "audience": [
@@ -3698,48 +3655,6 @@
       "address": "1011 Manhattan Ave",
       "lat": 40.733463,
       "lng": -73.955035,
-      "id": "troost-noah-amick-0810",
-      "title": "Noah Amick at Troost",
-      "kicker": "Electric indie jazz",
-      "summary": "Noah Amick brings electric indie jazz to the back room. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-10T00:00:00-04:00",
-      "endsAt": "2026-08-10T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: NOAH AMICK\nstart.date: 2026-08-10",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
       "id": "troost-stan-zenkov-0811",
       "title": "Stan Zenkov's improvised quintet at Troost",
       "kicker": "Creative improvised music",
@@ -4014,48 +3929,6 @@
           "title": "Greenpoint Comedy Club",
           "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
           "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-07"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "id": "film-noir-monday-0810",
-      "title": "Film Noir Monday",
-      "kicker": "The weekly late-night noir slot",
-      "startsAt": "2026-08-10T21:00:00-04:00",
-      "endsAt": "2026-08-10T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "summary": "The cinema's standing Monday noir programme. The listing names the slot but not the title screening.",
-      "sourceQuote": "title: FILM NOIR MONDAY",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema programme",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
-          "publisher": "Film Noir Cinema",
           "date": "2026-08-07"
         }
       ]
@@ -5182,56 +5055,6 @@
       "endsAt": "2026-08-29T11:00:00-04:00"
     },
     {
-      "id": "dreams-on-command-there-are-people-here-0808",
-      "title": "“There Are People Here” closes today at Dreams On Command",
-      "category": "arts_culture",
-      "filters": [
-        "arts_culture"
-      ],
-      "audience": [
-        "resident",
-        "visitor",
-        "creator"
-      ],
-      "kicker": "Closing day, 1–6pm",
-      "locationName": "Dreams On Command",
-      "address": "42 West St, Suite 105, Brooklyn, NY 11222",
-      "summary": "Today is the last day of “There Are People Here,” the gallery's current group show (up since July 11) — open in its usual Saturday window.",
-      "startsAt": "2026-08-08T13:00:00-04:00",
-      "endsAt": "2026-08-08T18:00:00-04:00",
-      "actions": [
-        {
-          "label": "Gallery site",
-          "type": "learn_more",
-          "url": "https://www.dreamsoncommand.com/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Dreams On Command",
-          "url": "https://www.dreamsoncommand.com/",
-          "publisher": "Dreams On Command",
-          "date": "2026-08-08"
-        }
-      ],
-      "sourceQuote": "There Are People Here. July 11–August 8, 2026. W-F (2-7pm) SAT/SUN (1-6pm).",
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
-      "relatedCardIds": [
-        "dreams-on-command"
-      ],
-      "lat": 40.728078,
-      "lng": -73.958665
-    },
-    {
       "category": "subscription",
       "audience": [
         "resident"
@@ -5460,7 +5283,12 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Adult Dance ($25/class): 4 classes a month - $87.00 per month (13% off). Adult Ground Skills ($30/class): 4 classes a month - $104.00 per month (13% off). Adult Aerial ($40/class): 4 classes a month - $139.00 per month (13% off). Kids Juggling/Flow ($100): Free trial class. Kids Aerial, Kids Acro ($160): Free trial class."
+      "sourceQuote": "Adult Dance ($25/class): 4 classes a month - $87.00 per month (13% off). Adult Ground Skills ($30/class): 4 classes a month - $104.00 per month (13% off). Adult Aerial ($40/class): 4 classes a month - $139.00 per month (13% off). Kids Juggling/Flow ($100): Free trial class. Kids Aerial, Kids Acro ($160): Free trial class.",
+      "relatedCardIds": [
+        "moon-bunny-two-day-camp-4-7-0813",
+        "moon-bunny-weekday-camp-8-12-0817",
+        "moon-bunny-two-day-camp-8-12-0824"
+      ]
     },
     {
       "category": "subscription",
@@ -6218,91 +6046,6 @@
       }
     },
     {
-      "id": "mcgolrick-pottery-picture-frames-0810",
-      "category": "event",
-      "title": "Pottery in the Park: Picture Frames",
-      "kicker": "Beginner hand-building, McGolrick Park",
-      "startsAt": "2026-08-10T18:00:00-04:00",
-      "endsAt": "2026-08-10T20:00:00-04:00",
-      "locationName": "Msgr McGolrick Park",
-      "address": "Monsignor McGolrick Park, Brooklyn, NY 11222",
-      "geocodeQuery": "Monsignor McGolrick Park, Brooklyn, NY",
-      "lat": 40.724458,
-      "lng": -73.943361,
-      "filters": [
-        "arts_culture"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "summary": "Series 1 of a pop-up craft night — decorate a clay frame for a favorite photo with an instructor's help. Materials provided, no experience needed.",
-      "actions": [
-        {
-          "label": "Directions",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flyer posted near McGolrick Park",
-          "publisher": "Pottery in the Park (McGolrick)",
-          "date": "2026-08-10"
-        }
-      ],
-      "sourceQuote": "Pottery in the Park. Series 1: Picture Frames. Join us for a relaxed, beginner-friendly evening of hand-building and decorating a frame for your favorite photo with the help of a seasoned instructor! No experience necessary, all materials provided. 10 August 2026, 6-8 PM, McGolrick Park. RSVP here!",
-      "evidenceStrength": "medium",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "low",
-      "trustRisk": "low",
-      "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "id": "film-noir-sintomas-0810",
-      "title": "Sintomas at Film Noir Cinema",
-      "kicker": "Early show before the Monday noir",
-      "summary": "A 7pm screening on the Meserole Avenue cinema's Monday bill, two hours ahead of its standing late-night noir slot.",
-      "startsAt": "2026-08-10T19:00:00-04:00",
-      "endsAt": "2026-08-10T20:00:00-04:00",
-      "sourceQuote": "title: SINTOMAS\nstartDate: 2026-08-10T23:00:00.000Z\nendDate: 2026-08-11T00:00:00.000Z",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-10"
-        }
-      ]
-    },
-    {
       "category": "event",
       "audience": [
         "resident"
@@ -6710,6 +6453,234 @@
       ],
       "lat": 40.72606,
       "lng": -73.950709
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "id": "film-noir-film-club-0813",
+      "title": "Film Club at Film Noir Cinema",
+      "kicker": "Nobody knows the title but the picker",
+      "summary": "A different member of the club chooses the night's films and keeps the titles secret until they roll. The cinema calls it pure cinematheque fun.",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "free": false,
+      "startsAt": "2026-08-13T21:00:00-04:00",
+      "endsAt": "2026-08-13T22:00:00-04:00",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema — FILM CLUB",
+          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-11"
+        }
+      ],
+      "sourceQuote": "FILM CLUB\nThursday, August 13, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.\nPure cinematheque fun."
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "id": "troost-lumens-0825",
+      "title": "LUMENS at Troost",
+      "kicker": "An evening of sonic mischief",
+      "summary": "Jeff Berner, Rob Heath and Tony Maimone play the Manhattan Avenue back room. The venue calendar lists the night without a set start time.",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "free": false,
+      "startsAt": "2026-08-25T00:00:00-04:00",
+      "endsAt": "2026-08-25T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-11"
+        }
+      ],
+      "sourceQuote": "summary: LUMENS\ndescription: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone\nstart.date: 2026-08-25"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "free": false,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "actions": [
+        {
+          "label": "Camp details",
+          "type": "learn_more",
+          "url": "https://moonbunnyaerial.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial events",
+          "url": "https://moonbunnyaerial.com",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-11"
+        }
+      ],
+      "id": "moon-bunny-two-day-camp-4-7-0813",
+      "title": "Two-Day Circus Camp for 4–7s at Moon Bunny Aerial",
+      "kicker": "Lyra, silks, hammock and trapeze",
+      "summary": "A shorter camp for the youngest flyers: aerial apparatus work plus ground acro, juggling and flow props, run across two consecutive days.",
+      "startsAt": "2026-08-13T09:00:00-04:00",
+      "endsAt": "2026-08-14T15:00:00-04:00",
+      "sourceQuote": "name: Two Day Camp 4-7 yrs old\nstart_at: 2026-08-13T13:00:00.000Z\nend_at: 2026-08-13T19:00:00.000Z\n\nname: Two Day Camp 4-7 yrs old\nstart_at: 2026-08-14T13:00:00.000Z\nend_at: 2026-08-14T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
+      "lat": 40.736575,
+      "lng": -73.952327
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "free": false,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "actions": [
+        {
+          "label": "Camp details",
+          "type": "learn_more",
+          "url": "https://moonbunnyaerial.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial events",
+          "url": "https://moonbunnyaerial.com",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-11"
+        }
+      ],
+      "id": "moon-bunny-weekday-camp-8-12-0817",
+      "title": "Week-Long Circus Camp for 8–12s at Moon Bunny Aerial",
+      "kicker": "Lyra, silks, hammock, trapeze",
+      "summary": "Moon Bunny's longest camp format for the 8-to-12 group, threading ground acro, juggling and flow props plus games and themed days through the full week.",
+      "startsAt": "2026-08-17T09:00:00-04:00",
+      "endsAt": "2026-08-21T15:00:00-04:00",
+      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-17T13:00:00.000Z\nend_at: 2026-08-17T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.Throughout the week, participants will enjoy games, themed days, and opportunities to build",
+      "lat": 40.736575,
+      "lng": -73.952327
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-11",
+      "updatedAt": "2026-08-11",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "free": false,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "actions": [
+        {
+          "label": "Camp details",
+          "type": "learn_more",
+          "url": "https://moonbunnyaerial.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial events",
+          "url": "https://moonbunnyaerial.com",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-11"
+        }
+      ],
+      "id": "moon-bunny-two-day-camp-8-12-0824",
+      "title": "Two-Day Circus Camp for 8–12s at Moon Bunny Aerial",
+      "kicker": "Late-August pair of camp days",
+      "summary": "The shorter format for the 8-to-12 group — aerial apparatus work plus acro, juggling and flow props over two consecutive days.",
+      "startsAt": "2026-08-24T09:00:00-04:00",
+      "endsAt": "2026-08-25T15:00:00-04:00",
+      "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-24T13:00:00.000Z\nend_at: 2026-08-24T19:00:00.000Z\n\nname: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-25T13:00:00.000Z\nend_at: 2026-08-25T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
+      "lat": 40.736575,
+      "lng": -73.952327
     }
   ]
 }

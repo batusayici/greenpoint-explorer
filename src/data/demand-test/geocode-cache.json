@@ -2953,5 +2953,30 @@
         "-73.9496230"
       ]
     }
+  },
+  "394 McGuinness Blvd, Brooklyn, NY 11222": {
+    "query": "394 McGuinness Blvd, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-11T13:25:14.615Z",
+    "hit": {
+      "place_id": 359106588,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280142972,
+      "lat": "40.7365745",
+      "lon": "-73.9523271",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "394, McGuinness Boulevard, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7364141",
+        "40.7366499",
+        "-73.9524932",
+        "-73.9521058"
+      ]
+    }
   }
 }
