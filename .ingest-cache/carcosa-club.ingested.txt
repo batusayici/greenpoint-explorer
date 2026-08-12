@@ -37,3 +37,34 @@ title: Malifaux Monthly
 startDate: 2026-09-12T13:45:00.019Z
 endDate: 2026-09-12T22:00:00.019Z
 fullUrl: /events/2026/7/12/malifaux-monthly-ytrrj
+
+
+## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
+
+## [DETAIL] https://www.carcosaclub.com/membership
+HOMEABOUTMEMBERSHIPORDERSEVENTSSTORE
+Monthly memberships are currently closed
+We maintain a cap on monthly memberships to ensure a comfortable environment for all of our members. Memberships are currently closed at this time. If you’re interested in getting notified when membership spaces open up, please fill out the form below.
+What to expect after applying: We do not send personalized emails, but your response will be recorded in our waitlist. When a membership space opens, we will announce this on our Discord. If you are not on the Discord, you may miss your chance at a membership, so please join!
+In the meantime, feel free to visit the club for one of our many events.
+Name
+First Name
+(required)
+Last Name
+(required)
+Email
+(required)
+Carcosa Discord handle
+(required)
+Please join here if you haven't already!
+SUBMIT
+Guests
+$15/visit
+Must be hosted by an existing member for the entirety of your visit.
+You may either pre-purchase your daily pass from our online store or via QR code at the club .
+Inclusivity
+The Carcosa Club values being an inclusive and friendly space for all people to game and hang out in a safe and support environment. In an effort to create a more diverse tabletop gaming environment, we allow women and non-binary applicants to be approved for membership regardless of current membership capacity. If you believe that you qualify for immediate membership under this initiative please reach out to a friendly officer on Discord!
+982 Manhattan Avenue
+Brooklyn, NY 11222
+Sunday-Thursday: 9am - 11pm
+Friday & Saturday: 9am - midnight

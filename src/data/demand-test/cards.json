@@ -4764,7 +4764,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "hana-sool-club",
       "title": "Hana Sool Club",
@@ -4798,7 +4798,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "A shipment of 4 or 2 different bottles of our sool every quarter—charged at a 15% discount. An automatic 15% discount on all additional purchases. Free shipping for club releases and all additional purchases. One complimentary pour with each visit to our Tasting Room & Brewery in Brooklyn, NY. Release pricing will generally range from $100-$130 for 4 bottles and $45-$65 for 2 bottles."
+      "sourceQuote": "A shipment of 4 or 2 different bottles of our sool every quarter—charged at a 15% discount.\nRelease pricing will generally range from $100-$130 for 4 bottles and $45-$65 for 2 bottles."
     },
     {
       "category": "subscription",
@@ -4810,7 +4810,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "yaro-studio-membership",
       "title": "Yaro Studios ceramics membership",
@@ -4844,7 +4844,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Full Shelf: $300/month. Half Shelf: $260/month. Membership pricing includes tax. Additional costs to our membership fees include clay and firing fees at 4 cents per cubic inch bisque/glaze firings & tax. Memberships require a minimum 3-month commitment. After that, you can cancel anytime with at least 30 days' notice before your next billing date."
+      "sourceQuote": "$300/mo Full Shelf & $260/mo Half Shelf\n*Membership pricing includes tax. Additional costs to our membership fees include clay and firing fees at 4 cents per cubic inch bisque/glaze firings & tax.\nMemberships require a minimum 3-month commitment. After that, you can cancel anytime with at least 30 days’ notice before your next billing date."
     },
     {
       "category": "subscription",
@@ -4856,7 +4856,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "kettl-tea-subscriptions",
       "title": "Kettl tea subscriptions",
@@ -4889,7 +4889,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "New Horizons Matcha Subscription — From $38.00: A curated matcha subscription, complete with subscriber-exclusive perks like unique recipe cards and a monthly newsletter. Founders Collection Subscription — $30.00: a hand selected tea-of-the-month by Kettl founder Zach Mangan. Roast Club Subscription — $30.00: house-roasted houjicha made with unique teas sourced directly from our producing partners. Kiwami Collection — $250.00 quarterly: the rarest and most unique teas being produced in Japan today.",
+      "sourceQuote": "New Horizons Matcha Subscription\nFrom $38.00\nFounders Collection Subscription: Curated by Kettl Founder, Zach Mangan\nKiwami Collection: A Quarterly Subscription of Our Most Esteemed Tea\nRoast Club Subscription: Fresh Roasted Houjicha\nOrders over $150 receive free shipping. All Subscriptions ship free in the USA.",
       "lat": 40.729523,
       "lng": -73.958159
     },
@@ -4903,7 +4903,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "carcosa-membership-guest-pass",
       "title": "Carcosa Club membership & guest pass",
@@ -4937,7 +4937,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Monthly memberships are currently closed due to capacity limits. Guest Pass: $15 per visit. Guests must be accompanied by an existing member throughout their stay. Women and non-binary applicants may receive immediate membership approval regardless of current capacity restrictions if they contact officers through Discord."
+      "sourceQuote": "Monthly memberships are currently closed\nWe maintain a cap on monthly memberships to ensure a comfortable environment for all of our members.\n$15/visit\nMust be hosted by an existing member for the entirety of your visit.\nwe allow women and non-binary applicants to be approved for membership regardless of current membership capacity"
     },
     {
       "category": "subscription",
@@ -4949,7 +4949,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "moon-bunny-monthly-plans",
       "title": "Moon Bunny monthly class plans",
@@ -4983,7 +4983,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Adult Dance ($25/class): 4 classes a month - $87.00 per month (13% off). Adult Ground Skills ($30/class): 4 classes a month - $104.00 per month (13% off). Adult Aerial ($40/class): 4 classes a month - $139.00 per month (13% off). Kids Juggling/Flow ($100): Free trial class. Kids Aerial, Kids Acro ($160): Free trial class.",
+      "sourceQuote": "4 classes a month - $87.00 per month (13% off)\n4 classes a month - $104.00 per month (13% off)\n4 classes a month - $139.00 per month (13% off)\nFree trial class",
       "relatedCardIds": [
         "moon-bunny-two-day-camp-4-7-0813",
         "moon-bunny-weekday-camp-8-12-0817",
@@ -5000,7 +5000,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "word-romance-book-club",
       "title": "Romance Book Club at WORD",
@@ -5033,7 +5033,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Romance Book Club — Brooklyn — Every First Saturday. Book club selections are 10% off in the month leading up to the meeting."
+      "sourceQuote": "Romance Book Club - Every First Saturday @ WORD Brooklyn\nBook club selections are 10% off in the month leading up to the meeting."
     },
     {
       "category": "event",
@@ -5331,7 +5331,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "category": "subscription",
       "id": "held-space-membership",
@@ -5365,7 +5365,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Community Membership: Attend unlimited Members Only Events (at least 2x per week with offerings like yoga, ecstatic dance, sound baths, communal coworking, and more); Access the common areas, including the lounge & quiet c...; Join our members-only Slack channel. $129/month or $1029/year (2 months free) No minimu... Practitioner Membership: Rates start at $329/month. Facilitator Membership: Rates start at $396/month. Come stop by for a tour! Tours are the first and third Friday of every month, between 12 - 2 pm.",
+      "sourceQuote": "Attend unlimited Members Only Events (at least 2x per week with offerings like yoga, ecstatic dance, sound baths, communal coworking, and more)\n$129/month or $1029/year (2 months free)\nNo minimum commitment.\nRates start at $329/month.\nRates start at $396/month",
       "lat": 40.732062,
       "lng": -73.954278
     },
@@ -5378,7 +5378,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "category": "subscription",
       "id": "selformer-memberships",
@@ -5412,7 +5412,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Unlimited All Access Membership $399 Every month. Unlimited On-Demand Video Membership $350 Every month. 4 Classes A Month Membership $147 Every month — Dip your toes in. A steady dose of reformer magic, once a week or more, for just $36.75 a class. 8 Classes A Month Membership $239 Every month — Take 8 classes per month at only $29.87 per class! 16 Classes A Month Membership $369 Every month — For your regulars who want to come 3 to 4x per week at only $23.06 a class. Monthly memberships renew automatically until canceled. Memeberships cannot be transferred to another user, or unused credits do not roll over to the next month.",
+      "sourceQuote": "Unlimited All Access Membership\nUnlimited On-Demand Video Membership\n4 Classes A Month Membership\n8 Classes A Month Membership\nTake 8 classes per month at only $29.87 per class!\n16 Classes A Month Membership\nFor your regulars who want to come 3 to 4x per week at only $23.06 a class",
       "lat": 40.728561,
       "lng": -73.959184
     },
@@ -5425,7 +5425,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "category": "subscription",
       "id": "clay-space-membership",
@@ -5459,7 +5459,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "This tier includes shared use of potter's wheels, 2 large communal handbuilding work tables, use of all equipment and all-level membership amenities. $210.00 - $255.00 + tax monthly. This tier includes a designated work table and pegboard divider, additional storage under the table & may include either wall or side shelving based on your particular membership level. $310 - $380 + tax monthly. The Clay Space Annex is a 700 sq. ft. ground floor, private entrance studio space located just across the street from our center. $365 - $525 + tax monthly. $485 - $650 + tax monthly. membership will only be considered for those with more than one year of consistent lessons and are able to commit to a 3-month minimum membership term.",
+      "sourceQuote": "This tier includes shared use of potter’s wheels, 2 large communal handbuilding work tables, use of all equipment and all-level membership amenities.\n$210.00 - $255.00 + tax monthly\nThis tier includes a designated work table and pegboard divider, additional storage under the table & may include either wall or side shelving based on your particular membership level.\n$310 - $380 + tax monthly\nThe Clay Space Annex is a 700 sq. ft. ground floor, private entrance studio space located just across the street from our center.",
       "lat": 40.729705,
       "lng": -73.949195
     },
@@ -5472,7 +5472,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "category": "subscription",
       "id": "marianella-subscription-box",
@@ -5505,7 +5505,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Delve into the world of Marianella with our monthly subscription boxes, each brimming with full-sized products at an incredible 50% off their retail value. Start My Monthly Ritual Deliver every month, $48.00 $48.00 USD Subscription Auto-renews, skip or cancel anytime.",
+      "sourceQuote": "Delve into the world of Marianella with our monthly subscription boxes, each brimming with full-sized products at an incredible 50% off their retail price.\nMonthly Contents: Full-sized luxury products including skincare, candles, and more between 1 and 4 products a month based on retail price.",
       "lat": 40.729398,
       "lng": -73.959338
     },
@@ -5518,7 +5518,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "category": "subscription",
       "id": "driftaway-coffee-subscriptions",
@@ -5552,7 +5552,7 @@
           "date": "2026-08-08"
         }
       ],
-      "sourceQuote": "Coffee Subscriptions for Coffee Lovers | 2026 Roaster of the Year. Subscription (6 products). All Roasts Subscription — A rotating selection of coffees from light to dark roasts, delivered fresh each shipment. Choose the roast profiles you want! From $17.00 USD. Light Roasts Subscription From $18.00 USD. Medium and Dark Roasts Subscription From $16.00 USD. Coffee Gift Subscription — Our bestseller for a reason! Start with an Explorer box and discover new coffees every month! From $56.00 USD.",
+      "sourceQuote": "All Roasts Subscription\nA rotating selection of coffees from light to dark roasts, delivered fresh each shipment. Choose the roast profiles you want!\nLight Roasts Subscription\nMedium and Dark Roasts Subscription\nFrom $16.00 USD\nFrom $17.00 USD\nFrom $18.00 USD\nFrom $56.00 USD",
       "lat": 40.717121,
       "lng": -73.938312
     },

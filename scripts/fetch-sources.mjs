@@ -583,10 +583,20 @@ async function detailText(src, listingText) {
   if (!cfg) return { block: "", fetched: 0, failed: [] };
   const base = sourceUrls(src)[0];
   const limit = Number.isInteger(cfg.limit) ? cfg.limit : DETAIL_LIMIT_DEFAULT;
+  // A `urls` entry may be a string or { url, fetch } — the two pages a single
+  // source needs are not always readable the same way. WORD needs the browser
+  // for withfriends' scroll-mounted /join AND plain fetch for
+  // wordbookstores.com/word-book-clubs, which bot-walls headless Chromium (302
+  // chars, never rendered) but answers a plain request fine.
+  const modeFor = new Map();
   const candidates = [];
-  for (const u of cfg.urls ?? []) {
-    const abs = absUrl(expandUrlTemplate(u), base);
-    if (abs) candidates.push(abs);
+  for (const entry of cfg.urls ?? []) {
+    const raw = typeof entry === "string" ? entry : entry?.url;
+    if (!raw) continue;
+    const abs = absUrl(expandUrlTemplate(raw), base);
+    if (!abs) continue;
+    candidates.push(abs);
+    if (typeof entry === "object" && entry.fetch) modeFor.set(abs, entry.fetch);
   }
   if (cfg.match) {
     const re = new RegExp(cfg.match);
@@ -606,15 +616,24 @@ async function detailText(src, listingText) {
   // instead of link-order shuffle. Explicit `urls` keep their roster order and
   // come first — they are the fixed evidence pages (a /summer-camps, a /join),
   // so they must never be crowded out by the harvest hitting the cap.
-  const pinned = (cfg.urls ?? []).map((u) => absUrl(expandUrlTemplate(u), base)).filter(Boolean);
-  const harvested = [...new Set(candidates)].filter((u) => !pinned.includes(u)).sort();
-  const urls = [...new Set([...pinned, ...harvested])].filter((u) => u !== base).slice(0, limit);
+  const pinned = (cfg.urls ?? [])
+    .map((e) => absUrl(expandUrlTemplate(typeof e === "string" ? e : e?.url ?? ""), base))
+    .filter(Boolean);
+  // The base URL is dropped from the HARVEST (a page linking to itself would
+  // duplicate its whole snapshot) but never from `urls`: pinning the base is
+  // the sanctioned way to re-read a lazy page with the browser. Membership and
+  // pricing pages (Held Space, Selformer, Clay Space) render 6KB of nav on
+  // plain fetch — comfortably past MIN_TEXT_CHARS, so `auto` never escalates —
+  // while every tier and price mounts on scroll and is silently absent.
+  const harvested = [...new Set(candidates)].filter((u) => !pinned.includes(u) && u !== base).sort();
+  const urls = [...new Set([...pinned, ...harvested])].slice(0, limit);
 
   const blocks = [];
   const failed = [];
   for (const u of urls) {
     try {
-      const raw = cfg.fetch === "browser" ? await browserText(u, { scroll: cfg.scroll !== false }) : htmlToText(await rawGet(u, "text/html,application/xhtml+xml"));
+      const mode = modeFor.get(u) ?? cfg.fetch;
+      const raw = mode === "browser" ? await browserText(u, { scroll: cfg.scroll !== false }) : htmlToText(await rawGet(u, "text/html,application/xhtml+xml"));
       const text = raw.trim();
       if (!text) {
         failed.push({ url: u, why: "empty" });

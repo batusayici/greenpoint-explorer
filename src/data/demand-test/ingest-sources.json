@@ -141,7 +141,14 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "76 Kent St; ceramics/fiber/print classes."
+      "notes": "76 Kent St; ceramics/fiber/print classes.",
+      "detail": {
+        "urls": [
+          "https://yarostudios.com/membership"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "yaro-kids-clay",
@@ -181,10 +188,16 @@
       "notes": "Batu 2026-08-05 confirmed this is where WORD publishes events (their own site bot-walls every method — IndieCommerce 403). STILL BROWSER-ONLY and provably so: Withfriends delivers the list over a WebSocket, not HTTP. Re-probed 2026-08-05 — /api/movement/word/events and ?format=json both return the same ~82KB empty SPA shell, .ics 500s. Do not re-hunt for an endpoint. Each event states its own location line, so the Brooklyn filter is mechanical: card ONLY \"Greenpoint, Brooklyn\" / \"Brooklyn, NY\" items, never \"Jersey City, NJ\". The list renders ~5 events behind a \"Show more events...\" control, so treat the snapshot as the near-term window, not the full calendar. ADDRESS RESOLVED (Batu, 2026-08-07): the Brooklyn store is 126 Franklin St, Brooklyn, NY 11222 — verified on WORD's own site footer, which lists exactly two locations (Brooklyn 126 Franklin St; Jersey City 29 McWilliams Pl). The Withfriends page's own blurb says it too: 'An independent bookstore since 2007 with locations in Greenpoint, Brooklyn and Jersey City, New Jersey.' So there is exactly ONE Brooklyn shop and it is in Greenpoint — a bare 'Brooklyn, NY' location line is unambiguous and pins to 126 Franklin St. This is what unblocks the three cards held 2026-08-06; the listing itself will still never print a street address, so DO NOT hold on that again. Accessibility, stated on the same page and worth carrying in card copy: 'Events in Brooklyn are held in the basement, accessed by a flight of stairs.' wordbookstores.com added to the tracked .claude/settings.json allowlist in the same change. DETAIL PAGES PERSISTED (2026-08-12): Membership tiers are JS-rendered on /join and invisible to plain fetch.",
       "detail": {
         "urls": [
-          "https://withfriends.co/word/join"
+          {
+            "url": "https://withfriends.co/word/join",
+            "fetch": "browser"
+          },
+          {
+            "url": "https://wordbookstores.com/word-book-clubs",
+            "fetch": "plain"
+          }
         ],
-        "limit": 1,
-        "fetch": "browser"
+        "limit": 2
       }
     },
     {
@@ -208,6 +221,13 @@
           "excerpt",
           "fullUrl"
         ]
+      },
+      "detail": {
+        "urls": [
+          "https://www.carcosaclub.com/membership"
+        ],
+        "limit": 1,
+        "fetch": "browser"
       }
     },
     {
@@ -267,7 +287,14 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "201 Dupont St; tours, tastings, classes."
+      "notes": "201 Dupont St; tours, tastings, classes.",
+      "detail": {
+        "urls": [
+          "https://hanamakgeolli.com/hanasoolclub"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "hana-makgeolli-soolschool",
@@ -313,7 +340,14 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "70 Greenpoint Ave; tastings/classes."
+      "notes": "70 Greenpoint Ave; tastings/classes.",
+      "detail": {
+        "urls": [
+          "https://kettl.co/collections/subscriptions"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "bellocq-tea",
@@ -362,7 +396,8 @@
       "citeHost": "moonbunnyaerial.com",
       "detail": {
         "urls": [
-          "https://moonbunnyaerial.com/summer-camps"
+          "https://moonbunnyaerial.com/summer-camps",
+          "https://moonbunnyaerial.com/discounts"
         ],
         "limit": 2
       }
@@ -690,7 +725,14 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "960 Manhattan Ave, 4th Floor. Onboarded 2026-08-08 to WATCH THE PRICES on held-space-membership — the card quotes $129/month or $1029/year (2 months free) plus Practitioner from $329 and Facilitator from $396, and nothing was re-verifying them. STANDING PROGRAMMING: the tiers are the supply, so the card is undated; a diff here means a price or tier changed, which is a card update, not a new card. The members-only programme (\"at least 2x per week\" — yoga, ecstatic dance, sound baths, communal coworking) is real but NOT publicly dated anywhere we can reach, so do not expect event cards from this source. Note the SSG directory's event URL for this business (/attend-an-offering) 404s — do not restore it."
+      "notes": "960 Manhattan Ave, 4th Floor. Onboarded 2026-08-08 to WATCH THE PRICES on held-space-membership — the card quotes $129/month or $1029/year (2 months free) plus Practitioner from $329 and Facilitator from $396, and nothing was re-verifying them. STANDING PROGRAMMING: the tiers are the supply, so the card is undated; a diff here means a price or tier changed, which is a card update, not a new card. The members-only programme (\"at least 2x per week\" — yoga, ecstatic dance, sound baths, communal coworking) is real but NOT publicly dated anywhere we can reach, so do not expect event cards from this source. Note the SSG directory's event URL for this business (/attend-an-offering) 404s — do not restore it.",
+      "detail": {
+        "urls": [
+          "https://heldspacebk.com/membership"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "selformer",
@@ -700,7 +742,14 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "67 West St. Onboarded 2026-08-08 to watch the prices on selformer-memberships ($147/$239/$369 a month for 4/8/16 classes; $399 unlimited; $350 on-demand video). TWO LOCATIONS — plans read \"Williamsburg + Greenpoint\" and the self-service station is Williamsburg-only, so never write a Greenpoint-exclusive benefit into card copy. The BOOKING page (/book-now) is login-walled Wix auth and carries nothing; this pricing page is the public surface — do not re-probe the booking path. Time-boxed promos appear here (a \"Summer Fling Unlimited\" $249/mo ran through Aug 15 2026 and was deliberately NOT carded — a deal that dies in a week is not worth a slot); card those only as `discount` WITH endsAt."
+      "notes": "67 West St. Onboarded 2026-08-08 to watch the prices on selformer-memberships ($147/$239/$369 a month for 4/8/16 classes; $399 unlimited; $350 on-demand video). TWO LOCATIONS — plans read \"Williamsburg + Greenpoint\" and the self-service station is Williamsburg-only, so never write a Greenpoint-exclusive benefit into card copy. The BOOKING page (/book-now) is login-walled Wix auth and carries nothing; this pricing page is the public surface — do not re-probe the booking path. Time-boxed promos appear here (a \"Summer Fling Unlimited\" $249/mo ran through Aug 15 2026 and was deliberately NOT carded — a deal that dies in a week is not worth a slot); card those only as `discount` WITH endsAt.",
+      "detail": {
+        "urls": [
+          "https://www.selformer.com/plans-pricing"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "clay-space-membership",
@@ -710,7 +759,15 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "275 Calyer St. Watches the prices on clay-space-membership: four tiers $210-$255 / $310-$380 / $365-$525 / $485-$650 + tax monthly, 3-month minimum, application-gated, requires more than a year of consistent lessons."
+      "notes": "275 Calyer St. Watches the prices on clay-space-membership: four tiers $210-$255 / $310-$380 / $365-$525 / $485-$650 + tax monthly, 3-month minimum, application-gated, requires more than a year of consistent lessons.",
+      "detail": {
+        "urls": [
+          "https://www.clayspacebk.com/membership",
+          "https://www.clayspacebk.com/semester-classes"
+        ],
+        "limit": 2,
+        "fetch": "browser"
+      }
     },
     {
       "id": "clay-space-workshops",
@@ -740,7 +797,14 @@
       "fetch": "auto",
       "standing": true,
       "citeHost": "driftaway.coffee",
-      "notes": "85 Debevoise Ave. Watches driftaway-coffee-subscriptions (six standing subscriptions, from $16). Mail-order by nature — the precedent for carding a national-shipping subscription from a Greenpoint roaster is kettl-tea-subscriptions. `monthly` cadence on purpose: a coffee catalogue does not turn over weekly and checking it every run is noise."
+      "notes": "85 Debevoise Ave. Watches driftaway-coffee-subscriptions (six standing subscriptions, from $16). Mail-order by nature — the precedent for carding a national-shipping subscription from a Greenpoint roaster is kettl-tea-subscriptions. `monthly` cadence on purpose: a coffee catalogue does not turn over weekly and checking it every run is noise.",
+      "detail": {
+        "urls": [
+          "https://store.driftaway.coffee/collections/subscriptions"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "marianella-subscription-box",
@@ -750,7 +814,14 @@
       "cadence": "monthly",
       "fetch": "auto",
       "standing": true,
-      "notes": "83 West St. Marianella is ALREADY a registered email sender; this is the web half, added 2026-08-08 because the sender channel does not re-verify the $48/month box price on marianella-subscription-box. Sale banners run across this page (a 19-year anniversary sale was live at onboarding) — those are separate `discount` cards WITH endsAt, not edits to the subscription card."
+      "notes": "83 West St. Marianella is ALREADY a registered email sender; this is the web half, added 2026-08-08 because the sender channel does not re-verify the $48/month box price on marianella-subscription-box. Sale banners run across this page (a 19-year anniversary sale was live at onboarding) — those are separate `discount` cards WITH endsAt, not edits to the subscription card.",
+      "detail": {
+        "urls": [
+          "https://marianella.co/products/subscription-box"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "otis-and-finn",

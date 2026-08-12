@@ -21,19 +21,27 @@
 // Exit codes: 0 = no mismatch in scope. 1 = at least one in-scope card's quote
 // is not in its snapshot — that card must go to the hold pile, never to prod.
 //
-// WHY THE DATE CUTOFF, stated honestly rather than buried. Running this over
-// the whole deck reports ~33 of 89 checkable cards as mismatched, and they are
-// overwhelmingly NOT fabrications: the snapshot is an incomplete evidence base
-// by design. `moon-bunny-aerial`'s snapshot is a bare `name:/start_at:` feed
-// while the card's prose came from a detail page fetched during R1 and never
-// persisted; `cibone-ote`'s baseline carries the post body but not the
-// "Store Hours"/"Address" lines the card quotes. Those cards are honest and
-// their evidence is simply gone. Gating them would produce a check so noisy it
-// gets ignored or widened until toothless — the failure mode that matters most
-// for a truth gate. So the gate binds from the day evidence-persistence lands
-// (SKILL.md: R1 detail fetches and image reads are written into the source's
-// snapshot), and `--all` keeps the backlog visible instead of pretending it is
-// clean.
+// WHY THE DATE CUTOFF, and what it means now. When this landed, `--all` over
+// the whole deck reported ~33 of 89 checkable cards as mismatched — and they
+// were overwhelmingly NOT fabrications. The snapshot was an incomplete evidence
+// base by design: listings were captured, detail pages were not. Gating that
+// would have produced a check so noisy it got ignored or widened until
+// toothless, the failure mode that matters most for a truth gate.
+//
+// THAT BACKLOG IS NOW ZERO (2026-08-12). All 29 were re-checked against live
+// sources: 17 were factually correct with evidence that had simply expired, and
+// the rest were RECONSTRUCTIONS — real facts, composed strings — which were
+// rewritten verbatim. `fetch-sources.mjs` now persists detail pages via the
+// roster `detail` block, so the evidence arrives with the run that authors the
+// card. So treat any `--all` mismatch as NEW DRIFT worth investigating, not as
+// background noise.
+//
+// The cutoff still stands, deliberately: recurring cards decay by design. A
+// venue listing rolls forward ("Thu Aug 6 … and 5 more" becomes "Thu Aug 13 …
+// and 4 more") and its quote stops matching even though the card is right. That
+// is a re-quote at the next verified-through check, not a reason to block a
+// ship. The BLOCKING gate is therefore scoped to cards this run touched;
+// `--all` is the health report.
 //
 // It can also only check cards whose source is a roster web source with a
 // committed baseline. Newsletter-derived cards (Gmail) have no snapshot on disk

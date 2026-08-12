@@ -74,3 +74,106 @@ $
 /mo
 25% discount on every purchase, online and in store
 Free entry to all events
+
+
+## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
+
+## [DETAIL] https://withfriends.co/word/join
+WORD
+Brooklyn and Jersey City
+An independent bookstore since 2007 with locations in Greenpoint, Brooklyn and Jersey City, New Jersey. Open every day 10 AM - 7 PM. Events at our Jersey City location are held on the main sales floor. Events in Brooklyn are held in the basement, accessed by a flight of stairs.
+Share Follow
+Memberships
+Upcoming Events
+About WORD
+Support Us
+Support WORD by becoming a member.
+Monthly
+Annual
+Cancel renewal at any time.
+Fan
+$
+5
+/mo
+WORD Sticker available for pickup right away!
+5% discount on every purchase, online and in store
+$10 store credit for a single purchase during your birthday month 🍰
+Our eternal gratitude
+View all perkskeyboard_arrow_down
+Private shopping after hours event during the holidays for members, with 20% off all purchases
+Special thanks on our https://wordbookstores.com/ (at your option)
+Become a member
+Gift a membership
+Your welcome gift is ready on
+August 13, 2026
+Friend
+$
+10
+/mo
+WORD Sticker available for pickup right away!
+10% discount on every purchase, online and in store
+10% discount on all events
+(online tickets only)
+Early access to RSVP for special events
+$10 store credit for a single purchase during your birthday month 🍰
+Our eternal gratitude
+View all perkskeyboard_arrow_down
+Private shopping after hours event during the holidays for members, with 20% off all purchases
+Special thanks on our https://wordbookstores.com/ (at your option)
+Become a member
+Gift a membership
+Your welcome gift is ready on
+August 13, 2026
+Family
+$
+20
+/mo
+WORD Sticker & Your choice of WORD T-Shirt, WORD Beanie, or WORD Tote available for pickup right away!
+20% discount on every purchase, online and in store
+20% discount on all events
+(online tickets only)
+Share your discount with 1 additional guest per event
+Early access to RSVP for special events
+$10 store credit for a single purchase during your birthday month 🍰
+1 free ARC (advanced reader copy) book per month (in-store pickup only)
+Our eternal gratitude
+View all perkskeyboard_arrow_down
+Private shopping after hours event during the holidays for members, with 20% off all purchases
+Special thanks on our https://wordbookstores.com/ (at your option)
+Become a member
+Gift a membership
+Your welcome gift is ready on
+August 13, 2026
+Champion
+$
+100
+/mo
+WORD Sticker, T-Shirt, Beanie, & Tote available for pickup or delivery right away!
+25% discount on every purchase, online and in store
+Free entry to all events
+Share free entry with 1 additional guest per event
+Early access to RSVP for special events
+Hand-picked book by the WORD bookseller team, just for you on your birthday (pickup-only) 🎂
+1 free ARC (advanced reader copy) book per month (in-store pickup only)
+Our eternal gratitude
+View all perkskeyboard_arrow_down
+Private shopping after hours event during the holidays for members, with 20% off all purchases
+Extra special thanks on our https://wordbookstores.com/ (at your option)
+Become a member
+Gift a membership
+Your welcome gift is ready on
+August 13, 2026
+Make a one-time contribution
+Even a one-time contribution will help WORD to meet its goals in the coming year.
+Choose any amount to support their mission.
+$
+Support
+Powered by Withfriends
+
+## [R1 PERSISTED 2026-08-12] https://wordbookstores.com/word-book-clubs
+# UNFETCHABLE BY THE PIPELINE: this host 403s plain fetch AND bot-walls headless
+# Chromium (302 chars, never rendered) — both attempted 2026-08-12. Read via
+# WebFetch and persisted by hand so word-romance-book-club stays verifiable.
+# If the club page ever becomes fetchable, move it into the roster `detail` block.
+Romance Book Club - Every First Saturday @ WORD Brooklyn
+Book club selections are 10% off in the month leading up to the meeting.
