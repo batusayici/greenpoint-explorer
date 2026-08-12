@@ -381,11 +381,17 @@ test("seed has exactly 75 cards across the six layers", () => {
   // card was MERGED rather than duplicated — `library-sensory-garden-0821`
   // keeps its id and becomes the grouped Friday day-card now that the branch
   // added two afternoon programs to the same day. 137 − 1 + 3 = 139.
-  assert.equal(seed.cards.length, 139);
+  // 2026-08-12 rulings (Batu, PRs #29/#30): +2 held cards released by the new
+  // rules — `cibone-hozubag-0813` (lens-less by the markets rule, now shippable)
+  // and `flowercat-love-unfolded-0823` (arts_culture by the mixer rule). The
+  // Dreams On Command show did NOT become a card: under the exhibition ruling
+  // an ongoing run belongs to the venue card, so `dreams-on-command` was updated
+  // in place instead. 139 + 2 = 141.
+  assert.equal(seed.cards.length, 141);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 69, "74 − 7 expired 8/11 events + the 8/22 library storytime and Troost 8/26");
+  assert.equal(count((c) => c.category === "event"), 71, "69 + the 2 cards released by the 2026-08-12 rulings (CIBONE HOZUBAG, Flower Cat mixer)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the unverifiable Brooklyn Youth Ballet trial class");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
   assert.equal(count((c) => c.filters.includes("live_music")), 23, "23 − the expired 8/11 Troost night + Troost 8/26");
@@ -537,6 +543,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
+    // 2026-08-12 exhibition ruling: the gallery's own Visit block states "Free
+    // admission unless stated otherwise" beside the on-view dates, and the show
+    // now lives on this venue card rather than a dated event card.
+    "dreams-on-command",
     "greenpoint-trash-club",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
     // "teen interns are running a free scavenger hunt" and "You can get free
@@ -713,11 +723,30 @@ test("a card that names a game is never filed under Arts & Culture", () => {
   }
 });
 
-test("no card is lens-less — the six 2026-07-25 stragglers resolved into Civic or Arts & Culture", () => {
-  // Empty filters (All-only) is legal schema-wise but was a placeholder, not
-  // a destination: every card that landed there got a real home same day.
-  const lensless = seed.cards.filter((c) => c.filters.length === 0);
-  assert.deepEqual(lensless, [], "a growing lens-less list means the taxonomy is leaking — review at ingest");
+// 2026-08-12 (Batu, PRs #29/#30): lens-less is now a DESTINATION for exactly one
+// class of card, and a leak for everything else. SKILL.md's markets rule says a
+// general-goods flea, craft fair or vendor pop-up "carries no lens and shows in
+// All only — that absence is the answer, not a hold", and `shopping` is retired
+// with no lens to reach for. That filing could not ship while this test asserted
+// `lensless === []`: the rule was right, the assertion was stale. Each id below
+// must name why it carries no lens, so a real taxonomy leak still surfaces as an
+// unexplained id at review.
+const LENS_LESS_BY_DESIGN = [
+  // Retail pop-up of bags made from retired paraglider fabric at CIBONE O'TE.
+  // General-goods retail, not an exhibition — the markets rule's exact case.
+  "cibone-hozubag-0813",
+];
+
+test("no card is lens-less except the markets rule's own class (2026-08-12)", () => {
+  // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
+  // stragglers all resolved into Civic or Arts & Culture same day. It is now
+  // also the sanctioned home for general-goods vendor markets, by name only.
+  const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
+  assert.deepEqual(
+    lensless,
+    [...LENS_LESS_BY_DESIGN].sort(),
+    "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it here",
+  );
 });
 
 test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {

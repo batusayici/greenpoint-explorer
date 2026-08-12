@@ -239,3 +239,13 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   denominator. Clean funnel tracking begins with Wave 1, when tagged traffic
   starts arriving. Report pre-Wave-1 rates as directional only, and never cite
   them as a gate read.
+- **(2026-08-12, Batu — adopted from the cycle 4 readout, PR #31.)** **Every
+  outbound draft must name "Stoopwise Greenpoint" in the body.** Before the
+  2026-08-06 rename the origin told the recipient what they were about to open;
+  `stoopwise.com` does not, and CLAUDE.md requires the neighborhood on every
+  title, meta and machine surface because that keyword is what search and answer
+  engines match on. **A link alone is now an unlabelled link** — treat a draft
+  without the neighborhood in the body as a defect, not a style preference.
+  (The same readout proposed a geo/engagement-split diagnostic rule; Batu
+  declined it on 2026-08-12. Do not re-add it — reporting the split inside a
+  readout is still fine, it just is not a standing rule.)

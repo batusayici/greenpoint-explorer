@@ -4,7 +4,90 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-10 (latest) — the ingest was never using the proxy: one false comment, three weeks of wrong diagnosis
+## 2026-08-12 (latest) — the held-card backlog was a rules backlog: thirteen rulings from PRs #29/#30/#31/#32
+
+**Batu, reviewing four open PRs at once.** Three PRs had each independently held Greek Kitchen,
+`macha-studio` and a Lockwood item — the same three items, three runs running. That repetition is
+the finding: **a card held twice is not a card problem, it is a missing rule.** Every ruling below
+is written to file a *class* of card mechanically, so the next flea, gallery show, mixer or
+image-first venue never reaches a human.
+
+### Taxonomy and filing
+
+1. **Lens-less cards are legal, and named.** SKILL.md's markets rule ("a general-goods flea, craft
+   fair or vendor market **carries no lens and shows in All only** — that absence is the answer, not
+   a hold") was unshippable: the test `no card is lens-less` asserted `lensless === []`. The rule
+   was right and the test was stale. The test now holds an **explicit id allowlist with a comment
+   per id**, the same idiom the free-ness and deals-lens tests already use — a growing list still
+   gets caught at review, but the sanctioned filing ships. *Unblocks `cibone-hozubag-0813` and every
+   future vendor market.*
+2. **An ongoing exhibition belongs to the venue card, not a dated `event`.** A two-month gallery run
+   is a standing state of a place; every dated `event` in the deck is a happening you attend at a
+   time. A 7/11→9/8 `event` would also sit in the Today lens every day until September. **Applies to
+   the whole class** — Dreams On Command, Kingsland, Culture House, Film Noir. Openings and closing
+   receptions stay cardable as real dated happenings.
+3. **A social event at a venue earns `arts_culture` when the source states a making/doing activity**
+   ("we're making fortune tellers"); a purely social gathering with no activity carries no lens.
+   Deliberately the same shape as the work-shift rule (Batu, 2026-08-06) where the shift earns
+   `civic` and the social tail inherits it: **the activity is what earns the lens.**
+
+### Truth enforcement
+
+4. **`sourceQuote` is now verified, not just present.** The live card
+   `dreams-on-command-there-are-people-here-0808` shipped to production quoting *"There Are People
+   Here. July 11–August 8, 2026."* — **a string that was never in the source**, which says
+   *September 8*. The gallery snapshot was byte-identical to the prior baseline, so this was not a
+   source that changed under us; the quote was wrong when written, and it told readers a running
+   show had closed. Schema-checking `sourceQuote` for *presence* (2026-08-02) never checked that the
+   text exists. It now must appear **verbatim in that source's fetched snapshot**, or the card fails
+   into the hold pile. *Presence was never the property that mattered.*
+5. **Image-detail sources get a vision read, and its text is written into the snapshot.**
+   `macha-studio` publishes ~12 events (Summer Poetry Open-Mic, Sunday Soundscapes, Bread &
+   Brooches) with **every date, time and address locked inside the event image** — which is why
+   three runs read its bodies as empty and proposed muting it. A text-only ingest cannot see a
+   productive source. Flagged sources now have their event images read, and **whatever is read out
+   of an image is written into that source's snapshot file** — so ruling 4 applies uniformly with no
+   exemption, and the image read becomes auditable and diffable across runs. *Instagram-first venues
+   are the same shape.*
+
+### Roster
+
+6. **Greek Kitchen fails the locally-owned gate — dropped.** Two locations across two boroughs. It
+   was onboarded 8/8 without the gate ever being applied, because the host was egress-denied and the
+   page **had never actually been fetched**. Its `/specials` page also opens "Specials vary by
+   location." with separate Brooklyn and Queens ordering links, so the rota was never attributable
+   to 912 Manhattan Ave anyway. Held three runs running (#29, #30, #32); the roster entry, not the
+   card, was the defect.
+7. **`macha-studio` → `standing: true`** with a details-in-images flag, and **events default to 135
+   Franklin St unless the event states otherwise** (Batu-supplied venue fact; card-level claims
+   still need their own quote per ruling 4). `standing: false` — proposed by #30 — would have muted
+   a source publishing a dozen events.
+8. **`hello@townsquarebk.org` declined.** Its supply is already fully covered by the `town-square-bk`
+   web source (both SummerStarz Fridays carded). Recorded so the discovery pass stops re-proposing
+   it; registry additions widen the trusted-sender surface and need a reason beyond redundancy.
+9. **ASK, open: allowlist `www.biosapothecary.com`** (Batu, at claude.ai/code). The free herbalist
+   consult cannot ship until we know whether it is in-store at 61 West St or online, and SKILL.md is
+   explicit that a storefront pin implies you can walk there. Live instance of the 2026-08-10 R1
+   blind spot: the host is not a roster entry, so it can **never** appear in the run's
+   self-assembling `EGRESS DENIED` block and no allowlist round picks it up unless asked by name.
+
+### Disposition
+
+10. **PRs #29 and #30 closed unmerged; their surviving cards re-authored onto current `main`.** #30
+    asserted a 148-card baseline against a `main` that now carries 139 — it was stale before it was
+    read. The rulings above change several of its cards anyway (the exhibition moves to the venue
+    card), so re-authoring is cleaner than rebasing.
+11. **`cibone-hozubag-0813` ships** — one day of visibility, but it proves ruling 1 end-to-end on a
+    real card.
+12. **From #31, one growth rule adopted, one dropped.** Kept: **every outbound draft must name
+    "Stoopwise Greenpoint" in the body** — since the 2026-08-06 rename `stoopwise.com` no longer
+    tells a recipient what they are opening, and a bare link is now an unlabelled link. Dropped: the
+    proposed geo/engagement-split diagnostic rule.
+13. **Wave 1 deferred**, notwithstanding the supply gate passing (`datedUpcoming7d` 56 vs a
+    pre-registered ≥35 bar). Not a rejection of the read — an outbound send is Batu's alone and was
+    kept out of this pass.
+
+## 2026-08-10 — the ingest was never using the proxy: one false comment, three weeks of wrong diagnosis
 
 **Corrects the 2026-08-05 entry below, whose central claim is false.** That entry says headless
 Chromium's CONNECT was reset "while plain fetch reached the same hosts **through the same proxy**

@@ -1458,6 +1458,14 @@
       "note": "197 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan; Batu subscribing. EMAIL-ONLY BY CONSTRUCTION — otisandfinn.com/community describes real community programming (annual free Back-to-School haircut event, Pride Party) but publishes NO dated calendar; the page is purely an email signup, which is why this is a sender and not a web source. Do not add the /community page to ingest-sources.json expecting dates. Seasonal: the Back-to-School haircut event lands in late August."
     }
   ],
+  "declinedSenders": [
+    {
+      "match": "hello@townsquarebk.org",
+      "publisher": "Town Square BK",
+      "declinedAt": "2026-08-12",
+      "note": "Batu, 2026-08-12 (PR #32). DECLINED as redundant, not untrusted — the `town-square-bk` web source already yields this publisher's supply in full (both SummerStarz Fridays were carded from it). A registry entry widens the trusted-sender surface, so it needs a reason beyond duplicate coverage. Recorded here so the Gmail discovery pass stops re-proposing it every run; re-open only if the newsletter is observed carrying an item the web source never published."
+    }
+  ],
   "watchItems": [
     {
       "name": "Kirbee's",

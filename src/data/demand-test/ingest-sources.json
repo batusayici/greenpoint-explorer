@@ -572,8 +572,10 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "feed",
-      "notes": "135 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan (docs/review/2026-08-08-ssg-directory-roster-scan.md). Shopify blog, so the .atom feed is the source of record — cheaper than the rendered /blogs/events page and carries the full entry body. Verified 2026-08-08: feed updated 2026-08-05 with \"Summer Fridays listening party\", \"Summer Fridays After Hours\", \"Summer Poetry Open-Mic\". Highest-yield find of that scan. Entry <updated> is the POST time, not the event date — read the event date out of the entry body, never from the timestamp. CITE cards to https://machastudio.com.",
-      "citeHost": "machastudio.com"
+      "notes": "135 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan (docs/review/2026-08-08-ssg-directory-roster-scan.md). Shopify blog, so the .atom feed is the source of record. Entry <updated> is the POST time, not the event date. CITE cards to https://machastudio.com. CORRECTED 2026-08-12 (Batu): the claim that the feed 'carries the full entry body' was WRONG, and it cost three runs. The bodies are empty or near-empty because EVERY date, time and address lives inside the event IMAGE — one entry body reads in full 'Join us for an evening of records, conversation and try on's...' with no schedule at all. Reading the bodies alone, three consecutive runs (PRs #29/#30/#32) concluded 'the page states a series but never a schedule' and proposed standing:false, which would have muted a source publishing ~12 events (Summer Poetry Open-Mic, Sunday Soundscapes, Bread & Brooches, trunk shows). SO: this is a detailsInImages source — fetch https://machastudio.com/blogs/events, read each event image, and WRITE WHAT YOU READ INTO THE SNAPSHOT before extracting, so the sourceQuote gate can check it like any other source. Events are at 135 Franklin St unless the event itself states otherwise (Batu-supplied venue fact; every other claim still needs its own quote).",
+      "citeHost": "machastudio.com",
+      "standing": true,
+      "detailsInImages": true
     },
     {
       "id": "maison-jar",
@@ -606,16 +608,6 @@
         ]
       },
       "citeHost": "lockwoodshop.com"
-    },
-    {
-      "id": "greek-kitchen",
-      "name": "Greek Kitchen (daily specials)",
-      "url": "https://greekkitchen.nyc/specials",
-      "group": "venue",
-      "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "912 Manhattan Ave. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: a recurring Sat-through-Thu day-of-week specials rota, not dated one-offs — card it undated as a deal, and expect `unchanged` most weeks. Verified 2026-08-08: 7 day-of-week hits on plain fetch. Re-author only when the rota itself changes; do NOT mint a dated card per day.",
-      "standing": true
     },
     {
       "id": "sparrow-nesting",

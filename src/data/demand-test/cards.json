@@ -311,7 +311,7 @@
       "lat": 40.728078,
       "lng": -73.958665,
       "corridor": "west-st",
-      "summary": "Contemporary art gallery (Suite 105) with a social and political focus.",
+      "summary": "Contemporary art gallery (Suite 105) with a social and political focus. On view now: “There Are People Here,” through September 8, 2026. Free admission unless stated otherwise.",
       "audience": [
         "resident",
         "visitor",
@@ -320,6 +320,11 @@
       "actions": [
         {
           "label": "Current show",
+          "type": "learn_more",
+          "url": "https://www.dreamsoncommand.com/"
+        },
+        {
+          "label": "Visit",
           "type": "visit"
         }
       ],
@@ -328,6 +333,12 @@
           "title": "Shop Small Greenpoint — July 2026 newsletter",
           "publisher": "Shop Small Greenpoint",
           "date": "2026-07-01"
+        },
+        {
+          "title": "Dreams On Command — On View",
+          "url": "https://www.dreamsoncommand.com/",
+          "publisher": "Dreams On Command",
+          "date": "2026-08-12"
         }
       ],
       "evidenceStrength": "medium_high",
@@ -335,8 +346,10 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-08-08",
-      "kicker": "Contemporary art gallery"
+      "updatedAt": "2026-08-12",
+      "kicker": "Contemporary art gallery",
+      "sourceQuote": "There Are People Here\nJuly 11 – September 8, 2026\nFree admission unless stated otherwise\nW-F (2-7pm) SAT/SUN (1-6pm)",
+      "free": true
     },
     {
       "id": "falu-tinned-fish-club",
@@ -6449,6 +6462,99 @@
       "geocodeQuery": "176 Nassau Avenue, Brooklyn, NY 11222",
       "lat": 40.72522,
       "lng": -73.946139
+    },
+    {
+      "id": "cibone-hozubag-0813",
+      "category": "event",
+      "title": "HOZUBAG: bags made from retired paragliders, at CIBONE O'TE",
+      "kicker": "Limited event, last day 8/13",
+      "summary": "A limited run of bags, pouches and furoshiki cloths handmade in Japan from retired paraglider fabric. Inside the shop at 50 Norman; no admission price is stated and no closing time is published.",
+      "startsAt": "2026-07-11T00:00:00-04:00",
+      "endsAt": "2026-08-13T23:59:00-04:00",
+      "filters": [],
+      "free": false,
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "locationName": "CIBONE O'TE",
+      "address": "50 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "July 11 – August 13, 2026\nHOZUBAG gives retired paragliders a new purpose by transforming them into functional and timeless bags, carefully handcrafted one by one by skilled Japanese artisans.\nFor this limited event, we will present an expanded selection of HOZUBAG, including signature bags, pouches, and versatile furoshiki cloths.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://cibone-us.com/blogs/news/hozu-bag-limited-event"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "HOZUBAG LIMITED EVENT",
+          "url": "https://cibone-us.com/blogs/news/hozu-bag-limited-event",
+          "publisher": "CIBONE O'TE",
+          "date": "2026-08-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "relatedCardIds": [
+        "cibone-ote"
+      ],
+      "lat": 40.724611,
+      "lng": -73.95359
+    },
+    {
+      "id": "flowercat-love-unfolded-0823",
+      "category": "event",
+      "title": "Love Unfolded: a singles night at Flower Cat",
+      "kicker": "Fortune-teller folding, 7–8pm",
+      "summary": "Chai and Churn's singles mixer built around folding paper fortune tellers as an icebreaker. No price is stated.",
+      "startsAt": "2026-08-23T19:00:00-04:00",
+      "endsAt": "2026-08-23T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "sourceQuote": "Chai and Churn Presents: Love Unfolded\nSunday, August 23, 2026\nJoin us for a night of awkwardness and add to the lore you’ve been missing whilst you’ve been trying to stay off of hinge. Worried about starting a conversation with the love of your life? We’re making fortune tellers.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-08-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "relatedCardIds": [
+        "flower-cat"
+      ],
+      "lat": 40.728678,
+      "lng": -73.954258
     }
   ]
 }
