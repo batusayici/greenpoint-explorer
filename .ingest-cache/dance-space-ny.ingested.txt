@@ -107,8 +107,6 @@ Join
 /p/join
 Login
 /account/sessions/new
-Logout
-/logout
 /p/home
 Go Home!
 www.dancewithellyshepley.com

@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-11T14:30:00-04:00",
+  "lastRunAt": "2026-08-12T14:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1202,6 +1202,13 @@
       "publisher": "Track V ingest (daily thin)",
       "processedAt": "2026-08-11",
       "outcome": "Reach 51/58 (12% error, under the 15% ceiling), fetch exit 0. All 7 errors are the Chromium CONNECT fault alone — 4 browser-only by construction plus happy-medium, sunshine-laundromat and brooklyn-youth-ballet falling through from `auto`. 9 sources changed. Expiry took 5 (145 → 140). SHIPPED 5 adds, 2 re-verified deals, 1 delete. The delete is the notable one: `dreams-on-command-there-are-people-here-0808` carried a sourceQuote (\"July 11–August 8, 2026\") that is NOT in the source — the snapshot, byte-identical to the last-ingested baseline, states \"July 11 – September 8, 2026\" — so the card's whole premise (\"closes today\") was false AND the show was still running. Deleted as unsubstantiated, not expired. Adds: film-noir-film-club-0813, troost-lumens-0825 (closed the only troost coverage GAP, 8/25), and three Moon Bunny circus camps. Gmail pass RAN: 1 registry hit (Bios Apothecary 8/10), 0 new senders from the discovery pass. holds: 3 new-judgment · 0 rule-miss · 1 source-blocked."
+    },
+    {
+      "id": "run:2026-08-12-daily-thin",
+      "kind": "run",
+      "publisher": "Track V ingest (daily thin)",
+      "processedAt": "2026-08-12",
+      "outcome": "Reach 51/58 (12% error, under the 15% ceiling), fetch exit 0. All 7 errors are the Chromium CONNECT-reset fault alone — 4 browser-only by construction (word-bookstore, greenpoint-comedy-club, leaves-bookstore, greenpoint-trash-club) plus happy-medium, sunshine-laundromat and brooklyn-youth-ballet falling through from `auto`. 19 sources changed. Expiry took 7 (144 → 137). SHIPPED 3 adds, 1 merge, 1 delete. Adds: library-saturday-storytime-0822 (8/22 had no library card), troost-louis-prince-0826 (closed the coverage script's one unexplained GAP) and star-deli-viral-boost (Greenpointers 8/11). The 8/21 library card was MERGED into a grouped Friday day-card rather than duplicated, after the branch added Garden Hours with a Garden Educator and an After School Movie to the same afternoon. The delete: bk-youth-ballet-trial-class, FLAGGED by expiry as a recurring deal past its 8/9 verified-through and un-re-verifiable — bkyouthballet.com answers a 169-byte JS shell to plain fetch (re-probed this run with a browser UA and redirects followed, per the 2026-08-10 broken-instrument rule) and the browser path is down. Recorded in watchItems, not lost. 11 of the 19 changed sources produced nothing cardable: greenpointers' only new post is the Star Deli story (carded), nycparks added only lap-swim and Shape Up NYC instances, moon-bunny/last-place/archestratus/troost/good-room added only out-of-window or non-Greenpoint items, and acme/selformer/bandit/dance-space/kettl/film-noir moved only boilerplate or already-expired lines. Gmail pass RAN (correction: an earlier draft of this entry said it had not). Registry pass newer_than:2d returned 1 thread — Bios Apothecary \"Bespoke Skincare\" 8/10, already processed by the 8/11 run — plus a Square-marketing note (\"New local pottery\", new artist-made planters) that states no date, price or offer and is not cardable. Discovery pass surfaced ONE candidate sender: hello@townsquarebk.org, whose 8/12 mail restates the SummerStarz Fridays already carded off townsquarebk.org (summerstarz-project-hail-mary-0814, summerstarz-zootopia-0821). Registry additions are human-gated, so it is proposed in PR #32, not added. holds: 0 new-judgment · 0 rule-miss · 2 source-blocked."
     }
   ],
   "senderRegistry": [
@@ -1451,6 +1458,14 @@
       "note": "197 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan; Batu subscribing. EMAIL-ONLY BY CONSTRUCTION — otisandfinn.com/community describes real community programming (annual free Back-to-School haircut event, Pride Party) but publishes NO dated calendar; the page is purely an email signup, which is why this is a sender and not a web source. Do not add the /community page to ingest-sources.json expecting dates. Seasonal: the Back-to-School haircut event lands in late August."
     }
   ],
+  "declinedSenders": [
+    {
+      "match": "hello@townsquarebk.org",
+      "publisher": "Town Square BK",
+      "declinedAt": "2026-08-12",
+      "note": "Batu, 2026-08-12 (PR #32). DECLINED as redundant, not untrusted — the `town-square-bk` web source already yields this publisher's supply in full (both SummerStarz Fridays were carded from it). A registry entry widens the trusted-sender surface, so it needs a reason beyond duplicate coverage. Recorded here so the Gmail discovery pass stops re-proposing it every run; re-open only if the newsletter is observed carrying an item the web source never published."
+    }
+  ],
   "watchItems": [
     {
       "name": "Kirbee's",
@@ -1546,11 +1561,6 @@
       "addedAt": "2026-08-11"
     },
     {
-      "name": "www.biosapothecary.com — R1 resolution fetch egress-denied at the proxy",
-      "note": "SOURCE FACT 2026-08-11, and a live instance of the R1 allowlist blind spot already recorded on 2026-08-10. Bios Apothecary (61 West Street, a registry sender) emailed 2026-08-10 with a standing offer: verbatim \"Would you like to consult with our in-house herbalist and have a custom product created just for you? Now available to you at no extra cost!\" The one field that decides whether it can ship is whether the consultation is in-store at 61 West Street or online — a storefront pin implies you can walk there for it. The booking page https://www.biosapothecary.com/products/book-a-consultation?variant=31794879463508 would state it, and the proxy refuses the tunnel: \"Proxy response (403) !== 200 when HTTP Tunneling\". The host is NOT a roster entry, so it can never appear in the run's EGRESS DENIED block. ASK: allowlist www.biosapothecary.com. UNBLOCKS the held bios-apothecary-herbalist-consultation card.",
-      "addedAt": "2026-08-11"
-    },
-    {
       "name": "Flower Cat — Live Band Karaoke: Summer of Soul, Fri 8/28 (past the 14-day window)",
       "note": "Fully sourced and in area, just beyond the horizon (window ends 8/25). Verbatim: \"Live Band Karaoke: Summer of Soul / Friday, August 28, 2026 / 7:30 PM / 11:00 PM / Flower Cat\" and \"Outside musicians are welcomed and encouraged to come jam along as well! Sub in on drums, bass, piano, guitar or bring your own. Free entry! 2 drink minimum! Tip your musicians & bartender!\" Flower Cat is a normal re-snapshotted web source, so this rolls in on its own once 8/28 enters the horizon (a run on or after 8/14) — recorded here only so a free event is not lost if the listing moves. FREE ENTRY is stated outright, so `free: true` is available when it is carded.",
       "addedAt": "2026-08-11"
@@ -1559,17 +1569,37 @@
       "name": "Moon Bunny Aerial — two in-progress camp sessions whose first day predates the API window",
       "note": "SOURCE FACT 2026-08-11. The feather.rsvp API returns UPCOMING instances only, so a multi-day session already underway shows a truncated span. On 2026-08-11 \"Weekday Camp 13-16 yrs old\" listed four days (8/11–8/14) where a Mon–Fri week needs five, and \"Two Day Camp 8-12 yrs old\" listed exactly one (8/11) where the name promises two. Both therefore started 8/10 and their real spans are INFERRED, not stated — so they were not carded, while the three sessions whose full span the API does carry (4-7 on 8/13–14, 8-12 on 8/17–21, 8-12 on 8/24–25) shipped. Not a hold and not a loss: this is a permanent property of the endpoint, and it only ever affects sessions that began before the run. Recorded so a later run does not re-litigate it.",
       "addedAt": "2026-08-11"
+    },
+    {
+      "name": "Brooklyn Youth Ballet — $40 trial class (card deleted 2026-08-12, re-author when readable)",
+      "note": "bk-youth-ballet-trial-class was FLAGGED by expiry on 2026-08-12 as a recurring deal past its 2026-08-09 verified-through, and DELETED because it could not be re-verified: bkyouthballet.com returns a 169-byte JavaScript shell to plain fetch (re-probed this run with a Chrome UA and -L, 202/169 bytes both ways), and the roster's `browser` strategy is dead under the chromium CONNECT-reset fault. This is 'we cannot read the source', never 'the offer ended'. UNBLOCKS the moment the browser path recovers or bkyouthballet.com serves the trial-class price server-side — then re-author the card from the page and set a fresh verified-through. Deleted card's claim was \"$40 trial class\" at Brooklyn Youth Ballet; do NOT re-author it from this note, which is a pointer, not a source.",
+      "addedAt": "2026-08-12"
+    },
+    {
+      "name": "Lockwood — Spark Session Night, Tue 8/25 5–8pm",
+      "note": "HELD 2026-08-12 (source-blocked), PR ingest/daily-2026-08-12. The SociableKit feed carries the entire item in five lines — \"name: Spark Session Night\\nstart_date_raw: 2026-08-25\\nstart_time: 5:00 pm\\nend_date_raw: 2026-08-25\\nend_time: 8:00 pm\\nhtml_link: https://www.facebook.com/events/1059709796558490\" — with no venue, no address and nothing stating what the session IS, so neither the pin nor the lens can be read off the source. Exactly the shape of the Tote-ally 20 Sale hold. R1 blocked: the only link is a facebook.com event page, which is not fetchable by this routine (NAMING THE HOST per the 2026-08-10 rule: facebook.com — but note it is login-walled, so an allowlist entry would not settle it; an interactive session or a Lockwood-published listing would). UNBLOCKS when the widget or lockwoodshop.com/pages/events states the venue and what the session is.",
+      "addedAt": "2026-08-12"
+    },
+    {
+      "name": "Greek Kitchen — daily specials rota (lunch $14.95, dinner $24.95)",
+      "note": "HELD 2026-08-12 (source-blocked), PR ingest/daily-2026-08-12. greekkitchen.nyc/specials carries a full Sat-through-Thu rota with prices and times — \"Daily Lunch Special! Any Pita Sandwich with choice of Fries or Rice and Can Soda. $14.95\", \"11:00 AM - 04:00 PM\", \"Complete Dinner Special – $24.95 at Greek Kitchen\", \"06:00 PM - 10:00 PM\" — but the page's own header reads \"Specials vary by location.\" and the business runs a Brooklyn (912 Manhattan Ave) and a Queens location, with nothing on the page attributing the rota to either. Pinning it at the Greenpoint storefront would infer the one fact that decides whether the card is true. R1 attempted and exhausted: fetched the page (200, 86KB) and read its own hrefs — the site has exactly one /specials URL and no per-location variant. UNBLOCKS when the page labels the location, a per-location specials URL appears, or the Brooklyn store states the rota directly.",
+      "addedAt": "2026-08-12"
+    },
+    {
+      "name": "Bios Apothecary — their promo booking link is broken (tell them)",
+      "note": "2026-08-12: the 8/10 'Bespoke Skincare' email's CTA points at /products/book-a-consultation?variant=31794879463508, which 404s; the bare product URL 404s too, and the consultation appears nowhere on biosapothecary.com. The card therefore links the site root and says to ask in-store. Bios is a registry sender and a plausible Founding Partner conversation — worth telling them their own CTA is dead. Re-point the card's action if they fix it.",
+      "addedAt": "2026-08-12"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-07-25",
-    "greenpointers": "2026-08-04",
+    "greenpointers": "2026-08-11",
     "greenpoint-comedy-club": "2026-08-06",
     "film-noir-cinema": "2026-08-10",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-05",
-    "greenpoint-library": "2026-08-09",
-    "bpl-north-brooklyn-calendar": "2026-08-09",
+    "greenpoint-library": "2026-08-11",
+    "bpl-north-brooklyn-calendar": "2026-08-11",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-07",
@@ -1588,7 +1618,7 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-02",
     "nycparks-greenpoint": "2026-08-06",
-    "troost": "2026-08-10",
+    "troost": "2026-08-11",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-06",
     "town-square-bk": "2026-08-06",
@@ -1732,16 +1762,16 @@
     {
       "sourceId": "nycparks-greenpoint",
       "gapKey": "GAP",
-      "reason": "All 8 flagged dates carry ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule. Re-checked against this run's snapshot: every entry on 8/11, 8/12, 8/13, 8/17, 8/18, 8/20, 8/24 and 8/25 is McCarren Pool swimming or Shape Up NYC — verbatim \"## McCarren Pool: Lap Swim ... location: McCarren Park Pool (in McCarren Park) / categories: Fitness | Swimming/Aquatics\". The single line this run's diff added was the 2026-08-25 instance of \"McCarren Pool: Lap Swim\", i.e. the new flagged date is itself standing rec programming. The three dates the deck DOES cover (8/14, 8/19, 8/21) are exactly the feed's non-rec items — the Free Summer Movies — all carded. No one-off happening on any flagged date is uncarded.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Re-earned 2026-08-12 against this run's snapshot; the flagged set grew to 9 dates (8/12, 8/13, 8/17, 8/18, 8/20, 8/24, 8/25, 8/26) and every one still carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule. The two dates this run's diff added are both 8/26, and both are rec: \"## McCarren Pool: Lap Swim\" and \"## Body-Centric Circuit Training\" (categories: Shape Up NYC | Recreation Center Programming). The dates the deck DOES cover (8/14, 8/19, 8/21) remain exactly the feed's non-rec items — the Free Summer Movies — all carded. No one-off happening on any flagged date is uncarded.",
+      "addedAt": "2026-08-12",
+      "expiresAt": "2026-08-26"
     },
     {
       "sourceId": "lockwood",
       "gapKey": "GAP",
-      "reason": "Both flagged dates (8/14, 8/16) are the two ends of ONE item, \"Tote-ally 20 Sale!\", and it is HELD rather than uncarded — carried forward from the 2026-08-10 review. The entire snapshot for it is six lines: \"name: Tote-ally 20 Sale!\\nstart_date_raw: 2026-08-14\\nstart_time: 11:00 am\\nend_date_raw: 2026-08-16\\nend_time: 8:00 pm\\nhtml_link: https://www.facebook.com/events/1097877372807949\". No venue, no address, no discount terms — and the only link is a Facebook event page, which is not fetchable, so R1 cannot resolve it. Carding it would require inventing both the location and what the offer actually is.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Re-earned 2026-08-12 against this run's snapshot, which now carries TWO items and three flagged dates. 8/14 and 8/16 are the two ends of ONE item, \"Tote-ally 20 Sale!\"; 8/25 is a second item, \"Spark Session Night\", added by this run's diff. Both are HELD, not uncarded, and for the same reason: the entire snapshot is six lines apiece — \"name: Spark Session Night\\nstart_date_raw: 2026-08-25\\nstart_time: 5:00 pm\\nend_date_raw: 2026-08-25\\nend_time: 8:00 pm\\nhtml_link: https://www.facebook.com/events/1059709796558490\" — with no venue, no address and nothing stating what the item is, and the only link is a login-walled Facebook event page that R1 cannot open. Carding either would require inventing both the location and the offer. Both are in watchItems.",
+      "addedAt": "2026-08-12",
+      "expiresAt": "2026-08-26"
     },
     {
       "sourceId": "cibone-ote",

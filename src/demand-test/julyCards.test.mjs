@@ -367,14 +367,37 @@ test("seed has exactly 75 cards across the six layers", () => {
   // kids rule and the bcc-kids-sewing-camp precedent. Two further Moon Bunny
   // sessions were NOT carded: their first day precedes the API window, so
   // their span would have been inferred. 140 − 1 + 5 = 144.
-  assert.equal(seed.cards.length, 144);
+  // 2026-08-12 daily thin refresh. Expiry took the seven past 8/11 items
+  // (144 → 137). Then −1: `bk-youth-ballet-trial-class` was DELETED, not
+  // expired. Expiry FLAGGED it as a recurring deal past its 8/9
+  // verified-through, and the source cannot be re-verified — bkyouthballet.com
+  // answers a 169-byte JS shell to plain fetch (browser UA, redirects
+  // followed) and the browser path is down with the known chromium
+  // CONNECT-reset fault. A deal with no current source does not stay live; it
+  // is in `watchItems` to be re-authored the day the source is readable.
+  // +3: library-saturday-storytime-0822 (8/22 had no library card at all),
+  // troost-louis-prince-0826 (the back-of-window night that was the coverage
+  // script's one unexplained gap) and star-deli-viral-boost. The 8/21 library
+  // card was MERGED rather than duplicated — `library-sensory-garden-0821`
+  // keeps its id and becomes the grouped Friday day-card now that the branch
+  // added two afternoon programs to the same day. 137 − 1 + 3 = 139.
+  // 2026-08-12 rulings (Batu, PRs #29/#30): +2 held cards released by the new
+  // rules — `cibone-hozubag-0813` (lens-less by the markets rule, now shippable)
+  // and `flowercat-love-unfolded-0823` (arts_culture by the mixer rule). The
+  // Dreams On Command show did NOT become a card: under the exhibition ruling
+  // an ongoing run belongs to the venue card, so `dreams-on-command` was updated
+  // in place instead. 139 + 2 = 141.
+  // +1 (2026-08-12, Batu): the Bios Apothecary herbalist consult, released once
+  // Batu allowlisted the host, confirmed the consult is in-store, and kept Bios
+  // through the locally-owned gate. 141 + 1 = 142.
+  assert.equal(seed.cards.length, 142);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 74, "73 + the 8/21 library Sensory Garden Hour (2026-08-10)");
-  assert.equal(count((c) => c.category === "discount"), 7, "5 + Maison Jar bulk refills and the Selformer summer promo (2026-08-10)");
-  assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 23, "21 + the 2 salvaged Troost nights");
+  assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
+  assert.equal(count((c) => c.category === "event"), 71, "69 + the 2 cards released by the 2026-08-12 rulings (CIBONE HOZUBAG, Flower Cat mixer)");
+  assert.equal(count((c) => c.category === "discount"), 7, "6 + the Bios Apothecary herbalist consult (2026-08-12)");
+  assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
+  assert.equal(count((c) => c.filters.includes("live_music")), 23, "23 − the expired 8/11 Troost night + Troost 8/26");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -444,6 +467,13 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // never a date, which the no-stated-end-date rule fills rather than holds)
   // and Selformer's Summer Fling promo, whose endsAt is the source's own
   // "available through Aug 15" rather than an edition-window default.
+  // 2026-08-12: −1. bk-youth-ballet-trial-class was FLAGGED past its 8/9
+  // verified-through and deleted rather than re-verified — the source is a
+  // 169-byte JS shell to plain fetch and the browser path is down, so there is
+  // no current source for the price. It is in watchItems, not lost.
+  // +1 (2026-08-12): the Bios herbalist consult — a standing offer with no
+  // stated end date, so `recurring: true` + verified-through per the
+  // no-stated-end-date rule, not a hold.
   assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
@@ -470,7 +500,8 @@ test("news cards name their publisher and sit in the news layer", () => {
   const news = seed.cards.filter((c) => c.category === "news");
   // 2026-07-27: +3 civic-issue cards (Monitor Point approval, McGuinness
   // redesign construction, Meeker Plume monitoring) — coverage-gap fix.
-  assert.equal(news.length, 13);
+  // 2026-08-12: +1 — the Star Deli viral-boost story (Greenpointers 8/11).
+  assert.equal(news.length, 14);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -518,18 +549,22 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
+    // 2026-08-12 exhibition ruling: the gallery's own Visit block states "Free
+    // admission unless stated otherwise" beside the on-view dates, and the show
+    // now lives on this venue card rather than a dated event card.
+    "dreams-on-command",
     "greenpoint-trash-club",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
     // "teen interns are running a free scavenger hunt" and "You can get free
     // tickets here". The 8/12 library card is NOT here: its garden club line
     // never says free. (library-tuesday-programs-0804 expired 2026-08-06.)
-    "library-tuesday-programs-0811",
+    // (library-tuesday-programs-0811 expired out 2026-08-12)
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
     // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-guardians-0819",
-    "paulie-gees-jabberjaw-comedy-0811",
+    // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
     // 2026-08-06: the 8/7 Ford v Ferrari card was DELETED, not rolled forward —
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
@@ -694,11 +729,30 @@ test("a card that names a game is never filed under Arts & Culture", () => {
   }
 });
 
-test("no card is lens-less — the six 2026-07-25 stragglers resolved into Civic or Arts & Culture", () => {
-  // Empty filters (All-only) is legal schema-wise but was a placeholder, not
-  // a destination: every card that landed there got a real home same day.
-  const lensless = seed.cards.filter((c) => c.filters.length === 0);
-  assert.deepEqual(lensless, [], "a growing lens-less list means the taxonomy is leaking — review at ingest");
+// 2026-08-12 (Batu, PRs #29/#30): lens-less is now a DESTINATION for exactly one
+// class of card, and a leak for everything else. SKILL.md's markets rule says a
+// general-goods flea, craft fair or vendor pop-up "carries no lens and shows in
+// All only — that absence is the answer, not a hold", and `shopping` is retired
+// with no lens to reach for. That filing could not ship while this test asserted
+// `lensless === []`: the rule was right, the assertion was stale. Each id below
+// must name why it carries no lens, so a real taxonomy leak still surfaces as an
+// unexplained id at review.
+const LENS_LESS_BY_DESIGN = [
+  // Retail pop-up of bags made from retired paraglider fabric at CIBONE O'TE.
+  // General-goods retail, not an exhibition — the markets rule's exact case.
+  "cibone-hozubag-0813",
+];
+
+test("no card is lens-less except the markets rule's own class (2026-08-12)", () => {
+  // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
+  // stragglers all resolved into Civic or Arts & Culture same day. It is now
+  // also the sanctioned home for general-goods vendor markets, by name only.
+  const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
+  assert.deepEqual(
+    lensless,
+    [...LENS_LESS_BY_DESIGN].sort(),
+    "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it here",
+  );
 });
 
 test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {
@@ -769,10 +823,9 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     );
   }
   assert.deepEqual(lens.map((c) => c.id).sort(), [
-    // 2026-08-03: the ballet trial double-files family_kids + deals_memberships,
-    // the same shape as moon-bunny-back-to-school — "kids events go in kids"
-    // bars double-filing into arts_culture/games, not into a deals lens.
-    "bk-youth-ballet-trial-class",
+    // (bk-youth-ballet-trial-class deleted 2026-08-12 — unverifiable source)
+    // 2026-08-12: standing offer at no extra cost, in-store at 61 West St.
+    "bios-apothecary-herbalist-consultation",
     "carcosa-membership-guest-pass",
     // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
     // different question than the event scan that preceded it: three of these
@@ -893,8 +946,8 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // (the recurring Thu/Fri/Sat showcases are deliberately not carded), so the
   // club's link list is four deep.
   // 2026-08-10: expiry took the 8/8 Secret Showcase and pruned the link.
+  // 2026-08-12: expiry took the 8/11 Raanan Hershberg night and pruned the link.
   assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
-    "comedy-raanan-hershberg-0811",
     "comedy-carmen-lagala-0815",
     "comedy-dani-castaneda-0816",
     // 2026-08-07: the four standing showcases, carded once each as recurring
