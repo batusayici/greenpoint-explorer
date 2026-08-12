@@ -4,7 +4,40 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-12 (latest) — the held-card backlog was a rules backlog: thirteen rulings from PRs #29/#30/#31/#32
+## 2026-08-12 (latest) — Stoopwise LLC: Terms, Privacy, and a legal footer
+
+**Batu confirmed Stoopwise LLC is formed in New York**, which is the condition both legal drafts
+gated on, so the pages publish with the LLC named as operator. Decisions taken while finalizing:
+
+1. **One published address: `hello@stoopwise.com`** — privacy requests, legal, and corrections all
+   land there. This is the first email address the product exposes anywhere; the 2026-07-15 rule
+   that Batu's personal inbox stays private is unchanged, and the Tally forms remain the primary
+   correction route (the footer's "Corrections" link points at the same form the per-card "Report
+   an error" link uses, so there is one route, not two). **No mailing address is published** — the
+   drafts allow "or other contact method", and the alternative is publishing a home address.
+2. **The privacy policy states the live stack, not a generic one.** Every bracketed field was
+   answered against the running site and put in a fact table on the page: Vercel (hosting +
+   pageview analytics), PostHog (named tap events, pageviews, error reports — no autocapture, no
+   session recording), OpenFreeMap (tiles + glyphs), Tally (three forms), **no cookies** (localStorage
+   only, for the anonymous analytics id and first-visit state), **no advertising pixels**, **no
+   precise-location request**, no payments. If any of those change, the page changes in the same PR
+   — a privacy page that drifts from the stack is worse than none.
+3. **Terms §4 explicitly welcomes answer-engine citation** with attribution and a link, while the
+   anti-scraping sentence stays. Answer-engine primacy is the north star (2026-07-21); terms that
+   read as a blanket bot ban would work against it. The line draws the boundary where the strategy
+   does: cite us, don't republish us.
+4. **The pages are static HTML in `public/`, not React routes.** No router exists, and legal pages
+   must render with no JS for crawlers and for anyone the bundle fails on. `/terms` and `/privacy`
+   are Vercel rewrites onto `/terms.html` and `/privacy.html`; they share `public/legal.css`, which
+   mirrors the same II-C tokens as `july.css` rather than importing the app's CSS graph.
+5. **The footer lives at the bottom of the card panel, not the shell.** The shell is a 100vh flex
+   column, so a shell-level footer would spend viewport height on every screen forever. In the panel
+   it is ~89px (10% of the desktop panel) and the last object in the mobile page flow. The drafted
+   two-sentence disclaimer was cut to one claim — the sentence that changes behavior ("details
+   change — verify anything time-sensitive with the source") — because at 400px the full version ran
+   three lines of permanent chrome; the full wording lives on `/terms`.
+
+## 2026-08-12 — the held-card backlog was a rules backlog: thirteen rulings from PRs #29/#30/#31/#32
 
 **Batu, reviewing four open PRs at once.** Three PRs had each independently held Greek Kitchen,
 `macha-studio` and a Lockwood item — the same three items, three runs running. That repetition is

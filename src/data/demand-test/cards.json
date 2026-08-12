@@ -5279,15 +5279,14 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "category": "subscription",
       "id": "word-membership",
       "title": "WORD bookstore membership",
       "kicker": "5–25% off every book, from $5/mo",
       "filters": [
-        "deals_memberships",
-        "arts_culture"
+        "deals_memberships"
       ],
       "locationName": "WORD Bookstore",
       "address": "126 Franklin St",

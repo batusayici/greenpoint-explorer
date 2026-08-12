@@ -817,7 +817,7 @@ body { margin: 0; }
    keeps the loud slot. Links are a middot-separated row, one line at any
    panel width. */
 .july-legal {
-  padding: 14px 14px 22px;
+  padding: 10px 14px 14px;
   border-top: 1px solid var(--ink-faint);
   font-size: 0.72rem;
   line-height: 1.5;
@@ -825,8 +825,8 @@ body { margin: 0; }
 }
 
 .july-legal-note {
-  margin: 0 0 6px;
-  max-width: 46ch;
+  margin: 0 0 4px;
+  max-width: 60ch;
 }
 
 .july-legal-links {

@@ -908,9 +908,14 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           points at the form the per-card "Report an error" link already uses,
           so there is one correction route, not two. */}
       <footer className="july-legal">
+        {/* One claim, not the drafted two: on the 400px desktop panel this
+            footer is permanent chrome (it sits below the scrolling list, not
+            inside it), so the copy is cut to the sentence that changes a
+            reader's behavior. The full "Stoopwise organizes sourced
+            neighborhood information" line lives on /terms. */}
         <p className="july-legal-note">
-          &copy; 2026 Stoopwise LLC. Sourced neighborhood information — details change, so verify
-          anything time-sensitive with the source.
+          &copy; 2026 Stoopwise LLC &middot; details change — verify anything time-sensitive with
+          the source.
         </p>
         <nav className="july-legal-links" aria-label="Legal">
           <a href="/terms">Terms</a>
