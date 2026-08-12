@@ -5557,9 +5557,7 @@
       "title": "CIBONE O'TE",
       "kicker": "Japanese design, ceramics and homeware",
       "summary": "The Brooklyn outpost of the Tokyo retailer, which calls itself a quiet curator of life — objects chosen for the stories they carry, not only their form. Store hours are 11am–8pm.",
-      "filters": [
-        "arts_culture"
-      ],
+      "filters": [],
       "audience": [
         "resident",
         "visitor"
@@ -5595,7 +5593,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "lat": 40.724611,
       "lng": -73.95359
     },
@@ -5607,9 +5605,7 @@
       "summary": "Re:STATION, a Tokyo curator and longtime CIBONE partner, chose the pieces for their history and enduring influence. It sits inside the shop; no admission price is stated.",
       "startsAt": "2026-08-15T11:00:00-04:00",
       "endsAt": "2026-09-15T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
+      "filters": [],
       "free": false,
       "audience": [
         "resident",
@@ -5641,7 +5637,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "lat": 40.724611,
       "lng": -73.95359
     },

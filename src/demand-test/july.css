@@ -811,6 +811,55 @@ body { margin: 0; }
 
 .july-cta--primary { background: var(--ink); color: var(--paper-lift); }
 
+/* --- legal footer (2026-08-12) ---
+   The quietest object on the page and deliberately so: hairline rule, soft
+   ink, small type. It ends the panel scroll, under the follow CTA — the CTA
+   keeps the loud slot. Links are a middot-separated row, one line at any
+   panel width. */
+.july-legal {
+  padding: 14px 14px 22px;
+  border-top: 1px solid var(--ink-faint);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.july-legal-note {
+  margin: 0 0 6px;
+  max-width: 46ch;
+}
+
+.july-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+}
+
+.july-legal-links a {
+  color: var(--ink-soft);
+  font-weight: 700;
+  text-decoration: none;
+  /* Tap target without a visible box: the row must stay a hairline of text,
+     so the padding does the reaching. */
+  padding: 4px 0;
+}
+
+/* Separator rides on the link's ::before rather than a DOM node — so no
+   hover underline here, which would drag the middot under the line with it.
+   Color carries the state instead. */
+.july-legal-links a + a::before {
+  content: "·";
+  padding: 0 7px;
+  color: var(--line);
+}
+
+.july-legal-links a:hover { color: var(--ink); }
+
+.july-legal-links a:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
 /* visually-hidden text for screen readers (new-tab hints etc.) */
 .sr-only {
   position: absolute;

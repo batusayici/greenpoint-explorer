@@ -738,9 +738,14 @@ test("a card that names a game is never filed under Arts & Culture", () => {
 // must name why it carries no lens, so a real taxonomy leak still surfaces as an
 // unexplained id at review.
 const LENS_LESS_BY_DESIGN = [
-  // Retail pop-up of bags made from retired paraglider fabric at CIBONE O'TE.
-  // General-goods retail, not an exhibition — the markets rule's exact case.
-  "cibone-hozubag-0813",
+  // 2026-08-12 (Batu): "Cibone is a store, not a gallery. these are for
+  // purchase. their events are shopping-related." All three CIBONE cards are
+  // retail, so none carries a lens — `shopping` is retired and there is nothing
+  // else honest to reach for. `cibone-ote` had been the ONLY shop card in the
+  // deck filed as arts_culture; that was the anomaly, not the precedent.
+  "cibone-hozubag-0813",     // bags made from retired paraglider fabric, for sale
+  "cibone-ote",              // the shop itself
+  "cibone-restation-showcase-0815", // archival CdG/Yohji, for purchase
 ];
 
 test("no card is lens-less except the markets rule's own class (2026-08-12)", () => {

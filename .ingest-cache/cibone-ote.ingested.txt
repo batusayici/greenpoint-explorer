@@ -714,3 +714,19 @@ Artwork Comment:
 Under the blue night sky on Christmas Eve, I designed with the theme of a sparkling evergreen tree. I drew freely, imagining the tree's pointed leaves and the glittering ornaments hanging on the tree.
 Judges' Comments:
 While incorporating the essence of the CIBONE brand, the theme "Dear Christmas" was beautifully conveyed through rich and expressive lines. The design exudes a dignified strength with a predominant black color scheme, complemented by vibrant hues that capture the excitement and elegant festivity of the Christmas season. The completeness of the artwork and the thoughtful consideration for easy adaptation to bags and wrapping paper were crucial factors in the selection process.
+
+## [R1 PERSISTED 2026-08-12] post-page detail not carried by the Atom feed
+# Evidence-persistence rule (DECISION_LOG 2026-08-12): whatever is read in order
+# to author a card is written into the snapshot, so the sourceQuote gate can
+# re-check it. These lines were read from the post pages below on 2026-08-12;
+# the feed body omits them, which is why cibone-ote and
+# cibone-restation-showcase-0815 could not be verified before now.
+
+# https://cibone-us.com/blogs/news/cibone-ote
+CIBONE Brooklyn will be reborn as "CIBONE O'TE"—a place where Japanese thought is shared with the world through the hands of makers and the rhythm of everyday life.
+Store Hours: 11am - 8pm
+Address: 50 Norman Ave, Brooklyn, NY 11222
+
+# https://cibone-us.com/blogs/news/re-station-store-from-japan-to-new-york
+Store Hours: 11am - 8pm
+Address: 50 Norman Ave, Brooklyn, NY 11222

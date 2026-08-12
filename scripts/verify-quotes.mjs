@@ -58,10 +58,14 @@ const sources = Array.isArray(sourcesRaw) ? sourcesRaw : sourcesRaw.sources;
 // that HTML-to-text conversion rewrites (curly quotes, dashes, nbsp). Nothing
 // else is forgiven — every other difference is the fabrication this catches, so
 // widening this is how the check quietly stops working.
+// Quote CHARACTERS are typography, not content: a source writing “CIBONE O'TE”
+// and a card writing 'CIBONE O'TE' make the identical claim, and the same page
+// renders them differently in feed vs. HTML. All quote marks fold to one token,
+// the same reasoning that already folds en/em dashes. This does NOT forgive a
+// changed word, number or date.
 const norm = (s) =>
   s
-    .replace(/[‘’ʼ]/g, "'")
-    .replace(/[“”]/g, '"')
+    .replace(/[‘’ʼ'“”"]/g, '"')
     .replace(/[‐-―−]/g, "-")
     .replace(/[   ]/g, " ")
     .replace(/\s+/g, " ")

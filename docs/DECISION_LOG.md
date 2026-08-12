@@ -86,6 +86,27 @@ image-first venue never reaches a human.
      PRESS (5 locations, no Greenpoint attribution) and CIBONE (Tokyo + Brooklyn, ruled in on
      2026-08-08 via the 50 Norman tenancy) sit on either side of the same line.
 
+### The CIBONE class, settled the same day
+
+**Batu, 2026-08-12: "Cibone is a store, not a gallery. these are for purchase. their events are
+shopping-related."** This closes the one conflict ruling 2 deliberately left open, and it turned out
+to be a mis-filing rather than a genuinely hard call.
+
+The deck had CIBONE's two limited runs filed opposite ways — `cibone-restation-showcase-0815`
+(100+ archival Comme des Garçons and Yohji Yamamoto pieces) as `arts_culture`, `cibone-hozubag-0813`
+as lens-less — on an unwritten judgment about whether archival fashion is an exhibition. **The tell
+was the shop card: `cibone-ote` was the only retail venue card in the entire deck filed as
+`arts_culture`.** Every other store is filed by what it actually is. That anomaly is what made the
+class look ambiguous. All three CIBONE cards are now lens-less.
+
+**The rule is VIEW or BUY, and the venue decides.** The exhibition rule (2) is for **galleries** —
+places whose business is showing work. A **store's** limited run is retail however curated it looks,
+so it takes the markets rule: **no lens, and a dated event card for its real run window** — a shop's
+pop-up genuinely starts and ends, so it does *not* move to the venue card. The boundary case that
+proves the rule is `leaves-august-book-club`: a bookshop is retail, but a book club is a thing you
+attend, not stock you buy, so it stays `arts_culture`. **The venue's business decides the default;
+the event's nature can override it.**
+
 ### Disposition
 
 10. **PRs #29 and #30 closed unmerged; their surviving cards re-authored onto current `main`.** #30

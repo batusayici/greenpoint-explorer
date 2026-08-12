@@ -1,6 +1,8 @@
 {
   "rewrites": [
-    { "source": "/e/:slug", "destination": "/" }
+    { "source": "/e/:slug", "destination": "/" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/privacy", "destination": "/privacy.html" }
   ],
   "redirects": [
     { "source": "/july.html", "destination": "/", "permanent": false }
