@@ -737,16 +737,23 @@ test("a card that names a game is never filed under Arts & Culture", () => {
 // `lensless === []`: the rule was right, the assertion was stale. Each id below
 // must name why it carries no lens, so a real taxonomy leak still surfaces as an
 // unexplained id at review.
+// Entries may be an exact id (a one-off) or a RegExp (a sanctioned class).
+// Prefer the class: it encodes the ruling instead of its instances, so no
+// bookkeeping edit is needed when one expires or a new one ships.
 const LENS_LESS_BY_DESIGN = [
   // 2026-08-12 (Batu): "Cibone is a store, not a gallery. these are for
-  // purchase. their events are shopping-related." All three CIBONE cards are
-  // retail, so none carries a lens — `shopping` is retired and there is nothing
-  // else honest to reach for. `cibone-ote` had been the ONLY shop card in the
-  // deck filed as arts_culture; that was the anomaly, not the precedent.
-  "cibone-hozubag-0813",     // bags made from retired paraglider fabric, for sale
-  "cibone-ote",              // the shop itself
-  "cibone-restation-showcase-0815", // archival CdG/Yohji, for purchase
+  // purchase. their events are shopping-related." That is a ruling about the
+  // VENUE, so it is written as one — every CIBONE card is retail and carries no
+  // lens (`shopping` is retired and there is nothing else honest to reach for).
+  // Written as a class deliberately: as three ids, `cibone-hozubag-0813`
+  // expiring on 8/13 would have left a stale entry for someone to prune, and
+  // the next pop-up would have needed a test edit before it could ship.
+  // `cibone-ote` had been the ONLY shop card in the deck filed as arts_culture;
+  // that was the anomaly, not the precedent.
+  /^cibone-/,
 ];
+const sanctionedLensLess = (id) =>
+  LENS_LESS_BY_DESIGN.some((rule) => (rule instanceof RegExp ? rule.test(id) : rule === id));
 
 test("no card is lens-less except the markets rule's own class (2026-08-12)", () => {
   // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
@@ -767,15 +774,17 @@ test("no card is lens-less except the markets rule's own class (2026-08-12)", ()
   // exactly, and tolerates the expiry race. Stale entries are reported below
   // without failing, so review still sees them.
   const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
-  const unexplained = lensless.filter((id) => !LENS_LESS_BY_DESIGN.includes(id));
+  const unexplained = lensless.filter((id) => !sanctionedLensLess(id));
   assert.deepEqual(
     unexplained,
     [],
     "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it to LENS_LESS_BY_DESIGN",
   );
 
+  // Only exact-id entries can go stale; a class rule stays true whether or not
+  // an instance is currently live.
   const live = new Set(seed.cards.map((c) => c.id));
-  const stale = LENS_LESS_BY_DESIGN.filter((id) => !live.has(id));
+  const stale = LENS_LESS_BY_DESIGN.filter((r) => typeof r === "string" && !live.has(r));
   if (stale.length) {
     console.log(`  note: LENS_LESS_BY_DESIGN has ${stale.length} expired id(s) to prune — ${stale.join(", ")}`);
   }
