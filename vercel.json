@@ -5,6 +5,34 @@
     { "source": "/privacy", "destination": "/privacy.html" }
   ],
   "redirects": [
-    { "source": "/july.html", "destination": "/", "permanent": false }
+    { "source": "/july.html", "destination": "/", "permanent": false },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "greenpoint.life" }],
+      "destination": "https://stoopwise.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.greenpoint.life" }],
+      "destination": "https://stoopwise.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.stoopwise.com" }],
+      "destination": "https://stoopwise.com/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    }
   ]
 }
