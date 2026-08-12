@@ -5,6 +5,7 @@ import {
   buildInitConfig,
   createCaptureTransport,
   initPostHog,
+  posthogAllowedHost,
 } from "./posthogTransport.js";
 
 // Regression (2026-07-21): posthog-js mutates the config it receives (writes
@@ -33,6 +34,44 @@ test("createCaptureTransport forwards name + payload to posthog.capture", () => 
 test("initPostHog resolves null without a key (ships dark until the key lands)", async () => {
   assert.equal(await initPostHog(undefined), null);
   assert.equal(await initPostHog(""), null);
+});
+
+// Environment gate (2026-08-12): dev sessions were sending real events into
+// the prod PostHog project — QA and local work contaminated the R0 retention
+// baseline that the demand gate reads. Only the serving origins may capture;
+// localhost and Vercel preview deployments (unique *.vercel.app hosts per
+// branch) ship dark. The exact serving set: the canonical domain, the legacy
+// redirecting domains (users may sit on them mid-redirect), and the vercel.app
+// rollback alias that old invite links still target.
+test("posthogAllowedHost admits exactly the serving origins", () => {
+  for (const host of [
+    "stoopwise.com",
+    "www.stoopwise.com",
+    "greenpoint.life",
+    "www.greenpoint.life",
+    "greenpoint-explorer.vercel.app",
+  ]) {
+    assert.equal(posthogAllowedHost(host), true, host);
+  }
+  for (const host of [
+    "localhost",
+    "127.0.0.1",
+    "greenpoint-explorer-git-qa-fixes-batu.vercel.app", // branch preview
+    "greenpoint-explorer-abc123-batu.vercel.app", // deployment preview
+    "evil-stoopwise.com",
+    "stoopwise.com.evil.example",
+    "",
+  ]) {
+    assert.equal(posthogAllowedHost(host), false, host || "(empty)");
+  }
+});
+
+test("initPostHog resolves null on a non-serving host even with a key", async () => {
+  assert.equal(await initPostHog("phc_test", "localhost"), null);
+  assert.equal(
+    await initPostHog("phc_test", "greenpoint-explorer-git-x-b.vercel.app"),
+    null,
+  );
 });
 
 // The privacy contract is load-bearing for a neighborhood-trust product:
