@@ -36,6 +36,29 @@ const iso = (y, m, d) => `${y}-${pad(m)}-${pad(d)}`;
 const END_LINE_RE = /^\s*(?:"?)(end[._-]?date|end_?at|ds_event_end_date|endDate|until)(?:"?)\s*[:=]/i;
 const stripEndLines = (text) => text.split("\n").filter((l) => !END_LINE_RE.test(l)).join("\n");
 
+// OUR OWN ANNOTATIONS ARE NOT THE SOURCE'S SUPPLY (2026-08-12). The evidence
+// rule has every run write what it read into the snapshot under
+// `## [R1 PERSISTED <date>]`, `## [IMAGE READ <date>]` or `## [DETAIL] <url>`
+// headers, with `# …` comment lines explaining provenance underneath. Those
+// lines are dated — by us, with the run's own date — and extractDates cannot
+// tell them from a listing, so the header's date became a date the SOURCE was
+// treated as publishing and coverage reported a GAP for a day nothing claimed.
+// Caught on macha-studio the moment the first [IMAGE READ] block landed.
+//
+// Deliberately NOT "strip every line starting with #". A `## <title>` line is
+// CONTENT — the feed snapshot format titles each post that way, and the
+// roundup's own title carries the week it covers ("… Greenpoint? (8/13-19)").
+// Dropping those would delete real signal to fix a phantom. So: bracketed
+// block headers, and `#` comments. Anything else with a hash is the source's.
+//
+// Two live cases pass today only by accident, which is why the tests use the
+// other form of each: `[R1 PERSISTED 2026-08-12b]` survives because the
+// trailing `b` kills the ISO pattern's word boundary, and a date-pathed
+// `[DETAIL]` URL survives only while it has a trailing slash.
+const ANNOTATION_LINE_RE = /^\s*(?:#{1,2}\s*\[|#\s)/;
+const stripAnnotationLines = (text) =>
+  text.split("\n").filter((l) => !ANNOTATION_LINE_RE.test(l)).join("\n");
+
 export const RECURRING_RE =
   /\b(every\s+(?:mon|tues|wednes|thurs|fri|satur|sun)day|weekly|(?:mon|tues|wednes|thurs|fri|satur|sun)days)\b/i;
 
@@ -54,7 +77,7 @@ function inferYear(month, day, now) {
 // cannot parse yields 0 dates, which the report must read as "no signal",
 // NEVER as "no supply".
 export function extractDates(raw, { now, windowDays = 14 } = {}) {
-  const text = stripEndLines(raw);
+  const text = stripAnnotationLines(stripEndLines(raw));
   const from = nyDay(now);
   const to = nyDay(new Date(now.getTime() + windowDays * 864e5));
   const out = new Set();
