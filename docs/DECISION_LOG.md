@@ -4,7 +4,45 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-12 (latest) — The locally-owned gate, written as a rule; and where a ruling has to land
+## 2026-08-12 (latest) — Two instruments corrected: a gate that cried wolf, and a source that went quiet
+
+Both surfaced by the Wednesday Greenpointers run. Neither is a content decision; both are the
+measuring equipment, and a wrong instrument is worse than no instrument.
+
+1. **`check-coverage --gate` now takes `--only` and judges only what the run actually read.** The
+   Wednesday routine fetches `--only greenpointers` in a fresh container where `.ingest-cache` is
+   gitignored, so **every other roster source has NO SNAPSHOT by construction**. The gate exited 1
+   with 49 unexplained lines — **all 66 flagged were NO SNAPSHOT, not one GAP, SILENT or STANDING
+   DARK** — and disqualified auto-ship on a run where nothing was wrong. It would have fired on
+   every Wednesday pull forever. The rejected fix is worth naming: **writing 49
+   `coverageExplanations` to pass it** is the rubber-stamping the skill warns against, and 14-day
+   expiries on them would have masked a genuine NO SNAPSHOT on Monday's full run.
+   - `inScope(row, only)` lives in `coverage.js`, not the script, so it is covered by `npm test` —
+     the same reason the reconciliation logic moved there after six hand-found bugs.
+   - **No `--only` still means the full roster gates**, which is the property that must not weaken:
+     Monday reads everything, so a missing snapshot there is real.
+   - **A `--only` naming an unknown source id is a hard error (exit 2), not a warning.** A typo'd
+     scope would match nothing, empty the gating set, and turn the gate into a rubber stamp that
+     always passes — this change inverted into the failure it exists to prevent.
+   - Out-of-scope rows still **print**, marked `[off-scope]`, and a passing scoped gate says how many
+     lines it did not judge. A quieter gate must not become a quieter report.
+2. **Greenpointers paywalled its feed, and three separate files still promised the opposite.**
+   `content:encoded` is now truncated to a teaser ending "Continue reading — subscribe to unlock the
+   full article." The 8/13-19 roundup reached the snapshot with **2 of its 25 items**. The local
+   snapshot shows the truncation was already there on **2026-08-10**, so the docs had been wrong for
+   two days. **This is the dangerous failure shape: the fetch is a clean 200 and the diff looks
+   healthy** — nothing errors, the run just silently stops knowing about 23 events.
+   - Corrected in all three places that asserted the full body: `SKILL.md`, the `greenpointers`
+     roster `notes` (what the run actually reads), and the `fetch: "feed"` comment in
+     `fetch-sources.mjs`. `fetch: "feed"` buys plain-fetch **access**, never **completeness**.
+   - **Recovery is the site's own public WP REST API**, `?slug=<slug>` → full `content.rendered`.
+     Measured today: **200, 14,801 chars, no paywall marker, all seven day headings**. ⚠ It answers
+     **403 to `WebFetch` and 200 to the roster's own User-Agent**, so a WebFetch probe makes a live
+     recovery route look dead — fetch it the way the script does, through `npm run`.
+   - The general rule already covered this and Greenpointers was the one source exempted from it:
+     **snapshot the discovery surface, author from the evidence surface.** The exemption is revoked.
+
+## 2026-08-12 — The locally-owned gate, written as a rule; and where a ruling has to land
 
 Two cards were held on the Wednesday Greenpointers run and **both were released the same day.**
 Neither release needed new judgment — one needed a rule to be written down where the routine could

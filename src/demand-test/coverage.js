@@ -296,3 +296,18 @@ export const isFlagged = (r) => FLAGGED_STATES.includes(r.state);
 // with no live matching explanation disqualifies auto-ship. NEVER CARDED is
 // not flagged, so it can never trip this.
 export const isUnexplained = (r) => isFlagged(r) && !r.explained;
+
+// A run may read only part of the roster (`fetch-sources.mjs --only greenpointers`
+// on Wednesdays). Every source outside that set then has NO SNAPSHOT by
+// construction — `.ingest-cache` is gitignored, so a fresh container starts
+// empty — and gating on those lines disqualified auto-ship on a run where
+// nothing was wrong (2026-08-12: exit 1, 49 unexplained, all NO SNAPSHOT, zero
+// GAP/SILENT/STANDING DARK).
+//
+// `only === null` means a FULL run and everything is in scope. That is the case
+// this must not weaken: Monday reads the whole roster, so a missing snapshot
+// there is a real finding. Scoping narrows WHICH rows can gate; it never
+// forgives a row inside the scope, and it never suppresses a row from the
+// printed report — an out-of-scope line still prints, labelled, so a reader can
+// see what was not looked at.
+export const inScope = (r, only) => !only || only.has(r.id);

@@ -8,7 +8,7 @@
       "group": "roundup",
       "cadence": "weekly",
       "fetch": "feed",
-      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS. Switched from the browser-only front page to the RSS feed 2026-08-05: the feed's content:encoded carries the FULL roundup body (times, venues, free-ness, RSVP links), so the snapshot is the article text itself — no browser, and no second fetch to the post URL to read items. The post URL is still in the diff; cite it as the sourceLink. Apply the Williamsburg-address gate per roundup item. The HTML site blocks plain WebFetch — go to the feed, not the page."
+      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS. Read via the RSS feed (switched from the browser-only front page 2026-08-05). ⚠ PAYWALLED SINCE ~2026-08-10: content:encoded is now TRUNCATED to a teaser ending \"Continue reading — subscribe to unlock the full article.\" — the 8/13-19 roundup arrived carrying 2 of its 25 items. The snapshot is a DISCOVERY surface only; never read item count off it. Recover the body from the site's own public WP REST API, greenpointers.com/wp-json/wp/v2/posts?slug=<slug> (HTTP 200, full content.rendered), and PERSIST what you read into the snapshot under an [R1 PERSISTED <date>] block or ingest:quotes will fail the cards. The post URL is still in the diff; cite it as the sourceLink. Apply the Williamsburg-address gate per roundup item. The HTML site blocks plain WebFetch — go to the feed or the REST API, not the page."
     },
     {
       "id": "troost",
