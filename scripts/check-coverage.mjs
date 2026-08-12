@@ -16,11 +16,16 @@
 // per run (post-fetch and pre-ship) is harmless — and the pre-ship invocation
 // is what captures cards authored this run before the ledger commits.
 //
-// Usage: node scripts/check-coverage.mjs [--window 14] [--all] [--gate]
+// Usage: node scripts/check-coverage.mjs [--window 14] [--all] [--gate] [--only id,id]
+//
+// `--only` takes the SAME value the run passed to fetch-sources.mjs, and scopes
+// the GATE to those sources (the report still shows everything). Without it a
+// scoped run gates on the whole roster, which is what made every Wednesday pull
+// exit 1 — see `inScope` in coverage.js for the full reasoning.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { reconcile, updatePulse, isFlagged, isUnexplained } from "../src/demand-test/coverage.js";
+import { reconcile, updatePulse, isFlagged, isUnexplained, inScope } from "../src/demand-test/coverage.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = join(root, "src", "data", "demand-test");
@@ -31,6 +36,8 @@ const wIdx = args.indexOf("--window");
 const windowDays = wIdx !== -1 ? Number(args[wIdx + 1]) : 14;
 const SHOW_ALL = args.includes("--all");
 const GATE_MODE = args.includes("--gate");
+const onlyIdx = args.indexOf("--only");
+const ONLY = onlyIdx !== -1 ? new Set(args[onlyIdx + 1].split(",")) : null;
 
 const raw = JSON.parse(readFileSync(join(dataDir, "ingest-sources.json"), "utf8"));
 const sources = Array.isArray(raw) ? raw : raw.sources;
@@ -58,6 +65,19 @@ const rows = reconcile({
 });
 const flagged = rows.filter(isFlagged).sort((a, b) => (b.missing?.length ?? 99) - (a.missing?.length ?? 99));
 const unexplained = rows.filter(isUnexplained);
+// Scoping the gate is only safe if the scope is real. A typo'd `--only` would
+// match nothing, leave the gating set empty, and turn the gate into a rubber
+// stamp that always passes — the exact failure this change exists to avoid,
+// inverted. So an id that names no roster source is a hard error, not a warning.
+if (ONLY) {
+  const unknown = [...ONLY].filter((id) => !sources.some((s) => s.id === id));
+  if (unknown.length) {
+    console.error(`[coverage] --only names ${unknown.length} unknown source id(s): ${unknown.join(", ")}`);
+    console.error("[coverage] refusing to run — a scope that matches nothing would silently pass the gate.");
+    process.exit(2);
+  }
+}
+const gating = unexplained.filter((r) => inScope(r, ONLY));
 const neverCarded = rows.filter((r) => !r.lastCardedAt);
 
 const nyDayOf = (d) =>
@@ -65,13 +85,22 @@ const nyDayOf = (d) =>
 
 console.log(
   `[coverage] window ${nyDayOf(now)} → ${nyDayOf(new Date(now.getTime() + windowDays * 864e5))} ` +
-    `(${windowDays}d) · ${sources.length} sources · ${flagged.length} flagged (${unexplained.length} unexplained)\n`,
+    `(${windowDays}d) · ${sources.length} sources · ${flagged.length} flagged (${unexplained.length} unexplained` +
+    (ONLY ? `, ${gating.length} in --only scope` : "") + ")\n",
 );
+if (ONLY) {
+  console.log(
+    `  scope: --only ${[...ONLY].join(",")} — the gate judges these ${ONLY.size} source(s) only.\n` +
+      `  Everything else is still reported below, marked \`off-scope\`, because a run that\n` +
+      "  did not read a source has learned nothing about it either way.\n",
+  );
+}
 
 if (flagged.length === 0) console.log("  nothing flagged — every source's dated items are represented in the deck");
 
 const explainedSuffix = (r) =>
-  r.explained ? `\n       explained: ${r.explanation.reason} (until ${r.explanation.expiresAt})` : "";
+  (inScope(r, ONLY) ? "" : "  [off-scope]") +
+  (r.explained ? `\n       explained: ${r.explanation.reason} (until ${r.explanation.expiresAt})` : "");
 
 for (const r of flagged) {
   if (r.state === "NO SNAPSHOT") { console.log(`  NO SNAPSHOT   ${r.id} — never fetched, or the id changed${explainedSuffix(r)}`); continue; }
@@ -126,8 +155,20 @@ console.log(
 // legitimate editorial gap would be worse than the blindness this replaces.
 // --gate (2026-08-08) is the SHIP-DECISION check: exit 1 means "auto-ship
 // disqualified, take the review-PR path" — never "halt the run".
-if (GATE_MODE && unexplained.length) {
-  console.error(`\n[coverage] GATE: ${unexplained.length} unexplained flagged line(s) — auto-ship disqualified, open a review PR.`);
+if (GATE_MODE && gating.length) {
+  console.error(
+    `\n[coverage] GATE: ${gating.length} unexplained flagged line(s)` +
+      (ONLY ? ` inside --only ${[...ONLY].join(",")}` : "") +
+      " — auto-ship disqualified, open a review PR.",
+  );
   process.exit(1);
+}
+// Said out loud rather than left to inference: a scoped run that passes has
+// passed a NARROWER check, and the reader should know how much narrower.
+if (GATE_MODE && ONLY && unexplained.length > gating.length) {
+  console.log(
+    `\n[coverage] GATE passed on ${ONLY.size} scoped source(s). ${unexplained.length - gating.length} unexplained\n` +
+      "[coverage] flagged line(s) are off-scope and were NOT judged — Monday's full run judges them.",
+  );
 }
 process.exit(0);

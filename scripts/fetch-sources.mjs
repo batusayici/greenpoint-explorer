@@ -96,11 +96,19 @@ if (MARK_INGESTED) {
 
 // --- RSS feed ---------------------------------------------------------------
 // A third fetch strategy alongside plain and browser. WordPress-style feeds
-// carry the FULL post body in <content:encoded>, so reading the feed yields
-// article text directly — strictly more than the page it comes from, at plain
+// MAY carry the full post body in <content:encoded>, so reading the feed can
+// yield article text directly — more than the page it comes from, at plain
 // fetch cost. Added 2026-08-05 for Greenpointers, whose front page is
-// browser-only (JS-thin + bot-walled) but whose feed is plain-fetchable and
-// carries the "What's Happening" roundup body, not merely a link to it.
+// browser-only (JS-thin + bot-walled) but whose feed is plain-fetchable.
+//
+// "MAY", not "does" — and a publisher can revoke it under you (2026-08-12).
+// Greenpointers now truncates `content:encoded` to a teaser ending "Continue
+// reading — subscribe to unlock the full article." A paywall is invisible to
+// this layer: the fetch is a clean 200, the diff looks healthy, and the run
+// silently loses 23 of a roundup's 25 items. Nothing here can detect that, and
+// it should not try to guess — the check belongs where the items are counted.
+// The lesson for the roster is that `fetch: "feed"` buys plain-fetch ACCESS,
+// never a guarantee of COMPLETENESS.
 // Written for RSS 2.0, plus Atom (2026-08-08) — Shopify serves /blogs/<h>.atom
 // and nothing else, so Atom support is what makes a Shopify blog readable at
 // feed cost instead of scraping its (much thinner) rendered page.

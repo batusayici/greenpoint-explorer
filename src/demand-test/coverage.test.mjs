@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { extractDates, buildHostMap, coveredDays, reconcile, nyDay, updatePulse, resolveCardChecked, isFlagged, isUnexplained } from "./coverage.js";
+import { extractDates, buildHostMap, coveredDays, reconcile, nyDay, updatePulse, resolveCardChecked, isFlagged, isUnexplained, inScope } from "./coverage.js";
 
 // L12 coverage reconciliation. The first version of this shipped as a script
 // with NO tests, and six bugs were found in it by hand in one afternoon. Each
@@ -333,4 +333,45 @@ test("standing: false means reviewed-and-incidental, and stays quiet", () => {
     snapshots: new Map([["bin-bin-sake", "shipments go out every Thursday"]]),
   });
   assert.equal(rows[0].state, "ok", "a shipping line is not programming, and saying so once must stick");
+});
+
+// ---- scoped runs: the gate must judge what the run actually read ----
+// 2026-08-12. The Wednesday routine fetches `--only greenpointers` in a fresh
+// container where `.ingest-cache` is gitignored, so every OTHER roster source
+// has no snapshot BY CONSTRUCTION. That made `--gate` exit 1 with 49
+// unexplained NO SNAPSHOT lines and disqualify auto-ship on a run where nothing
+// was actually wrong — and it would have fired on every Wednesday pull forever.
+// The tempting fix (write 49 coverageExplanations) is the rubber-stamping the
+// skill warns against, and 14-day expiries on them would mask a REAL NO
+// SNAPSHOT on Monday's full run.
+test("scope: a source the run never intended to read cannot disqualify the ship", () => {
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW,
+    snapshots: new Map([["troost", "Nothing on this week."]]), // every other source: no snapshot
+  });
+  const offScope = rows.filter((r) => r.id !== "troost");
+  assert.ok(offScope.every((r) => r.state === "NO SNAPSHOT"), "precondition: the others are unfetched");
+  assert.ok(offScope.some(isUnexplained), "precondition: and they are unexplained, so they WOULD gate");
+
+  const gating = rows.filter((r) => isUnexplained(r) && inScope(r, new Set(["troost"])));
+  assert.deepEqual(gating, [], "only the source the run fetched may disqualify auto-ship");
+});
+
+test("scope: with no --only, every source is in scope — a full run gates on everything", () => {
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW,
+    snapshots: new Map([["troost", "Nothing on this week."]]),
+  });
+  // null scope is the full run. This is the case that must NOT get quieter:
+  // Monday reads the whole roster, so a missing snapshot there is real.
+  assert.ok(rows.filter((r) => isUnexplained(r) && inScope(r, null)).length >= 4);
+});
+
+test("scope: an in-scope source still gates normally — scoping narrows, it never forgives", () => {
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW,
+    snapshots: new Map(), // troost unfetched too
+  });
+  const gating = rows.filter((r) => isUnexplained(r) && inScope(r, new Set(["troost"])));
+  assert.deepEqual(gating.map((r) => r.id), ["troost"], "the one source the run claimed to read is missing — that is real");
 });
