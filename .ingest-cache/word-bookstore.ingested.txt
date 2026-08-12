@@ -38,3 +38,39 @@ Support WORD
 Become a member and receive insider benefits
 Learn more
 Powered by Withfriends
+
+## [R1 PERSISTED 2026-08-12] https://withfriends.co/word/join (browser-rendered)
+# Evidence-persistence rule (DECISION_LOG 2026-08-12). The roster snapshot is
+# /word/events; the membership card quotes /word/join, whose tiers are
+# JS-rendered and invisible to plain fetch — which is why word-membership could
+# not be verified. Read via the browser pane on 2026-08-12.
+Support WORD by becoming a member.
+Cancel renewal at any time.
+Fan
+$
+5
+/mo
+5% discount on every purchase, online and in store
+$10 store credit for a single purchase during your birthday month
+Friend
+$
+10
+/mo
+10% discount on every purchase, online and in store
+10% discount on all events
+(online tickets only)
+Early access to RSVP for special events
+Family
+$
+20
+/mo
+20% discount on every purchase, online and in store
+20% discount on all events
+Share your discount with 1 additional guest per event
+1 free ARC (advanced reader copy) book per month (in-store pickup only)
+Champion
+$
+100
+/mo
+25% discount on every purchase, online and in store
+Free entry to all events
