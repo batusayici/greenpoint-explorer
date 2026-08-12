@@ -2602,7 +2602,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
+      "updatedAt": "2026-08-12",
       "id": "library-wednesday-programs-0812",
       "title": "Wednesday at Greenpoint Library",
       "kicker": "Garden club for ages 6 to 12",
@@ -2624,13 +2624,19 @@
       ],
       "sourceLinks": [
         {
+          "title": "Our Garden Club — Greenpoint Library calendar",
+          "url": "https://discover.bklynlibrary.org/",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-12"
+        },
+        {
           "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
           "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
           "publisher": "Greenpointers",
           "date": "2026-08-05"
         }
       ],
-      "sourceQuote": "Garden Club @ Greenpoint Library, 4:30 p.m. to 5:30 p.m: At the library’s garden club children ages 6 – 12 can plant seeds, read stories, sing, dance, and take home plants and flowers.",
+      "sourceQuote": "ts_title: Our Garden Club\nds_event_start_date: 2026-08-12T20:30:00Z\nds_event_end_date: 2026-08-12T21:30:00Z\nss_event_location: Greenpoint, Demonstration Garden\nts_body: Let’s see what we can grow in Brooklyn! Plant seeds and watch them grow. Read stories, sing, dance, take home plants and flowers. For children with and without disabilities. Kids and tweens welcome - ages 6 to 12.",
       "relatedCardIds": [
         "greenpoint-library"
       ],

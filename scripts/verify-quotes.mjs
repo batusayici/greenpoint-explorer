@@ -109,9 +109,14 @@ const readSnapshot = (id) => {
 // fragment-wise is also the better diagnostic: it names the unsupported claim
 // instead of just failing the card.
 const FRAGMENT_MIN = 15; // shorter than this is too generic to be evidence
+// `…` (and a bare " ... ") is an author's explicit ELISION marker — "text was
+// omitted here" — which is exactly the standard quoting convention, and the BCC
+// class cards use it: "Sewing 101: Tote Bag … In Greenpoint: Thurs, 8/13 at
+// 6:30pm". Splitting on it honours the marker instead of demanding that two
+// deliberately-separated spans be contiguous in the source.
 const fragments = (quote) => {
   const out = [];
-  for (const line of quote.split(/\n+/)) {
+  for (const line of quote.split(/\n+|\s*(?:…|\.\.\.)\s*/)) {
     if (norm(line).length < FRAGMENT_MIN) continue;
     out.push(line);
   }

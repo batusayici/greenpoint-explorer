@@ -42,3 +42,15 @@ title: SECRETS OF THE DEAD
 startDate: 2026-11-02T00:00:00.000Z
 endDate: 2026-11-02T01:00:00.000Z
 fullUrl: /program/2026/11/1/secrets-of-the-dead
+
+## [R1 PERSISTED 2026-08-12] program detail pages (JSON feed carries title/dates only)
+# Evidence rule, DECISION_LOG 2026-08-12. The roster JSON gives title, startDate,
+# endDate and fullUrl — never the blurb — so every Film Noir card's prose came
+# from its program page and could not be verified. Read 2026-08-12.
+
+# /program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
+# Thursday, August 13, 2026, 9:00 PM - 10:00 PM
+Thursday, August 13, 2026
+Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
+The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
+Pure cinematheque fun.
