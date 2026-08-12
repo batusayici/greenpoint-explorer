@@ -125,3 +125,25 @@ Email Signup
 © Copyright 2016-2024 by Go Green Brooklyn
 Go Green Brooklyn Hub is made possible with funding provided by the Office of the New York State Attorney General and the New York State Department of Environmental Conservation through the Greenpoint Community Environmental Fund.
 Scroll up
+
+## [R1 PERSISTED 2026-08-12] gogreenbk.org event detail pages
+# Evidence rule, DECISION_LOG 2026-08-12. The roster snapshot is the LISTING
+# page; recurring series live on per-event detail pages that roll off the
+# listing as dates pass, which is why these two cards became unverifiable.
+
+# https://gogreenbk.org/event/yoga-transmitter-2026/2026-08-04/
+Community Yoga in Transmitter Park
+Tuesday, August 4th at 7:00 AM - 8:00 AM
+Join us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park.
+Hosted by Kacey Weiniger of Kindred, in partnership with the Friends of Transmitter Park.
+What to Bring: A yoga mat if you have one, otherwise a towel or blanket.
+
+# https://gogreenbk.org/event/mcgolrick-bird-club-2026/2026-08-01/
+Join the McGolrick Bird Club every Saturday at 9 AM at the corner of Russell St. and Driggs Ave.
+McGolrick Park, Nassau Avenue & Russell Street, Brooklyn, NY 11222
+Where to Meet: Main Entrance – WNYC Transmitter Park, Greenpoint, Brooklyn- then walk to the shoreline lawn edge
+2026 Current & Upcoming Months
+Tuesday, August 4, 7:00 AM to 8:00 AM
+Tuesday, August 11, 7:00 AM to 8:00 AM
+Tuesday, August 18, 7:00 AM to 8:00 AM
+Tuesday, August 25, 7:00 AM to 8:00 AM

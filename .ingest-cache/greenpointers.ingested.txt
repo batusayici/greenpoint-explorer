@@ -107,3 +107,21 @@ Wed, 05 Aug 2026 13:00:00 +0000
 Some of us are froyo fiends, and some of us (me) have dairy dessert tastes that skew elsewhere (namely, The Original Chinatown Ice Cream Factory). Luckily, there’s room for us all in the North Brooklyn area, with an additional ice cream place having just opened this past weekend.
 Lucky Creamery quietly took over the storefront at 669 Manhattan Avenue, most recently home to Euro Chemist Pharmacy. Where the Screen Door (145 Driggs Ave.) keeps things…
 Continue reading — subscribe to unlock the full article.
+
+## [R1 PERSISTED 2026-08-12] greenpointers.com articles + one Eventbrite listing
+# Evidence rule, DECISION_LOG 2026-08-12. The roster snapshot is the site FEED,
+# which rolls forward, so cards citing individual articles lose their evidence
+# within days. greenpointers.com also returns 403 to plain fetch — read via the
+# browser pane on 2026-08-12.
+
+# https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/
+[Sponsored] Mention Greenpointers for 20% off your first appointment at Pooch’s Parlor (128 India St)!
+
+# https://greenpointers.com/2026/08/06/checkmate-north-brooklyn-chess-club-sets-up-summer-residency-at-the-mccarren-parkhouse/
+its residency at the McCarren Parkhouse (855 Lorimer St.) hosting weekly chess nights every Thursday from 7 to 11pm.
+
+# https://www.eventbrite.com/e/north-brooklyn-chess-parkhouse-summer-residency-tickets-1990656783025
+# (nb-chess-parkhouse-0806 quotes ACROSS two sources; the gate maps a card to one
+#  source by host, so the Eventbrite half is persisted here beside the article.)
+Sometimes free, sometimes ticketed. RSVPs encouraged and tickets are always available at the door.
+Each ticketed week we will bring one to two chess masters, coaches, or titled chess players for our "challengers corner". These will be high-skill games, in Blitz or Bullet format.

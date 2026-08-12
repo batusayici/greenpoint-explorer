@@ -132,6 +132,11 @@ const fragments = (quote) => {
 // `word:` is removed, never anything inside the claim.
 const unlabel = (s) => s.replace(/^\s*[a-z][a-z0-9_]*:\s*/i, "");
 
+// Trailing sentence punctuation an author added when lifting a fragment out of
+// running text. `bandit-running-gpr` states "Saturdays at 9:30 am" with no stop;
+// the card quotes "Saturdays at 9:30 am." A full stop is not a claim.
+const detrail = (s) => s.replace(/[\s.,;:!]+$/, "");
+
 // Only applied to a fragment that failed whole — splitting eagerly would break
 // "St.", "$17.50" and bare domains into noise.
 const sentences = (line) =>
@@ -161,7 +166,8 @@ for (const card of seed.cards) {
     continue;
   }
   const hay = norm(snap.text);
-  const has = (s) => hay.includes(norm(s)) || hay.includes(norm(unlabel(s)));
+  const has = (s) =>
+    [s, unlabel(s), detrail(s), detrail(unlabel(s))].some((v) => norm(v).length >= FRAGMENT_MIN && hay.includes(norm(v)));
   const missing = [];
   for (const frag of fragments(card.sourceQuote)) {
     if (has(frag)) continue;

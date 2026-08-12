@@ -1589,6 +1589,11 @@
       "name": "Bios Apothecary — their promo booking link is broken (tell them)",
       "note": "2026-08-12: the 8/10 'Bespoke Skincare' email's CTA points at /products/book-a-consultation?variant=31794879463508, which 404s; the bare product URL 404s too, and the consultation appears nowhere on biosapothecary.com. The card therefore links the site root and says to ask in-store. Bios is a registry sender and a plausible Founding Partner conversation — worth telling them their own CTA is dead. Re-point the card's action if they fix it.",
       "addedAt": "2026-08-12"
+    },
+    {
+      "name": "Greenpoint Trash Club — the 7:30pm start is not verifiable anywhere fetchable",
+      "note": "2026-08-12 bucket-B sweep. greenpointtrashclub.org (and its .com redirect) states \"Every Wednesday night\" and gives NO TIME anywhere on the page — checked in the browser, full page text is 1.8KB. The card's 7:30pm comes solely from the club's Instagram bio line \"Every Wednesday night at 7:30!\", which is first-party and was read at authoring time but cannot be re-fetched (instagram.com is not plain-fetchable). The DAY is verified; the TIME is not. Card keeps 7:30pm because a civic volunteer card without a start time is close to useless and the source is the org itself — but this is the one bucket-B card whose stated time no future run can re-check. Resolve by asking the club, or if they ever put a time on the site.",
+      "addedAt": "2026-08-12"
     }
   ],
   "sourcePulse": {

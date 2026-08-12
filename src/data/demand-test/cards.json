@@ -1435,7 +1435,7 @@
       "trustRisk": "medium",
       "geocodeQuery": "105 Franklin Street, Brooklyn, NY 11222",
       "createdAt": "2026-07-22",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "lat": 40.729519,
       "lng": -73.957799,
       "recurring": true,
@@ -1444,7 +1444,7 @@
           "wed"
         ]
       },
-      "sourceQuote": "❇️ Come pick up litter with us around Greenpoint! ❇️ ⚛️ Every Wednesday night at 7:30! ⚛️"
+      "sourceQuote": "Every Wednesday night — rain, snow, or freezing cold — about 50 volunteers meet to clean the streets of North Brooklyn."
     },
     {
       "category": "food_drink",
@@ -4249,7 +4249,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -4264,7 +4264,7 @@
       "recurring": true,
       "startsAt": "2026-08-13T20:00:00-04:00",
       "endsAt": "2026-08-22T23:59:00-04:00",
-      "sourceQuote": "Thu Aug 6, 2026, 8:00 PM, Thu Aug 13, 2026, 8:00 PM, Thu Aug 20, 2026, 8:00 PM and 5 more\nThe Thursday Showcase",
+      "sourceQuote": "Thu Aug 13, 2026, 8:00 PM, Thu Aug 20, 2026, 8:00 PM, Thu Aug 27, 2026, 8:00 PM and 4 more\nThe Thursday Showcase\nUSD $20.00",
       "actions": [
         {
           "label": "Tickets",
@@ -4297,7 +4297,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-12",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -4312,7 +4312,7 @@
       "recurring": true,
       "startsAt": "2026-08-14T20:00:00-04:00",
       "endsAt": "2026-08-22T23:59:00-04:00",
-      "sourceQuote": "Fri Aug 7, 2026, 8:00 PM, Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM and 5 more\nThe Friday Showcase Show @ 8:00 PM",
+      "sourceQuote": "Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM, Fri Aug 28, 2026, 8:00 PM and 4 more\nThe Friday Showcase Show @ 8:00 PM\nUSD $25.00",
       "actions": [
         {
           "label": "Tickets",
@@ -5724,7 +5724,7 @@
           "date": "2026-08-10"
         }
       ],
-      "sourceQuote": "yoga in the park. WNYC Transmitter Park. Free community yoga. Thursdays Sunset Yoga 7:00 PM: August 13, August 20, August 27. Scan to RSVP kindrednyc.co",
+      "sourceQuote": "sunset yoga in the park\naugust 13, 7pm\nWNYC transmitter park\njoin us for a sunset yoga practice by the water. free community yoga in collaboration with the friends of transmitter park.\nsunset yoga in the park\naugust 20, 7pm\nsunset yoga in the park\naugust 27, 7pm",
       "relatedCardIds": [
         "community-yoga-transmitter-tuesdays"
       ],
@@ -5733,7 +5733,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-12",
       "recurrence": {
         "days": [
           "thu"
