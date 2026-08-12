@@ -1,6 +1,6 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-08-12T13:27:00-04:00",
+  "lastRunAt": "2026-08-12T18:40:00-04:00",
   "cardChecked": {
     "sailor-and-siren": "2026-08-11",
     "core-press": null,
@@ -153,6 +153,7 @@
     "gather-sound-bath-0818": "2026-08-11",
     "idle-mind-vinyl-vibes-0819": "2026-08-11",
     "threes-flea-market-0815": "2026-08-11",
-    "buffalo-firefly-soundbath-0813": "2026-08-11"
+    "buffalo-firefly-soundbath-0813": "2026-08-11",
+    "macha-summer-fridays-after-hours": "2026-08-11"
   }
 }

@@ -7069,6 +7069,53 @@
       "updatedAt": "2026-08-12",
       "lat": 40.723368,
       "lng": -73.952339
+    },
+    {
+      "id": "macha-summer-fridays-after-hours",
+      "category": "event",
+      "title": "Summer Fridays After Hours at Macha Studio",
+      "kicker": "Drinks and try-ons at the jewelry studio",
+      "summary": "Macha keeps its Franklin St shop open past closing for the rest of the summer series, for wishlist building.",
+      "startsAt": "2026-08-14T15:00:00-04:00",
+      "endsAt": "2026-08-28T23:59:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "fri"
+        ]
+      },
+      "filters": [],
+      "free": false,
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "locationName": "Macha Studio",
+      "address": "135 Franklin St, Brooklyn, NY 11222",
+      "sourceQuote": "Join us for After Hours this Summer. Drinks, try on's and wishlist building\nMacha Studio\n135 Franklin St\nGreenpoint, Brooklyn\nSummer Fridays\nJuly - August\nFrom 3pm",
+      "actions": [
+        {
+          "label": "See the studio",
+          "type": "learn_more",
+          "url": "https://machastudio.com/blogs/events/summer-fridays-after-hours"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Summer Fridays After Hours",
+          "url": "https://machastudio.com/blogs/events/summer-fridays-after-hours",
+          "publisher": "Macha Studio",
+          "date": "2026-08-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "lat": 40.730903,
+      "lng": -73.957932
     }
   ]
 }

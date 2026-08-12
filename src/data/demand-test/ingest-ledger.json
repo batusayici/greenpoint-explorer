@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-12T13:27:00-04:00",
+  "lastRunAt": "2026-08-12T18:40:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1223,6 +1223,20 @@
       "publisher": "Track V ingest (Wednesday Greenpointers pull)",
       "processedAt": "2026-08-12",
       "outcome": "Scoped mini-ingest, fetch exit 0, reach 1/1. Expiry RAN (every path, 2026-08-06 rule) and took nothing — the 8/12 daily pass had already expired for today. Deck 142 → 150 (+5.6%, inside the ±40% swing gate). Gates: npm test 608/608 green; npm run build green; npm run ingest:quotes green (verified=24 mismatch=0) after the new evidence rode into the baseline; check-freshness --record stamped datedUpcoming7d=58, reservoir7-14d=27, topVenue=Troost:10%, no WARN. COVERAGE GATE EXITED 1 (49 unexplained flagged lines) and therefore disqualified auto-ship, so the whole run took the review-PR path per gate 6 — but read what it flagged before treating it as a supply signal: ALL 66 flagged lines are NO SNAPSHOT and NOT ONE is a GAP, SILENT, STANDING DARK or UNMARKED STANDING. A NO SNAPSHOT line means .ingest-cache/<id>.txt is absent, and this run fetched with --only greenpointers in a fresh container where .ingest-cache is gitignored, so every other source on the roster is absent BY CONSTRUCTION. That is an instrument artifact of a scoped run, not a coverage loss, and it will be true of EVERY Wednesday pull in a fresh checkout. Deliberately NOT papered over with 49 coverageExplanations entries: bulk-explaining sources this run never intended to read is the rubber-stamping the skill warns about, and 14-day expiries on them would mask a real NO SNAPSHOT on Monday's full run. The durable fix is a script change (have --gate ignore sources outside the run's --only set, or have the scoped Wednesday routine invoke coverage with the same --only), which is a CODE change and therefore human-gated — proposed in the review PR, not applied here. PROXY DENIALS this run, named per the R1 rule because the EGRESS DENIED block is structurally blind to R1 targets: buffalofirefly.com, www.dominicanwriters.org and support.nbkparks.org each failed CONNECT with 403. eventbrite.com, denied for three days in early August, now plain-fetches fine and resolved seven addresses this run."
+    },
+    {
+      "id": "https://machastudio.com/blogs/events/summer-fridays-after-hours",
+      "kind": "web",
+      "publisher": "Macha Studio",
+      "processedAt": "2026-08-12",
+      "outcome": "First card ever authored from a detailsInImages source, and the first read of macha-studio's actual supply. The Atom feed reported `unchanged` — correctly, and irrelevantly: macha is standing:true, which is the one sanctioned exception to skipping unchanged sources, and its bodies carry NO dates because every schedule fact is inside the event poster. Fetched https://machastudio.com/blogs/events, pulled the og:image off each 2026 event page, and READ ALL THREE POSTERS. 1 ADDED: macha-summer-fridays-after-hours — \"Summer Fridays / July - August / From 3pm\", recurring Fridays at 135 Franklin St, next occurrence Fri 8/14, endsAt 8/28 as verified-through (Aug 28 is the last Friday the stated July-August span covers). Filed LENS-LESS on the CIBONE precedent (Batu 2026-08-12, \"a store's events are shopping-related\"): \"Drinks, try on's and wishlist building\" at a jewelry studio is retail, and `shopping` is retired. Added to LENS_LESS_BY_DESIGN as an EXACT ID, deliberately not /^macha-/ — Macha also runs a Poetry Open-Mic, which is arts_culture on the leaves-august-book-club boundary (a thing you attend, not stock you buy), and a venue-wide regex would silently sanction that too. 2 NOT CARDED, both already past: the Summer Fridays listening party (poster states August 7th, 3-7pm, with Threes Brewing) and Poetry Open-Mic Vol. 25 (poster states FRIDAY JULY 31st, 7.30-9.30PM). All three poster transcriptions PERSISTED into .ingest-cache/macha-studio.txt under an [IMAGE READ] block per the evidence rule, so ingest:quotes verifies the card like any text source and a changed flyer produces a real diff next run. holds: 0 new-judgment · 0 rule-miss · 0 source-blocked."
+    },
+    {
+      "id": "run:2026-08-12-macha-studio-image-read",
+      "kind": "run",
+      "publisher": "Track V ingest (scoped single-source, macha-studio)",
+      "processedAt": "2026-08-12",
+      "outcome": "Scoped run requested by Batu to clear macha-studio's STANDING DARK. Expiry RAN (every path) and took nothing. Fetch exit 0, reach 1/1, `unchanged` — overridden by the standing:true exception. Deck 152 → 153 (+0.7%, inside ±40%). Gates: npm test 611/611; lintCard clean (kicker 40 chars, summary 108); npm run ingest:quotes verified=38 mismatch=0; coverage STANDING DARK on macha-studio CLEARED and the scoped gate exits 0. TWO FINDINGS WORTH KEEPING. (1) The \"~12 events\" figure in the roster note describes the BLOG ARCHIVE, not live supply: of 12 posts, most are 2024-2025, and of the three posted in 2026 exactly ONE is still upcoming. Batu's rejection of standing:false was still right — there IS standing programming — but the expected yield from this source is ~1 card, not ~12, and a future run should not go looking for eleven more. (2) PERSISTED-EVIDENCE HEADERS CAN INJECT PHANTOM DATES INTO THE COVERAGE PARSER. The first [IMAGE READ] block was headed with a bare ISO `2026-08-12` in its annotation lines; extractDates cannot tell an annotation from an event line, so coverage immediately reported a GAP for today that no source claims. Fixed here by writing metadata dates as \"12 August 2026\", which none of the extractor's patterns match. The same shape exists in the greenpointers [R1 PERSISTED] blocks and is merely masked there by real dates. The durable fix is to have coverage.js ignore `#` annotation lines — a CODE change, therefore human-gated and NOT applied in this run."
     }
   ],
   "senderRegistry": [
@@ -1663,7 +1677,8 @@
     "kindred-nyc": "2026-08-09",
     "down-to-earth-markets": "2026-08-09",
     "nyc-open-data-farmers-markets": "2026-08-09",
-    "maison-jar": "2026-08-09"
+    "maison-jar": "2026-08-09",
+    "macha-studio": "2026-08-11"
   },
   "coverageExplanations": [
     {

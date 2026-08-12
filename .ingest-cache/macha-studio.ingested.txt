@@ -133,3 +133,46 @@ https://machastudio.com/blogs/events/poetry-nights
 Our Open Mic Poetry Nights are held once a month in our Greenpoint shop. They began on the summer of 2022 with the main purpose of bringing people together, creating a space where everyone is welcome to share and express a bit of their hearts.
 Poetry is like a bridge. A bridge that connects the sacred with what matters. Reconnecting us with beauty, meaning & joy.
 Poetry is an immediate path to becoming better and creating a change. Creating a world less about tearing each other down and apart, and more about coming together. Our poetry events allow a safe space to share, heal and express from the depth of our hearts and with it connect with others.
+
+## [IMAGE READ 12 August 2026] macha-studio is a detailsInImages source — this is what the event posters say
+# Evidence rule, DECISION_LOG entry of 12 August 2026, and the `detailsInImages` roster flag
+# (Batu, same day). The Atom feed bodies carry no dates, times or prices because
+# EVERY schedule fact lives inside the event image. Below is what each poster
+# states, transcribed verbatim from the image, so `ingest:quotes` can check a
+# card against it exactly like any text source and a changed flyer produces a
+# real diff next run.
+#
+# Read from an interactive session: the three posters were downloaded from the
+# Shopify CDN (og:image on each event page) and read directly.
+
+# https://machastudio.com/blogs/events/summer-fridays-after-hours
+# image: /cdn/shop/articles/Black_Red_White_Minimalist_Simple_Creative_Agency_Intro_Poster-5.png
+SUMMER FRIDAYS
+Join us for After Hours this Summer. Drinks, try on's and wishlist building
+Macha Studio
+135 Franklin St
+Greenpoint, Brooklyn
+Summer Fridays
+July - August
+From 3pm
+
+# https://machastudio.com/blogs/events/summer-fridays-listening-party
+# image: /cdn/shop/articles/Black_Red_White_Minimalist_Simple_Creative_Agency_Intro_Poster-6_b5e65b3d-785a-4eed-9c73-321f96bd3cc9.png
+# PAST as of this run (12 August 2026) — not carded.
+SUMMER FRIDAYS
+Join us for a Summer Friday listening party.
+Bring your favorite vinyl & enjoy a drink in good company
+Macha Studio
+135 Franklin St
+Greenpoint, Brooklyn
+August 7th
+From 3-7pm
+THREES BREWING
+
+# https://machastudio.com/blogs/events/summer-poetry-open-mic
+# image: /cdn/shop/articles/4C0B541F-1CC9-4FF0-978A-08AA4F53A5CD_e61c37de-7d6f-4b16-a0b9-9569b9f71e6c.png
+# PAST as of this run (12 August 2026) — not carded.
+POETRY OPEN MIC! VOL. 25
+FRIDAY JULY 31st. 7.30-9.30PM
+MACHA STUDIO
+135 FRANKLIN ST.

@@ -408,11 +408,17 @@ test("seed has exactly 75 cards across the six layers", () => {
   // interactive session. Same attributability ruling applies: two locations
   // (Brooklyn + Richmond VA), and the site lists this session under its own
   // "Brooklyn Events" heading at the Nassau Ave address. 151 + 1 = 152.
-  assert.equal(seed.cards.length, 152);
+  // +1 (2026-08-12): `macha-summer-fridays-after-hours`, the first card ever
+  // authored from a `detailsInImages` source. macha-studio had been STANDING
+  // DARK with zero cards because its Atom feed bodies carry no dates — every
+  // schedule fact is inside the event poster. Reading the three posters found
+  // exactly one live item; the other two (listening party 8/7, poetry open-mic
+  // 7/31) had already passed. 152 + 1 = 153.
+  assert.equal(seed.cards.length, 153);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 81, "71 + all 8 adds from the 8/13-19 Greenpointers roundup + the 2 cards released by the 2026-08-12 rulings (Threes flea market, Buffalo Firefly sound bath) — every one is a dated happening");
+  assert.equal(count((c) => c.category === "event"), 82, "71 + all 8 adds from the 8/13-19 Greenpointers roundup + the 2 cards released by the 2026-08-12 rulings (Threes flea market, Buffalo Firefly sound bath) + Macha's recurring Summer Fridays — every one is a dated happening");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + the Bios Apothecary herbalist consult (2026-08-12)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
   assert.equal(count((c) => c.filters.includes("live_music")), 24, "23 + the all-vinyl DJ social at Idle Mind Tavern (8/19)");
@@ -797,6 +803,14 @@ const LENS_LESS_BY_DESIGN = [
   // silently swallow a farmers' market that genuinely belongs in `food_drink`.
   "neptune-artists-makers-market-0816",
   "threes-flea-market-0815",
+  // 2026-08-12: Macha Studio's Summer Fridays After Hours. The CIBONE ruling
+  // applied to a second store — "Drinks, try on's and wishlist building" at a
+  // jewelry studio is retail, so `shopping` being retired leaves no honest lens.
+  // Deliberately an EXACT ID and not `/^macha-/`, unlike CIBONE: Macha also runs
+  // a Poetry Open-Mic, which is `arts_culture` on the `leaves-august-book-club`
+  // boundary — a thing you attend, not stock you buy. A venue-wide regex here
+  // would silently sanction that one too.
+  "macha-summer-fridays-after-hours",
 ];
 const sanctionedLensLess = (id) =>
   LENS_LESS_BY_DESIGN.some((rule) => (rule instanceof RegExp ? rule.test(id) : rule === id));
