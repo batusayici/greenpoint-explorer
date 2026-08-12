@@ -3003,5 +3003,210 @@
         "-73.9460895"
       ]
     }
+  },
+  "61 Franklin St, Brooklyn, NY 11222": {
+    "query": "61 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T17:24:25.608Z",
+    "hit": {
+      "place_id": 402070514,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 922165267,
+      "lat": "40.7274866",
+      "lon": "-73.9573086",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "61, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7274366",
+        "40.7275366",
+        "-73.9573586",
+        "-73.9572586"
+      ]
+    }
+  },
+  "Under the K Bridge Park, Brooklyn, NY": {
+    "query": "Under the K Bridge Park, Brooklyn, NY",
+    "fetchedAt": "2026-08-12T17:24:27.036Z",
+    "hit": {
+      "place_id": 359153796,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 12922566,
+      "lat": "40.7254296",
+      "lon": "-73.9322796",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08009175936522465,
+      "addresstype": "park",
+      "name": "Under The K Bridge Park",
+      "display_name": "Under The K Bridge Park, Brooklyn, Kings County, New York, United States",
+      "boundingbox": [
+        "40.7248528",
+        "40.7275688",
+        "-73.9331199",
+        "-73.9291761"
+      ]
+    }
+  },
+  "13 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "13 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T17:24:28.607Z",
+    "hit": {
+      "place_id": 359206949,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140590,
+      "lat": "40.7298692",
+      "lon": "-73.9602488",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "13, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7297337",
+        "40.7300087",
+        "-73.9603115",
+        "-73.9601868"
+      ]
+    }
+  },
+  "273 Calyer St, Brooklyn, NY 11222": {
+    "query": "273 Calyer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T17:24:29.992Z",
+    "hit": {
+      "place_id": 359068443,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11294399148,
+      "lat": "40.7295267",
+      "lon": "-73.9493883",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "273, Calyer Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294767",
+        "40.7295767",
+        "-73.9494383",
+        "-73.9493383"
+      ]
+    }
+  },
+  "Edy's Grocer, Greenpoint, Brooklyn, NY": {
+    "query": "Edy's Grocer, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-08-12T17:24:31.356Z",
+    "hit": {
+      "place_id": 355520698,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842829044,
+      "lat": "40.7275194",
+      "lon": "-73.9510341",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Edy’s Grocer",
+      "display_name": "Edy’s Grocer, 136, Meserole Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7274694",
+        "40.7275694",
+        "-73.9510841",
+        "-73.9509841"
+      ]
+    }
+  },
+  "94 Guernsey St, Brooklyn, NY 11222": {
+    "query": "94 Guernsey St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T17:24:32.897Z",
+    "hit": {
+      "place_id": 360388694,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280118811,
+      "lat": "40.7242629",
+      "lon": "-73.9528886",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "94, Guernsey Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7242178",
+        "40.7243079",
+        "-73.9529779",
+        "-73.9527993"
+      ]
+    }
+  },
+  "623 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "623 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T17:24:34.381Z",
+    "hit": {
+      "place_id": 357252909,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 12398830775,
+      "lat": "40.7236008",
+      "lon": "-73.9509875",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "623, Manhattan Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7235508",
+        "40.7236508",
+        "-73.9510375",
+        "-73.9509375"
+      ]
+    }
+  },
+  "55 Nassau Ave, 2E, Brooklyn, NY 11222": {
+    "query": "55 Nassau Ave, 2E, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T18:44:27.311Z",
+    "hit": null
+  },
+  "55 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "55 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T18:44:50.689Z",
+    "hit": {
+      "place_id": 360534317,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842861227,
+      "lat": "40.7233679",
+      "lon": "-73.9523393",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Yuu",
+      "display_name": "Yuu, 55, Nassau Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7233179",
+        "40.7234179",
+        "-73.9523893",
+        "-73.9522893"
+      ]
+    }
   }
 }

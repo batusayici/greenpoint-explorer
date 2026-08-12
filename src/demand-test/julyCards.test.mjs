@@ -390,14 +390,32 @@ test("seed has exactly 75 cards across the six layers", () => {
   // +1 (2026-08-12, Batu): the Bios Apothecary herbalist consult, released once
   // Batu allowlisted the host, confirmed the consult is in-store, and kept Bios
   // through the locally-owned gate. 141 + 1 = 142.
-  assert.equal(seed.cards.length, 142);
+  // +8 (2026-08-12, Wednesday Greenpointers pull of the 8/13-19 roundup):
+  // reading-series-61-franklin-0813, zumba-under-the-k-0813,
+  // neptune-artists-makers-market-0816, anthost-designer-pillow-0816,
+  // sotte-paint-your-greca-0816, edys-anniversary-party-0816,
+  // gather-sound-bath-0818, idle-mind-vinyl-vibes-0819. Expiry took nothing
+  // this run (it had already run for 2026-08-12 on the daily pass). 142 + 8 = 150.
+  // +1 (2026-08-12, Batu): `threes-flea-market-0815`, released by the
+  // attributability ruling on the locally-owned gate — the listing names
+  // "Threes Brewing Greenpoint, 113 Franklin St." outright, so the claim is
+  // tied to the Greenpoint address and the second location is irrelevant.
+  // 150 + 1 = 151.
+  // +1 (2026-08-12, Batu): `buffalo-firefly-soundbath-0813`, released once Batu
+  // allowlisted `buffalofirefly.com` — the routine's egress denies the host
+  // (CONNECT 403) and Nominatim has no result for the venue name, so the
+  // address that clears the geography gate could only be read from an
+  // interactive session. Same attributability ruling applies: two locations
+  // (Brooklyn + Richmond VA), and the site lists this session under its own
+  // "Brooklyn Events" heading at the Nassau Ave address. 151 + 1 = 152.
+  assert.equal(seed.cards.length, 152);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 71, "69 + the 2 cards released by the 2026-08-12 rulings (CIBONE HOZUBAG, Flower Cat mixer)");
+  assert.equal(count((c) => c.category === "event"), 81, "71 + all 8 adds from the 8/13-19 Greenpointers roundup + the 2 cards released by the 2026-08-12 rulings (Threes flea market, Buffalo Firefly sound bath) — every one is a dated happening");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + the Bios Apothecary herbalist consult (2026-08-12)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.filters.includes("live_music")), 23, "23 − the expired 8/11 Troost night + Troost 8/26");
+  assert.equal(count((c) => c.filters.includes("live_music")), 24, "23 + the all-vinyl DJ social at Idle Mind Tavern (8/19)");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -553,6 +571,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
+    // 2026-08-12 roundup: "Free, no RSVP needed." on the Edy's anniversary line.
+    "edys-anniversary-party-0816",
     "greenpoint-trash-club",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
     // "teen interns are running a free scavenger hunt" and "You can get free
@@ -564,16 +584,25 @@ test("free-ness is designated only where the source states it (tester feedback #
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-guardians-0819",
+    // 2026-08-12 roundup, both stated on their own line: "Free, RSVP here." for
+    // the Neptune Room market and "Free, no RSVP needed." for the garden reading.
+    "neptune-artists-makers-market-0816",
     // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
+    "reading-series-61-franklin-0813",
     // 2026-08-06: the 8/7 Ford v Ferrari card was DELETED, not rolled forward —
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
     "summerstarz-project-hail-mary-0814", // "Free SummerStarz Movies" on townsquarebk.org
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
     "summerstarz-zootopia-0821",
+    // 2026-08-12 roundup: "Free, RSVP here." on the flea market line, and the
+    // Eventbrite listing says "Free to attend." independently.
+    "threes-flea-market-0815",
     // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
     // 2026-08-10: "Free Show + Free Donuts" on the WORD Bookstore flyer.
     "word-herman-melville-comedy-0820",
+    // 2026-08-12 roundup: "No rhythm required! Free, RSVP here."
+    "zumba-under-the-k-0813",
   ]);
 });
 
@@ -644,8 +673,14 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   assert.deepEqual(wellness, [
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
+    // 2026-08-12: the second sound bath of the same week, same reasoning as
+    // `gather-sound-bath-0818` below — bodywork, not spectacle.
+    "buffalo-firefly-soundbath-0813",
     "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays",
+    // 2026-08-12: a sound bath and Reiki session — bodywork in the same
+    // movement cluster as yoga, not a thing you attend to watch.
+    "gather-sound-bath-0818",
     "held-space-membership",
     "moon-bunny-monthly-plans",
     "selformer-memberships",
@@ -654,6 +689,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // a kids' discount in family_kids + deals_memberships (PR #18).
     "selformer-summer-fling-0815",
     "sparsa-greenpoint",
+    // 2026-08-12: a free outdoor Zumba class — dance-as-movement, the cluster's
+    // core reading, so wellness rather than arts_culture.
+    "zumba-under-the-k-0813",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
 });
@@ -751,6 +789,14 @@ const LENS_LESS_BY_DESIGN = [
   // `cibone-ote` had been the ONLY shop card in the deck filed as arts_culture;
   // that was the anomaly, not the precedent.
   /^cibone-/,
+  // 2026-08-12: the markets rule's own class, first application to actual vendor
+  // markets. General goods — pins, prints and ceramics from 20 artisans at the
+  // Neptune Room; art, vintage, books and records at the Threes flea — so
+  // `food_drink` is out and there is no other honest lens. Kept as ids rather
+  // than a class: "market" is a word, not a venue, and a regex over it would
+  // silently swallow a farmers' market that genuinely belongs in `food_drink`.
+  "neptune-artists-makers-market-0816",
+  "threes-flea-market-0815",
 ];
 const sanctionedLensLess = (id) =>
   LENS_LESS_BY_DESIGN.some((rule) => (rule instanceof RegExp ? rule.test(id) : rule === id));
