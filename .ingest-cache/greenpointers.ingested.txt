@@ -1,3 +1,19 @@
+## Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)
+https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/
+Wed, 12 Aug 2026 16:49:00 +0000
+No matter what you get into over the next week, there’s definitely no excuse to be bored!
+THURSDAY, AUGUST 13
+Friends of Greenpoint Library Meeting @ Greenpoint Library, 6 p.m.: Share ideas on making the branch a better place while planning upcoming events. RSVP here .
+DIY Summer Candle Workshop @ TALEA, 6:30 p.m.: When you feel like you’ve sniffed every candle there is, it’s time to make your own. Join a hands-on, instructor-guided session…
+Continue reading — subscribe to unlock the full article.
+
+## Pencil Factory Alums Opening Susu’s in Williamsburg Next Month
+https://greenpointers.com/2026/08/12/pencil-factory-alums-opening-susus-in-williamsburg-next-month/
+Wed, 12 Aug 2026 14:00:00 +0000
+This September, a new neighborhood bar called Susu’s is opening at 229 Kent Avenue in Williamsburg, in the former home of Grand Ferry , a tavern that closed in 2018. Susu’s will be an easy-going spot that serves cocktails, natural wine, and bar food.
+Susu’s calls itself “a bar made by bartenders.” The owners are Steven Bishop and his brother Michael Bishop-Myers, who was the general manager of Pencil Factory (142 Franklin St.), the beloved…
+Continue reading — subscribe to unlock the full article.
+
 ## NYC Reddit User Becomes Silent Superman for Greenpoint’s Local Businesses
 https://greenpointers.com/2026/08/11/nyc-reddit-user-becomes-silent-superman-for-greenpoints-local-businesses/
 Tue, 11 Aug 2026 17:25:01 +0000
@@ -90,23 +106,144 @@ This interview has been edited and condensed for clarity.
 Tell us about yourself and…
 Continue reading — subscribe to unlock the full article.
 
-## Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)
-https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/
-Wed, 05 Aug 2026 15:46:24 +0000
-No matter what you get into over the next week, there’s definitely no excuse to be bored!
-ALL WEEK
-Greenpoint Film Festival : Greenpoint’s very own film festival returns for its 15th year, taking place from August 5-9. Check out the full schedule here .
-T HURSDAY, AUGUST 6
-Babies and Books @ Greenpoint Library, 10:30 a.m.: Story time for the littlest of your little ones. First come, first served .
-North Brooklyn Chess Residency…
-Continue reading — subscribe to unlock the full article.
+## [R1 PERSISTED 2026-08-12b] Wednesday Greenpointers pull — full roundup body + linked listings
+# Evidence rule, DECISION_LOG 2026-08-12. The greenpointers RSS feed is now
+# PAYWALL-TRUNCATED ("Continue reading — subscribe to unlock the full article."),
+# so the roundup reaches the snapshot with only its first two items. The full
+# body below was read this run from the site's own public WP REST API,
+# /wp-json/wp/v2/posts?slug=… (HTTP 200), the same path the 2026-08-01 run used.
 
-## Lucky Creamery Scooping Up Asian-Inspired Ice Cream Flavors in Greenpoint
-https://greenpointers.com/2026/08/05/lucky-creamery-scooping-up-asian-inspired-ice-cream-flavors-in-greenpoint/
-Wed, 05 Aug 2026 13:00:00 +0000
-Some of us are froyo fiends, and some of us (me) have dairy dessert tastes that skew elsewhere (namely, The Original Chinatown Ice Cream Factory). Luckily, there’s room for us all in the North Brooklyn area, with an additional ice cream place having just opened this past weekend.
-Lucky Creamery quietly took over the storefront at 669 Manhattan Avenue, most recently home to Euro Chemist Pharmacy. Where the Screen Door (145 Driggs Ave.) keeps things…
-Continue reading — subscribe to unlock the full article.
+# https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/
+# Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)
+# published 2026-08-12T12:49:00
+
+No matter what you get into over the next week, there’s definitely no excuse to be bored!
+
+THURSDAY, AUGUST 13
+
+Friends of Greenpoint Library Meeting @ Greenpoint Library, 6 p.m.: Share ideas on making the branch a better place while planning upcoming events. RSVP here.
+
+DIY Summer Candle Workshop @ TALEA, 6:30 p.m.: When you feel like you’ve sniffed every candle there is, it’s time to make your own. Join a hands-on, instructor-guided session with supplies included as you blend fragrances, pour wax, and leave with your own custom candle. $48.78, register here.
+
+Reading Series @ 61 Franklin St. Garden, 6:30 p.m.: Enjoy readings by Josh Harper, Joel Walkowski, Aug Stone, Scott Laudati, and Tobias Carroll in partnership with WORD Bookstore. Free, no RSVP needed.
+
+Restorative Sound Journey @ Buffalo Firefly, 7 p.m.: Rest and restore with a bit of sound healing by way of Himalayan singing bowls, tuning forks, gongs, chimes, and bells led by trained healer Evie. $55, register here.
+
+Watch Me Screening @ Film Noir Cinema, 7 p.m.: Be some of the first in the country to see the European indie arthouse film exploring digital intimacy through a guerilla-style lens. $12, get tickets here.
+
+Zumba @ Under The K Bridge Park, 7 p.m.: Break a sweat to the beat at these all-ages, all fitness-levels classes lead by a certified Zumba instructor. No rhythm required! Free, RSVP here.
+
+FRIDAY, AUGUST 14
+
+Kids’ Movie @ Greenpoint Library, 3 p.m.: Before he was on Broadway, but after he was a beloved literary figure, Paddington was a film. Little ones can enjoy his adventures on-screen in the 2015 movie. Free, no RSVP needed.
+
+SATURDAY, AUGUST 15
+
+McGolrick Bird Club @ McGolrick Park, 9 a.m.: Appreciate the neighborhood wildlife! Free, no RSVP needed.
+
+Pollinator Gardening @ Marsha P Johnson State Park, 10 a.m.: Remove weeds and plant native seeds. Ages 8+. Free, RSVP here.
+
+Evolv Pros vs. Joes @ Vital Climbing Gym, 11 a.m.: See if you have what it takes against elite climbing athletes from Evolv during a series of specialized physical challenges followed by photo ops, an award ceremony, and rooftop happy hour. Free for members, day pass required for non-members, RSVP here.
+
+Morgan Craftz Pop-Up @ Pure Green Greenpoint, 11 a.m.: Local crocheter and artisan Morgan will be selling her handmade and charm-adorned crochet bags.
+
+Flea Market @ Threes Brewing, 12 p.m.: The brewery’s first-ever flea market will feature art, vintage, books, and records from local vendors curated by Fig Shop, plus a live DJ and food from Grand Army. Plus, of course, drinks from Threes. Free, RSVP here.
+
+SUNDAY, AUGUST 16
+
+Artists & Markers Summer Market @ Neptune, 12 p.m.: It’s the weekend of flea! Buy some special wares like pins, prints, ceramics, and more from 20 local artisans. Free, RSVP here.
+
+Create Your Own Designer Pillow @ Le Studio Anthost, 2 p.m.: Learn the textile studio’s signature “paint with wool” technique to create a pillow cover from scratch that’s uniquely your own. $120, register here.
+
+Paint Your Greca @ Sotte Eatery, 3 p.m.: Join a unique celebration of Dominican culture through creativity, community, and food while personalizing and painting your own greca (a coffee maker familiar to many as a moka pot) with a Caribbean-inspired meal from Sotte and Next Stop Vegan. Starting at $75, get tickets here.
+
+Anniversary Party @ Edy’s Grocer, 6 p.m.: Celebrate six years of Edy’s with a block party of food, fun, friends, music, an ice cream truck, and cake tasting from Desserts By G earlier in the day. Free, no RSVP needed.
+
+MONDAY, AUGUST 17
+
+Knitting 101 @ Brooklyn Craft Company, 11 a.m.: Learn to knit for the first time or get a refresher course with a workshop focused on yarns and needles, how to cast on and start, the knit stitch, and finishing projects. $49.87, register here.
+
+TUESDAY, AUGUST 18
+
+Yoga in the Park @ Transmitter Park, 7 a.m.: 45 minutes of fresh air and movement for all levels. Bring your own mat, towel, or blanket. Free, RSVP here.
+
+Therapeutic Sound Bath + Reiki @ Gather Center, 7 p.m.: Healing is so hot right now! For two hours, experience a blend of therapeutic sound, Reiki energy work, and more connections to remind you to slow down and listen more deeply. $108.55, get tickets here.
+
+WEDNESDAY, AUGUST 19
+
+Dancers Who Run Run Club @ Lululemon, 6 p.m.: Who says you can only have one active hobby? Connect with other artists and creatives and anyone dancer-adjacent outside of the studio during a casual, conversational 5K jog. Free, RSVP here.
+
+Mahjong Mingle Night @ Kings Co. Imperial, 6:30 p.m.: Enjoy a family-style feast and lesson on Chinese Mahjong during a free-flow night of open play from Dragons Den Mahjong. $81.88, get tickets here.
+
+Vinyl & Vibes An After Work Social @ Idle Mind Tavern, 7 p.m.: Rethink happy hour and opt for unwinding with all-vinyl DJ sets and more geared towards music lovers, record collectors, and beyond. $12.51, get tickets here.
+
+Hump Night @ Pete’s Candy Store, 10 p.m.: Weekends shouldn’t have all the fun. Dance, chill in the garden, have a drink, and make friends in a not-too-loud, not-too-clubby, and non-stuffy atmosphere. Featuring a cocktail special and performance from DJ R.A.K. Free, no RSVP needed.
+
+# --- venue, address and end-time facts read from the listings the roundup links to (R1) ---
+
+# https://www.eventbrite.com/e/artists-makers-summer-market-in-greenpoint-brooklyn-tickets-1996316493371
+Artists & Makers Summer Market in Greenpoint, Brooklyn Tickets, Sunday, August 16  •  12 PM - 5 PM | Eventbrite
+Eventbrite - Living Muses NYC presents Artists & Makers Summer Market in Greenpoint, Brooklyn - Sunday, August 16, 2026 at The Neptune Room, Brooklyn, NY. Find event and ticket information.
+The Neptune Room Brooklyn, NY
+A quick bus ride/walk from the Vernon Blvd-Jackson Av (7 train)
+13 Greenpoint Avenue
+Brooklyn, NY 11222
+
+# https://www.eventbrite.com/e/create-your-own-designer-pillow-tickets-1992511612871
+Create Your Own Designer Pillow Tickets, Multiple dates | Eventbrite
+Eventbrite - LE STUDIO ANTHOST presents Create Your Own Designer Pillow - Sunday, August 9, 2026 at 273 Calyer St, Brooklyn, NY. Find event and ticket information.
+273 Calyer St Brooklyn, NY
+273 Calyer St
+273 Calyer Street
+Brooklyn, NY 11222
+
+# https://www.eventbrite.com/e/returning-to-resonance-therapeutic-sound-bath-reiki-tickets-1994379871884
+returning to resonance therapeutic sound bath + reiki Tickets, Tuesday, August 18  •  7 PM - 9 PM | Eventbrite
+Eventbrite - Gather Center presents returning to resonance therapeutic sound bath + reiki - Tuesday, August 18, 2026 at 94 Guernsey St, Brooklyn, NY. Find event and ticket information.
+94 Guernsey St Brooklyn, NY
+Venue: 94 Guernsey Street, Brooklyn, NY 11222
+94 Guernsey St
+94 Guernsey Street
+Brooklyn, NY 11222
+
+# https://www.eventbrite.com/e/vinyl-vibes-an-after-work-social-tickets-1996760831398
+Vinyl & Vibes An After Work Social Tickets, Wednesday, August 19  •  7 PM - 11 PM | Eventbrite
+Eventbrite - The Haus of Vibes presents Vinyl & Vibes An After Work Social - Wednesday, August 19, 2026 at Idle Mind Tavern, Brooklyn, NY. Find event and ticket information.
+Idle Mind Tavern Brooklyn, NY
+623 Manhattan Avenue
+Brooklyn, NY 11222
+
+# https://www.eventbrite.com/e/threes-flea-market-tickets-1995144108737
+Threes Flea Market Tickets, Saturday, August 15  •  12 PM - 7 PM | Eventbrite
+Eventbrite - Threes Brewing presents Threes Flea Market - Saturday, August 15, 2026 at Threes Brewing Greenpoint, Brooklyn, NY. Find event and ticket information.
+Threes Brewing Greenpoint Brooklyn, NY
+Free to attend. Threes Brewing Greenpoint, 113 Franklin St.
+113 Franklin Street
+Brooklyn, NY 11222
+
+# https://www.eventbrite.com/e/diy-summer-candle-workshop-with-instructor-samantha-candle-making-class-in-nyc-classpoptm-tickets-1992634915673
+DIY Summer Candle Workshop With Instructor Samantha - Candle Making Class in NYC | Classpop!™ Tickets, Thursday, August 13  •  6:30 PM - 8:30 PM | Eventbrite
+Eventbrite - Classpop! presents DIY Summer Candle Workshop With Instructor Samantha - Candle Making Class in NYC | Classpop!™ - Thursday, August 13, 2026 at TALEA Beer Co - Williamsburg, Brooklyn, NY, NY. Find event and ticket information.
+TALEA Beer Co - Williamsburg Brooklyn, NY, NY
+87 Richardson St
+Brooklyn, NY, NY 11211
+Explore all events in Brooklyn, NY and filter by date, category, and more to find the perfect fit.
+
+# https://www.eventbrite.com/e/mahjong-mingle-night-at-kings-co-tickets-1989681394612
+Mahjong Mingle Night at Kings Co. Tickets, Wednesday, August 19  •  6:30 PM - 9:30 PM | Eventbrite
+Eventbrite - Dragons Den Mahjong presents Mahjong Mingle Night at Kings Co. - Wednesday, August 19, 2026 at Kings Co Imperial, Brooklyn, NY. Find event and ticket information.
+Kings Co Imperial Brooklyn, NY
+20 Skillman Avenue
+Brooklyn, NY 11211
+
+# https://www.eventbrite.com/e/pollinator-gardening-tickets-1992457861098
+Pollinator Gardening Tickets, Saturday, August 15  •  10 AM - 11:30 AM | Eventbrite
+Eventbrite - Marsha P. Johnson State Park presents Pollinator Gardening - Saturday, August 15, 2026 at Marsha P. Johnson State Park, Brooklyn, NY. Find event and ticket information.
+Marsha P. Johnson State Park Brooklyn, NY
+90 Kent Ave, Brooklyn, New York
+Cross streets – N 8th and Kent Ave
+90 Kent Ave
+Brooklyn, NY 11211
 
 ## [R1 PERSISTED 2026-08-12] greenpointers.com articles + one Eventbrite listing
 # Evidence rule, DECISION_LOG 2026-08-12. The roster snapshot is the site FEED,

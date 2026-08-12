@@ -251,9 +251,10 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08",
+      "updatedAt": "2026-08-12",
       "relatedCardIds": [
-        "g-train-closures"
+        "g-train-closures",
+        "sotte-paint-your-greca-0816"
       ],
       "kicker": "Plant-based Caribbean seafood"
     },
@@ -3303,7 +3304,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-12",
       "locationName": "WORD Bookstore",
       "address": "126 Franklin St, Brooklyn, NY 11222",
       "filters": [
@@ -3333,7 +3334,10 @@
       "summary": "A standing Monday-night group at the Franklin Street bookshop. Held downstairs, reached by a flight of stairs.",
       "sourceQuote": "Monday, August 17 at 7:00 PM\nJournal Club\nBrooklyn, NY",
       "lat": 40.729072,
-      "lng": -73.957317
+      "lng": -73.957317,
+      "relatedCardIds": [
+        "reading-series-61-franklin-0813"
+      ]
     },
     {
       "id": "bcc-knitting-101-0817",
@@ -6601,6 +6605,374 @@
       "updatedAt": "2026-08-12",
       "lat": 40.7284753,
       "lng": -73.959146
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "reading-series-61-franklin-0813",
+      "category": "event",
+      "title": "Reading Series at the 61 Franklin St. Garden",
+      "kicker": "Five writers in the garden, free",
+      "summary": "Josh Harper, Joel Walkowski, Aug Stone, Scott Laudati and Tobias Carroll read, in partnership with WORD Bookstore. No RSVP needed.",
+      "startsAt": "2026-08-13T18:30:00-04:00",
+      "endsAt": "2026-08-13T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": true,
+      "locationName": "61 Franklin St. Garden",
+      "address": "61 Franklin St, Brooklyn, NY 11222",
+      "sourceQuote": "Reading Series @ 61 Franklin St. Garden, 6:30 p.m.: Enjoy readings by Josh Harper, Joel Walkowski, Aug Stone, Scott Laudati, and Tobias Carroll in partnership with WORD Bookstore. Free, no RSVP needed.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        }
+      ],
+      "relatedCardIds": [
+        "word-journal-club-0817"
+      ],
+      "lat": 40.727487,
+      "lng": -73.957309
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "zumba-under-the-k-0813",
+      "category": "event",
+      "title": "Zumba at Under the K Bridge Park",
+      "kicker": "Free all-levels Zumba, 7pm",
+      "summary": "An all-ages class led by a certified Zumba instructor — no rhythm required. RSVP through North Brooklyn Parks.",
+      "startsAt": "2026-08-13T19:00:00-04:00",
+      "endsAt": "2026-08-13T23:59:00-04:00",
+      "filters": [
+        "wellness"
+      ],
+      "free": true,
+      "locationName": "Under the K Bridge Park",
+      "geocodeQuery": "Under the K Bridge Park, Brooklyn, NY",
+      "sourceQuote": "Zumba @ Under The K Bridge Park, 7 p.m.: Break a sweat to the beat at these all-ages, all fitness-levels classes lead by a certified Zumba instructor. No rhythm required! Free, RSVP here.",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "learn_more",
+          "url": "https://support.nbkparks.org/event/fit-club-under-the-k/e823883/register/new/select-tickets"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        }
+      ],
+      "lat": 40.72543,
+      "lng": -73.93228
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "neptune-artists-makers-market-0816",
+      "category": "event",
+      "title": "Artists & Makers Summer Market at The Neptune Room",
+      "kicker": "20 local artisans, free entry",
+      "summary": "Pins, prints, ceramics and other handmade wares, presented by Living Muses NYC. RSVP requested.",
+      "startsAt": "2026-08-16T12:00:00-04:00",
+      "endsAt": "2026-08-16T17:00:00-04:00",
+      "filters": [],
+      "free": true,
+      "locationName": "The Neptune Room",
+      "address": "13 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Artists & Markers Summer Market @ Neptune, 12 p.m.: It’s the weekend of flea! Buy some special wares like pins, prints, ceramics, and more from 20 local artisans. Free, RSVP here.\nArtists & Makers Summer Market in Greenpoint, Brooklyn Tickets, Sunday, August 16  •  12 PM - 5 PM | Eventbrite\n13 Greenpoint Avenue\nBrooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/artists-makers-summer-market-in-greenpoint-brooklyn-tickets-1996316493371"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        },
+        {
+          "title": "Artists & Makers Summer Market in Greenpoint, Brooklyn",
+          "url": "https://www.eventbrite.com/e/artists-makers-summer-market-in-greenpoint-brooklyn-tickets-1996316493371",
+          "publisher": "Living Muses NYC",
+          "date": "2026-08-12"
+        }
+      ],
+      "lat": 40.729869,
+      "lng": -73.960249
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "anthost-designer-pillow-0816",
+      "category": "event",
+      "title": "Create Your Own Designer Pillow at Le Studio Anthost",
+      "kicker": "Paint-with-wool pillow class, $120",
+      "summary": "The textile studio’s signature technique, worked into a pillow cover made from scratch. Registration required.",
+      "startsAt": "2026-08-16T14:00:00-04:00",
+      "endsAt": "2026-08-16T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "locationName": "Le Studio Anthost",
+      "address": "273 Calyer St, Brooklyn, NY 11222",
+      "sourceQuote": "Create Your Own Designer Pillow @ Le Studio Anthost, 2 p.m.: Learn the textile studio’s signature “paint with wool” technique to create a pillow cover from scratch that’s uniquely your own. $120, register here.\nEventbrite - LE STUDIO ANTHOST presents Create Your Own Designer Pillow - Sunday, August 9, 2026 at 273 Calyer St, Brooklyn, NY. Find event and ticket information.",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/create-your-own-designer-pillow-tickets-1992511612871"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        },
+        {
+          "title": "Create Your Own Designer Pillow",
+          "url": "https://www.eventbrite.com/e/create-your-own-designer-pillow-tickets-1992511612871",
+          "publisher": "LE STUDIO ANTHOST",
+          "date": "2026-08-12"
+        }
+      ],
+      "lat": 40.729527,
+      "lng": -73.949388
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "sotte-paint-your-greca-0816",
+      "category": "event",
+      "title": "Paint Your Greca at Sotte Eatery",
+      "kicker": "Paint a greca, Caribbean meal",
+      "summary": "A Dominican Writers event: personalize your own greca coffee maker, with food from Sotte and Next Stop Vegan. Tickets start at $75.",
+      "startsAt": "2026-08-16T15:00:00-04:00",
+      "endsAt": "2026-08-16T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "locationName": "Sotteatery",
+      "address": "685 Manhattan Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Paint Your Greca @ Sotte Eatery, 3 p.m.: Join a unique celebration of Dominican culture through creativity, community, and food while personalizing and painting your own greca (a coffee maker familiar to many as a moka pot) with a Caribbean-inspired meal from Sotte and Next Stop Vegan. Starting at $75, get tickets here.",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.dominicanwriters.org/event-info/paint-your-greca-w-luisa-pascual-2"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        }
+      ],
+      "relatedCardIds": [
+        "sotteatery"
+      ],
+      "lat": 40.725011,
+      "lng": -73.951726
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "edys-anniversary-party-0816",
+      "category": "event",
+      "title": "Edy’s Grocer sixth-anniversary block party",
+      "kicker": "Six years of Edy’s, free block party",
+      "summary": "Food, friends, music and an ice cream truck, with cake tasting from Desserts By G earlier in the day. No RSVP needed.",
+      "startsAt": "2026-08-16T18:00:00-04:00",
+      "endsAt": "2026-08-16T23:59:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "free": true,
+      "locationName": "Edy’s Grocer",
+      "geocodeQuery": "Edy's Grocer, Greenpoint, Brooklyn, NY",
+      "sourceQuote": "Anniversary Party @ Edy’s Grocer, 6 p.m.: Celebrate six years of Edy’s with a block party of food, fun, friends, music, an ice cream truck, and cake tasting from Desserts By G earlier in the day. Free, no RSVP needed.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        }
+      ],
+      "lat": 40.727519,
+      "lng": -73.951034
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "gather-sound-bath-0818",
+      "category": "event",
+      "title": "Returning to Resonance: sound bath and Reiki at Gather Center",
+      "kicker": "Sound bath + Reiki, 7–9pm",
+      "summary": "Two hours of therapeutic listening and energy work, framed as a prompt to slow down and listen more deeply. $108.55, ticketed.",
+      "startsAt": "2026-08-18T19:00:00-04:00",
+      "endsAt": "2026-08-18T21:00:00-04:00",
+      "filters": [
+        "wellness"
+      ],
+      "free": false,
+      "locationName": "Gather Center",
+      "address": "94 Guernsey St, Brooklyn, NY 11222",
+      "sourceQuote": "Therapeutic Sound Bath + Reiki @ Gather Center, 7 p.m.: Healing is so hot right now! For two hours, experience a blend of therapeutic sound, Reiki energy work, and more connections to remind you to slow down and listen more deeply. $108.55, get tickets here.\nreturning to resonance therapeutic sound bath + reiki Tickets, Tuesday, August 18  •  7 PM - 9 PM | Eventbrite\nVenue: 94 Guernsey Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/returning-to-resonance-therapeutic-sound-bath-reiki-tickets-1994379871884"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        },
+        {
+          "title": "returning to resonance therapeutic sound bath + reiki",
+          "url": "https://www.eventbrite.com/e/returning-to-resonance-therapeutic-sound-bath-reiki-tickets-1994379871884",
+          "publisher": "Gather Center",
+          "date": "2026-08-12"
+        }
+      ],
+      "lat": 40.724263,
+      "lng": -73.952889
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "id": "idle-mind-vinyl-vibes-0819",
+      "category": "event",
+      "title": "Vinyl & Vibes: an after-work social at Idle Mind Tavern",
+      "kicker": "All-vinyl DJ sets, 7–11pm",
+      "summary": "The Haus of Vibes reframes happy hour for music lovers and record collectors, with sets played entirely off records. $12.51.",
+      "startsAt": "2026-08-19T19:00:00-04:00",
+      "endsAt": "2026-08-19T23:00:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "free": false,
+      "locationName": "Idle Mind Tavern",
+      "address": "623 Manhattan Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Vinyl & Vibes An After Work Social @ Idle Mind Tavern, 7 p.m.: Rethink happy hour and opt for unwinding with all-vinyl DJ sets and more geared towards music lovers, record collectors, and beyond. $12.51, get tickets here.\nVinyl & Vibes An After Work Social Tickets, Wednesday, August 19  •  7 PM - 11 PM | Eventbrite\n623 Manhattan Avenue\nBrooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/vinyl-vibes-an-after-work-social-tickets-1996760831398"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
+          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-12"
+        },
+        {
+          "title": "Vinyl & Vibes An After Work Social",
+          "url": "https://www.eventbrite.com/e/vinyl-vibes-an-after-work-social-tickets-1996760831398",
+          "publisher": "The Haus of Vibes",
+          "date": "2026-08-12"
+        }
+      ],
+      "lat": 40.723601,
+      "lng": -73.950987
     }
   ]
 }
