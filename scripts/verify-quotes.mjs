@@ -154,18 +154,26 @@ for (const card of seed.cards) {
   // is a ratchet — once a run touches a legacy card, that card's evidence has
   // to be persisted or the card has to be held.
   if (!sweepAll && !(card.createdAt >= GATE_FROM || card.updatedAt >= GATE_FROM)) continue;
-  const hosts = (card.sourceLinks ?? []).map((l) => hostOf(l.url)).filter(Boolean);
-  const src = hosts.map((h) => byHost.get(h)).find(Boolean);
-  if (!src) {
-    results.skip.push({ id: card.id, why: hosts.length ? `no roster source for ${hosts[0]}` : "no source URL" });
+  // A card's evidence base is EVERY source it cites, not just the first.
+  // `nb-chess-parkhouse-0806` quotes across a Greenpointers article AND an
+  // Eventbrite listing; matching only the first host reported it unverifiable
+  // and forced its Eventbrite half to be hand-copied into the Greenpointers
+  // snapshot. Union the snapshots instead — cross-source quoting is normal and
+  // the model should carry it.
+  const hosts = [...new Set((card.sourceLinks ?? []).map((l) => hostOf(l.url)).filter(Boolean))];
+  const srcs = [...new Set(hosts.map((h) => byHost.get(h)).filter(Boolean))];
+  if (srcs.length === 0) {
+    results.skip.push({ id: card.id, why: hosts.length ? `no roster source for ${hosts.join(", ")}` : "no source URL" });
     continue;
   }
-  const snap = readSnapshot(src.id);
-  if (!snap) {
-    results.skip.push({ id: card.id, why: `no snapshot for ${src.id}` });
+  const snaps = srcs.map((s) => ({ s, snap: readSnapshot(s.id) })).filter((x) => x.snap);
+  if (snaps.length === 0) {
+    results.skip.push({ id: card.id, why: `no snapshot for ${srcs.map((s) => s.id).join(", ")}` });
     continue;
   }
-  const hay = norm(snap.text);
+  const src = snaps[0].s;
+  const snap = snaps[0].snap;
+  const hay = norm(snaps.map((x) => x.snap.text).join("\n"));
   const has = (s) =>
     [s, unlabel(s), detrail(s), detrail(unlabel(s))].some((v) => norm(v).length >= FRAGMENT_MIN && hay.includes(norm(v)));
   const missing = [];
@@ -178,9 +186,9 @@ for (const card of seed.cards) {
     missing.push(...(parts.length > 1 ? bad : [frag]));
   }
   if (missing.length === 0) {
-    results.ok.push({ id: card.id, src: src.id });
+    results.ok.push({ id: card.id, src: srcs.map((x) => x.id).join("+") });
   } else {
-    results.mismatch.push({ id: card.id, src: src.id, file: snap.file, missing });
+    results.mismatch.push({ id: card.id, src: srcs.map((x) => x.id).join("+"), file: snaps.map((x) => x.snap.file).join("+"), missing });
   }
 }
 
