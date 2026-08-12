@@ -6,6 +6,7 @@ import { createCaptureTransport, initPostHog } from "./posthogTransport.js";
 import { recordReturnVisit } from "./returnVisit.js";
 import { shouldShowOrientation } from "./firstVisitOrientation.js";
 import JulyApp from "./JulyApp.jsx";
+import ErrorBoundary from "./ErrorBoundary.jsx";
 import "./july.css";
 
 // Pageviews via Vercel; custom tap events via PostHog (2026-07-21 transport
@@ -42,6 +43,8 @@ if (src) setEventContext({ src });
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <JulyApp showOrientation={showOrientation} />
+    <ErrorBoundary>
+      <JulyApp showOrientation={showOrientation} />
+    </ErrorBoundary>
   </React.StrictMode>,
 );
