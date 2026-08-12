@@ -3,12 +3,22 @@
   "sources": [
     {
       "id": "greenpointers",
-      "name": "Greenpointers (RSS)",
-      "url": "https://greenpointers.com/feed/",
+      "name": "Greenpointers (WP REST)",
+      "url": "https://greenpointers.com/wp-json/wp/v2/posts?per_page=15",
       "group": "roundup",
       "cadence": "weekly",
-      "fetch": "feed",
-      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS. Read via the RSS feed (switched from the browser-only front page 2026-08-05). ⚠ PAYWALLED SINCE ~2026-08-10: content:encoded is now TRUNCATED to a teaser ending \"Continue reading — subscribe to unlock the full article.\" — the 8/13-19 roundup arrived carrying 2 of its 25 items. The snapshot is a DISCOVERY surface only; never read item count off it. Recover the body from the site's own public WP REST API, greenpointers.com/wp-json/wp/v2/posts?slug=<slug> (HTTP 200, full content.rendered), and PERSIST what you read into the snapshot under an [R1 PERSISTED <date>] block or ingest:quotes will fail the cards. The post URL is still in the diff; cite it as the sourceLink. Apply the Williamsburg-address gate per roundup item. The HTML site blocks plain WebFetch — go to the feed or the REST API, not the page."
+      "fetch": "json",
+      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS. Read via the site's own public WP REST API. SWITCHED OFF THE RSS FEED 2026-08-12, because the feed is PAYWALLED: content:encoded is truncated to a teaser ending \"Continue reading — subscribe to unlock the full article.\", and the 8/13-19 roundup reached the snapshot carrying 2 of its 25 items while the fetch returned a clean 200 and the diff looked healthy. The REST endpoint returns the FULL content.rendered for the same posts, unpaywalled, at one plain fetch — measured 2026-08-12: 12 posts, bodies 2,372-14,801 chars, zero paywall markers, all seven day headings of the 8/13-19 roundup. This makes the recovery structural instead of a per-run workaround nobody may remember. per_page=15 deliberately exceeds the 10 items the RSS feed carried, so the window did not shrink in the swap. NOTE the snapshot shape changed with the strategy: it is now `title.rendered:` / `link:` / `date:` / `content.rendered:` field lines, and each body is ONE long flattened line (renderValue collapses whitespace) — quote verification is unaffected because the verifier normalises whitespace on both sides, confirmed by re-running ingest:quotes across all 8 shipped roundup cards before the swap landed. ⚠ CARRY THE [R1 PERSISTED] BLOCKS FORWARD when re-marking this baseline: cards quote Eventbrite venue lines and buffalofirefly.com hours that live ONLY in those blocks, and dropping them fails 6 live cards. Cite the post URL from `link:` as the sourceLink. Apply the Williamsburg-address gate per roundup item. The HTML site blocks plain WebFetch, and so does the REST path — it answers 403 to WebFetch and 200 to the roster's own User-Agent, so a WebFetch probe makes this live route look dead. ⚠ A `detail` block CANNOT auto-persist the Eventbrite evidence here, tried and removed 2026-08-12: renderValue runs content.rendered through htmlToText, which strips <a href> and keeps only the anchor text (\"RSVP here\"), so the body carries ZERO outbound URLs for detail.match to harvest — and harvestFromHrefs re-reads the base URL, which is this JSON endpoint and has no anchors either. The 9 Eventbrite links visible in the snapshot come from the carried [R1 PERSISTED] blocks, not from the feed. So listing evidence still has to be fetched and persisted by the run; do not re-attempt a detail block.",
+      "citeHost": "greenpointers.com",
+      "json": {
+        "path": "",
+        "fields": [
+          "title.rendered",
+          "link",
+          "date",
+          "content.rendered"
+        ]
+      }
     },
     {
       "id": "troost",
