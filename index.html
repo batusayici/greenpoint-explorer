@@ -35,6 +35,17 @@
       content="What's happening in Greenpoint this week — events, new openings, deals, and neighborhood news, verified and mapped."
     />
     <meta name="twitter:image" content="https://stoopwise.com/og.png" />
+    <!-- Identity mark (2026-08-12, pre-seed QA): the Stoopwise stoop glyph —
+         ink steps + amber pin, strictly II-C. Before this the tab showed a
+         blank glyph and iOS "Add to Home Screen" (the word-of-mouth install
+         path) fell back to a page screenshot. SVG first, ICO for the
+         legacy/Safari path, 180px touch icon, manifest for the home-screen
+         name + start_url (?src=homescreen keeps installs attributable). -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#eae1ce" />
     <!-- Map first-paint (2026-08-08 audit item 2): MapLibre can't request a
          single tile until it has fetched the TileJSON at /planet — a full
          extra round trip serialized behind JS boot. Preconnect opens the
