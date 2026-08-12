@@ -342,7 +342,13 @@ async function preflightBrowser() {
   }
   return { ...primaryFailure, enginesTried: ENGINES, ...(alsoTried.length ? { alsoTried } : {}) };
 }
-async function browserText(url) {
+// `opts` is used only by the detail-page path so existing source behaviour is
+// byte-identical. `scroll` exists because lazily-mounted content is common on
+// exactly the pages that hold the evidence: withfriends' /join renders its
+// membership tiers on scroll, so a straight read captured the page shell and
+// "Cancel renewal at any time." while every tier and price stayed invisible —
+// a snapshot that looks fine and proves nothing.
+async function browserText(url, opts = {}) {
   if (NO_BROWSER) throw new Error("browser path disabled (--no-browser)");
   if (!pw) throw new Error("playwright not installed (npm i -D playwright && npx playwright install chromium)");
   // Preflight already diagnosed and reported the cause; don't re-attempt a
@@ -359,6 +365,18 @@ async function browserText(url) {
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
     await page.waitForTimeout(2500); // let JS-rendered calendars settle
+    if (opts.scroll) {
+      // Walk the page so intersection-observer content mounts, then return to
+      // the top and let it settle before reading.
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight) {
+          window.scrollTo(0, y);
+          await new Promise((r) => setTimeout(r, 250));
+        }
+        window.scrollTo(0, 0);
+      });
+      await page.waitForTimeout(1500);
+    }
     let text = await readText();
     // The remaining browser-only sources render from a WebSocket, and 2500ms is
     // sometimes not enough — observed 2026-08-05, when one run captured the
@@ -498,6 +516,125 @@ async function fetchSource(src) {
 const hash = (s) => createHash("sha256").update(s).digest("hex").slice(0, 16);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// --- detail pages -----------------------------------------------------------
+// THE PROBLEM THIS SOLVES (DECISION_LOG 2026-08-12). A roster source names a
+// DISCOVERY surface — a listing, a feed, a JSON endpoint — but cards are
+// authored from the DETAIL page one level down, and until now only the
+// discovery surface was ever saved. So the run persisted the index and threw
+// away the book: `brooklyn-craft-company`'s collection page carries class names
+// and prices and NO DATES AT ALL, `go-green-bk` snapshots a listing while each
+// recurring series lives on a per-event page, `film-noir-cinema` and
+// `moon-bunny-aerial` snapshot JSON with no prose. 29 live cards ended up with
+// quotes nobody could re-check, and the evidence expires in DAYS because
+// listings roll forward. Verification is only possible if the evidence is
+// captured in the same run that authors the card.
+//
+// Roster opt-in, because crawling every source would be slow and rude:
+//   "detail": {
+//     "match": "/event/",          // regex; harvested from feed/JSON text and listing hrefs
+//     "urls": ["https://…/join"],  // or an explicit fixed page (a /summer-camps, a /join)
+//     "limit": 8,                  // hard cap on pages followed per run (default 8)
+//     "fetch": "browser",          // when the detail page is JS-rendered (default plain)
+//     "delayMs": 400               // politeness gap between detail fetches
+//   }
+//
+// Detail text is appended to the SNAPSHOT, so it is hashed, diffed and
+// verifiable exactly like the listing. Failures are reported in changes.json
+// and never written into the snapshot — a transient error must not flap the
+// hash and make a source look "changed".
+const DETAIL_LIMIT_DEFAULT = 8;
+const absUrl = (href, base) => {
+  try {
+    const u = new URL(href, base);
+    return u.protocol === "http:" || u.protocol === "https:" ? u.toString() : null;
+  } catch {
+    return null;
+  }
+};
+
+// Feeds and JSON already emit their item links into the snapshot text
+// (feedToText writes the entry link; film-noir's JSON writes `fullUrl:
+// /program/…`), so the cheapest harvest reads the text we just built. Relative
+// paths resolve against the source URL.
+function harvestFromText(text, base, re) {
+  const out = [];
+  for (const m of text.matchAll(/https?:\/\/[^\s<>"')\]]+|(?<=^|\s)\/[A-Za-z0-9._~\-/]{2,}/gm)) {
+    const u = absUrl(m[0].replace(/[.,;]+$/, ""), base);
+    if (u && re.test(u)) out.push(u);
+  }
+  return out;
+}
+
+// For a plain/browser listing the hrefs are lost by htmlToText, so re-read the
+// listing once for its anchors. One extra GET on an opt-in source is cheaper
+// than threading raw HTML through every fetcher.
+async function harvestFromHrefs(base, re) {
+  const html = await rawGet(base, "text/html,application/xhtml+xml");
+  const out = [];
+  for (const m of html.matchAll(/href=["']([^"']+)["']/gi)) {
+    const u = absUrl(decode(m[1]), base);
+    if (u && re.test(u)) out.push(u);
+  }
+  return out;
+}
+
+async function detailText(src, listingText) {
+  const cfg = src.detail;
+  if (!cfg) return { block: "", fetched: 0, failed: [] };
+  const base = sourceUrls(src)[0];
+  const limit = Number.isInteger(cfg.limit) ? cfg.limit : DETAIL_LIMIT_DEFAULT;
+  const candidates = [];
+  for (const u of cfg.urls ?? []) {
+    const abs = absUrl(expandUrlTemplate(u), base);
+    if (abs) candidates.push(abs);
+  }
+  if (cfg.match) {
+    const re = new RegExp(cfg.match);
+    candidates.push(...harvestFromText(listingText, base, re));
+    try {
+      candidates.push(...await harvestFromHrefs(base, re));
+    } catch (e) {
+      // Non-fatal: the text harvest may already have found everything, and the
+      // listing itself was fetched successfully or we would not be here.
+      console.error(`  detail: href harvest failed for ${src.id} — ${e.message}`);
+    }
+  }
+  // Drop the listing itself; a source that links to itself would otherwise
+  // duplicate its whole snapshot inside its own detail section.
+  // Sorted, not insertion-ordered: the detail text is part of the hashed
+  // snapshot, so a stable order keeps the daily diff to real content changes
+  // instead of link-order shuffle. Explicit `urls` keep their roster order and
+  // come first — they are the fixed evidence pages (a /summer-camps, a /join),
+  // so they must never be crowded out by the harvest hitting the cap.
+  const pinned = (cfg.urls ?? []).map((u) => absUrl(expandUrlTemplate(u), base)).filter(Boolean);
+  const harvested = [...new Set(candidates)].filter((u) => !pinned.includes(u)).sort();
+  const urls = [...new Set([...pinned, ...harvested])].filter((u) => u !== base).slice(0, limit);
+
+  const blocks = [];
+  const failed = [];
+  for (const u of urls) {
+    try {
+      const raw = cfg.fetch === "browser" ? await browserText(u, { scroll: cfg.scroll !== false }) : htmlToText(await rawGet(u, "text/html,application/xhtml+xml"));
+      const text = raw.trim();
+      if (!text) {
+        failed.push({ url: u, why: "empty" });
+      } else if (BLOCK_RE.test(text.slice(0, 800))) {
+        failed.push({ url: u, why: "bot-wall" });
+      } else {
+        blocks.push(`## [DETAIL] ${u}\n${text}`);
+      }
+    } catch (e) {
+      failed.push({ url: u, why: e.message });
+    }
+    await sleep(cfg.delayMs ?? 400);
+  }
+  return {
+    block: blocks.length ? `\n\n${blocks.join("\n\n")}` : "",
+    fetched: blocks.length,
+    failed,
+  };
+}
+
 // Which sources are in play this run, and does any of them require the browser?
 const selected = sources.filter(
   (s) => (!ONLY || ONLY.has(s.id)) && (ONLY || s.cadence !== "monthly" || INCLUDE_MONTHLY),
@@ -535,7 +672,16 @@ for (const src of sources) {
   const snapPath = join(CACHE_DIR, `${src.id}.txt`);
   const entry = { id: src.id, name: src.name, url: src.url, group: src.group, notes: src.notes || undefined };
   try {
-    const { text, method } = await fetchSource(src);
+    const { text: listingText, method } = await fetchSource(src);
+    // Detail pages are part of the snapshot, not a side file: they must be
+    // hashed, diffed and re-checkable exactly like the listing they came from.
+    const detail = await detailText(src, listingText);
+    const text = listingText + detail.block;
+    if (src.detail) {
+      entry.detail = { fetched: detail.fetched, ...(detail.failed.length ? { failed: detail.failed } : {}) };
+      const note = detail.failed.length ? `, ${detail.failed.length} failed` : "";
+      console.log(`  detail: ${detail.fetched} page(s) persisted for ${src.id}${note}`);
+    }
     const h = hash(text);
     const prev = state[src.id] ?? {};
     entry.method = method;
