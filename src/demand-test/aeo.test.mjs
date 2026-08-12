@@ -6,6 +6,8 @@ import {
   eventJsonLd,
   cardJsonLd,
   injectCardPage,
+  homeJsonLd,
+  injectHomePage,
   sitemapXml,
   rssXml,
   icsText,
@@ -235,7 +237,55 @@ test("card page replaces the template's home canonical rather than adding a seco
   assert.match(canonicals[0], /href="https:\/\/example\.test\/e\/gig-0730"/);
 });
 
+// ---- home page JSON-LD (2026-08-12 pre-seed QA) ----------------------------
+// The 142 card pages carried structured data while the home page — the URL
+// that gets linked, shared, and asked about — shipped bare. WebSite names the
+// site for answer engines; ItemList enumerates the week's dated events so
+// "what's on in Greenpoint this week" is answerable from the root document.
+
+test("homeJsonLd emits WebSite + ItemList of upcoming dated events", () => {
+  const lds = homeJsonLd([timed, undated, expired], ORIGIN, NOW);
+  const site = lds.find((l) => l["@type"] === "WebSite");
+  assert.ok(site, "WebSite node present");
+  assert.equal(site.url, `${ORIGIN}/`);
+  assert.match(site.name, /Stoopwise/);
+  assert.match(site.description, /Greenpoint/);
+
+  const list = lds.find((l) => l["@type"] === "ItemList");
+  assert.ok(list, "ItemList node present");
+  const urls = list.itemListElement.map((e) => e.url);
+  assert.ok(urls.includes(`${ORIGIN}/e/gig-0730`), "upcoming dated event listed");
+  assert.ok(!urls.includes(`${ORIGIN}/e/le-fanfare`), "undated place not an event entry");
+  assert.ok(!urls.includes(`${ORIGIN}/e/gone-0720`), "expired event dropped");
+  // ListItem positions are 1-based and sequential.
+  list.itemListElement.forEach((e, i) => assert.equal(e.position, i + 1));
+});
+
+test("homeJsonLd lists only the next 7 days of events, in start order", () => {
+  const nextWeek = { ...timed, id: "in-window-0801", startsAt: "2026-08-01T19:00:00-04:00", endsAt: "2026-08-01T22:00:00-04:00" };
+  const farOut = { ...timed, id: "far-0915", startsAt: "2026-09-15T19:00:00-04:00", endsAt: "2026-09-15T22:00:00-04:00" };
+  const lds = homeJsonLd([farOut, nextWeek, timed], ORIGIN, NOW);
+  const list = lds.find((l) => l["@type"] === "ItemList");
+  const ids = list.itemListElement.map((e) => e.url.split("/e/")[1]);
+  assert.deepEqual(ids, ["gig-0730", "in-window-0801"], "7-day window, chronological");
+});
+
+test("injectHomePage adds home JSON-LD without touching title, canonical, or #root", () => {
+  const html = injectHomePage(TEMPLATE, [timed, undated], ORIGIN, NOW);
+  assert.match(html, /<script type="application\/ld\+json">[\s\S]*"@type": ?"WebSite"/);
+  assert.match(html, /"@type": ?"ItemList"/);
+  assert.match(html, /<title>Stoopwise Greenpoint<\/title>/, "title untouched");
+  assert.match(html, /<div id="root"><\/div>/, "root untouched — the SPA owns the home body");
+  assert.match(html, /assets\/index-abc123\.js/, "bundle reference untouched");
+});
+
 // ---- feeds -----------------------------------------------------------------
+
+test("sitemap announces the legal pages", () => {
+  const xml = sitemapXml([timed], ORIGIN, NOW);
+  assert.match(xml, /<loc>https:\/\/example\.test\/terms<\/loc>/);
+  assert.match(xml, /<loc>https:\/\/example\.test\/privacy<\/loc>/);
+});
 
 test("sitemap lists root + live cards only", () => {
   const xml = sitemapXml([timed, undated, expired], ORIGIN, NOW);
