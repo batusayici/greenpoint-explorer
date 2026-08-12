@@ -61,7 +61,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "json",
-      "notes": "Switched 2026-08-05 from the browser-rendered month grid to the Squarespace collection JSON, which returns the whole upcoming programme in one call (14 screenings through November at the switch) instead of one month. startDate/endDate arrive as epoch milliseconds and are converted to ISO in the snapshot. The \"Keep Us Alive\" banner that feeds the film-noir-support card is NOT in this JSON — it is plain text in the homepage HTML at https://www.filmnoircinema.com/, check there when re-verifying that card. CITE cards to fullUrl. Squarespace location is a coordinate blob with every address field empty — deliberately not snapshotted; the venue address above is the truth.",
+      "notes": "Switched 2026-08-05 from the browser-rendered month grid to the Squarespace collection JSON, which returns the whole upcoming programme in one call (14 screenings through November at the switch) instead of one month. startDate/endDate arrive as epoch milliseconds and are converted to ISO in the snapshot. The \"Keep Us Alive\" banner that feeds the film-noir-support card is NOT in this JSON — it is plain text in the homepage HTML at https://www.filmnoircinema.com/, check there when re-verifying that card. CITE cards to fullUrl. Squarespace location is a coordinate blob with every address field empty — deliberately not snapshotted; the venue address above is the truth. DETAIL PAGES PERSISTED (2026-08-12): JSON carries title/dates/fullUrl and never the blurb; every card's prose comes from the program page.",
       "json": {
         "path": "upcoming",
         "fields": [
@@ -71,6 +71,10 @@
           "excerpt",
           "fullUrl"
         ]
+      },
+      "detail": {
+        "match": "filmnoircinema\\.com/program/",
+        "limit": 10
       }
     },
     {
@@ -128,7 +132,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) — the Shopify collection page hides dated listings (2026-07-25 lesson). VENUE IS NOT STATED PER DATE (2026-08-03 lesson, PR #18): the newsletter lists a class's dates then says \"In Greenpoint and Lower Manhattan\" — it never says which date is where, and BCC runs a concurrent Lower Manhattan pop-up (225 Broadway). NEVER pin a newsletter workshop at 165 Greenpoint Ave on the newsletter alone. The per-session location lives in a BookThatApp widget that is unreadable by automation — verified three ways: invisible to WebFetch (\"Date & Time: select above\"), does not render headless (a control on a known-live session shows the same empty \"Notify Me\" state), and absent from Shopify's product JSON (single Default Title variant). Resolving a date needs a human in a real browser or an email to BCC — so these go to watchItems, not to a weekly re-author."
+      "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) — the Shopify collection page hides dated listings (2026-07-25 lesson). VENUE IS NOT STATED PER DATE (2026-08-03 lesson, PR #18): the newsletter lists a class's dates then says \"In Greenpoint and Lower Manhattan\" — it never says which date is where, and BCC runs a concurrent Lower Manhattan pop-up (225 Broadway). NEVER pin a newsletter workshop at 165 Greenpoint Ave on the newsletter alone. The per-session location lives in a BookThatApp widget that is unreadable by automation — verified three ways: invisible to WebFetch (\"Date & Time: select above\"), does not render headless (a control on a known-live session shows the same empty \"Notify Me\" state), and absent from Shopify's product JSON (single Default Title variant). Resolving a date needs a human in a real browser or an email to BCC — so these go to watchItems, not to a weekly re-author. DETAIL PAGES DELIBERATELY NOT CONFIGURED (2026-08-12): tried and removed. The product pages carry no dates either — the per-session schedule is inside the BookThatApp widget — so following them added three irrelevant products (gift card, Galentines coasters) and zero evidence. THIS SOURCE'S EVIDENCE IS THE NEWSLETTER, which is persisted by hand into the snapshot at ingest time. Do not re-add a `detail` block expecting dates."
     },
     {
       "id": "yaro-studios",
@@ -137,7 +141,14 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "76 Kent St; ceramics/fiber/print classes."
+      "notes": "76 Kent St; ceramics/fiber/print classes.",
+      "detail": {
+        "urls": [
+          "https://yarostudios.com/membership"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "yaro-kids-clay",
@@ -174,7 +185,20 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "Batu 2026-08-05 confirmed this is where WORD publishes events (their own site bot-walls every method — IndieCommerce 403). STILL BROWSER-ONLY and provably so: Withfriends delivers the list over a WebSocket, not HTTP. Re-probed 2026-08-05 — /api/movement/word/events and ?format=json both return the same ~82KB empty SPA shell, .ics 500s. Do not re-hunt for an endpoint. Each event states its own location line, so the Brooklyn filter is mechanical: card ONLY \"Greenpoint, Brooklyn\" / \"Brooklyn, NY\" items, never \"Jersey City, NJ\". The list renders ~5 events behind a \"Show more events...\" control, so treat the snapshot as the near-term window, not the full calendar. ADDRESS RESOLVED (Batu, 2026-08-07): the Brooklyn store is 126 Franklin St, Brooklyn, NY 11222 — verified on WORD's own site footer, which lists exactly two locations (Brooklyn 126 Franklin St; Jersey City 29 McWilliams Pl). The Withfriends page's own blurb says it too: 'An independent bookstore since 2007 with locations in Greenpoint, Brooklyn and Jersey City, New Jersey.' So there is exactly ONE Brooklyn shop and it is in Greenpoint — a bare 'Brooklyn, NY' location line is unambiguous and pins to 126 Franklin St. This is what unblocks the three cards held 2026-08-06; the listing itself will still never print a street address, so DO NOT hold on that again. Accessibility, stated on the same page and worth carrying in card copy: 'Events in Brooklyn are held in the basement, accessed by a flight of stairs.' wordbookstores.com added to the tracked .claude/settings.json allowlist in the same change."
+      "notes": "Batu 2026-08-05 confirmed this is where WORD publishes events (their own site bot-walls every method — IndieCommerce 403). STILL BROWSER-ONLY and provably so: Withfriends delivers the list over a WebSocket, not HTTP. Re-probed 2026-08-05 — /api/movement/word/events and ?format=json both return the same ~82KB empty SPA shell, .ics 500s. Do not re-hunt for an endpoint. Each event states its own location line, so the Brooklyn filter is mechanical: card ONLY \"Greenpoint, Brooklyn\" / \"Brooklyn, NY\" items, never \"Jersey City, NJ\". The list renders ~5 events behind a \"Show more events...\" control, so treat the snapshot as the near-term window, not the full calendar. ADDRESS RESOLVED (Batu, 2026-08-07): the Brooklyn store is 126 Franklin St, Brooklyn, NY 11222 — verified on WORD's own site footer, which lists exactly two locations (Brooklyn 126 Franklin St; Jersey City 29 McWilliams Pl). The Withfriends page's own blurb says it too: 'An independent bookstore since 2007 with locations in Greenpoint, Brooklyn and Jersey City, New Jersey.' So there is exactly ONE Brooklyn shop and it is in Greenpoint — a bare 'Brooklyn, NY' location line is unambiguous and pins to 126 Franklin St. This is what unblocks the three cards held 2026-08-06; the listing itself will still never print a street address, so DO NOT hold on that again. Accessibility, stated on the same page and worth carrying in card copy: 'Events in Brooklyn are held in the basement, accessed by a flight of stairs.' wordbookstores.com added to the tracked .claude/settings.json allowlist in the same change. DETAIL PAGES PERSISTED (2026-08-12): Membership tiers are JS-rendered on /join and invisible to plain fetch.",
+      "detail": {
+        "urls": [
+          {
+            "url": "https://withfriends.co/word/join",
+            "fetch": "browser"
+          },
+          {
+            "url": "https://wordbookstores.com/word-book-clubs",
+            "fetch": "plain"
+          }
+        ],
+        "limit": 2
+      }
     },
     {
       "id": "carcosa-club",
@@ -197,6 +221,13 @@
           "excerpt",
           "fullUrl"
         ]
+      },
+      "detail": {
+        "urls": [
+          "https://www.carcosaclub.com/membership"
+        ],
+        "limit": 1,
+        "fetch": "browser"
       }
     },
     {
@@ -256,7 +287,14 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "201 Dupont St; tours, tastings, classes."
+      "notes": "201 Dupont St; tours, tastings, classes.",
+      "detail": {
+        "urls": [
+          "https://hanamakgeolli.com/hanasoolclub"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "hana-makgeolli-soolschool",
@@ -302,7 +340,14 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "70 Greenpoint Ave; tastings/classes."
+      "notes": "70 Greenpoint Ave; tastings/classes.",
+      "detail": {
+        "urls": [
+          "https://kettl.co/collections/subscriptions"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "bellocq-tea",
@@ -338,7 +383,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "json",
-      "notes": "394 McGuinness Blvd #208. Switched 2026-08-05 from browser to the feather.rsvp public API the site embeds — the org id is in the page HTML. Root-level array, so json.path is empty. Every event belongs to this one studio, so no geography filter is needed and location is null by design. description is deliberately NOT snapshotted: these are recurring class blurbs that would bloat every diff. pageSize=100 covers roughly a month; the window we card is today+10. CITE cards to https://moonbunnyaerial.com.",
+      "notes": "394 McGuinness Blvd #208. Switched 2026-08-05 from browser to the feather.rsvp public API the site embeds — the org id is in the page HTML. Root-level array, so json.path is empty. Every event belongs to this one studio, so no geography filter is needed and location is null by design. description is deliberately NOT snapshotted: these are recurring class blurbs that would bloat every diff. pageSize=100 covers roughly a month; the window we card is today+10. CITE cards to https://moonbunnyaerial.com. DETAIL PAGES PERSISTED (2026-08-12): Feed is a bare name/start_at JSON with no prose. The camp descriptions live on one fixed page, in collapsed accordion panels.",
       "json": {
         "path": "",
         "fields": [
@@ -348,7 +393,14 @@
           "price_in_cents"
         ]
       },
-      "citeHost": "moonbunnyaerial.com"
+      "citeHost": "moonbunnyaerial.com",
+      "detail": {
+        "urls": [
+          "https://moonbunnyaerial.com/summer-camps",
+          "https://moonbunnyaerial.com/discounts"
+        ],
+        "limit": 2
+      }
     },
     {
       "id": "acme-fish-friday",
@@ -410,7 +462,15 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days."
+      "notes": "Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days. DETAIL PAGES PERSISTED (2026-08-12): the listing only shows events whose date is CURRENT, so a recurring series' page vanishes from the harvest between occurrences and its cards would silently become unverifiable again. The two live series (Transmitter Park yoga, McGolrick Bird Club) are therefore PINNED in `detail.urls` — pinned URLs are fetched every run regardless of the listing and are never crowded out by the cap.",
+      "detail": {
+        "match": "gogreenbk\\.org/event/",
+        "limit": 16,
+        "urls": [
+          "https://gogreenbk.org/event/yoga-transmitter-2026/2026-08-04/",
+          "https://gogreenbk.org/event/mcgolrick-bird-club-2026/2026-08-01/"
+        ]
+      }
     },
     {
       "id": "kindred-nyc",
@@ -665,7 +725,14 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "960 Manhattan Ave, 4th Floor. Onboarded 2026-08-08 to WATCH THE PRICES on held-space-membership — the card quotes $129/month or $1029/year (2 months free) plus Practitioner from $329 and Facilitator from $396, and nothing was re-verifying them. STANDING PROGRAMMING: the tiers are the supply, so the card is undated; a diff here means a price or tier changed, which is a card update, not a new card. The members-only programme (\"at least 2x per week\" — yoga, ecstatic dance, sound baths, communal coworking) is real but NOT publicly dated anywhere we can reach, so do not expect event cards from this source. Note the SSG directory's event URL for this business (/attend-an-offering) 404s — do not restore it."
+      "notes": "960 Manhattan Ave, 4th Floor. Onboarded 2026-08-08 to WATCH THE PRICES on held-space-membership — the card quotes $129/month or $1029/year (2 months free) plus Practitioner from $329 and Facilitator from $396, and nothing was re-verifying them. STANDING PROGRAMMING: the tiers are the supply, so the card is undated; a diff here means a price or tier changed, which is a card update, not a new card. The members-only programme (\"at least 2x per week\" — yoga, ecstatic dance, sound baths, communal coworking) is real but NOT publicly dated anywhere we can reach, so do not expect event cards from this source. Note the SSG directory's event URL for this business (/attend-an-offering) 404s — do not restore it.",
+      "detail": {
+        "urls": [
+          "https://heldspacebk.com/membership"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "selformer",
@@ -675,7 +742,14 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "67 West St. Onboarded 2026-08-08 to watch the prices on selformer-memberships ($147/$239/$369 a month for 4/8/16 classes; $399 unlimited; $350 on-demand video). TWO LOCATIONS — plans read \"Williamsburg + Greenpoint\" and the self-service station is Williamsburg-only, so never write a Greenpoint-exclusive benefit into card copy. The BOOKING page (/book-now) is login-walled Wix auth and carries nothing; this pricing page is the public surface — do not re-probe the booking path. Time-boxed promos appear here (a \"Summer Fling Unlimited\" $249/mo ran through Aug 15 2026 and was deliberately NOT carded — a deal that dies in a week is not worth a slot); card those only as `discount` WITH endsAt."
+      "notes": "67 West St. Onboarded 2026-08-08 to watch the prices on selformer-memberships ($147/$239/$369 a month for 4/8/16 classes; $399 unlimited; $350 on-demand video). TWO LOCATIONS — plans read \"Williamsburg + Greenpoint\" and the self-service station is Williamsburg-only, so never write a Greenpoint-exclusive benefit into card copy. The BOOKING page (/book-now) is login-walled Wix auth and carries nothing; this pricing page is the public surface — do not re-probe the booking path. Time-boxed promos appear here (a \"Summer Fling Unlimited\" $249/mo ran through Aug 15 2026 and was deliberately NOT carded — a deal that dies in a week is not worth a slot); card those only as `discount` WITH endsAt.",
+      "detail": {
+        "urls": [
+          "https://www.selformer.com/plans-pricing"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "clay-space-membership",
@@ -685,7 +759,15 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "275 Calyer St. Watches the prices on clay-space-membership: four tiers $210-$255 / $310-$380 / $365-$525 / $485-$650 + tax monthly, 3-month minimum, application-gated, requires more than a year of consistent lessons."
+      "notes": "275 Calyer St. Watches the prices on clay-space-membership: four tiers $210-$255 / $310-$380 / $365-$525 / $485-$650 + tax monthly, 3-month minimum, application-gated, requires more than a year of consistent lessons.",
+      "detail": {
+        "urls": [
+          "https://www.clayspacebk.com/membership",
+          "https://www.clayspacebk.com/semester-classes"
+        ],
+        "limit": 2,
+        "fetch": "browser"
+      }
     },
     {
       "id": "clay-space-workshops",
@@ -715,7 +797,14 @@
       "fetch": "auto",
       "standing": true,
       "citeHost": "driftaway.coffee",
-      "notes": "85 Debevoise Ave. Watches driftaway-coffee-subscriptions (six standing subscriptions, from $16). Mail-order by nature — the precedent for carding a national-shipping subscription from a Greenpoint roaster is kettl-tea-subscriptions. `monthly` cadence on purpose: a coffee catalogue does not turn over weekly and checking it every run is noise."
+      "notes": "85 Debevoise Ave. Watches driftaway-coffee-subscriptions (six standing subscriptions, from $16). Mail-order by nature — the precedent for carding a national-shipping subscription from a Greenpoint roaster is kettl-tea-subscriptions. `monthly` cadence on purpose: a coffee catalogue does not turn over weekly and checking it every run is noise.",
+      "detail": {
+        "urls": [
+          "https://store.driftaway.coffee/collections/subscriptions"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "marianella-subscription-box",
@@ -725,7 +814,14 @@
       "cadence": "monthly",
       "fetch": "auto",
       "standing": true,
-      "notes": "83 West St. Marianella is ALREADY a registered email sender; this is the web half, added 2026-08-08 because the sender channel does not re-verify the $48/month box price on marianella-subscription-box. Sale banners run across this page (a 19-year anniversary sale was live at onboarding) — those are separate `discount` cards WITH endsAt, not edits to the subscription card."
+      "notes": "83 West St. Marianella is ALREADY a registered email sender; this is the web half, added 2026-08-08 because the sender channel does not re-verify the $48/month box price on marianella-subscription-box. Sale banners run across this page (a 19-year anniversary sale was live at onboarding) — those are separate `discount` cards WITH endsAt, not edits to the subscription card.",
+      "detail": {
+        "urls": [
+          "https://marianella.co/products/subscription-box"
+        ],
+        "limit": 1,
+        "fetch": "browser"
+      }
     },
     {
       "id": "otis-and-finn",
@@ -745,7 +841,11 @@
       "cadence": "weekly",
       "fetch": "feed",
       "standing": false,
-      "notes": "50 Norman Ave, inside the 50 Norman complex. Onboarded 2026-08-08 from a newsletter Batu forwarded (the Re:STATION archival showcase). LOCALLY-OWNED EXCEPTION — READ BEFORE SKIPPING: CIBONE lists Tokyo Omotesando and Ginza alongside Brooklyn, so the 2026-07-16 locally-owned gate (the rule that dropped PRESS for being multi-location) would skip it. Batu ruled 50 Norman IN on 2026-08-08: its tenants (CIBONE, Kama-Asa, Dashi Okume, Cafe O'te) get venue and event cards like any local business. Do not re-litigate this each run. Shopify Atom feed, not the HTML blog — /blogs/news.atom carries the full post bodies (dates, hours, address), so no browser and no second fetch to the post URL. WHAT TO CARD: month-long curated showcases and limited events (Re:STATION, HOZUBAG, glass/ceramics debuts), which is most of what this blog publishes. LENS: NONE — Batu 2026-08-12, 'Cibone is a store, not a gallery. these are for purchase. their events are shopping-related.' Every CIBONE card is retail and carries no lens (All only) under the markets rule; add each new one to LENS_LESS_BY_DESIGN in julyCards.test.mjs. Do NOT file a CIBONE showcase as arts_culture however exhibition-like it reads, and do NOT move it to the venue card under the gallery/exhibition rule — a store's limited run really does start and end, so it stays a dated event card for its run window. They state a run range and 'Store Hours: 11am - 8pm' rather than a single event time — card as a dated event spanning the run, ending at closing time on the last day. Marked standing:false so the L12 UNMARKED STANDING signal stays quiet: the blog announces limited runs, it publishes no recurring weekly programme."
+      "notes": "50 Norman Ave, inside the 50 Norman complex. Onboarded 2026-08-08 from a newsletter Batu forwarded (the Re:STATION archival showcase). LOCALLY-OWNED EXCEPTION — READ BEFORE SKIPPING: CIBONE lists Tokyo Omotesando and Ginza alongside Brooklyn, so the 2026-07-16 locally-owned gate (the rule that dropped PRESS for being multi-location) would skip it. Batu ruled 50 Norman IN on 2026-08-08: its tenants (CIBONE, Kama-Asa, Dashi Okume, Cafe O'te) get venue and event cards like any local business. Do not re-litigate this each run. Shopify Atom feed, not the HTML blog — /blogs/news.atom carries the full post bodies (dates, hours, address), so no browser and no second fetch to the post URL. WHAT TO CARD: month-long curated showcases and limited events (Re:STATION, HOZUBAG, glass/ceramics debuts), which is most of what this blog publishes. LENS: NONE — Batu 2026-08-12, 'Cibone is a store, not a gallery. these are for purchase. their events are shopping-related.' Every CIBONE card is retail and carries no lens (All only) under the markets rule; add each new one to LENS_LESS_BY_DESIGN in julyCards.test.mjs. Do NOT file a CIBONE showcase as arts_culture however exhibition-like it reads, and do NOT move it to the venue card under the gallery/exhibition rule — a store's limited run really does start and end, so it stays a dated event card for its run window. They state a run range and 'Store Hours: 11am - 8pm' rather than a single event time — card as a dated event spanning the run, ending at closing time on the last day. Marked standing:false so the L12 UNMARKED STANDING signal stays quiet: the blog announces limited runs, it publishes no recurring weekly programme. DETAIL PAGES PERSISTED (2026-08-12): Atom bodies omit the Store Hours / Address lines the cards quote; those are on the post pages.",
+      "detail": {
+        "match": "cibone-us\\.com/blogs/news/",
+        "limit": 6
+      }
     }
   ]
 }

@@ -262,3 +262,31 @@ its residency at the McCarren Parkhouse (855 Lorimer St.) hosting weekly chess n
 #  source by host, so the Eventbrite half is persisted here beside the article.)
 Sometimes free, sometimes ticketed. RSVPs encouraged and tickets are always available at the door.
 Each ticketed week we will bring one to two chess masters, coaches, or titled chess players for our "challengers corner". These will be high-skill games, in Blitz or Bullet format.
+
+## [R1 PERSISTED 2026-08-12c] buffalofirefly.com — the venue the roundup never names an address for
+# Evidence rule, DECISION_LOG 2026-08-12. Read from an interactive session after
+# Batu allowlisted the host; the routine's own egress denies it (CONNECT 403),
+# which is why this card was held on the Wednesday run. Nominatim returns NO
+# RESULT for "Buffalo Firefly, Brooklyn, NY", so the address below is the only
+# thing that clears the Greenpoint-geography gate.
+#
+# Buffalo Firefly runs TWO locations (Brooklyn + Richmond VA). The 8/13 session
+# is listed under the site's own "Brooklyn Events" heading and the detail page
+# states the Nassau Ave address on the listing itself, so the claim is
+# attributable to the Greenpoint storefront — the locally-owned gate passes on
+# attributability per the same day's ruling.
+
+# https://buffalofirefly.com/
+CONTACT INFO
+NYC
+55 Nassau Ave, 2E, Brooklyn, NY 11222
+Richmond
+4025 MacArthur Ave, Richmond, VA 23227
+
+Brooklyn Events
+Thu 8/13 Soundbath w/Evie
+
+# https://buffalofirefly.com/pages/soundbath-w-evie-nyc
+Thursday, Aug 13 · 7:00–8:15pm
+In person $55
+55 Nassau Ave, 2E, Brooklyn, NY 11222

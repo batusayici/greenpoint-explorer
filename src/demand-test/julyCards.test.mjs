@@ -396,11 +396,23 @@ test("seed has exactly 75 cards across the six layers", () => {
   // sotte-paint-your-greca-0816, edys-anniversary-party-0816,
   // gather-sound-bath-0818, idle-mind-vinyl-vibes-0819. Expiry took nothing
   // this run (it had already run for 2026-08-12 on the daily pass). 142 + 8 = 150.
-  assert.equal(seed.cards.length, 150);
+  // +1 (2026-08-12, Batu): `threes-flea-market-0815`, released by the
+  // attributability ruling on the locally-owned gate — the listing names
+  // "Threes Brewing Greenpoint, 113 Franklin St." outright, so the claim is
+  // tied to the Greenpoint address and the second location is irrelevant.
+  // 150 + 1 = 151.
+  // +1 (2026-08-12, Batu): `buffalo-firefly-soundbath-0813`, released once Batu
+  // allowlisted `buffalofirefly.com` — the routine's egress denies the host
+  // (CONNECT 403) and Nominatim has no result for the venue name, so the
+  // address that clears the geography gate could only be read from an
+  // interactive session. Same attributability ruling applies: two locations
+  // (Brooklyn + Richmond VA), and the site lists this session under its own
+  // "Brooklyn Events" heading at the Nassau Ave address. 151 + 1 = 152.
+  assert.equal(seed.cards.length, 152);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 79, "71 + all 8 adds from the 8/13-19 Greenpointers roundup — every one is a dated happening");
+  assert.equal(count((c) => c.category === "event"), 81, "71 + all 8 adds from the 8/13-19 Greenpointers roundup + the 2 cards released by the 2026-08-12 rulings (Threes flea market, Buffalo Firefly sound bath) — every one is a dated happening");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + the Bios Apothecary herbalist consult (2026-08-12)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
   assert.equal(count((c) => c.filters.includes("live_music")), 24, "23 + the all-vinyl DJ social at Idle Mind Tavern (8/19)");
@@ -583,6 +595,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     "summerstarz-project-hail-mary-0814", // "Free SummerStarz Movies" on townsquarebk.org
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
     "summerstarz-zootopia-0821",
+    // 2026-08-12 roundup: "Free, RSVP here." on the flea market line, and the
+    // Eventbrite listing says "Free to attend." independently.
+    "threes-flea-market-0815",
     // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
     // 2026-08-10: "Free Show + Free Donuts" on the WORD Bookstore flyer.
     "word-herman-melville-comedy-0820",
@@ -658,6 +673,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   assert.deepEqual(wellness, [
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
+    // 2026-08-12: the second sound bath of the same week, same reasoning as
+    // `gather-sound-bath-0818` below — bodywork, not spectacle.
+    "buffalo-firefly-soundbath-0813",
     "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays",
     // 2026-08-12: a sound bath and Reiki session — bodywork in the same
@@ -757,31 +775,65 @@ test("a card that names a game is never filed under Arts & Culture", () => {
 // `lensless === []`: the rule was right, the assertion was stale. Each id below
 // must name why it carries no lens, so a real taxonomy leak still surfaces as an
 // unexplained id at review.
+// Entries may be an exact id (a one-off) or a RegExp (a sanctioned class).
+// Prefer the class: it encodes the ruling instead of its instances, so no
+// bookkeeping edit is needed when one expires or a new one ships.
 const LENS_LESS_BY_DESIGN = [
   // 2026-08-12 (Batu): "Cibone is a store, not a gallery. these are for
-  // purchase. their events are shopping-related." All three CIBONE cards are
-  // retail, so none carries a lens — `shopping` is retired and there is nothing
-  // else honest to reach for. `cibone-ote` had been the ONLY shop card in the
-  // deck filed as arts_culture; that was the anomaly, not the precedent.
-  "cibone-hozubag-0813",     // bags made from retired paraglider fabric, for sale
-  "cibone-ote",              // the shop itself
-  "cibone-restation-showcase-0815", // archival CdG/Yohji, for purchase
-  // 2026-08-12: the markets rule's own class, first application to an actual
-  // vendor market — pins, prints and ceramics from 20 artisans is general goods,
-  // not food, so `food_drink` is out and there is no other honest lens.
+  // purchase. their events are shopping-related." That is a ruling about the
+  // VENUE, so it is written as one — every CIBONE card is retail and carries no
+  // lens (`shopping` is retired and there is nothing else honest to reach for).
+  // Written as a class deliberately: as three ids, `cibone-hozubag-0813`
+  // expiring on 8/13 would have left a stale entry for someone to prune, and
+  // the next pop-up would have needed a test edit before it could ship.
+  // `cibone-ote` had been the ONLY shop card in the deck filed as arts_culture;
+  // that was the anomaly, not the precedent.
+  /^cibone-/,
+  // 2026-08-12: the markets rule's own class, first application to actual vendor
+  // markets. General goods — pins, prints and ceramics from 20 artisans at the
+  // Neptune Room; art, vintage, books and records at the Threes flea — so
+  // `food_drink` is out and there is no other honest lens. Kept as ids rather
+  // than a class: "market" is a word, not a venue, and a regex over it would
+  // silently swallow a farmers' market that genuinely belongs in `food_drink`.
   "neptune-artists-makers-market-0816",
+  "threes-flea-market-0815",
 ];
+const sanctionedLensLess = (id) =>
+  LENS_LESS_BY_DESIGN.some((rule) => (rule instanceof RegExp ? rule.test(id) : rule === id));
 
 test("no card is lens-less except the markets rule's own class (2026-08-12)", () => {
   // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
   // stragglers all resolved into Civic or Arts & Culture same day. It is now
   // also the sanctioned home for general-goods vendor markets, by name only.
+  //
+  // SUBSET, not exact match (2026-08-12, revised same day). This was first
+  // written as `deepEqual`, on the reasoning that a stale entry should fail
+  // loudly. That reasoning was wrong for THIS list, because of WHEN it fires:
+  // expiry DELETES cards, and expiry runs inside the unattended cloud ingest.
+  // So the very next run after a lens-less card expires would have died on a
+  // stale id — a scheduled job failing where nobody is watching, blocking a
+  // whole content refresh over a bookkeeping line. Loud failure earns its keep
+  // when a human is present to act on it; here it just stops the pipeline.
+  //
+  // What the check actually exists to catch is a card arriving with NO lens
+  // that nobody sanctioned — a taxonomy leak. A subset assertion catches that
+  // exactly, and tolerates the expiry race. Stale entries are reported below
+  // without failing, so review still sees them.
   const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
+  const unexplained = lensless.filter((id) => !sanctionedLensLess(id));
   assert.deepEqual(
-    lensless,
-    [...LENS_LESS_BY_DESIGN].sort(),
-    "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it here",
+    unexplained,
+    [],
+    "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it to LENS_LESS_BY_DESIGN",
   );
+
+  // Only exact-id entries can go stale; a class rule stays true whether or not
+  // an instance is currently live.
+  const live = new Set(seed.cards.map((c) => c.id));
+  const stale = LENS_LESS_BY_DESIGN.filter((r) => typeof r === "string" && !live.has(r));
+  if (stale.length) {
+    console.log(`  note: LENS_LESS_BY_DESIGN has ${stale.length} expired id(s) to prune — ${stale.join(", ")}`);
+  }
 });
 
 test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {

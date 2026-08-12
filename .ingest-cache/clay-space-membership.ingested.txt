@@ -136,3 +136,163 @@ $485 - $650 + tax monthly
 See the dimension and price
 Contact us ‍ ‍ COVID 19 protocols ‍ ‍ Career
 Copyright © 2025. All rights reserved.
+
+
+## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
+# Captured by the new roster `detail` mechanism and merged here so the
+# sourceQuote gate can re-check these cards. Merged rather than promoted via
+# --mark-ingested on purpose: marking would flag unreviewed content as already
+# processed and hide real supply from the next run.
+
+## [DETAIL] https://www.clayspacebk.com/membership
+SKIP TO CONTENT
+For Adults
+For Kids
+Membership
+About
+Events
+Gift Cards
+Student Portal
+Member Portal
+Outside Firing Portal
+Membership
+Becoming a member
+Because we put community at the center, we make it a point to meet all prospective members in person and introduce you to our space, our vision, and our values. Please don’t stop by without first applying, since we plan all tours in an organized fashion. In the meantime, get to know us a bit by reading our Community Agreements as you prepare to apply.
+OUR PROCESS
+Fill out our membership application so we can get to know you and your needs.
+You will hear back from us to schedule a studio tour or direct you towards continuing your journey of learning*.
+Tour Clay Space and get a feel for our community. Once we all agree, you’ll be offered a membership based on availability and interest.
+*While we do value all skill levels, membership will only be considered for those with more than one year of consistent lessons and are able to commit to a 3-month minimum membership term. By filling out our membership application, this allows us to learn a bit about your skill level and needs. You will hear back from us within 10 days with a determination. If we feel you’re ready for a membership, we’ll invite you to schedule a studio tour so you can visit the space and get a feel for our community and amenities.
+Our member’s work area does not include instruction, therefore all our memberships require a strong base level understanding of the entire ceramic process as well as several classes and/or practice experience that shows you’ve really grasped the process. This doesn’t mean you have to be a master ceramicist, but we do need to ensure you’re working at an independent and intermediate/advanced level. If we determine you are not quite ready for membership, take heart! This only means we think you’ll be better served by continuing with the support of an instructor’s guidance. Because we see how our students have developed their skills, they are in line for membership when spots open up before those from outside the community working at the same level. We recommend you consider one of our intermediate, advanced or independent study classes to expand your skills and experience and our instructors will help guide you towards membership.
+For those that haven’t begun their clay journey or have some amount of experience, we would be honored to be a part of your learning and growth. We suggest starting with one of our many classes.
+Amenities & Services for all membership levels
+All members have 24/7 access to members work areas and equipment, kitchen with a refrigerator, microwave/air fryer, toaster oven, discounts on some Clay Space Workshops & Classes and inclusion in events such as our Annual Holiday Market & Open Studio events. View detailed amenity information.
+APPLY FOR MEMBERSHIP
+Membership Levels
+& Pricing
+Communal: work-table
+Feel ready to grow beyond the classroom, practice your skills, and spend quality time with other makers? Is your work fairly small, you’re not in production, you want to get a feel for the studio? This communal membership is for you!
+This tier includes shared use of potter’s wheels, 2 large communal handbuilding work tables, use of all equipment and all-level membership amenities.
+Choose from either one or two shelves for your designated storage.
+$210.00 - $255.00 + tax monthly
+See the dimension and price
+Semi Private: work-space
+Do you need a work-space where you can let works in progress rest? Are you ready to dive deeper and invest more into your practice? Our semi-private locations in the studio will allow you the flexibility to work in your own space while still making alongside other creatives.
+This tier includes a designated work table and pegboard divider, additional storage under the table & may include either wall or side shelving based on your particular membership level.
+With this level, you are eligible for being included in bulk supply orders with our clay vendors and opportunity to schedule your own kiln.
+$310 - $380 + tax monthly
+See the dimension and price
+Semi-Private & Private: work-annex
+Are you a small ceramic business that wants to be a part of the Clay Space community but need extra space for your production and/or slip casting work? Do you like a bit more privacy but remain a part of the community? If so, the work-annex membership is for you!
+The Clay Space Annex is a 700 sq. ft. ground floor, private entrance studio space located just across the street from our center. You will be sharing the space with 12 other members.
+This tier includes both semi private & private options along with full access to Clay Space Ceramic Center and all of its amenities and equipment.
+Annex amenities:
+Communal Hand building tables
+(1) 7 cu. ft. kiln & (1) 2.6 cu. ft. test kiln
+Norstar Slab roller
+Norstar Extruder
+(4) Potter’s wheels
+Utility sink
+Refrigerator and counter
+Wifi Access
+$365 - $525 + tax monthly
+See the dimension and price
+Private: work-studio
+Do you need space and time to hone your craft but also like to be amongst other clay folks? This membership tier provides you with lots of storage space. It’s private, but never lonely.
+This tier includes a designated work table & pegboard divider, storage under the table & a large private shelving unit adjacent to your table. This is the perfect size for a production potter or someone who makes large work.
+You are eligible for being included in bulk supply orders with our clay vendors and opportunity to schedule your own kiln.
+$485 - $650 + tax monthly
+See the dimension and price
+Contact us‍ ‍COVID 19 protocols‍ ‍Career
+Copyright © 2025. All rights reserved.
+
+
+
+## [DETAIL] https://www.clayspacebk.com/semester-classes
+SKIP TO CONTENT
+For Adults
+For Kids
+Membership
+About
+Events
+Gift Cards
+Student Portal
+Member Portal
+Outside Firing Portal
+Classes for Adults
+SCROLL DOWN TO SEE OUR SEMESTER CLASS OFFERINGS & DESCRIPTIONS
+FALL 2026 SEMESTER: Sunday, September 13 to Saturday, December 12
+12 week long session
+Registration for Winter 2027 (January-March) will be released in late November.
+REGISTER FOR CLASSES
+Exploring Ceramic Techniques
+Foundation Class
+Level - Beginner to Beginner-Intermediate 12 students
+$760 PER 12 WEEK FULL SEMESTER
+Class description
+Center & Throw
+WheelThrowing Class
+Level - Beginner to Intermediate 12 students
+$760 PER 12 WEEK FULL SEMESTER
+Class description
+Wheel Throwing & Handbuilding for All
+Wheel throwing & Handbuilding Class
+Level - Beginner to Intermediate 12 students
+$760 PER 12 WEEK FULL SEMESTER
+Class description
+Leveling Up Handbuilding
+Wheel Throwing Class
+Level- Intermediate to Advanced
+$760 PER 12 WEEK FULL SEMESTER
+Class description
+Coil & Slab
+Handbuilding Class
+Level- Beginner to Intermediate 9 students
+$760 PER 12 WEEK FULL SEMESTER
+Class description
+Handbuilding Tableware
+Handbuilding Class
+Level- Beginner to Intermediate
+9 students
+$760 PER 12 WEEK FULL SEMESTER
+Class description
+Next Level
+Wheel Throwing Class
+Level- Intermediate to Advanced
+$760 PER 12 WEEK FULL SEMESTER
+Class description
+Independent Study Ceramics
+Wheel throwing &/or Handbuilding Classes
+Level- Intermediate to Advanced
+$900 PER 12 WEEK FULL SEMESTER
+IMPORTANT PREREQUISITE
+Class description
+How does it work?
+What will I get out of the class?
+Class Details
+All students will be asked to follow our Clay Space Community Agreements
+Supplies:
+The class fee includes clay and glaze.
+Firings are 7 cents per cubic inch for both firings.
+As a registered student you will have 4 hours per week of bench time. 12-week Session students can purchase a Unlimited Bench time Card for extra practice hours! [Summer only, 8-week card here]
+Depending on your class selection, please be prepared to purchase Clay Space Tool Kits and supplies if you do not already have them. Each class registration has descriptions and links to all products sold in our shop! They can be stored in the classroom and towels and aprons should be taken home weekly for cleaning.
+Clay Space is open to students M-Sa 10am-9.30pm, Su 10am-9pm during every semester.
+Waitlist:
+If open spots become available in a waitlisted course, waitlisted students will be contacted to register. Please note, we notify the whole waitlist at once and space in classes is first come first serve.
+Missed Class Policy:
+We do our best to work with your schedule and offer up to 3 makeups to our students to be used within the current semester only. To make up a class, you must arrive at a comparable class on time and wait to see if there is an open spot. If there is not, you cannot make up the class at this time. If there is a spot, ask the instructor if you can attend. They have the option to agree or not. Makeups cannot be guaranteed and there is no refund for missed classes. If you cannot fulfill a makeup class, you can receive an additional 3 hours of benchtime for this missed class. Email Education@clayspacebk.com with your class information to receive these accommodations, but do not ask us to arrange a make up.
+Cancellation Policy:
+If you register for the wrong class, please email to be transferred, do not double book, or you will be charged a change of registration fee of 3%.
+To request a cancellation, you must contact us in writing.
+***More than 10 days prior to the first class of your session: you may receive a refund minus a $20 fee onto a gift card, or refund to your payment card minus a $50 processing fee
+***10 days or less to the start of class: receive a refund minus $100 or a gift card minus a $20 fee
+***Within 1 week of start of class: receive a refund of 50% (of the entire class fee)
+There are no refunds or tuition applied to another semester once the session begins. Students are responsible to pay for the entire semester if they have chosen the payment plan. Email Education@clayspacebk.com with your cancellation request.
+We May Cancel:
+If the class does not fill sufficiently, we may cancel and try to move students to another class, apply tuition to another class or semester, or provide a full refund.
+Video & Photographs:
+Clay Space reserves the right to use photographs and/or videos taken during classes & workshops to market and promote our programs. Any student or legal guardian who does not wish to have his or her child photographed will be able to opt-out during registration.
+Masking:
+Clay Space is mask optional. If the CDC guidelines change at any point before or during the session we will follow the state’s requirements. In the event of a shut down, wherever possible, we will provide materials and online instruction to fulfill the remainder of the session. Where this is not possible, we will give you credit towards another current or future class, firing, or materials.
+Contact us‍ ‍COVID 19 protocols‍ ‍Career
+Copyright © 2025. All rights reserved.

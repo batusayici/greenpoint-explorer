@@ -1,6 +1,6 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-08-12T14:30:00-04:00",
+  "lastRunAt": "2026-08-12T13:27:00-04:00",
   "cardChecked": {
     "sailor-and-siren": "2026-08-11",
     "core-press": null,
@@ -25,7 +25,7 @@
     "film-noir-cinema": "2026-08-10",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-11",
-    "flower-cat-subscription": "2026-08-05",
+    "flower-cat-subscription": "2026-08-11",
     "film-noir-support": "2026-08-10",
     "saint-vitus-bushwick-move": "2026-08-11",
     "greenpoint-library": "2026-08-11",
@@ -67,8 +67,8 @@
     "carcosa-hot-dog-day-0815": "2026-08-07",
     "good-room-stuntsz-0815": "2026-08-06",
     "hana-tour-tasting-0820": "2026-08-07",
-    "flowercat-fantasy-lab-0816": "2026-08-05",
-    "flowercat-cozy-reading-0817": "2026-08-05",
+    "flowercat-fantasy-lab-0816": "2026-08-11",
+    "flowercat-cozy-reading-0817": "2026-08-11",
     "summerstarz-project-hail-mary-0814": "2026-08-06",
     "mcgolrick-movies-guardians-0819": "2026-08-06",
     "word-open-mic-0814": "2026-08-09",
@@ -121,8 +121,8 @@
     "clay-space-membership": "2026-08-09",
     "marianella-subscription-box": "2026-08-07",
     "driftaway-coffee-subscriptions": "2026-08-07",
-    "cibone-ote": "2026-08-07",
-    "cibone-restation-showcase-0815": "2026-08-07",
+    "cibone-ote": "2026-08-11",
+    "cibone-restation-showcase-0815": "2026-08-11",
     "word-herman-melville-comedy-0820": "2026-08-09",
     "community-yoga-transmitter-thursdays": "2026-08-09",
     "film-noir-phedre-0824": "2026-08-10",
@@ -141,8 +141,8 @@
     "library-saturday-storytime-0822": "2026-08-11",
     "troost-louis-prince-0826": "2026-08-11",
     "star-deli-viral-boost": "2026-08-11",
-    "cibone-hozubag-0813": "2026-08-07",
-    "flowercat-love-unfolded-0823": "2026-08-05",
+    "cibone-hozubag-0813": "2026-08-11",
+    "flowercat-love-unfolded-0823": "2026-08-11",
     "bios-apothecary-herbalist-consultation": null,
     "reading-series-61-franklin-0813": "2026-08-11",
     "zumba-under-the-k-0813": "2026-08-11",
@@ -151,6 +151,8 @@
     "sotte-paint-your-greca-0816": "2026-08-11",
     "edys-anniversary-party-0816": "2026-08-11",
     "gather-sound-bath-0818": "2026-08-11",
-    "idle-mind-vinyl-vibes-0819": "2026-08-11"
+    "idle-mind-vinyl-vibes-0819": "2026-08-11",
+    "threes-flea-market-0815": "2026-08-11",
+    "buffalo-firefly-soundbath-0813": "2026-08-11"
   }
 }

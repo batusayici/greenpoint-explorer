@@ -2,19 +2,45 @@
 
 Roundup: [Enjoy nature, be healed, and more — What's Happening, Greenpoint? (8/13-19)](https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/)
 
-25 items parsed · 8 shipped in this PR · 6 duplicates skipped · 7 out-of-area or
-gate-failing skips · **2 held, below.**
+25 items parsed · **10 shipped in this PR** · 6 duplicates skipped · 7 out-of-area
+or gate-failing skips · **0 still held.**
 
-`holds: 1 new-judgment · 0 rule-miss · 1 source-blocked`
+`holds: 0 — both released 2026-08-12 (1 by ruling, 1 by allowlist)`
 
-Both held items are time-critical — 8/13 and 8/15 — so neither survives to
-Monday's full run.
+Both held items were time-critical — 8/13 and 8/15 — so neither would have
+survived to Monday's full run. **Both were released the same day and both ship
+here.** The write-ups below are kept in full: they are the record of what was
+blocking each card and what unblocked it, and the reasoning is what stops the
+next run re-deriving it.
 
 ---
 
-## 1. Restorative Sound Journey @ Buffalo Firefly — Thu 8/13, 7pm · `source-blocked`
+## 1. Restorative Sound Journey @ Buffalo Firefly — Thu 8/13, 7pm · ~~`source-blocked`~~ **UNBLOCKED, SHIPPED 2026-08-12**
 
-**Why held:** the roundup states everything except *where*. R1 on the linked
+> **Batu allowlisted `buffalofirefly.com`** and the host was read from an
+> interactive session — the fallback this doc names below, the same one that
+> settled `eventbrite.com` and `marianella.co` on 2026-08-10. It ships as
+> `buffalo-firefly-soundbath-0813` (deck 151 → 152), hours before the event.
+>
+> **The venue is in Greenpoint: `55 Nassau Ave, 2E, Brooklyn, NY 11222`**, stated
+> in the site's own CONTACT INFO block and again on the session's detail page.
+> It geocodes to 40.723368, -73.952339 — inside the bbox. Nominatim still returns
+> nothing for the venue *name*; only the street address resolves it, and the unit
+> suffix has to come off for the query (`geocodeQuery` carries the stripped form
+> so the card can keep the address the source actually states).
+>
+> **The detail page also tightened the card past what the roundup carried:**
+> "Thursday, Aug 13 · 7:00–8:15pm" and "In person $55" — so the card has a real
+> end time instead of an open-ended 7pm. Both new lines are persisted to
+> `.ingest-cache/greenpointers.ingested.txt` under `[R1 PERSISTED 2026-08-12c]`,
+> and `ingest:quotes` verifies the card against them (verified=35, mismatch=0).
+>
+> **It cleared the locally-owned gate on the same attributability ruling as the
+> flea market below** — Buffalo Firefly runs Brooklyn + Richmond VA, and the site
+> lists this session under its own "Brooklyn Events" heading at the Nassau Ave
+> address. Two rulings, one day, and the second one needed no new judgment.
+
+**Why it was held:** the roundup states everything except *where*. R1 on the linked
 detail page was **denied at the proxy — `buffalofirefly.com` fails CONNECT with
 403** — and Nominatim returns NO RESULT for `Buffalo Firefly, Brooklyn, NY`, so
 the venue cannot be pinned and the Greenpoint-geography gate cannot be cleared.
@@ -34,9 +60,27 @@ fallback that settled `eventbrite.com` and `marianella.co` on 2026-08-10).
 
 ---
 
-## 2. Flea Market @ Threes Brewing Greenpoint — Sat 8/15, 12–7pm · `new-judgment`
+## 2. Flea Market @ Threes Brewing Greenpoint — Sat 8/15, 12–7pm · ~~`new-judgment`~~ **RULED, SHIPPED 2026-08-12**
 
-**Why held:** everything except the locally-owned gate is already settled. The
+> **Batu approved the attributability rule.** The card ships in this PR
+> (`threes-flea-market-0815`, deck 150 → 151), and the rule is now written into
+> `SKILL.md`'s locally-owned gate.
+>
+> **The question had already been answered and the skill file hid it.**
+> `DECISION_LOG.md` (2026-08-12, the Bios entry) states it outright —
+> *"Multi-location is not itself disqualifying — unattributable is."* — hours
+> before this run held the card. What the run read instead was SKILL.md's gate
+> line, which said **"PRESS dropped, multi-location"**: the instance, not the
+> rule. That one phrasing cost a fully-sourced, fully-geocoded card a hold.
+> SKILL.md now carries the rule and both sides of the precedent list, with the
+> old wording called out so it does not get restored.
+>
+> **The durable lesson is about where rules live, not about breweries.** A
+> decision recorded only in `DECISION_LOG.md` does not reach an unattended
+> routine — the routine reads `SKILL.md`. Any ruling that changes a gate has to
+> land in both, in the same change.
+
+**Why it was held:** everything except the locally-owned gate is already settled. The
 Eventbrite listing gives the address, the free-ness and the end time; 113
 Franklin St geocodes inside the bbox; and the markets rule files it mechanically
 (general-goods flea → no lens → `LENS_LESS_BY_DESIGN`).

@@ -122,3 +122,73 @@ about us membership receive care our spaces 02.
 reach out 08.
 member handbook ____
 home 01.
+
+
+## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
+# Captured by the new roster `detail` mechanism and merged here so the
+# sourceQuote gate can re-check these cards. Merged rather than promoted via
+# --mark-ingested on purpose: marking would flag unreviewed content as already
+# processed and hide real supply from the next run.
+
+## [DETAIL] https://heldspacebk.com/membership
+MEMBER HANDBOOK
+Membership
+Our members are the heart of our community and the keepers of our space.
+United by a love for wellness in its many forms, Held Space membership is for the person who is devoted to their practices and wants to experience meaningful connection with fellow Brooklynites.
+Community Membership
+Attend unlimited Members Only Events (at least 2x per week with offerings like yoga, ecstatic dance, sound baths, communal coworking, and more)
+Access the common areas, including the lounge & quiet co-working space, from 7am-10pm, 7 days a week
+Reserve the Gathering Room on demand at the discounted membership rate
+Host non-profit and donation-based events for free
+Get exclusive access to book the practice rooms on an hourly basis
+Receive professionally designed marketing graphics + visibility on our social channels
+Get personalized support bringing your ideas to life—from event design to promotion.
+Unlock discounted rates with Held Space photographer & videographer
+Join our members-only Slack channel: a place for networking, collaboration, and friendly conversation
+$129/month or $1029/year (2 months free)
+No minimum commitment.
+APPLY HERE
+includes:
+For those seeking connection, inspiration, and a sense of belonging.
+Our Community Membership offers full access to the Held Space community and the resources that help creative and wellness professionals thrive.
+Practitioner Membership
+MORE DETAILS
+For therapists, bodyworkers, coaches, healers, and wellness professionals seeking a consistent place to grow their practice.
+Practitioner Membership includes everything in Community Membership, plus a recurring practice room reservation.
+Facilitator Membership
+MORE DETAILS
+For yoga teachers, movement educators, workshop leaders, artists, and community builders seeking a consistent home for their offerings.
+Facilitator Membership includes everything in Community Membership, plus recurring access to the Gathering Room.
+Caretaker Membership
+MORE DETAILS
+For community members who want to play an active role in caring for Held Space.
+The Caretaker Membership is an exchange of service for membership, designed for local members who feel called to help steward the space and support the community behind the scenes.
+Mutual Aid Sponsor
+APPLY HERE
+For those who want to support the growth and sustainability of Held Space. This generous gift helps us to cultivate an accessible, community-centered home for healing and care.
+Monthly or annual donations of your choice.
+No minimum commitment.
+Want to try out Held Space for the day or reserve a private room by the hour? Now you can get a taste before committing for membership!
+Email us hello@heldspacebk.com to sign up for your day pass.
+NEW! Day Pass
+Interested in joining Held Space or reserving the Gathering Room?
+Come stop by for a tour! Tours are the first and third Friday of every month, between 12 - 2 pm.
+RSVP HERE
+Membership FAQs
+DO I HAVE TO BE A LICENSED PROFESSIONAL TO JOIN THE COLLECTIVE?
+WILL I BE EMPLOYED BY HELD SPACE?
+WILL HELD SPACE MANAGE MY ATTENDEES?
+DOES HELD SPACE DICTATE TICKET PRICING OR TAKE A CUT OF MY EARNINGS?
+DO I HAVE TO BE A MEMBER TO RENT THE GATHERING ROOM?
+follow along on the gram
+be
+(held)
+in the community
+© HELD SPACE LLC 2026
+brand & web design: natalie linnea
+T&C | PRIVACY
+960 MANHATTAN AVE, 4TH FLOOR | BROOKLYN, NY 11222
+HELLO@HELDSPACEBK.COM
+listen while you scroll
+get in touch:
+BACK TO TOP

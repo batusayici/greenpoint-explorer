@@ -29,3 +29,57 @@ Thank you!
 Info
 Info
 Powered by Squarespace
+
+
+## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
+# Captured by the new roster `detail` mechanism and merged here so the
+# sourceQuote gate can re-check these cards. Merged rather than promoted via
+# --mark-ingested on purpose: marking would flag unreviewed content as already
+# processed and hide real supply from the next run.
+
+## [DETAIL] https://yarostudios.com/membership
+SUMMER CLASS REGISTRATION IS OPEN!
+ABOUTTEAMCLASSES
+ADULT SEMESTER CLASSES
+ONE TIME WHEEL CLASSES
+WORKSHOPS
+KIDS AFTER SCHOOL PROGRAM
+KIDS SUMMER CLAY CAMP
+MEMBERSHIPEVENTS & PRIVATE CLASSESCONTACTGIFT CARDS
+Interested in Membership?
+Membership at Yaro is intended for ceramicists who are comfortable working independently and have a solid understanding of the full ceramic process.
+To be considered for membership, please complete our Membership Application. We'll review your application and follow up by email.
+If approved, we'll invite you to visit the studio and discuss membership options, availability, and next steps.
+Not quite ready for membership?
+No worries! Many members begin through our classes, workshops, or independent study offerings before transitioning into membership.
+Questions? Email us at info@yarostudios.com
+Apply For Membership
+Membership includes:
+24/7 access
+shelf storage
+access to studio facilities and all ceramic equipment
+throwing wheels with personal work stations
+communal work tables & tools
+20+ glazes
+Discounts on yaro workshops & classes
+Opportunities to collaborate in upcoming curated shows
+A little about the space:
+Prime & accessible location on Kent St in Greenpoint, Brooklyn (a block away from the Greenpoint Av G stop and 2 blocks from the East River Ferry)
+Natural sunlight & state of the art studio lighting
+Fully air conditioned & heated studio with HVAC & filtration system
+Throwing wheels & throwing designated areas
+5 Kilns, all available for rental
+Large communal work tables for hand-building
+Glazing room, glazing equipment & studio test tiles
+Quiet work environment
+Pricing
+$300/mo Full Shelf & $260/mo Half Shelf
+*Membership pricing includes tax. Additional costs to our membership fees include clay and firing fees at 4 cents per cubic inch bisque/glaze firings & tax.
+Commitment & Cancellation Notice
+Memberships require a minimum 3-month commitment. After that, you can cancel anytime with at least 30 days’ notice before your next billing date.
+Please email info@yarostudios.com for questions :)
+Subscribe
+Sign up to receive news and updates.
+SIGN UP
+We respect your privacy.
+Powered by Squarespace

@@ -3178,5 +3178,35 @@
         "-73.9509375"
       ]
     }
+  },
+  "55 Nassau Ave, 2E, Brooklyn, NY 11222": {
+    "query": "55 Nassau Ave, 2E, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T18:44:27.311Z",
+    "hit": null
+  },
+  "55 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "55 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T18:44:50.689Z",
+    "hit": {
+      "place_id": 360534317,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842861227,
+      "lat": "40.7233679",
+      "lon": "-73.9523393",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Yuu",
+      "display_name": "Yuu, 55, Nassau Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7233179",
+        "40.7234179",
+        "-73.9523893",
+        "-73.9522893"
+      ]
+    }
   }
 }

@@ -4,7 +4,42 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-12 (latest) — Stoopwise LLC: Terms, Privacy, and a legal footer
+## 2026-08-12 (latest) — The locally-owned gate, written as a rule; and where a ruling has to land
+
+Two cards were held on the Wednesday Greenpointers run and **both were released the same day.**
+Neither release needed new judgment — one needed a rule to be written down where the routine could
+read it, the other needed a host opened.
+
+1. **The gate turns on ATTRIBUTABILITY, not on counting locations.** An independently-owned business
+   with more than one location **passes** when the carded claim is unambiguously tied to the
+   Greenpoint address, and **fails** when the source cannot attribute it there. This is not a new
+   decision — the Bios entry below states it outright ("Multi-location is not itself disqualifying —
+   unattributable is") — but it now lives in `SKILL.md` with both sides of the precedent list:
+   dropped are PRESS (5 locations, no attribution) and Greek Kitchen ("Specials vary by location");
+   kept are Bios, Brooklyn Craft Company (`In Greenpoint:` headings), CIBONE, and now **Threes
+   Brewing** (`threes-flea-market-0815` — the listing names "Threes Brewing Greenpoint, 113 Franklin
+   St." outright).
+2. **The durable failure was a doc, not a judgment.** `SKILL.md`'s gate line read *"PRESS dropped,
+   **multi-location**"* — the instance instead of the rule — so an unattended routine applied the
+   count and held a fully-sourced, fully-geocoded card that the decision log had already cleared
+   hours earlier. **A ruling that changes a gate has to land in `SKILL.md` in the same change as
+   `DECISION_LOG.md`.** The log is what humans read; the skill file is what the routine reads, and
+   only one of them was updated. Cite the rule, never the count.
+3. **`buffalofirefly.com` allowlisted, and the fetch improved the card rather than just unblocking
+   it** — the opposite of the Bios case below. The routine's egress denies the host (CONNECT 403)
+   and Nominatim has no result for the venue name, so the address was unreadable to the run. From an
+   interactive session the site states `55 Nassau Ave, 2E, Brooklyn, NY 11222` in its own CONTACT
+   INFO and again on the session page, plus **"Thursday, Aug 13 · 7:00–8:15pm"** and **"In person
+   $55"** — so `buffalo-firefly-soundbath-0813` ships with a real end time instead of the roundup's
+   open-ended 7pm. Same attributability ruling clears it (Brooklyn + Richmond VA; the session sits
+   under the site's own "Brooklyn Events" heading). Evidence persisted under `[R1 PERSISTED
+   2026-08-12c]`. **Nominatim needs the unit suffix stripped** — `geocodeQuery` carries the stripped
+   form so the card can keep the address the source actually states.
+4. **Both cards were hours from being moot.** The events were 8/13 and 8/15; a Monday full run would
+   have found nothing to ship. When a hold is time-critical the PR has to say so in the summary, not
+   only in the write-up — that is what made these two get read in time.
+
+## 2026-08-12 — Stoopwise LLC: Terms, Privacy, and a legal footer
 
 **Batu confirmed Stoopwise LLC is formed in New York**, which is the condition both legal drafts
 gated on, so the pages publish with the LLC named as operator. Decisions taken while finalizing:
