@@ -1,3 +1,10 @@
+name: Spark Session Night
+start_date_raw: 2026-08-25
+start_time: 5:00 pm
+end_date_raw: 2026-08-25
+end_time: 8:00 pm
+html_link: https://www.facebook.com/events/1059709796558490
+
 name: Tote-ally 20 Sale!
 start_date_raw: 2026-08-14
 start_time: 11:00 am

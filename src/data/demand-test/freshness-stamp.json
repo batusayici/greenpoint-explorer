@@ -1,6 +1,6 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-08-11T14:30:00-04:00",
+  "lastRunAt": "2026-08-12T14:30:00-04:00",
   "cardChecked": {
     "sailor-and-siren": "2026-08-04",
     "core-press": null,
@@ -55,19 +55,13 @@
     "community-yoga-transmitter-tuesdays": "2026-08-02",
     "marianella-19th-anniversary-sale": "2026-08-07",
     "bk-youth-ballet-adult-term": "2026-08-02",
-    "bk-youth-ballet-trial-class": "2026-08-02",
     "nb-chess-parkhouse-0806": "2026-08-04",
-    "library-tuesday-programs-0811": "2026-08-09",
-    "kirbees-sneak-preview-0811": "2026-08-04",
-    "paulie-gees-jabberjaw-comedy-0811": "2026-08-04",
     "library-wednesday-programs-0812": "2026-08-09",
     "troost-barba-yiorgi-0813": "2026-08-10",
     "troost-jeff-widner-0815": "2026-08-10",
     "library-thursday-programs-0813": "2026-08-09",
     "library-friday-garden-0814": "2026-08-09",
-    "film-noir-cult-cinema-0811": "2026-08-10",
     "film-noir-watch-me-0813": "2026-08-10",
-    "comedy-raanan-hershberg-0811": "2026-08-06",
     "comedy-carmen-lagala-0815": "2026-08-06",
     "comedy-dani-castaneda-0816": "2026-08-06",
     "carcosa-hot-dog-day-0815": "2026-08-07",
@@ -80,7 +74,6 @@
     "word-open-mic-0814": "2026-08-09",
     "word-journal-club-0817": "2026-08-09",
     "bcc-knitting-101-0817": "2026-08-07",
-    "troost-stan-zenkov-0811": "2026-08-10",
     "troost-timothy-okeefe-0814": "2026-08-10",
     "troost-gabriel-heinemann-0816": "2026-08-10",
     "troost-julia-kwamya-0818": "2026-08-10",
@@ -132,7 +125,6 @@
     "cibone-restation-showcase-0815": "2026-08-07",
     "word-herman-melville-comedy-0820": "2026-08-09",
     "community-yoga-transmitter-thursdays": "2026-08-09",
-    "film-noir-arrebato-0811": "2026-08-10",
     "film-noir-phedre-0824": "2026-08-10",
     "troost-andrew-mccann-quartet-0823": "2026-08-10",
     "troost-john-dorney-0824": "2026-08-10",
@@ -145,6 +137,9 @@
     "troost-lumens-0825": "2026-08-10",
     "moon-bunny-two-day-camp-4-7-0813": "2026-08-10",
     "moon-bunny-weekday-camp-8-12-0817": "2026-08-10",
-    "moon-bunny-two-day-camp-8-12-0824": "2026-08-10"
+    "moon-bunny-two-day-camp-8-12-0824": "2026-08-10",
+    "library-saturday-storytime-0822": "2026-08-09",
+    "troost-louis-prince-0826": "2026-08-10",
+    "star-deli-viral-boost": "2026-08-04"
   }
 }

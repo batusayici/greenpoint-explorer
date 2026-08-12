@@ -1,47 +1,3 @@
-ts_title: Free English Class
-ds_event_start_date: 2026-08-11T18:00:00Z
-ds_event_end_date: 2026-08-11T20:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","ESOL","Immigrant Services","Welcome ESOL"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: The library offers free ESOL classes for beginners learning English. Classes meet twice a week Improve your English Practice with other adults learning English This class is first-come, first-served until classroom hits capacity. Registration is not necessary. (For non-beginner classes, integrated English literacy, or classes outside of the Greenpoint Library, please visit https://www.bklynlibrary.org/adult-learning/esol )
-
-ts_title: Teen Time with Teen Interns: Scavenger Hunt
-ds_event_start_date: 2026-08-11T19:00:00Z
-ds_event_end_date: 2026-08-11T20:45:00Z
-ss_event_location: Greenpoint, Eco Lab 3 (Teens)
-ss_event_location_master: Greenpoint Library
-ss_event_age: Teens & Young Adults
-sm_event_tags: ["table-top & board games","teen time"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: PLEASE NOTE: this program is run by TEENAGE Interns. Teens ages 13-19 , stop by the Teen Zone for a Scavenger Hunt. On this Scavenger Hunt, teens will search for Mr. Bear and rescue him through riddles and clues he's left behind. Once teens have succeeded in finding Mr. Bear, they will have to separate and whoever finds the Teen Librarian first wins a prize.
-
-ts_title: Keep Calm & Carry Yarn - Sewists Welcome!
-ds_event_start_date: 2026-08-11T21:30:00Z
-ds_event_end_date: 2026-08-11T23:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","arts and crafts","fiber arts","knitting and crocheting"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community. Bring your handwork project to show off, get inspired, or get advice. Lessons are available for beginners in knitting, mending, or crochet. Learning supplies can be provided. All genders welcomed--teens too! **MEETS WEEKLY! If you need a lesson, shoot an email to MRogers@bklynlibrary.org.
-
-ts_title: English Conversation Group
-ds_event_start_date: 2026-08-11T22:00:00Z
-ds_event_end_date: 2026-08-11T23:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","english conversation group","Immigrant Services"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join other adults who are learning to speak English in this weekly English Conversation Group. This is a drop-in program. Patrons will be admitted on a first-come, first-serve basis until the classroom reaches capacity.
-
 ts_title: Toddler Time
 ds_event_start_date: 2026-08-12T14:30:00Z
 ds_event_end_date: 2026-08-12T15:00:00Z
@@ -437,3 +393,47 @@ sm_event_tags: ["first five years","gardening","storytime"]
 is_event_registration: 0
 is_event_canceled: 0
 ts_body: Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well. For ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures. Please be advised that the garden gets lots of very bright sun; we recommend bringing hats and/or other forms of sun protection.
+
+ts_title: Garden Hours with a Garden Educator
+ds_event_start_date: 2026-08-21T19:00:00Z
+ds_event_end_date: 2026-08-21T20:00:00Z
+ss_event_location: Greenpoint, Demonstration Garden
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["gardening","health and wellness"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather. All ages welcome. All furniture is generously provided by the Friends of Greenpoint Library .
+
+ts_title: After School Movie
+ds_event_start_date: 2026-08-21T19:00:00Z
+ds_event_end_date: 2026-08-21T20:45:00Z
+ss_event_location: Greenpoint, Eco Lab 1
+ss_event_location_master: Greenpoint Library
+ss_event_age: Kids
+sm_event_tags: ["after school","family movie","kids","movies","movies at the library"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us after school for a kid-friendly movie! This week's movie will be: "______" (---- ) Rated -, -- minutes -
+
+ts_title: The Cycle Alliance's Period Pantry at Greenpoint (Available During ALL Open Branch Hours)
+ds_event_start_date: 2026-08-22T14:00:00Z
+ds_event_end_date: 2026-08-22T21:00:00Z
+ss_event_location: Greenpoint, Eco Lab 3 (Teens)
+ss_event_location_master: Greenpoint Library
+ss_event_age: Teens & Young Adults
+sm_event_tags: ["Cycle Alliance","health and wellness","mental health","teen time"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours . If you are someone who would like to pick up a period wellness bag containing a variety of menstrual hygiene products brought to you by community donations, zines, and check out books please stop by our Teen Zone! This is open to all ages and genders .
+
+ts_title: Saturday Family StoryTime
+ds_event_start_date: 2026-08-22T14:30:00Z
+ds_event_end_date: 2026-08-22T15:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Kids
+sm_event_tags: ["all ages","Events for Youth and Family","first five years","music","saturday storytime","stomp clap and sing","storytime"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Saturday Family StoryTime Join us for Saturday morning @ 10:30am for Family StoryTime in the Children's Area! We will be singing songs, reading books together, and enjoying our FREEDOM TO READ together. All ages are welcome *No Registration or tickets necessary*

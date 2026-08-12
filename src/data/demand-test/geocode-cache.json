@@ -2978,5 +2978,30 @@
         "-73.9521058"
       ]
     }
+  },
+  "176 Nassau Avenue, Brooklyn, NY 11222": {
+    "query": "176 Nassau Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-12T13:23:59.364Z",
+    "hit": {
+      "place_id": 402064511,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 517754783,
+      "lat": "40.7252195",
+      "lon": "-73.9461395",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "176, Nassau Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7251695",
+        "40.7252695",
+        "-73.9461895",
+        "-73.9460895"
+      ]
+    }
   }
 }

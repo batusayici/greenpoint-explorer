@@ -367,14 +367,28 @@ test("seed has exactly 75 cards across the six layers", () => {
   // kids rule and the bcc-kids-sewing-camp precedent. Two further Moon Bunny
   // sessions were NOT carded: their first day precedes the API window, so
   // their span would have been inferred. 140 − 1 + 5 = 144.
-  assert.equal(seed.cards.length, 144);
+  // 2026-08-12 daily thin refresh. Expiry took the seven past 8/11 items
+  // (144 → 137). Then −1: `bk-youth-ballet-trial-class` was DELETED, not
+  // expired. Expiry FLAGGED it as a recurring deal past its 8/9
+  // verified-through, and the source cannot be re-verified — bkyouthballet.com
+  // answers a 169-byte JS shell to plain fetch (browser UA, redirects
+  // followed) and the browser path is down with the known chromium
+  // CONNECT-reset fault. A deal with no current source does not stay live; it
+  // is in `watchItems` to be re-authored the day the source is readable.
+  // +3: library-saturday-storytime-0822 (8/22 had no library card at all),
+  // troost-louis-prince-0826 (the back-of-window night that was the coverage
+  // script's one unexplained gap) and star-deli-viral-boost. The 8/21 library
+  // card was MERGED rather than duplicated — `library-sensory-garden-0821`
+  // keeps its id and becomes the grouped Friday day-card now that the branch
+  // added two afternoon programs to the same day. 137 − 1 + 3 = 139.
+  assert.equal(seed.cards.length, 139);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 74, "73 + the 8/21 library Sensory Garden Hour (2026-08-10)");
-  assert.equal(count((c) => c.category === "discount"), 7, "5 + Maison Jar bulk refills and the Selformer summer promo (2026-08-10)");
-  assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 23, "21 + the 2 salvaged Troost nights");
+  assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
+  assert.equal(count((c) => c.category === "event"), 69, "74 − 7 expired 8/11 events + the 8/22 library storytime and Troost 8/26");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 − the unverifiable Brooklyn Youth Ballet trial class");
+  assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
+  assert.equal(count((c) => c.filters.includes("live_music")), 23, "23 − the expired 8/11 Troost night + Troost 8/26");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -444,7 +458,11 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // never a date, which the no-stated-end-date rule fills rather than holds)
   // and Selformer's Summer Fling promo, whose endsAt is the source's own
   // "available through Aug 15" rather than an edition-window default.
-  assert.equal(deals.length, 7);
+  // 2026-08-12: −1. bk-youth-ballet-trial-class was FLAGGED past its 8/9
+  // verified-through and deleted rather than re-verified — the source is a
+  // 169-byte JS shell to plain fetch and the browser path is down, so there is
+  // no current source for the price. It is in watchItems, not lost.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -470,7 +488,8 @@ test("news cards name their publisher and sit in the news layer", () => {
   const news = seed.cards.filter((c) => c.category === "news");
   // 2026-07-27: +3 civic-issue cards (Monitor Point approval, McGuinness
   // redesign construction, Meeker Plume monitoring) — coverage-gap fix.
-  assert.equal(news.length, 13);
+  // 2026-08-12: +1 — the Star Deli viral-boost story (Greenpointers 8/11).
+  assert.equal(news.length, 14);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -523,13 +542,13 @@ test("free-ness is designated only where the source states it (tester feedback #
     // "teen interns are running a free scavenger hunt" and "You can get free
     // tickets here". The 8/12 library card is NOT here: its garden club line
     // never says free. (library-tuesday-programs-0804 expired 2026-08-06.)
-    "library-tuesday-programs-0811",
+    // (library-tuesday-programs-0811 expired out 2026-08-12)
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
     // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-guardians-0819",
-    "paulie-gees-jabberjaw-comedy-0811",
+    // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
     // 2026-08-06: the 8/7 Ford v Ferrari card was DELETED, not rolled forward —
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
@@ -769,10 +788,7 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     );
   }
   assert.deepEqual(lens.map((c) => c.id).sort(), [
-    // 2026-08-03: the ballet trial double-files family_kids + deals_memberships,
-    // the same shape as moon-bunny-back-to-school — "kids events go in kids"
-    // bars double-filing into arts_culture/games, not into a deals lens.
-    "bk-youth-ballet-trial-class",
+    // (bk-youth-ballet-trial-class deleted 2026-08-12 — unverifiable source)
     "carcosa-membership-guest-pass",
     // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
     // different question than the event scan that preceded it: three of these
@@ -893,8 +909,8 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // (the recurring Thu/Fri/Sat showcases are deliberately not carded), so the
   // club's link list is four deep.
   // 2026-08-10: expiry took the 8/8 Secret Showcase and pruned the link.
+  // 2026-08-12: expiry took the 8/11 Raanan Hershberg night and pruned the link.
   assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
-    "comedy-raanan-hershberg-0811",
     "comedy-carmen-lagala-0815",
     "comedy-dani-castaneda-0816",
     // 2026-08-07: the four standing showcases, carded once each as recurring

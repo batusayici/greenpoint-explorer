@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-11",
+  "version": "2026-08-12",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -929,7 +929,6 @@
       "lat": 40.729567,
       "lng": -73.958337,
       "relatedCardIds": [
-        "comedy-raanan-hershberg-0811",
         "comedy-carmen-lagala-0815",
         "comedy-dani-castaneda-0816",
         "comedy-wednesday-cysk",
@@ -982,7 +981,6 @@
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-cult-cinema-0811",
         "film-noir-watch-me-0813",
         "film-noir-watch-me-0821",
         "film-noir-film-club-0813"
@@ -1277,13 +1275,13 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-12",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-tuesday-programs-0811",
         "library-wednesday-programs-0812",
-        "library-thursday-programs-0813"
+        "library-thursday-programs-0813",
+        "library-saturday-storytime-0822"
       ]
     },
     {
@@ -1760,7 +1758,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-08-03",
+      "updatedAt": "2026-08-12",
       "id": "bk-youth-ballet-enrollment",
       "title": "Brooklyn Youth Ballet fall enrollment",
       "kicker": "Ballet signup + $40 trial class",
@@ -1789,8 +1787,7 @@
       "lat": 40.729869,
       "lng": -73.959022,
       "relatedCardIds": [
-        "bk-youth-ballet-adult-term",
-        "bk-youth-ballet-trial-class"
+        "bk-youth-ballet-adult-term"
       ]
     },
     {
@@ -2524,53 +2521,6 @@
       "updatedAt": "2026-08-03"
     },
     {
-      "id": "bk-youth-ballet-trial-class",
-      "category": "discount",
-      "title": "$40 trial class at Brooklyn Youth Ballet",
-      "kicker": "One trial class, credited to tuition",
-      "endsAt": "2026-08-09T23:59:00-04:00",
-      "recurring": true,
-      "locationName": "Brooklyn Youth Ballet",
-      "address": "37 Greenpoint Ave",
-      "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
-      "lat": 40.729869,
-      "lng": -73.959022,
-      "filters": [
-        "family_kids",
-        "deals_memberships"
-      ],
-      "summary": "New students can take a single class before committing to a semester. Limit one per student per semester.",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://bkyouthballet.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Brooklyn Youth Ballet calendar",
-          "url": "https://bkyouthballet.com/calendar/",
-          "publisher": "Brooklyn Youth Ballet",
-          "date": "2026-08-03"
-        }
-      ],
-      "sourceQuote": "Try a single trial class before enrolling in a full semester — just $40, credited toward your tuition when you enroll. One trial class per student per semester.",
-      "relatedCardIds": [
-        "bk-youth-ballet-enrollment"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "direct",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
-    },
-    {
       "audience": [
         "resident"
       ],
@@ -2629,143 +2579,6 @@
           "thu"
         ]
       }
-    },
-    {
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "library-tuesday-programs-0811",
-      "title": "Tuesday at Greenpoint Library",
-      "kicker": "Teen scavenger hunt with a prize",
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "free": true,
-      "startsAt": "2026-08-11T15:00:00-04:00",
-      "endsAt": "2026-08-11T16:45:00-04:00",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "summary": "Interns in Eco Lab 3 send other teens after Mr. Bear through a trail of riddles and clues, and there is something waiting at the end.",
-      "actions": [
-        {
-          "label": "Event page",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/calendar/teen-time-teen-interns-greenpoint-eco-lab-3-20260811-0300pm"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Teen Scavenger Hunt @ Greenpoint Library, 3 p.m. to 4:45 p.m: In Eco Lab 3, teen interns are running a free scavenger hunt for other teens. Participants will search for Mr. Bear and rescue him through riddles and clues. There will be a prize!",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "evidenceStrength": "medium_high",
-      "lat": 40.72606,
-      "lng": -73.950709
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "kirbees-sneak-preview-0811",
-      "title": "Kirbee's sneak preview",
-      "kicker": "A look in before the BBQ joint opens",
-      "category": "event",
-      "filters": [
-        "food_drink"
-      ],
-      "startsAt": "2026-08-11T17:00:00-04:00",
-      "endsAt": "2026-08-11T23:59:00-04:00",
-      "locationName": "Kirbee's",
-      "address": "55 McGuinness Blvd, Brooklyn, NY 11222",
-      "geocodeQuery": "55 McGuinness Boulevard, Brooklyn, NY 11222",
-      "summary": "First come, first served at the McGuinness Boulevard space, from the team behind Goldee's Bar-B-Q and Barbs B Q in Texas.",
-      "actions": [
-        {
-          "label": "Announcement",
-          "type": "learn_more",
-          "url": "https://www.instagram.com/p/Dbl2smzpviL/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        },
-        {
-          "title": "Kirbee's to Bring Award-Winning Texan BBQ to Greenpoint This Summer",
-          "url": "https://greenpointers.com/2026/03/05/kirbees-to-bring-award-winning-texan-bbq-to-greenpoint-this-summer/",
-          "publisher": "Greenpointers",
-          "date": "2026-03-05"
-        }
-      ],
-      "sourceQuote": "Sneak Preview @ Kirbee’s, 5 p.m.: BBQ joint Kirbee’s is hosting a sneak preview before their new restaurant opens. It’s first come, first served.",
-      "evidenceStrength": "medium_high",
-      "lat": 40.724271,
-      "lng": -73.948208
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "paulie-gees-jabberjaw-comedy-0811",
-      "title": "Jabberjaw Comedy at Paulie Gee's Slice Shop",
-      "kicker": "Free stand-up over slices on Franklin",
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": true,
-      "startsAt": "2026-08-11T20:00:00-04:00",
-      "endsAt": "2026-08-11T23:59:00-04:00",
-      "locationName": "Paulie Gee's Slice Shop",
-      "address": "110 Franklin St, Brooklyn, NY 11222",
-      "geocodeQuery": "Paulie Gee's Slice Shop, Brooklyn, NY",
-      "summary": "Jabberjaw is bringing a new comedy bill to the pizza counter; reserve a spot in advance through the show's ticket page.",
-      "actions": [
-        {
-          "label": "Free tickets",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/jabberjaw-comedy-paulie-gees-slice-shop-tickets-1989796829882"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Comedy @ Paulie Gee’s Slice Shop, 8 p.m.: Jabberjaw Comedy is serving up a fresh stand-up show at Paulie Gee’s Slice Shop. You can get free tickets here .",
-      "evidenceStrength": "medium_high",
-      "lat": 40.728359,
-      "lng": -73.95719
     },
     {
       "audience": [
@@ -2991,51 +2804,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "film-noir-cult-cinema-0811",
-      "title": "Cult Cinema at Film Noir",
-      "kicker": "The weekly late-night cult slot",
-      "summary": "The Meserole Avenue cinema's standing cult programme. The listing names the slot but not the title screening.",
-      "startsAt": "2026-08-11T21:00:00-04:00",
-      "endsAt": "2026-08-11T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: CULT CINEMA",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-06"
-        }
-      ],
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
       "updatedAt": "2026-08-10",
       "id": "film-noir-watch-me-0813",
       "title": "Watch Me continues at Film Noir Cinema",
@@ -3069,51 +2837,6 @@
       ],
       "lat": 40.727314,
       "lng": -73.951608
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "comedy-raanan-hershberg-0811",
-      "title": "Raanan Hershberg at Greenpoint Comedy Club",
-      "kicker": "Headline set, $25",
-      "summary": "A one-off headline booking on a Tuesday, outside the club's usual Thursday-to-Saturday showcase run.",
-      "startsAt": "2026-08-11T19:30:00-04:00",
-      "endsAt": "2026-08-11T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Tue Aug 11, 2026, 7:30 PM\nGreenpoint Comedy Club Presents: Raanan Hershberg",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-06"
-        }
-      ],
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
-      ],
-      "lat": 40.729567,
-      "lng": -73.958337
     },
     {
       "category": "event",
@@ -3638,48 +3361,6 @@
       ],
       "lat": 40.730461,
       "lng": -73.953114
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "id": "troost-stan-zenkov-0811",
-      "title": "Stan Zenkov's improvised quintet at Troost",
-      "kicker": "Creative improvised music",
-      "summary": "Stan Zenkov with Ayumi Ishito, Nathan Chamberlain, Evan Crane and Yuko Togami. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-11T00:00:00-04:00",
-      "endsAt": "2026-08-11T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: Stan Zenkov // with Ayumi Ishito, Nathan Chamberlain, Evan Crane, Yuko Togami // creative improvised music from the <3\nstart.date: 2026-08-11",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
     },
     {
       "category": "event",
@@ -6067,51 +5748,6 @@
       ],
       "lat": 40.727314,
       "lng": -73.951608,
-      "id": "film-noir-arrebato-0811",
-      "title": "Arrebato at Film Noir Cinema",
-      "kicker": "Early show before the cult slot",
-      "summary": "A 7pm screening on the Meserole Avenue cinema's Tuesday bill, ahead of the weekly late-night cult programme.",
-      "startsAt": "2026-08-11T19:00:00-04:00",
-      "endsAt": "2026-08-11T20:00:00-04:00",
-      "sourceQuote": "title: ARREBATO\nstartDate: 2026-08-11T23:00:00.324Z\nendDate: 2026-08-12T00:00:00.324Z",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-10"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608,
       "id": "film-noir-phedre-0824",
       "title": "Phedre at Film Noir Cinema",
       "kicker": "Opens the following Monday",
@@ -6421,7 +6057,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-12",
       "free": false,
       "id": "library-sensory-garden-0821",
       "category": "event",
@@ -6429,13 +6065,13 @@
         "family_kids"
       ],
       "startsAt": "2026-08-21T10:30:00-04:00",
-      "endsAt": "2026-08-21T11:30:00-04:00",
-      "title": "Sensory Garden Hour at Greenpoint Library",
-      "kicker": "Rooftop garden time for under-fives",
-      "summary": "A short themed storytime, then activities set up among the plants. No registration needed; it can be called off in rain or extreme heat.",
+      "endsAt": "2026-08-21T16:45:00-04:00",
+      "title": "Friday at Greenpoint Library",
+      "kicker": "Rooftop garden, then a kids' movie",
+      "summary": "Storytime for under-fives at 10:30, an educator answering plant questions upstairs 3–4, and a film in Eco Lab 1 at 3. No registration for any of them.",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well. For ages 0-5. No registration required.",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-21T14:30:00Z\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-08-21T19:00:00Z\nts_body: Garden Educator will be on site from 3-4pm on Fridays, weather permitting.\nts_title: After School Movie\nds_event_start_date: 2026-08-21T19:00:00Z\nts_body: Join us after school for a kid-friendly movie!",
       "actions": [
         {
           "label": "Branch calendar",
@@ -6681,6 +6317,138 @@
       "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-24T13:00:00.000Z\nend_at: 2026-08-24T19:00:00.000Z\n\nname: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-25T13:00:00.000Z\nend_at: 2026-08-25T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
       "lat": 40.736575,
       "lng": -73.952327
+    },
+    {
+      "id": "library-saturday-storytime-0822",
+      "category": "event",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "title": "Saturday Family StoryTime at Greenpoint Library",
+      "kicker": "Songs and books in the Children's Area",
+      "filters": [
+        "family_kids"
+      ],
+      "startsAt": "2026-08-22T10:30:00-04:00",
+      "endsAt": "2026-08-22T11:00:00-04:00",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "All ages are welcome and the branch asks for no registration and no tickets — turn up on the morning.",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-12"
+        }
+      ],
+      "sourceQuote": "Saturday Family StoryTime Join us for Saturday morning @ 10:30am for Family StoryTime in the Children's Area! We will be singing songs, reading books together, and enjoying our FREEDOM TO READ together. All ages are welcome *No Registration or tickets necessary*",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "troost-louis-prince-0826",
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "title": "LOUIS PRINCE at Troost",
+      "kicker": "One line on the venue calendar",
+      "filters": [
+        "live_music"
+      ],
+      "startsAt": "2026-08-26T00:00:00-04:00",
+      "endsAt": "2026-08-26T23:59:00-04:00",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "summary": "Troost's own Google Calendar carries just the name: no support acts, no door time, no ticket link.",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-12"
+        }
+      ],
+      "sourceQuote": "summary: LOUIS PRINCE\nstart.date: 2026-08-26",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "star-deli-viral-boost",
+      "category": "news",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-12",
+      "updatedAt": "2026-08-12",
+      "title": "A viral video windfall for Star Deli",
+      "kicker": "$6,000 raised to fix a broken freezer",
+      "filters": [
+        "news"
+      ],
+      "locationName": "Star Deli",
+      "address": "176 Nassau Ave, Brooklyn, NY 11222",
+      "summary": "Videos by Instagram creator @pov.outside passed 4 million views; Greenpointers names software engineer Shuayb Qureshi as the man behind the surge.",
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/11/nyc-reddit-user-becomes-silent-superman-for-greenpoints-local-businesses/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NYC Reddit User Becomes Silent Superman for Greenpoint’s Local Businesses",
+          "url": "https://greenpointers.com/2026/08/11/nyc-reddit-user-becomes-silent-superman-for-greenpoints-local-businesses/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-11"
+        }
+      ],
+      "sourceQuote": "A few weeks ago, customers began pouring into Greenpoint staple Star Deli (176 Nassau Ave.) after a series of videos posted by Instagram creator @pov.outside unexpectedly went viral, amassing more than 4 million views. Google Reviews multiplied overnight and strangers from around the world donated more than $6,000 to repair the deli’s broken freezer.\nBehind the sudden surge was Shuayb Qureshi, a software engineer at Meta by trade and champion of neighborhood businesses by choice.",
+      "geocodeQuery": "176 Nassau Avenue, Brooklyn, NY 11222",
+      "lat": 40.72522,
+      "lng": -73.946139
     }
   ]
 }
