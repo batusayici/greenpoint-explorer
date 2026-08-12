@@ -65,11 +65,26 @@ image-first venue never reaches a human.
 8. **`hello@townsquarebk.org` declined.** Its supply is already fully covered by the `town-square-bk`
    web source (both SummerStarz Fridays carded). Recorded so the discovery pass stops re-proposing
    it; registry additions widen the trusted-sender surface and need a reason beyond redundancy.
-9. **ASK, open: allowlist `www.biosapothecary.com`** (Batu, at claude.ai/code). The free herbalist
-   consult cannot ship until we know whether it is in-store at 61 West St or online, and SKILL.md is
-   explicit that a storefront pin implies you can walk there. Live instance of the 2026-08-10 R1
-   blind spot: the host is not a roster entry, so it can **never** appear in the run's
-   self-assembling `EGRESS DENIED` block and no allowlist round picks it up unless asked by name.
+9. **`www.biosapothecary.com` allowlisted — and the fetch disproved the card's premise rather than
+   unblocking it.** Live instance of the 2026-08-10 R1 blind spot: the host is not a roster entry,
+   so it can **never** appear in the run's self-assembling `EGRESS DENIED` block and no allowlist
+   round picks it up unless asked by name. Once open, the fetch found the emailed booking URL
+   **404s**, `/products/book-a-consultation` 404s, the homepage advertises no consultation, and a
+   site search for "herbalist" returns three products and the In-House Formulary page. **The service
+   exists nowhere on their own site.** So R1 could not answer in-store vs online; the answer came
+   from Batu directly (**in-store**), and the offer's own email footer signs from *61 West Street,
+   Brooklyn, NY 11222* — the Greenpoint shop — so the pin is first-party, not inferred. Card ships
+   as a standing `discount`, deliberately **linking the site root rather than the booking URL**: a
+   card must never send a resident to a dead page. Worth telling Bios their promo link is broken.
+   - **Bios KEPT at the locally-owned gate (Batu, 2026-08-12), and this is the line the gate draws.**
+     Their contact page states two locations — 61 West Street (Greenpoint) and 67 35th Street,
+     Industry City. That is *not* the Greek Kitchen case decided hours earlier, and the difference is
+     the point: Greek Kitchen spanned **two boroughs** with a page that **explicitly hedged which
+     location its offer applied to** ("Specials vary by location"), so its card could not be
+     attributed at all. Bios has a confirmed Greenpoint storefront and an offer emailed under that
+     storefront's own address. **Multi-location is not itself disqualifying — unattributable is.**
+     PRESS (5 locations, no Greenpoint attribution) and CIBONE (Tokyo + Brooklyn, ruled in on
+     2026-08-08 via the 50 Norman tenancy) sit on either side of the same line.
 
 ### Disposition
 

@@ -387,12 +387,15 @@ test("seed has exactly 75 cards across the six layers", () => {
   // Dreams On Command show did NOT become a card: under the exhibition ruling
   // an ongoing run belongs to the venue card, so `dreams-on-command` was updated
   // in place instead. 139 + 2 = 141.
-  assert.equal(seed.cards.length, 141);
+  // +1 (2026-08-12, Batu): the Bios Apothecary herbalist consult, released once
+  // Batu allowlisted the host, confirmed the consult is in-store, and kept Bios
+  // through the locally-owned gate. 141 + 1 = 142.
+  assert.equal(seed.cards.length, 142);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
   assert.equal(count((c) => c.category === "event"), 71, "69 + the 2 cards released by the 2026-08-12 rulings (CIBONE HOZUBAG, Flower Cat mixer)");
-  assert.equal(count((c) => c.category === "discount"), 6, "7 − the unverifiable Brooklyn Youth Ballet trial class");
+  assert.equal(count((c) => c.category === "discount"), 7, "6 + the Bios Apothecary herbalist consult (2026-08-12)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
   assert.equal(count((c) => c.filters.includes("live_music")), 23, "23 − the expired 8/11 Troost night + Troost 8/26");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
@@ -468,7 +471,10 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // verified-through and deleted rather than re-verified — the source is a
   // 169-byte JS shell to plain fetch and the browser path is down, so there is
   // no current source for the price. It is in watchItems, not lost.
-  assert.equal(deals.length, 6);
+  // +1 (2026-08-12): the Bios herbalist consult — a standing offer with no
+  // stated end date, so `recurring: true` + verified-through per the
+  // no-stated-end-date rule, not a hold.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -818,6 +824,8 @@ test("the deals & memberships lens holds only deals and standing memberships", (
   }
   assert.deepEqual(lens.map((c) => c.id).sort(), [
     // (bk-youth-ballet-trial-class deleted 2026-08-12 — unverifiable source)
+    // 2026-08-12: standing offer at no extra cost, in-store at 61 West St.
+    "bios-apothecary-herbalist-consultation",
     "carcosa-membership-guest-pass",
     // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
     // different question than the event scan that preceded it: three of these

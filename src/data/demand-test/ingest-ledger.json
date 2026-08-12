@@ -1561,12 +1561,6 @@
       "addedAt": "2026-08-11"
     },
     {
-      "name": "Bios Apothecary — herbalist consult: site has no such service, and 2 locations",
-      "note": "RESOLVED-AS-BLOCKED 2026-08-12. Batu allowlisted the host and the R1 fetch now succeeds — it did NOT settle the question, it settled a different one. The booking URL from the 8/10 email (/products/book-a-consultation?variant=31794879463508) returns 404, as does /products/book-a-consultation; the homepage advertises no herbalist consultation; and a site search for 'herbalist' returns only three products and the In-House Formulary page — no consultation service anywhere on the site. So the ONLY evidence for the offer is the email itself, and nothing states whether the consult is in-store at 61 West St or online. Under the storefront-pin rule the card still cannot ship. NEXT STEP is first-party, not another fetch: Bios is a registry sender — ask info@biosapothecary.com / 212-390-0442 whether the consult is in-store, and whether the booking link is broken. SEPARATELY, the contact page states TWO locations — 61 West Street (Greenpoint) and 67 35th Street Bldg. 5, Industry City — which raises the locally-owned gate that dropped greek-kitchen the same day. Two Brooklyn locations is not the same as Greek Kitchen's two boroughs, so this needs Batu's call before any Bios card ships.",
-      "addedAt": "2026-08-11",
-      "updatedAt": "2026-08-12"
-    },
-    {
       "name": "Flower Cat — Live Band Karaoke: Summer of Soul, Fri 8/28 (past the 14-day window)",
       "note": "Fully sourced and in area, just beyond the horizon (window ends 8/25). Verbatim: \"Live Band Karaoke: Summer of Soul / Friday, August 28, 2026 / 7:30 PM / 11:00 PM / Flower Cat\" and \"Outside musicians are welcomed and encouraged to come jam along as well! Sub in on drums, bass, piano, guitar or bring your own. Free entry! 2 drink minimum! Tip your musicians & bartender!\" Flower Cat is a normal re-snapshotted web source, so this rolls in on its own once 8/28 enters the horizon (a run on or after 8/14) — recorded here only so a free event is not lost if the listing moves. FREE ENTRY is stated outright, so `free: true` is available when it is carded.",
       "addedAt": "2026-08-11"
@@ -1589,6 +1583,11 @@
     {
       "name": "Greek Kitchen — daily specials rota (lunch $14.95, dinner $24.95)",
       "note": "HELD 2026-08-12 (source-blocked), PR ingest/daily-2026-08-12. greekkitchen.nyc/specials carries a full Sat-through-Thu rota with prices and times — \"Daily Lunch Special! Any Pita Sandwich with choice of Fries or Rice and Can Soda. $14.95\", \"11:00 AM - 04:00 PM\", \"Complete Dinner Special – $24.95 at Greek Kitchen\", \"06:00 PM - 10:00 PM\" — but the page's own header reads \"Specials vary by location.\" and the business runs a Brooklyn (912 Manhattan Ave) and a Queens location, with nothing on the page attributing the rota to either. Pinning it at the Greenpoint storefront would infer the one fact that decides whether the card is true. R1 attempted and exhausted: fetched the page (200, 86KB) and read its own hrefs — the site has exactly one /specials URL and no per-location variant. UNBLOCKS when the page labels the location, a per-location specials URL appears, or the Brooklyn store states the rota directly.",
+      "addedAt": "2026-08-12"
+    },
+    {
+      "name": "Bios Apothecary — their promo booking link is broken (tell them)",
+      "note": "2026-08-12: the 8/10 'Bespoke Skincare' email's CTA points at /products/book-a-consultation?variant=31794879463508, which 404s; the bare product URL 404s too, and the consultation appears nowhere on biosapothecary.com. The card therefore links the site root and says to ask in-store. Bios is a registry sender and a plausible Founding Partner conversation — worth telling them their own CTA is dead. Re-point the card's action if they fix it.",
       "addedAt": "2026-08-12"
     }
   ],

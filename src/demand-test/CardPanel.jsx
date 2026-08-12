@@ -899,6 +899,33 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           </a>
         </footer>
       )}
+      {/* Legal footer (2026-08-12, Stoopwise LLC formed). Last object in the
+          scroll on both layouts — it lives inside the panel, not the shell,
+          because the shell is a 100vh flex column and a shell-level footer
+          would spend viewport height on every screen forever.
+          The disclaimer sentence is the same promise the per-card "checked
+          <date>" line makes, said once for the whole surface; Corrections
+          points at the form the per-card "Report an error" link already uses,
+          so there is one correction route, not two. */}
+      <footer className="july-legal">
+        <p className="july-legal-note">
+          &copy; 2026 Stoopwise LLC. Sourced neighborhood information — details change, so verify
+          anything time-sensitive with the source.
+        </p>
+        <nav className="july-legal-links" aria-label="Legal">
+          <a href="/terms">Terms</a>
+          <a href="/privacy">Privacy</a>
+          <a
+            href={FEEDBACK_HREF}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "legal" })}
+          >
+            Corrections
+          </a>
+          <a href="mailto:hello@stoopwise.com">Contact</a>
+        </nav>
+      </footer>
     </aside>
   );
 }
