@@ -752,12 +752,33 @@ test("no card is lens-less except the markets rule's own class (2026-08-12)", ()
   // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
   // stragglers all resolved into Civic or Arts & Culture same day. It is now
   // also the sanctioned home for general-goods vendor markets, by name only.
+  //
+  // SUBSET, not exact match (2026-08-12, revised same day). This was first
+  // written as `deepEqual`, on the reasoning that a stale entry should fail
+  // loudly. That reasoning was wrong for THIS list, because of WHEN it fires:
+  // expiry DELETES cards, and expiry runs inside the unattended cloud ingest.
+  // So the very next run after a lens-less card expires would have died on a
+  // stale id — a scheduled job failing where nobody is watching, blocking a
+  // whole content refresh over a bookkeeping line. Loud failure earns its keep
+  // when a human is present to act on it; here it just stops the pipeline.
+  //
+  // What the check actually exists to catch is a card arriving with NO lens
+  // that nobody sanctioned — a taxonomy leak. A subset assertion catches that
+  // exactly, and tolerates the expiry race. Stale entries are reported below
+  // without failing, so review still sees them.
   const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
+  const unexplained = lensless.filter((id) => !LENS_LESS_BY_DESIGN.includes(id));
   assert.deepEqual(
-    lensless,
-    [...LENS_LESS_BY_DESIGN].sort(),
-    "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it here",
+    unexplained,
+    [],
+    "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it to LENS_LESS_BY_DESIGN",
   );
+
+  const live = new Set(seed.cards.map((c) => c.id));
+  const stale = LENS_LESS_BY_DESIGN.filter((id) => !live.has(id));
+  if (stale.length) {
+    console.log(`  note: LENS_LESS_BY_DESIGN has ${stale.length} expired id(s) to prune — ${stale.join(", ")}`);
+  }
 });
 
 test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {
