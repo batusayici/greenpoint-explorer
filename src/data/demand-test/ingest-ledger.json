@@ -1561,9 +1561,10 @@
       "addedAt": "2026-08-11"
     },
     {
-      "name": "www.biosapothecary.com — R1 resolution fetch egress-denied at the proxy",
-      "note": "SOURCE FACT 2026-08-11, and a live instance of the R1 allowlist blind spot already recorded on 2026-08-10. Bios Apothecary (61 West Street, a registry sender) emailed 2026-08-10 with a standing offer: verbatim \"Would you like to consult with our in-house herbalist and have a custom product created just for you? Now available to you at no extra cost!\" The one field that decides whether it can ship is whether the consultation is in-store at 61 West Street or online — a storefront pin implies you can walk there for it. The booking page https://www.biosapothecary.com/products/book-a-consultation?variant=31794879463508 would state it, and the proxy refuses the tunnel: \"Proxy response (403) !== 200 when HTTP Tunneling\". The host is NOT a roster entry, so it can never appear in the run's EGRESS DENIED block. ASK: allowlist www.biosapothecary.com. UNBLOCKS the held bios-apothecary-herbalist-consultation card.",
-      "addedAt": "2026-08-11"
+      "name": "Bios Apothecary — herbalist consult: site has no such service, and 2 locations",
+      "note": "RESOLVED-AS-BLOCKED 2026-08-12. Batu allowlisted the host and the R1 fetch now succeeds — it did NOT settle the question, it settled a different one. The booking URL from the 8/10 email (/products/book-a-consultation?variant=31794879463508) returns 404, as does /products/book-a-consultation; the homepage advertises no herbalist consultation; and a site search for 'herbalist' returns only three products and the In-House Formulary page — no consultation service anywhere on the site. So the ONLY evidence for the offer is the email itself, and nothing states whether the consult is in-store at 61 West St or online. Under the storefront-pin rule the card still cannot ship. NEXT STEP is first-party, not another fetch: Bios is a registry sender — ask info@biosapothecary.com / 212-390-0442 whether the consult is in-store, and whether the booking link is broken. SEPARATELY, the contact page states TWO locations — 61 West Street (Greenpoint) and 67 35th Street Bldg. 5, Industry City — which raises the locally-owned gate that dropped greek-kitchen the same day. Two Brooklyn locations is not the same as Greek Kitchen's two boroughs, so this needs Batu's call before any Bios card ships.",
+      "addedAt": "2026-08-11",
+      "updatedAt": "2026-08-12"
     },
     {
       "name": "Flower Cat — Live Band Karaoke: Summer of Soul, Fri 8/28 (past the 14-day window)",
