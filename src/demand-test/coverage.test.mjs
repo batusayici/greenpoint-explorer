@@ -375,3 +375,49 @@ test("scope: an in-scope source still gates normally — scoping narrows, it nev
   const gating = rows.filter((r) => isUnexplained(r) && inScope(r, new Set(["troost"])));
   assert.deepEqual(gating.map((r) => r.id), ["troost"], "the one source the run claimed to read is missing — that is real");
 });
+
+// ---- annotation lines are OUR words, never the source's supply ----
+// 2026-08-12. The evidence rule has runs write what they read into the snapshot
+// under `## [R1 PERSISTED <date>]` / `## [IMAGE READ <date>]` / `## [DETAIL] <url>`
+// headers with `#` comment lines under them. extractDates cannot tell an
+// annotation from an event line, so the DATE IN THE HEADER became a date the
+// source was treated as publishing — and coverage reported a GAP for a day
+// nothing had claimed. Caught on macha-studio the moment the first [IMAGE READ]
+// block landed; the same shape sits in the greenpointers baseline right now,
+// masked only because the deck happens to cover that day.
+test("annotation: a `#` comment line's date is not source supply", () => {
+  const dates = extractDates("# Evidence rule, DECISION_LOG 2026-08-12, and the roster flag", { now: NOW });
+  assert.deepEqual(dates, [], "our own commentary is not a listing");
+});
+
+test("annotation: a bracketed `##` block header's date is not source supply", () => {
+  // The UNSUFFIXED form deliberately: `2026-08-12b` happens to survive today
+  // because the trailing `b` kills the ISO pattern's word boundary. That is an
+  // accident of one block's name, not a property — the sibling block in the
+  // same file is headed `[R1 PERSISTED 2026-08-12]` and does inject.
+  const dates = extractDates("## [R1 PERSISTED 2026-08-12] greenpointers.com articles", { now: NOW });
+  assert.deepEqual(dates, []);
+});
+
+test("annotation: a `## [DETAIL] <url>` header cannot inject the date in its own path", () => {
+  // Not live today — no configured detail URL is date-pathed — but go-green-bk's
+  // /event/ pages and any greenpointers article would be. NO TRAILING SLASH
+  // deliberately: with one, `(?!\/)` rejects the match and the test passes
+  // without exercising anything. The bare form is the one that injects.
+  const dates = extractDates("## [DETAIL] https://greenpointers.com/2026/08/12", { now: NOW });
+  assert.deepEqual(dates, []);
+});
+
+// The property that must NOT break. A `## <title>` line is CONTENT — the old
+// feed snapshots title every post that way, and the roundup's own title carries
+// the week it covers. Stripping every `#` line would throw that away, which is
+// why the rule is bracketed-annotation-and-comments, not "starts with #".
+test("annotation: a plain `## <title>` line still contributes its dates", () => {
+  const dates = extractDates("## Enjoy nature, be healed, and more — What's Happening, Greenpoint? (8/13-19)", { now: NOW });
+  assert.deepEqual(dates, ["2026-08-13"], "a post title is the source's own words, not ours");
+});
+
+test("annotation: stripping a comment line does not swallow the line after it", () => {
+  const dates = extractDates("# persisted 2026-08-12\nSaturday, Aug 15 — flea market", { now: NOW });
+  assert.deepEqual(dates, ["2026-08-15"]);
+});
