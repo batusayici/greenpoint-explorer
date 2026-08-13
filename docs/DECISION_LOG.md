@@ -4,7 +4,56 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-13 (latest) — The feed is the product; the map is a passenger and must fail alone
+## 2026-08-13 (later same day) — The containment rule gets a test, and a second failure shape
+
+The fix below shipped and was **confirmed in the environment that reported it** (ChatGPT's cloud
+browser, GPU rendering disabled in the sandbox): initial load and reload both show the notice, the
+full feed is usable, filtering works, the whole-app error screen is gone, console records
+`[map] unavailable — degrading to the feed`. Two things came out of that confirmation.
+
+1. **There was a SECOND failure shape, and it was found by a pasted console line, not by us.** The
+   report quoted `Cannot read properties of undefined (reading 'S')` — not "Failed to initialize
+   WebGL". That is a context that **exists but is broken**, where the guard for an ABSENT context
+   never fires and MapLibre dies further in. Reproduced locally with a hollow context object
+   (`TypeError: t.bindBuffer is not a function`); the try/catch happens to cover it too, because
+   MapLibre throws from the constructor in both shapes. **We got lucky, and luck is the reason the
+   rule now has a test** — shipping believing one try/catch covered everything was the actual risk.
+2. **`map.on("error")` now covers the asynchronous death** the boundary structurally cannot see —
+   a style that never parses, a source that never resolves — which would otherwise leave an empty,
+   unexplained map and never fire `map_unavailable`, under-reporting the sensor. Fatal is judged
+   narrowly, because the cure is easy to make worse than the disease:
+   - **Before first load only.** After load the map is demonstrably working; tearing it down over a
+     later source error would be the regression.
+   - **Not source/tile errors** (they carry `sourceId`). One 404 tile at startup must not condemn
+     the map; a style that fails to parse carries no `sourceId` and means nothing will ever render.
+   - ⚠ **`webglcontextlost` is deliberately NOT fatal.** MapLibre restores the context itself, and
+     mobile browsers lose it routinely just from backgrounding a tab — treating it as fatal would
+     kill a working map every time the reader switched apps.
+
+**`npm run test:dom` — the repo's first rendering tests, and a deliberate second runner.** `npm test`
+stays 626 pure-logic `.test.mjs` files under `node --test`: fast, dependency-free, right for
+everything that doesn't need a DOM. vitest + jsdom runs `.test.jsx` only, so the two globs can never
+fight. Eight tests pin the invariant — **the feed survives the map** — across both failure shapes,
+the late-throw path, the async error path, both non-fatal cases, and a healthy-map case so the suite
+can't pass by always degrading.
+
+**Both guards were mutation-tested, not just watched to go green:** removing the `FeatureBoundary`
+wrap fails the late-throw test; removing the `error` listener fails the async test. A test that
+cannot fail guards nothing.
+
+⚠ Writing them surfaced a genuine code smell: the first version added a **second** `once("load")`
+handler beside the existing one. Real MapLibre keeps both, so it worked — but the test fake stored
+one listener per type and silently dropped it. The fake was fixed to keep arrays (a fake that loses
+listeners invents bugs), and the product now flips `mapLoaded` inside the single existing load
+handler, so one place decides what "loaded" means.
+
+**Still not covered, stated plainly:** map behaviour on a normal local device with working WebGL is
+verified only by hand in a browser. And the reporting environment was an **AI agent browser**, which
+is not an edge case for this product — `prerender-aeo.mjs` exists precisely because answer engines
+matter, and a JS-executing agent was previously seeing *less* than a plain crawler: React replaced
+the prerendered static HTML and the boundary then blanked it.
+
+## 2026-08-13 — The feed is the product; the map is a passenger and must fail alone
 
 A reader hit a browser where WebGL could not initialize and **lost the whole product** — not a
 broken map, an empty page with a reload button that could never work, because the cause was their

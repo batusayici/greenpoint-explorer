@@ -88,6 +88,37 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
       return;
     }
 
+    // Asynchronous death (2026-08-13). The try/catch above only covers what
+    // throws DURING construction; MapLibre reports later failures — a style
+    // that never parses, a source that never resolves — through its own error
+    // event, which no React boundary can see because it fires outside render.
+    // Without this the map would sit there empty and unexplained, and
+    // map_unavailable would never fire, so the sensor would under-report.
+    //
+    // Fatal is judged narrowly, because the cure is easy to make worse than
+    // the disease:
+    //   · BEFORE first load only. Once the map has loaded it is demonstrably
+    //     working, and a later source error is partial degradation — tearing
+    //     down a working map over one failed request would be the regression.
+    //   · NOT source/tile errors (they carry sourceId). A single 404 tile
+    //     during startup must not condemn the whole map; a style that fails to
+    //     parse carries no sourceId and means nothing will ever render.
+    // mapLoaded is flipped in the SINGLE existing load handler below, not a
+    // second once("load") of its own — one place decides what "loaded" means.
+    let mapLoaded = false;
+    map.on("error", (e) => {
+      if (mapLoaded || e?.sourceId) {
+        console.warn("[map] non-fatal error", e?.error ?? e);
+        return;
+      }
+      onUnavailableRef.current?.(e?.error ?? new Error("map failed before load"));
+    });
+    // NOT handled on purpose: webglcontextlost. MapLibre restores the context
+    // itself, and mobile browsers lose it routinely just from backgrounding a
+    // tab — treating that as fatal would kill a working map every time the
+    // reader switched apps, which is worse than the failure this file exists
+    // to contain.
+
     // Compact attribution must stay collapsed (just the ⓘ): MapLibre re-opens
     // it whenever source attributions update — at load AND after camera moves
     // pull new tiles — covering the map's bottom edge (worst on the mobile
@@ -102,6 +133,7 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
     let attribObserver;
     let userToggleUntil = 0;
     map.once("load", () => {
+      mapLoaded = true; // from here on, map errors are partial, not fatal
       collapseAttrib();
       const attrib = attribEl();
       if (attrib) {
