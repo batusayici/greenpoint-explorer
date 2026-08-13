@@ -97,6 +97,32 @@ test("same-day sentinel end (unknown end time) omits endDate", () => {
   assert.equal(ld.endDate, undefined);
 });
 
+test("a multi-day daily sitting ends its occurrence on its own day", () => {
+  // moon-bunny-two-day-camp-4-7-0813 shipped to production telling every
+  // crawler `endDate: 2026-08-14T15:00` against a 2026-08-13 start — a camp
+  // for 4-to-7-year-olds running 30 unbroken hours. card.endsAt is the LAST
+  // day's end, not this occurrence's; the occurrence ends at 3pm the same day.
+  const camp = {
+    id: "camp", category: "event", title: "Two-Day Circus Camp",
+    summary: "Two consecutive days.", locationName: "Moon Bunny Aerial",
+    startsAt: "2026-08-13T09:00:00-04:00", endsAt: "2026-08-14T15:00:00-04:00",
+  };
+  const ld = eventJsonLd(camp, ORIGIN);
+  assert.equal(ld.startDate, "2026-08-13T09:00:00-04:00");
+  assert.equal(ld.endDate, "2026-08-13T15:00:00-04:00");
+});
+
+test("a genuinely continuous overnight window keeps its real endDate", () => {
+  // The carve-out: an end clock that doesn't follow its start clock is a real
+  // overnight run, not a daily sitting, and must not be truncated to day one.
+  const overnight = {
+    id: "vigil", category: "event", title: "Overnight vigil",
+    summary: "Runs through the night.", locationName: "Somewhere",
+    startsAt: "2026-08-13T21:00:00-04:00", endsAt: "2026-08-14T02:00:00-04:00",
+  };
+  assert.equal(eventJsonLd(overnight, ORIGIN).endDate, "2026-08-14T02:00:00-04:00");
+});
+
 // ---- cardJsonLd: every card page carries structured data (2026-08-08) -------
 
 test("a dated event still routes to schema.org/Event", () => {

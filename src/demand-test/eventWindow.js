@@ -16,12 +16,49 @@ const MERIDIEM = new Intl.DateTimeFormat("en-US", { hour: "numeric", hour12: tru
 // < and >, so the padding is what makes that legal.
 const DAYKEY = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: TZ });
 
+const MONTH = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: TZ });
+const DAYNUM = new Intl.DateTimeFormat("en-US", { day: "numeric", timeZone: TZ });
+
 const isStartSentinel = (d) => CLOCK.format(d) === "00:00"; // all-day start
 const isEndSentinel = (d) => CLOCK.format(d) === "23:59"; // end-of-day
 const meridiem = (d) => MERIDIEM.format(d).replace(/[\d\s]/g, ""); // "AM" | "PM"
 
 // A timed instant as "Jul 9, 7:15 PM"; a sentinel instant as just "Jul 9".
 const instant = (d, sentinel) => (sentinel(d) ? DATE.format(d) : `${DATE.format(d)}, ${TIME.format(d)}`);
+
+// "Aug 13–14" inside one month, "Aug 15 – Sep 15" across two. Shared with
+// editionLabel so the header and a card's when-line name a range the same way.
+const dateRange = (a, b) =>
+  MONTH.format(a) === MONTH.format(b)
+    ? `${MONTH.format(a)} ${DAYNUM.format(a)}–${DAYNUM.format(b)}`
+    : `${DATE.format(a)} – ${DATE.format(b)}`;
+
+// "7:15–8:30 PM" when both ends share a meridiem, "9:00 AM–3:00 PM" when not.
+const timeRange = (s, e) =>
+  meridiem(s) === meridiem(e)
+    ? `${TIME.format(s).replace(/\s?[AP]M$/, "")}–${TIME.format(e)}`
+    : `${TIME.format(s)}–${TIME.format(e)}`;
+
+// Does this window state ONE SITTING repeated on each day of a multi-day span?
+// ONE definition, exported, because three surfaces answer this question and
+// they must not drift: placement (occurrenceEndMinutes), the reader's when-line
+// (formatWindow) and the crawler surface (eventJsonLd). They disagreed once
+// already — that is the whole 2026-08-13 bug — and the cause was the same
+// reading being re-implemented per caller instead of shared.
+//
+// The carve-outs are the ones occurrenceEndMinutes already makes: a same-day
+// window is a single sitting and not a repeat; an all-day start (00:00) or an
+// unsourced end (23:59) states no clock to repeat; and an end clock that does
+// not follow its start clock is a window crossing midnight, not a daily one.
+export function isDailySitting(card) {
+  const { startsAt, endsAt } = card ?? {};
+  if (startsAt == null || endsAt == null) return false;
+  const s = new Date(startsAt);
+  const e = new Date(endsAt);
+  if (DAYKEY.format(s) === DAYKEY.format(e)) return false;
+  if (isStartSentinel(s) || isEndSentinel(e)) return false;
+  return minutesOfDay(e) > minutesOfDay(s);
+}
 
 export function formatWindow(card) {
   const { startsAt, endsAt } = card;
@@ -35,14 +72,26 @@ export function formatWindow(card) {
     if (isEndSentinel(e)) return instant(s, isStartSentinel); // point-in-time start
     // Real start and end times: "Jul 9, 7:15–8:30 PM", sharing the meridiem
     // when both fall in the same half of the day.
-    const range =
-      meridiem(s) === meridiem(e)
-        ? `${TIME.format(s).replace(/\s?[AP]M$/, "")}–${TIME.format(e)}`
-        : `${TIME.format(s)}–${TIME.format(e)}`;
-    return `${DATE.format(s)}, ${range}`;
+    return `${DATE.format(s)}, ${timeRange(s, e)}`;
   }
 
-  if (s && e) return `${instant(s, isStartSentinel)} → ${instant(e, isEndSentinel)}`;
+  if (s && e) {
+    // A MULTI-DAY WINDOW STATES ONE SITTING, REPEATED DAILY (2026-08-13) —
+    // the same reading occurrenceEndMinutes uses to decide which day the card
+    // belongs on. This branch used to render it as one continuous run, so the
+    // two surfaces told different stories about one window: a camp for
+    // 4-to-7-year-olds read "Aug 13, 9:00 AM → Aug 14, 3:00 PM", which a
+    // parent can only take as an OVERNIGHT camp, and a shop's month of
+    // trading read as 745 unbroken hours. The clock is the true story.
+    //
+    // The carve-outs mirror occurrenceEndMinutes exactly, so the two can't
+    // drift: an all-day start (00:00), an end that was never sourced (23:59),
+    // or an end clock that doesn't follow its start clock — a window crossing
+    // midnight — is not a daily sitting and keeps the continuous form rather
+    // than being reformatted into a claim the source never made.
+    if (isDailySitting(card)) return `${dateRange(s, e)}, ${timeRange(s, e)}`;
+    return `${instant(s, isStartSentinel)} → ${instant(e, isEndSentinel)}`;
+  }
   if (s) return `From ${instant(s, isStartSentinel)}`;
   return `Through ${instant(e, isEndSentinel)}`;
 }
@@ -170,13 +219,6 @@ export function recurrenceLabel(card) {
 
 // Header kicker (UX eval F23 / Q4-B): the edition date — the rolling week the
 // feed covers, today through six days out. Self-maintaining, no data field.
-const MONTH = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: TZ });
-const DAYNUM = new Intl.DateTimeFormat("en-US", { day: "numeric", timeZone: TZ });
-
 export function editionLabel(date) {
-  const end = new Date(date.getTime() + 6 * 86400000);
-  const sameMonth = MONTH.format(date) === MONTH.format(end);
-  return sameMonth
-    ? `${MONTH.format(date)} ${DAYNUM.format(date)}–${DAYNUM.format(end)}`
-    : `${DATE.format(date)} – ${DATE.format(end)}`;
+  return dateRange(date, new Date(date.getTime() + 6 * 86400000));
 }

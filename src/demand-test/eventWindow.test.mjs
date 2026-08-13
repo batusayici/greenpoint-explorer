@@ -47,6 +47,46 @@ test("multi-day timed start keeps the start time, drops the end sentinel", () =>
   );
 });
 
+// ── A multi-day window is a DAILY SITTING, and the copy must say so ───────
+// (2026-08-13, the second half of the 9am-camp report.) Placement already
+// reads a multi-day window's time of day as the sitting repeated on each day
+// (occurrenceEndMinutes). The when-line was still rendering the same window as
+// one continuous run — "Aug 13, 9:00 AM → Aug 14, 3:00 PM" for a camp for
+// 4-to-7-year-olds, which a parent can only read as an OVERNIGHT camp, and
+// "Aug 15, 11:00 AM → Sep 15, 8:00 PM" for a shop. Two surfaces telling
+// different stories about one window is the bug; the clock is the true one.
+test("multi-day timed window reads as the daily sitting, not a continuous run", () => {
+  // moon-bunny-two-day-camp-4-7-0813. Source: 13:00–19:00Z on Aug 13 AND
+  // Aug 14 — 9am–3pm each day, never overnight.
+  assert.equal(
+    formatWindow({ startsAt: "2026-08-13T09:00:00-04:00", endsAt: "2026-08-14T15:00:00-04:00" }),
+    "Aug 13–14, 9:00 AM–3:00 PM",
+  );
+  // film-noir-watch-me-0813: a three-night run, 7–8 PM each night.
+  assert.equal(
+    formatWindow({ startsAt: "2026-08-13T19:00:00-04:00", endsAt: "2026-08-15T20:00:00-04:00" }),
+    "Aug 13–15, 7:00–8:00 PM",
+  );
+});
+
+test("a daily sitting spanning two months keeps both month names", () => {
+  // cibone-restation-showcase-0815 — open 11–8 daily, not for 745 hours straight.
+  assert.equal(
+    formatWindow({ startsAt: "2026-08-15T11:00:00-04:00", endsAt: "2026-09-15T20:00:00-04:00" }),
+    "Aug 15 – Sep 15, 11:00 AM–8:00 PM",
+  );
+});
+
+test("a multi-day window whose clock cannot be a daily sitting stays continuous", () => {
+  // End clock at or before the start clock is not a sitting — an overnight
+  // window is exactly what it looks like, and must not be reformatted into a
+  // nonsense "9:00 PM–2:00 AM daily" claim the source never made.
+  assert.equal(
+    formatWindow({ startsAt: "2026-08-13T21:00:00-04:00", endsAt: "2026-08-14T02:00:00-04:00" }),
+    "Aug 13, 9:00 PM → Aug 14, 2:00 AM",
+  );
+});
+
 test("end-only card reads 'Through <date>'", () => {
   assert.equal(formatWindow({ endsAt: "2026-07-19T23:59:00-04:00" }), "Through Jul 19");
 });

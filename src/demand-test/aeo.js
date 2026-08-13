@@ -11,7 +11,7 @@
 import { isExpiredCard } from "./filterCards.js";
 import { isStartSentinel, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 import { RECURRENCE_DAYS } from "./cardSchema.js";
-import { editionLabel } from "./eventWindow.js";
+import { editionLabel, isDailySitting } from "./eventWindow.js";
 
 // Canonical origin since the 2026-08-06 Stoopwise rename. Two older hosts keep
 // serving and are NOT canonical: greenpoint.life (the Aug 2 cutover origin) and
@@ -30,6 +30,13 @@ const escapeHtml = (s) =>
 
 // ---- schema.org/Event ------------------------------------------------------
 
+// The first sitting's end: the start's calendar day carrying the end's clock.
+// Built from the card's own ISO strings rather than by date arithmetic — the
+// two share a calendar day by construction here, so they share a UTC offset,
+// and no DST edge can shift the result.
+const sameDayEnd = (startsAt, end) =>
+  `${startsAt.slice(0, 10)}T${NY_CLOCK.format(end)}:00${startsAt.slice(19)}`;
+
 export function eventJsonLd(card, origin) {
   if (card.startsAt == null || card.recurring) return null;
   const start = new Date(card.startsAt);
@@ -43,8 +50,21 @@ export function eventJsonLd(card, origin) {
     startDate = card.startsAt;
     // A 23:59 end is the "unknown end time" sentinel on a same-day event —
     // omitting endDate is honest; inventing one is not.
-    if (end && !isEndSentinel(end)) endDate = card.endsAt;
-    else if (end && nyDay(end) !== nyDay(start)) endDate = nyDay(end);
+    //
+    // A MULTI-DAY DAILY SITTING needs the same restraint (2026-08-13). Its
+    // `endsAt` is the LAST day's end, so emitting it here told every crawler
+    // that a camp for 4-to-7-year-olds ran from Thursday 9am to Friday 3pm
+    // without stopping — 30 unbroken hours, on the surface this product most
+    // wants to be cited from. schema.org can say "9–3 daily" with a Schedule,
+    // but only via `byDay`, and byDay is not sourceable here: a month-long
+    // daily window (the CIBONE showcase) would need a seven-day byDay
+    // asserting opening days nobody stated. So this emits the ONE occurrence
+    // it can source — the first sitting, ending on its own day — and leaves
+    // the repeat to the description ("run across two consecutive days").
+    // Omitting beats inventing, exactly as for the sentinel above.
+    if (end && !isEndSentinel(end)) {
+      endDate = isDailySitting(card) ? sameDayEnd(card.startsAt, end) : card.endsAt;
+    } else if (end && nyDay(end) !== nyDay(start)) endDate = nyDay(end);
   }
 
   const location = { "@type": "Place", name: card.locationName };
