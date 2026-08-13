@@ -20,7 +20,9 @@
     "verify:stories": "node scripts/verify-place-stories.mjs",
     "verify:kit-coverage": "node scripts/verify-kit-coverage.mjs",
     "verify:overrides": "node scripts/verify-facade-overrides.mjs",
-    "verify": "npm run test && npm run test:dom && npm run verify:conformance && npm run verify:visual && npm run verify:components && npm run verify:stories && npm run verify:kit-coverage && npm run verify:overrides",
+    "verify:aeo": "node scripts/verify-aeo.mjs",
+    "verify:agent-browser": "node scripts/verify-agent-browser.mjs",
+    "verify": "npm run test && npm run test:dom && npm run verify:aeo && npm run verify:agent-browser && npm run verify:conformance && npm run verify:visual && npm run verify:components && npm run verify:stories && npm run verify:kit-coverage && npm run verify:overrides",
     "ingest:coverage": "node scripts/check-coverage.mjs",
     "ingest:quotes": "node scripts/verify-quotes.mjs"
   },

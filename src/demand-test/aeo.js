@@ -10,6 +10,7 @@
 // calendarLink.js, whose helpers these are).
 import { isExpiredCard } from "./filterCards.js";
 import { isStartSentinel, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
+import { RECURRENCE_DAYS } from "./cardSchema.js";
 
 // Canonical origin since the 2026-08-06 Stoopwise rename. Two older hosts keep
 // serving and are NOT canonical: greenpoint.life (the Aug 2 cutover origin) and
@@ -66,6 +67,83 @@ export function eventJsonLd(card, origin) {
   return ld;
 }
 
+// ---- schema.org/Event for RECURRING programming ----------------------------
+
+// 2026-08-13. Standing programming used to fall through to `Service`, on the
+// reasoning that a weekly card is not an Event with one startDate and that
+// inventing an occurrence date would break the truth rule. That reasoning was
+// right; it just had one option missing. schema.org/Schedule states a rhythm
+// WITHOUT asserting any occurrence: "every Tuesday at 5pm, between these
+// dates" is exactly what `recurrence.days` + the card's own window already
+// say. Nothing is invented, and "what's on this weekend" — the single most
+// likely question a neighborhood answer engine is asked — can now match 19
+// cards that were previously typed as services.
+//
+// Deliberately narrow:
+//   · `category === "event"` ONLY. A recurring DEAL stays an Offer (its
+//     machine-checkable fact is that it expires) and a recurring SUBSCRIPTION
+//     stays a Service (you join it; the taxonomy means membership, and
+//     re-typing it here would be re-deciding the taxonomy in the wrong file).
+//   · `recurrence.days` REQUIRED. Four recurring cards don't state a day —
+//     they are standing offers, not weekly events — and a Schedule with no
+//     byDay would be a claim we can't source.
+//   · No top-level `startDate`. The Event genuinely has no single occurrence;
+//     the window lives inside the Schedule, which is what Schedule's own
+//     startDate/endDate mean.
+const SCHEMA_DAY = {
+  sun: "https://schema.org/Sunday",
+  mon: "https://schema.org/Monday",
+  tue: "https://schema.org/Tuesday",
+  wed: "https://schema.org/Wednesday",
+  thu: "https://schema.org/Thursday",
+  fri: "https://schema.org/Friday",
+  sat: "https://schema.org/Saturday",
+};
+
+// NY wall-clock "HH:MM" — the time the card already prints in its row. Only
+// used when the start is a real clock time, never for the all-day sentinel.
+const NY_CLOCK = new Intl.DateTimeFormat("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  timeZone: "America/New_York",
+});
+
+export function recurringEventJsonLd(card, origin) {
+  const days = card.recurrence?.days;
+  if (!Array.isArray(days) || days.length === 0) return null;
+  if (card.category !== "event") return null;
+
+  const schedule = {
+    "@type": "Schedule",
+    repeatFrequency: "P1W",
+    byDay: RECURRENCE_DAYS.filter((d) => days.includes(d)).map((d) => SCHEMA_DAY[d]),
+    scheduleTimezone: "America/New_York",
+  };
+
+  if (card.startsAt != null) {
+    const start = new Date(card.startsAt);
+    schedule.startDate = nyDay(start);
+    // A 00:00 start is the all-day sentinel — no clock time was ever stated,
+    // so none is emitted (same contract as eventJsonLd and calendarLink).
+    if (!isStartSentinel(start)) schedule.startTime = NY_CLOCK.format(start);
+  }
+  if (card.endsAt != null) schedule.endDate = nyDay(new Date(card.endsAt));
+
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: card.title,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventSchedule: schedule,
+    location: placeOf(card),
+    url: cardUrl(card, origin),
+  };
+  if (card.summary) ld.description = card.summary;
+  if (typeof card.free === "boolean") ld.isAccessibleForFree = card.free;
+  return ld;
+}
+
 // ---- schema.org for everything else ----------------------------------------
 
 // 2026-08-08 (Batu): "all pages should always carry them as needed." Before
@@ -115,6 +193,11 @@ export function cardJsonLd(card, origin) {
   // A dated, non-recurring event is a real schema.org/Event — unchanged path.
   const event = eventJsonLd(card, origin);
   if (event) return event;
+
+  // Recurring programming that states its days is also an Event — one that
+  // carries a Schedule instead of an occurrence date (2026-08-13).
+  const recurringEvent = recurringEventJsonLd(card, origin);
+  if (recurringEvent) return recurringEvent;
 
   if (card.category === "news") {
     const src = (card.sourceLinks ?? []).find((s) => s?.publisher);
@@ -279,12 +362,36 @@ export function homeJsonLd(cards, origin, now) {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "This week in Greenpoint, Brooklyn",
-    itemListElement: upcoming.map((c, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: c.title,
-      url: cardUrl(c, origin),
-    })),
+    // Each entry carries the EVENT, not just a headline and a link
+    // (2026-08-13). Measured before this change: every crawler — Googlebot
+    // included — got zero visible words from the home page, and the ItemList
+    // was `name` + `url` only. So the one machine-readable thing the home page
+    // had said "these 42 things exist, go and fetch 42 more pages" and could
+    // not answer "what's on Thursday" from the page it was already holding.
+    //
+    // Compact on purpose: name, dates, url, and where. No geo, no description
+    // — those are on the card page, and 42 full Events would bloat the entry
+    // document for facts a follow-up fetch already provides.
+    //
+    // Dates come from eventJsonLd rather than being re-derived, so the
+    // all-day/unknown-end sentinels are honoured by construction; a second
+    // date implementation here is exactly how a fake 00:00 clock time would
+    // reach a crawler.
+    itemListElement: upcoming.map((c, i) => {
+      const ev = eventJsonLd(c, origin);
+      const item = {
+        "@type": "Event",
+        name: c.title,
+        startDate: ev.startDate,
+        url: cardUrl(c, origin),
+      };
+      if (ev.endDate) item.endDate = ev.endDate;
+      if (c.locationName) {
+        item.location = { "@type": "Place", name: c.locationName };
+        if (c.address) item.location.address = c.address;
+      }
+      return { "@type": "ListItem", position: i + 1, url: cardUrl(c, origin), item };
+    }),
   };
 
   return [site, list];

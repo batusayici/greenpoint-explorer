@@ -163,9 +163,72 @@ test("every category yields JSON-LD — no card page ships bare", () => {
   }
 });
 
-test("undated and recurring cards get no Event JSON-LD", () => {
+test("eventJsonLd still refuses undated and recurring cards", () => {
+  // Unchanged contract, and it must stay unchanged: eventJsonLd asserts ONE
+  // occurrence. Recurring cards get their Event from recurringEventJsonLd
+  // below, which states a Schedule instead — see that block for why the
+  // page-level type can now be Event while this builder still says no.
   assert.equal(eventJsonLd(undated, ORIGIN), null);
   assert.equal(eventJsonLd({ ...timed, recurring: true }, ORIGIN), null);
+});
+
+// ---- recurring programming as Event + Schedule (2026-08-13) ----------------
+
+const weekly = {
+  ...timed,
+  id: "kids-art-tue",
+  title: "Artistic Voices",
+  category: "event",
+  recurring: true,
+  recurrence: { days: ["tue"] },
+  startsAt: "2026-07-07T17:00:00-04:00",
+  endsAt: "2026-08-31T23:59:00-04:00",
+};
+
+test("a recurring event states its rhythm as a Schedule, never an occurrence date", () => {
+  const ld = cardJsonLd(weekly, ORIGIN);
+  assert.equal(ld["@type"], "Event");
+  // The whole point: no invented occurrence. The window lives in the Schedule,
+  // which is what Schedule.startDate/endDate mean.
+  assert.equal(ld.startDate, undefined);
+  assert.deepEqual(ld.eventSchedule, {
+    "@type": "Schedule",
+    repeatFrequency: "P1W",
+    byDay: ["https://schema.org/Tuesday"],
+    scheduleTimezone: "America/New_York",
+    startDate: "2026-07-07",
+    startTime: "17:00",
+    endDate: "2026-08-31",
+  });
+});
+
+test("multi-day recurrence lists days in canonical week order, not card order", () => {
+  const ld = cardJsonLd({ ...weekly, recurrence: { days: ["sun", "thu"] } }, ORIGIN);
+  assert.deepEqual(ld.eventSchedule.byDay, [
+    "https://schema.org/Sunday",
+    "https://schema.org/Thursday",
+  ]);
+});
+
+test("an all-day recurring event states no clock time", () => {
+  // 00:00 is the all-day sentinel — inventing a startTime from it would be the
+  // same lie eventJsonLd refuses to tell.
+  const ld = cardJsonLd({ ...weekly, startsAt: "2026-07-07T00:00:00-04:00" }, ORIGIN);
+  assert.equal(ld.eventSchedule.startTime, undefined);
+  assert.equal(ld.eventSchedule.startDate, "2026-07-07");
+});
+
+test("recurring WITHOUT stated days stays a Service — a standing offer is not weekly", () => {
+  const standing = { ...weekly, recurrence: undefined };
+  assert.equal(cardJsonLd(standing, ORIGIN)["@type"], "Service");
+});
+
+test("recurring deals and subscriptions keep their own types", () => {
+  // A recurring deal's machine-checkable fact is that it EXPIRES, and a
+  // subscription is something you join — re-typing either as an Event would be
+  // re-deciding the product taxonomy inside the schema layer.
+  assert.equal(cardJsonLd({ ...weekly, category: "discount" }, ORIGIN)["@type"], "Offer");
+  assert.equal(cardJsonLd({ ...weekly, category: "subscription" }, ORIGIN)["@type"], "Service");
 });
 
 // ---- injectCardPage --------------------------------------------------------
@@ -259,6 +322,23 @@ test("homeJsonLd emits WebSite + ItemList of upcoming dated events", () => {
   assert.ok(!urls.includes(`${ORIGIN}/e/gone-0720`), "expired event dropped");
   // ListItem positions are 1-based and sequential.
   list.itemListElement.forEach((e, i) => assert.equal(e.position, i + 1));
+});
+
+test("home ItemList entries carry the event itself — answerable without a second fetch", () => {
+  const list = homeJsonLd([timed], ORIGIN, NOW).find((l) => l["@type"] === "ItemList");
+  const { item } = list.itemListElement[0];
+  assert.equal(item["@type"], "Event");
+  assert.equal(item.name, "DJ Night & Friends");
+  assert.equal(item.startDate, "2026-07-30T19:00:00-04:00");
+  assert.equal(item.endDate, "2026-07-30T22:00:00-04:00");
+  assert.equal(item.location.name, "Troost");
+  assert.equal(item.location.address, "1011 Manhattan Ave, Brooklyn, NY 11222");
+});
+
+test("home ItemList honours the all-day sentinel instead of inventing a clock", () => {
+  // The reason dates are taken from eventJsonLd rather than re-derived here.
+  const list = homeJsonLd([allDay], ORIGIN, NOW).find((l) => l["@type"] === "ItemList");
+  assert.equal(list.itemListElement[0].item.startDate, "2026-08-01");
 });
 
 test("homeJsonLd lists only the next 7 days of events, in start order", () => {

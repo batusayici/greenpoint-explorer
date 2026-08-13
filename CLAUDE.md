@@ -9,6 +9,8 @@ npm run dev       # dev server at http://127.0.0.1:5173 — the product serves a
 npm test          # unit tests — TZ-pinned to America/New_York (day-grouping tests are zone-sensitive; the cloud routine runs UTC)
 npm run test:dom  # rendering tests (vitest + jsdom, `.test.jsx`) — SEPARATE runner from `npm test`, which stays pure-logic `.test.mjs` under node --test. Only for invariants a DOM is required to check; today that means one: a failing map must never empty the page (2026-08-13). `npm run verify` runs both.
 npm run build     # production build to dist/
+npm run verify:aeo            # what an AI CRAWLER gets from dist/ — prose per card page, required JSON-LD fields per type, sitemap parity, single canonical, llms.txt links resolve. Needs a fresh build.
+npm run verify:agent-browser  # what a JS-EXECUTING AI AGENT gets — serves dist/ and drives it in a hostile context (no WebGL, storage blocked), the environment the 2026-08-13 map bug came from. Needs a fresh build.
 npm run preview   # preview production build
 npm run ingest:geocode  # geocode new cards (Nominatim → geocode-cache.json)
 ```
