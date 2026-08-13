@@ -137,7 +137,8 @@
       "category": "shopping",
       "filters": [
         "family_kids",
-        "news"
+        "news",
+        "shopping"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Giggles & Wiggles",
@@ -5526,7 +5527,9 @@
       "title": "CIBONE O'TE",
       "kicker": "Japanese design, ceramics and homeware",
       "summary": "The Brooklyn outpost of the Tokyo retailer, which calls itself a quiet curator of life — objects chosen for the stories they carry, not only their form. Store hours are 11am–8pm.",
-      "filters": [],
+      "filters": [
+        "shopping"
+      ],
       "audience": [
         "resident",
         "visitor"
@@ -5574,7 +5577,9 @@
       "summary": "Re:STATION, a Tokyo curator and longtime CIBONE partner, chose the pieces for their history and enduring influence. It sits inside the shop; no admission price is stated.",
       "startsAt": "2026-08-15T11:00:00-04:00",
       "endsAt": "2026-09-15T20:00:00-04:00",
-      "filters": [],
+      "filters": [
+        "shopping"
+      ],
       "free": false,
       "audience": [
         "resident",
@@ -6391,7 +6396,9 @@
       "summary": "A limited run of bags, pouches and furoshiki cloths handmade in Japan from retired paraglider fabric. Inside the shop at 50 Norman; no admission price is stated and no closing time is published.",
       "startsAt": "2026-07-11T00:00:00-04:00",
       "endsAt": "2026-08-13T23:59:00-04:00",
-      "filters": [],
+      "filters": [
+        "shopping"
+      ],
       "free": false,
       "audience": [
         "resident",
@@ -6627,7 +6634,9 @@
       "summary": "Pins, prints, ceramics and other handmade wares, presented by Living Muses NYC. RSVP requested.",
       "startsAt": "2026-08-16T12:00:00-04:00",
       "endsAt": "2026-08-16T17:00:00-04:00",
-      "filters": [],
+      "filters": [
+        "shopping"
+      ],
       "free": true,
       "locationName": "The Neptune Room",
       "address": "13 Greenpoint Ave, Brooklyn, NY 11222",
@@ -6897,7 +6906,9 @@
       "summary": "Local vendors curated by Fig Shop, a live DJ, and food from Grand Army alongside the taproom's own beer. RSVP requested.",
       "startsAt": "2026-08-15T12:00:00-04:00",
       "endsAt": "2026-08-15T19:00:00-04:00",
-      "filters": [],
+      "filters": [
+        "shopping"
+      ],
       "free": true,
       "audience": [
         "resident",
@@ -6999,7 +7010,9 @@
           "fri"
         ]
       },
-      "filters": [],
+      "filters": [
+        "shopping"
+      ],
       "free": false,
       "audience": [
         "resident",

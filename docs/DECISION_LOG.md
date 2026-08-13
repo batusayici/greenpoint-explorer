@@ -4,6 +4,87 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-13 (sixth entry) — `shopping` returns as a lens; "no lens" was never a design call
+
+Batu, walking the feed: the CIBONE cards are "effectively unfindable for users. lost among a sea of
+cards on ALL feed."
+
+**What was actually wrong.** Yesterday's ruling (2026-08-12, fifth entry) got the CLASS right —
+retail is not `arts_culture` — and then conflated two different claims about where it goes. "No
+*existing* lens is honest for this" (true: `arts_culture` would lie, `shopping` was retired) became
+"this class carries no lens," which nobody had decided on UX grounds. The tell is that all four
+entries in the resulting `LENS_LESS_BY_DESIGN` allowlist justified themselves in the same words —
+"`shopping` is retired and there is nothing else honest to reach for." Six cards, a bespoke
+allowlist, and its own staleness protocol to survive expiry mid-ingest: that is not miscellany, it
+is **a lens nobody had named**. The user-facing cost was the complaint above — All is 159 cards, so
+lens-less meant reachable only by scrolling past everything or finding the pin, for a class that is
+weekly summer supply and strong go-out intent ("what markets are on this weekend").
+
+**The label is `Shopping`, and the alternative it beat is `Markets`.** Greenpoint already has two
+farmers' markets on the map (`mccarren-greenmarket`, `mcgolrick-farmers-market`), correctly filed
+`food_drink`. Here "market" *means* the greenmarket, so a Markets chip would promise McCarren on
+Saturday and deliver an archival fashion sale — while mislabelling the two members that are not
+markets at all (an in-store showcase, a studio after-hours). Wrong in both directions. `Shopping` is
+the word the ruling itself used ("their events are shopping-related") **and** the word the schema
+already uses as a `category`, so it invents no synonym — the standing rule from 2026-08-02, when
+"What changed" was cut in favour of News. Rejected alongside Markets: *Pop-ups* (lifestyle register,
+and a flea is not a pop-up), *Markets & Pop-ups* (longest chip in the row, still incomplete),
+*Retail* (the seller's word), *Shops* (promises a store directory; the lens is mostly events).
+
+**Not a reversal of the 2026-07-26 retirement.** That fold moved STANDING OFFERS into
+`deals_memberships` and they stay there. What did not exist in July is this class — *dated* retail
+happenings. Per ORDER IS THE BAR (2026-08-02), a restocked lens enters at the **back** of the bar
+rather than resuming a July slot, so `shopping` sits after `wellness`. At 7 cards it clears
+FOLD_THRESHOLD and shows on the primary bar; it is deliberately **not** authored-folded like
+`games`, because burying it in "More" would not fix the findability problem that opened this entry.
+
+**Rule of record.** VIEW or BUY, and the venue decides — unchanged; BUY now has a destination.
+`shopping` holds dated retail happenings (flea, makers market, vendor pop-up, a store's limited run
+or after-hours) **plus every `category: shopping` venue card**, which makes it mechanical: a shop
+card carries the shopping lens on top of any audience lens it earned (`giggles-and-wiggles` is
+`family_kids` + `shopping`; previously the deck's two shop cards were filed by two different
+logics). Boundaries that still hold: `leaves-august-book-club` stays `arts_culture` (a book club is
+attendance, not stock), and food markets stay `food_drink`. `LENS_LESS_BY_DESIGN` is deleted and
+`no card is lens-less` asserts `[]` exactly again — no exceptions list to keep in sync, and a
+lens-less card is once more an unambiguous taxonomy leak.
+
+Owner: Batu (label + rule). Verified: 651/651 unit, DOM suite, build clean, AEO + agent-browser
+gates green. Staged to a branch for preview review per the 2026-08-08 design-batch rule.
+
+**Chip ORDER was re-examined in the same session and deliberately NOT changed.** Batu asked whether
+the bar is right for launch from a supply/demand standpoint. With no usage data pre-launch, demand
+was modelled from `growth-engine.md` (the resident opens it asking "What's on near me this week?";
+first-session success is one high-intent act), which makes the supply metric *this-week dated cards*
+rather than raw count. That surfaced a real shift: **Arts & Culture is now the deck's largest lens at
+40 cards / 20 actionable this week** — up from the 11 it carried when the order was set — while
+sitting in the truncated slot (71% visible at 375px, **24% at 320px**). Variants were rendered
+against the running app (Arts·Family·[Food] and Arts·Food·[Family]) per the render-don't-mock method.
+
+**The proposal was withdrawn on the evidence, and the withdrawal is the durable part.** Reading the
+full `cardSchema.js` header showed the order already encodes this reasoning and outranks the model:
+(1) 2026-07-25 — "Family & Kids is deliberately promoted to slot 2 **above its raw volume** (it's the
+growth wedge)", so position and volume were decoupled on purpose and a supply shift is not by itself
+drift; (2) same entry — "**Order is static (muscle memory beats optimality); revisit ONLY at declared
+checkpoints against position-corrected `filter_tap` + post-filter engagement**", and a model that
+infers demand from supply is exactly the uncorrected inference that rule forbids, since chip 1 earns
+taps for being chip 1; (3) 2026-07-26 — "leading with `live_music` read as 'gig tracker', which this
+isn't", the same failure mode that leading with Arts & Culture would invite. Rendering confirmed it:
+variant B reads as an arts listing, and variant C pushes Family & Kids out of the visible set,
+undoing the wedge promotion outright.
+
+**Registered as a checkpoint hypothesis, not a change (the one keepable output).** At the first
+post-launch checkpoint, test against position-corrected `filter_tap` + post-filter engagement:
+*does Arts & Culture underperform its 20-actionable-card supply because it is the truncated chip?*
+If yes, that is the declared-checkpoint evidence the 2026-07-25 rule requires, and the swap becomes
+legitimate. Until then the bar ships as-is. **Separately unresolved and independent of order:** at
+320px the Arts & Culture peek falls to 24%, so the scroll affordance nearly disappears on small
+phones — a peek-width craft question, open for Batu.
+
+Method note, third confirmation: rendering against the running app (not mockups) is what made the
+"reads as an arts listing" failure legible. Standing lesson reinforced — **cross-examine the docs of
+record before proposing, not after**; the header comment contained the counter-argument to a
+recommendation that had already been made out loud.
+
 ## 2026-08-13 (fifth entry) — The strategy survives a skeptical outside pass: four adoptions, three rejections
 
 Batu ran the strategy through an outside model (ChatGPT, "App critique from skeptics") and asked

@@ -115,10 +115,21 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // the largest lens — leading with News would position this as a local news
 // product, which `docs/context/2026-07-03-greenpointers-differentiation.md`
 // rules out. Supply earns tier 2; positioning decides tier 1.
+// `shopping` is BACK (Batu, 2026-08-13), at the back of the bar exactly as the
+// rule above prescribes. It was retired 2026-07-26 when its only members were
+// standing offers, which folded into deals_memberships and STAY there. What
+// brought it back is supply that did not exist in July — dated retail
+// happenings (a flea, a makers market, an archival showcase, a store's
+// after-hours) — plus the 2026-08-12 CIBONE ruling, which correctly said retail
+// is not arts_culture and then had nowhere to put it. Six cards accumulated in
+// All with a bespoke test allowlist to sanction them; that is a missing lens,
+// not a miscellany. Named `shopping` and not `markets` because two farmers'
+// markets already live in food_drink and would make that chip lie in both
+// directions — see julyCards.test.mjs for the full label reasoning.
 export const FILTER_IDS = [
   "food_drink", "family_kids", "arts_culture",
   "live_music", "news", "deals_memberships",
-  "civic", "wellness",
+  "civic", "wellness", "shopping",
   "games",
 ];
 
