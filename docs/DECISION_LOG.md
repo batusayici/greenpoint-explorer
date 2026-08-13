@@ -4,6 +4,58 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-13 (third entry) — Why the map bug went uncaught, and the inventory that answers it
+
+Batu's question after the fix shipped: *why was this uncaught, when one ChatGPT test found it
+immediately?* The answer is not "we forgot to test failure states", and the investigation is worth
+more than the fix.
+
+**The rule already existed.** `design_crit` says *"every reachable state designed, including the
+ugly ones (offline, partial data, race conditions)"*, *"critique [failure] as hard as the happy
+path"*, and *"honest state"*. Three separate instructions, all well written, none of which fired.
+
+**The word doing the damage is "reachable".** A design crit is performed by looking at the running
+product, so it can only judge states the reviewer's environment can produce. No reviewer's browser
+could produce "no WebGL", so that state was never rendered, never seen, never critiqued. The other
+half of the portfolio — 626 pure-logic `.test.mjs` files — never renders anything by design. **The
+blind spot was the intersection: states that require rendering AND cannot occur in a normal
+browser.** Nothing in the portfolio could see into it.
+
+**Why ChatGPT found it in one pass: environment diversity, not analytical depth.** Every prior
+reviewer — the June and July resident interviews, Batu's phone reviews, both August external audits,
+every design crit, every agent browser check — ran a normal browser with a GPU. Dozens of draws from
+one distribution. One draw from a different distribution hit it immediately. **A third external
+audit would have found nothing.** For environment-dependent failure, diversity of environment beats
+volume of review.
+
+⚠ **The 2026-08-12 top-level error boundary probably reduced urgency.** It was correctly reasoned
+and it is still the right last resort — but it solved the symptom class at the outermost level,
+converting a blank page into a polished apology screen. That reads as handled, and it never prompted
+the follow-on question: *which subsystems should fail independently?* A good total-failure net is
+exactly what stops you asking about partial failure.
+
+**Proof the class generalises — a second live instance, found by looking rather than by luck.**
+`main.jsx` read `window.localStorage` at module scope. That property read THROWS (`SecurityError`)
+when a browser blocks site data, killing the module before `createRoot()` — so React never mounted,
+`#root` stayed empty, and the error boundary was structurally unable to help. Verified in a browser:
+blank page. The sharpest detail is that `returnVisit.js` and `firstVisitOrientation.js` **both
+already had try/catch around their use of storage** — the thinking was present, one layer too deep
+to matter. Fixed with `boot.js`: `safeStorage()` guards the *read*, `bootSafely()` isolates each
+boot step so a dead analytics vendor cannot also cost the reader their orientation line.
+
+**The durable output is `docs/environmental-dependencies.md`**, now referenced from CLAUDE.md: every
+browser capability the product assumes, what the reader sees without it, what contains it, and what
+proves it. It converts an unreachable-state problem into an ordinary checklist — states you cannot
+reach by looking must be enumerated deliberately. Two corollaries are recorded there because both
+were learned the hard way: **guard the access, not just the use**, and **containment has phases**
+(an error boundary covers React's render only — boot-time and asynchronous failures are outside it).
+
+Writing the inventory surfaced a fact worth stating plainly: **the home page has no no-JS
+fallback.** `dist/index.html` ships a 51-byte body and the AEO injection there is JSON-LD only; just
+`/e/<slug>` pages carry prerendered visible text. An earlier claim in this thread — that a
+JS-executing agent had been seeing *less* than a plain crawler on the home page — was wrong, because
+there was never visible prerendered content there to lose.
+
 ## 2026-08-13 (later same day) — The containment rule gets a test, and a second failure shape
 
 The fix below shipped and was **confirmed in the environment that reported it** (ChatGPT's cloud
