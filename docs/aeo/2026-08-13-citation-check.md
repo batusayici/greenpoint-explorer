@@ -99,11 +99,37 @@ a *source* in our own roster.
 - **Do not tune the schema off this result.** The recurring-event change shipped because `Service` is
   structurally wrong for "what's on", not because a check came back empty. One run is an anecdote.
 
+## Bing Webmaster Tools — set up the same day
+
+Verified via **Import from Google Search Console** (no code change, no DNS). Everything came across:
+
+| Signal | Value |
+|---|---|
+| Sitemap | imported, last crawl 8/13, **Success**, **161 URLs**, 0 errors, 0 warnings |
+| Home page | **"Indexed successfully — URL can appear on Bing"** |
+| Request indexing | submitted for `/`; quota is **100 URLs/day** (far more generous than Google's) |
+
+Two findings worth carrying forward:
+
+**1. `AI Performance` (BETA) is a real instrument for Layer 3.** Bing reports citations of the site in
+AI-generated answers across "Microsoft Copilots and Partners" — continuously, no manual asking.
+Current reading: **0 citations, 0 cited pages over 3 months**, matching today's manual result. This
+should become the *primary* Layer 3 signal, with the manual question set kept as the qualitative
+half (it is the only thing that catches *wrong facts* attributed to us, which a citation counter
+cannot see).
+
+**2. ⚠ Bing independently flags `H1 tag missing` on the home page.** That is the zero-prose gap,
+caught by an outside tool with no knowledge of this thread: the served HTML has an empty `#root`, so
+the `<h1>` React renders is invisible to anything that doesn't run JS. It is the deferred home-page
+decision, now with third-party evidence attached — and notably Bing files it under "SEO/**GEO**"
+issues, generative-engine optimisation being exactly the goal here.
+
 ## Still outstanding
 
-- **Bing Webmaster Tools** — unverified as far as I could tell. Worth doing: Bing feeds ChatGPT's
-  search, so it matters more than its market share implies.
 - **The three named engines remain unmeasured.** Today's baseline covers one index only.
+- **IndexNow is available and unused.** Bing supports instant push-on-publish, which fits a feed that
+  refreshes daily — it would tell Bing about new cards the moment a routine ships instead of waiting
+  for a crawl. Needs a key file at the site root, so it costs a deploy.
 
 ## Next check
 
