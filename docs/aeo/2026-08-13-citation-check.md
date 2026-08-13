@@ -127,9 +127,27 @@ issues, generative-engine optimisation being exactly the goal here.
 ## Still outstanding
 
 - **The three named engines remain unmeasured.** Today's baseline covers one index only.
-- **IndexNow is available and unused.** Bing supports instant push-on-publish, which fits a feed that
-  refreshes daily — it would tell Bing about new cards the moment a routine ships instead of waiting
-  for a crawl. Needs a key file at the site root, so it costs a deploy.
+- ~~IndexNow is available and unused.~~ **Wired 2026-08-13** — see below.
+
+## IndexNow — push-on-publish (wired same day)
+
+The product's edge is freshness; waiting for a crawler spends it. `scripts/ping-indexnow.mjs` now
+announces changes at the end of `npm run build`.
+
+- **Only changed URLs.** Cards whose `updatedAt` falls inside a 2-day window, plus `/` (whose
+  `ItemList` changes whenever any card does). Re-submitting all 159 every deploy is what gets a
+  site's pings discounted. `updatedAt` is schema-required, so this needs no git history — which
+  matters because Vercel builds from a shallow clone.
+- **Production deploys only** (`VERCEL_ENV === "production"`). A preview build would announce URLs
+  the canonical origin doesn't serve, and every local `npm run build` would ping. Verified: unset →
+  skip, `preview` → skip, `production` → send.
+- **Never fails the build.** An announcement is not the deploy; a dead endpoint must not turn a good
+  build red.
+- **The key is public by design** — the protocol verifies ownership by fetching `public/<key>.txt`
+  from the site root, so it is committed on purpose and is not a secret.
+- `verify:aeo` now asserts the key file ships and contains exactly its own key. Without that, a
+  missing key would fail *silently* inside a script that deliberately never breaks the build.
+  Mutation-tested both ways.
 
 ## Next check
 
