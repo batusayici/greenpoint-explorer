@@ -51,6 +51,40 @@ lens-less card is once more an unambiguous taxonomy leak.
 Owner: Batu (label + rule). Verified: 651/651 unit, DOM suite, build clean, AEO + agent-browser
 gates green. Staged to a branch for preview review per the 2026-08-08 design-batch rule.
 
+**Chip ORDER was re-examined in the same session and deliberately NOT changed.** Batu asked whether
+the bar is right for launch from a supply/demand standpoint. With no usage data pre-launch, demand
+was modelled from `growth-engine.md` (the resident opens it asking "What's on near me this week?";
+first-session success is one high-intent act), which makes the supply metric *this-week dated cards*
+rather than raw count. That surfaced a real shift: **Arts & Culture is now the deck's largest lens at
+40 cards / 20 actionable this week** — up from the 11 it carried when the order was set — while
+sitting in the truncated slot (71% visible at 375px, **24% at 320px**). Variants were rendered
+against the running app (Arts·Family·[Food] and Arts·Food·[Family]) per the render-don't-mock method.
+
+**The proposal was withdrawn on the evidence, and the withdrawal is the durable part.** Reading the
+full `cardSchema.js` header showed the order already encodes this reasoning and outranks the model:
+(1) 2026-07-25 — "Family & Kids is deliberately promoted to slot 2 **above its raw volume** (it's the
+growth wedge)", so position and volume were decoupled on purpose and a supply shift is not by itself
+drift; (2) same entry — "**Order is static (muscle memory beats optimality); revisit ONLY at declared
+checkpoints against position-corrected `filter_tap` + post-filter engagement**", and a model that
+infers demand from supply is exactly the uncorrected inference that rule forbids, since chip 1 earns
+taps for being chip 1; (3) 2026-07-26 — "leading with `live_music` read as 'gig tracker', which this
+isn't", the same failure mode that leading with Arts & Culture would invite. Rendering confirmed it:
+variant B reads as an arts listing, and variant C pushes Family & Kids out of the visible set,
+undoing the wedge promotion outright.
+
+**Registered as a checkpoint hypothesis, not a change (the one keepable output).** At the first
+post-launch checkpoint, test against position-corrected `filter_tap` + post-filter engagement:
+*does Arts & Culture underperform its 20-actionable-card supply because it is the truncated chip?*
+If yes, that is the declared-checkpoint evidence the 2026-07-25 rule requires, and the swap becomes
+legitimate. Until then the bar ships as-is. **Separately unresolved and independent of order:** at
+320px the Arts & Culture peek falls to 24%, so the scroll affordance nearly disappears on small
+phones — a peek-width craft question, open for Batu.
+
+Method note, third confirmation: rendering against the running app (not mockups) is what made the
+"reads as an arts listing" failure legible. Standing lesson reinforced — **cross-examine the docs of
+record before proposing, not after**; the header comment contained the counter-argument to a
+recommendation that had already been made out loud.
+
 ## 2026-08-13 (fifth entry) — The strategy survives a skeptical outside pass: four adoptions, three rejections
 
 Batu ran the strategy through an outside model (ChatGPT, "App critique from skeptics") and asked
