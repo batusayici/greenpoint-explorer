@@ -44,6 +44,8 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 
 **Logic modules** (each with a sibling `.test.mjs`): `cardSchema.js` (card model incl. place-graph fields `relatedCardIds`/`timeline`/`trustRisk`), `filterCards.js`, `eventWindow.js` (Today lens, dated/ongoing/expiry), `cardActions.js`, `postValue.js` (post-value email prompt), `gtrainBanner.js`.
 
+- **A dated card's window states ONE SITTING, and a multi-day span repeats that sitting daily (2026-08-13).** `occurrenceEndMinutes` in `eventWindow.js` reads the **time of day** of `startsAt`…`endsAt` and applies it to whichever day the card lands on — so `2026-08-13T09:00 → 2026-08-14T15:00` means "9am–3pm on each day", never "continuously for 30 hours". Authoring a multi-day card by taking `startsAt` from the first day and `endsAt` from the last is therefore a data bug that puts a finished morning event at the head of the evening feed (that is exactly what shipped; see DECISION_LOG 2026-08-13 eighth entry). Sentinels are carve-outs: a `00:00` start means all-day, a `23:59` end means the end time was never sourced (expires an hour past start).
+
 **Data** (`src/data/demand-test/`): `cards.json` (live feed — renamed from `july-2026-cards.json` 2026-07-27), `geocode-cache.json`, `ingest-ledger.json` (ingest run state + sender registry).
 
 **Old `/july.html` URL** redirects to `/` via `vercel.json` (query params preserved — live invite links depend on this).

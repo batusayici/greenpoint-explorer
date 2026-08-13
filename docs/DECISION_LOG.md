@@ -4,6 +4,49 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-13 (eighth entry) — A fix wired into one branch is not a fix
+
+Batu on stoopwise.com at 6:13pm: **the feed opened with a 9am event** — a Two-Day Circus Camp at
+Moon Bunny Aerial, nine hours finished, leading the Today group. This is the *same report* as the
+2026-08-08 7:37pm one (the Today group led with a greenmarket, a bird club and a run that had all
+finished that morning), and the machinery built to fix it was present, correct, and not running.
+
+**Root cause — the occurrence clock was gated to weekly cards.** The 2026-08-08 fix added
+`nextOccurrence`/`occurrenceEndMinutes`, whose model is general and right: *a sitting's real window
+is the TIME OF DAY of `startsAt`…`endsAt`, applied to the day it lands on.* But `groupByDay` called
+it behind `card.recurring && card.recurrence.days.length > 0` — because the three cards that
+prompted it happened to be weekly. Every **multi-day one-off** fell through to `isActiveOn`, which
+compares calendar days and never asks the clock, so it sat in Today **at its span-start time on
+every day of its span**. The gate is now `!standing` (a recurring card with no stated day still
+belongs on its shelf); placement only ever moves a card *forward* to a day it genuinely occurs on,
+so nothing can be hidden by it.
+
+**It was not one bad card.** The same deck carried six more in the identical shape, two of them
+scheduled to repeat the bug for five consecutive days: the Aug 17–21 weekday camp, the Aug 24–25
+camp, two Film Noir multi-night runs, and the month-long CIBONE showcase. A three-night film run led
+Today at 7pm all day on nights two and three.
+
+**The durable lesson is about the shape of the 08-08 fix, not about dates.** The instance was fixed
+and the class was left open: the general mechanism was built, then wired to the one branch where the
+bug had been *observed*. **When a fix introduces a general mechanism, the reviewable question is
+which callers do NOT get it, and why** — an exemption is a claim that needs a reason, and here there
+was none, only the accident of which three cards Batu happened to look at. Both reports are one bug,
+reported twice, five days apart.
+
+**Second cause, in the data: the source stated real end times and the card discarded them.** The
+Moon Bunny feed gave two discrete sittings — `start_at: 2026-08-13T13:00:00Z / end_at:
+2026-08-13T19:00:00Z` and the same pair for 08-14, i.e. **9am–3pm each day** — and the card
+flattened them into one span, `startsAt` from day one and `endsAt` from day two, asserting a
+continuous 30-hour event running overnight. Batu: *"the events have end times on their website."*
+The flattening is what fed a 9:00am clock into the sort. Rule now in `ingest-newsletters/SKILL.md`:
+**a multi-day event with per-day sittings keeps the per-day clock; never take `startsAt` from the
+first day and `endsAt` from the last.** The card's window survived unchanged here only because both
+days share one 9am–3pm sitting, which the generalized clock now reads correctly — a coincidence, not
+a design.
+
+Regression guards: three tests in `filterCards.test.mjs` pinning the 6:13pm report, the still-live
+half of the contract (the clock must not evict a card mid-sitting), and the nightly film run.
+
 ## 2026-08-13 (seventh entry) — Search Console opened, and the count rule gets a command
 
 Two instruments, both from the 2026-08-11 readout's proposals.

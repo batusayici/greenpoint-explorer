@@ -176,8 +176,24 @@ export function groupByDay(cards, date) {
     // `date`, not `dayStart`: nextOccurrence needs the CLOCK to know whether
     // today's sitting is still on. Passing local midnight is what kept this
     // morning's greenmarket under "Today" all evening (2026-08-08).
-    const states = card.recurring && card.recurrence?.days?.length > 0;
-    const occurrence = dated && states ? nextOccurrence(card, date) : null;
+    // THE CLOCK IS NOT A WEEKLY-CARD PRIVILEGE (2026-08-13). This gate used to
+    // read `card.recurring && recurrence.days` — the occurrence clock ran for
+    // weekly cards and nothing else, because the three cards that prompted it
+    // on 2026-08-08 happened to be weekly. Every MULTI-DAY ONE-OFF fell through
+    // to isActiveOn, which compares calendar days and never asks the clock, so
+    // it sat in Today at its span-start time on every day of its span: a 9am
+    // two-day camp led the 6:13pm feed, and a three-night film run led at 7pm
+    // all day on nights two and three. The sitting model in occurrenceEndMinutes
+    // was always general — time-of-day of startsAt…endsAt, applied to the day it
+    // lands on — so the fix is to stop withholding it.
+    //
+    // A standing offer (recurring with NO stated day) still belongs on the
+    // shelf, not on a calendar day, so it is the one dated shape held back.
+    // Placement only ever moves a card FORWARD to a day it genuinely occurs on:
+    // when nextOccurrence finds nothing it returns null and the old branches
+    // below run unchanged, so nothing can be hidden by this.
+    const standing = card.recurring && !(card.recurrence?.days?.length > 0);
+    const occurrence = dated && !standing ? nextOccurrence(card, date) : null;
     if (occurrence != null) {
       // Local midnight, matching dayStart — the offset below is a whole-day
       // count, and a noon anchor would round a same-day occurrence up to 1.

@@ -516,6 +516,53 @@ test("groupByDay: a weekly card leaves Today once its sitting is over", () => {
   assert.deepEqual(groups.map((g) => g.label), ["Sat, Aug 15"]);
 });
 
+// ── The clock is not a weekly-card privilege (2026-08-13) ─────────────────
+// Batu on stoopwise.com at 6:13pm: the Today group led with a 9am two-day
+// circus camp. The 2026-08-08 fix above built exactly the right machinery and
+// wired it into ONE branch — `card.recurring && recurrence.days` — because the
+// three cards that prompted it happened to be weekly. A MULTI-DAY ONE-OFF got
+// none of it: placement fell through to isActiveOn, which compares calendar
+// days and never asks the clock, so the card sat in Today at its span-start
+// time for every day of its span. Not a one-off bug either — the same deck
+// carried two more Moon Bunny camps (Aug 17–21, Aug 24–25) queued to do it
+// again, plus a film run and a month-long showcase in the same shape.
+const twoDayCamp = {
+  id: "camp", category: "event",
+  startsAt: "2026-08-13T09:00:00-04:00", endsAt: "2026-08-14T15:00:00-04:00",
+};
+
+test("groupByDay: a multi-day one-off leaves Today once today's sitting is over", () => {
+  // 6:13pm, the moment reported. The camp's sitting is 9am–3pm (the source
+  // stated both days at 13:00–19:00Z); day two is tomorrow, so that is where
+  // it belongs — not at the head of tonight's feed.
+  const groups = groupByDay([twoDayCamp], new Date("2026-08-13T18:13:00-04:00"));
+  assert.deepEqual(groups.map((g) => g.label), ["Tomorrow · Fri, Aug 14"]);
+});
+
+test("groupByDay: a multi-day one-off still in its sitting stays in Today", () => {
+  // The other half of the contract — the clock must not evict a live card.
+  const groups = groupByDay([twoDayCamp], new Date("2026-08-13T10:00:00-04:00"));
+  assert.deepEqual(groups.map((g) => g.label), ["Today · Thu, Aug 13"]);
+});
+
+test("groupByDay: a nightly multi-day run rolls to tomorrow after the night's show", () => {
+  // A film's three-night run is one card (ingest rule), so its window spans
+  // days while each sitting is 7–8pm. Before 2026-08-13 it led Today at 7pm
+  // all day on days two and three.
+  const filmRun = {
+    id: "film", category: "event",
+    startsAt: "2026-08-13T19:00:00-04:00", endsAt: "2026-08-15T20:00:00-04:00",
+  };
+  assert.deepEqual(
+    groupByDay([filmRun], new Date("2026-08-13T19:30:00-04:00")).map((g) => g.label),
+    ["Today · Thu, Aug 13"],
+  );
+  assert.deepEqual(
+    groupByDay([filmRun], new Date("2026-08-13T20:30:00-04:00")).map((g) => g.label),
+    ["Tomorrow · Fri, Aug 14"],
+  );
+});
+
 // ── The feed clock (2026-08-08) ───────────────────────────────────────────
 // Every dated surface called `new Date()` during render, which is only ever
 // as fresh as the last render — nothing re-renders a page nobody is touching,
