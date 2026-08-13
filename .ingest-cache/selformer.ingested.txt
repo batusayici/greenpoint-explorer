@@ -7,10 +7,6 @@ Book Greenpoint
 Book By Service
 My Bookings
 Pricing
-Summer Unlimted Memebership
-Refer a Bud
-Purchase a gift card
-Videos
 Shop
 Grip Socks
 Matcha
@@ -21,18 +17,21 @@ Beauty + Wellness Products
 Shop All
 About+
 Our Locations
+Our Instructors
+Studio Policies
 Private Event Request Form
 Request a Private/Duet
-Our Services
+Refer a Bud
 FAQ
-Studio Policies
 Health Waiver
-Contact Us
-Mat PopUp Events
-Events
+Our Services
 Suggestion Box
-Career
+Contact Us
+Events
+Purchase a gift card
 Blog
+Career
+Videos
 More
 Use tab to navigate through the menu items.
 Log In
@@ -47,17 +46,23 @@ $25 session of your choice
 Group Class
 Private Room Video Class
 Self-service Station
-Summer Fling Unlimited
-$ 249 249$
-Every month Your no-strings summer of unlimited Pilates — both locations, a free guest every week. Limited spots: available through Aug 15 or until we're full, whichever comes first.
+NEW CLIENT Private With an Instructor
+$ 100 100$
+Try out your first one-on-one class with one of our instructors at a discounted rate!
 Valid for 3 months
 Buy Now
-Unlimited group classes — Williamsburg + Greenpoint
-Unlimited private video rooms + self-service stations
-One FREE guest pass every week
-One FREE Red Light Therapy Add-On per week
-Entry into The Fling 40 Challenge (hit 40 classes = free September)
-Summer rate — reverts to regular pricing on Sept 15
+Receive individualized support from a certified instructor
+Request an appointment and we'll get back to you
+24 hour cancellation policy
+NEW CLIENTS ONLY Two Weeks Unlimited
+$ 149 149$
+New to Selformer? Get two weeks of unlimited classes and see what the hype is about! For first-time clients only.
+Valid for 2 weeks
+Buy Now
+Take x1 Group or x1 Video per day
+No commitment or monthly renewals
+Valid for Williamsburg and Greenpoint Locations
+Eligible, one per customer
 Single Class Credits
 One step at a Time
 Single Private On-Demand Video Class
@@ -73,32 +78,32 @@ Valid for one month
 Buy Now
 12 hour cancellation policy
 Single Duet Video Class
-$ 75 75$
+$ 90 90$
 Bring a friend and take a private video class led by our filmed instructors.
 Valid for one month
 Buy Now
+Pay one full credit or use two credits from any package
 12 hour cancellation policy
+Duet Session with an Instructor
+$ 185 185$
+Book a Duet for you and a friend with one of our certified instructors.
+Valid for one month
+Buy Now
+Receive individualized support from a certified instructor
+50 mins of one-on-one time
+Request an appointment and we'll get back to you
+24 hour cancelation policy
 All Access Unlimited Memberships
 Go All In, the Selformer Way.
 Unlimited On-Demand Video Membership
 $ 350 350$
 Every month Your own reformer, your own space, your own flow. Unlimited access to our filmed Selformer classes in a private luxurious room. New In Grand: Self- Service Station. Workout solo in a group setting
+Add to Cart
 Buy Now
 Includes all private video classes and self service stations
 10% off in the retail store and coffee shop
 No commitment, automatic renewal each month until canceled
 Take 1x Video or 1x Self-Station Video class per day
-One Complimentary Video Duet per month
-Eligible for freeze: 14 days x2 or 30 days x1 per year
-Unlimited All Access Membership
-$ 399 399$
-Every month Experience Selformer without limits! Enjoy full access to all group classes, video classes, and brand new video stations
-Buy Now
-Any Group, Private Video, Self service stations Class
-Any Group, Private Video, Self service stations Class
-10% off in the retail store and coffee shop
-Valid for Williamsburg and Greenpoint Locations
-No commitment, automatic renewal each month until canceled
 One Complimentary Video Duet per month
 Eligible for freeze: 14 days x2 or 30 days x1 per year
 Monthly Memberships
@@ -187,6 +192,25 @@ Request an appointment and we'll get back to you
 24 hour cancelation policy
 Private & Duet Credits
 Purchase a single credit before booking your service.
+Single Private On-Demand Video Class
+$ 45 45$
+Perfect for a one-time sweat date. Try Selformer without commitment.
+Valid for one month
+Buy Now
+12 hour cancellation policy
+Single Group Class
+$ 45 45$
+Perfect for a one-time sweat date. Try Selformer without commitment.
+Valid for one month
+Buy Now
+12 hour cancellation policy
+Single Duet Video Class
+$ 90 90$
+Bring a friend and take a private video class led by our filmed instructors.
+Valid for one month
+Buy Now
+Pay one full credit or use two credits from any package
+12 hour cancellation policy
 Single Private with an Instructor
 $ 130 130$
 Book a 1:1 with one of our certified instructors. Get the attention you and your body deserve!
@@ -211,7 +235,8 @@ All sales are final. We do not offer refunds.
 Selformer has a strict 5-minute lateness policy. Clients who arrive more than five minutes after class start time will not be permitted to join the session.
 Contact Us
 For questions, bookings, or any other assistance or inquiries, please email us at hello@selformer.com
-We're Not Your Ordinary Pilates Studio
+WE'RE NOT
+YOUR ORDINARY PILATES STUDIO
 Facebook
 Instagram
 Tiktok
@@ -241,7 +266,6 @@ Greenpoint
 Williamsburg
 grand@selformer.com
 bottom of page
-
 
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 # Captured by the new roster `detail` mechanism and merged here so the

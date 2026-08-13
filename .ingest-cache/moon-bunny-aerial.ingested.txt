@@ -1,27 +1,3 @@
-name: Weekday Camp 13-16 yrs old
-start_at: 2026-08-12T13:00:00.000Z
-end_at: 2026-08-12T19:00:00.000Z
-
-name: Aerial Conditioning
-start_at: 2026-08-12T20:00:00.000Z
-end_at: 2026-08-12T21:00:00.000Z
-
-name: Silks Private
-start_at: 2026-08-12T21:00:00.000Z
-end_at: 2026-08-12T22:00:00.000Z
-
-name: Silks
-start_at: 2026-08-12T22:00:00.000Z
-end_at: 2026-08-12T23:00:00.000Z
-
-name: Silks
-start_at: 2026-08-12T23:30:00.000Z
-end_at: 2026-08-13T00:30:00.000Z
-
-name: Hammock
-start_at: 2026-08-13T00:30:00.000Z
-end_at: 2026-08-13T01:30:00.000Z
-
 name: Two Day Camp 4-7 yrs old
 start_at: 2026-08-13T13:00:00.000Z
 end_at: 2026-08-13T19:00:00.000Z
@@ -398,24 +374,29 @@ name: Lyra
 start_at: 2026-08-29T19:00:00.000Z
 end_at: 2026-08-29T20:00:00.000Z
 
-## [R1 PERSISTED 2026-08-12] https://moonbunnyaerial.com/summer-camps
-# Evidence rule, DECISION_LOG 2026-08-12. The roster JSON feed carries only
-# `name` / `start_at` / `end_at` per session — never the camp description — so
-# every Moon Bunny camp card's prose was unverifiable. The three descriptions
-# live in COLLAPSED accordion panels that plain fetch cannot see; read via the
-# browser pane on 2026-08-12. Note the panels are near-identical, which is
-# exactly why a card must quote the right one.
-Our coaches have over 10 years of experience teaching kids circus and are committed to a fun, supportive learning environment. We have full day and half day options for 4-7 years old, 7-12 years old, and 13-17 years old.
-Our Single-Day Circus Camp is perfect for children who want to try camp before committing to a full session. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props. No prior experience is required. This is a great opportunity for children to try new skills and see if our circus camp is the right fit.
-Our Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.With two days to learn and practice, participants can build confidence, develop new skills, and enjoy an engaging introduction to circus arts. No prior experience is required.
-Our Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.Throughout the week, participants will enjoy games, themed days, and opportunities to build skills and creativity. The camp concludes with a special showcase where campers perform for family and friends.No prior experience is required.
+name: Pokeball
+start_at: 2026-08-29T20:15:00.000Z
+end_at: 2026-08-29T21:15:00.000Z
 
+name: Weekend Camp 13-16 yrs old
+start_at: 2026-08-30T13:00:00.000Z
+end_at: 2026-08-30T19:00:00.000Z
 
-## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
-# Captured by the new roster `detail` mechanism and merged here so the
-# sourceQuote gate can re-check these cards. Merged rather than promoted via
-# --mark-ingested on purpose: marking would flag unreviewed content as already
-# processed and hide real supply from the next run.
+name: Open Gym
+start_at: 2026-08-30T17:00:00.000Z
+end_at: 2026-08-30T18:00:00.000Z
+
+name: Spiral
+start_at: 2026-08-30T17:00:00.000Z
+end_at: 2026-08-30T18:00:00.000Z
+
+name: Baby Lyra
+start_at: 2026-08-30T18:00:00.000Z
+end_at: 2026-08-30T19:00:00.000Z
+
+name: Flexibility
+start_at: 2026-08-30T18:00:00.000Z
+end_at: 2026-08-30T19:00:00.000Z
 
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial
@@ -465,8 +446,6 @@ Contact Us
 @moonbunnyaerial
 info@moonbunnyaerial.com
 Aerial rigging points certified by HLZAE
-
-
 
 ## [DETAIL] https://moonbunnyaerial.com/discounts
 Pricing/Discounts — Moon Bunny Aerial

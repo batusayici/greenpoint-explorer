@@ -414,14 +414,31 @@ test("seed has exactly 75 cards across the six layers", () => {
   // schedule fact is inside the event poster. Reading the three posters found
   // exactly one live item; the other two (listening party 8/7, poetry open-mic
   // 7/31) had already passed. 152 + 1 = 153.
-  assert.equal(seed.cards.length, 153);
+  // 2026-08-13 daily refresh: expiry deleted `library-wednesday-programs-0812`
+  // (ended 8/12), then 8 adds. 153 - 1 + 8 = 160. Six of the eight fill the
+  // BACK of the 14-day window off sources the run had already fetched: the
+  // Greenpoint Library's own Solr calendar carried five uncarded days inside
+  // the window (8/15, 8/18, 8/19, 8/25, 8/26) while the deck only held
+  // Thu/Fri/Sat cards, and Troost's calendar carried 8/27 — the exact
+  // "the source published it and we did not card it" shape the coverage gate
+  // exists to surface (it had flagged troost 8/27). The other two are new
+  // supply from this run's diffs: NYC Parks' It's My Park volunteer shift at
+  // McGolrick (8/23) and the library's Sips & Scholars lecture at McCarren
+  // Parkhouse (8/25).
+  // ...and one delete: `selformer-summer-fling-0815`. The offer's own terms
+  // were "available through Aug 15 or until we're full, whichever comes
+  // first", and the string "Summer Fling" no longer appears anywhere on
+  // /plans-pricing — the page now lists a different membership set. A deal
+  // whose source has stopped stating it does not get to coast to its printed
+  // end date. 153 - 1 + 8 - 1 = 159.
+  assert.equal(seed.cards.length, 159);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 82, "71 + all 8 adds from the 8/13-19 Greenpointers roundup + the 2 cards released by the 2026-08-12 rulings (Threes flea market, Buffalo Firefly sound bath) + Macha's recurring Summer Fridays — every one is a dated happening");
-  assert.equal(count((c) => c.category === "discount"), 7, "6 + the Bios Apothecary herbalist consult (2026-08-12)");
+  assert.equal(count((c) => c.category === "event"), 89, "82 - the expired 8/12 library day-card + all 8 adds of the 2026-08-13 refresh — every one is a dated happening");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.filters.includes("live_music")), 24, "23 + the all-vinyl DJ social at Idle Mind Tavern (8/19)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 + DJ Barba Yiorgi's 8/27 night at Troost");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -498,7 +515,12 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // +1 (2026-08-12): the Bios herbalist consult — a standing offer with no
   // stated end date, so `recurring: true` + verified-through per the
   // no-stated-end-date rule, not a hold.
-  assert.equal(deals.length, 7);
+  // 2026-08-13: −1. The Selformer Summer Fling was DELETED, not expired — the
+  // string "Summer Fling" is gone from /plans-pricing entirely, and the offer's
+  // own terms were "available through Aug 15 or until we're full, whichever
+  // comes first", so the page pulling it is the offer ending. Caught by
+  // ingest:quotes, not by the calendar: its printed endsAt was still 2 days out.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -595,6 +617,12 @@ test("free-ness is designated only where the source states it (tester feedback #
     "neptune-artists-makers-market-0816",
     // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
     "reading-series-61-franklin-0813",
+    // 2026-08-13: the library's own record for the Sips & Scholars lecture
+    // states the series' free-ness in the body the card quotes — "the second
+    // annual Sips & Scholars series, free lectures set in bars, parks, cafes,
+    // and restaurants all over Brooklyn". This is a single event, not a
+    // grouped day-card, so the line covers the whole card.
+    "sips-scholars-parkhouse-0825",
     // 2026-08-06: the 8/7 Ford v Ferrari card was DELETED, not rolled forward —
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
@@ -693,7 +721,6 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // 2026-08-10: the Summer Fling promo is a DEAL at a Pilates studio, so it
     // double-files wellness + deals_memberships on the same reading that puts
     // a kids' discount in family_kids + deals_memberships (PR #18).
-    "selformer-summer-fling-0815",
     "sparsa-greenpoint",
     // 2026-08-12: a free outdoor Zumba class — dance-as-movement, the cluster's
     // core reading, so wellness rather than arts_culture.
@@ -878,11 +905,17 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   // the 6pm shift is in the sourceQuote, and it is what earns the lens.
   // 2026-08-07 expiry took that potluck (it ran 8/6), so the lens is back to
   // the four standing asks plus the CAG meeting.
+  // 2026-08-13: It's My Park at McGolrick joins as a dated work shift — NYC
+  // Parks files it "categories: Volunteer | It's My Park" and the body reads
+  // "volunteer with North Brooklyn Parks Alliance to beautify Msgr. McGolrick
+  // Park". That is the work-shift rule at its plainest: hands-on participation
+  // with neighborhood stakes, no social-tail inference needed.
   assert.deepEqual(civic, [
     "adopt-a-business",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
+    "mcgolrick-its-my-park-0823",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {
@@ -947,7 +980,6 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "selformer-memberships",
     // 2026-08-10: a dated promo, so it sits beside the membership card rather
     // than replacing it — endsAt is the source's own "available through Aug 15".
-    "selformer-summer-fling-0815",
     "word-membership",
     "yaro-studio-membership",
   ]);

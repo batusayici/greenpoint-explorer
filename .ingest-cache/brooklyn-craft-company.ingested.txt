@@ -247,16 +247,6 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Knitting 101
-Regular Price
-$45.00
-Sale Price
-$45.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
 Crochet 101 - Lil' Bag
 Regular Price
 $45.00
@@ -267,101 +257,11 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Sewing 101 - Make a Skirt
-Regular Price
-$95.00
-Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Visible Darning & Mending with a Loom
-Regular Price
-$65.00
-Sale Price
-$65.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Natural Bundle Dye Workshop
-Regular Price
-$75.00
-Sale Price
-$75.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Private Crochet Lessons by the Hour
-Regular Price
-$60.00
-Sale Price
-$60.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Crochet 101 - Chunky Cowl
-Regular Price
-$45.00
-Sale Price
-$45.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Beaded Embroidery
-Regular Price
-$55.00
-Sale Price
-$55.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Beginner Embroidery
-Regular Price
-$50.00
-Sale Price
-$50.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
 Sewing 101 - Tote Bag
 Regular Price
 $95.00
 Sale Price
 $95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Denim Mending
-Regular Price
-$65.00
-Sale Price
-$65.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Needle Felted Pets
-Regular Price
-$65.00
-Sale Price
-$65.00
 Regular Price
 Unit Price
 / per
@@ -379,7 +279,7 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Private Knitting Lessons by the Hour
+Private Crochet Lessons by the Hour
 Regular Price
 $60.00
 Sale Price
@@ -394,6 +294,16 @@ Regular Price
 $25.00
 Sale Price
 $25.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Sewing 101 - Make a Skirt
+Regular Price
+$95.00
+Sale Price
+$95.00
 Regular Price
 Unit Price
 / per
@@ -414,6 +324,16 @@ Regular Price
 $65.00
 Sale Price
 $65.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Knitting 101
+Regular Price
+$45.00
+Sale Price
+$45.00
 Regular Price
 Unit Price
 / per
@@ -479,11 +399,31 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+Private Knitting Lessons by the Hour
+Regular Price
+$60.00
+Sale Price
+$60.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 CRAFTY HOUR: Embroidered Hats
 Regular Price
 $25.00
 Sale Price
 $25.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Needle Felted Pets
+Regular Price
+$65.00
+Sale Price
+$65.00
 Regular Price
 Unit Price
 / per
@@ -499,11 +439,31 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+Beginner Quilting
+Regular Price
+$125.00
+Sale Price
+$125.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 Floral Embroidery
 Regular Price
 $55.00
 Sale Price
 $55.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Visible Darning & Mending with a Loom
+Regular Price
+$65.00
+Sale Price
+$65.00
 Regular Price
 Unit Price
 / per
@@ -524,6 +484,46 @@ Regular Price
 $85.00
 Sale Price
 $85.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Filet Crochet
+Regular Price
+$55.00
+Sale Price
+$55.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Scrappy Patchwork Tote (1-day Intensive)
+Regular Price
+$175.00
+Sale Price
+$175.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Macramé Plant Hanger
+Regular Price
+$65.00
+Sale Price
+$65.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Intro to Garment Sewing - Free Range Slacks (Weeknights, 3 parts)
+Regular Price
+$225.00
+Sale Price
+$225.00
 Regular Price
 Unit Price
 / per

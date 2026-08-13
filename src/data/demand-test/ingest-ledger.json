@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-12T18:40:00-04:00",
+  "lastRunAt": "2026-08-13T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1237,6 +1237,20 @@
       "publisher": "Track V ingest (scoped single-source, macha-studio)",
       "processedAt": "2026-08-12",
       "outcome": "Scoped run requested by Batu to clear macha-studio's STANDING DARK. Expiry RAN (every path) and took nothing. Fetch exit 0, reach 1/1, `unchanged` — overridden by the standing:true exception. Deck 152 → 153 (+0.7%, inside ±40%). Gates: npm test 611/611; lintCard clean (kicker 40 chars, summary 108); npm run ingest:quotes verified=38 mismatch=0; coverage STANDING DARK on macha-studio CLEARED and the scoped gate exits 0. TWO FINDINGS WORTH KEEPING. (1) The \"~12 events\" figure in the roster note describes the BLOG ARCHIVE, not live supply: of 12 posts, most are 2024-2025, and of the three posted in 2026 exactly ONE is still upcoming. Batu's rejection of standing:false was still right — there IS standing programming — but the expected yield from this source is ~1 card, not ~12, and a future run should not go looking for eleven more. (2) PERSISTED-EVIDENCE HEADERS CAN INJECT PHANTOM DATES INTO THE COVERAGE PARSER. The first [IMAGE READ] block was headed with a bare ISO `2026-08-12` in its annotation lines; extractDates cannot tell an annotation from an event line, so coverage immediately reported a GAP for today that no source claims. Fixed here by writing metadata dates as \"12 August 2026\", which none of the extractor's patterns match. The same shape exists in the greenpointers [R1 PERSISTED] blocks and is merely masked there by real dates. The durable fix is to have coverage.js ignore `#` annotation lines — a CODE change, therefore human-gated and NOT applied in this run."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/13/acclaimed-thai-spot-ugly-baby-officially-relocates-to-williamsburg/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-13",
+      "outcome": "SKIPPED — geography. The only new Greenpointers post in this run's diff. \"Eater reports that the restaurant will open on August 27, at 364 Grand Street (most recently home to Emmy Squared).\" 364 Grand Street is Williamsburg, so the item is out of scope under the standing geography gate; noted in the run summary, not mapped. Recorded here because the Greenpointers feed is NOT monotone (2026-08-10) — without this entry a future run cannot tell \"already triaged\" from \"never seen\"."
+    },
+    {
+      "id": "run:2026-08-13-daily-thin",
+      "kind": "run",
+      "publisher": "Track V ingest (daily thin)",
+      "processedAt": "2026-08-13",
+      "outcome": "SHIPPED 8 adds, 1 delete, 1 expiry; deck 153 → 159 (+3.9%, inside ±40%). Expiry RAN (every path) and took library-wednesday-programs-0812. Fetch exit 0, reach 50/58 (14% error, ceiling 15%), 18 changed / 32 unchanged / 8 error / 10 skipped-monthly. Gates: npm test 622/622; lintCard clean on all 8; ingest:quotes verified=43 mismatch=0 gated and 106/0 on --all; ingest:coverage --gate exit 0 (21 flagged, 0 unexplained); build ok; check-freshness datedUpcoming7d=66 reservoir7-14d=28 topVenue=Troost:11% → FRESH, no WARN. holds: 1 new-judgment · 0 rule-miss · 0 source-blocked.\n\nTHE RUN'S REAL FINDING IS A PIPELINE DEFECT, not any card: --mark-ingested CLOBBERS hand-persisted evidence. ingest:quotes read 35/0 immediately before promotion and 30/13 immediately after, with no source re-fetched in between — see the watchItems entry of the same date. Recovered by re-appending eight baselines' persisted tails from git HEAD. Two lessons worth keeping: (1) RUN ingest:quotes AFTER --mark-ingested, not only before — run before promotion it verifies the wrong file and reports green on a broken evidence base; (2) a failed detail fetch is only transient if the baseline keeps the old block, and today it did not.\n\nSUPPLY: six of the eight adds fill the BACK of the window off sources already on disk. The Greenpoint Library's Solr calendar carried five uncarded days inside the 14-day window (8/15, 8/18, 8/19, 8/25, 8/26) while the deck held only Thu/Fri/Sat day-cards — a standing shape, not a one-off miss, and invisible to the coverage script because grouped day-cards read as coverage. Troost 8/27 WAS flagged and is now closed. Worth noting against the 2026-08-06 lesson: the supply was never missing, it was never read past the days already carded.\n\nDELETE: selformer-summer-fling-0815, caught by ingest:quotes rather than by the calendar — its printed endsAt was still two days out, but \"Summer Fling\" no longer appears anywhere on /plans-pricing and the offer's own terms were \"until we're full, whichever comes first\". Two other --all mismatches were re-read and confirmed unchanged in substance, then re-quoted from the current snapshot: the Go Green yoga line now renders \"of Kindred , in partnership\" (a stray space from the stripped anchor tag) and the Moon Bunny camp paragraph is now split across two lines. Neither was edited to fit — both claims were verified against the live text first.\n\nGmail pass DONE (connector authenticated, newer_than:2d): 2 threads, nothing cardable. GUNK's 8/12 issue is an anniversary essay whose only dated item is its own party, 8/15 at Secret Riso Club in Bushwick — out of area. Town Square's 8/12 email restates SummerStarz 8/14, already carded. EGRESS DENIED: www.goldendrum.org (403 to CONNECT) — golden-drum was added to the roster this morning and has never once been fetched, so its locally-owned gate has never been applied; needs one allowlist entry at claude.ai/code. Browser path still down with browser-connect-reset (7 sources); known state, reported, not re-investigated."
     }
   ],
   "senderRegistry": [
@@ -1622,6 +1636,11 @@
       "name": "Greenpoint Trash Club — the 7:30pm start is not verifiable anywhere fetchable",
       "note": "2026-08-12 bucket-B sweep. greenpointtrashclub.org (and its .com redirect) states \"Every Wednesday night\" and gives NO TIME anywhere on the page — checked in the browser, full page text is 1.8KB. The card's 7:30pm comes solely from the club's Instagram bio line \"Every Wednesday night at 7:30!\", which is first-party and was read at authoring time but cannot be re-fetched (instagram.com is not plain-fetchable). The DAY is verified; the TIME is not. Card keeps 7:30pm because a civic volunteer card without a start time is close to useless and the source is the org itself — but this is the one bucket-B card whose stated time no future run can re-check. Resolve by asking the club, or if they ever put a time on the site.",
       "addedAt": "2026-08-12"
+    },
+    {
+      "name": "--mark-ingested DESTROYS hand-persisted evidence when a detail fetch fails",
+      "note": "SOURCE FACT / PIPELINE DEFECT found 2026-08-13. Promoting baselines overwrites <id>.ingested.txt with the fresh snapshot, and any evidence that lives ONLY in the baseline is lost. It bit 20 live cards in two steps this run: ingest:quotes read verified=35 mismatch=0 before --mark-ingested and verified=30 mismatch=13 immediately after, with nothing else changed — and a further 7 pre-2026-08-12 cards surfaced on --all, which the dated gate does not cover, so the gated number understated the damage by more than half. Two causes, both silent. (1) DETAIL FETCH FAILURES: the run logged \"detail: 0 page(s) persisted for kettl-tea, 1 failed\" and the same for selformer, held-space and clay-space-membership — a failed detail page is correctly not written into the snapshot, but promoting that snapshot then deletes the [DETAIL] block the previous baseline still had, so the failure is not transient after all. (2) HAND-PERSISTED BLOCKS: the [R1 PERSISTED] blocks on greenpointers and cibone-ote and the [IMAGE READ] block on macha-studio exist in no fetch at all; the greenpointers roster note already warns \"CARRY THE [R1 PERSISTED] BLOCKS FORWARD when re-marking this baseline\", and that warning is currently the only thing standing between a routine run and six failed cards. Recovered here by re-appending each old baseline's persisted tail from git HEAD (hana-makgeolli-events, yaro-studios, kettl-tea, carcosa-club, selformer, cibone-ote, greenpointers, macha-studio, then brooklyn-craft-company and clay-space-membership once --all surfaced them) and re-running to verified=106 mismatch=0 across the whole deck. RUN --all, not just the gated set: the gate binds on createdAt >= 2026-08-12, and clobbered evidence does not respect that date. THE RECOVERY IS MANUAL AND WILL BE NEEDED EVERY TIME. The durable fix is a code change (make --mark-ingested merge, never clobber, the [DETAIL]/[R1 PERSISTED]/[IMAGE READ] blocks, and skip promotion for a source whose detail fetch failed), which is human-gated — proposed in the 2026-08-13 review PR. Until it lands: run ingest:quotes AFTER --mark-ingested, not only before, or the gate is measuring the wrong file.",
+      "addedAt": "2026-08-13"
     }
   ],
   "sourcePulse": {
@@ -1631,8 +1650,8 @@
     "film-noir-cinema": "2026-08-10",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-11",
-    "greenpoint-library": "2026-08-11",
-    "bpl-north-brooklyn-calendar": "2026-08-11",
+    "greenpoint-library": "2026-08-12",
+    "bpl-north-brooklyn-calendar": "2026-08-12",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-07",
@@ -1650,8 +1669,8 @@
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-02",
-    "nycparks-greenpoint": "2026-08-06",
-    "troost": "2026-08-11",
+    "nycparks-greenpoint": "2026-08-12",
+    "troost": "2026-08-12",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-06",
     "town-square-bk": "2026-08-06",
@@ -1797,9 +1816,9 @@
     {
       "sourceId": "nycparks-greenpoint",
       "gapKey": "GAP",
-      "reason": "Re-earned 2026-08-12 against this run's snapshot; the flagged set grew to 9 dates (8/12, 8/13, 8/17, 8/18, 8/20, 8/24, 8/25, 8/26) and every one still carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule. The two dates this run's diff added are both 8/26, and both are rec: \"## McCarren Pool: Lap Swim\" and \"## Body-Centric Circuit Training\" (categories: Shape Up NYC | Recreation Center Programming). The dates the deck DOES cover (8/14, 8/19, 8/21) remain exactly the feed's non-rec items — the Free Summer Movies — all carded. No one-off happening on any flagged date is uncarded.",
-      "addedAt": "2026-08-12",
-      "expiresAt": "2026-08-26"
+      "reason": "Re-earned 2026-08-13 against this run's snapshot. The flagged set is now 8 dates (8/13, 8/17, 8/18, 8/20, 8/24, 8/25, 8/26, 8/27) and every one carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule — the two dates this run's diff added are both \"## McCarren Pool: Lap Swim\" (8/24 and 8/27, categories: Recreation Center Programming). 8/23 has DROPPED OFF this list because the run carded it: the diff surfaced a genuine one-off, \"This It's My Park season, volunteer with North Brooklyn Parks Alliance to beautify Msgr. McGolrick Park\" (startdate: 2026-08-23, starttime: 10:00 am), now live as mcgolrick-its-my-park-0823. That is the difference between an explained line and a rubber-stamped one: the same wording covered 8/23 on 2026-08-12 and it was right then, so the re-check is what caught the change. The dates the deck covers (8/14, 8/19, 8/21, 8/23) remain the feed's non-rec items.",
+      "addedAt": "2026-08-13",
+      "expiresAt": "2026-08-27"
     },
     {
       "sourceId": "lockwood",
@@ -1828,6 +1847,20 @@
       "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
       "addedAt": "2026-08-11",
       "expiresAt": "2026-08-25"
+    },
+    {
+      "sourceId": "golden-drum",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Added to the roster 2026-08-13 (commit 6ccfe4f) and EGRESS-DENIED on its first fetch, so it has never had a snapshot. The fetch report names the cause exactly: \"the proxy refused the tunnel to www.goldendrum.org (answered 403 to CONNECT), so no HTTP response ever existed — an egress-policy denial.\" This is the born-blocked shape SKILL.md warns about after the 2026-08-08 SSG sweep — a source onboarded without its host on the routine's egress allowlist works interactively and is dead in the cloud. NOT a site bot-wall (those return a status) and NOT the browser path (this source is plain fetch). Resolution is one allowlist entry for www.goldendrum.org at claude.ai/code; until then the locally-owned gate cannot even be applied, because the page has never been read. Never routed around.",
+      "addedAt": "2026-08-13",
+      "expiresAt": "2026-08-27"
+    },
+    {
+      "sourceId": "maison-jar",
+      "gapKey": "GAP",
+      "reason": "FALSE POSITIVE, verified against the snapshot 2026-08-13: the single flagged date is 2026-08-27 and it belongs to a PAST workshop in the page's archive, not to current supply. The snapshot reads \"August 27, 2025 - 04:00 PM TO 06:00 PM / Happy Hour - August 2025 / It's not summer without some cold and refreshing kombucha!\" — the year is 2025. extractDates reads the month and day and cannot see that the year is a season old, which is the same annotation-vs-event blindness recorded for the macha-studio image block on 2026-08-12. Maison Jar's live standing offer IS carded (maison-jar-refill-happy-hour, verified-through 8/24). No uncarded 2026 supply exists at this source.",
+      "addedAt": "2026-08-13",
+      "expiresAt": "2026-08-27"
     }
   ]
 }

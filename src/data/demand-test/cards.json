@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-12",
+  "version": "2026-08-13",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -1300,13 +1300,13 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-13",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-wednesday-programs-0812",
         "library-thursday-programs-0813",
-        "library-saturday-storytime-0822"
+        "library-saturday-storytime-0822",
+        "sips-scholars-parkhouse-0825"
       ]
     },
     {
@@ -2443,7 +2443,7 @@
           "date": "2026-08-03"
         }
       ],
-      "sourceQuote": "Community Yoga in Transmitter Park\nTuesday, August 4th at 7:00 AM - 8:00 AM\nJoin us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park. Hosted by Kacey Weiniger of Kindred, in partnership with the Friends of Transmitter Park.\nWhat to Bring: A yoga mat if you have one, otherwise a towel or blanket.\nWhere to Meet: Main Entrance – WNYC Transmitter Park, Greenpoint, Brooklyn- then walk to the shoreline lawn edge\n2026 Current & Upcoming Months\nTuesday, August 4, 7:00 AM to 8:00 AM\nTuesday, August 11, 7:00 AM to 8:00 AM\nTuesday, August 18, 7:00 AM to 8:00 AM\nTuesday, August 25, 7:00 AM to 8:00 AM",
+      "sourceQuote": "Community Yoga in Transmitter Park\nTuesday, August 4th at 7:00 AM - 8:00 AM\nJoin us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park. Hosted by Kacey Weiniger of Kindred , in partnership with the Friends of Transmitter Park.\nWhat to Bring: A yoga mat if you have one, otherwise a towel or blanket.\nWhere to Meet: Main Entrance – WNYC Transmitter Park, Greenpoint, Brooklyn- then walk to the shoreline lawn edge\n2026 Current & Upcoming Months\nTuesday, August 4, 7:00 AM to 8:00 AM\nTuesday, August 11, 7:00 AM to 8:00 AM\nTuesday, August 18, 7:00 AM to 8:00 AM\nTuesday, August 25, 7:00 AM to 8:00 AM",
       "relatedCardIds": [
         "transmitter-park-restaurant-marina"
       ],
@@ -2452,7 +2452,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-13",
       "recurrence": {
         "days": [
           "tue"
@@ -2604,57 +2604,6 @@
           "thu"
         ]
       }
-    },
-    {
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-12",
-      "id": "library-wednesday-programs-0812",
-      "title": "Wednesday at Greenpoint Library",
-      "kicker": "Garden club for ages 6 to 12",
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "startsAt": "2026-08-12T16:30:00-04:00",
-      "endsAt": "2026-08-12T17:30:00-04:00",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "summary": "An hour upstairs planting seeds, reading stories, singing and dancing — children leave with plants and flowers to take home.",
-      "actions": [
-        {
-          "label": "Event page",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/calendar/our-garden-club-greenpoint-demonstration-20260812-0430pm"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Our Garden Club — Greenpoint Library calendar",
-          "url": "https://discover.bklynlibrary.org/",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-12"
-        },
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "ts_title: Our Garden Club\nds_event_start_date: 2026-08-12T20:30:00Z\nds_event_end_date: 2026-08-12T21:30:00Z\nss_event_location: Greenpoint, Demonstration Garden\nts_body: Let’s see what we can grow in Brooklyn! Plant seeds and watch them grow. Read stories, sing, dance, take home plants and flowers. For children with and without disabilities. Kids and tweens welcome - ages 6 to 12.",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "evidenceStrength": "medium_high",
-      "lat": 40.72606,
-      "lng": -73.950709
     },
     {
       "category": "event",
@@ -5994,51 +5943,6 @@
         "resident"
       ],
       "evidenceStrength": "high",
-      "monetizationRelevance": "direct",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
-      "free": false,
-      "id": "selformer-summer-fling-0815",
-      "category": "discount",
-      "filters": [
-        "wellness",
-        "deals_memberships"
-      ],
-      "endsAt": "2026-08-15T23:59:00-04:00",
-      "title": "Summer Fling unlimited Pilates at Selformer",
-      "kicker": "Unlimited Pilates at $249 a month",
-      "summary": "Valid at the Greenpoint and Williamsburg locations and includes a free guest each week. Spots are capped, and the rate reverts to regular pricing on September 15.",
-      "locationName": "Selformer",
-      "address": "67 West St, Brooklyn, NY 11222",
-      "sourceQuote": "Summer Fling Unlimited\n$ 249\nEvery month Your no-strings summer of unlimited Pilates — both locations, a free guest every week. Limited spots: available through Aug 15 or until we're full, whichever comes first.",
-      "actions": [
-        {
-          "label": "Plans",
-          "type": "learn_more",
-          "url": "https://www.selformer.com/plans-pricing"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Selformer plans & pricing",
-          "url": "https://www.selformer.com/plans-pricing",
-          "publisher": "Selformer",
-          "date": "2026-08-10"
-        }
-      ],
-      "relatedCardIds": [
-        "selformer-memberships"
-      ],
-      "lat": 40.728561,
-      "lng": -73.959184
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
@@ -6264,7 +6168,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-11",
+      "updatedAt": "2026-08-13",
       "filters": [
         "family_kids"
       ],
@@ -6296,7 +6200,7 @@
       "summary": "Moon Bunny's longest camp format for the 8-to-12 group, threading ground acro, juggling and flow props plus games and themed days through the full week.",
       "startsAt": "2026-08-17T09:00:00-04:00",
       "endsAt": "2026-08-21T15:00:00-04:00",
-      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-17T13:00:00.000Z\nend_at: 2026-08-17T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.Throughout the week, participants will enjoy games, themed days, and opportunities to build",
+      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-17T13:00:00.000Z\nend_at: 2026-08-17T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.\nThroughout the week, participants will enjoy games, themed days, and opportunities to build",
       "lat": 40.736575,
       "lng": -73.952327
     },
@@ -7127,6 +7031,347 @@
       "updatedAt": "2026-08-12",
       "lat": 40.730903,
       "lng": -73.957932
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-13"
+        }
+      ],
+      "id": "library-collaging-cooking-0815",
+      "category": "event",
+      "free": false,
+      "title": "Collaging & Cooking with Dacha 46",
+      "kicker": "Collage table, then a cooking demo",
+      "summary": "Bring recipes or photos to work into a collage; chefs Jessica and Trina Quinn then demonstrate shuba. Finished collages can go into the library's community zine.",
+      "startsAt": "2026-08-15T11:00:00-04:00",
+      "endsAt": "2026-08-15T13:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "ts_title: Collaging & Cooking with Dacha 46!\nds_event_start_date: 2026-08-15T15:00:00Z\nts_body: Join us for collage-making followed by a food demonstration by Brooklyn-based chef couple Jessica and Trina Quinn of Dach 46, a traveling pop-up that explores Eastern European cuisine through the lens of the Queer Jewish experience"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-13"
+        }
+      ],
+      "id": "library-tuesday-programs-0818",
+      "category": "event",
+      "free": false,
+      "title": "Tuesday at Greenpoint Library",
+      "kicker": "Three adult drop-ins, no sign-up needed",
+      "summary": "A free ESOL class for beginners at 2, the Keep Calm & Carry Yarn fiber-arts group at 5:30 with lessons available, and an English conversation group at 6.",
+      "startsAt": "2026-08-18T14:00:00-04:00",
+      "endsAt": "2026-08-18T19:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-08-18T18:00:00Z\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-18T21:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-18T22:00:00Z"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-13"
+        }
+      ],
+      "id": "library-wednesday-programs-0819",
+      "category": "event",
+      "free": false,
+      "title": "Wednesday at Greenpoint Library",
+      "kicker": "Seven programs, morning to late afternoon",
+      "summary": "Toddler Time at 10:30 and 11:15, the final Read and Play session at 1, rooftop seating 1–4, We Speak NYC English at 3:30, teen reading at 4 and Our Garden Club at 4:30.",
+      "startsAt": "2026-08-19T10:30:00-04:00",
+      "endsAt": "2026-08-19T17:30:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-19T14:30:00Z\nts_title: Read and Play\nds_event_start_date: 2026-08-19T17:00:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-19T17:00:00Z\nts_title: Free English Class (We Speak NYC)\nds_event_start_date: 2026-08-19T19:30:00Z\nts_title: Teen Time: Reading in the Rooftop Garden\nds_event_start_date: 2026-08-19T20:00:00Z\nts_title: Our Garden Club\nds_event_start_date: 2026-08-19T20:30:00Z"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-13"
+        }
+      ],
+      "id": "library-tuesday-programs-0825",
+      "category": "event",
+      "free": false,
+      "title": "Tuesday at Greenpoint Library",
+      "kicker": "Three adult drop-ins, no sign-up needed",
+      "summary": "A free ESOL class for beginners at 2, the Keep Calm & Carry Yarn fiber-arts group at 5:30 with lessons available, and an English conversation group at 6.",
+      "startsAt": "2026-08-25T14:00:00-04:00",
+      "endsAt": "2026-08-25T19:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-08-25T18:00:00Z\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-25T21:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-25T22:00:00Z"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-13"
+        }
+      ],
+      "id": "library-wednesday-programs-0826",
+      "category": "event",
+      "free": false,
+      "title": "Wednesday at Greenpoint Library",
+      "kicker": "Storytimes, then quiet study upstairs",
+      "summary": "Toddler Time at 10:30 and 11:15, then the third-floor Demonstration Garden opens for public seating 1–4 — closed in rain, high heat or other inclement weather.",
+      "startsAt": "2026-08-26T10:30:00-04:00",
+      "endsAt": "2026-08-26T16:00:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-26T14:30:00Z\nts_title: Toddler Time\nds_event_start_date: 2026-08-26T15:15:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-26T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating!"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "id": "sips-scholars-parkhouse-0825",
+      "category": "event",
+      "free": true,
+      "title": "Sips & Scholars: Enlightenment and Counter-Enlightenment",
+      "kicker": "Free lecture in the parkhouse",
+      "summary": "Michael Stevenson of the Brooklyn Institute for Social Research reads the Counter-Enlightenment as a corrective rather than a rejection. RSVP in advance; refreshments provided.",
+      "startsAt": "2026-08-25T18:30:00-04:00",
+      "endsAt": "2026-08-25T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "McCarren Parkhouse",
+      "address": "McCarren Park, Brooklyn, NY 11222",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-13"
+        }
+      ],
+      "sourceQuote": "ts_title: Sips & Scholars: Enlightenment and Counter-Enlightenment with Michael Stevenson\nds_event_start_date: 2026-08-25T22:30:00Z\nss_event_location: McCarren Parkhouse\nts_body: Class is in session this summer! We’re partnering with the Brooklyn Institute of Social Research to offer the second annual Sips & Scholars series, free lectures set in bars, parks, cafes, and restaurants all over Brooklyn.",
+      "lat": 40.721159,
+      "lng": -73.952879
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "id": "mcgolrick-its-my-park-0823",
+      "category": "event",
+      "free": false,
+      "title": "It's My Park at Msgr. McGolrick Park",
+      "kicker": "Morning cleanup shift, no sign-up listed",
+      "summary": "North Brooklyn Parks Alliance runs the beautification session. NYC Parks files it under Volunteer and It's My Park, and the feed carries no registration link.",
+      "startsAt": "2026-08-23T10:00:00-04:00",
+      "endsAt": "2026-08-23T12:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Msgr McGolrick Park",
+      "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
+      "geocodeQuery": "Monsignor McGolrick Park, Brooklyn, NY",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/events/2026/08/23/its-my-park-at-msgr-mcgolrick-park"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "It's My Park at Msgr. McGolrick Park",
+          "url": "https://www.nycgovparks.org/events/2026/08/23/its-my-park-at-msgr-mcgolrick-park",
+          "publisher": "NYC Parks",
+          "date": "2026-08-13"
+        }
+      ],
+      "sourceQuote": "This It's My Park season, volunteer with North Brooklyn Parks Alliance to beautify Msgr. McGolrick Park. We look forward to cleaning up the park with you!\nstartdate: 2026-08-23\nstarttime: 10:00 am\nendtime: 12:00 pm",
+      "lat": 40.724458,
+      "lng": -73.943361
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "id": "troost-barba-yiorgi-0827",
+      "category": "event",
+      "free": false,
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
+      "startsAt": "2026-08-27T00:00:00-04:00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-13"
+        }
+      ],
+      "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-08-27"
     }
   ]
 }
