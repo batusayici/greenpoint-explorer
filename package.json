@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "node scripts/check-freshness.mjs --stamp && vite build && node scripts/prerender-aeo.mjs",
+    "build": "node scripts/check-freshness.mjs --stamp && vite build && node scripts/prerender-aeo.mjs && node scripts/ping-indexnow.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test": "TZ=America/New_York node --test \"src/**/*.test.mjs\"",
     "test:dom": "TZ=America/New_York vitest run",
@@ -13,6 +13,7 @@
     "ingest:expire": "node scripts/expire-cards.mjs",
     "ingest:geocode": "NODE_USE_ENV_PROXY=1 node scripts/geocode-demand-cards.mjs",
     "ingest:index": "node scripts/card-index.mjs",
+    "ingest:indexnow": "node scripts/ping-indexnow.mjs",
     "board": "python3 scripts/asset_kit_board.py",
     "verify:conformance": "node scripts/verify-visual-conformance.mjs",
     "verify:visual": "node scripts/verify-visual-baseline.mjs",

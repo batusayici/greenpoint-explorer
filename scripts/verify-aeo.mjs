@@ -12,7 +12,7 @@
 // canonicals would all pass `npm test` and reach production.
 //
 // Run against a fresh dist/: `npm run build && npm run verify:aeo`.
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { AEO_ORIGIN, liveCards } from "../src/demand-test/aeo.js";
@@ -165,6 +165,21 @@ for (const url of llms.match(/https:\/\/\S+/g) ?? []) {
   if (!path) continue;
   const onDisk = existsSync(resolve(DIST, path)) || existsSync(resolve(DIST, path, "index.html"));
   if (!onDisk) fail("llms.txt", `points at a surface that isn't in dist/: ${url}`);
+}
+
+// 6. The IndexNow key must actually SHIP. Without it at the site root the
+//    protocol rejects every ping — and it fails silently, in a script that
+//    deliberately never breaks the build, so nothing else would ever notice
+//    that push-on-publish had stopped working.
+const keyFiles = readdirSync(DIST).filter((f) => /^[a-f0-9]{8,128}\.txt$/i.test(f));
+if (keyFiles.length !== 1) {
+  fail("indexnow", `expected exactly 1 key file at the site root, found ${keyFiles.length}`);
+} else {
+  const name = keyFiles[0].replace(/\.txt$/i, "");
+  const contents = read(keyFiles[0]).trim();
+  if (contents !== name) {
+    fail("indexnow", `key file ${keyFiles[0]} must contain exactly its own key, found "${contents.slice(0, 40)}"`);
+  }
 }
 
 // ---- report ----------------------------------------------------------------
