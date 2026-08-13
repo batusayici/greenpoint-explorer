@@ -870,6 +870,31 @@
         "match": "goldendrum\\.org/calendar-1/",
         "limit": 8
       }
+    },
+    {
+      "id": "mta-g-alerts",
+      "name": "MTA — subway service alerts (G line / Greenpoint stops)",
+      "url": "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-alerts.json",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "json",
+      "notes": "THE G BANNER'S SUPPLY. Onboarded 2026-08-13 during the pre-seed QA: nothing in the roster watched the G, while gtrainBanner.js hardcodes the closure windows and the app's banner slot depends on them. Its last window ends Aug 24 2026, after which the slot goes empty with nothing prompting a refill — this source is what prompts it.\n\nWHY THE API AND NOT THE ARTICLE PAGE. mta.info/article/service-changes-g-line-2026 is the reader-facing page (and stays the cards' sourceLink — see citeHost), but it is the wrong DETECTION surface, measured 2026-08-13: (1) it LAGS — it listed only August windows while this feed already carried Fri Sep 11 21:45 -> Mon Sep 14 05:00; (2) it CHURNS — the page carries a site-wide 'Updated <today> at <time>' survey widget, so its snapshot would diff on nearly every run and spend model attention on nothing. The API leads by weeks and only changes when the alerts change.\n\nWHICH ALERTS CLOSE GREENPOINT — the one rule that matters, and it is mechanical. The prose NEVER names the Greenpoint stations; it names the segment endpoints. Greenpoint Av is GTFS stop G26 and Nassau Av is G28 (verified against data.ny.gov/resource/39hk-dx4f MTA Subway Stations, 2026-08-13). A window closes Greenpoint iff its informed_entity carries G26/G28 — in practice the header 'No [G] between Bedford-Nostrand Avs and Court Sq'. The 'no [G] between Hoyt-Schermerhorn Sts and Church Av' weekends (e.g. Jul 31-Aug 3, Aug 14-17) are Bedford-Nostrand SOUTH and leave Greenpoint Av and Nassau Av OPEN — they must never become a banner window. That is the single easiest mistake to make here.\n\nREADING THE SNAPSHOT. active_period.0.start/.end are rendered ISO by the date coercion and are UTC — convert to America/New_York before writing any date (2026-09-12T01:45Z is Fri Sep 11 9:45 PM ET). The raw active_period array is kept alongside because a nightly window is SEVERAL periods and the .0 fields would show only the first night. The include filter keeps alerts whose payload names a Greenpoint stop (197 citywide alerts -> ~9), so a few south-Brooklyn G stop-skips ride along where Greenpoint Av is listed as a rider alternative — they are real G-line service info, just not banner material.\n\nWHAT A DIFF HERE OBLIGES. GTRAIN_WINDOWS in src/demand-test/gtrainBanner.js is CODE, so a new window is a HUMAN-GATED code change (CLAUDE.md) — it never auto-ships with a content refresh. A new Greenpoint window means: propose the GTRAIN_WINDOWS entry + a g-train-closures timeline entry in a review PR. The card is undated and standing, so this source reporting `unchanged` is not 'nothing to do' when the live windows have run out.",
+      "json": {
+        "path": "entity",
+        "include": [
+          "\"stop_id\":\"G26\"",
+          "\"stop_id\":\"G28\""
+        ],
+        "fields": [
+          "alert.header_text.translation.0.text",
+          "alert.active_period.0.start",
+          "alert.active_period.0.end",
+          "alert.active_period",
+          "alert.description_text.translation.0.text"
+        ]
+      },
+      "citeHost": "mta.info",
+      "standing": true
     }
   ]
 }

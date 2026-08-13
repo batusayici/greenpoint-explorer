@@ -67,16 +67,33 @@ function renderItem(item, fields) {
  * @param data  parsed JSON response
  * @param path  dot path to the array of items ("" / omitted = the root array)
  * @param fields  dot paths to emit per item, in order (omitted = every own key)
+ * @param include  keep only items whose raw JSON contains one of these strings
  *
  * An empty array is NOT an error — a calendar with no events this month is a
  * real state, and throwing would report it as an unreachable source. A path
  * that is not an array IS an error: that means the API's shape moved.
+ *
+ * `include` is the twin of `feed: { include: [...] }` (added 2026-08-08 for the
+ * NYC Parks citywide RSS; its comment already called that shape "the same as
+ * the json block"). Same job here: scope a citywide endpoint to the
+ * neighborhood so the snapshot's daily diff tracks Greenpoint instead of
+ * churning with the rest of the city. Matching is a substring test against the
+ * item's RAW JSON, not its rendered text, so a filter can key on a field the
+ * snapshot itself does not need to carry — for the MTA alerts feed that is the
+ * stop_id, which is the only mechanical proof an alert closes a Greenpoint
+ * station. Zero matches is a legitimate quiet week, not an error.
  */
-export function jsonToText(data, { path = "", fields = null } = {}) {
-  const items = getPath(data, path);
+export function jsonToText(data, { path = "", fields = null, include = null } = {}) {
+  let items = getPath(data, path);
   if (!Array.isArray(items)) {
     const got = items === undefined ? "undefined" : Array.isArray(items) ? "array" : typeof items;
     throw new Error(`json path "${path || "(root)"}" is not an array (got ${got}) — API shape changed?`);
+  }
+  if (Array.isArray(include) && include.length) {
+    items = items.filter((item) => {
+      const raw = JSON.stringify(item) ?? "";
+      return include.some((s) => raw.includes(s));
+    });
   }
   return items
     .map((item) => renderItem(item, fields))
