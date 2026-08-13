@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback, useEffect } from "react";
+import React, { useMemo, useState, useCallback, useEffect, useRef } from "react";
 import seed from "../data/demand-test/cards.json";
 import { matchesFilter, sortTodayFirst, isExpiredCard, isActiveOn, groupByDay, liveFilterCounts, feedSignature } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
@@ -11,6 +11,7 @@ import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
+import FeatureBoundary from "./FeatureBoundary.jsx";
 
 const CARDS_BY_ID = new Map(seed.cards.map((c) => [c.id, c]));
 
@@ -48,6 +49,32 @@ export default function JulyApp({ showOrientation = false } = {}) {
   // Bumped by revealCard so the panel scrolls the revealed card into view.
   // A counter, not a boolean: revealing the SAME card twice must still scroll.
   const [revealTick, setRevealTick] = useState(0);
+  // The map couldn't run (2026-08-13). One-way: once a surface has failed,
+  // re-mounting it just fails again — the reader who reported this got a crash
+  // screen whose only offer was a reload that could never work. The map zone
+  // comes out of the layout entirely and the feed says so, once.
+  const [mapDown, setMapDown] = useState(false);
+  // Reported-once guard lives in a ref, not in the setState updater: React
+  // may call an updater twice (StrictMode does), and an updater that fires
+  // analytics would double-count. Init failure can also arrive twice on its
+  // own — MapView's catch and FeatureBoundary both report.
+  const mapFailReportedRef = useRef(false);
+  const onMapUnavailable = useCallback((error) => {
+    if (!mapFailReportedRef.current) {
+      mapFailReportedRef.current = true;
+      console.error("[map] unavailable — degrading to the feed", error);
+      // The reason rides on the EVENT, not through window.reportError: this is
+      // a handled state we designed for, and filing it as an exception would
+      // put designed degradation in the crash feed the L4 monitoring gate
+      // watches. But "the map didn't run" with no cause is undiagnosable —
+      // MapLibre packs the GPU's own statusMessage in here — so the message
+      // comes along, bounded (trackEvent only takes primitives).
+      trackEvent(EVENTS.MAP_UNAVAILABLE, {
+        reason: String(error?.message ?? "unknown").slice(0, 200),
+      });
+    }
+    setMapDown(true);
+  }, []);
 
   // Chip-fold input (F16-B): live counts per layer, fixed at mount — they only
   // drift at expiry boundaries, and the bar must not reshuffle mid-session.
@@ -310,10 +337,11 @@ export default function JulyApp({ showOrientation = false } = {}) {
           <span className="july-cbanner-cta">{slot.alert.cta} &rarr;</span>
         </button>
       )}
-      <main className="july-main">
+      <main className={`july-main${mapDown ? " july-main--nomap" : ""}`}>
         <CardPanel
           groups={groups}
           cardsById={CARDS_BY_ID}
+          mapUnavailable={mapDown}
           deadLinkNotice={showDeadLinkNotice}
           onDismissDeadLink={() => setShowDeadLinkNotice(false)}
           filter={filter}
@@ -328,14 +356,23 @@ export default function JulyApp({ showOrientation = false } = {}) {
           dismissedLenses={dismissedLenses}
           onDismissFollow={onDismissFollow}
         />
+        {/* The map is a passenger, not the product (2026-08-13). MapView's own
+            catch handles the common case — no WebGL — and FeatureBoundary
+            covers what a try/catch can't reach: a throw from the marker sync
+            or camera effect after a successful init. Either way the zone comes
+            out of the layout and CardPanel says one line about it. */}
+        {!mapDown && (
         <div className={`july-mapzone${mapExpanded ? " is-expanded" : ""}`}>
-          <MapView
-            cards={mapCards}
-            selectedId={selectedId}
-            focusKey={pinFocus?.key ?? null}
-            onSelect={setSelectedId}
-            onFocusLocation={onFocusLocation}
-          />
+          <FeatureBoundary onFail={onMapUnavailable}>
+            <MapView
+              cards={mapCards}
+              selectedId={selectedId}
+              focusKey={pinFocus?.key ?? null}
+              onSelect={setSelectedId}
+              onFocusLocation={onFocusLocation}
+              onUnavailable={onMapUnavailable}
+            />
+          </FeatureBoundary>
           <button
             type="button"
             className="july-mapexpand"
@@ -352,6 +389,7 @@ export default function JulyApp({ showOrientation = false } = {}) {
             </svg>
           </button>
         </div>
+        )}
       </main>
     </div>
   );

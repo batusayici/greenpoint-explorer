@@ -479,7 +479,7 @@ function FilterChip({ f, filter, onFilter }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, revealTick = 0, onSelect, onRelated, dismissedLenses, onDismissFollow }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, mapUnavailable = false, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, revealTick = 0, onSelect, onRelated, dismissedLenses, onDismissFollow }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
@@ -702,7 +702,25 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           </button>
         </div>
       )}
-      <nav className="july-filters" aria-label="Filter the map" ref={filtersRef}>
+      {/* The map couldn't run (2026-08-13). Honest degradation, same rule the
+          stale-feed banner follows (L11): a surface that's missing says so
+          rather than quietly presenting less as if it were everything. No
+          retry — the reported failure survived a reload, and a control that
+          can't work is worse than none. Normal flow, not sticky: an
+          explanation is read once and should scroll away, unlike the chip bar
+          that earns its permanent rent. */}
+      {mapUnavailable && (
+        <p className="july-notice july-notice--quiet" role="status">
+          Map unavailable in this browser &mdash; the full list is still here.
+        </p>
+      )}
+      {/* The chip bar filters both surfaces, so it can't keep naming the map
+          once the map is gone. */}
+      <nav
+        className="july-filters"
+        aria-label={mapUnavailable ? "Filter the list" : "Filter the map"}
+        ref={filtersRef}
+      >
         {shown.map((f) => (
           <FilterChip key={f.id} f={f} filter={filter} onFilter={onFilter} />
         ))}

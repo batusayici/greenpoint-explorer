@@ -4,7 +4,59 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-12 (latest) — Two instruments corrected: a gate that cried wolf, and a source that went quiet
+## 2026-08-13 (latest) — The feed is the product; the map is a passenger and must fail alone
+
+A reader hit a browser where WebGL could not initialize and **lost the whole product** — not a
+broken map, an empty page with a reload button that could never work, because the cause was their
+environment and it was still there on the second load.
+
+Root cause, reproduced locally by stubbing `getContext('webgl*')` → null: `new maplibregl.Map()`
+throws **synchronously** (`_setupPainter`, "Failed to initialize WebGL") inside `MapView`'s mount
+effect; React 19 walks up to the nearest boundary; the **only** boundary was the app-wide
+`ErrorBoundary`. One dependency of one surface could therefore delete the feed, the filters, the
+banner, the G-train status and the footer.
+
+**The rule this establishes:** a non-essential surface may fail, but it may never take the page.
+The feed is the product; everything else is a passenger.
+
+1. **`FeatureBoundary.jsx` — contain and notify, not contain and render.** On failure it calls
+   `onFail` and renders nothing, leaving the parent to own the fallback, so there is one source of
+   truth for what a down surface looks like instead of a local fallback competing with a layout
+   change elsewhere. It re-enters `window.reportError` like `ErrorBoundary` does: **a contained
+   failure must stay a visible failure to us** — silent containment is how a surface stays broken
+   for months. The app-wide `ErrorBoundary` is unchanged and remains the last resort for the feed.
+2. **Two layers, deliberately.** `MapView` catches its own init failure (the common case, and the
+   one that produces a *designed* state rather than a caught crash); `FeatureBoundary` covers what
+   a try/catch cannot reach — the marker-sync effect, the camera effect, MapLibre's own handlers.
+   **Verified separately**: a forced throw *after* a successful init degrades identically, and the
+   console names `FeatureBoundary` as the catcher. Layer 1 alone would have left three effects able
+   to blank the page — a smaller single point of failure is still a single point of failure.
+3. **Honest degradation extends from stale data to missing surfaces** (Batu's call, options put to
+   him as say-so / silently-collapse / static-stand-in). The map zone leaves the layout, the feed
+   takes the full width, and one quiet line says so: *"Map unavailable in this browser — the full
+   list is still here."* Same rule as the L11 stale-feed banner. **No retry control** — the reported
+   failure survived a reload, and a control that cannot work is worse than none.
+4. **The failure reason rides on the `map_unavailable` event, not through `reportError`.** This is a
+   handled state we designed for; filing it as an exception would put designed degradation in the
+   crash feed the L4 monitoring gate watches. But "the map didn't run" with no cause is
+   undiagnosable, so the message (MapLibre packs the GPU's own `statusMessage` there) comes along as
+   event data. The event is also the only sensor for **how many readers ever meet this layout** —
+   without it we are guessing whether to design the no-map path harder.
+5. **`--peek` is the mobile layout's one lever, and every rule that sets it now excludes the no-map
+   case explicitly.** The chip bar sticks at `top: var(--peek)` and `--chrome` (`peek + 53px`)
+   places the sticky day headers and every card's `scroll-margin`, so zeroing it re-seats the whole
+   stack with no other rule touched. ⚠ The first version relied on **source order** and the later
+   `@media (max-height: 700px)` rule silently beat it — at 320×568 the chip bar parked 142px down a
+   viewport with no map above it. Caught only by measuring at that breakpoint. `:not(.july-main--nomap)`
+   on each `--peek` declaration states the intent instead of implying it by line number.
+
+**Known gap, not silently accepted:** this path has **no automated regression guard**. The suite is
+`node --test` over pure `.mjs` logic modules — no DOM, no component rendering — so "the map must
+never take the page" is verified by hand today and can regress unnoticed. Adding real coverage means
+introducing a browser test runner, which is a larger call than this fix; flagged for Batu rather
+than bolted on unasked.
+
+## 2026-08-12 — Two instruments corrected: a gate that cried wolf, and a source that went quiet
 
 Both surfaced by the Wednesday Greenpointers run. Neither is a content decision; both are the
 measuring equipment, and a wrong instrument is worse than no instrument.
