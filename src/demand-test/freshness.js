@@ -29,7 +29,10 @@
 
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
-function upcomingWithin7Days(card, now) {
+// Exported so the send pre-flight counts a card as "this week" by exactly the
+// same rule the freshness alarm and the client banner do. A second definition
+// would let an outbound note claim a window the product doesn't show.
+export function upcomingWithin7Days(card, now) {
   const start = card.startsAt ? new Date(card.startsAt) : null;
   const end = card.endsAt ? new Date(card.endsAt) : null;
   if (!start && !end) return false; // undated place/news cards aren't "upcoming"

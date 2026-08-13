@@ -24,6 +24,7 @@
     "verify:aeo": "node scripts/verify-aeo.mjs",
     "verify:agent-browser": "node scripts/verify-agent-browser.mjs",
     "verify": "npm run test && npm run test:dom && npm run verify:aeo && npm run verify:agent-browser && npm run verify:conformance && npm run verify:visual && npm run verify:components && npm run verify:stories && npm run verify:kit-coverage && npm run verify:overrides",
+    "preflight:send": "NODE_USE_ENV_PROXY=1 node scripts/send-preflight.mjs",
     "ingest:coverage": "node scripts/check-coverage.mjs",
     "ingest:quotes": "node scripts/verify-quotes.mjs"
   },

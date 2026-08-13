@@ -4,6 +4,53 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-13 (seventh entry) — Search Console opened, and the count rule gets a command
+
+Two instruments, both from the 2026-08-11 readout's proposals.
+
+**Google Search Console is verified for `stoopwise.com` (Domain property, auto-verified via the
+domain name provider — no DNS TXT needed).** It is now the instrument of record for Loop C, which
+until today was inferred from PostHog referrers alone. Baseline recorded in the readout's second
+addendum: 161 sitemap urls discovered, **9 known pages, 2 indexed**, 6 clicks / 136 impressions at
+average position 16, 21 queries, **4 valid Event rich results and 0 invalid**.
+
+**Two findings matter beyond the numbers.** First, every one of the 21 queries is an *entity*
+query — `chi ba bakery`, `transmitter park marina`, `le fanfare greenpoint`, `meeker avenue plume
+superfund site` — and none is a brand term. That is the "they curate the week, we index the
+neighborhood" position (2026-07-28) earning traffic on its own terms, evidenced from outside our
+own analytics for the first time. Second, **L3's last open item is closed**: the manual Rich
+Results spot-check carried since 2026-07-27 is superseded by the Events enhancement report, which
+answers it continuously and currently reads 0 invalid.
+
+**Indexing is the bottleneck, and its clock starts today.** 161 discovered, 2 indexed. Proposal 3's
+pre-registered rule — fewer than half the live card pages indexed after four weeks makes the H5
+hardening backlog a real proposal — runs from **2026-08-13**, first read **~2026-09-10**. No action
+before then; the property is hours old and Google's backfill only reaches 8/7.
+
+**The outbound-count rule becomes executable.** The standing instruction ratified 2026-08-06 —
+never put a card count in outbound copy without regenerating it the morning it is sent — was a
+discipline with a hand-rolled grep behind it. It is now `npm run preflight:send`
+(`scripts/send-preflight.mjs`; logic + tests in `src/demand-test/sendPreflight.js`), which
+regenerates every count, verifies each `src` has a canonical `channel-links.md` row whose link
+resolves with its query intact, confirms prod serves the deck the counts describe, prints what
+expires tonight, and **exits non-zero if any of it is untrue**.
+
+**It justified itself on first run.** Against the 8/11 drafts: Greenpoint Library 7 → **11**, Film
+Noir Cinema 8 → **6**, `family_kids` 7 → **12** dated in-window. The Film Noir move is the one that
+matters — a count that falls turns a friendly note into a false claim, which is a truth-rule breach
+committed in outbound copy where no reviewer would ever see it.
+
+**Two design rules, both learned from existing entries.** Venues match on **exact `locationName`,
+never a regex over ids** — a fuzzy match inflates a count in the org's own favour, the one
+direction an org note must never be wrong in. And the window rule is **imported from
+`freshness.js`, not redefined** (`upcomingWithin7Days` is now exported), so an outbound note can
+never claim a week the product does not show — the same single-source-of-truth lesson as the
+`GL_PROD_HOSTS` correction on 2026-08-06. Adding an org to a wave means adding its `SEND_TARGETS`
+row in the same change.
+
+Owner: Batu (GSC verification, on his account). Verified: 658/658 unit, build clean; pre-flight run
+end to end against prod — all four links 200 with `src` intact, sitemap 161 vs deck 159.
+
 ## 2026-08-13 (sixth entry) — `shopping` returns as a lens; "no lens" was never a design call
 
 Batu, walking the feed: the CIBONE cards are "effectively unfindable for users. lost among a sea of
