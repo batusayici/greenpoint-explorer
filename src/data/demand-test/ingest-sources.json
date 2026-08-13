@@ -872,6 +872,36 @@
       }
     },
     {
+      "id": "lot-radio",
+      "name": "The Lot Radio",
+      "url": "https://www.thelotradio.com/calendar",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "17 Nassau Ave. Onboarded 2026-08-13, not yet fetched. Independent 24/7 internet radio streaming from a shipping container on an empty lot; the /calendar page is a day-by-day grid of hourly/multi-hour DJ sets (verified by WebFetch 2026-08-13, reads as static HTML — plain fetch untested by the roster script itself). The schedule turns over many named sets per day, which is a much higher cadence than a typical venue calendar — do not card every slot as a discrete event; this needs an editorial call (e.g. notable/guest sets only, or treat as a standing-programming venue card) before it produces cards, not a blanket dated-event treatment.",
+      "citeHost": "thelotradio.com"
+    },
+    {
+      "id": "razor-n-tape",
+      "name": "Razor-N-Tape",
+      "url": "https://razor-n-tape.bandcamp.com/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "110 Meserole Ave. Onboarded 2026-08-13, not yet fetched. Flagship record store for the Razor-N-Tape house/disco label — full vinyl catalogue plus new/used records, open Fri-Sun, custom DJ booth for in-store sessions and guest takeovers. razorntape.com 301s to this Bandcamp page (release/merch info, not events) — no proper venue website exists. In-store sessions and DJ takeovers are announced on Instagram (instagram.com/razorntape) which, like the Trash Club precedent, blocks headless fetch — check the Browser pane manually each run for cardable in-store events.",
+      "citeHost": "razor-n-tape.bandcamp.com"
+    },
+    {
+      "id": "brooklyn-record-exchange",
+      "name": "Brooklyn Record Exchange",
+      "url": "https://brooklynrecordexchange.com/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "87 Guernsey St. Onboarded 2026-08-13, not yet fetched. Used/new vinyl shop (also carries Mexican Summer releases and Anthology Editions books); open daily 12-8pm. Homepage is a minimal storefront page (address, hours, contact) with no events/news section as of onboarding (verified by WebFetch 2026-08-13). Check instagram.com/brooklynrecordexchange for restock/event announcements — plain fetch cannot reach it; use the Browser pane.",
+      "citeHost": "brooklynrecordexchange.com"
+    },
+    {
       "id": "mta-g-alerts",
       "name": "MTA — subway service alerts (G line / Greenpoint stops)",
       "url": "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-alerts.json",
