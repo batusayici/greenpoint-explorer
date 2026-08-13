@@ -11,6 +11,7 @@
 import { isExpiredCard } from "./filterCards.js";
 import { isStartSentinel, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 import { RECURRENCE_DAYS } from "./cardSchema.js";
+import { editionLabel } from "./eventWindow.js";
 
 // Canonical origin since the 2026-08-06 Stoopwise rename. Two older hosts keep
 // serving and are NOT canonical: greenpoint.life (the Aug 2 cutover origin) and
@@ -400,11 +401,43 @@ export function homeJsonLd(cards, origin, now) {
 // Same template surgery as injectCardPage, but additive only: the home page's
 // title, meta, canonical and #root are already correct — this just seats the
 // JSON-LD scripts in the head.
+// The home page's static body (2026-08-13). Until now `#root` shipped empty —
+// a 51-byte body — so the home page had structured data and NOT ONE WORD of
+// prose for anything that doesn't execute JS. Bing Webmaster Tools flagged it
+// independently as an `H1 tag missing` SEO/GEO error, which is how it finally
+// got measured rather than assumed.
+//
+// DELIBERATELY THE HEADER, NOT THE FEED. Prerendering the whole week's listings
+// is a separate, still-open product decision — it changes what the first screen
+// says and collides with calls already made twice (2026-08-02). This is the
+// narrow fix: the page states what it IS to a machine that can't run the app.
+//
+// Every line is VERBATIM from what the app renders — same edition kicker, same
+// h1, and the orientation line the header shows a first-time visitor. Inventing
+// a crawler-only headline (say, stuffing the title's "what's on this week"
+// phrasing into the h1) would show machines something readers never see, which
+// is the one thing the truth rules will not carry.
+//
+// Costs readers nothing: `createRoot()` replaces `#root` wholesale, exactly as
+// it already does on every card page, so this is only ever visible in the
+// moment before JS boots — where a styled header beats a blank page anyway.
+export function homeBodyHtml(cards, origin, now) {
+  return [
+    "<main>",
+    `<p>${escapeHtml(editionLabel(now))}</p>`,
+    "<h1>Stoopwise Greenpoint</h1>",
+    "<p>Events, openings, deals and neighborhood news — verified and sourced.</p>",
+    "</main>",
+  ].join("\n");
+}
+
 export function injectHomePage(template, cards, origin, now) {
   const scripts = homeJsonLd(cards, origin, now)
     .map((ld) => `    <script type="application/ld+json">${JSON.stringify(ld, null, 1)}</script>`)
     .join("\n");
-  return template.replace("</head>", `${scripts}\n  </head>`);
+  return template
+    .replace("</head>", `${scripts}\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root">${homeBodyHtml(cards, origin, now)}</div>`);
 }
 
 // ---- sitemap / rss ---------------------------------------------------------
