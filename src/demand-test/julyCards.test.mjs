@@ -11,7 +11,11 @@ const ledger = JSON.parse(
   readFileSync(fileURLToPath(new URL("../data/demand-test/ingest-ledger.json", import.meta.url)), "utf8"),
 );
 
-test("seed has exactly 75 cards across the six layers", () => {
+// Title carries NO counts on purpose (2026-08-13): it read "exactly 75 cards
+// across the six layers" from 2026-07-08 until the deck hit 159 across twelve
+// categories — the assertions below are bumped every ingest run, the title never
+// was, so anyone grepping for the deck size found a number 84 cards stale.
+test("deck size and per-layer counts are pinned — update on every ingest", () => {
   // 2026-07-02 (Batu): per-station G-closure cards cut — closure context lives
   // in the banner; the layer keeps the action cards (adopt + advocacy).
   // 2026-07-08 weekly refresh: Jul 7–12 roundup in, 10 past events out.
