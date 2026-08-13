@@ -9,7 +9,7 @@ test("forwards a known event with its properties to the bound transport", () => 
   assert.deepEqual(calls, [{ name: "pin_tap", data: { cardId: "core-press", kind: "business" } }]);
 });
 
-test("exposes the eleven agreed events by stable wire name", () => {
+test("exposes the twelve agreed events by stable wire name", () => {
   // related_tap + source_tap added 2026-07-03: the place-graph traversal and
   // the source-credibility link are go/no-go evidence, same as action taps.
   // feedback_tap added 2026-07-15: the limited-launch feedback channel.
@@ -18,6 +18,10 @@ test("exposes the eleven agreed events by stable wire name", () => {
   // alert_tap added 2026-07-26: the community-alert banner tap (banner charter).
   // submit_tap added 2026-07-28 (L5): the business submission entry — the
   // supply-gate sensor (≥5 proactive actors, ops plan 3.3).
+  // map_unavailable added 2026-08-13: fires when the map can't initialize and
+  // the page degrades to the feed. The only sensor for how many readers ever
+  // meet the no-map layout — without it we'd be guessing whether that path is
+  // one unusual browser or a measurable slice worth designing harder for.
   assert.deepEqual(EVENTS, {
     PIN_TAP: "pin_tap",
     CARD_OPEN: "card_open",
@@ -30,6 +34,7 @@ test("exposes the eleven agreed events by stable wire name", () => {
     RETURN_VISIT: "return_visit",
     ALERT_TAP: "alert_tap",
     SUBMIT_TAP: "submit_tap",
+    MAP_UNAVAILABLE: "map_unavailable",
   });
 });
 

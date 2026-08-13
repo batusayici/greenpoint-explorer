@@ -169,6 +169,21 @@ body { margin: 0; }
   grid-column: 2;
 }
 
+/* Map down (2026-08-13): the zone is gone from the DOM, so the feed takes the
+   whole width — but a 400px column of rows stretched across 1400px of paper is
+   worse than the split it replaces. Hold a reading measure and centre it,
+   hairlines on both edges, so it reads as a printed column ON the paper rather
+   than a strip beside a lot of nothing. */
+.july-main--nomap {
+  grid-template-columns: 1fr;
+}
+
+.july-main--nomap .july-panel {
+  max-width: 760px;
+  margin: 0 auto;
+  border-left: 1px solid var(--ink);
+}
+
 .july-map {
   position: relative;
   width: 100%;
@@ -240,6 +255,21 @@ body { margin: 0; }
 }
 
 .july-notice p { margin: 0; flex: 1; }
+
+/* Degraded-surface footnote (2026-08-13), quieter than the notice above it:
+   that one is a greeting to someone who followed a dead link, this one is a
+   fact about the page. Faint rule instead of full ink, no paper-lift fill, no
+   icon — it should register once on the way past and never compete with the
+   chip bar under it. */
+.july-notice--quiet {
+  display: block;
+  margin: 0;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--ink-faint);
+  background: none;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
 
 .july-notice-dismiss {
   border: none;
@@ -901,18 +931,36 @@ body { margin: 0; }
     flex-direction: column;
     flex: none;
     height: auto;
-    /* single source of truth for the anchored map's height. The 170px floor
-       lives INSIDE the var (2026-08-08): it used to be a min-height on
-       .july-mapzone only, so on viewports under ~680px tall the map stood
-       taller than --peek and the chip bar stuck part-way UP the map. */
-    --peek: max(25vh, 170px);
   }
+  /* single source of truth for the anchored map's height. The 170px floor
+     lives INSIDE the var (2026-08-08): it used to be a min-height on
+     .july-mapzone only, so on viewports under ~680px tall the map stood
+     taller than --peek and the chip bar stuck part-way UP the map.
+     Every rule that sets --peek is stating THE MAP'S HEIGHT, so each one
+     excludes the no-map case explicitly (2026-08-13). The exclusion is not
+     optional politeness: the nomap override first relied on source order and
+     the later short-screen rule below silently beat it, parking the chip bar
+     142px down a viewport with no map above it. */
+  .july-main:not(.july-main--nomap) { --peek: max(25vh, 170px); }
   .july-main:has(.july-mapzone.is-expanded) { --peek: 55vh; }
+  /* Map down (2026-08-13): --peek IS the mobile layout's one lever — the chip
+     bar sticks at top:var(--peek), and --chrome (peek + 53px) places the
+     sticky day headers and every card's scroll-margin. Zero it and the whole
+     stack re-seats correctly with no other rule touched: chips to the top,
+     dates flush under them, deep links still clearing the chrome. The panel
+     also drops the desktop measure — at 375px a max-width and side rules
+     would just be inset noise. */
+  .july-main--nomap { --peek: 0px; }
+  .july-main--nomap .july-panel {
+    max-width: none;
+    margin: 0;
+    border-left: 0;
+  }
   /* Short screens (2026-08-08 audit #1, conservative cut): at 320×568 the
      peek + chip bar held 223 of 568px. A lower floor keeps the sticky chrome
      under ~35% of the viewport; the Expand toggle still serves map-first use. */
   @media (max-height: 700px) {
-    .july-main { --peek: max(25vh, 140px); }
+    .july-main:not(.july-main--nomap) { --peek: max(25vh, 140px); }
   }
   /* Map and filter bar anchor to the top while the feed scrolls beneath
      (2026-07-23 live review: "I don't want to keep scrolling to come back

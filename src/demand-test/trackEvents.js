@@ -16,6 +16,7 @@ export const EVENTS = Object.freeze({
   RETURN_VISIT: "return_visit",
   ALERT_TAP: "alert_tap",
   SUBMIT_TAP: "submit_tap",
+  MAP_UNAVAILABLE: "map_unavailable",
 });
 
 const NAMES = new Set(Object.values(EVENTS));

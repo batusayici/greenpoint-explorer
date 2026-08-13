@@ -24,7 +24,7 @@ function stackKind(cards) {
 // Tapping a multi-card pin focuses the FEED on that location (2026-07-23,
 // Batu: the fan-out cluttered an already dense mobile map); onFocusLocation
 // receives the group, or null when the bare map is tapped.
-export default function MapView({ cards, selectedId, focusKey, onSelect, onFocusLocation }) {
+export default function MapView({ cards, selectedId, focusKey, onSelect, onFocusLocation, onUnavailable }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
@@ -45,21 +45,48 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
   // stop re-framing — their view is theirs.
   const cameraTakenRef = useRef(false);
 
+  // Init is the one line here that can throw SYNCHRONOUSLY: MapLibre's
+  // _setupPainter throws "Failed to initialize WebGL" when the canvas won't
+  // hand back a webgl2/webgl context (2026-08-13 bug report — a reader's
+  // browser had none, and an uncaught throw from a mount effect walked up to
+  // the app-wide boundary and blanked the whole product). Caught here so a
+  // missing map is a STATE the app can lay out around, not an exception; the
+  // parent drops the map zone and says so. FeatureBoundary still wraps this
+  // component for the failures a try/catch can't reach — the marker sync and
+  // camera effects below, and MapLibre's own handlers.
+  const onUnavailableRef = useRef(onUnavailable);
   useEffect(() => {
-    const map = new maplibregl.Map({
-      container: containerRef.current,
-      style: buildIIMapStyle(),
-      center: GREENPOINT_CENTER,
-      zoom: 14.1,
-      minZoom: 12.8,
-      maxZoom: 17.5,
-      maxBounds: GREENPOINT_MAX_BOUNDS,
-      attributionControl: { compact: true },
-      // cooperativeGestures tried (F2-A) and removed 2026-07-23: two-finger
-      // pan broke thumb-only use, and the 25vh peek + page-flow layout
-      // removed the swipe trap it existed to solve.
-    });
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    onUnavailableRef.current = onUnavailable;
+  });
+
+  useEffect(() => {
+    let map;
+    try {
+      map = new maplibregl.Map({
+        container: containerRef.current,
+        style: buildIIMapStyle(),
+        center: GREENPOINT_CENTER,
+        zoom: 14.1,
+        minZoom: 12.8,
+        maxZoom: 17.5,
+        maxBounds: GREENPOINT_MAX_BOUNDS,
+        attributionControl: { compact: true },
+        // cooperativeGestures tried (F2-A) and removed 2026-07-23: two-finger
+        // pan broke thumb-only use, and the 25vh peek + page-flow layout
+        // removed the swipe trap it existed to solve.
+      });
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    } catch (error) {
+      // Tear down a half-built map before reporting — a constructor that threw
+      // may still have attached listeners and a canvas to the container.
+      try {
+        map?.remove();
+      } catch {
+        // Nothing to salvage; the report below is what matters.
+      }
+      onUnavailableRef.current?.(error);
+      return;
+    }
 
     // Compact attribution must stay collapsed (just the ⓘ): MapLibre re-opens
     // it whenever source attributions update — at load AND after camera moves
