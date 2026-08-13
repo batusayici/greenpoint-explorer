@@ -4,6 +4,66 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-13 (fourth entry) — AEO/agent testing: three layers, and recurring events become Events
+
+Scoped after the map bug, because the reporting environment (ChatGPT's cloud browser) was not an
+edge case — it is the channel answer-engine primacy depends on. **Measured production first**, and
+the finding reframed the work: the machine surface was already good (typed JSON-LD per category,
+24 tests, live sitemap/RSS/`llms.txt`/ICS, `robots.txt` open). This was never "make the site legible
+to AI"; it was pin what works, close measured gaps, and cover the population with **zero** coverage.
+
+**The distinction the scope hangs on** — two audiences get conflated as "AI traffic" and fail in
+completely different ways: **non-JS fetchers** (GPTBot, ClaudeBot, PerplexityBot, Googlebot) read raw
+HTML, while **JS-executing agents** (ChatGPT cloud browser, Comet) render the SPA in a GPU-less
+sandbox. The second is what broke, and nothing tested it.
+
+1. **`npm run verify:aeo` (Layer 1)** — what a crawler gets, checked against `dist/`, not against the
+   builders. Unit tests prove the FUNCTIONS are right; they cannot prove the built artefact is. Card
+   prose floor, required JSON-LD fields per type, sitemap parity in both directions plus files
+   actually on disk, exactly one canonical, `llms.txt` links resolve. Four mutations verified it
+   fails: missing `byDay`, a fabricated `startDate`, a sitemap ghost entry, an `ItemList` item
+   stripped of its date.
+2. **`npm run verify:agent-browser` (Layer 2)** — what a JS-executing agent gets. Playwright was
+   already a devDependency, so no new tooling; it serves `dist/` and drives it with WebGL stubbed off
+   and storage throwing. ⚠ Two single-layer mutations **passed** — removing MapView's try/catch alone
+   didn't crash the page because `FeatureBoundary` caught it. That is the redundancy working, and it
+   is the first evidence the two layers aren't decorative. Removing **both** produced the exact
+   pre-fix state, and the verifier named it in six lines.
+3. **`docs/aeo/citation-check.md` (Layer 3)** — a fixed 5-question set run monthly by hand against
+   ChatGPT/Perplexity/Google AI. **Deliberately not automated**: engines personalise and vary run to
+   run, so a scripted "did we appear" check would return a green tick with no information in it.
+   Layers 1–2 prove we are legible; only this one measures whether it *works*.
+
+**Recurring programming is now `Event` + `eventSchedule`.** The earlier call — a weekly card is not
+an Event with one invented `startDate` — was right, and had one option missing: `schema.org/Schedule`
+states "every Tuesday at 5pm, between these dates" **without asserting any occurrence**, which is
+exactly what `recurrence.days` plus the card's own window already say. Nothing invented; the truth
+rule holds. Event pages went **70 → 89**, Service **44 → 25**.
+
+⚠ Deliberately narrow, and the number shrank twice under scrutiny — 44 → 24 → **19**: only
+`category === "event"` converts. A recurring **deal** stays an `Offer` (its machine-checkable fact is
+that it expires) and a recurring **subscription** stays a `Service` (you join it) — re-typing either
+would be re-deciding the product taxonomy inside the schema layer. Four recurring cards state no day
+and stay `Service`: a standing offer is not weekly, and a `Schedule` with no `byDay` would be a claim
+we can't source. `eventJsonLd` still refuses recurring cards; its test was reframed rather than
+weakened.
+
+**Home `ItemList` entries now carry the event, not just a headline and a link.** Measured before the
+change: every crawler including Googlebot got **zero visible words** from the home page, and its one
+machine-readable asset listed 42 titles with URLs — so it said "these things exist, now fetch 42 more
+pages" and could not answer "what's on Thursday" from the document already in hand. Entries now carry
+`startDate`, `endDate` and location, with dates taken **from `eventJsonLd` rather than re-derived** —
+a second date implementation is precisely how a fake `00:00` clock reaches a crawler.
+
+**Deferred, with evidence attached:** prerendering visible prose into the home page. It is the
+biggest measured gap and it is a product decision — it changes what React hydrates over and collides
+with first-screen calls already ruled on twice (2026-08-02 games/IA; first-viewport promotion killed
+after being rendered). It gets its own round.
+
+**Noted, not done:** the home `ItemList` still filters out recurring cards, so the 19 newly-typed
+Events can't appear in "this week" even though they occur in it. Surfacing them means deciding what a
+weekly card means in a dated list — a content question, not a schema one.
+
 ## 2026-08-13 (third entry) — Why the map bug went uncaught, and the inventory that answers it
 
 Batu's question after the fix shipped: *why was this uncaught, when one ChatGPT test found it
