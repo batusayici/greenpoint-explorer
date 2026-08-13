@@ -20,6 +20,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { AEO_ORIGIN, liveCards } from "../src/demand-test/aeo.js";
+import { cardsToAnnounce } from "../src/demand-test/indexNow.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -45,24 +46,32 @@ if (!keyFile) {
 const key = keyFile.replace(/\.txt$/i, "");
 
 const seed = JSON.parse(readFileSync(resolve(ROOT, "src/data/demand-test/cards.json"), "utf8"));
+const ledger = JSON.parse(readFileSync(resolve(ROOT, "src/data/demand-test/ingest-ledger.json"), "utf8"));
 const now = new Date();
-const cutoff = now.getTime() - DAYS * 86400000;
 
-// Only what actually CHANGED. IndexNow is for announcing changes; re-submitting
-// 159 unchanged URLs on every deploy is what gets a site's pings discounted.
-// `updatedAt` is schema-required on every card, so this needs no git history —
-// which matters because Vercel builds from a shallow clone.
-const changed = liveCards(seed.cards, now).filter((c) => {
-  const t = Date.parse(c.updatedAt ?? c.createdAt ?? "");
-  return Number.isFinite(t) && t >= cutoff;
+// Content changes come from INGEST RUNS, not from deploys — so the last run is
+// the cutoff, not a wall-clock window. See src/demand-test/indexNow.js for the
+// two ways this was wrong before it was right. `--days N` overrides for a
+// deliberate manual re-push.
+const changed = cardsToAnnounce(liveCards(seed.cards, now), {
+  lastRunAt: has("--days") ? null : ledger.lastRunAt,
+  now,
+  fallbackDays: DAYS,
 });
+
+if (changed.length === 0) {
+  // The fix for the 403: a deploy that changed no content has nothing to
+  // announce, and saying so anyway is what got the second ping rejected.
+  console.log(`[indexnow] no cards changed since the last ingest run (${ledger.lastRunAt}) — nothing to announce`);
+  process.exit(0);
+}
 
 const urlList = [
   `${AEO_ORIGIN}/`, // the home page's ItemList changes whenever any card does
   ...changed.map((c) => `${AEO_ORIGIN}/e/${encodeURIComponent(c.id)}`),
 ];
 
-console.log(`[indexnow] ${changed.length} card(s) changed in the last ${DAYS}d → ${urlList.length} URL(s)`);
+console.log(`[indexnow] ${changed.length} card(s) changed since ${ledger.lastRunAt} → ${urlList.length} URL(s)`);
 
 if (DRY) {
   for (const u of urlList) console.log("  ", u);
@@ -85,7 +94,16 @@ try {
   });
   // 200 accepted · 202 accepted, key validation pending · 4xx worth seeing.
   console.log(`[indexnow] ${res.status} ${res.statusText}`);
-  if (!res.ok) console.error("[indexnow]", (await res.text()).slice(0, 300));
+  if (res.status === 403) {
+    // Verified 2026-08-13: the key file resolves and a fresh submission of the
+    // same shape returns 200, so a 403 here means these URLs were already
+    // announced — not a broken key. Named explicitly so it can't be mistaken
+    // for the failure it looks like.
+    console.error("[indexnow] 403 — already announced, or the key is not resolving. Check that " +
+      `${AEO_ORIGIN}/${keyFile} returns the key before assuming duplication.`);
+  } else if (!res.ok) {
+    console.error("[indexnow]", (await res.text()).slice(0, 300));
+  }
 } catch (error) {
   // An announcement is not the deploy. A dead endpoint, a DNS blip or an
   // offline sandbox must never turn a good build red.
