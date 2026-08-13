@@ -30,21 +30,46 @@ it is *one index*. Nothing here says whether Google or Bing have indexed the sit
 | 4 | Free kids' activities this week? | No | n/a | Brooklyn Bridge Parents, Mommy Poppins, Bitesize |
 | 5 | Ceramics/art class membership? | No | n/a | Choplet, Yaro Studios, The Pottery Studio, **Greenpointers** |
 
-## The finding: this is an INDEXING problem, not a schema problem
+## The finding: absent from THIS index — but Google has it
 
-Three diagnostics, run after the questions:
+Three diagnostics against the same engine:
 
 - Search restricted to `stoopwise.com` → **no links found**
 - Search restricted to `greenpoint.life` (the previous origin, now 308-redirecting) → **no links found**
 - Brand-name search for "Stoopwise Greenpoint" → nothing; the engine replied that it "isn't
   well-indexed online… could be a very recent or niche establishment"
 
-**The site is not in this index at all.** Until that changes, no amount of schema work can produce a
-citation — structured data affects how a page is *understood*, never whether it is *retrieved*.
+⚠ **My first reading of this was wrong, and Search Console corrected it the same hour.** "Absent from
+one retrieval index" is not "not indexed" — those are different indexes, and the second claim was a
+generalisation the evidence didn't support.
 
-**Most likely cause: age.** `stoopwise.com` became canonical on **2026-08-06 — seven days ago**. A
-week-old domain that inherited a 308 from a previous origin is squarely inside normal indexing lag.
-This is an expected reading, not an alarm.
+### What Google Search Console actually shows (checked 2026-08-13)
+
+| Signal | Value |
+|---|---|
+| Property | `https://stoopwise.com/` — **already verified** |
+| Sitemap | Submitted **Aug 8**, last read **Aug 12**, status **Success**, **143 pages discovered** |
+| Page indexing report | 1 indexed / 5 not indexed — but **last updated 8/6**, i.e. stale by a week |
+| Reason given for the 5 | **"Crawled – currently not indexed"** (Google systems) |
+| Live URL Inspection | `/`, `/e/sailor-and-siren`, `/e/artistic-voices-artudio` → **all "URL is on Google"** |
+| Events rich results | **4 valid, 0 invalid** (8/11) |
+| Search performance | **6 web-search clicks**, 8/7–8/11 |
+
+So: the sitemap was already submitted, Google has crawled and indexed at least the pages spot-checked
+live, it is already parsing our `Event` structured data without errors, and the site is drawing real
+(tiny) click traffic. **The dashboard's "1 indexed page" is simply stale** — every page I inspected
+live came back indexed.
+
+**The real gap is narrower than "indexing":** we are in Google's index and absent from the retrieval
+index behind this engine's answers. That is a distribution/authority problem on a seven-day-old
+canonical domain, not a technical one — `"Crawled – currently not indexed"` is Google's way of saying
+it saw the page and didn't rate it worth surfacing yet, which is the normal state for a new site.
+
+### Actions taken during this check
+
+- **Requested indexing** for `/` (its `ItemList` changed today) and `/e/artistic-voices-artudio`
+  (its schema changed today, `Service` → `Event` + `eventSchedule`). Both accepted into the priority
+  crawl queue.
 
 ## The uncomfortable half: the facts are ours, the citations aren't
 
@@ -65,18 +90,29 @@ a *source* in our own roster.
 
 ## What this does and doesn't change
 
-- **It does not invalidate the AEO work.** Correct schema is a precondition for being *used* once
-  retrieved. Today's result says nothing about it either way, because retrieval never happened.
-- **It reprioritises.** The next lever is discovery — Search Console / Bing Webmaster verification and
-  sitemap submission, inbound links from sites already indexed — not more structured data.
+- **It does not invalidate the AEO work.** Google is already parsing our `Event` data cleanly (4
+  valid, 0 invalid) — the schema layer is doing its job. Today's 0/5 says nothing about it either
+  way, because retrieval never happened in that engine.
+- **It reprioritises, but not toward what I first said.** Sitemap submission was already done a week
+  ago. The remaining lever is **authority**: inbound links from sites already indexed, and time.
+  Structured data is not the constraint.
 - **Do not tune the schema off this result.** The recurring-event change shipped because `Service` is
   structurally wrong for "what's on", not because a check came back empty. One run is an anecdote.
 
+## Still outstanding
+
+- **Bing Webmaster Tools** — unverified as far as I could tell. Worth doing: Bing feeds ChatGPT's
+  search, so it matters more than its market share implies.
+- **The three named engines remain unmeasured.** Today's baseline covers one index only.
+
 ## Next check
 
-Re-run in ~4 weeks (≈2026-09-10), by which point a 7-day-old domain has had a fair chance. The single
-most useful thing to change before then is submitting the sitemap to Search Console and Bing
-Webmaster Tools — both need an account action only Batu can take.
+Re-run in ~4 weeks (≈2026-09-10), by which point a 7-day-old domain has had a fair chance and the two
+requested recrawls will have landed.
 
 Re-run **question 4** with particular attention: it is the direct test of the 19 cards moved to
 `Event` + `eventSchedule` today, and today's answer is its control.
+
+Also re-check the **Page indexing** report — today's was a week stale, so the honest number of
+indexed pages is unknown. If it still says 1 of 143 in September, that is a real signal rather than
+a reporting lag.
