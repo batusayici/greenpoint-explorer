@@ -68,9 +68,24 @@ on openings, closings, events, deals and memberships, accumulating weekly since
 July 2026. It is an **emerging proprietary asset, not yet a moat** (reframed
 2026-07-28): public-source facts can be reconstructed from archives and listings.
 It becomes defensible only as it compounds with what cannot be reconstructed —
-trusted longitudinal coverage, direct supply relationships (recurring
-submissions, correction history, owner contact), and structured engagement
-evidence. Protect all three accordingly: they are the business, not a byproduct.
+**four assets, not three (sharpened 2026-08-13; an external skeptical review
+independently converged on the same loop — DECISION_LOG same date):**
+
+1. **Trusted longitudinal coverage** — the verified record plus the published
+   standards behind it.
+2. **Direct supply relationships** — recurring submissions, correction history,
+   owner contact.
+3. **Attributable outcome evidence** — sharpened from "structured engagement
+   evidence": not just that engagement happened, but that a specific card
+   produced a specific action for a specific business. Attribution is what
+   makes the evidence sellable and uncopiable.
+4. **The resident participation graph** — what residents save, follow, and act
+   on. Starts backend-free (anonymous localStorage saves, lens follows); named
+   here so it gets built as an asset, not a feature.
+
+Together they close one loop: verified coverage → resident action →
+attributable outcome → business contribution → better coverage. Protect all
+four accordingly: they are the business, not a byproduct.
 
 ## 2. Non-negotiables
 

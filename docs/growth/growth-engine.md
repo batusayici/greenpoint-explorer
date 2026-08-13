@@ -177,6 +177,14 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   asset, coverage-quality instrument, and H3's test in one number. Derivable
   during the Monday ingest (a card whose only roster source is the venue/org
   itself counts); one line in the Tuesday readout next to feed density.
+- **Qualified-action rate (added 2026-08-13 — the action lens):** share of
+  sessions taking ≥1 high-intent act (the aha-proxy act set: `action_tap`,
+  `cta_tap`, `today_toggle`; calendar adds ride `action_tap`). Habit is
+  downstream of action, so this moves before WRL does — but it is a supporting
+  readout line, **never the gate**: the demand bar stays as re-registered
+  2026-07-28, because amending a pre-registered bar mid-data is exactly what
+  pre-registration forbids. Already instrumented; pulled Monday, one line in
+  the Tuesday readout next to feed density and unique-coverage.
 - **Confirming signal (added 2026-07-27):** PMF in this era is binary — a
   word-of-mouth machine exists or it doesn't, and the benchmark is **organic
   >50% of acquisition**. Instrumentable post-launch: share of new sessions with
@@ -296,7 +304,8 @@ evidence.
 | R0 | **`return_visit` sensor** — localStorage first-seen + visit count, privacy-light. ✅ **live since 2026-07-26** (`returnVisit.js`). | — | Not an experiment — the prerequisite. Unlocks R1/R2 and the demand gate itself. |
 | R1 | **Follow: personalized alert vs. broadcast digest** *(restructured 2026-07-28 — was "weekly digest to postvalue signups"; the digest is now the control arm, not the treatment)*. The segment is **taken from context, never asked** (2026-07-29): the app derives the object from the active lens or the trigger card and rides it into the form as a hidden `follow` param (`lens:<id>` / `place:<id>` / `all`), so the form stays one field. Operator drafts per-segment; Batu sends **only when something matches**. Unsegmented signups receive the Monday digest unchanged (`?src=digest`); segments carry `?src=follow-<lens>`. | Manual segments — no backend, no automation build. Keep segments coarse (4–5) so a narrow lens doesn't go weeks without a match. | Segment click-through vs. broadcast click-through, 3 weeks. **The design contains its own control — the answer is empirical, not argued.** Kill: if segmented doesn't beat broadcast by week 3, personalization isn't worth a backend → fall back to the digest and close the question. **Time-boxed regardless:** manual segment sends cost more founder-minutes than one digest, so the test ends at 3 weeks either way — continue only as a build decision. |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
-| R3 | **Five warm-user conversations:** "what would make you check this weekly?" | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals. |
+| R3 | **Five warm-user conversations:** "what would make you check this weekly?" — plus the causal question (added 2026-08-13): **"Did Stoopwise cause you to do something you would not otherwise have known about or chosen?"** The demand-side twin of the unique-coverage count, and verbatim the strongest line pilot evidence can carry ("N% wouldn't have known otherwise"). | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals and the pilot-conversation kit. |
+| R4 | **Anonymous save** *(candidate, registered 2026-08-13 — not live; enters via a Tue-readout proposal when a max-3 slot opens, Batu ratifies)*: a star/save on every card, anonymous localStorage, no account. Hypothesis: saving starts the resident participation graph (business-model.md §1, asset 4) and returns readers to their own shortlist — Laura/Edmond's standing ask. A saved-items view is gated on observed save usage; reminders stay behind the R1 backend decision. | Small UI change over localStorage — no backend, no identity. | Proposed rule (final kill criteria set at launch): save rate per activated session, and whether savers return more (R0 sensor). Kill if saves stay rare after 3 weeks or don't correlate with return. |
 
 ---
 

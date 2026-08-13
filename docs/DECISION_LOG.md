@@ -4,6 +4,71 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-13 (fifth entry) — The strategy survives a skeptical outside pass: four adoptions, three rejections
+
+Batu ran the strategy through an outside model (ChatGPT, "App critique from skeptics") and asked
+for a reconciliation against the docs of record. Two findings frame everything adopted below.
+
+**First, the review converged on the strategy we already have.** Its opening recommendation — a
+curated-media play (three editorial picks, a Thursday newsletter, a named editor) — is the
+direction our own docs litigated and retired (digest retired as the default re-entry mechanism
+2026-07-28, four strikes; index-not-newsletter positioning, business-model §1). Batu killed it
+mid-conversation with the docs' own argument. The corrected final strategy — "the action and
+relationship layer for neighborhood life," report-not-dashboard merchant proof, no social network,
+no personalization, no payments, no expansion, distribution over destination — restates the
+existing strategy at ~85% overlap. Independent convergence by a skeptical pass is evidence the
+strategy is sound, and it cost one conversation to obtain.
+
+**Second, the review's opening P0 — "a map failure must not destroy the app" — was reported from
+that very session's browser and had already shipped** (the first two 2026-08-13 entries below).
+Its app audit is otherwise partly stale: it missed the shipped submission path (L5), the
+correction links (L10), and the per-category JSON-LD in `aeo.js`. Its embedded "Claude Code
+prompt" was not run.
+
+**Adopted (four):**
+
+1. **The moat is four assets, not three** (business-model §1 sharpened): coverage trust · supply
+   relationships · **attributable outcome evidence** (sharpened from "structured engagement
+   evidence" — attribution is what makes the evidence sellable and uncopiable) · **the resident
+   participation graph** (saves, follows — backend-free start). The loop: verified coverage →
+   resident action → attributable outcome → business contribution → better coverage.
+2. **The causal question as a standing instrument** (growth-engine §2 R3): *"Did Stoopwise cause
+   you to do something you would not otherwise have known about or chosen?"* The demand-side twin
+   of the unique-coverage count, and the strongest evidence line a pilot renewal can carry. Zero
+   build.
+3. **Qualified-action rate as a supporting readout metric** (growth-engine §1): share of sessions
+   with ≥1 high-intent act — already instrumented, one line in the Tuesday readout. **Never the
+   gate**: the WRL demand bar stays as re-registered 2026-07-28. Amending a pre-registered bar
+   mid-data is exactly what pre-registration forbids; holding that line against a well-argued
+   outside metric is the discipline working, not rigidity.
+4. **Anonymous-save registered as experiment candidate R4** (growth-engine §2): localStorage
+   star/save, no account — Laura/Edmond's standing ask, and the cheapest first entry into moat
+   asset 4. Candidate only; enters under the max-3 rule via a Tue-readout proposal, Batu ratifies.
+
+**Approved small build, scheduled separately — the AEO surface proves facts but not
+participation.** Still true after the fourth entry's work landed in parallel: `og:image` stays the
+generic site image on every `/e/` page (title/description/url are already per-card), Event JSON-LD
+carries no `organizer`/`offers`, and prerendered pages carry the source link but no action CTA. One
+prerender-pipeline ship, no URL changes; it strengthens Loop C and the share loop exactly where the
+positioning claims "take part."
+
+**Rejected (three), with reasons:**
+
+- **Editorial curation as the product's center** — contradicts index-not-newsletter;
+  differentiation here is measured (unique-coverage count), not asserted taste. The review's own
+  second half half-killed it; the residue ("editorial judgment as a supporting layer") is
+  declined too.
+- **PostHog taxonomy rename** (`opportunity_*` events) — breaks longitudinal data for zero
+  information gain; every proposed concept maps onto the existing 9-event taxonomy.
+- **"Own transactions" as a roadmap phase** (tickets, membership payments) — Layer 3 is spatial
+  intelligence; commerce/jobs stay parked behind their existing evidence gate. A fork to revisit
+  at the gates, not a phase.
+
+**Deferred-but-named:** the entity / opportunity / occurrence / action / verification-record
+vocabulary is recorded in PLAN.md's existing v2 content-model open item as the target shape —
+adopted when that reconciliation happens, no restructuring before validation. "Organizer-confirmed"
+status folds into the already-deferred second verification tier when that tier is designed.
+
 ## 2026-08-13 (fourth entry) — AEO/agent testing: three layers, and recurring events become Events
 
 Scoped after the map bug, because the reporting environment (ChatGPT's cloud browser) was not an
