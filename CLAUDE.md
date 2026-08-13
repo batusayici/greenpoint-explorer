@@ -31,7 +31,7 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 
 **Stoopwise Greenpoint** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, in the II-C inked visual identity. Sole goal: real value and PMF.
 
-**Naming (2026-08-06):** the parent brand is **Stoopwise**; this edition is **Stoopwise Greenpoint**, and future neighborhoods take the same shape (Stoopwise Astoria). Canonical domain `stoopwise.com`. `greenpoint.life` and `greenpoint-explorer.vercel.app` both keep serving and redirect here — already-sent invite links depend on it. Repo keeps the `greenpoint-explorer` name. **"Greenpoint" is not in the brand any more, so every title, meta, and machine surface must carry it explicitly** — that keyword is what search and answer engines match on.
+**Naming (2026-08-06):** the parent brand is **Stoopwise**; this edition is **Stoopwise Greenpoint**, and future neighborhoods take the same shape (Stoopwise Astoria). Canonical domain `stoopwise.com`. `greenpoint.life` redirects here (308, now also version-controlled in `vercel.json`); `greenpoint-explorer.vercel.app` deliberately does NOT redirect — it serves a byte-identical copy as the rollback origin and the live-invite target (DECISION_LOG L7), with the canonical tag pointing dupes at stoopwise.com. Repo keeps the `greenpoint-explorer` name. **"Greenpoint" is not in the brand any more, so every title, meta, and machine surface must carry it explicitly** — that keyword is what search and answer engines match on.
 
 ## Architecture
 

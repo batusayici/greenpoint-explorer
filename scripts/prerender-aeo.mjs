@@ -14,6 +14,7 @@ import {
   AEO_ORIGIN,
   liveCards,
   injectCardPage,
+  injectHomePage,
   sitemapXml,
   rssXml,
   icsText,
@@ -36,6 +37,11 @@ for (const card of live) {
   writeFileSync(resolve(dir, "index.html"), injectCardPage(template, card, AEO_ORIGIN));
 }
 
+// Home-page JSON-LD (2026-08-12 pre-seed QA): WebSite + this week's ItemList
+// seated into the built shell — the root document answers "what's on in
+// Greenpoint this week" without JS, same as the card pages.
+writeFileSync(resolve(DIST, "index.html"), injectHomePage(template, seed.cards, AEO_ORIGIN, now));
+
 writeFileSync(resolve(DIST, "sitemap.xml"), sitemapXml(seed.cards, AEO_ORIGIN, now));
 writeFileSync(resolve(DIST, "rss.xml"), rssXml(seed.cards, AEO_ORIGIN, now));
 writeFileSync(resolve(DIST, "events.ics"), icsText(seed.cards, AEO_ORIGIN, now));
@@ -45,4 +51,4 @@ writeFileSync(
   `User-agent: *\nAllow: /\n\nSitemap: ${AEO_ORIGIN}/sitemap.xml\n`,
 );
 
-console.log(`AEO prerender: ${live.length} card pages + sitemap/rss/ics/llms.txt/robots.txt -> dist/`);
+console.log(`AEO prerender: home JSON-LD + ${live.length} card pages + sitemap/rss/ics/llms.txt/robots.txt -> dist/`);

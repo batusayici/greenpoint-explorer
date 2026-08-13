@@ -1147,3 +1147,42 @@ body { margin: 0; }
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
+
+/* --- error-boundary fallback (2026-08-12) ---
+   Seen only when the app itself has crashed, so it depends on nothing:
+   paper ground, ink type, one primary action. Same voice as the empty
+   state — calm, small, recoverable. */
+.july-crash {
+  max-width: 46ch;
+  padding: 48px 22px;
+}
+
+.july-crash-line {
+  margin: 0 0 18px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.july-crash-reload {
+  padding: 10px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper-lift);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.july-crash-contact {
+  margin: 18px 0 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.july-crash-contact a {
+  color: var(--ink-soft);
+  font-weight: 700;
+}

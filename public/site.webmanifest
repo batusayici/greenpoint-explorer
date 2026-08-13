@@ -1,0 +1,13 @@
+{
+  "name": "Stoopwise Greenpoint",
+  "short_name": "Stoopwise",
+  "description": "What's on in Greenpoint, Brooklyn this week — events, new openings, deals and neighborhood news, verified and sourced.",
+  "start_url": "/?src=homescreen",
+  "display": "standalone",
+  "background_color": "#eae1ce",
+  "theme_color": "#eae1ce",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

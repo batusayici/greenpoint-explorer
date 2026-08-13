@@ -445,15 +445,15 @@ function FollowPrompt({ filter, onDismiss, placement }) {
 // sit anywhere in the list, so it needs real intersection — the old top-only
 // test stayed true once the element had scrolled above the fold, which would
 // have hidden the pill permanently after the reader scrolled past the banner.
-function feedEndVisible(ownScroller) {
+function feedEndVisible() {
   const banner = document.querySelector(".july-fbanner");
   if (banner) {
     const r = banner.getBoundingClientRect();
     if (r.bottom > 0 && r.top < window.innerHeight) return true;
   }
-  // Desktop: the footer sits below the list inside the panel, so the pill
-  // (bottom: 88px) never reaches it — only the banner above can collide.
-  if (ownScroller) return false;
+  // The footer CTA lives at the end of the scroll on BOTH layouts
+  // (2026-08-12): on desktop the list clips it until the reader nears the
+  // feed end, so the same viewport test covers the scroller and page flow.
   const footer = document.querySelector(".july-ctas");
   return footer ? footer.getBoundingClientRect().top < window.innerHeight : false;
 }
@@ -577,7 +577,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     if (!list) return;
     const ownScroller = list.scrollHeight > list.clientHeight + 1;
     const needed =
-      !feedEndVisible(ownScroller) &&
+      !feedEndVisible() &&
       todayPillNeeded({
         ownScroller,
         scrollTop: list.scrollTop,
@@ -604,7 +604,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
         chromeBottom: filtersRef.current?.getBoundingClientRect().bottom ?? 0,
       });
       const away = scrolledAwayFromPill(pillOriginRef.current, ownScroller ? list.scrollTop : window.scrollY);
-      if (!still || away || feedEndVisible(ownScroller)) setShowTodayPill(false);
+      if (!still || away || feedEndVisible()) setShowTodayPill(false);
     };
     window.addEventListener("scroll", check, { passive: true });
     list?.addEventListener("scroll", check, { passive: true });
@@ -876,61 +876,65 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             submit an event &rarr;
           </a>
         </li>
+        {/* The list-end copy of the ask is GONE (Batu, 2026-07-30: "no need to
+            also anchor it to the bottom") — the row has one static slot in the
+            feed and does not repeat.
+            The footer is a different object: the general, unsegmented Follow
+            for readers with no lens on, and R1's control arm (growth-engine §2
+            reads unsegmented signups as the broadcast group). It steps aside
+            whenever the lens row is up, since two stacked asks read as the app
+            asking twice — and steps back in on the All lens, or once the
+            reader has waved this lens off, so the surface is never askless.
+            IN the scroller since 2026-08-12 (pre-seed QA): pinned below the
+            list it was permanent chrome, and with the legal footer it left a
+            286px list viewport at 1280×720 — three cards of a 142-card feed.
+            Feed end is where mobile has always kept it. */}
+        {!askShowing && (
+          <li className="july-ctas-row">
+            <footer className="july-ctas">
+              <a
+                className="july-cta july-cta--primary"
+                href={followHref(SIGNUP_URL, "all")}
+                target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
+                rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
+                onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement: "footer", object: "all" })}
+              >
+                Follow Greenpoint
+              </a>
+            </footer>
+          </li>
+        )}
+        {/* Legal footer (2026-08-12, Stoopwise LLC formed). Last object in the
+            SCROLL on both layouts — inside the list scroller, per the decision
+            that legal chrome lives at the bottom of the scrolling panel, never
+            as viewport-permanent chrome (DECISION_LOG 2026-08-12; the first
+            ship had it below the desktop scroller — pre-seed QA moved it in).
+            The disclaimer sentence is the same promise the per-card "checked
+            <date>" line makes, said once for the whole surface; Corrections
+            points at the form the per-card "Report an error" link already
+            uses, so there is one correction route, not two. */}
+        <li className="july-legal-row">
+          <footer className="july-legal">
+            <p className="july-legal-note">
+              &copy; 2026 Stoopwise LLC &middot; details change — verify anything time-sensitive with
+              the source.
+            </p>
+            <nav className="july-legal-links" aria-label="Legal">
+              <a href="/terms">Terms</a>
+              <a href="/privacy">Privacy</a>
+              <a
+                href={FEEDBACK_HREF}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "legal" })}
+              >
+                Corrections
+              </a>
+              <a href="mailto:hello@stoopwise.com">Contact</a>
+            </nav>
+          </footer>
+        </li>
       </ol>
-      {/* The list-end copy of the ask is GONE (Batu, 2026-07-30: "no need to
-          also anchor it to the bottom") — the row has one static slot in the
-          feed and does not repeat.
-          The footer is a different object: the general, unsegmented Follow for
-          readers with no lens on, and R1's control arm (growth-engine §2 reads
-          unsegmented signups as the broadcast group). It steps aside whenever
-          the lens row is up, since two stacked asks read as the app asking
-          twice — and steps back in on the All lens, or once the reader has
-          waved this lens off, so the surface is never askless. */}
-      {!askShowing && (
-        <footer className="july-ctas">
-          <a
-            className="july-cta july-cta--primary"
-            href={followHref(SIGNUP_URL, "all")}
-            target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
-            rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
-            onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement: "footer", object: "all" })}
-          >
-            Follow Greenpoint
-          </a>
-        </footer>
-      )}
-      {/* Legal footer (2026-08-12, Stoopwise LLC formed). Last object in the
-          scroll on both layouts — it lives inside the panel, not the shell,
-          because the shell is a 100vh flex column and a shell-level footer
-          would spend viewport height on every screen forever.
-          The disclaimer sentence is the same promise the per-card "checked
-          <date>" line makes, said once for the whole surface; Corrections
-          points at the form the per-card "Report an error" link already uses,
-          so there is one correction route, not two. */}
-      <footer className="july-legal">
-        {/* One claim, not the drafted two: on the 400px desktop panel this
-            footer is permanent chrome (it sits below the scrolling list, not
-            inside it), so the copy is cut to the sentence that changes a
-            reader's behavior. The full "Stoopwise organizes sourced
-            neighborhood information" line lives on /terms. */}
-        <p className="july-legal-note">
-          &copy; 2026 Stoopwise LLC &middot; details change — verify anything time-sensitive with
-          the source.
-        </p>
-        <nav className="july-legal-links" aria-label="Legal">
-          <a href="/terms">Terms</a>
-          <a href="/privacy">Privacy</a>
-          <a
-            href={FEEDBACK_HREF}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "legal" })}
-          >
-            Corrections
-          </a>
-          <a href="mailto:hello@stoopwise.com">Contact</a>
-        </nav>
-      </footer>
     </aside>
   );
 }

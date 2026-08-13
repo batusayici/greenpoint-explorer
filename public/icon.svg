@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Stoopwise mark (2026-08-12): the name made visible — a brownstone stoop
+       profile in ink on paper, with one map pin above it (the product's pin
+       dot, amber ringed in ink). Strictly II-C: paper #eae1ce, ink #2a241c,
+       amber #cc9a3b. Composition is the diagonal: steps rise right-to-left,
+       pin holds the open corner. Legible at 16px — solid shapes, no strokes
+       thinner than 3 units. -->
+  <rect width="64" height="64" fill="#eae1ce"/>
+  <path d="M58 58 V46 H44 V34 H30 V22 H6 V58 Z" fill="#2a241c"/>
+  <circle cx="47" cy="17" r="9" fill="#cc9a3b" stroke="#2a241c" stroke-width="3.5"/>
+</svg>

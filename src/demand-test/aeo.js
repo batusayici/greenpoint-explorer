@@ -249,10 +249,68 @@ export function injectCardPage(template, card, origin) {
   return html.replace('<div id="root"></div>', `<div id="root">${cardBodyHtml(card, origin)}</div>`);
 }
 
+// ---- home page JSON-LD (2026-08-12 pre-seed QA) ----------------------------
+// The card pages carried exemplary structured data while the home page — the
+// URL people link, share, and ask answer engines about — shipped bare.
+// WebSite names the site; ItemList enumerates the next 7 days of dated,
+// non-recurring events so "what's on in Greenpoint this week" is answerable
+// from the root document alone. Recurring cards are excluded the same way
+// eventJsonLd excludes them: a weekly card is programming, not an Event with
+// one startDate, and inventing an occurrence date would break the truth rule.
+const HOME_LIST_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
+
+export function homeJsonLd(cards, origin, now) {
+  const horizon = now.getTime() + HOME_LIST_WINDOW_MS;
+  const upcoming = liveCards(cards, now)
+    .filter((c) => c.startsAt != null && !c.recurring)
+    .filter((c) => new Date(c.startsAt).getTime() <= horizon)
+    .sort((a, b) => new Date(a.startsAt) - new Date(b.startsAt));
+
+  const site = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Stoopwise Greenpoint",
+    url: `${origin}/`,
+    description:
+      "What's on in Greenpoint, Brooklyn this week — events, new openings, deals and neighborhood news, verified and sourced.",
+  };
+
+  const list = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "This week in Greenpoint, Brooklyn",
+    itemListElement: upcoming.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.title,
+      url: cardUrl(c, origin),
+    })),
+  };
+
+  return [site, list];
+}
+
+// Same template surgery as injectCardPage, but additive only: the home page's
+// title, meta, canonical and #root are already correct — this just seats the
+// JSON-LD scripts in the head.
+export function injectHomePage(template, cards, origin, now) {
+  const scripts = homeJsonLd(cards, origin, now)
+    .map((ld) => `    <script type="application/ld+json">${JSON.stringify(ld, null, 1)}</script>`)
+    .join("\n");
+  return template.replace("</head>", `${scripts}\n  </head>`);
+}
+
 // ---- sitemap / rss ---------------------------------------------------------
 
 export function sitemapXml(cards, origin, now) {
-  const urls = [`${origin}/`, ...liveCards(cards, now).map((c) => cardUrl(c, origin))];
+  // /terms and /privacy are crawlable (index,follow + canonicals) but were
+  // never announced here (2026-08-12 pre-seed QA).
+  const urls = [
+    `${origin}/`,
+    `${origin}/terms`,
+    `${origin}/privacy`,
+    ...liveCards(cards, now).map((c) => cardUrl(c, origin)),
+  ];
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
