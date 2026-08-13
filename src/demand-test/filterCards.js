@@ -15,6 +15,12 @@ const LABELS = {
   // 2026-07-30 rule had to evict. The id was renamed to match the same day —
   // one word for one lens, in the UI, the card data and the ingest rules.
   civic: "Civic",
+  // "Shopping", not "Markets" (Batu, 2026-08-13). The deck's two farmers'
+  // markets are food_drink, and in Greenpoint "market" means the greenmarket —
+  // a Markets chip would promise McCarren on Saturday and deliver an archival
+  // fashion sale. `shopping` is the word the ruling used and the word the schema
+  // already uses as a category, so no synonym is invented for it.
+  shopping: "Shopping",
   deals_memberships: "Deals & Memberships",
   news: "News",
   games: "Games",

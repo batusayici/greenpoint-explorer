@@ -96,7 +96,10 @@ test("FILTER_IDS is the bar's real order: thick lenses first, fold-prone ones at
   assert.deepEqual(FILTER_IDS, [
     "food_drink", "family_kids", "arts_culture",
     "live_music", "news", "deals_memberships",
-    "civic", "wellness",
+    // `shopping` re-enters at the back (2026-08-13), which is the rule working
+    // rather than an exception to it: a lens restocked by new supply earns its
+    // way forward from the tail, it does not resume a July slot.
+    "civic", "wellness", "shopping",
     "games",
   ]);
   // `games` trails because it is authored-folded — its position only orders it

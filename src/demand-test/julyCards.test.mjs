@@ -800,81 +800,88 @@ test("a card that names a game is never filed under Arts & Culture", () => {
   }
 });
 
-// 2026-08-12 (Batu, PRs #29/#30): lens-less is now a DESTINATION for exactly one
-// class of card, and a leak for everything else. SKILL.md's markets rule says a
-// general-goods flea, craft fair or vendor pop-up "carries no lens and shows in
-// All only — that absence is the answer, not a hold", and `shopping` is retired
-// with no lens to reach for. That filing could not ship while this test asserted
-// `lensless === []`: the rule was right, the assertion was stale. Each id below
-// must name why it carries no lens, so a real taxonomy leak still surfaces as an
-// unexplained id at review.
-// Entries may be an exact id (a one-off) or a RegExp (a sanctioned class).
-// Prefer the class: it encodes the ruling instead of its instances, so no
-// bookkeeping edit is needed when one expires or a new one ships.
-const LENS_LESS_BY_DESIGN = [
-  // 2026-08-12 (Batu): "Cibone is a store, not a gallery. these are for
-  // purchase. their events are shopping-related." That is a ruling about the
-  // VENUE, so it is written as one — every CIBONE card is retail and carries no
-  // lens (`shopping` is retired and there is nothing else honest to reach for).
-  // Written as a class deliberately: as three ids, `cibone-hozubag-0813`
-  // expiring on 8/13 would have left a stale entry for someone to prune, and
-  // the next pop-up would have needed a test edit before it could ship.
-  // `cibone-ote` had been the ONLY shop card in the deck filed as arts_culture;
-  // that was the anomaly, not the precedent.
-  /^cibone-/,
-  // 2026-08-12: the markets rule's own class, first application to actual vendor
-  // markets. General goods — pins, prints and ceramics from 20 artisans at the
-  // Neptune Room; art, vintage, books and records at the Threes flea — so
-  // `food_drink` is out and there is no other honest lens. Kept as ids rather
-  // than a class: "market" is a word, not a venue, and a regex over it would
-  // silently swallow a farmers' market that genuinely belongs in `food_drink`.
-  "neptune-artists-makers-market-0816",
-  "threes-flea-market-0815",
-  // 2026-08-12: Macha Studio's Summer Fridays After Hours. The CIBONE ruling
-  // applied to a second store — "Drinks, try on's and wishlist building" at a
-  // jewelry studio is retail, so `shopping` being retired leaves no honest lens.
-  // Deliberately an EXACT ID and not `/^macha-/`, unlike CIBONE: Macha also runs
-  // a Poetry Open-Mic, which is `arts_culture` on the `leaves-august-book-club`
-  // boundary — a thing you attend, not stock you buy. A venue-wide regex here
-  // would silently sanction that one too.
-  "macha-summer-fridays-after-hours",
-];
-const sanctionedLensLess = (id) =>
-  LENS_LESS_BY_DESIGN.some((rule) => (rule instanceof RegExp ? rule.test(id) : rule === id));
+// 2026-08-13 (Batu): `shopping` comes back as a lens, and the lens-less
+// allowlist dissolves with it. The 2026-08-12 markets rule was right about the
+// CLASS — retail is not arts_culture — and wrong about its destination. "Carries
+// no lens" was never a design call; it was the absence of an honest one, and all
+// four allowlist entries said so in the same words: "`shopping` is retired and
+// there is nothing else honest to reach for". Six cards and a bespoke allowlist
+// with its own staleness protocol is not miscellany, it is a lens nobody had
+// named. The user-facing cost was the tell: All is 159 cards, so a lens-less
+// card was reachable only by scrolling past everything or by finding its pin.
+//
+// Why the label is `Shopping` and not `Markets`. The deck already carries two
+// farmers' markets (mccarren-greenmarket, mcgolrick-farmers-market) filed
+// food_drink, and in this neighborhood "market" MEANS the greenmarket — a
+// Markets chip would promise McCarren on Saturday and deliver an archival
+// fashion sale, while mislabelling the showcase and the after-hours, which are
+// not markets at all. Wrong in both directions. `Shopping` is the word the
+// ruling itself used ("their events are shopping-related"), and the word the
+// schema still uses as a CATEGORY — so it needs no invented synonym, per the
+// 2026-08-02 rule that killed "What changed" in favour of News.
+//
+// Not a reversal of the 2026-07-26 retirement. That fold moved STANDING OFFERS
+// into deals_memberships and they stay there — Marianella's sale, the Maison Jar
+// refill, the WORD membership are all still deals. What did not exist in July is
+// this class: DATED retail happenings. A restocked lens enters at the back of
+// the bar, per ORDER IS THE BAR in cardSchema.js.
+test("the shopping lens holds retail — the store and its dated run (2026-08-13)", () => {
+  const shopping = seed.cards.filter((c) => c.filters.includes("shopping")).map((c) => c.id).sort();
+  assert.deepEqual(shopping, [
+    // The CIBONE ruling's own three: the store, and the two limited runs it
+    // hosts. A shop's pop-up genuinely starts and ends, so it keeps its own
+    // dated card rather than collapsing into the venue (2026-08-12).
+    "cibone-hozubag-0813",
+    "cibone-ote",
+    "cibone-restation-showcase-0815",
+    // A kids' store. It keeps `family_kids` — the audience lens it already
+    // earned — and ADDS shopping, which is what makes the rule mechanical:
+    // every category:shopping card carries the shopping lens. Before this, the
+    // deck's two shop cards were filed by two different logics.
+    "giggles-and-wiggles",
+    // "Drinks, try on's and wishlist building" at a jewelry studio — retail at
+    // a second store, the ruling's first extension beyond CIBONE.
+    "macha-summer-fridays-after-hours",
+    // The markets rule's own class: general goods, not food. Pins, prints and
+    // ceramics from 20 artisans at the Neptune Room; art, vintage, books and
+    // records at the Threes flea.
+    "neptune-artists-makers-market-0816",
+    "threes-flea-market-0815",
+  ]);
 
-test("no card is lens-less except the markets rule's own class (2026-08-12)", () => {
-  // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
-  // stragglers all resolved into Civic or Arts & Culture same day. It is now
-  // also the sanctioned home for general-goods vendor markets, by name only.
-  //
-  // SUBSET, not exact match (2026-08-12, revised same day). This was first
-  // written as `deepEqual`, on the reasoning that a stale entry should fail
-  // loudly. That reasoning was wrong for THIS list, because of WHEN it fires:
-  // expiry DELETES cards, and expiry runs inside the unattended cloud ingest.
-  // So the very next run after a lens-less card expires would have died on a
-  // stale id — a scheduled job failing where nobody is watching, blocking a
-  // whole content refresh over a bookkeeping line. Loud failure earns its keep
-  // when a human is present to act on it; here it just stops the pipeline.
-  //
-  // What the check actually exists to catch is a card arriving with NO lens
-  // that nobody sanctioned — a taxonomy leak. A subset assertion catches that
-  // exactly, and tolerates the expiry race. Stale entries are reported below
-  // without failing, so review still sees them.
-  const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
-  const unexplained = lensless.filter((id) => !sanctionedLensLess(id));
-  assert.deepEqual(
-    unexplained,
-    [],
-    "an unexplained lens-less id means the taxonomy is leaking — review at ingest, don't just add it to LENS_LESS_BY_DESIGN",
-  );
-
-  // Only exact-id entries can go stale; a class rule stays true whether or not
-  // an instance is currently live.
-  const live = new Set(seed.cards.map((c) => c.id));
-  const stale = LENS_LESS_BY_DESIGN.filter((r) => typeof r === "string" && !live.has(r));
-  if (stale.length) {
-    console.log(`  note: LENS_LESS_BY_DESIGN has ${stale.length} expired id(s) to prune — ${stale.join(", ")}`);
+  // VIEW or BUY, and the venue decides (2026-08-12). Both boundaries that
+  // defined the rule must still hold now that BUY has somewhere to land.
+  const byId = (id) => seed.cards.find((c) => c.id === id);
+  // A bookshop is retail, but a book club is a thing you ATTEND, not stock you
+  // buy — the case that proves the rule is about the event, not the venue.
+  const bookClub = byId("leaves-august-book-club");
+  if (bookClub) {
+    assert.ok(bookClub.filters.includes("arts_culture"), "the book club is attendance, not retail");
+    assert.ok(!bookClub.filters.includes("shopping"), "a bookshop's event is not automatically shopping");
   }
+  // The reason `Markets` lost: these are markets, and they are food.
+  for (const id of ["mccarren-greenmarket", "mcgolrick-farmers-market"]) {
+    const market = byId(id);
+    if (!market) continue;
+    assert.ok(market.filters.includes("food_drink"), `${id} is a food market`);
+    assert.ok(!market.filters.includes("shopping"), `${id} is groceries, not the retail lens`);
+  }
+});
+
+test("no card is lens-less (2026-08-13: the markets rule got its lens)", () => {
+  // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
+  // stragglers all resolved into Civic or Arts & Culture same day. Between
+  // 2026-08-12 and 2026-08-13 it was also the sanctioned home for retail, which
+  // needed a by-name allowlist and a subset assertion to tolerate expiry
+  // deleting a sanctioned id mid-run. Now that `shopping` exists, no card has a
+  // reason to carry no lens, so this is exact again and there is no list to keep
+  // in sync: a card arriving with no lens is a taxonomy leak, full stop.
+  const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
+  assert.deepEqual(
+    lensless,
+    [],
+    "a lens-less card means the taxonomy is leaking — file it at ingest, don't re-open an exceptions list",
+  );
 });
 
 test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {
