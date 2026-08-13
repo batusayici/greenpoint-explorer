@@ -155,6 +155,11 @@ export function expandUrlTemplate(url, now = new Date()) {
       const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + offset, 1));
       return `${String(d.getUTCMonth() + 1).padStart(2, "0")}-${d.getUTCFullYear()}`;
     }
+    if (kind === "env") {
+      const value = process.env[arg];
+      if (!value) throw new Error(`missing env var ${arg} for URL template ${match}`);
+      return value;
+    }
     throw new Error(`unknown URL template ${match}`);
   });
 }

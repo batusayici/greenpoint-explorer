@@ -23,11 +23,11 @@
     {
       "id": "troost",
       "name": "Troost (Google Calendar API)",
-      "url": "https://www.googleapis.com/calendar/v3/calendars/troostlive%40gmail.com/events?key=AIzaSyB94vf6WdsNg7nv-BNhNLX-wvDYVEV1SMY&singleEvents=true&orderBy=startTime&timeMin={{now:iso}}&maxResults=40",
+      "url": "https://www.googleapis.com/calendar/v3/calendars/troostlive%40gmail.com/events?key={{env:TROOST_CALENDAR_API_KEY}}&singleEvents=true&orderBy=startTime&timeMin={{now:iso}}&maxResults=40",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "json",
-      "notes": "Switched 2026-08-05: troostny.com/calendar renders a client-side Google Calendar widget, so plain fetch saw nothing and it fell back to the browser. This is the exact request the site JS makes — calendar id and API key are both published in the page. IF THIS 403s, the key was rotated: re-fetch https://troostny.com/calendar/ and grep for \"apikey:\" to re-derive it. The public .ics was rejected as an alternative: it returns 731 events back to 2023, unsorted, with a DTSTAMP that changes every export, so every line diffs every run. CITE cards to https://troostny.com/calendar/.",
+      "notes": "Switched 2026-08-05: troostny.com/calendar renders a client-side Google Calendar widget, so plain fetch saw nothing and it fell back to the browser. This is the exact request the site JS makes — calendar id and API key are both published in the page (key kept out of this tracked file as TROOST_CALENDAR_API_KEY in .env.local, not because Troost treats it as secret, but so it doesn't read as a leaked credential in a public repo). IF THIS 403s, the key was rotated: re-fetch https://troostny.com/calendar/ and grep for \"apikey:\" to re-derive it. The public .ics was rejected as an alternative: it returns 731 events back to 2023, unsorted, with a DTSTAMP that changes every export, so every line diffs every run. CITE cards to https://troostny.com/calendar/.",
       "json": {
         "path": "items",
         "fields": [

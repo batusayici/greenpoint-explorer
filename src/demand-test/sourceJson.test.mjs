@@ -150,3 +150,11 @@ test("month offsets roll over the year, and unknown templates fail loudly", () =
   assert.equal(expandUrlTemplate("?month={{month:+1}}", dec), "?month=01-2027");
   assert.throws(() => expandUrlTemplate("{{bogus:x}}", dec), /unknown URL template/);
 });
+
+test("env template pulls from process.env and fails loudly when unset", () => {
+  const now = new Date("2026-08-05T14:47:18.123Z");
+  process.env.TEST_TEMPLATE_VAR = "shh";
+  assert.equal(expandUrlTemplate("key={{env:TEST_TEMPLATE_VAR}}", now), "key=shh");
+  delete process.env.TEST_TEMPLATE_VAR;
+  assert.throws(() => expandUrlTemplate("key={{env:TEST_TEMPLATE_VAR}}", now), /missing env var TEST_TEMPLATE_VAR/);
+});
