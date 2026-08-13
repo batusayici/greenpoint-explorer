@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   AEO_ORIGIN,
   liveCards,
@@ -335,6 +336,27 @@ test("home ItemList entries carry the event itself — answerable without a seco
   assert.equal(item.location.address, "1011 Manhattan Ave, Brooklyn, NY 11222");
 });
 
+test("the home page ships an h1 and prose for machines that can't run the app", () => {
+  // 2026-08-13: #root shipped empty, so the home page had structured data and
+  // not one word of prose. Bing flagged it as "H1 tag missing".
+  const html = injectHomePage(TEMPLATE, [timed], ORIGIN, NOW);
+  const root = html.slice(html.indexOf('<div id="root">'), html.indexOf("</body>"));
+  assert.match(root, /<h1>Stoopwise Greenpoint<\/h1>/);
+  assert.equal((root.match(/<h1>/g) ?? []).length, 1, "exactly one h1");
+  assert.match(root, /Events, openings, deals and neighborhood news/);
+  assert.match(root, /Jul 26/, "carries the edition kicker for the given date");
+});
+
+test("the prerendered h1 is the one the app renders — never a crawler-only headline", () => {
+  // Showing machines a headline readers never see is the line the truth rules
+  // don't cross. JulyApp.jsx renders <h1>Stoopwise Greenpoint</h1>; if that
+  // ever changes, this test should fail and force both to move together.
+  const appHeading = readFileSync(new URL("./JulyApp.jsx", import.meta.url), "utf8");
+  assert.match(appHeading, /<h1>Stoopwise Greenpoint<\/h1>/);
+  const html = injectHomePage(TEMPLATE, [timed], ORIGIN, NOW);
+  assert.match(html, /<h1>Stoopwise Greenpoint<\/h1>/);
+});
+
 test("home ItemList honours the all-day sentinel instead of inventing a clock", () => {
   // The reason dates are taken from eventJsonLd rather than re-derived here.
   const list = homeJsonLd([allDay], ORIGIN, NOW).find((l) => l["@type"] === "ItemList");
@@ -350,12 +372,19 @@ test("homeJsonLd lists only the next 7 days of events, in start order", () => {
   assert.deepEqual(ids, ["gig-0730", "in-window-0801"], "7-day window, chronological");
 });
 
-test("injectHomePage adds home JSON-LD without touching title, canonical, or #root", () => {
+test("injectHomePage adds home JSON-LD and a static body, leaving the shell alone", () => {
+  // AMENDED 2026-08-13. This used to assert `<div id="root"></div>` stayed
+  // empty — "root untouched, the SPA owns the home body". That was the
+  // decision, and it was wrong in one specific way: it left the home page with
+  // structured data and zero prose, which Bing reported as an `H1 tag missing`
+  // error. `#root` is now seeded the same way every card page already seeds it,
+  // and `createRoot()` still replaces it wholesale, so the SPA does still own
+  // the home body for anyone running JS. Everything else must stay untouched.
   const html = injectHomePage(TEMPLATE, [timed, undated], ORIGIN, NOW);
   assert.match(html, /<script type="application\/ld\+json">[\s\S]*"@type": ?"WebSite"/);
   assert.match(html, /"@type": ?"ItemList"/);
   assert.match(html, /<title>Stoopwise Greenpoint<\/title>/, "title untouched");
-  assert.match(html, /<div id="root"><\/div>/, "root untouched — the SPA owns the home body");
+  assert.match(html, /<div id="root"><main>/, "root seeded with the static body");
   assert.match(html, /assets\/index-abc123\.js/, "bundle reference untouched");
 });
 

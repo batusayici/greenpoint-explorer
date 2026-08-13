@@ -131,6 +131,15 @@ for (const url of listed) {
 //    This is the check that would have caught the measured gap: entries that
 //    carried a headline and a URL and nothing a question could be answered from.
 const home = read("index.html");
+
+// 3a. The home page must say something in PROSE, not only in JSON-LD. It
+//     shipped a 51-byte body until 2026-08-13 and no check here noticed —
+//     Bing did, as an `H1 tag missing` error.
+const homeH1s = (home.match(/<h1[\s>]/g) ?? []).length;
+if (homeH1s !== 1) fail("/", `expected exactly 1 <h1>, found ${homeH1s}`);
+const homeWords = visibleWords(home);
+if (homeWords < 10) fail("/", `only ${homeWords} visible words — the body is effectively empty`);
+
 const homeLds = jsonLdBlocks(home, "/");
 const list = homeLds.find((l) => l["@type"] === "ItemList");
 if (!homeLds.some((l) => l["@type"] === "WebSite")) fail("/", "home page has no WebSite JSON-LD");
