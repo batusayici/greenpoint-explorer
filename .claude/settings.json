@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:acmesmokedfish.com)",
+      "WebFetch(domain:api-endpoint.mta.info)",
       "WebFetch(domain:api.feather.rsvp)",
       "WebFetch(domain:archestrat.us)",
       "WebFetch(domain:banditrunning.com)",
@@ -20,6 +21,7 @@
       "WebFetch(domain:dancewithellyshepley.com)",
       "WebFetch(domain:data.accentapi.com)",
       "WebFetch(domain:data.cityofnewyork.us)",
+      "WebFetch(domain:data.ny.gov)",
       "WebFetch(domain:donyc.com)",
       "WebFetch(domain:downtoearthmarkets.com)",
       "WebFetch(domain:dreamsoncommand.com)",
@@ -55,6 +57,7 @@
       "WebFetch(domain:maisonjar.nyc)",
       "WebFetch(domain:marianella.co)",
       "WebFetch(domain:moonbunnyaerial.com)",
+      "WebFetch(domain:mta.info)",
       "WebFetch(domain:nominatim.openstreetmap.org)",
       "WebFetch(domain:nycgovparks.org)",
       "WebFetch(domain:nyctrivialeague.com)",
@@ -82,6 +85,7 @@
       "WebFetch(domain:www.hisawyer.com)",
       "WebFetch(domain:www.leavesbookstore.com)",
       "WebFetch(domain:www.lockwoodshop.com)",
+      "WebFetch(domain:www.mta.info)",
       "WebFetch(domain:www.nyc.gov)",
       "WebFetch(domain:www.otisandfinn.com)",
       "WebFetch(domain:www.wordbookstores.com)",

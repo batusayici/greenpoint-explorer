@@ -58,6 +58,46 @@ test("empty and missing fields are skipped, items separated by a blank line", ()
   assert.equal(jsonToText(data, { path: "items", fields: ["title", "note", "tags"] }), "title: A\n\ntitle: B\nnote: kept");
 });
 
+// Opt-in item filter, the `json` twin of `feed: { include: [...] }` (which the
+// feed code already called "the same shape as the json block"). Added
+// 2026-08-13 for the MTA citywide subway-alerts feed: 197 alerts, of which only
+// the ones touching a Greenpoint station matter, and ~43 are realtime churn
+// that would diff the snapshot on every run. Matching is a substring test
+// against the RAW item JSON — the same choice feedToText makes against raw item
+// XML — so a filter can key on a field the rendered output does not carry.
+test("json include filters items by raw-payload substring, before rendering", () => {
+  const data = {
+    entity: [
+      { id: "a", alert: { stops: ["G26", "G28"], header: { text: "No G between Court Sq and Bedford-Nostrand" } } },
+      { id: "b", alert: { stops: ["G33", "G34"], header: { text: "No G between Hoyt-Schermerhorn and Church Av" } } },
+    ],
+  };
+  const out = jsonToText(data, {
+    path: "entity",
+    include: ['"G26"'],
+    fields: ["alert.header.text"],
+  });
+  assert.equal(
+    out,
+    "alert.header.text: No G between Court Sq and Bedford-Nostrand",
+    "the Greenpoint-closing alert is kept and the Bedford-Nostrand-south one dropped, on a field the output never renders",
+  );
+});
+
+test("json include is OR across terms, and no include keeps everything", () => {
+  const data = { entity: [{ n: "G26 only" }, { n: "G28 only" }, { n: "G33 only" }] };
+  assert.equal(jsonToText(data, { path: "entity", include: ["G26", "G28"], fields: ["n"] }), "n: G26 only\n\nn: G28 only");
+  assert.equal(jsonToText(data, { path: "entity", fields: ["n"] }).split("\n\n").length, 3);
+  assert.equal(jsonToText(data, { path: "entity", include: [], fields: ["n"] }).split("\n\n").length, 3, "an empty list is not a filter");
+});
+
+// Zero matches is a legitimate quiet week (no planned work at a Greenpoint
+// stop), not a dead source — the same call feedToText makes.
+test("json include matching nothing yields empty, not an error", () => {
+  const data = { entity: [{ n: "G33 only" }] };
+  assert.equal(jsonToText(data, { path: "entity", include: ["G26"], fields: ["n"] }), "");
+});
+
 test("an empty array is a real state, not a failure", () => {
   // A Squarespace calendar month with no events must snapshot as empty rather
   // than error — reporting it as an unreachable source would be a lie that
