@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev       # dev server at http://127.0.0.1:5173 — the product serves at /
 npm test          # unit tests — TZ-pinned to America/New_York (day-grouping tests are zone-sensitive; the cloud routine runs UTC)
+npm run test:dom  # rendering tests (vitest + jsdom, `.test.jsx`) — SEPARATE runner from `npm test`, which stays pure-logic `.test.mjs` under node --test. Only for invariants a DOM is required to check; today that means one: a failing map must never empty the page (2026-08-13). `npm run verify` runs both.
 npm run build     # production build to dist/
 npm run preview   # preview production build
 npm run ingest:geocode  # geocode new cards (Nominatim → geocode-cache.json)

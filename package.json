@@ -8,6 +8,7 @@
     "build": "node scripts/check-freshness.mjs --stamp && vite build && node scripts/prerender-aeo.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test": "TZ=America/New_York node --test \"src/**/*.test.mjs\"",
+    "test:dom": "TZ=America/New_York vitest run",
     "ingest:fetch": "NODE_USE_ENV_PROXY=1 node scripts/fetch-sources.mjs",
     "ingest:expire": "node scripts/expire-cards.mjs",
     "ingest:geocode": "NODE_USE_ENV_PROXY=1 node scripts/geocode-demand-cards.mjs",
@@ -19,7 +20,7 @@
     "verify:stories": "node scripts/verify-place-stories.mjs",
     "verify:kit-coverage": "node scripts/verify-kit-coverage.mjs",
     "verify:overrides": "node scripts/verify-facade-overrides.mjs",
-    "verify": "npm run test && npm run verify:conformance && npm run verify:visual && npm run verify:components && npm run verify:stories && npm run verify:kit-coverage && npm run verify:overrides",
+    "verify": "npm run test && npm run test:dom && npm run verify:conformance && npm run verify:visual && npm run verify:components && npm run verify:stories && npm run verify:kit-coverage && npm run verify:overrides",
     "ingest:coverage": "node scripts/check-coverage.mjs",
     "ingest:quotes": "node scripts/verify-quotes.mjs"
   },
@@ -34,9 +35,11 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.2",
+    "jsdom": "^29.1.1",
     "pixelmatch": "^7.2.0",
     "playwright": "1.56.0",
     "pngjs": "^7.0.0",
-    "vite": "^8.0.14"
+    "vite": "^8.0.14",
+    "vitest": "^4.1.10"
   }
 }
