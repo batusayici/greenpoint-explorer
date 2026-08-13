@@ -48,7 +48,10 @@ test("nextGtrainWindow picks the first window whose end is still ahead", () => {
   assert.equal(nextGtrainWindow(new Date("2026-08-05T12:00:00-04:00")), GTRAIN_WINDOWS[0]);
   assert.equal(nextGtrainWindow(new Date("2026-08-10T06:00:00-04:00")), GTRAIN_WINDOWS[1]);
   assert.equal(nextGtrainWindow(new Date("2026-08-21T06:00:00-04:00")), GTRAIN_WINDOWS[2]);
-  assert.equal(nextGtrainWindow(new Date("2026-08-24T06:00:00-04:00")), null);
+  // Aug 24 5 AM used to be the end of the list; the Sep 11–14 weekend now
+  // follows it (added 2026-08-13 from the alerts feed).
+  assert.equal(nextGtrainWindow(new Date("2026-08-24T06:00:00-04:00")), GTRAIN_WINDOWS[3]);
+  assert.equal(nextGtrainWindow(new Date("2026-09-14T06:00:00-04:00")), null);
 });
 
 test("after one window ends, the phase re-gates against the next (no dark gap, no early noise)", () => {
@@ -61,9 +64,38 @@ test("after one window ends, the phase re-gates against the next (no dark gap, n
   // Fri Aug 21, 8 AM: overnights ended at 5 AM, weekend closure starts 9:45 PM → near.
   const t3 = new Date("2026-08-21T08:00:00-04:00");
   assert.equal(bannerPhase(t3, nextGtrainWindow(t3)), "near");
-  // After the last window → null for good.
+  // Sep 1: the Sep 11–14 window exists but is 10 days out — still silence.
+  // The 7-day horizon is what keeps a known-but-distant closure off the slot.
   const t4 = new Date("2026-09-01T09:00:00-04:00");
   assert.equal(bannerPhase(t4, nextGtrainWindow(t4)), null);
+  // After the LAST window → null for good.
+  const t5 = new Date("2026-09-15T09:00:00-04:00");
+  assert.equal(bannerPhase(t5, nextGtrainWindow(t5)), null);
+});
+
+// The Aug 24 → Sep 11 quiet stretch is a real state, not a bug: MTA has
+// announced no Greenpoint closure in it, so the slot correctly frees up for
+// the community alert / freshness tiers, then the G returns on its own.
+test("the Aug 24 – Sep 11 gap is silent, and the Sep window wakes on its own ramp", () => {
+  for (const iso of ["2026-08-25T09:00:00-04:00", "2026-08-31T09:00:00-04:00", "2026-09-03T09:00:00-04:00"]) {
+    const t = new Date(iso);
+    assert.equal(bannerPhase(t, nextGtrainWindow(t)), null, `${iso} must be quiet`);
+  }
+  // The horizon edge is INCLUSIVE (`untilStart > HORIZON_MS` → null): a minute
+  // past 7 days is silent, exactly 7 days already shows the chip.
+  const justOutside = new Date("2026-09-04T21:44:00-04:00");
+  assert.equal(bannerPhase(justOutside, nextGtrainWindow(justOutside)), null);
+  const exactly7d = new Date("2026-09-04T21:45:00-04:00");
+  assert.equal(bannerPhase(exactly7d, nextGtrainWindow(exactly7d)), "distant");
+  // Sep 5 → inside the week: chip.
+  const chip = new Date("2026-09-05T12:00:00-04:00");
+  assert.equal(bannerPhase(chip, nextGtrainWindow(chip)), "distant");
+  // Sep 10 noon → inside 48h: full banner.
+  const near = new Date("2026-09-10T12:00:00-04:00");
+  assert.equal(bannerPhase(near, nextGtrainWindow(near)), "near");
+  // Sat Sep 12 → live.
+  const live = new Date("2026-09-12T12:00:00-04:00");
+  assert.equal(bannerPhase(live, nextGtrainWindow(live)), "active");
 });
 
 test("bannerPhase with no window → null", () => {
@@ -74,15 +106,25 @@ test("bannerPhase with no window → null", () => {
 // updated Jul 23, sourced 2026-08-02), frozen, in chronological order.
 test("shipped windows match the MTA source and are frozen", () => {
   assert.ok(Object.isFrozen(GTRAIN_WINDOWS));
-  assert.equal(GTRAIN_WINDOWS.length, 3);
+  assert.equal(GTRAIN_WINDOWS.length, 4);
   assert.deepEqual(
     GTRAIN_WINDOWS.map((w) => [w.startsAt, w.endsAt]),
     [
       ["2026-08-07T21:45:00-04:00", "2026-08-10T05:00:00-04:00"],
       ["2026-08-17T21:45:00-04:00", "2026-08-21T05:00:00-04:00"],
       ["2026-08-21T21:45:00-04:00", "2026-08-24T05:00:00-04:00"],
+      // Added 2026-08-13 from the MTA alerts feed (mta-g-alerts), which
+      // carried it weeks before the G-line article page mentioned September.
+      ["2026-09-11T21:45:00-04:00", "2026-09-14T05:00:00-04:00"],
     ],
   );
+  // Chronological, non-overlapping — nextGtrainWindow's find() assumes it.
+  for (let i = 1; i < GTRAIN_WINDOWS.length; i++) {
+    assert.ok(
+      Date.parse(GTRAIN_WINDOWS[i].startsAt) >= Date.parse(GTRAIN_WINDOWS[i - 1].endsAt),
+      `window ${i} must start no earlier than window ${i - 1} ends`,
+    );
+  }
   for (const w of GTRAIN_WINDOWS) {
     assert.ok(Object.isFrozen(w));
     assert.ok(Date.parse(w.endsAt) > Date.parse(w.startsAt));

@@ -16,7 +16,12 @@
 // card holds that.
 //
 // Sourced 2026-08-02 from mta.info/article/service-changes-g-line-2026
-// (page updated Jul 23). Greenpoint-closing windows only: the Jul 31–Aug 3
+// (page updated Jul 23); the Sep 11–14 window added 2026-08-13 from the MTA
+// alerts feed, which the roster now watches as `mta-g-alerts` — the page had
+// no September dates at all when the feed already carried them, so the FEED is
+// the sensor and the article stays the readers' link. A window closes
+// Greenpoint iff its informed_entity carries G26 (Greenpoint Av) and G28
+// (Nassau Av). Greenpoint-closing windows only: the Jul 31–Aug 3
 // and Aug 14–17 weekends close Hoyt-Schermerhorn–Church Av and leave
 // Greenpoint Av / Nassau Av open, so they are NOT windows here.
 export const GTRAIN_WINDOWS = Object.freeze([
@@ -41,6 +46,23 @@ export const GTRAIN_WINDOWS = Object.freeze([
     endsAt: "2026-08-24T05:00:00-04:00",
     dates: "Fri Aug 21, 9:45 PM – Mon Aug 24, 5 AM",
     shortDates: "Aug 21–24",
+    stops: "Greenpoint Av + Nassau Av",
+    shuttle: "free T403 shuttle",
+  }),
+  // Added 2026-08-13 from the MTA alerts feed (roster `mta-g-alerts`), which
+  // carried this window while the G-line article page still listed August
+  // only — the reason the feed, not the page, is the sensor. Its
+  // informed_entity closes G26 (Greenpoint Av) and G28 (Nassau Av), which is
+  // the mechanical Greenpoint test; the header is the same "No [G] between
+  // Bedford-Nostrand Avs and Court Sq" as the August weekends, and the
+  // description states the free T403 shuttle verbatim.
+  // NOTE the Aug 24 → Sep 11 gap is real, not missing data: MTA has announced
+  // no Greenpoint closure in it, so the banner is silent for those 18 days.
+  Object.freeze({
+    startsAt: "2026-09-11T21:45:00-04:00",
+    endsAt: "2026-09-14T05:00:00-04:00",
+    dates: "Fri Sep 11, 9:45 PM – Mon Sep 14, 5 AM",
+    shortDates: "Sep 11–14",
     stops: "Greenpoint Av + Nassau Av",
     shuttle: "free T403 shuttle",
   }),

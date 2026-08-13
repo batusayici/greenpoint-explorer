@@ -454,6 +454,11 @@
           "date": "2026-08-21",
           "title": "Weekend closure (MTA-confirmed)",
           "summary": "No G between Court Sq and Bedford–Nostrand Avs, Fri Aug 21 9:45 PM to Mon Aug 24 5 AM — Greenpoint Av and Nassau Av closed, free T403 shuttle. Back-to-back with the Aug 17–21 overnights."
+        },
+        {
+          "date": "2026-09-11",
+          "title": "Weekend closure (MTA-confirmed)",
+          "summary": "No G between Court Sq and Bedford–Nostrand Avs, Fri Sep 11 9:45 PM to Mon Sep 14 5 AM — Greenpoint Av and Nassau Av closed, free T403 shuttle. The next Greenpoint closure after Aug 24: MTA has announced none in between."
         }
       ],
       "relatedCardIds": [
@@ -486,6 +491,12 @@
           "publisher": "Greenpointers",
           "url": "https://greenpointers.com/2026/07/28/expect-g-train-service-changes-every-weekend-this-august/",
           "date": "2026-07-28"
+        },
+        {
+          "title": "MTA subway service alerts — G line (Sep 11–14 closure)",
+          "publisher": "MTA",
+          "url": "https://new.mta.info/alerts",
+          "date": "2026-08-13"
         }
       ],
       "evidenceStrength": "high",
@@ -493,7 +504,7 @@
       "partnerRelevance": "high",
       "trustRisk": "medium",
       "createdAt": "2026-07-03",
-      "updatedAt": "2026-08-02",
+      "updatedAt": "2026-08-13",
       "kicker": "Dates, shuttle, who's open"
     },
     {
