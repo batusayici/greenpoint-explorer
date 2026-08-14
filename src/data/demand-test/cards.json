@@ -4952,7 +4952,8 @@
       "relatedCardIds": [
         "moon-bunny-two-day-camp-4-7-0813",
         "moon-bunny-weekday-camp-8-12-0817",
-        "moon-bunny-two-day-camp-8-12-0824"
+        "moon-bunny-two-day-camp-8-12-0824",
+        "moon-bunny-two-day-camp-4-7-0827"
       ]
     },
     {
@@ -6253,6 +6254,53 @@
       "startsAt": "2026-08-24T09:00:00-04:00",
       "endsAt": "2026-08-25T15:00:00-04:00",
       "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-24T13:00:00.000Z\nend_at: 2026-08-24T19:00:00.000Z\n\nname: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-25T13:00:00.000Z\nend_at: 2026-08-25T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
+      "lat": 40.736575,
+      "lng": -73.952327
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "free": false,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "actions": [
+        {
+          "label": "Camp details",
+          "type": "learn_more",
+          "url": "https://moonbunnyaerial.com/summer-camps"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial summer camps",
+          "url": "https://moonbunnyaerial.com/summer-camps",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-13"
+        }
+      ],
+      "id": "moon-bunny-two-day-camp-4-7-0827",
+      "title": "Two-Day Circus Camp for 4–7s at Moon Bunny Aerial",
+      "kicker": "No experience needed, lyra to trapeze",
+      "summary": "The shorter format for the youngest flyers, long enough to build confidence and pick up new skills — ground acro, juggling and flow props alongside the apparatus.",
+      "startsAt": "2026-08-27T09:00:00-04:00",
+      "endsAt": "2026-08-28T15:00:00-04:00",
+      "sourceQuote": "name: Two Day Camp 4-7 yrs old\nstart_at: 2026-08-27T13:00:00.000Z\nend_at: 2026-08-27T19:00:00.000Z\n\nname: Two Day Camp 4-7 yrs old\nstart_at: 2026-08-28T13:00:00.000Z\nend_at: 2026-08-28T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\n\nWith two days to learn and practice, participants can build confidence, develop new skills, and enjoy an engaging introduction to circus arts. No prior experience is required.",
       "lat": 40.736575,
       "lng": -73.952327
     },

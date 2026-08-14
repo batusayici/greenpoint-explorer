@@ -435,11 +435,15 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // /plans-pricing — the page now lists a different membership set. A deal
   // whose source has stopped stating it does not get to coast to its printed
   // end date. 153 - 1 + 8 - 1 = 159.
-  assert.equal(seed.cards.length, 159);
+  // 2026-08-13 (second run, scoped to moon-bunny-aerial): +1, the Two-Day
+  // Circus Camp for 4–7s on 8/27–28. The source had carried it all along —
+  // it surfaced while fixing the 9am-camp bug, from the same feed that was
+  // already snapshotted. 159 + 1 = 160.
+  assert.equal(seed.cards.length, 160);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 89, "82 - the expired 8/12 library day-card + all 8 adds of the 2026-08-13 refresh — every one is a dated happening");
+  assert.equal(count((c) => c.category === "event"), 90, "89 + the 8/27–28 two-day camp for 4–7s (2026-08-13 scoped moon-bunny run)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 + DJ Barba Yiorgi's 8/27 night at Troost");
