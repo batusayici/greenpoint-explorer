@@ -452,6 +452,9 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // other three: the library's 8/27 Thursday programs and Film Noir's ARREBATO,
   // both new in this run's diff, and Good Room's 8/28 bill, which is the date
   // the coverage check flagged as a GAP.
+  // Also 2026-08-14: the Cycle Alliance Period Pantry adds NO card. It is a
+  // standing amenity of the branch, so the 2026-08-12 exhibition ruling puts it
+  // on `greenpoint-library` — count unaffected, and that is the point.
   assert.equal(seed.cards.length, 158);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
