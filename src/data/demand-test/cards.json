@@ -2675,19 +2675,19 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-14",
       "id": "library-friday-garden-0814",
       "title": "Friday in the library rooftop garden",
       "kicker": "Sensory hour, garden educator, movie",
       "summary": "Ages 0–5 start at 10:30 on the third-floor rooftop; from 3pm a specialist is on site there, and Paddington (PG, 95 min) runs in Eco Lab 1.",
       "startsAt": "2026-08-14T10:30:00-04:00",
-      "endsAt": "2026-08-14T23:59:00-04:00",
+      "endsAt": "2026-08-14T16:00:00-04:00",
       "filters": [
         "family_kids"
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: Friday Kids' Movie\nts_body: Join us on Friday afternoon for a kid-friendly movie! This week's movie will be: \"Paddington\" (2015 ) Rated PG, 95 minutes -",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: Friday Kids' Movie\nts_body: Join us on Friday afternoon for a kid-friendly movie! This week's movie will be: \"Paddington\" (2015 ) Rated PG, 95 minutes -\nts_body: Garden Educator will be on site from 3-4pm on Fridays, weather permitting.",
       "actions": [
         {
           "label": "Branch calendar",
@@ -4198,15 +4198,15 @@
       "lng": -73.958337,
       "id": "comedy-friday-showcase",
       "title": "The Friday Showcase",
-      "kicker": "$25 — a 10pm show follows",
-      "summary": "The evening bill; a later 10pm show runs the same night.",
+      "kicker": "$25 — 8pm and 10pm sittings",
+      "summary": "The club's main Friday bill, run twice: an 8pm show and a later 10pm show, same night.",
       "filters": [
         "arts_culture"
       ],
       "recurring": true,
       "startsAt": "2026-08-14T20:00:00-04:00",
-      "endsAt": "2026-08-28T23:59:00-04:00",
-      "sourceQuote": "Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM, Fri Aug 28, 2026, 8:00 PM and 4 more\nThe Friday Showcase Show @ 8:00 PM",
+      "endsAt": "2026-08-28T22:00:00-04:00",
+      "sourceQuote": "Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM, Fri Aug 28, 2026, 8:00 PM and 4 more\nThe Friday Showcase Show @ 8:00 PM\nFri Aug 14, 2026, 10:00 PM, Fri Aug 21, 2026, 10:00 PM, Fri Aug 28, 2026, 10:00 PM and 4 more\nThe (Later) Friday Showcase @ 10:00 PM",
       "actions": [
         {
           "label": "Tickets",
@@ -4239,22 +4239,22 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-14",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
       "lng": -73.958337,
       "id": "comedy-saturday-showcase",
       "title": "The Saturday Showcase",
-      "kicker": "$25 — 10pm Secret Showcase follows",
-      "summary": "The club's main evening bill.",
+      "kicker": "$25 — 8pm and 10pm sittings",
+      "summary": "The club's main Saturday bill, run twice: an 8pm show and The Late Saturday Showcase at 10pm.",
       "filters": [
         "arts_culture"
       ],
       "recurring": true,
       "startsAt": "2026-08-08T20:00:00-04:00",
-      "endsAt": "2026-08-22T23:59:00-04:00",
-      "sourceQuote": "Sat Aug 8, 2026, 8:00 PM, Sat Aug 15, 2026, 8:00 PM, Sat Aug 22, 2026, 8:00 PM and 5 more\nThe Saturday Showcase @ 8:00 PM",
+      "endsAt": "2026-08-22T22:00:00-04:00",
+      "sourceQuote": "Sat Aug 15, 2026, 8:00 PM, Sat Aug 22, 2026, 8:00 PM, Sat Aug 29, 2026, 8:00 PM and 4 more\nThe Saturday Showcase @ 8:00 PM\nSat Aug 15, 2026, 10:00 PM, Sat Aug 22, 2026, 10:00 PM, Sat Aug 29, 2026, 10:00 PM and 4 more\nThe Late Saturday Showcase @ 10:00 PM",
       "actions": [
         {
           "label": "Tickets",
@@ -4465,13 +4465,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-14",
       "id": "library-thursday-programs-0820",
       "title": "Thursday at Greenpoint Library",
       "kicker": "Five programs, morning to evening",
       "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines at 1, a free English class at 2, Teen Tech Time at 3, and Sunset Storytime at 6.",
       "startsAt": "2026-08-20T10:30:00-04:00",
-      "endsAt": "2026-08-20T23:59:00-04:00",
+      "endsAt": "2026-08-20T18:00:00-04:00",
       "filters": [
         "family_kids"
       ],

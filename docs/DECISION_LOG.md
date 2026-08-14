@@ -4,6 +4,42 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-14 (third entry) — A different time is not a different card; a different bill is
+
+**Batu, asked for the rule rather than the instance.** Greenpoint Comedy Club runs an 8pm and a 10pm
+showcase on Fridays and Saturdays. The deck carried the 8pm sittings and not the 10pm ones, and the
+question was whether the late show is a second card.
+
+**The ruling: one card per BILL, naming every sitting. A second card only when the second item has
+its own name and lineup.** The test is the reader's decision — *sittings differ by when you turn up,
+bills differ by what you see.* So the Friday 8pm and "(Later)" 10pm showcases are one card, while
+`comedy-cartoon-strips-0827` stays separate from the Thursday showcase that runs the same night.
+
+**This was already the deck's grammar; it just had not been written down.**
+`library-thursday-programs-0820` is one card covering five programs from 10:30am to 6pm, and across
+160 cards exactly ONE venue-day carries two dated cards — Transmitter Park on 8/14, a fitness class
+and a movie by different organisers. One-card-per-venue-per-day was the de facto rule and two cards
+was the anomaly, arising when the *things* differ rather than the *times*.
+
+**The deciding argument was the scan layer, not tidiness.** The 2026-08-14 tester read the feed as
+uniform rows with no standout signal, and the comedy club is the densest venue in the deck (10 of
+160 cards). Splitting by sitting would put "The Friday Showcase 8pm" directly above "The Later
+Friday Showcase 10pm" every Friday — the exact failure that tester named, applied where it already
+hurts most. The accepted cost is calendar precision: one card exports one `.ics` at the first
+sitting, so a reader attending the 10pm show gets an 8pm entry. That is recoverable at the ticket
+page; an unscannable feed is not.
+
+**And the rule exposed a live bug it had to fix to be honest.** `occurrenceEndMinutes` retires a
+card **60 minutes after start** when `endsAt` is the `23:59` unsourced-end sentinel. So a grouped
+card sitting on that sentinel vanishes before most of what it advertises: `library-friday-garden-0814`
+(starts 10:30, summary names 3pm) was invisible from **11:30am**, and `comedy-friday-showcase` died
+at 9pm while its own kicker advertised a 10pm show. Only 2 of the 10 library day-cards were on the
+sentinel — the other 8 already carry real end times (16:45, 19:30, 17:30…), so this was two
+stragglers against an established pattern, not a design gap. Both corrected to sourced clocks.
+
+Also corrected in passing: `comedy-saturday-showcase` billed the late show as the "Secret Showcase",
+a name appearing **zero times** in the source, which calls it "The Late Saturday Showcase".
+
 ## 2026-08-14 (second entry) — A rule that lives only in prose is not a gate
 
 Two defects, found by chasing one failing check. Both are the same shape: **a mechanism that was
