@@ -4,6 +4,55 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-14 — The exhibition rule was never about art: a standing amenity belongs to its place
+
+**Batu, ruling on the one card PR #37 held.** The Cycle Alliance's period pantry at Greenpoint
+Library was held on two questions — *which lens?* and *is it even a dated event?* — and the second
+one dissolved the first.
+
+**The ruling: extend the 2026-08-12 exhibition rule past galleries.** A standing amenity of a place
+belongs on that place's card. The pantry folded into `greenpoint-library`; **no event card was
+authored**, so the deck stays at 160 and the `no card is lens-less` assertion stays exactly `[]`.
+
+**Why the lens question never needed answering.** It was genuinely unanswerable as posed: free-supply
+mutual aid reads like `civic`, but `civic` is hands-on *participation* with neighborhood stakes and
+taking from a pantry is not that; the source's own tags say "health and wellness", but `wellness`
+here is the movement cluster (yoga/pilates/dance/run). The run filed it lens-less and flagged it
+PROVISIONAL. **That a card cannot be filed under any lens is evidence it is not that kind of card** —
+a venue card is filed by what the venue *is*, and a standing amenity inherits that. The lens question
+was a symptom of the category error, not a separate problem.
+
+**The mechanical tell, so the next one never reaches a human: the source contradicting its own date
+field.** The BPL calendar carries the pantry as a Saturday record with `ds_event_start_date` and a
+10–5 span, while `ts_body` says *"Located in the Teen Zone (Eco Lab 3) on the second floor,
+**Monday-Sunday** during branch open hours"*. When a listing's body describes availability wider
+than its own record's window, **the record is a listing convention and the body is the fact** —
+file it on the venue. Written into SKILL.md under the exhibition rule.
+
+**Bounded deliberately.** This is not licence to fold recurring events into venue cards: a weekly
+storytime is still a happening you attend at a time and stays a dated card. The line is
+*happening-at-a-time* vs *state-of-a-place*, which is the same line the gallery rule drew — the
+2026-08-12 entry just drew it on galleries because galleries were the instance in front of it. Same
+error shape as the 2026-08-13 "fix the class, not the caller" finding.
+
+**The pantry recurs weekly** (8/22 was in the same snapshot), so a card-by-card answer would have
+re-asked this every Friday. It is answered once.
+
+Also in the same PR, and the more consequential half: **promotion may add evidence, never remove
+it** (`persistedBlocks.js`). `--mark-ingested` had been copying the fresh snapshot over
+`<id>.ingested.txt`, deleting any `## [DETAIL]` / `## [R1 PERSISTED]` / `## [IMAGE READ]` block the
+run's fetch had not returned — a failed detail page, or a flyer that has no URL to fetch at all.
+It fired in production on 2026-08-13 **after every gate had gone green**: `ingest:quotes` read
+verified=35/mismatch=0 immediately before the command and verified=30/mismatch=13 immediately after,
+with nothing re-fetched in between, and `--all` put the real number at 20. The gated count
+understated the damage by more than half because clobbered evidence does not respect the gate's
+`createdAt` cutoff. Recovery was manual, out of `git HEAD`. **The roster note that was supposed to
+prevent this — *"CARRY THE [R1 PERSISTED] BLOCKS FORWARD when re-marking this baseline"* — was a
+warning, not a mechanism.** Now it is code, and the run prints what it rescued. SKILL.md step 4.4
+additionally requires `ingest:quotes -- --all` **after** promotion, not only before: the verifier
+reads the baseline, so a pre-promotion check verifies the previous file and learns nothing about what
+the run is shipping.
+
 ## 2026-08-13 (ninth entry) — First outbound send: friends & family, WhatsApp
 
 Batu sent the friends-family re-invite tonight, **~6:30pm, to a small group over WhatsApp** —

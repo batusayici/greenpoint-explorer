@@ -1268,7 +1268,7 @@
       "kicker": "The neighborhood's free program engine",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "summary": "Full-service branch and environmental education center on Norman Ave — storytimes, teen tech, garden hours, English classes and studio time nearly every day, plus a rooftop demonstration garden.",
+      "summary": "Full-service branch and environmental education center on Norman Ave — storytimes, teen tech, garden hours, English classes and studio time nearly every day, plus a rooftop demonstration garden. The Cycle Alliance keeps a period pantry in the Teen Zone (Eco Lab 3, second floor) — menstrual supplies to pick up, open to all ages and genders, during all branch hours.",
       "filters": [
         "family_kids",
         "arts_culture"
@@ -1295,6 +1295,12 @@
           "publisher": "Brooklyn Public Library",
           "url": "https://www.bklynlibrary.org/locations/greenpoint",
           "date": "2026-07-16"
+        },
+        {
+          "title": "The Cycle Alliance’s Period Pantry at Greenpoint — branch event calendar",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-13"
         }
       ],
       "evidenceStrength": "high",
@@ -1302,13 +1308,14 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-13",
+      "updatedAt": "2026-08-14",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
         "library-saturday-storytime-0822",
         "sips-scholars-parkhouse-0825"
-      ]
+      ],
+      "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
     {
       "id": "wasabi-closing",

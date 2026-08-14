@@ -43,6 +43,7 @@ import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sou
 import { decode, htmlToText } from "../src/demand-test/sourceText.js";
 import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
 import { classifyFetchFailure, isPolicyDenial, assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
+import { carryForwardBlocks } from "../src/demand-test/persistedBlocks.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -78,19 +79,41 @@ const { sources } = JSON.parse(readFileSync(SOURCES_PATH, "utf8"));
 // --mark-ingested: promote current snapshots to ingested baselines (no
 // network). Run at ship time, after the review gate — including for sources
 // whose extraction found nothing on-concept (they were reviewed too).
+// PROMOTION MAY ADD EVIDENCE, NEVER REMOVE IT (2026-08-13). Promotion used to
+// copy the fresh snapshot straight over the baseline, which deleted every
+// `## [DETAIL]` / `## [R1 PERSISTED]` / `## [IMAGE READ]` block this run's
+// fetch happened not to return — a failed detail page, or a flyer that has no
+// URL to fetch in the first place. That cost 20 live cards their evidence in
+// one command on 2026-08-13 (ingest:quotes 35/0 before, 30/13 after, 7 more on
+// --all), silently and after every gate had passed. See persistedBlocks.js.
 if (MARK_INGESTED) {
   let n = 0;
+  let rescued = 0;
   for (const src of sources) {
     if (ONLY && !ONLY.has(src.id)) continue;
     const snapPath = join(CACHE_DIR, `${src.id}.txt`);
     if (!state[src.id]?.hash || !existsSync(snapPath)) continue;
-    writeFileSync(join(CACHE_DIR, `${src.id}.ingested.txt`), readFileSync(snapPath));
+    const baselinePath = join(CACHE_DIR, `${src.id}.ingested.txt`);
+    const old = existsSync(baselinePath) ? readFileSync(baselinePath, "utf8") : null;
+    const { text, carried } = carryForwardBlocks(readFileSync(snapPath, "utf8"), old);
+    if (carried.length) {
+      rescued += carried.length;
+      console.log(`  carried forward ${carried.length} persisted block(s) for ${src.id}:`);
+      for (const header of carried) console.log(`    ${header}`);
+    }
+    writeFileSync(baselinePath, text);
+    // The hash still tracks the FETCHED snapshot, not the promoted file: it is
+    // what the next run's diff compares against, and carried-forward evidence
+    // must not read as a change the source made.
     state[src.id].ingestedHash = state[src.id].hash;
     state[src.id].ingestedAt = new Date().toISOString();
     n++;
   }
   writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
-  console.log(`marked ${n} sources ingested (baselines promoted)`);
+  console.log(
+    `marked ${n} sources ingested (baselines promoted)` +
+      (rescued ? `; ${rescued} persisted block(s) carried forward` : ""),
+  );
   process.exit(0);
 }
 
