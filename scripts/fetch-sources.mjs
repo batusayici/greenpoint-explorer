@@ -43,7 +43,7 @@ import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sou
 import { decode, htmlToText } from "../src/demand-test/sourceText.js";
 import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
 import { classifyFetchFailure, isPolicyDenial, assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
-import { carryForwardBlocks } from "../src/demand-test/persistedBlocks.js";
+import { carryForwardBlocks, writeSnapshotPreservingBlocks } from "../src/demand-test/persistedBlocks.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -764,7 +764,14 @@ for (const src of sources) {
         entry.reorderedOnly = d.reorderedOnly;
       }
     }
-    writeFileSync(snapPath, text + "\n");
+    // Not a plain write: a block persisted into this working snapshot (a
+    // newsletter or flyer read, which has no URL to re-fetch) would otherwise
+    // be destroyed here, in the window before the run promotes a baseline.
+    // Same rule as promotion — see persistedBlocks.js. `hash`/`h` above are
+    // computed from the FETCHED text, so carried evidence never reads as a
+    // change the source made.
+    const rescued = writeSnapshotPreservingBlocks(snapPath, text + "\n");
+    for (const header of rescued) console.log(`    carried forward ${header}`);
     state[src.id] = { ...prev, hash: h, ingestedHash: ingestedHash ?? prev.ingestedHash, fetchedAt: new Date().toISOString(), method };
     // A source that only shrank has +0 added and would otherwise read as noise;
     // show the removals so an emptying calendar is legible.
