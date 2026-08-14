@@ -878,7 +878,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "17 Nassau Ave. Onboarded 2026-08-13, not yet fetched. Independent 24/7 internet radio streaming from a shipping container on an empty lot; the /calendar page is a day-by-day grid of hourly/multi-hour DJ sets (verified by WebFetch 2026-08-13, reads as static HTML — plain fetch untested by the roster script itself). The schedule turns over many named sets per day, which is a much higher cadence than a typical venue calendar — do not card every slot as a discrete event; this needs an editorial call (e.g. notable/guest sets only, or treat as a standing-programming venue card) before it produces cards, not a blanket dated-event treatment.",
+      "notes": "17 Nassau Ave. FIRST FETCH 2026-08-13: clean plain fetch, 1,081 chars, no browser needed. The /calendar page extracts as a day-grid of hourly slots — 'TODAY 08.13.2026 / 12pm — 2pm / YOUNGBLOODS with Cal.vino / 2pm — 3pm / Worl Dance with Stamma and Ras I' — with genre tags on some sets. Independent 24/7 internet radio from a shipping container on an empty lot. THE CADENCE PROBLEM IS REAL AND UNRESOLVED: this is ~10+ named sets EVERY day, so carding them as dated events would put one venue's DJ slots far past the 25% concentration warning and bury every other source in the feed. DO NOT blanket-card the slots. It needs an editorial rule from Batu first — candidates: card only guest/named-series sets, or represent the station as ONE standing live_music venue card pointing at the calendar. Until that rule exists this source is fetched but produces no cards, and that is deliberate, not a coverage gap.",
       "citeHost": "thelotradio.com"
     },
     {
@@ -888,7 +888,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "110 Meserole Ave. Onboarded 2026-08-13, not yet fetched. Flagship record store for the Razor-N-Tape house/disco label — full vinyl catalogue plus new/used records, open Fri-Sun, custom DJ booth for in-store sessions and guest takeovers. razorntape.com 301s to this Bandcamp page (release/merch info, not events) — no proper venue website exists. In-store sessions and DJ takeovers are announced on Instagram (instagram.com/razorntape) which, like the Trash Club precedent, blocks headless fetch — check the Browser pane manually each run for cardable in-store events.",
+      "notes": "110 Meserole Ave. FIRST FETCH 2026-08-13, and THE URL IS WRONG FOR THIS ROSTER'S PURPOSE: razorntape.com 301s to Bandcamp, which lands on the MERCH page — 2,572 chars of vinyl SKUs and prices ('Dirty Channels - Jungle Echoes EP – 12\" Vinyl … $22 USD'), zero events, zero dates. It fetches clean and will report `changed` whenever stock moves, which is diff noise that can never become a card. Flagship record store for the Razor-N-Tape house/disco label; open Fri-Sun with a custom DJ booth for in-store sessions and guest takeovers. Those in-stores are the only cardable supply here and they are announced on Instagram (instagram.com/razorntape), which blocks headless fetch — same shape as Greenpoint Trash Club and Eavesdrop, so it needs a Browser-pane check and a logged-in view. DECIDE BEFORE TRUSTING THIS ENTRY: either re-point it at a real events surface if one is found, or drop the URL to a manual IG-only note. Do not read `unchanged`/`changed` here as a signal about events either way.",
       "citeHost": "razor-n-tape.bandcamp.com"
     },
     {
@@ -898,7 +898,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "87 Guernsey St. Onboarded 2026-08-13, not yet fetched. Used/new vinyl shop (also carries Mexican Summer releases and Anthology Editions books); open daily 12-8pm. Homepage is a minimal storefront page (address, hours, contact) with no events/news section as of onboarding (verified by WebFetch 2026-08-13). Check instagram.com/brooklynrecordexchange for restock/event announcements — plain fetch cannot reach it; use the Browser pane.",
+      "notes": "87 Guernsey St. FIRST FETCH 2026-08-13 FAILED and this entry is NOT yet a working source: 'only 102 chars after 7.5s in chromium — page never rendered'. Plain fetch and the browser path both come back empty, so it is a JS-thin shell like sunshine-laundromat (169 bytes) and brooklyn-youth-ballet (180) — WebFetch could read it at onboarding because WebFetch executes differently, which is exactly why onboarding on a WebFetch read alone is not evidence the roster can fetch it (same lesson as greek-kitchen, onboarded 2026-08-08 while egress-denied and never actually fetched). Used/new vinyl shop, also carries Mexican Summer releases and Anthology Editions books; open daily 12-8pm. It had no events section anyway, so the loss is small. OPTIONS, needs Batu: drop it, or re-point at instagram.com/brooklynrecordexchange as a manual Browser-pane note. Leave it erroring in the roster and it will keep counting against the 15% reach ceiling every run for a source that has never produced a card.",
       "citeHost": "brooklynrecordexchange.com"
     },
     {
