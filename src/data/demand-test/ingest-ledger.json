@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-13T18:55:00-04:00",
+  "lastRunAt": "2026-08-14T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1265,6 +1265,41 @@
       "publisher": "Track V ingest (roster decisions, human-gated)",
       "processedAt": "2026-08-14",
       "outcome": "Batu approved all three roster recommendations from the scoped run; applied together on branch ingest/review-2026-08-13-moon-bunny. (1) lot-radio: standing:true, ONE standing venue card and NEVER per-set cards — ~10+ named DJ slots a day would put a single venue past the 25% concentration warning. (2) razor-n-tape and (3) brooklyn-record-exchange REMOVED from `sources` into a new INERT `manualSources` key (the fetch script destructures `sources` only), each carrying the measurement that settled it and a revisitIf, so a later run does not re-onboard them and rediscover the same failure. NET CARD CHANGE: ZERO — deck stays 160. A `lot-radio` venue card WAS authored, geocoded and quote-verified, then DELETED before commit as a DUPLICATE: `the-lot-radio` has been live since 2026-07-16 with the same address and coordinates. The dedupe check missed it because the roster id (lot-radio) and card id (the-lot-radio) differ, so an id-shaped search finds nothing and the venue reads as uncarded — match on the HOST, never the id, and that trap is now written into the roster notes. It surfaced only because freshness-stamp.json stamped the new card 2026-07-15, a date that could only have come from the existing card's source pulse; the stamp caught a dedupe error nothing else was watching for. WHAT SHIPPED INSTEAD, and it is worth more than the duplicate would have been: `the-lot-radio` was a month-stale unsourced card (updatedAt 2026-07-16, no sourceQuote, cited the homepage). It now cites the /calendar page the roster actually fetches, carries a verbatim sourceQuote that verifies against the snapshot, and its reader-facing 'checked' date moved 2026-07-15 -> 2026-08-13. Its 'shipping container' and '24/7' claims rest on the 2026-07-16 homepage read, NOT on the current /calendar snapshot, which states only hours, address, show names and genres — re-source them if that page is ever read again. Gates: 666 unit + 8 DOM, build, verify:aeo, ingest:quotes verified=49 mismatch=0, geocode clean. Freshness briefly alarmed sourcesUnreachable at reach=2/3 — an artifact of the 3-source scoped fetch counting brooklyn-record-exchange, which this change deletes; re-fetching the current roster reads 1/1 and FRESH. Coverage gate: all three ids cleared their flags; the remaining unexplained lines are pre-existing, so the run stays on the review-PR path. holds: 0. DELIBERATELY NOT DONE: expiry did not run and lastRunAt was not bumped — the clock crossed into 08-14 mid-run and rolling the day over is the next scheduled daily-thin run's job; the refresh-discipline test derives from lastRunAt and passes, confirming the deck is consistent with the 08-13 stamp it still carries."
+    },
+    {
+      "id": "gmail:1a0002d852972bc2",
+      "kind": "email",
+      "publisher": "Tend Greenpoint",
+      "processedAt": "2026-08-14",
+      "outcome": "HELD (source-blocked). \"20% OFF All Plants!\" through Friday, August 21, 2026. No street address in the email and tendgreenpoint.com is egress-blocked, so the card cannot be geocoded or bbox-checked. See watchItems."
+    },
+    {
+      "id": "gmail:19ffde805a3e7235",
+      "kind": "email",
+      "publisher": "Tend Greenpoint",
+      "processedAt": "2026-08-14",
+      "outcome": "HELD (source-blocked), same address problem. \"save 20% off already reduced merchandise!*\" / \"Valid through September 7, 2026.\" The abbreviated August hours it mentions are never stated, so nothing there is cardable either."
+    },
+    {
+      "id": "gmail:19ffbe6beab38914",
+      "kind": "email",
+      "publisher": "Marianella Market",
+      "processedAt": "2026-08-14",
+      "outcome": "SHIPPED as a correction to marianella-19th-anniversary-sale. The live card read \"no closing date was announced\"; this email says \"Closing this week. Once it's gone, it's gone until next year.\" Summary rewritten and the verified-through pulled back 8/25 → 8/16 so the next run re-checks rather than coasting. The card asserts no closing DATE, because the source states none."
+    },
+    {
+      "id": "gmail:19ffcc51c723d22e",
+      "kind": "email",
+      "publisher": "Dandelion Wine",
+      "processedAt": "2026-08-14",
+      "outcome": "SKIPPED — past. \"TASTING TONIGHT 6-8\" sent 2026-08-13 16:16 EDT for that same evening; it had already run by the time this run read it."
+    },
+    {
+      "id": "run:2026-08-14-daily-thin",
+      "kind": "run",
+      "publisher": "Track V ingest (daily thin)",
+      "processedAt": "2026-08-14",
+      "outcome": "SHIPPED 6 adds, 3 updates, 8 expiries; deck 160 → 158 (-1.3%, inside ±40%). Expiry RAN (every path). Fetch exit 0, reach 51/60 (15% error, at the ceiling), 18 changed / 33 unchanged / 9 error / 10 skipped-monthly. Gates: npm test 666/666; lintCard clean on every new/changed card (the one warning is film-noir-cinema's pre-existing kicker/summary overlap, byte-identical to HEAD — this run only added a relatedCardIds entry to it); build ok. holds: 0 new-judgment · 0 rule-miss · 1 source-blocked (Tend Greenpoint, host tendgreenpoint.com).\n\nSUPPLY: three of six adds are Longevity Stick at Transmitter Park, 38 lines of it sitting uncarded in an already-fetched go-green-bk snapshot — the \"the source published it and we did not card it\" shape again, and this time the coverage check did NOT flag it (go-green's other dates were covered, so the source never appeared in the report). The shape worth keeping: an IRREGULAR series defeats both card shapes on their own. Thursday mornings recur weekly; the Friday evenings are 8/14 and 8/28 with NO 8/21. One recurring card with days:[\"thu\",\"fri\"] would have invented an 8/21 sitting, and four dated cards would have thrown away a real weekly pattern. Split: recurring for the regular day, dated for the exceptions.\n\nTWO SOURCES CONTRADICTED LIVE CARDS and both were corrections, not adds. Selformer's /plans-pricing dropped the $399 Unlimited All Access tier entirely and repriced the video room $350 → $279; the card had been asserting both. Marianella's own email says the anniversary sale is \"Closing this week\" against a card that read \"no closing date was announced\". Neither is visible to any supply gate — a card can be stale while the deck count, the reservoir and the trend alarm all read green. The +0/-R diff line is what surfaced Selformer; the Gmail pass is what surfaced Marianella.\n\nEGRESS: 2 hosts denied at the proxy — www.goldendrum.org, www.thelotradio.com (both roster, both born-blocked, both explained in coverageExplanations) — plus tendgreenpoint.com, an R1 target that the EGRESS DENIED block is structurally blind to. Browser path down (browser-connect-reset), 7 sources errored on it: greenpoint-comedy-club, word-bookstore, sunshine-laundromat, brooklyn-youth-ballet, greenpoint-trash-club, leaves-bookstore, happy-medium. Known state, not re-investigated."
     }
   ],
   "senderRegistry": [
@@ -1660,17 +1695,22 @@
       "name": "Moon Bunny camps past the 14-day horizon (8/29-30 and 9/1)",
       "note": "DEFERRED 2026-08-13, horizon only — all three are sourced and in area, nothing is blocked. Weekend Camp 13-16: 'start_at: 2026-08-29T13:00:00.000Z' + 8/30, and Two Day Camp 8-12: 'start_at: 2026-09-01T13:00:00.000Z' (its pair is not in the feed window yet). Horizon was 8/27 and the reservoir7-14d read 23 against a floor of 10, so there was no supply reason to reach past it. moon-bunny-aerial is a json web source re-snapshotted every run, so these roll in on their own — this entry exists so the deferral is visible, not because they need rescuing. NOTE the 13-16 age group has NO card in the deck at all: the 8/12-14 Weekday Camp 13-16 was mid-run and unjoinable by the time this run saw it, so 8/29-30 is the first cardable one. Condition to promote: the run date reaches 8/15 or later.",
       "addedAt": "2026-08-13"
+    },
+    {
+      "name": "Tend Greenpoint — 20% off all plants (through 8/21) and 20% off already-reduced stock (through 9/7)",
+      "note": "HELD 2026-08-14, source-blocked on the ADDRESS, and the blocked host is `tendgreenpoint.com` (R1 rule: name it — the EGRESS DENIED block covers roster hosts only and Tend is not a roster source, so it can never appear there). Two fully-stated offers arrived from a sender already in the registry (messages+d4sh8s6s9jcvd@squaremktg.com, publisher \"Tend Greenpoint\"). Verbatim, 8/14 email: \"20% OFF All Plants!\" / \"Through Friday, August 21, 2026, our collections of Indoor Tropicals, Cacti &amp; Succulents, Garden Perennials, Annuals and Trees &amp; Shrubs are 20% OFF*.\" and, from the 8/13 email: \"For a limited time, save 20% off already reduced merchandise!*\" / \"Valid through September 7, 2026.\" Both are marked \"*Valid In-store and Online.\" NEITHER EMAIL STATES A STREET ADDRESS, and the card cannot be authored without one — no address means no geocode and no Greenpoint bbox check, so there is nothing schema-valid to put in a review PR. R1 was attempted and refused: WebFetch of https://tendgreenpoint.com/ returned EGRESS_BLOCKED for tendgreenpoint.com. WHAT RESOLVES IT: allowlist tendgreenpoint.com for the routine at claude.ai/code (and then it is worth a roster entry — the shop mails offers regularly and has no snapshot anywhere), or Batu supplies the address, or an interactive session reads it, where egress is unrestricted. Also unstated and NOT to be invented: the email says \"Our shop hours will be abbreviated through Labor Day\" without giving the hours.",
+      "addedAt": "2026-08-14"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-07-25",
     "greenpointers": "2026-08-11",
     "greenpoint-comedy-club": "2026-08-06",
-    "film-noir-cinema": "2026-08-10",
+    "film-noir-cinema": "2026-08-13",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-11",
-    "greenpoint-library": "2026-08-12",
-    "bpl-north-brooklyn-calendar": "2026-08-12",
+    "greenpoint-library": "2026-08-13",
+    "bpl-north-brooklyn-calendar": "2026-08-13",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-07",
@@ -1687,11 +1727,11 @@
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-08-02",
+    "go-green-bk": "2026-08-13",
     "nycparks-greenpoint": "2026-08-12",
     "troost": "2026-08-12",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-08-06",
+    "good-room": "2026-08-13",
     "town-square-bk": "2026-08-06",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -1836,9 +1876,9 @@
     {
       "sourceId": "nycparks-greenpoint",
       "gapKey": "GAP",
-      "reason": "Re-earned 2026-08-13 against this run's snapshot. The flagged set is now 8 dates (8/13, 8/17, 8/18, 8/20, 8/24, 8/25, 8/26, 8/27) and every one carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule — the two dates this run's diff added are both \"## McCarren Pool: Lap Swim\" (8/24 and 8/27, categories: Recreation Center Programming). 8/23 has DROPPED OFF this list because the run carded it: the diff surfaced a genuine one-off, \"This It's My Park season, volunteer with North Brooklyn Parks Alliance to beautify Msgr. McGolrick Park\" (startdate: 2026-08-23, starttime: 10:00 am), now live as mcgolrick-its-my-park-0823. That is the difference between an explained line and a rubber-stamped one: the same wording covered 8/23 on 2026-08-12 and it was right then, so the re-check is what caught the change. The dates the deck covers (8/14, 8/19, 8/21, 8/23) remain the feed's non-rec items.",
-      "addedAt": "2026-08-13",
-      "expiresAt": "2026-08-27"
+      "reason": "Re-earned 2026-08-14 against this run's snapshot. The flagged set is now 8 dates (8/17, 8/18, 8/20, 8/24, 8/25, 8/26, 8/27, 8/28) and every one carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule. 8/13 dropped off as past; 8/28 is NEW this run and was checked, not assumed — the single content line the diff added for it is \"## McCarren Pool: Lap Swim\" (categories: Recreation Center Programming), the same exclusion that covers 8/24 and 8/27. The dates the deck covers (8/14, 8/19, 8/21, 8/23) remain the feed's non-rec items, including mcgolrick-its-my-park-0823, the genuine one-off this explanation's 2026-08-13 revision caught.",
+      "addedAt": "2026-08-14",
+      "expiresAt": "2026-08-28"
     },
     {
       "sourceId": "lockwood",
@@ -1881,6 +1921,13 @@
       "reason": "FALSE POSITIVE, verified against the snapshot 2026-08-13: the single flagged date is 2026-08-27 and it belongs to a PAST workshop in the page's archive, not to current supply. The snapshot reads \"August 27, 2025 - 04:00 PM TO 06:00 PM / Happy Hour - August 2025 / It's not summer without some cold and refreshing kombucha!\" — the year is 2025. extractDates reads the month and day and cannot see that the year is a season old, which is the same annotation-vs-event blindness recorded for the macha-studio image block on 2026-08-12. Maison Jar's live standing offer IS carded (maison-jar-refill-happy-hour, verified-through 8/24). No uncarded 2026 supply exists at this source.",
       "addedAt": "2026-08-13",
       "expiresAt": "2026-08-27"
+    },
+    {
+      "sourceId": "lot-radio",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Added to the roster 2026-08-13 alongside golden-drum and EGRESS-DENIED on its first fetch, so it has never had a snapshot. The 2026-08-14 fetch report names the cause exactly: \"the proxy refused the tunnel to www.thelotradio.com (answered 403 to CONNECT), so no HTTP response ever existed — an egress-policy denial.\" Same born-blocked shape as golden-drum and the six 2026-08-08 SSG sources: a host that is not on the routine's egress allowlist works interactively and is dead in the cloud. NOT a site bot-wall (those return a status) and NOT the browser path (this source is plain fetch — it never reaches Chromium). Resolution is one allowlist entry for www.thelotradio.com at claude.ai/code; until then the locally-owned gate cannot even be applied, because the page has never been read. Never routed around.",
+      "addedAt": "2026-08-14",
+      "expiresAt": "2026-08-28"
     }
   ]
 }

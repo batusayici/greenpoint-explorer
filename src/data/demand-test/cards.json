@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-13",
+  "version": "2026-08-14",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -1004,13 +1004,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-14",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-watch-me-0813",
         "film-noir-watch-me-0821",
-        "film-noir-film-club-0813"
+        "film-noir-arrebato-0814"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1306,7 +1306,6 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-thursday-programs-0813",
         "library-saturday-storytime-0822",
         "sips-scholars-parkhouse-0825"
       ]
@@ -2351,11 +2350,14 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-14",
       "lat": 40.729855,
       "lng": -73.960729,
       "relatedCardIds": [
-        "community-yoga-transmitter-tuesdays"
+        "community-yoga-transmitter-tuesdays",
+        "longevity-stick-transmitter-thursdays",
+        "longevity-stick-transmitter-0814",
+        "longevity-stick-transmitter-0828"
       ],
       "sourceQuote": "City Council Member Lincoln Restler, State Senator Kristen Gonzalez, and State Assemblymember Emily Gallagher asked the NYC Parks Department to reconsider the controversial proposal, which sparked widespread backlash when Greenpointers first revealed the plans in July."
     },
@@ -2466,7 +2468,7 @@
       "category": "discount",
       "title": "Marianella's 19th-anniversary sale",
       "kicker": "Up to 50% off sitewide, plus bundles",
-      "endsAt": "2026-08-25T23:59:00-04:00",
+      "endsAt": "2026-08-16T23:59:00-04:00",
       "recurring": true,
       "locationName": "Marianella Market",
       "address": "83 West St, Brooklyn, NY 11222",
@@ -2476,7 +2478,7 @@
       "filters": [
         "deals_memberships"
       ],
-      "summary": "The West Street shop is marking nineteen years. The markdown runs online with free shipping, and no closing date was announced.",
+      "summary": "The West Street shop is marking nineteen years. The markdown runs online with free shipping, and the shop says it closes this week.",
       "audience": [
         "resident"
       ],
@@ -2493,15 +2495,21 @@
           "url": "https://marianella.co/pages/store",
           "publisher": "Marianella Market",
           "date": "2026-08-11"
+        },
+        {
+          "title": "The anniversary sale is closing.",
+          "url": "https://marianella.co/pages/store",
+          "publisher": "Marianella Market",
+          "date": "2026-08-13"
         }
       ],
-      "sourceQuote": "UP TO 50% OFF\n19 YEAR ANNIVERSARY SALE\nFREE SHIPPING",
+      "sourceQuote": "UP TO 50% OFF\n19 YEAR ANNIVERSARY SALE\nFREE SHIPPING\n50% off sitewide. Free shipping on every order. Gifts with purchase.\nClosing this week. Once it's gone, it's gone until next year.",
       "evidenceStrength": "medium",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-11"
+      "updatedAt": "2026-08-14"
     },
     {
       "id": "bk-youth-ballet-adult-term",
@@ -2619,48 +2627,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-06",
       "updatedAt": "2026-08-06",
-      "id": "troost-barba-yiorgi-0813",
-      "title": "DJ Barba Yiorgi at Troost",
-      "kicker": "World psychedelic groove",
-      "summary": "The psychedelic-groove residency returns for another Thursday. No set start time is listed on the venue calendar.",
-      "startsAt": "2026-08-13T00:00:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "sourceQuote": "summary: DJ Barba Yiorgi\nstart.date: 2026-08-13",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.733463,
-      "lng": -73.955035
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
       "id": "troost-jeff-widner-0815",
       "title": "DJ Jeff Widner at Troost",
       "kicker": "Pop records all night",
@@ -2690,48 +2656,6 @@
       ],
       "lat": 40.733463,
       "lng": -73.955035
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "library-thursday-programs-0813",
-      "title": "Thursday at Greenpoint Library",
-      "kicker": "Storytimes, sewing, teen tech, ESOL",
-      "summary": "Babies & Books lapsits at 10:30 and 11:15, drop-in sewing machines at 1, English class at 2, Teen Tech at 3, Friends meeting and Sunset Storytime at 6.",
-      "startsAt": "2026-08-13T10:30:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.72606,
-      "lng": -73.950709
     },
     {
       "category": "event",
@@ -3296,10 +3220,7 @@
       "summary": "A standing Monday-night group at the Franklin Street bookshop. Held downstairs, reached by a flight of stairs.",
       "sourceQuote": "Monday, August 17 at 7:00 PM\nJournal Club\nBrooklyn, NY",
       "lat": 40.729072,
-      "lng": -73.957317,
-      "relatedCardIds": [
-        "reading-series-61-franklin-0813"
-      ]
+      "lng": -73.957317
     },
     {
       "id": "bcc-knitting-101-0817",
@@ -5023,50 +4944,6 @@
       "lat": 40.730461,
       "lng": -73.953114,
       "sourceCampaign": "bcc_newsletter_2026_08_06",
-      "id": "bcc-sewing-101-tote-0813",
-      "title": "Sewing 101: Tote Bag",
-      "kicker": "Beginner sewing, one evening",
-      "startsAt": "2026-08-13T18:30:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
-      "summary": "The Greenpoint run of the shop's beginner sewing class — you leave with a tote you made.",
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/products/sewing-101-tote-bag"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
-          "url": "https://www.brooklyncraftcompany.com/products/sewing-101-tote-bag",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-06"
-        }
-      ],
-      "sourceQuote": "Sewing 101: Tote Bag … In Greenpoint: Thurs, 8/13 at 6:30pm"
-    },
-    {
-      "category": "event",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "filters": [
-        "arts_culture"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
-      "lat": 40.730461,
-      "lng": -73.953114,
-      "sourceCampaign": "bcc_newsletter_2026_08_06",
       "id": "bcc-knitting-101-0822",
       "title": "Knitting 101",
       "kicker": "Saturday-morning knitting for beginners",
@@ -5345,7 +5222,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-14",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "category": "subscription",
       "id": "selformer-memberships",
@@ -5358,7 +5235,7 @@
       "locationName": "Selformer",
       "address": "67 West St",
       "geocodeQuery": "67 West St, Brooklyn, NY 11222",
-      "summary": "Monthly reformer memberships at the West St studio: four classes for $147 ($36.75 each), eight for $239 ($29.87 each), or sixteen for $369 ($23.06 each). Unlimited All Access is $399 a month and an on-demand private video room is $350. All renew automatically with no commitment, but credits do not roll over and cancellation must be emailed to the studio.",
+      "summary": "Reformer packages run $147, $239 or $369 by volume, or $279 for unlimited private video-room access. Auto-renew, no rollovers, and cancelling means emailing the studio five days ahead.",
       "whyItMatters": "Priced per class, the sixteen-a-month tier is the cheapest regular reformer access in Greenpoint.",
       "actions": [
         {
@@ -5376,10 +5253,10 @@
           "title": "Plans & Pricing",
           "publisher": "Selformer",
           "url": "https://www.selformer.com/plans-pricing",
-          "date": "2026-08-08"
+          "date": "2026-08-14"
         }
       ],
-      "sourceQuote": "Unlimited All Access Membership\nUnlimited On-Demand Video Membership\n4 Classes A Month Membership\n8 Classes A Month Membership\nTake 8 classes per month at only $29.87 per class!\n16 Classes A Month Membership\nFor your regulars who want to come 3 to 4x per week at only $23.06 a class",
+      "sourceQuote": "Unlimited On-Demand Video Membership\n$ 279 279$\nMonthly Memberships\nMonth by Month, No Rollovers, No Excuses\n4 Classes A Month Membership\n$ 147 147$\n8 Classes A Month Membership\n$ 239 239$\n16 Classes A Month Membership\n$ 369 369$\nFor your regulars who want to come 3 to 4x per week at only $23.06 a class\nMonthly memberships renew automatically until canceled. Cancellations cannot be made through the Selformer app, website or social media and must be done by emailing the studio directly at hellow@selformer.com at least five days prior to membership renawal.",
       "lat": 40.728561,
       "lng": -73.959184
     },
@@ -6041,51 +5918,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-11",
       "updatedAt": "2026-08-11",
-      "id": "film-noir-film-club-0813",
-      "title": "Film Club at Film Noir Cinema",
-      "kicker": "Nobody knows the title but the picker",
-      "summary": "A different member of the club chooses the night's films and keeps the titles secret until they roll. The cinema calls it pure cinematheque fun.",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "free": false,
-      "startsAt": "2026-08-13T21:00:00-04:00",
-      "endsAt": "2026-08-13T22:00:00-04:00",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema — FILM CLUB",
-          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-11"
-        }
-      ],
-      "sourceQuote": "FILM CLUB\nThursday, August 13, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.\nPure cinematheque fun."
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-11",
       "id": "troost-lumens-0825",
       "title": "LUMENS at Troost",
       "kicker": "An evening of sonic mischief",
@@ -6438,56 +6270,6 @@
       "lng": -73.946139
     },
     {
-      "id": "cibone-hozubag-0813",
-      "category": "event",
-      "title": "HOZUBAG: bags made from retired paragliders, at CIBONE O'TE",
-      "kicker": "Limited event, last day 8/13",
-      "summary": "A limited run of bags, pouches and furoshiki cloths handmade in Japan from retired paraglider fabric. Inside the shop at 50 Norman; no admission price is stated and no closing time is published.",
-      "startsAt": "2026-07-11T00:00:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
-      "filters": [
-        "shopping"
-      ],
-      "free": false,
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "locationName": "CIBONE O'TE",
-      "address": "50 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "July 11 – August 13, 2026\nHOZUBAG gives retired paragliders a new purpose by transforming them into functional and timeless bags, carefully handcrafted one by one by skilled Japanese artisans.\nFor this limited event, we will present an expanded selection of HOZUBAG, including signature bags, pouches, and versatile furoshiki cloths.",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://cibone-us.com/blogs/news/hozu-bag-limited-event"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "HOZUBAG LIMITED EVENT",
-          "url": "https://cibone-us.com/blogs/news/hozu-bag-limited-event",
-          "publisher": "CIBONE O'TE",
-          "date": "2026-08-12"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "relatedCardIds": [
-        "cibone-ote"
-      ],
-      "lat": 40.724611,
-      "lng": -73.95359
-    },
-    {
       "id": "flowercat-love-unfolded-0823",
       "category": "event",
       "title": "Love Unfolded: a singles night at Flower Cat",
@@ -6576,94 +6358,6 @@
       "updatedAt": "2026-08-12",
       "lat": 40.7284753,
       "lng": -73.959146
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "reading-series-61-franklin-0813",
-      "category": "event",
-      "title": "Reading Series at the 61 Franklin St. Garden",
-      "kicker": "Five writers in the garden, free",
-      "summary": "Josh Harper, Joel Walkowski, Aug Stone, Scott Laudati and Tobias Carroll read, in partnership with WORD Bookstore. No RSVP needed.",
-      "startsAt": "2026-08-13T18:30:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": true,
-      "locationName": "61 Franklin St. Garden",
-      "address": "61 Franklin St, Brooklyn, NY 11222",
-      "sourceQuote": "Reading Series @ 61 Franklin St. Garden, 6:30 p.m.: Enjoy readings by Josh Harper, Joel Walkowski, Aug Stone, Scott Laudati, and Tobias Carroll in partnership with WORD Bookstore. Free, no RSVP needed.",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        }
-      ],
-      "relatedCardIds": [
-        "word-journal-club-0817"
-      ],
-      "lat": 40.727487,
-      "lng": -73.957309
-    },
-    {
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "zumba-under-the-k-0813",
-      "category": "event",
-      "title": "Zumba at Under the K Bridge Park",
-      "kicker": "Free all-levels Zumba, 7pm",
-      "summary": "An all-ages class led by a certified Zumba instructor — no rhythm required. RSVP through North Brooklyn Parks.",
-      "startsAt": "2026-08-13T19:00:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
-      "filters": [
-        "wellness"
-      ],
-      "free": true,
-      "locationName": "Under the K Bridge Park",
-      "geocodeQuery": "Under the K Bridge Park, Brooklyn, NY",
-      "sourceQuote": "Zumba @ Under The K Bridge Park, 7 p.m.: Break a sweat to the beat at these all-ages, all fitness-levels classes lead by a certified Zumba instructor. No rhythm required! Free, RSVP here.",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "learn_more",
-          "url": "https://support.nbkparks.org/event/fit-club-under-the-k/e823883/register/new/select-tickets"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        }
-      ],
-      "lat": 40.72543,
-      "lng": -73.93228
     },
     {
       "audience": [
@@ -6997,55 +6691,6 @@
       "lng": -73.9578047
     },
     {
-      "id": "buffalo-firefly-soundbath-0813",
-      "category": "event",
-      "title": "Sound bath with Evie at Buffalo Firefly",
-      "kicker": "Himalayan bowls, gongs and chimes, $55",
-      "summary": "A restorative sound journey led by trained healer Evie — singing bowls, tuning forks, gongs, chimes and bells. Booking required.",
-      "startsAt": "2026-08-13T19:00:00-04:00",
-      "endsAt": "2026-08-13T20:15:00-04:00",
-      "filters": [
-        "wellness"
-      ],
-      "free": false,
-      "audience": [
-        "resident"
-      ],
-      "locationName": "Buffalo Firefly",
-      "address": "55 Nassau Ave, 2E, Brooklyn, NY 11222",
-      "geocodeQuery": "55 Nassau Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Restorative Sound Journey @ Buffalo Firefly, 7 p.m.: Rest and restore with a bit of sound healing by way of Himalayan singing bowls, tuning forks, gongs, chimes, and bells led by trained healer Evie. $55, register here.\nThursday, Aug 13 · 7:00–8:15pm\nIn person $55\n55 Nassau Ave, 2E, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Book",
-          "type": "learn_more",
-          "url": "https://buffalofirefly.com/pages/soundbath-w-evie-nyc"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        },
-        {
-          "title": "Soundbath w/ Evie",
-          "url": "https://buffalofirefly.com/pages/soundbath-w-evie-nyc",
-          "publisher": "Buffalo Firefly",
-          "date": "2026-08-12"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "lat": 40.723368,
-      "lng": -73.952339
-    },
-    {
       "id": "macha-summer-fridays-after-hours",
       "category": "event",
       "title": "Summer Fridays After Hours at Macha Studio",
@@ -7271,7 +6916,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-13",
+      "updatedAt": "2026-08-14",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
@@ -7296,13 +6941,13 @@
       "free": false,
       "title": "Wednesday at Greenpoint Library",
       "kicker": "Storytimes, then quiet study upstairs",
-      "summary": "Toddler Time at 10:30 and 11:15, then the third-floor Demonstration Garden opens for public seating 1–4 — closed in rain, high heat or other inclement weather.",
+      "summary": "Toddler Time at 10:30 and 11:15, the third-floor Demonstration Garden open for seating 1–4, and teens decorating a teddy bear at 4.",
       "startsAt": "2026-08-26T10:30:00-04:00",
-      "endsAt": "2026-08-26T16:00:00-04:00",
+      "endsAt": "2026-08-26T17:15:00-04:00",
       "filters": [
         "family_kids"
       ],
-      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-26T14:30:00Z\nts_title: Toddler Time\nds_event_start_date: 2026-08-26T15:15:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-26T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating!"
+      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-26T14:30:00Z\nts_title: Toddler Time\nds_event_start_date: 2026-08-26T15:15:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-26T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating!\nts_title: Teens DIY: Decorate a Teddy Bear\nds_event_start_date: 2026-08-26T20:00:00Z"
     },
     {
       "audience": [
@@ -7434,6 +7079,280 @@
         }
       ],
       "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-08-27"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "id": "library-thursday-programs-0827",
+      "title": "Thursday at Greenpoint Library",
+      "kicker": "Four programs, morning into afternoon",
+      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines from 1, and an English class for beginners from 2.",
+      "startsAt": "2026-08-27T10:30:00-04:00",
+      "endsAt": "2026-08-27T16:00:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "sourceQuote": "ts_title: Babies & Books\nds_event_start_date: 2026-08-27T14:30:00Z\nts_title: Babies & Books\nds_event_start_date: 2026-08-27T15:15:00Z\nts_title: Drop-In Sewing Machine Hours\nds_event_start_date: 2026-08-27T17:00:00Z\nts_title: Free English Class\nds_event_start_date: 2026-08-27T18:00:00Z",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "id": "film-noir-arrebato-0814",
+      "title": "Arrebato at Film Noir Cinema",
+      "kicker": "Spanish cult horror, one 9pm show",
+      "summary": "A low-budget filmmaker falls in with an eccentric trying to film his own consciousness. Programmed after the Watch Me screening the same evening.",
+      "startsAt": "2026-08-14T21:00:00-04:00",
+      "endsAt": "2026-08-14T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "sourceQuote": "title: ARREBATO\nstartDate: 2026-08-15T01:00:00.000Z\nendDate: 2026-08-15T02:00:00.000Z\nSP. 1979\nA low budget horror filmmaker gets in touch with an eccentric who is trying to film his consciousness during drug abuse.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "id": "good-room-magnetic-0828",
+      "title": "Magnetic at Good Room",
+      "kicker": "Six-DJ Friday bill",
+      "summary": "Artwork headlines, with Alex Mccracken, UMA DJ b2b Boat Neck, Victor Florescu and Lee Cash b2b whydan across the night.",
+      "filters": [
+        "live_music"
+      ],
+      "startsAt": "2026-08-28T19:00:00-04:00",
+      "endsAt": "2026-08-28T23:59:00-04:00",
+      "sourceQuote": "Aug 28\nMagnetic ft Artwork, Alex Mccracken, UMA DJ b2b Boat Neck, Victor Florescu, Lee Cash b2b whydan",
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "filters": [
+        "wellness"
+      ],
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "relatedCardIds": [
+        "transmitter-park-restaurant-marina"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Longevity Stick (Transmitter Park)",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-08-14"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "id": "longevity-stick-transmitter-thursdays",
+      "title": "Thursday morning Longevity Stick in Transmitter Park",
+      "kicker": "Free waterfront Tai Chi and yoga",
+      "summary": "The stick is what makes it work for all ages, and they hand them out — bring a water bottle and a small towel. Tyler Trocinski instructs.",
+      "startsAt": "2026-08-20T08:00:00-04:00",
+      "endsAt": "2026-08-27T09:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      },
+      "sourceQuote": "Join us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nRegistering helps us track participants in the event of a rain delay or reschedule.\nThu, Aug 20, 8:00 AM to 9:00 AM\nThu, Aug 27, 8:00 AM to 9:00 AM"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "filters": [
+        "wellness"
+      ],
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "relatedCardIds": [
+        "transmitter-park-restaurant-marina"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Longevity Stick (Transmitter Park)",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-08-14"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "id": "longevity-stick-transmitter-0814",
+      "title": "Longevity Stick in Transmitter Park",
+      "kicker": "Free waterfront Tai Chi and yoga",
+      "summary": "One of the series' occasional evening sittings. The stick is handed out; bring a water bottle and a small towel. Registering helps them handle a rain delay.",
+      "startsAt": "2026-08-14T19:30:00-04:00",
+      "endsAt": "2026-08-14T20:30:00-04:00",
+      "sourceQuote": "Longevity Stick (Transmitter Park)\nFriday, August 14th at 7:30 PM - 8:30 PM\nJoin us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nRegistering helps us track participants in the event of a rain delay or reschedule."
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "filters": [
+        "wellness"
+      ],
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "relatedCardIds": [
+        "transmitter-park-restaurant-marina"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Longevity Stick (Transmitter Park)",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-08-14"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "id": "longevity-stick-transmitter-0828",
+      "title": "Longevity Stick in Transmitter Park",
+      "kicker": "Free waterfront Tai Chi and yoga",
+      "summary": "The season's last listed evening sitting. The stick is handed out; bring a water bottle and a small towel. Registering helps them handle a rain delay.",
+      "startsAt": "2026-08-28T19:30:00-04:00",
+      "endsAt": "2026-08-28T20:30:00-04:00",
+      "sourceQuote": "Join us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nRegistering helps us track participants in the event of a rain delay or reschedule.\nFri, Aug 28, 7:30 PM to 8:30 PM"
     }
   ]
 }

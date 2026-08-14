@@ -1936,7 +1936,6 @@ Terms of service
 Shipping policy
 Choosing a selection results in a full page refresh.
 Opens in a new window.
-
 ## [R1 PERSISTED 2026-08-12] post-page detail not carried by the Atom feed
 # Evidence-persistence rule (DECISION_LOG 2026-08-12): whatever is read in order
 # to author a card is written into the snapshot, so the sourceQuote gate can

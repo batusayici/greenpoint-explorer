@@ -245,10 +245,10 @@ Date, new to old
 Clear all
 See 17 items
 Virtual Class | An Introduction to Matcha
-Choose
+Add
 Virtual Class | An Introduction to Matcha
 Virtual Class | An Introduction to Matcha
-From $30.00
+$30.00
 A virtual class exploring the fundamentals with matcha, available as a standalone ticket or with bundled tea and tools.
 Location
 Virtual
@@ -261,7 +261,7 @@ Join us for an exploration of Japan's most revered matcha producing regions, and
 Location
 Kettl Matcha Sen Mon Ten
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
-Sold out
+Choose
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
 $70.00
@@ -427,9 +427,7 @@ $45.00
 View all
 Get 15% off
 {"themeColor":"#574CD5","iconColor":"#574CD5","showLogo":true,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}
-
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
-
 ## [DETAIL] https://kettl.co/collections/subscriptions
 Skip to content
 A gift for every ritual—enjoy a complimentary matcha or tea with select tea tools and teaware purchases.

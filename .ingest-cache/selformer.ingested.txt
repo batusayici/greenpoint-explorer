@@ -96,16 +96,16 @@ Request an appointment and we'll get back to you
 All Access Unlimited Memberships
 Go All In, the Selformer Way.
 Unlimited On-Demand Video Membership
-$ 350 350$
+$ 279 279$
 Every month Your own reformer, your own space, your own flow. Unlimited access to our filmed Selformer classes in a private luxurious room. New In Grand: Self- Service Station. Workout solo in a group setting
 Add to Cart
 Buy Now
-Includes all private video classes and self service stations
-10% off in the retail store and coffee shop
-No commitment, automatic renewal each month until canceled
-Take 1x Video or 1x Self-Station Video class per day
-One Complimentary Video Duet per month
-Eligible for freeze: 14 days x2 or 30 days x1 per year
+Unlimited access to our private video rooms and self-service stations
+One session per day
+One complimentary video duet per month
+10% off in the retail store and matcha bar
+No commitment — automatic monthly renewal, cancel anytime
+Eligible for freeze: one 30-day freeze per year
 Monthly Memberships
 Month by Month, No Rollovers, No Excuses
 4 Classes A Month Membership
@@ -266,13 +266,11 @@ Greenpoint
 Williamsburg
 grand@selformer.com
 bottom of page
-
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 # Captured by the new roster `detail` mechanism and merged here so the
 # sourceQuote gate can re-check these cards. Merged rather than promoted via
 # --mark-ingested on purpose: marking would flag unreviewed content as already
 # processed and hide real supply from the next run.
-
 ## [DETAIL] https://www.selformer.com/plans-pricing
 Skip to Main Content
 Home

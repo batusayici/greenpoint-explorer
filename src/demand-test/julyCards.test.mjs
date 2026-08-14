@@ -439,14 +439,27 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Circus Camp for 4–7s on 8/27–28. The source had carried it all along —
   // it surfaced while fixing the 9am-camp bug, from the same feed that was
   // already snapshotted. 159 + 1 = 160.
-  assert.equal(seed.cards.length, 160);
+  // 2026-08-14 daily refresh: expiry deleted 8 fully-past events (Troost 8/13,
+  // the library's 8/13 day-card, the BCC tote workshop, Film Noir's film club,
+  // the CIBONE Hozubag pop-up, the 61 Franklin reading, Zumba Under the K and
+  // the Buffalo Firefly sound bath), then 6 adds. 160 - 8 + 6 = 158. Three of
+  // the six are Longevity Stick at Transmitter Park — 38 lines of it sat in
+  // `.ingest-cache/go-green-bk.txt` uncarded, the "the source published it and
+  // we did not card it" shape again. Its schedule is irregular (Thursday
+  // mornings weekly, Friday evenings on 8/14 and 8/28 but NOT 8/21), so the
+  // Thursdays are one recurring card and each Friday is its own — a
+  // `recurrence.days: ["fri"]` card would have invented an 8/21 sitting. The
+  // other three: the library's 8/27 Thursday programs and Film Noir's ARREBATO,
+  // both new in this run's diff, and Good Room's 8/28 bill, which is the date
+  // the coverage check flagged as a GAP.
+  assert.equal(seed.cards.length, 158);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 90, "89 + the 8/27–28 two-day camp for 4–7s (2026-08-13 scoped moon-bunny run)");
+  assert.equal(count((c) => c.category === "event"), 88, "82 after expiry + 6 adds (2026-08-14 daily refresh)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 + DJ Barba Yiorgi's 8/27 night at Troost");
+  assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 after expiry + Good Room's 8/28 Magnetic bill");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -610,6 +623,13 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-12 roundup: "Free, no RSVP needed." on the Edy's anniversary line.
     "edys-anniversary-party-0816",
     "greenpoint-trash-club",
+    // 2026-08-14: three Longevity Stick sittings at Transmitter Park. The Go
+    // Green detail page states the free-ness once for the whole series — "Join
+    // us on select Friday evenings as we flow in our free Longevity Stick
+    // Classes" — and each card quotes that line, so it covers all three.
+    "longevity-stick-transmitter-0814",
+    "longevity-stick-transmitter-0828",
+    "longevity-stick-transmitter-thursdays",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
     // "teen interns are running a free scavenger hunt" and "You can get free
     // tickets here". The 8/12 library card is NOT here: its garden club line
@@ -624,7 +644,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // the Neptune Room market and "Free, no RSVP needed." for the garden reading.
     "neptune-artists-makers-market-0816",
     // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
-    "reading-series-61-franklin-0813",
     // 2026-08-13: the library's own record for the Sips & Scholars lecture
     // states the series' free-ness in the body the card quotes — "the second
     // annual Sips & Scholars series, free lectures set in bars, parks, cafes,
@@ -644,7 +663,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-10: "Free Show + Free Donuts" on the WORD Bookstore flyer.
     "word-herman-melville-comedy-0820",
     // 2026-08-12 roundup: "No rhythm required! Free, RSVP here."
-    "zumba-under-the-k-0813",
   ]);
 });
 
@@ -715,15 +733,21 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   assert.deepEqual(wellness, [
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
-    // 2026-08-12: the second sound bath of the same week, same reasoning as
-    // `gather-sound-bath-0818` below — bodywork, not spectacle.
-    "buffalo-firefly-soundbath-0813",
+    // (buffalo-firefly-soundbath-0813 expired out 2026-08-14)
     "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays",
     // 2026-08-12: a sound bath and Reiki session — bodywork in the same
     // movement cluster as yoga, not a thing you attend to watch.
     "gather-sound-bath-0818",
     "held-space-membership",
+    // 2026-08-14: Longevity Stick at Transmitter Park, "a mix of Tai Chi and
+    // yoga" on Go Green's own detail page — the movement cluster this lens
+    // names, and free. Three cards because the series' schedule is irregular:
+    // Thursday mornings recur weekly, the Friday evenings are 8/14 and 8/28
+    // only, and a recurring Friday card would have invented an 8/21 sitting.
+    "longevity-stick-transmitter-0814",
+    "longevity-stick-transmitter-0828",
+    "longevity-stick-transmitter-thursdays",
     "moon-bunny-monthly-plans",
     "selformer-memberships",
     // 2026-08-10: the Summer Fling promo is a DEAL at a Pilates studio, so it
@@ -732,7 +756,6 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     "sparsa-greenpoint",
     // 2026-08-12: a free outdoor Zumba class — dance-as-movement, the cluster's
     // core reading, so wellness rather than arts_culture.
-    "zumba-under-the-k-0813",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
 });
@@ -839,7 +862,7 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // The CIBONE ruling's own three: the store, and the two limited runs it
     // hosts. A shop's pop-up genuinely starts and ends, so it keeps its own
     // dated card rather than collapsing into the venue (2026-08-12).
-    "cibone-hozubag-0813",
+    // (cibone-hozubag-0813 expired out 2026-08-14)
     "cibone-ote",
     "cibone-restation-showcase-0815",
     // A kids' store. It keeps `family_kids` — the audience lens it already

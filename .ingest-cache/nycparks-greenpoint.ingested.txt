@@ -1,62 +1,6 @@
 ## McCarren Pool: Lap Swim
-http://www.nycgovparks.org/events/2026/08/13/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
-Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
-parkids: B058
-parknames: McCarren Park
-startdate: 2026-08-13
-enddate: 2026-08-13
-starttime: 7:00 am
-endtime: 8:30 am
-location: McCarren Park Pool (in McCarren Park)
-categories: Fitness | Swimming/Aquatics
-coordinates: 40.72015570000000000, -73.95174040000000000
-
-## Session 3: McCarren Pool - Parent and Tots Learn to Swim (Class A)
-http://www.nycgovparks.org/events/2026/08/13/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a
-Thu, 13 Aug 2026 00:00:03 EDT
-The Learn to Swim program puts the fun in fundamentals and teaches basic swimming and safety skills. The program offers tots, from 1 1/2 to 5 years old, the opportunity to become comfortable in the water and prepare to learn to swim. Parents/Guardians must accompany tots in the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
-parkids: B058
-parknames: McCarren Park
-startdate: 2026-08-13
-enddate: 2026-08-13
-starttime: 10:00 am
-endtime: 11:00 am
-location: McCarren Park Pool (in McCarren Park)
-categories: Swimming/Aquatics
-coordinates: 40.72015570000000000, -73.95174040000000000
-
-## Session 3: McCarren Pool - Parent and Tots Learn to Swim (Class B)
-http://www.nycgovparks.org/events/2026/08/13/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-b
-Thu, 13 Aug 2026 00:00:03 EDT
-The Learn to Swim program puts the fun in fundamentals and teaches basic swimming and safety skills. The program offers tots, from 1 1/2 to 5 years old, the opportunity to become comfortable in the water and prepare to learn to swim. Parents/Guardians must accompany tots in the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
-parkids: B058
-parknames: McCarren Park
-startdate: 2026-08-13
-enddate: 2026-08-13
-starttime: 11:00 am
-endtime: 12:00 pm
-location: McCarren Park Pool (in McCarren Park)
-categories: Swimming/Aquatics
-coordinates: 40.72015570000000000, -73.95174040000000000
-
-## Session 3: McCarren Pool - Children's Learn to Swim Level 2 (Class C)
-http://www.nycgovparks.org/events/2026/08/13/session-3-mccarren-pool-childrens-learn-to-swim-level-2-class-b
-Thu, 13 Aug 2026 00:00:03 EDT
-Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
-parkids: B058
-parknames: McCarren Park
-startdate: 2026-08-13
-enddate: 2026-08-13
-starttime: 1:00 pm
-endtime: 2:00 pm
-location: McCarren Park Pool (in McCarren Park)
-categories: Swimming/Aquatics
-coordinates: 40.72015570000000000, -73.95174040000000000
-
-## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/14/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -70,7 +14,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Children's Learn to Swim Level 1 (Class E)
 http://www.nycgovparks.org/events/2026/08/14/session-3-mccarren-pool-childrens-learn-to-swim-level-1-class-d
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -84,7 +28,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Summerstarz 2026 Free Movies
 http://www.nycgovparks.org/events/2026/08/14/summerstarz-2026-free-movies
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Town Square BK's SummerSTARZ 2026 free movies are back in Transmitter Park. Arrive early to snag a good spot on the grass and enjoy the gorgeous Brooklyn waterfront until the movie starts at sunset. Get your FREE tickets here: https://summerstarz-2026.eventbrite.com
 Fri. July 17 - Zootopia 2 >> POSTPONED TO Aug 21!!
 Fri. July 24 - The Princess Bride
@@ -106,7 +50,7 @@ image: http://www.nycgovparks.org/common_images/events/6a2c72317b3f4.jpg
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/17/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -120,7 +64,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Children's Learn to Swim Level 1 (Class E)
 http://www.nycgovparks.org/events/2026/08/17/session-3-mccarren-pool-childrens-learn-to-swim-level-1-class-d
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -134,7 +78,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/08/17/bodyweight-interval-training
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -148,7 +92,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/18/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -162,7 +106,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Parent and Tots Learn to Swim (Class A)
 http://www.nycgovparks.org/events/2026/08/18/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 The Learn to Swim program puts the fun in fundamentals and teaches basic swimming and safety skills. The program offers tots, from 1 1/2 to 5 years old, the opportunity to become comfortable in the water and prepare to learn to swim. Parents/Guardians must accompany tots in the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -176,7 +120,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Parent and Tots Learn to Swim (Class B)
 http://www.nycgovparks.org/events/2026/08/18/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-b
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 The Learn to Swim program puts the fun in fundamentals and teaches basic swimming and safety skills. The program offers tots, from 1 1/2 to 5 years old, the opportunity to become comfortable in the water and prepare to learn to swim. Parents/Guardians must accompany tots in the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -190,7 +134,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Children's Learn to Swim Level 2 (Class C)
 http://www.nycgovparks.org/events/2026/08/18/session-3-mccarren-pool-childrens-learn-to-swim-level-2-class-b
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -204,7 +148,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/19/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -218,7 +162,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Children's Learn to Swim Level 1 (Class E)
 http://www.nycgovparks.org/events/2026/08/19/session-3-mccarren-pool-childrens-learn-to-swim-level-1-class-d
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -232,7 +176,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/08/19/bodycentric-circuit-training
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058
@@ -247,7 +191,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## Movies Under the Stars: Guardians of The Galaxy (2014)
 http://www.nycgovparks.org/events/2026/08/19/movies-under-the-stars-guardians-of-the-galaxy-2014
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor’s Office of Media and Entertainment will host family-friendly movie showings across the five boroughs.
 Cosmic outlaws face an interstellar villain who seeks to control the universe with a powerful orb. Together, Peter Quill, Rocket Raccoon, Groot, Gamora and Drax the Destroyer may be the galaxy's only hope for thwarting Ronan's sinister plan.
 Rated PG-13
@@ -267,7 +211,7 @@ image: http://www.nycgovparks.org/common_images/events/6a67027c067be.png
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/20/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -281,7 +225,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Parent and Tots Learn to Swim (Class A)
 http://www.nycgovparks.org/events/2026/08/20/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-a
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 The Learn to Swim program puts the fun in fundamentals and teaches basic swimming and safety skills. The program offers tots, from 1 1/2 to 5 years old, the opportunity to become comfortable in the water and prepare to learn to swim. Parents/Guardians must accompany tots in the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -295,7 +239,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Parent and Tots Learn to Swim (Class B)
 http://www.nycgovparks.org/events/2026/08/20/session-3-mccarren-pool-parent-and-tots-learn-to-swim-class-b
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 The Learn to Swim program puts the fun in fundamentals and teaches basic swimming and safety skills. The program offers tots, from 1 1/2 to 5 years old, the opportunity to become comfortable in the water and prepare to learn to swim. Parents/Guardians must accompany tots in the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -309,7 +253,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Children's Learn to Swim Level 2 (Class C)
 http://www.nycgovparks.org/events/2026/08/20/session-3-mccarren-pool-childrens-learn-to-swim-level-2-class-b
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -323,7 +267,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/21/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -337,7 +281,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Session 3: McCarren Pool - Children's Learn to Swim Level 1 (Class E)
 http://www.nycgovparks.org/events/2026/08/21/session-3-mccarren-pool-childrens-learn-to-swim-level-1-class-d
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Through our Learn to Swim program, your children will put the 'fun' in fundamentals and learn basic swimming and safety skills! During this two-week outdoor program, our Aquatic Specialists will teach your children (ages 6 to 17 years old) basic swimming skills, and how to stay safe around the water. Registration for this program takes place by lottery drawing. Visit https://nyc.gov/parks/learntoswim for rules and regulations.
 parkids: B058
 parknames: McCarren Park
@@ -351,7 +295,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Summerstarz 2026 Free Movies
 http://www.nycgovparks.org/events/2026/08/21/summerstarz-2026-free-movies
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Town Square BK's SummerSTARZ 2026 free movies are back in Transmitter Park. Arrive early to snag a good spot on the grass and enjoy the gorgeous Brooklyn waterfront until the movie starts at sunset. Get your FREE tickets here: https://summerstarz-2026.eventbrite.com
 Fri. July 17 - Zootopia 2 >> POSTPONED TO Aug 21!!
 Fri. July 24 - The Princess Bride
@@ -373,7 +317,7 @@ image: http://www.nycgovparks.org/common_images/events/6a2c72317b3f4.jpg
 
 ## It's My Park at Msgr. McGolrick Park
 http://www.nycgovparks.org/events/2026/08/23/its-my-park-at-msgr-mcgolrick-park
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 This It's My Park season, volunteer with North Brooklyn Parks Alliance to beautify Msgr. McGolrick Park. We look forward to cleaning up the park with you!
 parkids: B114
 parknames: Msgr. McGolrick Park
@@ -387,7 +331,7 @@ coordinates: 40.72439956665039000, -73.94339752197266000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/24/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -401,7 +345,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/08/24/bodyweight-interval-training
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -415,7 +359,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/25/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -429,7 +373,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/26/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -443,7 +387,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/08/26/bodycentric-circuit-training
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058
@@ -458,12 +402,26 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/27/mccarren-pool-lap-swim1
-Thu, 13 Aug 2026 00:00:03 EDT
+Fri, 14 Aug 2026 00:00:02 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
 startdate: 2026-08-27
 enddate: 2026-08-27
+starttime: 7:00 am
+endtime: 8:30 am
+location: McCarren Park Pool (in McCarren Park)
+categories: Fitness | Swimming/Aquatics
+coordinates: 40.72015570000000000, -73.95174040000000000
+
+## McCarren Pool: Lap Swim
+http://www.nycgovparks.org/events/2026/08/28/mccarren-pool-lap-swim1
+Fri, 14 Aug 2026 00:00:02 EDT
+Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
+parkids: B058
+parknames: McCarren Park
+startdate: 2026-08-28
+enddate: 2026-08-28
 starttime: 7:00 am
 endtime: 8:30 am
 location: McCarren Park Pool (in McCarren Park)

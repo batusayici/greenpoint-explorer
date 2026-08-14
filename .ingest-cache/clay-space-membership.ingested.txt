@@ -136,13 +136,11 @@ $485 - $650 + tax monthly
 See the dimension and price
 Contact us ‍ ‍ COVID 19 protocols ‍ ‍ Career
 Copyright © 2025. All rights reserved.
-
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 # Captured by the new roster `detail` mechanism and merged here so the
 # sourceQuote gate can re-check these cards. Merged rather than promoted via
 # --mark-ingested on purpose: marking would flag unreviewed content as already
 # processed and hide real supply from the next run.
-
 ## [DETAIL] https://www.clayspacebk.com/membership
 SKIP TO CONTENT
 For Adults
@@ -204,9 +202,6 @@ $485 - $650 + tax monthly
 See the dimension and price
 Contact us‍ ‍COVID 19 protocols‍ ‍Career
 Copyright © 2025. All rights reserved.
-
-
-
 ## [DETAIL] https://www.clayspacebk.com/semester-classes
 SKIP TO CONTENT
 For Adults
