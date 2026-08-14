@@ -1258,6 +1258,13 @@
       "publisher": "Track V ingest (scoped mini-ingest)",
       "processedAt": "2026-08-13",
       "outcome": "SHIPPED 1 add: moon-bunny-two-day-camp-4-7-0827 (Two-Day Circus Camp for 4-7s, 8/27-28, 9am-3pm daily). Deck 159 -> 160 (+0.6%, inside +/-40%). Scope: moon-bunny-aerial only, prompted by uncarded supply found while fixing the 9am-camp feed bug — the source had carried it all along. Expiry RAN (every path): 159 -> 159, nothing to do. Fetch reach 1/1, 0% error, changed +16/-17. ingest:quotes gated verified=48 mismatch=0 BEFORE and AFTER --mark-ingested. --all reads 109/1/6: the single mismatch is moon-bunny-two-day-camp-4-7-0813, report-only (createdAt 08-11, before the gate date), caused by this run's own baseline promotion rolling its 8/13 sitting off the feed — logged as a second cause on the --mark-ingested watchItem, NOT papered over. holds: 0 new-judgment - 0 rule-miss - 0 source-blocked. SHIP PATH SPLIT BY BATU: the card and this ledger went to main; the roster-note edits that disqualified the run under gate 5 stayed on branch ingest/review-2026-08-13-moon-bunny (lot-radio cadence rule, razor-n-tape wrong URL, brooklyn-record-exchange never fetchable). Gate 6 stays red on 7 pre-existing unexplained lines, unrelated to this add and not cleared by it. Deferred to watchItems on horizon only: Weekend Camp 13-16 8/29-30, Two Day Camp 8-12 9/1."
+    },
+    {
+      "id": "run:2026-08-13-scoped-moon-bunny-phase2-roster",
+      "kind": "run",
+      "publisher": "Track V ingest (roster decisions, human-gated)",
+      "processedAt": "2026-08-14",
+      "outcome": "Batu approved all three roster recommendations from the scoped run; applied together on branch ingest/review-2026-08-13-moon-bunny. (1) lot-radio: standing:true, ONE standing venue card and NEVER per-set cards — ~10+ named DJ slots a day would put a single venue past the 25% concentration warning. (2) razor-n-tape and (3) brooklyn-record-exchange REMOVED from `sources` into a new INERT `manualSources` key (the fetch script destructures `sources` only), each carrying the measurement that settled it and a revisitIf, so a later run does not re-onboard them and rediscover the same failure. NET CARD CHANGE: ZERO — deck stays 160. A `lot-radio` venue card WAS authored, geocoded and quote-verified, then DELETED before commit as a DUPLICATE: `the-lot-radio` has been live since 2026-07-16 with the same address and coordinates. The dedupe check missed it because the roster id (lot-radio) and card id (the-lot-radio) differ, so an id-shaped search finds nothing and the venue reads as uncarded — match on the HOST, never the id, and that trap is now written into the roster notes. It surfaced only because freshness-stamp.json stamped the new card 2026-07-15, a date that could only have come from the existing card's source pulse; the stamp caught a dedupe error nothing else was watching for. WHAT SHIPPED INSTEAD, and it is worth more than the duplicate would have been: `the-lot-radio` was a month-stale unsourced card (updatedAt 2026-07-16, no sourceQuote, cited the homepage). It now cites the /calendar page the roster actually fetches, carries a verbatim sourceQuote that verifies against the snapshot, and its reader-facing 'checked' date moved 2026-07-15 -> 2026-08-13. Its 'shipping container' and '24/7' claims rest on the 2026-07-16 homepage read, NOT on the current /calendar snapshot, which states only hours, address, show names and genres — re-source them if that page is ever read again. Gates: 666 unit + 8 DOM, build, verify:aeo, ingest:quotes verified=49 mismatch=0, geocode clean. Freshness briefly alarmed sourcesUnreachable at reach=2/3 — an artifact of the 3-source scoped fetch counting brooklyn-record-exchange, which this change deletes; re-fetching the current roster reads 1/1 and FRESH. Coverage gate: all three ids cleared their flags; the remaining unexplained lines are pre-existing, so the run stays on the review-PR path. holds: 0. DELIBERATELY NOT DONE: expiry did not run and lastRunAt was not bumped — the clock crossed into 08-14 mid-run and rolling the day over is the next scheduled daily-thin run's job; the refresh-discipline test derives from lastRunAt and passes, confirming the deck is consistent with the 08-13 stamp it still carries."
     }
   ],
   "senderRegistry": [
@@ -1711,7 +1718,7 @@
     "maison-jar": "2026-08-09",
     "macha-studio": "2026-08-11",
     "mta-g-alerts": "2026-08-13",
-    "lot-radio": "2026-07-15"
+    "lot-radio": "2026-08-13"
   },
   "coverageExplanations": [
     {

@@ -894,10 +894,10 @@
       ],
       "sourceLinks": [
         {
-          "title": "The Lot Radio — daily schedule",
+          "title": "The Lot Radio calendar",
           "publisher": "The Lot Radio",
-          "url": "https://www.thelotradio.com/",
-          "date": "2026-07-16"
+          "url": "https://www.thelotradio.com/calendar",
+          "date": "2026-08-14"
         }
       ],
       "evidenceStrength": "high",
@@ -905,10 +905,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-16",
+      "updatedAt": "2026-08-14",
       "address": "17 Nassau Ave, Brooklyn, NY 11222",
       "lat": 40.722798,
-      "lng": -73.954054
+      "lng": -73.954054,
+      "sourceQuote": "EVERYDAY from 10AM to MIDNIGHT\n17 Nassau Ave, Brooklyn, NY 11222\n\nWorl Dance with Stamma and Ras I\nReggae, Amapiano, Afrobeats, Highlife, Dancehall\n\nTonal Fiction with Ken Meier\nTechno, House"
     },
     {
       "id": "greenpoint-comedy-club",
