@@ -30,6 +30,8 @@
 // baseline instead of dropped. Live listing content still turns over normally —
 // only these explicitly-marked blocks are carried.
 
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+
 const BLOCK_HEADER = /^## \[/;
 
 /**
@@ -84,4 +86,24 @@ export function carryForwardBlocks(newSnapshot, oldBaseline) {
 
   const text = `${next.replace(/\s+$/, "")}\n\n${chunks.join("\n\n")}\n`;
   return { text, carried };
+}
+
+/**
+ * Write a freshly-fetched snapshot to `<id>.txt` WITHOUT dropping evidence the
+ * previous copy of that file carried.
+ *
+ * The same rule as promotion, at the other call site. A newsletter or flyer
+ * read has no URL to re-fetch, so it is written into the WORKING snapshot when
+ * the card is authored — and before 2026-08-14 the next fetch of that source
+ * overwrote the file wholesale and destroyed it, in the window before the run
+ * ever promoted a baseline. Live listing content still turns over normally;
+ * only marked blocks are carried, and a block this fetch DID return wins.
+ *
+ * Returns the headers carried forward, so the caller can say what it rescued.
+ */
+export function writeSnapshotPreservingBlocks(snapPath, fetchedText) {
+  const existing = existsSync(snapPath) ? readFileSync(snapPath, "utf8") : null;
+  const { text, carried } = carryForwardBlocks(fetchedText, existing);
+  writeFileSync(snapPath, text.endsWith("\n") ? text : `${text}\n`);
+  return carried;
 }

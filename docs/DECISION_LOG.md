@@ -4,6 +4,55 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-14 (second entry) — A rule that lives only in prose is not a gate
+
+Two defects, found by chasing one failing check. Both are the same shape: **a mechanism that was
+built correctly and then wired into only one of the places that needed it.**
+
+**1. The truth gate was never on the gate list.** `npm run ingest:quotes` was created by the
+2026-08-12 ruling because a fabricated quote had reached production. It was written into SKILL.md's
+truth section as a rule — *"a card whose quote does not match fails into the hold pile"* — and it was
+**never added to "Run-level gates — all must pass before ANY push"**, which had six entries and is
+the list a run actually executes. So on 2026-08-14 an auto-shipping run pushed
+`marianella-19th-anniversary-sale` to production while that check was failing. Nothing malfunctioned;
+the checklist simply never asked. It is now gate 7, and **exit 1 HOLDS the card** rather than merely
+disqualifying auto-ship the way the coverage gate does — an unverifiable quote is the one failure
+that must not reach a reader.
+
+The card itself was **honest**, which is the part worth remembering. Its lines *"50% off sitewide.
+Free shipping on every order."* and *"Closing this week. Once it's gone, it's gone until next year."*
+are verbatim from a Marianella email of 2026-08-13 (sender in `senderRegistry`, locally-owned gate
+cleared) — confirmed by reading the message, not the ledger's paraphrase. What was missing was the
+**evidence**: the email was never written to disk, so the verifier mapped the card to `marianella.co`
+by host and checked email text against a store-page snapshot. **A card may legitimately assemble a
+quote from two evidence bases while the verifier maps it to one source.** Persisting the email as
+`## [NEWSLETTER PERSISTED …]` resolves it. The first instinct — that the card overstated a local
+business's discount — was wrong, and acting on it would have deleted true claims about a real shop.
+*Read the source before believing the alarm.*
+
+The same source had **no `.ingested.txt` at all**, and only `*.ingested.txt` is tracked, so its
+evidence base existed nowhere in git and a cloud run from a fresh checkout had no snapshot for it.
+Now promoted and committed.
+
+**2. Gate 5 punished doing the right thing.** The content-only file set omitted
+`.ingest-cache/*.ingested.txt` — which **step 4.4 mandates every run write**, and which the evidence
+rule requires whenever a newsletter or flyer is read. As written, a run that correctly persisted
+evidence produced an "outside the set" file and disqualified its own auto-ship. That is a live
+incentive to skip persisting, which is exactly what happened. Added to the set.
+
+**3. The carry-forward fix had a sibling caller, and it re-shipped the bug.** 2026-08-13 made
+`--mark-ingested` non-destructive. But the FETCH path still did `writeFileSync(snapPath, text)`,
+overwriting `<id>.txt` wholesale — so a block persisted into a **working** snapshot was destroyed by
+that source's next fetch, in the window before the run ever promoted a baseline. A newsletter read
+has no URL to re-fetch, so that window is precisely where it lives. `writeSnapshotPreservingBlocks`
+now covers it, proven on real data: a forced re-fetch of marianella that changed the page by 20
+lines carried the email block forward and printed what it rescued.
+
+This is the **third** instance of the 2026-08-13 lesson (*fix the class, not the caller*), and this
+time the re-shipped bug was in the fix for the previous instance. The audit that catches it is
+mechanical: **when wiring a general mechanism, enumerate every caller that writes the same artifact
+and cover them in the same change.** Both snapshot writers are now covered; there are only two.
+
 ## 2026-08-14 — The exhibition rule was never about art: a standing amenity belongs to its place
 
 **Batu, ruling on the one card PR #37 held.** The Cycle Alliance's period pantry at Greenpoint

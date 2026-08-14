@@ -65,3 +65,36 @@ test("promotion is idempotent — carrying forward twice adds nothing", () => {
   assert.deepEqual(twice.carried, []);
   assert.equal(twice.text, once.text);
 });
+
+// 2026-08-14 — THE SIBLING CALLER. The 2026-08-13 fix wired carryForwardBlocks
+// into PROMOTION only, which is where the loss was observed. The FETCH path
+// still did `writeFileSync(snapPath, text + "\n")`, overwriting `<id>.txt`
+// wholesale — so a block persisted into a WORKING snapshot (the only place a
+// newsletter or flyer read can go before the run promotes) was destroyed by
+// that source's next fetch, before it ever reached a baseline. Marianella's
+// anniversary email lived in exactly that window. Same rule, second caller:
+// A SNAPSHOT WRITE MAY ADD EVIDENCE, NEVER REMOVE IT.
+test("a re-fetch preserves evidence persisted into the working snapshot", async () => {
+  const { mkdtempSync, writeFileSync, readFileSync } = await import("node:fs");
+  const { join } = await import("node:path");
+  const { tmpdir } = await import("node:os");
+  const { writeSnapshotPreservingBlocks } = await import("./persistedBlocks.js");
+
+  const dir = mkdtempSync(join(tmpdir(), "snap-"));
+  const snap = join(dir, "marianella-subscription-box.txt");
+  writeFileSync(
+    snap,
+    "UP TO 50% OFF\n19 YEAR ANNIVERSARY SALE\n" +
+      "## [NEWSLETTER PERSISTED 2026-08-14] messages+fqhkbz0zmpz0x@squaremktg.com, 2026-08-13\n" +
+      "Closing this week. Once it's gone, it's gone until next year.\n",
+  );
+
+  const carried = writeSnapshotPreservingBlocks(snap, "UP TO 50% OFF\n19 YEAR ANNIVERSARY SALE\nNEW BANNER LINE\n");
+
+  const after = readFileSync(snap, "utf8");
+  assert.match(after, /NEW BANNER LINE/, "the fresh fetch must win for live listing content");
+  assert.match(after, /Closing this week\./, "the persisted email must survive the re-fetch");
+  assert.deepEqual(carried, [
+    "## [NEWSLETTER PERSISTED 2026-08-14] messages+fqhkbz0zmpz0x@squaremktg.com, 2026-08-13",
+  ]);
+});
