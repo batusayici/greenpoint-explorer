@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-13 (ninth entry) — First outbound send: friends & family, WhatsApp
+
+Batu sent the friends-family re-invite tonight, **~6:30pm, to a small group over WhatsApp** —
+the first outbound send since launch readiness closed (L1–L11, 2026-08-02/06) and the first to break
+the "Wave 1 deferred" streak recorded on 2026-08-06, 2026-08-11, and 2026-08-12. Link carried
+`?src=friends-family` (row added to `channel-links.md` same day, split out from `wave2` and from the
+three individually-tracked testers — `michael`, `laura-edmond`, `perri` — who keep their own rows).
+
+Not the full Wave 1 as specified in the launch plan (Q1 org notes, Q2 parents post): a narrower,
+lower-stakes first move — the sneak-peek group, not cold outreach. Q1/Q2 remain unsent.
+
+**Next:** spot-check `src=friends-family` lands in PostHog within a day (channel-links.md pre-send
+checklist), or let Tuesday's Growth Operator readout (2026-08-18) pick it up from the pull.
+
 ## 2026-08-13 (eighth entry) — A fix wired into one branch is not a fix
 
 Batu on stoopwise.com at 6:13pm: **the feed opened with a 9am event** — a Two-Day Circus Camp at
