@@ -4095,7 +4095,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-14",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -4109,8 +4109,8 @@
       ],
       "recurring": true,
       "startsAt": "2026-08-12T20:00:00-04:00",
-      "endsAt": "2026-08-22T23:59:00-04:00",
-      "sourceQuote": "Wed Aug 12, 2026, 8:00 PM, Wed Aug 19, 2026, 8:00 PM, Wed Aug 26, 2026, 8:00 PM\nComedians You Should Know @ 8:00 PM",
+      "endsAt": "2026-08-26T23:59:00-04:00",
+      "sourceQuote": "Wed Aug 19, 2026, 8:00 PM, Wed Aug 26, 2026, 8:00 PM\nComedians You Should Know @ 8:00 PM",
       "actions": [
         {
           "label": "Tickets",
@@ -4143,7 +4143,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-14",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -4157,8 +4157,8 @@
       ],
       "recurring": true,
       "startsAt": "2026-08-13T20:00:00-04:00",
-      "endsAt": "2026-08-22T23:59:00-04:00",
-      "sourceQuote": "Thu Aug 13, 2026, 8:00 PM, Thu Aug 20, 2026, 8:00 PM, Thu Aug 27, 2026, 8:00 PM and 4 more\nThe Thursday Showcase\nUSD $20.00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "sourceQuote": "Thu Aug 20, 2026, 8:00 PM, Thu Aug 27, 2026, 8:00 PM, Thu Sep 3, 2026, 8:00 PM and 3 more\nThe Thursday Showcase @ 8:00PM",
       "actions": [
         {
           "label": "Tickets",
@@ -4191,7 +4191,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-14",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -4205,8 +4205,8 @@
       ],
       "recurring": true,
       "startsAt": "2026-08-14T20:00:00-04:00",
-      "endsAt": "2026-08-22T23:59:00-04:00",
-      "sourceQuote": "Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM, Fri Aug 28, 2026, 8:00 PM and 4 more\nThe Friday Showcase Show @ 8:00 PM\nUSD $25.00",
+      "endsAt": "2026-08-28T23:59:00-04:00",
+      "sourceQuote": "Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM, Fri Aug 28, 2026, 8:00 PM and 4 more\nThe Friday Showcase Show @ 8:00 PM",
       "actions": [
         {
           "label": "Tickets",
@@ -7360,6 +7360,90 @@
       "startsAt": "2026-08-28T19:30:00-04:00",
       "endsAt": "2026-08-28T20:30:00-04:00",
       "sourceQuote": "Join us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nRegistering helps us track participants in the event of a rain delay or reschedule.\nFri, Aug 28, 7:30 PM to 8:30 PM"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "id": "comedy-isa-medina-0822",
+      "title": "Isa Medina and Friends",
+      "kicker": "Saturday early show, $20",
+      "startsAt": "2026-08-22T18:00:00-04:00",
+      "endsAt": "2026-08-22T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "summary": "Isa Medina hosts a named early-evening bill, ahead of the club's 8pm Saturday showcase.",
+      "sourceQuote": "Sat Aug 22, 2026, 6:00 PM\nIsa Medina and Friends",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "id": "comedy-cartoon-strips-0827",
+      "title": "Cartoon Strips with Hilary Campbell",
+      "kicker": "Thursday cartoonist showcase, $20",
+      "startsAt": "2026-08-27T20:00:00-04:00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "summary": "Hilary Campbell brings the Cartoon Strips show to Greenpoint, a separate booking from the weekly Thursday showcase.",
+      "sourceQuote": "Thu Aug 27, 2026, 8:00 PM\nCartoon Strips with Hilary Campbell",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-14"
+        }
+      ]
     }
   ]
 }

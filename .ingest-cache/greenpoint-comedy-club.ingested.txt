@@ -11,36 +11,6 @@ NY, US
 Upcoming
 Past
 Calendar
-Sat Aug 8, 2026, 6:00 PM
-Off Menu - Saturday August 8th 6PM
-NY, US
-USD $20.00
-In Stock
-Sat Aug 8, 2026, 8:00 PM, Sat Aug 15, 2026, 8:00 PM, Sat Aug 22, 2026, 8:00 PM and 5 more
-The Saturday Showcase @ 8:00 PM
-NY, US
-USD $25.00
-In Stock
-Sat Aug 8, 2026, 10:00 PM, Sat Aug 15, 2026, 10:00 PM, Sat Aug 22, 2026, 10:00 PM and 5 more
-The Secret Showcase @ 10:00 PM
-NY, US
-USD $25.00
-In Stock
-Tue Aug 11, 2026, 7:30 PM
-Greenpoint Comedy Club Presents: Raanan Hershberg
-NY, US
-USD $25.00
-In Stock
-Wed Aug 12, 2026, 8:00 PM, Wed Aug 19, 2026, 8:00 PM, Wed Aug 26, 2026, 8:00 PM
-Comedians You Should Know @ 8:00 PM
-NY, US
-USD $20.00
-In Stock
-Thu Aug 13, 2026, 8:00 PM, Thu Aug 20, 2026, 8:00 PM, Thu Aug 27, 2026, 8:00 PM and 4 more
-The Thursday Showcase
-NY, US
-USD $20.00
-In Stock
 Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM, Fri Aug 28, 2026, 8:00 PM and 4 more
 The Friday Showcase Show @ 8:00 PM
 NY, US
@@ -56,8 +26,28 @@ Greenpoint Comedy Club Presents: Carmen Lagala
 NY, US
 USD $25.00
 In Stock
+Sat Aug 15, 2026, 8:00 PM, Sat Aug 22, 2026, 8:00 PM, Sat Aug 29, 2026, 8:00 PM and 4 more
+The Saturday Showcase @ 8:00 PM
+NY, US
+USD $25.00
+In Stock
+Sat Aug 15, 2026, 10:00 PM, Sat Aug 22, 2026, 10:00 PM, Sat Aug 29, 2026, 10:00 PM and 4 more
+The Late Saturday Showcase @ 10:00 PM
+NY, US
+USD $25.00
+In Stock
 Sun Aug 16, 2026, 7:00 PM
-Dani Castañeda presenta Amigos en Común
+Amigos en común a beneficio del terremoto de Colombia
+NY, US
+USD $20.00
+In Stock
+Wed Aug 19, 2026, 8:00 PM, Wed Aug 26, 2026, 8:00 PM
+Comedians You Should Know @ 8:00 PM
+NY, US
+USD $20.00
+In Stock
+Thu Aug 20, 2026, 8:00 PM, Thu Aug 27, 2026, 8:00 PM, Thu Sep 3, 2026, 8:00 PM and 3 more
+The Thursday Showcase @ 8:00PM
 NY, US
 USD $20.00
 In Stock
@@ -103,6 +93,31 @@ USD $25.00
 In Stock
 Thu Oct 22, 2026, 7:30 PM
 Greenpoint Comedy Club Presents: Joe Zimmerman
+NY, US
+USD $25.00
+In Stock
+Sat Nov 7, 2026, 6:00 PM
+New York Comedy Festival Presents: Ariel Elias
+NY, US
+USD $25.00
+In Stock
+Sun Nov 8, 2026, 7:00 PM
+New York Comedy Festival Presents: Cartoon Strips with Hilary Campbell
+NY, US
+USD $25.00
+In Stock
+Tue Nov 10, 2026, 7:00 PM
+New York Comedy Festival Presents: Thunder Davis and Friends
+NY, US
+USD $25.00
+In Stock
+Fri Nov 13, 2026, 8:00 PM
+New York Comedy Festival Showcase Show
+NY, US
+USD $25.00
+In Stock
+Sat Nov 14, 2026, 8:00 PM
+New York Comedy Festival Presents: Shaunak Godkhindi and Adam Gilbert
 NY, US
 USD $25.00
 In Stock

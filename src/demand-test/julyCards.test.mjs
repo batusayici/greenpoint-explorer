@@ -455,11 +455,19 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Also 2026-08-14: the Cycle Alliance Period Pantry adds NO card. It is a
   // standing amenity of the branch, so the 2026-08-12 exhibition ruling puts it
   // on `greenpoint-library` — count unaffected, and that is the point.
-  assert.equal(seed.cards.length, 158);
+  // 2026-08-14 (coverage-gate close): +2. The comedy club's GAP for 8/26-8/28
+  // was two separate things wearing one flag. The three weekly showcases were
+  // verified-through 8/22 while their own quotes already named later dates, so
+  // the recurrence expansion stopped short — those are verified-through bumps,
+  // not new cards. The genuine uncarded supply was two ONE-OFFS the date-based
+  // check could not surface on its own: Isa Medina (8/22 6pm) sits on a date
+  // the Saturday showcase already covers, so it never flagged at all.
+  // 158 + 2 = 160.
+  assert.equal(seed.cards.length, 160);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 88, "82 after expiry + 6 adds (2026-08-14 daily refresh)");
+  assert.equal(count((c) => c.category === "event"), 90, "88 + the two uncarded Greenpoint Comedy Club one-offs (2026-08-14 coverage close)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
   assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 after expiry + Good Room's 8/28 Magnetic bill");
