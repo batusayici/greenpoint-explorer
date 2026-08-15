@@ -228,18 +228,20 @@ and should go — with small fixes.
   decoupling buys time to close Q2's three preconditions below. Q2 is the
   one Wave-1 item that cannot be re-run if botched.
 
-**Q2 preconditions (all three before the post goes out):**
-1. **Messenger verified as an embedded member.** The review's hardest
-   finding: Rana is two hops out, with no documented membership in either
-   group, no documented product usage, and a recorded belief that browser
-   products don't reach people — a handed-to-them post in a join-gated,
-   no-promo group risks a mod delete that burns the wedge channel for
-   months. **If Batu confirms Rana is a genuine member of one target group
-   and personally willing, the choice stands** (own words, exact tagged
-   link, ONE group — second group needs its own `src` row per the
-   one-src-per-channel rule); otherwise revert to Laura (this doc's
-   original recommendation), with a Slack-pod thread reply preferred over a
-   standalone FB post (near-zero blast radius).
+**Q2 preconditions:**
+1. ~~**Messenger verified as an embedded member.**~~ **CLOSED 2026-08-15 —
+   Batu confirmed Rana is a member of a target group and personally willing.**
+   Rana stands as the Q2 messenger. Terms of the confirmation still bind: the
+   post goes out in Rana's own words, with the exact tagged link, to ONE group
+   only (a second group needs its own `src` row per the one-src-per-channel
+   rule). Open detail: which of the two groups — that determines the `src`
+   value and needs answering before the copy is finalized, not before Monday.
+   *(Original finding, kept for the record: Rana was two hops out, with no
+   documented membership, no documented product usage, and a recorded belief
+   that browser products don't reach people; a handed-to-them post in a
+   join-gated, no-promo group risked a mod delete. Batu's confirmation is the
+   documentation the review was missing. Laura remains the fallback if Rana
+   goes quiet before the Sep 1–8 window.)*
 2. **`?lens=family_kids` deep-link shipped** — the post promises a kids map
    but `main.jsx` reads only `src`; the link lands on the general feed and
    only 15 people have ever tapped a filter chip. ~10-line gated code
