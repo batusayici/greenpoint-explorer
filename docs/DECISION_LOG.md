@@ -4,6 +4,38 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-15 (second entry) — The launch plan gets a cockpit, and the state file is the source of truth
+
+**Batu:** "I feel like I don't have a cockpit." The launch and GTM plan is spread across five docs and
+four readouts — ~1,200 lines of prose — with no view that answers *where are we, what's next, what's
+the goal, why does it matter* without re-reading all of it.
+
+**The decision: a machine-readable state file, and a page generated from it.**
+`docs/launch/gtm-state.json` holds phases, milestones, experiments (hypothesis · pre-registered rule ·
+target · actual · verdict · implication), the four gates, metrics, the send log, open decisions, risks
+and the operating rules. Every record carries a `source` pointer back to the doc and date it came from,
+so nothing on the page is unattributable — the same rule the cards live under.
+`scripts/build-cockpit.mjs` renders it; the page never holds a fact the state file doesn't.
+
+**Why generated rather than written.** A hand-maintained summary drifts, and a drifted cockpit is worse
+than no cockpit — it launders stale numbers into confident ones. So the Tuesday growth routine now
+writes the state file as **step 4.5, in the same commit as the readout**, the same way a new source
+domain has to land in `.claude/settings.json` in the same change. The cadence the readouts already run
+is the cadence the cockpit updates on.
+
+**Two constraints written into the skill.** The operator may never write a verdict Batu hasn't
+ratified — a computed read is `not yet read` or the rule's own word (`hold` / `continue` / `kill`), and
+a decision stays in `openDecisions` until it lands here. And an unknown stays `null`, which the page
+renders as `—`; an experiment that hasn't been read shows as unread, never as a zero. No figures from
+`docs/private/` enter the file (2026-07-28 sensitivity split).
+
+Published privately as an artifact rather than a route in the product: it is an internal instrument,
+and putting it in the app would make an ops view part of the resident-facing deploy. It borrows the
+II-C palette but reads as an instrument panel, not the product.
+
+**Backfilled 2026-08-15** from the ops plan, launch runbook, seeding roster, growth engine,
+business-model §4, channel-links and the four readouts. 676/676 tests pass.
+
 ## 2026-08-15 — Seeding motion adversarially reviewed; pre-registrations P1–P6 ratified; Q2 moves to back-to-school week
 
 **Decision (Batu), after a two-pass adversarial review of the seeding motion** (independent

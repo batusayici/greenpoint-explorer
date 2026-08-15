@@ -43,6 +43,8 @@ gate: **merging is the only way any of its output becomes real.**
   previous one is this run's state — it lists what's live)
 - Decisions: `docs/DECISION_LOG.md` (read-only for the operator; verdicts Batu
   ratifies land there via the merged PR or a follow-up Batu edit)
+- Cockpit state: `docs/launch/gtm-state.json` (Batu's single view of the launch;
+  this run updates it — see step 4.5) rendered by `node scripts/build-cockpit.mjs`
 
 ## The loop
 
@@ -133,10 +135,37 @@ below — the growth version of "every complaint becomes a test case." Propose
 ladder promotions only per §7's rule (3 clean cycles + reversible + inside kit
 rules), in the readout, never self-granted.
 
+### 4.5 Update the cockpit state
+
+`docs/launch/gtm-state.json` is Batu's single view of the launch, and it is only
+worth having if it can't drift from the readout. Update it in the **same commit**
+as the readout — same rule as a new source domain in `.claude/settings.json`.
+
+Write only what this cycle actually established:
+
+- `meta.asOf`, `meta.lastDataPull`, `meta.nextReadout`
+- `metrics[].value` / `.prior` / `.trend` / `.caveat` from this run's pull
+- `experiments[].actual` / `.readAt` / `.verdict` / `.implication` — the read you
+  computed in step 2, against the rule you copied verbatim, never a softened one
+- `gates[].actual` / `.readAt`
+- `channels[].sent` / `.firstSession` / `.reply` — the P4 send log
+- `milestones[].status` — done / live / next / blocked, and `.outcome` when one lands
+- add to `openDecisions[]` anything this readout hands Batu
+
+**Never** write a verdict Batu hasn't ratified: a computed read is `verdict:
+"not yet read"` or the rule's own word (`hold`, `continue`, `kill`), and a
+decision stays in `openDecisions` until it lands in `DECISION_LOG.md`. Leave a
+field `null` rather than guessing — the page renders `—` and that is honest.
+
+Then `node scripts/build-cockpit.mjs` and commit the regenerated
+`docs/launch/cockpit.html` alongside. Republishing the page is Batu's step (it
+publishes to an artifact URL, outside the PR gate).
+
 ### 5. Open the PR (the gate)
 
 1. `npm test` (sanity — this skill ships no code, but readouts ride the repo).
-2. Commit the readout (+ any channel-links rows + standing-instruction edits)
+2. Commit the readout (+ the cockpit state and regenerated page from 4.5 + any
+   channel-links rows + standing-instruction edits)
    and open a PR titled `growth: readout YYYY-MM-DD` whose body is the readout
    itself. **Stop there.** Merging = Batu's review; closing discards the cycle.
 
