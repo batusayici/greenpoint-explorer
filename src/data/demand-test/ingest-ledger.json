@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-14T09:30:00-04:00",
+  "lastRunAt": "2026-08-15T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1312,6 +1312,12 @@
       "kind": "ruling",
       "processedAt": "2026-08-14",
       "outcome": "Batu's class ruling: a different TIME is not a different card, a different BILL is. The club's 8pm and 10pm showcases fold into one card per night naming both sittings; comedy-cartoon-strips-0827 stays separate from the Thursday showcase because it is a different bill. No new cards were added - comedy-friday-showcase and comedy-saturday-showcase absorbed the late sittings (quotes extended to the 10pm listing lines, verbatim). Fixed in passing: the Saturday card billed the late show as the 'Secret Showcase', a name that appears ZERO times in the source, which calls it 'The Late Saturday Showcase'. The ruling also forced a live visibility fix - occurrenceEndMinutes retires a card 60 min after start when endsAt is the 23:59 unsourced-end sentinel, so grouped cards on that sentinel vanished before their own content: library-friday-garden-0814 was invisible from 11:30am while advertising 3pm programming, and comedy-friday-showcase died at 9pm advertising a 10pm show. Both moved to sourced end clocks (16:00 from 'Garden Educator will be on site from 3-4pm on Fridays'; 18:00 from Sunset Storytime's own start field). Only 2 of 10 library day-cards were on the sentinel; the other 8 already carried real end times, so this corrected stragglers against an existing pattern."
+    },
+    {
+      "id": "RUN-DAILY-2026-08-15",
+      "kind": "run",
+      "processedAt": "2026-08-15",
+      "outcome": "Daily thin (Track V). Fetch exit 0, reach 53/60 (12% error, ceiling 15%); 23 changed, 30 unchanged, 7 error, 10 skipped monthly. All 7 errors are the known browser-connect-reset outage (greenpoint-comedy-club, word-bookstore, leaves-bookstore, greenpoint-trash-club, sunshine-laundromat, brooklyn-youth-ballet, happy-medium) — plain fetch reaches the control URL through the same proxy, so this is the chromium-CONNECT relay defect, not an allowlist gap. No EGRESS DENIED block. Expiry deleted 8 passed events (160 → 152). Added 8 cards, held 1, edited 1 grouped day-card and re-quoted the-lot-radio. Ten of the 23 'changed' sources were +0/-N shrinkage caused by failed detail fetches dropping their [DETAIL] blocks (yaro-studios, carcosa-club, hana-makgeolli-events, kettl-tea, selformer, clay-space-membership, golden-drum, and cibone-ote/brooklyn-craft-company/macha-studio for ordinary roll-off) — the 2026-08-13 shape; promotion is non-destructive so the blocks carry forward, verified with ingest:quotes --all after --mark-ingested. Gmail pass ran (connector authenticated). Two findings. (1) BCC's 2026-08-14 newsletter states venue PER SESSION and every in-window session is Lower Manhattan — nothing to card, seven September sessions recorded in watchItems, newsletter persisted into the snapshot. (2) Tend Greenpoint's 8/14 plant sale (20% off through 8/21) is still blocked on tendgreenpoint.com egress — already a watchItem, condition unmet, not re-authored. HELD 1: nbcb-canoe-newtown-creek-0822 — fully sourced and in area, but ingest:quotes cannot reach its evidence. greenpoint-library declares citeHost bklynlibrary.org and sits earlier in the roster than bpl-north-brooklyn-calendar (host www.bklynlibrary.org), so it claims the shared host key and the community calendar is never registered in the verifier host map — that source is structurally unverifiable for EVERY card. Roster fix + card on branch ingest/daily-2026-08-15. ALSO FIXED: the-lot-radio quoted two of 8/14 rotating DJ slots, which roll off daily by design; requoted to the two standing venue facts it actually rests on, no claim changed. And library-friday-programs-0828 was narrowed to library-sensory-garden-0828 — the library API snapshot carries no 8/28 Garden Hours record, so the 3-4pm half was dropped rather than quoted from a snapshot the verifier cannot read. ingest:quotes --all after promotion: verified=109 mismatch=2 unverifiable=7. Both mismatches are ordinary evidence decay, not promotion damage — film-noir-watch-me-0813 quotes two startDate lines whose screenings have passed off the feed, and comedy-dani-castaneda-0816 sits behind the browser outage. 45 persisted blocks carried forward. holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. watchItems: 31 blocked, unchanged."
     }
   ],
   "senderRegistry": [
@@ -1712,17 +1718,27 @@
       "name": "Tend Greenpoint — 20% off all plants (through 8/21) and 20% off already-reduced stock (through 9/7)",
       "note": "HELD 2026-08-14, source-blocked on the ADDRESS, and the blocked host is `tendgreenpoint.com` (R1 rule: name it — the EGRESS DENIED block covers roster hosts only and Tend is not a roster source, so it can never appear there). Two fully-stated offers arrived from a sender already in the registry (messages+d4sh8s6s9jcvd@squaremktg.com, publisher \"Tend Greenpoint\"). Verbatim, 8/14 email: \"20% OFF All Plants!\" / \"Through Friday, August 21, 2026, our collections of Indoor Tropicals, Cacti &amp; Succulents, Garden Perennials, Annuals and Trees &amp; Shrubs are 20% OFF*.\" and, from the 8/13 email: \"For a limited time, save 20% off already reduced merchandise!*\" / \"Valid through September 7, 2026.\" Both are marked \"*Valid In-store and Online.\" NEITHER EMAIL STATES A STREET ADDRESS, and the card cannot be authored without one — no address means no geocode and no Greenpoint bbox check, so there is nothing schema-valid to put in a review PR. R1 was attempted and refused: WebFetch of https://tendgreenpoint.com/ returned EGRESS_BLOCKED for tendgreenpoint.com. WHAT RESOLVES IT: allowlist tendgreenpoint.com for the routine at claude.ai/code (and then it is worth a roster entry — the shop mails offers regularly and has no snapshot anywhere), or Batu supplies the address, or an interactive session reads it, where egress is unrestricted. Also unstated and NOT to be invented: the email says \"Our shop hours will be abbreviated through Labor Day\" without giving the hours.",
       "addedAt": "2026-08-14"
+    },
+    {
+      "name": "Brooklyn Craft Company — September Greenpoint sessions (from the 2026-08-14 newsletter)",
+      "note": "EMAIL IS ONE-SHOT, so these are recorded here or lost. Newsletter 'September Workshops are Open for Registration!' (info@brooklyncraftcompany.com, 2026-08-14, gmail:1a001e41613c3ca6), persisted verbatim into .ingest-cache/brooklyn-craft-company.txt as a [NEWSLETTER PERSISTED 2026-08-15] block. VENUE IS STATED PER SESSION this time, as 'In the BCC Shop' / 'In the BCC Annex' / 'In Lower Manhattan' — and the footer defines the Brooklyn store as '165 Greenpoint Avenue', so BCC Shop sessions are pinnable. ⚠ 'BCC Annex' IS NOT DEFINED ANYWHERE IN THE EMAIL — do not pin an Annex session at 165 Greenpoint Ave on this newsletter alone; that address is inferred, not stated. WHAT RESOLVES IT: the newsletter (or the product page) naming the Annex's street address. Card each BCC Shop session as its date enters the 14-day window: 'Beginner Patchwork / Sat, 9/6 at 12pm / In the BCC Shop'; 'Macrame Plant Hanger / Sun, 9/13 at 11am / In the BCC Shop'; 'Knitting 104: Sock Knitting / Tues, 9/15 at 6:30pm / In the BCC Shop'; 'Knitting 102: Billie Bandana / Wed, 9/23 at 6:30pm / In the BCC Shop'. HELD ON ANNEX ADDRESS: 'Intro to Garment Sewing - Free Range Slacks (Weeknights, 3 parts) / Starts Mon, 9/14 at 6:30pm / In the BCC Annex'; '5-Week Sewing Course: Ilford Jacket / Thurs, 9/17 at 6:30pm / In the BCC Annex'; 'Sew a Jumpsuit (4 Parts) / Sun, 9/13 at 11am / In the BCC Annex'. All six in-window sessions in this newsletter (Sewing 101 Tote Bag 8/15 + 8/20, Beginner Quilting from 8/19, Bookbinding 101 8/16, Crochet 102 8/18, Flat Felting 8/24, Floral Embroidery 8/23) are marked 'In Lower Manhattan' — 225 Broadway, out of area, correctly not carded.",
+      "addedAt": "2026-08-15"
+    },
+    {
+      "name": "The Lot Radio — a card here must quote STANDING facts, never a day's DJ slots",
+      "note": "SOURCE FACT found 2026-08-15 by the quotes gate. the-lot-radio shipped quoting two of 2026-08-14's rotating slots (\"Worl Dance with Stamma and Ras I\", \"Tonal Fiction with Ken Meier\"). The roster note already says only TODAY's slots expand and later days are bare date headings — so any slot name in a sourceQuote is unverifiable within 24 hours, through no change in the card. Requoted to \"EVERYDAY from 10AM to MIDNIGHT\" and \"17 Nassau Ave, Brooklyn, NY 11222\", the two lines the card's kicker and summary actually rest on; neither names a DJ, so no claim changed. DO NOT re-add slot names to this card's quote.",
+      "addedAt": "2026-08-15"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-07-25",
-    "greenpointers": "2026-08-11",
+    "greenpointers": "2026-08-14",
     "greenpoint-comedy-club": "2026-08-13",
-    "film-noir-cinema": "2026-08-13",
+    "film-noir-cinema": "2026-08-14",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-11",
-    "greenpoint-library": "2026-08-13",
-    "bpl-north-brooklyn-calendar": "2026-08-13",
+    "greenpoint-library": "2026-08-14",
+    "bpl-north-brooklyn-calendar": "2026-08-14",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-07",
@@ -1741,9 +1757,9 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-13",
     "nycparks-greenpoint": "2026-08-12",
-    "troost": "2026-08-12",
+    "troost": "2026-08-14",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-08-13",
+    "good-room": "2026-08-14",
     "town-square-bk": "2026-08-06",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -1940,6 +1956,20 @@
       "reason": "Added to the roster 2026-08-13 alongside golden-drum and EGRESS-DENIED on its first fetch, so it has never had a snapshot. The 2026-08-14 fetch report names the cause exactly: \"the proxy refused the tunnel to www.thelotradio.com (answered 403 to CONNECT), so no HTTP response ever existed — an egress-policy denial.\" Same born-blocked shape as golden-drum and the six 2026-08-08 SSG sources: a host that is not on the routine's egress allowlist works interactively and is dead in the cloud. NOT a site bot-wall (those return a status) and NOT the browser path (this source is plain fetch — it never reaches Chromium). Resolution is one allowlist entry for www.thelotradio.com at claude.ai/code; until then the locally-owned gate cannot even be applied, because the page has never been read. Never routed around.",
       "addedAt": "2026-08-14",
       "expiresAt": "2026-08-28"
+    },
+    {
+      "sourceId": "brooklyn-craft-company",
+      "gapKey": "GAP",
+      "reason": "Both flagged dates are LOWER MANHATTAN pop-up sessions, out of area — not uncarded Greenpoint supply. Evidence is the 2026-08-14 newsletter, persisted verbatim into the snapshot this run as a [NEWSLETTER PERSISTED 2026-08-15] block, and it states the venue per session for the first time in a while: 'Floral Embroidery / Sun. 8/23 at 2:30pm / In Lower Manhattan' and 'Flat Felting: Pizza Slice / Mon, 8/24 at 6:30pm / In Lower Manhattan'. The footer defines that pop-up as '225 Broadway, located near the the Fulton St. station', against the Brooklyn store's '165 Greenpoint Avenue'. EVERY in-window session in this newsletter is Lower Manhattan; the seven Greenpoint/Annex sessions it lists are all September, past the 14-day horizon, and are recorded in watchItems per the email-is-one-shot rule.",
+      "addedAt": "2026-08-15",
+      "expiresAt": "2026-08-25"
+    },
+    {
+      "sourceId": "archestratus",
+      "gapKey": "SILENT",
+      "reason": "The shop CLOSED — this is a permanent state, not a quiet source, and the snapshot says so in its own banner: 'OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE'. That closure is already the deck's card for this source (archestratus-closed). What remains on the events page is online-only and therefore unmappable: 'SUN AUG 30 via ZOOM / A Cooking Class on Arancine' and 'SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)' — a Zoom session has no Greenpoint location to pin. The one physical item is the wind-down sale, 'PAIGE IS MOVING! A SALE', with no dates stated anywhere in the 2KB snapshot. So the source yielding nothing since 2026-07-24 is the correct outcome, and the pulse will stay silent by design. WHAT WOULD CHANGE IT: a dated in-person event, or the sale acquiring an end date.",
+      "addedAt": "2026-08-15",
+      "expiresAt": "2026-08-29"
     }
   ]
 }

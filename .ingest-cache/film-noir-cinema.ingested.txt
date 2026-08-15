@@ -1,17 +1,22 @@
 title: WATCH ME
-startDate: 2026-08-14T23:00:00.187Z
-endDate: 2026-08-15T00:00:00.187Z
-fullUrl: /program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7
-
-title: ARREBATO
-startDate: 2026-08-15T01:00:00.000Z
-endDate: 2026-08-15T02:00:00.000Z
-fullUrl: /program/2026/8/8/arrebato
-
-title: WATCH ME
 startDate: 2026-08-15T23:00:00.405Z
 endDate: 2026-08-16T00:00:00.405Z
 fullUrl: /program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7-5rkp8
+
+title: DENCHU-KOZO
+startDate: 2026-08-16T21:00:00.771Z
+endDate: 2026-08-16T22:00:00.771Z
+fullUrl: /program/2026/4/8/denchu-kozo
+
+title: CULT CINEMA
+startDate: 2026-08-20T01:00:00.241Z
+endDate: 2026-08-20T02:00:00.241Z
+fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+
+title: FILM CLUB
+startDate: 2026-08-21T01:00:00.532Z
+endDate: 2026-08-21T02:00:00.532Z
+fullUrl: /program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
 
 title: WATCH ME
 startDate: 2026-08-21T23:00:00.385Z
@@ -28,6 +33,11 @@ startDate: 2026-08-24T23:00:00.000Z
 endDate: 2026-08-25T00:00:00.000Z
 fullUrl: /program/2026/8/24/phedre
 
+title: FILM NOIR MONDAY
+startDate: 2026-08-25T01:00:00.000Z
+endDate: 2026-08-25T02:00:00.000Z
+fullUrl: /program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
+
 title: TERROR TERROIR
 startDate: 2026-09-04T23:00:00.202Z
 endDate: 2026-09-05T00:00:00.202Z
@@ -42,6 +52,105 @@ title: SECRETS OF THE DEAD
 startDate: 2026-11-02T00:00:00.000Z
 endDate: 2026-11-02T01:00:00.000Z
 fullUrl: /program/2026/11/1/secrets-of-the-dead
+
+## [DETAIL] https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
+FILM NOIR MONDAY — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+FILM NOIR MONDAY
+Monday, August 24, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
+In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
+Earlier Event: August 24
+PHEDRE
+Later Event: September 4
+TERROR TERROIR
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+CULT CINEMA — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+CULT CINEMA
+Wednesday, August 19, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
+Earlier Event: August 16
+DENCHU-KOZO
+Later Event: August 20
+FILM CLUB
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
+FILM CLUB — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+FILM CLUB
+Thursday, August 20, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
+The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
+Pure cinematheque fun.
+Earlier Event: August 19
+CULT CINEMA
+Later Event: August 21
+WATCH ME
+Back To Top
+Cart ( 0 )
 
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/10/24/clownspiracy
 CLOWNSPIRACY — Film Noir Cinema
@@ -107,6 +216,39 @@ CLOWNSPIRACY
 Back To Top
 Cart ( 0 )
 
+## [DETAIL] https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo
+DENCHU-KOZO — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+DENCHU-KOZO
+Sunday, August 16, 2026
+5:00 PM
+6:00 PM
+17:00
+18:00
+Google Calendar
+ICS
+JP. 1987
+Hikari is a boy who is bullied and teased by the other boys at school because he has the odd distinction of having an electricity pole growing out of his back. However, one of his classmates, a girl named Momo, comes to his rescue.
+Earlier Event: August 15
+WATCH ME
+Later Event: August 19
+CULT CINEMA
+Back To Top
+Cart ( 0 )
+
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/8/24/phedre
 PHEDRE — Film Noir Cinema
 Home
@@ -135,49 +277,8 @@ Brooklyn Telemann Chamber Society is proud to premiere Phèdre, a cinematic inte
 Ticket link : https://www.lizkiger.com/btcs-phedre
 Earlier Event: August 22
 WATCH ME
-Later Event: September 4
-TERROR TERROIR
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7
-WATCH ME — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-WATCH ME
-Friday, August 14, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-CR. 2026
-Director: Ivan Malekin
-Runtime: 94min
-Language: English
-Cast: Anastasia Kor, Nicolas Hackenberg, Andrea Véguez, Antoine Topin, Ivona Tomiek
-Isla is an international student barely holding her life together.
-Overworked, directionless, and drowning financially, she reluctantly enters the world of webcam modelling after encouragement from her reckless, extroverted best friend Fay.
-What begins as survival soon becomes transformation.
-Trailer: https://youtu.be/Ih-G1XukOeE
-Tickets: https://www.eventbrite.de/e/watch-me-us-premiere-screening-filmmaker-qa-tickets-1989552119948
-Earlier Event: August 13
-FILM CLUB
-Later Event: August 14
-ARREBATO
+Later Event: August 24
+FILM NOIR MONDAY
 Back To Top
 Cart ( 0 )
 
@@ -217,8 +318,8 @@ Trailer: https://youtu.be/Ih-G1XukOeE
 Tickets: https://www.eventbrite.de/e/watch-me-us-premiere-screening-filmmaker-qa-tickets-1989552119948
 Earlier Event: August 14
 ARREBATO
-Later Event: August 21
-WATCH ME
+Later Event: August 16
+DENCHU-KOZO
 Back To Top
 Cart ( 0 )
 
@@ -256,8 +357,8 @@ Overworked, directionless, and drowning financially, she reluctantly enters the 
 What begins as survival soon becomes transformation.
 Trailer: https://youtu.be/Ih-G1XukOeE
 Tickets: https://www.eventbrite.de/e/watch-me-us-premiere-screening-filmmaker-qa-tickets-1989552119948
-Earlier Event: August 15
-WATCH ME
+Earlier Event: August 20
+FILM CLUB
 Later Event: August 22
 WATCH ME
 Back To Top
@@ -301,6 +402,47 @@ Earlier Event: August 21
 WATCH ME
 Later Event: August 24
 PHEDRE
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7
+WATCH ME — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+WATCH ME
+Friday, August 14, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+CR. 2026
+Director: Ivan Malekin
+Runtime: 94min
+Language: English
+Cast: Anastasia Kor, Nicolas Hackenberg, Andrea Véguez, Antoine Topin, Ivona Tomiek
+Isla is an international student barely holding her life together.
+Overworked, directionless, and drowning financially, she reluctantly enters the world of webcam modelling after encouragement from her reckless, extroverted best friend Fay.
+What begins as survival soon becomes transformation.
+Trailer: https://youtu.be/Ih-G1XukOeE
+Tickets: https://www.eventbrite.de/e/watch-me-us-premiere-screening-filmmaker-qa-tickets-1989552119948
+Earlier Event: August 13
+FILM CLUB
+Later Event: August 14
+ARREBATO
 Back To Top
 Cart ( 0 )
 
@@ -367,104 +509,7 @@ Later Event: October 24
 CLOWNSPIRACY
 Back To Top
 Cart ( 0 )
-## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
-FILM CLUB — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-FILM CLUB
-Thursday, August 13, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
-The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
-Pure cinematheque fun.
-Earlier Event: August 13
-WATCH ME
-Later Event: August 14
-WATCH ME
-Back To Top
-Cart ( 0 )
-## [DETAIL] https://www.filmnoircinema.com/program/2026/10/24/clownspiracy
-CLOWNSPIRACY — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-CLOWNSPIRACY
-Saturday, October 24, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-US. 2026
-A small town high school misfit investigates the appearance of creepy clowns before an upcoming election, discovering the clowns are more than they appear.
-Tickets: https://www.eventbrite.com/e/clownspiracy-tickets-1990612090348?aff=oddtdtcreator
-Earlier Event: August 24
-PHEDRE
-Later Event: November 1
-SECRETS OF THE DEAD
-Back To Top
-Cart ( 0 )
-## [DETAIL] https://www.filmnoircinema.com/program/2026/8/24/phedre
-PHEDRE — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-PHEDRE
-Monday, August 24, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Brooklyn Telemann Chamber Society is proud to premiere Phèdre, a cinematic interpretation of Rameau’s first opera Hippolyte et Aricie. Filmed on beaches, castles, & Victorian abodes, we tell the tragic Greek myth of Phèdre, cursed to love her stepson, who has already fallen for a priestess of Goddess Athena. Sung in French with English subtitles.
-Ticket link : https://www.lizkiger.com/btcs-phedre
-Earlier Event: August 22
-WATCH ME
-Later Event: October 24
-CLOWNSPIRACY
-Back To Top
-Cart ( 0 )
+
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38
 WATCH ME — Film Noir Cinema
 Home
@@ -505,6 +550,7 @@ Later Event: August 13
 FILM CLUB
 Back To Top
 Cart ( 0 )
+
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7
 WATCH ME — Film Noir Cinema
 Home
@@ -542,46 +588,6 @@ Tickets: https://www.eventbrite.de/e/watch-me-us-premiere-screening-filmmaker-qa
 Earlier Event: August 13
 FILM CLUB
 Later Event: August 15
-WATCH ME
-Back To Top
-Cart ( 0 )
-## [DETAIL] https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7-5rkp8
-WATCH ME — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-WATCH ME
-Saturday, August 15, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-CR. 2026
-Director: Ivan Malekin
-Runtime: 94min
-Language: English
-Cast: Anastasia Kor, Nicolas Hackenberg, Andrea Véguez, Antoine Topin, Ivona Tomiek
-Isla is an international student barely holding her life together.
-Overworked, directionless, and drowning financially, she reluctantly enters the world of webcam modelling after encouragement from her reckless, extroverted best friend Fay.
-What begins as survival soon becomes transformation.
-Trailer: https://youtu.be/Ih-G1XukOeE
-Tickets: https://www.eventbrite.de/e/watch-me-us-premiere-screening-filmmaker-qa-tickets-1989552119948
-Earlier Event: August 14
-WATCH ME
-Later Event: August 21
 WATCH ME
 Back To Top
 Cart ( 0 )

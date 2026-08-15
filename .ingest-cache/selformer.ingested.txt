@@ -266,11 +266,13 @@ Greenpoint
 Williamsburg
 grand@selformer.com
 bottom of page
+
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 # Captured by the new roster `detail` mechanism and merged here so the
 # sourceQuote gate can re-check these cards. Merged rather than promoted via
 # --mark-ingested on purpose: marking would flag unreviewed content as already
 # processed and hide real supply from the next run.
+
 ## [DETAIL] https://www.selformer.com/plans-pricing
 Skip to Main Content
 Home

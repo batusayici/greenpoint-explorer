@@ -463,13 +463,35 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // check could not surface on its own: Isa Medina (8/22 6pm) sits on a date
   // the Saturday showcase already covers, so it never flagged at all.
   // 158 + 2 = 160.
+  // 2026-08-15 daily refresh: expiry deleted 8 fully-past events (the library's
+  // 8/14 garden day-card, SummerStarz Project Hail Mary, WORD's open mic,
+  // Troost 8/14, Good Room 8/14, the Moon Bunny 4-7 camp, Film Noir's ARREBATO
+  // and the 8/14 Longevity Stick), then 9 adds. 160 - 8 + 9 = 161. Four of the
+  // nine are Film Noir Cinema — DENCHU-KOZO (8/16), CULT CINEMA (8/19), FILM
+  // CLUB (8/20) and FILM NOIR MONDAY (8/24) — all dated off the ISO startDate,
+  // never the fullUrl slug, which for three of them points at a reused 2019/2020
+  // programme page. FILM NOIR MONDAY sits on the same night as PHEDRE and is a
+  // separate card because it is a different BILL, not a later sitting: the
+  // cinema's own detail page lists "Earlier Event: August 24 / PHEDRE" beside
+  // it. The other five: Troost 8/29 and Good Room 8/29 (both the far end of the
+  // 14-day window), the library's 8/28 Sensory Garden Hour, and the Matches
+  // signage story. 160 - 8 + 8 = 160.
+  // A NINTH card was authored and HELD, not dropped: NBCB's free 8/22 canoe
+  // paddles. Its whole evidence base is the BPL North Brooklyn community
+  // calendar, and `ingest:quotes` cannot reach that snapshot — greenpoint-library
+  // declares `citeHost: bklynlibrary.org` and sits earlier in the roster, so it
+  // claims the shared host key and bpl-north-brooklyn-calendar is never
+  // registered in the verifier's host map. The card is real and sourced; the
+  // roster is the defect. It rides the review branch with the citeHost fix.
+  // Also 2026-08-15: the 8/27 library day-card gained Teen Tech Time and Sunset
+  // Storytime, so its end clock moved 16:00 → 18:30 — an edit, not an add.
   assert.equal(seed.cards.length, 160);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 24, "23 + the Star Deli viral-boost story");
-  assert.equal(count((c) => c.category === "event"), 90, "88 + the two uncarded Greenpoint Comedy Club one-offs (2026-08-14 coverage close)");
+  assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
+  assert.equal(count((c) => c.category === "event"), 89, "90 - 8 expired + 7 added; the 8th add (NBCB canoe) is held, not shipped (2026-08-15)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
-  assert.equal(count((c) => c.category === "news"), 14, "13 + the Star Deli viral-boost story");
+  assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 after expiry + Good Room's 8/28 Magnetic bill");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
@@ -579,7 +601,8 @@ test("news cards name their publisher and sit in the news layer", () => {
   // 2026-07-27: +3 civic-issue cards (Monitor Point approval, McGuinness
   // redesign construction, Meeker Plume monitoring) — coverage-gap fix.
   // 2026-08-12: +1 — the Star Deli viral-boost story (Greenpointers 8/11).
-  assert.equal(news.length, 14);
+  // 2026-08-15: +1 — Matches signage at the old Enid's space (Greenpointers 8/14).
+  assert.equal(news.length, 15);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -638,7 +661,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Green detail page states the free-ness once for the whole series — "Join
     // us on select Friday evenings as we flow in our free Longevity Stick
     // Classes" — and each card quotes that line, so it covers all three.
-    "longevity-stick-transmitter-0814",
+    // (longevity-stick-transmitter-0814 expired out 2026-08-15)
     "longevity-stick-transmitter-0828",
     "longevity-stick-transmitter-thursdays",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
@@ -651,6 +674,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-guardians-0819",
+    // (nbcb-canoe-newtown-creek-0822 authored 2026-08-15 and HELD — the
+    // verifier cannot reach its source's snapshot; see the deck-count comment.)
     // 2026-08-12 roundup, both stated on their own line: "Free, RSVP here." for
     // the Neptune Room market and "Free, no RSVP needed." for the garden reading.
     "neptune-artists-makers-market-0816",
@@ -664,7 +689,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-06: the 8/7 Ford v Ferrari card was DELETED, not rolled forward —
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
-    "summerstarz-project-hail-mary-0814", // "Free SummerStarz Movies" on townsquarebk.org
+    // (summerstarz-project-hail-mary-0814 expired out 2026-08-15)
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
     "summerstarz-zootopia-0821",
     // 2026-08-12 roundup: "Free, RSVP here." on the flea market line, and the
@@ -756,7 +781,7 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // names, and free. Three cards because the series' schedule is irregular:
     // Thursday mornings recur weekly, the Friday evenings are 8/14 and 8/28
     // only, and a recurring Friday card would have invented an 8/21 sitting.
-    "longevity-stick-transmitter-0814",
+    // (longevity-stick-transmitter-0814 expired out 2026-08-15)
     "longevity-stick-transmitter-0828",
     "longevity-stick-transmitter-thursdays",
     "moon-bunny-monthly-plans",

@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-14",
+  "version": "2026-08-15",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -905,11 +905,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-14",
+      "updatedAt": "2026-08-15",
       "address": "17 Nassau Ave, Brooklyn, NY 11222",
       "lat": 40.722798,
       "lng": -73.954054,
-      "sourceQuote": "EVERYDAY from 10AM to MIDNIGHT\n17 Nassau Ave, Brooklyn, NY 11222\n\nWorl Dance with Stamma and Ras I\nReggae, Amapiano, Afrobeats, Highlife, Dancehall\n\nTonal Fiction with Ken Meier\nTechno, House"
+      "sourceQuote": "EVERYDAY from 10AM to MIDNIGHT\n17 Nassau Ave, Brooklyn, NY 11222"
     },
     {
       "id": "greenpoint-comedy-club",
@@ -1004,13 +1004,16 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-14",
+      "updatedAt": "2026-08-15",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-watch-me-0813",
         "film-noir-watch-me-0821",
-        "film-noir-arrebato-0814"
+        "film-noir-denchu-kozo-0816",
+        "film-noir-cult-cinema-0819",
+        "film-noir-film-club-0820",
+        "film-noir-monday-0824"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1308,12 +1311,13 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-14",
+      "updatedAt": "2026-08-15",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
         "library-saturday-storytime-0822",
-        "sips-scholars-parkhouse-0825"
+        "sips-scholars-parkhouse-0825",
+        "library-sensory-garden-0828"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -2363,7 +2367,6 @@
       "relatedCardIds": [
         "community-yoga-transmitter-tuesdays",
         "longevity-stick-transmitter-thursdays",
-        "longevity-stick-transmitter-0814",
         "longevity-stick-transmitter-0828"
       ],
       "sourceQuote": "City Council Member Lincoln Restler, State Senator Kristen Gonzalez, and State Assemblymember Emily Gallagher asked the NYC Parks Department to reconsider the controversial proposal, which sparked widespread backlash when Greenpointers first revealed the plans in July."
@@ -2663,48 +2666,6 @@
       ],
       "lat": 40.733463,
       "lng": -73.955035
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-14",
-      "id": "library-friday-garden-0814",
-      "title": "Friday in the library rooftop garden",
-      "kicker": "Sensory hour, garden educator, movie",
-      "summary": "Ages 0–5 start at 10:30 on the third-floor rooftop; from 3pm a specialist is on site there, and Paddington (PG, 95 min) runs in Eco Lab 1.",
-      "startsAt": "2026-08-14T10:30:00-04:00",
-      "endsAt": "2026-08-14T16:00:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: Friday Kids' Movie\nts_body: Join us on Friday afternoon for a kid-friendly movie! This week's movie will be: \"Paddington\" (2015 ) Rated PG, 95 minutes -\nts_body: Garden Educator will be on site from 3-4pm on Fridays, weather permitting.",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.72606,
-      "lng": -73.950709
     },
     {
       "category": "event",
@@ -3064,54 +3025,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-07",
-      "id": "summerstarz-project-hail-mary-0814",
-      "title": "SummerStarz: Project Hail Mary",
-      "kicker": "Free waterfront movie night",
-      "summary": "The free Friday series continues on the waterfront lawn. Bring a blanket and a picnic; tickets are free but requested in advance.",
-      "startsAt": "2026-08-14T20:00:00-04:00",
-      "endsAt": "2026-08-14T23:59:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "WNYC Transmitter Park",
-      "address": "1 Greenpoint Ave",
-      "sourceQuote": "Fridays, J uly 24th to August 21st, 8 PM\nTransmitter Park, B K | 1 Gre e npoint Ave.\nFri. 8/14 - Project Hail Mary",
-      "actions": [
-        {
-          "label": "Get free tickets",
-          "type": "learn_more",
-          "url": "https://www.townsquarebk.org"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Town Square BK",
-          "url": "https://www.townsquarebk.org",
-          "publisher": "Town Square BK",
-          "date": "2026-08-06"
-        },
-        {
-          "title": "NYC Parks — Transmitter Park events",
-          "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
-          "publisher": "NYC Parks",
-          "date": "2026-08-07"
-        }
-      ],
-      "lat": 40.729537,
-      "lng": -73.960287
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": true,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
       "updatedAt": "2026-08-06",
       "id": "mcgolrick-movies-guardians-0819",
       "title": "Movies Under the Stars: Guardians of the Galaxy",
@@ -3142,49 +3055,6 @@
       ],
       "lat": 40.724458,
       "lng": -73.943361
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "WORD Bookstore",
-      "address": "126 Franklin St, Brooklyn, NY 11222",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "learn_more",
-          "url": "https://withfriends.co/word/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "WORD upcoming events",
-          "url": "https://withfriends.co/word/events",
-          "publisher": "WORD Bookstore",
-          "date": "2026-08-07"
-        }
-      ],
-      "id": "word-open-mic-0814",
-      "title": "What's The Word Open Mic",
-      "kicker": "Open mic night, sign up to read",
-      "startsAt": "2026-08-14T19:30:00-04:00",
-      "endsAt": "2026-08-14T23:59:00-04:00",
-      "summary": "The bookshop's recurring open mic. Held downstairs, reached by a flight of stairs; RSVP through the shop's events page.",
-      "sourceQuote": "Friday, August 14 at 7:30 PM\nWhat's The Word Open Mic in Brooklyn\nBrooklyn, NY",
-      "lat": 40.729072,
-      "lng": -73.957317
     },
     {
       "category": "event",
@@ -3274,48 +3144,6 @@
       ],
       "lat": 40.730461,
       "lng": -73.953114
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "id": "troost-timothy-okeefe-0814",
-      "title": "DJ Timothy O'Keefe at Troost",
-      "kicker": "Friday night DJ set",
-      "summary": "A Friday set at the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-14T00:00:00-04:00",
-      "endsAt": "2026-08-14T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: DJ TIMOTHY O'KEEFE\nstart.date: 2026-08-14",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
     },
     {
       "category": "event",
@@ -3911,49 +3739,6 @@
           "date": "2026-08-07"
         }
       ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "id": "good-room-prove-it-all-night-0814",
-      "title": "Prove It All Night at Good Room",
-      "kicker": "Andrew VanWyngarden of MGMT",
-      "summary": "A Springsteen-themed night with Andrew VanWyngarden of MGMT and Arianna Danae.",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-08-14T19:00:00-04:00",
-      "endsAt": "2026-08-14T23:59:00-04:00",
-      "sourceQuote": "Aug 14\nProve It All Night (Andrew VanWyngarden of MGMT), Arianna Danae b2b Se",
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room via DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-07"
-        }
-      ],
-      "lat": 40.726909,
-      "lng": -73.95281
     },
     {
       "category": "event",
@@ -4879,7 +4664,6 @@
       ],
       "sourceQuote": "4 classes a month - $87.00 per month (13% off)\n4 classes a month - $104.00 per month (13% off)\n4 classes a month - $139.00 per month (13% off)\nFree trial class",
       "relatedCardIds": [
-        "moon-bunny-two-day-camp-4-7-0813",
         "moon-bunny-weekday-camp-8-12-0817",
         "moon-bunny-two-day-camp-8-12-0824",
         "moon-bunny-two-day-camp-4-7-0827"
@@ -5606,14 +5390,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-15",
       "filters": [
         "arts_culture"
       ],
       "locationName": "Film Noir Cinema",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "film-noir-cinema"
+        "film-noir-cinema",
+        "film-noir-monday-0824"
       ],
       "lat": 40.727314,
       "lng": -73.951608,
@@ -5955,53 +5740,6 @@
         }
       ],
       "sourceQuote": "summary: LUMENS\ndescription: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone\nstart.date: 2026-08-25"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-11",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
-      "free": false,
-      "relatedCardIds": [
-        "moon-bunny-monthly-plans"
-      ],
-      "actions": [
-        {
-          "label": "Camp details",
-          "type": "learn_more",
-          "url": "https://moonbunnyaerial.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial events",
-          "url": "https://moonbunnyaerial.com",
-          "publisher": "Moon Bunny Aerial",
-          "date": "2026-08-11"
-        }
-      ],
-      "id": "moon-bunny-two-day-camp-4-7-0813",
-      "title": "Two-Day Circus Camp for 4–7s at Moon Bunny Aerial",
-      "kicker": "Lyra, silks, hammock and trapeze",
-      "summary": "A shorter camp for the youngest flyers: aerial apparatus work plus ground acro, juggling and flow props, run across two consecutive days.",
-      "startsAt": "2026-08-13T09:00:00-04:00",
-      "endsAt": "2026-08-14T15:00:00-04:00",
-      "sourceQuote": "name: Two Day Camp 4-7 yrs old\nstart_at: 2026-08-13T13:00:00.000Z\nend_at: 2026-08-13T19:00:00.000Z\n\nname: Two Day Camp 4-7 yrs old\nstart_at: 2026-08-14T13:00:00.000Z\nend_at: 2026-08-14T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
-      "lat": 40.736575,
-      "lng": -73.952327
     },
     {
       "category": "event",
@@ -7098,13 +6836,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-14",
-      "updatedAt": "2026-08-14",
+      "updatedAt": "2026-08-15",
       "id": "library-thursday-programs-0827",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Four programs, morning into afternoon",
-      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines from 1, and an English class for beginners from 2.",
+      "kicker": "Six programs, morning into evening",
+      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines from 1, an English class from 2, teen video games at 3, and an all-ages storytime at 6.",
       "startsAt": "2026-08-27T10:30:00-04:00",
-      "endsAt": "2026-08-27T16:00:00-04:00",
+      "endsAt": "2026-08-27T18:30:00-04:00",
       "filters": [
         "family_kids"
       ],
@@ -7112,7 +6850,7 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
       "lng": -73.950709,
-      "sourceQuote": "ts_title: Babies & Books\nds_event_start_date: 2026-08-27T14:30:00Z\nts_title: Babies & Books\nds_event_start_date: 2026-08-27T15:15:00Z\nts_title: Drop-In Sewing Machine Hours\nds_event_start_date: 2026-08-27T17:00:00Z\nts_title: Free English Class\nds_event_start_date: 2026-08-27T18:00:00Z",
+      "sourceQuote": "ts_title: Babies & Books\nds_event_start_date: 2026-08-27T14:30:00Z\nts_title: Babies & Books\nds_event_start_date: 2026-08-27T15:15:00Z\nts_title: Drop-In Sewing Machine Hours\nds_event_start_date: 2026-08-27T17:00:00Z\nts_title: Free English Class\nds_event_start_date: 2026-08-27T18:00:00Z\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-08-27T19:00:00Z\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-27T22:00:00Z",
       "actions": [
         {
           "label": "Branch calendar",
@@ -7125,51 +6863,6 @@
           "title": "Greenpoint Library",
           "url": "https://www.bklynlibrary.org/locations/greenpoint",
           "publisher": "Brooklyn Public Library",
-          "date": "2026-08-14"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-14",
-      "updatedAt": "2026-08-14",
-      "id": "film-noir-arrebato-0814",
-      "title": "Arrebato at Film Noir Cinema",
-      "kicker": "Spanish cult horror, one 9pm show",
-      "summary": "A low-budget filmmaker falls in with an eccentric trying to film his own consciousness. Programmed after the Watch Me screening the same evening.",
-      "startsAt": "2026-08-14T21:00:00-04:00",
-      "endsAt": "2026-08-14T22:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "sourceQuote": "title: ARREBATO\nstartDate: 2026-08-15T01:00:00.000Z\nendDate: 2026-08-15T02:00:00.000Z\nSP. 1979\nA low budget horror filmmaker gets in touch with an eccentric who is trying to film his consciousness during drug abuse.",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato",
-          "publisher": "Film Noir Cinema",
           "date": "2026-08-14"
         }
       ]
@@ -7307,52 +7000,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-14",
       "updatedAt": "2026-08-14",
-      "id": "longevity-stick-transmitter-0814",
-      "title": "Longevity Stick in Transmitter Park",
-      "kicker": "Free waterfront Tai Chi and yoga",
-      "summary": "One of the series' occasional evening sittings. The stick is handed out; bring a water bottle and a small towel. Registering helps them handle a rain delay.",
-      "startsAt": "2026-08-14T19:30:00-04:00",
-      "endsAt": "2026-08-14T20:30:00-04:00",
-      "sourceQuote": "Longevity Stick (Transmitter Park)\nFriday, August 14th at 7:30 PM - 8:30 PM\nJoin us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nRegistering helps us track participants in the event of a rain delay or reschedule."
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": true,
-      "filters": [
-        "wellness"
-      ],
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729855,
-      "lng": -73.960729,
-      "relatedCardIds": [
-        "transmitter-park-restaurant-marina"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Longevity Stick (Transmitter Park)",
-          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/",
-          "publisher": "Go Green Brooklyn",
-          "date": "2026-08-14"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-14",
-      "updatedAt": "2026-08-14",
       "id": "longevity-stick-transmitter-0828",
       "title": "Longevity Stick in Transmitter Park",
       "kicker": "Free waterfront Tai Chi and yoga",
@@ -7442,6 +7089,355 @@
           "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
           "publisher": "Greenpoint Comedy Club",
           "date": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "id": "matches-enids-space",
+      "category": "news",
+      "title": "Matches is close to opening in the old Enid's space",
+      "kicker": "New signage at the old Enid's space",
+      "summary": "It comes from the Greenpoint Fish & Lobster team, and the name nods to a neighbouring bar of yore — but they would not say when the doors open.",
+      "filters": [
+        "news"
+      ],
+      "locationName": "Matches (former Enid's)",
+      "address": "560 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "560 Manhattan Avenue, Brooklyn, NY 11222",
+      "sourceQuote": "A Redditor spotted new signage at 560 Manhattan Avenue, with a name that pays tribute to a neighboring bar of yore.\nMatches, from the Greenpoint Fish & Lobster team, looks like it’s getting closer to opening, but ironically, the team was unable to shed any light on the situation.",
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/14/matches-from-greenpoint-fish-lobster-team-looks-ready-to-open-in-former-enids-space/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Matches, from Greenpoint Fish & Lobster Team, Looks Ready to Open in Former Enid’s Space",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/08/14/matches-from-greenpoint-fish-lobster-team-looks-ready-to-open-in-former-enids-space/",
+          "date": "2026-08-14"
+        }
+      ],
+      "lat": 40.722342,
+      "lng": -73.9498
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "id": "troost-lupe-loop-mela-0829",
+      "category": "event",
+      "title": "DJs Lupe Loop and Mela at Troost",
+      "kicker": "Feel-good funk and vintage house",
+      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
+      "startsAt": "2026-08-29T00:00:00-04:00",
+      "endsAt": "2026-08-29T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "sourceQuote": "summary: DJs Lupe Loop and Mela\ndescription: feel good funk, international dance jams and vintage house\nstart.date: 2026-08-29",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-15"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "id": "good-room-1morning-0829",
+      "category": "event",
+      "title": "1morning and Very J at Good Room",
+      "kicker": "Two-act Saturday bill",
+      "summary": "The DoNYC listing names the two acts on the booth at the Meserole Avenue club and nothing else — no support, no ticket price.",
+      "startsAt": "2026-08-29T19:00:00-04:00",
+      "endsAt": "2026-08-29T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "sourceQuote": "Aug 29\n1morning, Very J",
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-08-15"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "filters": [
+        "arts_culture"
+      ],
+      "category": "event",
+      "id": "film-noir-denchu-kozo-0816",
+      "title": "Denchu-Kozo at Film Noir Cinema",
+      "kicker": "A 1987 Japanese cult oddity",
+      "summary": "Hikari is bullied at school for the electricity pole growing out of his back, until a classmate named Momo comes to his rescue.",
+      "startsAt": "2026-08-16T17:00:00-04:00",
+      "endsAt": "2026-08-16T18:00:00-04:00",
+      "sourceQuote": "DENCHU-KOZO\nSunday, August 16, 2026\n5:00 PM\n6:00 PM\nJP. 1987\nHikari is a boy who is bullied and teased by the other boys at school because he has the odd distinction of having an electricity pole growing out of his back. However, one of his classmates, a girl named Momo, comes to his rescue.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-15"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "filters": [
+        "arts_culture"
+      ],
+      "category": "event",
+      "id": "film-noir-cult-cinema-0819",
+      "title": "Cult Cinema at Film Noir Cinema",
+      "kicker": "No titles announced beforehand",
+      "summary": "The Meserole Avenue cinema bills it as a night of sheer cinematic madness dedicated to the most obscure films ever made.",
+      "startsAt": "2026-08-19T21:00:00-04:00",
+      "endsAt": "2026-08-19T22:00:00-04:00",
+      "sourceQuote": "CULT CINEMA\nWednesday, August 19, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-15"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "filters": [
+        "arts_culture"
+      ],
+      "category": "event",
+      "id": "film-noir-film-club-0820",
+      "title": "Film Club at Film Noir Cinema",
+      "kicker": "Only the picker knows the title",
+      "summary": "An evening with moving image, billed as pure cinematheque fun, with a different member of the club programming it each time.",
+      "startsAt": "2026-08-20T21:00:00-04:00",
+      "endsAt": "2026-08-20T22:00:00-04:00",
+      "sourceQuote": "FILM CLUB\nThursday, August 20, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.\nPure cinematheque fun.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-15"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema",
+        "film-noir-phedre-0824"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "filters": [
+        "arts_culture"
+      ],
+      "category": "event",
+      "id": "film-noir-monday-0824",
+      "title": "Film Noir Monday",
+      "kicker": "Titles kept in total darkness",
+      "summary": "The house series digs up lesser-known and very obscure noir, international titles included, and never says beforehand what is screening.",
+      "startsAt": "2026-08-24T21:00:00-04:00",
+      "endsAt": "2026-08-24T22:00:00-04:00",
+      "sourceQuote": "FILM NOIR MONDAY\nMonday, August 24, 2026\n9:00 PM\n10:00 PM\nFilm Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.\nIn Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-15"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": false,
+      "id": "library-sensory-garden-0828",
+      "category": "event",
+      "title": "Sensory Garden Hour at Greenpoint Library",
+      "kicker": "Ages 0–5, up in the rooftop garden",
+      "summary": "A short garden-themed storytime, then sensory activities among the plants. No registration needed, and it is called off in rain or extreme heat.",
+      "startsAt": "2026-08-28T10:30:00-04:00",
+      "endsAt": "2026-08-28T11:30:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-28T14:30:00Z\nds_event_end_date: 2026-08-28T15:30:00Z\nts_body: Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well. For ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures.",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-15"
         }
       ]
     }

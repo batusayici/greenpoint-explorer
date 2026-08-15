@@ -133,6 +133,7 @@ https://machastudio.com/blogs/events/poetry-nights
 Our Open Mic Poetry Nights are held once a month in our Greenpoint shop. They began on the summer of 2022 with the main purpose of bringing people together, creating a space where everyone is welcome to share and express a bit of their hearts.
 Poetry is like a bridge. A bridge that connects the sacred with what matters. Reconnecting us with beauty, meaning & joy.
 Poetry is an immediate path to becoming better and creating a change. Creating a world less about tearing each other down and apart, and more about coming together. Our poetry events allow a safe space to share, heal and express from the depth of our hearts and with it connect with others.
+
 ## [IMAGE READ 12 August 2026] macha-studio is a detailsInImages source — this is what the event posters say
 # Evidence rule, DECISION_LOG entry of 12 August 2026, and the `detailsInImages` roster flag
 # (Batu, same day). The Atom feed bodies carry no dates, times or prices because

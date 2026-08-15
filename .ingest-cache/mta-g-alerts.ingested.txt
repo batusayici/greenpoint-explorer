@@ -10,7 +10,7 @@ alert.active_period.0.end: 2026-09-14T09:00:00.000Z
 alert.active_period: [{"start":1789177500,"end":1789376400}]
 alert.description_text.translation.0.text: [G] runs every 10 minutes (days/evenings) between Church Av and Bedford-Nostrand Avs, the last stop. [shuttle bus icon] Free T403 shuttle buses make stops between Bedford-Nostrand Avs and Court Sq. Transfer between [G] and [shuttle bus icon] at Bedford-Nostrand Avs. What's happening? We're modernizing signals [accessibility icon] This service change affects one or more ADA accessible stations and these travel alternatives may not be fully accessible. Please contact 511 to plan your trip.
 
-alert.header_text.translation.0.text: In Brooklyn, Church Av-bound [G] skips 4 Av-9 St, 15 St-Prospect Park and Fort Hamilton Pkwy
+alert.header_text.translation.0.text: In Brooklyn, Coney Island-bound [F] and Church Av-bound [G] skip 4 Av-9 St, 15 St-Prospect Park and Fort Hamilton Pkwy
 alert.active_period.0.start: 2026-09-12T02:45:00.000Z
 alert.active_period.0.end: 2026-09-14T09:00:00.000Z
 alert.active_period: [{"start":1789181100,"end":1789376400}]

@@ -3233,5 +3233,60 @@
         "-73.9578818"
       ]
     }
+  },
+  "560 Manhattan Avenue, Brooklyn, NY 11222": {
+    "query": "560 Manhattan Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-15T13:26:26.359Z",
+    "hit": {
+      "place_id": 425366916,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081685,
+      "lat": "40.7223415",
+      "lon": "-73.9497997",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "Bar Bruno",
+      "display_name": "Bar Bruno, 560, Manhattan Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7222947",
+        "40.7224583",
+        "-73.9498845",
+        "-73.9496217"
+      ]
+    }
+  },
+  "Manhattan Avenue Park, Brooklyn, NY": {
+    "query": "Manhattan Avenue Park, Brooklyn, NY",
+    "fetchedAt": "2026-08-15T13:26:27.938Z",
+    "hit": null
+  },
+  "1205 Manhattan Avenue, Brooklyn, NY 11222": {
+    "query": "1205 Manhattan Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-15T13:26:36.571Z",
+    "hit": {
+      "place_id": 413621320,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 46863480,
+      "lat": "40.7384198",
+      "lon": "-73.9554700",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "1205, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7383698",
+        "40.7384698",
+        "-73.9555200",
+        "-73.9554200"
+      ]
+    }
   }
 }

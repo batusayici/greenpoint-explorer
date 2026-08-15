@@ -1,8 +1,3 @@
-summary: DJ TIMOTHY O'KEEFE
-start.date: 2026-08-14
-end.date: 2026-08-15
-htmlLink: https://www.google.com/calendar/event?eid=NTk5YjVhdDY3M2tzNWs5YmMyaHBsbzFrdDNfMjAyNjA4MTQgdHJvb3N0bGl2ZUBt
-
 summary: DJ JEFF WIDNER
 description: POP MUSIC
 start.date: 2026-08-15
@@ -221,3 +216,8 @@ description: WORLD PSYCHEDELIC GROOVE
 start.date: 2026-10-01
 end.date: 2026-10-02
 htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjEwMDEgdHJvb3N0bGl2ZUBt
+
+summary: First Vinyl Fridays with Steph
+start.date: 2026-10-02
+end.date: 2026-10-03
+htmlLink: https://www.google.com/calendar/event?eid=NGh2cXIwOHFocGlycXFyN25tbGF1NGk5a2xfMjAyNjEwMDIgdHJvb3N0bGl2ZUBt
