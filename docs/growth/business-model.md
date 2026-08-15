@@ -205,6 +205,11 @@ no strategy doc, while 7 of 48 roster sources go dark Nov–Mar):**
   within a day.
 - September experiment reads carry a standing confound note: the citywide
   autumn rebound. Pre/post cannot control for it; reads are labeled accordingly.
+- **A demand-gate pass on cohorts wholly inside Sep–Oct is provisional** (P8,
+  ratified 2026-08-15, pre-data) until one Nov-or-later 4-week cohort clears
+  the same bar — or Batu explicitly accepts a peak-season pass, disclosed
+  wherever the number is quoted in pilot conversations. The counterpart to the
+  Dec–Feb no-read rule; full text in growth-engine §1.
 
 Sequencing rules:
 

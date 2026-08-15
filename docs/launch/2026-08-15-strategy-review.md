@@ -53,11 +53,13 @@ Sources available on request.
 
 ---
 
-## Proposed pre-registrations P7–P11 — PENDING RATIFICATION (Batu)
+## Pre-registrations P7–P11 — RATIFIED (Batu, 2026-08-15)
 
-Numbering continues from the seeding roster's P1–P6. On ratification: a
-DECISION_LOG entry, and the rule amendments land in growth-engine §1/§2/§4 the
-same day (the P1–P6 pattern).
+Numbering continues from the seeding roster's P1–P6. Ratified before any
+Wave-1 data existed. The DECISION_LOG entry is promoted (third entry,
+2026-08-15) and the rule amendments applied the same day: growth-engine
+§1/§2/§4 and its "Explicitly not doing" list, business-model §4, and the
+growth-weekly skill.
 
 ### P7 — what to do if signups never reach R1
 
@@ -133,7 +135,7 @@ Bookstore and Flower Cat in the roster's Tier 2 order. Same setup as Q1, same
 preflight checks; org links may carry `?lens=arts_culture`. This doesn't touch
 the rule against running two networks at once. It only says which one is next.
 
-## Decisions for Batu (recommendation first, marked)
+## Decisions (1–4 ratified by Batu 2026-08-15; 5 done — pushed same day)
 
 1. **Ratify P7–P11 this weekend. Recommended.** Once Wave-1 numbers exist,
    setting the pass/fail bar looks like moving the goalposts. Each of these is
@@ -183,8 +185,9 @@ the rule against running two networks at once. It only says which one is next.
   (map renders, feed renders, `src` lands) + the row in
   `environmental-dependencies.md` in the same change. It is the bug class that
   has bitten twice; a late find leaves days before the Sep 1–8 window.
-- Every link copied from `channel-links.md`. Log each send in the send log
-  (both places until decision 4 lands).
+- Every link copied from `channel-links.md`. Log each send in
+  `gtm-state.json` `channels[]` (primary, decision 4) and mirror the roster
+  table.
 
 ## Applied in this package (no ratification needed — drift fixes + instruments)
 
@@ -223,9 +226,9 @@ Routed through the normal readout cycle, one per week at most:
    send (the "just moved here" threads are the highest-intent audience the
    plan doesn't own).
 
-## Proposed DECISION_LOG entry (promoted on ratification)
+## DECISION_LOG entry (promoted 2026-08-15, third entry)
 
-> **2026-08-1X — Five more rules set before the numbers arrive (P7–P11)**
+> **2026-08-15 (third entry) — Five more rules set before the numbers arrive (P7–P11)**
 >
 > Batu's decision, from the 2026-08-15 strategy review (two independent
 > reviews plus a scan of what's actually on the map;

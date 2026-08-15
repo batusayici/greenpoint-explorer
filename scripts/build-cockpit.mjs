@@ -101,6 +101,7 @@ const channels = s.channels.map((c) => `
     <td class="mono">${esc(c.wave)}</td>
     <td class="mono">${esc(c.sent ?? '—')}</td>
     <td class="mono">${esc(c.firstSession ?? '—')}</td>
+    <td class="mono">${esc(c.shared ?? '—')}</td>
     <td>${esc(c.status)}</td>
   </tr>`).join('');
 
@@ -294,7 +295,7 @@ footer a{color:var(--idle)}
   <section>
     <h2>Send log</h2>
     <div class="scroll"><table>
-      <thead><tr><th>src</th><th>Channel</th><th>Wave</th><th>Sent</th><th>First session</th><th>Status</th></tr></thead>
+      <thead><tr><th>src</th><th>Channel</th><th>Wave</th><th>Sent</th><th>First session</th><th>Shared?</th><th>Status</th></tr></thead>
       <tbody>${channels}</tbody>
     </table></div>
   </section>

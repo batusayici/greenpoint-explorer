@@ -110,6 +110,9 @@ Template:
 WRL proxy · activation rate · organic share · per-src table (quoted from pull)
 · feed density with per-category cut — cards + dated-in-window by filter, from
 cards.json (added 2026-08-15; surfaces a thinning category between sweeps)
+· Loop C split (P10, 2026-08-15): citations (monthly check) and AI-referrer
+sessions as their own lines, apart from organic — citations up with sessions
+flat is Loop C working zero-click, never a fail read
 
 ## Live experiments (max 3)
 One line each per §2 above.
@@ -150,7 +153,10 @@ Write only what this cycle actually established:
 - `experiments[].actual` / `.readAt` / `.verdict` / `.implication` — the read you
   computed in step 2, against the rule you copied verbatim, never a softened one
 - `gates[].actual` / `.readAt`
-- `channels[].sent` / `.firstSession` / `.reply` — the P4 send log
+- `channels[].sent` / `.firstSession` / `.shared` / `.reply` — the **primary**
+  send log (ratified 2026-08-15; the roster's P4 table is the narrative
+  mirror). `shared` = the org's own channel carried the link, confirmed from
+  the Monday roster snapshots — never inferred from session counts
 - `milestones[].status` — done / live / next / blocked, and `.outcome` when one lands
 - add to `openDecisions[]` anything this readout hands Batu
 

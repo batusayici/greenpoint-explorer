@@ -214,12 +214,13 @@
       "id": "ptawave",
       "phase": "wave2",
       "title": "September PTA / GWYSL wave",
-      "status": "blocked",
-      "date": "2026-09-01",
+      "status": "next",
+      "date": "2026-08-24",
+      "dateLabel": "roster adds at the Mon 8/24 ingest",
       "goal": "Four volunteer email lists that collectively reach most 11222 elementary families.",
       "why": "Schools and youth sports were a total blind spot — zero presence in the docs or on the map. Highest-density parent channels in the neighborhood.",
-      "blockedOn": "None are on the map today, so the 'you're already on it' note would be false. Sequence is roster adds (human-gated) → cover their public events → then the note.",
-      "source": "roster Tier 2 item 2"
+      "blockedOn": "Roster adds ratified 2026-08-15 (strategy review decision 3): PS 110/34/31 PTAs, GWYSL, Play Lab, GAMA, Artudio, St. Stans Academy + NY Society of Play roster entry enter the Mon 8/24 ingest, events carded by 8/31 — then the notes. Ingest proposes, Batu approves, as always.",
+      "source": "roster Tier 2 item 2; strategy review decision 3"
     }
   ],
 
@@ -287,7 +288,7 @@
       "actual": null,
       "readAt": null,
       "verdict": "not yet read",
-      "scheduledFor": "Sep 1–8",
+      "scheduledFor": "Tue Sep 8 (ratified 2026-08-15 — Labor Day empties the earlier date)",
       "implication": "Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24–30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions.",
       "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels. Cross-channel return comparisons carry that asymmetry caveat (P1).",
       "source": "growth §4; roster"
@@ -487,10 +488,10 @@
     {"src": "michael", "label": "Michael re-invite", "wave": "1", "sent": null, "firstSession": null, "reply": null, "status": "due 8/17"},
     {"src": "laura-edmond", "label": "Laura & Edmond re-invite", "wave": "1", "sent": null, "firstSession": null, "reply": null, "status": "due 8/17"},
     {"src": "perri", "label": "Perri / Shop Small", "wave": "1", "sent": null, "firstSession": null, "reply": null, "status": "due 8/17"},
-    {"src": "org-town-square", "label": "Town Square BK", "wave": "1", "sent": null, "firstSession": null, "reply": null, "status": "due 8/17 PM"},
-    {"src": "org-gp-library", "label": "Greenpoint Library", "wave": "1", "sent": null, "firstSession": null, "reply": null, "status": "due 8/18–19"},
-    {"src": "org-brooklyn-craft", "label": "Brooklyn Craft Company", "wave": "1", "sent": null, "firstSession": null, "reply": null, "status": "due 8/18–19"},
-    {"src": "parents", "label": "Parents-group post (Q2)", "wave": "1→moved", "sent": null, "firstSession": null, "reply": null, "status": "held for Sep 1–8"},
+    {"src": "org-town-square", "label": "Town Square BK", "wave": "1", "sent": null, "firstSession": null, "shared": null, "reply": null, "status": "due 8/17 PM"},
+    {"src": "org-gp-library", "label": "Greenpoint Library", "wave": "1", "sent": null, "firstSession": null, "shared": null, "reply": null, "status": "due 8/18–19"},
+    {"src": "org-brooklyn-craft", "label": "Brooklyn Craft Company", "wave": "1", "sent": null, "firstSession": null, "shared": null, "reply": null, "status": "due 8/18–19"},
+    {"src": "parents", "label": "Parents-group post (Q2)", "wave": "1→moved", "sent": null, "firstSession": null, "shared": null, "reply": null, "status": "posts Tue Sep 8, morning (ratified 8/15)"},
     {"src": "org-film-noir", "label": "Film Noir Cinema", "wave": "2", "sent": null, "firstSession": null, "reply": null, "status": "front of Tier 2, draft ready"},
     {"src": "reddit", "label": "Reddit", "wave": "2", "sent": null, "firstSession": null, "reply": null, "status": "gated on 8/25"},
     {"src": "fbgroups", "label": "Local FB/WhatsApp groups", "wave": "2", "sent": null, "firstSession": null, "reply": null, "status": "gated on 8/25"},
@@ -504,7 +505,7 @@
       "id": "q2-group",
       "title": "Which parent group does Rana post in?",
       "owner": "Batu",
-      "needBy": "before the Q2 copy is finalized (Sep 1–8 window)",
+      "needBy": "before the Q2 copy is finalized (posts Tue Sep 8)",
       "why": "It determines the src value — one src per channel, so a second group needs its own row.",
       "options": ["Williamsburg & Greenpoint BK Parents (~5k, join-gated)", "Brooklyn Baby Hui (~10k + Slack pods where the 0–4 crowd actually asks)"],
       "source": "roster decision 2"
@@ -524,14 +525,6 @@
       "needBy": "open three cycles",
       "why": "Operator-derived and unratified. Including Shop Small gives 76%, excluding it gives 83%. A marketing number with a 7-point definitional swing isn't a number.",
       "source": "readout metrics table"
-    },
-    {
-      "id": "pta-roster",
-      "title": "September PTA / GWYSL roster adds",
-      "owner": "Batu",
-      "needBy": "September",
-      "why": "Human-gated source adds. They enter the queue when the ingest ritual proposes them; nothing can be sent to those lists until their events are actually covered.",
-      "source": "roster decision 3"
     }
   ],
 

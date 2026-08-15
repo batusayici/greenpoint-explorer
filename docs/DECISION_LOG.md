@@ -4,6 +4,37 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-15 (third entry) — Five more rules set before the numbers arrive (P7–P11 ratified)
+
+**Batu's decision, from the 2026-08-15 strategy review** (two independent reviews plus a scan of
+what's actually on the map; `docs/launch/2026-08-15-strategy-review.md`). All five were set before
+any Wave-1 data existed, which is the only time you can set them honestly.
+
+The five rules answer what happens when things don't start rather than when they go wrong.
+**P7:** if R1 hasn't started by Oct 5, the next experiment slot goes to a way of bringing people
+back that needs no email list (R4 anonymous save or per-lens `.ics`), and the late-October demand
+read is labeled as measured without one — a miss under that label reads as product-plus-missing-
+mechanism unresolved, never as product failure alone. **P8:** a demand pass built only on September
+and October cohorts is provisional until a November-or-later cohort clears the same bar — the
+counterpart to the existing rule against reading raw December–February numbers. **P9:** the
+Instagram carousel test starts automatically at the first readout on or after Oct 6 if tagged
+sessions across every sent link are still under 50 (it may also enter earlier by normal proposal).
+**P10:** citations and AI referrals get their own readout lines, and rising citations with flat
+sessions counts as Loop C working, so H5's fail branch can't fire on it; llms.txt stays up with
+zero value booked against it. **P11:** when Q1 finishes, the freed slot goes to the arts and
+culture wave, Film Noir first.
+
+Also decided: **Q2 posts Tuesday Sep 8**, not Wednesday Sep 2, because Labor Day empties the
+earlier date. The **kids roster adds go through the 8/24 ingest** (PS 110/34/31 PTAs, GWYSL, The
+Play Lab, GAMA, Artudio, St. Stans Academy, plus a roster entry for NY Society of Play) so their
+events are carded before the September sends. **`gtm-state.json` becomes the real send log**, with
+a `shared?` field in both it and the roster table recording whether the org posted the link itself
+— confirmed from Monday roster snapshots, never inferred from sessions.
+
+Rule changes applied the same day: growth-engine §1/§2/§4 and its "Explicitly not doing" list,
+business-model §4 (seasonality), and the growth-weekly skill (readout lines + send-log fields).
+Owner: Batu.
+
 ## 2026-08-15 (second entry) — The launch plan gets a cockpit, and the state file is the source of truth
 
 **Batu:** "I feel like I don't have a cockpit." The launch and GTM plan is spread across five docs and

@@ -320,7 +320,7 @@ plan of record; the 8/17–19 burst is re-invites + the three org notes only).
 
 ## Send log (P4)
 
-*Primary log (pending Batu's ratification, strategy-review decision 4):
+*Primary log (ratified 2026-08-15, strategy-review decision 4):
 `gtm-state.json` `channels[]` — the cockpit's source-of-truth rule. This table
 stays as the narrative record. `shared?` = the org's own channel (newsletter /
 IG / site) carried the link, confirmed from the Monday roster snapshots — all
@@ -331,7 +331,7 @@ three Wave-1 orgs are already ingest sources — never inferred from sessions.*
 | org-gp-library | — | — | — | — | |
 | org-brooklyn-craft | — | — | — | — | |
 | org-town-square | — | — | — | — | |
-| parents | — | — | — | — | held for Sep 1–8 window |
+| parents | — | — | — | — | posts Tue Sep 8, morning (ratified 2026-08-15 — Labor Day empties the earlier date) |
 
 ---
 
