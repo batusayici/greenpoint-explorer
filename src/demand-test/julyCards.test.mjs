@@ -482,7 +482,8 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // declares `citeHost: bklynlibrary.org` and sits earlier in the roster, so it
   // claims the shared host key and bpl-north-brooklyn-calendar is never
   // registered in the verifier's host map. The card is real and sourced; the
-  // roster is the defect. It rides the review branch with the citeHost fix.
+  // roster is the defect — fixed in this branch by making the verifier's host
+  // map hold a LIST per host instead of first-wins, so the card ships. 160 + 1 = 161.
   // Also 2026-08-15: the 8/27 library day-card gained Teen Tech Time and Sunset
   // Storytime, so its end clock moved 16:00 → 18:30 — an edit, not an add.
   // +1 (2026-08-15, closing the coverage gate's last comedy-club line):
@@ -491,11 +492,13 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // to be authored anyway — the gate reconciles dates, not bills, so a named
   // one-off at 6pm went invisible the moment the 8pm showcase covered its day.
   // A different bill is a different card (Batu, RULING-SITTINGS-VS-BILLS). 161.
-  assert.equal(seed.cards.length, 161);
+  // +1 (this branch): the NBCB canoe card, unblocked by the verify-quotes
+  // host-map fix. 161 + 1 = 162.
+  assert.equal(seed.cards.length, 162);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 90, "89 + comedy-goo-goo-0829, the named 8/29 one-off the date-based coverage gate could no longer see (2026-08-15)");
+  assert.equal(count((c) => c.category === "event"), 91, "90 (incl. comedy-goo-goo-0829) + the NBCB canoe card, unblocked by the verify-quotes host-map fix (2026-08-15)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 after expiry + Good Room's 8/28 Magnetic bill");
@@ -680,8 +683,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-guardians-0819",
-    // (nbcb-canoe-newtown-creek-0822 authored 2026-08-15 and HELD — the
-    // verifier cannot reach its source's snapshot; see the deck-count comment.)
+    // 2026-08-15: the BPL North Brooklyn community calendar states it twice in
+    // the lines the card quotes — the listing title "🛶 Free canoe rides on
+    // Newtown Creek with NBCB!" and the body's "At these FREE informal paddles".
+    "nbcb-canoe-newtown-creek-0822",
     // 2026-08-12 roundup, both stated on their own line: "Free, RSVP here." for
     // the Neptune Room market and "Free, no RSVP needed." for the garden reading.
     "neptune-artists-makers-market-0816",
