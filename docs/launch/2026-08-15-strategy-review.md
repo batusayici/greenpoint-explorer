@@ -40,92 +40,117 @@ DMs), which the OG + `?src=share` retagging infrastructure already serves.
 ## Proposed pre-registrations P7–P11 — PENDING RATIFICATION (Batu)
 
 Numbering continues from the seeding roster's P1–P6. On ratification: a
-DECISION_LOG entry, and the rule amendments land in growth-engine
-§1/§2/§4 the same day (the P1–P6 pattern).
+DECISION_LOG entry, and the rule amendments land in growth-engine §1/§2/§4 the
+same day (the P1–P6 pattern).
 
-- **P7 — R1 arming fallback + re-entry accounting.** R1's ratified trigger
-  (≥10 signups with ≥1 segmented, P5) has no bound, and the chain that feeds
-  it — Wave 1 → signups → R1 — is hopeful at every link (3 signups ever, 0 new
-  in the 12 days before the 8/11 readout). Re-entry is Loop A's named weakest
-  edge; it must not dangle unread into the firm verdict. Rule: **if R1 has not
-  armed by the Mon Oct 5 readout, the next free experiment slot goes to a
-  re-entry mechanism that needs no list** — R4 anonymous save or per-lens
-  `.ics` feeds, chosen at that readout — **and the ~late-Oct firm demand read
-  carries the label "measured without a re-entry mechanism"**: a demand miss
-  under that label is interpreted as product-plus-missing-mechanism unresolved,
-  never as product failure alone.
-- **P8 — peak-cohort label on the demand gate.** Existing seasonality rules are
-  one-sided: they prevent a false winter kill (no raw Dec–Feb reads) but not a
-  false autumn pass — and the firm verdict lands ~late Oct on cohorts that are
-  entirely Sep–Oct data. Rule: **a demand-gate pass whose mature cohorts lie
-  wholly inside Sep–Oct is provisional until one later non-peak 4-week cohort
-  (Nov or later) also clears the bar** — or Batu explicitly accepts it as a
-  peak pass, in which case pilot conversations disclose the seasonal basis of
-  the number. Ratifiable now because no cohort has matured.
-- **P9 — the medium test gets a trigger.** The approved 4-week IG auto-carousel
-  test (business-model §6) has no entry condition, so the plan's biggest
-  environmental bet — that Greenpoint will open a browser at all (Rana's read;
-  the under-30 discovery data) — can never get a clean read: low fall numbers
-  stay attributable to messenger, copy, or season forever. Rule: the carousel
-  test enters (a) by normal Tuesday proposal whenever a slot is free, and
-  (b) **automatically at the first readout on/after Tue Oct 6 if cumulative
-  tagged sessions across all sent srcs are below 50** (floor is Batu's to
-  reset at ratification; what matters is that a number and a date exist).
-- **P10 — Loop C zero-click accounting.** An assistant that reads `/e/<slug>`
-  and answers residents directly produces citations without sessions — the
-  answer-engine north star succeeding in a form Loop C's session metric scores
-  as failure. Rule: **citations (monthly check) and AI-referrer sessions become
-  their own readout lines**, separate from organic sessions; the divergent case
-  "citations rising, sessions flat" is pre-named as Loop C working zero-click —
-  **H5's fail branch (deprioritize AEO) must not fire on it**; the response is
-  the hardening backlog (venue/category pages, archives, Search Console).
-  llms.txt stays published with zero value booked against it. Loop C's
-  timeline expectation is quarters, not the gate window.
-- **P11 — wedge #2 pre-sequenced.** The deck's densest inventory is
-  arts/culture (43 cards, 24 dated this week; Troost 13, Jump Comedy 10, Film
-  Noir 9 — the three densest suppliers on the map), and it has no seeded
-  audience and no Loop B relationship; its wave's current trigger, "whenever a
-  slot opens," is the shape that never starts. Rule: **when Q1 closes (its
-  decision rule fires or its 4-week clock expires, per P5), the freed slot goes
-  to the arts/culture wave** — Film Noir first (draft and `org-film-noir` row
-  standing), then WORD Bookstore / Flower Cat per roster Tier 2 order; same Q1
-  mechanism, same preflight kinds, org links may carry `?lens=arts_culture`.
-  The echo-chamber rule is untouched — this sequences the next network, it
-  does not open two at once.
+### P7 — what to do if signups never reach R1
+
+R1 only starts once 10 people sign up and at least one picks a topic (P5).
+Nothing says what happens if that never comes, and it might not: 3 signups
+total, none in the 12 days before the 8/11 readout. Getting people to come
+back on their own is the weakest part of Loop A, so it can't sit unanswered
+when we judge whether this works.
+
+Rule: if R1 has not started by the Monday Oct 5 readout, the next open
+experiment slot goes to a way of bringing people back that needs no email list.
+That's either R4 (save something without signing up) or per-topic calendar
+feeds, picked at that readout. The firm demand read in late October then
+carries the label "measured without a way to bring people back," and a bad
+demand number under that label means the product may be fine and we never
+built the return path. It does not count as the product failing.
+
+### P8 — a fall pass is provisional
+
+We already protect against killing this on bad winter numbers (no raw Dec–Feb
+reads). We don't protect against the opposite. The late-October verdict will
+rest entirely on September and October data, the best stretch of the year for
+a neighborhood calendar.
+
+Rule: if the demand gate passes on cohorts that all sit inside Sep–Oct, that
+pass is provisional until one four-week cohort from November or later also
+clears the bar. Or you accept it as a peak-season pass, in which case pilot
+conversations say so when quoting the number.
+
+Safe to decide now, since no cohort has matured.
+
+### P9 — the Instagram test needs a start date
+
+The 4-week auto-carousel test (business-model §6) is approved but has no start
+condition, so it may never run. It's the only test that answers the biggest
+open question: will people here open a browser at all? Rana thinks not, and the
+data on under-30 local discovery agrees. Without it, weak fall numbers stay
+ambiguous forever, because we can't tell the messenger from the copy from the
+season from the medium.
+
+Rule: the carousel test starts either (a) as a normal Tuesday proposal whenever
+a slot is free, or (b) automatically at the first readout on or after Tuesday
+Oct 6 if total tagged sessions across every link we've sent are under 50. Reset
+the 50 at ratification if you want a different number; what matters is that a
+number and a date exist.
+
+### P10 — count citations separately from visits
+
+If an assistant reads an event page and answers someone directly, that person
+gets what they needed and never visits the site. That is the answer-engine goal
+working, but Loop C measures sessions, so it would score as failure.
+
+Rule: citations (checked monthly) and sessions from AI referrers get their own
+lines in the readout, kept apart from organic sessions. Citations rising while
+sessions stay flat counts as Loop C working, not failing, and H5's fail branch
+(deprioritize AEO) cannot fire on that pattern. The response there is to keep
+hardening: venue and category pages, archives, Search Console. llms.txt stays
+published and we book zero value from it. Loop C pays off over quarters, not
+inside the gate window.
+
+### P11 — arts and culture is next in line
+
+Arts and culture is our best-stocked category (43 cards, 24 of them dated this
+week; Troost 13, Jump Comedy 10, Film Noir 9, the three densest suppliers on
+the map), and we've seeded nobody in it and built no business relationship
+there. Its invite wave is currently scheduled for "whenever a slot opens,"
+which means never.
+
+Rule: when Q1 finishes, either because its decision rule fires or its four-week
+clock runs out (P5), the freed slot goes to the arts and culture wave. Film
+Noir first, since the draft and the `org-film-noir` row are ready, then WORD
+Bookstore and Flower Cat in the roster's Tier 2 order. Same setup as Q1, same
+preflight checks; org links may carry `?lens=arts_culture`. This doesn't touch
+the rule against running two networks at once. It only says which one is next.
 
 ## Decisions for Batu (recommendation first, marked)
 
-1. **Ratify P7–P11 this weekend (recommended).** The legitimacy window closes
-   as Wave-1 data arrives; every one is a sentence-level rule with no build.
-2. **Q2 posts Tue Sep 8, morning (recommended)** over Wed Sep 2. Labor Day is
-   Mon Sep 7 — no doc named it, and it empties the holiday weekend; Tue 9/8 is
-   the back-to-school week-planning moment, the strongest attention of the
-   wedge's year. Morning-of preflight reconfirms the fall-registration cards
-   (the YMCA 9/8-deadline card is on its last day — keep or drop per that
-   check). Alternative: Wed Sep 2 catches pre-holiday planning but posts into
-   a group half-away.
-3. **Kids roster adds get a date (recommended: approve at the Mon 8/24 ingest
-   asks step).** PS 110 / PS 34 / PS 31 PTAs, GWYSL, The Play Lab, GAMA,
-   Artudio, St. Stans Academy as proposed source adds, plus a roster entry for
-   NY Society of Play (carded today with no source — orphan). Family/kids is
-   27 cards with the library carrying a third; the wedge's biggest channels
-   are school-year infrastructure with zero cards, and the September sends
-   (Q2 Sep 8; PTA notes mid-Sep) need their coverage to exist first. Approving
-   the adds 8/24 means their events are carded by the 8/31 ingest. Human-gated
-   as always — the ingest ritual proposes, Batu approves.
-4. **Send-log primary: `gtm-state.json` `channels[]` (recommended).** The
-   cockpit decision already made the state file the source of truth; the
-   roster's P4 table stays as the narrative record and points there. Both gain
-   a **`shared?`** field — did the org's own channel carry the link, confirmed
-   from Monday roster snapshots (all three Wave-1 orgs are already in the
-   ingest roster), never inferred from sessions. Without it, an org clicking
-   its own link is indistinguishable from real redistribution, and criterion 1
-   says the org sharing *is* the growth event.
-5. **Push to origin before Tue 9:30 ET (recommended; push = deploy, so it is
-   Batu's).** Local `main` is ahead by the cockpit commit (`93d1eb2`) plus this
-   package; the Tuesday cloud routine checks out origin — without the push it
-   runs the old skill (no cockpit update, and the P6 no-read instruction isn't
-   in what it reads) and the state file drifts from day one.
+1. **Ratify P7–P11 this weekend. Recommended.** Once Wave-1 numbers exist,
+   setting the pass/fail bar looks like moving the goalposts. Each of these is
+   one rule in a sentence, and none needs code.
+2. **Post Q2 on Tuesday Sep 8 in the morning, not Wednesday Sep 2.
+   Recommended.** Labor Day is Monday Sep 7 and no doc caught it, which empties
+   the whole holiday weekend. Tue 9/8 is when parents plan the school week, the
+   best attention this audience gives all year. Run preflight that morning to
+   reconfirm the fall-registration cards, including the YMCA card whose 9/8
+   deadline lands that day, and keep or drop it on what preflight says.
+   Wednesday Sep 2 would catch pre-holiday planning, but it posts to a group
+   that's half gone.
+3. **Approve the kids roster adds at the Monday 8/24 ingest. Recommended.**
+   The adds: PS 110, PS 34 and PS 31 PTAs, GWYSL, The Play Lab, GAMA, Artudio,
+   St. Stans Academy, plus a roster entry for NY Society of Play (we carded it
+   today with no source behind it). Family and kids is 27 cards and the library
+   supplies a third of them, while the schools and leagues that actually run
+   the school year supply none. The September sends need that coverage to exist
+   before they go out, and approving on 8/24 means the events are carded by the
+   8/31 ingest. Still human-gated: the ingest proposes, you approve.
+4. **Make `gtm-state.json` `channels[]` the real send log. Recommended.** The
+   cockpit decision already made that file the source of truth; the roster's P4
+   table stays as the written record and points at it. Add a `shared?` field to
+   both, meaning the org posted the link on its own channel, confirmed from the
+   Monday roster snapshots (all three Wave-1 orgs are already in the ingest
+   roster) and never guessed from session counts. Without that field, an org
+   clicking its own link looks exactly like an org spreading it, and criterion
+   1 treats the org sharing as the thing we're trying to cause.
+5. **Push to origin before Tuesday 9:30 ET. Recommended, and yours to do since
+   push means deploy.** Local `main` has the cockpit commit (`93d1eb2`) and this
+   package on top of origin. The Tuesday cloud routine reads origin, so without
+   the push it runs the old version: no cockpit update, and the P6 no-read
+   instruction isn't in what it sees. The state file starts drifting on day one.
 
 ## Wave-1 send checklist (Mon 8/17 → Wed 8/19)
 
@@ -184,15 +209,31 @@ Routed through the normal readout cycle, one per week at most:
 
 ## Proposed DECISION_LOG entry (promoted on ratification)
 
-> **2026-08-1X — Strategy-review pre-registrations P7–P11 ratified**
-> Decision (Batu), on the 2026-08-15 full-stack strategy review (two
-> independent passes + category scan; `docs/launch/2026-08-15-strategy-review.md`).
-> Ratified pre-data: P7 R1 arming fallback (Oct 5) + "measured without
-> re-entry" label on the firm demand read · P8 peak-cohort provisional label
-> (symmetric counterpart to the Dec–Feb rule) · P9 IG carousel trigger (floor
-> + Oct 6 date) · P10 Loop C zero-click accounting (citation lines; H5 fail
-> branch must not fire on zero-click success; llms.txt zero-booked) · P11
-> wedge #2 pre-sequenced (arts wave takes Q1's freed slot, Film Noir first).
-> Also decided: Q2 posts Tue Sep 8 · kids roster adds enter the 8/24 ingest ·
-> send-log primary is `gtm-state.json`, both logs gain `shared?`. Rule
-> amendments applied to growth-engine §1/§2/§4 same day. Owner: Batu.
+> **2026-08-1X — Five more rules set before the numbers arrive (P7–P11)**
+>
+> Batu's decision, from the 2026-08-15 strategy review (two independent
+> reviews plus a scan of what's actually on the map;
+> `docs/launch/2026-08-15-strategy-review.md`). All five were set before any
+> Wave-1 data existed, which is the only time you can set them honestly.
+>
+> The five rules answer what happens when things don't start rather than when
+> they go wrong. **P7:** if R1 hasn't started by Oct 5, the next experiment
+> slot goes to a way of bringing people back that needs no email list, and the
+> late-October demand read is labeled as measured without one. **P8:** a demand
+> pass built only on September and October cohorts is provisional until a
+> November-or-later cohort clears the same bar. This is the counterpart to the
+> existing rule against reading raw December and January numbers. **P9:** the
+> Instagram carousel test starts automatically at the first readout on or after
+> Oct 6 if tagged sessions are still under 50. **P10:** citations and AI
+> referrals get their own readout lines, and rising citations with flat sessions
+> counts as Loop C working, so H5's fail branch can't fire on it. llms.txt stays
+> up with zero value booked against it. **P11:** when Q1 finishes, the freed
+> slot goes to the arts and culture wave, Film Noir first.
+>
+> Also decided: Q2 posts Tuesday Sep 8, not Wednesday Sep 2, because Labor Day
+> empties the earlier date. The kids roster adds go through the 8/24 ingest so
+> their events are carded before the September sends. `gtm-state.json` becomes
+> the real send log, with a `shared?` field in both it and the roster table
+> recording whether the org posted the link itself.
+>
+> The rule changes land in growth-engine §1/§2/§4 the same day. Owner: Batu.
