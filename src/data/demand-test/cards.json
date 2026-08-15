@@ -7093,6 +7093,48 @@
       ]
     },
     {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "id": "comedy-goo-goo-0829",
+      "title": "Savannah DesOrmeaux's Goo Goo Comedy",
+      "kicker": "Early Saturday standup, $20",
+      "startsAt": "2026-08-29T18:00:00-04:00",
+      "endsAt": "2026-08-29T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "summary": "Savannah DesOrmeaux's own comedy night, booked separately from the club's weekly Saturday Showcase later that evening.",
+      "sourceQuote": "Sat Aug 29, 2026, 6:00 PM\nSavannah DesOrmeaux’s Goo Goo Comedy\nUSD $20.00",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-15"
+        }
+      ]
+    },
+    {
       "audience": [
         "resident"
       ],

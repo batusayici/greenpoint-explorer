@@ -485,11 +485,17 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // roster is the defect. It rides the review branch with the citeHost fix.
   // Also 2026-08-15: the 8/27 library day-card gained Teen Tech Time and Sunset
   // Storytime, so its end clock moved 16:00 → 18:30 — an edit, not an add.
-  assert.equal(seed.cards.length, 160);
+  // +1 (2026-08-15, closing the coverage gate's last comedy-club line):
+  // `comedy-goo-goo-0829`. Bumping the Saturday showcase's verified-through to
+  // 8/29 satisfied the DATE the gate checks, which is exactly why this card had
+  // to be authored anyway — the gate reconciles dates, not bills, so a named
+  // one-off at 6pm went invisible the moment the 8pm showcase covered its day.
+  // A different bill is a different card (Batu, RULING-SITTINGS-VS-BILLS). 161.
+  assert.equal(seed.cards.length, 161);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 89, "90 - 8 expired + 7 added; the 8th add (NBCB canoe) is held, not shipped (2026-08-15)");
+  assert.equal(count((c) => c.category === "event"), 90, "89 + comedy-goo-goo-0829, the named 8/29 one-off the date-based coverage gate could no longer see (2026-08-15)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 after expiry + Good Room's 8/28 Magnetic bill");
