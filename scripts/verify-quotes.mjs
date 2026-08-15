@@ -91,10 +91,27 @@ const hostOf = (u) => {
 // Map a card to its roster source by host. `citeHost` exists because some
 // sources are cited at their public domain while fetched at a feed URL
 // (macha-studio cites machastudio.com, fetches /blogs/events.atom).
+//
+// ONE HOST CAN OWN SEVERAL SOURCES, and first-wins silently blinded the gate
+// (2026-08-15). `greenpoint-library` fetches discover.bklynlibrary.org and
+// declares `citeHost: bklynlibrary.org`; `bpl-north-brooklyn-calendar` IS
+// www.bklynlibrary.org. Both normalise to the same key, greenpoint-library sits
+// earlier in the roster, so the community calendar was never registered — a
+// source we fetch, diff and snapshot every run was structurally unverifiable
+// for EVERY card citing it, and the one card that did (NBCB's free canoe
+// paddles) was held as if its evidence were missing. It was on disk the whole
+// time. So the map holds a LIST per host and the reader unions them, which is
+// the same union the cross-source rule below already intends.
 const byHost = new Map();
 for (const s of sources) {
   for (const h of [hostOf(s.url), s.citeHost ? hostOf(`https://${s.citeHost}`) : null]) {
-    if (h && !byHost.has(h)) byHost.set(h, s);
+    if (!h) continue;
+    const bucket = byHost.get(h);
+    if (bucket) {
+      if (!bucket.includes(s)) bucket.push(s);
+    } else {
+      byHost.set(h, [s]);
+    }
   }
 }
 
@@ -169,7 +186,7 @@ for (const card of seed.cards) {
   // snapshot. Union the snapshots instead — cross-source quoting is normal and
   // the model should carry it.
   const hosts = [...new Set((card.sourceLinks ?? []).map((l) => hostOf(l.url)).filter(Boolean))];
-  const srcs = [...new Set(hosts.map((h) => byHost.get(h)).filter(Boolean))];
+  const srcs = [...new Set(hosts.flatMap((h) => byHost.get(h) ?? []))];
   if (srcs.length === 0) {
     results.skip.push({ id: card.id, why: hosts.length ? `no roster source for ${hosts.join(", ")}` : "no source URL" });
     continue;

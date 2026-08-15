@@ -7482,6 +7482,49 @@
           "date": "2026-08-15"
         }
       ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "free": true,
+      "id": "nbcb-canoe-newtown-creek-0822",
+      "category": "event",
+      "title": "Free canoe rides on Newtown Creek",
+      "kicker": "Walk up, no registration needed",
+      "summary": "Trained guides from the North Brooklyn Community Boathouse run 20-minute paddles down the creek. They provide the equipment; it is first come, first served.",
+      "startsAt": "2026-08-22T12:00:00-04:00",
+      "endsAt": "2026-08-22T15:00:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Manhattan Avenue Park",
+      "address": "Manhattan Avenue Park, Brooklyn, NY 11222",
+      "geocodeQuery": "1205 Manhattan Avenue, Brooklyn, NY 11222",
+      "sourceQuote": "🛶 Free canoe rides on Newtown Creek with NBCB!\nSat, Aug 22 12:00 pm\nManhattan Avenue Park Brooklyn, NY 11222\n👉 Saturday, Aug 22, 12-3pm\nAt these FREE informal paddles, NBCB welcomes walk-up participants (no registration is required) to join trained canoe guides for 20-minute paddles down Newtown Creek.",
+      "actions": [
+        {
+          "label": "Community calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "BPL North Brooklyn community calendar",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-15"
+        }
+      ],
+      "lat": 40.73842,
+      "lng": -73.95547
     }
   ]
 }
