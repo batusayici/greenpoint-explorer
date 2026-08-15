@@ -906,6 +906,17 @@
       },
       "citeHost": "mta.info",
       "standing": true
+    },
+    {
+      "id": "tend-greenpoint",
+      "name": "Tend Greenpoint",
+      "url": "https://www.tendgreenpoint.com/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "embedded",
+      "standing": false,
+      "citeHost": "tendgreenpoint.com",
+      "notes": "252 Franklin St, Greenpoint plant shop and garden nursery. Already in senderRegistry as publisher \"Tend Greenpoint\" (messages+d4sh8s6s9jcvd@squaremktg.com, a Square marketing relay) — the SENDER trust decision was made 2026-07; this adds the WEB source so its evidence has somewhere to live. ⚠ USE THE `www.` URL. The bare host redirects (HTTP/2 301 → https://www.tendgreenpoint.com) and the routine's egress gateway treats the two as SEPARATE hosts: on 2026-08-15 the bare host CONNECTed fine while www 403'd, so an allowlist entry for tendgreenpoint.com alone left every fetch dead and the block read as resolved from the outside for a day. Same shape as happy-medium.co → www.happy-medium.co. Both hosts are now allowlisted; keep both. FETCH IS `embedded`: the page is a JS shell and tag-stripping reduces 256 KB to ONE readable line (the <title>). Every fact — the address prose, the sale banners, the vendor copy — lives in escaped JSON inside the HTML. 322 usable prose lines came out of the payload. Do not conclude this source is dead from a thin plain-text read. LOCALLY OWNED: single Greenpoint storefront, no second location found on the site. The homepage carries the standing sale-on-sale (\"For a limited time, save 20% off already reduced merchandise!\") but NOT the dated plant sale — dated offers arrive by email only, so persist each one into this snapshot as a [NEWSLETTER PERSISTED] block at ingest time. `standing: false` is a REVIEWED call: the recurring phrasing on the page is retail promo copy, not recurring programming."
     }
   ],
   "manualSources": [
