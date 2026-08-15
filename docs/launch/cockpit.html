@@ -220,6 +220,20 @@ footer a{color:var(--idle)}
     
     
   </article>
+  <article class="row row--pass">
+    <div class="row__head">
+      <span class="pill pill--pass">done</span>
+      <time class="mono">2026-08-15</time>
+      <h3>Full-stack strategy review; P7–P11 ratified</h3>
+    </div>
+    <p class="row__goal">Two independent passes (adversarial + 2026 best-practices research) plus a category scan of the deck, the weekend before Wave 1.</p>
+    <details class="why"><summary>Why this way</summary><p>The plan's rules all guarded against wrong readings; the likeliest fall failure was nothing starting — no signups, no R1, no submissions, no medium test. P7–P11 give that case dates, numbers, and agreed meanings, set while pre-data ratification was still legitimate.</p></details>
+    <p class="row__out"><span class="lbl">Outcome</span> P7–P11 ratified; Q2 dated Tue Sep 8; kids roster adds enter the 8/24 ingest; gtm-state became the primary send log with the shared? field. Send kit finalized in the roster. Both reviews endorsed the plan's shape.</p>
+    
+    
+    
+    
+  </article>
   <article class="row row--now">
     <div class="row__head">
       <span class="pill pill--now">next</span>
@@ -329,7 +343,7 @@ footer a{color:var(--idle)}
     <td>
       <b>Follow — personalized alert vs broadcast digest</b>
       <span class="xr__hyp">Re-entry is the weakest edge of the content loop — nothing tells a resident it's a new week. A followed lens or place beats a broadcast digest at bringing them back.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Manual segments, 4–5 coarse ones. No backend, no automation build. Batu sends only when something matches.  ·  Decision rule: Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 → personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.  ·  Trigger: Starts the first Monday after ≥10 signups with ≥1 segmented. The 3-week clock runs from that Monday. Ratified 2026-08-15, supersedes 'first Monday post-launch'.</p></details>
+      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Manual segments, 4–5 coarse ones. No backend, no automation build. Batu sends only when something matches.  ·  Decision rule: Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 → personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.  ·  Trigger: Starts the first Monday after ≥10 signups with ≥1 segmented. The 3-week clock runs from that Monday. Ratified 2026-08-15, supersedes 'first Monday post-launch'. P7 fallback: if not armed by Mon Oct 5, the next free slot goes to a no-list re-entry mechanism and the late-Oct demand read is labeled accordingly.</p></details>
     </td>
     <td class="mono num">Segmented &gt; broadcast by week 3</td>
     <td class="mono num">Treatment arm 0 segmented. Control arm 3 recipients. No new signup in 12 days.</td>
@@ -341,7 +355,7 @@ footer a{color:var(--idle)}
     <td>
       <b>Org seeding — 3 orgs already on the map</b>
       <span class="xr__hyp">A recommendation from inside a small trust network converts where broadcast can't, and costs nothing. An org that shares is a Loop B ignition.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Three emails. Per-org src row added first.  ·  Decision rule: Sessions and activation rate per src. Kill an org-type after 2 non-responses.  ·  Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org.</p></details>
+      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Three emails. Per-org src row added first.  ·  Decision rule: Sessions and activation rate per src. Kill an org-type after 2 non-responses.  ·  Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org. P11: when Q1 closes, its slot goes to the arts/culture wave — Film Noir first.</p></details>
     </td>
     <td class="mono num">≥1 session per sent src within 7 days (P3 mechanism check)</td>
     <td class="mono num">—</td>
@@ -365,7 +379,7 @@ footer a{color:var(--idle)}
     <td>
       <b>AEO / answer-engine acceptance</b>
       <span class="xr__hyp">Cards published as static structured HTML get cited by search engines and AI assistants, bringing residents at zero cost to acquire.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Already shipped. Watch organic sessions monthly.  ·  Decision rule: No kill rule — owned infrastructure.  ·  Crawl latency measured at ~4 days — survivable for a card dated a week out, fatal for one posted the morning of. That is an ingest lead-time fact.</p></details>
+      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Already shipped. Watch organic sessions monthly.  ·  Decision rule: No kill rule — owned infrastructure.  ·  Crawl latency measured at ~4 days — survivable for a card dated a week out, fatal for one posted the morning of. That is an ingest lead-time fact. P10 (2026-08-15): citations and AI-referrer sessions get their own readout lines — citations up with sessions flat is the loop working zero-click, never a fail read; llms.txt booked at zero.</p></details>
     </td>
     <td class="mono num">Organic sessions trending up</td>
     <td class="mono num">7 people from Google since 8/9, all NYC-local, all landing on /e/&lt;slug&gt; card pages. 6 interactions from those 7, against 0 from 20 untagged direct arrivals.</td>
@@ -773,7 +787,7 @@ footer a{color:var(--idle)}
 
   <section>
     <h2>The rules we're playing by</h2>
-    <ul class="rules"><li>Max 3 live experiments. Attribution dies past that.</li><li>Every experiment ships with hypothesis → smallest test → one metric → decision rule → kill criteria written before launch. No kill criteria, no launch.</li><li>Pre/post and small-n qualitative only. No A/B infrastructure, no significance theater — at this traffic it's noise cosplay.</li><li>September reads carry the autumn-rebound confound and nothing graduates on a Sep–Oct read alone. Carve-out: contemporaneous-control designs (R1, Q2) are exempt — 2a governs pre/post reads.</li><li>Each Q experiment closes at the readout after its rule fires, or after 4 weeks, whichever comes first. No experiment squats on a slot.</li><li>The unit of seeding is a small trust network, not reach. Saturate one network before opening the next.</li><li>Batu sends every outbound message. Every link is copied from channel-links.md, never composed by hand.</li><li>Paid acquisition is dead permanently, not deferred — revenue per user is $0, so only near-zero-CAC channels can ever fit.</li><li>Coverage is never for sale. Every verified business is on the map free.</li></ul>
+    <ul class="rules"><li>Max 3 live experiments. Attribution dies past that.</li><li>Every experiment ships with hypothesis → smallest test → one metric → decision rule → kill criteria written before launch. No kill criteria, no launch.</li><li>Pre/post and small-n qualitative only. No A/B infrastructure, no significance theater — at this traffic it's noise cosplay.</li><li>September reads carry the autumn-rebound confound and nothing graduates on a Sep–Oct read alone. Carve-out: contemporaneous-control designs (R1, Q2) are exempt — 2a governs pre/post reads.</li><li>Each Q experiment closes at the readout after its rule fires, or after 4 weeks, whichever comes first. No experiment squats on a slot.</li><li>The unit of seeding is a small trust network, not reach. Saturate one network before opening the next.</li><li>Batu sends every outbound message. Every link is copied from channel-links.md, never composed by hand.</li><li>Paid acquisition is dead permanently, not deferred — revenue per user is $0, so only near-zero-CAC channels can ever fit.</li><li>Coverage is never for sale. Every verified business is on the map free.</li><li>P7: if R1 hasn't armed by the Mon Oct 5 readout, the next free slot goes to a no-list re-entry mechanism (R4 or per-lens .ics), and the late-Oct demand read is labeled 'measured without a re-entry mechanism' — a miss under it is never read as product failure alone.</li><li>P8: a demand-gate pass on cohorts wholly inside Sep–Oct is provisional until a Nov-or-later cohort clears the same bar — or it's accepted explicitly as a peak-season pass and disclosed in pilot conversations. Counterpart to the Dec–Feb no-read rule.</li><li>P9: the approved IG carousel test starts automatically at the first readout on/after Tue Oct 6 if tagged sessions across all sent srcs are under 50 (earlier by normal proposal when a slot frees). The medium question — will Greenpoint open a browser? — can no longer go unread.</li><li>P10: citations and AI-referrer sessions get their own readout lines. Citations up with sessions flat = Loop C working zero-click — H5's fail branch can't fire on it. llms.txt stays up, zero value booked.</li><li>P11: when Q1 closes, the freed slot goes to the arts/culture wave — Film Noir first, then WORD and Flower Cat. Sequencing only; never two networks at once.</li></ul>
   </section>
 
   <footer>

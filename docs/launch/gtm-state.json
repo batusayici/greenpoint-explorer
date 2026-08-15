@@ -149,6 +149,17 @@
       "source": "roster; log 2026-08-15"
     },
     {
+      "id": "strategy-review",
+      "phase": "wave1",
+      "title": "Full-stack strategy review; P7–P11 ratified",
+      "status": "done",
+      "date": "2026-08-15",
+      "goal": "Two independent passes (adversarial + 2026 best-practices research) plus a category scan of the deck, the weekend before Wave 1.",
+      "why": "The plan's rules all guarded against wrong readings; the likeliest fall failure was nothing starting — no signups, no R1, no submissions, no medium test. P7–P11 give that case dates, numbers, and agreed meanings, set while pre-data ratification was still legitimate.",
+      "outcome": "P7–P11 ratified; Q2 dated Tue Sep 8; kids roster adds enter the 8/24 ingest; gtm-state became the primary send log with the shared? field. Send kit finalized in the roster. Both reviews endorsed the plan's shape.",
+      "source": "docs/launch/2026-08-15-strategy-review.md; log 2026-08-15 third"
+    },
+    {
       "id": "send-townsquare",
       "phase": "wave1",
       "title": "Town Square BK note + warm re-invites",
@@ -254,7 +265,7 @@
       "actual": "Treatment arm 0 segmented. Control arm 3 recipients. No new signup in 12 days.",
       "readAt": "2026-08-11",
       "verdict": "hold",
-      "trigger": "Starts the first Monday after ≥10 signups with ≥1 segmented. The 3-week clock runs from that Monday. Ratified 2026-08-15, supersedes 'first Monday post-launch'.",
+      "trigger": "Starts the first Monday after ≥10 signups with ≥1 segmented. The 3-week clock runs from that Monday. Ratified 2026-08-15, supersedes 'first Monday post-launch'. P7 fallback: if not armed by Mon Oct 5, the next free slot goes to a no-list re-entry mechanism and the late-Oct demand read is labeled accordingly.",
       "implication": "Do not start the clock. It is the scarce resource and it expires whether or not the arms have people in them. Q1/Q2 are the mechanisms that produce the signups. Wave 1 first, R1 second.",
       "source": "growth §2; readout 2026-08-11"
     },
@@ -272,8 +283,8 @@
       "readAt": null,
       "verdict": "not yet read",
       "implication": "No campaign src has ever landed in the project's history — not one. Which mechanically confirms Wave 1 has not been sent, and is why every published rate is a mixed population.",
-      "notes": "Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org.",
-      "source": "growth §4; roster P4"
+      "notes": "Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org. P11: when Q1 closes, its slot goes to the arts/culture wave — Film Noir first.",
+      "source": "growth §4; roster P4; strategy review P11"
     },
     {
       "id": "Q2",
@@ -307,8 +318,8 @@
       "readAt": "2026-08-11",
       "verdict": "first positive read",
       "implication": "The loop turned once and it turned in the right direction. First acquisition in the project's history that came from neither a link Batu sent nor the share button. n=7 graduates nothing.",
-      "notes": "Crawl latency measured at ~4 days — survivable for a card dated a week out, fatal for one posted the morning of. That is an ingest lead-time fact.",
-      "source": "growth §4; readout Finding 2"
+      "notes": "Crawl latency measured at ~4 days — survivable for a card dated a week out, fatal for one posted the morning of. That is an ingest lead-time fact. P10 (2026-08-15): citations and AI-referrer sessions get their own readout lines — citations up with sessions flat is the loop working zero-click, never a fail read; llms.txt booked at zero.",
+      "source": "growth §4; readout Finding 2; strategy review P10"
     },
     {
       "id": "A1",
@@ -572,6 +583,11 @@
     {"id": "echo", "text": "The unit of seeding is a small trust network, not reach. Saturate one network before opening the next.", "source": "growth §4"},
     {"id": "sends", "text": "Batu sends every outbound message. Every link is copied from channel-links.md, never composed by hand.", "source": "runbook"},
     {"id": "paid", "text": "Paid acquisition is dead permanently, not deferred — revenue per user is $0, so only near-zero-CAC channels can ever fit.", "source": "growth §4"},
-    {"id": "coverage", "text": "Coverage is never for sale. Every verified business is on the map free.", "source": "model §2"}
+    {"id": "coverage", "text": "Coverage is never for sale. Every verified business is on the map free.", "source": "model §2"},
+    {"id": "r1-fallback", "text": "P7: if R1 hasn't armed by the Mon Oct 5 readout, the next free slot goes to a no-list re-entry mechanism (R4 or per-lens .ics), and the late-Oct demand read is labeled 'measured without a re-entry mechanism' — a miss under it is never read as product failure alone.", "source": "strategy review; log 2026-08-15 third"},
+    {"id": "peak-pass", "text": "P8: a demand-gate pass on cohorts wholly inside Sep–Oct is provisional until a Nov-or-later cohort clears the same bar — or it's accepted explicitly as a peak-season pass and disclosed in pilot conversations. Counterpart to the Dec–Feb no-read rule.", "source": "strategy review; growth §1; model §4"},
+    {"id": "carousel-trigger", "text": "P9: the approved IG carousel test starts automatically at the first readout on/after Tue Oct 6 if tagged sessions across all sent srcs are under 50 (earlier by normal proposal when a slot frees). The medium question — will Greenpoint open a browser? — can no longer go unread.", "source": "strategy review; growth 'Explicitly not doing'"},
+    {"id": "zero-click", "text": "P10: citations and AI-referrer sessions get their own readout lines. Citations up with sessions flat = Loop C working zero-click — H5's fail branch can't fire on it. llms.txt stays up, zero value booked.", "source": "strategy review; growth §1 Loop C"},
+    {"id": "wedge2", "text": "P11: when Q1 closes, the freed slot goes to the arts/culture wave — Film Noir first, then WORD and Flower Cat. Sequencing only; never two networks at once.", "source": "strategy review; growth §4"}
   ]
 }
