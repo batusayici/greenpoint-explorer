@@ -28,6 +28,7 @@ or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
 | Q1 org seeding — Greenpoint Library | `org-gp-library` | https://stoopwise.com/?src=org-gp-library | **new 2026-07-28** |
 | Q1 org seeding — Film Noir Cinema | `org-film-noir` | https://stoopwise.com/?src=org-film-noir | **new 2026-07-28** |
 | Q1 org seeding — Brooklyn Craft Company | `org-brooklyn-craft` | https://stoopwise.com/?src=org-brooklyn-craft | **new 2026-07-28** |
+| Q1 org seeding — Town Square BK | `org-town-square` | https://stoopwise.com/?src=org-town-square | **new 2026-08-15** — swapped in for Film Noir (seeding roster, ratified); Film Noir's row stays for its Tier-2 send |
 | Friends & family WhatsApp re-invite | `friends-family` | https://stoopwise.com/?src=friends-family | **new 2026-08-13** · sneak-peek group, excluding the 3 named below (they keep their own rows) |
 | Personal re-invites (wave 2) | `wave2` | https://stoopwise.com/?src=wave2 | |
 | Michael follow-up | `michael` | https://stoopwise.com/?src=michael | |

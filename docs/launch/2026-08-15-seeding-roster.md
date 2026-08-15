@@ -33,7 +33,7 @@ Scores below are 0–2 per criterion, in that order (e.g. `2·2·2·1`).
 |---|---|---|
 | **Greenpoint Library (BPL)** — keep | 2·2·2·2 | Strongest kids org in the data: 11 cards, 6 dated this week, 5 of them `family_kids`. Community institution, direct API source, physical board + children's librarian as human router. Draft exists (`src=org-gp-library`). |
 | **Brooklyn Craft Company** — keep | 2·2·2·2 | Kids Sewing Camp running through 8/22; newsletter is their *primary* channel (redistribution proven); classes skew to the same parents network as Q2 — Q1 and Q2 reinforce inside one trust network. Draft exists (`src=org-brooklyn-craft`). |
-| **Town Square BK** — **swap in** (replaces Film Noir Cinema) | 2·2·1·2 | The outside-in pass's #1 node and the only one all three passes independently surfaced: one volunteer org runs the marquee family calendar (Halloween Parade, Egg Hunt, SummerStarz, Schoolfest, Campfest) plus the gogreenbk.org org directory. IG + Eventbrite + site redistribution. On-map now via SummerStarz (8/21 movie) — thinner than the other two, which is the one cost of the swap. Schoolfest/Campfest are literally camps-discovery events — the wedge in org form. Needs: a `src=org-town-square` row + a fresh draft note. |
+| **Town Square BK** — **swap in** (replaces Film Noir Cinema) | 2·2·1·2 | The outside-in pass's #1 node and the only one all three passes independently surfaced: one volunteer org runs the marquee family calendar (Halloween Parade, Egg Hunt, SummerStarz, Schoolfest, Campfest) plus the gogreenbk.org org directory. IG + Eventbrite + site redistribution. On-map now via SummerStarz (8/21 movie) — thinner than the other two, which is the one cost of the swap. Schoolfest/Campfest are literally camps-discovery events — the wedge in org form. `src=org-town-square` row + draft note: done 2026-08-15 (below). |
 
 **The rule behind the swap** (the class, not the instance): Wave 1 should be
 *one* coherent trust network, per our own echo-chamber doctrine. Library +
@@ -138,15 +138,55 @@ Category sweep against the merged universe surfaced these gaps — each is a
 - Validation notes: Good Room recurs weekly but reaches us only through DoNYC
   (no relationship to seed); Giggles & Wiggles is already carded via SSG.
 
-## Decision asks (Batu)
+## Decisions (Batu, 2026-08-15)
 
-1. **Ratify or decline the Q1 swap** (Town Square in, Film Noir to Tier 2
-   front). Recommended: swap — wedge coherence beats individual-org strength
-   for the first wave. If declined, the drafted slate stays valid.
-2. **Q2 messenger:** ask Laura to member-share vs. post yourself. Recommended:
-   Laura (or Perri intro), per the groups' anti-marketing norms.
-3. **September PTA/GWYSL wave** enters the roster queue as human-gated source
-   adds — approve the roster additions when proposed by the ingest ritual.
+1. **Q1 swap ratified** — Town Square BK in; Film Noir Cinema moves to the
+   front of Tier 2 (its draft and `src=org-film-noir` row stay valid for that
+   send). `src=org-town-square` row added to `channel-links.md` same change.
+2. **Q2 messenger: Rana** (Josh's contact). Operational notes: the post must
+   carry the exact `src=parents` link copied from `channel-links.md` — a
+   member-share with an untagged link is unmeasurable and has burned us
+   before; Batu hands Rana the finished link+copy, Rana shares in their own
+   words. Rana's own read ("people don't open browsers — only Instagram,
+   Facebook, and games") makes them a credibility-honest messenger for a
+   browser product: if it lands with Rana's groups, that's a strong signal.
+3. **September PTA/GWYSL wave** — still open: enters the roster queue as
+   human-gated source adds, approved when the ingest ritual proposes them.
+
+## Town Square note — draft (send Tue 8/18, Batu sends)
+
+The other three Wave-1 drafts live in `docs/growth/readouts/2026-08-11.md`
+(Library and Brooklyn Craft still valid; Film Noir's is held for Tier 2).
+
+**Truth constraints on this draft:** Town Square has exactly ONE live card —
+`summerstarz-zootopia-0821` (Fri 8/21, the *last* free movie of the season) —
+so the note claims one screening, singular, never "your events." The claim
+**dies after Friday 8/21**: if the send slips past then, the note is false and
+must be re-grounded on whatever Town Square card is live at that time. The
+copy deliberately carries **no count**, so it needs no `SEND_TARGETS` row in
+`sendPreflight.js`; the morning-of-send check is instead: confirm the card is
+still in `cards.json` and still upcoming.
+
+> **Subject:** Friday's SummerStarz closing night is on the Greenpoint map
+>
+> Hi [name],
+>
+> I run Stoopwise Greenpoint — a small map + feed of what's happening in
+> Greenpoint each week: events, openings, deals, news, everything verified
+> against named sources. Free, no ads, not a business.
+>
+> Friday's Zootopia 2 screening at Transmitter Park is on it now, with the
+> free-ticket link:
+>
+> https://stoopwise.com/?src=org-town-square
+>
+> No ask and nothing to sign up for — it's already live. If anything's listed
+> wrong, tell me and I'll fix it same day. And since your events are the spine
+> of the family calendar here, anything coming up — Schoolfest, the Halloween
+> parade, the swaps — goes up the moment you send it, listed from you rather
+> than found late.
+>
+> — Batu, Greenpoint
 
 *Method note: private-doc findings inform Tier 3 at class level only; no
 figures or prospect assessments appear here by design (DECISION_LOG
