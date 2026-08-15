@@ -1,39 +1,55 @@
 # Launch strategy review — full-stack pass (2026-08-15)
 
-Produced the weekend before Wave 1 sends, at Batu's request ("make sure the
-launch strategy is as strong as it can be"). Method: two independent
-clean-context passes — (1) an adversarial review of the entire strategy stack
-(ops plan, runbook, seeding roster, growth engine, business-model rules,
-decision log, live git/code state), (2) a web-research pass benchmarking the
-plan against current (2025 → mid-2026) consumer-launch practice — plus (3) an
-empirical category/audience scan of `cards.json` and the roster in the main
-thread. Class-level findings only; no private-doc figures (DECISION_LOG
-2026-07-28).
+Written the weekend before the first invites go out, at Batu's request: "make
+sure the launch strategy is as strong as it can be."
 
-**Overall verdict, both passes:** the plan's shape is validated — quiet cutover
-instead of a launch event, trust-network seeding before broadcast, retention
-before acquisition, pre-registered gates and kill rules, no paid channels.
-Nextdoor started exactly this way; Patch died of the opposite; the 2026
-"big launch" pressure traces to agencies selling launch services, not
-operators. The pre-registration discipline (P1–P6) already covers the failure
-modes reviews usually find. The remaining exposure has one shape: **every
-defense in the plan guards against a wrong reading, while the likeliest failure
-this fall is nothing starting** — no signups, R1 never arming, no submissions,
-the medium test never triggering. P7–P11 below give that shape tripwires,
-dates, and pre-agreed interpretations. Ratifying them now is what keeps them
-legitimate: Wave 1 sends Monday, and pre-registration is only pre-registration
-before the data exists.
+Three passes, run separately. One review attacked the whole strategy stack with
+no prior context: ops plan, runbook, seeding roster, growth engine,
+business-model rules, decision log, and the live state of the code. A second
+checked the plan against how consumer launches actually ran through 2025 and
+mid-2026. Then a count in the main thread of what's really on the map, by
+category and by who it serves. Everything below is about rules rather than
+individual cases, and no figures from the private docs appear here
+(DECISION_LOG 2026-07-28).
 
-Key research findings the pre-registrations rest on (sources in the research
-pass, available on request): every durable hyperlocal comparable is email-first
-(Front Porch Forum, 6AM City, Naptown Scoop); ~90% of mobile time is in apps,
-so an unprompted browser-return habit is a fine *test* but a weak *mechanism*;
-llms.txt is measured near-zero everywhere (Google states Search/AI Overviews
-ignore it; Ahrefs May 2026: 97% of files got no traffic); AI referrals are
-under 1% of web traffic today but growing fast, and assistants cite Reddit
-heavily — the Wave-2 Reddit send does double duty; under-30 local discovery
-runs through Instagram/TikTok; 70–84% of sharing is private (group chats and
-DMs), which the OG + `?src=share` retagging infrastructure already serves.
+## The verdict
+
+Both reviews said the plan's shape is right. Turning the site on quietly rather
+than staging a launch event, seeding through people who already trust each
+other before going broad, fixing whether people come back before chasing new
+ones, writing the pass and fail rules before the numbers arrive, and paying for
+nothing. Nextdoor grew this way. Patch spent heavily doing the opposite and
+folded. The pressure to stage a big launch traces mostly to agencies who sell
+launch services, not to people who have run one.
+
+The rules already written down, P1–P6, cover the mistakes a review normally
+catches. What's left is a different kind of risk. Every rule in the plan
+protects against reading the numbers wrong, but the most likely way this fall
+goes badly is that nothing happens at all: nobody signs up, R1 never starts, no
+business submits anything, the Instagram test never runs. P7–P11 give that case
+a date, a number, and an agreed meaning before it can be argued about.
+
+Decide them this weekend. Wave 1 goes out Monday, and a rule written after the
+numbers land is worth much less than one written before.
+
+## Research these rules rest on
+
+Sources available on request.
+
+- Every hyperlocal that lasted is email-first: Front Porch Forum, 6AM City,
+  Naptown Scoop.
+- Roughly 90% of time on a phone is spent inside apps. Expecting people to
+  reopen a browser on their own is worth testing, but it's a weak thing to
+  depend on.
+- llms.txt does close to nothing anywhere. Google says Search and AI Overviews
+  ignore it, and Ahrefs found in May 2026 that 97% of published files drew no
+  traffic at all.
+- AI assistants send under 1% of web traffic today, but that share is growing
+  fast and they lean heavily on Reddit. The Wave-2 Reddit post earns its place
+  twice over.
+- People under 30 find local things through Instagram and TikTok.
+- Between 70% and 84% of sharing happens privately, in group chats and DMs.
+  The link previews and `?src=share` tagging already handle that.
 
 ---
 
