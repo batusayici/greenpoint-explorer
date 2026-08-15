@@ -2768,11 +2768,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-15",
       "id": "comedy-dani-castaneda-0816",
-      "title": "Amigos en Común at Greenpoint Comedy Club",
-      "kicker": "Spanish-language comedy, $20",
-      "summary": "Dani Castañeda hosts a Spanish-language showcase — a Sunday booking outside the club's usual run.",
+      "title": "Amigos en Común, a Colombia earthquake benefit",
+      "kicker": "Colombia earthquake benefit, $20",
+      "summary": "The club's Spanish-language Sunday show, now billed by the venue as a fundraiser for the Colombia earthquake — a date outside its usual weekly run.",
       "startsAt": "2026-08-16T19:00:00-04:00",
       "endsAt": "2026-08-16T23:59:00-04:00",
       "filters": [
@@ -2780,7 +2780,7 @@
       ],
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Sun Aug 16, 2026, 7:00 PM\nDani Castañeda presenta Amigos en Común",
+      "sourceQuote": "Sun Aug 16, 2026, 7:00 PM\nAmigos en común a beneficio del terremoto de Colombia\nUSD $20.00",
       "actions": [
         {
           "label": "Tickets",
@@ -2793,7 +2793,7 @@
           "title": "Greenpoint Comedy Club",
           "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
           "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-06"
+          "date": "2026-08-15"
         }
       ],
       "relatedCardIds": [
