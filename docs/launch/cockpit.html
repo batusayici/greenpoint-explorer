@@ -133,7 +133,8 @@ footer a{color:var(--idle)}
     <p class="mast__sub">Stoopwise Greenpoint, soft-launched and not yet shared broadly. Wave 1 seeding starts Monday. Every number here comes from the last analytics pull; every rule was written before the data it judges.</p>
     <div class="mast__meta">
       <span>As of 2026-08-15</span>
-      <span>Last data pull 2026-08-11</span>
+      <span>Analytics pull 2026-08-11</span>
+      <span>Feed check 2026-08-15</span>
       <span>Next readout 2026-08-18</span>
     </div>
   </header>
@@ -500,7 +501,7 @@ footer a{color:var(--idle)}
   </section>
 
   <section>
-    <h2>Metrics — last pull 2026-08-11</h2>
+    <h2>Metrics — analytics 2026-08-11, feed 2026-08-15</h2>
     <div class="tiles">
   <article class="tile">
     <span class="tile__lbl">Weekly returning locals</span>
@@ -511,31 +512,38 @@ footer a{color:var(--idle)}
   </article>
   <article class="tile">
     <span class="tile__lbl">Dated items, next 7 days</span>
-    <span class="tile__val mono">56</span>
-    <span class="tile__meta mono">↗ was 27 · target ≥35 to send</span>
+    <span class="tile__val mono">73</span>
+    <span class="tile__meta mono">↗ was 56 · target ≥35 to send</span>
     <span class="tile__role">supply-side leading indicator</span>
-    <span class="tile__cav">Instrument definition counts recurring and span-covering cards; a strict hand count is 45. Both clear the bar.</span>
+    <span class="tile__cav">check-freshness.mjs, run 2026-08-15. Twice the send bar. Its definition counts recurring and span-covering cards, so a strict hand count runs lower.</span>
+  </article>
+  <article class="tile">
+    <span class="tile__lbl">Reservoir, 7–14 days out</span>
+    <span class="tile__val mono">22</span>
+    <span class="tile__meta mono">→ was 24</span>
+    <span class="tile__role">says whether the peak is a spike</span>
+    <span class="tile__cav">Holding, so the 73 is not a one-week bulge.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Cards on the map</span>
-    <span class="tile__val mono">144</span>
-    <span class="tile__meta mono">↗ was 75</span>
+    <span class="tile__val mono">163</span>
+    <span class="tile__meta mono">↗ was 144</span>
     <span class="tile__role">coverage</span>
-    <span class="tile__cav">§1 baseline of 95 cards / 38 dated / 48 sources is now three weeks stale and describes a smaller product.</span>
+    <span class="tile__cav">§1 baseline of 95 cards / 38 dated / 48 sources describes a product a third this size. Restating it is an open decision.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Roster yield</span>
     <span class="tile__val mono">42 of 68 (62%)</span>
     <span class="tile__meta mono">↗ was 10 of 48 (21%)</span>
     <span class="tile__role">source health</span>
-    
+    <span class="tile__cav">Not re-derived 8/15 — the roster is now 71 sources, but the yield fraction is an operator derivation from the ledger and there is no instrument for it. Tuesday's readout re-computes it.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Unique coverage</span>
     <span class="tile__val mono">110 of 144 (76%)</span>
     <span class="tile__meta mono">↗ was 46 of 75 (61%)</span>
     <span class="tile__role">the differentiation proof</span>
-    <span class="tile__cav">Operator-derived proxy, unratified after three cycles. Excluding Shop Small gives 83%. That spread is why it needs ratifying or retiring.</span>
+    <span class="tile__cav">As of 8/11, not re-derived. Operator proxy, unratified after three cycles — excluding Shop Small gives 83%. That spread is why it needs ratifying or retiring.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Activation rate</span>
@@ -750,7 +758,7 @@ footer a{color:var(--idle)}
   </article>
   <article class="risk">
     <h3>The feed peak is perishable <span class="pill pill--warn">timing</span></h3>
-    <p>56 dated items is the highest ever recorded, and the reservoir (24 items 7–14 days out) says it isn't a one-week spike. But cycle 1's org drafts were falsified by ordinary expiry inside a week, and the dated kids inventory collapses after 8/22.</p>
+    <p>73 dated items on 8/15, up from 56, with the reservoir holding at 22 — so this isn't a one-week bulge. But cycle 1's org drafts were falsified by ordinary expiry inside a week, and the dated kids inventory collapses after 8/22.</p>
     <p class="risk__resp"><span class="lbl">Response</span> Seeding is one-shot per trust network, so spend it while the feed is at its best. That is the whole argument for sending now.</p>
   </article>
   </section>

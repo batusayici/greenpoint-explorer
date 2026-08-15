@@ -2,6 +2,7 @@
   "meta": {
     "asOf": "2026-08-15",
     "lastDataPull": "2026-08-11",
+    "lastFeedCheck": "2026-08-15",
     "nextReadout": "2026-08-18",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -468,10 +469,11 @@
 
   "metrics": [
     {"id": "wrl", "label": "Weekly returning locals", "value": "2 people", "prior": "1 person", "target": "≥30", "trend": "up", "role": "the demand gate itself", "caveat": "Structurally immune to bot traffic. Baseline is young — sensor live since 7/26."},
-    {"id": "feed", "label": "Dated items, next 7 days", "value": "56", "prior": "27", "target": "≥35 to send", "trend": "up", "role": "supply-side leading indicator", "caveat": "Instrument definition counts recurring and span-covering cards; a strict hand count is 45. Both clear the bar."},
-    {"id": "cards", "label": "Cards on the map", "value": "144", "prior": "75", "target": null, "trend": "up", "role": "coverage", "caveat": "§1 baseline of 95 cards / 38 dated / 48 sources is now three weeks stale and describes a smaller product."},
-    {"id": "yield", "label": "Roster yield", "value": "42 of 68 (62%)", "prior": "10 of 48 (21%)", "target": null, "trend": "up", "role": "source health", "caveat": null},
-    {"id": "unique", "label": "Unique coverage", "value": "110 of 144 (76%)", "prior": "46 of 75 (61%)", "target": null, "trend": "up", "role": "the differentiation proof", "caveat": "Operator-derived proxy, unratified after three cycles. Excluding Shop Small gives 83%. That spread is why it needs ratifying or retiring."},
+    {"id": "feed", "label": "Dated items, next 7 days", "value": "73", "prior": "56", "target": "≥35 to send", "trend": "up", "role": "supply-side leading indicator", "caveat": "check-freshness.mjs, run 2026-08-15. Twice the send bar. Its definition counts recurring and span-covering cards, so a strict hand count runs lower."},
+    {"id": "reservoir", "label": "Reservoir, 7–14 days out", "value": "22", "prior": "24", "target": null, "trend": "flat", "role": "says whether the peak is a spike", "caveat": "Holding, so the 73 is not a one-week bulge."},
+    {"id": "cards", "label": "Cards on the map", "value": "163", "prior": "144", "target": null, "trend": "up", "role": "coverage", "caveat": "§1 baseline of 95 cards / 38 dated / 48 sources describes a product a third this size. Restating it is an open decision."},
+    {"id": "yield", "label": "Roster yield", "value": "42 of 68 (62%)", "prior": "10 of 48 (21%)", "target": null, "trend": "up", "role": "source health", "caveat": "Not re-derived 8/15 — the roster is now 71 sources, but the yield fraction is an operator derivation from the ledger and there is no instrument for it. Tuesday's readout re-computes it."},
+    {"id": "unique", "label": "Unique coverage", "value": "110 of 144 (76%)", "prior": "46 of 75 (61%)", "target": null, "trend": "up", "role": "the differentiation proof", "caveat": "As of 8/11, not re-derived. Operator proxy, unratified after three cycles — excluding Shop Small gives 83%. That spread is why it needs ratifying or retiring."},
     {"id": "activation", "label": "Activation rate", "value": "19% NYC-metro (7 of 37)", "prior": "18% (7 of 38)", "target": null, "trend": "flat", "role": "aha proxy", "caveat": "All-production reads 9% because 62 of 103 'people' are automated. Numerator rose 7→9; only the denominator moved. Directional only per the 8/6 ruling."},
     {"id": "cardopen", "label": "Card-open conversion", "value": "41% NYC-metro (13 of 32)", "prior": "43%", "target": null, "trend": "flat", "role": "funnel read (A1)", "caveat": "Stable across four readings at growing n. Says the stall is before the first card open."},
     {"id": "organic", "label": "Organic sessions", "value": "7 from Google", "prior": "0 all-time", "target": ">50% of acquisition", "trend": "up", "role": "Loop C compounding metric", "caveat": "Not readable against the benchmark yet — it compares organic against tagged acquisition, and no tagged campaign has run."},
@@ -562,7 +564,7 @@
       "id": "perishable",
       "title": "The feed peak is perishable",
       "severity": "timing",
-      "detail": "56 dated items is the highest ever recorded, and the reservoir (24 items 7–14 days out) says it isn't a one-week spike. But cycle 1's org drafts were falsified by ordinary expiry inside a week, and the dated kids inventory collapses after 8/22.",
+      "detail": "73 dated items on 8/15, up from 56, with the reservoir holding at 22 — so this isn't a one-week bulge. But cycle 1's org drafts were falsified by ordinary expiry inside a week, and the dated kids inventory collapses after 8/22.",
       "response": "Seeding is one-shot per trust network, so spend it while the feed is at its best. That is the whole argument for sending now.",
       "source": "readout Finding 1"
     }

@@ -256,7 +256,8 @@ footer a{color:var(--idle)}
     <p class="mast__sub">Stoopwise Greenpoint, soft-launched and not yet shared broadly. Wave 1 seeding starts Monday. Every number here comes from the last analytics pull; every rule was written before the data it judges.</p>
     <div class="mast__meta">
       <span>As of ${esc(s.meta.asOf)}</span>
-      <span>Last data pull ${esc(s.meta.lastDataPull)}</span>
+      <span>Analytics pull ${esc(s.meta.lastDataPull)}</span>
+      ${s.meta.lastFeedCheck ? `<span>Feed check ${esc(s.meta.lastFeedCheck)}</span>` : ''}
       <span>Next readout ${esc(s.meta.nextReadout)}</span>
     </div>
   </header>
@@ -286,7 +287,7 @@ footer a{color:var(--idle)}
   </section>
 
   <section>
-    <h2>Metrics — last pull ${esc(s.meta.lastDataPull)}</h2>
+    <h2>Metrics — analytics ${esc(s.meta.lastDataPull)}${s.meta.lastFeedCheck ? `, feed ${esc(s.meta.lastFeedCheck)}` : ''}</h2>
     <div class="tiles">${metrics}</div>
   </section>
 
