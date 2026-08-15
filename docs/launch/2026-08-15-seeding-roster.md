@@ -251,11 +251,13 @@ and should go — with small fixes.
    `environmental-dependencies.md`. This is the exact hostile-context class
    of the 2026-08-13 map bug, and ~100% of Q2 taps arrive through it.
 
-## Pre-registrations — DRAFTED, PENDING BATU RATIFICATION
+## Pre-registrations — RATIFIED (Batu, 2026-08-15, before any send)
 
-Legitimate only if written before Monday's first send (amending
-pre-registered rules mid-data is what pre-registration forbids). On
-ratification these land in `DECISION_LOG.md` / growth-engine:
+Ratified pre-data, before Monday's first send, as pre-registration doctrine
+requires. Recorded in `DECISION_LOG.md`; rule amendments applied to
+growth-engine §1/§2/§4/§6 the same day. **Also ratified: Q2 moves to the
+Sep 1–8 back-to-school window** (the revised Wave-1 plan above stands as the
+plan of record; the 8/17–19 burst is re-invites + the three org notes only).
 
 - **P1 — Broadcast-seed contamination label.** The organic->50% WoM lens and
   the demand gate's "majority unprompted" clause are unreadable for 4 weeks
@@ -296,14 +298,19 @@ ratification these land in `DECISION_LOG.md` / growth-engine:
 - **P6 — 8/18 readout instruction.** Tuesday 8/18's routine fires mid-wave:
   org srcs not yet sent are not silence; no Q1/Q2 read that cycle.
 
-## Code items (small, gated, TDD)
+## Code items (approved 2026-08-15 — **shipped same day, TDD**)
 
-- **`cards` target kind in `sendPreflight.js`** (+test): Town Square's note
-  makes a card-level claim with a Friday expiry; "no count in copy" dodged
-  the letter of the SEND_TARGETS rule but broke its intent, and every
-  multi-venue org in Tier 2 (WORD, PTAs, GWYSL) hits the same gap — fix the
-  class.
-- **`?lens=` deep-link** (+test): Q2 precondition 2 above.
+- **`cards` target kind in `sendPreflight.js`** ✅ (+2 tests): Town Square's
+  note makes a card-level claim with a Friday expiry; counts by explicit id
+  list (a venue match would inflate with unrelated Transmitter Park cards).
+  `org-town-square` now rides the full preflight incl. network checks; when
+  its listed card expires, total goes to 0 and the do-not-send failure fires.
+  Every multi-venue org in Tier 2 (WORD, PTAs, GWYSL) uses the same kind.
+- **`?lens=` deep-link** ✅ (+1 test): `lensFromSearch` in `deepLink.js`,
+  validated against `FILTERS`, unknown → null → "all" (a bad link can never
+  narrow the page). Q2 precondition 2 closed once deployed; the Q2 link
+  becomes `/?src=parents&lens=family_kids`, and org links may adopt the
+  param where the promised view warrants it.
 
 ## Send log (P4)
 

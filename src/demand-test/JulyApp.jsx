@@ -7,7 +7,7 @@ import { activeCommunityAlert } from "./communityAlert.js";
 import { bannerSlot } from "./bannerSlot.js";
 import { assessFreshness } from "./freshness.js";
 import stamp from "../data/demand-test/freshness-stamp.json";
-import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
+import { resolveDeepLink, deepLinkUrl, lensFromSearch } from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
@@ -32,7 +32,10 @@ function initialDeepLink() {
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
 // page; must never import the 3D runtime.
 export default function JulyApp({ showOrientation = false } = {}) {
-  const [filter, setFilter] = useState("all");
+  // ?lens= deep link (2026-08-15): channel links may promise a view — land
+  // on it. lensFromSearch returns null for anything unknown, so "all" stays
+  // the fallback and a bad link can't narrow the page.
+  const [filter, setFilter] = useState(() => lensFromSearch(window.location.search) ?? "all");
   const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
   const [selectedId, setSelectedId] = useState(initialId);
   const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);

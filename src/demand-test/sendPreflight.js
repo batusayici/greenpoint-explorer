@@ -52,6 +52,17 @@ export const SEND_TARGETS = [
     kind: "lens",
     lens: "family_kids",
   },
+  // Town Square BK produces at other orgs' venues (SummerStarz runs at
+  // Transmitter Park), so a locationName match would count unrelated cards
+  // at the same venue — the `cards` kind counts the note's own claims by id.
+  // When every listed card leaves the deck, total goes to 0 and the script's
+  // do-not-send failure blocks the send: the note's claim has expired.
+  {
+    src: "org-town-square",
+    label: "Town Square BK",
+    kind: "cards",
+    cardIds: ["summerstarz-zootopia-0821"],
+  },
 ];
 
 const isDated = (c) => Boolean(c.startsAt || c.endsAt);
@@ -99,6 +110,13 @@ export function countForLens(cards, lens, now) {
   );
 }
 
+export function countForCards(cards, cardIds, now) {
+  return summarise(
+    cards.filter((c) => cardIds.includes(c.id)),
+    now,
+  );
+}
+
 // Every target counted against one deck at one instant, so a readout or a
 // send can quote a single generatedAt rather than a spread of grep timestamps.
 export function assessSend(cards, { now = new Date() } = {}) {
@@ -109,7 +127,9 @@ export function assessSend(cards, { now = new Date() } = {}) {
       ...t,
       ...(t.kind === "venue"
         ? countForVenue(cards, t.locationName, now)
-        : countForLens(cards, t.lens, now)),
+        : t.kind === "cards"
+          ? countForCards(cards, t.cardIds, now)
+          : countForLens(cards, t.lens, now)),
     })),
   };
 }

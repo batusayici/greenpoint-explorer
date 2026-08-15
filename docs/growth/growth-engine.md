@@ -190,7 +190,16 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   >50% of acquisition**. Instrumentable post-launch: share of new sessions with
   no `?src=` plus search/AI referrers, read monthly. A lens on the WRL bar (it
   sharpens the existing "majority arriving without a fresh invite push" clause),
-  not a second bar.
+  not a second bar. **Contamination label (ratified 2026-08-15, pre-data):
+  this lens and the gate's "majority unprompted" clause are unreadable for 4
+  weeks after any broadcast seed** (group post, QR, org newsletter) — untagged
+  echo (retyped domain, screenshots, second-hop shares) plus cookieless
+  identity rotation and FB-webview localStorage fragmentation read seeding as
+  organic. The ~Sep 15 provisional demand readout carries this label alongside
+  the September-rebound label; warm re-invitees' 4-week windows containing a
+  re-invite count as prompted. The webview mechanism also *deflates* return
+  metrics on webview-borne channels relative to email-borne ones —
+  cross-channel return comparisons carry that asymmetry caveat.
 - **Weakest edge:** *re-entry* — nothing external reminds a resident it's a new
   week (no digest; habit can't form on memory alone). R1 aims here. The *share*
   edge was repaired 2026-07-26 (3.1: OG tags + crawlable `/e/<slug>`); whether
@@ -302,7 +311,7 @@ evidence.
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
 | R0 | **`return_visit` sensor** — localStorage first-seen + visit count, privacy-light. ✅ **live since 2026-07-26** (`returnVisit.js`). | — | Not an experiment — the prerequisite. Unlocks R1/R2 and the demand gate itself. |
-| R1 | **Follow: personalized alert vs. broadcast digest** *(restructured 2026-07-28 — was "weekly digest to postvalue signups"; the digest is now the control arm, not the treatment)*. The segment is **taken from context, never asked** (2026-07-29): the app derives the object from the active lens or the trigger card and rides it into the form as a hidden `follow` param (`lens:<id>` / `place:<id>` / `all`), so the form stays one field. Operator drafts per-segment; Batu sends **only when something matches**. Unsegmented signups receive the Monday digest unchanged (`?src=digest`); segments carry `?src=follow-<lens>`. | Manual segments — no backend, no automation build. Keep segments coarse (4–5) so a narrow lens doesn't go weeks without a match. | Segment click-through vs. broadcast click-through, 3 weeks. **The design contains its own control — the answer is empirical, not argued.** Kill: if segmented doesn't beat broadcast by week 3, personalization isn't worth a backend → fall back to the digest and close the question. **Time-boxed regardless:** manual segment sends cost more founder-minutes than one digest, so the test ends at 3 weeks either way — continue only as a build decision. |
+| R1 | **Follow: personalized alert vs. broadcast digest** *(restructured 2026-07-28 — was "weekly digest to postvalue signups"; the digest is now the control arm, not the treatment)*. The segment is **taken from context, never asked** (2026-07-29): the app derives the object from the active lens or the trigger card and rides it into the form as a hidden `follow` param (`lens:<id>` / `place:<id>` / `all`), so the form stays one field. Operator drafts per-segment; Batu sends **only when something matches**. Unsegmented signups receive the Monday digest unchanged (`?src=digest`); segments carry `?src=follow-<lens>`. | Manual segments — no backend, no automation build. Keep segments coarse (4–5) so a narrow lens doesn't go weeks without a match. | Segment click-through vs. broadcast click-through, 3 weeks. **The design contains its own control — the answer is empirical, not argued.** Kill: if segmented doesn't beat broadcast by week 3, personalization isn't worth a backend → fall back to the digest and close the question. **Time-boxed regardless:** manual segment sends cost more founder-minutes than one digest, so the test ends at 3 weeks either way — continue only as a build decision. **Trigger (ratified 2026-08-15):** R1 starts the first Monday after ≥10 signups with ≥1 segmented; its 3-week clock runs from that Monday. Supersedes the launch plan's "first Monday post-launch". |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
 | R3 | **Five warm-user conversations:** "what would make you check this weekly?" — plus the causal question (added 2026-08-13): **"Did Stoopwise cause you to do something you would not otherwise have known about or chosen?"** The demand-side twin of the unique-coverage count, and verbatim the strongest line pilot evidence can carry ("N% wouldn't have known otherwise"). | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals and the pilot-conversation kit. |
 | R4 | **Anonymous save** *(candidate, registered 2026-08-13 — not live; enters via a Tue-readout proposal when a max-3 slot opens, Batu ratifies)*: a star/save on every card, anonymous localStorage, no account. Hypothesis: saving starts the resident participation graph (business-model.md §1, asset 4) and returns readers to their own shortlist — Laura/Edmond's standing ask. A saved-items view is gated on observed save usage; reminders stay behind the R1 backend decision. | Small UI change over localStorage — no backend, no identity. | Proposed rule (final kill criteria set at launch): save rate per activated session, and whether savers return more (R0 sensor). Kill if saves stay rare after 3 weeks or don't correlate with return. |
@@ -364,7 +373,7 @@ seeding order in the launch runbook §3; kit rules: Batu sends every message):**
 
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
-| Q1 | **Org seeding:** 3 orgs whose events are already on the map get a personal "your events are live here" note + per-org `?src=`. | 3 emails. | Sessions and activation rate per src; an org that shares = a Loop B ignition. Kill an org-type after 2 non-responses. |
+| Q1 | **Org seeding:** 3 orgs whose events are already on the map get a personal "your events are live here" note + per-org `?src=`. | 3 emails. | Sessions and activation rate per src; an org that shares = a Loop B ignition. Kill an org-type after 2 non-responses. *(2026-08-15: org-type taxonomy — institution / business / volunteer-org — plus the whole-wave-silence branch and the August clock suspension live in the seeding roster; "attribution confirms" for Wave 2 = ≥1 session per sent src within 7 days, a mechanism check, never a performance read.)* |
 | Q2 | **Parents-wedge post** in 1–2 parent groups: "every kids/camp thing in Greenpoint this week, verified, on one map," `?src=parents`. | One post. | src=parents sessions + week-2 return (needs R0). Double down only if return beats other srcs. |
 | Q3 | **AEO acceptance** (rides 3.6): `curl` acceptance **passed on prod 2026-07-28** (extensionless `/e/<slug>`, no-JS facts, Event JSON-LD); Rich Results manual spot-check open; re-verify on greenpoint.life at cutover. Then watch organic sessions monthly. | Shipped; watch-only. | Organic sessions trend; no kill — owned infrastructure. |
 
@@ -425,7 +434,13 @@ Embedded in the existing weekly loop — no new ceremony:
 2a. **Seasonal confound (standing note, 2026-07-28):** September reads ride the
    citywide autumn rebound and pre/post cannot control for it — early-fall lifts
    are labeled "confounded with season" in readouts, and no experiment
-   graduates on a Sep–Oct read alone.
+   graduates on a Sep–Oct read alone. **Carve-out (ratified 2026-08-15,
+   pre-data):** 2a governs *pre/post* reads, per its own rationale;
+   contemporaneous-control designs — both arms riding the same weeks, as in
+   R1's segment-vs-broadcast and Q2's return-vs-other-srcs — are exempt, and
+   "a Sep read" means the data window, not the readout date. Without this,
+   every Wave-1 experiment's terminal decision lands in a month whose reads
+   the rule disqualifies.
 2. **Pre/post and small-n qualitative only.** Five resident conversations are a
    valid instrument. No A/B infrastructure, no significance theater — at our
    traffic it's noise cosplay.
@@ -434,6 +449,12 @@ Embedded in the existing weekly loop — no new ceremony:
    experiments and don't make the list.
 5. Every result — including kills — gets one line in the Tue readout doc;
    durable decisions go to `DECISION_LOG.md`.
+6. **Slot & clock hygiene (ratified 2026-08-15):** Wave-2 channels
+   (reddit / fbgroups / qr) extend Q1/Q2's existing slots with per-channel
+   `src`s — they are not experiments 4–6. Watch-only, no-kill items (Q3) sit
+   outside the max-3 cap, explicitly. Each Q experiment closes at the readout
+   after its decision rule fires, or after 4 weeks, whichever comes first —
+   no experiment squats on a slot indefinitely.
 
 **Ownership split:** governed by the operator model and autonomy ladder in §7.
 Anything recurring that can't be automated into the Mon/Tue rhythm doesn't ship.

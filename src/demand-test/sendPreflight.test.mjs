@@ -4,6 +4,7 @@ import {
   SEND_TARGETS,
   countForVenue,
   countForLens,
+  countForCards,
   assessSend,
 } from "./sendPreflight.js";
 
@@ -96,4 +97,48 @@ test("assessSend covers every channel-links src that carries a count", () => {
   // rather than crash, so the operator sees "0" and knows not to send.
   assert.equal(report.targets[0].total, 0);
   assert.equal(report.targets[0].through, null);
+});
+
+// 2026-08-15 (adversarial review, finding M5): an org whose cards span venues
+// (Town Square BK produces at Transmitter Park) can't count by locationName —
+// a venue match would inflate the count with unrelated cards at the same
+// venue, the one direction an org note must never be wrong in. The `cards`
+// kind counts an explicit id list instead, so card-level claims ("Friday's
+// screening is on it") get the same machine preflight as counts.
+test("counts an explicit card list, and an expired list reports zero in-window", () => {
+  // Local clock: the send window under review (Mon 8/17 send, Fri 8/21 claim).
+  const SEND_NOW = new Date("2026-08-17T10:00:00-04:00");
+  const cards = [
+    card("summerstarz", {
+      locationName: "WNYC Transmitter Park",
+      startsAt: "2026-08-21T20:00:00-04:00",
+      endsAt: "2026-08-21T23:00:00-04:00",
+    }),
+    card("unrelated-at-same-venue", {
+      locationName: "WNYC Transmitter Park",
+      startsAt: "2026-08-18T18:00:00-04:00",
+    }),
+  ];
+  const c = countForCards(cards, ["summerstarz"], SEND_NOW);
+  assert.equal(c.total, 1);
+  assert.equal(c.inWindow, 1);
+  assert.equal(c.through, "2026-08-21");
+  // After the claim's card leaves the deck, the count is loudly zero —
+  // the script's total===0 failure blocks the send.
+  const gone = countForCards([], ["summerstarz"], SEND_NOW);
+  assert.equal(gone.total, 0);
+});
+
+test("assessSend dispatches the cards kind", () => {
+  const deck = [
+    card("summerstarz-zootopia-0821", {
+      locationName: "WNYC Transmitter Park",
+      startsAt: "2026-08-21T20:00:00-04:00",
+    }),
+  ];
+  const report = assessSend(deck, { now: new Date("2026-08-17T10:00:00-04:00") });
+  const tsbk = report.targets.find((t) => t.src === "org-town-square");
+  assert.ok(tsbk, "org-town-square must be a preflight target");
+  assert.equal(tsbk.total, 1);
+  assert.equal(tsbk.inWindow, 1);
 });

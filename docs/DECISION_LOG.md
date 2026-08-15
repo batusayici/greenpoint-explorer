@@ -4,6 +4,37 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-15 — Seeding motion adversarially reviewed; pre-registrations P1–P6 ratified; Q2 moves to back-to-school week
+
+**Decision (Batu), after a two-pass adversarial review of the seeding motion** (independent
+clean-context critiques: measurement/experiment design · field reality; full findings and ratified
+text in `docs/launch/2026-08-15-seeding-roster.md`). The wave splits: **warm re-invites + the three
+Q1 org notes (Library, Brooklyn Craft, Town Square) go 8/17–19; Q2 (parents post) moves to the
+Sep 1–8 back-to-school window**, where the feed's fall-registration inventory is the story and the
+week-2 return read lands on the wedge's strongest week instead of its emptiest (post-8/21 the dated
+kids inventory collapses — a kill would have read on a supply artifact).
+
+**Ratified pre-data, before any send** (the legitimacy window pre-registration doctrine requires):
+**P1** broadcast-seed contamination label — the organic->50% lens and the demand gate's "majority
+unprompted" clause are unreadable for 4 weeks after any broadcast seed, and the ~Sep 15 provisional
+readout carries this label (untagged echo + cookieless identity rotation + FB-webview localStorage
+fragmentation read seeding as organic; the same mechanism asymmetrically deflates Q2's return
+metric) · **P2** rule 2a carve-out — 2a governs pre/post reads; contemporaneous-control designs
+(R1, Q2) are exempt, and "a Sep read" means the data window, not the readout date · **P3** Wave-2
+gate defined — "attribution confirms" = every sent `src` shows ≥1 session within 7 days; channel
+performance explicitly does not gate Wave 2 · **P4** whole-wave-silence branch + org-type taxonomy;
+org-type kill clock suspended for August · **P5** slot/clock hygiene — Wave-2 channels extend
+Q1/Q2's slots; Q3 sits outside the max-3 cap; Q experiments get completion conditions; R1's trigger
+ratified (first Monday after ≥10 signups with ≥1 segmented, supersedes "first Monday post-launch")
+· **P6** the 8/18 mid-wave readout carries a no-read instruction. Rule amendments applied to
+growth-engine §1/§2/§4/§6 same day.
+
+**Also:** Q2 messenger Rana confirmed by Batu (member of a target group, personally willing; own
+words, exact tagged link, one group; Laura is the fallback). Two code items approved and shipped
+TDD: the `cards` target kind in `sendPreflight.js` (card-level outbound claims get machine
+preflight; fixes the class for every multi-venue org) and the `?lens=` deep-link (a channel link
+that promises a view lands on it). Open before Q2: FB in-app webview verification on real devices.
+
 ## 2026-08-14 (third entry) — A different time is not a different card; a different bill is
 
 **Batu, asked for the rule rather than the instance.** Greenpoint Comedy Club runs an 8pm and a 10pm
