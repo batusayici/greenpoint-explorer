@@ -191,3 +191,123 @@ still in `cards.json` and still upcoming.
 *Method note: private-doc findings inform Tier 3 at class level only; no
 figures or prospect assessments appear here by design (DECISION_LOG
 2026-07-28 sensitivity split).*
+
+---
+
+# Adversarial review of the seeding motion (2026-08-15)
+
+Two independent clean-context adversarial passes (measurement/experiment
+design · field reality), synthesized in the main thread. Verdicts: measurement
+— **"not as written; a page of pre-registrations away from yes"** · field —
+**"yes-with-changes: split the wave."** Convergent core: **Q2 is the fragile
+item** (it stacks an unverified messenger, a landing page that doesn't show
+the promised product, a week-2 read on the emptiest kids week of the year, and
+structurally asymmetric measurement loss), while the org notes are low-risk
+and should go — with small fixes.
+
+## Revised Wave-1 plan (recommended)
+
+- **Mon 8/17 PM:** warm re-invites (unchanged) **+ the Town Square note,
+  moved up from Tuesday** — a Tue send gives a volunteer org ~72h to act on
+  its own season finale; Monday buys a real window. Note re-centered so
+  nothing expires Friday: the screening is the proof, the **fall calendar**
+  (Schoolfest, Halloween Parade, swaps) is the pitch. Optional, high-value:
+  be at the 8/21 screening — the largest physical gathering of the wedge
+  audience this month, and a 5-minute in-person follow-up.
+- **Tue–Wed:** Library + Brooklyn Craft notes, each gaining Film Noir's
+  already-approved share line ("if you want to share it with your people,
+  that link is yours") — criterion 1 says the org *sharing* is the growth
+  event, and two of three drafts previously asked for nothing.
+- **Q2 decoupled → the Sep 1–8 back-to-school window.** Rationale: (a) the
+  week-2 return read would land on Aug 24–30, when the dated kids inventory
+  collapses (SummerStarz/McGolrick movies/both camps all end by 8/22; kill
+  would read on a supply artifact, not demand); (b) the feed's strongest
+  late-August wedge story is **fall registration** (dance ×3, Yaro, YMCA
+  9/8 deadline, NY Society of Play) — the back-to-school post writes itself
+  and week-2 return reads on the richest week of the wedge's year; (c) the
+  decoupling buys time to close Q2's three preconditions below. Q2 is the
+  one Wave-1 item that cannot be re-run if botched.
+
+**Q2 preconditions (all three before the post goes out):**
+1. **Messenger verified as an embedded member.** The review's hardest
+   finding: Rana is two hops out, with no documented membership in either
+   group, no documented product usage, and a recorded belief that browser
+   products don't reach people — a handed-to-them post in a join-gated,
+   no-promo group risks a mod delete that burns the wedge channel for
+   months. **If Batu confirms Rana is a genuine member of one target group
+   and personally willing, the choice stands** (own words, exact tagged
+   link, ONE group — second group needs its own `src` row per the
+   one-src-per-channel rule); otherwise revert to Laura (this doc's
+   original recommendation), with a Slack-pod thread reply preferred over a
+   standalone FB post (near-zero blast radius).
+2. **`?lens=family_kids` deep-link shipped** — the post promises a kids map
+   but `main.jsx` reads only `src`; the link lands on the general feed and
+   only 15 people have ever tapped a filter chip. ~10-line gated code
+   change; also improves every future org link.
+3. **FB in-app webview verified on real devices** (iOS + Android: map
+   renders, feed renders, `src` lands in PostHog) + a webview row in
+   `environmental-dependencies.md`. This is the exact hostile-context class
+   of the 2026-08-13 map bug, and ~100% of Q2 taps arrive through it.
+
+## Pre-registrations — DRAFTED, PENDING BATU RATIFICATION
+
+Legitimate only if written before Monday's first send (amending
+pre-registered rules mid-data is what pre-registration forbids). On
+ratification these land in `DECISION_LOG.md` / growth-engine:
+
+- **P1 — Broadcast-seed contamination label.** The organic->50% WoM lens and
+  the demand gate's "majority unprompted" clause are unreadable for 4 weeks
+  after any broadcast seed (group post, QR, org newsletter); the ~Sep 15
+  provisional demand readout carries this label plus the September-rebound
+  confound label. Warm re-invitees' 4-week windows containing a re-invite
+  count as prompted. (Mechanism: untagged echo — retyped domain, screenshots,
+  second-hop shares — plus cookieless identity rotation and FB-webview
+  localStorage fragmentation, which also systematically *deflates* Q2's
+  return metric relative to email-borne org channels; cross-channel return
+  comparisons carry that asymmetry caveat.)
+- **P2 — Rule 2a carve-out.** §6 rule 2a applies to *pre/post* reads;
+  contemporaneous-control designs (R1 segment-vs-broadcast, Q2
+  return-vs-other-srcs — both arms in the same weeks) are exempt. "A Sep
+  read" means the data window, not the readout date. Without this, every
+  Wave-1 experiment's terminal decision lands in a month whose reads the
+  rules disqualify.
+- **P3 — Wave-2 gate defined.** "Attribution confirms" = every sent `src`
+  shows ≥1 session in PostHog within 7 days of its send (mechanism check —
+  the thing Aug 25 can actually measure at current n). Channel *performance*
+  explicitly does not gate Wave 2; per-src performance follows its own
+  pre-registered rules.
+- **P4 — Whole-wave-silence branch + kill-rule repair.** The org-type kill
+  rule is unfireable on a one-org-per-type slate and undefined without a
+  taxonomy (institution / business / volunteer-org). Branch: if by Tue 8/25
+  all three org srcs show 0 sessions and 0 replies → one follow-up per org
+  that week; the type-level question goes to Batu with Film Noir as the
+  next test. **The org-type kill clock is suspended for August** (silence
+  in vacation season is noise; September is the institution class's best
+  month). Replies/non-replies get logged in the send log below.
+- **P5 — Slot + clock hygiene.** Wave-2 channels (reddit/fbgroups/qr) extend
+  Q1/Q2's slots with per-channel srcs — they are not experiments 4–6; Q3
+  (watch-only, no kill) sits outside the max-3 cap, in writing; each Q
+  experiment closes at the readout after its decision rule fires or after 4
+  weeks, whichever first. **R1's trigger ratified as:** R1 starts the first
+  Monday after ≥10 signups with ≥1 segmented; its 3-week clock runs from
+  that Monday (supersedes the launch plan's "first Monday post-launch").
+- **P6 — 8/18 readout instruction.** Tuesday 8/18's routine fires mid-wave:
+  org srcs not yet sent are not silence; no Q1/Q2 read that cycle.
+
+## Code items (small, gated, TDD)
+
+- **`cards` target kind in `sendPreflight.js`** (+test): Town Square's note
+  makes a card-level claim with a Friday expiry; "no count in copy" dodged
+  the letter of the SEND_TARGETS rule but broke its intent, and every
+  multi-venue org in Tier 2 (WORD, PTAs, GWYSL) hits the same gap — fix the
+  class.
+- **`?lens=` deep-link** (+test): Q2 precondition 2 above.
+
+## Send log (P4)
+
+| src | sent | first session | reply | notes |
+|---|---|---|---|---|
+| org-gp-library | — | — | — | |
+| org-brooklyn-craft | — | — | — | |
+| org-town-square | — | — | — | |
+| parents | — | — | — | held for Sep 1–8 window |

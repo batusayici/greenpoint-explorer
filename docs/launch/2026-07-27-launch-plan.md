@@ -59,6 +59,12 @@ exception 2026-07-28 — they protect the "verified" promise, they don't add fea
 
 ## 3. Seeding waves (post-verify; all sends by Batu, links copied from `channel-links.md`)
 
+> **Superseded in part, 2026-08-15:** Wave 1 was deferred 2026-08-12 and re-planned.
+> Target selection, the ratified slate (Town Square BK swapped in for Film Noir),
+> timing, drafts, and the adversarial-review amendments now live in
+> **`docs/launch/2026-08-15-seeding-roster.md`** — that doc governs the sends; the
+> wave *structure* below (trust networks → broadcast → held plays) still stands.
+
 Echo-chamber order — saturate small trust networks before broadcast
 (growth-engine §4): a messenger inside the network beats reach.
 
