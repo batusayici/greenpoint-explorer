@@ -108,6 +108,8 @@ Template:
 
 ## Metrics this week
 WRL proxy · activation rate · organic share · per-src table (quoted from pull)
+· feed density with per-category cut — cards + dated-in-window by filter, from
+cards.json (added 2026-08-15; surfaces a thinning category between sweeps)
 
 ## Live experiments (max 3)
 One line each per §2 above.

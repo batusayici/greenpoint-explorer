@@ -155,6 +155,12 @@ Category sweep against the merged universe surfaced these gaps — each is a
 
 ## Town Square note — draft (send Tue 8/18, Batu sends)
 
+> **Superseded same day (2026-08-15):** the adversarial review below moved this
+> send to **Mon 8/17** and re-centered it (screening = proof, fall calendar =
+> pitch). Final send-ready copy for all three org notes now lives in
+> **"Send-ready drafts — final"** at the end of this doc. This section stays as
+> the dated record of the first version and its truth constraints.
+
 The other three Wave-1 drafts live in `docs/growth/readouts/2026-08-11.md`
 (Library and Brooklyn Craft still valid; Film Noir's is held for Tier 2).
 
@@ -314,9 +320,101 @@ plan of record; the 8/17–19 burst is re-invites + the three org notes only).
 
 ## Send log (P4)
 
-| src | sent | first session | reply | notes |
-|---|---|---|---|---|
-| org-gp-library | — | — | — | |
-| org-brooklyn-craft | — | — | — | |
-| org-town-square | — | — | — | |
-| parents | — | — | — | held for Sep 1–8 window |
+*Primary log (pending Batu's ratification, strategy-review decision 4):
+`gtm-state.json` `channels[]` — the cockpit's source-of-truth rule. This table
+stays as the narrative record. `shared?` = the org's own channel (newsletter /
+IG / site) carried the link, confirmed from the Monday roster snapshots — all
+three Wave-1 orgs are already ingest sources — never inferred from sessions.*
+
+| src | sent | first session | shared? | reply | notes |
+|---|---|---|---|---|---|
+| org-gp-library | — | — | — | — | |
+| org-brooklyn-craft | — | — | — | — | |
+| org-town-square | — | — | — | — | |
+| parents | — | — | — | — | held for Sep 1–8 window |
+
+---
+
+## Send-ready drafts — final (2026-08-15)
+
+Final copy per the revised Wave-1 plan: Town Square moved to **Mon 8/17 PM**
+and re-centered so nothing expires Friday; Library and Brooklyn Craft
+(**Tue–Wed 8/18–19, mid-morning**) gain the share line, because criterion 1
+says the org *sharing* is the growth event. Rules unchanged: Batu sends, links
+copied from `channel-links.md`, `npm run preflight:send` the morning of each
+send. Warm re-invites (Mon 8/17 PM) use the existing kit copy on their own
+rows (`michael` / `laura-edmond` / `perri`).
+
+**Town Square BK** (`org-town-square`, Mon 8/17 PM). Truth constraints: one
+live card (`summerstarz-zootopia-0821`) — singular claim, no count; the
+screening line dies after Fri 8/21 and must be re-grounded if the send slips;
+the `cards` preflight target fires do-not-send when the card expires.
+
+> **Subject:** Friday's SummerStarz finale is on the Greenpoint map
+>
+> Hi [name],
+>
+> I run Stoopwise Greenpoint — a small map + feed of what's happening in
+> Greenpoint each week: events, openings, deals, news, everything verified
+> against named sources. Free, no ads, not a business.
+>
+> Friday's Zootopia 2 screening at Transmitter Park is on it now, with the
+> free-ticket link:
+>
+> https://stoopwise.com/?src=org-town-square
+>
+> No ask and nothing to sign up for — it's already live. The reason I'm
+> writing you in particular: your events are the spine of Greenpoint's family
+> calendar, and everything coming this fall — Schoolfest, the Halloween
+> Parade, the swaps — goes up the moment you announce it, listed from you
+> rather than found late. If anything's ever listed wrong, tell me and I'll
+> fix it same day.
+>
+> — Batu, Greenpoint
+
+**Greenpoint Library** (`org-gp-library`, Tue–Wed 8/18–19). The count bracket
+is filled from that morning's `preflight:send` output, or dropped — never
+hand-derived.
+
+> **Subject:** Your programs are on the Greenpoint map
+>
+> Hi [name],
+>
+> I built a small map + feed of what's happening in Greenpoint each week —
+> events, openings, deals, news — all verified against named sources, free, no
+> ads, not a business. It's called Stoopwise Greenpoint.
+>
+> Your programs are on it — [N from preflight] listed right now — and I keep
+> them current from your calendar. Nothing is asked of you — it's already
+> live.
+>
+> https://stoopwise.com/?src=org-gp-library
+>
+> If you want to share it with your patrons, that link is yours. If anything's
+> listed wrong, tell me and I'll fix it same day. And if there's something
+> coming up you'd want neighbors to know about, send it over — I'd rather list
+> it from you than find it late.
+>
+> — Batu, Greenpoint
+
+**Brooklyn Craft Company** (`org-brooklyn-craft`, Tue–Wed 8/18–19). The
+booking-calendar clause turns the BookThatApp blocker into a supply ask
+(carried from cycle 3; drop it if it reads as an excuse).
+
+> **Subject:** Your classes are on the Greenpoint map
+>
+> Hi [name],
+>
+> I keep Stoopwise Greenpoint — a verified weekly map + feed of what's
+> happening in the neighborhood. Your classes are on it, listed from your own
+> calendar, sourced, free, no ads.
+>
+> https://stoopwise.com/?src=org-brooklyn-craft
+>
+> Nothing needed from you. If you'd like to share it with your students, that
+> link is yours. If a listing is off I'll correct it same day, and if you'd
+> like something upcoming included, just send it — your booking calendar is
+> hard for me to read automatically, so anything you send goes up faster and
+> more accurately than anything I find.
+>
+> — Batu, Greenpoint

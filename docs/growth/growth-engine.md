@@ -118,13 +118,13 @@ the cookieless stance) · resident payment or tip jar (§2 non-negotiable 1) ·
 any paid-placement surface before the demand gate · sponsorship affordance on
 news or civic cards, ever.
 
-**Gaps against this map** (status 2026-07-28): business CTA = **L5 shipped**;
+**Gaps against this map** (status 2026-07-28; Follow status corrected
+2026-08-15): business CTA = **L5 shipped**;
 only Batu's Tally form creation remains — **the Follow segment question should
-ride that same Tally setup**, making the R1 test near-free · the Follow CTA has
-no in-product surface — the existing
-post-value prompt captures an email with no stated promise, and the smallest
-version (one Tally question: which lens, or which place) is copy plus a form
-field, not a build · the published coverage standards page (business-model.md
+ride that same Tally setup**, making the R1 test near-free · the Follow CTA
+**shipped 2026-07-29** — the segment is context-derived and rides the
+post-value form as a hidden `follow` param (see R1); the earlier "no
+in-product surface" text here was stale · the published coverage standards page (business-model.md
 §4) does not exist and pays into two loops (buyer trust + answer-engine trust
 signal) · per-lens `.ics` feeds (the ambient layer) are unbuilt — small,
 testable, post-launch.
@@ -169,7 +169,11 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   (the 7/27–28 outage would have tripped it in a day). Pulled Monday from
   `cards.json` + `ingest-ledger.json`; one line in every Tuesday readout.
   **Baseline (last week of July 2026): 95 cards · 38 dated in-window · 48
-  sources.**
+  sources.** **Per-category cut (added 2026-08-15):** the same line breaks out
+  cards + dated-in-window **by filter** — a category going thin (the kids
+  inventory in September, civic all year) is otherwise invisible between
+  one-off sweeps, and the 2026-08-15 strategy review found civic at 5 cards /
+  1 dated only by manual scan.
 - **Unique-coverage count (added 2026-07-28 — the differentiation proof):**
   items on the map this week that appeared in no other Greenpoint source
   (Greenpointers guide, OMGreenpoint, venue-only calendars). The measurable form

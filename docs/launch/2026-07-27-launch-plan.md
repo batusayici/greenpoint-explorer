@@ -90,7 +90,9 @@ Echo-chamber order — saturate small trust networks before broadcast
   routine** drafts the readout PR (§5) → Batu merges/edits → Wed–Fri approved
   ships only.
 - **Experiments (max 3 live — growth-engine §6):** light **R1 Follow**
-  (personalized alert vs. broadcast digest, first Monday post-launch;
+  (personalized alert vs. broadcast digest, ~~first Monday post-launch~~ —
+  *trigger superseded 2026-08-15, seeding-roster P5: first Monday after ≥10
+  signups with ≥1 segmented*;
   `src=follow-<lens>` treatment against the `src=digest` control — restructured
   2026-07-28, growth-engine §0/§2), **Q1**, **Q2**. R2 ("new this week"
   marker) waits for a returner population; A1 funnel read happens inside the
