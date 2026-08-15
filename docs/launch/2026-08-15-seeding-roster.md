@@ -83,6 +83,10 @@ gates on that attribution.
    charter; Sunday farmers market = stroller epicenter), McCarren Greenmarket,
    **North Brooklyn Community Boathouse** (free family paddles, loves accurate
    listings). Mostly QR/physical-presence plays (Wave 2 QR cards), not notes.
+   **Friends of Bushwick Inlet Park:** Michael's named early-partner candidate
+   and his warm intro — but their sender is registered with zero cards shipped,
+   so the on-map truth test fails today. Coverage first (normal ingest gate),
+   then the note in this wave; Michael's re-invite may carry a soft mention.
 4. **Greenpoint YMCA** — already a roster source + email sender with a fall
    registration card; front desk + boards make it a physical-distribution ask
    (branch manager OK), rides the QR wave.
