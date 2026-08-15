@@ -492,14 +492,19 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // to be authored anyway — the gate reconciles dates, not bills, so a named
   // one-off at 6pm went invisible the moment the 8pm showcase covered its day.
   // A different bill is a different card (Batu, RULING-SITTINGS-VS-BILLS). 161.
-  // +1 (this branch): the NBCB canoe card, unblocked by the verify-quotes
-  // host-map fix. 161 + 1 = 162.
-  assert.equal(seed.cards.length, 162);
+  // +1 (PR #39): the NBCB canoe card, unblocked by the verify-quotes host-map
+  // fix. 161 + 1 = 162.
+  // +1 (PR #40): Tend Greenpoint's 20%-off plant sale. Held since 8/14 on a
+  // missing address, and the block was never what the hold said it was — the
+  // bare host was already allowlisted and CONNECTed fine; the 403 was on the
+  // redirect target, www.tendgreenpoint.com. With that opened the shop's own
+  // page states the address outright. 162 + 1 = 163.
+  assert.equal(seed.cards.length, 163);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.category === "event"), 91, "90 (incl. comedy-goo-goo-0829) + the NBCB canoe card, unblocked by the verify-quotes host-map fix (2026-08-15)");
-  assert.equal(count((c) => c.category === "discount"), 6, "7 - the Selformer Summer Fling, pulled from its own pricing page (2026-08-13)");
+  assert.equal(count((c) => c.category === "discount"), 7, "6 + Tend Greenpoint's dated plant sale, unblocked 2026-08-15");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 after expiry + Good Room's 8/28 Magnetic bill");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
@@ -583,7 +588,9 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // own terms were "available through Aug 15 or until we're full, whichever
   // comes first", so the page pulling it is the offer ending. Caught by
   // ingest:quotes, not by the calendar: its printed endsAt was still 2 days out.
-  assert.equal(deals.length, 6);
+  // 2026-08-15: +1 — Tend Greenpoint's plant sale, dated (through 8/21) and so
+  // correctly NOT recurring; the email states its own closing date.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -1063,6 +1070,12 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
     "selformer-memberships",
+    // 2026-08-15: a DATED sale (through 8/21), so it is not recurring — the
+    // email states its own closing date, unlike the Marianella and Pooch's
+    // offers above. The shop's second offer (20% off already-reduced stock,
+    // through 9/7) is deliberately NOT folded in: two end dates on one card
+    // would tell a reader the wrong deadline for one of them.
+    "tend-plant-sale-0821",
     // 2026-08-10: a dated promo, so it sits beside the membership card rather
     // than replacing it — endsAt is the source's own "available through Aug 15".
     "word-membership",

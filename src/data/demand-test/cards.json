@@ -7525,6 +7525,54 @@
       ],
       "lat": 40.73842,
       "lng": -73.95547
+    },
+    {
+      "id": "tend-plant-sale-0821",
+      "category": "discount",
+      "title": "20% off all plants at Tend Greenpoint",
+      "kicker": "Indoor tropicals to trees and shrubs",
+      "summary": "Valid in store and online. The discount is applied automatically at checkout, with no coupon code needed.",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "filters": [
+        "deals_memberships"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "locationName": "Tend Greenpoint",
+      "address": "252 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "252 Franklin Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Shop the sale",
+          "type": "order",
+          "url": "https://www.tendgreenpoint.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Tend Greenpoint",
+          "url": "https://www.tendgreenpoint.com/",
+          "publisher": "Tend Greenpoint",
+          "date": "2026-08-15"
+        },
+        {
+          "title": "A Very Rare Treat",
+          "url": "https://www.tendgreenpoint.com/",
+          "publisher": "Tend Greenpoint",
+          "date": "2026-08-14"
+        }
+      ],
+      "sourceQuote": "20% OFF All Plants!\nThrough Friday, August 21, 2026, our collections of Indoor Tropicals, Cacti & Succulents, Garden Perennials, Annuals and Trees & Shrubs are 20% OFF*.\nThe discount is automatically applied at checkout. No coupon code is needed.\nFind our shop at 252 Franklin St in Greenpoint, Brooklyn, open daily.",
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "lat": 40.734612,
+      "lng": -73.958144
     }
   ]
 }
