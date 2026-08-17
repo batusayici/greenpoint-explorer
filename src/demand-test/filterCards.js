@@ -149,11 +149,22 @@ const SHELF_SECTIONS = [
 ];
 export const shelfSection = (card) => SHELF_SECTIONS[ongoingRank(card)];
 
-// Freshest first inside a kind — an undated card's createdAt is the only
-// recency signal it has, and it makes each refresh's additions surface. The
-// kind itself is now carried by the section, not by the comparator.
-const created = (c) => Date.parse(c.createdAt ?? "") || 0;
-const byFreshest = (a, b) => created(b) - created(a);
+// Freshest first inside a kind. For most kinds an undated card's createdAt is
+// the only recency signal it has, and it makes each refresh's additions
+// surface: for a place or a deal, "new here" is the recency that matters, and
+// its source link may be an article from years ago. The kind itself is carried
+// by the section, not by the comparator.
+//
+// NEWS IS THE EXCEPTION (2026-08-17): a story's recency is its own date, which
+// is now the date its row prints, and an order that disagrees with the date
+// beside it reads as broken. It was already wrong and unseeable — two stories
+// picked up in the same run tie on createdAt and fell to array order, which put
+// Jul 24 above Jul 25 the moment the dates became visible.
+//
+// Both are "YYYY-MM-DD", so this compares lexicographically rather than
+// parsing — same reason as the shelf life above.
+const recencyOf = (c) => (c.category === "news" ? publishedOn(c) : c.createdAt) ?? "";
+const byFreshest = (a, b) => (recencyOf(a) < recencyOf(b) ? 1 : recencyOf(a) > recencyOf(b) ? -1 : 0);
 
 export function groupByDay(cards, date) {
   const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
@@ -267,7 +278,38 @@ export function noTodayNotice(groups, filterId) {
 // cards are untouched.
 const STARTED_GRACE_MS = 60 * 60000;
 
+// The date a story was PUBLISHED — the source's own date, falling back to the
+// day we made the card. Shared by the shelf life below and the date the row
+// prints, so a story can never expire on one clock and display another.
+export const publishedOn = (card) =>
+  (card.sourceLinks ?? []).find((s) => s?.date)?.date ?? card.createdAt ?? null;
+
+// News shelf life (2026-08-17). Reporting was the ONLY card kind with no way to
+// leave the feed: news carries no endsAt, so the check below passed it forever
+// and every story ever ingested was still on the page. Measured that morning:
+// 15 news cards live, 13 older than two weeks, 8 older than a month, the oldest
+// 96 days — sitting in a section that prints no date, so a May story read
+// exactly as current as Tuesday's.
+//
+// A shelf life, not a window. Every other expiry here answers "is this over?"
+// from a sourced end time; news has no end, it just stops being news. Thirty
+// days is a judgment call, deliberately generous, and it is the one number to
+// change if the feed reads stale or thin.
+//
+// Dated by the STORY, not by us: a May piece picked up in an August run is
+// three months old to a reader, and createdAt would call it new. Undateable
+// news is never deleted — we don't delete what we can't judge — and the rule is
+// news-only, because a bar from May is still a bar.
+const NEWS_SHELF_LIFE_DAYS = 30;
+
 export function isExpiredCard(card, date) {
+  if (card.category === "news") {
+    const published = publishedOn(card);
+    const cutoff = NY_DAY.format(new Date(date.getTime() - NEWS_SHELF_LIFE_DAYS * 86400000));
+    // Both are "YYYY-MM-DD", so this compares lexicographically — the same
+    // trick indexNow.js uses, immune to timezone drift and midnight parsing.
+    if (published && published < cutoff) return true;
+  }
   if (card.endsAt == null) return false;
   if (Date.parse(card.endsAt) < date.getTime()) return true;
   if (card.recurring || card.startsAt == null) return false;
