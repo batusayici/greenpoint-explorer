@@ -1640,7 +1640,7 @@
     },
     {
       "name": "BQFlea @ Meeker Avenue (Sundays under the BQE)",
-      "note": "BLOCKED on two counts (2026-08-05 roundup): (1) location — the listing says only \"@ Meeker Avenue\", and Meeker runs the length of the BQE viaduct across both Greenpoint and Williamsburg, so there is no point to pin; (2) lens — `shopping` is retired and `deals_memberships` is deals/memberships only, so an outdoor market has no honest home. UNBLOCK when the organiser's own page gives cross-streets AND Batu rules on where markets/fleas file (proposed in the 2026-08-05 review PR). Full card JSON: docs/review/held-cards-2026-08-05.md.",
+      "note": "LENS RESOLVED 2026-08-17: Batu ruled markets/fleas file under shopping (same as the Cibone Comme des Garcons showcase; DECISION_LOG 2026-08-17) — the Aug 5 lens blocker is dead, and the deals_memberships question with it. STILL HELD on location only: the listing says just \"@ Meeker Avenue\", which runs the length of the BQE across Greenpoint and Williamsburg, so there is no point to pin. UNBLOCK when the organiser's own page gives cross-streets; then card as a shopping event. Full card JSON: docs/review/held-cards-2026-08-05.md (update its filters to [\"shopping\"] when carding). PRIOR (2026-08-05): blocked on both lens and location.",
       "addedAt": "2026-08-05"
     },
     {
