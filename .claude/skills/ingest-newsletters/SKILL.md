@@ -326,6 +326,14 @@ review cycle and, on a same-week item, usually the card itself.
 5. Run the step-3 run-level gates, **including `npm run ingest:coverage -- --gate`** (this pre-ship invocation is also what stamps the just-authored cards into `sourcePulse`). All green → commit the **shipping** cards (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
 6. **Held cards go to a PR** (`ingest/review-<date>`) with a one-line reason each and what would resolve it. Ship first, then PR — a doubtful card must never delay the clean ones.
 7. **Report every run in the summary**, whether or not it shipped: what shipped, what was held and why, and the gate results. Autonomy without a log is not autonomy, it's drift.
+
+   **Write the report the way you'd tell Batu, not the way you'd document the pipeline (2026-08-17).** The Monday 8/17 commit opened with "Deck 163 -> 150 (-8.0%). Fetch exit 0, reach 53/61 (13% error, ceiling 15%)" — telemetry, not a sentence — and explained a caught cancellation as "INVISIBLE to the fetch diff: it is a line-set diff, the literal line `is_event_canceled: 1` already occurs elsewhere in the snapshot" — how it was found, not what happened. Lead with what changed on the map, in plain words; give the mechanism after, only if the plain version alone would leave Batu unable to judge the call.
+   - Not: "Deck 163 -> 150 (-8.0%). Fetch exit 0, reach 53/61 (13% error, ceiling 15%)."
+     Instead: "The map went from 163 cards to 150. All 61 sources were checked; 53 came back clean, 8 failed, which is inside the normal range."
+   - Not: "The cancellations were INVISIBLE to the fetch diff: it is a line-set diff, the literal line `is_event_canceled: 1` already occurs elsewhere in the snapshot, so flipping a fifth record to it adds no line."
+     Instead: "The library's Tuesday ESOL class got canceled, but the usual check for cancellations missed it — another class was already marked canceled, and the check only looks for that marking to appear anywhere, not for which class has it. Caught by reading the two lists by hand."
+
+   Card slugs, gate names, file paths and counts still belong in the report — they're what makes a claim checkable later — but they follow the plain sentence, they don't stand in for it.
 8. **Classify every hold and log the tally (2026-08-03).** One line in the summary, and the same line on the run's `processedItems` entry so the trend is queryable across runs:
 
    `holds: <n> new-judgment · <n> rule-miss · <n> source-blocked`
