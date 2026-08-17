@@ -1607,6 +1607,14 @@
         "event"
       ],
       "note": "197 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan; Batu subscribing. EMAIL-ONLY BY CONSTRUCTION — otisandfinn.com/community describes real community programming (annual free Back-to-School haircut event, Pride Party) but publishes NO dated calendar; the page is purely an email signup, which is why this is a sender and not a web source. Do not add the /community page to ingest-sources.json expecting dates. Seasonal: the Back-to-School haircut event lands in late August."
+    },
+    {
+      "publisher": "Action City Comics",
+      "match": "actioncitycomics.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "570 Manhattan Ave. Onboarded 2026-08-17 (Batu). Comic shop with a Square-Online ticketed events widget on the homepage — Flesh & Blood, One Piece, and other TCG tournament nights, each individually ticketed (stock status shown per event). PRIMARY SOURCE IS THE WEB PAGE, not the newsletter: the homepage renders the live events list server-side (see ingest-sources.json id action-city-comics), so pull it every ingest. Batu also subscribed to the newsletter 2026-08-17 as a backup channel in case a tournament is announced there before it hits the site."
     }
   ],
   "declinedSenders": [

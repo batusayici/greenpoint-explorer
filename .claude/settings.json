@@ -2,6 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:acmesmokedfish.com)",
+      "WebFetch(domain:actioncitycomics.com)",
+      "WebFetch(domain:www.actioncitycomics.com)",
       "WebFetch(domain:api-endpoint.mta.info)",
       "WebFetch(domain:api.feather.rsvp)",
       "WebFetch(domain:archestrat.us)",

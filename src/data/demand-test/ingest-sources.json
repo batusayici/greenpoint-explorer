@@ -917,6 +917,19 @@
       "standing": false,
       "citeHost": "tendgreenpoint.com",
       "notes": "252 Franklin St, Greenpoint plant shop and garden nursery. Already in senderRegistry as publisher \"Tend Greenpoint\" (messages+d4sh8s6s9jcvd@squaremktg.com, a Square marketing relay) — the SENDER trust decision was made 2026-07; this adds the WEB source so its evidence has somewhere to live. ⚠ USE THE `www.` URL. The bare host redirects (HTTP/2 301 → https://www.tendgreenpoint.com) and the routine's egress gateway treats the two as SEPARATE hosts: on 2026-08-15 the bare host CONNECTed fine while www 403'd, so an allowlist entry for tendgreenpoint.com alone left every fetch dead and the block read as resolved from the outside for a day. Same shape as happy-medium.co → www.happy-medium.co. Both hosts are now allowlisted; keep both. FETCH IS `embedded`: the page is a JS shell and tag-stripping reduces 256 KB to ONE readable line (the <title>). Every fact — the address prose, the sale banners, the vendor copy — lives in escaped JSON inside the HTML. 322 usable prose lines came out of the payload. Do not conclude this source is dead from a thin plain-text read. LOCALLY OWNED: single Greenpoint storefront, no second location found on the site. The homepage carries the standing sale-on-sale (\"For a limited time, save 20% off already reduced merchandise!\") but NOT the dated plant sale — dated offers arrive by email only, so persist each one into this snapshot as a [NEWSLETTER PERSISTED] block at ingest time. `standing: false` is a REVIEWED call: the recurring phrasing on the page is retail promo copy, not recurring programming."
+    },
+    {
+      "id": "action-city-comics",
+      "name": "Action City Comics",
+      "url": "https://www.actioncitycomics.com/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "citeHost": [
+        "actioncitycomics.com",
+        "www.actioncitycomics.com"
+      ],
+      "notes": "570 Manhattan Ave — comic shop, onboarded 2026-08-17 (Batu). STILL BROWSER-ONLY and provably so: the site is a Vue SPA on Square Online/Weebly infrastructure (window.__BOOTSTRAP_STATE__, editmysite.com map iframe); plain WebFetch of the homepage returns just the page title, no body. The homepage itself carries an \"Events\" block, server-rendered on browser load with title, date, start time, and live ticket-stock status (\"Low stock\"/\"Out of stock\") per event — confirmed 2026-08-17: Flesh & Blood Armory Tue Aug 18 7pm, One Piece Tournament Wed Aug 19 7pm, One Piece OP-17 Constructed Prerelease Wed Aug 26 7pm. Each event is a ticketed line item with a \"Get tickets\" submit button, not a distinct URL — there is no per-event permalink, so cite the homepage itself. Address/hours/phone/email also live on the same page (Location & Hours block), confirmed against the page's own embedded Google Map (lat 40.722538, lng -73.949837, matches Nominatim). Weekly recurring themes stated on /gaming: \"Join us Tuesdays for Flesh and Blood and Sundays for Sorcery!\" — no specific time given for that general statement, so only the individually dated/ticketed tournaments get carded, not an inferred recurring card."
     }
   ],
   "manualSources": [

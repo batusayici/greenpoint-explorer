@@ -506,11 +506,15 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // adds are two Troost nights that rolled into the 14-day window (8/30, 8/31),
   // It's My Park at Transmitter Park on 8/30, and Tend Greenpoint's
   // stack-on-sale markdown through 9/7. 147 − 1 + 4 = 150.
-  assert.equal(seed.cards.length, 150);
+  // +3 (2026-08-17, Action City Comics onboarding): three ticketed TCG
+  // tournament nights (Flesh & Blood Armory 8/18, One Piece 8/19, One Piece
+  // OP-17 prerelease 8/26) sourced from the shop's own homepage events widget.
+  // 150 + 3 = 153.
+  assert.equal(seed.cards.length, 153);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 79, "76 after the 2026-08-17 expiry + two Troost nights and It's My Park at Transmitter Park");
+  assert.equal(count((c) => c.category === "event"), 82, "79 + three Action City Comics tournament nights (2026-08-17)");
   assert.equal(count((c) => c.category === "discount"), 6, "6 after the 2026-08-17 expiry: −1 Marianella (sale ended), +1 Tend's already-reduced markdown");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.filters.includes("live_music")), 24, "22 after the 2026-08-17 expiry + the two new Troost nights");
@@ -835,6 +839,11 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
 test("the games lens holds play, and no games card is left in Arts & Culture", () => {
   const games = seed.cards.filter((c) => c.filters.includes("games")).map((c) => c.id).sort();
   assert.deepEqual(games, [
+    // 2026-08-17: Action City Comics onboarded — three ticketed TCG tournament
+    // nights sourced from the shop's own homepage events widget.
+    "action-city-fnb-armory-0818",
+    "action-city-one-piece-op17-prerelease-0826",
+    "action-city-one-piece-weds-0819",
     "black-rabbit",
     // 2026-08-07: Black Rabbit and Scrappleland are back after the standing-
     // programming fix — their weekly nights had silently stopped being carded

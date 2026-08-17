@@ -6985,6 +6985,120 @@
       "sourceQuote": "Save an Additional 20% OFF Already Reduced Merchandise\nFor a limited time, save 20% off already reduced favorites including Bergs Potter's Daisy Wall Planter!\nOur entire remaining selection of Hawkins NY linens and dining pieces is 20% OFF!\nOur 2026 Hudson Valley Seed Co. Art Packs are now 20% OFF!\nOur shop hours will be abbreviated through Labor Day.\n*Valid In-store and Online. Not valid on previous purchases. Multiple online discounts may not be combined nor used concurrently. The discount is automatically applied at checkout. No coupon code is needed. Limited time only. Other conditions and exclusions may apply. Valid through September 7, 2026. May be canceled at any time.",
       "lat": 40.734612,
       "lng": -73.958144
+    },
+    {
+      "id": "action-city-fnb-armory-0818",
+      "category": "event",
+      "audience": ["resident"],
+      "free": false,
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "title": "Flesh & Blood Armory — Classic Constructed",
+      "kicker": "Ticketed TCG tournament, low stock",
+      "summary": "A ticketed Classic Constructed tournament at the Manhattan Ave comic shop. Tickets are limited and already running low.",
+      "startsAt": "2026-08-18T19:00:00-04:00",
+      "endsAt": "2026-08-18T22:00:00-04:00",
+      "filters": ["games"],
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics — Events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-08-17"
+        }
+      ],
+      "sourceQuote": "Flesh & Blood Armory - Classic Constructed\nTUE, AUG 18 7:00 PM\nLow stock\nGet tickets",
+      "lat": 40.722526,
+      "lng": -73.949837
+    },
+    {
+      "id": "action-city-one-piece-weds-0819",
+      "category": "event",
+      "audience": ["resident"],
+      "free": false,
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "title": "One Piece Tournament — Wednesday!",
+      "kicker": "Weekly ticketed TCG night, low stock",
+      "summary": "A ticketed One Piece card game tournament at the Manhattan Ave comic shop. Tickets are limited and already running low.",
+      "startsAt": "2026-08-19T19:00:00-04:00",
+      "endsAt": "2026-08-19T22:00:00-04:00",
+      "filters": ["games"],
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics — Events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-08-17"
+        }
+      ],
+      "sourceQuote": "One Piece Tournament - Wednesday!\nWED, AUG 19 7:00 PM\nLow stock\nGet tickets",
+      "lat": 40.722526,
+      "lng": -73.949837
+    },
+    {
+      "id": "action-city-one-piece-op17-prerelease-0826",
+      "category": "event",
+      "audience": ["resident"],
+      "free": false,
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "title": "One Piece OP-17 Constructed Prerelease",
+      "kicker": "Prerelease tournament, tickets sold out",
+      "summary": "A ticketed prerelease tournament for One Piece's OP-17 set at the Manhattan Ave comic shop. Tickets are already sold out as of this listing.",
+      "startsAt": "2026-08-26T19:00:00-04:00",
+      "endsAt": "2026-08-26T22:00:00-04:00",
+      "filters": ["games"],
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics — Events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-08-17"
+        }
+      ],
+      "sourceQuote": "One Piece OP-17 Constructed Prerelease!\nWED, AUG 26 7:00 PM\nOut of stock\nGet tickets",
+      "lat": 40.722526,
+      "lng": -73.949837
     }
   ]
 }
