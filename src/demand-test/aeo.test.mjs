@@ -212,12 +212,14 @@ const weekly = {
   endsAt: "2026-08-31T23:59:00-04:00",
 };
 
-test("a recurring event states its rhythm as a Schedule, never an occurrence date", () => {
+test("a recurring event states its rhythm as a Schedule plus its first sourced occurrence", () => {
   const ld = cardJsonLd(weekly, ORIGIN);
   assert.equal(ld["@type"], "Event");
-  // The whole point: no invented occurrence. The window lives in the Schedule,
-  // which is what Schedule.startDate/endDate mean.
-  assert.equal(ld.startDate, undefined);
+  // Google rejects an Event with no top-level startDate outright (GSC critical
+  // issue, 2026-08-17), and the first occurrence IS sourced: the card claims
+  // Tuesdays and its window opens on one. Stating it invents nothing — the
+  // rhythm still lives in the Schedule.
+  assert.equal(ld.startDate, "2026-07-07T17:00:00-04:00");
   assert.deepEqual(ld.eventSchedule, {
     "@type": "Schedule",
     repeatFrequency: "P1W",
@@ -243,6 +245,39 @@ test("an all-day recurring event states no clock time", () => {
   const ld = cardJsonLd({ ...weekly, startsAt: "2026-07-07T00:00:00-04:00" }, ORIGIN);
   assert.equal(ld.eventSchedule.startTime, undefined);
   assert.equal(ld.eventSchedule.startDate, "2026-07-07");
+  // The occurrence date is still sourced; the clock time is not.
+  assert.equal(ld.startDate, "2026-07-07");
+});
+
+test("a window opening off-rhythm dates the first stated day, not the window start", () => {
+  // Window opens Tue Jul 7 but the card says Thursdays — the first occurrence
+  // is Thu Jul 9, date-only: the card's clock belongs to its stated days, and
+  // gluing it onto a derived date would manufacture an ISO instant nobody wrote.
+  const ld = cardJsonLd({ ...weekly, recurrence: { days: ["thu"] } }, ORIGIN);
+  assert.equal(ld.startDate, "2026-07-09");
+});
+
+test("a recurring event with no window states no occurrence", () => {
+  const ld = cardJsonLd({ ...weekly, startsAt: null, endsAt: null }, ORIGIN);
+  assert.equal(ld.startDate, undefined);
+  assert.equal(ld.eventSchedule.startDate, undefined);
+});
+
+test("a free event carries an explicit zero-price offer", () => {
+  // GSC flags Events without `offers` (2026-08-17). `free: true` is a sourced
+  // fact, and Google's own convention for it is price 0 — so a free event can
+  // say so machine-readably. Paid or unstated events still emit nothing: the
+  // card holds no price, and the truth rules won't parse one out of prose.
+  const freeOffer = {
+    "@type": "Offer",
+    price: 0,
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+  };
+  assert.deepEqual(cardJsonLd({ ...timed, free: true }, ORIGIN).offers, freeOffer);
+  assert.deepEqual(cardJsonLd({ ...weekly, free: true }, ORIGIN).offers, freeOffer);
+  assert.equal(cardJsonLd({ ...timed, free: false }, ORIGIN).offers, undefined);
+  assert.equal(cardJsonLd({ ...timed, free: undefined }, ORIGIN).offers, undefined);
 });
 
 test("recurring WITHOUT stated days stays a Service — a standing offer is not weekly", () => {

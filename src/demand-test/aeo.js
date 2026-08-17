@@ -85,8 +85,20 @@ export function eventJsonLd(card, origin) {
   };
   if (endDate) ld.endDate = endDate;
   if (typeof card.free === "boolean") ld.isAccessibleForFree = card.free;
+  if (card.free === true) ld.offers = FREE_OFFER;
   return ld;
 }
+
+// GSC flags Events without `offers` (2026-08-17). `free: true` is a sourced
+// fact and price 0 is Google's own convention for stating it; paid or unstated
+// events emit nothing — the card holds no price, and the truth rules won't
+// parse one out of prose (see the cardJsonLd preamble).
+const FREE_OFFER = {
+  "@type": "Offer",
+  price: 0,
+  priceCurrency: "USD",
+  availability: "https://schema.org/InStock",
+};
 
 // ---- schema.org/Event for RECURRING programming ----------------------------
 
@@ -108,9 +120,13 @@ export function eventJsonLd(card, origin) {
 //   · `recurrence.days` REQUIRED. Four recurring cards don't state a day —
 //     they are standing offers, not weekly events — and a Schedule with no
 //     byDay would be a claim we can't source.
-//   · No top-level `startDate`. The Event genuinely has no single occurrence;
-//     the window lives inside the Schedule, which is what Schedule's own
-//     startDate/endDate mean.
+//   · Top-level `startDate` is the FIRST SOURCED OCCURRENCE (2026-08-17;
+//     originally omitted on the reasoning that the Event has no single
+//     occurrence). Google rejects an Event without one as a critical error —
+//     no rich result at all — and the first occurrence needs no invention:
+//     the card states its days and its window start, so the earliest stated
+//     day in the window is already a claim the card makes. The rhythm still
+//     lives in the Schedule.
 const SCHEMA_DAY = {
   sun: "https://schema.org/Sunday",
   mon: "https://schema.org/Monday",
@@ -129,6 +145,25 @@ const NY_CLOCK = new Intl.DateTimeFormat("en-US", {
   hour12: false,
   timeZone: "America/New_York",
 });
+
+const NY_WEEKDAY = new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "America/New_York" });
+const nyWeekdayKey = (d) => NY_WEEKDAY.format(d).toLowerCase();
+
+// The first occurrence a recurring card can SOURCE: the earliest day on/after
+// its window start whose NY weekday the card states. When the window opens on
+// a stated day and carries a real clock time, that instant is card.startsAt
+// verbatim; otherwise the occurrence is date-only — the card's clock belongs
+// to its stated days, and welding it onto a derived date would manufacture an
+// ISO instant nobody wrote.
+function firstOccurrence(card) {
+  const start = new Date(card.startsAt);
+  for (let i = 0; i < 7; i++) {
+    const day = new Date(start.getTime() + i * 86400000);
+    if (!card.recurrence.days.includes(nyWeekdayKey(day))) continue;
+    return i === 0 && !isStartSentinel(start) ? card.startsAt : nyDay(day);
+  }
+  return null;
+}
 
 export function recurringEventJsonLd(card, origin) {
   const days = card.recurrence?.days;
@@ -160,8 +195,13 @@ export function recurringEventJsonLd(card, origin) {
     location: placeOf(card),
     url: cardUrl(card, origin),
   };
+  if (card.startsAt != null) {
+    const occurrence = firstOccurrence(card);
+    if (occurrence) ld.startDate = occurrence;
+  }
   if (card.summary) ld.description = card.summary;
   if (typeof card.free === "boolean") ld.isAccessibleForFree = card.free;
+  if (card.free === true) ld.offers = FREE_OFFER;
   return ld;
 }
 

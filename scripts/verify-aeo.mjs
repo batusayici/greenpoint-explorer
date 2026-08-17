@@ -65,7 +65,24 @@ const REQUIRED = {
     if (!ld.startDate && !ld.eventSchedule) return "Event has neither startDate nor eventSchedule";
     if (ld.eventSchedule) {
       if (!ld.eventSchedule.byDay?.length) return "eventSchedule states no byDay";
-      if (ld.startDate) return "recurring Event asserts a startDate it cannot source";
+      // 2026-08-17: Google rejects an Event with no top-level startDate as a
+      // critical error, so a recurring Event now states its FIRST occurrence —
+      // which is sourced only if it lands on a stated day, within a week of
+      // the window opening. Anything else is a fabricated occurrence.
+      if (ld.eventSchedule.startDate && !ld.startDate)
+        return "recurring Event with a window states no first occurrence";
+      if (ld.startDate) {
+        const day = new Date(ld.startDate);
+        const weekday = new Intl.DateTimeFormat("en-US", {
+          weekday: "long", timeZone: "America/New_York",
+        }).format(day);
+        if (!ld.eventSchedule.byDay.includes(`https://schema.org/${weekday}`))
+          return `recurring Event's startDate falls on ${weekday}, not a stated byDay`;
+        const windowOpen = new Date(`${ld.eventSchedule.startDate}T00:00:00-04:00`);
+        const drift = day.getTime() - windowOpen.getTime();
+        if (drift < 0 || drift >= 8 * 86400000)
+          return "recurring Event's startDate is not the first occurrence of its window";
+      }
     }
     return ld.location ? null : "Event has no location";
   },
