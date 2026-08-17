@@ -16,20 +16,59 @@
 //    source legible instead of looking like churn — the ingest should know
 //    when a calendar empties out.
 
-// Lines present in `text` that the baseline never had. Duplicates count: two
-// new identical listings are two additions, which is what a reader sees.
+// A field-labelled snapshot (blank-line-separated blocks of `key: value`
+// lines — the BPL Solr index, feather.rsvp, Squarespace JSON dumps) must be
+// diffed at RECORD granularity: a low-cardinality status flag flipping on one
+// record adds no line the snapshot didn't already have somewhere, so a
+// line-set diff reports nothing (2026-08-17, is_event_canceled). At record
+// granularity the changed record surfaces whole, once as a removal and once
+// as an addition.
+const FIELD_LINE = /^[\w.-]+: /;
+
+function splitRecords(text) {
+  return text.split(/\n{2,}/).filter((b) => b.trim() !== "");
+}
+
+function isFieldLabelled(blocks) {
+  if (blocks.length < 2) return false;
+  const labelled = blocks.filter(
+    (b) => b.split("\n").filter((l) => FIELD_LINE.test(l)).length >= 2
+  );
+  return labelled.length >= blocks.length * 0.8;
+}
+
+// Multiset diff over arbitrary units (lines or whole records). Duplicates
+// count: a second copy of an existing unit is one addition, which is what a
+// reader sees.
+function multisetDiff(baseUnits, textUnits) {
+  const counts = new Map();
+  for (const u of baseUnits) counts.set(u, (counts.get(u) ?? 0) + 1);
+  const added = [];
+  for (const u of textUnits) {
+    const n = counts.get(u) ?? 0;
+    if (n > 0) counts.set(u, n - 1);
+    else added.push(u);
+  }
+  let removedCount = 0;
+  for (const n of counts.values()) removedCount += n;
+  return { added, removedCount };
+}
+
 export function diffAgainstBaseline(baselineText, text) {
-  const baseSet = new Set(baselineText.split("\n"));
-  const textSet = new Set(text.split("\n"));
-  const added = text.split("\n").filter((l) => !baseSet.has(l));
-  const removed = baselineText.split("\n").filter((l) => !textSet.has(l));
+  const baseBlocks = splitRecords(baselineText);
+  const textBlocks = splitRecords(text);
+  const recordMode = isFieldLabelled(baseBlocks) || isFieldLabelled(textBlocks);
+  const baseUnits = recordMode ? baseBlocks : baselineText.split("\n");
+  const textUnits = recordMode ? textBlocks : text.split("\n");
+  const { added, removedCount } = multisetDiff(baseUnits, textUnits);
   return {
     added,
     addedLines: added.length,
-    removedLines: removed.length,
-    // Same line set, different bytes — pure reordering. Worth naming so it is
+    removedLines: removedCount,
+    recordMode,
+    // Same unit set, different bytes — pure reordering. Worth naming so it is
     // never mistaken for a source going quiet.
-    reorderedOnly: added.length === 0 && removed.length === 0 && baselineText !== text,
+    reorderedOnly: added.length === 0 && removedCount === 0 && baselineText !== text,
   };
 }
 

@@ -757,8 +757,10 @@ for (const src of sources) {
       if (baseline != null) {
         const d = diffAgainstBaseline(baseline, text);
         const diffPath = join(CACHE_DIR, `${src.id}.diff.txt`);
-        writeFileSync(diffPath, d.added.join("\n") + "\n");
+        // Record-mode units are whole multi-line records; keep them separated.
+        writeFileSync(diffPath, d.added.join(d.recordMode ? "\n\n" : "\n") + "\n");
         entry.diffPath = `.ingest-cache/${src.id}.diff.txt`;
+        entry.recordMode = d.recordMode;
         entry.addedLines = d.addedLines;
         entry.removedLines = d.removedLines;
         entry.reorderedOnly = d.reorderedOnly;

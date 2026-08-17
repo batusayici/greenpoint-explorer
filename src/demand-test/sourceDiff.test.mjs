@@ -68,3 +68,51 @@ test("a source matching its baseline resolves to the same hash the fetch produce
   const resolved = resolveIngestedHash({ baselineText: text + "\n", stateIngestedHash: "whatever", hash });
   assert.equal(resolved, hash(text), "this equality is what makes the source report unchanged");
 });
+
+// --- record-aware diff (2026-08-17) ----------------------------------------
+// A flipped status flag was invisible to the line-set diff: the literal line
+// "is_event_canceled: 1" already occurred elsewhere in the snapshot, so
+// flipping a fifth record to it added no new line. Field-labelled snapshots
+// diff at record granularity so a changed record surfaces whole.
+
+const rec = (title, canceled) =>
+  `ts_title: ${title}\nds_event_start_date: 2026-08-18T18:00:00Z\nis_event_canceled: ${canceled}`;
+
+test("a status flip surfaces as a record change even when every line already exists", () => {
+  const baseline = [rec("Free English Class", 0), rec("Movie Night", 1)].join("\n\n");
+  const text = [rec("Free English Class", 1), rec("Movie Night", 1)].join("\n\n");
+  const d = diffAgainstBaseline(baseline, text);
+  assert.ok(d.addedLines > 0, "the flipped record must appear as an addition");
+  assert.ok(d.removedLines > 0, "its old form must appear as a removal");
+  assert.ok(
+    d.added.join("\n").includes("Free English Class"),
+    "the diff names the record that changed"
+  );
+});
+
+test("record mode: identical field-labelled snapshots are unchanged", () => {
+  const s = [rec("A", 0), rec("B", 1)].join("\n\n");
+  const d = diffAgainstBaseline(s, s);
+  assert.equal(d.addedLines, 0);
+  assert.equal(d.removedLines, 0);
+});
+
+test("record mode: reordered records are reorderedOnly, not churn", () => {
+  const d = diffAgainstBaseline(
+    [rec("A", 0), rec("B", 1)].join("\n\n"),
+    [rec("B", 1), rec("A", 0)].join("\n\n")
+  );
+  assert.equal(d.addedLines, 0);
+  assert.equal(d.removedLines, 0);
+  assert.equal(d.reorderedOnly, true);
+});
+
+test("record mode: duplicate identical records count separately", () => {
+  const d = diffAgainstBaseline(rec("A", 0), [rec("A", 0), rec("A", 0)].join("\n\n"));
+  assert.equal(d.addedLines, 1, "a second copy of an existing record is one addition");
+});
+
+test("prose snapshots keep the plain line diff", () => {
+  const d = diffAgainstBaseline("a paragraph of text\nanother line", "a paragraph of text\nanother line\nnew line");
+  assert.deepEqual(d.added, ["new line"]);
+});

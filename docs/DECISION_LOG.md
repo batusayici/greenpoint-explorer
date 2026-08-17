@@ -4,6 +4,27 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-17 — Two rulings off the Monday refresh: markets file under `shopping`; monthly-cadence deal evidence persists in the cache
+
+**Markets and fleas file under `shopping` (Batu).** The Aug 5 hold on BQFlea said an outdoor
+market had no honest lens; that reasoning died when `shopping` came back on 2026-08-13 with the
+Cibone ruling. Batu confirms the class rule: a market or flea is a shopping event, same as the
+Cibone Comme des Garçons showcase (`cibone-restation-showcase-0815`, category `event`, filter
+`shopping`). BQFlea stays held on its remaining blocker only — the organiser has never stated
+cross-streets, and "@ Meeker Avenue" spans two neighborhoods.
+
+**Deal evidence from monthly-cadence sources persists into the source's `.ingest-cache` file
+(Batu-approved recommendation).** The gap: marianella.co is snapshotted only on first-Monday
+monthly runs, so between runs there was nowhere honest to keep store-page evidence, and the
+anniversary-sale drop had to lean on one-shot emails. The rule extends the existing mechanism —
+the same dated `[PERSISTED <date>]` block already used to keep one-shot newsletters checkable
+(Brooklyn Craft, 2026-08-15) may carry a dated fetch of a monthly source's page when a live card
+rests on it. No new machinery; the quotes gate reads the same file either way.
+
+Same change set: the fetch diff went record-aware (`sourceDiff.js`) after four library cards
+advertised a canceled class — a flipped `is_event_canceled` added no line a line-set diff could
+see. Field-labelled snapshots (BPL Solr, feather.rsvp, Squarespace JSON) now diff whole records.
+
 ## 2026-08-15 (third entry) — Five more rules set before the numbers arrive (P7–P11 ratified)
 
 **Batu's decision, from the 2026-08-15 strategy review** (two independent reviews plus a scan of
