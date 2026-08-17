@@ -4,6 +4,46 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-17 (fifth entry) — Demand gate re-registered as a rate with a floor; return redefined
+
+Decision (Batu, D1 of the 2026-08-17 strategy review — ruled **before** the first Wave-1 org
+note sent, which is the last moment pre-registration doctrine allows a bar to move).
+
+**The gate.** The PMF demand gate is now a **rate with a floor**: *of locals who visit twice,
+**≥25% return in ≥3 of any 4 consecutive weeks, floor 12 people***. **≥30 weekly returning
+locals is retained as the business-viability line** — it is what Layer-1 renewals and all of
+Layer 2 price off — and every readout carries both, distance-to-30 included. The *product*
+verdict reads the rate.
+
+**Two amendments ride with it.** (1) **"Majority unprompted" leaves the gate clause.** Reaching
+any meaningful number requires continuous seeding, and continuous seeding makes the clause
+permanently false — a condition that cannot be true while you execute the plan is a lock, not a
+bar. Organic share survives as a watched line under P1's contamination label, which now attaches
+to that line rather than to the gate. (2) **A tagged email click counts as a return**
+(`?src=digest` / `follow-*`), with site-direct returns reported separately. Once a weekly send is
+the re-entry mechanism, counting only site visits would measure the container rather than the
+habit — the medium question hiding inside the metric.
+
+**Why.** Three independent passes (blind first-principles design, adversarial review, outside
+hyperlocal research) converged: the planned reach produces ~150–400 sessions against the 500–1,000
+local visitors that 30 returners would need by mid-September, so the ~late-Oct verdict was
+arithmetically pre-determined to miss — and P7/P8 had already pre-labeled that miss as
+uninterpretable. The plan's own P9 trigger ("under 50 tagged sessions by Oct 6") sits 10× below
+what its own gate requires; the two numbers had never been checked against each other. Separately,
+**30 was never derived** — business-model H8 (derive N backwards from renewal price) is still open —
+so the number being re-formed had no derivation behind it either. Full analysis and the three
+passes: `docs/launch/2026-08-17-launch-strategy-review.md`; Greenpoint ground truth:
+`docs/launch/2026-08-17-greenpoint-attention-map.md`.
+
+**What this is not.** Not a softening to make a miss look like a pass — both numbers stay visible
+in every readout, and the rate is the harder question (a rate can fail at any traffic level; a
+count can fail purely from under-seeding). It is the separation of a product question from a
+business question that the single number 30 was conflating, which is the same error the
+2026-07-28 four-gate split corrected once already.
+
+Carriers updated the same change: `growth-engine.md` §1, `business-model.md` §4,
+`gtm-state.json` (gate, labels, WRL metric). Owner: Batu. D2–D6 of the same review remain open.
+
 ## 2026-08-17 (fourth entry) — Why no design pass ever saw what Sagar saw, and the method fix
 
 Batu's question after the Sagar session (L2026-08-14): is the scan-layer complaint a valid UX

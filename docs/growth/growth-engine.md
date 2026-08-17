@@ -146,9 +146,23 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
 → more demand signal → sharper ingest & coverage → (back to top)
 ```
 
-- **Compounding metric:** weekly returning locals (WRL) — the same number as the
-  demand-gate bar: **≥30 unique locals returning in ≥3 of any 4 consecutive
-  weeks, majority unprompted.** *(Re-registered 2026-07-28, pre-launch, twice:
+- **Compounding metric:** weekly returning locals (WRL). **The gate and this
+  metric split 2026-08-17 (D1, pre-Wave-1-data).** The **PMF demand gate** is
+  now a rate with a floor: *of locals who visit twice, **≥25% return in ≥3 of
+  any 4 consecutive weeks, floor 12 people***. **WRL ≥30 stays as the
+  business-viability line** (what Layer-1 renewals and Layer 2 price off);
+  both appear in every readout, distance-to-30 included, but the product
+  verdict reads the rate. **"Majority unprompted" is out of the gate clause** —
+  continuous seeding, which the reach math requires, makes it permanently
+  false; organic share stays a watched line under P1's contamination label.
+  **A tagged email click counts as a return** (`?src=digest` / `follow-*`),
+  with site-direct returns reported on their own line: once the weekly send is
+  the re-entry mechanism, counting site visits only would measure the container
+  instead of the habit. Rationale: the planned reach could not produce 30 by
+  its own verdict date, and 30 was never derived (business-model H8 open) —
+  `docs/launch/2026-08-17-launch-strategy-review.md` §1. *Prior bar, superseded:
+  ≥30 unique locals returning in ≥3 of any 4 consecutive weeks, majority
+  unprompted.* *(Re-registered 2026-07-28, pre-launch, twice:
   first the calendar — ~Sep 15 is a provisional readout; with an Aug 1–8 launch
   it holds only ~5–6 weeks of evidence; the firmer verdict follows two mature
   4-week cohorts, ~late Oct. Then the bar itself — the prior ≥2-visits/week

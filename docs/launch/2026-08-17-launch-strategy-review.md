@@ -126,7 +126,12 @@ From the attention map (each live-verified 2026-08-17 unless marked):
 
 ## The decisions — D1–D6, each awaiting a ruling
 
-### D1 — Re-register the demand bar. **Decide before the org notes send: the pre-data window closes tonight.**
+### D1 — Re-register the demand bar. ✅ **RATIFIED (Batu, 2026-08-17, pre-Wave-1-data)**
+
+Promoted to `DECISION_LOG.md` (2026-08-17, fifth entry); carriers updated the
+same change — `growth-engine.md` §1, `business-model.md` §4, `gtm-state.json`
+(gate bar, P1 label, WRL metric role). Open follow-up: the rate's denominator
+(twice-visiting locals) is not yet derived — Tuesday's readout adds the query.
 
 **Recommendation: yes.** Split the two jobs the number 30 is doing. Keep **30
 weekly returning locals** as the business-viability line (it anchors Layer-1/2

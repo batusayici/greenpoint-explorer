@@ -180,6 +180,20 @@ not that anyone will pay for it):
    daily-habit the product's cadence doesn't create, and survives as a
    supporting intensity signal, not the gate). **Sep 15 is a provisional
    readout; the firmer verdict follows two mature 4-week cohorts (~late Oct).**
+   **Re-registered again 2026-08-17 (D1), pre-Wave-1-data — the gate is now a
+   RATE with a floor:** *of locals who visit twice, **≥25% return in ≥3 of any
+   4 consecutive weeks, floor 12 people***. The old **30 WRL is retained as the
+   business-viability line** — it is what Layer-1 renewals and all of Layer 2
+   price off — and both numbers appear in every readout, but the *product*
+   verdict reads the rate. Two amendments ride with it: **"majority unprompted"
+   leaves the gate clause** (it is unsatisfiable while seeding continuously, and
+   the reach math requires continuous seeding; organic share survives as a
+   watched line under P1's contamination label), and **a tagged email click
+   counts as a return** (site-direct returns reported separately) — with a
+   weekly send as the re-entry mechanism, site-only counting would measure the
+   container rather than the habit. Rationale: 30 was never derived (H8 is still
+   open) and the planned reach could not produce it by its own verdict date —
+   `docs/launch/2026-08-17-launch-strategy-review.md` §1.
 2. **Distribution gate** — ≥2 channels repeatedly producing activated users
    without founder-intensive outreach.
 3. **Supply gate** — recurring verified submissions measurably increasing

@@ -466,9 +466,9 @@
       "id": "demand",
       "name": "Demand",
       "order": 1,
-      "bar": "≥30 unique locals returning in ≥3 of any 4 consecutive weeks, majority arriving without a fresh invite push",
-      "metric": "Weekly returning locals (WRL)",
-      "actual": "2 people returning across weeks, 6 events",
+      "bar": "PMF gate (re-registered 2026-08-17, D1): of locals who visit twice, ≥25% return in ≥3 of any 4 consecutive weeks, floor 12 people. Business-viability line, retained: ≥30 weekly returning locals. A tagged email click counts as a return; site-direct returns reported separately. 'Majority unprompted' removed from the gate clause — organic share stays a watched line under P1.",
+      "metric": "Return rate among twice-visiting locals (gate) + weekly returning locals (viability line)",
+      "actual": "2 people returning across weeks, 6 events. Rate denominator not yet derived — Tuesday's readout adds it.",
       "readAt": "2026-08-17",
       "status": "pending",
       "readsOn": "~Sep 15 provisional; firm verdict ~late Oct after two mature 4-week cohorts",
@@ -476,7 +476,7 @@
       "why": "This is the number the whole business prices off — Layer 1 renewals and all of Layer 2. It's the tightest coupling between the growth plan and the business model.",
       "notes": "Structurally immune to the automated traffic in Finding 3 — a stateless fetcher can never produce a return_visit with weekIndex ≥ 1. The demand gate's own metric is clean even when the activation proxies aren't.",
       "labels": [
-        "Broadcast-seed contamination (P1) — the 'majority unprompted' clause is unreadable for 4 weeks after any broadcast seed",
+        "Broadcast-seed contamination (P1) — now applies to the organic-share watched line, not the gate clause (D1 removed 'majority unprompted' from the gate)",
         "September rebound confound",
         "No gate read on raw Dec–Feb numbers"
       ],
@@ -530,9 +530,9 @@
       "label": "Weekly returning locals",
       "value": "2 people, 6 events",
       "prior": "2 people, 5 events",
-      "target": "≥30",
+      "target": "≥30 (business-viability line); PMF gate is now the return RATE — ≥25% of twice-visiting locals, floor 12 (D1, 2026-08-17)",
       "trend": "flat",
-      "role": "the demand gate itself",
+      "role": "business-viability line; the gate now reads the rate",
       "caveat": "return_visit at weekIndex ≥ 1. Structurally immune to bot traffic. Person-level counts come from the Tuesday narrowed query; 2 is read off the visit-count grouping."
     },
     {
