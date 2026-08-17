@@ -4,6 +4,56 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-17 (fourth entry) — Why no design pass ever saw what Sagar saw, and the method fix
+
+Batu's question after the Sagar session (L2026-08-14): is the scan-layer complaint a valid UX
+issue, and if so, why did neither the crit nor the generator ever surface it? Same shape as the
+2026-08-13 "why was the map bug uncaught" investigation, and the answer is again structural, not
+negligence.
+
+**Validity: real state, contested verdict.** The state Sagar describes is real and verifiable in
+code: every collapsed row is title + kicker at one type treatment, no imagery, no size variance —
+the only differentiators are day headers and the FREE badge. But the learning log already holds
+the counter-evidence (B1/Q2): Josh read the *same* unfiltered feed as abundance ("wow, there's so
+many cool things happening") and preferred it to filtered views. Both are non-resident friends
+browsing without an errand. So the finding stands as "the feed offers a scanner nothing to catch
+on," while "and that is a defect" stays contested until Q2 gets evidence from a resident with a
+real errand. Any redesign must serve both readings, not just Sagar's.
+
+**Why every pass missed it — four compounding causes:**
+
+1. **Task-driven walkthroughs can't fail on monotony.** Gate U walks a named user with a named
+   job; a user with an errand uses chips, day headers, and the Today pill, and never experiences
+   the goalless scan. Sagar's mode — browsing with no errand, 10 seconds of attention — was never
+   in the walkthrough repertoire. The 5-second test asks *what is this product* (comprehension),
+   not *can I pick anything out* (triage).
+2. **Modules were judged solo; the population was never a unit of critique.** The 2026-07-29 crit
+   flagged hierarchy *inside* the row (title/subline ratio). "Worst content" meant longest string,
+   empty state, 320px — never "150 instances of this module stacked." A population can fail while
+   every module in it passes, and no gate looked at the population.
+3. **The method's own pressure points toward uniformity.** Gate 0.5 penalizes inconsistency,
+   mechanics enforce rhythm, and the 2026-08-08 title-clamp verdict ("row rhythm beats headline
+   completeness") deliberately flattened rows further. Each call was locally right; their sum is
+   exactly the sameness Sagar named. Nothing in the method asks whether accumulated consistency
+   has become monotony.
+4. **The crit's data went stale while the design stood still.** The last unscoped full-gate crit
+   ran 2026-07-29 against **90 cards**; ingest auto-ships daily (by design, per 2026-08-02) and
+   the feed reached **154** with no design gate in between. Density is a property of the
+   population, so "the feed passed crit" quietly expired — same class as the 2026-08-13 lesson
+   that a crit can only judge states its environment produces, with data volume as the
+   environment this time.
+
+**Method fixes, applied to the global crit/generator files (not this repo):** Gate U gains a
+mandatory goalless-browse test for feeds/lists (10 seconds, production volume, "name 2–3 items
+without opening anything"); the modularity Growth Test gains "would a scanner still find
+anything?"; crits are stamped with the `data_volume` they saw and a PASS expires at roughly +50%
+population growth; the product-designer agent must design feeds for a second named user — the
+goalless browser — and screenshot the full feed at production volume in its worst-content pass.
+The fixes make the state *visible* to future passes; they deliberately do not predecide the
+contested verdict.
+
+Owner: Batu (question); method edits applied 2026-08-17.
+
 ## 2026-08-17 (third entry) — An expired card loses its public page; no archive
 
 **Batu's ruling, after asking me to think twice about my own recommendation.** The
