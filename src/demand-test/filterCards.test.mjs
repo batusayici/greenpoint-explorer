@@ -358,12 +358,29 @@ test("other shelf kinds still order by when they joined the map", () => {
   assert.deepEqual(places.cards.map((c) => c.id), ["recent", "old"]);
 });
 
-test("publishedOn: the story's date, then ours, then nothing", () => {
+test("publishedOn is the SOURCE's date and never ours", () => {
+  // The Archestratus lesson (2026-08-17, Batu): its only source was the shop's
+  // undated site banner, stamped with the day we looked. That read as
+  // three-week-old news for a shop whose last day was April 26. A date we
+  // assigned is not a publication date, so createdAt can never stand in.
   assert.equal(publishedOn(newsOn("2026-07-15")), "2026-07-15");
-  assert.equal(publishedOn({ createdAt: "2026-07-15" }), "2026-07-15");
-  assert.equal(publishedOn({ sourceLinks: [{ publisher: "X" }], createdAt: "2026-07-15" }), "2026-07-15",
-    "a source link without a date is not a date");
+  assert.equal(publishedOn({ createdAt: "2026-07-15" }), null, "our own date is not the story's");
+  assert.equal(publishedOn({ sourceLinks: [{ publisher: "X" }], createdAt: "2026-07-15" }), null,
+    "an undated source stays undated");
   assert.equal(publishedOn({}), null);
+  // The first source carrying a date wins — an undated banner alongside a
+  // dated article takes the article's date.
+  assert.equal(
+    publishedOn({ sourceLinks: [{ publisher: "Banner" }, { publisher: "Paper", date: "2026-02-23" }] }),
+    "2026-02-23",
+  );
+});
+
+test("undateable news still ages out — on our clock, and silently", () => {
+  // publishedOn refuses createdAt for DISPLAY; expiry still needs it, or a
+  // story nobody dated would sit in the feed forever.
+  assert.ok(isExpiredCard({ category: "news", createdAt: "2026-05-13" }, NEWS_AUG17));
+  assert.ok(!isExpiredCard({ category: "news", createdAt: "2026-08-14" }, NEWS_AUG17));
 });
 
 // 2026-07-23 (UX eval F16, decision B): thin layers fold into a "More" chip

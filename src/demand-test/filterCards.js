@@ -163,7 +163,7 @@ export const shelfSection = (card) => SHELF_SECTIONS[ongoingRank(card)];
 //
 // Both are "YYYY-MM-DD", so this compares lexicographically rather than
 // parsing — same reason as the shelf life above.
-const recencyOf = (c) => (c.category === "news" ? publishedOn(c) : c.createdAt) ?? "";
+const recencyOf = (c) => (c.category === "news" ? ageableDate(c) : c.createdAt) ?? "";
 const byFreshest = (a, b) => (recencyOf(a) < recencyOf(b) ? 1 : recencyOf(a) > recencyOf(b) ? -1 : 0);
 
 export function groupByDay(cards, date) {
@@ -278,11 +278,31 @@ export function noTodayNotice(groups, filterId) {
 // cards are untouched.
 const STARTED_GRACE_MS = 60 * 60000;
 
-// The date a story was PUBLISHED — the source's own date, falling back to the
-// day we made the card. Shared by the shelf life below and the date the row
-// prints, so a story can never expire on one clock and display another.
+// The date a source itself PUBLISHED the story. Only a source's own date
+// counts — never `createdAt`, which is the day WE built the card.
+//
+// The distinction is load-bearing and was learned the hard way (2026-08-17,
+// Batu): the Archestratus closure card carried `date: "2026-07-25"` on a source
+// that was the shop's undated site banner, so the date recorded when we LOOKED,
+// not when anything happened. The shop's last day was April 26, announced by
+// Greenpointers on February 23. Printed on the row it read as three-week-old
+// news and sorted fourth from the top, above stories that were genuinely days
+// old. A retrieval date always looks fresher than the fact it describes, so
+// this error can only ever make stale news look current.
+//
+// So: `sourceLinks[].date` means the date the SOURCE published, and a source
+// that publishes no date (a standing banner, an evergreen agency page) carries
+// no date. A card with no such source has no publication date, and the row
+// prints nothing rather than inventing one.
 export const publishedOn = (card) =>
-  (card.sourceLinks ?? []).find((s) => s?.date)?.date ?? card.createdAt ?? null;
+  (card.sourceLinks ?? []).find((s) => s?.date)?.date ?? null;
+
+// What the shelf life ages against. Falls back to `createdAt` where
+// `publishedOn` deliberately will not: a story we can't date must still be able
+// to leave the feed, and the day we ingested it is the only clock left. Never
+// used for display — ageing a card on our own clock is honest, telling a reader
+// it is the story's date is not.
+const ageableDate = (card) => publishedOn(card) ?? card.createdAt ?? null;
 
 // News shelf life (2026-08-17). Reporting was the ONLY card kind with no way to
 // leave the feed: news carries no endsAt, so the check below passed it forever
@@ -304,7 +324,7 @@ const NEWS_SHELF_LIFE_DAYS = 30;
 
 export function isExpiredCard(card, date) {
   if (card.category === "news") {
-    const published = publishedOn(card);
+    const published = ageableDate(card);
     const cutoff = NY_DAY.format(new Date(date.getTime() - NEWS_SHELF_LIFE_DAYS * 86400000));
     // Both are "YYYY-MM-DD", so this compares lexicographically — the same
     // trick indexNow.js uses, immune to timezone drift and midnight parsing.
