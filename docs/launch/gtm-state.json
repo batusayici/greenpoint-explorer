@@ -17,6 +17,17 @@
     }
   },
 
+  "focus": {
+    "goal": "Send Wave 1 this week",
+    "why": "The feed is the strongest it has ever been — 73 dated items against a send bar of 35 — and seeding a trust network is one-shot. Three org notes plus warm re-invites open the parents network while the pitch is at its best.",
+    "doneWhen": "All four sends out by Wed 8/19; the 8/25 readout checks each tagged link for at least one session.",
+    "steps": [
+      {"label": "Town Square note + warm re-invites", "when": "Mon 8/17 PM", "status": "next"},
+      {"label": "Library + Brooklyn Craft notes", "when": "Tue–Wed 8/18–19", "status": "next"},
+      {"label": "Attribution check opens Wave 2", "when": "Tue 8/25 readout", "status": "later"}
+    ]
+  },
+
   "phases": [
     {
       "id": "ready",

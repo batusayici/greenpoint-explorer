@@ -1,339 +1,228 @@
 <title>Stoopwise Launch Cockpit</title>
 <style>
 :root{
-  --paper:#ece3cf; --card:#fff8ea; --ink:#2a241c; --mute:#877d69; --rule:#cabfa7;
-  --pass:#4f7d52; --now:#cc9a3b; --warn:#a04432; --idle:#52647a;
-  --passbg:#4f7d5218; --nowbg:#cc9a3b20; --warnbg:#a0443216; --idlebg:#52647a14;
+  --paper:#f6efdd; --card:#fff8ea; --ink:#2a241c; --mute:#877d69; --rule:#d9cfb6;
+  --pass:#4f7d52; --now:#a05f10; --warn:#a04432; --idle:#52647a;
+  --nowbg:#cc9a3b1c; --warnbg:#a0443212; --passbg:#4f7d5215; --idlebg:#52647a10;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#1b1712; --card:#251f18; --ink:#ece3cf; --mute:#9b9079; --rule:#3d342a;
-  --pass:#7ba87e; --now:#d8ac57; --warn:#c9705c; --idle:#7d92ab;
-  --passbg:#7ba87e1a; --nowbg:#d8ac571f; --warnbg:#c9705c1a; --idlebg:#7d92ab16;
-}}
-:root[data-theme="dark"]{
-  --paper:#1b1712; --card:#251f18; --ink:#ece3cf; --mute:#9b9079; --rule:#3d342a;
-  --pass:#7ba87e; --now:#d8ac57; --warn:#c9705c; --idle:#7d92ab;
-  --passbg:#7ba87e1a; --nowbg:#d8ac571f; --warnbg:#c9705c1a; --idlebg:#7d92ab16;
-}
 *{box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);margin:0;padding:0 20px 96px;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.86em}
-.lbl{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-right:.6em}
-h1,h2,h3{text-wrap:balance;margin:0}
-h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:700;padding-bottom:10px;border-bottom:1px solid var(--rule)}
-h3{font-size:16px;font-weight:650}
+body{background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.87em}
+.lbl{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-right:.55em}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
 p{margin:0}
-section{display:flex;flex-direction:column;gap:18px}
-
-/* masthead */
-.mast{padding:44px 0 0;display:flex;flex-direction:column;gap:8px}
-.mast h1{font-size:clamp(30px,5vw,46px);font-weight:680;letter-spacing:-.022em;line-height:1.05}
-.mast__sub{color:var(--mute);max-width:62ch}
-.mast__meta{font-family:var(--mono);font-size:12px;color:var(--mute);display:flex;flex-wrap:wrap;gap:16px;margin-top:10px}
-
-/* phase track */
-.track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:3px}
-.phase{background:var(--card);padding:12px 13px 14px;display:flex;flex-direction:column;gap:5px;border:1px solid var(--rule);border-top:3px solid var(--c);border-radius:3px}
-.phase--pass{--c:var(--pass)} .phase--now{--c:var(--now)} .phase--warn{--c:var(--warn)} .phase--idle{--c:var(--rule)}
-.phase--here{background:var(--nowbg)}
-.phase__win{font:600 10px/1 var(--mono);letter-spacing:.06em;color:var(--mute)}
-.phase__title{font-weight:650;font-size:14px;line-height:1.25}
-.phase__line{font-size:12px;line-height:1.4;color:var(--mute)}
-.phase--here .phase__title::after{content:" \2190 here";color:var(--now);font-weight:600;font-size:11px;letter-spacing:.04em}
-
-/* pills + shared */
-.pill{display:inline-block;font:600 10px/1.7 var(--mono);letter-spacing:.07em;text-transform:uppercase;padding:0 7px;border-radius:2px;white-space:nowrap;color:var(--t);background:var(--b);border:1px solid var(--t)}
-.pill--pass{--t:var(--pass);--b:var(--passbg)} .pill--now{--t:var(--now);--b:var(--nowbg)}
-.pill--warn{--t:var(--warn);--b:var(--warnbg)} .pill--idle{--t:var(--idle);--b:var(--idlebg)}
-.why{margin-top:2px}
-.why summary{font:600 11px/1.6 var(--mono);letter-spacing:.05em;color:var(--idle);cursor:pointer;width:fit-content}
-.why summary:hover{color:var(--ink)}
-.why p{font-size:14px;color:var(--mute);margin-top:6px;padding-left:12px;border-left:2px solid var(--rule);max-width:74ch}
+b{font-weight:650}
 :focus-visible{outline:2px solid var(--now);outline-offset:2px}
 
-/* this week */
-.row{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--c);border-radius:3px;padding:16px 18px;display:flex;flex-direction:column;gap:9px}
-.row--pass{--c:var(--pass)} .row--now{--c:var(--now)} .row--warn{--c:var(--warn)} .row--idle{--c:var(--idle)}
-.row__head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.row__head time{color:var(--mute)}
-.row__head h3{flex:1 1 100%}
-.row__goal{max-width:76ch}
-.row__out{font-size:14px;color:var(--mute);max-width:76ch}
-.checks{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
-.check{display:flex;gap:9px;font-size:13.5px;line-height:1.45}
-.check__mk{font-family:var(--mono);color:var(--c2)}
-.check--pass{--c2:var(--pass)} .check--warn{--c2:var(--warn)} .check--idle{--c2:var(--idle)}
-.check div{display:flex;flex-direction:column}
-.check span{color:var(--mute)}
-.notes{margin:0;padding-left:18px;font-size:13px;color:var(--mute)}
+/* masthead — small; the focus block is the hero */
+.mast{padding-top:40px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.mast h1{font-size:15px;font-weight:700;letter-spacing:.01em}
+.mast span{font-family:var(--mono);font-size:11.5px;color:var(--mute)}
 
-/* tables */
-.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--card)}
-table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
-th{text-align:left;font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding:11px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
-td{padding:12px;border-bottom:1px solid var(--rule);vertical-align:top}
+/* focus */
+.focus{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:28px 28px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 0 var(--rule)}
+.focus__kicker{font:700 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--now)}
+.focus__goal{font-size:clamp(26px,4.5vw,34px);font-weight:680;letter-spacing:-.018em;line-height:1.1}
+.focus__why{color:var(--mute);max-width:58ch}
+.steps{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
+.step{display:flex;gap:16px;align-items:baseline;padding:10px 0;border-top:1px solid var(--rule)}
+.step__when{flex:0 0 138px;color:var(--mute);font-weight:600}
+.step__label{font-weight:600}
+.step--now .step__when{color:var(--now)}
+.step--idle .step__label{font-weight:400;color:var(--mute)}
+.focus__done{font-size:13.5px;color:var(--mute);border-top:1px solid var(--rule);padding-top:12px}
+
+/* sections */
+h2.sec{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);font-weight:700}
+section{display:flex;flex-direction:column;gap:14px}
+
+/* needs attention */
+.atts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.att details{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--warn);border-radius:3px;padding:11px 15px}
+.att summary{cursor:pointer;display:flex;align-items:baseline;gap:12px;list-style:none}
+.att summary::-webkit-details-marker{display:none}
+.att summary b{flex:1;font-size:15px}
+.att__by{color:var(--mute);font-size:11px;white-space:nowrap}
+.att details[open] summary{margin-bottom:8px}
+.att p{font-size:14px;color:var(--mute);max-width:62ch}
+.opts{margin:6px 0 0;padding-left:18px;font-size:13.5px;color:var(--mute)}
+
+/* coming up */
+.ups{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.up{display:flex;gap:16px;padding:11px 2px;border-top:1px solid var(--rule);align-items:baseline}
+.up:last-child{border-bottom:1px solid var(--rule)}
+.up__when{flex:0 0 138px;color:var(--mute);font-weight:600}
+.up--now .up__when{color:var(--now)}
+.up div{display:flex;flex-direction:column;gap:1px}
+.up__line{font-size:13.5px;color:var(--mute)}
+
+/* folds — the full picture */
+.folds{display:flex;flex-direction:column;gap:8px}
+.fold{background:var(--card);border:1px solid var(--rule);border-radius:3px}
+.fold>summary{cursor:pointer;padding:12px 16px;font:600 12px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--mute);list-style:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::before{content:"+ "}
+.fold[open]>summary::before{content:"− "}
+.fold[open]>summary{color:var(--ink)}
+.fold__body{padding:4px 16px 18px;overflow-x:auto}
+
+/* pills + tables inside folds */
+.pill{display:inline-block;font:600 10px/1.7 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:0 6px;border-radius:2px;white-space:nowrap;color:var(--t);background:var(--b)}
+.pill--pass{--t:var(--pass);--b:var(--passbg)} .pill--now{--t:var(--now);--b:var(--nowbg)}
+.pill--warn{--t:var(--warn);--b:var(--warnbg)} .pill--idle{--t:var(--idle);--b:var(--idlebg)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+th{text-align:left;font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding:9px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top}
 tr:last-child td{border-bottom:0}
-.num{white-space:normal;max-width:20ch}
-.xr{border-left:3px solid var(--c)}
-.xr--pass{--c:var(--pass)} .xr--now{--c:var(--now)} .xr--warn{--c:var(--warn)} .xr--idle{--c:transparent}
+.num{max-width:18ch}
 .xr__id{font-weight:700;color:var(--mute)}
-.xr td:nth-child(2){min-width:250px}
-.xr__hyp{display:block;color:var(--mute);font-size:13px;margin-top:3px;max-width:52ch}
-.xr__imp{color:var(--mute);font-size:13px;max-width:36ch}
-.slotbar{font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--mute)}
+.xr td:nth-child(2){min-width:230px}
+.xr__hyp,.xr__rule{display:block;color:var(--mute);font-size:12.5px;margin-top:3px;max-width:48ch}
+.xr__rule{font-family:var(--mono);font-size:11.5px}
+.xr__imp{color:var(--mute);font-size:12.5px;max-width:30ch}
 
-/* gates */
-.gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
-.gate{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--c);border-radius:3px;padding:15px 17px;display:flex;flex-direction:column;gap:8px}
-.gate--pass{--c:var(--pass)} .gate--warn{--c:var(--now)} .gate--idle{--c:var(--idle)}
-.gate header{display:flex;align-items:center;gap:9px}
-.gate__n{color:var(--mute);font-weight:700}
-.gate header h3{flex:1}
-.gate p{font-size:14px}
-.gate__act{font-size:15px}
-.gate__unl,.gate__bar{color:var(--mute)}
-.flags{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
-.flags li{font:11.5px/1.4 var(--mono);color:var(--warn);padding-left:13px;position:relative}
-.flags li::before{content:"\26A0";position:absolute;left:0}
+.gate{padding:12px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:5px}
+.gate:last-child{border-bottom:0}
+.gate header{display:flex;align-items:center;gap:10px}
+.gate h4{font-size:15px}
+.gate p{font-size:13.5px;color:var(--mute);max-width:66ch}
+.gate__act{color:var(--ink)}
 
-/* metric tiles */
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:12px}
-.tile{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:13px 14px;display:flex;flex-direction:column;gap:3px}
-.tile__lbl{font:600 10px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--mute)}
-.tile__val{font-size:19px;font-weight:600;line-height:1.2;margin:1px 0}
-.tile__meta{font-size:11.5px;color:var(--mute)}
-.tile__role{font-size:12px;color:var(--idle);margin-top:3px}
-.tile__cav{font-size:11.5px;line-height:1.4;color:var(--mute);border-top:1px solid var(--rule);margin-top:6px;padding-top:6px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding-top:8px}
+.tile{border:1px solid var(--rule);border-radius:3px;padding:11px 12px;display:flex;flex-direction:column;gap:2px}
+.tile__lbl{font:600 9.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.tile__val{font-size:17px;font-weight:600}
+.tile__meta{font-size:11px;color:var(--mute)}
+.tile__cav{font-size:11px;line-height:1.4;color:var(--mute);border-top:1px solid var(--rule);margin-top:5px;padding-top:5px}
 
-/* decisions + risks */
-.decs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
-.dec{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--now);border-radius:3px;padding:14px 16px;display:flex;flex-direction:column;gap:7px}
-.dec__why{font-size:14px;color:var(--mute)}
-.opts{margin:0;padding-left:18px;font-size:13.5px;display:flex;flex-direction:column;gap:3px}
-.dec__meta{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.07em}
-.risk{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--warn);border-radius:3px;padding:14px 16px;display:flex;flex-direction:column;gap:7px}
-.risk h3{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.risk p{font-size:14px;color:var(--mute);max-width:82ch}
-.risk__resp{color:var(--ink)}
+.plain{margin:0;padding-left:18px;font-size:13.5px;color:var(--mute);display:flex;flex-direction:column;gap:7px}
+.plain b{color:var(--ink)}
+.plain i{font-style:normal;color:var(--ink)}
+.plain .mono{color:var(--mute)}
 
-.rules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:9px}
-.rules li{font-size:13.5px;color:var(--mute);padding-left:15px;position:relative;line-height:1.45}
-.rules li::before{content:"\00B7";position:absolute;left:4px;color:var(--now);font-weight:700}
-footer{font:12px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--rule);padding-top:16px}
-footer a{color:var(--idle)}
-@media (max-width:640px){body{padding:0 14px 64px}.wrap{gap:40px}}
+footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--rule);padding-top:14px}
+@media (max-width:560px){
+  body{padding:0 14px 64px}
+  .focus{padding:20px 18px 16px}
+  .step__when,.up__when{flex-basis:96px}
+}
 </style>
 
 <div class="wrap">
   <header class="mast">
-    <h1>Where the launch actually is</h1>
-    <p class="mast__sub">Stoopwise Greenpoint, soft-launched and not yet shared broadly. Wave 1 seeding starts Monday. Every number here comes from the last analytics pull; every rule was written before the data it judges.</p>
-    <div class="mast__meta">
-      <span>As of 2026-08-15</span>
-      <span>Analytics pull 2026-08-11</span>
-      <span>Feed check 2026-08-15</span>
-      <span>Next readout 2026-08-18</span>
-    </div>
+    <h1>Stoopwise launch</h1>
+    <span>as of 2026-08-15</span>
+    <span>analytics 2026-08-11 · feed 2026-08-15</span>
   </header>
 
+  
+  <section class="focus">
+    <p class="focus__kicker">Right now</p>
+    <h2 class="focus__goal">Send Wave 1 this week</h2>
+    <p class="focus__why">The feed is the strongest it has ever been — 73 dated items against a send bar of 35 — and seeding a trust network is one-shot. Three org notes plus warm re-invites open the parents network while the pitch is at its best.</p>
+    <ol class="steps">
+      
+      <li class="step step--now">
+        <span class="step__when mono">Mon 8/17 PM</span>
+        <span class="step__label">Town Square note + warm re-invites</span>
+      </li>
+      <li class="step step--now">
+        <span class="step__when mono">Tue–Wed 8/18–19</span>
+        <span class="step__label">Library + Brooklyn Craft notes</span>
+      </li>
+      <li class="step step--idle">
+        <span class="step__when mono">Tue 8/25 readout</span>
+        <span class="step__label">Attribution check opens Wave 2</span>
+      </li>
+    </ol>
+    <p class="focus__done"><span class="lbl">Done when</span> All four sends out by Wed 8/19; the 8/25 readout checks each tagged link for at least one session.</p>
+  </section>
+
   <section>
-    <h2>The track</h2>
-    <ol class="track">
-  <li class="phase phase--pass">
-    <span class="phase__win">Jul 21 – Aug 2</span>
-    <span class="phase__title">Launch readiness</span>
-    <span class="phase__line">Build everything a launch needs, then close it — L1 through L11.</span>
+    <h2 class="sec">Waiting on you</h2>
+    <ul class="atts">
+  <li class="att">
+    <details>
+      <summary><b>Which parent group does Rana post in?</b><span class="att__by mono">before the Q2 copy is finalized (posts Tue Sep 8)</span></summary>
+      <p>It determines the src value — one src per channel, so a second group needs its own row.</p>
+      <ul class="opts"><li>Williamsburg &amp; Greenpoint BK Parents (~5k, join-gated)</li><li>Brooklyn Baby Hui (~10k + Slack pods where the 0–4 crowd actually asks)</li></ul>
+    </details>
   </li>
-  <li class="phase phase--pass">
-    <span class="phase__win">Aug 2 – Aug 6</span>
-    <span class="phase__title">Cutover + rename</span>
-    <span class="phase__line">Domain live, brand settled on Stoopwise, analytics following the move.</span>
+  <li class="att">
+    <details>
+      <summary><b>Restate the feed-density baseline</b><span class="att__by mono">next readout</span></summary>
+      <p>The §1 baseline (95 cards / 38 dated / 48 sources) is three weeks stale and describes a smaller product than the one we have. Every comparison against it flatters us.</p>
+      
+    </details>
   </li>
-  <li class="phase phase--pass">
-    <span class="phase__win">Aug 6 – Aug 11</span>
-    <span class="phase__title">Supply build</span>
-    <span class="phase__line">Get the feed strong enough that seeding is worth spending.</span>
+  <li class="att">
+    <details>
+      <summary><b>Ratify or retire the unique-coverage proxy</b><span class="att__by mono">open three cycles</span></summary>
+      <p>Operator-derived and unratified. Including Shop Small gives 76%, excluding it gives 83%. A marketing number with a 7-point definitional swing isn't a number.</p>
+      
+    </details>
+  </li></ul>
+  </section>
+
+  <section>
+    <h2 class="sec">Coming up</h2>
+    <ol class="ups">
+  <li class="up up--now">
+    <span class="up__when mono">Aug 25</span>
+    <div>
+      <b>First attribution read</b>
+      <span class="up__line">Did the tagged links land? That answer, and only that, opens Wave 2.</span>
+    </div>
   </li>
-  <li class="phase phase--now phase--here">
-    <span class="phase__win">Aug 13 – Aug 19</span>
-    <span class="phase__title">Wave 1 seeding</span>
-    <span class="phase__line">Three org notes plus warm re-invites into one trust network: parents.</span>
+  <li class="up up--idle">
+    <span class="up__when mono">Sep 1 – Sep 8</span>
+    <div>
+      <b>Wave 2 + Q2 parents post</b>
+      <span class="up__line">Broadcast channels, and the parents post timed to back-to-school.</span>
+    </div>
   </li>
-  <li class="phase phase--now">
-    <span class="phase__win">Aug 25</span>
-    <span class="phase__title">First attribution read</span>
-    <span class="phase__line">Did the tagged links land? That answer, and only that, opens Wave 2.</span>
+  <li class="up up--idle">
+    <span class="up__when mono">~Sep 15</span>
+    <div>
+      <b>Provisional demand readout</b>
+      <span class="up__line">First look at the demand gate — flagged as provisional, not a verdict.</span>
+    </div>
   </li>
-  <li class="phase phase--idle">
-    <span class="phase__win">Sep 1 – Sep 8</span>
-    <span class="phase__title">Wave 2 + Q2 parents post</span>
-    <span class="phase__line">Broadcast channels, and the parents post timed to back-to-school.</span>
+  <li class="up up--idle">
+    <span class="up__when mono">~late Oct</span>
+    <div>
+      <b>Firm demand verdict</b>
+      <span class="up__line">Two mature four-week cohorts. This is the real read.</span>
+    </div>
   </li>
-  <li class="phase phase--idle">
-    <span class="phase__win">~Sep 15</span>
-    <span class="phase__title">Provisional demand readout</span>
-    <span class="phase__line">First look at the demand gate — flagged as provisional, not a verdict.</span>
-  </li>
-  <li class="phase phase--idle">
-    <span class="phase__win">~late Oct</span>
-    <span class="phase__title">Firm demand verdict</span>
-    <span class="phase__line">Two mature four-week cohorts. This is the real read.</span>
-  </li>
-  <li class="phase phase--idle">
-    <span class="phase__win">Feb 15 2027</span>
-    <span class="phase__title">Commercial gate decision</span>
-    <span class="phase__line">Pre-registered kill date for the paid side, set after January budgets activate.</span>
+  <li class="up up--idle">
+    <span class="up__when mono">Feb 15 2027</span>
+    <div>
+      <b>Commercial gate decision</b>
+      <span class="up__line">Pre-registered kill date for the paid side, set after January budgets activate.</span>
+    </div>
   </li></ol>
   </section>
 
   <section>
-    <h2>This week and what's blocked</h2>
-    
-  <article class="row row--pass">
-    <div class="row__head">
-      <span class="pill pill--pass">done</span>
-      <time class="mono">2026-08-13</time>
-      <h3>First outbound send — friends &amp; family</h3>
-    </div>
-    <p class="row__goal">Break the deferred-send streak with the lowest-stakes group, on a tagged link.</p>
-    <details class="why"><summary>Why this way</summary><p>Wave 1 had been deferred three times (8/6, 8/11, 8/12). The sneak-peek group is a real send with no cold-outreach risk, and it proves the attribution plumbing on a live audience.</p></details>
-    <p class="row__out"><span class="lbl">Outcome</span> Sent ~6:30pm over WhatsApp, ?src=friends-family. No readout has covered it yet — 8/18 is the first pull that will.</p>
-    
-    
-    
-    
-  </article>
-  <article class="row row--pass">
-    <div class="row__head">
-      <span class="pill pill--pass">done</span>
-      <time class="mono">2026-08-15</time>
-      <h3>Adversarial review of the seeding motion; P1–P6 ratified</h3>
-    </div>
-    <p class="row__goal">Two independent hostile passes over the wave before sending, then pre-register every rule pre-data.</p>
-    <details class="why"><summary>Why this way</summary><p>Pre-registration is only legitimate before the data exists. Both passes converged on the same finding: the org notes are low-risk, Q2 is the fragile item.</p></details>
-    <p class="row__out"><span class="lbl">Outcome</span> Wave splits — org notes go now, Q2 moves to back-to-school. Six pre-registrations ratified. Two code items shipped same day.</p>
-    
-    
-    
-    
-  </article>
-  <article class="row row--pass">
-    <div class="row__head">
-      <span class="pill pill--pass">done</span>
-      <time class="mono">2026-08-15</time>
-      <h3>Full-stack strategy review; P7–P11 ratified</h3>
-    </div>
-    <p class="row__goal">Two independent passes (adversarial + 2026 best-practices research) plus a category scan of the deck, the weekend before Wave 1.</p>
-    <details class="why"><summary>Why this way</summary><p>The plan's rules all guarded against wrong readings; the likeliest fall failure was nothing starting — no signups, no R1, no submissions, no medium test. P7–P11 give that case dates, numbers, and agreed meanings, set while pre-data ratification was still legitimate.</p></details>
-    <p class="row__out"><span class="lbl">Outcome</span> P7–P11 ratified; Q2 dated Tue Sep 8; kids roster adds enter the 8/24 ingest; gtm-state became the primary send log with the shared? field. Send kit finalized in the roster. Both reviews endorsed the plan's shape.</p>
-    
-    
-    
-    
-  </article>
-  <article class="row row--now">
-    <div class="row__head">
-      <span class="pill pill--now">next</span>
-      <time class="mono">Mon 8/17 PM</time>
-      <h3>Town Square BK note + warm re-invites</h3>
-    </div>
-    <p class="row__goal">Reach the volunteer org that runs Greenpoint's marquee family calendar, plus re-invite Michael, Laura &amp; Edmond, Perri.</p>
-    <details class="why"><summary>Why this way</summary><p>Moved up from Tuesday because a Tue send gives a volunteer org ~72h to act on its own season finale. Monday buys a real window. The note is re-centered so nothing expires Friday: the 8/21 screening is the proof, the fall calendar is the pitch.</p></details>
-    
-    
-    
-    
-    <ul class="notes"><li>npm run preflight:send re-derives counts the morning of send</li><li>link copied verbatim from channel-links.md — never composed by hand</li></ul>
-  </article>
-  <article class="row row--now">
-    <div class="row__head">
-      <span class="pill pill--now">next</span>
-      <time class="mono">Tue–Wed 8/18–19, mid-morning</time>
-      <h3>Greenpoint Library + Brooklyn Craft notes</h3>
-    </div>
-    <p class="row__goal">The two strongest on-map orgs in the parents network get a personal 'your events are live here' note.</p>
-    <details class="why"><summary>Why this way</summary><p>Both score 2·2·2·2 — proven redistribution, real on-map truth, kids programming. Each note now carries the share line, because criterion 1 says the org sharing is the growth event, and two of three drafts previously asked for nothing.</p></details>
-    
-    
-    
-    
-    
-  </article>
-  <article class="row row--now">
-    <div class="row__head">
-      <span class="pill pill--now">next</span>
-      <time class="mono">2026-08-18</time>
-      <h3>Tue 8/18 readout — mid-wave, no-read instruction</h3>
-    </div>
-    <p class="row__goal">Pick up the friends-family send. Explicitly do not read Q1/Q2.</p>
-    <details class="why"><summary>Why this way</summary><p>P6: the routine fires mid-wave. Org srcs not yet sent are not silence, and reading them as silence would fire a kill rule on nothing.</p></details>
-    
-    
-    
-    
-    
-  </article>
-  <article class="row row--now">
-    <div class="row__head">
-      <span class="pill pill--now">next</span>
-      <time class="mono">2026-08-25</time>
-      <h3>Tue 8/25 readout — Wave 2 gate</h3>
-    </div>
-    <p class="row__goal">Check every sent src for ≥1 session within 7 days. That mechanism check, and nothing else, opens Wave 2.</p>
-    <details class="why"><summary>Why this way</summary><p>P3 defines 'attribution confirms' as a plumbing test, not a performance test — it is the thing 8/25 can actually measure at this n. Channel performance explicitly does not gate Wave 2.</p></details>
-    
-    
-    <p class="row__out"><span class="lbl">If it's silent</span> P4 — if all three org srcs show 0 sessions and 0 replies: one follow-up per org that week, and the org-type question goes to Batu with Film Noir as the next test. The org-type kill clock stays suspended for August.</p>
-    
-    
-  </article>
-  <article class="row row--warn">
-    <div class="row__head">
-      <span class="pill pill--warn">blocked</span>
-      <time class="mono">2026-09-01</time>
-      <h3>Q2 preconditions</h3>
-    </div>
-    <p class="row__goal">Close three things before the parents post goes out.</p>
-    <details class="why"><summary>Why this way</summary><p>Q2 is the one Wave-1 item that cannot be re-run if botched. A join-gated group with anti-promo norms gives you one shot.</p></details>
-    
-    
-    
-    <ul class="checks"><li class="check check--pass"><span class="check__mk">✓</span><div><b>Messenger verified as an embedded member</b><span>Closed 2026-08-15 — Rana confirmed as a member of a target group and personally willing. Own words, exact tagged link, one group only. Laura is the fallback.</span></div></li><li class="check check--pass"><span class="check__mk">✓</span><div><b>?lens=family_kids deep link shipped</b><span>Shipped 2026-08-15 TDD. lensFromSearch in deepLink.js; unknown lens → null → 'all', so a bad link can never narrow the page.</span></div></li><li class="check check--warn"><span class="check__mk">○</span><div><b>Facebook in-app webview verified on real iOS + Android</b><span>~100% of Q2 taps arrive through it, and it is the exact hostile-context class as the 8/13 map bug. Needs a row in environmental-dependencies.md in the same change.</span></div></li><li class="check check--warn"><span class="check__mk">○</span><div><b>Which of the two groups — determines the src value</b><span>Needed before the copy is finalized. Williamsburg &amp; Greenpoint BK Parents, or Brooklyn Baby Hui.</span></div></li></ul>
-    
-  </article>
-  <article class="row row--now">
-    <div class="row__head">
-      <span class="pill pill--now">next</span>
-      <time class="mono">roster adds at the Mon 8/24 ingest</time>
-      <h3>September PTA / GWYSL wave</h3>
-    </div>
-    <p class="row__goal">Four volunteer email lists that collectively reach most 11222 elementary families.</p>
-    <details class="why"><summary>Why this way</summary><p>Schools and youth sports were a total blind spot — zero presence in the docs or on the map. Highest-density parent channels in the neighborhood.</p></details>
-    
-    <p class="row__out"><span class="lbl">Blocked on</span> Roster adds ratified 2026-08-15 (strategy review decision 3): PS 110/34/31 PTAs, GWYSL, Play Lab, GAMA, Artudio, St. Stans Academy + NY Society of Play roster entry enter the Mon 8/24 ingest, events carded by 8/31 — then the notes. Ingest proposes, Batu approves, as always.</p>
-    
-    
-    
-  </article>
-  </section>
-
-  <section>
-    <h2>Experiments</h2>
-    <p class="slotbar">2 of 3 slots spoken for · max 3 live, because attribution dies past that</p>
-    <div class="scroll"><table>
-      <thead><tr><th></th><th>Experiment</th><th>Target</th><th>Actual</th><th>Verdict</th><th>What it means</th></tr></thead>
-      <tbody>
+    <h2 class="sec">The full picture</h2>
+    <div class="folds">
+      
+  <details class="fold">
+    <summary>Experiments — rules and reads</summary>
+    <div class="fold__body"><table>
+        <thead><tr><th></th><th>Experiment</th><th>Actual</th><th>Verdict</th><th>Means</th></tr></thead>
+        <tbody>
   <tr class="xr xr--pass">
     <td class="mono xr__id">R0</td>
     <td>
       <b>return_visit retention sensor</b>
       <span class="xr__hyp">Not an experiment — the prerequisite. Without it there is no way to see whether anyone comes back, and the demand gate is unreadable.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: localStorage first-seen + visit count. No fingerprinting, no accounts.  ·  Decision rule: n/a</p></details>
+      <span class="xr__rule">n/a</span>
     </td>
-    <td class="mono num">—</td>
     <td class="mono num">Live since 2026-07-26</td>
     <td><span class="pill pill--pass">shipped</span></td>
     <td class="xr__imp">Unlocks R1, R2 and the demand gate itself. The baseline is still young — nothing before 7/26 is recoverable.</td>
@@ -343,9 +232,8 @@ footer a{color:var(--idle)}
     <td>
       <b>Follow — personalized alert vs broadcast digest</b>
       <span class="xr__hyp">Re-entry is the weakest edge of the content loop — nothing tells a resident it's a new week. A followed lens or place beats a broadcast digest at bringing them back.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Manual segments, 4–5 coarse ones. No backend, no automation build. Batu sends only when something matches.  ·  Decision rule: Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 → personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.  ·  Trigger: Starts the first Monday after ≥10 signups with ≥1 segmented. The 3-week clock runs from that Monday. Ratified 2026-08-15, supersedes 'first Monday post-launch'. P7 fallback: if not armed by Mon Oct 5, the next free slot goes to a no-list re-entry mechanism and the late-Oct demand read is labeled accordingly.</p></details>
+      <span class="xr__rule">Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 → personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.</span>
     </td>
-    <td class="mono num">Segmented &gt; broadcast by week 3</td>
     <td class="mono num">Treatment arm 0 segmented. Control arm 3 recipients. No new signup in 12 days.</td>
     <td><span class="pill pill--warn">hold</span></td>
     <td class="xr__imp">Do not start the clock. It is the scarce resource and it expires whether or not the arms have people in them. Q1/Q2 are the mechanisms that produce the signups. Wave 1 first, R1 second.</td>
@@ -355,9 +243,8 @@ footer a{color:var(--idle)}
     <td>
       <b>Org seeding — 3 orgs already on the map</b>
       <span class="xr__hyp">A recommendation from inside a small trust network converts where broadcast can't, and costs nothing. An org that shares is a Loop B ignition.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Three emails. Per-org src row added first.  ·  Decision rule: Sessions and activation rate per src. Kill an org-type after 2 non-responses.  ·  Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org. P11: when Q1 closes, its slot goes to the arts/culture wave — Film Noir first.</p></details>
+      <span class="xr__rule">Sessions and activation rate per src. Kill an org-type after 2 non-responses.</span>
     </td>
-    <td class="mono num">≥1 session per sent src within 7 days (P3 mechanism check)</td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">not yet read</span></td>
     <td class="xr__imp">No campaign src has ever landed in the project's history — not one. Which mechanically confirms Wave 1 has not been sent, and is why every published rate is a mixed population.</td>
@@ -367,9 +254,8 @@ footer a{color:var(--idle)}
     <td>
       <b>Parents-wedge post</b>
       <span class="xr__hyp">Parents/camps is the sharpest unmet need in the neighborhood (the Sawyer gap). A member-share in a parent group reaches them where they already ask 'what do we do this weekend'.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: One post, one group, one src.  ·  Decision rule: src=parents sessions + week-2 return. Double down only if return beats other srcs.  ·  Caveat: Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels. Cross-channel return comparisons carry that asymmetry caveat (P1).</p></details>
+      <span class="xr__rule">src=parents sessions + week-2 return. Double down only if return beats other srcs.</span>
     </td>
-    <td class="mono num">Week-2 return beats other srcs</td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">not yet read</span></td>
     <td class="xr__imp">Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24–30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions.</td>
@@ -379,9 +265,8 @@ footer a{color:var(--idle)}
     <td>
       <b>AEO / answer-engine acceptance</b>
       <span class="xr__hyp">Cards published as static structured HTML get cited by search engines and AI assistants, bringing residents at zero cost to acquire.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Already shipped. Watch organic sessions monthly.  ·  Decision rule: No kill rule — owned infrastructure.  ·  Crawl latency measured at ~4 days — survivable for a card dated a week out, fatal for one posted the morning of. That is an ingest lead-time fact. P10 (2026-08-15): citations and AI-referrer sessions get their own readout lines — citations up with sessions flat is the loop working zero-click, never a fail read; llms.txt booked at zero.</p></details>
+      <span class="xr__rule">No kill rule — owned infrastructure.</span>
     </td>
-    <td class="mono num">Organic sessions trending up</td>
     <td class="mono num">7 people from Google since 8/9, all NYC-local, all landing on /e/&lt;slug&gt; card pages. 6 interactions from those 7, against 0 from 20 untagged direct arrivals.</td>
     <td><span class="pill pill--idle">first positive read</span></td>
     <td class="xr__imp">The loop turned once and it turned in the right direction. First acquisition in the project's history that came from neither a link Batu sent nor the share button. n=7 graduates nothing.</td>
@@ -391,9 +276,8 @@ footer a{color:var(--idle)}
     <td>
       <b>Funnel read</b>
       <span class="xr__hyp">Where do first sessions stall — before the first card open, or between open and act?</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Analysis only, inside the readouts. No build until this is read.  ·  Decision rule: Produces the target for A2.</p></details>
+      <span class="xr__rule">Produces the target for A2.</span>
     </td>
-    <td class="mono num">—</td>
     <td class="mono num">NYC-metro: 32 visitors → 13 opened a card (41%) → 6 acted. Stable across four readings at growing n (44%, 43%, 41%).</td>
     <td><span class="pill pill--idle">provisional</span></td>
     <td class="xr__imp">The stall is before the first card open. A2 is aimed at the right place. Still provisional, still not a build trigger.</td>
@@ -403,9 +287,8 @@ footer a{color:var(--idle)}
     <td>
       <b>Opinionated default on first visit</b>
       <span class="xr__hyp">Landing new visitors in the merchandised 'this week' state fixes whatever A1 says the stall point is.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: One default flipped on, pre/post.  ·  Decision rule: First-session activation rate. Kill if flat after 2 weeks.</p></details>
+      <span class="xr__rule">First-session activation rate. Kill if flat after 2 weeks.</span>
     </td>
-    <td class="mono num">—</td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">not yet read</span></td>
     <td class="xr__imp">Waits for a free slot. All three are spoken for the moment Wave 1 fires.</td>
@@ -415,9 +298,8 @@ footer a{color:var(--idle)}
     <td>
       <b>Post-value prompt timing</b>
       <span class="xr__hyp">The email ask fires too late (or too early) relative to demonstrated value.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Config-level change.  ·  Decision rule: Signup rate per activated session, pre/post.</p></details>
+      <span class="xr__rule">Signup rate per activated session, pre/post.</span>
     </td>
-    <td class="mono num">—</td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">deferred</span></td>
     <td class="xr__imp">Deferred until ≥50 sessions/week. Below that it's noise.</td>
@@ -427,9 +309,8 @@ footer a{color:var(--idle)}
     <td>
       <b>'New this week' marker</b>
       <span class="xr__hyp">Badging cards added since a reader's last visit makes the weekly rhythm visible in-product.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Small UI change over existing first-seen data.  ·  Decision rule: Return-visit card_open depth pre/post. Kill if no lift after 2 weeks of returners.</p></details>
+      <span class="xr__rule">Return-visit card_open depth pre/post. Kill if no lift after 2 weeks of returners.</span>
     </td>
-    <td class="mono num">—</td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">not yet read</span></td>
     <td class="xr__imp">Needs a returner population to exist first. Today's WRL proxy is 2 people.</td>
@@ -439,9 +320,8 @@ footer a{color:var(--idle)}
     <td>
       <b>Five warm-user conversations</b>
       <span class="xr__hyp">What would make you check this weekly? And the causal question: did Stoopwise cause you to do something you wouldn't otherwise have known about or chosen?</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Five conversations. Small-n qualitative is a valid instrument at this scale.  ·  Decision rule: Qualitative. Feeds Tuesday proposals and the pilot kit.</p></details>
+      <span class="xr__rule">Qualitative. Feeds Tuesday proposals and the pilot kit.</span>
     </td>
-    <td class="mono num">—</td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">standing instrument</span></td>
     <td class="xr__imp">The causal question is the demand-side twin of the unique-coverage count, and verbatim the strongest line pilot evidence can carry.</td>
@@ -451,177 +331,147 @@ footer a{color:var(--idle)}
     <td>
       <b>Anonymous save / star</b>
       <span class="xr__hyp">Saving starts the resident participation graph and returns readers to their own shortlist. Laura and Edmond's standing ask.</span>
-      <details class="why"><summary>Rule, test and detail</summary><p>Smallest test: Small UI change over localStorage. No backend, no identity.  ·  Decision rule: Proposed: save rate per activated session, and whether savers return more. Kill if saves stay rare after 3 weeks or don't correlate with return. Final kill criteria set at launch of the experiment.</p></details>
+      <span class="xr__rule">Proposed: save rate per activated session, and whether savers return more. Kill if saves stay rare after 3 weeks or don't correlate with return. Final kill criteria set at launch of the experiment.</span>
     </td>
-    <td class="mono num">—</td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">registered, not live</span></td>
     <td class="xr__imp">Enters via a Tuesday proposal when a max-3 slot opens; Batu ratifies.</td>
-  </tr></tbody>
-    </table></div>
-  </section>
-
-  <section>
-    <h2>The four gates</h2>
-    <div class="gates">
-  <article class="gate gate--warn">
+  </tr></tbody></table></div>
+  </details>
+      
+  <details class="fold">
+    <summary>The four gates</summary>
+    <div class="fold__body">
+  <article class="gate">
     <header>
-      <span class="gate__n mono">1</span>
-      <h3>Demand</h3>
+      <h4>Demand</h4>
       <span class="pill pill--warn">pending</span>
     </header>
-    <p class="gate__bar"><span class="lbl">Bar</span> ≥30 unique locals returning in ≥3 of any 4 consecutive weeks, majority arriving without a fresh invite push</p>
-    <p class="gate__act"><span class="lbl">Now</span> <span class="mono">2 people, 5 events (8/2 → 8/9)</span></p>
+    <p class="gate__bar">≥30 unique locals returning in ≥3 of any 4 consecutive weeks, majority arriving without a fresh invite push</p>
+    <p class="gate__act mono">2 people, 5 events (8/2 → 8/9)</p>
     <p class="gate__unl"><span class="lbl">Unlocks</span> Permission to ship any paid surface. Nothing paid goes live before this passes.</p>
-    <details class="why"><summary>Why the bar is there</summary><p>This is the number the whole business prices off — Layer 1 renewals and all of Layer 2. It's the tightest coupling between the growth plan and the business model.  ·  Structurally immune to the automated traffic in Finding 3 — a stateless fetcher can never produce a return_visit with weekIndex ≥ 1. The demand gate's own metric is clean even when the activation proxies aren't.  ·  Reads: ~Sep 15 provisional; firm verdict ~late Oct after two mature 4-week cohorts</p></details>
-    <ul class="flags"><li>Broadcast-seed contamination (P1) — the 'majority unprompted' clause is unreadable for 4 weeks after any broadcast seed</li><li>September rebound confound</li><li>No gate read on raw Dec–Feb numbers</li></ul>
   </article>
-  <article class="gate gate--warn">
+  <article class="gate">
     <header>
-      <span class="gate__n mono">2</span>
-      <h3>Distribution</h3>
+      <h4>Distribution</h4>
       <span class="pill pill--warn">pending</span>
     </header>
-    <p class="gate__bar"><span class="lbl">Bar</span> ≥2 channels repeatedly producing activated users without founder-intensive outreach</p>
-    <p class="gate__act"><span class="lbl">Now</span> <span class="mono">0 of 2. No campaign src has ever landed. Google organic is the only non-founder channel with any data (7 people).</span></p>
+    <p class="gate__bar">≥2 channels repeatedly producing activated users without founder-intensive outreach</p>
+    <p class="gate__act mono">0 of 2. No campaign src has ever landed. Google organic is the only non-founder channel with any data (7 people).</p>
     <p class="gate__unl"><span class="lbl">Unlocks</span> Confidence that growth isn't Batu's inbox. Feeds the distribution deliverable every pilot has to carry.</p>
-    <details class="why"><summary>Why the bar is there</summary><p>'Repeatedly, without founder-intensive outreach' is the whole test. Batu sending three emails is not a channel.</p></details>
-    
   </article>
-  <article class="gate gate--warn">
+  <article class="gate">
     <header>
-      <span class="gate__n mono">3</span>
-      <h3>Supply</h3>
+      <h4>Supply</h4>
       <span class="pill pill--warn">pending</span>
     </header>
-    <p class="gate__bar"><span class="lbl">Bar</span> ≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter</p>
-    <p class="gate__act"><span class="lbl">Now</span> <span class="mono">0 submissions. Form has 2 visits, 0 starts. submit_tap: 1 tap, 1 person, all-time.</span></p>
+    <p class="gate__bar">≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter</p>
+    <p class="gate__act mono">0 submissions. Form has 2 visits, 0 starts. submit_tap: 1 tap, 1 person, all-time.</p>
     <p class="gate__unl"><span class="lbl">Unlocks</span> The only loop that lowers marginal cost — direct submissions displace ingest labor.</p>
-    <details class="why"><summary>Why the bar is there</summary><p>Businesses currently have no reason to know the path exists. The missing mechanism is proof of value back to the supplier: submission → publication receipt → measured outcome report. Zero build, starts as soon as there's engagement to report.</p></details>
-    
   </article>
-  <article class="gate gate--idle">
+  <article class="gate">
     <header>
-      <span class="gate__n mono">4</span>
-      <h3>Commercial</h3>
+      <h4>Commercial</h4>
       <span class="pill pill--idle">parked</span>
     </header>
-    <p class="gate__bar"><span class="lbl">Bar</span> 3 paid pilots or signed LOIs from a defined buyer profile</p>
-    <p class="gate__act"><span class="lbl">Now</span> <span class="mono">Parked. All monetization decisions parked 2026-07-28 — sole priority is launch → learn → PMF.</span></p>
+    <p class="gate__bar">3 paid pilots or signed LOIs from a defined buyer profile</p>
+    <p class="gate__act mono">Parked. All monetization decisions parked 2026-07-28 — sole priority is launch → learn → PMF.</p>
     <p class="gate__unl"><span class="lbl">Unlocks</span> The paid layers, in order: Founding Pilots → Founding Partners → self-serve business layer → spatial intelligence.</p>
-    <details class="why"><summary>Why the bar is there</summary><p>Resident counts never open this gate; only paying buyers do. 30 returning residents prove someone values the product, not that anyone will pay for it.  ·  Kill date is Feb 15 2027, not December — institutional budgets set in Q4 activate in January, so a December 'no' is most likely 'not this budget year'. The kill is reason-conditional: budget-timing deferrals don't count as rejections.  ·  Kill date: 2027-02-15</p></details>
-    
   </article></div>
-  </section>
-
-  <section>
-    <h2>Metrics — analytics 2026-08-11, feed 2026-08-15</h2>
-    <div class="tiles">
+  </details>
+      
+  <details class="fold">
+    <summary>Metrics</summary>
+    <div class="fold__body"><div class="tiles">
   <article class="tile">
     <span class="tile__lbl">Weekly returning locals</span>
     <span class="tile__val mono">2 people</span>
     <span class="tile__meta mono">↗ was 1 person · target ≥30</span>
-    <span class="tile__role">the demand gate itself</span>
     <span class="tile__cav">Structurally immune to bot traffic. Baseline is young — sensor live since 7/26.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Dated items, next 7 days</span>
     <span class="tile__val mono">73</span>
     <span class="tile__meta mono">↗ was 56 · target ≥35 to send</span>
-    <span class="tile__role">supply-side leading indicator</span>
     <span class="tile__cav">check-freshness.mjs, run 2026-08-15. Twice the send bar. Its definition counts recurring and span-covering cards, so a strict hand count runs lower.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Reservoir, 7–14 days out</span>
     <span class="tile__val mono">22</span>
     <span class="tile__meta mono">→ was 24</span>
-    <span class="tile__role">says whether the peak is a spike</span>
     <span class="tile__cav">Holding, so the 73 is not a one-week bulge.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Cards on the map</span>
     <span class="tile__val mono">163</span>
     <span class="tile__meta mono">↗ was 144</span>
-    <span class="tile__role">coverage</span>
     <span class="tile__cav">§1 baseline of 95 cards / 38 dated / 48 sources describes a product a third this size. Restating it is an open decision.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Roster yield</span>
     <span class="tile__val mono">42 of 68 (62%)</span>
     <span class="tile__meta mono">↗ was 10 of 48 (21%)</span>
-    <span class="tile__role">source health</span>
     <span class="tile__cav">Not re-derived 8/15 — the roster is now 71 sources, but the yield fraction is an operator derivation from the ledger and there is no instrument for it. Tuesday's readout re-computes it.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Unique coverage</span>
     <span class="tile__val mono">110 of 144 (76%)</span>
     <span class="tile__meta mono">↗ was 46 of 75 (61%)</span>
-    <span class="tile__role">the differentiation proof</span>
     <span class="tile__cav">As of 8/11, not re-derived. Operator proxy, unratified after three cycles — excluding Shop Small gives 83%. That spread is why it needs ratifying or retiring.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Activation rate</span>
     <span class="tile__val mono">19% NYC-metro (7 of 37)</span>
     <span class="tile__meta mono">→ was 18% (7 of 38)</span>
-    <span class="tile__role">aha proxy</span>
     <span class="tile__cav">All-production reads 9% because 62 of 103 'people' are automated. Numerator rose 7→9; only the denominator moved. Directional only per the 8/6 ruling.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Card-open conversion</span>
     <span class="tile__val mono">41% NYC-metro (13 of 32)</span>
     <span class="tile__meta mono">→ was 43%</span>
-    <span class="tile__role">funnel read (A1)</span>
     <span class="tile__cav">Stable across four readings at growing n. Says the stall is before the first card open.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Organic sessions</span>
     <span class="tile__val mono">7 from Google</span>
     <span class="tile__meta mono">↗ was 0 all-time · target &gt;50% of acquisition</span>
-    <span class="tile__role">Loop C compounding metric</span>
     <span class="tile__cav">Not readable against the benchmark yet — it compares organic against tagged acquisition, and no tagged campaign has run.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Signup list (R1 denominator)</span>
     <span class="tile__val mono">3 completions, 0 segmented</span>
     <span class="tile__meta mono">→ was 3, 0 · target ≥10 with ≥1 segmented</span>
-    <span class="tile__role">R1 trigger</span>
     <span class="tile__cav">No new signup in 12 days.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Supply-side asks</span>
     <span class="tile__val mono">0</span>
     <span class="tile__meta mono">→ was 0 · target ≥5, ≥1 recurring</span>
-    <span class="tile__role">supply gate</span>
     <span class="tile__cav">Form: 2 visits, 0 starts, 0 completions.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Production exceptions</span>
     <span class="tile__val mono">0</span>
     <span class="tile__meta mono">→ was 0 · target 0</span>
-    <span class="tile__role">error monitoring (L4)</span>
     
-  </article></div>
-  </section>
-
-  <section>
-    <h2>Send log</h2>
-    <div class="scroll"><table>
-      <thead><tr><th>src</th><th>Channel</th><th>Wave</th><th>Sent</th><th>First session</th><th>Shared?</th><th>Status</th></tr></thead>
-      <tbody>
+  </article></div></div>
+  </details>
+      
+  <details class="fold">
+    <summary>Send log</summary>
+    <div class="fold__body"><table>
+        <thead><tr><th>src</th><th>Channel</th><th>Sent</th><th>First session</th><th>Status</th></tr></thead>
+        <tbody>
   <tr>
     <td class="mono">friends-family</td>
     <td>Friends &amp; family WhatsApp</td>
-    <td class="mono">1</td>
     <td class="mono">2026-08-13</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td>sent, unread</td>
   </tr>
   <tr>
     <td class="mono">michael</td>
     <td>Michael re-invite</td>
-    <td class="mono">1</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>due 8/17</td>
@@ -629,8 +479,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">laura-edmond</td>
     <td>Laura &amp; Edmond re-invite</td>
-    <td class="mono">1</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>due 8/17</td>
@@ -638,8 +486,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">perri</td>
     <td>Perri / Shop Small</td>
-    <td class="mono">1</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>due 8/17</td>
@@ -647,8 +493,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">org-town-square</td>
     <td>Town Square BK</td>
-    <td class="mono">1</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>due 8/17 PM</td>
@@ -656,8 +500,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">org-gp-library</td>
     <td>Greenpoint Library</td>
-    <td class="mono">1</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>due 8/18–19</td>
@@ -665,8 +507,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">org-brooklyn-craft</td>
     <td>Brooklyn Craft Company</td>
-    <td class="mono">1</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>due 8/18–19</td>
@@ -674,8 +514,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">parents</td>
     <td>Parents-group post (Q2)</td>
-    <td class="mono">1→moved</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>posts Tue Sep 8, morning (ratified 8/15)</td>
@@ -683,8 +521,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">org-film-noir</td>
     <td>Film Noir Cinema</td>
-    <td class="mono">2</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>front of Tier 2, draft ready</td>
@@ -692,8 +528,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">reddit</td>
     <td>Reddit</td>
-    <td class="mono">2</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>gated on 8/25</td>
@@ -701,8 +535,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">fbgroups</td>
     <td>Local FB/WhatsApp groups</td>
-    <td class="mono">2</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>gated on 8/25</td>
@@ -710,8 +542,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">qr</td>
     <td>II-C QR window cards</td>
-    <td class="mono">2</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>gated on 8/25</td>
@@ -719,8 +549,6 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">gpters</td>
     <td>Greenpointers</td>
-    <td class="mono">held</td>
-    <td class="mono">—</td>
     <td class="mono">—</td>
     <td class="mono">—</td>
     <td>strategic hold — the embed-swap play, once retention data exists</td>
@@ -728,70 +556,34 @@ footer a{color:var(--idle)}
   <tr>
     <td class="mono">share</td>
     <td>Card share button</td>
-    <td class="mono">product</td>
     <td class="mono">always on</td>
     <td class="mono">2 people</td>
-    <td class="mono">—</td>
     <td>product-generated, never sent by hand</td>
-  </tr></tbody>
-    </table></div>
-  </section>
-
-  <section>
-    <h2>Waiting on you</h2>
-    <div class="decs">
-  <article class="dec">
-    <h3>Which parent group does Rana post in?</h3>
-    <p class="dec__why">It determines the src value — one src per channel, so a second group needs its own row.</p>
-    <ul class="opts"><li>Williamsburg &amp; Greenpoint BK Parents (~5k, join-gated)</li><li>Brooklyn Baby Hui (~10k + Slack pods where the 0–4 crowd actually asks)</li></ul>
-    <p class="dec__meta mono">Batu · before the Q2 copy is finalized (posts Tue Sep 8)</p>
-  </article>
-  <article class="dec">
-    <h3>Restate the feed-density baseline</h3>
-    <p class="dec__why">The §1 baseline (95 cards / 38 dated / 48 sources) is three weeks stale and describes a smaller product than the one we have. Every comparison against it flatters us.</p>
-    
-    <p class="dec__meta mono">Batu · next readout</p>
-  </article>
-  <article class="dec">
-    <h3>Ratify or retire the unique-coverage proxy</h3>
-    <p class="dec__why">Operator-derived and unratified. Including Shop Small gives 76%, excluding it gives 83%. A marketing number with a 7-point definitional swing isn't a number.</p>
-    
-    <p class="dec__meta mono">Batu · open three cycles</p>
-  </article></div>
-  </section>
-
-  <section>
-    <h2>Known risks</h2>
-    
-  <article class="risk">
-    <h3>62 of 103 recorded 'people' are automated <span class="pill pill--warn">known, bounded</span></h3>
-    <p>Eleven Parisians on one day, six Varsovians on another, plus Google/AWS/Hetzner datacenter cities. One pageview each, fresh localStorage every time, not a single card open across 34 of them. Every published rate halved while every numerator rose.</p>
-    <p class="risk__resp"><span class="lbl">Response</span> No retro-clean — that was ruled on 8/6. Wave 1 is the actual fix: once tagged traffic arrives, every rate that matters reads per-src and untagged noise stops touching it. The demand gate's own metric was never affected.</p>
-  </article>
-  <article class="risk">
-    <h3>Facebook in-app webview unverified <span class="pill pill--warn">open</span></h3>
-    <p>~100% of Q2 taps will arrive through it, and it's the same hostile-context class that produced the 8/13 map bug — the one where a reader lost the whole product to a missing browser capability.</p>
-    <p class="risk__resp"><span class="lbl">Response</span> Q2 precondition 3. Verify on real iOS and Android devices, add the row to environmental-dependencies.md in the same change.</p>
-  </article>
-  <article class="risk">
-    <h3>~4-day crawl latency against weekly-expiring events <span class="pill pill--warn">measured</span></h3>
-    <p>Survivable for a card dated a week out. Fatal for one posted the morning of.</p>
-    <p class="risk__resp"><span class="lbl">Response</span> An ingest lead-time fact, not a fix. Worth keeping in view when the reservoir thins.</p>
-  </article>
-  <article class="risk">
-    <h3>The feed peak is perishable <span class="pill pill--warn">timing</span></h3>
-    <p>73 dated items on 8/15, up from 56, with the reservoir holding at 22 — so this isn't a one-week bulge. But cycle 1's org drafts were falsified by ordinary expiry inside a week, and the dated kids inventory collapses after 8/22.</p>
-    <p class="risk__resp"><span class="lbl">Response</span> Seeding is one-shot per trust network, so spend it while the feed is at its best. That is the whole argument for sending now.</p>
-  </article>
-  </section>
-
-  <section>
-    <h2>The rules we're playing by</h2>
-    <ul class="rules"><li>Max 3 live experiments. Attribution dies past that.</li><li>Every experiment ships with hypothesis → smallest test → one metric → decision rule → kill criteria written before launch. No kill criteria, no launch.</li><li>Pre/post and small-n qualitative only. No A/B infrastructure, no significance theater — at this traffic it's noise cosplay.</li><li>September reads carry the autumn-rebound confound and nothing graduates on a Sep–Oct read alone. Carve-out: contemporaneous-control designs (R1, Q2) are exempt — 2a governs pre/post reads.</li><li>Each Q experiment closes at the readout after its rule fires, or after 4 weeks, whichever comes first. No experiment squats on a slot.</li><li>The unit of seeding is a small trust network, not reach. Saturate one network before opening the next.</li><li>Batu sends every outbound message. Every link is copied from channel-links.md, never composed by hand.</li><li>Paid acquisition is dead permanently, not deferred — revenue per user is $0, so only near-zero-CAC channels can ever fit.</li><li>Coverage is never for sale. Every verified business is on the map free.</li><li>P7: if R1 hasn't armed by the Mon Oct 5 readout, the next free slot goes to a no-list re-entry mechanism (R4 or per-lens .ics), and the late-Oct demand read is labeled 'measured without a re-entry mechanism' — a miss under it is never read as product failure alone.</li><li>P8: a demand-gate pass on cohorts wholly inside Sep–Oct is provisional until a Nov-or-later cohort clears the same bar — or it's accepted explicitly as a peak-season pass and disclosed in pilot conversations. Counterpart to the Dec–Feb no-read rule.</li><li>P9: the approved IG carousel test starts automatically at the first readout on/after Tue Oct 6 if tagged sessions across all sent srcs are under 50 (earlier by normal proposal when a slot frees). The medium question — will Greenpoint open a browser? — can no longer go unread.</li><li>P10: citations and AI-referrer sessions get their own readout lines. Citations up with sessions flat = Loop C working zero-click — H5's fail branch can't fire on it. llms.txt stays up, zero value booked.</li><li>P11: when Q1 closes, the freed slot goes to the arts/culture wave — Film Noir first, then WORD and Flower Cat. Sequencing only; never two networks at once.</li></ul>
+  </tr></tbody></table></div>
+  </details>
+      
+  <details class="fold">
+    <summary>Known risks</summary>
+    <div class="fold__body"><ul class="plain">
+  <li><b>62 of 103 recorded 'people' are automated.</b> Eleven Parisians on one day, six Varsovians on another, plus Google/AWS/Hetzner datacenter cities. One pageview each, fresh localStorage every time, not a single card open across 34 of them. Every published rate halved while every numerator rose. <i>No retro-clean — that was ruled on 8/6. Wave 1 is the actual fix: once tagged traffic arrives, every rate that matters reads per-src and untagged noise stops touching it. The demand gate's own metric was never affected.</i></li>
+  <li><b>Facebook in-app webview unverified.</b> ~100% of Q2 taps will arrive through it, and it's the same hostile-context class that produced the 8/13 map bug — the one where a reader lost the whole product to a missing browser capability. <i>Q2 precondition 3. Verify on real iOS and Android devices, add the row to environmental-dependencies.md in the same change.</i></li>
+  <li><b>~4-day crawl latency against weekly-expiring events.</b> Survivable for a card dated a week out. Fatal for one posted the morning of. <i>An ingest lead-time fact, not a fix. Worth keeping in view when the reservoir thins.</i></li>
+  <li><b>The feed peak is perishable.</b> 73 dated items on 8/15, up from 56, with the reservoir holding at 22 — so this isn't a one-week bulge. But cycle 1's org drafts were falsified by ordinary expiry inside a week, and the dated kids inventory collapses after 8/22. <i>Seeding is one-shot per trust network, so spend it while the feed is at its best. That is the whole argument for sending now.</i></li></ul></div>
+  </details>
+      
+  <details class="fold">
+    <summary>Rules of play</summary>
+    <div class="fold__body"><ul class="plain"><li>Max 3 live experiments. Attribution dies past that.</li><li>Every experiment ships with hypothesis → smallest test → one metric → decision rule → kill criteria written before launch. No kill criteria, no launch.</li><li>Pre/post and small-n qualitative only. No A/B infrastructure, no significance theater — at this traffic it's noise cosplay.</li><li>September reads carry the autumn-rebound confound and nothing graduates on a Sep–Oct read alone. Carve-out: contemporaneous-control designs (R1, Q2) are exempt — 2a governs pre/post reads.</li><li>Each Q experiment closes at the readout after its rule fires, or after 4 weeks, whichever comes first. No experiment squats on a slot.</li><li>The unit of seeding is a small trust network, not reach. Saturate one network before opening the next.</li><li>Batu sends every outbound message. Every link is copied from channel-links.md, never composed by hand.</li><li>Paid acquisition is dead permanently, not deferred — revenue per user is $0, so only near-zero-CAC channels can ever fit.</li><li>Coverage is never for sale. Every verified business is on the map free.</li><li>P7: if R1 hasn't armed by the Mon Oct 5 readout, the next free slot goes to a no-list re-entry mechanism (R4 or per-lens .ics), and the late-Oct demand read is labeled 'measured without a re-entry mechanism' — a miss under it is never read as product failure alone.</li><li>P8: a demand-gate pass on cohorts wholly inside Sep–Oct is provisional until a Nov-or-later cohort clears the same bar — or it's accepted explicitly as a peak-season pass and disclosed in pilot conversations. Counterpart to the Dec–Feb no-read rule.</li><li>P9: the approved IG carousel test starts automatically at the first readout on/after Tue Oct 6 if tagged sessions across all sent srcs are under 50 (earlier by normal proposal when a slot frees). The medium question — will Greenpoint open a browser? — can no longer go unread.</li><li>P10: citations and AI-referrer sessions get their own readout lines. Citations up with sessions flat = Loop C working zero-click — H5's fail branch can't fire on it. llms.txt stays up, zero value booked.</li><li>P11: when Q1 closes, the freed slot goes to the arts/culture wave — Film Noir first, then WORD and Flower Cat. Sequencing only; never two networks at once.</li></ul></div>
+  </details>
+      
+  <details class="fold">
+    <summary>Done so far</summary>
+    <div class="fold__body"><ul class="plain"><li><span class="mono">Jul 21 – Aug 2</span> <b>Launch readiness</b> — Build everything a launch needs, then close it — L1 through L11.</li><li><span class="mono">Aug 2 – Aug 6</span> <b>Cutover + rename</b> — Domain live, brand settled on Stoopwise, analytics following the move.</li><li><span class="mono">Aug 6 – Aug 11</span> <b>Supply build</b> — Get the feed strong enough that seeding is worth spending.</li></ul></div>
+  </details>
+    </div>
   </section>
 
   <footer>
-    Generated from <code>docs/launch/gtm-state.json</code>. The Tuesday growth routine updates it and redeploys this page.<br>
-    Sources: docs/launch/2026-07-21-pmf-ops-plan.md · docs/launch/2026-07-27-launch-plan.md · docs/launch/2026-08-15-seeding-roster.md · docs/growth/growth-engine.md · docs/growth/business-model.md · docs/launch/channel-links.md · docs/growth/readouts/2026-08-11.md · docs/DECISION_LOG.md
+    Generated from docs/launch/gtm-state.json · updated by the Tuesday growth routine · every entry cites its source doc
   </footer>
 </div>
