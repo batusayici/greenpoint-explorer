@@ -346,7 +346,10 @@ and re-centered so nothing expires Friday; Library and Brooklyn Craft
 says the org *sharing* is the growth event. Rules unchanged: Batu sends, links
 copied from `channel-links.md`, `npm run preflight:send` the morning of each
 send. Warm re-invites (Mon 8/17 PM) use the existing kit copy on their own
-rows (`michael` / `laura-edmond` / `perri`).
+rows (`michael` / `laura-edmond`). **Perri gets a fresh draft below** — the
+2026-07-15 kit copy is unsendable (wrong host, `/july.html`, "the July map",
+a Jul 16–22 event count) and, more importantly, it was written as a re-invite
+to someone who has never heard from Batu.
 
 **Town Square BK** (`org-town-square`, Mon 8/17 PM). Truth constraints: one
 live card (`summerstarz-zootopia-0821`) — singular claim, no count; the
@@ -419,5 +422,71 @@ booking-calendar clause turns the BookThatApp blocker into a supply ask
 > like something upcoming included, just send it — your booking calendar is
 > hard for me to read automatically, so anything you send goes up faster and
 > more accurately than anything I find.
+>
+> — Batu, Greenpoint
+
+**Perri / Shop Small Greenpoint** (`perri`, Mon 8/17 PM) — **first contact,
+not a re-invite.** Written 2026-08-17, revised same day after checking
+`shopsmallgreenpoint.carrd.co` (added to `.claude/settings.json`). She is not
+an org note in the Q1 sense: she has no events of her own on the map, so the
+opening hook is *credit* — her July newsletter is a cited source on 12 of our
+cards. Truth constraints, all verified against prod on 2026-08-17: the eight
+named businesses each carry a `Shop Small Greenpoint` source link, all eight
+`/e/` pages resolve on stoopwise.com, and the `adopt-a-business` +
+`g-advocacy-mta` cards cite her too. **The WonderMart is genuinely not on the
+map** — the offer to add it is real, not a device, and it is ordinary free
+coverage (business-model rule: coverage is never for sale), not an intro
+offer. If the send slips past the next ingest, re-check the eight names
+before sending; they are evergreen business cards with no expiry, so the
+count is stable, but the rule is that counts are re-derived, never remembered.
+
+**The real reason for this send: the Fall Retail Crawl.** SSG runs a
+bi-annual retail crawl (passport at participating shops, $10 spend per stamp,
+3 stamps = tote bag, 8 stamps = grand-prize drawing, weekday-only discounts
+at select shops) — the site names it "Next Event: Fall 2026" with **no
+specific dates yet**. That's the actual redistribution opportunity (roster
+criterion 1): a live map of every participating shop is something her crawl
+audience genuinely needs, and it's a reason for her to point her list/IG at
+Stoopwise that isn't "please share my thing." The email below offers to build
+that view once she has a roster — **don't promise a live crawl map before
+one exists**, the offer is conditional on her sending the participant list.
+This reopens the question of whether "Shop Small Greenpoint amplification"
+(currently a Tier 3 hold, above) should move up once the crawl has dates —
+Batu's call, not made here.
+
+**Open gap: no verified contact channel.** Neither the carrd site nor prior
+docs have a working email or mailto for Perri or SSG — `docs/launch/
+2026-07-15-limited-launch-kit.md` says only "via Perri / SSG site." The
+`?src=perri` link and copy below are channel-agnostic (works as an email or
+an Instagram DM to @shopsmallgreenpoint) but **Batu needs to pick the actual
+send path** — this doc doesn't invent one.
+
+> **Subject:** Want Stoopwise to be the map for the Fall Crawl?
+>
+> Hi Perri,
+>
+> I'm Batu — I live in Greenpoint. I built Stoopwise Greenpoint, a map and
+> feed of what's happening in the neighborhood each week: events, new
+> openings, deals, news. Everything is verified against a named source. Free,
+> no ads, not a business.
+>
+> Your July newsletter is one of those sources. Eight of the businesses in it
+> are on the map now — Sailor + Siren, Core Press, Pooch's Parlor, Giggles &
+> Wiggles, Cookies N' Cream, Sotteatery, Socceria and Dreams on Command —
+> each credited to Shop Small Greenpoint, along with your G-shutdown pieces
+> on adopting a business and weighing in with the MTA.
+>
+> https://stoopwise.com/?src=perri
+>
+> I saw the Fall Retail Crawl is coming. I'd like Stoopwise to be the map
+> people use to find every shop on it — passport stops, hours, location, all
+> in one place, live and free. Send me the lineup whenever it's set and I'll
+> build it out, no cost, no strings. If it's useful, the link's yours to
+> share with your list or IG whenever you'd like — no pressure either way.
+>
+> One more thing: The WonderMart isn't on the map yet. Send me whatever
+> you'd want listed and it goes up — same for any member business, free,
+> permanently. And if anything's ever wrong, tell me and I'll fix it same
+> day.
 >
 > — Batu, Greenpoint
