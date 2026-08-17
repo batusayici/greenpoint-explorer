@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-15T09:30:00-04:00",
+  "lastRunAt": "2026-08-17T09:45:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1332,6 +1332,34 @@
       "publisher": "Track V ingest (coverage-gate close)",
       "processedAt": "2026-08-15",
       "outcome": "Closed the last unexplained coverage line, restoring auto-ship: `ingest:coverage --gate` now exits 0 (70 sources, 7 flagged, 0 unexplained). Started at 5 unexplained on 2026-08-13; the intervening cloud runs cleared most, and reconciling main (rebased a local golden-drum commit onto the cloud daily refresh, keeping BOTH processedItems entries — an append conflict where neither record supersedes the other) left exactly one: greenpoint-comedy-club missing 2026-08-29. ADD (1): comedy-goo-goo-0829 — 'Savannah DesOrmeaux's Goo Goo Comedy', Sat 8/29 6:00 PM, $20, arts_culture. Deck 160 -> 161. Quote verifies verbatim (verified=67 mismatch=0); lint clean; geocoded to the club's known pin. No relatedCardIds, matching the three most recent one-off comedy cards and the 2026-07-30 rule against overloading venue hubs (the club card already carries 6). THE LESSON, and it is about the gate itself: a sibling commit (d76c977) bumped comedy-saturday-showcase's verified-through to 8/29, which satisfied the DATE the gate reconciles and made the line disappear — while the 6pm one-off it was flagging stayed uncarded. THE COVERAGE GATE RECONCILES DATES, NEVER BILLS, so a named one-off goes invisible the moment any other card covers its day. A green gate is therefore not evidence of full coverage; it is evidence that no DATE is bare. This is the same blind spot the script's own header warns about from the other direction ('a GAP is not automatically wrong'), and it is why the card was authored after the gate had already gone green. Batu's RULING-SITTINGS-VS-BILLS is what settles it: a different time is not a different card, a different bill is. holds: 0."
+    },
+    {
+      "id": "gmail:19ffde805a3e7235",
+      "kind": "email",
+      "publisher": "Tend Greenpoint",
+      "processedAt": "2026-08-17",
+      "outcome": "SHIPPED as tend-additional-20-off (second hold, resolved by R2/R3 rather than re-held). Held 2026-08-14 as source-blocked for a missing street address; that block was cleared on 2026-08-15 when the shop's own page and the sibling email stated 252 Franklin St, and the sibling card tend-plant-sale-0821 shipped on it. Per the rule that a card held twice for the same reason is a defect, the address question was not re-litigated. The offer is DATED, not recurring — its own terms line reads \"Valid through September 7, 2026\" — which is a different deadline from the plant sale's 8/21, and is exactly why julyCards.test.mjs already said the two must not be folded into one card."
+    },
+    {
+      "id": "gmail:1a00cd0125c4c520",
+      "kind": "email",
+      "publisher": "Marianella Market",
+      "processedAt": "2026-08-17",
+      "outcome": "RESOLVED the expiry FLAG on marianella-19th-anniversary-sale by DROPPING the card. \"The anniversary sale ends at midnight tonight.\" (sent 2026-08-16 23:02Z), preceded by \"Last day. Midnight tonight.\" the same morning. The store page still shows an anniversary marquee but no longer carries any of the lines the card quoted, so the banner is stale chrome and the email is the dated fact. See watchItems for why it must not be re-authored from the banner."
+    },
+    {
+      "id": "gmail:1a00230cd9bb2a73",
+      "kind": "email",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-17",
+      "outcome": "NOTHING NEW. The 8/14 \"Greenpoint This Week\" digest is headline recap; every Greenpoint-side item is already carded (transmitter-park-restaurant-marina, matches-enids-space) or already ruled out. Susu's is \"on Kent Avenue\" and Brooklyn Brewery's 8/29 blowout is at its N 11th St flagship — both Williamsburg, skipped on geography. New New Patch is a product with no stated address. Ugly Baby was already skipped on geography 2026-08-13."
+    },
+    {
+      "id": "RUN-MONDAY-FULL-2026-08-17",
+      "kind": "run",
+      "publisher": "Track V ingest (Monday full)",
+      "processedAt": "2026-08-17",
+      "outcome": "SHIPPED 4 adds, 5 updates, 1 delete, 16 expiries; deck 163 → 150 (-8.0%, inside ±40%). Expiry RAN (every path). Fetch exit 0, reach 53/61 (13% error, ceiling 15%). NOT a first Monday (that was 8/3), so no --include-monthly, no roster-discovery sweep, no tally-pull. 8 errored sources: 7 are the known Chromium browser-connect-reset fault (greenpoint-comedy-club, word-bookstore, leaves-bookstore, happy-medium + the JS-thin auto sources sunshine-laundromat, brooklyn-youth-ballet, greenpoint-trash-club); the 8th, tend-greenpoint, is a ROSTER DEFECT — fetch: \"embedded\" with no `attr` — proposed for a human-gated roster fix. No EGRESS DENIED block; one R1 fetch (marianella.co/pages/store) reached HTTP 200, so no host to name. Gmail pass RAN. holds: 0 new-judgment · 0 rule-miss · 0 source-blocked. Notable finding: a flipped is_event_canceled flag is invisible to the line-set diff — see watchItems."
     }
   ],
   "senderRegistry": [
@@ -1674,8 +1702,8 @@
       "addedAt": "2026-08-10"
     },
     {
-      "name": "Go Green lists 'Keep Calm and Carry Yarn' at Greenpoint Library 8/11, but the library's own calendar does not",
-      "note": "SOURCE CONFLICT recorded 2026-08-10. gogreenbk.org's index carries \"11 August 2026 / Keep Calm and Carry Yarn (Greenpoint Library) / Free\", but the BPL Solr events index for the Greenpoint branch — the authoritative source for that branch's programmes, and fetched clean this run — contains no such entry on any date. Not carded: under the conflicting-sources rule the dedicated source wins, and here that is the library's own calendar. Most likely a stale aggregator listing. UNBLOCKS if the branch calendar starts carrying it.",
+      "name": "Go Green lists 'Keep Calm and Carry Yarn' at Greenpoint Library 8/11, but the library's own calendar does not [RESOLVED 2026-08-17]",
+      "note": "RESOLVED: the library's own Solr calendar now carries it under its full title — \"ts_title: Keep Calm & Carry Yarn - Sewists Welcome!\" at 2026-08-18T21:30:00Z and 2026-08-25T21:30:00Z, is_event_canceled: 0 — so the unblock condition (the primary source states it) is met. No new card was needed: the deck already covers both occurrences inside library-tuesday-programs-0818 and -0825, which quote those records directly. Go Green stays the secondary link, per the prefer-the-primary-source rule.",
       "addedAt": "2026-08-10"
     },
     {
@@ -1743,6 +1771,16 @@
       "name": "The Lot Radio — a card here must quote STANDING facts, never a day's DJ slots",
       "note": "SOURCE FACT found 2026-08-15 by the quotes gate. the-lot-radio shipped quoting two of 2026-08-14's rotating slots (\"Worl Dance with Stamma and Ras I\", \"Tonal Fiction with Ken Meier\"). The roster note already says only TODAY's slots expand and later days are bare date headings — so any slot name in a sourceQuote is unverifiable within 24 hours, through no change in the card. Requoted to \"EVERYDAY from 10AM to MIDNIGHT\" and \"17 Nassau Ave, Brooklyn, NY 11222\", the two lines the card's kicker and summary actually rest on; neither names a DJ, so no claim changed. DO NOT re-add slot names to this card's quote.",
       "addedAt": "2026-08-15"
+    },
+    {
+      "name": "Marianella Market — the 19th-anniversary sale is OVER (card dropped 2026-08-17)",
+      "note": "The expiry script FLAGGED marianella-19th-anniversary-sale as a recurring deal past its 2026-08-16 verified-through. Re-verified two ways. (1) The shop's own emails, in senderRegistry as messages+fqhkbz0zmpz0x@squaremktg.com: 2026-08-16 14:06Z \"Last day. Midnight tonight.\" and 2026-08-16 23:02Z \"The anniversary sale ends at midnight tonight.\" That is the source stating its own end, so the FLAG resolves to DROP, not to a bumped date. (2) An R1 fetch of marianella.co/pages/store today returned HTTP 200 and the marquee still reads UP TO 50% OFF / 19 YEAR ANNIVERSARY SALE — but every line the card actually quoted (\"50% off sitewide. Free shipping on every order. Gifts with purchase.\" / \"Closing this week. Once it's gone, it's gone until next year.\") is GONE from the page. A stale marquee is not an offer; the dated email is. NOTE FOR THE NEXT RUN: do not re-author this card from the banner alone — marianella.co is a monthly-cadence roster source (marianella-subscription-box), so the store page is only snapshotted on a first-Monday --include-monthly run and there is nowhere honest to persist store-page evidence in between.",
+      "addedAt": "2026-08-17"
+    },
+    {
+      "name": "Greenpoint Library — a flipped is_event_canceled flag is INVISIBLE to the diff engine",
+      "note": "Found 2026-08-17. Four \"Free English Class\" 2pm sessions (8/18, 8/20, 8/25, 8/27) and the 8/28 \"After School Movie\" flipped from is_event_canceled: 0 to 1 between the last ingested baseline and this run's snapshot — and the fetch reported the source as changed +5/-7, with the diff showing ONLY the three new 8/28 records. The reason is structural: the diff is a LINE-SET diff, the literal line \"is_event_canceled: 1\" already occurs elsewhere in the same snapshot, so flipping a fifth record to it adds no new line and produces no diff. Four live grouped cards were advertising a canceled class as a result. MITIGATION USED THIS RUN: parse the snapshot's ts_title/is_event_canceled pairs directly and compare against <id>.ingested.txt rather than trusting the diff. This is a fact, not a rule — but it generalises to any field-labelled feed whose status flags are low-cardinality (feather.rsvp, the BPL Solr index, Squarespace JSON), so check status flags by parse, not by diff.",
+      "addedAt": "2026-08-17"
     }
   ],
   "sourcePulse": {
@@ -1770,9 +1808,9 @@
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-08-13",
-    "nycparks-greenpoint": "2026-08-12",
-    "troost": "2026-08-14",
+    "go-green-bk": "2026-08-16",
+    "nycparks-greenpoint": "2026-08-16",
+    "troost": "2026-08-16",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-14",
     "town-square-bk": "2026-08-06",
@@ -1802,7 +1840,7 @@
     "macha-studio": "2026-08-11",
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
-    "tend-greenpoint": "2026-08-14"
+    "tend-greenpoint": "2026-08-16"
   },
   "coverageExplanations": [
     {
@@ -1986,6 +2024,34 @@
       "reason": "The shop CLOSED — this is a permanent state, not a quiet source, and the snapshot says so in its own banner: 'OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE'. That closure is already the deck's card for this source (archestratus-closed). What remains on the events page is online-only and therefore unmappable: 'SUN AUG 30 via ZOOM / A Cooking Class on Arancine' and 'SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)' — a Zoom session has no Greenpoint location to pin. The one physical item is the wind-down sale, 'PAIGE IS MOVING! A SALE', with no dates stated anywhere in the 2KB snapshot. So the source yielding nothing since 2026-07-24 is the correct outcome, and the pulse will stay silent by design. WHAT WOULD CHANGE IT: a dated in-person event, or the sale acquiring an end date.",
       "addedAt": "2026-08-15",
       "expiresAt": "2026-08-29"
+    },
+    {
+      "sourceId": "tend-greenpoint",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "ROSTER DEFECT, not a source going quiet, and not an egress denial. This run's fetch reported it verbatim as \"ERROR tend-greenpoint — the embedded strategy needs an `attr` to read\": the roster entry declares fetch: \"embedded\" without the `embedded: { attr }` block that strategy requires, so the fetcher refuses before it ever opens a socket. The source has therefore never produced a snapshot, and its two live cards (tend-plant-sale-0821, tend-additional-20-off) are both newsletter-derived — Tend is in senderRegistry as messages+d4sh8s6s9jcvd@squaremktg.com and the offers are quoted from its own emails, which is why the deck has supply here while the web snapshot is empty. FIX: add the `attr` to the roster entry (or drop the source back to `auto`). That is a roster change and so human-gated — proposed in the 2026-08-17 run report, not applied here.",
+      "addedAt": "2026-08-17",
+      "expiresAt": "2026-08-31"
+    },
+    {
+      "sourceId": "go-green-bk",
+      "gapKey": "GAP",
+      "reason": "GEOGRAPHY, verified against this run's snapshot rather than assumed. The flagged dates were 8/30 and 8/31. 8/30 is now CARDED (transmitter-its-my-park-0830), so only 8/31 remains, and the snapshot's only two lines for that date are \"Monday, August 31, 7:00 a.m.–9:00 a.m., It's My Park at Leif Ericson Park\" and \"Monday, August 31, 7:00 a.m.–9:00 a.m., It's My Park at Sunset Park\" — Bay Ridge and Sunset Park respectively, both far outside the Greenpoint bbox. The source is a Brooklyn-wide series page, so out-of-neighborhood dates are its normal output, not a coverage loss.",
+      "addedAt": "2026-08-17",
+      "expiresAt": "2026-08-31"
+    },
+    {
+      "sourceId": "eavesdrop",
+      "gapKey": "SILENT",
+      "reason": "THE FETCHABLE PAGE IS NOT THE CALENDAR — already recorded as a roster fact (\"REAL CALENDAR IS INSTAGRAM, IN TWO PARTS\", Batu 2026-08-13), and re-earned against this run's snapshot: eavesdrop.nyc/calendar fetched clean at 1,754 bytes and its LATEST listing is \"Sunday, Jul 12\" — five weeks stale, with nothing dated after it. So the page is not quiet, it is frozen, and the live calendar lives at instagram.com/eavesdrop.nyc/ which needs the Browser pane (IG blocks headless) while the browser path is down with the known browser-connect-reset fault. This is \"we cannot read the source\", never \"the source has no supply\". WHAT WOULD CHANGE IT: the browser path recovering, or the venue publishing dates on a plain-fetchable page.",
+      "addedAt": "2026-08-17",
+      "expiresAt": "2026-08-31"
+    },
+    {
+      "sourceId": "greenpoint-star",
+      "gapKey": "SILENT",
+      "reason": "THE OUTLET HAS STOPPED PUBLISHING, verified against this run's 72KB snapshot. Its post dates run \"Posted on June 28, 2026\", then June 2, then March 15 — nothing in the seven weeks since, so the silence since our last card (2026-07-26) is the source's, not the parser's. What it did publish most recently is syndicated advertorial by a single byline (\"Who Inherits When Family Records Are Lost\", \"USA Today Featured a Lease Model That Beats Buying\", \"How To Fight Back When Workers Comp is Denied\" — all \"By Dan Rose\"), i.e. not Greenpoint news and not cardable under the news rules, which require a Greenpoint-side story verified at its named primary source. WHAT WOULD CHANGE IT: a new Greenpoint civic/land-use story appearing on the site.",
+      "addedAt": "2026-08-17",
+      "expiresAt": "2026-08-31"
     }
   ]
 }

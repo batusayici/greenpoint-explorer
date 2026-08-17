@@ -1,14 +1,3 @@
-summary: DJ JEFF WIDNER
-description: POP MUSIC
-start.date: 2026-08-15
-end.date: 2026-08-16
-htmlLink: https://www.google.com/calendar/event?eid=XzhjcTM2ZGhvNnAzM2NiOWo2ZDFqYWI5azhvcTM0YjlvNjhwNGNiOWo4NHI0NmRocDhjcjQyaDFsNzAgdHJvb3N0bGl2ZUBt
-
-summary: GABRIEL HEINEMANN
-start.date: 2026-08-16
-end.date: 2026-08-17
-htmlLink: https://www.google.com/calendar/event?eid=NTdpY252anUzYmgxbGk1dDA2czZjMGZzMmwgdHJvb3N0bGl2ZUBt
-
 summary: JULIA KWAMYA // MARIE RAOULT // AVA RAIIN
 description: Stripped down Dream Pop and other Celestial Sounds
 start.date: 2026-08-18
@@ -26,7 +15,7 @@ start.date: 2026-08-20
 end.date: 2026-08-21
 htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA4MjAgdHJvb3N0bGl2ZUBt
 
-summary: DANNY RAMOS
+summary: DJ FRANTZ
 start.date: 2026-08-21
 end.date: 2026-08-22
 htmlLink: https://www.google.com/calendar/event?eid=NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjA4MjEgdHJvb3N0bGl2ZUBt
@@ -221,3 +210,14 @@ summary: First Vinyl Fridays with Steph
 start.date: 2026-10-02
 end.date: 2026-10-03
 htmlLink: https://www.google.com/calendar/event?eid=NGh2cXIwOHFocGlycXFyN25tbGF1NGk5a2xfMjAyNjEwMDIgdHJvb3N0bGl2ZUBt
+
+summary: HERB LORE
+start.date: 2026-10-04
+end.date: 2026-10-05
+htmlLink: https://www.google.com/calendar/event?eid=M3Fkb2RsZWExcGloN2l2c2N1ZTRzbnYyZDcgdHJvb3N0bGl2ZUBt
+
+summary: TIRED HORSES
+description: psychedelic indie jazz quintet
+start.date: 2026-10-05
+end.date: 2026-10-06
+htmlLink: https://www.google.com/calendar/event?eid=NmpwZ3BjcXFubzhwazl2Y3ZpdmZvbHAwcXBfMjAyNjEwMDUgdHJvb3N0bGl2ZUBt

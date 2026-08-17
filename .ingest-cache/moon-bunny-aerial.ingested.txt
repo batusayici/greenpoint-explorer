@@ -1,43 +1,3 @@
-name: Open Gym
-start_at: 2026-08-15T17:30:00.000Z
-end_at: 2026-08-15T18:30:00.000Z
-
-name: Flexibility
-start_at: 2026-08-15T17:30:00.000Z
-end_at: 2026-08-15T18:30:00.000Z
-
-name: Lyra
-start_at: 2026-08-15T19:00:00.000Z
-end_at: 2026-08-15T20:00:00.000Z
-
-name: Pokeball
-start_at: 2026-08-15T20:15:00.000Z
-end_at: 2026-08-15T21:15:00.000Z
-
-name: Open Gym
-start_at: 2026-08-16T17:00:00.000Z
-end_at: 2026-08-16T18:00:00.000Z
-
-name: Spiral
-start_at: 2026-08-16T17:00:00.000Z
-end_at: 2026-08-16T18:00:00.000Z
-
-name: Flexibility
-start_at: 2026-08-16T18:00:00.000Z
-end_at: 2026-08-16T19:00:00.000Z
-
-name: Baby Lyra
-start_at: 2026-08-16T18:00:00.000Z
-end_at: 2026-08-16T19:00:00.000Z
-
-name: Intro to Aerial
-start_at: 2026-08-16T19:00:00.000Z
-end_at: 2026-08-16T20:00:00.000Z
-
-name: Lyra
-start_at: 2026-08-16T20:00:00.000Z
-end_at: 2026-08-16T21:00:00.000Z
-
 name: Weekday Camp 8-12 yrs old
 start_at: 2026-08-17T13:00:00.000Z
 end_at: 2026-08-17T19:00:00.000Z
@@ -397,6 +357,46 @@ end_at: 2026-09-03T22:00:00.000Z
 name: Kids K-Pop Dance
 start_at: 2026-09-03T21:15:00.000Z
 end_at: 2026-09-03T22:15:00.000Z
+
+name: Two Day Camp 4-7 yrs old
+start_at: 2026-09-04T13:00:00.000Z
+end_at: 2026-09-04T19:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-04T20:00:00.000Z
+end_at: 2026-09-04T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-07T20:00:00.000Z
+end_at: 2026-09-07T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-10T20:00:00.000Z
+end_at: 2026-09-10T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-10T21:00:00.000Z
+end_at: 2026-09-10T22:00:00.000Z
+
+name: Kids K-Pop Dance
+start_at: 2026-09-10T21:15:00.000Z
+end_at: 2026-09-10T22:15:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-11T20:00:00.000Z
+end_at: 2026-09-11T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-14T20:00:00.000Z
+end_at: 2026-09-14T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-17T20:00:00.000Z
+end_at: 2026-09-17T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-17T21:00:00.000Z
+end_at: 2026-09-17T22:00:00.000Z
 
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial

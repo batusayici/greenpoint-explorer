@@ -499,14 +499,21 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // bare host was already allowlisted and CONNECTed fine; the 403 was on the
   // redirect target, www.tendgreenpoint.com. With that opened the shop's own
   // page states the address outright. 162 + 1 = 163.
-  assert.equal(seed.cards.length, 163);
+  // 2026-08-17 Monday full refresh: expiry took 16 (163 → 147), then −1 delete
+  // and +4 adds. The delete is the Marianella anniversary sale: the shop's own
+  // 8/16 email said "The anniversary sale ends at midnight tonight.", so the
+  // expiry FLAG resolved to drop, not to a bumped verified-through date. The
+  // adds are two Troost nights that rolled into the 14-day window (8/30, 8/31),
+  // It's My Park at Transmitter Park on 8/30, and Tend Greenpoint's
+  // stack-on-sale markdown through 9/7. 147 − 1 + 4 = 150.
+  assert.equal(seed.cards.length, 150);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 91, "90 (incl. comedy-goo-goo-0829) + the NBCB canoe card, unblocked by the verify-quotes host-map fix (2026-08-15)");
-  assert.equal(count((c) => c.category === "discount"), 7, "6 + Tend Greenpoint's dated plant sale, unblocked 2026-08-15");
+  assert.equal(count((c) => c.category === "event"), 79, "76 after the 2026-08-17 expiry + two Troost nights and It's My Park at Transmitter Park");
+  assert.equal(count((c) => c.category === "discount"), 6, "6 after the 2026-08-17 expiry: −1 Marianella (sale ended), +1 Tend's already-reduced markdown");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 after expiry + Good Room's 8/28 Magnetic bill");
+  assert.equal(count((c) => c.filters.includes("live_music")), 24, "22 after the 2026-08-17 expiry + the two new Troost nights");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -590,7 +597,11 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // ingest:quotes, not by the calendar: its printed endsAt was still 2 days out.
   // 2026-08-15: +1 — Tend Greenpoint's plant sale, dated (through 8/21) and so
   // correctly NOT recurring; the email states its own closing date.
-  assert.equal(deals.length, 7);
+  // 2026-08-17: −1 Marianella (the shop's own 8/16 email closed the sale at
+  // midnight, so the expiry FLAG resolved to a drop), +1 Tend Greenpoint's
+  // additional 20% off already-reduced stock, dated through 9/7 by its own
+  // terms line and so correctly NOT recurring.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -609,7 +620,13 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   assert.equal(seed.cards.find((c) => c.id === "hana-bottomless-makgeolli").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "poochs-parlor-first-groom").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "bios-apothecary-first-order"), undefined, "deleted — offer expired, no live offer to verify through");
-  assert.equal(seed.cards.find((c) => c.id === "moon-bunny-back-to-school").recurring, undefined, "dated deal must NOT carry recurring");
+  // 2026-08-17: moon-bunny-back-to-school expired out (its 8/15 deadline). The
+  // rule it pinned is asserted as a CLASS below instead of on one id, so the
+  // next dated deal inherits the check rather than needing a test edit.
+  assert.equal(seed.cards.find((c) => c.id === "moon-bunny-back-to-school"), undefined, "expired 2026-08-17 — its own 8/15 deadline passed");
+  for (const c of deals.filter((d) => !d.recurring)) {
+    assert.ok(c.endsAt, `${c.id} is a dated deal and must state its own endsAt`);
+  }
 });
 
 test("news cards name their publisher and sit in the news layer", () => {
@@ -670,8 +687,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
-    // 2026-08-12 roundup: "Free, no RSVP needed." on the Edy's anniversary line.
-    "edys-anniversary-party-0816",
     "greenpoint-trash-club",
     // 2026-08-14: three Longevity Stick sittings at Transmitter Park. The Go
     // Green detail page states the free-ness once for the whole series — "Join
@@ -694,9 +709,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // the lines the card quotes — the listing title "🛶 Free canoe rides on
     // Newtown Creek with NBCB!" and the body's "At these FREE informal paddles".
     "nbcb-canoe-newtown-creek-0822",
-    // 2026-08-12 roundup, both stated on their own line: "Free, RSVP here." for
-    // the Neptune Room market and "Free, no RSVP needed." for the garden reading.
-    "neptune-artists-makers-market-0816",
+    // (neptune-artists-makers-market-0816 and edys-anniversary-party-0816 both
+    // expired out 2026-08-17, as did threes-flea-market-0815.)
     // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
     // 2026-08-13: the library's own record for the Sips & Scholars lecture
     // states the series' free-ness in the body the card quotes — "the second
@@ -710,9 +724,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // (summerstarz-project-hail-mary-0814 expired out 2026-08-15)
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
     "summerstarz-zootopia-0821",
-    // 2026-08-12 roundup: "Free, RSVP here." on the flea market line, and the
-    // Eventbrite listing says "Free to attend." independently.
-    "threes-flea-market-0815",
     // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
     // 2026-08-10: "Free Show + Free Donuts" on the WORD Bookstore flyer.
     "word-herman-melville-comedy-0820",
@@ -834,8 +845,8 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // 2026-08-06: Carcosa Club enters the graph on the first 14-day fill run —
     // the Squarespace JSON finally carried dated events (Malifaux 8/8, Hot Dog
     // Day 8/15). A game club's programme is play by definition.
-    "carcosa-hot-dog-day-0815",
-    // (carcosa-malifaux-monthly-0808 expired out 2026-08-10)
+    // (carcosa-malifaux-monthly-0808 expired out 2026-08-10;
+    //  carcosa-hot-dog-day-0815 expired out 2026-08-17)
     "carcosa-membership-guest-pass",
     "last-place-chess-chill",
     // 2026-08-05: North Brooklyn Chess's August residency at the McCarren
@@ -927,11 +938,9 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // "Drinks, try on's and wishlist building" at a jewelry studio — retail at
     // a second store, the ruling's first extension beyond CIBONE.
     "macha-summer-fridays-after-hours",
-    // The markets rule's own class: general goods, not food. Pins, prints and
-    // ceramics from 20 artisans at the Neptune Room; art, vintage, books and
-    // records at the Threes flea.
-    "neptune-artists-makers-market-0816",
-    "threes-flea-market-0815",
+    // (The markets rule's own class — general goods, not food — was carried by
+    // neptune-artists-makers-market-0816 and threes-flea-market-0815 until both
+    // expired out 2026-08-17. macha-summer-fridays-after-hours still holds it.)
   ]);
 
   // VIEW or BUY, and the venue decides (2026-08-12). Both boundaries that
@@ -1008,6 +1017,12 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "g-advocacy-mta",
     "greenpoint-trash-club",
     "mcgolrick-its-my-park-0823",
+    // 2026-08-17: the same series at Transmitter Park on 8/30, with the Friends
+    // of WNYC Transmitter Park as the organiser. Carded off NYC Parks' own
+    // record ("categories: Volunteer | It's My Park"), which is why the work-
+    // shift rule applies mechanically rather than by resemblance to the line
+    // above it.
+    "transmitter-its-my-park-0830",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {
@@ -1064,9 +1079,10 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // at the zero-waste grocery. The page states the cadence but never a date,
     // which is the recurring + verified-through case, not a hold.
     "maison-jar-refill-happy-hour",
-    "marianella-19th-anniversary-sale",
+    // (marianella-19th-anniversary-sale dropped 2026-08-17: the shop's own
+    //  email closed the sale at midnight on 8/16. moon-bunny-back-to-school
+    //  expired the same run.)
     "marianella-subscription-box",
-    "moon-bunny-back-to-school",
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
     "selformer-memberships",
@@ -1075,6 +1091,10 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // offers above. The shop's second offer (20% off already-reduced stock,
     // through 9/7) is deliberately NOT folded in: two end dates on one card
     // would tell a reader the wrong deadline for one of them.
+    // 2026-08-17: the second offer finally lands as its own card, exactly as the
+    // note above said it should — its terms line states "Valid through
+    // September 7, 2026", a different deadline from the plant sale's 8/21.
+    "tend-additional-20-off",
     "tend-plant-sale-0821",
     // 2026-08-10: a dated promo, so it sits beside the membership card rather
     // than replacing it — endsAt is the source's own "available through Aug 15".
@@ -1172,9 +1192,9 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // club's link list is four deep.
   // 2026-08-10: expiry took the 8/8 Secret Showcase and pruned the link.
   // 2026-08-12: expiry took the 8/11 Raanan Hershberg night and pruned the link.
+  // 2026-08-17: expiry took the 8/15 Carmen Lagala and 8/16 Dani Castaneda
+  // nights and pruned both links.
   assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
-    "comedy-carmen-lagala-0815",
-    "comedy-dani-castaneda-0816",
     // 2026-08-07: the four standing showcases, carded once each as recurring
     // after the coverage check flagged six uncovered showcase dates.
     "comedy-wednesday-cysk",

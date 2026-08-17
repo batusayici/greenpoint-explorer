@@ -6,7 +6,21 @@ Book Williamsburg
 Book Greenpoint
 Book By Service
 My Bookings
+Refer & Save
 Pricing
+About+
+Our Locations
+Our Instructors
+Studio Policies
+Private Event Request Form
+Request a Private/Duet
+FAQ
+Health Waiver
+Our Services
+Suggestion Box
+Contact Us
+Events
+Purchase a gift card
 Shop
 Grip Socks
 Matcha
@@ -15,26 +29,11 @@ Clothing
 Accessories
 Beauty + Wellness Products
 Shop All
-About+
-Our Locations
-Our Instructors
-Studio Policies
-Private Event Request Form
-Request a Private/Duet
-Refer a Bud
-FAQ
-Health Waiver
-Our Services
-Suggestion Box
-Contact Us
-Events
-Purchase a gift card
 Blog
 Career
 Videos
 More
 Use tab to navigate through the menu items.
-Log In
 New Clients and Special Offers
 Neighborhood Open House Intro Pass
 $ 25 25$
@@ -105,7 +104,7 @@ One session per day
 One complimentary video duet per month
 10% off in the retail store and matcha bar
 No commitment — automatic monthly renewal, cancel anytime
-Eligible for freeze: one 30-day freeze per year
+Freeze: 2 x 30 days per year, per client — not per membership
 Monthly Memberships
 Month by Month, No Rollovers, No Excuses
 4 Classes A Month Membership
@@ -119,7 +118,7 @@ Any Self- Service Station class (Williamsburg Location)
 Valid for Williamsburg and Greenpoint Locations
 12 hour cancellation policy
 No commitment, auto-renewal each month until canceled
-Not eligible for a freeze
+Freeze: 2 x 30 days per year, per client — not per membership
 8 Classes A Month Membership
 $ 239 239$
 Every month Turn it up. Two or more sessions a week to stay consistent and strong.
@@ -132,7 +131,7 @@ Any Self- Service Stations (Williamsburg Location)
 Valid for Williamsburg and Greenpoint Locations
 12 hour cancellation policy
 No commitment, auto-renewal each month until canceled
-Eligible for freeze: 14 days x2 or 30 days x1 per year
+Freeze: 2 x 30 days per year, per client — not per membership
 Best Value
 16 Classes A Month Membership
 $ 369 369$
@@ -145,7 +144,7 @@ Any Self- Service Stations (Williamsburg Location)
 Valid for Williamsburg and Greenpoint Locations
 12 hour cancellation policy
 No commitment, auto-renewal each month until canceled
-Eligible for freeze: 14 days x2 or 30 days x1 per year
+Freeze: 2 x 30 days per year, per client — not per membership
 Discounted Packages
 One Time Payment, Longer expiration
 5 Classes Discounted Pack
@@ -233,6 +232,7 @@ Memeberships cannot be transferred to another user, or unused credits do not rol
 A 4.5% NYC service tax will be added to all memberships and pricing plans.
 All sales are final. We do not offer refunds.
 Selformer has a strict 5-minute lateness policy. Clients who arrive more than five minutes after class start time will not be permitted to join the session.
+Log In
 Contact Us
 For questions, bookings, or any other assistance or inquiries, please email us at hello@selformer.com
 WE'RE NOT

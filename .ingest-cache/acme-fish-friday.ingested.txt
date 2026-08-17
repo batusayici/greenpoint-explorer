@@ -656,7 +656,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Plain Smoked Salmon (4 oz.)
 Hot Smoked
 No reviews

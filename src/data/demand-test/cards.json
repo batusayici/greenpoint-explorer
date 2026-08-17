@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-15",
+  "version": "2026-08-17",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -254,8 +254,7 @@
       "createdAt": "2026-07-02",
       "updatedAt": "2026-08-12",
       "relatedCardIds": [
-        "g-train-closures",
-        "sotte-paint-your-greca-0816"
+        "g-train-closures"
       ],
       "kicker": "Plant-based Caribbean seafood"
     },
@@ -956,8 +955,6 @@
       "lat": 40.729567,
       "lng": -73.958337,
       "relatedCardIds": [
-        "comedy-carmen-lagala-0815",
-        "comedy-dani-castaneda-0816",
         "comedy-wednesday-cysk",
         "comedy-thursday-showcase",
         "comedy-friday-showcase",
@@ -1008,9 +1005,7 @@
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-watch-me-0813",
         "film-noir-watch-me-0821",
-        "film-noir-denchu-kozo-0816",
         "film-noir-cult-cinema-0819",
         "film-noir-film-club-0820",
         "film-noir-monday-0824"
@@ -1909,48 +1904,6 @@
       "lng": -73.958119
     },
     {
-      "category": "discount",
-      "audience": [
-        "family"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "id": "moon-bunny-back-to-school",
-      "title": "10% off September kids classes",
-      "kicker": "Aerial classes: code BACKTOSCHOOL",
-      "endsAt": "2026-08-15T23:59:00-04:00",
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY",
-      "filters": [
-        "family_kids",
-        "deals_memberships"
-      ],
-      "summary": "Moon Bunny Aerial takes 10% off any September kids class for signups before August 15 — code BACKTOSCHOOL.",
-      "actions": [
-        {
-          "label": "Book a class",
-          "type": "signup",
-          "url": "https://moonbunnyaerial.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial",
-          "url": "https://moonbunnyaerial.com",
-          "publisher": "Moon Bunny Aerial",
-          "date": "2026-07-25"
-        }
-      ],
-      "lat": 40.736575,
-      "lng": -73.952327
-    },
-    {
       "category": "event",
       "audience": [
         "family"
@@ -2474,54 +2427,6 @@
       }
     },
     {
-      "id": "marianella-19th-anniversary-sale",
-      "category": "discount",
-      "title": "Marianella's 19th-anniversary sale",
-      "kicker": "Up to 50% off sitewide, plus bundles",
-      "endsAt": "2026-08-16T23:59:00-04:00",
-      "recurring": true,
-      "locationName": "Marianella Market",
-      "address": "83 West St, Brooklyn, NY 11222",
-      "geocodeQuery": "83 West St, Brooklyn, NY 11222",
-      "lat": 40.729398,
-      "lng": -73.959338,
-      "filters": [
-        "deals_memberships"
-      ],
-      "summary": "The West Street shop is marking nineteen years. The markdown runs online with free shipping, and the shop says it closes this week.",
-      "audience": [
-        "resident"
-      ],
-      "actions": [
-        {
-          "label": "Shop the sale",
-          "type": "order",
-          "url": "https://marianella.co/pages/store"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Marianella store page",
-          "url": "https://marianella.co/pages/store",
-          "publisher": "Marianella Market",
-          "date": "2026-08-11"
-        },
-        {
-          "title": "The anniversary sale is closing.",
-          "url": "https://marianella.co/pages/store",
-          "publisher": "Marianella Market",
-          "date": "2026-08-13"
-        }
-      ],
-      "sourceQuote": "UP TO 50% OFF\n19 YEAR ANNIVERSARY SALE\nFREE SHIPPING\n50% off sitewide. Free shipping on every order. Gifts with purchase.\nClosing this week. Once it's gone, it's gone until next year.",
-      "evidenceStrength": "medium",
-      "monetizationRelevance": "direct",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-14"
-    },
-    {
       "id": "bk-youth-ballet-adult-term",
       "category": "subscription",
       "title": "Adult ballet workout term at Brooklyn Youth Ballet",
@@ -2637,269 +2542,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-06",
       "updatedAt": "2026-08-06",
-      "id": "troost-jeff-widner-0815",
-      "title": "DJ Jeff Widner at Troost",
-      "kicker": "Pop records all night",
-      "summary": "A pop-leaning Saturday set at the Manhattan Avenue bar. The venue calendar lists no start time.",
-      "startsAt": "2026-08-15T00:00:00-04:00",
-      "endsAt": "2026-08-15T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "sourceQuote": "summary: DJ JEFF WIDNER\nstart.date: 2026-08-15",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.733463,
-      "lng": -73.955035
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-10",
-      "id": "film-noir-watch-me-0813",
-      "title": "Watch Me continues at Film Noir Cinema",
-      "kicker": "Three nights, Thursday to Saturday",
-      "summary": "The feature holds over at the Meserole Avenue cinema with 7pm shows on each of the run's midweek dates.",
-      "startsAt": "2026-08-13T19:00:00-04:00",
-      "endsAt": "2026-08-15T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: WATCH ME\nstartDate: 2026-08-13T23:00:00.176Z\ntitle: WATCH ME\nstartDate: 2026-08-14T23:00:00.187Z\ntitle: WATCH ME\nstartDate: 2026-08-15T23:00:00.405Z",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-06"
-        }
-      ],
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "comedy-carmen-lagala-0815",
-      "title": "Carmen Lagala at Greenpoint Comedy Club",
-      "kicker": "Early Saturday headline, $25",
-      "summary": "A named booking in the 6pm slot, before the club's regular Saturday showcases take over the room.",
-      "startsAt": "2026-08-15T18:00:00-04:00",
-      "endsAt": "2026-08-15T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Sat Aug 15, 2026, 6:00 PM\nGreenpoint Comedy Club Presents: Carmen Lagala",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-06"
-        }
-      ],
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
-      ],
-      "lat": 40.729567,
-      "lng": -73.958337
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-15",
-      "id": "comedy-dani-castaneda-0816",
-      "title": "Amigos en Común, a Colombia earthquake benefit",
-      "kicker": "Colombia earthquake benefit, $20",
-      "summary": "The club's Spanish-language Sunday show, now billed by the venue as a fundraiser for the Colombia earthquake — a date outside its usual weekly run.",
-      "startsAt": "2026-08-16T19:00:00-04:00",
-      "endsAt": "2026-08-16T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Sun Aug 16, 2026, 7:00 PM\nAmigos en común a beneficio del terremoto de Colombia\nUSD $20.00",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-15"
-        }
-      ],
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
-      ],
-      "lat": 40.729567,
-      "lng": -73.958337
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "carcosa-hot-dog-day-0815",
-      "title": "HVAC Hot Dog Day at Carcosa Club",
-      "kicker": "Hot dogs and games, all day",
-      "summary": "An all-day fundraiser-style gathering at the Manhattan Avenue game club. The listing states no admission price.",
-      "startsAt": "2026-08-15T10:00:00-04:00",
-      "endsAt": "2026-08-15T18:30:00-04:00",
-      "filters": [
-        "games"
-      ],
-      "locationName": "Carcosa Club",
-      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: Carcosa HVAC Hot Dog Day",
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.carcosaclub.com/events/2026/8/5/carcosa-hvac-hot-dog-day"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Carcosa Club",
-          "url": "https://www.carcosaclub.com/events/2026/8/5/carcosa-hvac-hot-dog-day",
-          "publisher": "Carcosa Club",
-          "date": "2026-08-06"
-        }
-      ],
-      "geocodeQuery": "982 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.732676,
-      "lng": -73.954395
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "good-room-stuntsz-0815",
-      "title": "Stuntsz: Body Language at Good Room",
-      "kicker": "Six DJs on one bill",
-      "summary": "Ben Wagner, James Axon, Partok, Leo Scheck, Jason Wang and Markus Z play the Meserole Avenue club.",
-      "startsAt": "2026-08-15T19:00:00-04:00",
-      "endsAt": "2026-08-15T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "sourceQuote": "Stuntsz: Body Language ft Ben Wagner, James Axon, Partok, Leo Scheck, Jason Wang, Markus Z",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-06"
-        }
-      ],
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.726909,
-      "lng": -73.95281
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
       "id": "hana-tour-tasting-0820",
       "title": "Tour and tasting at Hana Makgeolli",
       "kicker": "45 minutes inside the brewery",
@@ -2929,48 +2571,6 @@
       ],
       "lat": 40.736437,
       "lng": -73.951511
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "flowercat-fantasy-lab-0816",
-      "title": "Fantasy Lab at Flower Cat",
-      "kicker": "Cocktails and a sex-ed talk",
-      "summary": "Educator Miss Bloom leads a conversation on fantasy, desire and communication. A ticket includes one cocktail; no price is stated.",
-      "startsAt": "2026-08-16T19:00:00-04:00",
-      "endsAt": "2026-08-16T21:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "sourceQuote": "An elegant evening of cocktails, conversation, and sex education exploring fantasy, desire, and communication.",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.728678,
-      "lng": -73.954258
     },
     {
       "category": "event",
@@ -3144,48 +2744,6 @@
       ],
       "lat": 40.730461,
       "lng": -73.953114
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "id": "troost-gabriel-heinemann-0816",
-      "title": "Gabriel Heinemann at Troost",
-      "kicker": "Sunday night live set",
-      "summary": "Gabriel Heinemann plays the back room. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-16T00:00:00-04:00",
-      "endsAt": "2026-08-16T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: GABRIEL HEINEMANN\nstart.date: 2026-08-16",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
     },
     {
       "category": "event",
@@ -4250,11 +3808,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-14",
+      "updatedAt": "2026-08-17",
       "id": "library-thursday-programs-0820",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Five programs, morning to evening",
-      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines at 1, a free English class at 2, Teen Tech Time at 3, and Sunset Storytime at 6.",
+      "kicker": "Four programs, morning to evening",
+      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines at 1, Teen Tech Time at 3, and Sunset Storytime at 6. The 2pm ESOL class is canceled.",
       "startsAt": "2026-08-20T10:30:00-04:00",
       "endsAt": "2026-08-20T18:00:00-04:00",
       "filters": [
@@ -4262,7 +3820,7 @@
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time 🎮\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-20T22:00:00Z",
+      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Teen Tech Time 🎮\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-20T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1",
       "actions": [
         {
           "label": "Branch calendar",
@@ -6106,191 +5664,6 @@
     },
     {
       "audience": [
-        "resident",
-        "visitor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "neptune-artists-makers-market-0816",
-      "category": "event",
-      "title": "Artists & Makers Summer Market at The Neptune Room",
-      "kicker": "20 local artisans, free entry",
-      "summary": "Pins, prints, ceramics and other handmade wares, presented by Living Muses NYC. RSVP requested.",
-      "startsAt": "2026-08-16T12:00:00-04:00",
-      "endsAt": "2026-08-16T17:00:00-04:00",
-      "filters": [
-        "shopping"
-      ],
-      "free": true,
-      "locationName": "The Neptune Room",
-      "address": "13 Greenpoint Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Artists & Markers Summer Market @ Neptune, 12 p.m.: It’s the weekend of flea! Buy some special wares like pins, prints, ceramics, and more from 20 local artisans. Free, RSVP here.\nArtists & Makers Summer Market in Greenpoint, Brooklyn Tickets, Sunday, August 16  •  12 PM - 5 PM | Eventbrite\n13 Greenpoint Avenue\nBrooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/artists-makers-summer-market-in-greenpoint-brooklyn-tickets-1996316493371"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        },
-        {
-          "title": "Artists & Makers Summer Market in Greenpoint, Brooklyn",
-          "url": "https://www.eventbrite.com/e/artists-makers-summer-market-in-greenpoint-brooklyn-tickets-1996316493371",
-          "publisher": "Living Muses NYC",
-          "date": "2026-08-12"
-        }
-      ],
-      "lat": 40.729869,
-      "lng": -73.960249
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "anthost-designer-pillow-0816",
-      "category": "event",
-      "title": "Create Your Own Designer Pillow at Le Studio Anthost",
-      "kicker": "Paint-with-wool pillow class, $120",
-      "summary": "The textile studio’s signature technique, worked into a pillow cover made from scratch. Registration required.",
-      "startsAt": "2026-08-16T14:00:00-04:00",
-      "endsAt": "2026-08-16T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": false,
-      "locationName": "Le Studio Anthost",
-      "address": "273 Calyer St, Brooklyn, NY 11222",
-      "sourceQuote": "Create Your Own Designer Pillow @ Le Studio Anthost, 2 p.m.: Learn the textile studio’s signature “paint with wool” technique to create a pillow cover from scratch that’s uniquely your own. $120, register here.\nEventbrite - LE STUDIO ANTHOST presents Create Your Own Designer Pillow - Sunday, August 9, 2026 at 273 Calyer St, Brooklyn, NY. Find event and ticket information.",
-      "actions": [
-        {
-          "label": "Register",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/create-your-own-designer-pillow-tickets-1992511612871"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        },
-        {
-          "title": "Create Your Own Designer Pillow",
-          "url": "https://www.eventbrite.com/e/create-your-own-designer-pillow-tickets-1992511612871",
-          "publisher": "LE STUDIO ANTHOST",
-          "date": "2026-08-12"
-        }
-      ],
-      "lat": 40.729527,
-      "lng": -73.949388
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "sotte-paint-your-greca-0816",
-      "category": "event",
-      "title": "Paint Your Greca at Sotte Eatery",
-      "kicker": "Paint a greca, Caribbean meal",
-      "summary": "A Dominican Writers event: personalize your own greca coffee maker, with food from Sotte and Next Stop Vegan. Tickets start at $75.",
-      "startsAt": "2026-08-16T15:00:00-04:00",
-      "endsAt": "2026-08-16T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": false,
-      "locationName": "Sotteatery",
-      "address": "685 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Paint Your Greca @ Sotte Eatery, 3 p.m.: Join a unique celebration of Dominican culture through creativity, community, and food while personalizing and painting your own greca (a coffee maker familiar to many as a moka pot) with a Caribbean-inspired meal from Sotte and Next Stop Vegan. Starting at $75, get tickets here.",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.dominicanwriters.org/event-info/paint-your-greca-w-luisa-pascual-2"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        }
-      ],
-      "relatedCardIds": [
-        "sotteatery"
-      ],
-      "lat": 40.725011,
-      "lng": -73.951726
-    },
-    {
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "edys-anniversary-party-0816",
-      "category": "event",
-      "title": "Edy’s Grocer sixth-anniversary block party",
-      "kicker": "Six years of Edy’s, free block party",
-      "summary": "Food, friends, music and an ice cream truck, with cake tasting from Desserts By G earlier in the day. No RSVP needed.",
-      "startsAt": "2026-08-16T18:00:00-04:00",
-      "endsAt": "2026-08-16T23:59:00-04:00",
-      "filters": [
-        "food_drink"
-      ],
-      "free": true,
-      "locationName": "Edy’s Grocer",
-      "geocodeQuery": "Edy's Grocer, Greenpoint, Brooklyn, NY",
-      "sourceQuote": "Anniversary Party @ Edy’s Grocer, 6 p.m.: Celebrate six years of Edy’s with a block party of food, fun, friends, music, an ice cream truck, and cake tasting from Desserts By G earlier in the day. Free, no RSVP needed.",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        }
-      ],
-      "lat": 40.727519,
-      "lng": -73.951034
-    },
-    {
-      "audience": [
         "resident"
       ],
       "evidenceStrength": "high",
@@ -6387,55 +5760,6 @@
       "lng": -73.950987
     },
     {
-      "id": "threes-flea-market-0815",
-      "category": "event",
-      "title": "Threes Brewing's first flea market",
-      "kicker": "Art, vintage and records, free entry",
-      "summary": "Local vendors curated by Fig Shop, a live DJ, and food from Grand Army alongside the taproom's own beer. RSVP requested.",
-      "startsAt": "2026-08-15T12:00:00-04:00",
-      "endsAt": "2026-08-15T19:00:00-04:00",
-      "filters": [
-        "shopping"
-      ],
-      "free": true,
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "locationName": "Threes Brewing Greenpoint",
-      "address": "113 Franklin St, Brooklyn, NY 11222",
-      "sourceQuote": "Flea Market @ Threes Brewing, 12 p.m.: The brewery's first-ever flea market will feature art, vintage, books, and records from local vendors curated by Fig Shop, plus a live DJ and food from Grand Army. Plus, of course, drinks from Threes. Free, RSVP here.\nThrees Flea Market Tickets, Saturday, August 15  •  12 PM - 7 PM | Eventbrite\nFree to attend. Threes Brewing Greenpoint, 113 Franklin St.",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/threes-flea-market-tickets-1995144108737"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What's Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        },
-        {
-          "title": "Threes Flea Market",
-          "url": "https://www.eventbrite.com/e/threes-flea-market-tickets-1995144108737",
-          "publisher": "Threes Brewing",
-          "date": "2026-08-12"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "lat": 40.7302402,
-      "lng": -73.9578047
-    },
-    {
       "id": "macha-summer-fridays-after-hours",
       "category": "event",
       "title": "Summer Fridays After Hours at Macha Studio",
@@ -6493,49 +5817,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-13",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-13"
-        }
-      ],
-      "id": "library-collaging-cooking-0815",
-      "category": "event",
-      "free": false,
-      "title": "Collaging & Cooking with Dacha 46",
-      "kicker": "Collage table, then a cooking demo",
-      "summary": "Bring recipes or photos to work into a collage; chefs Jessica and Trina Quinn then demonstrate shuba. Finished collages can go into the library's community zine.",
-      "startsAt": "2026-08-15T11:00:00-04:00",
-      "endsAt": "2026-08-15T13:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "sourceQuote": "ts_title: Collaging & Cooking with Dacha 46!\nds_event_start_date: 2026-08-15T15:00:00Z\nts_body: Join us for collage-making followed by a food demonstration by Brooklyn-based chef couple Jessica and Trina Quinn of Dach 46, a traveling pop-up that explores Eastern European cuisine through the lens of the Queer Jewish experience"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-13",
+      "updatedAt": "2026-08-17",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
@@ -6559,14 +5841,14 @@
       "category": "event",
       "free": false,
       "title": "Tuesday at Greenpoint Library",
-      "kicker": "Three adult drop-ins, no sign-up needed",
-      "summary": "A free ESOL class for beginners at 2, the Keep Calm & Carry Yarn fiber-arts group at 5:30 with lessons available, and an English conversation group at 6.",
-      "startsAt": "2026-08-18T14:00:00-04:00",
+      "kicker": "Two adult drop-ins, no sign-up needed",
+      "summary": "Knitting, crochet, mending and cross-stitch with lessons for beginners, plus an English conversation group alongside it. The branch has canceled its beginner ESOL class.",
+      "startsAt": "2026-08-18T17:30:00-04:00",
       "endsAt": "2026-08-18T19:30:00-04:00",
       "filters": [
         "arts_culture"
       ],
-      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-08-18T18:00:00Z\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-18T21:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-18T22:00:00Z"
+      "sourceQuote": "ts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-18T21:30:00Z\nds_event_end_date: 2026-08-18T23:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-18T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1"
     },
     {
       "audience": [
@@ -6619,7 +5901,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-13",
+      "updatedAt": "2026-08-17",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
@@ -6643,14 +5925,14 @@
       "category": "event",
       "free": false,
       "title": "Tuesday at Greenpoint Library",
-      "kicker": "Three adult drop-ins, no sign-up needed",
-      "summary": "A free ESOL class for beginners at 2, the Keep Calm & Carry Yarn fiber-arts group at 5:30 with lessons available, and an English conversation group at 6.",
-      "startsAt": "2026-08-25T14:00:00-04:00",
+      "kicker": "Two adult drop-ins, no sign-up needed",
+      "summary": "Knitting, crochet, mending and cross-stitch with lessons for beginners, plus an English conversation group alongside it. The branch has canceled its beginner ESOL class.",
+      "startsAt": "2026-08-25T17:30:00-04:00",
       "endsAt": "2026-08-25T19:30:00-04:00",
       "filters": [
         "arts_culture"
       ],
-      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-08-25T18:00:00Z\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-25T21:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-25T22:00:00Z"
+      "sourceQuote": "ts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-25T21:30:00Z\nds_event_end_date: 2026-08-25T23:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-25T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1"
     },
     {
       "audience": [
@@ -6836,11 +6118,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-14",
-      "updatedAt": "2026-08-15",
+      "updatedAt": "2026-08-17",
       "id": "library-thursday-programs-0827",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Six programs, morning into evening",
-      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines from 1, an English class from 2, teen video games at 3, and an all-ages storytime at 6.",
+      "kicker": "Five programs, morning into evening",
+      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines from 1, teen video games at 3, and an all-ages storytime at 6. The 2pm ESOL class is canceled.",
       "startsAt": "2026-08-27T10:30:00-04:00",
       "endsAt": "2026-08-27T18:30:00-04:00",
       "filters": [
@@ -6850,7 +6132,7 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
       "lng": -73.950709,
-      "sourceQuote": "ts_title: Babies & Books\nds_event_start_date: 2026-08-27T14:30:00Z\nts_title: Babies & Books\nds_event_start_date: 2026-08-27T15:15:00Z\nts_title: Drop-In Sewing Machine Hours\nds_event_start_date: 2026-08-27T17:00:00Z\nts_title: Free English Class\nds_event_start_date: 2026-08-27T18:00:00Z\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-08-27T19:00:00Z\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-27T22:00:00Z",
+      "sourceQuote": "ts_title: Babies & Books\nds_event_start_date: 2026-08-27T14:30:00Z\nts_title: Babies & Books\nds_event_start_date: 2026-08-27T15:15:00Z\nts_title: Drop-In Sewing Machine Hours\nds_event_start_date: 2026-08-27T17:00:00Z\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-08-27T19:00:00Z\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-27T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1",
       "actions": [
         {
           "label": "Branch calendar",
@@ -7282,51 +6564,6 @@
         "arts_culture"
       ],
       "category": "event",
-      "id": "film-noir-denchu-kozo-0816",
-      "title": "Denchu-Kozo at Film Noir Cinema",
-      "kicker": "A 1987 Japanese cult oddity",
-      "summary": "Hikari is bullied at school for the electricity pole growing out of his back, until a classmate named Momo comes to his rescue.",
-      "startsAt": "2026-08-16T17:00:00-04:00",
-      "endsAt": "2026-08-16T18:00:00-04:00",
-      "sourceQuote": "DENCHU-KOZO\nSunday, August 16, 2026\n5:00 PM\n6:00 PM\nJP. 1987\nHikari is a boy who is bullied and teased by the other boys at school because he has the odd distinction of having an electricity pole growing out of his back. However, one of his classmates, a girl named Momo, comes to his rescue.",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-15"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "free": false,
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "filters": [
-        "arts_culture"
-      ],
-      "category": "event",
       "id": "film-noir-cult-cinema-0819",
       "title": "Cult Cinema at Film Noir Cinema",
       "kicker": "No titles announced beforehand",
@@ -7450,15 +6687,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
+      "updatedAt": "2026-08-17",
       "free": false,
       "id": "library-sensory-garden-0828",
       "category": "event",
-      "title": "Sensory Garden Hour at Greenpoint Library",
-      "kicker": "Ages 0–5, up in the rooftop garden",
-      "summary": "A short garden-themed storytime, then sensory activities among the plants. No registration needed, and it is called off in rain or extreme heat.",
+      "title": "Friday at Greenpoint Library",
+      "kicker": "Rooftop garden, morning and afternoon",
+      "summary": "Storytime for the under-fives, then an educator on hand for plant questions. No registration for either, and both are called off in rain or extreme heat.",
       "startsAt": "2026-08-28T10:30:00-04:00",
-      "endsAt": "2026-08-28T11:30:00-04:00",
+      "endsAt": "2026-08-28T16:00:00-04:00",
       "filters": [
         "family_kids"
       ],
@@ -7466,7 +6703,7 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
       "lng": -73.950709,
-      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-28T14:30:00Z\nds_event_end_date: 2026-08-28T15:30:00Z\nts_body: Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well. For ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures.",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-28T14:30:00Z\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-08-28T19:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with aan experienced Garden Educator!\nGarden Educator will be on site from 3-4pm on Fridays, weather permitting.",
       "actions": [
         {
           "label": "Branch calendar",
@@ -7571,6 +6808,181 @@
       "trustRisk": "low",
       "createdAt": "2026-08-15",
       "updatedAt": "2026-08-15",
+      "lat": 40.734612,
+      "lng": -73.958144
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "free": false,
+      "id": "troost-jon-madof-0830",
+      "category": "event",
+      "title": "Jon Madof & Nate Rappaport at Troost",
+      "kicker": "Improvised guitar, drums and flutes",
+      "summary": "Troost's own Google Calendar lists the night by name and description only — no set time, no support acts, no ticket link.",
+      "startsAt": "2026-08-30T00:00:00-04:00",
+      "endsAt": "2026-08-30T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "sourceQuote": "summary: Jon Madof & Nate Rappaport\ndescription: A set of improvised sounds and grooves with guitar, drums, percussion, and flutes.\nstart.date: 2026-08-30",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "free": false,
+      "id": "troost-rob-heath-0831",
+      "category": "event",
+      "title": "Rob Heath's Nice Try, Kid! at Troost",
+      "kicker": "A monthly night of unapproved music",
+      "summary": "Troost's own Google Calendar lists the night by name and description only — no set time, no lineup, no ticket link.",
+      "startsAt": "2026-08-31T00:00:00-04:00",
+      "endsAt": "2026-08-31T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "sourceQuote": "summary: ROB HEATH / NICE TRY KID\ndescription: Rob Heath's Nice Try, Kid!: a monthly night of unapproved and experimental music\nstart.date: 2026-08-31",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "free": false,
+      "id": "transmitter-its-my-park-0830",
+      "category": "event",
+      "title": "It's My Park at WNYC Transmitter Park",
+      "kicker": "Morning cleanup shift with the Friends",
+      "summary": "Friends of WNYC Transmitter Park runs the beautification session. NYC Parks files it under Volunteer and It's My Park, and the feed carries no registration link.",
+      "startsAt": "2026-08-30T10:00:00-04:00",
+      "endsAt": "2026-08-30T12:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/events/2026/08/30/its-my-park-at-wnyc-transmitter-park"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "It's My Park at WNYC Transmitter Park",
+          "url": "https://www.nycgovparks.org/events/2026/08/30/its-my-park-at-wnyc-transmitter-park",
+          "publisher": "NYC Parks",
+          "date": "2026-08-17"
+        },
+        {
+          "title": "It's My Park in Brooklyn (Aug 2026)",
+          "url": "https://gogreenbk.org",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-08-17"
+        }
+      ],
+      "sourceQuote": "This It's My Park season, volunteer with Friends of WNYC Transmitter Park to beautify WNYC Transmitter Park. We look forward to cleaning up the park with you!\nstartdate: 2026-08-30\nstarttime: 10:00 am\nendtime: 12:00 pm",
+      "lat": 40.729855,
+      "lng": -73.960729
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "free": false,
+      "id": "tend-additional-20-off",
+      "category": "discount",
+      "title": "20% off already-reduced items at Tend Greenpoint",
+      "kicker": "Sale planters, linens and seed packs",
+      "summary": "The markdown stacks on top of existing sale prices, in store and online, applied automatically at checkout. The shop says its hours are abbreviated through Labor Day.",
+      "endsAt": "2026-09-07T23:59:00-04:00",
+      "filters": [
+        "deals_memberships"
+      ],
+      "locationName": "Tend Greenpoint",
+      "address": "252 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "252 Franklin Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Shop the sale",
+          "type": "order",
+          "url": "https://www.tendgreenpoint.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Save on Favorites!",
+          "url": "https://www.tendgreenpoint.com/",
+          "publisher": "Tend Greenpoint",
+          "date": "2026-08-13"
+        }
+      ],
+      "sourceQuote": "Save an Additional 20% OFF Already Reduced Merchandise\nFor a limited time, save 20% off already reduced favorites including Bergs Potter's Daisy Wall Planter!\nOur entire remaining selection of Hawkins NY linens and dining pieces is 20% OFF!\nOur shop hours will be abbreviated through Labor Day.\n*Valid In-store and Online. Not valid on previous purchases. Multiple online discounts may not be combined nor used concurrently. The discount is automatically applied at checkout. No coupon code is needed. Limited time only. Other conditions and exclusions may apply. Valid through September 7, 2026. May be canceled at any time.",
       "lat": 40.734612,
       "lng": -73.958144
     }

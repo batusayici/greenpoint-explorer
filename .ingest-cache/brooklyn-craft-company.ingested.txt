@@ -174,7 +174,7 @@ Private Events
 Join our Team!
 Browse Workshops
 For adults ages 18+
-123
+124
 products
 Filter
 Sort by
@@ -223,10 +223,20 @@ Product Type
 Past Workshop
 (3)
 Workshop
-(120)
+(121)
 Vendor
 Brooklyn Craft Company
-(123)
+(124)
+Community Craft Night: Embroidery
+Regular Price
+$25.00
+Sale Price
+$25.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 Crochet 102: Tom-a-tote!
 Regular Price
 $45.00
@@ -519,17 +529,7 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Intro to Garment Sewing - Free Range Slacks (Weeknights, 3 parts)
-Regular Price
-$225.00
-Sale Price
-$225.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Showing items 1-30 of 123.
+Showing items 1-30 of 124.
 1
 2
 3
