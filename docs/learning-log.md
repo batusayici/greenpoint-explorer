@@ -81,8 +81,12 @@ when revised, and retired ones are struck rather than renumbered.
   14 acted). _Evidence: L2026-08-02, L2026-07-29, L2026-08-17._
 - **B4 — Categories below the fold are invisible, and news was worse than
   buried.** Josh saw deals and memberships and never found news at all; the
-  cause turned out to be structural — 0 of 23 news cards carried a date, so
-  none could ever enter a day group. _Evidence: L2026-08-02 (both)._
+  cause turned out to be structural — no news card carries a date, so none can
+  enter a day group, and the calendar is the feed's only axis. Addressed
+  2026-08-02 by giving the shelf six named sections (News ranks second), not by
+  dating the cards — see L2026-08-02 for why dating them is the wrong fix.
+  Unverified since: no analytics confirm readers now reach the shelf.
+  _Evidence: L2026-08-02 (both)._
 - **B5 — Users pre-emptively fear map flooding; opt-in density is right.**
   Testers ask for curated/opt-in layers before ever seeing a flooded map.
   _Evidence: L2026-07-11 (Edmond), L2026-06 (platform-layers note)._
@@ -263,16 +267,24 @@ visitors is inflated by an unknown amount today. The 4-day crawl latency is a
 content-timing fact: fine for a card dated a week out, useless for one posted
 the morning of.
 
-### L2026-08-02 — News was structurally invisible, not just buried
+### L2026-08-02 — News was structurally unreachable — and was fixed the same day
 
 Source: `docs/PLAN.md`, item closed 2026-08-02 following the Josh session.
 
-Fact: "the cause was structural (0 of 23 news cards are dated, so none could
-ever enter a day group)."
+Facts: "the cause was structural (0 of 23 news cards are dated, so none could
+ever enter a day group); the undated shelf now renders as six named sections
+instead of one 'Ongoing' block." The first-viewport promotion was rendered
+three ways and declined — "keep current" — to be reopened "only if analytics
+show users still aren't reaching the shelf."
 
-Read: Josh never finding news the same week wasn't only a scroll-depth problem
-— no news card could appear in a day group at all, because none carried a date.
-A user-visible symptom with a data-shaped cause.
+Read: Josh never finding news wasn't only scroll depth — no news card could
+appear in a day group at all, because the feed's only axis is the calendar and
+news carries no date. **Already addressed:** news now has its own titled "News"
+section, ranked second of six on the shelf. Dating the cards was considered and
+is the wrong fix — a publication date is not an occurrence date, and asserting
+one would put a six-week-old story under "Today" and retype it as a
+schema.org/Event for crawlers (both verified 2026-08-17). Treat this entry as
+closed history, not an open problem.
 
 ### L2026-08-02 — Josh, live walkthrough (researcher friend)
 
