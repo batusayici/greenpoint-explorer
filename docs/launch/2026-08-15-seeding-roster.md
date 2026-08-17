@@ -53,8 +53,10 @@ candidate, exactly this demographic) which she's in and whether she'd share it
 as "a thing I use"; Perri is the documented fallback door ("ask Perri for
 intros," 2026-07-15 kit). A member-share beats an owner-post in these rooms.
 
-**Warm re-invites** (unchanged): Michael, Laura & Edmond, Perri on their
-existing `src` rows; friends-family row live.
+**Warm re-invites** (unchanged): Michael, Laura & Edmond on their existing
+`src` rows. **First outreach, not a re-invite:** Perri — kit copy drafted
+2026-07-15 but never sent; she hasn't heard from Batu yet (unseeded).
+Friends-family row live.
 
 **Timing** (from the 2026-08-15 discussion): re-invites Mon 8/17 PM after the
 full ingest merges · Q2 post Mon evening/Tue morning (week-planning moment,
@@ -98,9 +100,10 @@ gates on that attribution.
 - **Greenpointers** — held per launch plan §3; the play remains the H4 embed
   swap, approached as structurally non-competing. Their gravity is also a
   reason Wave 1 accuracy matters: be flawless on the events they cover.
-- **Shop Small Greenpoint amplification** — held alongside; Perri remains a
-  warm contact and door, distinct from the held *amplification* play. The 141
-  banked IG handles remain the seed list for the acknowledged IG gap.
+- **Shop Small Greenpoint amplification** — held alongside; Perri remains an
+  identified door (not yet contacted — see the Wave-1 first outreach above),
+  distinct from the held *amplification* play. The 141 banked IG handles
+  remain the seed list for the acknowledged IG gap.
 - **North Brooklyn Chamber** — legitimacy + member distribution, not a payer
   (class-level rule per business-model docs); Josh's "discovery channel first"
   framing. Institutional timing, not Wave 1/2.
@@ -213,7 +216,7 @@ and should go — with small fixes.
 
 ## Revised Wave-1 plan (recommended)
 
-- **Mon 8/17 PM:** warm re-invites (unchanged) **+ the Town Square note,
+- **Mon 8/17 PM:** warm re-invites + first outreach to Perri (unchanged) **+ the Town Square note,
   moved up from Tuesday** — a Tue send gives a volunteer org ~72h to act on
   its own season finale; Monday buys a real window. Note re-centered so
   nothing expires Friday: the screening is the proof, the **fall calendar**

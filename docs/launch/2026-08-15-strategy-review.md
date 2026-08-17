@@ -173,7 +173,9 @@ the rule against running two networks at once. It only says which one is next.
 ## Wave-1 send checklist (Mon 8/17 → Wed 8/19)
 
 - **Mon 8/17 PM:** warm re-invites (Michael `?src=michael`, Laura & Edmond
-  `?src=laura-edmond`, Perri `?src=perri` — existing kit copy) + **Town Square
+  `?src=laura-edmond` — existing kit copy) + first outreach to Perri
+  (`?src=perri` — kit copy drafted 2026-07-15 but never sent; she hasn't heard
+  from Batu yet, this is not a re-invite) + **Town Square
   note** (final draft in the seeding roster; `npm run preflight:send` first —
   its `cards` target confirms the SummerStarz card is live and upcoming).
   Optional, high-value: be at the 8/21 screening.

@@ -22,7 +22,7 @@
     "doneWhen": "All three org notes out by Wed 8/19. The 8/25 readout then checks each tagged link for at least one session — that check, and nothing else, opens Wave 2.",
     "steps": [
       {
-        "label": "Town Square note + warm re-invites (Michael, Laura & Edmond, Perri)",
+        "label": "Town Square note + warm re-invites (Michael, Laura & Edmond) + first outreach (Perri)",
         "when": "Tonight, Mon 8/17",
         "status": "next"
       },
@@ -70,7 +70,7 @@
       "title": "Wave 1 seeding",
       "window": "Aug 13 – Aug 19",
       "status": "live",
-      "oneLine": "Three org notes plus warm re-invites into one trust network: parents."
+      "oneLine": "Three org notes plus warm re-invites and a first outreach into one trust network: parents."
     },
     {
       "id": "read1",
@@ -187,11 +187,11 @@
     {
       "id": "send-townsquare",
       "phase": "wave1",
-      "title": "Town Square BK note + warm re-invites",
+      "title": "Town Square BK note + warm re-invites + first outreach to Perri",
       "status": "next",
       "date": "2026-08-17",
       "dateLabel": "Mon 8/17 PM",
-      "goal": "Reach the volunteer org that runs Greenpoint's marquee family calendar, plus re-invite Michael, Laura & Edmond, Perri.",
+      "goal": "Reach the volunteer org that runs Greenpoint's marquee family calendar, plus re-invite Michael and Laura & Edmond, and reach out to Perri for the first time.",
       "why": "Moved up from Tuesday because a Tue send gives a volunteer org ~72h to act on its own season finale. Monday buys a real window. The note is re-centered so nothing expires Friday: the 8/21 screening is the proof, the fall calendar is the pitch.",
       "owner": "Batu",
       "checks": [
@@ -686,7 +686,7 @@
     },
     {
       "src": "perri",
-      "label": "Perri / Shop Small",
+      "label": "Perri / Shop Small — first outreach, not a re-invite (never contacted before)",
       "wave": "1",
       "sent": null,
       "firstSession": null,
