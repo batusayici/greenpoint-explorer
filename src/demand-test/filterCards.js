@@ -149,11 +149,22 @@ const SHELF_SECTIONS = [
 ];
 export const shelfSection = (card) => SHELF_SECTIONS[ongoingRank(card)];
 
-// Freshest first inside a kind — an undated card's createdAt is the only
-// recency signal it has, and it makes each refresh's additions surface. The
-// kind itself is now carried by the section, not by the comparator.
-const created = (c) => Date.parse(c.createdAt ?? "") || 0;
-const byFreshest = (a, b) => created(b) - created(a);
+// Freshest first inside a kind. For most kinds an undated card's createdAt is
+// the only recency signal it has, and it makes each refresh's additions
+// surface: for a place or a deal, "new here" is the recency that matters, and
+// its source link may be an article from years ago. The kind itself is carried
+// by the section, not by the comparator.
+//
+// NEWS IS THE EXCEPTION (2026-08-17): a story's recency is its own date, which
+// is now the date its row prints, and an order that disagrees with the date
+// beside it reads as broken. It was already wrong and unseeable — two stories
+// picked up in the same run tie on createdAt and fell to array order, which put
+// Jul 24 above Jul 25 the moment the dates became visible.
+//
+// Both are "YYYY-MM-DD", so this compares lexicographically rather than
+// parsing — same reason as the shelf life above.
+const recencyOf = (c) => (c.category === "news" ? ageableDate(c) : c.createdAt) ?? "";
+const byFreshest = (a, b) => (recencyOf(a) < recencyOf(b) ? 1 : recencyOf(a) > recencyOf(b) ? -1 : 0);
 
 export function groupByDay(cards, date) {
   const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
@@ -267,7 +278,58 @@ export function noTodayNotice(groups, filterId) {
 // cards are untouched.
 const STARTED_GRACE_MS = 60 * 60000;
 
+// The date a source itself PUBLISHED the story. Only a source's own date
+// counts — never `createdAt`, which is the day WE built the card.
+//
+// The distinction is load-bearing and was learned the hard way (2026-08-17,
+// Batu): the Archestratus closure card carried `date: "2026-07-25"` on a source
+// that was the shop's undated site banner, so the date recorded when we LOOKED,
+// not when anything happened. The shop's last day was April 26, announced by
+// Greenpointers on February 23. Printed on the row it read as three-week-old
+// news and sorted fourth from the top, above stories that were genuinely days
+// old. A retrieval date always looks fresher than the fact it describes, so
+// this error can only ever make stale news look current.
+//
+// So: `sourceLinks[].date` means the date the SOURCE published, and a source
+// that publishes no date (a standing banner, an evergreen agency page) carries
+// no date. A card with no such source has no publication date, and the row
+// prints nothing rather than inventing one.
+export const publishedOn = (card) =>
+  (card.sourceLinks ?? []).find((s) => s?.date)?.date ?? null;
+
+// What the shelf life ages against. Falls back to `createdAt` where
+// `publishedOn` deliberately will not: a story we can't date must still be able
+// to leave the feed, and the day we ingested it is the only clock left. Never
+// used for display — ageing a card on our own clock is honest, telling a reader
+// it is the story's date is not.
+const ageableDate = (card) => publishedOn(card) ?? card.createdAt ?? null;
+
+// News shelf life (2026-08-17). Reporting was the ONLY card kind with no way to
+// leave the feed: news carries no endsAt, so the check below passed it forever
+// and every story ever ingested was still on the page. Measured that morning:
+// 15 news cards live, 13 older than two weeks, 8 older than a month, the oldest
+// 96 days — sitting in a section that prints no date, so a May story read
+// exactly as current as Tuesday's.
+//
+// A shelf life, not a window. Every other expiry here answers "is this over?"
+// from a sourced end time; news has no end, it just stops being news. Thirty
+// days is a judgment call, deliberately generous, and it is the one number to
+// change if the feed reads stale or thin.
+//
+// Dated by the STORY, not by us: a May piece picked up in an August run is
+// three months old to a reader, and createdAt would call it new. Undateable
+// news is never deleted — we don't delete what we can't judge — and the rule is
+// news-only, because a bar from May is still a bar.
+const NEWS_SHELF_LIFE_DAYS = 30;
+
 export function isExpiredCard(card, date) {
+  if (card.category === "news") {
+    const published = ageableDate(card);
+    const cutoff = NY_DAY.format(new Date(date.getTime() - NEWS_SHELF_LIFE_DAYS * 86400000));
+    // Both are "YYYY-MM-DD", so this compares lexicographically — the same
+    // trick indexNow.js uses, immune to timezone drift and midnight parsing.
+    if (published && published < cutoff) return true;
+  }
   if (card.endsAt == null) return false;
   if (Date.parse(card.endsAt) < date.getTime()) return true;
   if (card.recurring || card.startsAt == null) return false;

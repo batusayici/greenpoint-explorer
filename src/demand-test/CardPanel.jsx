@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FILTERS, pinKind, partitionFilters, pickRelated, noTodayNotice } from "./filterCards.js";
+import { FILTERS, pinKind, partitionFilters, pickRelated, noTodayNotice, publishedOn } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, followHref } from "./cardActions.js";
 import { followTarget, followRef, followSlotIndex } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
@@ -223,14 +223,27 @@ function cardSubline(card) {
   // the header can't say: that this comes back. Shelf-bound standing offers
   // have no stated day and get no marker.
   const rhythm = card.recurrence?.days?.length > 0 ? "Weekly" : null;
-  return [rowTime(card), rhythm, card.kicker, named(where) ? null : where, ends]
+  return [rowTime(card), rowDate(card), rhythm, card.kicker, named(where) ? null : where, ends]
     .filter(Boolean)
     .join(" · ");
 }
 
-// Timeline dates are date-only ISO strings — format in UTC so "2026-07-10"
-// doesn't roll back to Jul 9 in New York.
-const TIMELINE_DAY_FMT = new Intl.DateTimeFormat("en-US", {
+// News rows print the story's date where a dated row prints its clock
+// (2026-08-17). Reporting is the one undated kind whose age changes what it
+// means, and it showed nothing at all: a story from May read exactly as current
+// as Tuesday's. The News section was already sorted freshest-first — an order
+// no reader could see. Taking the clock's slot keeps the column the rest of the
+// feed holds, and it is the same date the 30-day shelf life reads, so what the
+// row says and what retires it can never disagree.
+function rowDate(card) {
+  if (card.category !== "news" || card.startsAt != null) return null;
+  const published = publishedOn(card);
+  return published ? DAY_ONLY_FMT.format(new Date(published)) : null;
+}
+
+// Timeline dates and publication dates are date-only ISO strings — format in
+// UTC so "2026-07-10" doesn't roll back to Jul 9 in New York.
+const DAY_ONLY_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   timeZone: "UTC",
@@ -278,7 +291,7 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
         <ol className="july-timeline">
           {card.timeline.map((t) => (
             <li key={t.date + t.title}>
-              <span className="july-timeline-date">{TIMELINE_DAY_FMT.format(new Date(t.date))}</span>
+              <span className="july-timeline-date">{DAY_ONLY_FMT.format(new Date(t.date))}</span>
               <span>
                 <strong>{t.title}</strong>
                 {t.summary && <> — {t.summary}</>}

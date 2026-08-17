@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated, noTodayNotice, feedSignature } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated, noTodayNotice, feedSignature, publishedOn } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", () => {
@@ -304,6 +304,83 @@ test("isExpiredCard: any past-endsAt card expires; open windows and undated card
   assert.ok(!isExpiredCard(liveEvent, jul15), "a window still open is live");
   assert.ok(!isExpiredCard({ category: "new_business" }, jul15), "undated cards never expire");
   assert.ok(!isExpiredCard({ category: "news", startsAt: "2026-07-01T00:00:00-04:00" }, jul15), "no endsAt → never expires");
+});
+
+// News shelf life (2026-08-17). News was the only card kind with no way to
+// leave: no endsAt, so isExpiredCard passed it forever. Measured that day: 15
+// news cards live, 13 older than two weeks, 8 older than a month, the oldest 96
+// days — and the row shows no date, so a reader can't tell May from Tuesday.
+const NEWS_AUG17 = new Date("2026-08-17T12:00:00-04:00");
+const newsOn = (date) => ({ category: "news", sourceLinks: [{ date }] });
+
+test("news gets a 30-day shelf life so the feed stops accumulating", () => {
+  assert.ok(isExpiredCard(newsOn("2026-05-13"), NEWS_AUG17), "96 days old");
+  assert.ok(isExpiredCard(newsOn("2026-07-17"), NEWS_AUG17), "31 days old");
+  assert.ok(!isExpiredCard(newsOn("2026-07-18"), NEWS_AUG17), "exactly 30 days is still on");
+  assert.ok(!isExpiredCard(newsOn("2026-08-14"), NEWS_AUG17), "3 days old");
+});
+
+test("the shelf life reads the story's own date, not when we ingested it", () => {
+  // A May story picked up in an August run is three months old to a reader;
+  // createdAt would call it new. Same reasoning as the row date it now prints.
+  const lateCatch = { category: "news", createdAt: "2026-08-16", sourceLinks: [{ date: "2026-05-13" }] };
+  assert.ok(isExpiredCard(lateCatch, NEWS_AUG17));
+  assert.ok(isExpiredCard({ category: "news", createdAt: "2026-05-13" }, NEWS_AUG17), "falls back to createdAt");
+  assert.ok(!isExpiredCard({ category: "news" }, NEWS_AUG17), "undateable news is never deleted");
+});
+
+test("the shelf life is news-only — everything else undated stays evergreen", () => {
+  // A bar from May is still a bar. Only reporting goes stale by sitting.
+  assert.ok(!isExpiredCard({ category: "food_drink", createdAt: "2026-05-13" }, NEWS_AUG17));
+  assert.ok(!isExpiredCard({ category: "civic_action", createdAt: "2026-05-13" }, NEWS_AUG17));
+  assert.ok(!isExpiredCard({ category: "new_business", createdAt: "2026-05-13" }, NEWS_AUG17));
+});
+
+test("the News shelf orders by the story's date, not the day we ingested it", () => {
+  // Two stories picked up in the same run tie on createdAt and fell to array
+  // order. Invisible until the rows started printing their dates, which showed
+  // Jul 24 sitting above Jul 25 (2026-08-17).
+  const sameRun = "2026-08-01";
+  const older = { id: "older", category: "news", createdAt: sameRun, sourceLinks: [{ date: "2026-07-24" }] };
+  const newer = { id: "newer", category: "news", createdAt: sameRun, sourceLinks: [{ date: "2026-07-25" }] };
+  const groups = groupByDay([older, newer], NEWS_AUG17);
+  const news = groups.find((g) => g.label === "News");
+  assert.deepEqual(news.cards.map((c) => c.id), ["newer", "older"]);
+});
+
+test("other shelf kinds still order by when they joined the map", () => {
+  // createdAt stays right for a place: "new here" is the recency that matters,
+  // and its source link may be an article from years ago.
+  const old = { id: "old", category: "food_drink", createdAt: "2026-06-01", sourceLinks: [{ date: "2026-08-16" }] };
+  const recent = { id: "recent", category: "food_drink", createdAt: "2026-08-10", sourceLinks: [{ date: "2020-01-01" }] };
+  const groups = groupByDay([old, recent], NEWS_AUG17);
+  const places = groups.find((g) => g.label === "Places");
+  assert.deepEqual(places.cards.map((c) => c.id), ["recent", "old"]);
+});
+
+test("publishedOn is the SOURCE's date and never ours", () => {
+  // The Archestratus lesson (2026-08-17, Batu): its only source was the shop's
+  // undated site banner, stamped with the day we looked. That read as
+  // three-week-old news for a shop whose last day was April 26. A date we
+  // assigned is not a publication date, so createdAt can never stand in.
+  assert.equal(publishedOn(newsOn("2026-07-15")), "2026-07-15");
+  assert.equal(publishedOn({ createdAt: "2026-07-15" }), null, "our own date is not the story's");
+  assert.equal(publishedOn({ sourceLinks: [{ publisher: "X" }], createdAt: "2026-07-15" }), null,
+    "an undated source stays undated");
+  assert.equal(publishedOn({}), null);
+  // The first source carrying a date wins — an undated banner alongside a
+  // dated article takes the article's date.
+  assert.equal(
+    publishedOn({ sourceLinks: [{ publisher: "Banner" }, { publisher: "Paper", date: "2026-02-23" }] }),
+    "2026-02-23",
+  );
+});
+
+test("undateable news still ages out — on our clock, and silently", () => {
+  // publishedOn refuses createdAt for DISPLAY; expiry still needs it, or a
+  // story nobody dated would sit in the feed forever.
+  assert.ok(isExpiredCard({ category: "news", createdAt: "2026-05-13" }, NEWS_AUG17));
+  assert.ok(!isExpiredCard({ category: "news", createdAt: "2026-08-14" }, NEWS_AUG17));
 });
 
 // 2026-07-23 (UX eval F16, decision B): thin layers fold into a "More" chip
