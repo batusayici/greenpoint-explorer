@@ -510,11 +510,15 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // tournament nights (Flesh & Blood Armory 8/18, One Piece 8/19, One Piece
   // OP-17 prerelease 8/26) sourced from the shop's own homepage events widget.
   // 150 + 3 = 153.
-  assert.equal(seed.cards.length, 153);
+  // +1 (2026-08-17, sidewalk-signage catch): Charlotte Patisserie's backyard
+  // Thursday movie series, sourced off their own Instagram/Facebook posts
+  // (lineup through 8/27) after Batu photographed the sandwich-board sign
+  // outside 596 Manhattan Ave. 153 + 1 = 154.
+  assert.equal(seed.cards.length, 154);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 82, "79 + three Action City Comics tournament nights (2026-08-17)");
+  assert.equal(count((c) => c.category === "event"), 83, "82 + Charlotte Patisserie's backyard movie nights (2026-08-17)");
   assert.equal(count((c) => c.category === "discount"), 6, "6 after the 2026-08-17 expiry: −1 Marianella (sale ended), +1 Tend's already-reduced markdown");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.filters.includes("live_music")), 24, "22 after the 2026-08-17 expiry + the two new Troost nights");

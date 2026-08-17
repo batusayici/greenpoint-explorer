@@ -16,7 +16,12 @@
       "addresstype": "building",
       "name": "",
       "display_name": "570, Manhattan Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
-      "boundingbox": ["40.7224574", "40.7225951", "-73.9499627", "-73.9497043"]
+      "boundingbox": [
+        "40.7224574",
+        "40.7225951",
+        "-73.9499627",
+        "-73.9497043"
+      ]
     }
   },
   "817 Manhattan Ave, Brooklyn, NY 11222": {
@@ -3306,6 +3311,31 @@
         "40.7384698",
         "-73.9555200",
         "-73.9554200"
+      ]
+    }
+  },
+  "596 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "596 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-17T16:36:23.743Z",
+    "hit": {
+      "place_id": 358355836,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081405,
+      "lat": "40.7231288",
+      "lon": "-73.9501409",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "596, Manhattan Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7230357",
+        "40.7231611",
+        "-73.9502916",
+        "-73.9500652"
       ]
     }
   }

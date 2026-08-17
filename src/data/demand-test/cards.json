@@ -1708,7 +1708,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-08-17",
       "id": "archestratus-closed",
       "title": "Archestratus closes its shop",
       "kicker": "Books & foods goes online-only",
@@ -1719,7 +1719,7 @@
         "news",
         "food_drink"
       ],
-      "summary": "The Sicilian cookbook shop and cafe's site banner says it plainly: the brick + mortar has closed, and the shop lives on online — the Lipari Island book club continues on Zoom.",
+      "summary": "The Sicilian cookbook shop and cafe closed its brick-and-mortar on April 26 after ten years; the shop lives on online, and the Lipari Island book club continues on Zoom.",
       "actions": [
         {
           "label": "Shop online",
@@ -1727,12 +1727,18 @@
           "url": "https://archestrat.us/pages/events"
         }
       ],
+      "sourceQuote": "Owner Paige Lipari shared the decision in an Instagram post last Friday, stating that the store's last day will be on April 26.",
       "sourceLinks": [
+        {
+          "title": "Archestratus, Bookstore and Community Hub, Will Close This Spring",
+          "url": "https://greenpointers.com/2026/02/23/archestratus-bookstore-and-community-hub-will-close-this-spring/",
+          "publisher": "Greenpointers",
+          "date": "2026-02-23"
+        },
         {
           "title": "Archestratus site banner",
           "url": "https://archestrat.us/pages/events",
-          "publisher": "Archestratus",
-          "date": "2026-07-25"
+          "publisher": "Archestratus"
         }
       ],
       "lat": 40.732874,
@@ -7099,6 +7105,63 @@
       "sourceQuote": "One Piece OP-17 Constructed Prerelease!\nWED, AUG 26 7:00 PM\nOut of stock\nGet tickets",
       "lat": 40.722526,
       "lng": -73.949837
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "id": "charlotte-backyard-movie-nights",
+      "title": "Charlotte Backyard Movie Nights",
+      "kicker": "Wine, desserts and classic films",
+      "locationName": "Charlotte Patisserie",
+      "address": "596 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "arts_culture"
+      ],
+      "summary": "Charlotte Patisserie's garden turns into an open-air theater every Thursday through Aug 27 — this month: Mamma Mia! (8/20) and Julie & Julia (8/27).",
+      "startsAt": "2026-07-30T18:00:00-04:00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      },
+      "actions": [
+        {
+          "label": "Instagram",
+          "type": "learn_more",
+          "url": "https://www.instagram.com/p/DbYZLrkOHCZ/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceQuote": "Charlotte Backyard Movie Nights — every Thursday at 6:00 PM. Charlotte Patisserie Backyard – Greenpoint. Wine, desserts, and great company. Weather permitting. July 30: The Birdcage. August 6: The Devil Wears Prada. August 13: Under the Tuscan Sun. August 20: Mamma Mia! August 27: Julie & Julia.",
+      "sourceLinks": [
+        {
+          "title": "Charlotte Patisserie — Instagram (Backyard Movie Nights lineup)",
+          "url": "https://www.instagram.com/p/DbYZLrkOHCZ/",
+          "publisher": "Charlotte Patisserie",
+          "date": "2026-08-17"
+        },
+        {
+          "title": "Charlotte Patisserie — Facebook (Backyard Movie Nights announcement)",
+          "url": "https://www.facebook.com/CharlottePatisserieinc/posts/-charlotte-backyard-movie-nights-join-us-every-thursday-at-600-pm-for-cozy-summe/1624909112968478/",
+          "publisher": "Charlotte Patisserie",
+          "date": "2026-08-17"
+        }
+      ],
+      "lat": 40.723129,
+      "lng": -73.950141
     }
   ]
 }
