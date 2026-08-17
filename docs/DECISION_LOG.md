@@ -4,6 +4,44 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-17 (third entry) — An expired card loses its public page; no archive
+
+**Batu's ruling, after asking me to think twice about my own recommendation.** The
+question came up twice in one day — expired event pages showing as "Page with redirect"
+in Search Console, then the news shelf life retiring `/e/rockaway-rocket`, the page with
+more search impressions than any other on the site. **The rule: expiry deletes the card
+AND its page, exactly as today. There is no archive.**
+
+I had argued for keeping expired pages forever. Two of the three arguments don't survive
+checking, and recording why matters more than the conclusion:
+
+- **"Expiry destroys the corpus the v2 place dossiers need" was simply wrong.** Every card
+  we have ever shipped is in `cards.json`'s git history. A dossier build can mine it
+  whenever we want one. Nothing is being lost, so the strongest forward-looking reason
+  evaporated.
+- **The citation argument cuts both ways.** Keeping pages alive protects a cited URL from
+  dying — but a page carrying schema.org markup is *more* citable, not less, so a
+  permanent archive lets an answer engine quote us confidently on something years stale.
+  That is the fragmented-stale-source failure this product exists to fix. The evidence I
+  leaned on undercut me too: rockaway-rocket's 44 impressions came with **zero clicks**.
+- **Claim decay is what actually decides it.** A past event is permanently true in past
+  tense; a place, business, deal or membership asserts a present state we stop verifying
+  the moment it leaves the feed. Greenpoint turnover is high enough that 4 of 15 news
+  cards are closures. A permanent archive of status claims becomes a graveyard that
+  misleads readers under our own domain with our own structured data vouching for it.
+
+**Parked, not rejected — the narrow version.** If this reopens, the only defensible shape
+is: past *dated events* only (their claim is time-stamped and cannot rot), roughly a
+year, framed "this happened on <date>" with a link to the venue's live card, and status
+cards deleting as they do now. Never a blanket archive.
+
+**What would reopen it:** old-link traffic or AI citations actually appearing in the
+numbers. Today they don't — the share button has produced 3 people all-time, and the
+GSC flags are cosmetic (those URLs are correctly not indexed). Cost if we build it is
+about half a day; the work is in `scripts/expire-cards.mjs` + `ingestExpiry.js` (archive
+instead of delete, with a retention window) and the sitemap-parity check in
+`verify-aeo.mjs`.
+
 ## 2026-08-17 (second entry) — Recurring Events state their first sourced occurrence
 
 **Amends the 2026-08-13 Schedule decision's "no top-level startDate" clause; the rest of that
