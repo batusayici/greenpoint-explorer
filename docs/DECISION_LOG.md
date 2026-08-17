@@ -4,6 +4,29 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-17 (second entry) — Recurring Events state their first sourced occurrence
+
+**Amends the 2026-08-13 Schedule decision's "no top-level startDate" clause; the rest of that
+decision stands.** Google Search Console rejects an Event without a top-level `startDate` as a
+critical error — no rich result at all — and flagged `/e/artistic-voices-artudio` on Aug 14. The
+original omission reasoned that a weekly card has no single occurrence; it missed that the FIRST
+occurrence is already a claim the card makes: the card states its days and its window start, so
+the earliest stated day in the window is sourced, not invented. `recurringEventJsonLd` now emits
+it (verbatim `startsAt` when the window opens on a stated day with a real clock; date-only
+otherwise), and `verify-aeo.mjs` checks the derivation — weekday must be a stated `byDay`, date
+within a week of the window opening — instead of banning the field.
+
+Same change: free events (`free: true`, a sourced fact) emit `offers` as Google's price-0
+convention, answering GSC's "missing offers" warning where it can be answered honestly. The
+other GSC wishlist fields (`image`, `performer`, `organizer`, `endDate` on sentinel-ended cards)
+stay omitted — nothing sourced to put in them.
+
+Noted, not actioned: GSC's "Page with redirect" flags are three intentional host redirects
+(http/www variants) plus four expired card URLs Google crawled only after their event day —
+single-day event pages often expire before Googlebot arrives, so they never index. The class fix
+would be retaining expired event pages (marked past) instead of deleting them on expiry; that is
+a product decision for Batu, not taken here.
+
 ## 2026-08-17 — Two rulings off the Monday refresh: markets file under `shopping`; monthly-cadence deal evidence persists in the cache
 
 **Markets and fleas file under `shopping` (Batu).** The Aug 5 hold on BQFlea said an outdoor
