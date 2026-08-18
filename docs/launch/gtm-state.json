@@ -17,9 +17,9 @@
     }
   },
   "focus": {
-    "goal": "Send Wave 1 — the org notes go out today and tomorrow",
-    "why": "The feed is at 67 dated items against a send bar of 35, and seeding a trust network is one-shot. The friends-family link already proved the plumbing works: 15 people, 39 card opens. The three org notes are what turn that into a channel.",
-    "doneWhen": "All three org notes out by Wed 8/19. The 8/25 readout then checks each tagged link for at least one session — that check, and nothing else, opens Wave 2.",
+    "goal": "Give the product a way to bring people back, and reach in parallel — not one network at a time",
+    "why": "Three independent passes converged (strategy review, 2026-08-17): the plan was a careful distribution schedule around a product with no return mechanism, aimed at a bar its own reach could not hit. No hyperlocal product in the researched record ever held a weekly habit without a scheduled send. D1–D6 ratified the same day.",
+    "doneWhen": "First Monday send out Aug 24 · every this-week channel sent on its own src · the five return/measurement fixes shipped · September supply in the pipeline. The 8/25 readout reads results; it no longer gates anything.",
     "steps": [
       {
         "label": "Town Square note + warm re-invites (Michael, Laura & Edmond) + first outreach (Perri)",
@@ -32,12 +32,37 @@
         "status": "next"
       },
       {
-        "label": "Mid-wave readout — picks up friends-family, no Q1/Q2 read",
+        "label": "D3 parallel reach — Film Noir + arts wave, Nextdoor, FB-group answer posts, IG carousel",
+        "when": "Week of 8/17, each on its own src",
+        "status": "next"
+      },
+      {
+        "label": "D5 product week — Follow ask un-gated, 'New every Monday' header, home-screen nudge, /week route, deep-link ask, Safari cookie fix, FB webview check",
+        "when": "Week of 8/17, branch + preview",
+        "status": "next"
+      },
+      {
+        "label": "D6 roster adds pulled into this week's ingest + fall/Halloween sweeps",
+        "when": "This week's ingest (was 8/24)",
+        "status": "next"
+      },
+      {
+        "label": "SummerStarz finale — be there (D4); market morning this weekend",
+        "when": "Thu 8/21 · Sat 8/22 or Sun 8/23",
+        "status": "next"
+      },
+      {
+        "label": "Mid-wave readout — picks up friends-family, no Q1/Q2 read (P6)",
         "when": "Tue 8/18",
         "status": "later"
       },
       {
-        "label": "Attribution check opens Wave 2",
+        "label": "First Monday send",
+        "when": "Mon 8/24",
+        "status": "later"
+      },
+      {
+        "label": "Readout reads Wave 1 results — gates nothing (D3 deleted the gate)",
         "when": "Tue 8/25",
         "status": "later"
       }
@@ -77,14 +102,14 @@
       "title": "First attribution read",
       "window": "Aug 25",
       "status": "next",
-      "oneLine": "Did the tagged links land? That answer, and only that, opens Wave 2."
+      "oneLine": "Did the tagged links land? Read as a result — it no longer gates anything (D3 deleted the gate)."
     },
     {
       "id": "wave2",
-      "title": "Wave 2 + Q2 parents post",
-      "window": "Sep 1 – Sep 8",
-      "status": "later",
-      "oneLine": "Broadcast channels, and the parents post timed to back-to-school."
+      "title": "Parallel reach + the weekly send",
+      "window": "Aug 17 – Sep 8",
+      "status": "live",
+      "oneLine": "Every channel fires on its own src, the Monday send starts Aug 24, and the parents post lands at back-to-school."
     },
     {
       "id": "provisional",
@@ -183,6 +208,17 @@
       "why": "The plan's rules all guarded against wrong readings; the likeliest fall failure was nothing starting — no signups, no R1, no submissions, no medium test. P7–P11 give that case dates, numbers, and agreed meanings, set while pre-data ratification was still legitimate.",
       "outcome": "P7–P11 ratified; Q2 dated Tue Sep 8; kids roster adds enter the 8/24 ingest; gtm-state became the primary send log with the shared? field. Send kit finalized in the roster. Both reviews endorsed the plan's shape.",
       "source": "docs/launch/2026-08-15-strategy-review.md; log 2026-08-15 third"
+    },
+    {
+      "id": "strategy-review-817",
+      "phase": "wave1",
+      "title": "Full-angle launch review; D1–D6 ratified",
+      "status": "done",
+      "date": "2026-08-17",
+      "goal": "Answer 'have we considered every angle' before spending the seeding — three independent passes plus a live ground-truth sweep of Greenpoint's attention infrastructure.",
+      "why": "Batu asked for blindspots before poking a question and finding one. Passes: a first-principles design blind to our docs, an adversarial review judged only on speed-to-signal, and outside research on how hyperlocal products reached habit. All three converged: the plan acquired visitors and nothing retained them.",
+      "outcome": "D1 re-registered the demand gate as a rate with a floor (pre-Wave-1-data, the last legitimate moment). D2–D6 approved as one act: weekly Monday send from 8/24, parallel reach with the 8/25 gate deleted, legal-only physical channel, five product return/measurement fixes, September supply pulled forward. Four factual claims verified in code first.",
+      "source": "docs/launch/2026-08-17-launch-strategy-review.md; docs/launch/2026-08-17-greenpoint-attention-map.md; log 2026-08-17 fifth + sixth"
     },
     {
       "id": "send-townsquare",
@@ -307,9 +343,9 @@
       "target": "Segmented > broadcast by week 3",
       "actual": "Treatment arm 0 segmented. Control arm 4 recipients — one new signup on 8/13, the day friends-family went out.",
       "readAt": "2026-08-17",
-      "verdict": "hold",
-      "trigger": "Starts the first Monday after ≥10 signups with ≥1 segmented. The 3-week clock runs from that Monday. Ratified 2026-08-15, supersedes 'first Monday post-launch'. P7 fallback: if not armed by Mon Oct 5, the next free slot goes to a no-list re-entry mechanism and the late-Oct demand read is labeled accordingly.",
-      "implication": "Do not start the clock. It is the scarce resource and it expires whether or not the arms have people in them. Q1/Q2 are the mechanisms that produce the signups. Wave 1 first, R1 second.",
+      "verdict": "hold — but the control arm now ships regardless (D2)",
+      "trigger": "R1's COMPARISON still starts the first Monday after ≥10 signups with ≥1 segmented, 3-week clock from then (P5). D2 (2026-08-17) decoupled the digest itself: it sends weekly from Mon Aug 24 as the retention spine whether or not R1 arms. P7 fallback stands for the comparison.",
+      "implication": "The reason the trigger could never fire was a product defect, not low traffic: postValue.js was lens-only, so the Follow ask rendered for no one without an active filter chip — ~90% of visitors — and the segmented arm was structurally unreachable. D5 un-gates it. Until then the digest carries re-entry on its own.",
       "source": "growth §2; readout 2026-08-11"
     },
     {
@@ -326,8 +362,25 @@
       "readAt": null,
       "verdict": "not yet read",
       "implication": "The friends-family link landed and carried real engagement — 15 people, 39 card opens, 4 actions — so the attribution plumbing is proven before the org notes go out. No org src has landed yet, which is correct: they send tonight and tomorrow.",
-      "notes": "Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org. P11: when Q1 closes, its slot goes to the arts/culture wave — Film Noir first.",
-      "source": "growth §4; roster P4; strategy review P11"
+      "notes": "Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org. D3 (2026-08-17) supersedes P11's trigger: the arts wave no longer waits for Q1 to close — Film Noir sends this week alongside Wave 1, WORD and Flower Cat behind it. Sends consume no experiment slot.",
+      "source": "growth §4; roster P4; strategy review P11; D3"
+    },
+    {
+      "id": "P9-ig",
+      "name": "Instagram carousel — the medium test",
+      "loop": "A",
+      "status": "starting",
+      "slot": false,
+      "hypothesis": "The neighborhood's attention lives on Instagram, not in browsers (Rana: 'people don't open browsers'). An auto-generated weekly carousel of the week's cards tests whether the CONTENT lands when the CONTAINER changes — the one open question that can invalidate the product's form rather than a feature.",
+      "smallestTest": "Auto-generated from existing cards, 4 weeks, src=ig. No account grinding — that stays banned.",
+      "rule": "In-feed engagement vs. tagged sessions. A carousel that engages while the site stays flat is evidence about the container, not the content.",
+      "target": null,
+      "actual": null,
+      "readAt": null,
+      "verdict": "not yet read",
+      "implication": "D3 moved this off P9's trigger ('Oct 6, only if tagged sessions are under 50'), which had scheduled our biggest open question as a consolation prize for failure — and would have suppressed it permanently on a merely-mediocre result. Its answer is worth most while it can still shape September.",
+      "caveat": "A carousel measures in-feed engagement, not whether anyone would return to anything. Pair its read with the digest's open-vs-click, which is the cleaner medium instrument.",
+      "source": "strategy review D3; growth 'Explicitly not doing'; learning-log Q1"
     },
     {
       "id": "Q2",
@@ -744,30 +797,84 @@
     },
     {
       "src": "org-film-noir",
-      "label": "Film Noir Cinema",
-      "wave": "2",
+      "label": "Film Noir Cinema (arts wave)",
+      "wave": "1",
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "front of Tier 2, draft ready"
+      "status": "due this week — D3 un-gated it from Q1 closing; draft ready"
+    },
+    {
+      "src": "org-word",
+      "label": "WORD Bookstore (arts wave)",
+      "wave": "1",
+      "sent": null,
+      "firstSession": null,
+      "reply": null,
+      "status": "behind Film Noir. Note: their own calendar showed no August events despite running one — their programming isn't discoverable on their own site, which is the pitch"
+    },
+    {
+      "src": "org-flower-cat",
+      "label": "Flower Cat (arts wave)",
+      "wave": "1",
+      "sent": null,
+      "firstSession": null,
+      "reply": null,
+      "status": "behind Film Noir and WORD"
     },
     {
       "src": "reddit",
-      "label": "Reddit",
+      "label": "Reddit (r/Greenpoint, 34.1K)",
       "wave": "2",
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "gated on 8/25"
+      "status": "due this week — gate deleted (D3)"
     },
     {
       "src": "fbgroups",
-      "label": "Local FB/WhatsApp groups",
+      "label": "FB group ANSWER posts (not link drops)",
       "wave": "2",
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "gated on 8/25"
+      "status": "due this week — gate deleted (D3). Entry: Greenpoint & Williamsburg Community Group (16K, 'free community events are always allowed') and Greenpoint Neighbors! NYC (7K, public, no posted rules). Never 11222 group (no links) or Buy Nothing (rule 8)"
+    },
+    {
+      "src": "nextdoor",
+      "label": "Nextdoor",
+      "wave": "2",
+      "sent": null,
+      "firstSession": null,
+      "reply": null,
+      "status": "due this week (D3). 6 Greenpoint sub-neighborhoods; reach unpublished"
+    },
+    {
+      "src": "ig",
+      "label": "Instagram carousel (medium test)",
+      "wave": "2",
+      "sent": null,
+      "firstSession": null,
+      "reply": null,
+      "status": "starting now — D3 moved it off the Oct 6 trigger"
+    },
+    {
+      "src": "market",
+      "label": "Market hand-outs (McCarren Sat 8–3 / McGolrick Sun 9–2)",
+      "wave": "physical",
+      "sent": null,
+      "firstSession": null,
+      "reply": null,
+      "status": "first morning this weekend (D4). Hand-to-hand only — poles and parks are per-flyer offences"
+    },
+    {
+      "src": "greenline",
+      "label": "The Greenline (St. Nicks, 5,000 print copies)",
+      "wave": "physical",
+      "sent": null,
+      "firstSession": null,
+      "reply": null,
+      "status": "contact for the September issue (D4) — greenline@stnicksalliance.org"
     },
     {
       "src": "qr",
@@ -776,7 +883,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "gated on 8/25"
+      "status": "unblocked — gate deleted (D3); rides the /week sheet"
     },
     {
       "src": "gpters",
@@ -835,6 +942,22 @@
       "detail": "As of 8/11, 62 of 103 recorded 'people' were automated — datacenter cities, one pageview each, not a single card open. The population has since grown to 173 and has not been re-split by geography.",
       "response": "Wave 1 is the fix and it is working: friends-family traffic reads per-src and untagged noise can't touch it. The demand gate's own metric was never affected. Tuesday's readout re-runs the geo split.",
       "source": "readout Finding 3"
+    },
+    {
+      "id": "safari-eviction",
+      "title": "Safari deletes the retention sensor's storage at exactly our cadence",
+      "severity": "open — measurement-fatal on the majority platform",
+      "detail": "returnVisit.js is localStorage-only. Safari (ITP) clears script-written storage after ~7 days of browser use without a first-party visit — a weekly-check product sits precisely on that edge, so an iPhone user returning on day 8 can re-register as brand new with weekIndex 0, forever. Verified as unenumerated: no ITP or eviction row exists in environmental-dependencies.md. Consistent with our own data — the July round saw 7 of 24 return inside a 5-day window, while cross-week WRL shows 2.",
+      "response": "D5: verify on a real iPhone, add the dependencies row in the same change, mirror gl_first_seen into a server-set cookie (the one no-backend exception — config-level, no storage, no accounts). Home-screen install also exempts a user from the cap.",
+      "source": "strategy review, verified-in-code section"
+    },
+    {
+      "id": "founder-capacity",
+      "title": "The approved slate costs ~12–15 founder-hours/week",
+      "severity": "named, not yet managed",
+      "detail": "Sends ~2h, group answers ~3h, physical ~4–5h, the weekly send ~1h, conversations ~2h. Every researched hyperlocal success ran on years of unpaid founder labor, and the most repeated failure was exhaustion before the curve turned.",
+      "response": "Earliest warning sign is a skipped week — watch it as a metric on ourselves. Cut order decided now rather than discovered in week 5: fewer group-answer posts, one market morning, Greenline deferred.",
+      "source": "strategy review, founder-hours section"
     },
     {
       "id": "webview",
@@ -919,8 +1042,23 @@
     },
     {
       "id": "carousel-trigger",
-      "text": "P9: the approved IG carousel test starts automatically at the first readout on/after Tue Oct 6 if tagged sessions across all sent srcs are under 50 (earlier by normal proposal when a slot frees). The medium question — will Greenpoint open a browser? — can no longer go unread.",
-      "source": "strategy review; growth 'Explicitly not doing'"
+      "text": "D3 (2026-08-17) supersedes P9's trigger: the IG carousel starts NOW, not 'Oct 6 if under 50 sessions'. P9 had scheduled the only test of the medium question as a consolation prize for failure, on a trigger a mediocre result would have suppressed permanently.",
+      "source": "strategy review D3; growth 'Explicitly not doing'"
+    },
+    {
+      "id": "weekly-send",
+      "text": "D2: the Monday digest ships weekly from Aug 24 — drafted by the routine, sent by Batu, three picks + 'the other N are on the map' + link. DENSITY FLOOR: a thin week is skipped, never sent thin. No hyperlocal product in the researched record ever held weekly habit without a scheduled send.",
+      "source": "strategy review D2; growth §0/§2; log 2026-08-17 sixth"
+    },
+    {
+      "id": "no-gates-on-proven-plumbing",
+      "text": "D3: the 8/25 Wave-2 gate is deleted. P3's check survives as a readout line — different srcs cannot contaminate each other, and friends-family proved the plumbing on 8/13. A send is not an experiment and consumes no slot; neither is a product fix that repairs a broken mechanism.",
+      "source": "strategy review D3; growth §6 rules 6–7"
+    },
+    {
+      "id": "physical-legal-only",
+      "text": "D4: physical means hand-to-hand at markets, permission-based placement inside venues, The Greenline, and being present at events. NEVER poles, parks, or scaffolding — §10-119 makes each flyer a separate $75–150 offence with the name on it presumed liable; 56 RCNY §1-05(c) requires a permit in parks.",
+      "source": "strategy review D4; attention map §8"
     },
     {
       "id": "zero-click",
@@ -929,8 +1067,13 @@
     },
     {
       "id": "wedge2",
-      "text": "P11: when Q1 closes, the freed slot goes to the arts/culture wave — Film Noir first, then WORD and Flower Cat. Sequencing only; never two networks at once.",
-      "source": "strategy review; growth §4"
+      "text": "P11's ORDER stands (Film Noir → WORD → Flower Cat) but D3 dropped its trigger and its 'never two networks at once' clause: the arts wave sends this week alongside Wave 1. Echo-chamber doctrine is about density INSIDE a network; per-src tagging already separates unrelated ones. Founder hours still point at parents.",
+      "source": "strategy review D3; growth §4"
+    },
+    {
+      "id": "founder-hours",
+      "text": "The approved slate costs ~12–15 founder-hours/week through mid-September. The researched failure pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped week. Cut order if the real budget is 8 hours: fewer group-answer posts, one market morning instead of two, Greenline deferred.",
+      "source": "strategy review, founder-hours section"
     }
   ]
 }

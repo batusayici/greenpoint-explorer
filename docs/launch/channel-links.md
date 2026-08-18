@@ -36,7 +36,13 @@ or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
 | Perri / Shop Small Greenpoint | `perri` | https://stoopwise.com/?src=perri | |
 | Action City Comics (Eric, in-person visit follow-up) | `action-city-comics` | https://stoopwise.com/?src=action-city-comics | **new 2026-08-17** — sent, retroactively added here after the fact |
 | Reddit (r/Greenpoint etc.) | `reddit` | https://stoopwise.com/?src=reddit | |
-| Local Facebook/WhatsApp groups | `fbgroups` | https://stoopwise.com/?src=fbgroups | |
+| Local Facebook/WhatsApp groups | `fbgroups` | https://stoopwise.com/?src=fbgroups | **answer posts, not link drops** (D3, 2026-08-17) — reply to real "anything this weekend?" threads with 3 specific picks + this link as the citation. Entry points: Greenpoint & Williamsburg Community Group (16K, rule: *"free community events are always allowed"*) and Greenpoint Neighbors! NYC (7K, public, no posted rules). Never post in Greenpoint, Brooklyn, NY 11222 (no-links rule) or Buy Nothing (rule 8) |
+| Nextdoor | `nextdoor` | https://stoopwise.com/?src=nextdoor | **new 2026-08-17 (D3)** — 6 Greenpoint sub-neighborhoods; reach unpublished |
+| Instagram carousel (P9 medium test) | `ig` | https://stoopwise.com/?src=ig | **new 2026-08-17 (D3)** — trigger moved off "Oct 6 on failure" to now; the medium question is tested while its answer can still shape September |
+| Q1 org seeding — WORD Bookstore (arts wave) | `org-word` | https://stoopwise.com/?src=org-word | **new 2026-08-17 (D3)** — arts wave, after Film Noir |
+| Q1 org seeding — Flower Cat (arts wave) | `org-flower-cat` | https://stoopwise.com/?src=org-flower-cat | **new 2026-08-17 (D3)** — arts wave, after Film Noir |
+| Market hand-outs (McCarren Sat / McGolrick Sun) | `market` | https://stoopwise.com/?src=market | **new 2026-08-17 (D4)** — printed `/week` sheet handed person-to-person. Hand-to-hand is legal; poles and parks postings are not (§10-119, 56 RCNY §1-05(c)) |
+| The Greenline (St. Nicks Alliance print) | `greenline` | https://stoopwise.com/?src=greenline | **new 2026-08-17 (D4)** — 5,000 free print copies, the only confirmed print distribution in the neighborhood |
 | II-C QR window card | `qr` | https://stoopwise.com/?src=qr | |
 | Greenpointers (held for now) | `gpters` | https://stoopwise.com/?src=gpters | |
 | Transport/testing (excluded from all pulls) | `verify` | https://stoopwise.com/?src=verify | |

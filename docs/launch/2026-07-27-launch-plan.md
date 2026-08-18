@@ -62,8 +62,18 @@ exception 2026-07-28 — they protect the "verified" promise, they don't add fea
 > **Superseded in part, 2026-08-15:** Wave 1 was deferred 2026-08-12 and re-planned.
 > Target selection, the ratified slate (Town Square BK swapped in for Film Noir),
 > timing, drafts, and the adversarial-review amendments now live in
-> **`docs/launch/2026-08-15-seeding-roster.md`** — that doc governs the sends; the
-> wave *structure* below (trust networks → broadcast → held plays) still stands.
+> **`docs/launch/2026-08-15-seeding-roster.md`** — that doc governs the sends.
+>
+> **Superseded further, 2026-08-17 (D3/D4):** the wave *structure* below —
+> trust networks, then broadcast on a gate — no longer holds. **Waves now run in
+> parallel, not in sequence:** the 8/25 gate is deleted (P3's check was a
+> plumbing test, and friends-family proved the plumbing 8/13), so Reddit,
+> Nextdoor, FB-group answer posts, the IG carousel and the arts wave all fire in
+> the same week as Wave 1, each on its own `src`. Physical becomes a standing
+> channel, legal-only. The echo-chamber principle survives as *density inside a
+> network*; its temporal-exclusivity reading is dropped. See
+> `docs/launch/2026-08-17-launch-strategy-review.md` and DECISION_LOG's sixth
+> 2026-08-17 entry.
 
 Echo-chamber order — saturate small trust networks before broadcast
 (growth-engine §4): a messenger inside the network beats reach.
@@ -89,6 +99,10 @@ Echo-chamber order — saturate small trust networks before broadcast
 - **Cadence:** Mon ingest (cloud routines, unchanged) → **Tue Growth Operator
   routine** drafts the readout PR (§5) → Batu merges/edits → Wed–Fri approved
   ships only.
+- **The Monday send (D2, from 2026-08-24):** the weekly digest ships to the full
+  list every Monday — drafted by the routine, sent by Batu, three picks plus the
+  link, and **skipped rather than sent thin**. It is the retention spine; R1's
+  segment-vs-broadcast comparison still arms separately per P5.
 - **Experiments (max 3 live — growth-engine §6):** light **R1 Follow**
   (personalized alert vs. broadcast digest, ~~first Monday post-launch~~ —
   *trigger superseded 2026-08-15, seeding-roster P5: first Monday after ≥10

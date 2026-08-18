@@ -10,11 +10,17 @@ ground-truth sweep of Greenpoint's attention infrastructure
 (`2026-08-17-greenpoint-attention-map.md`) and main-thread code verification of
 every load-bearing factual claim. Synthesis in the main thread.
 
-**Status: PROPOSED.** Each decision below (D1–D6) awaits Batu's per-item ruling.
-Ratified items get the DECISION_LOG entries drafted at the bottom; rejected ones
-stay here as the dated record of the road not taken. Nothing in this doc changes
-tonight's sends — the Wave-1 org notes and re-invites go out as drafted in the
-seeding roster.
+**Status: ALL RATIFIED (Batu, 2026-08-17).** D1 was ruled first, pre-Wave-1-data; D2–D6 approved together hours later. Promoted to `DECISION_LOG.md` (fifth and sixth entries).
+
+Nothing here changed tonight's sends — the Wave-1 org notes and re-invites went
+out as drafted in the seeding roster. Carriers updated the same day:
+`growth-engine.md` §0/§2/§4/§6 + "Explicitly not doing", `business-model.md` §4,
+`channel-links.md` (7 new `src` rows), `gtm-state.json`, the seeding roster's
+amendment banner, and the launch plan §3/§4.
+
+*(Original framing, kept as the record: each decision below awaited Batu's
+per-item ruling; rejected ones would have stayed as the dated record of the road
+not taken.)*
 
 ---
 
@@ -163,7 +169,7 @@ line. Moving a pre-registered bar is exactly what pre-registration forbids
 mid-data; that is why the ruling has tonight's deadline, and why a "no" tonight
 is a real "no" until the next clean window (there isn't one before the verdict).
 
-### D2 — Start the weekly Monday send, first send Mon Aug 24.
+### D2 — Start the weekly Monday send, first send Mon Aug 24. ✅ **RATIFIED (Batu, 2026-08-17)**
 
 **Recommendation: yes.** This is an un-gating, not a full reversal: the digest
 already survives in the plan as R1's control arm (`?src=digest`); it is trapped
@@ -191,7 +197,7 @@ rule).
 *Cost/risk:* permanent weekly founder-minutes; an email list to maintain. Both
 small at current n; revisit if the list clears ~200.
 
-### D3 — Fire reach in parallel this week; delete the 8/25 gate.
+### D3 — Fire reach in parallel this week; delete the 8/25 gate. ✅ **RATIFIED (Batu, 2026-08-17)**
 
 **Recommendation: yes.** Tonight/tomorrow unchanged (Town Square, Library,
 Brooklyn Craft, re-invites, Perri). Add, all tagged, all this week:
@@ -222,7 +228,7 @@ exclusivity clause dropped.
 instruction already covers it. The real risk is founder time — see D-hours note
 at the bottom.
 
-### D4 — Physical presence, legal version.
+### D4 — Physical presence, legal version. ✅ **RATIFIED (Batu, 2026-08-17)**
 
 **Recommendation: yes.** (a) **Be at the SummerStarz finale Thu 8/21** — the
 largest gathering of the exact wedge audience this month, run by the org
@@ -239,7 +245,7 @@ reach the non-digital residents no channel above touches.
 warm-user conversations — a standing instrument with no date since July — gets
 its dates from (a) and (b) for free.
 
-### D5 — Product week: the return mechanisms and the measurement repairs.
+### D5 — Product week: the return mechanisms and the measurement repairs. ✅ **RATIFIED (Batu, 2026-08-17)** — includes the server-set-cookie exception to no-backend.
 
 **Recommendation: yes.** All small, all backend-free except one flagged item;
 each TDD'd; ship on a branch, preview, then merge per the design-batch rule.
@@ -273,7 +279,7 @@ Measurement repairs:
 product" all three passes converged on; 6–8 make October's numbers mean
 something on iPhones.
 
-### D6 — Pull September supply forward.
+### D6 — Pull September supply forward. ✅ **RATIFIED (Batu, 2026-08-17)**
 
 **Recommendation: yes.** The roster adds ratified 8/15 for the 8/24 ingest
 (PS 110/34/31 PTAs, GWYSL, Play Lab, GAMA, Artudio, St. Stans Academy, NY
