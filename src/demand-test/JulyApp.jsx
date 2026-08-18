@@ -289,10 +289,21 @@ export default function JulyApp({ showOrientation = false } = {}) {
               line states the literal offer instead; shouldShowOrientation
               flips the flag at boot in main.jsx, so return visits — once
               the reader already knows what this is — get the brand line. */}
+          {/* RETURN-VISIT LINE CHANGED 2026-08-17 (D5). It was "Know what's
+              real. Take part." — values copy aimed at a reader who already
+              knows what this is. True, but it asks nothing and tells them
+              nothing they can act on. With no app and no push, the only thing
+              a website can do to earn a second visit is PUBLISH ITS SCHEDULE,
+              the way a paper does: every hyperlocal product in the researched
+              record that held a weekly habit had a named cadence (6AM City is
+              named after its send time; Front Porch Forum timed its digest to
+              when the evening paper used to land). So the returning reader now
+              gets the cadence — the one fact that makes a habit possible —
+              while the first-timer still gets the literal offer. */}
           {showOrientation ? (
             <p>Events, openings, deals and neighborhood news — verified and sourced.</p>
           ) : (
-            <p>Know what’s real. Take part.</p>
+            <p>New every Monday. Verified and sourced.</p>
           )}
         </div>
       </header>

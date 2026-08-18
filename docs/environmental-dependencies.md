@@ -41,6 +41,7 @@ Two corollaries, both learned the hard way:
 |---|---|---|---|---|
 | **WebGL** | MapLibre (`MapView.jsx`) | Map cannot render at all | try/catch on construction → `onUnavailable`; `FeatureBoundary` for later throws; `map.on("error")` for async death. Map zone leaves the layout, feed goes full width, one line says so | `mapContainment.test.jsx` (8 tests, both failure shapes) + **`npm run verify:agent-browser`** (real browser, real bundle, WebGL stubbed off) |
 | **localStorage / sessionStorage** | `returnVisit.js` (R0 retention), `firstVisitOrientation.js` | Property read throws (`SecurityError`) when site data is blocked → module dies before `createRoot` → **blank page**, no boundary can help | `safeStorage()` guards the read; consumers fail closed on `null`; `bootSafely()` isolates the step | `boot.test.mjs` + **`npm run verify:agent-browser`** (storage getter throws) |
+| **localStorage *persistence* past 7 days** (Safari ITP) | `returnVisit.js` (R0 retention — the demand gate's own instrument) | Storage is present and writable, so nothing throws and no test fails — but Safari **deletes all script-written storage after ~7 days of browser use without a first-party visit**. A weekly-cadence product sits exactly on that edge: a reader returning on day 8 arrives with `gl_first_seen` gone and re-registers as a **brand-new visitor with `weekIndex` 0, forever**. Silent, one-directional, and it under-counts precisely the behaviour the gate measures, on the audience's dominant browser | **Open (D5, 2026-08-17).** Planned: mirror first-seen into a **server-set** cookie via Vercel routing middleware — server-set cookies are not subject to the script-storage cap. Home-screen install (also D5) exempts a user entirely | **None yet — needs a real iPhone**, which is the point of the row. No stub can reproduce a 7-day eviction, so this is the first dependency here whose proof must be a device, not a test |
 | **Any boot side-effect** (analytics `inject()`, PostHog init, `URLSearchParams`) | `main.jsx` | Throw at module scope → render never runs → blank page | `bootSafely()` per step, so one dead vendor cannot cost another step | `boot.test.mjs` ("one failing boot step does not skip the steps after it") |
 | **`matchMedia`** | `JulyApp.jsx` (mobile breakpoint), `CardPanel.jsx` (reduced motion) | Layout flag defaults to desktop; motion guard defaults to animated | Already safe — every call site uses `window.matchMedia?.(…)`, and optional chaining short-circuits the whole chain | Covered indirectly by the jsdom suite (stubbed in `testSetup.dom.js`) |
 | **`navigator.share`** | `CardPanel.jsx` share action | Falls back to clipboard | Explicit `if (navigator.share)` branch | — |
@@ -57,7 +58,17 @@ Two corollaries, both learned the hard way:
 - **`Intl` and `MutationObserver` have no containment.** Judged baseline, deliberately — noted here
   so the judgement is visible rather than implied.
 - **No real-device matrix.** Everything is verified via stubs, jsdom, or one browser pane. Older
-  Safari, Firefox and real mobile hardware are unsampled.
+  Safari, Firefox and real mobile hardware are unsampled. **Two open items now depend on this
+  gap directly** (both D5, 2026-08-17): the Safari 7-day eviction row above, and the **Facebook
+  in-app webview** — ~100% of the Q2 parents post's arrivals will come through it, and it is the
+  same hostile-context class as the 2026-08-13 WebGL bug. Both need a phone, not a test.
+
+- **A capability can be *present* and still fail you.** Every other row here asks "what if this is
+  missing?" The ITP row is the first that asks "what if this works, but not for as long as we
+  assumed?" — storage that exists, accepts writes, reads back correctly, and is deleted on a
+  timer we don't control. Nothing in the suite could have caught it, because nothing was broken.
+  Worth carrying forward when adding rows: **duration and quota are dependencies too, not just
+  existence.**
 
 ## When adding a dependency
 

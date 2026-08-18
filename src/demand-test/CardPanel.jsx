@@ -401,8 +401,12 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
 // button, because every control on this surface is content-sized with a radius.
 function FollowPrompt({ filter, onDismiss, placement }) {
   const target = followTarget({ filterId: filter });
-  // Lens-only (Batu, 2026-07-30): no lens selected, no ask. The footer's
-  // ungated "Follow Greenpoint" covers that reader — see the footer's note.
+  // Un-gated from lens state (D5, 2026-08-17): a reader with no lens now gets
+  // the broadcast ask here rather than nothing. The lens-only rule made this
+  // invisible to ~90% of visitors — only 15 people ever tapped a filter chip —
+  // which is why R1's signup trigger could never arm. followTarget no longer
+  // returns null; the guard stays because a null target must never render a
+  // headless banner if that ever changes again.
   if (!target) return null;
   const ref = followRef(target);
   return (
@@ -514,8 +518,12 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // Anything that materialises in response to what the reader just did reads
   // as a popup, however quiet it looks — so the row is simply part of the lens
   // now, present from the moment a category is selected and never moving.
-  // Lens-only, so on All it renders nothing and the footer's ungated "Follow
-  // Greenpoint" steps back in to cover that reader.
+  // Un-gated 2026-08-17 (D5): on All this is now the broadcast object, so the
+  // row renders for every reader instead of only the ~10% who tap a chip. The
+  // dismiss set keys off target.id, so "all" dismisses independently of each
+  // lens — a reader who waves off the broadcast ask still sees a lens ask if
+  // they later choose a category, which is the more specific and more useful
+  // one.
   const followT = followTarget({ filterId: filter });
   const askShowing = followT != null && !dismissedLenses.has(followT.id);
   const followSlot = followSlotIndex(groups);
