@@ -694,6 +694,15 @@
       "status": "awaiting Batu — pick call vs. in-person, then reply"
     },
     {
+      "src": "action-city-comics",
+      "label": "Action City Comics (Eric) — in-person visit follow-up, outside the Wave-1 plan",
+      "wave": "n/a",
+      "sent": "2026-08-17",
+      "firstSession": null,
+      "reply": null,
+      "status": "sent 8/17 4:16pm to info@actioncitycomics.com — no reply yet"
+    },
+    {
       "src": "org-town-square",
       "label": "Town Square BK",
       "wave": "1",

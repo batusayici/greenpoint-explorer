@@ -34,6 +34,7 @@ or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
 | Michael follow-up | `michael` | https://stoopwise.com/?src=michael | |
 | Laura & Edmond follow-up | `laura-edmond` | https://stoopwise.com/?src=laura-edmond | |
 | Perri / Shop Small Greenpoint | `perri` | https://stoopwise.com/?src=perri | |
+| Action City Comics (Eric, in-person visit follow-up) | `action-city-comics` | https://stoopwise.com/?src=action-city-comics | **new 2026-08-17** — sent, retroactively added here after the fact |
 | Reddit (r/Greenpoint etc.) | `reddit` | https://stoopwise.com/?src=reddit | |
 | Local Facebook/WhatsApp groups | `fbgroups` | https://stoopwise.com/?src=fbgroups | |
 | II-C QR window card | `qr` | https://stoopwise.com/?src=qr | |
