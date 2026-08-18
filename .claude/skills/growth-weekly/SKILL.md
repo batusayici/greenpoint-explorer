@@ -286,3 +286,22 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   (The same readout proposed a geo/engagement-split diagnostic rule; Batu
   declined it on 2026-08-12. Do not re-add it — reporting the split inside a
   readout is still fine, it just is not a standing rule.)
+- **(proposed 2026-08-18, cycle 5 — pending ratification.)** **`$pageview`
+  carries no `src`; read every channel off its custom events.** All 339
+  production pageviews on 2026-08-18 sat in the untagged row, and every
+  campaign row in the pull's channels table read `views 0` — including
+  `friends-family`, which demonstrably produced visits (16 people, 39 card
+  opens). Attribution rides `card_open` / `filter_tap` / `return_visit` and the
+  rest. P3's "≥1 session per sent `src`" is therefore a check on
+  **people/events**, never on the `views` column; reading that column as visits
+  would report a landed channel as dead.
+- **(proposed 2026-08-18, cycle 5 — pending ratification.)** **Split by `src`
+  before splitting by geography.** "Non-local" stopped meaning "automated" the
+  moment a founder-sent WhatsApp message reached friends abroad: non-local
+  *engaged* people went 4 → 16 in one week, and 11 of the newcomers were a
+  Turkish cluster firing filter taps, card opens and an `action_tap` — P1's
+  untagged echo, not bots. The automated cohort is still there and still
+  passive (Paris, Council Bluffs, Eatonton: one card open between 47 people),
+  but geography alone can no longer tell the two apart. This does **not**
+  reinstate the declined standing geo rule above — it is a constraint on how
+  the split is read when a readout chooses to report it.

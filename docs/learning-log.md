@@ -42,8 +42,9 @@ section only when evidence answers it — then it becomes a belief.
   may not experience uniform rows the same way. _Evidence: L2026-08-14,
   L2026-08-02 — and they contradict each other, see B1._
 - **Q3 — Does anything bring people back?** No return path has been built or
-  tested (no email list, no saves). Current weekly returning locals: 2 people,
-  6 events, against a bar of 30 — but that reads as "never asked" rather than
+  tested (no email list, no saves). Current weekly returning locals: 4 people,
+  7 events, against a bar of 30 — and the first seeded cohort went quiet after
+  two days (L2026-08-18), which reads as "never asked" rather than
   "asked and refused." The one encouraging signal is old and small: in the July
   friends round, 7 of 24 ids came back on a second day within a 5-day window.
   Until a return path exists, every demand read carries the label "measured
@@ -115,19 +116,27 @@ when revised, and retired ones are struck rather than renumbered.
   Greenpoint" queries in the first 8 days. Yet those arrivals are our best
   traffic: 6 of 7 Google visitors did something, against 0 of 20 untagged
   direct arrivals. Low volume, high intent — and the first acquisition that
-  came from neither a link Batu sent nor the share button.
-  _Evidence: L2026-08-17, L2026-08-11._
-- **B10 — Personal messages convert; nothing else has yet.** The
-  friends-and-family WhatsApp send produced 15 people, 39 card opens and 4
-  high-intent actions — the first campaign link in the project's history to
-  produce sessions at all. Organic sharing runs at a trickle (a few people via
-  the share button). _Evidence: L2026-08-13._
-- **B11 — Aggregate visitor counts are heavily inflated by bots.** At the last
-  geo split, 62 of 103 recorded "people" were automated: datacenter cities, one
-  pageview each, not a single card open. The population has grown to 173 since
-  and has not been re-split. Every all-production conversion rate is therefore
-  a floor, not a rate — NYC-metro card-open was 41% against 20% all-in.
-  _Evidence: L2026-08-11, L2026-08-17._
+  came from neither a link Batu sent nor the share button. Doubling: 15 Google
+  people by 8/18, 12 of them local, now spread across 19 card pages rather than
+  two. The direct-arrival half of the old contrast is no longer clean —
+  WhatsApp strips referrers, so the seeded cohort sits inside `$direct`.
+  _Evidence: L2026-08-17, L2026-08-11, L2026-08-18._
+- **B10 — Personal messages convert, and their attention lasts about two
+  days.** The friends-and-family WhatsApp send produced 16 people, 39 card
+  opens and 4 high-intent actions — the first campaign link in the project's
+  history to produce sessions at all — and then went quiet: 11 people on day 2,
+  3 on day 3, effectively none after. Whether any of them come back is
+  unmeasured until 8/20. Organic sharing runs at a trickle (a few people via
+  the share button). _Evidence: L2026-08-13, L2026-08-18._
+- **B11 — Aggregate visitor counts are inflated by bots, but geography no
+  longer identifies them.** Re-split at n=178: 133 people fired only
+  `$pageview` + `return_visit`, and the datacenter clusters (Paris 26, Council
+  Bluffs 14, Eatonton 7) produced one card open between them. But non-local
+  *engaged* people went 4 → 16 in a week — mostly friends abroad arriving from
+  a forwarded WhatsApp link with the `src` stripped. Every all-production
+  conversion rate is still a floor rather than a rate (NYC-metro card-open 33%
+  against 18% all-in), and the split must now be taken by `src` first, then by
+  geography. _Evidence: L2026-08-11, L2026-08-17, L2026-08-18._
 
 ### Supply and operations
 
@@ -141,6 +150,43 @@ when revised, and retired ones are struck rather than renumbered.
   _Evidence: L2026-07-21._
 
 ## Log
+
+### L2026-08-18 — Wave-1 mid-flight: the first cohort, and what it did on day 3 (analytics pull)
+
+Source: `./scripts/posthog-pull.sh` + narrowed follow-up HogQL, run 2026-08-18
+for the Tuesday readout (`docs/growth/readouts/2026-08-18.md`); Tally pulled
+live; `check-freshness.mjs` and `npm run preflight:send` at `5c34743`.
+
+Facts — the friends-family WhatsApp cohort (sent 8/13 ~6:30pm): 16 people, 116
+events, 39 card opens, 35 filter taps, 4 `action_tap`; 14 of 16 NYC-metro.
+Its day curve: 4 people on 8/13, **11 on 8/14 (92 events)**, 3 on 8/15, 0 on
+8/16, 1 on 8/17, 0 on 8/18. All 27 of its `return_visit` events are at
+`weekIndex 0` — the cohort's own week-1 window does not open until 8/20.
+Facts — attribution mechanics: `$pageview` carries no `src`, so all 339
+production pageviews sit in the untagged row and every campaign row reads
+`views 0`. Facts — population: 178 production people, 133 passive-only
+(`$pageview` + `return_visit` and nothing else) and 45 engaged; Paris 26,
+Council Bluffs 14 and Eatonton 7 produced **one** card open between them, while
+a Turkish cluster of 11 new people (Istanbul, Izmir, Aydın, Yunusemre, Batman)
+fired 17 filter taps, 3 card opens and an `action_tap` — untagged.
+Facts — demand gate (D1, first derivation): 16 locals visited on ≥2 days; 3 of
+them were active in ≥3 distinct weeks. WRL proxy 4 people, 7 events. Google
+referrals 15 people (was 7), 12 of 15 NYC-local, across 19 card pages.
+Qualified-action rate, first computation: 23 of 278 sessions (8.3%). Feed 158
+cards, 70 dated in 7 days; civic 6 cards / 2 dated.
+
+Read: the cohort answers the *reach* question and leaves the *return* question
+exactly where Q3 left it — one real day of attention, then silence, in a
+product with nothing that says a new week has started. Nothing here is a return
+failure yet; 8/25 is the first honest read. Two interpretation rules changed
+this week and both are the kind of thing that quietly corrupts a later readout:
+attribution has to be read off custom events (the `views` column is
+structurally zero for every campaign), and **"non-local" has stopped meaning
+"automated"** — a founder's WhatsApp send reaches friends abroad, and P1's
+untagged echo puts them in the same bucket the bots were in a week ago. The
+gate's first number (3 of 16, 19%, floor 3 of 12) is quoted so the series has a
+starting point, not as a signal: 4.3 weeks of data cannot contain a 3-of-4-week
+pattern for many people.
 
 ### L2026-08-17 — Google Search Console, first snapshot (analytics pull)
 
