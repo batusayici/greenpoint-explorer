@@ -425,68 +425,62 @@ booking-calendar clause turns the BookThatApp blocker into a supply ask
 >
 > — Batu, Greenpoint
 
-**Perri / Shop Small Greenpoint** (`perri`, Mon 8/17 PM) — **first contact,
-not a re-invite.** Written 2026-08-17, revised same day after checking
-`shopsmallgreenpoint.carrd.co` (added to `.claude/settings.json`). She is not
-an org note in the Q1 sense: she has no events of her own on the map, so the
-opening hook is *credit* — her July newsletter is a cited source on 12 of our
-cards. Truth constraints, all verified against prod on 2026-08-17: the eight
-named businesses each carry a `Shop Small Greenpoint` source link, all eight
-`/e/` pages resolve on stoopwise.com, and the `adopt-a-business` +
-`g-advocacy-mta` cards cite her too. **The WonderMart is genuinely not on the
-map** — the offer to add it is real, not a device, and it is ordinary free
-coverage (business-model rule: coverage is never for sale), not an intro
-offer. If the send slips past the next ingest, re-check the eight names
-before sending; they are evergreen business cards with no expiry, so the
-count is stable, but the rule is that counts are re-derived, never remembered.
+**Perri / Shop Small Greenpoint** (`perri`) — **sent 2026-08-17, 4:41pm, to
+`shopsmallgp@gmail.com`. Replied same evening, 5:17pm** ("Love what you're
+building. Can we hop on a call sometime next week to chat about it? Or
+you're welcome to swing by my shop next week for an in person chat,
+Wednesday or Thursday (1-4pm)."). This resolves the open contact-channel gap
+below — `shopsmallgp@gmail.com` is now the verified address for Perri/SSG,
+add it to `channel-links.md` context if a future send needs it directly.
 
-**The real reason for this send: the Fall Retail Crawl.** SSG runs a
-bi-annual retail crawl (passport at participating shops, $10 spend per stamp,
-3 stamps = tote bag, 8 stamps = grand-prize drawing, weekday-only discounts
-at select shops) — the site names it "Next Event: Fall 2026" with **no
-specific dates yet**. That's the actual redistribution opportunity (roster
-criterion 1): a live map of every participating shop is something her crawl
-audience genuinely needs, and it's a reason for her to point her list/IG at
-Stoopwise that isn't "please share my thing." The email below offers to build
-that view once she has a roster — **don't promise a live crawl map before
-one exists**, the offer is conditional on her sending the participant list.
-This reopens the question of whether "Shop Small Greenpoint amplification"
-(currently a Tier 3 hold, above) should move up once the crawl has dates —
-Batu's call, not made here.
+Batu sent his own version rather than a draft iterated on here, landing the
+same core moves this doc converged on: lead with credit (the newsletter as a
+cited source, not a pitch), offer the crawl map as optional and conditional
+on her sending a lineup ("You can then decide whether this is something you
+might want to share"), no pressure. Full thread kept for the record:
 
-**Open gap: no verified contact channel.** Neither the carrd site nor prior
-docs have a working email or mailto for Perri or SSG — `docs/launch/
-2026-07-15-limited-launch-kit.md` says only "via Perri / SSG site." The
-`?src=perri` link and copy below are channel-agnostic (works as an email or
-an Instagram DM to @shopsmallgreenpoint) but **Batu needs to pick the actual
-send path** — this doc doesn't invent one.
-
-> **Subject:** Want Stoopwise to be the map for the Fall Crawl?
+> **Sent, Mon 8/17 4:41pm — Subject: An idea to support the Fall Shop Small Crawl**
 >
 > Hi Perri,
 >
-> I'm Batu — I live in Greenpoint. I built Stoopwise Greenpoint, a map and
-> feed of what's happening in the neighborhood each week: events, new
-> openings, deals, news. Everything is verified against a named source. Free,
-> no ads, not a business.
+> I'm Batu, a Greenpoint resident since 2013 and the person behind Stoopwise
+> [stoopwise.com/?src=perri](https://stoopwise.com/?src=perri): a new map
+> and feed of neighborhood local events, businesses, deals, and ways to get
+> involved.
 >
-> Your July newsletter is one of those sources. Eight of the businesses in it
-> are on the map now — Sailor + Siren, Core Press, Pooch's Parlor, Giggles &
-> Wiggles, Cookies N' Cream, Sotteatery, Socceria and Dreams on Command —
-> each credited to Shop Small Greenpoint, along with your G-shutdown pieces
-> on adopting a business and weighing in with the MTA.
+> Your recent newsletter helped me find and add several Greenpoint
+> businesses and resources related to the G shutdown, with each listing
+> credited and linked back to Shop Small Greenpoint.
 >
-> https://stoopwise.com/?src=perri
+> I also saw that you're planning the Fall Retail Crawl and thought
+> Stoopwise might be useful as a dedicated map (ie. people could easily find
+> the participating shops, passport stops, details, etc).
 >
-> I saw the Fall Retail Crawl is coming. I'd like Stoopwise to be the map
-> people use to find every shop on it — passport stops, hours, location, all
-> in one place, live and free. Send me the lineup whenever it's set and I'll
-> build it out, no cost, no strings. If it's useful, the link's yours to
-> share with your list or IG whenever you'd like — no pressure either way.
+> I'd be happy to put that together at no cost and work around whatever you
+> already have planned. You can then decide whether this is something you
+> might want to share with your community.
 >
-> One more thing: The WonderMart isn't on the map yet. Send me whatever
-> you'd want listed and it goes up — same for any member business, free,
-> permanently. And if anything's ever wrong, tell me and I'll fix it same
-> day.
+> If that sounds potentially helpful, I'd be glad to reconnect whenever the
+> crawl details are taking shape.
 >
-> — Batu, Greenpoint
+> Warmly,
+> Batu Sayici
+
+> **Reply, Mon 8/17 5:17pm — Perri**
+>
+> Hi Batu,
+>
+> Thanks for reaching out! Love what you're building.
+>
+> Can we hop on a call sometime next week to chat about it? Or you're
+> welcome to swing by my shop next week for an in person chat, Wednesday or
+> Thursday (1-4pm). LMK :)
+>
+> Best,
+> Perri
+
+**Status: awaiting Batu.** Pick call vs. in-person (her shop, The WonderMart
+on India Street, seems like the stronger option — she runs it solo and
+in-person tends to build more trust than a call) and a day, then reply. No
+crawl roster or dates exist yet, so nothing to prepare beyond the meeting
+itself — this is a relationship conversation, not a delivery.
