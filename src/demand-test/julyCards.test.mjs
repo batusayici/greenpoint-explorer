@@ -514,14 +514,25 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Thursday movie series, sourced off their own Instagram/Facebook posts
   // (lineup through 8/27) after Batu photographed the sandwich-board sign
   // outside 596 Manhattan Ave. 153 + 1 = 154.
-  assert.equal(seed.cards.length, 154);
+  // 2026-08-18 daily refresh: expiry deleted 3 cards that ended 8/17
+  // (flowercat-cozy-reading-0817, word-journal-club-0817,
+  // bcc-knitting-101-0817), then 7 adds. 154 − 3 + 7 = 158. Two are NYC Parks
+  // Movies Under the Stars screenings that rolled into the 14-day window
+  // (McCarren 8/26, McGolrick 8/29); one is a Troost night on 9/1 that the
+  // coverage gate had flagged as an uncarded date; one is the library's Chair
+  // Yoga on Monday 8/24, the branch's only program that day; and three come
+  // off Moon Bunny Aerial — the 13–16 weekend camp (8/29–30) and the 8–12
+  // two-day camp (9/1–2), both of which had been deferred as past-horizon and
+  // are now inside it, plus the back-to-school kids' pack discount that its
+  // newly persisted /discounts detail page states runs until Sept 4.
+  assert.equal(seed.cards.length, 158);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 83, "82 + Charlotte Patisserie's backyard movie nights (2026-08-17)");
-  assert.equal(count((c) => c.category === "discount"), 6, "6 after the 2026-08-17 expiry: −1 Marianella (sale ended), +1 Tend's already-reduced markdown");
+  assert.equal(count((c) => c.category === "event"), 86, "83 − 3 expired + 6 adds (2026-08-18): two park screenings, a Troost night, library chair yoga, two Moon Bunny camps");
+  assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 24, "22 after the 2026-08-17 expiry + the two new Troost nights");
+  assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 + the 9/1 Troost bill the coverage gate flagged (2026-08-18)");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -609,7 +620,13 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // midnight, so the expiry FLAG resolved to a drop), +1 Tend Greenpoint's
   // additional 20% off already-reduced stock, dated through 9/7 by its own
   // terms line and so correctly NOT recurring.
-  assert.equal(deals.length, 6);
+  // 2026-08-18: +1 — Moon Bunny Aerial's back-to-school discount on the kids'
+  // dance ($100 → $90) and aerial/acro ($160 → $144) packs. Dated by its own
+  // "until Sept 4th" line and so correctly NOT recurring. This is a fresh card,
+  // not the revived `moon-bunny-back-to-school` that expired 8/17 on its own
+  // 8/15 deadline — a different offer read off the newly persisted
+  // /discounts detail page.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -708,10 +725,14 @@ test("free-ness is designated only where the source states it (tester feedback #
     // tickets here". The 8/12 library card is NOT here: its garden club line
     // never says free. (library-tuesday-programs-0804 expired 2026-08-06.)
     // (library-tuesday-programs-0811 expired out 2026-08-12)
+    // 2026-08-18: two more Movies Under the Stars screenings, same NYC Parks
+    // boilerplate as the 8/19 one — "This event is FREE and open to the public."
+    "mccarren-movies-guardians-2-0826",
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
     // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
+    "mcgolrick-movies-eternal-sunshine-0829",
     "mcgolrick-movies-guardians-0819",
     // 2026-08-15: the BPL North Brooklyn community calendar states it twice in
     // the lines the card quotes — the listing title "🛶 Free canoe rides on
@@ -819,6 +840,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // Thursday mornings recur weekly, the Friday evenings are 8/14 and 8/28
     // only, and a recurring Friday card would have invented an 8/21 sitting.
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
+    // 2026-08-18: the branch's Monday chair-yoga hour — "an accessible yoga
+    // class suitable for adults of all ages and abilities", the movement cluster.
+    "library-chair-yoga-0824",
     "longevity-stick-transmitter-0828",
     "longevity-stick-transmitter-thursdays",
     "moon-bunny-monthly-plans",
@@ -1096,6 +1120,9 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     //  email closed the sale at midnight on 8/16. moon-bunny-back-to-school
     //  expired the same run.)
     "marianella-subscription-box",
+    // 2026-08-18: a kids DEAL double-files family_kids + deals_memberships
+    // (2026-08-03, PR #18) — 10% off the kids' dance and aerial/acro packs.
+    "moon-bunny-back-to-school-2026",
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
     "selformer-memberships",

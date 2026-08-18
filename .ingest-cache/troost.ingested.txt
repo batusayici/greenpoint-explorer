@@ -189,6 +189,12 @@ start.date: 2026-09-26
 end.date: 2026-09-27
 htmlLink: https://www.google.com/calendar/event?eid=aG92cWlvaWk3ZTE2ZmM3NzRiZms1ZmtjN25fMjAyNjA5MjYgdHJvb3N0bGl2ZUBt
 
+summary: LOUIS PRINCE
+description: Real Life Music
+start.date: 2026-09-27
+end.date: 2026-09-28
+htmlLink: https://www.google.com/calendar/event?eid=XzY4b2syYzI2Nm9zNGFiOW83NHI0NmI5azZwMjQ0YmExNnNzNDZiOW02c3AzNGhhMTZncWs0ZTluNjggdHJvb3N0bGl2ZUBt
+
 summary: ROB HEATH / NICE TRY KID
 description: Rob Heath's Nice Try, Kid!: a monthly night of unapproved and experimental music
 start.date: 2026-09-28
@@ -215,9 +221,3 @@ summary: HERB LORE
 start.date: 2026-10-04
 end.date: 2026-10-05
 htmlLink: https://www.google.com/calendar/event?eid=M3Fkb2RsZWExcGloN2l2c2N1ZTRzbnYyZDcgdHJvb3N0bGl2ZUBt
-
-summary: TIRED HORSES
-description: psychedelic indie jazz quintet
-start.date: 2026-10-05
-end.date: 2026-10-06
-htmlLink: https://www.google.com/calendar/event?eid=NmpwZ3BjcXFubzhwazl2Y3ZpdmZvbHAwcXBfMjAyNjEwMDUgdHJvb3N0bGl2ZUBt

@@ -346,7 +346,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Salmon Candy (12 oz.)
 Hot Smoked
 20 reviews

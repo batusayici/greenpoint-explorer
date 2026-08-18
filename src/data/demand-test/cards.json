@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-17",
+  "version": "2026-08-18",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -1951,9 +1951,6 @@
           "url": "https://brooklyncraftcompany.com/collections/all-workshops"
         }
       ],
-      "relatedCardIds": [
-        "bcc-knitting-101-0817"
-      ],
       "recurrence": {
         "days": [
           "sat"
@@ -2583,48 +2580,6 @@
       "audience": [
         "resident"
       ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "flowercat-cozy-reading-0817",
-      "title": "Cozy Reading Night with Yellow Peril Books",
-      "kicker": "$10 with a drink, bring a book",
-      "summary": "A quiet reading evening run with Yellow Peril Books, who also sell titles on site. The ticket covers a drink of your choice.",
-      "startsAt": "2026-08-17T18:30:00-04:00",
-      "endsAt": "2026-08-17T20:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "sourceQuote": "Tickets are $10 and include a beverage of your choice from Flower Cat.",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.728678,
-      "lng": -73.954258
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
       "free": true,
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
@@ -2661,95 +2616,6 @@
       ],
       "lat": 40.724458,
       "lng": -73.943361
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-12",
-      "locationName": "WORD Bookstore",
-      "address": "126 Franklin St, Brooklyn, NY 11222",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "learn_more",
-          "url": "https://withfriends.co/word/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "WORD upcoming events",
-          "url": "https://withfriends.co/word/events",
-          "publisher": "WORD Bookstore",
-          "date": "2026-08-07"
-        }
-      ],
-      "id": "word-journal-club-0817",
-      "title": "Journal Club at WORD",
-      "kicker": "Monday evening journaling group",
-      "startsAt": "2026-08-17T19:00:00-04:00",
-      "endsAt": "2026-08-17T23:59:00-04:00",
-      "summary": "A standing Monday-night group at the Franklin Street bookshop. Held downstairs, reached by a flight of stairs.",
-      "sourceQuote": "Monday, August 17 at 7:00 PM\nJournal Club\nBrooklyn, NY",
-      "lat": 40.729072,
-      "lng": -73.957317
-    },
-    {
-      "id": "bcc-knitting-101-0817",
-      "category": "event",
-      "title": "Knitting 101",
-      "kicker": "Monday-morning knitting for beginners",
-      "startsAt": "2026-08-17T11:00:00-04:00",
-      "endsAt": "2026-08-17T23:59:00-04:00",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "filters": [
-        "arts_culture"
-      ],
-      "summary": "A second run is on the books for the Saturday after, if a weekday does not work.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/products/open-beginner-knitting"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
-          "url": "https://www.brooklyncraftcompany.com/products/open-beginner-knitting",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-06"
-        }
-      ],
-      "sourceQuote": "Knitting 101 … In Greenpoint: … Mon, 8/17 at 11am … Sat, 8/22 at 11am",
-      "relatedCardIds": [
-        "bcc-kids-sewing-camp"
-      ],
-      "lat": 40.730461,
-      "lng": -73.953114
     },
     {
       "category": "event",
@@ -4192,7 +4058,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-18",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "moon-bunny-monthly-plans",
       "title": "Moon Bunny monthly class plans",
@@ -4230,7 +4096,10 @@
       "relatedCardIds": [
         "moon-bunny-weekday-camp-8-12-0817",
         "moon-bunny-two-day-camp-8-12-0824",
-        "moon-bunny-two-day-camp-4-7-0827"
+        "moon-bunny-two-day-camp-4-7-0827",
+        "moon-bunny-weekend-camp-13-16-0829",
+        "moon-bunny-two-day-camp-8-12-0901",
+        "moon-bunny-back-to-school-2026"
       ]
     },
     {
@@ -4320,10 +4189,7 @@
           "date": "2026-08-06"
         }
       ],
-      "sourceQuote": "Knitting 101 … In Greenpoint: Mon, 8/17 at 11am … Sat, 8/22 at 11am",
-      "relatedCardIds": [
-        "bcc-knitting-101-0817"
-      ]
+      "sourceQuote": "Knitting 101 … In Greenpoint: Mon, 8/17 at 11am … Sat, 8/22 at 11am"
     },
     {
       "locationName": "Leaves",
@@ -5316,7 +5182,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-13",
+      "updatedAt": "2026-08-18",
       "filters": [
         "family_kids"
       ],
@@ -5346,9 +5212,9 @@
       "title": "Week-Long Circus Camp for 8–12s at Moon Bunny Aerial",
       "kicker": "Lyra, silks, hammock, trapeze",
       "summary": "Moon Bunny's longest camp format for the 8-to-12 group, threading ground acro, juggling and flow props plus games and themed days through the full week.",
-      "startsAt": "2026-08-17T09:00:00-04:00",
+      "startsAt": "2026-08-18T09:00:00-04:00",
       "endsAt": "2026-08-21T15:00:00-04:00",
-      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-17T13:00:00.000Z\nend_at: 2026-08-17T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.\nThroughout the week, participants will enjoy games, themed days, and opportunities to build",
+      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-18T13:00:00.000Z\nend_at: 2026-08-18T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.\nThroughout the week, participants will enjoy games, themed days, and opportunities to build",
       "lat": 40.736575,
       "lng": -73.952327
     },
@@ -6995,7 +6861,9 @@
     {
       "id": "action-city-fnb-armory-0818",
       "category": "event",
-      "audience": ["resident"],
+      "audience": [
+        "resident"
+      ],
       "free": false,
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
@@ -7008,7 +6876,9 @@
       "summary": "A ticketed Classic Constructed tournament at the Manhattan Ave comic shop. Tickets are limited and already running low.",
       "startsAt": "2026-08-18T19:00:00-04:00",
       "endsAt": "2026-08-18T22:00:00-04:00",
-      "filters": ["games"],
+      "filters": [
+        "games"
+      ],
       "locationName": "Action City Comics",
       "address": "570 Manhattan Ave, Brooklyn, NY 11222",
       "actions": [
@@ -7033,7 +6903,9 @@
     {
       "id": "action-city-one-piece-weds-0819",
       "category": "event",
-      "audience": ["resident"],
+      "audience": [
+        "resident"
+      ],
       "free": false,
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
@@ -7046,7 +6918,9 @@
       "summary": "A ticketed One Piece card game tournament at the Manhattan Ave comic shop. Tickets are limited and already running low.",
       "startsAt": "2026-08-19T19:00:00-04:00",
       "endsAt": "2026-08-19T22:00:00-04:00",
-      "filters": ["games"],
+      "filters": [
+        "games"
+      ],
       "locationName": "Action City Comics",
       "address": "570 Manhattan Ave, Brooklyn, NY 11222",
       "actions": [
@@ -7071,7 +6945,9 @@
     {
       "id": "action-city-one-piece-op17-prerelease-0826",
       "category": "event",
-      "audience": ["resident"],
+      "audience": [
+        "resident"
+      ],
       "free": false,
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
@@ -7084,7 +6960,9 @@
       "summary": "A ticketed prerelease tournament for One Piece's OP-17 set at the Manhattan Ave comic shop. Tickets are already sold out as of this listing.",
       "startsAt": "2026-08-26T19:00:00-04:00",
       "endsAt": "2026-08-26T22:00:00-04:00",
-      "filters": ["games"],
+      "filters": [
+        "games"
+      ],
       "locationName": "Action City Comics",
       "address": "570 Manhattan Ave, Brooklyn, NY 11222",
       "actions": [
@@ -7162,6 +7040,319 @@
       ],
       "lat": 40.723129,
       "lng": -73.950141
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-18",
+      "updatedAt": "2026-08-18",
+      "id": "mccarren-movies-guardians-2-0826",
+      "category": "event",
+      "free": true,
+      "title": "Movies Under the Stars: Guardians of the Galaxy Vol. 2",
+      "kicker": "Free outdoor screening at McCarren",
+      "summary": "NYC Parks and the Mayor's Office of Media and Entertainment bring the 2017 sequel to the park. Rated PG-13. Grab a blanket; no ticket needed.",
+      "startsAt": "2026-08-26T20:00:00-04:00",
+      "endsAt": "2026-08-26T22:30:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "McCarren Park",
+      "address": "Driggs Ave & Lorimer St, Brooklyn, NY 11222",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY",
+      "sourceQuote": "## Movies Under the Stars: Guardians of The Galaxy Vol. 2 (2017)\nparknames: McCarren Park\nstartdate: 2026-08-26\nstarttime: 8:00 pm\nendtime: 10:30 pm\nlocation: Driggs Avenue and Lorimer Street (in McCarren Park)\nMovies begin at dusk. This event is FREE and open to the public.",
+      "actions": [
+        {
+          "label": "Event page",
+          "type": "learn_more",
+          "url": "http://www.nycgovparks.org/events/2026/08/26/movies-under-the-stars-guardians-of-the-galaxy-vol-2-2017"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NYC Parks events",
+          "url": "https://www.nycgovparks.org/events",
+          "publisher": "NYC Parks",
+          "date": "2026-08-18"
+        }
+      ],
+      "lat": 40.721159,
+      "lng": -73.952879
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-18",
+      "updatedAt": "2026-08-18",
+      "id": "mcgolrick-movies-eternal-sunshine-0829",
+      "category": "event",
+      "free": true,
+      "title": "Movies Under the Stars: Eternal Sunshine of the Spotless Mind",
+      "kicker": "Free outdoor screening, rated R",
+      "summary": "Charlie Kaufman's story of a man who has all memories of his girlfriend erased. NYC Parks rates it R and calls it intended for mature audiences.",
+      "startsAt": "2026-08-29T20:00:00-04:00",
+      "endsAt": "2026-08-29T22:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Msgr McGolrick Park",
+      "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
+      "sourceQuote": "## Movies Under the Stars: Eternal Sunshine of the Spotless Mind\nparknames: Msgr. McGolrick Park\nstartdate: 2026-08-29\nstarttime: 8:00 pm\nendtime: 10:30 pm\nlocation: Lawn Area - Monitor Street and Driggs Avenue (in Msgr. McGolrick Park)\nRated R\nMovies begin at dusk. This event is FREE and open to the public.",
+      "actions": [
+        {
+          "label": "Event page",
+          "type": "learn_more",
+          "url": "http://www.nycgovparks.org/events/2026/08/29/movies-under-the-stars-eternal-sunshine-of-the-spotless-mind"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NYC Parks events",
+          "url": "https://www.nycgovparks.org/events",
+          "publisher": "NYC Parks",
+          "date": "2026-08-18"
+        }
+      ],
+      "lat": 40.724458,
+      "lng": -73.943361
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-18",
+      "updatedAt": "2026-08-18",
+      "id": "troost-phillip-santos-0901",
+      "category": "event",
+      "free": false,
+      "title": "Phillip Santos, Michael Eaton and Evan Palmer at Troost",
+      "kicker": "Three players, no set time announced",
+      "summary": "Troost's own Google Calendar lists Phillip Santos, Michael Eaton and Evan Palmer by title only — no description and no ticket link.",
+      "startsAt": "2026-09-01T00:00:00-04:00",
+      "endsAt": "2026-09-01T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "sourceQuote": "summary: Phillip Santos, Michael Eaton, Evan Palmer\nstart.date: 2026-09-01",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-18"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-18",
+      "updatedAt": "2026-08-18",
+      "id": "library-chair-yoga-0824",
+      "category": "event",
+      "free": false,
+      "title": "Chair Yoga for Adults at Greenpoint Library",
+      "kicker": "An accessible chair-based yoga hour",
+      "summary": "Stefanie Mihoulides leads a chair-focused sequence with guided breathwork. The branch bills it as suitable for adults of all ages and abilities.",
+      "startsAt": "2026-08-24T13:30:00-04:00",
+      "endsAt": "2026-08-24T14:30:00-04:00",
+      "filters": [
+        "wellness"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "sourceQuote": "ts_title: Chair Yoga for Adults\nds_event_start_date: 2026-08-24T17:30:00Z\nds_event_end_date: 2026-08-24T18:30:00Z\nss_event_location: Greenpoint Library\nss_event_age: Adults\nts_body: Join us for Chair Yoga + Mindfulness with Stefanie Mihoulides! This is an accessible yoga class suitable for adults of all ages and abilities. Connect breath to movement as you build strength and mobility through a fundamental chair-focused sequence with guided breathwork.",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-18"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-18",
+      "updatedAt": "2026-08-18",
+      "id": "moon-bunny-weekend-camp-13-16-0829",
+      "category": "event",
+      "free": false,
+      "title": "Weekend Circus Camp for 13–16s at Moon Bunny Aerial",
+      "kicker": "A teen weekend on the aerial rig",
+      "summary": "The older bracket gets its own two-day session at the McGuinness Blvd studio, which runs full- and half-day camps for 4-to-7s, 7-to-12s and 13-to-17s.",
+      "startsAt": "2026-08-29T09:00:00-04:00",
+      "endsAt": "2026-08-30T15:00:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "lat": 40.736575,
+      "lng": -73.952327,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "sourceQuote": "name: Weekend Camp 13-16 yrs old\nstart_at: 2026-08-29T13:00:00.000Z\nend_at: 2026-08-29T19:00:00.000Z\n\nname: Weekend Camp 13-16 yrs old\nstart_at: 2026-08-30T13:00:00.000Z\nend_at: 2026-08-30T19:00:00.000Z\n\nWe have full day and half day options for 4-7 years old, 7-12 years old, and 13-17 years old.",
+      "actions": [
+        {
+          "label": "Camp details",
+          "type": "learn_more",
+          "url": "https://moonbunnyaerial.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial events",
+          "url": "https://moonbunnyaerial.com",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-18"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-18",
+      "updatedAt": "2026-08-18",
+      "id": "moon-bunny-two-day-camp-8-12-0901",
+      "category": "event",
+      "free": false,
+      "title": "Two-Day Circus Camp for 8–12s at Moon Bunny Aerial",
+      "kicker": "Two days on aerials, acro and juggling",
+      "summary": "The shorter camp format for the 8-to-12 group, run over two consecutive days. The studio states no prior experience is required.",
+      "startsAt": "2026-09-01T09:00:00-04:00",
+      "endsAt": "2026-09-02T15:00:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "lat": 40.736575,
+      "lng": -73.952327,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-09-01T13:00:00.000Z\nend_at: 2026-09-01T19:00:00.000Z\n\nname: Two Day Camp 8-12 yrs old\nstart_at: 2026-09-02T13:00:00.000Z\nend_at: 2026-09-02T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\nNo prior experience is required.",
+      "actions": [
+        {
+          "label": "Camp details",
+          "type": "learn_more",
+          "url": "https://moonbunnyaerial.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial events",
+          "url": "https://moonbunnyaerial.com",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-18"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-18",
+      "updatedAt": "2026-08-18",
+      "id": "moon-bunny-back-to-school-2026",
+      "category": "discount",
+      "free": false,
+      "title": "Back to School discount at Moon Bunny Aerial",
+      "kicker": "10% off kids' class packs until Sept 4",
+      "summary": "The kids' dance pack drops from $100 to $90 and the aerial/acro pack from $160 to $144. Both formats also include a free trial class.",
+      "endsAt": "2026-09-04T23:59:00-04:00",
+      "filters": [
+        "family_kids",
+        "deals_memberships"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "lat": 40.736575,
+      "lng": -73.952327,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "sourceQuote": "Kids Dance ($100)\nFree trial class\nBack to School Discount - $90 (10% off until Sept 4th)\nKids Aerial, Kids Acro ($160)\nFree trial class\nBack to School Discount - $144 (10% off until Sept 4th)",
+      "actions": [
+        {
+          "label": "See pricing",
+          "type": "learn_more",
+          "url": "https://www.moonbunnyaerial.com/discounts"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial — Pricing/Discounts",
+          "url": "https://www.moonbunnyaerial.com/discounts",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-18"
+        }
+      ]
     }
   ]
 }

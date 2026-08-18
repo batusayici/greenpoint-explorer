@@ -1,24 +1,4 @@
 name: Weekday Camp 8-12 yrs old
-start_at: 2026-08-17T13:00:00.000Z
-end_at: 2026-08-17T19:00:00.000Z
-
-name: Open Gym
-start_at: 2026-08-17T21:30:00.000Z
-end_at: 2026-08-17T22:30:00.000Z
-
-name: Flexibility
-start_at: 2026-08-17T22:30:00.000Z
-end_at: 2026-08-17T23:30:00.000Z
-
-name: Hula Hoop 101
-start_at: 2026-08-17T23:30:00.000Z
-end_at: 2026-08-18T00:30:00.000Z
-
-name: Lyra
-start_at: 2026-08-18T00:30:00.000Z
-end_at: 2026-08-18T01:30:00.000Z
-
-name: Weekday Camp 8-12 yrs old
 start_at: 2026-08-18T13:00:00.000Z
 end_at: 2026-08-18T19:00:00.000Z
 
@@ -397,6 +377,26 @@ end_at: 2026-09-17T21:00:00.000Z
 name: Kids Aerial
 start_at: 2026-09-17T21:00:00.000Z
 end_at: 2026-09-17T22:00:00.000Z
+
+name: Kids K-Pop Dance
+start_at: 2026-09-17T21:15:00.000Z
+end_at: 2026-09-17T22:15:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-18T20:00:00.000Z
+end_at: 2026-09-18T21:00:00.000Z
+
+name: Queer Flips Open Gym
+start_at: 2026-09-19T22:00:00.000Z
+end_at: 2026-09-19T23:30:00.000Z
+
+name: Full Day Kids Camp - Yom Kippur
+start_at: 2026-09-21T13:00:00.000Z
+end_at: 2026-09-21T19:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-21T20:00:00.000Z
+end_at: 2026-09-21T21:00:00.000Z
 
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial

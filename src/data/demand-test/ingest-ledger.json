@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-17T09:45:00-04:00",
+  "lastRunAt": "2026-08-18T09:45:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1360,6 +1360,13 @@
       "publisher": "Track V ingest (Monday full)",
       "processedAt": "2026-08-17",
       "outcome": "SHIPPED 4 adds, 5 updates, 1 delete, 16 expiries; deck 163 → 150 (-8.0%, inside ±40%). Expiry RAN (every path). Fetch exit 0, reach 53/61 (13% error, ceiling 15%). NOT a first Monday (that was 8/3), so no --include-monthly, no roster-discovery sweep, no tally-pull. 8 errored sources: 7 are the known Chromium browser-connect-reset fault (greenpoint-comedy-club, word-bookstore, leaves-bookstore, happy-medium + the JS-thin auto sources sunshine-laundromat, brooklyn-youth-ballet, greenpoint-trash-club); the 8th, tend-greenpoint, is a ROSTER DEFECT — fetch: \"embedded\" with no `attr` — proposed for a human-gated roster fix. No EGRESS DENIED block; one R1 fetch (marianella.co/pages/store) reached HTTP 200, so no host to name. Gmail pass RAN. holds: 0 new-judgment · 0 rule-miss · 0 source-blocked. Notable finding: a flipped is_event_canceled flag is invisible to the line-set diff — see watchItems."
+    },
+    {
+      "id": "RUN-DAILY-THIN-2026-08-18",
+      "kind": "run",
+      "publisher": "Track V ingest (daily thin)",
+      "processedAt": "2026-08-18",
+      "outcome": "SHIPPED 7 adds, 3 expiries; deck 154 → 158 (+2.6%, inside ±40%). Expiry RAN. Fetch exit 0, reach 53/62 (15% error, at the ceiling but not over). 9 errored sources: 8 are the known Chromium browser-connect-reset fault (greenpoint-comedy-club, word-bookstore, leaves-bookstore, happy-medium, action-city-comics + the JS-thin auto sources sunshine-laundromat, brooklyn-youth-ballet, greenpoint-trash-club); the 9th is tend-greenpoint, still the roster defect first reported 2026-08-17 (fetch: \"embedded\" with no `embedded: { attr }` block, so the fetcher refuses before opening a socket) — a roster change and so human-gated, not applied here. No EGRESS DENIED block. Adds: mccarren-movies-guardians-2-0826 and mcgolrick-movies-eternal-sunshine-0829 (NYC Parks screenings that rolled into the window); troost-phillip-santos-0901 (the 9/1 date the coverage gate had flagged as a GAP — that line is now closed); library-chair-yoga-0824 (the branch's only Monday program, so a single card rather than a grouped day card); moon-bunny-weekend-camp-13-16-0829 and moon-bunny-two-day-camp-8-12-0901 (both previously deferred as past-horizon, now inside it); moon-bunny-back-to-school-2026 (kids' pack discount off the newly persisted /discounts detail page, stated through Sept 4). holds: 0 new-judgment · 0 rule-miss · 0 source-blocked. Gmail pass RAN: WORD's August newsletter carries three events, two Jersey City and one already elapsed, so nothing cardable; the Greenpointers digest, the GUNK fundraiser recap and the McGolrick Bird Club post carried no new dated Greenpoint supply. Skipped on geography: the Greenpointers 8/17 Colombia earthquake donation drop-off, which is at 5 Debevoise St in Williamsburg — the civic-nearby exception is for Greenpoint-subject items and this one's subject is citywide relief."
     }
   ],
   "senderRegistry": [
@@ -1761,7 +1768,7 @@
     },
     {
       "name": "Moon Bunny camps past the 14-day horizon (8/29-30 and 9/1)",
-      "note": "DEFERRED 2026-08-13, horizon only — all three are sourced and in area, nothing is blocked. Weekend Camp 13-16: 'start_at: 2026-08-29T13:00:00.000Z' + 8/30, and Two Day Camp 8-12: 'start_at: 2026-09-01T13:00:00.000Z' (its pair is not in the feed window yet). Horizon was 8/27 and the reservoir7-14d read 23 against a floor of 10, so there was no supply reason to reach past it. moon-bunny-aerial is a json web source re-snapshotted every run, so these roll in on their own — this entry exists so the deferral is visible, not because they need rescuing. NOTE the 13-16 age group has NO card in the deck at all: the 8/12-14 Weekday Camp 13-16 was mid-run and unjoinable by the time this run saw it, so 8/29-30 is the first cardable one. Condition to promote: the run date reaches 8/15 or later.",
+      "note": "RESOLVED 2026-08-18 — all three are now inside the window and carded: the Weekend Camp 13-16 on 8/29–30 is `moon-bunny-weekend-camp-13-16-0829` and the Two Day Camp 8-12 starting 9/1 is `moon-bunny-two-day-camp-8-12-0901` (its second day, 9/2, sits one day past the horizon, which is fine — a multi-day card is placed by its start). Both carry the per-day 9am–3pm sitting per the 2026-08-13 multi-day rule, not a flattened span. DEFERRED 2026-08-13, horizon only — all three are sourced and in area, nothing is blocked. Weekend Camp 13-16: 'start_at: 2026-08-29T13:00:00.000Z' + 8/30, and Two Day Camp 8-12: 'start_at: 2026-09-01T13:00:00.000Z' (its pair is not in the feed window yet). Horizon was 8/27 and the reservoir7-14d read 23 against a floor of 10, so there was no supply reason to reach past it. moon-bunny-aerial is a json web source re-snapshotted every run, so these roll in on their own — this entry exists so the deferral is visible, not because they need rescuing. NOTE the 13-16 age group has NO card in the deck at all: the 8/12-14 Weekday Camp 13-16 was mid-run and unjoinable by the time this run saw it, so 8/29-30 is the first cardable one. Condition to promote: the run date reaches 8/15 or later.",
       "addedAt": "2026-08-13"
     },
     {
@@ -1789,6 +1796,26 @@
       "name": "Greenpoint Library — a flipped is_event_canceled flag is INVISIBLE to the diff engine",
       "note": "Found 2026-08-17. Four \"Free English Class\" 2pm sessions (8/18, 8/20, 8/25, 8/27) and the 8/28 \"After School Movie\" flipped from is_event_canceled: 0 to 1 between the last ingested baseline and this run's snapshot — and the fetch reported the source as changed +5/-7, with the diff showing ONLY the three new 8/28 records. The reason is structural: the diff is a LINE-SET diff, the literal line \"is_event_canceled: 1\" already occurs elsewhere in the same snapshot, so flipping a fifth record to it adds no new line and produces no diff. Four live grouped cards were advertising a canceled class as a result. MITIGATION USED THIS RUN: parse the snapshot's ts_title/is_event_canceled pairs directly and compare against <id>.ingested.txt rather than trusting the diff. This is a fact, not a rule — but it generalises to any field-labelled feed whose status flags are low-cardinality (feather.rsvp, the BPL Solr index, Squarespace JSON), so check status flags by parse, not by diff.",
       "addedAt": "2026-08-17"
+    },
+    {
+      "name": "Troost — LOUIS PRINCE / Real Life Music, Sun 9/27 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from troost.txt: \"summary: LOUIS PRINCE\\ndescription: Real Life Music\\nstart.date: 2026-09-27\\nend.date: 2026-09-28\". Troost is a web source re-snapshotted every run, so it would normally roll in on its own — but this run marks its baseline, so the line stops being a diff. Recorded here so a later run cards it when 9/27 enters the window. Same all-day-sentinel shape as every other Troost card (the venue calendar states no clock time).",
+      "addedAt": "2026-08-18"
+    },
+    {
+      "name": "Lockwood — MetroCard Mystery Weekend, 9/5–9/7 11am–8pm",
+      "note": "SOURCE-BLOCKED and past horizon, the same shape as the Spark Session Night hold. The whole item is six lines of SociableKit feed — \"name: MetroCard Mystery Weekend\\nstart_date_raw: 2026-09-05\\nstart_time: 11:00 am\\nend_date_raw: 2026-09-07\\nend_time: 8:00 pm\\nhtml_link: https://www.facebook.com/events/4525018494443102\" — with no venue, no address and nothing stating what it is, and the only link is a login-walled Facebook event page R1 cannot open. Carding it would mean inventing both the location and what the event is. WHAT WOULD RESOLVE IT: Lockwood publishing the detail anywhere fetchable, or a read from an interactive session where the FB page opens.",
+      "addedAt": "2026-08-18"
+    },
+    {
+      "name": "Archestratus — \"SAT AUG 22 / Archestratus Hang at the Greenmarket\"",
+      "note": "SOURCE-BLOCKED 2026-08-18, found while re-sourcing archestratus-closed for the quotes gate. The events page states the item as exactly that one line — no venue named beyond \"the Greenmarket\", no address, no time, and \"Regular price\" with no figure. Greenpoint has two farmers markets in the deck (McCarren on Saturdays, McGolrick on Sundays), so \"the Greenmarket\" on a Saturday POINTS at McCarren but the source never says it — carding it would mean inventing the location, which is the one thing the truth rules forbid. WHAT WOULD RESOLVE IT: Archestratus naming the market and a time, on their page or in the Lipari Island newsletter.",
+      "addedAt": "2026-08-18"
+    },
+    {
+      "name": "Moon Bunny — the feather.rsvp feed drops a multi-day camp's past days, which breaks the quotes gate mid-camp",
+      "note": "RECURRING MECHANIC, first hit 2026-08-18. moon-bunny-weekday-camp-8-12-0817 was authored 8/11 quoting its 8/17 first-day instance; the API serves UPCOMING instances only, so on 8/18 that line no longer existed in the snapshot and ingest:quotes failed the card — a correct, live card broken by its evidence rolling forward, not by anything wrong with it. Resolved by re-sourcing to the days the feed still states (startsAt moved 8/17 → 8/18, the quote fragment likewise); the camp still runs through 8/21 and the card says only what the source says today. EXPECT THIS AGAIN on every multi-day Moon Bunny card the day after it starts. The durable fix would be persisting each camp instance into the snapshot at authoring time so past days stay checkable — that is a fetcher/roster change, so human-gated, not applied here.",
+      "addedAt": "2026-08-18"
     }
   ],
   "sourcePulse": {
@@ -1798,8 +1825,8 @@
     "film-noir-cinema": "2026-08-14",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-11",
-    "greenpoint-library": "2026-08-14",
-    "bpl-north-brooklyn-calendar": "2026-08-14",
+    "greenpoint-library": "2026-08-17",
+    "bpl-north-brooklyn-calendar": "2026-08-17",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-07",
@@ -1810,15 +1837,15 @@
     "dance-space-ny": "2026-07-24",
     "yaro-studios": "2026-08-07",
     "yaro-kids-clay": "2026-08-07",
-    "moon-bunny-aerial": "2026-08-12",
+    "moon-bunny-aerial": "2026-08-17",
     "brooklyn-craft-company": "2026-08-07",
     "last-place-on-earth": "2026-07-26",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-16",
-    "nycparks-greenpoint": "2026-08-16",
-    "troost": "2026-08-16",
+    "nycparks-greenpoint": "2026-08-17",
+    "troost": "2026-08-17",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-14",
     "town-square-bk": "2026-08-06",
@@ -1848,7 +1875,8 @@
     "macha-studio": "2026-08-11",
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
-    "tend-greenpoint": "2026-08-16"
+    "tend-greenpoint": "2026-08-16",
+    "action-city-comics": "2026-08-16"
   },
   "coverageExplanations": [
     {
@@ -2029,9 +2057,9 @@
     {
       "sourceId": "archestratus",
       "gapKey": "SILENT",
-      "reason": "The shop CLOSED — this is a permanent state, not a quiet source, and the snapshot says so in its own banner: 'OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE'. That closure is already the deck's card for this source (archestratus-closed). What remains on the events page is online-only and therefore unmappable: 'SUN AUG 30 via ZOOM / A Cooking Class on Arancine' and 'SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)' — a Zoom session has no Greenpoint location to pin. The one physical item is the wind-down sale, 'PAIGE IS MOVING! A SALE', with no dates stated anywhere in the 2KB snapshot. So the source yielding nothing since 2026-07-24 is the correct outcome, and the pulse will stay silent by design. WHAT WOULD CHANGE IT: a dated in-person event, or the sale acquiring an end date.",
-      "addedAt": "2026-08-15",
-      "expiresAt": "2026-08-29"
+      "reason": "The shop CLOSED — a permanent state, not a quiet source, and the snapshot says so in its own banner: 'OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE'. That closure is already the deck's card for this source (archestratus-closed). CORRECTED 2026-08-18: the prior wording said the only physical item was an undated sale, which this run's snapshot contradicts — it now carries 'SAT AUG 22 / Archestratus Hang at the Greenmarket', a dated in-person item inside the window. It is NOT carded, and deliberately: the line names no venue (which greenmarket), no address and no time, and picking the McCarren greenmarket because the deck already has one would be inventing the location. It is in watchItems. Everything else on the events page is online-only and unmappable: 'SUN AUG 30 via ZOOM / A Cooking Class on Arancine' and 'SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)'. The wind-down sale, 'PAIGE IS MOVING! A SALE', still states no dates anywhere in the snapshot. WHAT WOULD CHANGE IT: the Aug 22 hang acquiring a stated venue and time, or a new dated in-person event.",
+      "addedAt": "2026-08-18",
+      "expiresAt": "2026-09-01"
     },
     {
       "sourceId": "tend-greenpoint",
@@ -2060,6 +2088,13 @@
       "reason": "THE OUTLET HAS STOPPED PUBLISHING, verified against this run's 72KB snapshot. Its post dates run \"Posted on June 28, 2026\", then June 2, then March 15 — nothing in the seven weeks since, so the silence since our last card (2026-07-26) is the source's, not the parser's. What it did publish most recently is syndicated advertorial by a single byline (\"Who Inherits When Family Records Are Lost\", \"USA Today Featured a Lease Model That Beats Buying\", \"How To Fight Back When Workers Comp is Denied\" — all \"By Dan Rose\"), i.e. not Greenpoint news and not cardable under the news rules, which require a Greenpoint-side story verified at its named primary source. WHAT WOULD CHANGE IT: a new Greenpoint civic/land-use story appearing on the site.",
       "addedAt": "2026-08-17",
       "expiresAt": "2026-08-31"
+    },
+    {
+      "sourceId": "action-city-comics",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Browser-dependent source (roster `fetch: \"browser\"`, a Square Online/Weebly Vue SPA whose events block only renders in a browser), and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-18 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside all 8 other browser-path sources, while plain fetch reached the control URL through the same proxy without trouble — so it is not an allowlist gap. Onboarded 2026-08-17 from an interactive session, which is why the deck already carries its three ticketed tournament cards (action-city-fnb-armory-0818, action-city-one-piece-weds-0819, action-city-one-piece-op17-prerelease-0826) while the routine has never produced a snapshot. This is 'we cannot read the source', never 'the source is quiet'. WHAT WOULD CHANGE IT: the Chromium CONNECT fault being fixed at the proxy relay.",
+      "addedAt": "2026-08-18",
+      "expiresAt": "2026-09-01"
     }
   ]
 }
