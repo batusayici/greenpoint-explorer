@@ -4,7 +4,7 @@ import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, 
 import { followTarget, followRef, followSlotIndex } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
-import { formatWindow, isSpan, recurrenceLabel } from "./eventWindow.js";
+import { formatWindow, isSpan, recurrenceLabel, rowTime } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 import { sourceCheckedDate, formatChecked } from "./sourceChecked.js";
 import stamp from "../data/demand-test/freshness-stamp.json";
@@ -171,18 +171,6 @@ const DEAL_END_FMT = new Intl.DateTimeFormat("en-US", {
 // Row-level start time (2026-07-15 review: time-sensitive cards must scan
 // without a tap). The day is carried by the group header; the row carries the
 // clock. A 00:00 start is the all-day sentinel — no fake time reaches a row.
-const ROW_TIME_FMT = new Intl.DateTimeFormat("en-US", {
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/New_York",
-});
-const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false,
-  timeZone: "America/New_York",
-});
-
 // 2026-08-08: a recurring card used to get NO clock, which was right when
 // every one of them sat on the shelf — a bare "8 PM" under no date says
 // nothing. Now that a card stating `recurrence.days` is placed in its real day
@@ -190,13 +178,11 @@ const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
 // what made these rows read differently from the one-offs beside them. A
 // recurring card with no stated day is still shelf-bound, so it still gets no
 // clock.
-function rowTime(card) {
-  if (card.startsAt == null) return null;
-  if (card.recurring && !(card.recurrence?.days?.length > 0)) return null;
-  const d = new Date(card.startsAt);
-  if (CLOCK_FMT.format(d) === "00:00") return null; // all-day sentinel
-  return ROW_TIME_FMT.format(d).replace(":00", "");
-}
+//
+// MOVED to eventWindow.js 2026-08-17 (D5) and imported as `rowTime`. The
+// printed /week sheet is a second day-grouped surface, and re-deriving this
+// there reproduced the 2026-08-13 drift class on its first render. The sitting
+// model now has one home, next to the rest of it.
 
 // List-row subline: the authored kicker (glanceability contract — the row must
 // explain itself without a tap) plus the street address (sans city boilerplate)
