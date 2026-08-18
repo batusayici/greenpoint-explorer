@@ -1,5 +1,22 @@
 # Seeding Roster — Wave 1 and beyond (2026-08-15)
 
+> **Amended 2026-08-17 by D3/D4** (`2026-08-17-launch-strategy-review.md`;
+> DECISION_LOG sixth entry). Three changes to what follows: **(1) the Tier-2
+> arts wave is no longer gated on Q1 closing** — Film Noir sends the week of
+> 8/17 alongside Wave 1, with WORD and Flower Cat behind it; P11's "never two
+> networks at once" is dropped while the density-inside-a-network principle
+> stands. **(2) The 8/25 Wave-2 gate is deleted** — P3's check becomes a
+> readout line, not a blocker, because friends-family proved the plumbing on
+> 8/13; Reddit, Nextdoor, FB-group answer posts and the IG carousel all fire
+> this week on their own `src`s. **(3) Physical presence is now a standing
+> channel** (SummerStarz finale 8/21, market mornings, permission-based
+> placements, The Greenline) — and **pole/park flyering is ruled out
+> permanently** as a per-flyer offence under §10-119 / 56 RCNY §1-05(c).
+> Q2's group question is also resolved by data: **Williamsburg & Greenpoint BK
+> Parents is dormant (0 posts/month)**; Brooklyn Baby Hui is alive (~300/mo)
+> and **Greenpoint Moms (5.2K, public)** is a third option — see
+> `2026-08-17-greenpoint-attention-map.md`. Everything else below stands.
+
 Strategic target selection for the seeding waves (launch plan §3). Produced by
 three independent passes so no single blind spot survives: (1) an empirical scan
 of `cards.json` + the ingest ledger/roster (who is actually behind our cards),
