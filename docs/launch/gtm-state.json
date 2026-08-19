@@ -949,7 +949,35 @@
       "status": "product-generated, never sent by hand"
     }
   ],
-  "openDecisions": [],
+  "openDecisions": [
+    {
+      "id": "d7-daily-window",
+      "title": "D7 — daily 15-minute decision window",
+      "detail": "One daily window where Batu clears the queue: sends to approve-and-paste, branches to merge, rulings due. Fixes the 1-2 day gaps that cost D5 its cohort timing and nearly cost the Perri window. Readout adds an oldest-open-item age line, target <1 day.",
+      "recommendation": "Yes — highest-leverage change; no new autonomy, same approvals on a daily clock. ~1.75h/week inside the confirmed budget.",
+      "owner": "Batu",
+      "needBy": "this week",
+      "source": "docs/launch/2026-08-19-october-verdict-review.md D7"
+    },
+    {
+      "id": "d8-default-merge",
+      "title": "D8 — default-merge for pre-ratified non-visual builds + ratify venue/category pages",
+      "detail": "Pre-ratified, non-visual, test-covered build items (cookie mirror, webview instrumentation, routine-clobber fix, GSC plumbing) merge 24h after preview unless vetoed in the daily queue. Visual items keep preview review. Venue/category pages ratified as owned Loop C infrastructure, no experiment slot, sequenced second.",
+      "recommendation": "Yes, narrowly — flagged plainly: this carves an exception to §7's 'code merges stay human'. Veto window and one-strike demotion preserved.",
+      "owner": "Batu",
+      "needBy": "this week",
+      "source": "docs/launch/2026-08-19-october-verdict-review.md D8"
+    },
+    {
+      "id": "d9-medium-pivot",
+      "title": "D9 — pre-register the medium-pivot rule",
+      "detail": "Written interpretation rule for the digest + carousel BEFORE first data exists. Judged on tagged clicks, never opens (re-entry ruling 1: Apple MPP inflates opens). Low clicks over three consecutive sends + carousel engaging while src=ig stays flat opens the container ruling; container evidence never resets the demand clock (D1 counts tagged email clicks as returns); healthy clicks close learning-log Q1 in the site's favor. Thresholds are editable defaults.",
+      "recommendation": "Yes, this week — same last-clean-window logic as D1. First send is Mon Aug 24; the window closes Sunday.",
+      "owner": "Batu",
+      "needBy": "2026-08-23",
+      "source": "docs/launch/2026-08-19-october-verdict-review.md D9"
+    }
+  ],
   "risks": [
     {
       "id": "no-return",
