@@ -1,6 +1,6 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-08-19T10:15:00-04:00",
+  "lastRunAt": "2026-08-19T17:30:00-04:00",
   "cardChecked": {
     "sailor-and-siren": "2026-08-18",
     "core-press": null,
@@ -163,6 +163,7 @@
     "le-studio-anthost-pillow-0823": "2026-08-18",
     "madelines-comedy-0825": "2026-08-18",
     "loft-story-live-island-0826": "2026-08-18",
-    "troost-dj-frantz-0821": "2026-08-18"
+    "troost-dj-frantz-0821": "2026-08-18",
+    "threes-peter-luger-0824": "2026-08-18"
   }
 }

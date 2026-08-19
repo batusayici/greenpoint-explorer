@@ -539,11 +539,18 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // calendar's 8/21 instance is titled DJ FRANTZ and Danny Ramos has moved to
   // 9/18, so the old card was misdated and its quote no longer existed in the
   // snapshot.
-  assert.equal(seed.cards.length, 162);
+  // 2026-08-19 Wednesday Greenpointers pull: expiry took nothing (the morning
+  // run had already cleared today) and 1 add. 162 + 1 = 163. The add is the
+  // Peter Luger takeover at Threes Brewing on 8/24, one of the 12 roundup items
+  // the morning run held for want of an address. Its Partiful listing answered
+  // this run and settles both blockers at once: it names "Threes Brewing
+  // Greenpoint" outright, which is attribution under the 2026-08-12 rule, and
+  // it states the 5–8pm window the roundup never did.
+  assert.equal(seed.cards.length, 163);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 90, "86 − 4 expired + 9 adds − 1 replaced Troost night (2026-08-19)");
+  assert.equal(count((c) => c.category === "event"), 91, "90 + the Peter Luger takeover at Threes Brewing, 8/24 (2026-08-19 Wednesday pull)");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
   assert.equal(count((c) => c.filters.includes("live_music")), 24, "25 − the expired 8/18 Troost night; DJ FRANTZ replaces Danny Ramos one-for-one (2026-08-19)");

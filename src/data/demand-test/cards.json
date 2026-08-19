@@ -7552,6 +7552,55 @@
           "date": "2026-08-19"
         }
       ]
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "threes-peter-luger-0824",
+      "category": "event",
+      "title": "Peter Luger takeover at Threes Brewing Greenpoint",
+      "kicker": "Luger brats and a collab lager",
+      "summary": "The finale of the brewery’s summer guest series. Walk-in only, no reservations, and specials are poured until they run out; Faccia Brutto mixes the drinks.",
+      "startsAt": "2026-08-24T17:00:00-04:00",
+      "endsAt": "2026-08-24T20:00:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "Threes Brewing, Franklin Street, Brooklyn, NY",
+      "sourceQuote": "Summer Guest Series Finale @ Threes Brewing, 5 p.m.: The local brewery is partnering with Peter Luger for a Brats and Beers takeover featuring Peter Luger-curated decor, menu, and music, plus Luger Lager, a special collaboration brew available while supplies last. Walk-in only. RSVP here .\nPeter Luger Steakhouse @ Threes Brewing Greenpoint\nMonday, Aug 24\n5:00pm – 8:00pm ET\nPeter Luger Steakhouse, the world-famous Williasmburg institution, is popping up at Threes Brewing Greenpoint for one night only. From 5–8pm, try Peter Luger's world-famous brats, taste Luger Lager, our collaboration bavarian lager, and sip drink specials by Faccia Brutto. Walk-in only. No reservations. Specials served until we run out.",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "learn_more",
+          "url": "https://partiful.com/e/5SVQBR7ZENGrpY5twISh"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Peter Luger Steakhouse @ Threes Brewing Greenpoint",
+          "url": "https://partiful.com/e/5SVQBR7ZENGrpY5twISh",
+          "publisher": "Threes Brewing",
+          "date": "2026-08-19"
+        },
+        {
+          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-19"
+        }
+      ],
+      "lat": 40.730371,
+      "lng": -73.957833
     }
   ]
 }

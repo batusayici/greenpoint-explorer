@@ -3438,5 +3438,30 @@
         "-73.9522402"
       ]
     }
+  },
+  "Threes Brewing, Franklin Street, Brooklyn, NY": {
+    "query": "Threes Brewing, Franklin Street, Brooklyn, NY",
+    "fetchedAt": "2026-08-19T17:23:26.436Z",
+    "hit": {
+      "place_id": 359210880,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 7424179953,
+      "lat": "40.7303713",
+      "lon": "-73.9578334",
+      "category": "amenity",
+      "type": "pub",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Threes Brewing",
+      "display_name": "Threes Brewing, 113, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7303213",
+        "40.7304213",
+        "-73.9578834",
+        "-73.9577834"
+      ]
+    }
   }
 }
