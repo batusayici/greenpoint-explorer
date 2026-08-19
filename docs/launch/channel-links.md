@@ -24,7 +24,9 @@ or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
 | Follow — Arts & Culture (R1 treatment) | `follow-arts-culture` | https://stoopwise.com/?src=follow-arts-culture | **new 2026-08-03** |
 | Follow — News (R1 treatment) | `follow-news` | https://stoopwise.com/?src=follow-news | **new 2026-08-03** |
 | Follow — a place (R1 treatment) | `follow-place` | https://stoopwise.com/?src=follow-place | **new 2026-08-03** · one row for all place-follows — a per-place `src` would fragment the join key |
-| Parents-group post (Q2) | `parents` | https://stoopwise.com/?src=parents | **new 2026-07-28** |
+| Parents-group post (Q2) | `parents` | https://stoopwise.com/?src=parents | **new 2026-07-28** · ⚠ **superseded 2026-08-19 — do not send this one.** Batu chose BOTH groups, and Q2's rule compares return *between* srcs, so a shared tag would make the comparison unreadable. Row kept because it has never been sent (0 events all-time) and deleting a row is how a link already in the wild loses its meaning. |
+| Q2 parents — Williamsburg & Greenpoint BK Parents | `parents-wgbk` | https://stoopwise.com/?src=parents-wgbk | **new 2026-08-19** — ~5k, join-gated |
+| Q2 parents — Brooklyn Baby Hui | `parents-hui` | https://stoopwise.com/?src=parents-hui | **new 2026-08-19** — ~10k + the Slack pods where the 0–4 crowd actually asks |
 | Q1 org seeding — Greenpoint Library | `org-gp-library` | https://stoopwise.com/?src=org-gp-library | **new 2026-07-28** |
 | Q1 org seeding — Film Noir Cinema | `org-film-noir` | https://stoopwise.com/?src=org-film-noir | **new 2026-07-28** |
 | Q1 org seeding — Brooklyn Craft Company | `org-brooklyn-craft` | https://stoopwise.com/?src=org-brooklyn-craft | **new 2026-07-28** |

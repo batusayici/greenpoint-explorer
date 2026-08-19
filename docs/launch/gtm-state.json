@@ -34,9 +34,9 @@
         "date": "2026-08-19"
       },
       {
-        "label": "Merge the readout PR #42 — but it reverts D1–D6, see Waiting on you",
+        "label": "PR #42 closed — superseded by the 8/19 reconciliation readout",
         "when": "Today",
-        "status": "next",
+        "status": "done",
         "date": "2026-08-19"
       },
       {
@@ -421,8 +421,8 @@
       "readAt": null,
       "verdict": "not yet read",
       "scheduledFor": "Tue Sep 8 (ratified 2026-08-15 — Labor Day empties the earlier date)",
-      "implication": "Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24–30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions.",
-      "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels. Cross-channel return comparisons carry that asymmetry caveat (P1).",
+      "implication": "Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24–30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions. GROUP CHOICE RULED 2026-08-19 (Batu): BOTH groups — Williamsburg & Greenpoint BK Parents (src=parents-wgbk) and Brooklyn Baby Hui (src=parents-hui), one src each so the rule's \"return beats other srcs\" comparison stays readable. The single shared `parents` tag is superseded and must not be sent.",
+      "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels. Cross-channel return comparisons carry that asymmetry caveat (P1). Two groups means Q2 now carries two reads, not one — and they are not independent samples of the same population (one is join-gated at ~5k, the other ~10k with Slack side-channels). Compare each against the other srcs, not against each other.",
       "source": "growth §4; roster"
     },
     {
@@ -681,7 +681,7 @@
       "target": "≥35 to send",
       "trend": "up",
       "role": "supply-side leading indicator",
-      "caveat": "Hand count of cards starting strictly inside 7 days: 65. Reservoir 23."
+      "caveat": "check-freshness.mjs: datedUpcoming7d=76 reservoir7-14d=21 topVenue=Troost:11%. Send bar is >=35. Baseline restated 2026-08-19."
     },
     {
       "id": "reservoir",
@@ -701,7 +701,7 @@
       "target": null,
       "trend": "up",
       "role": "coverage",
-      "caveat": "The growth-engine baseline (95 · 38 · 48) is still unrestated — third cycle running."
+      "caveat": "Baseline RESTATED 2026-08-19 to 162 · 76 · 72 (was 95 · 38 · 48 from pre-launch July)."
     },
     {
       "id": "yield",
@@ -961,69 +961,18 @@
   ],
   "openDecisions": [
     {
-      "id": "pr42",
-      "title": "Readout PR #42 reverts the D1–D6 decisions",
-      "owner": "Batu",
-      "needBy": "before merging — it has been open since 8/18",
-      "why": "The Tuesday routine branched from main at 7acae75, twenty minutes before D2–D6 landed. It then rewrote the whole state file from what it could see, so merging it as-is restores the old 'finish Wave 1' focus, puts the 8/25 gate back that D3 deleted, and drops the D1–D6 ratification record. Its readout content is good and its numbers are real — only the state file conflicts.",
-      "options": [
-        "Merge the readout doc and skip its gtm-state.json change (this update already carries its numbers)",
-        "Merge as-is and re-apply D1–D6 afterwards",
-        "Fix the class: have the routine merge into the state file instead of rewriting it"
-      ],
-      "source": "PR #42; log 2026-08-17 sixth"
-    },
-    {
-      "id": "perri-reply",
-      "title": "Answer Perri — call or shop visit",
-      "owner": "Batu",
-      "needBy": "today, Wed 8/19 — she offered Wed/Thu 1–4pm",
-      "why": "She replied 36 minutes after the note went out, the fastest response any outreach has produced. The window she offered is today and tomorrow. A draft is in the 8/18 readout.",
-      "source": "readout 2026-08-18; log 2026-08-17"
-    },
-    {
-      "id": "preflight-drift",
-      "title": "preflight:send fires a false do-not-send",
-      "owner": "Batu",
-      "needBy": "before the next send",
-      "why": "The gate that protects every outbound claim failed on the morning of the send it exists to protect. It compares the sitemap's live cards against every card in the deck, and aged-out news cards stay in the deck forever by design. Nine of them today. Prod was verified current three ways; the fix is proposed in the readout.",
-      "source": "readout 2026-08-18 Finding 1"
-    },
-    {
-      "id": "pr43-hosts",
-      "title": "Add four hosts to the claude.ai/code network policy — the last step on PR #43",
-      "owner": "Batu",
-      "needBy": "before the Wed 8/26 ingest — this week’s events (8/20–8/26) are already past by then",
-      "why": "Each host was fetched directly on 2026-08-19 and the list shrank. Add exactly these four: luma.com, partiful.com, portal.iclasspro.com, themccarren.com AND www.themccarren.com (it 301s to www, and a redirect into a non-allowlisted host fails like the original). OpenTable is dropped — it returns 403 to automated fetches on apex and www alike, so it is a bot block no network policy can fix; La Contenta needs an interactive session instead. Square is skipped by Batu’s call — the host answers, but a checkout page likely carries no venue address anyway. The tracked .claude/settings.json already matches this list; the network policy at claude.ai/code is a separate account setting no session can reach. Unblocks 8 of 12, not 9.",
-      "source": "PR #43; held-cards-2026-08-19.md “Ruled 2026-08-19” section"
-    },
-    {
-      "id": "q2-group",
-      "title": "Which parent group does Rana post in?",
-      "owner": "Batu",
-      "needBy": "before the Q2 copy is finalized (posts Tue Sep 8)",
-      "why": "It determines the src value — one src per channel, so a second group needs its own row.",
-      "options": [
-        "Williamsburg & Greenpoint BK Parents (~5k, join-gated)",
-        "Brooklyn Baby Hui (~10k + Slack pods where the 0–4 crowd actually asks)"
-      ],
-      "source": "roster decision 2"
-    },
-    {
-      "id": "baseline-restate",
-      "title": "Restate the feed-density baseline",
-      "owner": "Batu",
-      "needBy": "open three cycles",
-      "why": "The §1 baseline (95 cards / 38 dated / 48 sources) is three weeks stale and describes a smaller product than the one we have. Every comparison against it flatters us.",
-      "source": "readout Finding 1 recommendation"
-    },
-    {
       "id": "unique-coverage",
-      "title": "Ratify or retire the unique-coverage proxy",
+      "title": "Ratify or retire the two operator-derived metrics — unique coverage AND roster yield",
       "owner": "Batu",
-      "needBy": "open four cycles",
-      "why": "Operator-derived and unratified. Including Shop Small gives 76%, excluding it gives 83%. A marketing number with a 7-point definitional swing isn't a number.",
-      "source": "readout metrics table"
+      "needBy": "the 2026-09-01 readout, or the operator stops reporting both",
+      "why": "Unique coverage = the share of cards no other Greenpoint source carried. It is the differentiation proof (business-model §1.4, H3) and one of three things on the buyer trust surface (growth-engine rule 3), so it leaves the building — 82% counting Shop Small as another source, 88% not. Roster yield = the share of the 72 roster sources that produced a card in a window; it is an internal supply alarm only, 22% at 7 days or 67% at 14, and no window was ever agreed. Both move for definitional reasons rather than real ones.",
+      "source": "readout 2026-08-19 Proposal 3; business-model §1.4, §4 H3; growth-engine rule 3",
+      "options": [
+        "Unique coverage: ratify at the STRICT reading — Shop Small counts as another Greenpoint source, so 82%. The metric's own words are \"appeared in no other Greenpoint source\", SSG publishes a directory and a newsletter, and it is Perri's — claiming her listings as coverage nobody else has is both wrong and awkward with a partner. (recommended)",
+        "Unique coverage: ratify at 88%, treating SSG as a peer directory rather than a competing source",
+        "Roster yield: RETIRE it — check-coverage.mjs already flags per-source silence at 3x each source's own cadence, which is strictly better than a roster-wide percentage on an arbitrary window. (recommended)",
+        "Roster yield: ratify on the 14-day window (67%), matching the real cadence mix"
+      ]
     }
   ],
   "risks": [

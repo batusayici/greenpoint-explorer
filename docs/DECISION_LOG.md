@@ -4,6 +4,52 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-19 — Four rulings off the cycle-6 readout: hosts, both parent groups, baseline restated, routine merge discipline
+
+Decisions (Batu, on the 2026-08-19 reconciliation readout). Recorded together because they close four
+of the seven items that had been sitting in `gtm-state.json` `openDecisions`, three of which had been
+open for multiple cycles.
+
+**Hosts — the PR #43 allowlist ask, resolved and shrunk.** The five hosts that survive verification
+(`luma.com`, `partiful.com`, `portal.iclasspro.com`, `themccarren.com` **and** `www.themccarren.com`)
+are in the claude.ai/code network policy. **OpenTable is dropped permanently** — it returns 403 to
+automated fetches on apex and `www` alike, which is a bot block no network policy reaches, and the
+generalised rule now lives in the ingest skill: *distinguish a bot block from an egress block before
+proposing a host, and verify a host by fetching it before asking for it.* **Square is skipped by
+choice** — the host answers, but a checkout page likely carries no venue address, so the fetch would
+succeed and still yield nothing cardable. Net: 8 of the 12 held cards unblocked, not 9; La Contenta
+joins Panzon, Cloud City and Edith's in needing an interactive session or another source.
+
+**Q2 posts in BOTH parent groups, on two separate tags.** Williamsburg & Greenpoint BK Parents
+(`parents-wgbk`, ~5k, join-gated) and Brooklyn Baby Hui (`parents-hui`, ~10k plus the Slack pods where
+the 0–4 crowd actually asks). The single shared `parents` tag is **superseded and must not be sent** —
+Q2's pre-registered rule compares week-2 return *between* srcs, and one tag across two groups would
+have made that comparison unreadable while looking like it worked. The row stays in `channel-links.md`
+because it has never been sent (0 events all-time) and deleting a row is how a link already in the
+wild loses its meaning. Consistent with D3, which dropped P11's "never two networks at once".
+
+**The feed-density baseline is restated to 162 cards · 76 dated in-window · 72 sources.** The old
+baseline (95 · 38 · 48, last week of July) had been stale for three weeks and described a product
+roughly half this size, so every weekly comparison against it read as growth that had already
+happened. Carried in both `growth-engine.md` §1 and `business-model.md` §4, updated in the same change,
+with a standing note to restate it whenever it stops describing the live product — the winter
+seasonality comparison is only meaningful against a number that was true going into the winter.
+
+**The Tuesday routine must merge into `gtm-state.json`, not overwrite it.** Ratified as a standing
+instruction in the growth skill the same day it was proposed. The cycle-5 routine (PR #42) branched
+from `main` twenty minutes before D2–D6 landed, rewrote the whole state file from what it could see,
+and would have silently reverted five ratified decisions on merge. The rule: read the current file on
+`main` before writing, and re-branch rather than merging a stale copy forward. **A PR sitting open for
+a week is not evidence its base is still current.** PR #42 was closed unmerged and re-run as cycle 6.
+
+**Still open, and now the only item on the list:** whether `unique coverage` and `roster yield` are
+ratified or retired — five and six cycles unratified. Deadline stands at the 2026-09-01 readout, after
+which the operator stops reporting both.
+
+Carriers updated the same change: `channel-links.md` (two new rows, one superseded),
+`growth-engine.md` §1, `business-model.md` §4, `.claude/skills/growth-weekly/SKILL.md`,
+`.claude/skills/ingest-newsletters/SKILL.md`, `.claude/settings.json`, `gtm-state.json`. Owner: Batu.
+
 ## 2026-08-17 (sixth entry) — D2–D6 ratified: the weekly send, parallel reach, physical, product repairs, supply pulled forward
 
 Decision (Batu, "approve all" — D2 through D6 of the 2026-08-17 strategy review, ruled as one act

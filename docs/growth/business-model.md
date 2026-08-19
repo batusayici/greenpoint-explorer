@@ -213,10 +213,12 @@ no strategy doc, while 7 of 48 roster sources go dark Nov–Mar):**
   feed metrics from the trough are read against the seasonal baseline, never
   absolute. Pilot terms are written so renewal decisions don't land Jan–Feb.
 - **Feed density** (dated items in the next 7 days + share of roster yielding
-  this week) is tracked from **now, pre-launch** — baseline 2026-07-28: 95
-  cards, 38 dated in-window, 48 sources — so a winter content decline is
-  separable from product failure, and a silent ingest outage trips the metric
-  within a day.
+  this week) is tracked continuously — **baseline restated 2026-08-19: 162
+  cards, 76 dated in-window, 72 sources** (pre-launch reading, 2026-07-28: 95 ·
+  38 · 48) — so a winter content decline is separable from product failure, and
+  a silent ingest outage trips the metric within a day. **Restate the baseline
+  whenever it stops describing the live product**; the winter comparison is
+  only meaningful against a number that was true going into the winter.
 - September experiment reads carry a standing confound note: the citywide
   autumn rebound. Pre/post cannot control for it; reads are labeled accordingly.
 - **A demand-gate pass on cohorts wholly inside Sep–Oct is provisional** (P8,
