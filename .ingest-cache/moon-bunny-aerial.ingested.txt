@@ -1,24 +1,4 @@
 name: Weekday Camp 8-12 yrs old
-start_at: 2026-08-18T13:00:00.000Z
-end_at: 2026-08-18T19:00:00.000Z
-
-name: Open Gym
-start_at: 2026-08-18T22:15:00.000Z
-end_at: 2026-08-18T23:15:00.000Z
-
-name: Lyra
-start_at: 2026-08-18T22:15:00.000Z
-end_at: 2026-08-18T23:15:00.000Z
-
-name: K-Pop Dance
-start_at: 2026-08-18T23:30:00.000Z
-end_at: 2026-08-19T00:30:00.000Z
-
-name: K-Pop Dance
-start_at: 2026-08-19T00:45:00.000Z
-end_at: 2026-08-19T01:45:00.000Z
-
-name: Weekday Camp 8-12 yrs old
 start_at: 2026-08-19T13:00:00.000Z
 end_at: 2026-08-19T19:00:00.000Z
 
@@ -397,6 +377,26 @@ end_at: 2026-09-21T19:00:00.000Z
 name: Kids Aerial
 start_at: 2026-09-21T20:00:00.000Z
 end_at: 2026-09-21T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-24T20:00:00.000Z
+end_at: 2026-09-24T21:00:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-24T21:00:00.000Z
+end_at: 2026-09-24T22:00:00.000Z
+
+name: Kids K-Pop Dance
+start_at: 2026-09-24T21:15:00.000Z
+end_at: 2026-09-24T22:15:00.000Z
+
+name: Kids Aerial
+start_at: 2026-09-25T20:00:00.000Z
+end_at: 2026-09-25T21:00:00.000Z
+
+name: Avatar the Last Airbender - A Circus Retelling
+start_at: 2026-09-27T00:30:00.000Z
+end_at: 2026-09-27T01:30:00.000Z
 
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial

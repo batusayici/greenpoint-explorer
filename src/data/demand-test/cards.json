@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-18",
+  "version": "2026-08-19",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -1566,12 +1566,12 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-19",
       "id": "hana-bottomless-makgeolli",
       "title": "Bottomless makgeolli Thursdays & Sundays",
       "kicker": "$30 bottomless makgeolli",
       "recurring": true,
-      "endsAt": "2026-08-22T23:59:00-04:00",
+      "endsAt": "2026-09-02T23:59:00-04:00",
       "locationName": "Hana Makgeolli",
       "address": "201 Dupont St",
       "filters": [
@@ -2633,48 +2633,6 @@
       "address": "1011 Manhattan Ave",
       "lat": 40.733463,
       "lng": -73.955035,
-      "id": "troost-julia-kwamya-0818",
-      "title": "Julia Kwamya, Marie Raoult and Ava Raiin at Troost",
-      "kicker": "Dream pop triple bill",
-      "summary": "Stripped-down dream pop and other celestial sounds across three sets. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-18T00:00:00-04:00",
-      "endsAt": "2026-08-18T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: JULIA KWAMYA // MARIE RAOULT // AVA RAIIN\nstart.date: 2026-08-18",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
       "id": "troost-habbina-habbina-0819",
       "title": "Habbina Habbina at Troost",
       "kicker": "Midweek live set",
@@ -2947,8 +2905,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
-      "endsAt": "2026-08-21T23:59:00-04:00",
+      "updatedAt": "2026-08-19",
+      "endsAt": "2026-09-02T23:59:00-04:00",
       "id": "scrappleland-backgammon-club",
       "title": "Tuesday Backgammon Club at Scrappleland",
       "kicker": "All levels",
@@ -2962,7 +2920,7 @@
         "food_drink"
       ],
       "summary": "A backgammon meet at the pinball bar. The venue lists it as a regular club night.",
-      "sourceQuote": "Tuesday Backgammon Club",
+      "sourceQuote": "Tuesday Backgammon Club\nAugust 25 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -2999,8 +2957,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
-      "endsAt": "2026-08-21T23:59:00-04:00",
+      "updatedAt": "2026-08-19",
+      "endsAt": "2026-09-02T23:59:00-04:00",
       "id": "scrappleland-pinball-league",
       "title": "Wednesday Pinball League at Scrappleland",
       "kicker": "League night at the pinball bar",
@@ -3014,7 +2972,7 @@
         "food_drink"
       ],
       "summary": "The bar's pinball league on the arcade floor.",
-      "sourceQuote": "Wednesday Pinball League",
+      "sourceQuote": "Wednesday Pinball League\nAugust 19 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -3085,48 +3043,6 @@
           "wed"
         ]
       }
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "id": "troost-danny-ramos-0821",
-      "title": "Danny Ramos at Troost",
-      "kicker": "Friday night live set",
-      "summary": "Danny Ramos plays the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-08-21T00:00:00-04:00",
-      "endsAt": "2026-08-21T23:59:00-04:00",
-      "sourceQuote": "summary: DANNY RAMOS\nstart.date: 2026-08-21",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
     },
     {
       "category": "event",
@@ -3680,11 +3596,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-17",
+      "updatedAt": "2026-08-19",
       "id": "library-thursday-programs-0820",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Four programs, morning to evening",
-      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines at 1, Teen Tech Time at 3, and Sunset Storytime at 6. The 2pm ESOL class is canceled.",
+      "kicker": "Three programs, morning to evening",
+      "summary": "Babies & Books at 10:30 and 11:15, Teen Tech Time at 3, and Sunset Storytime at 6. The 1pm sewing hours and the 2pm ESOL class are both canceled.",
       "startsAt": "2026-08-20T10:30:00-04:00",
       "endsAt": "2026-08-20T18:00:00-04:00",
       "filters": [
@@ -3692,7 +3608,7 @@
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Teen Tech Time 🎮\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-20T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1",
+      "sourceQuote": "ts_title: Babies & Books\nts_title: Teen Tech Time 🎮\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-20T22:00:00Z\nts_title: Drop-In Sewing Machine Hours\nds_event_start_date: 2026-08-20T17:00:00Z\nis_event_canceled: 1\nts_title: Free English Class\nds_event_start_date: 2026-08-20T18:00:00Z\nis_event_canceled: 1",
       "actions": [
         {
           "label": "Branch calendar",
@@ -4793,7 +4709,7 @@
           "date": "2026-08-10"
         }
       ],
-      "sourceQuote": "sunset yoga in the park\naugust 13, 7pm\nWNYC transmitter park\njoin us for a sunset yoga practice by the water. free community yoga in collaboration with the friends of transmitter park.\nsunset yoga in the park\naugust 20, 7pm\nsunset yoga in the park\naugust 27, 7pm",
+      "sourceQuote": "sunset yoga in the park\naugust 20, 7pm\nWNYC transmitter park\njoin us for a sunset yoga practice by the water. free community yoga in collaboration with the friends of transmitter park.\nsunset yoga in the park\naugust 27, 7pm\nWNYC transmitter park",
       "relatedCardIds": [
         "community-yoga-transmitter-tuesdays"
       ],
@@ -4802,7 +4718,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-19",
       "recurrence": {
         "days": [
           "thu"
@@ -5182,7 +5098,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-18",
+      "updatedAt": "2026-08-19",
       "filters": [
         "family_kids"
       ],
@@ -5214,7 +5130,7 @@
       "summary": "Moon Bunny's longest camp format for the 8-to-12 group, threading ground acro, juggling and flow props plus games and themed days through the full week.",
       "startsAt": "2026-08-18T09:00:00-04:00",
       "endsAt": "2026-08-21T15:00:00-04:00",
-      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-18T13:00:00.000Z\nend_at: 2026-08-18T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.\nThroughout the week, participants will enjoy games, themed days, and opportunities to build",
+      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-19T13:00:00.000Z\nend_at: 2026-08-19T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.\nThroughout the week, participants will enjoy games, themed days, and opportunities to build",
       "lat": 40.736575,
       "lng": -73.952327
     },
@@ -5536,54 +5452,6 @@
     },
     {
       "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "gather-sound-bath-0818",
-      "category": "event",
-      "title": "Returning to Resonance: sound bath and Reiki at Gather Center",
-      "kicker": "Sound bath + Reiki, 7–9pm",
-      "summary": "Two hours of therapeutic listening and energy work, framed as a prompt to slow down and listen more deeply. $108.55, ticketed.",
-      "startsAt": "2026-08-18T19:00:00-04:00",
-      "endsAt": "2026-08-18T21:00:00-04:00",
-      "filters": [
-        "wellness"
-      ],
-      "free": false,
-      "locationName": "Gather Center",
-      "address": "94 Guernsey St, Brooklyn, NY 11222",
-      "sourceQuote": "Therapeutic Sound Bath + Reiki @ Gather Center, 7 p.m.: Healing is so hot right now! For two hours, experience a blend of therapeutic sound, Reiki energy work, and more connections to remind you to slow down and listen more deeply. $108.55, get tickets here.\nreturning to resonance therapeutic sound bath + reiki Tickets, Tuesday, August 18  •  7 PM - 9 PM | Eventbrite\nVenue: 94 Guernsey Street, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/returning-to-resonance-therapeutic-sound-bath-reiki-tickets-1994379871884"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        },
-        {
-          "title": "returning to resonance therapeutic sound bath + reiki",
-          "url": "https://www.eventbrite.com/e/returning-to-resonance-therapeutic-sound-bath-reiki-tickets-1994379871884",
-          "publisher": "Gather Center",
-          "date": "2026-08-12"
-        }
-      ],
-      "lat": 40.724263,
-      "lng": -73.952889
-    },
-    {
-      "audience": [
         "resident",
         "visitor"
       ],
@@ -5679,48 +5547,6 @@
       "updatedAt": "2026-08-12",
       "lat": 40.730903,
       "lng": -73.957932
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-17",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-13"
-        }
-      ],
-      "id": "library-tuesday-programs-0818",
-      "category": "event",
-      "free": false,
-      "title": "Tuesday at Greenpoint Library",
-      "kicker": "Two adult drop-ins, no sign-up needed",
-      "summary": "Knitting, crochet, mending and cross-stitch with lessons for beginners, plus an English conversation group alongside it. The branch has canceled its beginner ESOL class.",
-      "startsAt": "2026-08-18T17:30:00-04:00",
-      "endsAt": "2026-08-18T19:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "sourceQuote": "ts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-18T21:30:00Z\nds_event_end_date: 2026-08-18T23:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-18T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1"
     },
     {
       "audience": [
@@ -6559,13 +6385,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-17",
+      "updatedAt": "2026-08-19",
       "free": false,
       "id": "library-sensory-garden-0828",
       "category": "event",
       "title": "Friday at Greenpoint Library",
-      "kicker": "Rooftop garden, morning and afternoon",
-      "summary": "Storytime for the under-fives, then an educator on hand for plant questions. No registration for either, and both are called off in rain or extreme heat.",
+      "kicker": "Rooftop garden, then a magic show",
+      "summary": "Storytime for the under-fives, an educator on hand for plant questions, and Myron the Magnificent closing out summer reading with ASL interpretation.",
       "startsAt": "2026-08-28T10:30:00-04:00",
       "endsAt": "2026-08-28T16:00:00-04:00",
       "filters": [
@@ -6575,7 +6401,7 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
       "lng": -73.950709,
-      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-28T14:30:00Z\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-08-28T19:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with aan experienced Garden Educator!\nGarden Educator will be on site from 3-4pm on Fridays, weather permitting.",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-28T14:30:00Z\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-08-28T19:00:00Z\nts_body: Garden Educator will be on site from 3-4pm on Fridays, weather permitting.\nts_title: Myron the Magnificent\nds_event_start_date: 2026-08-28T19:30:00Z\nts_body: Join us at the Greenpoint Library for an end of summer celebration! We will enjoy a spectacular magic show from Myron the Magnificent!\nThis event will feature ASL interpretation.",
       "actions": [
         {
           "label": "Branch calendar",
@@ -6857,48 +6683,6 @@
       "sourceQuote": "Save an Additional 20% OFF Already Reduced Merchandise\nFor a limited time, save 20% off already reduced favorites including Bergs Potter's Daisy Wall Planter!\nOur entire remaining selection of Hawkins NY linens and dining pieces is 20% OFF!\nOur 2026 Hudson Valley Seed Co. Art Packs are now 20% OFF!\nOur shop hours will be abbreviated through Labor Day.\n*Valid In-store and Online. Not valid on previous purchases. Multiple online discounts may not be combined nor used concurrently. The discount is automatically applied at checkout. No coupon code is needed. Limited time only. Other conditions and exclusions may apply. Valid through September 7, 2026. May be canceled at any time.",
       "lat": 40.734612,
       "lng": -73.958144
-    },
-    {
-      "id": "action-city-fnb-armory-0818",
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-17",
-      "updatedAt": "2026-08-17",
-      "title": "Flesh & Blood Armory — Classic Constructed",
-      "kicker": "Ticketed TCG tournament, low stock",
-      "summary": "A ticketed Classic Constructed tournament at the Manhattan Ave comic shop. Tickets are limited and already running low.",
-      "startsAt": "2026-08-18T19:00:00-04:00",
-      "endsAt": "2026-08-18T22:00:00-04:00",
-      "filters": [
-        "games"
-      ],
-      "locationName": "Action City Comics",
-      "address": "570 Manhattan Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Get tickets",
-          "type": "rsvp",
-          "url": "https://www.actioncitycomics.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Action City Comics — Events",
-          "url": "https://www.actioncitycomics.com/",
-          "publisher": "Action City Comics",
-          "date": "2026-08-17"
-        }
-      ],
-      "sourceQuote": "Flesh & Blood Armory - Classic Constructed\nTUE, AUG 18 7:00 PM\nLow stock\nGet tickets",
-      "lat": 40.722526,
-      "lng": -73.949837
     },
     {
       "id": "action-city-one-piece-weds-0819",
@@ -7351,6 +7135,421 @@
           "url": "https://www.moonbunnyaerial.com/discounts",
           "publisher": "Moon Bunny Aerial",
           "date": "2026-08-18"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "franklin-garden-plant-biology-0820",
+      "category": "event",
+      "title": "Plant Biology at the 61 Franklin St. Garden",
+      "kicker": "Free garden talk, no RSVP",
+      "summary": "Adam Roddy walks through the inner workings of plants — how they grow, adapt and shape the world around them.",
+      "startsAt": "2026-08-20T18:30:00-04:00",
+      "endsAt": "2026-08-20T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": true,
+      "locationName": "61 Franklin St. Garden",
+      "address": "61 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "61 Franklin Street, Brooklyn, NY 11222",
+      "sourceQuote": "Plant Biology @ 61 Franklin St. Garden, 6:30 p.m.: Learn about the inner workings of plants and how they grow, adapt, and shape the world around us from Adam Roddy. Free, no RSVP needed.",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-19"
+        }
+      ],
+      "lat": 40.727487,
+      "lng": -73.957309
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "acme-good-baklava-0821",
+      "category": "event",
+      "title": "Good Baklava x Fish Friday at Acme Smoked Fish",
+      "kicker": "A guest schmear, free to attend",
+      "summary": "Good Baklava and “Bagel Ambassador” Sam Silverman debut a pistachio, baklava and kadayif cream cheese; Shagshoprooftop plays live.",
+      "startsAt": "2026-08-21T10:00:00-04:00",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "free": true,
+      "locationName": "Acme Smoked Fish",
+      "address": "30 Gem St",
+      "geocodeQuery": "30 Gem Street, Brooklyn, NY",
+      "relatedCardIds": [
+        "acme-fish-friday-0814"
+      ],
+      "sourceQuote": "Good Baklava x Fish Friday @ Acme Smoked Fish, 10 a.m.: The usual Acme Fish Friday is getting a special visit from Good Baklava and “Bagel Ambassador” Sam Silverman to debut Good Baklava Schmear, a mix of pistachio whipped cream cheese, baklava, and kadayif. There will also be a live music performance by Brooklyn’s Shagshoprooftop. Free to attend, RSVP here .",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-19"
+        }
+      ],
+      "lat": 40.725409,
+      "lng": -73.956615
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "giggles-loma-popup-0822",
+      "category": "event",
+      "title": "LOMA Collective pop-up at Giggles & Wiggles",
+      "kicker": "Mom-owned childrenswear, one day",
+      "summary": "LOMA Collective brings its own colorful, timeless line into the shop for a single morning.",
+      "startsAt": "2026-08-22T10:30:00-04:00",
+      "endsAt": "2026-08-22T23:59:00-04:00",
+      "filters": [
+        "shopping",
+        "family_kids"
+      ],
+      "locationName": "Giggles & Wiggles",
+      "address": "42 West St, Brooklyn, NY 11222",
+      "geocodeQuery": "42 West Street, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "giggles-and-wiggles"
+      ],
+      "sourceQuote": "LOMA Collective Pop-up @ Giggles & Wiggles, 10:30 a.m.: Shop colorful, timeless childrenswear curated by the mom-owned brand.",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-19"
+        }
+      ],
+      "lat": 40.728043,
+      "lng": -73.958836
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "hana-dusky-kitchen-popup-0823",
+      "category": "event",
+      "title": "The Dusky Kitchen x Hana Makgeolli dessert pop-up",
+      "kicker": "One-day dessert menu by Abi Balingit",
+      "summary": "A sweet sendoff to summer, served in the makgeolli brewery’s tasting room.",
+      "startsAt": "2026-08-23T14:00:00-04:00",
+      "endsAt": "2026-08-23T18:30:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "free": false,
+      "locationName": "Hana Makgeolli",
+      "address": "201 Dupont St",
+      "lat": 40.736437,
+      "lng": -73.951511,
+      "relatedCardIds": [
+        "hana-sool-club"
+      ],
+      "sourceQuote": "The Dusky Kitchen x Hana Makgeolli Dessert Pop-up\nSunday, August 23, 2026\n2:00 PM\n6:30 PM\nHANA MAKGEOLLI\n(map)\nEnjoy a sweet sendoff to summer at Hana Makgeolli with this one-day only dessert menu from Abi Balingit of The Dusky Kitchen!",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://hanamakgeolli.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hana Makgeolli events",
+          "url": "https://hanamakgeolli.com/events",
+          "publisher": "Hana Makgeolli",
+          "date": "2026-08-19"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "hana-tour-tasting-0827",
+      "category": "event",
+      "free": false,
+      "title": "Tour and tasting at Hana Makgeolli",
+      "kicker": "45 minutes inside the brewery",
+      "summary": "A Thursday slot for the brewery walk-through and guided tasting, before the tasting room opens.",
+      "startsAt": "2026-08-27T17:00:00-04:00",
+      "endsAt": "2026-08-27T18:00:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "Hana Makgeolli",
+      "address": "201 Dupont St",
+      "lat": 40.736437,
+      "lng": -73.951511,
+      "sourceQuote": "Hana Makgeolli Tour & Tasting\nThursday, August 27, 2026\n5:00 PM\n6:00 PM",
+      "actions": [
+        {
+          "label": "Book a tour",
+          "type": "learn_more",
+          "url": "https://hanamakgeolli.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hana Makgeolli events",
+          "url": "https://hanamakgeolli.com/events",
+          "publisher": "Hana Makgeolli",
+          "date": "2026-08-19"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "le-studio-anthost-pillow-0823",
+      "category": "event",
+      "title": "Create Your Own Designer Pillow at Le Studio Anthost",
+      "kicker": "Paint with wool, $120",
+      "summary": "The textile studio teaches its signature technique for building a pillow cover from scratch that you take home.",
+      "startsAt": "2026-08-23T14:00:00-04:00",
+      "endsAt": "2026-08-23T17:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "locationName": "Le Studio Anthost",
+      "address": "273 Calyer St, Brooklyn, NY 11222",
+      "geocodeQuery": "273 Calyer Street, Brooklyn, NY 11222",
+      "sourceQuote": "Create Your Own Designer Pillow @ Le Studio Anthost, 2 p.m.: Learn the textile studio’s signature “paint with wool” technique to create a pillow cover from scratch that’s uniquely your own. $120, register here .\n\"location\":{\"@type\":\"Place\",\"name\":\"273 Calyer St\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Brooklyn\",\"addressRegion\":\"NY\",\"addressCountry\":\"US\",\"streetAddress\":\"273 Calyer Street, Brooklyn, NY 11222\"}}\n\"startDate\":\"2026-08-09T14:00:00-04:00\"\n\"endDate\":\"2026-11-01T17:00:00-05:00\"",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/create-your-own-designer-pillow-tickets-1992511612871"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-19"
+        },
+        {
+          "title": "Create Your Own Designer Pillow",
+          "url": "https://www.eventbrite.com/e/create-your-own-designer-pillow-tickets-1992511612871",
+          "publisher": "Le Studio Anthost",
+          "date": "2026-08-19"
+        }
+      ],
+      "lat": 40.729527,
+      "lng": -73.949388
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "madelines-comedy-0825",
+      "category": "event",
+      "title": "Madeline’s Comedy Show",
+      "kicker": "Standup comedy, $10",
+      "summary": "A bill of comics with credits on Netflix, Comedy Central and Fallon takes the stage.",
+      "startsAt": "2026-08-25T20:00:00-04:00",
+      "endsAt": "2026-08-25T21:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "locationName": "Madeline’s",
+      "address": "113 Franklin St #FC, Brooklyn, NY 11222",
+      "geocodeQuery": "113 Franklin Street, Brooklyn, NY 11222",
+      "sourceQuote": "Madeline’s Comedy Show @ Madeline’s, 8 p.m.: Standup comedy featuring talent seen on Netflix, Comedy Central, Fallon , and more. $10, get tickets here .\n\"name\": \"Madeline's Comedy Show - Standup Comedy in Greenpoint\",\n\"startDate\": \"2026-03-12T20:00:00-04:00\",\n\"endDate\": \"2026-12-15T21:30:00-05:00\",\n\"location\":{\"@type\":\"Place\",\"name\":\"Madeline's\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Brooklyn\",\"addressRegion\":\"NY\",\"addressCountry\":\"US\",\"streetAddress\":\"113 Franklin Street, #FC, Brooklyn, NY 11222\"}}",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-19"
+        },
+        {
+          "title": "Madeline’s Comedy Show — Standup Comedy in Greenpoint",
+          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137",
+          "publisher": "Madeline’s",
+          "date": "2026-08-19"
+        }
+      ],
+      "lat": 40.730371,
+      "lng": -73.957833
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "loft-story-live-island-0826",
+      "category": "event",
+      "title": "LIVE ISLAND: A Gay Dating Experience",
+      "kicker": "Reality dating, staged live — $17.85",
+      "summary": "Gay singles meet their matches, weather unexpected twists and recouplings, and decide whether to close off, all in front of an audience.",
+      "startsAt": "2026-08-26T19:00:00-04:00",
+      "endsAt": "2026-08-26T23:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "locationName": "Loft Story",
+      "address": "748 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "748 Manhattan Avenue, Brooklyn, NY 11222",
+      "sourceQuote": "LIVE ISLAND: A Gay Dating Experience @ Loft Story, 7 p.m.: Always wanted to be a hot new bombshell entering the villa? Join a dating experience of gay singles meeting their matches, enduring unexpected twists and recouplings, and deciding whether or not they want to “close off” all in front of a live audience. $17.85, get tickets here .\n\"location\":{\"@type\":\"Place\",\"name\":\"LOFT STORY\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Brooklyn\",\"addressRegion\":\"NY\",\"addressCountry\":\"US\",\"streetAddress\":\"748 Manhattan Avenue, Brooklyn, NY 11222\"}}\n\"startDate\":\"2026-08-26T19:00:00-04:00\"\n\"endDate\":\"2026-08-26T23:30:00-04:00\"",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/live-island-a-gay-dating-experience-tickets-1993578759736"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
+          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-19"
+        },
+        {
+          "title": "LIVE ISLAND: A Gay Dating Experience",
+          "url": "https://www.eventbrite.com/e/live-island-a-gay-dating-experience-tickets-1993578759736",
+          "publisher": "Loft Story",
+          "date": "2026-08-19"
+        }
+      ],
+      "lat": 40.726647,
+      "lng": -73.95229
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "id": "troost-dj-frantz-0821",
+      "category": "event",
+      "free": false,
+      "title": "DJ FRANTZ at Troost",
+      "kicker": "Friday night DJ set",
+      "summary": "A Friday set at the Manhattan Avenue bar. The venue calendar lists the night without a start time.",
+      "startsAt": "2026-08-21T00:00:00-04:00",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "sourceQuote": "summary: DJ FRANTZ\nstart.date: 2026-08-21",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-19"
         }
       ]
     }

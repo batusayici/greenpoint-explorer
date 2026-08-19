@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-18T09:45:00-04:00",
+  "lastRunAt": "2026-08-19T10:15:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1367,6 +1367,13 @@
       "publisher": "Track V ingest (daily thin)",
       "processedAt": "2026-08-18",
       "outcome": "SHIPPED 7 adds, 3 expiries; deck 154 → 158 (+2.6%, inside ±40%). Expiry RAN. Fetch exit 0, reach 53/62 (15% error, at the ceiling but not over). 9 errored sources: 8 are the known Chromium browser-connect-reset fault (greenpoint-comedy-club, word-bookstore, leaves-bookstore, happy-medium, action-city-comics + the JS-thin auto sources sunshine-laundromat, brooklyn-youth-ballet, greenpoint-trash-club); the 9th is tend-greenpoint, still the roster defect first reported 2026-08-17 (fetch: \"embedded\" with no `embedded: { attr }` block, so the fetcher refuses before opening a socket) — a roster change and so human-gated, not applied here. No EGRESS DENIED block. Adds: mccarren-movies-guardians-2-0826 and mcgolrick-movies-eternal-sunshine-0829 (NYC Parks screenings that rolled into the window); troost-phillip-santos-0901 (the 9/1 date the coverage gate had flagged as a GAP — that line is now closed); library-chair-yoga-0824 (the branch's only Monday program, so a single card rather than a grouped day card); moon-bunny-weekend-camp-13-16-0829 and moon-bunny-two-day-camp-8-12-0901 (both previously deferred as past-horizon, now inside it); moon-bunny-back-to-school-2026 (kids' pack discount off the newly persisted /discounts detail page, stated through Sept 4). holds: 0 new-judgment · 0 rule-miss · 0 source-blocked. Gmail pass RAN: WORD's August newsletter carries three events, two Jersey City and one already elapsed, so nothing cardable; the Greenpointers digest, the GUNK fundraiser recap and the McGolrick Bird Club post carried no new dated Greenpoint supply. Skipped on geography: the Greenpointers 8/17 Colombia earthquake donation drop-off, which is at 5 Debevoise St in Williamsburg — the civic-nearby exception is for Greenpoint-subject items and this one's subject is citywide relief."
+    },
+    {
+      "id": "RUN-DAILY-THIN-2026-08-19",
+      "kind": "run",
+      "publisher": "Track V ingest (daily thin)",
+      "processedAt": "2026-08-19",
+      "outcome": "SHIPPED 9 adds, 8 updates, 1 correction-delete, 4 expiries; deck 158 → 162 (+2.5%, inside ±40%). Expiry RAN. Fetch exit 0, reach 53/62 (15% error, at the ceiling, not over). 9 errored sources: 8 are the known Chromium browser-connect-reset fault (greenpoint-comedy-club, word-bookstore, leaves-bookstore, happy-medium, action-city-comics + the JS-thin auto sources sunshine-laundromat, brooklyn-youth-ballet, greenpoint-trash-club); the 9th is tend-greenpoint, the same roster defect first reported 2026-08-17 (fetch: \"embedded\" with no `embedded: { attr }`) — human-gated, not applied here. No EGRESS DENIED block for the roster. The Greenpointers 8/20-26 roundup landed and was carded on first sight. Adds: franklin-garden-plant-biology-0820, acme-good-baklava-0821, giggles-loma-popup-0822, le-studio-anthost-pillow-0823, madelines-comedy-0825, loft-story-live-island-0826 (all off that roundup, the last three with addresses recovered from their Eventbrite listings and persisted into the snapshot); hana-dusky-kitchen-popup-0823 and hana-tour-tasting-0827; troost-dj-frantz-0821. Correction: troost-danny-ramos-0821 DELETED — the calendar's 8/21 instance is DJ FRANTZ and Danny Ramos moved to 9/18 (see watchItems). Updates: library-thursday-programs-0820 (the 1pm sewing hours flipped to is_event_canceled), library-sensory-garden-0828 (+ Myron the Magnificent), community-yoga-transmitter-thursdays and moon-bunny-weekday-camp-8-12-0817 (quotes re-pointed at lines the rolling feeds still carry), both Scrappleland standing nights and hana-bottomless-makgeolli (verified-through bumped to 9/2 off this run's snapshot). R1 egress denials to allowlist: opentable.com, portal.iclasspro.com, luma.com, checkout.square.site, partiful.com, themccarren.com. Gmail pass PENDING — the connector exposed no tools to this run. holds: 12 · 0 new-judgment · 0 rule-miss · 12 source-blocked."
     }
   ],
   "senderRegistry": [
@@ -1650,7 +1657,7 @@
     },
     {
       "name": "Lulla's Venezuela earthquake relief hub",
-      "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub — no address stated and no drop-off hours; card as community/news once the address and hours are verified",
+      "note": "RESOLVED 2026-08-19 — as OUT OF AREA, not as a card. The 8/20-26 roundup carried a dated item for this venue (\"Benefit Dinner + Drag Show for Venezuela @ Lulla’s, 8 p.m.\") and its Eventbrite listing finally states the address the roundup never did: \"location\":{\"@type\":\"Place\",\"name\":\"Lulla’s\",\"address\":{...\"streetAddress\":\"169 graham ave, Brooklyn, NY 11206\"}}. 169 Graham Ave is East Williamsburg, outside the Greenpoint bbox, so neither the relief hub nor the benefit dinner is cardable. Persisted in .ingest-cache/greenpointers.txt under [R1 PERSISTED 2026-08-19]. Do not re-open this on a future roundup mention.",
       "addedAt": "2026-07-27"
     },
     {
@@ -1816,11 +1823,21 @@
       "name": "Moon Bunny — the feather.rsvp feed drops a multi-day camp's past days, which breaks the quotes gate mid-camp",
       "note": "RECURRING MECHANIC, first hit 2026-08-18. moon-bunny-weekday-camp-8-12-0817 was authored 8/11 quoting its 8/17 first-day instance; the API serves UPCOMING instances only, so on 8/18 that line no longer existed in the snapshot and ingest:quotes failed the card — a correct, live card broken by its evidence rolling forward, not by anything wrong with it. Resolved by re-sourcing to the days the feed still states (startsAt moved 8/17 → 8/18, the quote fragment likewise); the camp still runs through 8/21 and the card says only what the source says today. EXPECT THIS AGAIN on every multi-day Moon Bunny card the day after it starts. The durable fix would be persisting each camp instance into the snapshot at authoring time so past days stay checkable — that is a fetcher/roster change, so human-gated, not applied here.",
       "addedAt": "2026-08-18"
+    },
+    {
+      "name": "Greenpointers 8/20-26 roundup — 12 items held for a street address the R1 host would not give up",
+      "note": "SOURCE-BLOCKED 2026-08-19, PR ingest/daily-2026-08-19. The roundup states NO street address for any item (it never does), and the roster note already records why: htmlToText strips <a href>, so the snapshot carries zero outbound URLs. The links were recovered by re-reading content.rendered from the WP REST API — that part worked — but only eventbrite.com answered at the routine's proxy. REFUSED (\"Request was cancelled\", or 502 \"policy unavailable\"): opentable.com (La Contenta 1-Year Anniversary 8/20), portal.iclasspro.com (Ms. J's Gymnastics Summer Bash 8/20), luma.com (Reforester's Laboratory Paint & Sip 8/20; Birdie's Sporting Club mahjong 8/26), checkout.square.site (Joy Flower Pot floral workshop 8/21), partiful.com (Bouquet Wine Bar 8/21; Rise & Bark at Memorial Gore Plaza 8/22; Threes Brewing guest-series finale 8/24), themccarren.com (Trivia at The McCarren 8/24). THREE are blocked differently and an allowlist will not fix them: Panzon's backyard BBQ (8/22), the Pigeons! art show at Cloud City (8/22) and Edith's Summer Sandwich Series (undated) carry no link at all in the roundup body. Threes Brewing has a second blocker on top of the address — it is multi-location and the roundup says only \"the local brewery\", so the claim is not attributable to 113 Franklin St under the 2026-08-12 attributability rule; the same roundup also carried four genuinely non-Greenpoint items, so \"it appeared in a Greenpoint roundup\" is not itself attribution. WHAT WOULD RESOLVE IT: Batu allowlisting the six hosts above at claude.ai/code (unblocks 9 of the 12), or an interactive session, where egress is unrestricted. Verbatim lines persisted in .ingest-cache/greenpointers.txt under [R1 PERSISTED 2026-08-19b] so they survive the REST window rolling.",
+      "addedAt": "2026-08-19"
+    },
+    {
+      "name": "Troost — the Google Calendar feed retitles instances of ONE recurring event, so a card can silently describe the wrong act",
+      "note": "SOURCE FACT found 2026-08-19 while reconciling the 8/21 night. The live card troost-danny-ramos-0821 quoted \"summary: DANNY RAMOS / start.date: 2026-08-21\" — a line that no longer exists anywhere in the feed. The calendar's 8/21 instance is titled DJ FRANTZ, and DANNY RAMOS has moved to 2026-09-18. Both instances share one base event id (htmlLink eids NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjA4MjE and ...XzIwMjYwOTE4), i.e. Troost runs a recurring series and retitles individual occurrences with whoever is actually playing. The retitle produced NO diff line this run because the change predates the last-ingested baseline — the baseline already read DJ FRANTZ on 8/21 while the card said Danny Ramos, so a run that only reads the diff cannot see it. The card was replaced by troost-dj-frantz-0821. WHAT CATCHES THE NEXT ONE: ingest:quotes, which fails a card whose quote is absent from the snapshot — this is exactly the shape that gate exists for, and it is why the gate must run after --mark-ingested.",
+      "addedAt": "2026-08-19"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-07-25",
-    "greenpointers": "2026-08-14",
+    "greenpointers": "2026-08-18",
     "greenpoint-comedy-club": "2026-08-14",
     "film-noir-cinema": "2026-08-14",
     "scrappleland": "2026-08-06",
@@ -1829,8 +1846,8 @@
     "bpl-north-brooklyn-calendar": "2026-08-17",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
-    "hana-makgeolli-events": "2026-08-07",
-    "hana-makgeolli-soolschool": "2026-08-07",
+    "hana-makgeolli-events": "2026-08-18",
+    "hana-makgeolli-soolschool": "2026-08-18",
     "archestratus": "2026-07-24",
     "little-dance-school": "2026-07-24",
     "brooklyn-youth-ballet": "2026-08-02",
@@ -1845,7 +1862,7 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-16",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-17",
+    "troost": "2026-08-18",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-14",
     "town-square-bk": "2026-08-06",
@@ -2095,6 +2112,13 @@
       "reason": "Browser-dependent source (roster `fetch: \"browser\"`, a Square Online/Weebly Vue SPA whose events block only renders in a browser), and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-18 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside all 8 other browser-path sources, while plain fetch reached the control URL through the same proxy without trouble — so it is not an allowlist gap. Onboarded 2026-08-17 from an interactive session, which is why the deck already carries its three ticketed tournament cards (action-city-fnb-armory-0818, action-city-one-piece-weds-0819, action-city-one-piece-op17-prerelease-0826) while the routine has never produced a snapshot. This is 'we cannot read the source', never 'the source is quiet'. WHAT WOULD CHANGE IT: the Chromium CONNECT fault being fixed at the proxy relay.",
       "addedAt": "2026-08-18",
       "expiresAt": "2026-09-01"
+    },
+    {
+      "sourceId": "golden-drum",
+      "gapKey": "GAP",
+      "reason": "FALSE POSITIVE, verified against this run's snapshot: the only 8/26-looking string in the whole 1,835-line file is line 1299, \"Sagittarius New Moon 12/08/26\" — a DD/MM/YY-style label for December 8, 2026, which extractDates reads as August 26. Same annotation-vs-event blindness already recorded for maison-jar (a 2025 archive date) and macha-studio. Golden Drum publishes nothing dated inside 2026-08-19 → 2026-09-02: every event detail block the fetch persisted this run is dated 2026-09-12 or later (Virgo New Moon 9/12, three African Drum classes 10/27, 11/23, 12/9, Scorpio full moon 10/26, Sagittarius full moon 11/24, Sagittarius new moon 12/8). No uncarded in-window supply exists at this source.",
+      "addedAt": "2026-08-19",
+      "expiresAt": "2026-09-02"
     }
   ]
 }

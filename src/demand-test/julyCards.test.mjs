@@ -525,14 +525,28 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // two-day camp (9/1–2), both of which had been deferred as past-horizon and
   // are now inside it, plus the back-to-school kids' pack discount that its
   // newly persisted /discounts detail page states runs until Sept 4.
-  assert.equal(seed.cards.length, 158);
+  // 2026-08-19 daily refresh: expiry deleted 4 cards that ended 8/18
+  // (troost-julia-kwamya-0818, gather-sound-bath-0818,
+  // library-tuesday-programs-0818, action-city-fnb-armory-0818), then 9 adds
+  // and 1 correction-deletion. 158 − 4 + 9 − 1 = 162. Six adds come off the
+  // Greenpointers 8/20-26 roundup — the 61 Franklin St. Garden plant-biology
+  // talk (8/20), Good Baklava's guest schmear at Acme's Fish Friday (8/21),
+  // the LOMA Collective pop-up at Giggles & Wiggles (8/22), Le Studio
+  // Anthost's pillow workshop (8/23), Madeline's comedy show (8/25) and LIVE
+  // ISLAND at Loft Story (8/26); two are Hana Makgeolli (the Dusky Kitchen
+  // dessert pop-up 8/23 and the 8/27 tour and tasting); one is DJ FRANTZ at
+  // Troost on 8/21, which REPLACES troost-danny-ramos-0821 — the venue
+  // calendar's 8/21 instance is titled DJ FRANTZ and Danny Ramos has moved to
+  // 9/18, so the old card was misdated and its quote no longer existed in the
+  // snapshot.
+  assert.equal(seed.cards.length, 162);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 86, "83 − 3 expired + 6 adds (2026-08-18): two park screenings, a Troost night, library chair yoga, two Moon Bunny camps");
+  assert.equal(count((c) => c.category === "event"), 90, "86 − 4 expired + 9 adds − 1 replaced Troost night (2026-08-19)");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 25, "24 + the 9/1 Troost bill the coverage gate flagged (2026-08-18)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 24, "25 − the expired 8/18 Troost night; DJ FRANTZ replaces Danny Ramos one-for-one (2026-08-19)");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -704,6 +718,11 @@ test("free-ness is designated only where the source states it (tester feedback #
   // NOT here: only some programs in each day state "Free", and a grouped card
   // must not extend one line's free-ness across the whole day.
   assert.deepEqual(free, [
+    // 2026-08-19: the Greenpointers 8/20-26 roundup states free-ness outright
+    // in the two lines these cards quote — "Free to attend, RSVP here" for the
+    // Good Baklava takeover of Acme's Fish Friday, and "Free, no RSVP needed"
+    // for the 61 Franklin St. Garden plant-biology talk.
+    "acme-good-baklava-0821",
     // 2026-08-10: Kindred's Thursday sunset session, same flyer as the
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
@@ -712,6 +731,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
+    "franklin-garden-plant-biology-0820",
     "greenpoint-trash-club",
     // 2026-08-14: three Longevity Stick sittings at Transmitter Park. The Go
     // Green detail page states the free-ness once for the whole series — "Join
@@ -830,9 +850,8 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (buffalo-firefly-soundbath-0813 expired out 2026-08-14)
     "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays",
-    // 2026-08-12: a sound bath and Reiki session — bodywork in the same
-    // movement cluster as yoga, not a thing you attend to watch.
-    "gather-sound-bath-0818",
+    // (gather-sound-bath-0818 — a sound bath and Reiki session, filed here
+    //  2026-08-12 as bodywork in the movement cluster — expired out 2026-08-19)
     "held-space-membership",
     // 2026-08-14: Longevity Stick at Transmitter Park, "a mix of Tai Chi and
     // yoga" on Go Green's own detail page — the movement cluster this lens
@@ -869,7 +888,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
   assert.deepEqual(games, [
     // 2026-08-17: Action City Comics onboarded — three ticketed TCG tournament
     // nights sourced from the shop's own homepage events widget.
-    "action-city-fnb-armory-0818",
+    // (action-city-fnb-armory-0818 expired out 2026-08-19)
     "action-city-one-piece-op17-prerelease-0826",
     "action-city-one-piece-weds-0819",
     "black-rabbit",
@@ -972,6 +991,11 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // every category:shopping card carries the shopping lens. Before this, the
     // deck's two shop cards were filed by two different logics.
     "giggles-and-wiggles",
+    // 2026-08-19: a visiting childrenswear label pops up inside that same kids'
+    // store for one morning. A vendor pop-up is a dated retail happening, which
+    // is exactly what this lens takes; it keeps `family_kids` alongside,
+    // following the venue card's own filing.
+    "giggles-loma-popup-0822",
     // "Drinks, try on's and wishlist building" at a jewelry studio — retail at
     // a second store, the ruling's first extension beyond CIBONE.
     "macha-summer-fridays-after-hours",
