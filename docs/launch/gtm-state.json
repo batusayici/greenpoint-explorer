@@ -22,9 +22,9 @@
     "doneWhen": "Perri answered today · the return branch reviewed and merged · first Monday send out Aug 24 · parallel-reach channels each on their own src. The 8/25 readout reads results; D3 deleted its gate.",
     "steps": [
       {
-        "label": "Reply to Perri — she offered a call or her shop Wed/Thu 1–4pm, and today is Wednesday",
+        "label": "Replied to Perri — she offered a call or her shop Wed/Thu 1–4pm",
         "when": "Today, Wed 8/19",
-        "status": "next",
+        "status": "done",
         "date": "2026-08-19"
       },
       {
@@ -1111,28 +1111,21 @@
   "daily": {
     "ranAt": "2026-08-19",
     "dayName": "Wednesday, August 19",
-    "dueToday": [
-      "Reply to Perri — she offered a call or her shop Wed/Thu 1–4pm, and today is Wednesday",
-      "Review the return branch — Follow ask un-gated, weekly cadence published, printable /week sheet (feat/return-mechanisms, 2 commits, unmerged)",
-      "Merge the readout PR #42 — but it reverts D1–D6, see Waiting on you"
-    ],
+    "dueToday": [],
     "overdue": [],
     "waiting": [
       {
-        "what": "PR #43 — content(track-v): held cards, daily 2026-08-19",
+        "what": "1 commit on main not pushed",
         "age": 0
-      },
-      {
-        "what": "PR #42 — growth: readout 2026-08-18",
-        "age": 1
       }
     ],
     "overnight": [
-      "docs: make plain-language reporting a project-wide rule, not a skill-scoped one",
-      "launch: cockpit updated to 2026-08-19",
-      "docs(launch): log Greenpoint Library + Brooklyn Craft outreach as sent",
-      "docs(strategy): D2-D6 ratified — weekly send, parallel reach, physical, product repairs, supply",
-      "content(track-v): daily refresh — 9 adds, 8 updates, 1 correction, 4 expiries; deck 158 → 162"
+      "growth: cycle-6 readout + four rulings (#45)",
+      "docs: record the analytics host gate, and the fake-prod-crash diagnostic",
+      "ingest: rule OpenTable un-allowlistable, skip Square; record why",
+      "settings: allowlist six PR #43 ticketing hosts for WebFetch",
+      "docs(launch): return-mechanisms branch merged — update state",
+      "Merge feat/return-mechanisms — D5: the missing product"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1141,8 +1134,8 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 75,
-      "reservoir": 22,
+      "dated": 76,
+      "reservoir": 21,
       "stale": false,
       "thin": false,
       "fresh": true,
