@@ -986,10 +986,10 @@
     {
       "id": "founder-capacity",
       "title": "The approved slate costs ~12–15 founder-hours/week",
-      "severity": "named, not yet managed",
+      "severity": "named; budget confirmed available",
       "detail": "Sends ~2h, group answers ~3h, physical ~4–5h, the weekly send ~1h, conversations ~2h. Every researched hyperlocal success ran on years of unpaid founder labor, and the most repeated failure was exhaustion before the curve turned.",
-      "response": "Earliest warning sign is a skipped week — watch it as a metric on ourselves. Cut order decided now rather than discovered in week 5: fewer group-answer posts, one market morning, Greenline deferred.",
-      "source": "strategy review, founder-hours section"
+      "response": "Batu confirmed 2026-08-19 that 12–15 hours/week is realistic, so the cut order stays unused unless a week is actually skipped. Earliest warning sign is still a skipped week — watch it as a metric on ourselves. Cut order if the budget turns out to be 8: fewer group-answer posts, one market morning, Greenline deferred. Note this is a stated budget, not H6 evidence — H6's test is 8 consecutive weeks tracked.",
+      "source": "strategy review, founder-hours section; confirmed by Batu 2026-08-19"
     },
     {
       "id": "webview",
@@ -1104,8 +1104,8 @@
     },
     {
       "id": "founder-hours",
-      "text": "The approved slate costs ~12–15 founder-hours/week through mid-September. The researched failure pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped week. Cut order if the real budget is 8 hours: fewer group-answer posts, one market morning instead of two, Greenline deferred.",
-      "source": "strategy review, founder-hours section"
+      "text": "The approved slate costs ~12–15 founder-hours/week through mid-September, and Batu confirmed that budget is realistic (2026-08-19) — so the slate runs as approved. The researched failure pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped week. Cut order, held in reserve if the real budget drops to 8 hours: fewer group-answer posts, one market morning instead of two, Greenline deferred.",
+      "source": "strategy review, founder-hours section; confirmed by Batu 2026-08-19"
     }
   ],
   "daily": {
