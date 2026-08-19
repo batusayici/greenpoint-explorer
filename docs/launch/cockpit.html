@@ -179,14 +179,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
 
   <section>
     <h2 class="sec">Waiting on you</h2>
-    <ul class="atts">
-  <li class="att">
-    <details>
-      <summary><b>Ratify or retire the two operator-derived metrics — unique coverage AND roster yield</b><span class="att__by mono">the 2026-09-01 readout, or the operator stops reporting both</span></summary>
-      <p>Unique coverage = the share of cards no other Greenpoint source carried. It is the differentiation proof (business-model §1.4, H3) and one of three things on the buyer trust surface (growth-engine rule 3), so it leaves the building — 82% counting Shop Small as another source, 88% not. Roster yield = the share of the 72 roster sources that produced a card in a window; it is an internal supply alarm only, 22% at 7 days or 67% at 14, and no window was ever agreed. Both move for definitional reasons rather than real ones.</p>
-      <ul class="opts"><li>Unique coverage: ratify at the STRICT reading — Shop Small counts as another Greenpoint source, so 82%. The metric's own words are &quot;appeared in no other Greenpoint source&quot;, SSG publishes a directory and a newsletter, and it is Perri's — claiming her listings as coverage nobody else has is both wrong and awkward with a partner. (recommended)</li><li>Unique coverage: ratify at 88%, treating SSG as a peer directory rather than a competing source</li><li>Roster yield: RETIRE it — check-coverage.mjs already flags per-source silence at 3x each source's own cadence, which is strictly better than a roster-wide percentage on an arbitrary window. (recommended)</li><li>Roster yield: ratify on the 14-day window (67%), matching the real cadence mix</li></ul>
-    </details>
-  </li></ul>
+    <ul class="atts"></ul>
   </section>
 
   <section>
@@ -470,16 +463,10 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <span class="tile__cav">Baseline RESTATED 2026-08-19 to 162 · 76 · 72 (was 95 · 38 · 48 from pre-launch July).</span>
   </article>
   <article class="tile">
-    <span class="tile__lbl">Roster yield</span>
-    <span class="tile__val mono">17 of 72 in 7d (24%) · 48 of 72 in 14d (67%)</span>
-    <span class="tile__meta mono">→ was &quot;42 of 68 (62%)&quot;</span>
-    <span class="tile__cav">The old 62% matches neither window. Computed here from the ledger's sourcePulse with the window stated. The metric has no instrument and no agreed window.</span>
-  </article>
-  <article class="tile">
     <span class="tile__lbl">Unique coverage</span>
-    <span class="tile__val mono">123 of 158 (78%)</span>
-    <span class="tile__meta mono">↗ was 110 of 144 (76%)</span>
-    <span class="tile__cav">84% excluding Shop Small. Same ~6-point definitional swing, unratified after four cycles.</span>
+    <span class="tile__val mono">133 of 162 (82%)</span>
+    <span class="tile__meta mono">↗ was 123 of 158 (78%), hand-derived</span>
+    <span class="tile__cav">RATIFIED 2026-08-19 and now computed by uniqueCoverage() in coverage.js, printed by npm run ingest:coverage — no longer an operator derivation. Shop Small counts as another Greenpoint source by ruling, which is why this reads 82% and not 88%. Changing the aggregator set changes a claim shown to buyers: that is a decision, not a tweak.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Signup list (R1 denominator)</span>

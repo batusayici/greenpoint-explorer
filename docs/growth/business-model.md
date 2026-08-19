@@ -53,6 +53,21 @@ compounding rather than ephemeral. Differentiators, in strength order:
    **unique-coverage count** (items on the map that appeared in no other
    Greenpoint source) is the differentiation proof nobody can copy without
    doing the verification work.
+   **RATIFIED 2026-08-19 (Batu), and it is now an instrument, not a derivation.**
+   `uniqueCoverage()` in `src/demand-test/coverage.js` computes it and
+   `npm run ingest:coverage` prints it every run. A card counts as unique when
+   **at least one** of its sources is not an aggregator — one named primary
+   source is the whole claim, so a card carried by Greenpointers *and* the venue
+   still counts; a card with no sources counts as **not** unique, because
+   unsourced is a truth-rule failure and must never read as a differentiation
+   win. **Shop Small Greenpoint is on the aggregator list by ruling:** this
+   metric's own words are "no other Greenpoint source", SSG runs a directory and
+   a newsletter and is cited as a publisher on live cards, so it is one. That
+   gives the lower reading (**82%**, vs 88% if SSG were excluded) — the correct
+   direction for a number shown to a buyer, and it avoids claiming a
+   prospective partner's own listings as coverage nobody else has. Changing the
+   aggregator set changes a published claim: treat it as a decision, not a
+   tweak.
 
 Community-run events (stoop sales, sidewalk sales) are real white space but
 **deferred post-PMF (Batu, 2026-07-28)**: they have no named source, so they
@@ -212,13 +227,23 @@ no strategy doc, while 7 of 48 roster sources go dark Nov–Mar):**
 - **No gate is read and no renewal is priced on raw Dec–Feb numbers.** WRL and
   feed metrics from the trough are read against the seasonal baseline, never
   absolute. Pilot terms are written so renewal decisions don't land Jan–Feb.
-- **Feed density** (dated items in the next 7 days + share of roster yielding
-  this week) is tracked continuously — **baseline restated 2026-08-19: 162
-  cards, 76 dated in-window, 72 sources** (pre-launch reading, 2026-07-28: 95 ·
-  38 · 48) — so a winter content decline is separable from product failure, and
-  a silent ingest outage trips the metric within a day. **Restate the baseline
-  whenever it stops describing the live product**; the winter comparison is
-  only meaningful against a number that was true going into the winter.
+- **Feed density** (dated items in the next 7 days) is tracked continuously —
+  **baseline restated 2026-08-19: 162 cards, 76 dated in-window, 72 sources**
+  (pre-launch reading, 2026-07-28: 95 · 38 · 48) — so a winter content decline
+  is separable from product failure, and a silent ingest outage trips the metric
+  within a day. **Restate the baseline whenever it stops describing the live
+  product**; the winter comparison is only meaningful against a number that was
+  true going into the winter.
+- **"Share of roster yielding this week" is RETIRED (Batu, 2026-08-19)** and is
+  no longer reported. It was never instrumented, no window was ever agreed, and
+  it read 22% or 67% on the same day depending on whether you looked back 7 days
+  or 14 — a 45-point swing on a definitional choice. **The job it approximated
+  is already done better:** `check-coverage.mjs` flags each source individually
+  once it has been silent past **3× its own cadence**, so a monthly source is
+  not scored as dark for being monthly, which is exactly the error a
+  roster-wide percentage makes. Seasonal separation reads off feed density
+  against the baseline above. Do not reinstate a roster-wide yield percentage
+  without first saying what the per-source silence check fails to catch.
 - September experiment reads carry a standing confound note: the citywide
   autumn rebound. Pre/post cannot control for it; reads are labeled accordingly.
 - **A demand-gate pass on cohorts wholly inside Sep–Oct is provisional** (P8,

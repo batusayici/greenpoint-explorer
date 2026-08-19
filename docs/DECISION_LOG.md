@@ -42,9 +42,34 @@ and would have silently reverted five ratified decisions on merge. The rule: rea
 `main` before writing, and re-branch rather than merging a stale copy forward. **A PR sitting open for
 a week is not evidence its base is still current.** PR #42 was closed unmerged and re-run as cycle 6.
 
-**Still open, and now the only item on the list:** whether `unique coverage` and `roster yield` are
-ratified or retired — five and six cycles unratified. Deadline stands at the 2026-09-01 readout, after
-which the operator stops reporting both.
+**The two operator-derived metrics, settled the same day — five and six cycles after they were first
+reported.** They were one open item and they got opposite answers, because they are different kinds of
+number.
+
+**`unique coverage` is RATIFIED at the strict reading, and instrumented.** A card counts as unique when
+at least one of its sources is not an aggregator; a card with no sources counts as **not** unique
+(unsourced is a truth-rule failure and must never read as a differentiation win). **Shop Small
+Greenpoint is on the aggregator list** — the metric's own words are "items that appeared in no other
+Greenpoint source", and SSG runs a directory and a newsletter and is cited as a publisher on live
+cards, so it is one. That gives **82%, not 88%**. Two reasons the lower number is the right one: this
+figure sits on the buyer trust surface (growth-engine rule 3) and so must be the version that survives
+being asked how it was calculated; and SSG is Perri's, so the higher number would claim a prospective
+partner's own listings as coverage nobody else has. It is now `uniqueCoverage()` in
+`src/demand-test/coverage.js`, printed by `npm run ingest:coverage`, with tests — **it stops being
+re-derived from memory by whoever runs the readout**, which is the same fix applied for the same reason
+as cycle 1's funnel numbers. Changing the aggregator set changes a published claim and is a decision,
+not a tweak.
+
+**`roster yield` is RETIRED.** It read 22% or 67% on the same day depending on a 7- or 14-day window
+nobody had ever agreed, and — the deciding argument — the job it approximated is already done better
+elsewhere: `check-coverage.mjs` flags each source once it is silent past **3× its own cadence**, so a
+monthly source is not scored as dark for being monthly, which is precisely the error a roster-wide
+percentage makes. Seasonal separation reads off feed density against the restated baseline instead.
+Reinstating a yield percentage requires first saying what the per-source check fails to catch.
+
+**The rule underneath both, worth keeping:** *a number that leaves the building gets an instrument; a
+number that cannot be defined twice the same way gets retired.* An unratified number published weekly
+eventually gets quoted by someone who did not read the caveat.
 
 Carriers updated the same change: `channel-links.md` (two new rows, one superseded),
 `growth-engine.md` §1, `business-model.md` §4, `.claude/skills/growth-weekly/SKILL.md`,

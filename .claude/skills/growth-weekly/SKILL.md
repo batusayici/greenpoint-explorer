@@ -295,3 +295,17 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   this cycle doesn't own has changed since the branch point, re-branch from
   current `main` rather than merging the stale copy forward. A PR sitting
   open for a week is not evidence its base is still current.
+- **(2026-08-19, cycle 6 — RATIFIED by Batu.)** **Quote `unique coverage` from
+  the instrument, and do not report `roster yield` at all.** Unique coverage is
+  now `uniqueCoverage()` in `src/demand-test/coverage.js`, printed by
+  `npm run ingest:coverage` — read that line, never re-derive it, and never
+  re-open the aggregator set inside a readout (Shop Small Greenpoint is on it by
+  ruling; changing the set changes a claim shown to buyers, so it is a decision
+  for Batu, not a tweak). **Roster yield is retired** — it was a roster-wide
+  percentage on a window nobody agreed, reading 22% or 67% on the same day, and
+  the per-source silence check in `check-coverage.mjs` already answers its
+  question with each source's own cadence. If a future readout wants a
+  supply-health line, use feed density against the restated baseline (162 · 76 ·
+  72) plus that silence check. **The general rule both of these came from: a
+  number that leaves the building gets an instrument; a number that cannot be
+  defined twice the same way gets retired.**

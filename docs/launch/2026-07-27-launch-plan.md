@@ -115,9 +115,11 @@ Echo-chamber order — saturate small trust networks before broadcast
   (≥2 `card_open` + 1 high-intent act, first session) · per-`src` sessions and
   week-2 return · organic share of new sessions (the >50% WoM signal, monthly
   read) · supply-side submissions/asks (L5) · **feed density** (dated in-window
-  items + roster yield share — the supply-side leading indicator, growth-engine
-  §1) · **unique-coverage count** (items no other Greenpoint source carried —
-  the differentiation proof, growth-engine §1).
+  items — the supply-side leading indicator, growth-engine §1; **roster yield
+  share retired 2026-08-19**, superseded by the per-source silence check in
+  `check-coverage.mjs`) · **unique-coverage count** (items no other Greenpoint
+  source carried — the differentiation proof, growth-engine §1; **ratified
+  2026-08-19 at 82%** and now computed by `uniqueCoverage()`, not by hand).
 - **Kill rules are pre-registered** in growth-engine §2–4; the operator computes
   the reads, Batu owns every verdict.
 

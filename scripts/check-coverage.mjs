@@ -25,7 +25,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { reconcile, updatePulse, isFlagged, isUnexplained, inScope } from "../src/demand-test/coverage.js";
+import { reconcile, updatePulse, isFlagged, isUnexplained, inScope, uniqueCoverage } from "../src/demand-test/coverage.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = join(root, "src", "data", "demand-test");
@@ -134,6 +134,17 @@ for (const r of flagged) {
 // not silence — fixing the roster converges these lines to SILENT/ok.
 if (neverCarded.length) {
   console.log(`\n  never carded (info): ${neverCarded.map((r) => r.id).join(", ")}`);
+}
+
+// Unique coverage — ratified 2026-08-19, printed here so the readout quotes an
+// instrument instead of re-deriving it. Never gates: it is a marketing/trust
+// number, and a low reading is an editorial signal, not a ship defect.
+{
+  const u = uniqueCoverage(cards);
+  console.log(
+    `\n[coverage] unique coverage: ${u.unique} of ${u.total} (${Math.round(u.share * 100)}%)` +
+      " — cards carried by at least one non-aggregator source.",
+  );
 }
 
 if (SHOW_ALL) {

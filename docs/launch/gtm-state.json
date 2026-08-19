@@ -704,24 +704,14 @@
       "caveat": "Baseline RESTATED 2026-08-19 to 162 · 76 · 72 (was 95 · 38 · 48 from pre-launch July)."
     },
     {
-      "id": "yield",
-      "label": "Roster yield",
-      "value": "17 of 72 in 7d (24%) · 48 of 72 in 14d (67%)",
-      "prior": "\"42 of 68 (62%)\"",
-      "target": null,
-      "trend": "flat",
-      "role": "source health",
-      "caveat": "The old 62% matches neither window. Computed here from the ledger's sourcePulse with the window stated. The metric has no instrument and no agreed window."
-    },
-    {
       "id": "unique",
       "label": "Unique coverage",
-      "value": "123 of 158 (78%)",
-      "prior": "110 of 144 (76%)",
+      "value": "133 of 162 (82%)",
+      "prior": "123 of 158 (78%), hand-derived",
       "target": null,
       "trend": "up",
       "role": "the differentiation proof",
-      "caveat": "84% excluding Shop Small. Same ~6-point definitional swing, unratified after four cycles."
+      "caveat": "RATIFIED 2026-08-19 and now computed by uniqueCoverage() in coverage.js, printed by npm run ingest:coverage — no longer an operator derivation. Shop Small counts as another Greenpoint source by ruling, which is why this reads 82% and not 88%. Changing the aggregator set changes a claim shown to buyers: that is a decision, not a tweak."
     },
     {
       "id": "signups",
@@ -959,22 +949,7 @@
       "status": "product-generated, never sent by hand"
     }
   ],
-  "openDecisions": [
-    {
-      "id": "unique-coverage",
-      "title": "Ratify or retire the two operator-derived metrics — unique coverage AND roster yield",
-      "owner": "Batu",
-      "needBy": "the 2026-09-01 readout, or the operator stops reporting both",
-      "why": "Unique coverage = the share of cards no other Greenpoint source carried. It is the differentiation proof (business-model §1.4, H3) and one of three things on the buyer trust surface (growth-engine rule 3), so it leaves the building — 82% counting Shop Small as another source, 88% not. Roster yield = the share of the 72 roster sources that produced a card in a window; it is an internal supply alarm only, 22% at 7 days or 67% at 14, and no window was ever agreed. Both move for definitional reasons rather than real ones.",
-      "source": "readout 2026-08-19 Proposal 3; business-model §1.4, §4 H3; growth-engine rule 3",
-      "options": [
-        "Unique coverage: ratify at the STRICT reading — Shop Small counts as another Greenpoint source, so 82%. The metric's own words are \"appeared in no other Greenpoint source\", SSG publishes a directory and a newsletter, and it is Perri's — claiming her listings as coverage nobody else has is both wrong and awkward with a partner. (recommended)",
-        "Unique coverage: ratify at 88%, treating SSG as a peer directory rather than a competing source",
-        "Roster yield: RETIRE it — check-coverage.mjs already flags per-source silence at 3x each source's own cadence, which is strictly better than a roster-wide percentage on an arbitrary window. (recommended)",
-        "Roster yield: ratify on the 14-day window (67%), matching the real cadence mix"
-      ]
-    }
-  ],
+  "openDecisions": [],
   "risks": [
     {
       "id": "no-return",
