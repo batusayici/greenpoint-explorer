@@ -131,7 +131,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
   <header class="mast">
     <h1>Stoopwise launch</h1>
     <span>as of 2026-08-19</span>
-    <span>analytics 2026-08-18 · feed 2026-08-19</span>
+    <span>analytics 2026-08-19 · feed 2026-08-19</span>
   </header>
 
   
@@ -154,7 +154,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
   <section class="focus">
     <p class="focus__kicker">Right now</p>
     <h2 class="focus__goal">Give people a reason to come back — the sends are done, nothing returns them yet</h2>
-    <p class="focus__why">Wave 1 is fully sent: five notes out, and the friends-family cohort proved the product lands (16 people, 39 card opens, 4 actions) and then went silent after two days with zero return events. That is the exact gap D1–D6 named on 8/17. The return mechanisms are built and sitting on an unmerged branch; the weekly send starts Monday.</p>
+    <p class="focus__why">Wave 1 is fully sent: six notes out (Town Square, Perri, Action City, Library, Brooklyn Craft, friends-family), and the friends-family cohort proved the product lands (16 people, 39 card opens, 4 actions) and then went silent with zero return events. Week 1 opens 8/20 — one day off. The return mechanisms are built and sitting on an unmerged branch; the weekly send starts Monday. The Library and Brooklyn Craft notes each produced a first session the same day they were sent.</p>
     <ol class="steps">
       
       <li class="step step--now">
@@ -182,22 +182,15 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <ul class="atts">
   <li class="att">
     <details>
-      <summary><b>Readout PR #42 reverts the D1–D6 decisions</b><span class="att__by mono">before merging — it has been open since 8/18</span></summary>
-      <p>The Tuesday routine branched from main at 7acae75, twenty minutes before D2–D6 landed. It then rewrote the whole state file from what it could see, so merging it as-is restores the old 'finish Wave 1' focus, puts the 8/25 gate back that D3 deleted, and drops the D1–D6 ratification record. Its readout content is good and its numbers are real — only the state file conflicts.</p>
-      <ul class="opts"><li>Merge the readout doc and skip its gtm-state.json change (this update already carries its numbers)</li><li>Merge as-is and re-apply D1–D6 afterwards</li><li>Fix the class: have the routine merge into the state file instead of rewriting it</li></ul>
+      <summary><b>Readout PR #42 — superseded, recommend closing without merging</b><span class="att__by mono">now — this cycle (docs/growth/readouts/2026-08-19.md) supersedes it</span></summary>
+      <p>Cycle 6 re-ran the growth loop from current main (which already carries D1–D6) instead of merging #42 as-is. Its readout numbers are one day stale but its state-file change is gone — this cycle merged directly into the current gtm-state.json. Recommend closing #42 without merging.</p>
+      <ul class="opts"><li>Close #42 without merging (recommended)</li><li>Merge #42’s readout doc only, for the historical record</li></ul>
     </details>
   </li>
   <li class="att">
     <details>
       <summary><b>Answer Perri — call or shop visit</b><span class="att__by mono">today, Wed 8/19 — she offered Wed/Thu 1–4pm</span></summary>
       <p>She replied 36 minutes after the note went out, the fastest response any outreach has produced. The window she offered is today and tomorrow. A draft is in the 8/18 readout.</p>
-      
-    </details>
-  </li>
-  <li class="att">
-    <details>
-      <summary><b>preflight:send fires a false do-not-send</b><span class="att__by mono">before the next send</span></summary>
-      <p>The gate that protects every outbound claim failed on the morning of the send it exists to protect. It compares the sitemap's live cards against every card in the deck, and aged-out news cards stay in the deck forever by design. Nine of them today. Prod was verified current three ways; the fix is proposed in the readout.</p>
       
     </details>
   </li>
@@ -226,6 +219,13 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <details>
       <summary><b>Ratify or retire the unique-coverage proxy</b><span class="att__by mono">open four cycles</span></summary>
       <p>Operator-derived and unratified. Including Shop Small gives 76%, excluding it gives 83%. A marketing number with a 7-point definitional swing isn't a number.</p>
+      
+    </details>
+  </li>
+  <li class="att">
+    <details>
+      <summary><b>Ratify the gtm-state.json merge-discipline standing instruction</b><span class="att__by mono">before the 8/25 routine run</span></summary>
+      <p>Proposed in SKILL.md this cycle: before writing gtm-state.json, read the current file on main and re-branch if anything this cycle doesn’t own has changed since the branch point. This is what would have prevented PR #42.</p>
       
     </details>
   </li></ul>
@@ -291,9 +291,9 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
       <span class="xr__hyp">Re-entry is the weakest edge of the content loop — nothing tells a resident it's a new week. A followed lens or place beats a broadcast digest at bringing them back.</span>
       <span class="xr__rule">Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 → personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.</span>
     </td>
-    <td class="mono num">4 signups, 0 segmented. Trigger (≥10 with ≥1 segmented) unmet.</td>
+    <td class="mono num">4 signups, 0 segmented. Trigger (≥10 with ≥1 segmented) unmet, unchanged since 8/13.</td>
     <td><span class="pill pill--warn">hold</span></td>
-    <td class="xr__imp">Do not start the clock. D2 ratified a weekly Monday send on 8/17, which changes what R1 is testing — the readout flagged D2 as unruled because it branched before that decision landed.</td>
+    <td class="xr__imp">Do not start the comparison clock — trigger still unmet. D2’s weekly Monday send arms as R1’s control arm starting 8/24 regardless of the trigger; the segmented-vs-broadcast comparison itself still waits on ≥10 signups with ≥1 segmented.</td>
   </tr>
   <tr class="xr xr--now">
     <td class="mono xr__id">Q1</td>
@@ -302,9 +302,9 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
       <span class="xr__hyp">A recommendation from inside a small trust network converts where broadcast can't, and costs nothing. An org that shares is a Loop B ignition.</span>
       <span class="xr__rule">Sessions and activation rate per src. Kill an org-type after 2 non-responses.</span>
     </td>
-    <td class="mono num">Town Square out 8/17 (1 session same evening); Library + Brooklyn Craft out 8/18, no sessions yet.</td>
+    <td class="mono num">Town Square 8/17 (1 session, no reply). Library + Brooklyn Craft sent 8/18 — both produced a first session the same day (6 and 8 people). Film Noir/WORD/Flower Cat (arts wave) due this week, not yet sent.</td>
     <td><span class="pill pill--idle">not yet read</span></td>
-    <td class="xr__imp">No read this cycle — P6 binds it. Two srcs had not been sent when the routine fired, and reading their zeros would fire a kill rule on nothing. Mechanism check runs 8/25.</td>
+    <td class="xr__imp">Still no read — only one send (Town Square) is old enough to count toward the 2-non-response kill rule, and that’s one, not two. Two same-day sessions from yesterday’s sends is a positive early signal, not a mechanism-check result; that still runs 8/25.</td>
   </tr>
   <tr class="xr xr--idle">
     <td class="mono xr__id">P9-ig</td>
@@ -335,9 +335,9 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
       <span class="xr__hyp">Cards published as static structured HTML get cited by search engines and AI assistants, bringing residents at zero cost to acquire.</span>
       <span class="xr__rule">No kill rule — owned infrastructure.</span>
     </td>
-    <td class="mono num">15 people from Google, 99 events, 12 of 15 local, 19 landing pages. AI-referrer sessions 0.</td>
-    <td><span class="pill pill--idle">second positive read</span></td>
-    <td class="xr__imp">Doubled again and no longer a two-page story. Recorded, not graduated. Citations unreadable from the routine — Search Console is a browser instrument on Batu's account.</td>
+    <td class="mono num">16 people from Google, 101 events, 13 of 16 local, 13 landing pages this pull. AI-referrer sessions 0.</td>
+    <td><span class="pill pill--idle">third positive read</span></td>
+    <td class="xr__imp">Grew again week over week (7 → 15 → 16). Recorded, not graduated. Citations still unreadable — Search Console needs Batu’s own browser session.</td>
   </tr>
   <tr class="xr xr--idle">
     <td class="mono xr__id">A1</td>
@@ -346,9 +346,9 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
       <span class="xr__hyp">Where do first sessions stall — before the first card open, or between open and act?</span>
       <span class="xr__rule">Produces the target for A2.</span>
     </td>
-    <td class="mono num">178 → 32 opened (18%) → 18 acted. NYC-metro 64 → 21 (33%) → 13.</td>
+    <td class="mono num">200 → 34 opened (17%) → NYC-metro 69 → 21 (30%).</td>
     <td><span class="pill pill--idle">provisional</span></td>
-    <td class="xr__imp">Five readings at growing n all say the stall is before the first card open. Still not a build trigger.</td>
+    <td class="xr__imp">Same shape as five prior readings: the stall is before the first card open. Still not a build trigger.</td>
   </tr>
   <tr class="xr xr--idle">
     <td class="mono xr__id">A2</td>
@@ -416,7 +416,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
       <span class="pill pill--warn">pending</span>
     </header>
     <p class="gate__bar">PMF gate (re-registered 2026-08-17, D1): of locals who visit twice, ≥25% return in ≥3 of any 4 consecutive weeks, floor 12 people. Business-viability line, retained: ≥30 weekly returning locals. A tagged email click counts as a return; site-direct returns reported separately. 'Majority unprompted' removed from the gate clause — organic share stays a watched line under P1.</p>
-    <p class="gate__act mono">3 of 16 locals (19%) against ≥25%; floor 3 against ≥12. WRL proxy 4 people, distance −26.</p>
+    <p class="gate__act mono">3 of 17 locals (18%) against ≥25%; floor 3 against ≥12. WRL proxy 4 people, distance −26.</p>
     <p class="gate__unl"><span class="lbl">Unlocks</span> Permission to ship any paid surface. Nothing paid goes live before this passes.</p>
   </article>
   <article class="gate">
@@ -425,7 +425,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
       <span class="pill pill--warn">pending</span>
     </header>
     <p class="gate__bar">≥2 channels repeatedly producing activated users without founder-intensive outreach</p>
-    <p class="gate__act mono">5 srcs sent, 2 have produced a session (friends-family, org-town-square). Google organic is the only non-founder channel: 15 people.</p>
+    <p class="gate__act mono">6 srcs sent, 4 have produced a session (friends-family, org-town-square, org-gp-library, org-brooklyn-craft — the last two landed same-day as their 8/18 sends). Google organic is still the only non-founder-outreach channel: 16 people.</p>
     <p class="gate__unl"><span class="lbl">Unlocks</span> Confidence that growth isn't Batu's inbox. Feeds the distribution deliverable every pilot has to carry.</p>
   </article>
   <article class="gate">
@@ -434,7 +434,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
       <span class="pill pill--warn">pending</span>
     </header>
     <p class="gate__bar">≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter</p>
-    <p class="gate__act mono">0 submissions. Form has 7 visits, 0 starts.</p>
+    <p class="gate__act mono">0 submissions. Form has 7 visits, 0 starts. Unchanged.</p>
     <p class="gate__unl"><span class="lbl">Unlocks</span> The only loop that lowers marginal cost — direct submissions displace ingest labor.</p>
   </article>
   <article class="gate">
@@ -453,87 +453,87 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <div class="fold__body"><div class="tiles">
   <article class="tile">
     <span class="tile__lbl">Demand gate (D1 rate)</span>
-    <span class="tile__val mono">3 of 16 locals (19%)</span>
-    <span class="tile__meta mono">→ was first derivation · target ≥25%, floor ≥12 people</span>
-    <span class="tile__cav">Both parts unmet on 4.3 weeks of data, six weeks before the number is meant to mean anything. D1 made the gate a rate on 8/17; this is its first denominator.</span>
+    <span class="tile__val mono">3 of 17 locals (18%)</span>
+    <span class="tile__meta mono">→ was 3 of 16 (19%) on 8/18 · target ≥25%, floor ≥12 people</span>
+    <span class="tile__cav">Both parts unmet on 4.4 weeks of data. Denominator grew by one person who has not yet built a third week — not a reversal, just noise at this sample size.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">WRL proxy (viability line)</span>
     <span class="tile__val mono">4 people · 7 events</span>
-    <span class="tile__meta mono">↗ was 2 people · target ≥30</span>
-    <span class="tile__cav">Distance −26. Immune to automated traffic — a stateless fetcher can't produce a return_visit at weekIndex ≥ 1.</span>
+    <span class="tile__meta mono">→ was 4 · 7 on 8/18 · target ≥30</span>
+    <span class="tile__cav">Distance −26. Unchanged from 8/18 — immune to traffic that has not had a week to prove itself yet.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">friends-family cohort</span>
     <span class="tile__val mono">16 people · 39 card opens · 4 actions</span>
-    <span class="tile__meta mono">→ was — · target return in week 1</span>
-    <span class="tile__cav">Landed 8/13, last seen 8/17, zero return-week events from any of them. Their week 1 only starts 8/20, so it is too early to call — but it is the shape the learning log predicted.</span>
+    <span class="tile__meta mono">→ was same headcount, 8/18 · target return in week 1</span>
+    <span class="tile__cav">Last event 8/18, still zero return-week events. Week 1 opens 8/20 — tomorrow, not yet reached. feat/return-mechanisms (D5) is unmerged and would help only if it lands before then.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Qualified-action rate</span>
-    <span class="tile__val mono">23 of 278 sessions (8.3%)</span>
-    <span class="tile__meta mono">→ was first computation</span>
-    <span class="tile__cav">Added to the growth engine on 8/13 and never reported until now. Session-level, so not comparable to the per-person activation row.</span>
+    <span class="tile__val mono">23 of 305 sessions (8%)</span>
+    <span class="tile__meta mono">→ was 23 of 278 (8.3%) on 8/18</span>
+    <span class="tile__cav">Session-level, not comparable to the per-person activation row.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Activation rate</span>
-    <span class="tile__val mono">16% NYC-metro (10 of 64)</span>
-    <span class="tile__meta mono">↘ was 19% on 8/11</span>
-    <span class="tile__cav">All-production reads 8% (14 of 178). Numerator flat this week; the denominator moved. Directional only pre-Wave-1 per the 8/6 ruling.</span>
+    <span class="tile__val mono">14% NYC-metro (10 of 69)</span>
+    <span class="tile__meta mono">↘ was 19% (3 of 16) on 8/18</span>
+    <span class="tile__cav">All-production reads 7% (14 of 200). Numerator flat; denominator grew. Directional only pre-Wave-1-completion.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Card-open conversion</span>
-    <span class="tile__val mono">33% NYC-metro (21 of 64)</span>
-    <span class="tile__meta mono">↘ was 41% on 8/11</span>
-    <span class="tile__cav">Numerator rose 13 → 21 while the rate fell. Five readings now agree the stall is before the first card open.</span>
+    <span class="tile__val mono">30% NYC-metro (21 of 69)</span>
+    <span class="tile__meta mono">↘ was 33% (21 of 64) on 8/18</span>
+    <span class="tile__cav">Numerator flat at 21 while the denominator grew — same stall-before-first-open shape as prior cycles.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Organic sessions (Loop C)</span>
-    <span class="tile__val mono">15 people from Google · 99 events</span>
-    <span class="tile__meta mono">↗ was 7 people · target &gt;50% of acquisition</span>
-    <span class="tile__cav">12 of 15 local, 19 landing pages — no longer a two-page story. AI-referrer sessions 0. Citations pending: Search Console is a browser instrument, unreadable from a cloud routine; re-pull ~8/31.</span>
+    <span class="tile__val mono">16 people from Google · 101 events</span>
+    <span class="tile__meta mono">↗ was 15 people on 8/18 · target &gt;50% of acquisition</span>
+    <span class="tile__cav">13 of 16 local. AI-referrer sessions 0. Citations pending: Search Console unreadable even from this interactive session; re-pull ~8/31.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Dated items, next 7 days</span>
-    <span class="tile__val mono">70</span>
-    <span class="tile__meta mono">↗ was 56 · target ≥35 to send</span>
-    <span class="tile__cav">Hand count of cards starting strictly inside 7 days: 65. Reservoir 23.</span>
+    <span class="tile__val mono">76</span>
+    <span class="tile__meta mono">↗ was 70 on 8/18 · target ≥35 to send</span>
+    <span class="tile__cav">check-freshness.mjs: datedUpcoming7d=76 reservoir7-14d=21 topVenue=Troost:11%. Deck grew 158→162 cards this week.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Reservoir, 7–14 days out</span>
-    <span class="tile__val mono">23</span>
-    <span class="tile__meta mono">↗ was 21</span>
-    <span class="tile__cav">Holding, so the 70 is not a one-week bulge.</span>
+    <span class="tile__val mono">21</span>
+    <span class="tile__meta mono">↘ was 23 on 8/18</span>
+    <span class="tile__cav">Still holding well above the send bar.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Cards on the map</span>
-    <span class="tile__val mono">158</span>
-    <span class="tile__meta mono">↗ was 144</span>
-    <span class="tile__cav">The growth-engine baseline (95 · 38 · 48) is still unrestated — third cycle running.</span>
+    <span class="tile__val mono">162</span>
+    <span class="tile__meta mono">↗ was 158 on 8/18</span>
+    <span class="tile__cav">The growth-engine baseline (95 · 38 · 48) is still unrestated — open decision baseline-restate.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Roster yield</span>
-    <span class="tile__val mono">17 of 72 in 7d (24%) · 48 of 72 in 14d (67%)</span>
-    <span class="tile__meta mono">→ was &quot;42 of 68 (62%)&quot;</span>
-    <span class="tile__cav">The old 62% matches neither window. Computed here from the ledger's sourcePulse with the window stated. The metric has no instrument and no agreed window.</span>
+    <span class="tile__val mono">16 of 72 in 7d (22%) · 48 of 72 in 14d (67%)</span>
+    <span class="tile__meta mono">→ was 17 of 72 (24%) · 48 (67%) on 8/18</span>
+    <span class="tile__cav">Same unratified proxy — open decision unique-coverage covers both this and the coverage row.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Unique coverage</span>
-    <span class="tile__val mono">123 of 158 (78%)</span>
-    <span class="tile__meta mono">↗ was 110 of 144 (76%)</span>
-    <span class="tile__cav">84% excluding Shop Small. Same ~6-point definitional swing, unratified after four cycles.</span>
+    <span class="tile__val mono">133 of 162 (82%)</span>
+    <span class="tile__meta mono">↗ was 123 of 158 (78%) on 8/18</span>
+    <span class="tile__cav">88% excluding Shop Small. Moving with deck growth, not with a ruling — unratified for six cycles running.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Signup list (R1 denominator)</span>
     <span class="tile__val mono">4 completions · 0 segmented</span>
-    <span class="tile__meta mono">↗ was 3 · 0 · target ≥10 with ≥1 segmented</span>
-    <span class="tile__cav">The 8/13 signup arrived the day friends-family went out. Trigger still unmet.</span>
+    <span class="tile__meta mono">→ was 4 · 0 on 8/18 · target ≥10 with ≥1 segmented</span>
+    <span class="tile__cav">Unchanged since 8/13. Trigger still unmet.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Supply-side asks</span>
     <span class="tile__val mono">0</span>
-    <span class="tile__meta mono">→ was 0 · target ≥5, ≥1 recurring</span>
-    <span class="tile__cav">Form has 7 visits, 0 starts. Supply gate unmoved.</span>
+    <span class="tile__meta mono">→ was 0 on 8/18 · target ≥5, ≥1 recurring</span>
+    <span class="tile__cav">Unchanged. Supply gate unmoved.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Production exceptions</span>
@@ -543,9 +543,9 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
   </article>
   <article class="tile">
     <span class="tile__lbl">Strongest lens by reach</span>
-    <span class="tile__val mono">Family &amp; Kids — 12 people since 8/12</span>
-    <span class="tile__meta mono">↗ was tied first at 18 lifetime</span>
-    <span class="tile__cav">Leads on distinct reach for the first time, a fourth consecutive cycle of strengthening. At n=32 lifetime filter users it still isn't load-bearing, but it is the supply-side case for the Sep 8 parents post. Two Library program cards sit in the all-time top six, which is the on-map truth behind the Library note.</span>
+    <span class="tile__val mono">Food &amp; Drink / Family &amp; Kids tied — 19 people each, all-time</span>
+    <span class="tile__meta mono">→ was Family &amp; Kids led 12 people since 8/12, on 8/18</span>
+    <span class="tile__cav">All-time filter_tap distinct-people count, not a since-8/12 split (that split was not re-run this cycle). Current lenses only: food_drink 19, family_kids 19, arts_culture 17, live_music 16. Civic remains thin at 6 cards / 2 dated, third cycle running — see feed-density cut in the readout.</span>
   </article></div></div>
   </details>
       
@@ -600,15 +600,15 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <td class="mono">org-gp-library</td>
     <td>Greenpoint Library</td>
     <td class="mono">2026-08-18</td>
-    <td class="mono">—</td>
-    <td>sent 8/18 via website contact form (no listed email) — no session, no reply yet</td>
+    <td class="mono">2026-08-18</td>
+    <td>sent 8/18 via website contact form — first session same day, 6 people, 1 card open. No reply yet.</td>
   </tr>
   <tr>
     <td class="mono">org-brooklyn-craft</td>
     <td>Brooklyn Craft Company</td>
     <td class="mono">2026-08-18</td>
-    <td class="mono">—</td>
-    <td>sent 8/18 10:36am — no session, no reply yet</td>
+    <td class="mono">2026-08-18</td>
+    <td>sent 8/18 10:36am — first session same day, 8 people, 1 card open. No reply yet.</td>
   </tr>
   <tr>
     <td class="mono">parents</td>
@@ -706,9 +706,9 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
   <details class="fold">
     <summary>Known risks</summary>
     <div class="fold__body"><ul class="plain">
-  <li><b>The first cohort we could watch went quiet after two days.</b> friends-family produced 16 people, 39 card opens and 4 high-intent actions on 8/13, was last seen 8/17, and has produced zero return-week events. Their week 1 only starts 8/20, so this is not yet a miss. <i>This is what D5 was ratified to fix, and the fix is built but unmerged. The Follow ask, the published weekly cadence and the /week sheet are sitting on feat/return-mechanisms.</i></li>
-  <li><b>The Tuesday routine rewrites the state file rather than merging into it.</b> Any decision that lands between the routine's branch point and its run gets silently reverted by its PR. It happened this week with D1–D6, twenty minutes apart. <i>Unfixed. The routine's step 4.5 tells it which fields to write; it needs to also read the file it is writing into.</i></li>
-  <li><b>62 of 103 recorded 'people' are automated.</b> As of 8/11, 62 of 103 recorded 'people' were automated — datacenter cities, one pageview each, not a single card open. The population has since grown to 173 and has not been re-split by geography. <i>Wave 1 is the fix and it is working: friends-family traffic reads per-src and untagged noise can't touch it. The demand gate's own metric was never affected. Tuesday's readout re-runs the geo split.</i></li>
+  <li><b>The first cohort we could watch went quiet after two days.</b> friends-family: 16 people, 39 card opens, 4 high-intent actions on 8/13, last seen 8/18, still zero return-week events. Week 1 opens 8/20 — one day off, not yet reached. <i>D5’s fix (Follow ask, weekly cadence, /week sheet) is still unmerged on feat/return-mechanisms. It only helps this cohort’s return week if it lands before 8/20.</i></li>
+  <li><b>The Tuesday routine rewrites the state file rather than merging into it.</b> Any decision that lands between the routine's branch point and its run gets silently reverted by its PR. It happened this week with D1–D6, twenty minutes apart. <i>Partially addressed 2026-08-19: this cycle branched from current main instead of merging the stale PR, so the immediate revert did not happen. The underlying cause (step 4.5 writes without reading) is still unfixed — a standing instruction is proposed in SKILL.md, pending Batu ratification (openDecisions.routine-merge-fix).</i></li>
+  <li><b>62 of 103 recorded 'people' are automated.</b> As of 8/11, 62 of 103 recorded people were automated. The population has since grown to 200 (69 NYC-metro) and has not been re-split by geography this cycle. <i>Wave 1 is the fix and it is working: friends-family traffic reads per-src and untagged noise can't touch it. The demand gate's own metric was never affected. Tuesday's readout re-runs the geo split.</i></li>
   <li><b>Safari deletes the retention sensor's storage at exactly our cadence.</b> returnVisit.js is localStorage-only. Safari (ITP) clears script-written storage after ~7 days of browser use without a first-party visit — a weekly-check product sits precisely on that edge, so an iPhone user returning on day 8 can re-register as brand new with weekIndex 0, forever. Verified as unenumerated: no ITP or eviction row exists in environmental-dependencies.md. Consistent with our own data — the July round saw 7 of 24 return inside a 5-day window, while cross-week WRL shows 2. <i>D5: verify on a real iPhone, add the dependencies row in the same change, mirror gl_first_seen into a server-set cookie (the one no-backend exception — config-level, no storage, no accounts). Home-screen install also exempts a user from the cap.</i></li>
   <li><b>The approved slate costs ~12–15 founder-hours/week.</b> Sends ~2h, group answers ~3h, physical ~4–5h, the weekly send ~1h, conversations ~2h. Every researched hyperlocal success ran on years of unpaid founder labor, and the most repeated failure was exhaustion before the curve turned. <i>Earliest warning sign is a skipped week — watch it as a metric on ourselves. Cut order decided now rather than discovered in week 5: fewer group-answer posts, one market morning, Greenline deferred.</i></li>
   <li><b>Facebook in-app webview unverified.</b> ~100% of Q2 taps will arrive through it, and it's the same hostile-context class that produced the 8/13 map bug — the one where a reader lost the whole product to a missing browser capability. <i>Q2 precondition 3. Verify on real iOS and Android devices, add the row to environmental-dependencies.md in the same change.</i></li>

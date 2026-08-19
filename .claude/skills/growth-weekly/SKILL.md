@@ -286,3 +286,12 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   (The same readout proposed a geo/engagement-split diagnostic rule; Batu
   declined it on 2026-08-12. Do not re-add it — reporting the split inside a
   readout is still fine, it just is not a standing rule.)
+- **(proposed 2026-08-19, cycle 6 — pending ratification.)** **Before writing
+  `gtm-state.json` in step 4.5, read the current file on `main` and diff it
+  against the branch's copy.** The cycle-5 routine (PR #42) branched from
+  `main` twenty minutes before D2–D6 landed, then rewrote the whole state
+  file from what it could see at branch time — merging it as-is would have
+  silently reverted five decisions Batu ratified hours later. If any field
+  this cycle doesn't own has changed since the branch point, re-branch from
+  current `main` rather than merging the stale copy forward. A PR sitting
+  open for a week is not evidence its base is still current.
