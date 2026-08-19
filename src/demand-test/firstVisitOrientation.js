@@ -1,5 +1,5 @@
 // First-visit orientation line (2026-08-08 external-audit item 4). The
-// header tagline states the brand's values ("Know what's real. Take part.")
+// header tagline states the brand's values ("Know what's happening. Take part.")
 // but never says what the product literally is. A first-time visitor gets
 // one plain sentence under it; every visit after, nothing — same
 // device-local, no-fingerprinting flag as returnVisit.js (R0), but a

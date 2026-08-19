@@ -284,7 +284,7 @@ export default function JulyApp({ showOrientation = false } = {}) {
           {/* First-visit orientation SWAPS with the tagline (2026-08-08
               external-audit item 4, corrected same day — Batu: "i dont want
               two taglines"). A first-time visitor doesn't know what the
-              product IS yet, so "Know what's real. Take part." (values,
+              product IS yet, so "Know what's happening. Take part." (values,
               6 words, 2026-08-02) would land as tone with no referent. One
               line states the literal offer instead; shouldShowOrientation
               flips the flag at boot in main.jsx, so return visits — once
@@ -292,13 +292,14 @@ export default function JulyApp({ showOrientation = false } = {}) {
           {/* RETURN-VISIT LINE REVERTED 2026-08-19 (Batu). D5 (2026-08-17)
               had swapped this for "New every Monday. Verified and sourced." to
               publish the cadence the way a paper does. Batu called the brand
-              line back; the cadence keeps its other homes — the Monday send
+              line back (reworded 2026-08-19: "what's real" → "what's happening");
+              the cadence keeps its other homes — the Monday send
               itself (D2), the /week sheet, and the edition kicker directly
               above this line, which already dates the week on every render. */}
           {showOrientation ? (
             <p>Events, openings, deals and neighborhood news — verified and sourced.</p>
           ) : (
-            <p>Know what’s real. Take part.</p>
+            <p>Know what’s happening. Take part.</p>
           )}
         </div>
       </header>
