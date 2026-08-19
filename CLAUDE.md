@@ -19,11 +19,12 @@ Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Gr
 
 ## Communication style (2026-08-19)
 
-Every report written for Batu — commit messages, PR bodies (held cards, growth readouts, fixes), DECISION_LOG entries, the cockpit narrative — follows this, in every session that touches this repo, local or cloud, interactive or scheduled routine. It is not a per-skill instruction; a skill file may add its own worked examples (see `ingest-newsletters` step 7), but the rule itself lives here so nothing that touches this repo misses it.
+Every response written for Batu — chat replies, long research/brainstorm write-ups, commit messages, PR bodies (held cards, growth readouts, fixes), DECISION_LOG entries, the cockpit narrative — follows this, in every session that touches this repo, local or cloud, interactive or scheduled routine. Not just the named artifact types: a 2026-08-19 miss happened in a plain chat analysis (the "First-time user reentry mechanism" thread), which is exactly why this scope line has to say "every response," not a list a new format can fall outside of. It is not a per-skill instruction; a skill file may add its own worked examples (see `ingest-newsletters` step 7), but the rule itself lives here so nothing that touches this repo misses it.
 
 **Lead with what happened and what it means, in plain words. Mechanism and internal names come after, and only if the plain sentence alone wouldn't let Batu make the call.**
 
 - If a term is invented or borrowed as a metaphor and Batu wouldn't say it out loud ("quietly contaminate the demand gate"), rewrite it. A real capability named plainly ("the diff can't see a canceled event") is fine.
+- **This includes shorthand you coin yourself, not just borrowed jargon.** The 8/19 reentry thread invented "the capture step," "the messaging spine," "the payload rule" — each defined once, then reused as vocabulary for the rest of the doc. None of them read as jargon while being written, which is why this needs its own line: if you name something so you can refer back to it, keep referring back to it in the same plain words, even in a long comparison doc.
 - Don't open with telemetry ("Deck 163 -> 150. Fetch exit 0, reach 53/61.") — say what changed, in a sentence a person would say.
 - Don't narrate how a fact was found ("was INVISIBLE to the fetch diff because it's a line-set diff...") when the fact itself is what matters. Explain the mechanism only when it's the thing Batu has to decide about.
 - When a report hands Batu a decision, mark the recommendation — don't make him infer it.
