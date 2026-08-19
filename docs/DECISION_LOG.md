@@ -4,6 +4,48 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-19 (second entry) — Recording the analytics host gate, and how to tell a fake production crash from a real one
+
+Housekeeping entry, written today for a fix that shipped **2026-08-12** (`8100401`) and was never
+logged. Surfaced while pruning stale branches: an unmerged, unpushed branch from 2026-07-27 carried a
+different fix for the same problem, and checking whether it still applied is what found the gap.
+
+**The problem, first seen 2026-07-27.** PostHog error tracking showed a live
+`ReferenceError: todayOnly is not defined` with frames in `CardPanel.jsx` and `JulyApp.jsx`. It was
+never a production bug, and **the reasoning is the durable part** — it is the test for any future
+suspicious exception:
+
+- No commit in the repo's history references `todayOnly` without declaring it.
+- **The production bundle ships minified and without source maps**, so a genuine production frame
+  *cannot* name an un-mangled identifier or attribute itself to a real `src/` path. A stack trace that
+  reads like your editor did not come from production.
+- The only environment that produces such frames is the Vite dev server — and `.env.local` carries the
+  production key, so `npm run dev` was initializing PostHog with `capture_exceptions: true`. The report
+  was a React Fast Refresh artifact from the session writing `d7fc893`, which was mid-way through
+  deleting that very binding.
+
+**The fix that shipped, and why it is the better of the two.** The July branch gated at the call site
+(`analyticsKey(key, { dev })` in `main.jsx`) and its own entry named preview deploys as a "known
+remaining gap, accepted for now." The 2026-08-12 gate instead lives **inside `initPostHog` itself**, as
+an exact-match `SERVING_HOSTS` allowlist — so every caller inherits it, and it closes the preview-deploy
+gap the July version left open. Same lesson as the 2026-08-13 "a fix wired into one branch is not a
+fix" entry: **gate the mechanism, not the caller.** The allowlist is exact-match on purpose, never a
+suffix test — preview deployments share the `vercel.app` suffix, and `stoopwise.com.evil.example` must
+not pass. Both cases are pinned in `posthogTransport.test.mjs`.
+
+**Verified today, and the verification is the point.** Every `$exception` ever recorded in this project
+— 22 of them, `2026-07-26` through `2026-08-02` — came from a `localhost` host. **Zero have ever come
+from a serving origin.** Dev traffic into the production project stops dead on 2026-08-12, the day the
+gate shipped, and there has been none since. So the readouts' standing "production exceptions: 0 · L4
+green" line is true, with the caveat worth stating once: the error-monitoring gate has never yet been
+exercised by a real production crash, so it is unproven rather than proven.
+
+**What was discarded:** the July branch (`analyticsKey`, its wiring and its test) is superseded and was
+deleted rather than merged. Nothing is lost — the host gate covers strictly more, and the diagnostic
+reasoning that was the branch's real value is preserved above.
+
+Owner: Batu.
+
 ## 2026-08-19 — Four rulings off the cycle-6 readout: hosts, both parent groups, baseline restated, routine merge discipline
 
 Decisions (Batu, on the 2026-08-19 reconciliation readout). Recorded together because they close four
@@ -74,6 +116,7 @@ eventually gets quoted by someone who did not read the caveat.
 Carriers updated the same change: `channel-links.md` (two new rows, one superseded),
 `growth-engine.md` §1, `business-model.md` §4, `.claude/skills/growth-weekly/SKILL.md`,
 `.claude/skills/ingest-newsletters/SKILL.md`, `.claude/settings.json`, `gtm-state.json`. Owner: Batu.
+
 
 ## 2026-08-17 (sixth entry) — D2–D6 ratified: the weekly send, parallel reach, physical, product repairs, supply pulled forward
 
