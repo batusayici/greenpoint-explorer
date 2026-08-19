@@ -17,6 +17,19 @@ npm run ingest:geocode  # geocode new cards (Nominatim → geocode-cache.json)
 
 Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill). **Since 2026-08-02 routine updates auto-ship** — push to `main` = production. Cards are triaged **per card**: one that is substantiated (carries a verbatim `sourceQuote`) and mechanically categorized ships; one that is unsourced, ambiguously categorized, inferred, or source-conflicted is **held in a review PR — never shipped, never silently dropped**. Roster/sender additions, business submissions, and code changes are always human-gated. Truth rules are unchanged; `sourceQuote` is schema-checked and a dated test fails any card created on/after 2026-08-02 without one.
 
+## Communication style (2026-08-19)
+
+Every report written for Batu — commit messages, PR bodies (held cards, growth readouts, fixes), DECISION_LOG entries, the cockpit narrative — follows this, in every session that touches this repo, local or cloud, interactive or scheduled routine. It is not a per-skill instruction; a skill file may add its own worked examples (see `ingest-newsletters` step 7), but the rule itself lives here so nothing that touches this repo misses it.
+
+**Lead with what happened and what it means, in plain words. Mechanism and internal names come after, and only if the plain sentence alone wouldn't let Batu make the call.**
+
+- If a term is invented or borrowed as a metaphor and Batu wouldn't say it out loud ("quietly contaminate the demand gate"), rewrite it. A real capability named plainly ("the diff can't see a canceled event") is fine.
+- Don't open with telemetry ("Deck 163 -> 150. Fetch exit 0, reach 53/61.") — say what changed, in a sentence a person would say.
+- Don't narrate how a fact was found ("was INVISIBLE to the fetch diff because it's a line-set diff...") when the fact itself is what matters. Explain the mechanism only when it's the thing Batu has to decide about.
+- When a report hands Batu a decision, mark the recommendation — don't make him infer it.
+
+Full trope list and rationale: `~/.claude/tropes.md` (local machine only — a cloud routine won't see it, which is exactly why the rule above has to be self-contained here).
+
 ## Read First
 
 1. `AGENTS.md` — operating contract v3 (roles, weekly loop, truth rules)
