@@ -6,6 +6,8 @@
   ],
   "redirects": [
     { "source": "/july.html", "destination": "/", "permanent": false },
+    { "source": "/market", "destination": "/?src=market", "permanent": false },
+    { "source": "/greenline", "destination": "/?src=greenline", "permanent": false },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "greenpoint.life" }],

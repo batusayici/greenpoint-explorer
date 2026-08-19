@@ -21,16 +21,30 @@ import { FILTERS } from "./filterCards.js";
 // as the resident CTA). §0 gives it one verb and the one-egg rule says it may
 // only appear once, after value.
 //
-// LENS-ONLY (Batu, 2026-07-30). The ask now takes exactly one object — the
-// active category lens — and renders nothing at all when none is selected:
+// UN-GATED FROM LENS STATE (D5, ratified 2026-08-17). Current contract:
 //
-//   active lens → that lens · no lens → no ask (the footer's ungated
-//   "Follow Greenpoint" is the broadcast arm and covers that reader).
+//   active lens → that lens (R1 treatment) · no lens, unknown lens, or "all"
+//   → the BROADCAST object (R1 control), which is what the digest arm is.
 //
-// Two things drove the narrowing. First, purpose: this ask is now an interest
-// probe for PERSONALIZATION, so every impression should carry a category the
-// reader chose. A Greenpoint-wide follow mixed generic-digest intent into the
-// same metric and made the signal unreadable.
+// Why the 2026-07-30 lens-only rule was overturned: it rendered the ask for
+// nobody without an active filter chip, and only 15 people had ever tapped one
+// — so the product's primary email ask was invisible to roughly 90% of
+// visitors, and the footer fallback sits below a full feed scroll. The
+// consequence was structural, not marginal: R1's trigger (≥10 signups with ≥1
+// segmented) could never arm, and the plan had already pre-registered P7 to
+// label the resulting demand miss "measured without a re-entry mechanism" —
+// turning a one-afternoon product defect into a ratified excuse for an
+// uninterpretable verdict. Full reasoning:
+// docs/launch/2026-08-17-launch-strategy-review.md (D5, and the verified-in-code
+// section); DECISION_LOG 2026-08-17 sixth entry.
+//
+// The original interest-probe purpose is preserved, not discarded: a lens still
+// yields a lens object, so a segmented signup still carries a category the
+// reader actually chose, and `followRef` keeps the two arms distinguishable
+// ("lens:<id>" vs "all"). The un-gating adds the control arm to the in-feed
+// surface instead of leaving that reader to a footer they never reach.
+//
+// The narrowing's other half still stands, and is unchanged below.
 //
 // Second, place-follow was structurally unsound and is withdrawn. The
 // 2026-07-29 category allowlist was necessary but not sufficient: a
@@ -42,12 +56,24 @@ import { FILTERS } from "./filterCards.js";
 // (Triskelion Arts)", and the 44-char rotating-meetup string. Rather than pile
 // heuristics onto a field that was never a name, the place object is gone.
 // Reinstating it needs a real venue-identity field, not a normalizer.
+// The broadcast object — R1's control arm, and the fallback for every reader
+// who never touches a filter chip. Frozen because it is returned by identity to
+// many callers and a mutation would leak across them.
+export const FOLLOW_BROADCAST = Object.freeze({
+  kind: "all",
+  id: "all",
+  label: "Greenpoint",
+});
+
 export function followTarget({ filterId = "all" } = {}) {
   if (filterId && filterId !== "all") {
     const lens = FILTERS.find((f) => f.id === filterId);
     if (lens) return { kind: "lens", id: lens.id, label: lens.label };
   }
-  return null;
+  // Unknown lens ids land here too: degrade to broadcast, never fabricate a
+  // category. Same shape as lensFromSearch's unknown → null → "all" — a bad
+  // input can only ever widen the ask, never invent a narrower one.
+  return FOLLOW_BROADCAST;
 }
 
 // Four rows is one phone-screen of feed at 375px — enough that the reader has

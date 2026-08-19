@@ -4,7 +4,7 @@ import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, 
 import { followTarget, followRef, followSlotIndex } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
-import { formatWindow, isSpan, recurrenceLabel } from "./eventWindow.js";
+import { formatWindow, isSpan, recurrenceLabel, rowTime } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 import { sourceCheckedDate, formatChecked } from "./sourceChecked.js";
 import stamp from "../data/demand-test/freshness-stamp.json";
@@ -171,18 +171,6 @@ const DEAL_END_FMT = new Intl.DateTimeFormat("en-US", {
 // Row-level start time (2026-07-15 review: time-sensitive cards must scan
 // without a tap). The day is carried by the group header; the row carries the
 // clock. A 00:00 start is the all-day sentinel — no fake time reaches a row.
-const ROW_TIME_FMT = new Intl.DateTimeFormat("en-US", {
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/New_York",
-});
-const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false,
-  timeZone: "America/New_York",
-});
-
 // 2026-08-08: a recurring card used to get NO clock, which was right when
 // every one of them sat on the shelf — a bare "8 PM" under no date says
 // nothing. Now that a card stating `recurrence.days` is placed in its real day
@@ -190,13 +178,11 @@ const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
 // what made these rows read differently from the one-offs beside them. A
 // recurring card with no stated day is still shelf-bound, so it still gets no
 // clock.
-function rowTime(card) {
-  if (card.startsAt == null) return null;
-  if (card.recurring && !(card.recurrence?.days?.length > 0)) return null;
-  const d = new Date(card.startsAt);
-  if (CLOCK_FMT.format(d) === "00:00") return null; // all-day sentinel
-  return ROW_TIME_FMT.format(d).replace(":00", "");
-}
+//
+// MOVED to eventWindow.js 2026-08-17 (D5) and imported as `rowTime`. The
+// printed /week sheet is a second day-grouped surface, and re-deriving this
+// there reproduced the 2026-08-13 drift class on its first render. The sitting
+// model now has one home, next to the rest of it.
 
 // List-row subline: the authored kicker (glanceability contract — the row must
 // explain itself without a tap) plus the street address (sans city boilerplate)
@@ -401,8 +387,12 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
 // button, because every control on this surface is content-sized with a radius.
 function FollowPrompt({ filter, onDismiss, placement }) {
   const target = followTarget({ filterId: filter });
-  // Lens-only (Batu, 2026-07-30): no lens selected, no ask. The footer's
-  // ungated "Follow Greenpoint" covers that reader — see the footer's note.
+  // Un-gated from lens state (D5, 2026-08-17): a reader with no lens now gets
+  // the broadcast ask here rather than nothing. The lens-only rule made this
+  // invisible to ~90% of visitors — only 15 people ever tapped a filter chip —
+  // which is why R1's signup trigger could never arm. followTarget no longer
+  // returns null; the guard stays because a null target must never render a
+  // headless banner if that ever changes again.
   if (!target) return null;
   const ref = followRef(target);
   return (
@@ -514,8 +504,12 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // Anything that materialises in response to what the reader just did reads
   // as a popup, however quiet it looks — so the row is simply part of the lens
   // now, present from the moment a category is selected and never moving.
-  // Lens-only, so on All it renders nothing and the footer's ungated "Follow
-  // Greenpoint" steps back in to cover that reader.
+  // Un-gated 2026-08-17 (D5): on All this is now the broadcast object, so the
+  // row renders for every reader instead of only the ~10% who tap a chip. The
+  // dismiss set keys off target.id, so "all" dismisses independently of each
+  // lens — a reader who waves off the broadcast ask still sees a lens ask if
+  // they later choose a category, which is the more specific and more useful
+  // one.
   const followT = followTarget({ filterId: filter });
   const askShowing = followT != null && !dismissedLenses.has(followT.id);
   const followSlot = followSlotIndex(groups);

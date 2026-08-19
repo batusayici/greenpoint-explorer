@@ -60,6 +60,31 @@ export function isDailySitting(card) {
   return minutesOfDay(e) > minutesOfDay(s);
 }
 
+// ROW CLOCK — the day-grouped form of a window. Lifted out of CardPanel.jsx
+// 2026-08-17 (D5) so a second day-grouped surface (the printed /week sheet)
+// could not re-derive it and drift.
+//
+// This module already carries the warning in its own comments: the sitting
+// model disagreed across surfaces once — the 2026-08-13 bug — because the same
+// reading was re-implemented per caller. The /week sheet reproduced that class
+// exactly on its first render: it called formatWindow under a day header, so a
+// Tuesday row read "Aug 4, 7:00 AM → Aug 25" where the reader needed "7 AM".
+// A day header carries the date; the row carries the clock. One definition.
+//
+// Nulls are meaningful and must be rendered as *nothing*, never as a fake time:
+// an undated card has no clock, a 00:00 start is the all-day sentinel, and a
+// recurring card with no stated days is shelf-bound (it has no real day to sit
+// in, so a bare clock under a date would be a claim the source never made).
+const ROW_TIME = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ });
+
+export function rowTime(card) {
+  if (card?.startsAt == null) return null;
+  if (card.recurring && !(card.recurrence?.days?.length > 0)) return null;
+  const d = new Date(card.startsAt);
+  if (isStartSentinel(d)) return null;
+  return ROW_TIME.format(d).replace(":00", "");
+}
+
 export function formatWindow(card) {
   const { startsAt, endsAt } = card;
   if (!startsAt && !endsAt) return null;

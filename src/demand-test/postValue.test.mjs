@@ -37,8 +37,14 @@ test("followTarget never returns a place, whatever the card carries", async () =
     { id: "dance", locationName: "The Little Dance School (Triskelion Arts)", category: "subscription" },
     { id: "plume", locationName: "Meeker Avenue Plume area", category: "news" },
   ];
+  // Un-gated 2026-08-17 (D5): no-lens now yields the broadcast object rather
+  // than null. The invariant this test exists to protect is unchanged and is
+  // asserted directly — a card must never become a follow object, whatever it
+  // carries in locationName.
   for (const card of cards) {
-    assert.equal(followTarget({ filterId: "all", card }), null, card.id);
+    const target = followTarget({ filterId: "all", card });
+    assert.notEqual(target.kind, "place", card.id);
+    assert.deepEqual(target, { kind: "all", id: "all", label: "Greenpoint" }, card.id);
   }
   // A lens still wins even when a card is passed — the card is simply ignored.
   assert.deepEqual(followTarget({ filterId: "news", card: cards[0] }), {
@@ -46,13 +52,38 @@ test("followTarget never returns a place, whatever the card carries", async () =
   });
 });
 
-test("followTarget yields no ask at all when no lens is selected", async () => {
+// UN-GATED FROM LENS STATE (D5, 2026-08-17). The 2026-07-30 lens-only rule
+// made the ask render for nobody without an active filter chip — and only 15
+// people had EVER tapped one, so the primary email ask was invisible to ~90%
+// of visitors. That is why R1's trigger (≥10 signups, ≥1 segmented) could
+// never arm: the list it needs was fed by an ask almost no one saw, and the
+// plan had pre-registered a label (P7) excusing the resulting miss as
+// "measured without a re-entry mechanism" — converting a fixable product
+// defect into a ratified reason the verdict wouldn't count.
+//
+// The interest-probe rationale survives intact: a lens still yields a lens
+// object, so a segmented signup still carries the category the reader chose.
+// What changes is that no-lens now yields the BROADCAST object rather than
+// nothing — which is exactly what R1's control arm is, so the segments stay
+// clean and the digest reader is no longer silently dropped.
+test("followTarget falls back to the broadcast object when no lens is on", async () => {
   const { followTarget } = await import("./postValue.js");
-  assert.equal(followTarget(), null);
-  assert.equal(followTarget({ filterId: "all" }), null);
-  assert.equal(followTarget({ filterId: null }), null);
-  // An unknown lens id must not invent an object either.
-  assert.equal(followTarget({ filterId: "not_a_lens" }), null);
+  const broadcast = { kind: "all", id: "all", label: "Greenpoint" };
+  assert.deepEqual(followTarget(), broadcast);
+  assert.deepEqual(followTarget({ filterId: "all" }), broadcast);
+  assert.deepEqual(followTarget({ filterId: null }), broadcast);
+  // An unknown lens id must not invent a lens object — it degrades to broadcast,
+  // never to a fabricated category (same shape as lensFromSearch's unknown→all).
+  assert.deepEqual(followTarget({ filterId: "not_a_lens" }), broadcast);
+});
+
+// The wire form R1 reads its arms off. A lens signup is the treatment; the
+// broadcast object is the control. Un-gating must not blur the two.
+test("followRef keeps the R1 arms distinguishable", async () => {
+  const { followTarget, followRef } = await import("./postValue.js");
+  assert.equal(followRef(followTarget({ filterId: "all" })), "all");
+  assert.equal(followRef(followTarget()), "all");
+  assert.equal(followRef(followTarget({ filterId: "family_kids" })), "lens:family_kids");
 });
 
 // Slot placement (design crit 2026-08-08). The slot was hardcoded to group 0,

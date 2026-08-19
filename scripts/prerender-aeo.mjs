@@ -20,6 +20,7 @@ import {
   icsText,
   llmsTxt,
 } from "../src/demand-test/aeo.js";
+import { weekSheetHtml, weekSheetGroups } from "../src/demand-test/weekSheet.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = resolve(ROOT, "dist");
@@ -42,6 +43,17 @@ for (const card of live) {
 // Greenpoint this week" without JS, same as the card pages.
 writeFileSync(resolve(DIST, "index.html"), injectHomePage(template, seed.cards, AEO_ORIGIN, now));
 
+// The printable / screenshottable week (D5). Deliberately NOT in the sitemap and
+// marked noindex: it is the same content as the feed in a print skin, and an
+// answer engine should cite the real card pages, not a handout.
+const weekDir = resolve(DIST, "week");
+mkdirSync(weekDir, { recursive: true });
+writeFileSync(
+  resolve(weekDir, "index.html"),
+  weekSheetHtml(seed.cards, AEO_ORIGIN, now, { vanityPath: "/market" }),
+);
+const weekCount = weekSheetGroups(seed.cards, now).reduce((n, g) => n + g.cards.length, 0);
+
 writeFileSync(resolve(DIST, "sitemap.xml"), sitemapXml(seed.cards, AEO_ORIGIN, now));
 writeFileSync(resolve(DIST, "rss.xml"), rssXml(seed.cards, AEO_ORIGIN, now));
 writeFileSync(resolve(DIST, "events.ics"), icsText(seed.cards, AEO_ORIGIN, now));
@@ -51,4 +63,6 @@ writeFileSync(
   `User-agent: *\nAllow: /\n\nSitemap: ${AEO_ORIGIN}/sitemap.xml\n`,
 );
 
-console.log(`AEO prerender: home JSON-LD + ${live.length} card pages + sitemap/rss/ics/llms.txt/robots.txt -> dist/`);
+console.log(
+  `AEO prerender: home JSON-LD + ${live.length} card pages + /week sheet (${weekCount} dated) + sitemap/rss/ics/llms.txt/robots.txt -> dist/`,
+);
