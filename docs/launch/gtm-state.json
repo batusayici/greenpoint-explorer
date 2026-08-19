@@ -28,9 +28,9 @@
         "date": "2026-08-19"
       },
       {
-        "label": "Review the return branch — Follow ask un-gated, weekly cadence published, printable /week sheet (feat/return-mechanisms, 2 commits, unmerged)",
+        "label": "Return branch merged — Follow ask un-gated, weekly cadence published, printable /week sheet live",
         "when": "Today",
-        "status": "next",
+        "status": "done",
         "date": "2026-08-19"
       },
       {
@@ -1032,7 +1032,7 @@
       "title": "The first cohort we could watch went quiet after two days",
       "severity": "the live question",
       "detail": "friends-family produced 16 people, 39 card opens and 4 high-intent actions on 8/13, was last seen 8/17, and has produced zero return-week events. Their week 1 only starts 8/20, so this is not yet a miss.",
-      "response": "This is what D5 was ratified to fix, and the fix is built but unmerged. The Follow ask, the published weekly cadence and the /week sheet are sitting on feat/return-mechanisms.",
+      "response": "D5’s fix merged to main 2026-08-19 (837e7c6) — Follow ask now renders for every visitor, not just the ~10% with an active filter chip, and the weekly cadence + /week sheet are live. Verified in a local build before merge. Whether it moves the friends-family cohort or the next one is a read for the 8/25 readout — it landed one day before that cohort’s own week 1 opens (8/20).",
       "source": "readout 2026-08-18 Finding 2"
     },
     {
