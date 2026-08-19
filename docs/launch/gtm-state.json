@@ -22,9 +22,9 @@
     "doneWhen": "Perri answered today · the return branch reviewed and merged · first Monday send out Aug 24 · parallel-reach channels each on their own src. The 8/25 readout reads results; D3 deleted its gate.",
     "steps": [
       {
-        "label": "Reply to Perri — she offered a call or her shop Wed/Thu 1–4pm, and today is Wednesday",
+        "label": "Perri — meeting set for after Sept 5th, in person at her shop",
         "when": "Today, Wed 8/19",
-        "status": "next",
+        "status": "done",
         "date": "2026-08-19"
       },
       {
@@ -798,8 +798,8 @@
       "wave": "1",
       "sent": "2026-08-17",
       "firstSession": null,
-      "reply": "2026-08-17 — warm, same evening (36 min): wants a call or in-person meeting at her shop next week (Wed/Thu 1-4pm)",
-      "status": "sent 8/17 4:41pm, replied 5:17pm — offered a call or her shop Wed/Thu 1–4pm. Batu owes the reply."
+      "reply": "2026-08-17 — warm, same evening (36 min): wants a call or in-person meeting; Batu confirmed in-person, after Sept 5th",
+      "status": "replied — meeting set for after Sept 5th, in person at her shop (Batu’s call, 2026-08-19)"
     },
     {
       "src": "action-city-comics",
@@ -971,14 +971,6 @@
         "Merge #42’s readout doc only, for the historical record"
       ],
       "source": "PR #42; readout 2026-08-19"
-    },
-    {
-      "id": "perri-reply",
-      "title": "Answer Perri — call or shop visit",
-      "owner": "Batu",
-      "needBy": "today, Wed 8/19 — she offered Wed/Thu 1–4pm",
-      "why": "She replied 36 minutes after the note went out, the fastest response any outreach has produced. The window she offered is today and tomorrow. A draft is in the 8/18 readout.",
-      "source": "readout 2026-08-18; log 2026-08-17"
     },
     {
       "id": "pr43-hosts",
