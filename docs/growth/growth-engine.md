@@ -213,8 +213,12 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   from product failure, and it catches silent source decay and ingest outages
   (the 7/27–28 outage would have tripped it in a day). Pulled Monday from
   `cards.json` + `ingest-ledger.json`; one line in every Tuesday readout.
-  **Baseline (last week of July 2026): 95 cards · 38 dated in-window · 48
-  sources.** **Per-category cut (added 2026-08-15):** the same line breaks out
+  **Baseline (RESTATED 2026-08-19, Batu): 162 cards · 76 dated in-window · 72
+  sources.** *(Prior baseline, last week of July 2026: 95 · 38 · 48 — kept here
+  as the pre-launch reading, not as the comparison point. It described a
+  product roughly half this size, so every week's comparison against it read as
+  growth that had already happened. A baseline nobody restates stops measuring
+  the present and starts flattering it.)* **Per-category cut (added 2026-08-15):** the same line breaks out
   cards + dated-in-window **by filter** — a category going thin (the kids
   inventory in September, civic all year) is otherwise invisible between
   one-off sweeps, and the 2026-08-15 strategy review found civic at 5 cards /

@@ -4,7 +4,7 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-19 — Recording the analytics host gate, and how to tell a fake production crash from a real one
+## 2026-08-19 (second entry) — Recording the analytics host gate, and how to tell a fake production crash from a real one
 
 Housekeeping entry, written today for a fix that shipped **2026-08-12** (`8100401`) and was never
 logged. Surfaced while pruning stale branches: an unmerged, unpushed branch from 2026-07-27 carried a
@@ -45,6 +45,78 @@ deleted rather than merged. Nothing is lost — the host gate covers strictly mo
 reasoning that was the branch's real value is preserved above.
 
 Owner: Batu.
+
+## 2026-08-19 — Four rulings off the cycle-6 readout: hosts, both parent groups, baseline restated, routine merge discipline
+
+Decisions (Batu, on the 2026-08-19 reconciliation readout). Recorded together because they close four
+of the seven items that had been sitting in `gtm-state.json` `openDecisions`, three of which had been
+open for multiple cycles.
+
+**Hosts — the PR #43 allowlist ask, resolved and shrunk.** The five hosts that survive verification
+(`luma.com`, `partiful.com`, `portal.iclasspro.com`, `themccarren.com` **and** `www.themccarren.com`)
+are in the claude.ai/code network policy. **OpenTable is dropped permanently** — it returns 403 to
+automated fetches on apex and `www` alike, which is a bot block no network policy reaches, and the
+generalised rule now lives in the ingest skill: *distinguish a bot block from an egress block before
+proposing a host, and verify a host by fetching it before asking for it.* **Square is skipped by
+choice** — the host answers, but a checkout page likely carries no venue address, so the fetch would
+succeed and still yield nothing cardable. Net: 8 of the 12 held cards unblocked, not 9; La Contenta
+joins Panzon, Cloud City and Edith's in needing an interactive session or another source.
+
+**Q2 posts in BOTH parent groups, on two separate tags.** Williamsburg & Greenpoint BK Parents
+(`parents-wgbk`, ~5k, join-gated) and Brooklyn Baby Hui (`parents-hui`, ~10k plus the Slack pods where
+the 0–4 crowd actually asks). The single shared `parents` tag is **superseded and must not be sent** —
+Q2's pre-registered rule compares week-2 return *between* srcs, and one tag across two groups would
+have made that comparison unreadable while looking like it worked. The row stays in `channel-links.md`
+because it has never been sent (0 events all-time) and deleting a row is how a link already in the
+wild loses its meaning. Consistent with D3, which dropped P11's "never two networks at once".
+
+**The feed-density baseline is restated to 162 cards · 76 dated in-window · 72 sources.** The old
+baseline (95 · 38 · 48, last week of July) had been stale for three weeks and described a product
+roughly half this size, so every weekly comparison against it read as growth that had already
+happened. Carried in both `growth-engine.md` §1 and `business-model.md` §4, updated in the same change,
+with a standing note to restate it whenever it stops describing the live product — the winter
+seasonality comparison is only meaningful against a number that was true going into the winter.
+
+**The Tuesday routine must merge into `gtm-state.json`, not overwrite it.** Ratified as a standing
+instruction in the growth skill the same day it was proposed. The cycle-5 routine (PR #42) branched
+from `main` twenty minutes before D2–D6 landed, rewrote the whole state file from what it could see,
+and would have silently reverted five ratified decisions on merge. The rule: read the current file on
+`main` before writing, and re-branch rather than merging a stale copy forward. **A PR sitting open for
+a week is not evidence its base is still current.** PR #42 was closed unmerged and re-run as cycle 6.
+
+**The two operator-derived metrics, settled the same day — five and six cycles after they were first
+reported.** They were one open item and they got opposite answers, because they are different kinds of
+number.
+
+**`unique coverage` is RATIFIED at the strict reading, and instrumented.** A card counts as unique when
+at least one of its sources is not an aggregator; a card with no sources counts as **not** unique
+(unsourced is a truth-rule failure and must never read as a differentiation win). **Shop Small
+Greenpoint is on the aggregator list** — the metric's own words are "items that appeared in no other
+Greenpoint source", and SSG runs a directory and a newsletter and is cited as a publisher on live
+cards, so it is one. That gives **82%, not 88%**. Two reasons the lower number is the right one: this
+figure sits on the buyer trust surface (growth-engine rule 3) and so must be the version that survives
+being asked how it was calculated; and SSG is Perri's, so the higher number would claim a prospective
+partner's own listings as coverage nobody else has. It is now `uniqueCoverage()` in
+`src/demand-test/coverage.js`, printed by `npm run ingest:coverage`, with tests — **it stops being
+re-derived from memory by whoever runs the readout**, which is the same fix applied for the same reason
+as cycle 1's funnel numbers. Changing the aggregator set changes a published claim and is a decision,
+not a tweak.
+
+**`roster yield` is RETIRED.** It read 22% or 67% on the same day depending on a 7- or 14-day window
+nobody had ever agreed, and — the deciding argument — the job it approximated is already done better
+elsewhere: `check-coverage.mjs` flags each source once it is silent past **3× its own cadence**, so a
+monthly source is not scored as dark for being monthly, which is precisely the error a roster-wide
+percentage makes. Seasonal separation reads off feed density against the restated baseline instead.
+Reinstating a yield percentage requires first saying what the per-source check fails to catch.
+
+**The rule underneath both, worth keeping:** *a number that leaves the building gets an instrument; a
+number that cannot be defined twice the same way gets retired.* An unratified number published weekly
+eventually gets quoted by someone who did not read the caveat.
+
+Carriers updated the same change: `channel-links.md` (two new rows, one superseded),
+`growth-engine.md` §1, `business-model.md` §4, `.claude/skills/growth-weekly/SKILL.md`,
+`.claude/skills/ingest-newsletters/SKILL.md`, `.claude/settings.json`, `gtm-state.json`. Owner: Batu.
+
 
 ## 2026-08-17 (sixth entry) — D2–D6 ratified: the weekly send, parallel reach, physical, product repairs, supply pulled forward
 

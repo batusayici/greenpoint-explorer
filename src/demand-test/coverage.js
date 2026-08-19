@@ -334,3 +334,52 @@ export const isUnexplained = (r) => isFlagged(r) && !r.explained;
 // printed report — an out-of-scope line still prints, labelled, so a reader can
 // see what was not looked at.
 export const inScope = (r, only) => !only || only.has(r.id);
+
+// ---- unique coverage (RATIFIED 2026-08-19, Batu) ----------------------------
+// The differentiation proof: cards on the map that appeared in NO other
+// Greenpoint source. business-model.md §1.4 states the promise this measures
+// ("coverage the newsletters miss — measured, not asserted"), §4 H3 tests it,
+// and growth-engine rule 3 puts it on the buyer trust surface alongside the
+// published coverage standards and the verified-through date.
+//
+// Why this is code and not a Tuesday derivation: it was reported for five
+// cycles as an operator approximation and moved ~6 points on a definitional
+// choice nobody had ratified. A number that goes into a pilot conversation
+// cannot be re-derived from memory by whoever runs the readout — that is the
+// same failure mode that put the first cycle's funnel numbers wrong and was
+// fixed the same way, by moving the computation into a script.
+//
+// Shop Small Greenpoint is ON this list by ruling, not by oversight. The metric
+// says "no other Greenpoint source"; SSG runs a directory and a newsletter and
+// is already cited as a publisher on live cards, so it is one. That gives the
+// lower number, which is the correct direction for a claim shown to a buyer —
+// and it avoids claiming a prospective partner's own listings as coverage
+// nobody else has.
+export const COVERAGE_AGGREGATORS = new Set([
+  "Greenpointers",
+  "OMGreenpoint",
+  "DoNYC",
+  "Time Out",
+  "Eventbrite",
+  "Brooklyn Paper",
+  "Brooklyn Magazine",
+  "Secret NYC",
+  "Shop Small Greenpoint",
+]);
+
+// A card is unique when at least one of its sources is NOT an aggregator — one
+// named primary source is the whole claim, so a card carried by Greenpointers
+// AND the venue still counts. A card with no sources at all is never unique:
+// unsourced is a truth-rule failure, and counting it would make this metric
+// reward what the schema gate exists to prevent.
+export function uniqueCoverage(cards, { aggregators = COVERAGE_AGGREGATORS } = {}) {
+  const uniqueIds = cards
+    .filter((c) => (c.sourceLinks ?? []).some((l) => !aggregators.has(l.publisher)))
+    .map((c) => c.id);
+  return {
+    total: cards.length,
+    unique: uniqueIds.length,
+    uniqueIds,
+    share: cards.length ? uniqueIds.length / cards.length : 0,
+  };
+}

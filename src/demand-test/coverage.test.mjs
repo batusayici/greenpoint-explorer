@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { extractDates, buildHostMap, coveredDays, reconcile, nyDay, updatePulse, resolveCardChecked, isFlagged, isUnexplained, inScope } from "./coverage.js";
+import { extractDates, buildHostMap, coveredDays, reconcile, nyDay, updatePulse, resolveCardChecked, isFlagged, isUnexplained, inScope, uniqueCoverage } from "./coverage.js";
 
 // L12 coverage reconciliation. The first version of this shipped as a script
 // with NO tests, and six bugs were found in it by hand in one afternoon. Each
@@ -420,4 +420,54 @@ test("annotation: a plain `## <title>` line still contributes its dates", () => 
 test("annotation: stripping a comment line does not swallow the line after it", () => {
   const dates = extractDates("# persisted 2026-08-12\nSaturday, Aug 15 — flea market", { now: NOW });
   assert.deepEqual(dates, ["2026-08-15"]);
+});
+
+// Unique coverage (RATIFIED 2026-08-19, Batu). The differentiation proof, and
+// one of three things on the buyer trust surface (growth-engine rule 3) — so
+// this number leaves the building, which is why it stops being a hand
+// derivation. It was reported for five cycles as an operator approximation and
+// swung ~6 points depending on whether Shop Small counted as an aggregator.
+//
+// The ratified reading is the STRICT one, taken from the metric's own words in
+// business-model.md §1.4: "items that appeared in NO OTHER Greenpoint source".
+// Shop Small publishes a directory and a newsletter and is cited as a publisher
+// on real cards, so it IS another Greenpoint source and its items are not
+// unique. That yields the lower, defensible number — the right direction for a
+// claim shown to a buyer.
+test("unique coverage: a card sourced only to aggregators is not unique", () => {
+  const cards = [
+    { id: "agg-only", sourceLinks: [{ publisher: "Greenpointers" }] },
+    { id: "own", sourceLinks: [{ publisher: "Film Noir Cinema" }] },
+  ];
+  const r = uniqueCoverage(cards);
+  assert.equal(r.total, 2);
+  assert.equal(r.unique, 1);
+  assert.deepEqual(r.uniqueIds, ["own"]);
+});
+
+test("unique coverage: one non-aggregator source is enough to make a card unique", () => {
+  // A card carried by BOTH an aggregator and the venue itself is still ours —
+  // we did the verification work against a named primary source.
+  const cards = [
+    { id: "both", sourceLinks: [{ publisher: "Greenpointers" }, { publisher: "Troost" }] },
+  ];
+  assert.equal(uniqueCoverage(cards).unique, 1);
+});
+
+test("unique coverage: Shop Small Greenpoint counts as another source (the ratified call)", () => {
+  const cards = [{ id: "ssg", sourceLinks: [{ publisher: "Shop Small Greenpoint" }] }];
+  assert.equal(
+    uniqueCoverage(cards).unique,
+    0,
+    "the 2026-08-19 ruling: SSG is another Greenpoint source, so its items are not unique coverage",
+  );
+});
+
+// A card with no sourceLinks at all must never be counted as a differentiation
+// win. Unsourced is a truth-rule failure, not an achievement — counting it
+// unique would make the metric reward exactly what the schema gate exists to
+// stop.
+test("unique coverage: an unsourced card is not unique", () => {
+  assert.equal(uniqueCoverage([{ id: "bare", sourceLinks: [] }]).unique, 0);
+  assert.equal(uniqueCoverage([{ id: "missing" }]).unique, 0);
 });

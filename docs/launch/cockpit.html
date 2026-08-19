@@ -179,56 +179,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
 
   <section>
     <h2 class="sec">Waiting on you</h2>
-    <ul class="atts">
-  <li class="att">
-    <details>
-      <summary><b>Readout PR #42 reverts the D1–D6 decisions</b><span class="att__by mono">before merging — it has been open since 8/18</span></summary>
-      <p>The Tuesday routine branched from main at 7acae75, twenty minutes before D2–D6 landed. It then rewrote the whole state file from what it could see, so merging it as-is restores the old 'finish Wave 1' focus, puts the 8/25 gate back that D3 deleted, and drops the D1–D6 ratification record. Its readout content is good and its numbers are real — only the state file conflicts.</p>
-      <ul class="opts"><li>Merge the readout doc and skip its gtm-state.json change (this update already carries its numbers)</li><li>Merge as-is and re-apply D1–D6 afterwards</li><li>Fix the class: have the routine merge into the state file instead of rewriting it</li></ul>
-    </details>
-  </li>
-  <li class="att">
-    <details>
-      <summary><b>Answer Perri — call or shop visit</b><span class="att__by mono">today, Wed 8/19 — she offered Wed/Thu 1–4pm</span></summary>
-      <p>She replied 36 minutes after the note went out, the fastest response any outreach has produced. The window she offered is today and tomorrow. A draft is in the 8/18 readout.</p>
-      
-    </details>
-  </li>
-  <li class="att">
-    <details>
-      <summary><b>preflight:send fires a false do-not-send</b><span class="att__by mono">before the next send</span></summary>
-      <p>The gate that protects every outbound claim failed on the morning of the send it exists to protect. It compares the sitemap's live cards against every card in the deck, and aged-out news cards stay in the deck forever by design. Nine of them today. Prod was verified current three ways; the fix is proposed in the readout.</p>
-      
-    </details>
-  </li>
-  <li class="att">
-    <details>
-      <summary><b>Add four hosts to the claude.ai/code network policy — the last step on PR #43</b><span class="att__by mono">before the Wed 8/26 ingest — this week’s events (8/20–8/26) are already past by then</span></summary>
-      <p>Each host was fetched directly on 2026-08-19 and the list shrank. Add exactly these four: luma.com, partiful.com, portal.iclasspro.com, themccarren.com AND www.themccarren.com (it 301s to www, and a redirect into a non-allowlisted host fails like the original). OpenTable is dropped — it returns 403 to automated fetches on apex and www alike, so it is a bot block no network policy can fix; La Contenta needs an interactive session instead. Square is skipped by Batu’s call — the host answers, but a checkout page likely carries no venue address anyway. The tracked .claude/settings.json already matches this list; the network policy at claude.ai/code is a separate account setting no session can reach. Unblocks 8 of 12, not 9.</p>
-      
-    </details>
-  </li>
-  <li class="att">
-    <details>
-      <summary><b>Which parent group does Rana post in?</b><span class="att__by mono">before the Q2 copy is finalized (posts Tue Sep 8)</span></summary>
-      <p>It determines the src value — one src per channel, so a second group needs its own row.</p>
-      <ul class="opts"><li>Williamsburg &amp; Greenpoint BK Parents (~5k, join-gated)</li><li>Brooklyn Baby Hui (~10k + Slack pods where the 0–4 crowd actually asks)</li></ul>
-    </details>
-  </li>
-  <li class="att">
-    <details>
-      <summary><b>Restate the feed-density baseline</b><span class="att__by mono">open three cycles</span></summary>
-      <p>The §1 baseline (95 cards / 38 dated / 48 sources) is three weeks stale and describes a smaller product than the one we have. Every comparison against it flatters us.</p>
-      
-    </details>
-  </li>
-  <li class="att">
-    <details>
-      <summary><b>Ratify or retire the unique-coverage proxy</b><span class="att__by mono">open four cycles</span></summary>
-      <p>Operator-derived and unratified. Including Shop Small gives 76%, excluding it gives 83%. A marketing number with a 7-point definitional swing isn't a number.</p>
-      
-    </details>
-  </li></ul>
+    <ul class="atts"></ul>
   </section>
 
   <section>
@@ -326,7 +277,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     </td>
     <td class="mono num">—</td>
     <td><span class="pill pill--idle">not yet read</span></td>
-    <td class="xr__imp">Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24–30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions.</td>
+    <td class="xr__imp">Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24–30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions. GROUP CHOICE RULED 2026-08-19 (Batu): BOTH groups — Williamsburg &amp; Greenpoint BK Parents (src=parents-wgbk) and Brooklyn Baby Hui (src=parents-hui), one src each so the rule's &quot;return beats other srcs&quot; comparison stays readable. The single shared `parents` tag is superseded and must not be sent.</td>
   </tr>
   <tr class="xr xr--idle">
     <td class="mono xr__id">Q3</td>
@@ -497,7 +448,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <span class="tile__lbl">Dated items, next 7 days</span>
     <span class="tile__val mono">70</span>
     <span class="tile__meta mono">↗ was 56 · target ≥35 to send</span>
-    <span class="tile__cav">Hand count of cards starting strictly inside 7 days: 65. Reservoir 23.</span>
+    <span class="tile__cav">check-freshness.mjs: datedUpcoming7d=76 reservoir7-14d=21 topVenue=Troost:11%. Send bar is &gt;=35. Baseline restated 2026-08-19.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Reservoir, 7–14 days out</span>
@@ -509,19 +460,13 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <span class="tile__lbl">Cards on the map</span>
     <span class="tile__val mono">158</span>
     <span class="tile__meta mono">↗ was 144</span>
-    <span class="tile__cav">The growth-engine baseline (95 · 38 · 48) is still unrestated — third cycle running.</span>
-  </article>
-  <article class="tile">
-    <span class="tile__lbl">Roster yield</span>
-    <span class="tile__val mono">17 of 72 in 7d (24%) · 48 of 72 in 14d (67%)</span>
-    <span class="tile__meta mono">→ was &quot;42 of 68 (62%)&quot;</span>
-    <span class="tile__cav">The old 62% matches neither window. Computed here from the ledger's sourcePulse with the window stated. The metric has no instrument and no agreed window.</span>
+    <span class="tile__cav">Baseline RESTATED 2026-08-19 to 162 · 76 · 72 (was 95 · 38 · 48 from pre-launch July).</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Unique coverage</span>
-    <span class="tile__val mono">123 of 158 (78%)</span>
-    <span class="tile__meta mono">↗ was 110 of 144 (76%)</span>
-    <span class="tile__cav">84% excluding Shop Small. Same ~6-point definitional swing, unratified after four cycles.</span>
+    <span class="tile__val mono">133 of 162 (82%)</span>
+    <span class="tile__meta mono">↗ was 123 of 158 (78%), hand-derived</span>
+    <span class="tile__cav">RATIFIED 2026-08-19 and now computed by uniqueCoverage() in coverage.js, printed by npm run ingest:coverage — no longer an operator derivation. Shop Small counts as another Greenpoint source by ruling, which is why this reads 82% and not 88%. Changing the aggregator set changes a claim shown to buyers: that is a decision, not a tweak.</span>
   </article>
   <article class="tile">
     <span class="tile__lbl">Signup list (R1 denominator)</span>
