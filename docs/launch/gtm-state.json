@@ -960,7 +960,17 @@
       "status": "product-generated, never sent by hand"
     }
   ],
-  "openDecisions": [],
+  "openDecisions": [
+    {
+      "id": "cookie-vs-no-cookie-promise",
+      "title": "The ratified cookie mirror contradicts a published privacy promise — ship it and rewrite the promise, or drop it and measure the bias instead?",
+      "detail": "D5 item 7 (ratified 8/17, re-ratified today inside D8's merge class) sets a server-set cookie mirroring gl_first_seen so Safari's 7-day storage eviction stops resetting returning iPhone readers to week 0. But public/privacy.html says the Service sets NO cookies in three places — the meta description ('No ads, no cookies, no precise location'), the summary paragraph, and section 4. Shipping the cookie makes a published legal page false, and rewriting a privacy policy is user-facing copy — so this item is NOT in D8's non-visual default-merge class and stops here for a ruling.",
+      "recommendation": "RECOMMENDED: drop the cookie, keep the promise true, and measure the bias instead. Three reasons. (1) The bias runs in the safe direction — an evicted iPhone reader re-registers as new, which inflates the denominator and deflates the numerator, so Safari eviction can only cause a false FAIL, never a false pass. (2) Two ratified return paths already route around localStorage entirely: a tagged digest click counts as a return under D1, and the home-screen install (D5 item 3) exempts installed users from the eviction cap. (3) 'No ads, no cookies, no precise location' is part of the trust posture the business model names as a compounding asset. Instead: add a return-rate-by-browser-family line to the Tuesday readout, and label the October read with the measured Safari gap. The alternative — ship the cookie and rewrite privacy.html §4 + the meta + the summary — is a real option if Batu would rather have the cleaner measurement.",
+      "owner": "Batu",
+      "needBy": "before ~Sep 25 (cohort entry closes); the measurement alternative wants the readout line from 8/25",
+      "source": "D5 item 7; D8 class boundary; public/privacy.html sections 4 + meta"
+    }
+  ],
   "risks": [
     {
       "id": "no-return",
@@ -991,7 +1001,7 @@
       "title": "Safari deletes the retention sensor's storage at exactly our cadence",
       "severity": "open — measurement-fatal on the majority platform",
       "detail": "returnVisit.js is localStorage-only. Safari (ITP) clears script-written storage after ~7 days of browser use without a first-party visit — a weekly-check product sits precisely on that edge, so an iPhone user returning on day 8 can re-register as brand new with weekIndex 0, forever. Verified as unenumerated: no ITP or eviction row exists in environmental-dependencies.md. Consistent with our own data — the July round saw 7 of 24 return inside a 5-day window, while cross-week WRL shows 2.",
-      "response": "D5: verify on a real iPhone, add the dependencies row in the same change, mirror gl_first_seen into a server-set cookie (the one no-backend exception — config-level, no storage, no accounts). Home-screen install also exempts a user from the cap.",
+      "response": "D5: verify on a real iPhone, add the dependencies row in the same change, mirror gl_first_seen into a server-set cookie (the one no-backend exception — config-level, no storage, no accounts). Home-screen install also exempts a user from the cap. HELD 2026-08-19: the cookie mirror contradicts privacy.html's published 'no cookies' promise (three places), so it left D8's non-visual merge class and is now an open decision — ship-and-rewrite vs drop-and-measure. Recommended: drop and measure, because the eviction bias can only produce a false fail, never a false pass, and two ratified return paths (tagged digest clicks under D1, home-screen install) already bypass localStorage.",
       "source": "strategy review, verified-in-code section"
     },
     {
