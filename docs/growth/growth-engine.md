@@ -55,8 +55,35 @@ after demonstrated value and changes with the relationship:
    refer, and the organic >50% word-of-mouth signal (§1) reads off it. Third
    rung, never a competing ask.
 
-**Why not the Monday digest** (the prior rung 2, retired as the default
-2026-07-28). Four strikes, three of them from our own docs: it is exactly the
+**The Monday digest — un-retired as the retention spine (D2, ratified
+2026-08-17).** It ships weekly to the full list from **Mon Aug 24**, drafted by
+the Monday routine, **sent by Batu** (§7 unchanged). Follow remains the CTA and
+rung 2 of the ladder; the digest is the *transport*, not a competing ask.
+**Density floor:** a thin week is skipped, never sent thin — a thin send teaches
+people the product is thin. (Citizen is the cautionary case: 2M pushes/day built
+the fastest habit in local media, and staff loosened what counted as
+alert-worthy on slow days to protect engagement. The floor is that failure mode
+pre-refused.)
+
+Why the 2026-07-28 retirement was overturned: outside research swept Front Porch
+Forum, Nextdoor, EveryBlock, Patch, Block Club, 6AM City, Bklyner and Citizen
+for a hyperlocal product that sustained weekly habit **without** a scheduled
+send. There is none — every success had one (FPF 63% read-every-issue; Block
+Club neighborhood lists open at 37–48%, ~2× citywide; EveryBlock's own founder:
+"most people get our daily email digest," with the site as the configuration
+surface), and every failure lacked one. Strike by strike: the *competes-with-
+Greenpointers* strike is weaker than it read — their events roundup was dormant
+four years until March 2026 and their calendar is empty (verified 2026-08-17) ·
+the *founder-cost* strike is real and bounded at ~15 min/week at this list size,
+already budgeted as R1's control arm · the *manufactures-the-metric* strike is
+answered by D1, which removed "majority unprompted" from the gate and counts a
+tagged email click as a return, both labeled · the *push-moment* strike stands
+as written, and is the reason the send carries three picks and points at the
+index rather than trying to be the index. Full analysis:
+`docs/launch/2026-08-17-launch-strategy-review.md` §2.
+
+*The 2026-07-28 case against it, kept as the dated record:* Four strikes, three
+of them from our own docs: it is exactly the
 "push moment" `business-model.md` §1 defines us *against* ("value spent at
 publish time; cannot answer a question asked Tuesday at 6pm") — we had written
 the case against our own re-entry mechanism · it competes head-on with
@@ -340,7 +367,7 @@ evidence.
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
 | R0 | **`return_visit` sensor** — localStorage first-seen + visit count, privacy-light. ✅ **live since 2026-07-26** (`returnVisit.js`). | — | Not an experiment — the prerequisite. Unlocks R1/R2 and the demand gate itself. |
-| R1 | **Follow: personalized alert vs. broadcast digest** *(restructured 2026-07-28 — was "weekly digest to postvalue signups"; the digest is now the control arm, not the treatment)*. The segment is **taken from context, never asked** (2026-07-29): the app derives the object from the active lens or the trigger card and rides it into the form as a hidden `follow` param (`lens:<id>` / `place:<id>` / `all`), so the form stays one field. Operator drafts per-segment; Batu sends **only when something matches**. Unsegmented signups receive the Monday digest unchanged (`?src=digest`); segments carry `?src=follow-<lens>`. | Manual segments — no backend, no automation build. Keep segments coarse (4–5) so a narrow lens doesn't go weeks without a match. | Segment click-through vs. broadcast click-through, 3 weeks. **The design contains its own control — the answer is empirical, not argued.** Kill: if segmented doesn't beat broadcast by week 3, personalization isn't worth a backend → fall back to the digest and close the question. **Time-boxed regardless:** manual segment sends cost more founder-minutes than one digest, so the test ends at 3 weeks either way — continue only as a build decision. **Trigger (ratified 2026-08-15):** R1 starts the first Monday after ≥10 signups with ≥1 segmented; its 3-week clock runs from that Monday. Supersedes the launch plan's "first Monday post-launch". **P7 fallback (ratified 2026-08-15):** if R1 has not armed by the Mon Oct 5 readout, the next free slot goes to a re-entry mechanism that needs no list (R4 or per-lens `.ics`), chosen at that readout — and the ~late-Oct firm demand read carries the label "measured without a re-entry mechanism": a miss under it reads as product-plus-missing-mechanism unresolved, never product failure alone. |
+| R1 | **Follow: personalized alert vs. broadcast digest** *(restructured 2026-07-28 — was "weekly digest to postvalue signups"; the digest is now the control arm, not the treatment)*. **D2 (2026-08-17): the control arm ships weekly from Mon Aug 24 regardless of R1's state** — the digest is the retention spine first and an experiment arm second, so it no longer waits on the trigger. R1's *comparison* still arms per P5 (first Monday after ≥10 signups with ≥1 segmented) and its 3-week clock runs from then. D5 un-gates the Follow ask from lens state, which is what makes the trigger reachable at all: `postValue.js` was lens-only, so ~90% of visitors never saw the ask and the segmented arm was structurally unreachable. The segment is **taken from context, never asked** (2026-07-29): the app derives the object from the active lens or the trigger card and rides it into the form as a hidden `follow` param (`lens:<id>` / `place:<id>` / `all`), so the form stays one field. Operator drafts per-segment; Batu sends **only when something matches**. Unsegmented signups receive the Monday digest unchanged (`?src=digest`); segments carry `?src=follow-<lens>`. | Manual segments — no backend, no automation build. Keep segments coarse (4–5) so a narrow lens doesn't go weeks without a match. | Segment click-through vs. broadcast click-through, 3 weeks. **The design contains its own control — the answer is empirical, not argued.** Kill: if segmented doesn't beat broadcast by week 3, personalization isn't worth a backend → fall back to the digest and close the question. **Time-boxed regardless:** manual segment sends cost more founder-minutes than one digest, so the test ends at 3 weeks either way — continue only as a build decision. **Trigger (ratified 2026-08-15):** R1 starts the first Monday after ≥10 signups with ≥1 segmented; its 3-week clock runs from that Monday. Supersedes the launch plan's "first Monday post-launch". **P7 fallback (ratified 2026-08-15):** if R1 has not armed by the Mon Oct 5 readout, the next free slot goes to a re-entry mechanism that needs no list (R4 or per-lens `.ics`), chosen at that readout — and the ~late-Oct firm demand read carries the label "measured without a re-entry mechanism": a miss under it reads as product-plus-missing-mechanism unresolved, never product failure alone. |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
 | R3 | **Five warm-user conversations:** "what would make you check this weekly?" — plus the causal question (added 2026-08-13): **"Did Stoopwise cause you to do something you would not otherwise have known about or chosen?"** The demand-side twin of the unique-coverage count, and verbatim the strongest line pilot evidence can carry ("N% wouldn't have known otherwise"). | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals and the pilot-conversation kit. |
 | R4 | **Anonymous save** *(candidate, registered 2026-08-13 — not live; enters via a Tue-readout proposal when a max-3 slot opens, Batu ratifies)*: a star/save on every card, anonymous localStorage, no account. Hypothesis: saving starts the resident participation graph (business-model.md §1, asset 4) and returns readers to their own shortlist — Laura/Edmond's standing ask. A saved-items view is gated on observed save usage; reminders stay behind the R1 backend decision. | Small UI change over localStorage — no backend, no identity. | Proposed rule (final kill criteria set at launch): save rate per activated session, and whether savers return more (R0 sensor). Kill if saves stay rare after 3 weeks or don't correlate with return. |
@@ -397,15 +424,37 @@ pick messengers embedded in the network over channels with bigger audiences, and
 saturate one network before opening the next. This tightens the existing
 experiments' messaging; it adds none (max-3 rule untouched).
 
-**Wedge #2 pre-sequenced (P11, ratified 2026-08-15):** when Q1 closes — its
-decision rule fires or its 4-week clock expires (P5) — the freed slot goes to
-the **arts/culture wave**: Film Noir first (draft and `org-film-noir` row
-standing), then WORD Bookstore and Flower Cat per the seeding roster's Tier 2
-order. Same mechanism and preflight checks as Q1; org links may carry
-`?lens=arts_culture`. This is sequencing only — never two networks at once.
-The rationale is supply-weighted: arts/culture is the deck's densest category
-and its three densest suppliers, with no seeded audience and no Loop B
-relationship; "whenever a slot opens" is the trigger that never fires.
+**Wedge #2 — un-sequenced and running now (D3, ratified 2026-08-17;
+supersedes P11's trigger).** The arts/culture wave — Film Noir first (draft and
+`org-film-noir` row standing), then WORD and Flower Cat — sends **the week of
+8/17, alongside Wave 1**, not when Q1 closes. Org links may carry
+`?lens=arts_culture`.
+
+**P11's temporal-exclusivity clause ("never two networks at once") is dropped;
+the echo-chamber density principle stands.** Echo-chamber seeding is about
+density *inside* a trust network — a recommendation from a member beats
+broadcast. It says nothing about running two *unrelated* networks in the same
+week: film-noir adults and library parents share no feed, and per-`src` tagging
+already buys the separation the exclusivity clause was paying four weeks for.
+P11's own reasoning also had a flaw worth naming — it picked the wave on
+**supply** density (arts/culture is the deck's densest category) to select a
+**demand** channel; card count is not audience size, and Film Noir being our
+most-opened card means the content works, not that its network is large. The
+wave still goes first among Tier 2, on the founder-cost argument: the draft and
+the `src` row already exist, so it costs ten minutes and touches no parent.
+Founder *hours* stay pointed at the parents wedge (§4 focus is unchanged) —
+what changed is that cheap sends no longer wait on expensive ones.
+
+**Channels added the same day (D3/D4):** Nextdoor (`nextdoor`) · Facebook-group
+**answer posts** (`fbgroups`) — replies to real "anything this weekend?" threads
+with three specific picks and the link as citation, entering through the 16K
+group's standing *"free community events are always allowed"* rule and the
+public Greenpoint Neighbors group · the **Instagram carousel** (`ig`), moved off
+its Oct-6-on-failure trigger · and the physical channel (`market`, `greenline`)
+— hand-to-hand and permission-based placement only, since pole and park
+postings are illegal per-flyer offences (§10-119; 56 RCNY §1-05(c)). Group
+rules, member counts, and the law are in
+`docs/launch/2026-08-17-greenpoint-attention-map.md`.
 
 **Acquisition experiments (ranked; all post-launch — Q1/Q2 are wave 1 of the
 seeding order in the launch runbook §3; kit rules: Batu sends every message):**
@@ -488,12 +537,24 @@ Embedded in the existing weekly loop — no new ceremony:
    experiments and don't make the list.
 5. Every result — including kills — gets one line in the Tue readout doc;
    durable decisions go to `DECISION_LOG.md`.
-6. **Slot & clock hygiene (ratified 2026-08-15):** Wave-2 channels
-   (reddit / fbgroups / qr) extend Q1/Q2's existing slots with per-channel
-   `src`s — they are not experiments 4–6. Watch-only, no-kill items (Q3) sit
-   outside the max-3 cap, explicitly. Each Q experiment closes at the readout
-   after its decision rule fires, or after 4 weeks, whichever comes first —
-   no experiment squats on a slot indefinitely.
+6. **Slot & clock hygiene (ratified 2026-08-15; extended by D3, 2026-08-17):**
+   Wave-2 channels (reddit / fbgroups / qr / nextdoor / ig / market / greenline)
+   extend Q1/Q2's existing slots with per-channel `src`s — they are not
+   experiments 4–6. Watch-only, no-kill items (Q3) sit outside the max-3 cap,
+   explicitly. Each Q experiment closes at the readout after its decision rule
+   fires, or after 4 weeks, whichever comes first — no experiment squats on a
+   slot indefinitely. **A send is not an experiment and consumes no slot**
+   (it carries its own `src`, so it costs no attribution capacity); neither is
+   a product fix that repairs a broken mechanism rather than testing a
+   hypothesis (D5's Follow-ask un-gating, header line, install nudge). The
+   max-3 cap governs *hypotheses under test*, and it was throttling builds it
+   was never written to govern.
+7. **No gate between waves on a mechanism already proven (D3, 2026-08-17).**
+   The 8/25 Wave-2 gate is deleted: P3's check ("every sent `src` shows ≥1
+   session within 7 days") was a plumbing test, and the plumbing was proven by
+   friends-family on 8/13. Different `src` values cannot contaminate each
+   other — that is what the attribution kit is for. P3's check survives as a
+   **readout line**, not a blocker.
 
 **Ownership split:** governed by the operator model and autonomy ladder in §7.
 Anything recurring that can't be automated into the Mon/Tue rhythm doesn't ship.
@@ -595,10 +656,15 @@ readouts.)*
 - Social-account grinding, generic SEO/content-marketing blog. *(Narrowed
   2026-07-28: a low-labor 4-week auto-generated-carousel test is an approved
   post-launch experiment candidate — grinding stays banned. P9, ratified
-  2026-08-15: the carousel test now has a trigger — it enters by normal
-  Tuesday proposal when a slot frees, and automatically at the first readout
-  on/after Tue Oct 6 if cumulative tagged sessions across all sent srcs are
-  under 50.)*
+  2026-08-15, gave it a trigger: normal Tuesday proposal when a slot frees, or
+  automatically at the first readout on/after Tue Oct 6 if cumulative tagged
+  sessions were under 50.* **D3, 2026-08-17: the carousel starts now** —
+  `src=ig`. P9 had scheduled the only test of our biggest open question (is a
+  website the right container at all? — learning-log Q1, which we ourselves
+  labeled as able to invalidate the form, not just a feature) as a consolation
+  prize for failure, on a trigger that a merely-mediocre result would have
+  suppressed permanently. Its answer is worth most while it can still shape
+  September. Grinding stays banned; this is auto-generated from existing cards.)*
 - Referral incentives or growth hacks bolted outside the loops.
 - Growth hires, agencies, or tools beyond PostHog free tier.
 - Shipping any paid surface before the demand gate passes. *(Revised 2026-07-28:

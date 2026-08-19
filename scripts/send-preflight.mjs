@@ -99,10 +99,15 @@ if (!offline) {
   try {
     const xml = await fetch(`${ORIGIN}/sitemap.xml`).then((r) => r.text());
     const locs = (xml.match(/<loc>/g) ?? []).length;
-    const drift = locs - report.deckSize;
-    const ok = Math.abs(drift) <= 5; // home + feeds + a card in flight
+    // The sitemap renders liveCards() plus /, /terms, /privacy (aeo.js) — not
+    // deckSize, which also counts expired-but-retained news cards that never
+    // leave cards.json (2026-08-19, Finding 1: this drifted -6 on a correctly
+    // deployed prod once nine news cards aged past their 30-day shelf life).
+    const expectedLocs = report.liveDeckSize + 3;
+    const drift = locs - expectedLocs;
+    const ok = Math.abs(drift) <= 5; // a card in flight
     console.log(
-      `\n  ${ok ? "✓" : "✗"} prod sitemap ${locs} urls vs local deck ${report.deckSize} (drift ${drift >= 0 ? "+" : ""}${drift})`,
+      `\n  ${ok ? "✓" : "✗"} prod sitemap ${locs} urls vs local live deck ${expectedLocs} (drift ${drift >= 0 ? "+" : ""}${drift})`,
     );
     if (!ok) failures.push(`prod sitemap drift ${drift} — is main deployed?`);
   } catch (err) {

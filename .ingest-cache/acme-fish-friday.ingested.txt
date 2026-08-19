@@ -396,7 +396,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Smoked Trout (1 lb.)
 Hot Smoked
 Specialty

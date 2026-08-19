@@ -26,7 +26,32 @@ const TONE = {
 };
 const tone = (v) => TONE[String(v ?? '').toLowerCase()] ?? 'idle';
 
+// ---- Today (written by cockpit-daily.mjs) --------------------------------
+
+const d = s.daily;
+const chip = (txt, t) => `<span class="chip chip--${t}">${esc(txt)}</span>`;
+const today = d ? `
+  <section class="today">
+    <div class="today__head">
+      <h2>${esc(d.dayName)}</h2>
+      <div class="today__chips">
+        ${d.feed?.dated != null ? chip(`feed ${d.feed.dated} dated`, d.feed.fresh ? 'ok' : 'warn') : ''}
+        ${d.feed?.stale ? chip('ingest stale', 'warn') : ''}
+        ${d.waiting?.length ? chip(`${d.waiting.length} waiting`, 'warn') : ''}
+        ${d.unanswered?.length ? chip(`${d.unanswered.length} awaiting reply`, 'idle') : ''}
+      </div>
+    </div>
+    ${d.overdue?.length ? `<ul class="today__list today__list--over">${d.overdue.map((o) => `<li><span class="mono">${esc(o.since)}</span> ${esc(o.label)}</li>`).join('')}</ul>` : ''}
+    ${d.dueToday?.length ? `<ul class="today__list">${d.dueToday.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`
+      : (!d.overdue?.length ? `<p class="today__clear">Nothing dated for today.</p>` : '')}
+    ${d.waiting?.length ? `<p class="today__meta">${d.waiting.map((w) => esc(w.what) + (w.age ? ` <span class="mono">${w.age}d</span>` : '')).join(' &nbsp;·&nbsp; ')}</p>` : ''}
+  </section>` : '';
+
 // ---- Focus (the one goal) ----------------------------------------------
+
+// Today's items are owned by the strip above; the focus card carries the arc
+// after today, so a step is never printed twice on one page.
+const ahead = (s.focus?.steps ?? []).filter((st) => !d || !st.date || st.date > d.ranAt);
 
 const focus = s.focus ? `
   <section class="focus">
@@ -34,7 +59,7 @@ const focus = s.focus ? `
     <h2 class="focus__goal">${esc(s.focus.goal)}</h2>
     <p class="focus__why">${esc(s.focus.why)}</p>
     <ol class="steps">
-      ${s.focus.steps.map((st) => `
+      ${ahead.map((st) => `
       <li class="step step--${tone(st.status)}">
         <span class="step__when mono">${esc(st.when)}</span>
         <span class="step__label">${esc(st.label)}</span>
@@ -160,6 +185,22 @@ b{font-weight:650}
 .step--idle .step__label{font-weight:400;color:var(--mute)}
 .focus__done{font-size:13.5px;color:var(--mute);border-top:1px solid var(--rule);padding-top:12px}
 
+/* today strip */
+.today{border-bottom:1px solid var(--rule);padding-bottom:20px;display:flex;flex-direction:column;gap:12px}
+.today__head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.today__head h2{font-size:22px;font-weight:680;letter-spacing:-.015em}
+.today__chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:600 10.5px/1.8 var(--mono);letter-spacing:.04em;padding:0 8px;border-radius:10px;white-space:nowrap;color:var(--t);background:var(--b)}
+.chip--ok{--t:var(--pass);--b:var(--passbg)} .chip--warn{--t:var(--warn);--b:var(--warnbg)} .chip--idle{--t:var(--idle);--b:var(--idlebg)}
+.today__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.today__list li{font-size:15px;font-weight:600;padding-left:17px;position:relative;line-height:1.4}
+.today__list li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--now)}
+.today__list--over li{color:var(--warn)}
+.today__list--over li::before{background:var(--warn)}
+.today__list--over li .mono{font-weight:600;opacity:.75}
+.today__clear{font-size:14px;color:var(--mute)}
+.today__meta{font-size:12.5px;color:var(--mute)}
+
 /* sections */
 h2.sec{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);font-weight:700}
 section{display:flex;flex-direction:column;gap:14px}
@@ -242,6 +283,8 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <span>as of ${esc(s.meta.asOf)}</span>
     <span>analytics ${esc(s.meta.lastDataPull)} · feed ${esc(s.meta.lastFeedCheck || s.meta.lastDataPull)}</span>
   </header>
+
+  ${today}
 
   ${focus}
 

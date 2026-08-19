@@ -4,6 +4,68 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-17 (sixth entry) — D2–D6 ratified: the weekly send, parallel reach, physical, product repairs, supply pulled forward
+
+Decision (Batu, "approve all" — D2 through D6 of the 2026-08-17 strategy review, ruled as one act
+hours after D1). Together with D1 these replace the plan's central bet: *seed one trust network at
+a time and read carefully* becomes *give the product a way to bring people back, then reach as
+widely as the truth rules allow, and read honestly*. The three passes' shared diagnosis was that
+the plan was a careful distribution schedule wrapped around a product with no return mechanism.
+
+**D2 — The Monday send ships weekly from Aug 24.** Drafted by the Monday routine, sent by Batu
+(§7 unchanged), three hand-picked things + "the other N are on the map" + link. **Density floor:
+a thin week is skipped, never sent thin.** This un-gates the digest that already existed as R1's
+control arm but was trapped behind a trigger that D5 proves was unreachable. Overturns the
+2026-07-28 retirement on evidence: no hyperlocal product in the researched record — FPF, Nextdoor,
+EveryBlock, Patch, Block Club, 6AM City, Bklyner, Citizen — ever sustained weekly habit without a
+scheduled send, and every failure lacked one. R1's comparison still arms per P5.
+
+**D3 — Reach fires in parallel; the 8/25 gate is deleted.** P3's check was a plumbing test and the
+plumbing was proven 8/13; it survives as a readout line, not a blocker. P11's "never two networks
+at once" is dropped (echo-chamber doctrine is about density *inside* a network; per-`src` tagging
+already separates unrelated ones) — the arts wave sends this week. P9's carousel moves from
+"Oct 6 if under 50 sessions" to now: it was the only test of the medium question, scheduled as a
+consolation prize for failure. New channels: `nextdoor`, `ig`, `org-word`, `org-flower-cat`;
+`fbgroups` is redefined as **answer posts, not link drops**. A send is not an experiment and
+consumes no slot; neither is a product fix.
+
+**D4 — Physical, legal-only.** SummerStarz finale (8/21, the season's last night and the largest
+gathering of the wedge audience this month), market mornings, permission-based placements, The
+Greenline. **Never poles or parks**: §10-119 makes each flyer a separate $75–150 offence with the
+name on it presumed liable, and 56 RCNY §1-05(c) requires a permit in parks. R3's five warm-user
+conversations — a standing instrument with no date since July — get their dates from these.
+
+**D5 — The missing product.** Follow ask un-gated from lens state (it was lens-only, so ~90% of
+visitors never saw it and R1's segmented arm was structurally unreachable); "New every Monday" in
+the header (a no-push product earns return by publishing its schedule); home-screen install nudge;
+`/week` printable route; email ask on deep-link landings. Plus measurement repairs: **Safari
+evicts script-written localStorage after ~7 days without a first-party visit — exactly our
+cadence — so `returnVisit.js` can re-register a returning iPhone user as brand new, forever.**
+Mirror first-seen into a server-set cookie (**the one no-backend exception, config-level, no
+storage, no accounts**), add the ITP row to `environmental-dependencies.md`, verify the FB webview.
+
+**D6 — September supply pulled forward.** The roster adds ratified 8/15 (PTAs, GWYSL, Play Lab,
+GAMA, Artudio, St. Stans Academy, NY Society of Play) move from the 8/24 ingest to this week's —
+approval already happened, only the date moves. Fall-registration and Halloween sweeps added: zero
+cards currently start after Aug 31, and **four recurring family Halloween events have no published
+2026 dates** (Town Square's parade, McGolrick's party, PS 31 and PS 110 fall festivals) while
+Greenpointers publishes its guide ~Oct 20–24. First verified listings own October.
+
+**Held, not approved:** paid reach as a one-off measurement buy (revisit ~Sep 15 if tagged local
+sessions are under ~300 — the free channels are unexploited); Greenpointers (approach as a
+source-tip relationship, never a pitch; the embed-swap hold stands).
+
+**Cost named up front:** ~12–15 founder-hours/week through mid-September. The researched failure
+pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped
+week. Cut order if the budget is really 8 hours: fewer group-answer posts, one market morning
+instead of two, The Greenline deferred.
+
+Sources: `docs/launch/2026-08-17-launch-strategy-review.md` (three independent passes) and
+`docs/launch/2026-08-17-greenpoint-attention-map.md` (ground truth: group counts and posting
+rules, institutions, school calendar, flyering law). Carriers updated same change: growth-engine
+§0/§2/§4/§6 + "Explicitly not doing", channel-links.md, gtm-state.json, seeding roster, launch
+plan §3/§4. Owner: Batu.
+
 ## 2026-08-17 (fifth entry) — Demand gate re-registered as a rate with a floor; return redefined
 
 Decision (Batu, D1 of the 2026-08-17 strategy review — ruled **before** the first Wave-1 org

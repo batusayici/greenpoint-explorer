@@ -3338,5 +3338,105 @@
         "-73.9500652"
       ]
     }
+  },
+  "61 Franklin Street, Brooklyn, NY 11222": {
+    "query": "61 Franklin Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-19T13:26:27.387Z",
+    "hit": {
+      "place_id": 413609596,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 922165267,
+      "lat": "40.7274866",
+      "lon": "-73.9573086",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "61, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7274366",
+        "40.7275366",
+        "-73.9573586",
+        "-73.9572586"
+      ]
+    }
+  },
+  "42 West Street, Brooklyn, NY 11222": {
+    "query": "42 West Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-19T13:26:29.490Z",
+    "hit": {
+      "place_id": 360034434,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842929253,
+      "lat": "40.7280427",
+      "lon": "-73.9588364",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "42, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7279927",
+        "40.7280927",
+        "-73.9588864",
+        "-73.9587864"
+      ]
+    }
+  },
+  "273 Calyer Street, Brooklyn, NY 11222": {
+    "query": "273 Calyer Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-19T13:26:30.831Z",
+    "hit": {
+      "place_id": 358814509,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11294399148,
+      "lat": "40.7295267",
+      "lon": "-73.9493883",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "273, Calyer Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294767",
+        "40.7295767",
+        "-73.9494383",
+        "-73.9493383"
+      ]
+    }
+  },
+  "748 Manhattan Avenue, Brooklyn, NY 11222": {
+    "query": "748 Manhattan Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-19T13:26:32.369Z",
+    "hit": {
+      "place_id": 359183083,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842829082,
+      "lat": "40.7266469",
+      "lon": "-73.9522902",
+      "category": "shop",
+      "type": "chemist",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "shop",
+      "name": "Walgreens",
+      "display_name": "Walgreens, 748, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7265969",
+        "40.7266969",
+        "-73.9523402",
+        "-73.9522402"
+      ]
+    }
   }
 }

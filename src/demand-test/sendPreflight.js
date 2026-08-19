@@ -21,6 +21,7 @@
 // Consumed by scripts/send-preflight.mjs (which adds the network checks —
 // links resolve, `src` survives, prod is serving the current deck).
 import { upcomingWithin7Days } from "./freshness.js";
+import { isExpiredCard } from "./filterCards.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -123,6 +124,12 @@ export function assessSend(cards, { now = new Date() } = {}) {
   return {
     generatedAt: now.toISOString(),
     deckSize: cards.length,
+    // What the sitemap actually renders (liveCards, aeo.js) plus its fixed
+    // urls — never deckSize. Expired-but-retained news cards (we don't delete
+    // what we can't judge, filterCards.js) stay in cards.json past their
+    // 30-day shelf life, so deckSize drifts from the sitemap on every send
+    // from the day the first one ages out (2026-08-19, Finding 1).
+    liveDeckSize: cards.filter((c) => !isExpiredCard(c, now)).length,
     targets: SEND_TARGETS.map((t) => ({
       ...t,
       ...(t.kind === "venue"
