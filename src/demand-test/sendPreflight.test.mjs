@@ -142,3 +142,21 @@ test("assessSend dispatches the cards kind", () => {
   assert.equal(tsbk.total, 1);
   assert.equal(tsbk.inWindow, 1);
 });
+
+// 2026-08-19 (Finding 1, cycle-5 readout): the sitemap drift check compared
+// prod's sitemap (which renders only liveCards) against deckSize (every card,
+// including news past its 30-day shelf life that we deliberately never
+// delete). A news-heavy deck therefore drifts the check into a false
+// do-not-send on every send, worst on the morning of the send itself.
+// liveDeckSize is the number the sitemap check must compare against instead.
+test("liveDeckSize excludes news cards past their 30-day shelf life; deckSize does not", () => {
+  const NOW = new Date("2026-08-19T12:00:00-04:00");
+  const deck = [
+    card("fresh-news", { category: "news", createdAt: "2026-08-10T00:00:00-04:00" }),
+    card("stale-news", { category: "news", createdAt: "2026-07-01T00:00:00-04:00" }),
+    card("undated-event", {}),
+  ];
+  const report = assessSend(deck, { now: NOW });
+  assert.equal(report.deckSize, 3);
+  assert.equal(report.liveDeckSize, 2);
+});
