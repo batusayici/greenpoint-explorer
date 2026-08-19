@@ -4,6 +4,51 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-19 (third entry) — Re-entry: the digest stands, the signup ask is the work, WhatsApp means group posts
+
+Decisions (Batu, on the re-entry review — full record: `docs/launch/2026-08-19-reentry-review.md`).
+The question was whether the ratified Monday digest email is really the strongest way to bring a
+first-time visitor back in 2026. A wide ideation round first recommended replacing it with a WhatsApp
+channel; three independent verification passes (a clean-room re-derivation, an adversarial review,
+an external fact-check) overturned that recommendation, and these rulings are what survived.
+
+**D2 stands unchanged — the Monday email digest ships Aug 24.** The verification strengthened it:
+neighborhood email is the best-performing email category there is (Block Club opens above 50%,
+6AM City 41–48%); "newsletters don't get opened" is true for brands and false for neighborhood
+letters. Judged on tagged clicks, never opens (Apple's privacy tech inflates opens 15–35%).
+
+**The priority build is the post-value signup ask, which has converted 2 of the 18 people who ever
+saw it.** However good the send is, it goes to nobody until signing up converts. Mechanism repair,
+not an experiment — no slot consumed. Design work runs product-designer + design_crit, staged on a
+preview branch.
+
+**The digest sends real news only:** thin weeks are skipped (the existing density floor), and a
+true sourced deadline — camp registration closing, tickets on sale — leads the send when one exists.
+
+**WhatsApp's shape of record is the week-sheet image into existing group chats,** the version our
+evidence supports (the one converting send ever was a personal WhatsApp message; the week sheet
+exists because links get ignored there). A channel of our own is not built by default: channels are
+muted for every follower at the moment of follow, and the D2 research pattern (Front Porch Forum,
+Block Club, EveryBlock) validates a send that arrives, which was email in every case. If a channel
+is tried, it's a cross-post with `?src=wa-channel` and a pre-registered kill — fewer tagged returns
+than the digest over 4 weeks. A channel-join ask never displaces the post-value email ask.
+
+**No permanent re-entry ruling until the Instagram carousel test reads** — it is the pre-registered
+instrument on Q1 (is a website the right form at all), and it outranks every argument in this round.
+
+**Nothing was killed permanently:** every considered mechanism is parked with a written revival
+trigger in the review doc (native app/widget → if the carousel says the medium is wrong; SMS → if
+messaging beats email on tagged returns; per-lens calendar feeds → the P7 fallback, carrying the
+verified iPhone-only and day-stale caveats; Facebook-group weekly post → Tuesday proposal candidate;
+`/this-week` assistant page → Loop C backlog at zero booked value).
+
+**Method rule, adopted:** two passes agreeing means little when they read the same docs — the
+passes that changed this answer brought *new* evidence (the code, the attention map, external
+facts). Future strategy verifications include at least one pass over the repo's code and
+ground-truth docs and one over external facts.
+
+Owner: Batu.
+
 ## 2026-08-19 (second entry) — Recording the analytics host gate, and how to tell a fake production crash from a real one
 
 Housekeeping entry, written today for a fix that shipped **2026-08-12** (`8100401`) and was never

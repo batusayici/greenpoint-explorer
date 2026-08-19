@@ -33,6 +33,12 @@ Ingest runs as claude.ai cloud routines (2026-07-26 decision): Mon full + Tue–
 
 ## Open items & known gaps
 
+- **Signup-ask redesign (2026-08-19 re-entry review — next design build):** the post-value email
+  prompt has converted 2 of the 18 people who ever saw it, and the 2026-08-19 rulings made it the
+  priority: the Aug 24 digest goes to nobody until signing up converts. Product-designer +
+  design_crit passes, preview branch, Batu reviews before merge; measured as completions per prompt
+  shown, before/after. Mechanism repair — no experiment slot. Full record + parked alternatives
+  with revival triggers: `docs/launch/2026-08-19-reentry-review.md`.
 - **Post-validation follow-ups:** reconcile the card schema with `PlaceStory`/`Landmark` into one canonical content model; v2 shape = **living place dossiers** (articles → linked spatial objects with timelines/claims/actions) — target vocabulary named 2026-08-13 (external-review convergence, DECISION_LOG): **entity / opportunity / occurrence / action / verification record**; adopt when the reconciliation happens, no restructuring before validation; business submission pipeline; refresh seed from the ~Aug 5 SSG issue. (Spec: `2026-07-02-spatial-demand-test-design.md` · context: `2026-07-03-greenpointers-differentiation.md`.)
 - **Newsletter/calendar source audit (opened 2026-07-21):** roster additions + monthly discovery sweep are in `ingest-newsletters/SKILL.md`; still unswept: retail & services categories, additional civic/nonprofit orgs. Manual-only signups Batu finishes by hand: Warsaw, PLAY Kids Greenpoint (forms unreachable under automation). Coverage scans write gap reports to `docs/launch/coverage-scans/`; scans audit only — all card changes go through the review gate.
 - **Jobs as a content category (Batu, 2026-07-26):** eventually test local hiring — "now hiring" cards from Greenpoint businesses — as a feed layer. Fits the supply loop (a reason for businesses to engage) and the utility thesis; needs a sourcing story that passes the truth rules before it ships. Not scheduled — candidate for a post-launch experiment slot.
