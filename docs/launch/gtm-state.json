@@ -991,11 +991,11 @@
     },
     {
       "id": "pr43-hosts",
-      "title": "Twelve held cards need host allowlisting",
+      "title": "Six PR #43 hosts added to .claude/settings.json — still need the claude.ai/code network policy",
       "owner": "Batu",
       "needBy": "this week — the events are 8/20–8/26",
-      "why": "The Greenpointers roundup names venues and no addresses. Only Eventbrite answered at the proxy, so nine items need hosts allowlisted at claude.ai/code (opentable, luma, partiful, square, iclasspro, themccarren). Three have no link at all and need an interactive session.",
-      "source": "PR #43"
+      "why": "All six hosts (opentable.com, luma.com, checkout.square.site, partiful.com, portal.iclasspro.com, themccarren.com) are now in the tracked .claude/settings.json WebFetch allowlist — that covers an interactive session’s own WebFetch tool. It does NOT cover the ingest cloud routine’s fetch calls (curl/node fetch through the sandbox proxy), which is what actually blocked these nine cards in PR #43 — that needs the Custom-allowlist network policy at claude.ai/code updated directly, an account setting this session cannot reach (same distinction as DECISION_LOG 2026-07-27/28). Three cards (Panzon, Cloud City, Edith’s) have no link at all and need an interactive session regardless.",
+      "source": "PR #43; .claude/settings.json"
     },
     {
       "id": "q2-group",
