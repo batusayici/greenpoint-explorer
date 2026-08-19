@@ -4,6 +4,34 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-19 (fourth entry) — D9 ratified: the medium-pivot rule is pre-registered
+
+Decision (Batu, pre-data — the instruments first produce data Mon Aug 24; ratified four days ahead
+of that window closing). Full framing: `docs/launch/2026-08-19-october-verdict-review.md` D9. The
+medium question (learning-log Q1: is a website the right container at all) now has a written,
+pre-registered interpretation rule, set before the Monday send or the Instagram carousel produced
+a single data point — the same last-clean-window logic D1 used on 8/17.
+
+**The rule.** Judged on tagged clicks, never opens (the re-entry review's Apple Mail caveat is
+binding — inflated opens could fake exactly the pattern this rule watches for). Three consecutive
+sends with tagged `?src=digest` clicks under 10% of list size, while the carousel engages in-feed
+and `src=ig` sessions stay flat, **opens the container ruling** — options pre-named: (a) email-first
+product with the site as archive + AEO surface, (b) status quo with the send as spine. The trigger
+opens a decision for Batu; it never executes a pivot.
+
+**Pre-commitment 1 — no clock reset.** Container evidence never resets the demand clock. D1 already
+defined a return container-neutrally (a tagged email click counts), so the October gate keeps
+reading through any container decision. Without this line, a mid-September pivot would hand October
+a built-in excuse to be unreadable.
+
+**Pre-commitment 2 — the question closes either way.** Three sends with tagged clicks at or above
+25% of list size closes learning-log Q1 in the site's favor and permanently retires "wrong
+container" as an explanation for a demand miss. A pre-registered question that can only resolve
+against the product is an exit, not an instrument.
+
+The two percentages are editable-at-ratification defaults that Batu ratified as proposed. D7 (daily
+decision window) and D8 (default-merge class + venue/category pages) remain open in the same review.
+
 ## 2026-08-19 (third entry) — Re-entry: the digest stands, the signup ask is the work, WhatsApp means group posts
 
 Decisions (Batu, on the re-entry review — full record: `docs/launch/2026-08-19-reentry-review.md`).

@@ -405,7 +405,8 @@
       "verdict": "not yet read",
       "implication": "D3 moved this off P9's trigger ('Oct 6, only if tagged sessions are under 50'), which had scheduled our biggest open question as a consolation prize for failure — and would have suppressed it permanently on a merely-mediocre result. Its answer is worth most while it can still shape September.",
       "caveat": "A carousel measures in-feed engagement, not whether anyone would return to anything. Pair its read with the digest's open-vs-click, which is the cleaner medium instrument.",
-      "source": "strategy review D3; growth 'Explicitly not doing'; learning-log Q1"
+      "source": "strategy review D3; growth 'Explicitly not doing'; learning-log Q1",
+      "notes": "D9 (2026-08-19) pre-registered how this instrument reads alongside the digest: its in-feed-engagement-vs-tagged-sessions rule now feeds the container trigger, and its result can close learning-log Q1 either way. See rules.medium-pivot-preregistered."
     },
     {
       "id": "Q2",
@@ -967,15 +968,6 @@
       "owner": "Batu",
       "needBy": "this week",
       "source": "docs/launch/2026-08-19-october-verdict-review.md D8"
-    },
-    {
-      "id": "d9-medium-pivot",
-      "title": "D9 — pre-register the medium-pivot rule",
-      "detail": "Written interpretation rule for the digest + carousel BEFORE first data exists. Judged on tagged clicks, never opens (re-entry ruling 1: Apple MPP inflates opens). Low clicks over three consecutive sends + carousel engaging while src=ig stays flat opens the container ruling; container evidence never resets the demand clock (D1 counts tagged email clicks as returns); healthy clicks close learning-log Q1 in the site's favor. Thresholds are editable defaults.",
-      "recommendation": "Yes, this week — same last-clean-window logic as D1. First send is Mon Aug 24; the window closes Sunday.",
-      "owner": "Batu",
-      "needBy": "2026-08-23",
-      "source": "docs/launch/2026-08-19-october-verdict-review.md D9"
     }
   ],
   "risks": [
@@ -1134,6 +1126,11 @@
       "id": "founder-hours",
       "text": "The approved slate costs ~12–15 founder-hours/week through mid-September, and Batu confirmed that budget is realistic (2026-08-19) — so the slate runs as approved. The researched failure pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped week. Cut order, held in reserve if the real budget drops to 8 hours: fewer group-answer posts, one market morning instead of two, Greenline deferred.",
       "source": "strategy review, founder-hours section; confirmed by Batu 2026-08-19"
+    },
+    {
+      "id": "medium-pivot-preregistered",
+      "text": "D9 (ratified 2026-08-19, pre-data): the medium test is judged on tagged clicks, never opens. Three consecutive sends with ?src=digest clicks <10% of list size, carousel engaging while src=ig sessions stay flat, OPENS the container ruling (email-first vs status quo) — it never executes a pivot. Container evidence never resets the demand clock (D1 counts tagged email clicks as returns). Three sends with clicks ≥25% of list closes learning-log Q1 in the site's favor and retires 'wrong container' as an explanation for a demand miss.",
+      "source": "DECISION_LOG 2026-08-19 fourth entry; october-verdict-review D9"
     }
   ],
   "daily": {

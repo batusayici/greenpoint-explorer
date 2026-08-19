@@ -15,7 +15,7 @@ treated as prior decisions here: the signup-ask repair enters the build
 sequence below, and D9 was aligned to its click-first caveat before any
 ruling.
 
-**Status: D7–D9 awaiting Batu's per-item ruling.** Numbering continues the
+**Status: D9 ✅ ratified (Batu, 2026-08-19, same day, pre-data — promoted to `DECISION_LOG.md` fourth entry). D7 and D8 still await rulings.** Numbering continues the
 8/17 review's D1–D6. Ruled entries get promoted to `DECISION_LOG.md`; rejected
 ones stay here as the dated record.
 
@@ -194,7 +194,7 @@ the signup-ask redesign (re-entry ruling 2).
 bounded by the class definition (non-visual, tested, pre-ratified). (b) build
 time against launch-week attention — bounded by sequencing it second.
 
-## D9 — Pre-register the medium-pivot rule before the first send. **Deadline: Sun Aug 23.**
+## D9 — Pre-register the medium-pivot rule before the first send. ✅ **RATIFIED (Batu, 2026-08-19, pre-data — thresholds as proposed)**
 
 **Recommendation: yes, this week.** The medium question (learning-log Q1:
 never tested that a *website* is the right container; Rana doesn't open
