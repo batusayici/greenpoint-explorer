@@ -15,7 +15,7 @@ treated as prior decisions here: the signup-ask repair enters the build
 sequence below, and D9 was aligned to its click-first caveat before any
 ruling.
 
-**Status: D9 ✅ ratified (Batu, 2026-08-19, same day, pre-data — promoted to `DECISION_LOG.md` fourth entry). D7 and D8 still await rulings.** Numbering continues the
+**Status: ALL RATIFIED (Batu, 2026-08-19).** D9 was ruled first, four days ahead of its window closing; D7 and D8 followed the same day. Promoted to `DECISION_LOG.md` (fourth and fifth entries); carriers updated in the same change — `growth-engine.md` §7 (ladder row + stays-human list), `gtm-state.json` (standing rules, readout line, open decisions cleared). Numbering continues the
 8/17 review's D1–D6. Ruled entries get promoted to `DECISION_LOG.md`; rejected
 ones stay here as the dated record.
 
@@ -131,7 +131,7 @@ recoverable loss. D7 is the fix.
 
 ---
 
-## D7 — The daily decision window
+## D7 — The daily decision window. ✅ **RATIFIED (Batu, 2026-08-19)**
 
 **Recommendation: yes.** One fifteen-minute window a day (time of Batu's
 choosing) to clear the queue: sends to approve-and-paste, branches to merge,
@@ -153,7 +153,7 @@ warning the founder-hours risk already watches.
 *Cost/risk:* a daily obligation on Batu. Mitigation: the window has no
 minimum — an empty queue is a ten-second check.
 
-## D8 — Default-merge for pre-ratified non-visual builds; ratify the venue/category pages
+## D8 — Default-merge for pre-ratified non-visual builds; ratify the venue/category pages. ✅ **RATIFIED (Batu, 2026-08-19)** — including the named §7 exception.
 
 **Recommendation: yes, narrowly.** Two parts.
 

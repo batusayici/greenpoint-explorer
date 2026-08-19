@@ -4,6 +4,44 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-19 (fifth entry) — D7 + D8 ratified: a daily decision window, and a narrow default-merge class
+
+Decisions (Batu, on the October verdict review — full framing:
+`docs/launch/2026-08-19-october-verdict-review.md` D7 and D8). Both answer the same finding: with the
+October verdict effectively decided by ~Sep 25, the largest recoverable loss is not strategy or build
+capacity but **decision latency** — four separate 1–2 day gaps in one week's record, including D5's
+return mechanisms merging one day before the cohort they were built for.
+
+**D7 — the daily decision window.** One fifteen-minute window a day, time of Batu's choosing, clears
+the queue: sends to approve-and-paste, branches to merge, rulings due. The queue is
+`gtm-state.json`'s `daily` + `needBy` fields rendered in the cockpit; the operator keeps it current
+across sessions and routines and chases items rather than waiting to be asked. Supervision is
+unchanged — the same approvals, on a daily clock instead of a session-batched one. Instrumented: the
+Tuesday readout reports the **age of the oldest open queue item, target under 1 day**; a skipped week
+of windows is the same early warning the founder-hours risk already watches.
+
+**D8 — default-merge for pre-ratified non-visual builds.** A build item that (a) a DECISION_LOG entry
+has already ratified, (b) has **no visual surface**, and (c) carries test coverage now merges by
+default **24 hours** after its preview lands in the daily queue, unless vetoed. The initial class is
+exhaustive: the `gl_first_seen` server-set cookie mirror, FB webview instrumentation, the
+growth-weekly routine-clobber fix, and GSC plumbing. Anything with a visual surface keeps preview
+review under the 2026-08-08 design-batch rule and rides D7 for speed instead — including the signup-ask
+redesign and the venue/category pages.
+
+**This is a real, named exception to §7's "code merges stay human,"** not a reinterpretation of it.
+It is bounded four ways: the pre-ratified requirement, the non-visual requirement, the 24-hour veto,
+and one-strike demotion on any miss. A revert stays one commit away. §7's ladder and its
+stays-human list are amended in the same change.
+
+**D8(b) — venue/category pages ratified as owned Loop C infrastructure.** Named as the follow-through
+on the abandoned search flank since 8/17, H5's own contingency, parked since July. Loop C is the only
+channel producing non-founder users and it converts best; at ~4-day crawl latency, pages built in the
+next two weeks harvest inside the cohort-entry window. They sit **outside the max-3 experiment cap**
+with no kill rule (same standing as Q3), get normal preview review, and are sequenced behind the
+measurement repairs and the signup-ask redesign.
+
+Ratified the same day as D9; together they close the October verdict review.
+
 ## 2026-08-19 (fourth entry) — D9 ratified: the medium-pivot rule is pre-registered
 
 Decision (Batu, pre-data — the instruments first produce data Mon Aug 24; ratified four days ahead

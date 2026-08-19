@@ -603,7 +603,7 @@ review · V3 = executes autonomously):
 | Experiment reads vs. pre-registered decision rules | V2 — reads land as recommendations | V3 — rules are mechanical once calibrated |
 | Tue readout + top-3 proposal drafting | V2 | V3 (drafting only) |
 | Outbound copy — digest, org notes, posts | V2 — draft only | V2 — **sending is Batu's, permanently** |
-| Instrumentation / growth-edge ships | V2 — PR-gated, TDD | V2 — merge = deploy stays Batu's |
+| Instrumentation / growth-edge ships | **V2, with one carved exception (D8, 2026-08-19):** pre-ratified + non-visual + test-covered items merge by default 24 h after preview unless vetoed in the daily queue. Everything else stays PR-gated, TDD | V2 — merge = deploy stays Batu's outside that class |
 | Kill / graduate verdicts | V1 — recommend only | Batu, permanently |
 | New experiments, scope changes, monetization | V1 | Batu, permanently |
 
@@ -616,6 +616,24 @@ on any truth-rule breach, untagged link, or misread — one strike, one rung dow
 **What stays human regardless of calibration:** sends, **code** deploys/merges,
 taste gates, kill/graduate/PMF verdicts, and spending money. These aren't
 trust-gated — they're the definition of supervision.
+
+**The one carved exception (D8, ratified 2026-08-19), stated plainly because it
+amends the line above:** a build item that a DECISION_LOG entry has *already
+ratified*, that has *no visual surface*, and that carries test coverage merges
+by default 24 hours after its preview lands in the daily queue, unless Batu
+vetoes it. Initial class, exhaustive: the `gl_first_seen` server-set cookie
+mirror, FB webview instrumentation, the routine-clobber fix in this skill's
+step 4.5, and GSC plumbing. The bound is what makes it supervision rather than
+autonomy — Batu already ruled on *what* gets built; the exception only removes
+the wait on *when* it lands, and a revert is one commit away. Anything visual
+keeps preview review under the 2026-08-08 design-batch rule. One-strike
+demotion applies here as everywhere else in this section.
+
+**The daily decision window (D7, ratified 2026-08-19)** is the other half: the
+queue of sends, merges and due rulings lives in `gtm-state.json` (`daily`,
+`needBy`) and Batu clears it once a day. The Tuesday readout reports the age of
+the oldest open item, target under 1 day — the operator's own latency, measured
+the same way every other loop edge is.
 
 **Routine content ships autonomously (Batu, 2026-08-02 — supersedes the
 2026-07-28 zero-add/expiry-only promotions):** an ingest run pushes its clean

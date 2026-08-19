@@ -753,6 +753,16 @@
       "trend": "up",
       "role": "which lens people actually pull",
       "caveat": "Leads on distinct reach for the first time, a fourth consecutive cycle of strengthening. At n=32 lifetime filter users it still isn't load-bearing, but it is the supply-side case for the Sep 8 parents post. Two Library program cards sit in the all-time top six, which is the on-map truth behind the Library note."
+    },
+    {
+      "id": "queuelatency",
+      "label": "Oldest open queue item",
+      "value": "first read 2026-08-25",
+      "prior": null,
+      "target": "< 1 day",
+      "trend": "flat",
+      "role": "D7 instrument — our own decision latency",
+      "caveat": "Added by D7 (2026-08-19). Measures the gap this review named as the largest recoverable loss; a skipped week of windows is the same early warning the founder-hours risk watches."
     }
   ],
   "channels": [
@@ -950,26 +960,7 @@
       "status": "product-generated, never sent by hand"
     }
   ],
-  "openDecisions": [
-    {
-      "id": "d7-daily-window",
-      "title": "D7 — daily 15-minute decision window",
-      "detail": "One daily window where Batu clears the queue: sends to approve-and-paste, branches to merge, rulings due. Fixes the 1-2 day gaps that cost D5 its cohort timing and nearly cost the Perri window. Readout adds an oldest-open-item age line, target <1 day.",
-      "recommendation": "Yes — highest-leverage change; no new autonomy, same approvals on a daily clock. ~1.75h/week inside the confirmed budget.",
-      "owner": "Batu",
-      "needBy": "this week",
-      "source": "docs/launch/2026-08-19-october-verdict-review.md D7"
-    },
-    {
-      "id": "d8-default-merge",
-      "title": "D8 — default-merge for pre-ratified non-visual builds + ratify venue/category pages",
-      "detail": "Pre-ratified, non-visual, test-covered build items (cookie mirror, webview instrumentation, routine-clobber fix, GSC plumbing) merge 24h after preview unless vetoed in the daily queue. Visual items keep preview review. Venue/category pages ratified as owned Loop C infrastructure, no experiment slot, sequenced second.",
-      "recommendation": "Yes, narrowly — flagged plainly: this carves an exception to §7's 'code merges stay human'. Veto window and one-strike demotion preserved.",
-      "owner": "Batu",
-      "needBy": "this week",
-      "source": "docs/launch/2026-08-19-october-verdict-review.md D8"
-    }
-  ],
+  "openDecisions": [],
   "risks": [
     {
       "id": "no-return",
@@ -1131,6 +1122,16 @@
       "id": "medium-pivot-preregistered",
       "text": "D9 (ratified 2026-08-19, pre-data): the medium test is judged on tagged clicks, never opens. Three consecutive sends with ?src=digest clicks <10% of list size, carousel engaging while src=ig sessions stay flat, OPENS the container ruling (email-first vs status quo) — it never executes a pivot. Container evidence never resets the demand clock (D1 counts tagged email clicks as returns). Three sends with clicks ≥25% of list closes learning-log Q1 in the site's favor and retires 'wrong container' as an explanation for a demand miss.",
       "source": "DECISION_LOG 2026-08-19 fourth entry; october-verdict-review D9"
+    },
+    {
+      "id": "daily-decision-window",
+      "text": "D7 (ratified 2026-08-19): Batu clears the queue once a day in a ~15-minute window — sends to approve-and-paste, branches to merge, rulings due. The queue is this file's `daily` + `needBy` fields, rendered in the cockpit; the operator keeps it current across sessions and chases items rather than waiting to be asked. The Tuesday readout reports the age of the oldest open queue item, target under 1 day. Supervision is unchanged — same approvals, daily clock.",
+      "source": "DECISION_LOG 2026-08-19 fifth entry; october-verdict-review D7"
+    },
+    {
+      "id": "default-merge-class",
+      "text": "D8 (ratified 2026-08-19): a build item that is already ratified in the DECISION_LOG, has NO visual surface, and carries test coverage merges by default 24h after its preview lands in the daily queue unless vetoed. Initial class, exhaustive: gl_first_seen server-set cookie mirror, FB webview instrumentation, growth-weekly routine-clobber fix, GSC plumbing. Anything visual keeps preview review (2026-08-08 design-batch rule). Named exception to growth-engine §7's 'code merges stay human'; one-strike demotion applies. Venue/category pages ratified in the same ruling as owned Loop C infrastructure — outside the max-3 cap, no kill rule, normal preview review, sequenced after the measurement repairs and the signup-ask redesign.",
+      "source": "DECISION_LOG 2026-08-19 fifth entry; october-verdict-review D8"
     }
   ],
   "daily": {
