@@ -35,6 +35,22 @@ b{font-weight:650}
 .step--idle .step__label{font-weight:400;color:var(--mute)}
 .focus__done{font-size:13.5px;color:var(--mute);border-top:1px solid var(--rule);padding-top:12px}
 
+/* today strip */
+.today{border-bottom:1px solid var(--rule);padding-bottom:20px;display:flex;flex-direction:column;gap:12px}
+.today__head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.today__head h2{font-size:22px;font-weight:680;letter-spacing:-.015em}
+.today__chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:600 10.5px/1.8 var(--mono);letter-spacing:.04em;padding:0 8px;border-radius:10px;white-space:nowrap;color:var(--t);background:var(--b)}
+.chip--ok{--t:var(--pass);--b:var(--passbg)} .chip--warn{--t:var(--warn);--b:var(--warnbg)} .chip--idle{--t:var(--idle);--b:var(--idlebg)}
+.today__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.today__list li{font-size:15px;font-weight:600;padding-left:17px;position:relative;line-height:1.4}
+.today__list li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--now)}
+.today__list--over li{color:var(--warn)}
+.today__list--over li::before{background:var(--warn)}
+.today__list--over li .mono{font-weight:600;opacity:.75}
+.today__clear{font-size:14px;color:var(--mute)}
+.today__meta{font-size:12.5px;color:var(--mute)}
+
 /* sections */
 h2.sec{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);font-weight:700}
 section{display:flex;flex-direction:column;gap:14px}
@@ -115,8 +131,24 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
   <header class="mast">
     <h1>Stoopwise launch</h1>
     <span>as of 2026-08-19</span>
-    <span>analytics 2026-08-18 · feed 2026-08-18</span>
+    <span>analytics 2026-08-18 · feed 2026-08-19</span>
   </header>
+
+  
+  <section class="today">
+    <div class="today__head">
+      <h2>Wednesday, August 19</h2>
+      <div class="today__chips">
+        <span class="chip chip--ok">feed 75 dated</span>
+        
+        <span class="chip chip--warn">2 waiting</span>
+        <span class="chip chip--idle">4 awaiting reply</span>
+      </div>
+    </div>
+    
+    <ul class="today__list"><li>Reply to Perri — she offered a call or her shop Wed/Thu 1–4pm, and today is Wednesday</li><li>Review the return branch — Follow ask un-gated, weekly cadence published, printable /week sheet (feat/return-mechanisms, 2 commits, unmerged)</li><li>Merge the readout PR #42 — but it reverts D1–D6, see Waiting on you</li></ul>
+    <p class="today__meta">PR #43 — content(track-v): held cards, daily 2026-08-19 &nbsp;·&nbsp; PR #42 — growth: readout 2026-08-18 <span class="mono">1d</span></p>
+  </section>
 
   
   <section class="focus">
@@ -125,18 +157,6 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <p class="focus__why">Wave 1 is fully sent: five notes out, and the friends-family cohort proved the product lands (16 people, 39 card opens, 4 actions) and then went silent after two days with zero return events. That is the exact gap D1–D6 named on 8/17. The return mechanisms are built and sitting on an unmerged branch; the weekly send starts Monday.</p>
     <ol class="steps">
       
-      <li class="step step--now">
-        <span class="step__when mono">Today, Wed 8/19</span>
-        <span class="step__label">Reply to Perri — she offered a call or her shop Wed/Thu 1–4pm, and today is Wednesday</span>
-      </li>
-      <li class="step step--now">
-        <span class="step__when mono">Today</span>
-        <span class="step__label">Review the return branch — Follow ask un-gated, weekly cadence published, printable /week sheet (feat/return-mechanisms, 2 commits, unmerged)</span>
-      </li>
-      <li class="step step--now">
-        <span class="step__when mono">Today</span>
-        <span class="step__label">Merge the readout PR #42 — but it reverts D1–D6, see Waiting on you</span>
-      </li>
       <li class="step step--now">
         <span class="step__when mono">This week</span>
         <span class="step__label">D3 parallel reach — Film Noir + arts wave, Nextdoor, FB-group answer posts, IG carousel, each on its own src</span>

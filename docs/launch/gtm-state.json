@@ -2,7 +2,7 @@
   "meta": {
     "asOf": "2026-08-19",
     "lastDataPull": "2026-08-18",
-    "lastFeedCheck": "2026-08-18",
+    "lastFeedCheck": "2026-08-19",
     "nextReadout": "2026-08-25",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -24,37 +24,44 @@
       {
         "label": "Reply to Perri — she offered a call or her shop Wed/Thu 1–4pm, and today is Wednesday",
         "when": "Today, Wed 8/19",
-        "status": "next"
+        "status": "next",
+        "date": "2026-08-19"
       },
       {
         "label": "Review the return branch — Follow ask un-gated, weekly cadence published, printable /week sheet (feat/return-mechanisms, 2 commits, unmerged)",
         "when": "Today",
-        "status": "next"
+        "status": "next",
+        "date": "2026-08-19"
       },
       {
         "label": "Merge the readout PR #42 — but it reverts D1–D6, see Waiting on you",
         "when": "Today",
-        "status": "next"
+        "status": "next",
+        "date": "2026-08-19"
       },
       {
         "label": "D3 parallel reach — Film Noir + arts wave, Nextdoor, FB-group answer posts, IG carousel, each on its own src",
         "when": "This week",
-        "status": "next"
+        "status": "next",
+        "date": "2026-08-23"
       },
       {
         "label": "SummerStarz finale — be there (D4)",
         "when": "Thu 8/21",
-        "status": "next"
+        "status": "next",
+        "date": "2026-08-21"
       },
       {
         "label": "First Monday send — the weekly cadence D2 ratified",
         "when": "Mon 8/24",
-        "status": "later"
+        "status": "later",
+        "date": "2026-08-24"
       },
       {
         "label": "Readout reads Wave 1 results — gates nothing (D3)",
         "when": "Tue 8/25",
-        "status": "later"
+        "status": "later",
+        "date": "2026-08-25"
       }
     ]
   },
@@ -1176,5 +1183,46 @@
       "text": "The approved slate costs ~12–15 founder-hours/week through mid-September. The researched failure pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped week. Cut order if the real budget is 8 hours: fewer group-answer posts, one market morning instead of two, Greenline deferred.",
       "source": "strategy review, founder-hours section"
     }
-  ]
+  ],
+  "daily": {
+    "ranAt": "2026-08-19",
+    "dayName": "Wednesday, August 19",
+    "dueToday": [
+      "Reply to Perri — she offered a call or her shop Wed/Thu 1–4pm, and today is Wednesday",
+      "Review the return branch — Follow ask un-gated, weekly cadence published, printable /week sheet (feat/return-mechanisms, 2 commits, unmerged)",
+      "Merge the readout PR #42 — but it reverts D1–D6, see Waiting on you"
+    ],
+    "overdue": [],
+    "waiting": [
+      {
+        "what": "PR #43 — content(track-v): held cards, daily 2026-08-19",
+        "age": 0
+      },
+      {
+        "what": "PR #42 — growth: readout 2026-08-18",
+        "age": 1
+      }
+    ],
+    "overnight": [
+      "docs: make plain-language reporting a project-wide rule, not a skill-scoped one",
+      "launch: cockpit updated to 2026-08-19",
+      "docs(launch): log Greenpoint Library + Brooklyn Craft outreach as sent",
+      "docs(strategy): D2-D6 ratified — weekly send, parallel reach, physical, product repairs, supply",
+      "content(track-v): daily refresh — 9 adds, 8 updates, 1 correction, 4 expiries; deck 158 → 162"
+    ],
+    "unanswered": [
+      "action-city-comics",
+      "org-town-square",
+      "org-gp-library",
+      "org-brooklyn-craft"
+    ],
+    "feed": {
+      "dated": 75,
+      "reservoir": 22,
+      "stale": false,
+      "thin": false,
+      "fresh": true,
+      "cards": 162
+    }
+  }
 }
