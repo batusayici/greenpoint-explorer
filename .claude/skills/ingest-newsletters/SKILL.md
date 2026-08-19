@@ -275,6 +275,21 @@ hold note must **name which one it failed**:
     from an interactive session, where egress is unrestricted — which is the fallback
     when this happens, not a reason to skip naming the host. **A denial nobody names
     is a denial nobody fixes.**
+  - **But some hosts can never be allowlisted, and naming them as if they can wastes
+    a round (2026-08-19).** A host that answers the connection and then refuses the
+    *request* — OpenTable returns **403 to automated fetches on both `opentable.com`
+    and `www.opentable.com`** — is a bot block, not an egress block. It looks
+    identical from the error line, and no network-policy entry fixes it. This is the
+    same shape as the `browser-connect-reset` vs `browser-egress-blocked` split above,
+    one layer up: **before proposing a host, say which of the two it is**, and route
+    bot-blocked hosts to the interactive-session fallback or another source rather
+    than onto an allowlist ask. Do not re-add a host already ruled bot-blocked to
+    "retry" it. **Also allowlist the redirect target**, per the `happy-medium.co` rule
+    — `themccarren.com` 301s to `www.themccarren.com`, and the bare host alone stays
+    denied. Both findings came from fetching each proposed host directly once it was
+    in the tracked `.claude/settings.json`; **verify a host before asking Batu to
+    allowlist it**, which costs one fetch and is the whole difference between an ask
+    that works and one that quietly doesn't.
 - **R2 — Check whether a standing rule already supplies the field.** A "missing"
   field is often one this skill already has an answer for: an offer with no stated
   end date is `recurring` + verified-through (**not** a hold); an enrollment goes

@@ -991,11 +991,11 @@
     },
     {
       "id": "pr43-hosts",
-      "title": "Six PR #43 hosts added to .claude/settings.json — still need the claude.ai/code network policy",
+      "title": "Add four hosts to the claude.ai/code network policy — the last step on PR #43",
       "owner": "Batu",
-      "needBy": "this week — the events are 8/20–8/26",
-      "why": "All six hosts (opentable.com, luma.com, checkout.square.site, partiful.com, portal.iclasspro.com, themccarren.com) are now in the tracked .claude/settings.json WebFetch allowlist — that covers an interactive session’s own WebFetch tool. It does NOT cover the ingest cloud routine’s fetch calls (curl/node fetch through the sandbox proxy), which is what actually blocked these nine cards in PR #43 — that needs the Custom-allowlist network policy at claude.ai/code updated directly, an account setting this session cannot reach (same distinction as DECISION_LOG 2026-07-27/28). Three cards (Panzon, Cloud City, Edith’s) have no link at all and need an interactive session regardless.",
-      "source": "PR #43; .claude/settings.json"
+      "needBy": "before the Wed 8/26 ingest — this week’s events (8/20–8/26) are already past by then",
+      "why": "Each host was fetched directly on 2026-08-19 and the list shrank. Add exactly these four: luma.com, partiful.com, portal.iclasspro.com, themccarren.com AND www.themccarren.com (it 301s to www, and a redirect into a non-allowlisted host fails like the original). OpenTable is dropped — it returns 403 to automated fetches on apex and www alike, so it is a bot block no network policy can fix; La Contenta needs an interactive session instead. Square is skipped by Batu’s call — the host answers, but a checkout page likely carries no venue address anyway. The tracked .claude/settings.json already matches this list; the network policy at claude.ai/code is a separate account setting no session can reach. Unblocks 8 of 12, not 9.",
+      "source": "PR #43; held-cards-2026-08-19.md “Ruled 2026-08-19” section"
     },
     {
       "id": "q2-group",

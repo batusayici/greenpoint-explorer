@@ -203,8 +203,8 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
   </li>
   <li class="att">
     <details>
-      <summary><b>Six PR #43 hosts added to .claude/settings.json — still need the claude.ai/code network policy</b><span class="att__by mono">this week — the events are 8/20–8/26</span></summary>
-      <p>All six hosts (opentable.com, luma.com, checkout.square.site, partiful.com, portal.iclasspro.com, themccarren.com) are now in the tracked .claude/settings.json WebFetch allowlist — that covers an interactive session’s own WebFetch tool. It does NOT cover the ingest cloud routine’s fetch calls (curl/node fetch through the sandbox proxy), which is what actually blocked these nine cards in PR #43 — that needs the Custom-allowlist network policy at claude.ai/code updated directly, an account setting this session cannot reach (same distinction as DECISION_LOG 2026-07-27/28). Three cards (Panzon, Cloud City, Edith’s) have no link at all and need an interactive session regardless.</p>
+      <summary><b>Add four hosts to the claude.ai/code network policy — the last step on PR #43</b><span class="att__by mono">before the Wed 8/26 ingest — this week’s events (8/20–8/26) are already past by then</span></summary>
+      <p>Each host was fetched directly on 2026-08-19 and the list shrank. Add exactly these four: luma.com, partiful.com, portal.iclasspro.com, themccarren.com AND www.themccarren.com (it 301s to www, and a redirect into a non-allowlisted host fails like the original). OpenTable is dropped — it returns 403 to automated fetches on apex and www alike, so it is a bot block no network policy can fix; La Contenta needs an interactive session instead. Square is skipped by Batu’s call — the host answers, but a checkout page likely carries no venue address anyway. The tracked .claude/settings.json already matches this list; the network policy at claude.ai/code is a separate account setting no session can reach. Unblocks 8 of 12, not 9.</p>
       
     </details>
   </li>

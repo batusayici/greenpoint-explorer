@@ -55,6 +55,40 @@ roundup body.
 The fallback for all twelve is the same one the skill already names: an
 interactive session, where egress is unrestricted.
 
+### Ruled 2026-08-19, after reaching each host directly — read this before retrying
+
+Every host above was fetched from an interactive session once the tracked
+`.claude/settings.json` carried it. **The table's premise held for four of the
+six and failed for two, in different ways.** Batu ruled on both the same day.
+
+| host | what actually happened | standing |
+|---|---|---|
+| `luma.com` | 200, resolves directly (no `lu.ma` hop) | **allowlist** |
+| `partiful.com` | 200 | **allowlist** |
+| `portal.iclasspro.com` | 200 | **allowlist** |
+| `themccarren.com` | 301 → **`www.themccarren.com`**, then 200 | **allowlist BOTH** — a redirect into a non-allowlisted host fails exactly like the original |
+| `opentable.com` / `www.opentable.com` | **403 to automated fetches**, apex and `www` alike | **do not allowlist — it cannot work** |
+| `checkout.square.site` | reachable | **skipped (Batu, 2026-08-19)** |
+
+**OpenTable is a bot block, not an egress block, and no network policy fixes
+it.** This is the distinction the 2026-08-10 rule already draws for the proxy
+and it applies one level up: a host that answers the TCP connection and then
+refuses the *request* is not a reachability problem. La Contenta therefore
+needs an interactive session or a different source for its address — the same
+bucket as Panzon, Cloud City and Edith's, not the allowlist bucket.
+**Do not re-add `opentable.com` to a roster or an allowlist to "retry" it.**
+
+**Square was skipped by decision, not by failure.** The host answers; the
+reason to drop it is the one this document already flagged below — a Square
+checkout page is not certain to carry a venue address at all, so the likely
+outcome of pursuing it is a fetch that succeeds and still yields nothing
+cardable. Joy Flower Pot stays held. If it is ever revived, go to the shop's
+own site first, not the checkout page.
+
+**Revised count: the allowlist unblocks 8 of 12, not 9.** Four need an
+interactive session or another source (La Contenta, Panzon, Cloud City,
+Edith's) and one is closed by choice (Joy Flower Pot).
+
 ---
 
 ## 1–2. Thursday 8/20 — La Contenta, Ms. J's Gymnastics
@@ -70,8 +104,11 @@ day, time, and for the Summer Bash a stated price. Both link slugs are
 a slug is not a stated address, and reading a neighborhood out of a URL is the
 kind of inference the truth rules exist to stop.
 
-**What would resolve it:** `opentable.com` / `portal.iclasspro.com` reachable,
-or an interactive session.
+**What would resolve it:** `portal.iclasspro.com` reachable settles **Ms. J's**.
+**La Contenta does not resolve that way** — OpenTable returns 403 to automated
+fetches on both the apex and `www` (verified 2026-08-19), so no allowlist entry
+reaches it. It needs an interactive session or a different source for the
+address.
 
 ## 3. Thursday 8/20 — Reforester's Laboratory, Paint & Sip
 
@@ -87,6 +124,12 @@ stated, including the 90-minute duration. `luma.com/d2cgma9q` refused.
 **Reason held: source-blocked (address).** `checkout.square.site` refused, and
 a Square checkout page is not certain to carry a venue address even once
 reachable — this one may need the shop's own site instead.
+
+**Closed 2026-08-19 (Batu): Square is skipped.** The host does answer when
+allowlisted, so this was a choice rather than a failure — and the caveat above
+is the reason for it: the likely outcome is a fetch that succeeds and still
+yields no address. The card stays held. If it is ever revived, start at Joy
+Flower Pot's own site, not the checkout page.
 
 ## 5. Friday 8/21 — Bouquet Wine Bar, Meet Your Wine Soulmate
 
