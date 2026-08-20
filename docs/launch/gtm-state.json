@@ -763,6 +763,16 @@
       "trend": "flat",
       "role": "D7 instrument — our own decision latency",
       "caveat": "Added by D7 (2026-08-19). Measures the gap this review named as the largest recoverable loss; a skipped week of windows is the same early warning the founder-hours risk watches."
+    },
+    {
+      "id": "safaribias",
+      "label": "Return rate by browser family",
+      "value": "first read 2026-08-25",
+      "prior": null,
+      "target": null,
+      "trend": "flat",
+      "role": "sizes the Safari eviction undercount we chose to measure rather than fix",
+      "caveat": "Added 2026-08-19 when the cookie mirror was dropped. One-directional — Safari eviction can only depress the gate, never flatter it. Carry the gap as a label on any demand read."
     }
   ],
   "channels": [
@@ -960,17 +970,7 @@
       "status": "product-generated, never sent by hand"
     }
   ],
-  "openDecisions": [
-    {
-      "id": "cookie-vs-no-cookie-promise",
-      "title": "The ratified cookie mirror contradicts a published privacy promise — ship it and rewrite the promise, or drop it and measure the bias instead?",
-      "detail": "D5 item 7 (ratified 8/17, re-ratified today inside D8's merge class) sets a server-set cookie mirroring gl_first_seen so Safari's 7-day storage eviction stops resetting returning iPhone readers to week 0. But public/privacy.html says the Service sets NO cookies in three places — the meta description ('No ads, no cookies, no precise location'), the summary paragraph, and section 4. Shipping the cookie makes a published legal page false, and rewriting a privacy policy is user-facing copy — so this item is NOT in D8's non-visual default-merge class and stops here for a ruling.",
-      "recommendation": "RECOMMENDED: drop the cookie, keep the promise true, and measure the bias instead. Three reasons. (1) The bias runs in the safe direction — an evicted iPhone reader re-registers as new, which inflates the denominator and deflates the numerator, so Safari eviction can only cause a false FAIL, never a false pass. (2) Two ratified return paths already route around localStorage entirely: a tagged digest click counts as a return under D1, and the home-screen install (D5 item 3) exempts installed users from the eviction cap. (3) 'No ads, no cookies, no precise location' is part of the trust posture the business model names as a compounding asset. Instead: add a return-rate-by-browser-family line to the Tuesday readout, and label the October read with the measured Safari gap. The alternative — ship the cookie and rewrite privacy.html §4 + the meta + the summary — is a real option if Batu would rather have the cleaner measurement.",
-      "owner": "Batu",
-      "needBy": "before ~Sep 25 (cohort entry closes); the measurement alternative wants the readout line from 8/25",
-      "source": "D5 item 7; D8 class boundary; public/privacy.html sections 4 + meta"
-    }
-  ],
+  "openDecisions": [],
   "risks": [
     {
       "id": "no-return",
@@ -999,9 +999,9 @@
     {
       "id": "safari-eviction",
       "title": "Safari deletes the retention sensor's storage at exactly our cadence",
-      "severity": "open — measurement-fatal on the majority platform",
+      "severity": "accepted and measured — one-directional, can only depress the gate",
       "detail": "returnVisit.js is localStorage-only. Safari (ITP) clears script-written storage after ~7 days of browser use without a first-party visit — a weekly-check product sits precisely on that edge, so an iPhone user returning on day 8 can re-register as brand new with weekIndex 0, forever. Verified as unenumerated: no ITP or eviction row exists in environmental-dependencies.md. Consistent with our own data — the July round saw 7 of 24 return inside a 5-day window, while cross-week WRL shows 2.",
-      "response": "D5: verify on a real iPhone, add the dependencies row in the same change, mirror gl_first_seen into a server-set cookie (the one no-backend exception — config-level, no storage, no accounts). Home-screen install also exempts a user from the cap. HELD 2026-08-19: the cookie mirror contradicts privacy.html's published 'no cookies' promise (three places), so it left D8's non-visual merge class and is now an open decision — ship-and-rewrite vs drop-and-measure. Recommended: drop and measure, because the eviction bias can only produce a false fail, never a false pass, and two ratified return paths (tagged digest clicks under D1, home-screen install) already bypass localStorage.",
+      "response": "RULED 2026-08-19 (Batu): the server-set cookie mirror is DROPPED, not deferred — privacy.html promises no cookies in three places and the bias only runs one way (an evicted reader re-registers as new, inflating the denominator and deflating the numerator, so it can produce a false fail but never a false pass). Replaced by a return-rate-by-browser-family line in the Tuesday readout plus a labeled October read. Home-screen install still exempts a user; a tagged digest click counts as a return under D1 regardless of storage. DECISION_LOG 2026-08-19 sixth entry.",
       "source": "strategy review, verified-in-code section"
     },
     {
@@ -1140,8 +1140,13 @@
     },
     {
       "id": "default-merge-class",
-      "text": "D8 (ratified 2026-08-19): a build item that is already ratified in the DECISION_LOG, has NO visual surface, and carries test coverage merges by default 24h after its preview lands in the daily queue unless vetoed. Initial class, exhaustive: gl_first_seen server-set cookie mirror, FB webview instrumentation, growth-weekly routine-clobber fix, GSC plumbing. Anything visual keeps preview review (2026-08-08 design-batch rule). Named exception to growth-engine §7's 'code merges stay human'; one-strike demotion applies. Venue/category pages ratified in the same ruling as owned Loop C infrastructure — outside the max-3 cap, no kill rule, normal preview review, sequenced after the measurement repairs and the signup-ask redesign.",
+      "text": "D8 (ratified 2026-08-19): a build item that is already ratified in the DECISION_LOG, has NO visual surface, and carries test coverage merges by default 24h after its preview lands in the daily queue unless vetoed. Initial class, now: FB webview instrumentation and GSC plumbing (the routine-clobber fix already landed 2026-08-19; the gl_first_seen cookie mirror was DROPPED the same day — it would have falsified privacy.html's 'no cookies' promise, which is exactly the boundary this class draws). Anything visual keeps preview review (2026-08-08 design-batch rule). Named exception to growth-engine §7's 'code merges stay human'; one-strike demotion applies. Venue/category pages ratified in the same ruling as owned Loop C infrastructure — outside the max-3 cap, no kill rule, normal preview review, sequenced after the measurement repairs and the signup-ask redesign.",
       "source": "DECISION_LOG 2026-08-19 fifth entry; october-verdict-review D8"
+    },
+    {
+      "id": "published-promise-beats-ratification",
+      "text": "Standing rule (2026-08-19): a published promise is a constraint on the build, not a document that follows it. Anything that would falsify a live legal or trust page (privacy.html, terms, coverage standards) leaves any auto-merge class and becomes a decision for Batu, whatever its prior ratification. Set by the dropped cookie mirror, which was ratified twice and still stopped.",
+      "source": "DECISION_LOG 2026-08-19 sixth entry"
     }
   ],
   "daily": {

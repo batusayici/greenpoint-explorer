@@ -162,9 +162,13 @@ already ratified and that have **no visual surface**, the flow becomes:
 branch + tests + preview as today → notification lands in the daily queue →
 **if not vetoed within 24 hours, I merge**. Today's class, exhaustively:
 
-1. Server-set cookie mirror of `gl_first_seen` (D5 item 7) — closes the
-   Safari eviction hole that is currently miscounting every iPhone cohort,
-   including the ones entering *right now*.
+1. ~~Server-set cookie mirror of `gl_first_seen` (D5 item 7)~~ — **dropped
+   the same day (Batu), before it was built.** `privacy.html` promises no
+   cookies in three places, so shipping it would have falsified a published
+   page — outside this class by construction, and the first item tested
+   proved the boundary works. The Safari bias is measured instead
+   (return-rate-by-browser line, labeled October read); it can only produce a
+   false fail, never a false pass. DECISION_LOG 2026-08-19 sixth entry.
 2. FB webview check instrumentation + its dependencies row (D5 item 8) — Q2's
    open precondition, due before Sep 8.
 3. The routine-clobber fix in growth-weekly step 4.5 (cycle-6 proposal 3).

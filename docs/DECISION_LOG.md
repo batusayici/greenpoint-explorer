@@ -4,6 +4,35 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-19 (sixth entry) — The cookie mirror is dropped: the "no cookies" promise stands, the Safari bias gets measured instead
+
+Decision (Batu). D5 item 7 — mirroring `gl_first_seen` into a server-set cookie so Safari's ~7-day
+storage eviction stops resetting returning iPhone readers to `weekIndex` 0 — **is dropped, not
+deferred.** It was ratified twice (D5 on 8/17, then inside D8's default-merge class today) and stopped
+on the first attempt to build it, because `public/privacy.html` promises the Service sets **no
+cookies** in three places: the meta description ("No ads, no cookies, no precise location"), the
+summary paragraph, and section 4. Shipping the cookie would have made a published legal page false;
+rewriting a privacy policy is user-facing copy, which is outside D8's non-visual class by
+construction. **D8's boundary caught its own first item, which is the boundary working.**
+
+**Why dropped rather than ship-and-rewrite** — the argument that decided it: the eviction bias runs in
+the safe direction. An evicted reader returns looking brand new, which *inflates* the twice-visiting
+denominator and *deflates* the ≥3-week numerator, so Safari eviction can only manufacture a false
+**fail**, never a false pass. A conservative instrument does not justify spending a trust asset that
+`business-model.md` counts as compounding, especially when two ratified return paths already bypass
+localStorage entirely: a tagged digest click counts as a return under D1, and a home-screen install
+(D5 item 3) exempts the user from the cap.
+
+**What replaces it:** a **return-rate-by-browser-family line in the Tuesday readout** (Safari vs the
+rest), which sizes the bias instead of removing it, and a label on the October read carrying that
+size and its direction. If the Safari gap turns out large enough to swing the verdict, that is itself
+the evidence that would reopen this — with the privacy-copy rewrite named as the cost, not discovered
+again.
+
+**Standing rule this sets:** a published promise is a constraint on the build, not a document that
+follows it. Anything that would falsify a live legal or trust page leaves any auto-merge class and
+becomes a decision, whatever its prior ratification.
+
 ## 2026-08-19 (fifth entry) — D7 + D8 ratified: a daily decision window, and a narrow default-merge class
 
 Decisions (Batu, on the October verdict review — full framing:

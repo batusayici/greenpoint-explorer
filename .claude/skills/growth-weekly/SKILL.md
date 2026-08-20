@@ -113,6 +113,11 @@ cards.json (added 2026-08-15; surfaces a thinning category between sweeps)
 · Loop C split (P10, 2026-08-15): citations (monthly check) and AI-referrer
 sessions as their own lines, apart from organic — citations up with sessions
 flat is Loop C working zero-click, never a fail read
+· return rate by browser family — Safari vs the rest (added 2026-08-19): Safari
+deletes the retention sensor's storage at roughly our own cadence, so this line
+sizes an undercount we chose to measure rather than fix with a cookie. It can
+only depress the gate, never flatter it; carry the gap as a label on any demand
+read
 
 ## Live experiments (max 3)
 One line each per §2 above.
