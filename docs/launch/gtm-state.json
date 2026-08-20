@@ -1152,7 +1152,20 @@
   "daily": {
     "ranAt": "2026-08-19",
     "dayName": "Wednesday, August 19",
-    "dueToday": [],
+    "dueToday": [
+      {
+        "what": "D8 default-merge: feat/webview-instrumentation — veto by Thu 8/20 ~17:00 or it merges",
+        "detail": "In-app-browser tagging so Q2's return rate can be split from org channels instead of caveated. Non-visual, 710+8 tests green, browser-verified. Preview builds on the branch push.",
+        "owner": "Batu",
+        "needBy": "2026-08-20"
+      },
+      {
+        "what": "Phone check (~15 min, only you can do it): open a Stoopwise link inside the Facebook app on iPhone AND Android",
+        "detail": "Q2 precondition. Post any stoopwise.com link into a private FB post or message yourself, tap it from inside the app, and confirm: the map renders (not the no-WebGL fallback), the feed lists cards, and tapping a card opens it. Screenshot anything wrong. This is the hostile-context class that produced the 8/13 map bug; the instrumentation shipping today measures the storage side, not whether the product works there.",
+        "owner": "Batu",
+        "needBy": "before 2026-09-08 (Q2)"
+      }
+    ],
     "overdue": [],
     "waiting": [
       {
