@@ -1,6 +1,8 @@
 # Citation check — the only layer that measures whether any of this works
 
 **Cadence:** monthly, and after any change to the AEO surface.
+**Who notices when it lapses:** the launch cockpit — it reads the dates off the files in this folder
+and flips the citation tile to "Due now" past 31 days (2026-08-19). Nothing else tracks it.
 **Time:** ~15 minutes. **Automatable:** no, deliberately.
 
 ## Why this is manual

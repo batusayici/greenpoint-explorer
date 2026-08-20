@@ -3,7 +3,7 @@
 // The JSON is the source of truth; this file only formats it.
 //   node scripts/build-cockpit.mjs [--out docs/launch/cockpit.html]
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -124,6 +124,34 @@ const metrics = s.metrics.map((m) => `
     <span class="tile__meta mono">${esc(ARROW[m.trend] || '')} was ${esc(m.prior)}${m.target ? ` · target ${esc(m.target)}` : ''}</span>
     ${m.caveat ? `<span class="tile__cav">${esc(m.caveat)}</span>` : ''}
   </article>`).join('');
+
+// Citation-check freshness is computed, not stored: the check is monthly, manual
+// and unscheduled, so a hand-maintained tile would go stale in exactly the weeks
+// it matters. Reading the filenames means the cockpit notices the lapse itself.
+const CITATION_DUE_DAYS = 31;
+const citationTile = (() => {
+  let last = null;
+  try {
+    last = readdirSync(resolve(root, 'docs/aeo'))
+      .map((f) => /^(\d{4}-\d{2}-\d{2})-citation-check\.md$/.exec(f)?.[1])
+      .filter(Boolean)
+      .sort()
+      .pop() ?? null;
+  } catch { /* no docs/aeo yet — fall through to "never run" */ }
+  const days = last
+    ? Math.round((Date.now() - Date.parse(last + 'T00:00:00Z')) / 86400000)
+    : null;
+  const overdue = days === null || days > CITATION_DUE_DAYS;
+  return `
+  <article class="tile">
+    <span class="tile__lbl">Answer-engine citation check</span>
+    <span class="tile__val mono">${last ? `${esc(last)} · ${days}d ago` : 'never run'}</span>
+    <span class="tile__meta mono">monthly · manual · ~15 min</span>
+    <span class="tile__cav">${overdue
+      ? 'Due now. Five fixed questions on ChatGPT, Perplexity and Google AI — method and template in docs/aeo/citation-check.md. Nothing else tracks this.'
+      : `Next due about ${esc(CITATION_DUE_DAYS - days)} days from now. docs/aeo/citation-check.md.`}</span>
+  </article>`;
+})();
 
 const channels = s.channels.map((c) => `
   <tr>
@@ -305,7 +333,7 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
         <thead><tr><th></th><th>Experiment</th><th>Actual</th><th>Verdict</th><th>Means</th></tr></thead>
         <tbody>${experiments}</tbody></table>`)}
       ${fold('The four gates', gates)}
-      ${fold('Metrics', `<div class="tiles">${metrics}</div>`)}
+      ${fold('Metrics', `<div class="tiles">${metrics}${citationTile}</div>`)}
       ${fold('Send log', `<table>
         <thead><tr><th>src</th><th>Channel</th><th>Sent</th><th>First session</th><th>Status</th></tr></thead>
         <tbody>${channels}</tbody></table>`)}

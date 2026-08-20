@@ -38,6 +38,9 @@ gate: **merging is the only way any of its output becomes real.**
 - Analytics: `./scripts/posthog-pull.sh` (needs `POSTHOG_READ_KEY` +
   `POSTHOG_PROJECT_ID` from `.env.local` or environment — scoped read key;
   never `VITE_`-prefixed)
+- Search: `npm run growth:gsc` (needs `GSC_SITE_URL` +
+  `GSC_SERVICE_ACCOUNT_JSON`; setup in `docs/growth/search-console-setup.md`).
+  Same rule — never `VITE_`-prefixed, and always through `npm run`.
 - Links: `docs/launch/channel-links.md` (copy, never compose)
 - Readouts: `docs/growth/readouts/YYYY-MM-DD.md` (this run's output; the
   previous one is this run's state — it lists what's live)
@@ -86,7 +89,19 @@ gate: **merging is the only way any of its output becomes real.**
      `recentRelayFailures` naming `us.posthog.com:443`. This is an org
      network-policy block; **never route around it** — report the blocked host.
      Fix: allowlist `us.posthog.com` in the routine's environment.
-4. Qualitative sensors: new business submissions/asks since last readout
+4. Run `npm run growth:gsc` and capture the full output: totals this window vs
+   prior, the query list, pages, and the high-impression zero-click table. It
+   defaults to a 7-day window ending 3 days back — GSC finalises on a lag, and
+   pulling right up to today shows a fake decline every single week. Read the
+   query list yourself; the brand/generic/place-name split it prints is a
+   heuristic, and the live question from L2026-08-17 is whether anyone reaches
+   us on generic intent rather than looking up a place they already know.
+   **Same fallback rules as the PostHog pull** — exit 3 is missing env, 4 is
+   network/egress (the script names the blocked host; allowlist it, never route
+   around it), 5 is auth, and an auth failure is nearly always the Search
+   Console property grant rather than the API. Mark search `⚠ pending` and
+   flag the PR `[data pending]`; never estimate.
+5. Qualitative sensors: new business submissions/asks since last readout
    (Tally exports / Batu-forwarded replies noted in the previous readout),
    anything the week's ingest PRs flagged as demand signal.
 
@@ -113,6 +128,11 @@ cards.json (added 2026-08-15; surfaces a thinning category between sweeps)
 · Loop C split (P10, 2026-08-15): citations (monthly check) and AI-referrer
 sessions as their own lines, apart from organic — citations up with sessions
 flat is Loop C working zero-click, never a fail read
+· Search (from `npm run growth:gsc`, added 2026-08-19): clicks · impressions ·
+CTR · average position, each against the prior window; the query split with a
+one-line read on generic-intent vs place-name lookup; any new high-impression
+zero-click page. Also state days since the last citation check — it is monthly
+and manual, and nothing else will notice when it lapses
 · return rate by browser family — Safari vs the rest (added 2026-08-19): Safari
 deletes the retention sensor's storage at roughly our own cadence, so this line
 sizes an undercount we chose to measure rather than fix with a cookie. It can

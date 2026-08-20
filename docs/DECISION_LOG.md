@@ -4,6 +4,31 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-19 (seventh entry) — Search gets a real sensor; the citation check stays manual and the cockpit watches it
+
+Decision (Batu, this session). Until today the only Search Console numbers we ever had were the ones
+Batu read off the web UI by hand on 8/17 (learning log L2026-08-17), so every Tuesday readout printed
+search as `⚠ pending`. A blank line every week is not a trend, and search is half of Loop C.
+
+**What changed.** `npm run growth:gsc` pulls Search Console through the API — totals for the week
+against the prior week, the query list, pages, and the high-impression zero-click table — and the
+growth-weekly skill now runs it as a second deterministic sensor beside the PostHog pull, with the
+same fallback contract (exit 3 env, 4 network, 5 auth, 6 api; mark pending, never estimate). Auth is
+a service account rather than OAuth **because OAuth needs a human click whenever the refresh token
+lapses**, which is the exact failure that left search unmeasured for a month. Setup, including the
+property grant people skip, is `docs/growth/search-console-setup.md`. It cannot run until Batu creates
+the account — the JWT signing, network and error paths are verified, the property read is not.
+
+**The citation check stays manual, and stays monthly.** Nothing here automates it; `docs/aeo/citation-check.md`
+already argues why an automated "did an engine cite us" check produces a green tick with no
+information in it. What was missing was anyone noticing when it lapsed, so the cockpit now computes
+freshness from the `docs/aeo/YYYY-MM-DD-citation-check.md` filenames and flips the tile to "Due now"
+past 31 days. Computed, not stored: a hand-maintained tile goes stale in exactly the weeks it matters.
+
+**Deliberately not done:** no separate cron for the citation check. The cockpit already runs every
+weekday morning and is Batu's single view; a second reminder channel is one more thing to maintain.
+Revisit if a check is missed with the tile showing red.
+
 ## 2026-08-19 (sixth entry) — The cookie mirror is dropped: the "no cookies" promise stands, the Safari bias gets measured instead
 
 Decision (Batu). D5 item 7 — mirroring `gl_first_seen` into a server-set cookie so Safari's ~7-day
