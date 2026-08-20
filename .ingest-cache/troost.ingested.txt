@@ -1,8 +1,3 @@
-summary: HABBINA HABBINA
-start.date: 2026-08-19
-end.date: 2026-08-20
-htmlLink: https://www.google.com/calendar/event?eid=NnZucnRmcWxpaXIydmFocmRpYzlidW9ybHAgdHJvb3N0bGl2ZUBt
-
 summary: DJ Barba Yiorgi
 description: WORLD PSYCHEDELIC GROOVE
 start.date: 2026-08-20
@@ -221,3 +216,8 @@ description: psychedelic indie jazz quintet
 start.date: 2026-10-05
 end.date: 2026-10-06
 htmlLink: https://www.google.com/calendar/event?eid=NmpwZ3BjcXFubzhwazl2Y3ZpdmZvbHAwcXBfMjAyNjEwMDUgdHJvb3N0bGl2ZUBt
+
+summary: RADIO BRASS
+start.date: 2026-10-06
+end.date: 2026-10-07
+htmlLink: https://www.google.com/calendar/event?eid=NTF0bTdiZTN2cTFjMzBhbm85dmYxdHFvZzQgdHJvb3N0bGl2ZUBt

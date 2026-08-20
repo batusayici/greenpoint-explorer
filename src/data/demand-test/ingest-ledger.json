@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-19T17:30:00-04:00",
+  "lastRunAt": "2026-08-20T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1388,6 +1388,27 @@
       "publisher": "Greenpointers",
       "processedAt": "2026-08-19",
       "outcome": "SKIPPED — geography, and no dated item in any case. The only genuinely new post in this run’s diff (+1 line). A “Greenpoint at Work” profile of Karen Young, who “is a long-time Greenpointer hosting color analysis sessions just across the Pulaski Bridge in Long Island City.” The sessions are in LIC, outside the Greenpoint bbox, and the 2026-07-22 Newtown Creek CAG exception covers CIVIC items only — a paid consulting service is not one. Recorded because the Greenpointers feed is not monotone (2026-08-10): without this entry a future run cannot tell “already triaged” from “never seen”."
+    },
+    {
+      "id": "RUN-DAILY-THIN-2026-08-20",
+      "kind": "run",
+      "publisher": "Track V ingest (daily thin)",
+      "processedAt": "2026-08-20",
+      "outcome": "SHIPPED 8 adds, 3 updates, 6 expiries; deck 163 → 165 (+1.2%, inside ±40%). Expiry RAN. Fetch exit 0, reach 54/62 (13% error, under the 15% ceiling). 8 errored sources: 7 are the known Chromium browser-connect-reset fault (greenpoint-comedy-club, word-bookstore, leaves-bookstore, happy-medium, action-city-comics, brooklyn-youth-ballet, greenpoint-trash-club), the 8th is tend-greenpoint, the same roster defect as previous runs — its entry declares fetch: \"embedded\" without the `embedded: { attr }` block that strategy requires, so the fetcher refuses before opening a socket. No EGRESS DENIED block. Adds: film-noir-haze-0820, film-noir-cult-cinema-0825 (closes the 8/25 coverage gap), troost-barba-yiorgi-0903 (closes the 9/3 coverage gap), golden-drum-yara-drum-workshop-0824 and golden-drum-sacred-roses-0825 (the source's first cards ever — its old coverage explanation claimed it publishes nothing in-window and was wrong), library-tuesday-programs-0901, library-toddler-time-0902, moon-bunny-two-day-camp-4-7-0903. Updates: library-wednesday-programs-0826 (Computer Basics and a We Speak NYC English class added, end time extended to 5:30pm to reach the last sitting, Our Garden Club noted canceled), plus reciprocal links on film-noir-cinema, greenpoint-library and moon-bunny-monthly-plans. Cancellations reconciled against the full library snapshot, not the diff: 6 records carry is_event_canceled: 1 and all 6 are already reflected or were never carded. holds: 0 new-judgment · 0 rule-miss · 0 source-blocked. Gmail pass PENDING — the connector is not authenticated in this run."
+    },
+    {
+      "id": "https://www.goldendrum.org/calendar-1/yaradrumworkshop",
+      "kind": "web",
+      "publisher": "Golden Drum",
+      "processedAt": "2026-08-20",
+      "outcome": "CARDED as golden-drum-yara-drum-workshop-0824. R1 resolution: the events listing gave the title, \"August 24, 2026\" and the blurb but no time and no price, and the detail page had been crowded out of the roster's 8-page detail cap. Read directly and persisted into .ingest-cache/golden-drum.txt as an [R1 PERSISTED 2026-08-20] block, which is where the card's sourceQuote verifies. The page states \"Monday, August 24, 2026 / 7:00 PM / 9:30 PM\", the venue as \"Golden Drum / 97 Green St. G1\", and \"Drum Workshop with Yara 08/24/26 / $40.00\"."
+    },
+    {
+      "id": "https://www.goldendrum.org/calendar-1/sacredrose",
+      "kind": "web",
+      "publisher": "Golden Drum",
+      "processedAt": "2026-08-20",
+      "outcome": "CARDED as golden-drum-sacred-roses-0825. The detail page was inside this run's harvest, so no R1 was needed: \"Tuesday, August 25, 2026 / 7:00 PM / 9:30 PM\", \"Sacred rose with Ananda 08/25/26 / $40.00\". Filed arts_culture per the schema's own precedent for ideas/spiritual programming (astrology and the cannabis-science talk, 2026-07-25 second pass), not wellness — wellness is the movement cluster (yoga/pilates/dance/run), and this is a workshop you attend."
     }
   ],
   "senderRegistry": [
@@ -1847,17 +1868,27 @@
       "name": "Troost — the Google Calendar feed retitles instances of ONE recurring event, so a card can silently describe the wrong act",
       "note": "SOURCE FACT found 2026-08-19 while reconciling the 8/21 night. The live card troost-danny-ramos-0821 quoted \"summary: DANNY RAMOS / start.date: 2026-08-21\" — a line that no longer exists anywhere in the feed. The calendar's 8/21 instance is titled DJ FRANTZ, and DANNY RAMOS has moved to 2026-09-18. Both instances share one base event id (htmlLink eids NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjA4MjE and ...XzIwMjYwOTE4), i.e. Troost runs a recurring series and retitles individual occurrences with whoever is actually playing. The retitle produced NO diff line this run because the change predates the last-ingested baseline — the baseline already read DJ FRANTZ on 8/21 while the card said Danny Ramos, so a run that only reads the diff cannot see it. The card was replaced by troost-dj-frantz-0821. WHAT CATCHES THE NEXT ONE: ingest:quotes, which fails a card whose quote is absent from the snapshot — this is exactly the shape that gate exists for, and it is why the gate must run after --mark-ingested.",
       "addedAt": "2026-08-19"
+    },
+    {
+      "name": "Troost — TIRED HORSES 10/5 and RADIO BRASS 10/6 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from troost.txt: \"summary: TIRED HORSES\\ndescription: psychedelic indie jazz quintet\\nstart.date: 2026-10-05\\nend.date: 2026-10-06\" and \"summary: RADIO BRASS\\nstart.date: 2026-10-06\\nend.date: 2026-10-07\". Troost is a web source re-snapshotted every run, so these roll in on their own once the window reaches them — recorded here only so a run can tell \"deferred on purpose\" from \"never seen\".",
+      "addedAt": "2026-08-20"
+    },
+    {
+      "name": "Golden Drum — the roster's detail.limit of 8 crowds out real event pages",
+      "note": "SOURCE FACT 2026-08-20. golden-drum's roster entry sets `detail: { match: \"goldendrum\\\\.org/calendar-1/\", limit: 8 }` and the listing now links 11 calendar-1 pages, so the harvest hit its cap and dropped exactly the one this run needed: /calendar-1/yaradrumworkshop, whose listing text carries the title, the date and a blurb but NO time and NO price. Resolved by R1 (read directly, persisted into the snapshot as an [R1 PERSISTED 2026-08-20] block) — the page states \"Monday, August 24, 2026 / 7:00 PM / 9:30 PM\" and \"$40.00\". PROPOSED FIX, human-gated because it is a roster change: raise `limit` to 16, as go-green-bk already does. Until then, expect one uncarded Golden Drum event per run whenever the calendar runs longer than 8 entries — and note the failure is SILENT: the listing still yields a title and a date, so the item looks thin rather than truncated.",
+      "addedAt": "2026-08-20"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-07-25",
     "greenpointers": "2026-08-18",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-14",
+    "film-noir-cinema": "2026-08-19",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-11",
-    "greenpoint-library": "2026-08-17",
-    "bpl-north-brooklyn-calendar": "2026-08-17",
+    "greenpoint-library": "2026-08-19",
+    "bpl-north-brooklyn-calendar": "2026-08-19",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-18",
@@ -1868,7 +1899,7 @@
     "dance-space-ny": "2026-07-24",
     "yaro-studios": "2026-08-07",
     "yaro-kids-clay": "2026-08-07",
-    "moon-bunny-aerial": "2026-08-17",
+    "moon-bunny-aerial": "2026-08-19",
     "brooklyn-craft-company": "2026-08-07",
     "last-place-on-earth": "2026-07-26",
     "greenpoint-star": "2026-07-26",
@@ -1876,7 +1907,7 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-16",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-18",
+    "troost": "2026-08-19",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-14",
     "town-square-bk": "2026-08-06",
@@ -1907,7 +1938,8 @@
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
     "tend-greenpoint": "2026-08-16",
-    "action-city-comics": "2026-08-16"
+    "action-city-comics": "2026-08-16",
+    "golden-drum": "2026-08-19"
   },
   "coverageExplanations": [
     {
@@ -2058,13 +2090,6 @@
       "expiresAt": "2026-08-25"
     },
     {
-      "sourceId": "golden-drum",
-      "gapKey": "NO SNAPSHOT",
-      "reason": "Added to the roster 2026-08-13 (commit 6ccfe4f) and EGRESS-DENIED on its first fetch, so it has never had a snapshot. The fetch report names the cause exactly: \"the proxy refused the tunnel to www.goldendrum.org (answered 403 to CONNECT), so no HTTP response ever existed — an egress-policy denial.\" This is the born-blocked shape SKILL.md warns about after the 2026-08-08 SSG sweep — a source onboarded without its host on the routine's egress allowlist works interactively and is dead in the cloud. NOT a site bot-wall (those return a status) and NOT the browser path (this source is plain fetch). Resolution is one allowlist entry for www.goldendrum.org at claude.ai/code; until then the locally-owned gate cannot even be applied, because the page has never been read. Never routed around.",
-      "addedAt": "2026-08-13",
-      "expiresAt": "2026-08-27"
-    },
-    {
       "sourceId": "maison-jar",
       "gapKey": "GAP",
       "reason": "FALSE POSITIVE, verified against the snapshot 2026-08-13: the single flagged date is 2026-08-27 and it belongs to a PAST workshop in the page's archive, not to current supply. The snapshot reads \"August 27, 2025 - 04:00 PM TO 06:00 PM / Happy Hour - August 2025 / It's not summer without some cold and refreshing kombucha!\" — the year is 2025. extractDates reads the month and day and cannot see that the year is a season old, which is the same annotation-vs-event blindness recorded for the macha-studio image block on 2026-08-12. Maison Jar's live standing offer IS carded (maison-jar-refill-happy-hour, verified-through 8/24). No uncarded 2026 supply exists at this source.",
@@ -2130,9 +2155,9 @@
     {
       "sourceId": "golden-drum",
       "gapKey": "GAP",
-      "reason": "FALSE POSITIVE, verified against this run's snapshot: the only 8/26-looking string in the whole 1,835-line file is line 1299, \"Sagittarius New Moon 12/08/26\" — a DD/MM/YY-style label for December 8, 2026, which extractDates reads as August 26. Same annotation-vs-event blindness already recorded for maison-jar (a 2025 archive date) and macha-studio. Golden Drum publishes nothing dated inside 2026-08-19 → 2026-09-02: every event detail block the fetch persisted this run is dated 2026-09-12 or later (Virgo New Moon 9/12, three African Drum classes 10/27, 11/23, 12/9, Scorpio full moon 10/26, Sagittarius full moon 11/24, Sagittarius new moon 12/8). No uncarded in-window supply exists at this source.",
-      "addedAt": "2026-08-19",
-      "expiresAt": "2026-09-02"
+      "reason": "REPLACES the 2026-08-14 explanation, which said Golden Drum \"publishes nothing dated inside 2026-08-19 → 2026-09-02\" and is now wrong: this run's fetch added 51 lines carrying two real in-window workshops, and BOTH are carded (golden-drum-yara-drum-workshop-0824, golden-drum-sacred-roses-0825) — the source's first cards ever. What remains flagged is 2026-08-26, and that one IS still the annotation false positive the old note described: the only 8/26-looking string in the file is \"Sagittarius New Moon 12/08/26\", a DD/MM/YY label for December 8, 2026 that extractDates reads as August 26. Same annotation-vs-event blindness recorded for maison-jar and macha-studio. LESSON WORTH KEEPING: a \"this source has no supply\" explanation goes stale the moment the source publishes, so it must be re-earned against the CURRENT snapshot, never inherited.",
+      "addedAt": "2026-08-20",
+      "expiresAt": "2026-09-03"
     }
   ]
 }

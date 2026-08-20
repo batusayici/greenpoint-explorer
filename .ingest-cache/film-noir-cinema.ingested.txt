@@ -1,7 +1,7 @@
-title: CULT CINEMA
-startDate: 2026-08-20T01:00:00.241Z
-endDate: 2026-08-20T02:00:00.241Z
-fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+title: HAZE
+startDate: 2026-08-20T23:00:00.000Z
+endDate: 2026-08-21T00:00:00.000Z
+fullUrl: /program/2026/4/29/haze
 
 title: FILM CLUB
 startDate: 2026-08-21T01:00:00.532Z
@@ -27,6 +27,11 @@ title: FILM NOIR MONDAY
 startDate: 2026-08-25T01:00:00.000Z
 endDate: 2026-08-25T02:00:00.000Z
 fullUrl: /program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
+
+title: CULT CINEMA
+startDate: 2026-08-26T01:00:00.087Z
+endDate: 2026-08-26T02:00:00.087Z
+fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
 
 title: TERROR TERROIR
 startDate: 2026-09-04T23:00:00.202Z
@@ -71,8 +76,8 @@ Film Noir Mondays are dedicated to bring to light lesser known as well as very o
 In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
 Earlier Event: August 24
 PHEDRE
-Later Event: September 4
-TERROR TERROIR
+Later Event: August 25
+CULT CINEMA
 Back To Top
 Cart ( 0 )
 
@@ -93,7 +98,7 @@ Location
 Contact
 Back to All Events
 CULT CINEMA
-Wednesday, August 19, 2026
+Tuesday, August 25, 2026
 9:00 PM
 10:00 PM
 21:00
@@ -101,10 +106,10 @@ Wednesday, August 19, 2026
 Google Calendar
 ICS
 Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
-Earlier Event: August 16
-DENCHU-KOZO
-Later Event: August 20
-FILM CLUB
+Earlier Event: August 24
+FILM NOIR MONDAY
+Later Event: September 4
+TERROR TERROIR
 Back To Top
 Cart ( 0 )
 
@@ -135,8 +140,8 @@ ICS
 Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
 The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
 Pure cinematheque fun.
-Earlier Event: August 19
-CULT CINEMA
+Earlier Event: August 20
+HAZE
 Later Event: August 21
 WATCH ME
 Back To Top
@@ -203,6 +208,39 @@ ICS
 SECRETS OF THE DEAD Short Film Festival
 Earlier Event: October 24
 CLOWNSPIRACY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/4/29/haze
+HAZE — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+HAZE
+Thursday, August 20, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+JP. 2004
+A man wakes up to find himself locked in a cramped concrete maze of corridors, in which he can barely move.
+Earlier Event: August 16
+DENCHU-KOZO
+Later Event: August 20
+FILM CLUB
 Back To Top
 Cart ( 0 )
 
@@ -345,8 +383,8 @@ Friday, September 4, 2026
 20:00
 Google Calendar
 ICS
-Earlier Event: August 24
-FILM NOIR MONDAY
+Earlier Event: August 25
+CULT CINEMA
 Later Event: October 24
 CLOWNSPIRACY
 Back To Top

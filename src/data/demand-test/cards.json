@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-19",
+  "version": "2026-08-20",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -1001,14 +1001,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-15",
+      "updatedAt": "2026-08-20",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-watch-me-0821",
-        "film-noir-cult-cinema-0819",
         "film-noir-film-club-0820",
-        "film-noir-monday-0824"
+        "film-noir-monday-0824",
+        "film-noir-haze-0820",
+        "film-noir-cult-cinema-0825"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1306,13 +1307,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-15",
+      "updatedAt": "2026-08-20",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
         "library-saturday-storytime-0822",
         "sips-scholars-parkhouse-0825",
-        "library-sensory-garden-0828"
+        "library-sensory-garden-0828",
+        "library-tuesday-programs-0901",
+        "library-toddler-time-0902"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -2580,90 +2583,6 @@
       "audience": [
         "resident"
       ],
-      "free": true,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "mcgolrick-movies-guardians-0819",
-      "title": "Movies Under the Stars: Guardians of the Galaxy",
-      "kicker": "Free outdoor screening on the lawn",
-      "summary": "NYC Parks screens the 2014 film on the lawn at Monitor Street and Driggs Avenue. Free, no ticket needed.",
-      "startsAt": "2026-08-19T20:00:00-04:00",
-      "endsAt": "2026-08-19T22:00:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Msgr McGolrick Park",
-      "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
-      "sourceQuote": "Movies Under the Stars: Guardians of The Galaxy (2014)",
-      "actions": [
-        {
-          "label": "Park events",
-          "type": "learn_more",
-          "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "NYC Parks",
-          "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events",
-          "publisher": "NYC Parks",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.724458,
-      "lng": -73.943361
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "id": "troost-habbina-habbina-0819",
-      "title": "Habbina Habbina at Troost",
-      "kicker": "Midweek live set",
-      "summary": "Habbina Habbina plays the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-19T00:00:00-04:00",
-      "endsAt": "2026-08-19T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: HABBINA HABBINA\nstart.date: 2026-08-19",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
       "free": false,
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
@@ -2957,7 +2876,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-19",
+      "updatedAt": "2026-08-20",
       "endsAt": "2026-09-02T23:59:00-04:00",
       "id": "scrappleland-pinball-league",
       "title": "Wednesday Pinball League at Scrappleland",
@@ -2972,7 +2891,7 @@
         "food_drink"
       ],
       "summary": "The bar's pinball league on the arcade floor.",
-      "sourceQuote": "Wednesday Pinball League\nAugust 19 @ 8:00pm - 10:00pm",
+      "sourceQuote": "Wednesday Pinball League\nAugust 26 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -3974,7 +3893,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-18",
+      "updatedAt": "2026-08-20",
       "sourceCampaign": "membership_sweep_2026_08_08",
       "id": "moon-bunny-monthly-plans",
       "title": "Moon Bunny monthly class plans",
@@ -4015,7 +3934,8 @@
         "moon-bunny-two-day-camp-4-7-0827",
         "moon-bunny-weekend-camp-13-16-0829",
         "moon-bunny-two-day-camp-8-12-0901",
-        "moon-bunny-back-to-school-2026"
+        "moon-bunny-back-to-school-2026",
+        "moon-bunny-two-day-camp-4-7-0903"
       ]
     },
     {
@@ -5098,7 +5018,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-19",
+      "updatedAt": "2026-08-20",
       "filters": [
         "family_kids"
       ],
@@ -5128,9 +5048,9 @@
       "title": "Week-Long Circus Camp for 8–12s at Moon Bunny Aerial",
       "kicker": "Lyra, silks, hammock, trapeze",
       "summary": "Moon Bunny's longest camp format for the 8-to-12 group, threading ground acro, juggling and flow props plus games and themed days through the full week.",
-      "startsAt": "2026-08-18T09:00:00-04:00",
+      "startsAt": "2026-08-20T09:00:00-04:00",
       "endsAt": "2026-08-21T15:00:00-04:00",
-      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-19T13:00:00.000Z\nend_at: 2026-08-19T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.\nThroughout the week, participants will enjoy games, themed days, and opportunities to build",
+      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-20T13:00:00.000Z\nend_at: 2026-08-20T19:00:00.000Z\n\nname: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.\nThroughout the week, participants will enjoy games, themed days, and opportunities to build",
       "lat": 40.736575,
       "lng": -73.952327
     },
@@ -5451,55 +5371,6 @@
       "lng": -73.959146
     },
     {
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "id": "idle-mind-vinyl-vibes-0819",
-      "category": "event",
-      "title": "Vinyl & Vibes: an after-work social at Idle Mind Tavern",
-      "kicker": "All-vinyl DJ sets, 7–11pm",
-      "summary": "The Haus of Vibes reframes happy hour for music lovers and record collectors, with sets played entirely off records. $12.51.",
-      "startsAt": "2026-08-19T19:00:00-04:00",
-      "endsAt": "2026-08-19T23:00:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "free": false,
-      "locationName": "Idle Mind Tavern",
-      "address": "623 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Vinyl & Vibes An After Work Social @ Idle Mind Tavern, 7 p.m.: Rethink happy hour and opt for unwinding with all-vinyl DJ sets and more geared towards music lovers, record collectors, and beyond. $12.51, get tickets here.\nVinyl & Vibes An After Work Social Tickets, Wednesday, August 19  •  7 PM - 11 PM | Eventbrite\n623 Manhattan Avenue\nBrooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/vinyl-vibes-an-after-work-social-tickets-1996760831398"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Enjoy nature, be healed, and more — What’s Happening, Greenpoint? (8/13-19)",
-          "url": "https://greenpointers.com/2026/08/12/enjoy-nature-be-healed-and-more-whats-happening-greenpoint-8-13-19/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-12"
-        },
-        {
-          "title": "Vinyl & Vibes An After Work Social",
-          "url": "https://www.eventbrite.com/e/vinyl-vibes-an-after-work-social-tickets-1996760831398",
-          "publisher": "The Haus of Vibes",
-          "date": "2026-08-12"
-        }
-      ],
-      "lat": 40.723601,
-      "lng": -73.950987
-    },
-    {
       "id": "macha-summer-fridays-after-hours",
       "category": "event",
       "title": "Summer Fridays After Hours at Macha Studio",
@@ -5557,48 +5428,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-13",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-13"
-        }
-      ],
-      "id": "library-wednesday-programs-0819",
-      "category": "event",
-      "free": false,
-      "title": "Wednesday at Greenpoint Library",
-      "kicker": "Seven programs, morning to late afternoon",
-      "summary": "Toddler Time at 10:30 and 11:15, the final Read and Play session at 1, rooftop seating 1–4, We Speak NYC English at 3:30, teen reading at 4 and Our Garden Club at 4:30.",
-      "startsAt": "2026-08-19T10:30:00-04:00",
-      "endsAt": "2026-08-19T17:30:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-19T14:30:00Z\nts_title: Read and Play\nds_event_start_date: 2026-08-19T17:00:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-19T17:00:00Z\nts_title: Free English Class (We Speak NYC)\nds_event_start_date: 2026-08-19T19:30:00Z\nts_title: Teen Time: Reading in the Rooftop Garden\nds_event_start_date: 2026-08-19T20:00:00Z\nts_title: Our Garden Club\nds_event_start_date: 2026-08-19T20:30:00Z"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-13",
       "updatedAt": "2026-08-17",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
@@ -5641,7 +5470,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-14",
+      "updatedAt": "2026-08-20",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
@@ -5666,13 +5495,13 @@
       "free": false,
       "title": "Wednesday at Greenpoint Library",
       "kicker": "Storytimes, then quiet study upstairs",
-      "summary": "Toddler Time at 10:30 and 11:15, the third-floor Demonstration Garden open for seating 1–4, and teens decorating a teddy bear at 4.",
+      "summary": "Toddler Time at 10:30 and 11:15, the rooftop garden open 1–4, a beginner PC class and a We Speak NYC English class from mid-afternoon, teens decorating a teddy bear. Our Garden Club is canceled.",
       "startsAt": "2026-08-26T10:30:00-04:00",
-      "endsAt": "2026-08-26T17:15:00-04:00",
+      "endsAt": "2026-08-26T17:30:00-04:00",
       "filters": [
         "family_kids"
       ],
-      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-26T14:30:00Z\nts_title: Toddler Time\nds_event_start_date: 2026-08-26T15:15:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-26T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating!\nts_title: Teens DIY: Decorate a Teddy Bear\nds_event_start_date: 2026-08-26T20:00:00Z"
+      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-26T14:30:00Z\nts_title: Toddler Time\nds_event_start_date: 2026-08-26T15:15:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-26T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating!\nts_title: Teens DIY: Decorate a Teddy Bear\nds_event_start_date: 2026-08-26T20:00:00Z\nts_title: Computer Basics\nds_event_start_date: 2026-08-26T19:15:00Z\nts_title: Free English Class (We Speak NYC)\nds_event_start_date: 2026-08-26T19:30:00Z\nds_event_end_date: 2026-08-26T21:30:00Z\nts_title: Our Garden Club\nis_event_canceled: 1"
     },
     {
       "audience": [
@@ -6262,51 +6091,6 @@
         "arts_culture"
       ],
       "category": "event",
-      "id": "film-noir-cult-cinema-0819",
-      "title": "Cult Cinema at Film Noir Cinema",
-      "kicker": "No titles announced beforehand",
-      "summary": "The Meserole Avenue cinema bills it as a night of sheer cinematic madness dedicated to the most obscure films ever made.",
-      "startsAt": "2026-08-19T21:00:00-04:00",
-      "endsAt": "2026-08-19T22:00:00-04:00",
-      "sourceQuote": "CULT CINEMA\nWednesday, August 19, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-15"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "free": false,
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "filters": [
-        "arts_culture"
-      ],
-      "category": "event",
       "id": "film-noir-film-club-0820",
       "title": "Film Club at Film Noir Cinema",
       "kicker": "Only the picker knows the title",
@@ -6683,48 +6467,6 @@
       "sourceQuote": "Save an Additional 20% OFF Already Reduced Merchandise\nFor a limited time, save 20% off already reduced favorites including Bergs Potter's Daisy Wall Planter!\nOur entire remaining selection of Hawkins NY linens and dining pieces is 20% OFF!\nOur 2026 Hudson Valley Seed Co. Art Packs are now 20% OFF!\nOur shop hours will be abbreviated through Labor Day.\n*Valid In-store and Online. Not valid on previous purchases. Multiple online discounts may not be combined nor used concurrently. The discount is automatically applied at checkout. No coupon code is needed. Limited time only. Other conditions and exclusions may apply. Valid through September 7, 2026. May be canceled at any time.",
       "lat": 40.734612,
       "lng": -73.958144
-    },
-    {
-      "id": "action-city-one-piece-weds-0819",
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-17",
-      "updatedAt": "2026-08-17",
-      "title": "One Piece Tournament — Wednesday!",
-      "kicker": "Weekly ticketed TCG night, low stock",
-      "summary": "A ticketed One Piece card game tournament at the Manhattan Ave comic shop. Tickets are limited and already running low.",
-      "startsAt": "2026-08-19T19:00:00-04:00",
-      "endsAt": "2026-08-19T22:00:00-04:00",
-      "filters": [
-        "games"
-      ],
-      "locationName": "Action City Comics",
-      "address": "570 Manhattan Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Get tickets",
-          "type": "rsvp",
-          "url": "https://www.actioncitycomics.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Action City Comics — Events",
-          "url": "https://www.actioncitycomics.com/",
-          "publisher": "Action City Comics",
-          "date": "2026-08-17"
-        }
-      ],
-      "sourceQuote": "One Piece Tournament - Wednesday!\nWED, AUG 19 7:00 PM\nLow stock\nGet tickets",
-      "lat": 40.722526,
-      "lng": -73.949837
     },
     {
       "id": "action-city-one-piece-op17-prerelease-0826",
@@ -7601,6 +7343,367 @@
       ],
       "lat": 40.730371,
       "lng": -73.957833
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "free": false,
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "id": "film-noir-haze-0820",
+      "title": "Haze at Film Noir Cinema",
+      "kicker": "A man wakes in a concrete maze",
+      "summary": "The programme lists the film as JP, 2004 and gives two sentences of plot — no director, no runtime and no ticket price stated.",
+      "startsAt": "2026-08-20T19:00:00-04:00",
+      "endsAt": "2026-08-20T20:00:00-04:00",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "sourceQuote": "HAZE\nThursday, August 20, 2026\n7:00 PM\n8:00 PM\nJP. 2004\nA man wakes up to find himself locked in a cramped concrete maze of corridors, in which he can barely move.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/4/29/haze"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/4/29/haze",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-20"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "free": false,
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "id": "film-noir-cult-cinema-0825",
+      "title": "Cult Cinema at Film Noir Cinema",
+      "kicker": "No titles announced beforehand",
+      "summary": "The Meserole Avenue cinema bills it as a night of sheer cinematic madness dedicated to the most obscure films ever made.",
+      "startsAt": "2026-08-25T21:00:00-04:00",
+      "endsAt": "2026-08-25T22:00:00-04:00",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "sourceQuote": "CULT CINEMA\nTuesday, August 25, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-20"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "live_music"
+      ],
+      "id": "troost-barba-yiorgi-0903",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
+      "startsAt": "2026-09-03T00:00:00-04:00",
+      "endsAt": "2026-09-03T23:59:00-04:00",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-09-03",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-20"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "free": false,
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "id": "library-tuesday-programs-0901",
+      "title": "Tuesday at Greenpoint Library",
+      "kicker": "Four adult drop-ins in one afternoon",
+      "summary": "Beginner ESOL, knitting and mending with lessons for first-timers, an English conversation group, and a St. Nicks Alliance clinic on tenant rights and fighting displacement.",
+      "startsAt": "2026-09-01T14:00:00-04:00",
+      "endsAt": "2026-09-01T19:30:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-01T18:00:00Z\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-09-01T21:30:00Z\nds_event_end_date: 2026-09-01T23:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-09-01T22:00:00Z\nts_title: St. Nicks Alliance Housing Legal Clinic\nts_body: Receive legal advice about your tenant rights and how to fight displacement & harassment.\nPresented by community development organization, St Nicks Alliance.",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-20"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "free": false,
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "library-toddler-time-0902",
+      "title": "Toddler Time at Greenpoint Library",
+      "kicker": "Two sittings, tickets at the desk",
+      "summary": "Songs, rhymes and books for walking toddlers. A caregiver has to be there to collect the first-come ticket; infants not yet walking go to Babies & Books instead.",
+      "startsAt": "2026-09-02T10:30:00-04:00",
+      "endsAt": "2026-09-02T11:45:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "sourceQuote": "ts_title: Toddler Time (for walking toddlers)\nds_event_start_date: 2026-09-02T14:30:00Z\nds_event_end_date: 2026-09-02T15:00:00Z\nds_event_start_date: 2026-09-02T15:15:00Z\nds_event_end_date: 2026-09-02T15:45:00Z\nts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books!",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-20"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "locationName": "Golden Drum",
+      "address": "97 Green St. G1, Brooklyn, NY 11222",
+      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "id": "golden-drum-yara-drum-workshop-0824",
+      "title": "Drum Workshop with Yara Yaworâ at Golden Drum",
+      "kicker": "Afro-Brazilian rhythms, $40",
+      "summary": "Two hours on the Sacred Lineage of Umbanda and the Orixás, with a rhythm for each element of nature. Bring your own percussion if you have it.",
+      "startsAt": "2026-08-24T19:00:00-04:00",
+      "endsAt": "2026-08-24T21:30:00-04:00",
+      "relatedCardIds": [
+        "golden-drum-sacred-roses-0825"
+      ],
+      "sourceQuote": "Drum Workshop—by Yara Yaworâ (Brazil)\nMonday, August 24, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nIn this 2-hour workshop, I will share knowledge about the Sacred Lineage of Umbanda (an Afro-Brazilian religion), where we will learn more deeply about who the Orixás are and how they work through the elements of Nature.\nI will also introduce Afro-Brazilian rhythms that invoke the elements of Nature, where each rhythm features a dance, an element, and an invocation of different ancestral forces.\nParticipants are also welcome to bring their own percussion instruments so we can create rhythms that activate our chakras, thereby awakening our Kundalini.\nDrum Workshop with Yara 08/24/26\n$40.00",
+      "actions": [
+        {
+          "label": "Workshop page",
+          "type": "learn_more",
+          "url": "https://www.goldendrum.org/calendar-1/yaradrumworkshop"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Golden Drum",
+          "url": "https://www.goldendrum.org/calendar-1/yaradrumworkshop",
+          "publisher": "Golden Drum",
+          "date": "2026-08-20"
+        }
+      ],
+      "lat": 40.733571,
+      "lng": -73.957721
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "locationName": "Golden Drum",
+      "address": "97 Green St. G1, Brooklyn, NY 11222",
+      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "id": "golden-drum-sacred-roses-0825",
+      "title": "Sacred Roses with Ananda at Golden Drum",
+      "kicker": "Body-awareness workshop, $40",
+      "summary": "Movement, breath and sound drawn from Core Energetics body therapy, then the Sacred Roses practice tied to the Pentagram of Venus. No previous experience needed.",
+      "startsAt": "2026-08-25T19:00:00-04:00",
+      "endsAt": "2026-08-25T21:30:00-04:00",
+      "relatedCardIds": [
+        "golden-drum-yara-drum-workshop-0824"
+      ],
+      "sourceQuote": "Unveiling the Temple Body with the Sacred Roses by Ananda (Brazil)\nTuesday, August 25, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nJoin Ananda for a two-hour experiential workshop exploring the body as a space for awareness, transformation, and deeper connection with ourselves.\nfollowed by a guided body-awareness practice inspired by Core Energetics Body Therapy\nAnanda will guide participants into the Sacred Roses practice , a symbolic and energetic activation connected to the Pentagram of Venus.\nNo previous experience is necessary.\nSacred rose with Ananda 08/25/26\n$40.00",
+      "actions": [
+        {
+          "label": "Workshop page",
+          "type": "learn_more",
+          "url": "https://www.goldendrum.org/calendar-1/sacredrose"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Golden Drum",
+          "url": "https://www.goldendrum.org/calendar-1/sacredrose",
+          "publisher": "Golden Drum",
+          "date": "2026-08-20"
+        }
+      ],
+      "lat": 40.733571,
+      "lng": -73.957721
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-20",
+      "updatedAt": "2026-08-20",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
+      "free": false,
+      "relatedCardIds": [
+        "moon-bunny-monthly-plans"
+      ],
+      "actions": [
+        {
+          "label": "Camp details",
+          "type": "learn_more",
+          "url": "https://moonbunnyaerial.com/summer-camps"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial summer camps",
+          "url": "https://moonbunnyaerial.com/summer-camps",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-08-20"
+        }
+      ],
+      "id": "moon-bunny-two-day-camp-4-7-0903",
+      "title": "Two-Day Circus Camp for 4–7s at Moon Bunny Aerial",
+      "kicker": "No experience needed, lyra to trapeze",
+      "summary": "The shorter format for the youngest flyers, long enough to build confidence and pick up new skills — ground acro, juggling and flow props alongside the apparatus.",
+      "startsAt": "2026-09-03T09:00:00-04:00",
+      "endsAt": "2026-09-04T15:00:00-04:00",
+      "sourceQuote": "name: Two Day Camp 4-7 yrs old\nstart_at: 2026-09-03T13:00:00.000Z\nend_at: 2026-09-03T19:00:00.000Z\n\nname: Two Day Camp 4-7 yrs old\nstart_at: 2026-09-04T13:00:00.000Z\nend_at: 2026-09-04T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\n\nWith two days to learn and practice, participants can build confidence, develop new skills, and enjoy an engaging introduction to circus arts. No prior experience is required.",
+      "lat": 40.736575,
+      "lng": -73.952327
     }
   ]
 }

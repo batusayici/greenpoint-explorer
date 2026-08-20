@@ -330,7 +330,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Pre-Sliced Wild King Smoked Salmon (8 oz.)
 Cold Smoked
 3 reviews
@@ -396,7 +396,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Trout (1 lb.)
 Hot Smoked
 Specialty
@@ -545,22 +545,6 @@ Quantity
 -
 +
 Add to cart
-Salmon Caviar (7 oz.)
-Specialty
-28 reviews
-Regular price
-$23.49
-Sale price
-$23.49
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
 Herring in Wine (12 oz.)
 Herring
 No reviews
@@ -656,7 +640,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Plain Smoked Salmon (4 oz.)
 Hot Smoked
 No reviews
@@ -728,6 +712,22 @@ Regular price
 $6.49
 Sale price
 $6.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Salmon Caviar (7 oz.)
+Specialty
+28 reviews
+Regular price
+$23.49
+Sale price
+$23.49
 Regular price
 Sale
 Sold out

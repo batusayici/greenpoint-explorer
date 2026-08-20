@@ -546,14 +546,22 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // this run and settles both blockers at once: it names "Threes Brewing
   // Greenpoint" outright, which is attribution under the 2026-08-12 rule, and
   // it states the 5–8pm window the roundup never did.
-  assert.equal(seed.cards.length, 163);
+  // 2026-08-20 daily thin: expiry took 6 passed 8/19 events (163 → 157) and the
+  // run added 8. Two close coverage gaps the reconciler had flagged as owed
+  // cards — Cult Cinema on 8/25 and DJ Barba Yiorgi on 9/3. Two are Golden
+  // Drum's first cards ever: the Yara Yaworâ drum workshop (8/24) and the
+  // Sacred Roses workshop (8/25), both $40 and 7–9:30pm, the second resolved by
+  // reading a detail page the roster's `detail.limit: 8` had crowded out. The
+  // rest fill the back of the window: Haze at Film Noir tonight, the 9/1 and
+  // 9/2 library day-cards, and Moon Bunny's 9/3–4 camp for 4–7s. 157 + 8 = 165.
+  assert.equal(seed.cards.length, 165);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 91, "90 + the Peter Luger takeover at Threes Brewing, 8/24 (2026-08-19 Wednesday pull)");
+  assert.equal(count((c) => c.category === "event"), 93, "91 − 6 expired 8/19 events + 8 adds on 2026-08-20 (two Golden Drum workshops, Haze, Cult Cinema, DJ Barba Yiorgi 9/3, two library day-cards, Moon Bunny 9/3 camp)");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
   assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 24, "25 − the expired 8/18 Troost night; DJ FRANTZ replaces Danny Ramos one-for-one (2026-08-19)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 23, "24 − the expired 8/19 Troost and Idle Mind nights + DJ Barba Yiorgi on 9/3 (2026-08-20)");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -760,7 +768,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-eternal-sunshine-0829",
-    "mcgolrick-movies-guardians-0819",
     // 2026-08-15: the BPL North Brooklyn community calendar states it twice in
     // the lines the card quotes — the listing title "🛶 Free canoe rides on
     // Newtown Creek with NBCB!" and the body's "At these FREE informal paddles".
@@ -897,7 +904,6 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // nights sourced from the shop's own homepage events widget.
     // (action-city-fnb-armory-0818 expired out 2026-08-19)
     "action-city-one-piece-op17-prerelease-0826",
-    "action-city-one-piece-weds-0819",
     "black-rabbit",
     // 2026-08-07: Black Rabbit and Scrappleland are back after the standing-
     // programming fix — their weekly nights had silently stopped being carded

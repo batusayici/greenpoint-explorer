@@ -3463,5 +3463,30 @@
         "-73.9577834"
       ]
     }
+  },
+  "97 Green St, Brooklyn, NY 11222": {
+    "query": "97 Green St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-20T13:22:52.823Z",
+    "hit": {
+      "place_id": 359055892,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2843029002,
+      "lat": "40.7335713",
+      "lon": "-73.9577207",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "97, Green Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7335213",
+        "40.7336213",
+        "-73.9577707",
+        "-73.9576707"
+      ]
+    }
   }
 }
