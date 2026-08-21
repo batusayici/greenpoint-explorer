@@ -6,134 +6,52 @@ reserve
 calendar
 private events
 ‹ calendar
-12midnight
-DJ STEPDAD @eavesdrop
-<
-Saturday, Jun 27
-12midnight
-Sean Sato @eavesdrop
-<
-6PM
-Sexier Than @eavesdrop
-<
-Sunday, Jun 28
-12midnight
-Kels @eavesdrop
-<
-6PM
-RONI @eavesdrop
-<
-Monday, Jun 29
-12midnight
-IBM Doily @eavesdrop
-<
-Thursday, Jul 2
-12midnight
-A––Z Radio w/ Downloadable Content residency
-<
-Friday, Jul 3
-12midnight
-Indonesian Vinyl Night w/ Psychic Reader @eavesdrop
-<
-Saturday, Jul 4
-12midnight
-Renata Do Valle residency
-<
-6PM
-TAJ for HUMANITY @eavesdrop
-<
-Sunday, Jul 5
-12midnight
-John Silas residency
-<
-6PM
-Conmigo @eavesdrop
-<
-Monday, Jul 6
-12midnight
-Father Sheed and Alex S @eavesdrop
-<
-Friday, Jul 10
-12midnight
-James Park @eavesdrop
-<
-Saturday, Jul 11
-12midnight
-Max In The World and Eden Aurelius residency
-<
-6PM
+1AM
 SGLD residency
 <
-Sunday, Jul 12
+Saturday, Aug 22
 12midnight
-Mickey Perez @eavesdrop
+Marco Weibel residency
 <
 6PM
-Casey Block @eavesdrop
+BODEGA BRUJA @eavesdrop
 <
-Monday, Jul 13
+Sunday, Aug 23
 12midnight
-Garo @eavesdrop
-<
-Thursday, Jul 16
-12midnight
-Gavin Sultan @eavesdrop
-<
-Friday, Jul 17
-12midnight
-Jackson Lee @eavesdrop
-<
-Saturday, Jul 18
-12midnight
-Extra Meesh @eavesdrop
+Cosmo @eavesdrop
 <
 6PM
-DJ Anton residency
+DJ DAN. CE @eavesdrop
 <
-Sunday, Jul 19
+Monday, Aug 24
 12midnight
-Úrsula @eavesdrop
+NoahShea @eavesdrop
+<
+Thursday, Aug 27
+12midnight
+Dan Piepenbring
+<
+Friday, Aug 28
+12midnight
+Dynoman @eavesdrop
+<
+Saturday, Aug 29
+12midnight
+Alien D residency
 <
 6PM
-Recreational DJ @eavesdrop
+Antron @eavesdrop
 <
-Monday, Jul 20
+Sunday, Aug 30
 12midnight
-Verve Records Residency Night @eavesdrop
-<
-Thursday, Jul 23
-12midnight
-subcultures @eavesdrop
-<
-Friday, Jul 24
-12midnight
-EAMMS @eavesdrop
-<
-Saturday, Jul 25
-12midnight
-DJ Selly residency
+HunnyBunny @eavesdrop
 <
 6PM
-Andrew Goldberg @eavesdrop
+l'oggetto @eavesdrop
 <
-Sunday, Jul 26
+Monday, Aug 31
 12midnight
-DJ Shannon residency
-<
-6PM
-Funk du jour @eavesdrop
-<
-Monday, Jul 27
-12midnight
-Heavy Hymns @eavesdrop
-<
-Friday, Jul 31
-12midnight
-Arjun Shah @eavesdrop
-<
-Saturday, Aug 1
-12midnight
-Very J @eavesdrop
+Kamilla Norova @eavesdrop
 <
 — 674
 Manhattan

@@ -51,9 +51,3 @@ alert.active_period.0.start: 2026-08-22T01:45:00.000Z
 alert.active_period.0.end: 2026-08-24T09:00:00.000Z
 alert.active_period: [{"start":1787363100,"end":1787562000}]
 alert.description_text.translation.0.text: [G] runs every 10 minutes (days/evenings) between Church Av and Bedford-Nostrand Avs, the last stop. [shuttle bus icon] Free T403 shuttle buses make stops between Bedford-Nostrand Avs and Court Sq. Transfer between [G] and [shuttle bus icon] at Bedford-Nostrand Avs. What's happening? Structural maintenance [accessibility icon] This service change affects one or more ADA accessible stations and these travel alternatives may not be fully accessible. Please contact 511 to plan your trip.
-
-alert.header_text.translation.0.text: No [G] between Bedford-Nostrand Avs and Court Sq
-alert.active_period.0.start: 2026-08-18T01:45:00.000Z
-alert.active_period.0.end: 2026-08-18T09:00:00.000Z
-alert.active_period: [{"start":1787017500,"end":1787043600},{"start":1787103900,"end":1787130000},{"start":1787190300,"end":1787216400},{"start":1787276700,"end":1787302800}]
-alert.description_text.translation.0.text: [G] runs between Church Av and Bedford-Nostrand Avs, the last stop. [shuttle bus icon] Free T403 shuttle buses make stops between Bedford-Nostrand Avs and Court Sq. Transfer between [G] and [shuttle bus icon] at Bedford-Nostrand Avs. What's happening? Structural maintenance [accessibility icon] This service change affects one or more ADA accessible stations and these travel alternatives may not be fully accessible. Please contact 511 to plan your trip.

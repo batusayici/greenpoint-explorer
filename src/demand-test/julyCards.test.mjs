@@ -554,14 +554,25 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // reading a detail page the roster's `detail.limit: 8` had crowded out. The
   // rest fill the back of the window: Haze at Film Noir tonight, the 9/1 and
   // 9/2 library day-cards, and Moon Bunny's 9/3–4 camp for 4–7s. 157 + 8 = 165.
+  // 2026-08-21 daily thin: expiry took 10 passed 8/20 events (165 → 155) and
+  // the run added 10. Eavesdrop's own calendar came back to life carrying dated
+  // listings with clock times — its first cards since the venue card was
+  // deleted — and four of them ship (the 6pm sets on 8/22, 8/23, 8/29 and
+  // 8/30); the eight midnight sets are HELD, because a 00:00 start is the
+  // all-day sentinel in eventWindow.js and the card model has no way to say
+  // "starts at midnight". One is Greenpointers' story on the rally asking the
+  // MTA to move December's G shutdown. The rest fill the far edge of the
+  // window, which is 9/4: Terror Terroir at Film Noir, First Vinyl Fridays at
+  // Troost, Lloyd's Bday at Good Room, and the Sensory Garden Hour's last
+  // stated Friday. Plus Babies & Books on 9/3. 155 + 10 = 165.
   assert.equal(seed.cards.length, 165);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 25, "24 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.category === "event"), 93, "91 − 6 expired 8/19 events + 8 adds on 2026-08-20 (two Golden Drum workshops, Haze, Cult Cinema, DJ Barba Yiorgi 9/3, two library day-cards, Moon Bunny 9/3 camp)");
+  assert.equal(count((c) => c.filters.includes("news")), 26, "25 + the December G-shutdown rally (2026-08-21)");
+  assert.equal(count((c) => c.category === "event"), 92, "93 − 10 expired 8/20 events + 9 dated adds on 2026-08-21 (four Eavesdrop 6pm sets, Terror Terroir, First Vinyl Fridays, Lloyd's Bday, the 9/4 sensory garden hour, Babies & Books 9/3)");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
-  assert.equal(count((c) => c.category === "news"), 15, "14 + the Matches signage story (2026-08-15)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 23, "24 − the expired 8/19 Troost and Idle Mind nights + DJ Barba Yiorgi on 9/3 (2026-08-20)");
+  assert.equal(count((c) => c.category === "news"), 16, "15 + the December G-shutdown rally (2026-08-21)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 27, "23 − 2 expired 8/20 nights + 6 adds on 2026-08-21 (four Eavesdrop sets, Troost 9/4, Good Room 9/4)");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -689,7 +700,12 @@ test("news cards name their publisher and sit in the news layer", () => {
   // redesign construction, Meeker Plume monitoring) — coverage-gap fix.
   // 2026-08-12: +1 — the Star Deli viral-boost story (Greenpointers 8/11).
   // 2026-08-15: +1 — Matches signage at the old Enid's space (Greenpointers 8/14).
-  assert.equal(news.length, 15);
+  // 2026-08-21: +1 — the rally asking the MTA to move December's G shutdown
+  // (Greenpointers 8/20). It joins the G-train news cluster rather than the
+  // campaign cards: `g-advocacy-mta`'s link list is pinned below as the
+  // reciprocal pair it has been since 2026-07-03, so the story links to
+  // `g-train-closures` and `gtrain-sales-survey` only.
+  assert.equal(news.length, 16);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -746,13 +762,16 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
-    "franklin-garden-plant-biology-0820",
     "greenpoint-trash-club",
     // 2026-08-14: three Longevity Stick sittings at Transmitter Park. The Go
     // Green detail page states the free-ness once for the whole series — "Join
     // us on select Friday evenings as we flow in our free Longevity Stick
     // Classes" — and each card quotes that line, so it covers all three.
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
+    // 2026-08-21: the series' last stated Friday — the Go Green event page
+    // reads "Every Friday, 10:30 AM to 11:30 AM to September 4, 2026" and
+    // "Free" on the same listing.
+    "library-sensory-garden-0904",
     "longevity-stick-transmitter-0828",
     "longevity-stick-transmitter-thursdays",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
@@ -788,8 +807,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
     "summerstarz-zootopia-0821",
     // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
-    // 2026-08-10: "Free Show + Free Donuts" on the WORD Bookstore flyer.
-    "word-herman-melville-comedy-0820",
     // 2026-08-12 roundup: "No rhythm required! Free, RSVP here."
   ]);
 });
