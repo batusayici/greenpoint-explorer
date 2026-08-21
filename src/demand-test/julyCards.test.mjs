@@ -565,14 +565,17 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // window, which is 9/4: Terror Terroir at Film Noir, First Vinyl Fridays at
   // Troost, Lloyd's Bday at Good Room, and the Sensory Garden Hour's last
   // stated Friday. Plus Babies & Books on 9/3. 155 + 10 = 165.
-  assert.equal(seed.cards.length, 165);
+  // 2026-08-21 review PR: the eight HELD Eavesdrop midnight sets. They are in
+  // the deck on this branch only, so Batu can see them rendered before ruling
+  // on how a midnight start should be written. 165 + 8 = 173.
+  assert.equal(seed.cards.length, 173);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 26, "25 + the December G-shutdown rally (2026-08-21)");
-  assert.equal(count((c) => c.category === "event"), 92, "93 − 10 expired 8/20 events + 9 dated adds on 2026-08-21 (four Eavesdrop 6pm sets, Terror Terroir, First Vinyl Fridays, Lloyd's Bday, the 9/4 sensory garden hour, Babies & Books 9/3)");
+  assert.equal(count((c) => c.category === "event"), 100, "92 + the 8 held Eavesdrop midnight sets (2026-08-21 review PR) — 93 − 10 expired 8/20 events + 9 dated adds on 2026-08-21 (four Eavesdrop 6pm sets, Terror Terroir, First Vinyl Fridays, Lloyd's Bday, the 9/4 sensory garden hour, Babies & Books 9/3)");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
   assert.equal(count((c) => c.category === "news"), 16, "15 + the December G-shutdown rally (2026-08-21)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 27, "23 − 2 expired 8/20 nights + 6 adds on 2026-08-21 (four Eavesdrop sets, Troost 9/4, Good Room 9/4)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 35, "27 + the 8 held Eavesdrop midnight sets (2026-08-21 review PR) — 23 − 2 expired 8/20 nights + 6 adds on 2026-08-21 (four Eavesdrop sets, Troost 9/4, Good Room 9/4)");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
