@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-21T09:30:00-04:00",
+  "lastRunAt": "2026-08-22T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1486,6 +1486,13 @@
       "publisher": "Moon Bunny Aerial",
       "processedAt": "2026-08-21",
       "outcome": "NOT CARDED, deliberate. The 23 in-window items are the studio's regular drop-in timetable (Silks, Hammock, Lyra, Flexibility, K-Pop Dance, Open Gym…), already represented by moon-bunny-monthly-plans. Camps and dated one-offs stay cardable. Recorded in watchItems so a later run can tell this apart from a miss."
+    },
+    {
+      "id": "run:daily-thin-2026-08-22",
+      "kind": "run",
+      "publisher": "Track V daily thin",
+      "processedAt": "2026-08-22",
+      "outcome": "DEGRADED — no ingest. ingest:fetch exited 1: 12 of 62 sources errored (19%, ceiling 15%), so the roster was not readable and no source was parsed. Expiry still ran and removed 9 items that ended 8/21 (165 → 156). Snapshots NOT marked ingested; the 23 changed sources stay pending for the next healthy run. Errors: 10 on the known-broken browser path (browser-connect-reset), tend-greenpoint needs an `attr` for its embedded strategy (roster defect), www.triskelionarts.org refused at the proxy (needs allowlisting). holds: 0 new-judgment · 0 rule-miss · 0 source-blocked."
     }
   ],
   "senderRegistry": [

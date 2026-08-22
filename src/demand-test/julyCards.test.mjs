@@ -565,14 +565,18 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // window, which is 9/4: Terror Terroir at Film Noir, First Vinyl Fridays at
   // Troost, Lloyd's Bday at Good Room, and the Sensory Garden Hour's last
   // stated Friday. Plus Babies & Books on 9/3. 155 + 10 = 165.
-  assert.equal(seed.cards.length, 165);
+  // 2026-08-22 daily thin: expiry only. 9 items that ran on 8/21 came off the
+  // map (165 → 156) and nothing was added — the fetch could not read enough of
+  // the roster to ingest against (12 of 62 sources errored, over the 15%
+  // ceiling), so this run reads no sources and authors no cards.
+  assert.equal(seed.cards.length, 156);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 26, "25 + the December G-shutdown rally (2026-08-21)");
-  assert.equal(count((c) => c.category === "event"), 92, "93 − 10 expired 8/20 events + 9 dated adds on 2026-08-21 (four Eavesdrop 6pm sets, Terror Terroir, First Vinyl Fridays, Lloyd's Bday, the 9/4 sensory garden hour, Babies & Books 9/3)");
-  assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
+  assert.equal(count((c) => c.category === "event"), 84, "92 − 8 events that ran on 8/21 (2026-08-22 expiry-only run)");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ended 8/21 (2026-08-22)");
   assert.equal(count((c) => c.category === "news"), 16, "15 + the December G-shutdown rally (2026-08-21)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 27, "23 − 2 expired 8/20 nights + 6 adds on 2026-08-21 (four Eavesdrop sets, Troost 9/4, Good Room 9/4)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 25, "27 − the Anish Kumar and DJ Frantz nights, which ran 8/21 (2026-08-22)");
   assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -666,7 +670,8 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // not the revived `moon-bunny-back-to-school` that expired 8/17 on its own
   // 8/15 deadline — a different offer read off the newly persisted
   // /discounts detail page.
-  assert.equal(deals.length, 7);
+  // 2026-08-22: −1 — the Tend plant sale ran through 8/21 and expired out.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -749,11 +754,7 @@ test("free-ness is designated only where the source states it (tester feedback #
   // NOT here: only some programs in each day state "Free", and a grouped card
   // must not extend one line's free-ness across the whole day.
   assert.deepEqual(free, [
-    // 2026-08-19: the Greenpointers 8/20-26 roundup states free-ness outright
-    // in the two lines these cards quote — "Free to attend, RSVP here" for the
-    // Good Baklava takeover of Acme's Fish Friday, and "Free, no RSVP needed"
-    // for the 61 Franklin St. Garden plant-biology talk.
-    "acme-good-baklava-0821",
+    // (acme-good-baklava-0821 expired out 2026-08-22)
     // 2026-08-10: Kindred's Thursday sunset session, same flyer as the
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
@@ -804,8 +805,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
     // (summerstarz-project-hail-mary-0814 expired out 2026-08-15)
-    // 2026-08-07: the season's closing screening, surfaced by the coverage check.
-    "summerstarz-zootopia-0821",
+    // (summerstarz-zootopia-0821, the season's closing screening, ran 8/21 and
+    // expired out 2026-08-22)
     // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
     // 2026-08-12 roundup: "No rhythm required! Free, RSVP here."
   ]);
@@ -1189,7 +1190,6 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // note above said it should — its terms line states "Valid through
     // September 7, 2026", a different deadline from the plant sale's 8/21.
     "tend-additional-20-off",
-    "tend-plant-sale-0821",
     // 2026-08-10: a dated promo, so it sits beside the membership card rather
     // than replacing it — endsAt is the source's own "available through Aug 15".
     "word-membership",
