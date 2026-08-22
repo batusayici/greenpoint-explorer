@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-21",
+  "version": "2026-08-22",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -2549,8 +2549,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
-      "endsAt": "2026-08-21T23:59:00-04:00",
+      "updatedAt": "2026-08-22",
+      "endsAt": "2026-09-04T23:59:00-04:00",
       "id": "black-rabbit-nerd-alert-trivia",
       "title": "Nerd Alert! Trivia at Black Rabbit",
       "kicker": "No cover",
@@ -2601,8 +2601,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
-      "endsAt": "2026-08-21T23:59:00-04:00",
+      "updatedAt": "2026-08-22",
+      "endsAt": "2026-09-04T23:59:00-04:00",
       "id": "black-rabbit-sunday-bingo",
       "title": "Sunday bingo at Black Rabbit",
       "kicker": "Bingo night",
@@ -2650,8 +2650,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
-      "endsAt": "2026-08-21T23:59:00-04:00",
+      "updatedAt": "2026-08-22",
+      "endsAt": "2026-09-04T23:59:00-04:00",
       "id": "hide-and-seek-wine-down-jazz",
       "title": "Wine Down Wednesday live jazz",
       "kicker": "Standing midweek session",
@@ -2800,12 +2800,12 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-22",
       "id": "brew-inn-greenpoint-trivia",
       "title": "Greenpoint Trivia Night at The Brew Inn",
       "kicker": "Run by the NYC Trivia League",
       "startsAt": "2026-08-12T19:00:00-04:00",
-      "endsAt": "2026-08-21T23:59:00-04:00",
+      "endsAt": "2026-09-04T23:59:00-04:00",
       "locationName": "The Brew Inn",
       "address": "924 Manhattan Ave, Brooklyn, NY 11222",
       "geocodeQuery": "924 Manhattan Ave, Brooklyn, NY 11222",
@@ -2879,49 +2879,6 @@
           "date": "2026-08-07"
         }
       ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "id": "good-room-anish-kumar-0821",
-      "title": "Anish Kumar at Good Room",
-      "kicker": "Four-DJ Friday bill",
-      "summary": "Anish Kumar, Extra Meesh, Alyssa Stowers and John Silas across the night.",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-08-21T19:00:00-04:00",
-      "endsAt": "2026-08-21T23:59:00-04:00",
-      "sourceQuote": "Aug 21\nAnish Kumar, Extra Meesh, Alyssa Stowers, John Silas",
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room via DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-07"
-        }
-      ],
-      "lat": 40.726909,
-      "lng": -73.95281
     },
     {
       "category": "event",
@@ -3157,139 +3114,6 @@
           "sat"
         ]
       }
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": true,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "id": "summerstarz-zootopia-0821",
-      "title": "SummerStarz: Zootopia 2",
-      "kicker": "Last free movie of the season",
-      "startsAt": "2026-08-21T20:00:00-04:00",
-      "endsAt": "2026-08-21T23:00:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "WNYC Transmitter Park",
-      "address": "1 Greenpoint Ave",
-      "lat": 40.729537,
-      "lng": -73.960287,
-      "summary": "The closing night of the free Friday series on the waterfront lawn. Bring a blanket; tickets are free but requested ahead.",
-      "sourceQuote": "Fri. 8/21 - Zootopia 2",
-      "actions": [
-        {
-          "label": "Get free tickets",
-          "type": "learn_more",
-          "url": "https://www.townsquarebk.org"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Town Square BK",
-          "url": "https://www.townsquarebk.org",
-          "publisher": "Town Square BK",
-          "date": "2026-08-07"
-        },
-        {
-          "title": "NYC Parks — Transmitter Park events",
-          "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
-          "publisher": "NYC Parks",
-          "date": "2026-08-07"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "id": "playkids-toy-story-0821",
-      "title": "Toy Story 5 drop-off movie night",
-      "kicker": "Drop-off, ages 4–8",
-      "startsAt": "2026-08-21T17:30:00-04:00",
-      "endsAt": "2026-08-21T20:30:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "PLAY Kids Greenpoint",
-      "address": "33 Nassau Avenue, Brooklyn, NY 11222",
-      "geocodeQuery": "33 Nassau Ave, Brooklyn, NY 11222",
-      "summary": "Parents get the evening off. The listing notes the title may change if streaming falls through.",
-      "sourceQuote": "TOY STORY 5\nDrop-Off Movie Night\nFriday, August 21, 5:30 pm",
-      "actions": [
-        {
-          "label": "Sign up",
-          "type": "learn_more",
-          "url": "https://www.playgreenpoint.com/movie-nights"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "PLAY Kids movie nights",
-          "url": "https://www.playgreenpoint.com/movie-nights",
-          "publisher": "PLAY Kids Greenpoint",
-          "date": "2026-08-07"
-        }
-      ],
-      "lat": 40.723168,
-      "lng": -73.952948
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "id": "hana-tour-tasting-0821",
-      "title": "Tour and tasting at Hana Makgeolli",
-      "kicker": "45 minutes inside the brewery",
-      "startsAt": "2026-08-21T17:00:00-04:00",
-      "endsAt": "2026-08-21T18:00:00-04:00",
-      "filters": [
-        "food_drink"
-      ],
-      "locationName": "Hana Makgeolli",
-      "address": "201 Dupont St",
-      "lat": 40.736437,
-      "lng": -73.951511,
-      "summary": "A Friday slot for the brewery walk-through and guided tasting, before the tasting room opens.",
-      "sourceQuote": "Hana Makgeolli Tour & Tasting\nFriday, August 21, 2026\n5:00 PM",
-      "actions": [
-        {
-          "label": "Book a tour",
-          "type": "learn_more",
-          "url": "https://hanamakgeolli.com/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hana Makgeolli events",
-          "url": "https://hanamakgeolli.com/events",
-          "publisher": "Hana Makgeolli",
-          "date": "2026-08-07"
-        }
-      ]
     },
     {
       "category": "event",
@@ -3719,7 +3543,6 @@
       ],
       "sourceQuote": "4 classes a month - $87.00 per month (13% off)\n4 classes a month - $104.00 per month (13% off)\n4 classes a month - $139.00 per month (13% off)\nFree trial class",
       "relatedCardIds": [
-        "moon-bunny-weekday-camp-8-12-0817",
         "moon-bunny-two-day-camp-8-12-0824",
         "moon-bunny-two-day-camp-4-7-0827",
         "moon-bunny-weekend-camp-13-16-0829",
@@ -4624,48 +4447,6 @@
       "lng": -73.949195
     },
     {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-12",
-      "free": false,
-      "id": "library-sensory-garden-0821",
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "startsAt": "2026-08-21T10:30:00-04:00",
-      "endsAt": "2026-08-21T16:45:00-04:00",
-      "title": "Friday at Greenpoint Library",
-      "kicker": "Rooftop garden, then a kids' movie",
-      "summary": "Storytime for under-fives at 10:30, an educator answering plant questions upstairs 3–4, and a film in Eco Lab 1 at 3. No registration for any of them.",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-21T14:30:00Z\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-08-21T19:00:00Z\nts_body: Garden Educator will be on site from 3-4pm on Fridays, weather permitting.\nts_title: After School Movie\nds_event_start_date: 2026-08-21T19:00:00Z\nts_body: Join us after school for a kid-friendly movie!",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-10"
-        }
-      ],
-      "lat": 40.72606,
-      "lng": -73.950709
-    },
-    {
       "category": "event",
       "audience": [
         "resident"
@@ -4706,53 +4487,6 @@
         }
       ],
       "sourceQuote": "summary: LUMENS\ndescription: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone\nstart.date: 2026-08-25"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-21",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
-      "free": false,
-      "relatedCardIds": [
-        "moon-bunny-monthly-plans"
-      ],
-      "actions": [
-        {
-          "label": "Camp details",
-          "type": "learn_more",
-          "url": "https://moonbunnyaerial.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial events",
-          "url": "https://moonbunnyaerial.com",
-          "publisher": "Moon Bunny Aerial",
-          "date": "2026-08-11"
-        }
-      ],
-      "id": "moon-bunny-weekday-camp-8-12-0817",
-      "title": "Week-Long Circus Camp for 8–12s at Moon Bunny Aerial",
-      "kicker": "Lyra, silks, hammock, trapeze",
-      "summary": "Moon Bunny's longest camp format for the 8-to-12 group, threading ground acro, juggling and flow props plus games and themed days through the full week.",
-      "startsAt": "2026-08-21T09:00:00-04:00",
-      "endsAt": "2026-08-21T15:00:00-04:00",
-      "sourceQuote": "name: Weekday Camp 8-12 yrs old\nstart_at: 2026-08-21T13:00:00.000Z\nend_at: 2026-08-21T19:00:00.000Z\n\nOur Week-Long Circus Camp offers a full, immersive experience for children to explore and develop their circus skills. Campers will learn a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, along with ground activities like acro, juggling, and flow props.",
-      "lat": 40.736575,
-      "lng": -73.952327
     },
     {
       "category": "event",
@@ -5901,54 +5635,6 @@
       "lng": -73.95547
     },
     {
-      "id": "tend-plant-sale-0821",
-      "category": "discount",
-      "title": "20% off all plants at Tend Greenpoint",
-      "kicker": "Indoor tropicals to trees and shrubs",
-      "summary": "Valid in store and online. The discount is applied automatically at checkout, with no coupon code needed.",
-      "endsAt": "2026-08-21T23:59:00-04:00",
-      "filters": [
-        "deals_memberships"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "locationName": "Tend Greenpoint",
-      "address": "252 Franklin St, Brooklyn, NY 11222",
-      "geocodeQuery": "252 Franklin Street, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Shop the sale",
-          "type": "order",
-          "url": "https://www.tendgreenpoint.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tend Greenpoint",
-          "url": "https://www.tendgreenpoint.com/",
-          "publisher": "Tend Greenpoint",
-          "date": "2026-08-15"
-        },
-        {
-          "title": "A Very Rare Treat",
-          "url": "https://www.tendgreenpoint.com/",
-          "publisher": "Tend Greenpoint",
-          "date": "2026-08-14"
-        }
-      ],
-      "sourceQuote": "20% OFF All Plants!\nThrough Friday, August 21, 2026, our collections of Indoor Tropicals, Cacti & Succulents, Garden Perennials, Annuals and Trees & Shrubs are 20% OFF*.\nThe discount is automatically applied at checkout. No coupon code is needed.\nFind our shop at 252 Franklin St in Greenpoint, Brooklyn, open daily.",
-      "evidenceStrength": "medium",
-      "monetizationRelevance": "direct",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "lat": 40.734612,
-      "lng": -73.958144
-    },
-    {
       "audience": [
         "resident"
       ],
@@ -6538,53 +6224,6 @@
     {
       "audience": [
         "resident",
-        "visitor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
-      "id": "acme-good-baklava-0821",
-      "category": "event",
-      "title": "Good Baklava x Fish Friday at Acme Smoked Fish",
-      "kicker": "A guest schmear, free to attend",
-      "summary": "Good Baklava and “Bagel Ambassador” Sam Silverman debut a pistachio, baklava and kadayif cream cheese; Shagshoprooftop plays live.",
-      "startsAt": "2026-08-21T10:00:00-04:00",
-      "endsAt": "2026-08-21T23:59:00-04:00",
-      "filters": [
-        "food_drink"
-      ],
-      "free": true,
-      "locationName": "Acme Smoked Fish",
-      "address": "30 Gem St",
-      "geocodeQuery": "30 Gem Street, Brooklyn, NY",
-      "relatedCardIds": [
-        "acme-fish-friday-0814"
-      ],
-      "sourceQuote": "Good Baklava x Fish Friday @ Acme Smoked Fish, 10 a.m.: The usual Acme Fish Friday is getting a special visit from Good Baklava and “Bagel Ambassador” Sam Silverman to debut Good Baklava Schmear, a mix of pistachio whipped cream cheese, baklava, and kadayif. There will also be a live music performance by Brooklyn’s Shagshoprooftop. Free to attend, RSVP here .",
-      "actions": [
-        {
-          "label": "Read the roundup",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
-          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-19"
-        }
-      ],
-      "lat": 40.725409,
-      "lng": -73.956615
-    },
-    {
-      "audience": [
-        "resident",
         "family"
       ],
       "evidenceStrength": "high",
@@ -6864,48 +6503,6 @@
       ],
       "lat": 40.726647,
       "lng": -73.95229
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
-      "id": "troost-dj-frantz-0821",
-      "category": "event",
-      "free": false,
-      "title": "DJ FRANTZ at Troost",
-      "kicker": "Friday night DJ set",
-      "summary": "A Friday set at the Manhattan Avenue bar. The venue calendar lists the night without a start time.",
-      "startsAt": "2026-08-21T00:00:00-04:00",
-      "endsAt": "2026-08-21T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "sourceQuote": "summary: DJ FRANTZ\nstart.date: 2026-08-21",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-19"
-        }
-      ]
     },
     {
       "audience": [
