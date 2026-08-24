@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-21T09:30:00-04:00",
+  "lastRunAt": "2026-08-24T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1486,6 +1486,69 @@
       "publisher": "Moon Bunny Aerial",
       "processedAt": "2026-08-21",
       "outcome": "NOT CARDED, deliberate. The 23 in-window items are the studio's regular drop-in timetable (Silks, Hammock, Lyra, Flexibility, K-Pop Dance, Open Gym…), already represented by moon-bunny-monthly-plans. Camps and dated one-offs stay cardable. Recorded in watchItems so a later run can tell this apart from a miss."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/24/beloved-greenpoint-staple-ashbox-cafe-closes-its-doors/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-24",
+      "outcome": "CARDED TWICE: ashbox-cafe-closes (news, the closure itself) and ashbox-farewell-sale-0825 (the dated inventory sale, 8/25-8/28 11:30am-2:30pm). The sale is one sitting repeated daily per the 2026-08-13 multi-day rule, so startsAt/endsAt carry the 11:30-14:30 clock across the span. Filed `shopping` as a store's dated limited run per the 2026-08-13 markets rule."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/21/kimchee-markets-owner-looking-for-new-space-plans-to-eventually-close-dokebi/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-24",
+      "outcome": "CARDED as kimchee-market-new-space (news). Address stated in the line the card quotes (191 Greenpoint Ave.)."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/#2026-08-24",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-24",
+      "outcome": "Re-read for the 8/24-26 tail. Already carded: Chair Yoga (library-chair-yoga-0824), Threes x Peter Luger (threes-peter-luger-0824), Sips & Scholars (sips-scholars-parkhouse-0825), Madeline's Comedy (madelines-comedy-0825), LIVE ISLAND (loft-story-live-island-0826). SKIPPED out of area: Trivia @ The McCarren — R1 to themccarren.com returned 200 and its own page states \"595 Union Avenue\" / \"Brooklyn, NY, 11211\", which is Williamsburg, outside the bbox. HELD: Birdie's Mahjong and Edith's Summer Sandwich Series, both in watchItems with the refused R1 host named."
+    },
+    {
+      "id": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e#2026-08-27",
+      "kind": "web",
+      "publisher": "Film Noir Cinema",
+      "processedAt": "2026-08-24",
+      "outcome": "CARDED as film-noir-film-club-0827. Closes the 8/27 coverage GAP. Date taken from ISO startDate (2026-08-28T01:00:00.592Z → 9pm on 8/27 New York), never the 2020 fullUrl slug."
+    },
+    {
+      "id": "https://troostny.com/calendar/#2026-09-05,2026-09-07",
+      "kind": "web",
+      "publisher": "Troost",
+      "processedAt": "2026-08-24",
+      "outcome": "CARDED as troost-suki-diaz-0905 and troost-tired-horses-0907. Closes both flagged Troost coverage dates. Each summary line read fresh from its own date block per the 2026-08-19 retitle warning."
+    },
+    {
+      "id": "https://donyc.com/venues/good-room#2026-09-05,2026-09-06",
+      "kind": "web",
+      "publisher": "DoNYC",
+      "processedAt": "2026-08-24",
+      "outcome": "CARDED as good-room-fango-0905 and good-room-gloria-danger-0906. Closes both flagged Good Room coverage dates."
+    },
+    {
+      "id": "https://www.townsquareinc.org#scouts-2026-08-24",
+      "kind": "web",
+      "publisher": "Town Square",
+      "processedAt": "2026-08-24",
+      "outcome": "CARDED as town-square-scouts-troop-26 and town-square-cub-scouts-pack-7, resolving the UNMARKED STANDING? flag by supplying the missing cards rather than a roster edit. Both are recurring clubs → `subscription`, audience lens `family_kids` (the enrollment rule bars deals_memberships). Town Square is a named community institution, so the locally-owned gate does not apply. Two cards, not one: different ages, different meeting nights, different pins. SummerStarz on the same page is NOT re-carded — \"Fridays, J uly 24th to August 21st, 8 PM\" ended, and its last night expired this morning."
+    },
+    {
+      "id": "https://edysgrocer.com/shop/events#dinner-maria-koutsogiannis",
+      "kind": "web",
+      "publisher": "Edy's Grocer",
+      "processedAt": "2026-08-24",
+      "outcome": "HELD (source-blocked): no day-of-month stated in the listing excerpt or on the R1 detail page, and the product reads sold out. In watchItems."
+    },
+    {
+      "id": "run:2026-08-24-monday-full",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-24",
+      "outcome": "Monday full refresh. Deck 165 → 141 (expiry) → 150 (10 adds, 1 delete). holds: 0 new-judgment · 0 rule-miss · 3 source-blocked. Fetch exit 0, reach 53/62 (15%, at the ceiling): browser path down with the known chromium CONNECT-reset fault (9 sources errored, 8 of them browser-path) plus the tend-greenpoint roster defect. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Deleted bcc-kids-sewing-camp: the Brooklyn Craft Company page no longer states the camp anywhere and the source shrank 108 lines, so the recurring card could not be re-verified. Re-verified and bumped four standing venue nights (Black Rabbit trivia + bingo, Hide & Seek jazz, Brew Inn trivia) and the Acme Fish Friday weekly."
     }
   ],
   "senderRegistry": [
@@ -1980,13 +2043,43 @@
       "name": "Moon Bunny Aerial — the drop-in class timetable is deliberately not carded",
       "note": "STANDING EDITORIAL FACT, restated 2026-08-21 because the feed surfaces ~23 of these a run. The feather.rsvp feed lists every scheduled class session by name (Silks, Hammock, Lyra, Flexibility, K-Pop Dance, Open Gym…). These are the studio's regular weekly timetable, not happenings, and the deck already represents them as moon-bunny-monthly-plans. Camps and dated one-offs stay cardable; the timetable does not.",
       "addedAt": "2026-08-21"
+    },
+    {
+      "name": "Not Your Mother's Mahjong @ Birdie's Sporting Club, Wed 8/26 6:30pm",
+      "note": "HELD 2026-08-24 (source-blocked, R1 host refused at the proxy). The Greenpointers 8/20-26 roundup states the item in full — verbatim: \"Not Your Mother’s Mahjong @ Birdie’s Sporting Club, 6:30 p.m.: Whether you’re a seasoned Mahjong player or completely new to the game, join an evening of slow, hands-on instruction and meaningful connection all about upping your game while celebrating the history, heritage, and traditions of the game. Starting at $25, get tickets here .\" — but names NO ADDRESS, and the roundup snapshot strips the outbound hrefs, so the venue cannot be placed on the map. R1 was attempted and the gateway refused the CONNECT: birdiessportingclub.com and www.birdiessportingclub.com both answered 403 at the tunnel (the proxy's own relay log records \"connect_rejected … gateway answered 403 to CONNECT\"). That is an EGRESS denial, not a bot block — the request never reached the origin — so one allowlist entry resolves it. WHAT WOULD CHANGE IT: allowlisting www.birdiessportingclub.com (and the bare host) for the routine, or settling the address from an interactive session. Lens is already mechanical if it ships: mahjong is a game, so `games`.",
+      "addedAt": "2026-08-24"
+    },
+    {
+      "name": "Summer Sandwich Series @ Edith's — collab sandwich with Būccan",
+      "note": "HELD 2026-08-24 (source-blocked, two independent gaps). The Greenpointers 8/20-26 roundup states the offer — verbatim: \"Summer Sandwich Series @ Edith’s: Try a taste of Palm Beach with a collab sandwich from Florida’s Būccan Sandwich Shop—the Beef Carpaccio Sandwich is layered with beef carpaccio, arugula, Parmesan, crispy balsamic onions, mayo, and lemon vinaigrette on a baguette. For a limited time.\" — and states NO ADDRESS and NO DATES. The only date signal is the roundup's \"WEDNESDAY, AUGUST 26\" section heading, which is the roundup's layout and not a claim about the offer, so taking a date from it would be inferring a field. R1 was attempted and the gateway refused the CONNECT: edithseatery.com and www.edithseatery.com answered 502 at the tunnel (relay log: \"connect_rejected … gateway answered 502 to CONNECT\"). WHAT WOULD CHANGE IT: allowlisting www.edithseatery.com so the address can be confirmed — the missing end date is NOT a blocker on its own, since an open-ended offer is `recurring` + verified-through under the 2026-08-03 rule.",
+      "addedAt": "2026-08-24"
+    },
+    {
+      "name": "Edy's Grocer — Dinner at the Grocer with Maria Koutsogiannis (September, date unstated)",
+      "note": "HELD 2026-08-24 (source-blocked on the date, and the source is the one that would carry it). The listing excerpt is complete on everything EXCEPT the day: it states the venue and address (\"📍 Hosted at Edy’s Grocer | 136 Meserole Ave, BK\"), both seatings (\"There will be two seatings: 6:00 PM and 8:30 PM\"), the ticketing terms, and the month only — \"It’s time for our September Dinner at the Grocer!\". Per the roster's own trap note, `publishOn` is a PUBLISH timestamp and must never become the card date. R1 WAS followed this run: https://edysgrocer.com/shop/p/dinner-at-the-grocer-maria-koutsogiannies?format=json returned HTTP 200 / 35 KB and carries no day-of-month anywhere either, and the product reads SOLD OUT. So the date is genuinely absent from the source, not merely unfetched — this is \"the page doesn't say\", not \"we couldn't open the page\". WHAT WOULD CHANGE IT: Edy's stating the date on the product page or in a newsletter. Note the roster line \"A sold-out dinner is still worth carding as neighbourhood signal but must say sold out\" presumes a date exists; it does not here.",
+      "addedAt": "2026-08-24"
+    },
+    {
+      "name": "Film Noir Cinema — BLACK BOX 9/11, CLOWNSPIRACY 10/24, HALLOWEEN PARTY 10/31, SECRETS OF THE DEAD 11/1 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. All four sit in the programme JSON with ISO startDate fields; dates were read from startDate, never the fullUrl slug, per the 2026-08-08 rule. Film Noir is a web source re-snapshotted every run, so each rolls into the window on its own. Recorded so a later run can tell a deliberate deferral from a miss. NOTE for whoever cards them: BLACK BOX and TERROR TERROIR have no ## [DETAIL] block in the snapshot, so their only evidence is the bare JSON header (title/startDate/endDate/fullUrl) — a card wanting prose needs the detail page persisted first.",
+      "addedAt": "2026-08-24"
+    },
+    {
+      "name": "Troost and Good Room — 35 dated nights past 2026-09-07",
+      "note": "Horizon only, nothing blocked. Troost's Google Calendar feed carries 28 further nights (2026-09-09 through 2026-10-11) and the Good Room DoNYC listing 7 more (2026-09-11 through 2026-12-03). Both are web sources re-snapshotted every run, so they roll into the 14-day window by themselves — this entry exists so the count is on the record, not because anything needs recovering. Two Good Room items (Sep 17 \"Otha\", Dec 3 \"LUCY/F.G.S.\") are listed TWICE on the page with slightly different framing and time; card from one listing and note the discrepancy rather than authoring two rows.",
+      "addedAt": "2026-08-24"
+    },
+    {
+      "name": "Greenpointers — promoting the baseline can strip the evidence for OLDER live cards (per_page=15 roll-off)",
+      "note": "RECURRING MECHANIC, first diagnosed 2026-08-24 by the post-promotion quotes check. The roster reads greenpointers.com/wp-json/wp/v2/posts?per_page=15, so the snapshot is a 15-post WINDOW, not an archive. Promotion overwrites the baseline with that window, and any card still live whose article has scrolled past post 15 instantly becomes unverifiable — even though nothing about the card or the article changed. Measured this run: immediately after --mark-ingested the gated check went 91 verified / 2 MISMATCH (transmitter-park-restaurant-marina, star-deli-viral-boost) and the full sweep found a third (nb-chess-parkhouse-0806), all three purely from roll-off. THE FIX IS TO RESTORE THE EVIDENCE, NEVER TO EDIT THE QUOTE: re-fetch each cited article by slug at greenpointers.com/wp-json/wp/v2/posts?slug=<slug> with a browser UA (it answers 200; WebFetch gets 403) and append it to .ingest-cache/greenpointers.ingested.txt under an [R1 PERSISTED <date>] heading, which persistedBlocks.js then carries forward on every future promotion. Done this run for all four articles: the 7/28 Transmitter Park piece, the 8/10 elected-officials follow-up (NOTE: the quote came from the THIRD sourceLink, not the first — check every cited link before concluding an article is gone), the 8/11 Star Deli story and the 8/6 chess residency. Gated check ended 93/0 and the full sweep 104/0. WHY THIS WILL RECUR: it fires whenever a live card outlives 15 Greenpointers posts, which is roughly a fortnight. A run that promotes without re-checking quotes AFTER promotion will not see it. POSSIBLE STRUCTURAL FIX for a roster PR: raise per_page, or have the fetcher pin the articles that live cards cite.",
+      "addedAt": "2026-08-24"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
-    "greenpointers": "2026-08-20",
+    "greenpointers": "2026-08-23",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-20",
+    "film-noir-cinema": "2026-08-23",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-11",
     "greenpoint-library": "2026-08-20",
@@ -2009,10 +2102,10 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-20",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-20",
+    "troost": "2026-08-23",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-08-20",
-    "town-square-bk": "2026-08-06",
+    "good-room": "2026-08-23",
+    "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
     "brew-inn-trivia": "2026-08-06",
@@ -2267,6 +2360,13 @@
       "reason": "PARTIALLY CLOSED, remainder HELD — 2026-08-21. The venue's own /calendar came back to life this run carrying dated listings with clock times (it had stated nothing past Aug 1 since the 2026-08-13 review), so Eavesdrop has cards again for the first time since its venue card was deleted. Each calendar day carries at most two listings: a \"6PM\" set and a \"12midnight\" set. The four 6pm sets are CARDED (eavesdrop-bodega-bruja-0822, eavesdrop-dj-dan-ce-0823, eavesdrop-antron-0829, eavesdrop-loggetto-0830), which covers 8/22, 8/23, 8/29 and 8/30. The dates still flagged — 8/24, 8/27, 8/28, 8/31 — carry ONLY a midnight set (verbatim: \"Monday, Aug 24 / 12midnight / NoahShea @eavesdrop\", \"Thursday, Aug 27 / 12midnight / Dan Piepenbring\", \"Friday, Aug 28 / 12midnight / Dynoman @eavesdrop\", \"Monday, Aug 31 / 12midnight / Kamilla Norova @eavesdrop\"), and a midnight start cannot be expressed: 00:00 is the all-day sentinel in eventWindow.js, so carding the sourced time would tell the feed the set runs all day. All eight midnight sets are authored and held in the review PR with the rule question. WHAT WOULD CHANGE IT: a ruling on how a midnight start is written.",
       "addedAt": "2026-08-21",
       "expiresAt": "2026-09-04"
+    },
+    {
+      "sourceId": "play-kids-greenpoint",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "REVIEWED 2026-08-24: the recurring phrase is real but the SCHEDULE IS EXHAUSTED, which is a third state the flag does not have a slot for. The page frames the series standing — \"Drop-Off Events & Movie Nights / SUMMER 2026 Edition / FRIDAY evenings\", \"When: Fridays!\", \"What time: 5:30 - 8:30 pm\" — but every dated instance it lists has already happened: \"Friday, July 10, 5:30 pm\" (ASTERIX & OBELIX), \"Friday, July 24, 5:30 pm\" (GOAT), \"Friday, August 7, 5:30 pm\" (A MINECRAFT MOVIE) and \"Friday, August 21, 5:30 pm\" (TOY STORY 5). The last of those WAS carded (playkids-toy-story-0821) and expired on schedule this morning, so the deck reading empty is the series running out, not the source going dark. Carding a future Friday would mean inventing a date and a film the page does not state. This is deliberately NOT proposed as `standing: false` — the recurring programming is genuine, it is between editions, and the roster flag should be decided when the fall edition posts. WHAT WOULD CHANGE IT: PLAY Kids publishing a Fall 2026 edition, which will land as a normal diff.",
+      "addedAt": "2026-08-24",
+      "expiresAt": "2026-09-07"
     }
   ]
 }

@@ -3488,5 +3488,120 @@
         "-73.9576707"
       ]
     }
+  },
+  "1154 Manhattan Avenue, Brooklyn, NY 11222": {
+    "query": "1154 Manhattan Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-24T13:34:21.762Z",
+    "hit": {
+      "place_id": 356400109,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280146599,
+      "lat": "40.7377690",
+      "lon": "-73.9551856",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "1154, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7377204",
+        "40.7378149",
+        "-73.9553215",
+        "-73.9550572"
+      ]
+    }
+  },
+  "191 Greenpoint Avenue, Brooklyn, NY 11222": {
+    "query": "191 Greenpoint Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-24T13:34:23.298Z",
+    "hit": {
+      "place_id": 359162115,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280137490,
+      "lat": "40.7306196",
+      "lon": "-73.9519471",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "191, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7304971",
+        "40.7306790",
+        "-73.9519927",
+        "-73.9518913"
+      ]
+    }
+  },
+  "Driggs Avenue and Manhattan Avenue, Brooklyn, NY 11222": {
+    "query": "Driggs Avenue and Manhattan Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-24T13:34:24.860Z",
+    "hit": null
+  },
+  "Franklin Street and Noble Street, Brooklyn, NY 11222": {
+    "query": "Franklin Street and Noble Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-24T13:34:26.473Z",
+    "hit": null
+  },
+  "McCarren Park, Brooklyn, NY 11222": {
+    "query": "McCarren Park, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-24T13:34:39.964Z",
+    "hit": {
+      "place_id": 356404796,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280079054,
+      "lat": "40.7220391",
+      "lon": "-73.9517946",
+      "category": "amenity",
+      "type": "toilets",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "McCarren Park House",
+      "display_name": "McCarren Park House, 903, Lorimer Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7219008",
+        "40.7221791",
+        "-73.9520141",
+        "-73.9515704"
+      ]
+    }
+  },
+  "American Playground, Franklin Street, Brooklyn, NY 11222": {
+    "query": "American Playground, Franklin Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-24T13:34:41.789Z",
+    "hit": null
+  },
+  "American Playground, Brooklyn, NY": {
+    "query": "American Playground, Brooklyn, NY",
+    "fetchedAt": "2026-08-24T13:34:49.054Z",
+    "hit": {
+      "place_id": 355527280,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 372050312,
+      "lat": "40.7288908",
+      "lon": "-73.9579173",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08009175936522465,
+      "addresstype": "park",
+      "name": "American Playground",
+      "display_name": "American Playground, Brooklyn, Kings County, New York, United States",
+      "boundingbox": [
+        "40.7284743",
+        "40.7290760",
+        "-73.9582833",
+        "-73.9575103"
+      ]
+    }
   }
 }

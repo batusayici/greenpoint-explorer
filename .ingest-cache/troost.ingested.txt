@@ -1,18 +1,3 @@
-summary: DJ FRANTZ
-start.date: 2026-08-21
-end.date: 2026-08-22
-htmlLink: https://www.google.com/calendar/event?eid=NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjA4MjEgdHJvb3N0bGl2ZUBt
-
-summary: DJ LOSSY
-start.date: 2026-08-22
-end.date: 2026-08-23
-htmlLink: https://www.google.com/calendar/event?eid=Xzg1MGowY3BpNjhvamNiYTI4Z3AzNmI5azZncms2YmEyNzExM2FiOWw4Y3NqNmQ5bThvcDNnZTFvNjggdHJvb3N0bGl2ZUBt
-
-summary: Andrew McCann Quartet
-start.date: 2026-08-23
-end.date: 2026-08-24
-htmlLink: https://www.google.com/calendar/event?eid=XzYwcGo2ZGk1NjhyM2diYTY2Z3NqMmI5azhsMTQ2YmEyNm9xamViOWs2NTFqNGQxbzY5MGppYzluNnMgdHJvb3N0bGl2ZUBt
-
 summary: John Dorney
 start.date: 2026-08-24
 end.date: 2026-08-25
@@ -221,3 +206,19 @@ description: WORLD PSYCHEDELIC GROOVE
 start.date: 2026-10-08
 end.date: 2026-10-09
 htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjEwMDggdHJvb3N0bGl2ZUBt
+
+summary: DJ TIMOTHY O'KEEFE
+start.date: 2026-10-09
+end.date: 2026-10-10
+htmlLink: https://www.google.com/calendar/event?eid=NTk5YjVhdDY3M2tzNWs5YmMyaHBsbzFrdDNfMjAyNjEwMDkgdHJvb3N0bGl2ZUBt
+
+summary: DJ THE HEFKER GIRL
+description: Decirculated Dub, Mariachi, Pirate Radio and Everything in between
+start.date: 2026-10-10
+end.date: 2026-10-11
+htmlLink: https://www.google.com/calendar/event?eid=ZnV1anE4cnNramg1ZWZpbDRkZTRzMGhwcTdfMjAyNjEwMTAgdHJvb3N0bGl2ZUBt
+
+summary: DJ MIKE WALLACE No Hard Feelings
+start.date: 2026-10-11
+end.date: 2026-10-12
+htmlLink: https://www.google.com/calendar/event?eid=XzZkMjQ4aGE1OGNwNDZiOWk2b3EzOGI5azZvcmo2YjlwODhzNDhiOW82Y28zZ2gxaDZzcTRjaDlsNjQgdHJvb3N0bGl2ZUBt

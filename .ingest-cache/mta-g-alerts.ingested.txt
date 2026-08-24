@@ -45,9 +45,3 @@ alert.active_period.0.start: 2026-08-25T02:45:00.000Z
 alert.active_period.0.end: 2026-08-25T09:00:00.000Z
 alert.active_period: [{"start":1787625900,"end":1787648400},{"start":1787712300,"end":1787734800},{"start":1787798700,"end":1787821200},{"start":1787885100,"end":1787907600},{"start":1788230700,"end":1788253200},{"start":1788317100,"end":1788339600},{"start":1788403500,"end":1788426000},{"start":1788489900,"end":1788512400}]
 alert.description_text.translation.0.text: For service to these stations, take the [F] or [G] to 7 Av or Church Av and transfer to a Manhattan-bound [F] or Court Sq-bound [G]. For service from these stations, take the [F] or [G] to 7 Av or Smith-9 Sts and transfer to a Coney Island-bound [F] or Church Av-bound [G]. What's happening? We're replacing tracks
-
-alert.header_text.translation.0.text: No [G] between Bedford-Nostrand Avs and Court Sq
-alert.active_period.0.start: 2026-08-22T01:45:00.000Z
-alert.active_period.0.end: 2026-08-24T09:00:00.000Z
-alert.active_period: [{"start":1787363100,"end":1787562000}]
-alert.description_text.translation.0.text: [G] runs every 10 minutes (days/evenings) between Church Av and Bedford-Nostrand Avs, the last stop. [shuttle bus icon] Free T403 shuttle buses make stops between Bedford-Nostrand Avs and Court Sq. Transfer between [G] and [shuttle bus icon] at Bedford-Nostrand Avs. What's happening? Structural maintenance [accessibility icon] This service change affects one or more ADA accessible stations and these travel alternatives may not be fully accessible. Please contact 511 to plan your trip.

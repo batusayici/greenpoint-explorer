@@ -565,15 +565,30 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // window, which is 9/4: Terror Terroir at Film Noir, First Vinyl Fridays at
   // Troost, Lloyd's Bday at Good Room, and the Sensory Garden Hour's last
   // stated Friday. Plus Babies & Books on 9/3. 155 + 10 = 165.
-  assert.equal(seed.cards.length, 165);
+  // 2026-08-24 Monday full: expiry took 24 passed 8/21–8/23 items (165 → 141)
+  // — the biggest single clear-out since launch, because a Friday-to-Sunday
+  // weekend drains three days of nightlife at once — and the run added 10 and
+  // deleted 1. 141 + 10 − 1 = 150. Four adds close coverage dates the
+  // reconciler had flagged as owed cards: Troost 9/5 and 9/7, Good Room 9/5 and
+  // 9/6. One closes Film Noir's 8/27 gap (Film Club). Three come from
+  // Greenpointers: Ashbox Cafe closing after 18 years, its 8/25–8/28 farewell
+  // inventory sale, and Kimchee Market's search for a new space. The last two
+  // are Town Square's standing youth programmes — Scouts BSA Troop 26 and Cub
+  // Scouts Lucky Pack 7 — which resolve the reconciler's UNMARKED STANDING?
+  // flag by supplying the missing cards rather than by editing the roster.
+  // The delete is bcc-kids-sewing-camp: Brooklyn Craft Company's page no longer
+  // states the camp anywhere and the source shrank 108 lines, so a recurring
+  // card past its verified-through could not be re-verified and does not get
+  // renewed on faith.
+  assert.equal(seed.cards.length, 150);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 26, "25 + the December G-shutdown rally (2026-08-21)");
-  assert.equal(count((c) => c.category === "event"), 92, "93 − 10 expired 8/20 events + 9 dated adds on 2026-08-21 (four Eavesdrop 6pm sets, Terror Terroir, First Vinyl Fridays, Lloyd's Bday, the 9/4 sensory garden hour, Babies & Books 9/3)");
-  assert.equal(count((c) => c.category === "discount"), 7, "6 + Moon Bunny's back-to-school kids' pack discount, stated through Sept 4 (2026-08-18)");
-  assert.equal(count((c) => c.category === "news"), 16, "15 + the December G-shutdown rally (2026-08-21)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 27, "23 − 2 expired 8/20 nights + 6 adds on 2026-08-21 (four Eavesdrop sets, Troost 9/4, Good Room 9/4)");
-  assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
+  assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
+  assert.equal(count((c) => c.category === "event"), 74, "92 − 19 expired/deleted + 6 dated adds on 2026-08-24 (Troost 9/5 + 9/7, Good Room 9/5 + 9/6, Film Club 8/27, the Ashbox farewell sale)");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
+  assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 24, "27 − 7 expired 8/21–8/23 nights + 4 adds on 2026-08-24 (Troost 9/5 + 9/7, Good Room 9/5 + 9/6)");
+  assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -666,7 +681,9 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // not the revived `moon-bunny-back-to-school` that expired 8/17 on its own
   // 8/15 deadline — a different offer read off the newly persisted
   // /discounts detail page.
-  assert.equal(deals.length, 7);
+  // 2026-08-24: −1 — the Tend Greenpoint plant sale ran out on its own 8/21
+  // end date and expiry removed it. No new deals this run.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -705,7 +722,12 @@ test("news cards name their publisher and sit in the news layer", () => {
   // campaign cards: `g-advocacy-mta`'s link list is pinned below as the
   // reciprocal pair it has been since 2026-07-03, so the story links to
   // `g-train-closures` and `gtrain-sales-survey` only.
-  assert.equal(news.length, 16);
+  // 2026-08-24: +2 from Greenpointers — Ashbox Cafe closing after 18 years
+  // (1154 Manhattan Ave, the chef citing arthritis) and Kimchee Market looking
+  // for a new home ahead of a six-story condo on its Greenpoint Ave site. The
+  // Ashbox closure is paired with a dated card for its farewell inventory sale,
+  // which is a happening and so is NOT filed here.
+  assert.equal(news.length, 18);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -749,11 +771,7 @@ test("free-ness is designated only where the source states it (tester feedback #
   // NOT here: only some programs in each day state "Free", and a grouped card
   // must not extend one line's free-ness across the whole day.
   assert.deepEqual(free, [
-    // 2026-08-19: the Greenpointers 8/20-26 roundup states free-ness outright
-    // in the two lines these cards quote — "Free to attend, RSVP here" for the
-    // Good Baklava takeover of Acme's Fish Friday, and "Free, no RSVP needed"
-    // for the 61 Franklin St. Garden plant-biology talk.
-    "acme-good-baklava-0821",
+    // (acme-good-baklava-0821 expired out 2026-08-24)
     // 2026-08-10: Kindred's Thursday sunset session, same flyer as the
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
@@ -787,10 +805,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-eternal-sunshine-0829",
-    // 2026-08-15: the BPL North Brooklyn community calendar states it twice in
-    // the lines the card quotes — the listing title "🛶 Free canoe rides on
-    // Newtown Creek with NBCB!" and the body's "At these FREE informal paddles".
-    "nbcb-canoe-newtown-creek-0822",
+    // (nbcb-canoe-newtown-creek-0822 expired out 2026-08-24)
     // (neptune-artists-makers-market-0816 and edys-anniversary-party-0816 both
     // expired out 2026-08-17, as did threes-flea-market-0815.)
     // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
@@ -804,8 +819,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
     // (summerstarz-project-hail-mary-0814 expired out 2026-08-15)
-    // 2026-08-07: the season's closing screening, surfaced by the coverage check.
-    "summerstarz-zootopia-0821",
+    // 2026-08-07: the season's closing screening, surfaced by the coverage
+    // check. (summerstarz-zootopia-0821 expired out 2026-08-24 — that was the
+    // last night of the series, which Town Square's page dates "Fridays, J uly
+    // 24th to August 21st", so nothing rolls forward here until next summer.)
     // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
     // 2026-08-12 roundup: "No rhythm required! Free, RSVP here."
   ]);
@@ -1014,6 +1031,11 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // hosts. A shop's pop-up genuinely starts and ends, so it keeps its own
     // dated card rather than collapsing into the venue (2026-08-12).
     // (cibone-hozubag-0813 expired out 2026-08-14)
+    // 2026-08-24: a closing cafe clearing its plates, cups, packaged food and
+    // kitchen tools over four days. A store's dated limited run is exactly the
+    // markets rule's class — a happening with a start and an end, not a
+    // standing offer — so it files here and not in deals_memberships.
+    "ashbox-farewell-sale-0825",
     "cibone-ote",
     "cibone-restation-showcase-0815",
     // A kids' store. It keeps `family_kids` — the audience lens it already
@@ -1025,7 +1047,7 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // store for one morning. A vendor pop-up is a dated retail happening, which
     // is exactly what this lens takes; it keeps `family_kids` alongside,
     // following the venue card's own filing.
-    "giggles-loma-popup-0822",
+    // (giggles-loma-popup-0822 expired out 2026-08-24)
     // "Drinks, try on's and wishlist building" at a jewelry studio — retail at
     // a second store, the ruling's first extension beyond CIBONE.
     "macha-summer-fridays-after-hours",
@@ -1107,7 +1129,7 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
-    "mcgolrick-its-my-park-0823",
+    // (mcgolrick-its-my-park-0823 expired out 2026-08-24)
     // 2026-08-17: the same series at Transmitter Park on 8/30, with the Friends
     // of WNYC Transmitter Park as the organiser. Carded off NYC Parks' own
     // record ("categories: Volunteer | It's My Park"), which is why the work-
@@ -1189,7 +1211,8 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // note above said it should — its terms line states "Valid through
     // September 7, 2026", a different deadline from the plant sale's 8/21.
     "tend-additional-20-off",
-    "tend-plant-sale-0821",
+    // (tend-plant-sale-0821 expired out 2026-08-24 on its own stated 8/21
+    //  deadline — the second Tend offer above runs to 9/7 and stays.)
     // 2026-08-10: a dated promo, so it sits beside the membership card rather
     // than replacing it — endsAt is the source's own "available through Aug 15".
     "word-membership",
