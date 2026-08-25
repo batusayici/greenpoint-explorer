@@ -17,6 +17,22 @@
 > and **Greenpoint Moms (5.2K, public)** is a third option — see
 > `2026-08-17-greenpoint-attention-map.md`. Everything else below stands.
 
+> **Amended again 2026-08-25 by Batu's families-timing ruling** (DECISION_LOG
+> third entry): **all** parents- and families-facing awareness starts **Tue Sep
+> 8**, not just Q2's post — families are away through Labor Day (Sep 7) and
+> school opens Thu Sep 10. Three changes here: **(1) Greenpoint Moms**
+> (`parents-gpmoms`, 5.2K, public, ~100 posts/mo) **replaces Williamsburg &
+> Greenpoint BK Parents**, which this roster listed as a candidate and the
+> 8/17 attention map then measured at 0 posts/month — dormant; Q2 posts to
+> Baby Hui + Greenpoint Moms, one src each. **(2) The redistributor asks move
+> ahead of the wave, to ~Sep 1–3** — PTA newsletters and first-week comms are
+> written the week of Aug 31, so the library children's librarian, the three
+> PTAs, Town Square and the class providers have to be asked before Sep 7, not
+> with it. **(3) Criterion 3 is not met for that week today** — dated
+> family/kids cards end Sep 4 and Sep 7–13 has none, so building that week's
+> supply (including school-year sources the roster does not carry) is the
+> precondition for sending at all. Everything else below stands.
+
 Strategic target selection for the seeding waves (launch plan §3). Produced by
 three independent passes so no single blind spot survives: (1) an empirical scan
 of `cards.json` + the ingest ledger/roster (who is actually behind our cards),
@@ -351,7 +367,10 @@ three Wave-1 orgs are already ingest sources — never inferred from sessions.*
 | org-gp-library | — | — | — | — | |
 | org-brooklyn-craft | — | — | — | — | |
 | org-town-square | — | — | — | — | |
-| parents | — | — | — | — | posts Tue Sep 8, morning (ratified 2026-08-15 — Labor Day empties the earlier date) |
+| ~~parents~~ | — | — | — | — | superseded 2026-08-19 — per-group srcs replace the shared tag |
+| parents-hui | — | — | — | — | Brooklyn Baby Hui — posts Tue Sep 8, morning; member-share (Laura), not an owner post |
+| parents-gpmoms | — | — | — | — | Greenpoint Moms — posts Tue Sep 8, morning; swapped in 2026-08-25 for the dormant BK Parents group |
+| ~~parents-wgbk~~ | — | — | — | — | retired unsent 2026-08-25 — 0 posts/month, dormant |
 
 ---
 

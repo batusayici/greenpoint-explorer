@@ -4,6 +4,71 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-25 (third entry) — The families push starts Sep 8; the two weeks before it are the supply build
+
+Decision (Batu, this session): **awareness aimed at parents and families starts Sep 7–8, not
+before.** His reasoning: families are still away in late August (his own included), and the week
+school opens is when parents are back, paying attention, and already reading school comms and going
+to PTA meetings. Reaching them earlier spends the audience while nobody is home.
+
+**The date itself changes nothing** — Q2's post has been scheduled for Tue Sep 8 since 2026-08-15,
+for the same Labor Day reason. What changes is scope: this is no longer one post's timing, it is
+**every parents-facing action**, and it turns Aug 25 – Sep 6 into a prep window with hard dates
+rather than open time. Two calendar facts set the shape: **Sep 7 is Labor Day** and **school opens
+Thu Sep 10**, so the usable days are Tue Sep 8 and Wed Sep 9 — the planning days.
+
+**What has to be true by then, and isn't yet:**
+
+- **The map is empty for that week.** Dated family/kids cards run out Sep 4; Sep 7–13 has none. The
+  roster's criterion 3 — "your events are live here" must be literally true at send time — cannot be
+  met today. Worse, the source roster carries no school-year sources at all: no PS 31 / 34 / 110 PTA,
+  no District 14, no after-school or fall-registration feeds. Fall registration is the story Q2 was
+  built to ride and nothing we ingest publishes it. Roughly two weeks of ingest work, now dated.
+- **The asks to redistributors go before Sep 7, not with the wave.** PTA newsletters and first-week
+  comms are written the week of Aug 31 – Sep 4. The library's children's librarian, the three PTAs
+  (@ps110pta 2,006 · @ps31pta 811 · @ps34elementary 238), Town Square (Schoolfest/Campfest) and the
+  class providers have to be asked ~Sep 1–3 to carry us during school-open week. Consumer awareness
+  waits; the supply-side ask cannot.
+- **Laura is on the critical path and still hasn't been contacted.** The plan is a member-share, not
+  a cold post, and the named member is Laura — whose re-invite is unsent. That ask needs a week or
+  two of lead, so it goes now.
+- **The signup-ask rebuild gets a deadline: live by ~Sep 4.** It converts 2 of 18 today. If Sep 8–9
+  is the largest reach event of the runway, the repair has to be merged and soaked on smaller traffic
+  first, or the wave arrives at a broken mechanism.
+- **October gets tighter and the next two weeks have to pay for the delay.** Cohort entry effectively
+  closes ~Sep 25 and the denominator has to go from 17 to ~48. A Sep 8 start still matures in time
+  (four weeks: Sep 8 – Oct 5), but the sharpest wedge we have now only contributes in the back half.
+  Aug 25 – Sep 6 must therefore be carried entirely by the channels the school calendar doesn't touch
+  — Reddit, Greenpoint Neighbors, the 16K group's free-events doorway, Nextdoor, the arts wave, IG.
+  All were cleared 2026-08-17 and none had fired as of 8/19. If they slip again, the delay is unpaid
+  and the October read comes back thin. **This is the risk the decision creates.**
+
+**Two rulings made with it:**
+
+1. **Greenpoint Moms replaces Williamsburg & Greenpoint BK Parents.** The 2026-08-19 ruling picked
+   both BK Parents and Brooklyn Baby Hui; the 8/17 attention map had already measured BK Parents at
+   **0 posts/month — dormant**. With the whole families push concentrated on one morning, half of it
+   would have gone into a dead room. Q2 now posts to **Brooklyn Baby Hui** (`parents-hui`) and
+   **Greenpoint Moms** (`parents-gpmoms`, 5.2K, public, ~100 posts/mo), one src each so the
+   return-between-srcs comparison still reads. `parents-wgbk` is retired unsent.
+2. **That week's Monday digest moves to Tue Sep 8.** Sep 7 is a holiday. Digest, both group posts and
+   any PTA shares land the same morning; the weekly cadence slips one day, once.
+
+**Doctrine exception, recorded so it doesn't read as a violation later:** the echo-chamber rule says
+saturate one network before opening the next, with parents/camps as the declared first network. The
+season makes that impossible — arts and general-neighborhood networks now go first, by calendar, not
+by choice. The density-inside-a-network principle still stands once Sep 8 arrives.
+
+**Label carried to the October read:** a cohort entering Sep 8 enters at the top of the September
+rebound, which flatters its return rate against a year-round baseline; the Facebook webview storage
+asymmetry (P1) pulls the same cohort's measured return the other way. Both already on the books —
+noted here because so much of the October cohort now enters on one morning that both effects hit the
+same people at once.
+
+**Not banked on:** parent-teacher conference evenings are Sep 23 (middle) and **Sep 30 (elementary)**.
+Elementary is our demographic and Sep 30 falls past the ~Sep 25 cohort close, so it cannot help
+October.
+
 ## 2026-08-25 (second entry) — Tend Greenpoint's web source is dropped; the newsletter already carried it
 
 Decision (Batu, this session), on the question the 2026-08-24 review PR raised.

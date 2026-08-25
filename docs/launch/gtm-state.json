@@ -17,51 +17,51 @@
     }
   },
   "focus": {
-    "goal": "Give people a reason to come back — the sends are done, nothing returns them yet",
-    "why": "Wave 1 is fully sent: five notes out, and the friends-family cohort proved the product lands (16 people, 39 card opens, 4 actions) and then went silent after two days with zero return events. That is the exact gap D1–D6 named on 8/17. The return mechanisms are built and sitting on an unmerged branch; the weekly send starts Monday.",
-    "doneWhen": "Perri answered today · the return branch reviewed and merged · first Monday send out Aug 24 · parallel-reach channels each on their own src. The 8/25 readout reads results; D3 deleted its gate.",
+    "goal": "Make the week school opens the densest family week the map has had — and fire every channel that does not need parents in the meantime",
+    "why": "Batu ruled 2026-08-25 that parents- and families-facing awareness starts Sep 8: families are away through Labor Day, school opens Thu Sep 10, and that week is when parents are back and reading school comms. Q2 was already scheduled for Sep 8, so the date does not move — the scope does. Aug 25 - Sep 6 is now a prep window with hard dates, and October depends on the non-parent channels carrying it, because cohort entry closes ~Sep 25 and the denominator has to go 17 → ~48.",
+    "doneWhen": "Sep 7-13 has real dated family cards · school-year sources on the roster · Laura asked to share · signup-ask rebuild live by ~Sep 4 · redistributor asks out ~Sep 1-3 · Reddit/FB groups/Nextdoor/arts wave/IG all fired before Sep 6",
     "steps": [
       {
-        "label": "Replied to Perri — she offered a call or her shop Wed/Thu 1–4pm",
-        "when": "Today, Wed 8/19",
-        "status": "done",
-        "date": "2026-08-19"
-      },
-      {
-        "label": "Return branch merged — Follow ask un-gated, weekly cadence published, printable /week sheet live",
-        "when": "Today",
-        "status": "done",
-        "date": "2026-08-19"
-      },
-      {
-        "label": "PR #42 closed — superseded by the 8/19 reconciliation readout",
-        "when": "Today",
-        "status": "done",
-        "date": "2026-08-19"
-      },
-      {
-        "label": "D3 parallel reach — Film Noir + arts wave, Nextdoor, FB-group answer posts, IG carousel, each on its own src",
+        "label": "Fire the channels cleared on 8/17 and still unsent — Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir → WORD → Flower Cat), IG carousel",
         "when": "This week",
         "status": "next",
-        "date": "2026-08-23"
+        "date": "2026-08-28"
       },
       {
-        "label": "SummerStarz finale — be there (D4)",
-        "when": "Thu 8/21",
+        "label": "Send the last two warm re-invites — Michael, Laura & Edmond",
+        "when": "This week",
         "status": "next",
-        "date": "2026-08-21"
+        "date": "2026-08-26"
       },
       {
-        "label": "First Monday send — the weekly cadence D2 ratified",
-        "when": "Mon 8/24",
-        "status": "later",
-        "date": "2026-08-24"
+        "label": "Ask Laura to be the member who shares Q2 on Sep 8 — needs a week or two of lead",
+        "when": "This week",
+        "status": "next",
+        "date": "2026-08-26"
       },
       {
-        "label": "Readout reads Wave 1 results — gates nothing (D3)",
-        "when": "Tue 8/25",
+        "label": "Add school-year and fall-registration sources to the ingest roster (PTAs, District 14, after-school and class providers) and build out Sep 7-13 family supply",
+        "when": "Aug 26 - Sep 4",
+        "status": "next",
+        "date": "2026-09-04"
+      },
+      {
+        "label": "Signup-ask rebuild merged and live, soaked on smaller traffic first",
+        "when": "By Sep 4",
         "status": "later",
-        "date": "2026-08-25"
+        "date": "2026-09-04"
+      },
+      {
+        "label": "Redistributor asks — library children's librarian, PS 31/34/110 PTAs, Town Square, class providers — so they carry us in first-week comms",
+        "when": "~Sep 1-3",
+        "status": "later",
+        "date": "2026-09-03"
+      },
+      {
+        "label": "Families morning — Q2 posts (parents-hui + parents-gpmoms), the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
+        "when": "Tue Sep 8",
+        "status": "later",
+        "date": "2026-09-08"
       }
     ]
   },
@@ -421,10 +421,17 @@
       "actual": null,
       "readAt": null,
       "verdict": "not yet read",
-      "scheduledFor": "Tue Sep 8 (ratified 2026-08-15 — Labor Day empties the earlier date)",
-      "implication": "Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24–30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions. GROUP CHOICE RULED 2026-08-19 (Batu): BOTH groups — Williamsburg & Greenpoint BK Parents (src=parents-wgbk) and Brooklyn Baby Hui (src=parents-hui), one src each so the rule's \"return beats other srcs\" comparison stays readable. The single shared `parents` tag is superseded and must not be sent.",
-      "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels. Cross-channel return comparisons carry that asymmetry caveat (P1). Two groups means Q2 now carries two reads, not one — and they are not independent samples of the same population (one is join-gated at ~5k, the other ~10k with Slack side-channels). Compare each against the other srcs, not against each other.",
-      "source": "growth §4; roster"
+      "scheduledFor": "Tue Sep 8 (ratified 2026-08-15; scope widened 2026-08-25 — Sep 7-8 is now the start of ALL parents-facing awareness, not just this post. Sep 7 is Labor Day and school opens Thu Sep 10, so the usable days are Tue 9/8 and Wed 9/9.)",
+      "implication": "Moved out of Wave 1 for three reasons: the week-2 read would have landed Aug 24-30 when the dated kids inventory collapses (a kill would read on a supply artifact, not demand); the feed's strongest late-August wedge story is fall registration, so the back-to-school post writes itself; and the delay buys time to close the preconditions. GROUP CHOICE RULED 2026-08-19 (Batu): both groups, one src each so the rule's \"return beats other srcs\" comparison stays readable. AMENDED 2026-08-25 (Batu): Williamsburg & Greenpoint BK Parents is dropped unsent — the 8/17 attention map measured it at 0 posts/month, dormant, and with the whole families push on one morning half of it would have gone into a dead room. Q2 now posts to Brooklyn Baby Hui (src=parents-hui) and Greenpoint Moms (src=parents-gpmoms, 5.2K, public, ~100 posts/mo). The single shared `parents` tag and `parents-wgbk` are both superseded and must not be sent.",
+      "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels. Cross-channel return comparisons carry that asymmetry caveat (P1). Two groups means Q2 carries two reads, not one — and they are not independent samples (one join-gated ~10k with Slack side-channels, one public ~5.2k). Compare each against the other srcs, not against each other. Both entering Sep 8 also puts them at the top of the September rebound, which flatters return against a year-round baseline — the two effects pull opposite ways on the same people.",
+      "source": "growth §4; roster",
+      "preconditions": [
+        "Dated family/kids cards live for Sep 7-13 — today the inventory ends Sep 4 and that week has none (roster criterion 3: \"your events are live here\" must be literally true at send time)",
+        "School-year sources on the ingest roster — no PTA (PS 31/34/110), no District 14, no after-school or fall-registration feed exists today",
+        "Laura asked to be the member who shares — her re-invite is still unsent and the ask needs a week or two of lead",
+        "Signup-ask rebuild merged and live by ~Sep 4, soaked on smaller traffic first",
+        "Redistributor asks out ~Sep 1-3 (library children's librarian, three PTAs, Town Square, class providers) so they can carry us in first-week comms"
+      ]
     },
     {
       "id": "Q3",
@@ -853,13 +860,43 @@
     },
     {
       "src": "parents",
-      "label": "Parents-group post (Q2)",
+      "label": "Parents-group post (Q2) — shared tag, SUPERSEDED",
       "wave": "1→moved",
       "sent": null,
       "firstSession": null,
       "shared": null,
       "reply": null,
-      "status": "posts Tue Sep 8, morning (ratified 8/15)"
+      "status": "do not send — superseded 2026-08-19 by per-group srcs; row kept because the link exists in channel-links.md"
+    },
+    {
+      "src": "parents-hui",
+      "label": "Q2 parents — Brooklyn Baby Hui (~10.6K, ~300 posts/mo + Slack pods)",
+      "wave": "1→moved",
+      "sent": null,
+      "firstSession": null,
+      "shared": null,
+      "reply": null,
+      "status": "posts Tue Sep 8, morning. Member-share, not an owner post — Laura is the intended sharer and has not been asked yet."
+    },
+    {
+      "src": "parents-gpmoms",
+      "label": "Q2 parents — Greenpoint Moms (5.2K, public, ~100 posts/mo)",
+      "wave": "1→moved",
+      "sent": null,
+      "firstSession": null,
+      "shared": null,
+      "reply": null,
+      "status": "posts Tue Sep 8, morning. Swapped in 2026-08-25 for Williamsburg & Greenpoint BK Parents, which the 8/17 attention map measured at 0 posts/month."
+    },
+    {
+      "src": "parents-wgbk",
+      "label": "Q2 parents — Williamsburg & Greenpoint BK Parents — RETIRED UNSENT",
+      "wave": "n/a",
+      "sent": null,
+      "firstSession": null,
+      "shared": null,
+      "reply": null,
+      "status": "retired 2026-08-25 without ever sending — dormant group, 0 posts/month (attention map 8/17). Row kept so the link does not lose its meaning if it ever leaked."
     },
     {
       "src": "org-film-noir",
@@ -1100,7 +1137,7 @@
     },
     {
       "id": "weekly-send",
-      "text": "D2: the Monday digest ships weekly from Aug 24 — drafted by the routine, sent by Batu, three picks + 'the other N are on the map' + link. DENSITY FLOOR: a thin week is skipped, never sent thin. No hyperlocal product in the researched record ever held weekly habit without a scheduled send.",
+      "text": "D2: the Monday digest ships weekly from Aug 24 — drafted by the routine, sent by Batu, three picks + 'the other N are on the map' + link. DENSITY FLOOR: a thin week is skipped, never sent thin. No hyperlocal product in the researched record ever held weekly habit without a scheduled send. ONE-WEEK EXCEPTION (2026-08-25, Batu): the Sep 7 send moves to Tue Sep 8 — Sep 7 is Labor Day — so the digest, both parent-group posts and any PTA shares land the same morning. Cadence slips one day, once, and resumes Mon Sep 14.",
       "source": "strategy review D2; growth §0/§2; log 2026-08-17 sixth"
     },
     {
@@ -1147,6 +1184,11 @@
       "id": "published-promise-beats-ratification",
       "text": "Standing rule (2026-08-19): a published promise is a constraint on the build, not a document that follows it. Anything that would falsify a live legal or trust page (privacy.html, terms, coverage standards) leaves any auto-merge class and becomes a decision for Batu, whatever its prior ratification. Set by the dropped cookie mirror, which was ratified twice and still stopped.",
       "source": "DECISION_LOG 2026-08-19 sixth entry"
+    },
+    {
+      "id": "families-start-sep-8",
+      "text": "Ruled 2026-08-25 (Batu): all parents- and families-facing awareness starts Tue Sep 8 — families are away through Labor Day (Sep 7) and school opens Thu Sep 10, so the planning days are 9/8-9/9. Scope is every parents-facing action, not just Q2. Two consequences carry: (a) supply-side and redistributor asks go BEFORE the wave (~Sep 1-3), because PTA newsletters and first-week comms are written the week of Aug 31; (b) Aug 25 - Sep 6 belongs entirely to channels the school calendar does not touch (Reddit, Greenpoint Neighbors, the 16K free-events doorway, Nextdoor, arts wave, IG) — if those slip again the delay is unpaid and the October read comes back thin. Named exception to the echo-chamber rule for these two weeks: parents/camps is still the declared first network, but arts and general-neighborhood go first by season, not by choice; density-inside-a-network resumes Sep 8.",
+      "source": "DECISION_LOG 2026-08-25 third entry"
     }
   ],
   "daily": {
