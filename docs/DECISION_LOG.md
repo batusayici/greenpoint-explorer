@@ -4,6 +4,63 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-26 — When a listing states a time twice, print the prose; and a multi-day run with different daily hours is more than one card
+
+**Batu, ruling on the one card PR #49 held.** A volunteer clean up at Bedford Slip on Sunday 8/30 was
+held because the BPL North Brooklyn Environmental Community Calendar states its time twice and the
+two disagree: the header reads `Sun, Aug 30 8:00 am`, the body of the same entry reads
+`Volunteer clean up from 11:00AM to 1:00PM`. The hold was correct — a three-hour error on a volunteer
+shift sends someone to an empty shoreline.
+
+**It resolved on evidence, not on a new reading of an old rule.** Batu supplied the organiser's own
+Partiful page for that block on that weekend. It puts the Sunday programme at `10AM-8PM`, so nothing
+is happening there at 8:00 am and the header cannot be the clean up's start. The body's stated shift
+sits inside the day and is the only credible reading. The card ships at 11am-1pm.
+
+**The rule the hold asked for still stands, and it is written on its own terms.** The held-card doc
+proposed extending the 2026-08-14 period-pantry ruling to cover a body that *narrows* its header.
+That is the wrong parent. The pantry ruling is about **what kind of card a thing is** — a standing
+amenity belongs to its venue, and a body describing wider availability than the date field was the
+tell. This is about **which of two stated clocks to print** on a card that is plainly a dated event.
+So: **when one listing states a time twice and the statements disagree, print the prose, not the
+header or the date field.** A person wrote the sentence to describe the event; the header is calendar
+plumbing. That reasoning holds whether the prose widens the window or narrows it, and it does not
+borrow an argument about card type to get there.
+
+**Second ruling, and the one with the wider blast radius: a multi-day run whose daily hours differ is
+one card per hours-pattern.** The Partiful page also surfaced the weekend the clean up sits inside,
+which the deck did not carry at all: `Friday, August 28th 5PM-8PM Saturday, Aug 29th 10AM-8PM Sunday,
+Aug 30th 10AM-8PM`. Two rules collide here. "Do not card the same thing repeatedly just because the
+source repeats it" says one programme, one card. But a dated card's window states **one sitting
+repeated daily** (2026-08-13) — so a single card spanning 8/28 to 8/30 has to pick one clock for all
+three days, and either pattern lies about the others. Choosing 10AM-8PM would have put the card in
+front of readers from 10am on Friday for something that opens at 5pm — the same harm the clean up was
+held over. **So the weekend ships as two cards: the Friday opener, and the Saturday-Sunday run.** The
+split is by hours-pattern, not by day: two days that share a clock stay on one card.
+
+**What is deliberately NOT carded.** The page says `Saturday come play chess`, with no time given.
+Carding it would mean inventing one, and naming chess in any card's copy mechanically forces the
+`games` lens (`julyCards.test.mjs`), which would file a street festival under Games. It stays
+uncarded and unmentioned. TreesNY's tree care session HAS a stated clock (`Saturday 1:00PM - 2:00PM`)
+and its own name and partner, so it is its own card under the different-bill rule.
+
+**Lens calls, since two of them are close.** The clean up and the TreesNY session are `civic` — the
+first is the work-shift rule at its plainest, the second is a judgment: an info session is not itself
+a shift, but it teaches the care of street trees a reader is then expected to give, which is
+neighborhood stewardship. The two street cards are `food_drink` — the stated activity is eating
+together at tables, and "merely social" carries no lens while food does.
+
+**One thing left open for Batu.** The three cards sourced from Partiful come back `SKIP` from
+`verify-quotes` — "no roster source for partiful.com" — so their quotes have no snapshot on disk to
+check against, exactly like a newsletter card. `partiful.com` is already a `WebFetch` allowlist
+domain but is not in `ingest-sources.json`, and roster additions are human-gated. Worth adding if
+Partiful keeps turning up as the organiser page for street events; not added here.
+
+**A dead source worth knowing about.** Chasing the organiser first took me to North Brooklyn
+Neighbors, the obvious host for a Bedford Slip clean up. Their domain has expired, and the alternate
+address that still resolves is now a parked page serving casino spam. Neither domain is in the roster
+or the allowlist, so nothing needed cleaning up — but a well-known local group's website is gone.
+
 ## 2026-08-25 (fourth entry) — Rana posts to several groups, the warm re-invites are retired, Perri is met in person
 
 Three corrections from Batu, same session as the families-timing ruling above.

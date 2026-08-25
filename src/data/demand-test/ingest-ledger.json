@@ -2082,8 +2082,8 @@
       "addedAt": "2026-08-24"
     },
     {
-      "name": "Bedford Slip volunteer cleanup, Sun 8/30 — the listing gives two different times",
-      "note": "HELD 2026-08-25 (new-judgment: a conflict inside one source that has to be adjudicated). The North Brooklyn Environmental Community Calendar states the item twice over, and the two statements disagree: the listing header reads \"Bedford Slip\\nSun, Aug 30 8:00 am\\n1 Bedford Av Brooklyn, NY 11222\" while the body of the same entry reads \"Volunteer clean up from 11:00AM to 1:00PM\". Nothing on the page says which is the start. The library period-pantry precedent (2026-08-14) says trust the body when it describes the thing and the date field is a listing convention — but applying it here is an adjudication, not a mechanical read, so the card is held rather than shipped with a guessed start. It is otherwise complete: civic lens (a volunteer cleanup is hands-on participation with neighborhood stakes), 1 Bedford Ave is zip 11222, free-ness not stated. WHAT WOULD RESOLVE IT: the organiser's own page or a second listing naming one start time.",
+      "name": "Bedford Slip volunteer cleanup, Sun 8/30 — RESOLVED, shipped at 11am-1pm",
+      "note": "RESOLVED 2026-08-26 (PR #49, Batu). Shipped as bedford-slip-cleanup-0830 at 11:00-13:00. The conflict was settled on evidence, not by extending a precedent: the organiser's own Partiful page for that block that weekend (https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH) puts the Sunday programme at \"Sunday, Aug 30 10AM-8PM\", so nothing is happening there at 8:00 am and the listing header cannot be the cleanup's start. The body's \"Volunteer clean up from 11:00AM to 1:00PM\" is the only credible reading. The general rule Batu set at the same time: when one listing states a time twice and the two disagree, print the prose, not the header — see DECISION_LOG 2026-08-26 and the ingest SKILL.md rule of the same date. The same Partiful page also surfaced the previously-uncarded Bedford Slip Weekend (3 more cards). Do not re-open this.",
       "addedAt": "2026-08-25"
     },
     {

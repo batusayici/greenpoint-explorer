@@ -592,11 +592,21 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Beginner Patchwork on 9/6; Flower Cat's Live Band Karaoke on 8/28, free
   // entry; and the last Leaves summer writing group on 9/3, which the 8/11 run
   // deferred on horizon alone and which is now inside the window.
-  assert.equal(seed.cards.length, 155);
+  // 2026-08-26, PR #49 review (Batu): +4 Bedford Slip cards. The held volunteer
+  // cleanup ships at 11am-1pm — the organiser's own Partiful page for that same
+  // weekend puts the block's Sunday programme at 10AM-8PM, so the listing's
+  // 8:00 am header cannot be the cleanup's start and the body's stated shift is
+  // the only credible reading. The same page surfaced the weekend it sits
+  // inside, previously uncarded: an opening Friday evening, the Saturday-Sunday
+  // daytime run, and TreesNY's tree care session. The weekend is TWO cards, not
+  // one, because Friday runs 5-8PM and the other two days 10AM-8PM, and a
+  // dated card's window states one sitting repeated daily — one card cannot
+  // carry both patterns without lying about one of them.
+  assert.equal(seed.cards.length, 159);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.category === "event"), 79, "74 + 5 Eavesdrop midnight sets released by the allDay ruling (2026-08-25)");
+  assert.equal(count((c) => c.category === "event"), 83, "79 + the four Bedford Slip cards (2026-08-26)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
   assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
   assert.equal(count((c) => c.filters.includes("live_music")), 29, "24 + 5 Eavesdrop midnight sets (2026-08-25)");
@@ -1139,8 +1149,18 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   // "volunteer with North Brooklyn Parks Alliance to beautify Msgr. McGolrick
   // Park". That is the work-shift rule at its plainest: hands-on participation
   // with neighborhood stakes, no social-tail inference needed.
+  // 2026-08-26 (PR #49): two Bedford Slip cards join. The Sunday volunteer
+  // clean up is the work-shift rule at its plainest. TreesNY's street tree care
+  // session is the harder one and it is deliberate: an info session is not
+  // itself a shift, but it teaches the care of the street trees a reader is
+  // then expected to give — neighborhood stewardship, which is what this lens
+  // is for. The rest of that weekend is NOT here: the Friday and Saturday-
+  // Sunday street cards are people eating at tables, which is exactly the
+  // "merely social" the 2026-07-30 ruling evicted.
   assert.deepEqual(civic, [
     "adopt-a-business",
+    "bedford-slip-cleanup-0830",
+    "bedford-slip-tree-care-0829",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",

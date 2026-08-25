@@ -1,5 +1,23 @@
 # Held cards — daily thin run, 2026-08-25
 
+> **RESOLVED 2026-08-26 (Batu, PR #49). Nothing here is still held.** The clean up
+> ships at **11:00am-1:00pm** as `bedford-slip-cleanup-0830`, on evidence rather
+> than on the rule extension this doc proposed: the organiser's own Partiful page
+> for that block that weekend puts the Sunday programme at `10AM-8PM`, so nothing
+> is happening there at 8:00 am and the listing header cannot be the clean up's
+> start. That page also surfaced the weekend the clean up sits inside, which the
+> deck did not carry at all — three more cards shipped with it.
+>
+> The rule question was answered too, but written on its own terms rather than as
+> an extension of the 2026-08-14 pantry ruling: **when one listing states a time
+> twice and the two disagree, print the prose, not the header.** Batu also settled
+> a second question this weekend forced — **a multi-day run whose daily hours
+> differ is one card per hours-pattern.** Both in `docs/DECISION_LOG.md`
+> (2026-08-26) and the ingest skill.
+>
+> Everything below is the run's original reasoning, kept as written.
+
+
 One card was held this run. Everything else the run authored shipped to `main`
 in `bffccc4`.
 
