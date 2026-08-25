@@ -334,3 +334,15 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   72) plus that silence check. **The general rule both of these came from: a
   number that leaves the building gets an instrument; a number that cannot be
   defined twice the same way gets retired.**
+- **(proposed 2026-08-25, cycle 7 — PENDING RATIFICATION.)** **Every population
+  filter behind a headline number gets a named definition in the readout, or an
+  instrument.** Cycle 7 could not honestly trend "NYC-metro" against cycle 6:
+  cycle 6 reported 69 people without recording how it computed that filter, and
+  the same idea reads **85** on a NY/NJ/CT region filter or **80** on a
+  five-borough city filter. The demand gate happened to survive the ambiguity
+  (3 of 20 vs 3 of 19) — that is luck, not design, and a base number that moves
+  25% on an unrecorded choice is not a number. This is the 2026-08-19 rule (*a
+  number that leaves the building gets an instrument*) applied one level down,
+  to the filters underneath the numbers. Cheapest form: a `nycMetro()` helper
+  beside `uniqueCoverage()` in `src/demand-test/coverage.js`, quoted rather than
+  re-derived. Until it exists, print the filter expression next to the number.
