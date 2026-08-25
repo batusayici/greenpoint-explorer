@@ -2132,7 +2132,6 @@
     "macha-studio": "2026-08-11",
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
-    "tend-greenpoint": "2026-08-16",
     "action-city-comics": "2026-08-16",
     "golden-drum": "2026-08-19"
   },
@@ -2304,13 +2303,6 @@
       "reason": "The shop CLOSED — a permanent state, not a quiet source, and the snapshot says so in its own banner: 'OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE'. That closure is already the deck's card for this source (archestratus-closed). CORRECTED 2026-08-18: the prior wording said the only physical item was an undated sale, which this run's snapshot contradicts — it now carries 'SAT AUG 22 / Archestratus Hang at the Greenmarket', a dated in-person item inside the window. It is NOT carded, and deliberately: the line names no venue (which greenmarket), no address and no time, and picking the McCarren greenmarket because the deck already has one would be inventing the location. It is in watchItems. Everything else on the events page is online-only and unmappable: 'SUN AUG 30 via ZOOM / A Cooking Class on Arancine' and 'SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)'. The wind-down sale, 'PAIGE IS MOVING! A SALE', still states no dates anywhere in the snapshot. WHAT WOULD CHANGE IT: the Aug 22 hang acquiring a stated venue and time, or a new dated in-person event.",
       "addedAt": "2026-08-18",
       "expiresAt": "2026-09-01"
-    },
-    {
-      "sourceId": "tend-greenpoint",
-      "gapKey": "NO SNAPSHOT",
-      "reason": "ROSTER DEFECT, not a source going quiet, and not an egress denial. This run's fetch reported it verbatim as \"ERROR tend-greenpoint — the embedded strategy needs an `attr` to read\": the roster entry declares fetch: \"embedded\" without the `embedded: { attr }` block that strategy requires, so the fetcher refuses before it ever opens a socket. The source has therefore never produced a snapshot, and its two live cards (tend-plant-sale-0821, tend-additional-20-off) are both newsletter-derived — Tend is in senderRegistry as messages+d4sh8s6s9jcvd@squaremktg.com and the offers are quoted from its own emails, which is why the deck has supply here while the web snapshot is empty. FIX: add the `attr` to the roster entry (or drop the source back to `auto`). That is a roster change and so human-gated — proposed in the 2026-08-17 run report, not applied here.",
-      "addedAt": "2026-08-17",
-      "expiresAt": "2026-08-31"
     },
     {
       "sourceId": "go-green-bk",

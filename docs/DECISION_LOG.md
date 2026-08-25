@@ -4,6 +4,29 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-25 (second entry) — Tend Greenpoint's web source is dropped; the newsletter already carried it
+
+Decision (Batu, this session), on the question the 2026-08-24 review PR raised.
+
+**The web source never fetched once.** `fetch: "embedded"` needs an `attr` naming the HTML attribute
+the JSON sits in; the roster entry never had one, so the fetcher refused before opening a socket and
+every run spent an error on it. It could not simply be given the attribute — the content is not in an
+attribute at all, it lives in the body of a 215KB script tag, which `embedded` cannot read.
+
+**Why it mattered beyond tidiness.** A run stops ingesting when errored sources pass 15% of those
+attempted. The 2026-08-24 run finished at exactly 15%. A source that has never contributed a card was
+one slot away from halting a Monday refresh.
+
+**Nothing is lost.** Tend is a trusted sender in the ledger's sender registry, and the 2026-08-17
+coverage explanation had already established that both live Tend cards were quoted from its emails
+rather than its page — which is why the deck had supply here while the web snapshot stayed empty. The
+page carried only a standing promo banner; dated offers arrive by email.
+
+**Recorded, not deleted.** The entry moves to `manualSources` with the measurement that settled it and
+what would reopen it, so a later run does not re-onboard it and rediscover the same failure. Both
+hosts stay allowlisted for R1 lookups — they are separate hosts to the egress gateway, and dropping
+either re-creates the 2026-08-15 confusion where one worked and the other 403'd.
+
 ## 2026-08-25 — A card says whether it is all-day; midnight becomes a real time again
 
 Decision (Batu, this session), answering the question the 2026-08-21 review PR held eight cards on.

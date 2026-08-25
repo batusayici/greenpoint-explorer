@@ -908,17 +908,6 @@
       "standing": true
     },
     {
-      "id": "tend-greenpoint",
-      "name": "Tend Greenpoint",
-      "url": "https://www.tendgreenpoint.com/",
-      "group": "venue",
-      "cadence": "weekly",
-      "fetch": "embedded",
-      "standing": false,
-      "citeHost": "tendgreenpoint.com",
-      "notes": "252 Franklin St, Greenpoint plant shop and garden nursery. Already in senderRegistry as publisher \"Tend Greenpoint\" (messages+d4sh8s6s9jcvd@squaremktg.com, a Square marketing relay) — the SENDER trust decision was made 2026-07; this adds the WEB source so its evidence has somewhere to live. ⚠ USE THE `www.` URL. The bare host redirects (HTTP/2 301 → https://www.tendgreenpoint.com) and the routine's egress gateway treats the two as SEPARATE hosts: on 2026-08-15 the bare host CONNECTed fine while www 403'd, so an allowlist entry for tendgreenpoint.com alone left every fetch dead and the block read as resolved from the outside for a day. Same shape as happy-medium.co → www.happy-medium.co. Both hosts are now allowlisted; keep both. FETCH IS `embedded`: the page is a JS shell and tag-stripping reduces 256 KB to ONE readable line (the <title>). Every fact — the address prose, the sale banners, the vendor copy — lives in escaped JSON inside the HTML. 322 usable prose lines came out of the payload. Do not conclude this source is dead from a thin plain-text read. LOCALLY OWNED: single Greenpoint storefront, no second location found on the site. The homepage carries the standing sale-on-sale (\"For a limited time, save 20% off already reduced merchandise!\") but NOT the dated plant sale — dated offers arrive by email only, so persist each one into this snapshot as a [NEWSLETTER PERSISTED] block at ingest time. `standing: false` is a REVIEWED call: the recurring phrasing on the page is retail promo copy, not recurring programming."
-    },
-    {
       "id": "action-city-comics",
       "name": "Action City Comics",
       "url": "https://www.actioncitycomics.com/",
@@ -948,6 +937,14 @@
       "status": "dropped",
       "reason": "DROPPED 2026-08-13 (Batu). First and only fetch: 'only 102 chars after 7.5s in chromium — page never rendered'. Plain fetch and the browser path both return an empty shell, so it is JS-thin like sunshine-laundromat (169 bytes) and brooklyn-youth-ballet (180). It had no events or news section either, so nothing was lost. Left in the roster it would count against the 15% reach ceiling on every run for a source that has never produced a card. NOTE WHY IT WAS EVER ADDED: onboarded the same morning on a WebFetch read alone, which executes differently from the roster's fetch — a WebFetch read is NOT evidence the roster can fetch a source (same lesson as greek-kitchen, onboarded 2026-08-08 while egress-denied and never actually fetched).",
       "revisitIf": "The site is rebuilt server-rendered, or an events surface appears. Used/new vinyl shop (also Mexican Summer and Anthology Editions), open daily 12-8pm — worth carding by hand if it ever runs an in-store."
+    },
+    {
+      "id": "tend-greenpoint",
+      "name": "Tend Greenpoint",
+      "address": "252 Franklin St",
+      "status": "manual-newsletter",
+      "reason": "REMOVED FROM THE FETCH ROSTER 2026-08-25 (Batu), not from the neighborhood. The web source NEVER fetched once in its life: `fetch: \"embedded\"` needs an `attr` naming the HTML attribute the JSON sits in, the entry never had one, and the fetcher refuses before it opens a socket — so every run spent an error on it. It cannot simply be given the attribute: the content is not in an attribute at all (no attribute on the page exceeds 400 chars, no hydration markers), it lives in the body of a 215KB script tag, which `embedded` cannot read. That mattered beyond tidiness — the 2026-08-24 run finished at EXACTLY the 15% error ceiling that halts ingest, so a source that can never contribute was one slot away from stopping a Monday run. Its supply is already covered: Tend is a trusted sender in the ledger's senderRegistry (messages+d4sh8s6s9jcvd@squaremktg.com, a Square marketing relay, kinds: discount), and the roster note said it itself — dated offers arrive by email only, the page carried just the standing promo banner. ⚠ BOTH HOSTS STAY ALLOWLISTED (tendgreenpoint.com and www.tendgreenpoint.com) for R1 lookups: they are separate hosts to the egress gateway and un-allowlisting either re-creates the 2026-08-15 confusion where one worked and the other 403'd. NOTHING IS LOST: the 2026-08-17 coverage explanation settled this — both live Tend cards were quoted from its emails, not the page, which is why the deck had supply here while the web snapshot stayed empty.",
+      "revisitIf": "The `embedded` fetch strategy learns to read a script BODY rather than only an attribute, or Tend's site starts serving its content server-rendered. Either would make the homepage's standing promo re-verifiable; the dated offers would still come from the newsletter."
     }
   ]
 }
