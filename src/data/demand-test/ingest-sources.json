@@ -919,6 +919,22 @@
         "www.actioncitycomics.com"
       ],
       "notes": "570 Manhattan Ave — comic shop, onboarded 2026-08-17 (Batu). STILL BROWSER-ONLY and provably so: the site is a Vue SPA on Square Online/Weebly infrastructure (window.__BOOTSTRAP_STATE__, editmysite.com map iframe); plain WebFetch of the homepage returns just the page title, no body. The homepage itself carries an \"Events\" block, server-rendered on browser load with title, date, start time, and live ticket-stock status (\"Low stock\"/\"Out of stock\") per event — confirmed 2026-08-17: Flesh & Blood Armory Tue Aug 18 7pm, One Piece Tournament Wed Aug 19 7pm, One Piece OP-17 Constructed Prerelease Wed Aug 26 7pm. Each event is a ticketed line item with a \"Get tickets\" submit button, not a distinct URL — there is no per-event permalink, so cite the homepage itself. Address/hours/phone/email also live on the same page (Location & Hours block), confirmed against the page's own embedded Google Map (lat 40.722538, lng -73.949837, matches Nominatim). Weekly recurring themes stated on /gaming: \"Join us Tuesdays for Flesh and Blood and Sundays for Sorcery!\" — no specific time given for that general statement, so only the individually dated/ticketed tournaments get carded, not an inferred recurring card."
+    },
+    {
+      "id": "nbk-open-streets",
+      "name": "NBK Open Streets (Partiful)",
+      "url": "https://partiful.com/u/N7B7Ape64RYAHsjXJK5qqhk5lwu2",
+      "citeHost": "partiful.com",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "North Brooklyn Open Streets — \"a coalition supporting safe Open Streets for all\", per their own profile blurb. Added 2026-08-25 (Batu) after PR #49: the Bedford Slip clean up the BPL calendar listed with two conflicting times is theirs, and their event page is what settled it. This is the ORGANISER PAGE, not a single event — 25 events on it and it carries the one we carded, so it does not expire the way an /e/ URL would. Plain fetch returns 231KB of real content with the events in server-rendered JSON-LD (`@type: Event` with name/startDate/endDate/url), so fetch=auto takes the cheap path; verified by running the script, not by a WebFetch read (see the brooklyn-record-exchange manualSources note for why that distinction matters). GEOGRAPHY IS NOT MECHANICAL HERE: this coalition runs Berry Street in WILLIAMSBURG as well as Bedford Slip, and their titles do not say which — \"Spring Cleaning on Berry Open Street\" and \"Feb-Brew-Berry\" are Berry Street and OUT OF SCOPE, while Bedford Slip (1 Bedford Ave, 11222) is in the bbox. Check the event page's stated location before carding, every time. THE PROFILE PAGE CARRIES NO CLOCK: its JSON-LD gives a single start/end spanning the whole run, and the per-day hours live only in the event page's own prose (\"Friday, August 28th 5PM-8PM Saturday, Aug 29th 10AM-8PM\"), which is exactly the fact a card needs — hence the detail block below. The detail URL is pinned to one event and MUST be swapped to the current one when this weekend rolls off; a stale detail URL is dead weight, not a failure.",
+      "detail": {
+        "urls": [
+          "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
+        ],
+        "limit": 1
+      }
     }
   ],
   "manualSources": [

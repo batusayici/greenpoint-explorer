@@ -50,11 +50,27 @@ a shift, but it teaches the care of street trees a reader is then expected to gi
 neighborhood stewardship. The two street cards are `food_drink` — the stated activity is eating
 together at tables, and "merely social" carries no lens while food does.
 
-**One thing left open for Batu.** The three cards sourced from Partiful come back `SKIP` from
-`verify-quotes` — "no roster source for partiful.com" — so their quotes have no snapshot on disk to
-check against, exactly like a newsletter card. `partiful.com` is already a `WebFetch` allowlist
-domain but is not in `ingest-sources.json`, and roster additions are human-gated. Worth adding if
-Partiful keeps turning up as the organiser page for street events; not added here.
+**Roster addition, same session (Batu): `nbk-open-streets`.** The three Partiful cards first came
+back `SKIP` from `verify-quotes` — no roster source for the domain, so no snapshot to check against.
+Chasing the organiser rather than the event fixed that properly: the host is **North Brooklyn Open
+Streets**, a coalition with 25 events on its Partiful profile, and it is the profile that went in the
+roster, not the `/e/` URL, which would have expired the week after. Plain fetch returns 231KB with the
+events in server-rendered JSON-LD, proven by running `ingest:fetch`, not by a WebFetch read — the
+distinction the `brooklyn-record-exchange` note exists to enforce. All three cards now verify.
+
+**Two things to know about this source.** Its geography is NOT mechanical: the same coalition runs
+**Berry Street in Williamsburg**, out of the bbox, and the titles do not say which street ("Feb-Brew-
+Berry" is Berry). Check the event page's stated location every time. And the profile page carries no
+clock — its JSON-LD gives one span for a whole multi-day run, and the per-day hours live only in the
+event page's prose, which is why the entry pins a `detail` URL. That URL must be swapped when this
+weekend rolls off.
+
+**The quote check caught me, which is the point of it.** `bedford-slip-weekend-0829` first shipped a
+`sourceQuote` I had composed from two non-adjacent lines of the page. Every fact in it was true and
+the string appeared nowhere in the source — precisely the reconstruction the 2026-08-12 ruling
+introduced this gate for. It went `MISMATCH` the moment a snapshot existed to check against, and was
+rewritten to the contiguous block. Worth recording because the card had already passed schema
+validation, lint, 707 tests and a build: nothing else in the stack can see it.
 
 **A dead source worth knowing about.** Chasing the organiser first took me to North Brooklyn
 Neighbors, the obvious host for a Bedford Slip clean up. Their domain has expired, and the alternate
