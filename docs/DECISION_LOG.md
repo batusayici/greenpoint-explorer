@@ -4,6 +4,49 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-25 (fourth entry) — Rana posts to several groups, the warm re-invites are retired, Perri is met in person
+
+Three corrections from Batu, same session as the families-timing ruling above.
+
+**1. Rana posts to multiple parent groups, not one.** She has been the confirmed Q2 messenger since
+2026-08-15, and the term binding her to ONE group is lifted. Batu hands over the list closer to Sep 8.
+This also supersedes the pick-one-of-two framing from the entry above — Rana's list decides which
+rooms get a post, not us. The 8/17 measurement still stands as guidance for that list: Williamsburg &
+Greenpoint BK Parents runs at 0 posts/month and is not worth one of her posts.
+
+**The measurement change this forces, pre-registered now because kill criteria are written before the
+send, never after.** Each group gets its own `parents-<slug>` src, per the one-src-per-channel rule.
+But **Q2's decision reads the pooled `parents-*` family against the other srcs** — per-group rows are
+diagnostics only. At this traffic a single group reads n≈3, and a rule that fires on n≈3 is a rule
+that decides by noise. Splitting into an unknown number of srcs would otherwise have quietly made the
+experiment unreadable at the moment it got bigger.
+
+**The risk that grows with it.** Roughly all of these taps arrive through the Facebook in-app webview,
+which is still unverified on real devices — the last open Q2 precondition, and the same hostile-context
+class that produced the 8/13 map bug. It stops being one channel's problem here: with several groups
+feeding it, a large share of the entire October cohort enters through that webview, where localStorage
+fragmentation can also make a real return read as a new visit. A failure there would depress the demand
+gate itself. It is now the highest-stakes item before Sep 8 and needs real iOS and Android hardware.
+Group memberships also overlap, so the same parent may see the post several times — a cost to Rana's
+standing, and hers to weigh, not ours.
+
+**2. Michael and Laura & Edmond are retired unsent.** They were already reached twice — the July round
+and the 8/13 friends-family WhatsApp — so the planned re-invites would be a third contact. Batu's
+ruling: that is spamming a personal relationship, and the relationship outlasts the experiment.
+
+**Standing rule this sets: warm personal contacts carry a contact cap.** Consequence for the numbers,
+recorded so nobody reads these rows as pending work: the `michael` and `laura-edmond` srcs will never
+carry data — whatever those three did is already inside `friends-family` — so the distribution gate
+must not count them as channels still to fire. A *different* kind of ask is not a re-invite and is not
+capped: Laura remains the Q2 fallback messenger, and Perri is a meeting.
+
+**3. Perri is met in person, week of Sep 5, when Batu is back in NY.** She replied warm in 36 minutes
+on 8/17 and the 8/19 review recorded the unsent reply as one of the four latency gaps; that gap is
+closed. Worth knowing it lands in the same week as Labor Day and the families push.
+
+**One correction to the entry above:** it named Laura as the intended Q2 sharer. Rana has been the
+confirmed messenger since 8/15; Laura is the documented fallback.
+
 ## 2026-08-25 (third entry) — The families push starts Sep 8; the two weeks before it are the supply build
 
 Decision (Batu, this session): **awareness aimed at parents and families starts Sep 7–8, not
@@ -29,9 +72,11 @@ Thu Sep 10**, so the usable days are Tue Sep 8 and Wed Sep 9 — the planning da
   (@ps110pta 2,006 · @ps31pta 811 · @ps34elementary 238), Town Square (Schoolfest/Campfest) and the
   class providers have to be asked ~Sep 1–3 to carry us during school-open week. Consumer awareness
   waits; the supply-side ask cannot.
-- **Laura is on the critical path and still hasn't been contacted.** The plan is a member-share, not
-  a cold post, and the named member is Laura — whose re-invite is unsent. That ask needs a week or
-  two of lead, so it goes now.
+- **The messenger is Rana, and her group list is the open input.** ~~The plan is a member-share, not
+  a cold post, and the named member is Laura — whose re-invite is unsent.~~ **Corrected same day
+  (fourth entry): Rana has been the confirmed messenger since 8/15 and will post to several groups;
+  Batu supplies the list closer to Sep 8. Laura is the fallback, and her re-invite is retired unsent
+  under the contact cap.**
 - **The signup-ask rebuild gets a deadline: live by ~Sep 4.** It converts 2 of 18 today. If Sep 8–9
   is the largest reach event of the runway, the repair has to be merged and soaked on smaller traffic
   first, or the wave arrives at a broken mechanism.

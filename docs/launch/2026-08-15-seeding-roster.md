@@ -20,11 +20,14 @@
 > **Amended again 2026-08-25 by Batu's families-timing ruling** (DECISION_LOG
 > third entry): **all** parents- and families-facing awareness starts **Tue Sep
 > 8**, not just Q2's post — families are away through Labor Day (Sep 7) and
-> school opens Thu Sep 10. Three changes here: **(1) Greenpoint Moms**
-> (`parents-gpmoms`, 5.2K, public, ~100 posts/mo) **replaces Williamsburg &
-> Greenpoint BK Parents**, which this roster listed as a candidate and the
-> 8/17 attention map then measured at 0 posts/month — dormant; Q2 posts to
-> Baby Hui + Greenpoint Moms, one src each. **(2) The redistributor asks move
+> school opens Thu Sep 10. Three changes here: **(1) Rana posts to MULTIPLE
+> groups**, not one — the 8/15 one-group term is lifted and Batu supplies the
+> list closer to Sep 8. Each group gets its own `parents-<slug>` src, but **Q2's
+> decision reads the pooled `parents-*` family** (pre-registered 2026-08-25),
+> because a single group at this traffic reads n≈3. Guidance for that list:
+> Williamsburg & Greenpoint BK Parents, a candidate below, was measured at 0
+> posts/month — dormant — and is not worth one of her posts. **(2) The
+> redistributor asks move
 > ahead of the wave, to ~Sep 1–3** — PTA newsletters and first-week comms are
 > written the week of Aug 31, so the library children's librarian, the three
 > PTAs, Town Square and the class providers have to be asked before Sep 7, not
@@ -86,8 +89,11 @@ candidate, exactly this demographic) which she's in and whether she'd share it
 as "a thing I use"; Perri is the documented fallback door ("ask Perri for
 intros," 2026-07-15 kit). A member-share beats an owner-post in these rooms.
 
-**Warm re-invites** (unchanged): Michael, Laura & Edmond on their existing
-`src` rows. **First outreach, not a re-invite:** Perri — kit copy drafted
+~~**Warm re-invites** (unchanged): Michael, Laura & Edmond on their existing
+`src` rows.~~ **RETIRED UNSENT 2026-08-25 (Batu):** all three were already
+reached twice — the July round and the 8/13 friends-family WhatsApp — so a
+re-invite is contact three, which is spamming a personal relationship. Their
+srcs will never carry data; whatever they did is inside `friends-family`. **First outreach, not a re-invite:** Perri — kit copy drafted
 2026-07-15 but never sent; she hasn't heard from Batu yet (unseeded).
 Friends-family row live.
 
@@ -273,17 +279,20 @@ and should go — with small fixes.
 **Q2 preconditions:**
 1. ~~**Messenger verified as an embedded member.**~~ **CLOSED 2026-08-15 —
    Batu confirmed Rana is a member of a target group and personally willing.**
-   Rana stands as the Q2 messenger. Terms of the confirmation still bind: the
-   post goes out in Rana's own words, with the exact tagged link, to ONE group
-   only (a second group needs its own `src` row per the one-src-per-channel
-   rule). Open detail: which of the two groups — that determines the `src`
-   value and needs answering before the copy is finalized, not before Monday.
+   Rana stands as the Q2 messenger. Own words, exact tagged link — those terms
+   still bind. **The ONE-group term is lifted (2026-08-25, Batu): Rana posts to
+   several groups, list handed over closer to Sep 8.** Each group still gets its
+   own `src` per the one-src-per-channel rule, and the rows have to exist before
+   the copy is finalized; Q2's decision then reads the pooled `parents-*` family,
+   because a single group at this traffic reads n≈3.
    *(Original finding, kept for the record: Rana was two hops out, with no
    documented membership, no documented product usage, and a recorded belief
    that browser products don't reach people; a handed-to-them post in a
    join-gated, no-promo group risked a mod delete. Batu's confirmation is the
    documentation the review was missing. Laura remains the fallback if Rana
-   goes quiet before the Sep 1–8 window.)*
+   goes quiet before the Sep 1–8 window. Laura's own re-invite was retired
+   unsent 2026-08-25 under the contact cap — being the fallback messenger is a
+   different ask and is not capped.)*
 2. **`?lens=family_kids` deep-link shipped** — the post promises a kids map
    but `main.jsx` reads only `src`; the link lands on the general feed and
    only 15 people have ever tapped a filter chip. ~10-line gated code
@@ -367,10 +376,10 @@ three Wave-1 orgs are already ingest sources — never inferred from sessions.*
 | org-gp-library | — | — | — | — | |
 | org-brooklyn-craft | — | — | — | — | |
 | org-town-square | — | — | — | — | |
-| ~~parents~~ | — | — | — | — | superseded 2026-08-19 — per-group srcs replace the shared tag |
-| parents-hui | — | — | — | — | Brooklyn Baby Hui — posts Tue Sep 8, morning; member-share (Laura), not an owner post |
-| parents-gpmoms | — | — | — | — | Greenpoint Moms — posts Tue Sep 8, morning; swapped in 2026-08-25 for the dormant BK Parents group |
-| ~~parents-wgbk~~ | — | — | — | — | retired unsent 2026-08-25 — 0 posts/month, dormant |
+| ~~parents~~ | — | — | — | — | superseded 2026-08-19 — one src per group replaces the shared tag |
+| parents-&lt;slug&gt; | — | — | — | — | Rana posts to several groups Tue Sep 8, morning; rows created when Batu hands over the list. Pooled `parents-*` is what Q2's rule reads |
+| ~~michael~~ | — | — | — | — | **retired unsent 2026-08-25** — already reached twice; a third contact is spam (contact cap) |
+| ~~laura-edmond~~ | — | — | — | — | **retired unsent 2026-08-25** — same. Laura still stands as the Q2 fallback messenger |
 
 ---
 
@@ -381,8 +390,8 @@ and re-centered so nothing expires Friday; Library and Brooklyn Craft
 (**Tue–Wed 8/18–19, mid-morning**) gain the share line, because criterion 1
 says the org *sharing* is the growth event. Rules unchanged: Batu sends, links
 copied from `channel-links.md`, `npm run preflight:send` the morning of each
-send. Warm re-invites (Mon 8/17 PM) use the existing kit copy on their own
-rows (`michael` / `laura-edmond`). **Perri gets a fresh draft below** — the
+send. ~~Warm re-invites (Mon 8/17 PM) use the existing kit copy on their own
+rows (`michael` / `laura-edmond`).~~ **Retired unsent 2026-08-25 — contact cap.** **Perri gets a fresh draft below** — the
 2026-07-15 kit copy is unsendable (wrong host, `/july.html`, "the July map",
 a Jul 16–22 event count) and, more importantly, it was written as a re-invite
 to someone who has never heard from Batu.
