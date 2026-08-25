@@ -7275,6 +7275,196 @@
         }
       ],
       "sourceQuote": "meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "locationName": "Bedford Slip",
+      "address": "1 Bedford Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
+      "lat": 40.7238537,
+      "lng": -73.9510984,
+      "id": "bedford-slip-weekend-0828",
+      "title": "Bedford Slip Weekend opens",
+      "kicker": "Opening night of a three-day street run",
+      "summary": "The organisers put tables and chairs out on the car-free block and ask the neighborhood to bring a bite and sit down. It runs again the next two days, on longer daytime hours.",
+      "filters": [
+        "food_drink"
+      ],
+      "startsAt": "2026-08-28T17:00:00-04:00",
+      "endsAt": "2026-08-28T20:00:00-04:00",
+      "relatedCardIds": [
+        "bedford-slip-weekend-0829",
+        "bedford-slip-tree-care-0829",
+        "bedford-slip-cleanup-0830"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Bedford Slip Weekend",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
+          "publisher": "Partiful",
+          "date": "2026-08-26"
+        }
+      ],
+      "sourceQuote": "Bedford Slip Weekend starts Friday night! Come enjoy a bite in the street! We'll have tables & chairs ready for you. WHEN? Friday, August 28th 5PM-8PM Saturday, Aug 29th 10AM-8PM Sunday, Aug 30th 10AM-8PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "locationName": "Bedford Slip",
+      "address": "1 Bedford Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
+      "lat": 40.7238537,
+      "lng": -73.9510984,
+      "id": "bedford-slip-weekend-0829",
+      "title": "Bedford Slip Weekend",
+      "kicker": "Two full days of tables in the street",
+      "summary": "The car-free block stays set up with seating right through both days, and Sunday closes with a bring-your-own dinner eaten together.",
+      "filters": [
+        "food_drink"
+      ],
+      "startsAt": "2026-08-29T10:00:00-04:00",
+      "endsAt": "2026-08-30T20:00:00-04:00",
+      "relatedCardIds": [
+        "bedford-slip-weekend-0828",
+        "bedford-slip-tree-care-0829",
+        "bedford-slip-cleanup-0830"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Bedford Slip Weekend",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
+          "publisher": "Partiful",
+          "date": "2026-08-26"
+        }
+      ],
+      "sourceQuote": "Bedford Slip Weekend starts Friday night! Come enjoy a bite in the street! We'll have tables & chairs ready for you. WHEN? Friday, August 28th 5PM-8PM Saturday, Aug 29th 10AM-8PM Sunday, Aug 30th 10AM-8PM Sunday there's fun the whole day ☀️ including byo dinner 🍽️ together."
+    },
+    {
+      "audience": [
+        "resident",
+        "civic_actor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "locationName": "Bedford Slip",
+      "address": "1 Bedford Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
+      "lat": 40.7238537,
+      "lng": -73.9510984,
+      "id": "bedford-slip-tree-care-0829",
+      "title": "Street Tree Care with TreesNY",
+      "kicker": "Learn to look after the trees on your block",
+      "summary": "A short info session run by TreesNY, tucked inside the weekend takeover of the car-free block.",
+      "filters": [
+        "civic"
+      ],
+      "startsAt": "2026-08-29T13:00:00-04:00",
+      "endsAt": "2026-08-29T14:00:00-04:00",
+      "relatedCardIds": [
+        "bedford-slip-weekend-0828",
+        "bedford-slip-weekend-0829",
+        "bedford-slip-cleanup-0830"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Bedford Slip Weekend",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
+          "publisher": "Partiful",
+          "date": "2026-08-26"
+        }
+      ],
+      "sourceQuote": "Saturday come play chess ♟️and learn about 🌳 tree care Saturday 1:00PM - 2:00PM Tree 🌳 Care Info Session with TreesNY"
+    },
+    {
+      "audience": [
+        "resident",
+        "civic_actor"
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "medium",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "locationName": "Bedford Slip",
+      "address": "1 Bedford Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
+      "lat": 40.7238537,
+      "lng": -73.9510984,
+      "id": "bedford-slip-cleanup-0830",
+      "title": "Volunteer cleanup at Bedford Slip",
+      "kicker": "A two-hour shift on the shoreline block",
+      "summary": "An all-ages volunteer clean up, listed by the North Brooklyn Environmental Community Calendar and falling inside the weekend takeover of the same block.",
+      "filters": [
+        "civic"
+      ],
+      "startsAt": "2026-08-30T11:00:00-04:00",
+      "endsAt": "2026-08-30T13:00:00-04:00",
+      "relatedCardIds": [
+        "bedford-slip-weekend-0828",
+        "bedford-slip-weekend-0829",
+        "bedford-slip-tree-care-0829"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "North Brooklyn Environmental Community Calendar",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-25"
+        }
+      ],
+      "sourceQuote": "Bedford Slip\nSun, Aug 30 8:00 am\n1 Bedford Av Brooklyn, NY 11222\nAudience: All Ages Type: Workshop/Info Session\nVolunteer clean up from 11:00AM to 1:00PM"
     }
   ]
 }
