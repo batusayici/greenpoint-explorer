@@ -582,6 +582,16 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // renewed on faith.
   // 2026-08-25: +5 Eavesdrop midnight sets (8/27–8/31), released by the
   // `allDay` ruling — the venue's own "12midnight" slot became expressible.
+  // 2026-08-25 daily thin: expiry took the 6 passed 8/24 items (155 → 149) and
+  // the run added 6, so the total lands back on 155 and every count below is
+  // unchanged except live_music, which the Flower Cat karaoke night moves.
+  // The adds: DENCHU-KOZO at Film Noir on 8/25 (its own bill, not the Cult
+  // Cinema night that follows it — the venue lists them as separate programme
+  // entries an hour apart); three Brooklyn Craft Company workshops off the
+  // 8/06 and 8/14 newsletters, Knitting 103 on 8/25, Crochet 102 on 8/29 and
+  // Beginner Patchwork on 9/6; Flower Cat's Live Band Karaoke on 8/28, free
+  // entry; and the last Leaves summer writing group on 9/3, which the 8/11 run
+  // deferred on horizon alone and which is now inside the window.
   assert.equal(seed.cards.length, 155);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
@@ -782,6 +792,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
+    // 2026-08-25: Flower Cat's live band karaoke night — the listing ends
+    // "Free entry! 2 drink minimum! Tip your musicians & bartender!", so the
+    // entry is stated free even though the bar expects a bar tab.
+    "flowercat-live-band-karaoke-0828",
     "greenpoint-trash-club",
     // 2026-08-14: three Longevity Stick sittings at Transmitter Park. The Go
     // Green detail page states the free-ness once for the whole series — "Join
@@ -909,9 +923,8 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // Thursday mornings recur weekly, the Friday evenings are 8/14 and 8/28
     // only, and a recurring Friday card would have invented an 8/21 sitting.
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
-    // 2026-08-18: the branch's Monday chair-yoga hour — "an accessible yoga
-    // class suitable for adults of all ages and abilities", the movement cluster.
-    "library-chair-yoga-0824",
+    // (library-chair-yoga-0824, the branch's Monday chair-yoga hour, expired
+    // out 2026-08-25)
     "longevity-stick-transmitter-0828",
     "longevity-stick-transmitter-thursdays",
     "moon-bunny-monthly-plans",

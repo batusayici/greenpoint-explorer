@@ -1,27 +1,7 @@
-title: THE SORE LOSERS
-startDate: 2026-08-23T20:00:00.687Z
-endDate: 2026-08-23T21:00:00.687Z
-fullUrl: /program/2026/6/27/loser
-
-title: SATAN'S SKIN
-startDate: 2026-08-23T22:00:00.181Z
-endDate: 2026-08-23T23:00:00.181Z
-fullUrl: /program/2026/1/31/satans-skin
-
-title: BODY MELT
-startDate: 2026-08-24T00:00:00.013Z
-endDate: 2026-08-24T01:00:00.013Z
-fullUrl: /program/2026/8/23/decompose
-
-title: PHEDRE
-startDate: 2026-08-24T23:00:00.000Z
-endDate: 2026-08-25T00:00:00.000Z
-fullUrl: /program/2026/8/24/phedre
-
-title: FILM NOIR MONDAY
-startDate: 2026-08-25T01:00:00.000Z
-endDate: 2026-08-25T02:00:00.000Z
-fullUrl: /program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
+title: DENCHU-KOZO
+startDate: 2026-08-26T00:00:00.000Z
+endDate: 2026-08-26T01:00:00.000Z
+fullUrl: /program/2026/4/8/denchu-kozo
 
 title: CULT CINEMA
 startDate: 2026-08-26T01:00:00.087Z
@@ -58,39 +38,6 @@ startDate: 2026-11-02T00:00:00.000Z
 endDate: 2026-11-02T01:00:00.000Z
 fullUrl: /program/2026/11/1/secrets-of-the-dead
 
-## [DETAIL] https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
-FILM NOIR MONDAY — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-FILM NOIR MONDAY
-Monday, August 24, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
-In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
-Earlier Event: August 24
-PHEDRE
-Later Event: August 25
-CULT CINEMA
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
 CULT CINEMA — Film Noir Cinema
 Home
@@ -116,8 +63,8 @@ Tuesday, August 25, 2026
 Google Calendar
 ICS
 Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
-Earlier Event: August 24
-FILM NOIR MONDAY
+Earlier Event: August 25
+DENCHU-KOZO
 Later Event: August 27
 FILM CLUB
 Back To Top
@@ -191,39 +138,6 @@ SECRETS OF THE DEAD
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2026/1/31/satans-skin
-SATAN'S SKIN — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-SATAN'S SKIN
-Sunday, August 23, 2026
-6:00 PM
-7:00 PM
-18:00
-19:00
-Google Calendar
-ICS
-UK. 1979
-In early 18th century England, the children of a village slowly convert into a coven of devil worshipers.
-Earlier Event: August 23
-THE SORE LOSERS
-Later Event: August 23
-BODY MELT
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/10/24/clownspiracy
 CLOWNSPIRACY — Film Noir Cinema
 Home
@@ -285,6 +199,167 @@ ICS
 SECRETS OF THE DEAD Short Film Festival
 Earlier Event: October 31
 HALLOWEEN PARTY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo
+DENCHU-KOZO — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+DENCHU-KOZO
+Tuesday, August 25, 2026
+8:00 PM
+9:00 PM
+20:00
+21:00
+Google Calendar
+ICS
+JP. 1987
+Hikari is a boy who is bullied and teased by the other boys at school because he has the odd distinction of having an electricity pole growing out of his back. However, one of his classmates, a girl named Momo, comes to his rescue.
+Earlier Event: August 24
+FILM NOIR MONDAY
+Later Event: August 25
+CULT CINEMA
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
+BLACK BOX — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BLACK BOX
+Friday, September 11, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Earlier Event: September 4
+TERROR TERROIR
+Later Event: October 24
+CLOWNSPIRACY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/4/terror-terroir
+TERROR TERROIR — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+TERROR TERROIR
+Friday, September 4, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Earlier Event: August 27
+FILM CLUB
+Later Event: September 11
+BLACK BOX
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
+FILM NOIR MONDAY — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+FILM NOIR MONDAY
+Monday, August 24, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
+In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
+Earlier Event: August 24
+PHEDRE
+Later Event: August 25
+CULT CINEMA
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/1/31/satans-skin
+SATAN'S SKIN — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SATAN'S SKIN
+Sunday, August 23, 2026
+6:00 PM
+7:00 PM
+18:00
+19:00
+Google Calendar
+ICS
+UK. 1979
+In early 18th century England, the children of a village slowly convert into a coven of devil worshipers.
+Earlier Event: August 23
+THE SORE LOSERS
+Later Event: August 23
+BODY MELT
 Back To Top
 Cart ( 0 )
 
@@ -469,37 +544,6 @@ PHEDRE
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/4/terror-terroir
-TERROR TERROIR — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-TERROR TERROIR
-Friday, September 4, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Earlier Event: August 25
-CULT CINEMA
-Later Event: October 24
-CLOWNSPIRACY
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/4/29/haze
 HAZE — Film Noir Cinema
 Home
@@ -530,39 +574,6 @@ Earlier Event: August 16
 DENCHU-KOZO
 Later Event: August 20
 FILM CLUB
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo
-DENCHU-KOZO — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-DENCHU-KOZO
-Sunday, August 16, 2026
-5:00 PM
-6:00 PM
-17:00
-18:00
-Google Calendar
-ICS
-JP. 1987
-Hikari is a boy who is bullied and teased by the other boys at school because he has the odd distinction of having an electricity pole growing out of his back. However, one of his classmates, a girl named Momo, comes to his rescue.
-Earlier Event: August 15
-WATCH ME
-Later Event: August 19
-CULT CINEMA
 Back To Top
 Cart ( 0 )
 

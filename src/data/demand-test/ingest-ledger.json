@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-24T09:30:00-04:00",
+  "lastRunAt": "2026-08-25T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1549,6 +1549,13 @@
       "publisher": "Stoopwise ingest",
       "processedAt": "2026-08-24",
       "outcome": "Monday full refresh. Deck 165 → 141 (expiry) → 150 (10 adds, 1 delete). holds: 0 new-judgment · 0 rule-miss · 3 source-blocked. Fetch exit 0, reach 53/62 (15%, at the ceiling): browser path down with the known chromium CONNECT-reset fault (9 sources errored, 8 of them browser-path) plus the tend-greenpoint roster defect. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Deleted bcc-kids-sewing-camp: the Brooklyn Craft Company page no longer states the camp anywhere and the source shrank 108 lines, so the recurring card could not be re-verified. Re-verified and bumped four standing venue nights (Black Rabbit trivia + bingo, Hide & Seek jazz, Brew Inn trivia) and the Acme Fish Friday weekly."
+    },
+    {
+      "id": "run:2026-08-25-daily-thin",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-25",
+      "outcome": "Daily thin refresh. Deck 155 → 149 (expiry) → 155 (6 adds). holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. Fetch exit 0, reach 55/61 (10% error, ceiling 15%): the six failures are the known chromium CONNECT-reset browser fault. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Added DENCHU-KOZO (Film Noir, 8/25), three Brooklyn Craft Company workshops (8/25, 8/29, 9/6), Flower Cat live band karaoke (8/28) and the last Leaves summer writing group (9/3). Fixed library-thursday-programs-0827, which was advertising drop-in sewing machine hours that the branch has canceled. Re-verified and bumped three standing cards: the Maison Jar refill happy hour, North Brooklyn Chess at the Parkhouse, and the McGolrick Bird Club. Held the Bedford Slip cleanup on a time conflict inside its own listing."
     }
   ],
   "senderRegistry": [
@@ -2073,15 +2080,35 @@
       "name": "Greenpointers — promoting the baseline can strip the evidence for OLDER live cards (per_page=15 roll-off)",
       "note": "RECURRING MECHANIC, first diagnosed 2026-08-24 by the post-promotion quotes check. The roster reads greenpointers.com/wp-json/wp/v2/posts?per_page=15, so the snapshot is a 15-post WINDOW, not an archive. Promotion overwrites the baseline with that window, and any card still live whose article has scrolled past post 15 instantly becomes unverifiable — even though nothing about the card or the article changed. Measured this run: immediately after --mark-ingested the gated check went 91 verified / 2 MISMATCH (transmitter-park-restaurant-marina, star-deli-viral-boost) and the full sweep found a third (nb-chess-parkhouse-0806), all three purely from roll-off. THE FIX IS TO RESTORE THE EVIDENCE, NEVER TO EDIT THE QUOTE: re-fetch each cited article by slug at greenpointers.com/wp-json/wp/v2/posts?slug=<slug> with a browser UA (it answers 200; WebFetch gets 403) and append it to .ingest-cache/greenpointers.ingested.txt under an [R1 PERSISTED <date>] heading, which persistedBlocks.js then carries forward on every future promotion. Done this run for all four articles: the 7/28 Transmitter Park piece, the 8/10 elected-officials follow-up (NOTE: the quote came from the THIRD sourceLink, not the first — check every cited link before concluding an article is gone), the 8/11 Star Deli story and the 8/6 chess residency. Gated check ended 93/0 and the full sweep 104/0. WHY THIS WILL RECUR: it fires whenever a live card outlives 15 Greenpointers posts, which is roughly a fortnight. A run that promotes without re-checking quotes AFTER promotion will not see it. POSSIBLE STRUCTURAL FIX for a roster PR: raise per_page, or have the fetcher pin the articles that live cards cite.",
       "addedAt": "2026-08-24"
+    },
+    {
+      "name": "Bedford Slip volunteer cleanup, Sun 8/30 — the listing gives two different times",
+      "note": "HELD 2026-08-25 (new-judgment: a conflict inside one source that has to be adjudicated). The North Brooklyn Environmental Community Calendar states the item twice over, and the two statements disagree: the listing header reads \"Bedford Slip\\nSun, Aug 30 8:00 am\\n1 Bedford Av Brooklyn, NY 11222\" while the body of the same entry reads \"Volunteer clean up from 11:00AM to 1:00PM\". Nothing on the page says which is the start. The library period-pantry precedent (2026-08-14) says trust the body when it describes the thing and the date field is a listing convention — but applying it here is an adjudication, not a mechanical read, so the card is held rather than shipped with a guessed start. It is otherwise complete: civic lens (a volunteer cleanup is hands-on participation with neighborhood stakes), 1 Bedford Ave is zip 11222, free-ness not stated. WHAT WOULD RESOLVE IT: the organiser's own page or a second listing naming one start time.",
+      "addedAt": "2026-08-25"
+    },
+    {
+      "name": "Troost — DJ MIKE WALLACE and SAM KEEDY, both 10/11 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from troost.txt: \"summary: DJ MIKE WALLACE No Hard Feelings\\nstart.date: 2026-10-11\\nend.date: 2026-10-12\" and \"summary: SAM KEEDY\\nstart.date: 2026-10-11\\nend.date: 2026-10-12\". Two separate calendar entries on the same night, not one duplicated listing. Troost is a web source re-snapshotted every run, so both roll into the window on their own — recorded so a later run can tell a deliberate deferral from a miss.",
+      "addedAt": "2026-08-25"
+    },
+    {
+      "name": "Brooklyn Craft Company — what is still pending from the 8/06 and 8/14 newsletters",
+      "note": "STATUS 2026-08-25, updating the 2026-08-07 and 2026-08-15 entries. SHIPPED this run: Knitting 103 Summer Bandana 8/25 6:30pm, Crochet 102 Tom-a-tote 8/29 11am (both \"In Greenpoint:\" in the 8/06 newsletter) and Beginner Patchwork 9/6 12pm (\"In the BCC Shop\" in the 8/14 newsletter, and that newsletter's footer defines the Brooklyn store as \"165 Greenpoint Avenue\"). STILL PENDING, horizon only: Macrame Plant Hanger Sun 9/13 11am and Knitting 104 Sock Knitting Tues 9/15 6:30pm, both \"In the BCC Shop\" and therefore pinnable when their date enters the window. STILL BLOCKED on address, not on horizon: Sew a Jumpsuit Sun 9/13 11am, Intro to Garment Sewing Mon 9/14 6:30pm and the 5-Week Ilford Jacket course Thurs 9/17 6:30pm are all \"In the BCC Annex\", and the Annex address is stated NOWHERE in either newsletter — do not pin an Annex session at 165 Greenpoint Ave. WHAT WOULD RESOLVE IT: a newsletter or a page that gives the Annex a street address.",
+      "addedAt": "2026-08-25"
+    },
+    {
+      "name": "The working snapshot loses its persisted evidence blocks at fetch time; only the baseline keeps them",
+      "note": "SOURCE FACT found 2026-08-25, and it cost an extraction. `.ingest-cache/<id>.txt` is rewritten by every fetch WITHOUT the carried-forward `## [` blocks, while `<id>.ingested.txt` keeps them (promotion is the non-destructive step, per persistedBlocks.js). Measured this run: brooklyn-craft-company baseline 2 blocks / working 0, greenpointers 8 / 0, go-green-bk 73 / 11, film-noir-cinema 20 / 8, plus carcosa-club, clay-space-membership, hana-makgeolli-events, kettl-tea, macha-studio, selformer, tend-greenpoint, word-bookstore, yaro-studios and marianella-subscription-box. TWO CONSEQUENCES. (1) Extraction subagents read the WORKING snapshot, so they cannot see persisted evidence: the BCC subagent reported \"no NEWSLETTER PERSISTED block present in this snapshot\" and skipped all 30 workshops, and the orchestrator had to read the block out of the baseline by hand to card the three that shipped. (2) It explains the large `+0/-R` diffs on ten sources this run (golden-drum -571, selformer -282, kettl-tea -171, clay-space-membership -158, hana-makgeolli-events -114) — those removals are block turnover, not content the source dropped. The quotes gate is unaffected because it reads the baseline. NOTE this contradicts the 2026-08-15 entry's claim that \"the same guard now covers the working snapshot at fetch time\". PROPOSED FIX, human-gated because it is a code change: carry marked blocks into the working snapshot at fetch time as well, or point extraction prompts at `<id>.ingested.txt`.",
+      "addedAt": "2026-08-25"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
     "greenpointers": "2026-08-23",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-23",
+    "film-noir-cinema": "2026-08-24",
     "scrappleland": "2026-08-06",
-    "flower-cat": "2026-08-11",
+    "flower-cat": "2026-08-24",
     "greenpoint-library": "2026-08-20",
     "bpl-north-brooklyn-calendar": "2026-08-20",
     "greenpoint-trash-club": "2026-07-21",
@@ -2095,7 +2122,7 @@
     "yaro-studios": "2026-08-07",
     "yaro-kids-clay": "2026-08-07",
     "moon-bunny-aerial": "2026-08-19",
-    "brooklyn-craft-company": "2026-08-07",
+    "brooklyn-craft-company": "2026-08-24",
     "last-place-on-earth": "2026-07-26",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
@@ -2115,7 +2142,7 @@
     "bandit-running-gpr": "2026-08-07",
     "dreams-on-command": "2026-08-07",
     "kettl-tea": "2026-08-07",
-    "leaves-bookstore": "2026-08-07",
+    "leaves-bookstore": "2026-08-24",
     "greenpoint-ymca": "2026-08-07",
     "marianella-subscription-box": "2026-08-07",
     "held-space": "2026-08-07",
@@ -2139,86 +2166,86 @@
     {
       "sourceId": "dashi-okume",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "epa-meeker-plume",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "nyc-dot-mcguinness",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "grownyc-mccarren-greenmarket",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "nyc-open-data-farmers-markets",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "greenpoint-ymca",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "sparrow-nesting",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "brooklyn-hearts-club",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "driftaway-subscriptions",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "marianella-subscription-box",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-11; the first Monday was 2026-08-03, so it was not attempted. The fetch report lists it under `skipped_monthly` and the run line reads \"68 sources → 9 changed, 0 new, 42 unchanged, 7 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "greenpoint-comedy-club",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "word-bookstore",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "brooklyn-youth-ballet",
@@ -2230,30 +2257,30 @@
     {
       "sourceId": "greenpoint-trash-club",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "leaves-bookstore",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "happy-medium",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "lockwood",
       "gapKey": "GAP",
-      "reason": "Re-earned 2026-08-12 against this run's snapshot, which now carries TWO items and three flagged dates. 8/14 and 8/16 are the two ends of ONE item, \"Tote-ally 20 Sale!\"; 8/25 is a second item, \"Spark Session Night\", added by this run's diff. Both are HELD, not uncarded, and for the same reason: the entire snapshot is six lines apiece — \"name: Spark Session Night\\nstart_date_raw: 2026-08-25\\nstart_time: 5:00 pm\\nend_date_raw: 2026-08-25\\nend_time: 8:00 pm\\nhtml_link: https://www.facebook.com/events/1059709796558490\" — with no venue, no address and nothing stating what the item is, and the only link is a login-walled Facebook event page that R1 cannot open. Carding either would require inventing both the location and the offer. Both are in watchItems.",
-      "addedAt": "2026-08-12",
-      "expiresAt": "2026-08-26"
+      "reason": "Re-earned 2026-08-25 against this run's snapshot: three flagged dates, 8/25, 9/5 and 9/7, and all belong to items that are HELD, not uncarded, for one reason — the SociableKit feed states a name and a clock and nothing else. \"name: Spark Session Night\\nstart_date_raw: 2026-08-25\\nstart_time: 5:00 pm\" and \"name: MetroCard Mystery Weekend\\nstart_date_raw: 2026-09-05\\nstart_time: 11:00 am\\nend_date_raw: 2026-09-07\" carry no venue, no address and nothing stating what the item IS, and each links only a login-walled facebook.com event page that R1 cannot open. Carding either would mean inventing both the location and the offer. Both are in watchItems. WHAT WOULD CHANGE IT: Lockwood publishing the detail anywhere fetchable.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "cibone-ote",
@@ -2307,9 +2334,9 @@
     {
       "sourceId": "go-green-bk",
       "gapKey": "GAP",
-      "reason": "GEOGRAPHY, verified against this run's snapshot rather than assumed. The flagged dates were 8/30 and 8/31. 8/30 is now CARDED (transmitter-its-my-park-0830), so only 8/31 remains, and the snapshot's only two lines for that date are \"Monday, August 31, 7:00 a.m.–9:00 a.m., It's My Park at Leif Ericson Park\" and \"Monday, August 31, 7:00 a.m.–9:00 a.m., It's My Park at Sunset Park\" — Bay Ridge and Sunset Park respectively, both far outside the Greenpoint bbox. The source is a Brooklyn-wide series page, so out-of-neighborhood dates are its normal output, not a coverage loss.",
-      "addedAt": "2026-08-17",
-      "expiresAt": "2026-08-31"
+      "reason": "GEOGRAPHY, re-earned 2026-08-25 against this run's snapshot. The two flagged dates are 8/31 and 9/8, and both belong to Brooklyn-wide programming outside Greenpoint: 8/31's only lines are \"Monday, August 31, 7:00 a.m.–9:00 a.m., It's My Park at Leif Ericson Park\" and \"...at Sunset Park\" (Bay Ridge and Sunset Park), and 9/8 is a Waterfront Walks occurrence whose Venue block reads \"Brooklyn Bridge Park, Pebble Beach, Brooklyn, NY 11201\". The source is a Brooklyn-wide series page, so out-of-neighborhood dates are its normal output, not a coverage loss. Every in-area item it carries in the window IS covered: the Transmitter Park yoga Tuesdays and Thursdays, the McGolrick Bird Club (re-verified and bumped through 9/5 this run), It's My Park at Transmitter Park on 8/30, and Keep Calm and Carry Yarn inside library-tuesday-programs-0825.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "eavesdrop",
@@ -2328,9 +2355,9 @@
     {
       "sourceId": "action-city-comics",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source (roster `fetch: \"browser\"`, a Square Online/Weebly Vue SPA whose events block only renders in a browser), and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-18 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside all 8 other browser-path sources, while plain fetch reached the control URL through the same proxy without trouble — so it is not an allowlist gap. Onboarded 2026-08-17 from an interactive session, which is why the deck already carries its three ticketed tournament cards (action-city-fnb-armory-0818, action-city-one-piece-weds-0819, action-city-one-piece-op17-prerelease-0826) while the routine has never produced a snapshot. This is 'we cannot read the source', never 'the source is quiet'. WHAT WOULD CHANGE IT: the Chromium CONNECT fault being fixed at the proxy relay.",
-      "addedAt": "2026-08-18",
-      "expiresAt": "2026-09-01"
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "golden-drum",
@@ -2342,9 +2369,9 @@
     {
       "sourceId": "nycparks-greenpoint",
       "gapKey": "GAP",
-      "reason": "Re-earned 2026-08-21 against this run's snapshot, not inherited. The flagged set is now 8/24, 8/25, 8/27, 8/28, 8/31 and 9/2, and every one of them carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule: \"McCarren Pool: Lap Swim\" on 8/24, 8/25, 8/26, 8/27 and 8/28; \"Bodyweight Interval Training\" (Shape Up NYC) on 8/24 and, marked \"CANCELED:\", on 8/31; \"Body-Centric Circuit Training\" (Shape Up NYC) on 8/26 and 9/2. Every non-rec item the feed carries in the window IS carded — summerstarz-zootopia-0821, mcgolrick-its-my-park-0823, mccarren-movies-guardians-2-0826, mcgolrick-movies-eternal-sunshine-0829 and transmitter-its-my-park-0830 — so the flagged dates are the exclusion working, not supply we missed.",
-      "addedAt": "2026-08-21",
-      "expiresAt": "2026-09-04"
+      "reason": "Re-earned 2026-08-25 against this run's snapshot. The flagged set is now 8/25, 8/27, 8/28, 8/31, 9/2 and 9/7, and every one carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule: \"McCarren Pool: Lap Swim\" on 8/25, 8/26, 8/27 and 8/28; \"Body-Centric Circuit Training\" (Shape Up NYC) on 8/26 and 9/2; \"CANCELED: Bodyweight Interval Training\" (Shape Up NYC) on 8/31 and 9/7. Every non-rec item the feed carries in the window IS carded — mccarren-movies-guardians-2-0826, mcgolrick-movies-eternal-sunshine-0829 and transmitter-its-my-park-0830 — so the flagged dates are the exclusion working, not supply we missed.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     },
     {
       "sourceId": "eavesdrop",
@@ -2359,6 +2386,13 @@
       "reason": "REVIEWED 2026-08-24: the recurring phrase is real but the SCHEDULE IS EXHAUSTED, which is a third state the flag does not have a slot for. The page frames the series standing — \"Drop-Off Events & Movie Nights / SUMMER 2026 Edition / FRIDAY evenings\", \"When: Fridays!\", \"What time: 5:30 - 8:30 pm\" — but every dated instance it lists has already happened: \"Friday, July 10, 5:30 pm\" (ASTERIX & OBELIX), \"Friday, July 24, 5:30 pm\" (GOAT), \"Friday, August 7, 5:30 pm\" (A MINECRAFT MOVIE) and \"Friday, August 21, 5:30 pm\" (TOY STORY 5). The last of those WAS carded (playkids-toy-story-0821) and expired on schedule this morning, so the deck reading empty is the series running out, not the source going dark. Carding a future Friday would mean inventing a date and a film the page does not state. This is deliberately NOT proposed as `standing: false` — the recurring programming is genuine, it is between editions, and the roster flag should be decided when the fall edition posts. WHAT WOULD CHANGE IT: PLAY Kids publishing a Fall 2026 edition, which will land as a normal diff.",
       "addedAt": "2026-08-24",
       "expiresAt": "2026-09-07"
+    },
+    {
+      "sourceId": "dreams-on-command",
+      "gapKey": "GAP",
+      "reason": "ONGOING EXHIBITION, which belongs to the venue card and not to a dated event (SKILL.md class rule, Batu 2026-08-12). The single flagged date is 2026-09-08 and it is the CLOSING date of the current show, not a happening: the snapshot's whole dated content is \"There Are People Here\" / \"July 11 – September 8, 2026\" / \"Free admission unless stated otherwise\" / \"W-F (2-7pm) SAT/SUN (1-6pm)\". The live `dreams-on-command` venue card already carries exactly those four lines as its sourceQuote and states what is on view and through when. Carding a 7/11→9/8 run as an event would also park it in the Today lens every day until September, which is the failure the rule exists to prevent. WHAT WOULD CHANGE IT: a dated opening, closing reception or artist talk, which are real happenings and stay cardable.",
+      "addedAt": "2026-08-25",
+      "expiresAt": "2026-09-08"
     }
   ]
 }

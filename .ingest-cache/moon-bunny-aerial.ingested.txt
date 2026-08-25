@@ -1,24 +1,4 @@
 name: Two Day Camp 8-12 yrs old
-start_at: 2026-08-24T13:00:00.000Z
-end_at: 2026-08-24T19:00:00.000Z
-
-name: Open Gym
-start_at: 2026-08-24T21:30:00.000Z
-end_at: 2026-08-24T22:30:00.000Z
-
-name: Flexibility
-start_at: 2026-08-24T22:30:00.000Z
-end_at: 2026-08-24T23:30:00.000Z
-
-name: Hula Hoop 101
-start_at: 2026-08-24T23:30:00.000Z
-end_at: 2026-08-25T00:30:00.000Z
-
-name: Lyra
-start_at: 2026-08-25T00:30:00.000Z
-end_at: 2026-08-25T01:30:00.000Z
-
-name: Two Day Camp 8-12 yrs old
 start_at: 2026-08-25T13:00:00.000Z
 end_at: 2026-08-25T19:00:00.000Z
 
@@ -29,6 +9,10 @@ end_at: 2026-08-25T23:15:00.000Z
 name: Lyra
 start_at: 2026-08-25T22:15:00.000Z
 end_at: 2026-08-25T23:15:00.000Z
+
+name: Lyra Point Rental
+start_at: 2026-08-25T23:15:00.000Z
+end_at: 2026-08-26T00:15:00.000Z
 
 name: K-Pop Dance
 start_at: 2026-08-25T23:30:00.000Z
@@ -165,6 +149,10 @@ end_at: 2026-08-31T16:00:00.000Z
 name: Open Gym
 start_at: 2026-08-31T21:30:00.000Z
 end_at: 2026-08-31T22:30:00.000Z
+
+name: Half studio rental
+start_at: 2026-08-31T22:00:00.000Z
+end_at: 2026-09-01T00:00:00.000Z
 
 name: Flexibility
 start_at: 2026-08-31T22:30:00.000Z
@@ -397,6 +385,18 @@ end_at: 2026-09-07T23:30:00.000Z
 name: Open Gym
 start_at: 2026-09-07T22:30:00.000Z
 end_at: 2026-09-07T23:30:00.000Z
+
+name: Hula Hoop 101
+start_at: 2026-09-07T23:30:00.000Z
+end_at: 2026-09-08T00:30:00.000Z
+
+name: Hammock
+start_at: 2026-09-07T23:30:00.000Z
+end_at: 2026-09-08T00:30:00.000Z
+
+name: Flexibility
+start_at: 2026-09-07T23:30:00.000Z
+end_at: 2026-09-08T00:30:00.000Z
 
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial

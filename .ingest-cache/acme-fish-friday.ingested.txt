@@ -379,7 +379,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Trout (1 lb.)
 Hot Smoked
 Specialty
@@ -396,7 +396,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Whiting (1 lb.)
 Hot Smoked
 Specialty
@@ -527,7 +527,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Herring in Wine (12 oz.)
 Herring
 No reviews
@@ -559,7 +559,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Herring in Dill (12 oz.)
 Herring
 No reviews

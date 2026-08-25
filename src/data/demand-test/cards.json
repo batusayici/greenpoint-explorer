@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-24",
+  "version": "2026-08-25",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -969,7 +969,7 @@
       "title": "Film Noir Cinema",
       "kicker": "Greenpoint's indie cult-film cinema",
       "locationName": "Film Noir Cinema",
-      "summary": "Independent cinema on Meserole Ave screening noir, cult and horror rarities, with a published monthly calendar — Film Noir Mondays and Cult Cinema Tuesdays are the standing series.",
+      "summary": "Screens noir, cult and horror rarities on Meserole Ave, with a published monthly calendar — Mondays and Tuesdays carry the standing series.",
       "filters": [
         "arts_culture"
       ],
@@ -1002,13 +1002,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-20",
+      "updatedAt": "2026-08-25",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-monday-0824",
         "film-noir-cult-cinema-0825",
-        "film-noir-film-club-0827"
+        "film-noir-film-club-0827",
+        "film-noir-denchu-kozo-0825"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1116,10 +1116,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-25",
       "address": "162 Noble St, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "flower-cat-subscription"
+        "flower-cat-subscription",
+        "flowercat-live-band-karaoke-0828"
       ],
       "lat": 40.728678,
       "lng": -73.954258
@@ -2180,7 +2181,7 @@
       "title": "McGolrick Bird Club",
       "kicker": "Meets at the Russell St corner",
       "startsAt": "2026-08-08T09:00:00-04:00",
-      "endsAt": "2026-08-29T10:00:00-04:00",
+      "endsAt": "2026-09-05T10:00:00-04:00",
       "recurring": true,
       "locationName": "Msgr McGolrick Park",
       "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
@@ -2188,7 +2189,7 @@
       "filters": [
         "family_kids"
       ],
-      "summary": "The club meets by the Russell Street corner of the park. Go Green Brooklyn lists it under free, outdoor, family programming.",
+      "summary": "Go Green Brooklyn lists it under free, outdoor, family programming.",
       "audience": [
         "resident",
         "family"
@@ -2214,7 +2215,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-25",
       "lat": 40.724458,
       "lng": -73.943361,
       "recurrence": {
@@ -2436,7 +2437,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-25",
       "id": "nb-chess-parkhouse-0806",
       "title": "North Brooklyn Chess at the Parkhouse",
       "kicker": "Casual chess, beginners to sharks",
@@ -2445,7 +2446,7 @@
         "games"
       ],
       "startsAt": "2026-08-06T19:00:00-04:00",
-      "endsAt": "2026-08-24T23:00:00-04:00",
+      "endsAt": "2026-09-08T23:00:00-04:00",
       "locationName": "McCarren Parkhouse",
       "address": "McCarren Park, Brooklyn, NY 11222",
       "geocodeQuery": "McCarren Park, Brooklyn, NY",
@@ -3439,7 +3440,7 @@
           "wed"
         ]
       },
-      "summary": "The second-hand shop's book club, an hour in the evening at the Nassau Ave store. August's theme is gothic houses, and the group votes from a list running Shirley Jackson to Danielewski. Email events@leavesbookstore.com to sign up.",
+      "summary": "An hour in the evening at the second-hand shop. This month the theme is gothic architecture, with picks running Shirley Jackson to Danielewski. Email events@leavesbookstore.com to sign up.",
       "whyItMatters": "A free-to-join reading group on Nassau Ave that lives only on the shop's own calendar.",
       "actions": [
         {
@@ -3466,10 +3467,13 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-25",
       "sourceCampaign": "leaves_onboarding_2026_08_08",
       "lat": 40.724627,
-      "lng": -73.947732
+      "lng": -73.947732,
+      "relatedCardIds": [
+        "leaves-summer-writing-group-0903"
+      ]
     },
     {
       "id": "ymca-greenpoint-fall-1-registration",
@@ -3946,95 +3950,6 @@
       }
     },
     {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-15",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "film-noir-cinema",
-        "film-noir-monday-0824"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "id": "film-noir-phedre-0824",
-      "title": "Phedre at Film Noir Cinema",
-      "kicker": "Opens the following Monday",
-      "summary": "A single 7pm show on the Meserole Avenue cinema's programme, listed for the Monday after the Watch Me run closes.",
-      "startsAt": "2026-08-24T19:00:00-04:00",
-      "endsAt": "2026-08-24T20:00:00-04:00",
-      "sourceQuote": "title: PHEDRE\nstartDate: 2026-08-24T23:00:00.000Z\nendDate: 2026-08-25T00:00:00.000Z",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/24/phedre"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/24/phedre",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-10"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-10"
-        }
-      ],
-      "id": "troost-john-dorney-0824",
-      "title": "John Dorney at Troost",
-      "kicker": "Monday night live set",
-      "summary": "John Dorney plays the back room on Manhattan Avenue. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-24T00:00:00-04:00",
-      "endsAt": "2026-08-24T23:59:00-04:00",
-      "allDay": true,
-      "sourceQuote": "summary: John Dorney\nstart.date: 2026-08-24"
-    },
-    {
       "id": "mcgolrick-farmers-market",
       "title": "McGolrick Park Farmers Market",
       "category": "food_drink",
@@ -4102,7 +4017,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10",
+      "updatedAt": "2026-08-25",
       "free": false,
       "id": "maison-jar-refill-happy-hour",
       "category": "discount",
@@ -4110,7 +4025,7 @@
         "deals_memberships"
       ],
       "recurring": true,
-      "endsAt": "2026-08-24T23:59:00-04:00",
+      "endsAt": "2026-09-08T23:59:00-04:00",
       "title": "20% off bulk refills at Maison Jar",
       "kicker": "Bulk refills 20% off, once a month",
       "summary": "The zero-waste grocery on Leonard Street runs it in store with no registration; they announce each date on Instagram and on signage.",
@@ -4236,7 +4151,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-11",
+      "updatedAt": "2026-08-25",
       "filters": [
         "family_kids"
       ],
@@ -4264,11 +4179,11 @@
       ],
       "id": "moon-bunny-two-day-camp-8-12-0824",
       "title": "Two-Day Circus Camp for 8–12s at Moon Bunny Aerial",
-      "kicker": "Late-August pair of camp days",
-      "summary": "The shorter format for the 8-to-12 group — aerial apparatus work plus acro, juggling and flow props over two consecutive days.",
-      "startsAt": "2026-08-24T09:00:00-04:00",
+      "kicker": "Final day of the two-day camp",
+      "summary": "The shorter format for the 8-to-12 group — aerial apparatus work plus acro, juggling and flow props. The studio's feed now lists only today's session.",
+      "startsAt": "2026-08-25T09:00:00-04:00",
       "endsAt": "2026-08-25T15:00:00-04:00",
-      "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-24T13:00:00.000Z\nend_at: 2026-08-24T19:00:00.000Z\n\nname: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-25T13:00:00.000Z\nend_at: 2026-08-25T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
+      "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-25T13:00:00.000Z\nend_at: 2026-08-25T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
       "lat": 40.736575,
       "lng": -73.952327
     },
@@ -4684,11 +4599,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-14",
-      "updatedAt": "2026-08-17",
+      "updatedAt": "2026-08-25",
       "id": "library-thursday-programs-0827",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Five programs, morning into evening",
-      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines from 1, teen video games at 3, and an all-ages storytime at 6. The 2pm ESOL class is canceled.",
+      "kicker": "Four programs, morning into evening",
+      "summary": "Babies & Books at 10:30 and 11:15, teen video games at 3, and an all-ages storytime at 6. Drop-in sewing machine hours and the 2pm ESOL class are both canceled.",
       "startsAt": "2026-08-27T10:30:00-04:00",
       "endsAt": "2026-08-27T18:30:00-04:00",
       "filters": [
@@ -4698,7 +4613,7 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
       "lng": -73.950709,
-      "sourceQuote": "ts_title: Babies & Books\nds_event_start_date: 2026-08-27T14:30:00Z\nts_title: Babies & Books\nds_event_start_date: 2026-08-27T15:15:00Z\nts_title: Drop-In Sewing Machine Hours\nds_event_start_date: 2026-08-27T17:00:00Z\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-08-27T19:00:00Z\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-27T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1",
+      "sourceQuote": "ts_title: Babies & Books\nds_event_start_date: 2026-08-27T14:30:00Z\nts_title: Babies & Books\nds_event_start_date: 2026-08-27T15:15:00Z\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-08-27T19:00:00Z\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-27T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1\nts_title: Drop-In Sewing Machine Hours\nis_event_canceled: 1",
       "actions": [
         {
           "label": "Branch calendar",
@@ -5063,52 +4978,6 @@
           "title": "Good Room via DoNYC",
           "url": "https://donyc.com/venues/good-room",
           "publisher": "DoNYC",
-          "date": "2026-08-15"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "free": false,
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "film-noir-cinema",
-        "film-noir-phedre-0824"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "filters": [
-        "arts_culture"
-      ],
-      "category": "event",
-      "id": "film-noir-monday-0824",
-      "title": "Film Noir Monday",
-      "kicker": "Titles kept in total darkness",
-      "summary": "The house series digs up lesser-known and very obscure noir, international titles included, and never says beforehand what is screening.",
-      "startsAt": "2026-08-24T21:00:00-04:00",
-      "endsAt": "2026-08-24T22:00:00-04:00",
-      "sourceQuote": "FILM NOIR MONDAY\nMonday, August 24, 2026\n9:00 PM\n10:00 PM\nFilm Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.\nIn Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
-          "publisher": "Film Noir Cinema",
           "date": "2026-08-15"
         }
       ]
@@ -5561,48 +5430,6 @@
     },
     {
       "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-18",
-      "updatedAt": "2026-08-18",
-      "id": "library-chair-yoga-0824",
-      "category": "event",
-      "free": false,
-      "title": "Chair Yoga for Adults at Greenpoint Library",
-      "kicker": "An accessible chair-based yoga hour",
-      "summary": "Stefanie Mihoulides leads a chair-focused sequence with guided breathwork. The branch bills it as suitable for adults of all ages and abilities.",
-      "startsAt": "2026-08-24T13:30:00-04:00",
-      "endsAt": "2026-08-24T14:30:00-04:00",
-      "filters": [
-        "wellness"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "sourceQuote": "ts_title: Chair Yoga for Adults\nds_event_start_date: 2026-08-24T17:30:00Z\nds_event_end_date: 2026-08-24T18:30:00Z\nss_event_location: Greenpoint Library\nss_event_age: Adults\nts_body: Join us for Chair Yoga + Mindfulness with Stefanie Mihoulides! This is an accessible yoga class suitable for adults of all ages and abilities. Connect breath to movement as you build strength and mobility through a fundamental chair-focused sequence with guided breathwork.",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-18"
-        }
-      ]
-    },
-    {
-      "audience": [
         "resident",
         "family"
       ],
@@ -5888,55 +5715,6 @@
     },
     {
       "audience": [
-        "resident",
-        "visitor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
-      "id": "threes-peter-luger-0824",
-      "category": "event",
-      "title": "Peter Luger takeover at Threes Brewing Greenpoint",
-      "kicker": "Luger brats and a collab lager",
-      "summary": "The finale of the brewery’s summer guest series. Walk-in only, no reservations, and specials are poured until they run out; Faccia Brutto mixes the drinks.",
-      "startsAt": "2026-08-24T17:00:00-04:00",
-      "endsAt": "2026-08-24T20:00:00-04:00",
-      "filters": [
-        "food_drink"
-      ],
-      "locationName": "Threes Brewing Greenpoint",
-      "address": "113 Franklin St, Brooklyn, NY 11222",
-      "geocodeQuery": "Threes Brewing, Franklin Street, Brooklyn, NY",
-      "sourceQuote": "Summer Guest Series Finale @ Threes Brewing, 5 p.m.: The local brewery is partnering with Peter Luger for a Brats and Beers takeover featuring Peter Luger-curated decor, menu, and music, plus Luger Lager, a special collaboration brew available while supplies last. Walk-in only. RSVP here .\nPeter Luger Steakhouse @ Threes Brewing Greenpoint\nMonday, Aug 24\n5:00pm – 8:00pm ET\nPeter Luger Steakhouse, the world-famous Williasmburg institution, is popping up at Threes Brewing Greenpoint for one night only. From 5–8pm, try Peter Luger's world-famous brats, taste Luger Lager, our collaboration bavarian lager, and sip drink specials by Faccia Brutto. Walk-in only. No reservations. Specials served until we run out.",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "learn_more",
-          "url": "https://partiful.com/e/5SVQBR7ZENGrpY5twISh"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Peter Luger Steakhouse @ Threes Brewing Greenpoint",
-          "url": "https://partiful.com/e/5SVQBR7ZENGrpY5twISh",
-          "publisher": "Threes Brewing",
-          "date": "2026-08-19"
-        },
-        {
-          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
-          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-19"
-        }
-      ],
-      "lat": 40.730371,
-      "lng": -73.957833
-    },
-    {
-      "audience": [
         "resident"
       ],
       "evidenceStrength": "high",
@@ -5944,7 +5722,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-20",
+      "updatedAt": "2026-08-25",
       "locationName": "Film Noir Cinema",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "lat": 40.727314,
@@ -5961,7 +5739,8 @@
       "startsAt": "2026-08-25T21:00:00-04:00",
       "endsAt": "2026-08-25T22:00:00-04:00",
       "relatedCardIds": [
-        "film-noir-cinema"
+        "film-noir-cinema",
+        "film-noir-denchu-kozo-0825"
       ],
       "sourceQuote": "CULT CINEMA\nTuesday, August 25, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.",
       "actions": [
@@ -6131,61 +5910,12 @@
       "filters": [
         "arts_culture"
       ],
-      "id": "golden-drum-yara-drum-workshop-0824",
-      "title": "Drum Workshop with Yara Yaworâ at Golden Drum",
-      "kicker": "Afro-Brazilian rhythms, $40",
-      "summary": "Two hours on the Sacred Lineage of Umbanda and the Orixás, with a rhythm for each element of nature. Bring your own percussion if you have it.",
-      "startsAt": "2026-08-24T19:00:00-04:00",
-      "endsAt": "2026-08-24T21:30:00-04:00",
-      "relatedCardIds": [
-        "golden-drum-sacred-roses-0825"
-      ],
-      "sourceQuote": "Drum Workshop—by Yara Yaworâ (Brazil)\nMonday, August 24, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nIn this 2-hour workshop, I will share knowledge about the Sacred Lineage of Umbanda (an Afro-Brazilian religion), where we will learn more deeply about who the Orixás are and how they work through the elements of Nature.\nI will also introduce Afro-Brazilian rhythms that invoke the elements of Nature, where each rhythm features a dance, an element, and an invocation of different ancestral forces.\nParticipants are also welcome to bring their own percussion instruments so we can create rhythms that activate our chakras, thereby awakening our Kundalini.\nDrum Workshop with Yara 08/24/26\n$40.00",
-      "actions": [
-        {
-          "label": "Workshop page",
-          "type": "learn_more",
-          "url": "https://www.goldendrum.org/calendar-1/yaradrumworkshop"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Golden Drum",
-          "url": "https://www.goldendrum.org/calendar-1/yaradrumworkshop",
-          "publisher": "Golden Drum",
-          "date": "2026-08-20"
-        }
-      ],
-      "lat": 40.733571,
-      "lng": -73.957721
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-20",
-      "locationName": "Golden Drum",
-      "address": "97 Green St. G1, Brooklyn, NY 11222",
-      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
-      "free": false,
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
       "id": "golden-drum-sacred-roses-0825",
       "title": "Sacred Roses with Ananda at Golden Drum",
       "kicker": "Body-awareness workshop, $40",
       "summary": "Movement, breath and sound drawn from Core Energetics body therapy, then the Sacred Roses practice tied to the Pentagram of Venus. No previous experience needed.",
       "startsAt": "2026-08-25T19:00:00-04:00",
       "endsAt": "2026-08-25T21:30:00-04:00",
-      "relatedCardIds": [
-        "golden-drum-yara-drum-workshop-0824"
-      ],
       "sourceQuote": "Unveiling the Temple Body with the Sacred Roses by Ananda (Brazil)\nTuesday, August 25, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nJoin Ananda for a two-hour experiential workshop exploring the body as a space for awareness, transformation, and deeper connection with ourselves.\nfollowed by a guided body-awareness practice inspired by Core Energetics Body Therapy\nAnanda will guide participants into the Sacred Roses practice , a symbolic and energetic activation connected to the Pentagram of Venus.\nNo previous experience is necessary.\nSacred rose with Ananda 08/25/26\n$40.00",
       "actions": [
         {
@@ -7263,6 +6993,288 @@
           "date": "2026-08-21"
         }
       ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-25",
+      "updatedAt": "2026-08-25",
+      "id": "film-noir-denchu-kozo-0825",
+      "category": "event",
+      "title": "DENCHU-KOZO at Film Noir Cinema",
+      "kicker": "A 1987 Japanese cult oddity",
+      "summary": "Hikari has an electricity pole growing out of his back, and the other boys at school torment him for it — until a classmate named Momo comes to his rescue.",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "free": false,
+      "startsAt": "2026-08-25T20:00:00-04:00",
+      "endsAt": "2026-08-25T21:00:00-04:00",
+      "relatedCardIds": [
+        "film-noir-cinema",
+        "film-noir-cult-cinema-0825"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "DENCHU-KOZO — Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-25"
+        }
+      ],
+      "sourceQuote": "DENCHU-KOZO — Film Noir Cinema\nDENCHU-KOZO\nTuesday, August 25, 2026\n8:00 PM\n9:00 PM\nJP. 1987\nHikari is a boy who is bullied and teased by the other boys at school because he has the odd distinction of having an electricity pole growing out of his back. However, one of his classmates, a girl named Momo, comes to his rescue."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-25",
+      "updatedAt": "2026-08-25",
+      "id": "bcc-knitting-103-bandana-0825",
+      "category": "event",
+      "title": "Knitting 103: Summer Bandana at Brooklyn Craft Company",
+      "kicker": "Summer bandana, start to finish",
+      "summary": "Third step in the shop's knitting ladder, $85 for the session. Their workshops sell out fast, so check availability before turning up.",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
+      "lat": 40.730461,
+      "lng": -73.953114,
+      "free": false,
+      "startsAt": "2026-08-25T18:30:00-04:00",
+      "endsAt": "2026-08-25T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Workshop page",
+          "type": "learn_more",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-06"
+        },
+        {
+          "title": "Brooklyn Craft Company workshops",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-25"
+        }
+      ],
+      "sourceQuote": "Knitting 103: Summer Bandana\nIn Greenpoint:\nTues, 8/25 at 6:30pm\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train\n$85.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-25",
+      "updatedAt": "2026-08-25",
+      "id": "bcc-crochet-102-tomatote-0829",
+      "category": "event",
+      "title": "Crochet 102: Tom-a-tote! at Brooklyn Craft Company",
+      "kicker": "Crochet a tomato-shaped tote",
+      "summary": "A step up from the beginner class, $45 for the session. Workshops at this shop sell out fast, so check availability first.",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
+      "lat": 40.730461,
+      "lng": -73.953114,
+      "free": false,
+      "startsAt": "2026-08-29T11:00:00-04:00",
+      "endsAt": "2026-08-29T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Workshop page",
+          "type": "learn_more",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-06"
+        },
+        {
+          "title": "Brooklyn Craft Company workshops",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-25"
+        }
+      ],
+      "sourceQuote": "Crochet 102: Tom-a-tote!\nIn Greenpoint:\nSat, 8/29 at 11am\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train\n$45.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-25",
+      "updatedAt": "2026-08-25",
+      "id": "bcc-beginner-patchwork-0906",
+      "category": "event",
+      "title": "Beginner Patchwork at Brooklyn Craft Company",
+      "kicker": "Piece your first quilt top",
+      "summary": "Billed as a beginner class, $95 for the session. Brooklyn Craft Company's workshops sell out fast, so check availability before turning up.",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
+      "lat": 40.730461,
+      "lng": -73.953114,
+      "free": false,
+      "startsAt": "2026-09-06T12:00:00-04:00",
+      "endsAt": "2026-09-06T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Workshop page",
+          "type": "learn_more",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter, 2026-08-14",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-14"
+        },
+        {
+          "title": "Brooklyn Craft Company workshops",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-25"
+        }
+      ],
+      "sourceQuote": "Beginner Patchwork\nSat, 9/6 at 12pm\nIn the BCC Shop\nVISIT OUR STORE IN BROOKLYN\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train\n$95.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-25",
+      "updatedAt": "2026-08-25",
+      "id": "flowercat-live-band-karaoke-0828",
+      "category": "event",
+      "title": "Live Band Karaoke: Summer of Soul at Flower Cat",
+      "kicker": "Sing with a live band behind you",
+      "summary": "Aretha, Amy, Alicia and the rest. Turn up at 7:30 to get on the list, and outside players can sit in on drums, bass, piano or guitar. Free entry, two-drink minimum.",
+      "filters": [
+        "live_music",
+        "food_drink"
+      ],
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "lat": 40.728678,
+      "lng": -73.954258,
+      "free": true,
+      "startsAt": "2026-08-28T19:30:00-04:00",
+      "endsAt": "2026-08-28T23:00:00-04:00",
+      "relatedCardIds": [
+        "flower-cat"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat events",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-08-25"
+        }
+      ],
+      "sourceQuote": "Live Band Karaoke: Summer of Soul\nFriday, August 28, 2026\n7:30 PM\n11:00 PM\nFlower Cat\nShow up at around 7:30pm to get on the list and pick your song & stick around to cheer on your fellow Flower Cat community members!\nOutside musicians are welcomed and encouraged to come jam along as well! Sub in on drums, bass, piano, guitar or bring your own. Free entry! 2 drink minimum! Tip your musicians & bartender!"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-25",
+      "updatedAt": "2026-08-25",
+      "id": "leaves-summer-writing-group-0903",
+      "category": "event",
+      "title": "Summer Writing Group at Leaves",
+      "kicker": "Last of an eight-week run",
+      "summary": "The biweekly group closes out its summer session at the second-hand bookshop. Leaves states the date but no start time — check with the shop before heading over.",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Leaves",
+      "address": "140 Nassau Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "140 Nassau Avenue, Brooklyn, NY 11222",
+      "lat": 40.724627,
+      "lng": -73.947732,
+      "startsAt": "2026-09-03T00:00:00-04:00",
+      "endsAt": "2026-09-03T23:59:00-04:00",
+      "allDay": true,
+      "relatedCardIds": [
+        "leaves-august-book-club"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.leavesbookstore.com/events.php"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Leaves events",
+          "url": "https://www.leavesbookstore.com/events.php",
+          "publisher": "Leaves",
+          "date": "2026-08-11"
+        }
+      ],
+      "sourceQuote": "meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3"
     }
   ]
 }

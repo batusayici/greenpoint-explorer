@@ -1,8 +1,3 @@
-summary: John Dorney
-start.date: 2026-08-24
-end.date: 2026-08-25
-htmlLink: https://www.google.com/calendar/event?eid=M2k2dTdjM2Y0bDc5YXBrN2luZWZ1amdocDMgdHJvb3N0bGl2ZUBt
-
 summary: LUMENS
 description: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone
 start.date: 2026-08-25
@@ -222,3 +217,8 @@ summary: DJ MIKE WALLACE No Hard Feelings
 start.date: 2026-10-11
 end.date: 2026-10-12
 htmlLink: https://www.google.com/calendar/event?eid=XzZkMjQ4aGE1OGNwNDZiOWk2b3EzOGI5azZvcmo2YjlwODhzNDhiOW82Y28zZ2gxaDZzcTRjaDlsNjQgdHJvb3N0bGl2ZUBt
+
+summary: SAM KEEDY
+start.date: 2026-10-11
+end.date: 2026-10-12
+htmlLink: https://www.google.com/calendar/event?eid=Xzg1MGs0aDIxNmNzazZiYTE4bDBrOGI5azhkMGtjYmEyNjRyamNiOW02Y28zNGNwbjY4b2pnZTlwNjAgdHJvb3N0bGl2ZUBt
