@@ -4,6 +4,37 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-25 — A card says whether it is all-day; midnight becomes a real time again
+
+Decision (Batu, this session), answering the question the 2026-08-21 review PR held eight cards on.
+
+**The problem.** `00:00` was the only way a card could say "the date is sourced, no clock is" — the
+all-day sentinel. That made a *sourced* midnight impossible to write down. Eavesdrop's calendar lists
+two slots a night, "6PM" and "12midnight"; carding the venue's own words told the feed the set ran all
+day and sorted a DJ set to the top of the morning feed. That is the 2026-08-13 camp failure from the
+other end of the clock, and it is not one venue's quirk — every late-night venue on the roster hits it.
+
+**What changed.** Cards carry an explicit `allDay` boolean. `true` keeps exactly the old sentinel
+behaviour (bare date, no `startTime` to crawlers, runs to midnight); `false` means midnight is real, so
+the card shows a clock, sorts to the start of its day and — with the usual `23:59` unsourced-end
+sentinel — retires an hour in rather than holding the day's feed. The twelve existing all-day cards
+(all Troost) were backfilled with `true`.
+
+**The flag is required, not optional.** `validateCard` rejects a `00:00` start that omits `allDay`, and
+rejects `allDay: true` on a card with a stated clock. Leaving the old reading as a silent fallback
+would have let one ingest run re-create the bug; the gate is what makes the ambiguity unreachable
+rather than merely discouraged.
+
+**One definition, five callers.** `isAllDay` lives in `cardSchema.js` and every surface imports it —
+the feed, the when-line, the row clock, the Google Calendar link, the .ics feed and all three JSON-LD
+paths. Each of those had been re-reading the clock itself, which is precisely how the sitting model
+drifted per caller on 2026-08-13; asking the card instead of the clock is what stops that class, not
+just this instance.
+
+**Shipped with it.** Five of the eight held Eavesdrop sets (8/27–8/31); the other three had already
+passed. The ingest rule and Eavesdrop's roster note are updated so future midnight sets file
+mechanically.
+
 ## 2026-08-19 (seventh entry) — Search gets a real sensor; the citation check stays manual and the cockpit watches it
 
 Decision (Batu, this session). Until today the only Search Console numbers we ever had were the ones

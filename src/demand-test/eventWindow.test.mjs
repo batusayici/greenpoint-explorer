@@ -119,7 +119,7 @@ test("isSpan: multi-day and open-ended windows are spans, same-day is not", asyn
 // day the feed could not answer "what's on this Saturday", so every recurring
 // card was shelved — burying the Saturday kids' events Batu reported missing.
 // `recurrence.days` states the day; these tests pin what it must mean.
-import { occursOn, nextOccurrence, RECURRENCE_DAYS, recurrenceLabel } from "./eventWindow.js";
+import { occursOn, nextOccurrence, rowTime, RECURRENCE_DAYS, recurrenceLabel } from "./eventWindow.js";
 
 // Real seed card: Saturday sewing camp, Aug 1–22, 11am–2pm.
 const sewing = {
@@ -234,4 +234,34 @@ test("recurrenceLabel names the rhythm for the row, without a date", () => {
   // ingest happened to type the days.
   assert.equal(recurrenceLabel({ recurring: true, recurrence: { days: ["thu", "sun"] } }), "Sundays & Thursdays");
   assert.equal(recurrenceLabel(standingDeal), null); // no stated day, no claim
+});
+
+// ── A sourced midnight is a real clock (2026-08-25) ────────────────────────
+// `allDay` decides this now, not the 00:00 clock — so the same instant reads
+// two ways depending on what the source actually stated. Every surface asks
+// the card, so none of them can drift the way the sitting model did on
+// 2026-08-13.
+const midnightSet = {
+  startsAt: "2026-08-27T00:00:00-04:00",
+  endsAt: "2026-08-27T23:59:00-04:00",
+  allDay: false,
+};
+const noClockSourced = { ...midnightSet, allDay: true };
+
+test("a midnight set keeps its clock; an all-day card shows a bare date", () => {
+  assert.equal(formatWindow(midnightSet), "Aug 27, 12:00 AM");
+  assert.equal(formatWindow(noClockSourced), "Aug 27");
+});
+
+test("the row clock prints a midnight set and stays silent for an all-day card", () => {
+  assert.equal(rowTime(midnightSet), "12 AM");
+  assert.equal(rowTime(noClockSourced), null);
+});
+
+test("a midnight set retires an hour in — it does not hold the day's feed", () => {
+  // This is the 2026-08-13 failure from the other end of the clock: read as
+  // all-day, a DJ set would lead the feed all Thursday.
+  assert.equal(nextOccurrence(midnightSet, at("2026-08-27T00:30:00-04:00")), "2026-08-27", "still on at half past");
+  assert.equal(nextOccurrence(midnightSet, at("2026-08-27T02:00:00-04:00")), null, "over by 2am");
+  assert.equal(nextOccurrence(noClockSourced, at("2026-08-27T02:00:00-04:00")), "2026-08-27", "an all-day card runs to midnight");
 });

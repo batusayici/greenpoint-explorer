@@ -580,14 +580,16 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // states the camp anywhere and the source shrank 108 lines, so a recurring
   // card past its verified-through could not be re-verified and does not get
   // renewed on faith.
-  assert.equal(seed.cards.length, 150);
+  // 2026-08-25: +5 Eavesdrop midnight sets (8/27–8/31), released by the
+  // `allDay` ruling — the venue's own "12midnight" slot became expressible.
+  assert.equal(seed.cards.length, 155);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.category === "event"), 74, "92 − 19 expired/deleted + 6 dated adds on 2026-08-24 (Troost 9/5 + 9/7, Good Room 9/5 + 9/6, Film Club 8/27, the Ashbox farewell sale)");
+  assert.equal(count((c) => c.category === "event"), 79, "74 + 5 Eavesdrop midnight sets released by the allDay ruling (2026-08-25)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
   assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 24, "27 − 7 expired 8/21–8/23 nights + 4 adds on 2026-08-24 (Troost 9/5 + 9/7, Good Room 9/5 + 9/6)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 29, "24 + 5 Eavesdrop midnight sets (2026-08-25)");
   assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still

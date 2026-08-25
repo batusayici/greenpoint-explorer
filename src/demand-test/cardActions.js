@@ -4,6 +4,8 @@
 // address or coords → null. share/filterId actions return null here because
 // the component handles them as buttons, not links. Derived directions use the
 // documented Google Maps search URL — derived from card data, never invented.
+import { isAllDay } from "./cardSchema.js";
+
 const DIRECTIONS_BASE = "https://www.google.com/maps/search/?api=1&query=";
 
 export function actionHref(action, card) {
@@ -40,17 +42,11 @@ const SHARE_TIME = new Intl.DateTimeFormat("en-US", {
   minute: "2-digit",
   timeZone: "America/New_York",
 });
-const SHARE_CLOCK = new Intl.DateTimeFormat("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false,
-  timeZone: "America/New_York",
-});
 
 function shareWhen(card) {
   if (card.startsAt == null || card.recurring) return null;
   const d = new Date(card.startsAt);
-  if (SHARE_CLOCK.format(d) === "00:00") return SHARE_DATE.format(d).replace(",", ""); // all-day sentinel
+  if (isAllDay(card)) return SHARE_DATE.format(d).replace(",", ""); // no clock was sourced
   return `${SHARE_DAY.format(d)} ${SHARE_TIME.format(d).replace(":00", "")}`;
 }
 

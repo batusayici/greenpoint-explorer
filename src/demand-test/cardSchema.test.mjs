@@ -142,6 +142,7 @@ test("a deal (discount) must carry an end date — offers expire", () => {
     filters: ["deals_memberships"],
     startsAt: "2026-07-14T00:00:00-04:00",
     endsAt: "2026-07-20T23:59:00-04:00",
+    allDay: true, // a midnight start states which meaning it carries (2026-08-25)
   };
   assert.deepEqual(validateCard(deal).errors, []);
   const { startsAt, endsAt, ...open } = deal;
@@ -229,4 +230,26 @@ test("lintCard warns when the summary restates its kicker", async () => {
     summary: "No cover; the quartet rotates weekly and the kitchen runs late.",
   };
   assert.equal(lintCard(distinct).ok, true, "different jobs, no warning");
+});
+
+// ── All-day is stated, not inferred (2026-08-25) ───────────────────────────
+// Eavesdrop lists two slots a night, "6PM" and "12midnight". Before this, a
+// midnight start could only mean "no clock was sourced", so the venue's own
+// words had no honest representation and eight sourced sets were held.
+test("a 00:00 start must say which meaning it carries", () => {
+  const midnight = { ...good, category: "event", startsAt: "2026-08-27T00:00:00-04:00" };
+  assert.deepEqual(
+    validateCard(midnight).errors,
+    ["test-card: 00:00 start needs an explicit allDay (true = no clock sourced, false = a real midnight)"],
+    "ambiguous midnight is rejected at the gate, so the fallback never fires on the live deck",
+  );
+  assert.deepEqual(validateCard({ ...midnight, allDay: true }).errors, []);
+  assert.deepEqual(validateCard({ ...midnight, allDay: false }).errors, []);
+});
+
+test("allDay: true contradicts a stated clock", () => {
+  const timed = { ...good, category: "event", startsAt: "2026-08-27T18:00:00-04:00", allDay: true };
+  assert.equal(validateCard(timed).ok, false);
+  assert.equal(validateCard({ ...timed, allDay: false }).ok, true);
+  assert.equal(validateCard({ ...good, allDay: "yes" }).ok, false, "allDay is a boolean");
 });

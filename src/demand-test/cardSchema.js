@@ -13,6 +13,46 @@
 // on. Week order is canonical (see recurrenceLabel in eventWindow.js).
 export const RECURRENCE_DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
+// ── All-day, stated rather than inferred (2026-08-25) ─────────────────────
+// A 00:00 NY start used to be the ONLY way to say "no clock time was ever
+// sourced" — the all-day sentinel. That made a SOURCED midnight start
+// impossible to write down: Eavesdrop's calendar lists two slots a night,
+// "6PM" and "12midnight", and carding the stated time told the feed the set
+// ran all day and sorted a DJ set to the top of the morning feed. That is the
+// 2026-08-13 failure from the other end of the clock.
+//
+// `allDay` states it instead. ONE definition, exported, because five surfaces
+// asked this question by re-reading the clock themselves — eventWindow,
+// calendarLink, aeo (three times), cardActions — which is exactly how the
+// sitting model drifted per caller on 2026-08-13.
+//
+//   allDay: true   → no clock was sourced; render a bare date, run to midnight
+//   allDay: false  → the clock is real, midnight included
+//   absent         → the legacy sentinel reading (00:00 = all day), kept so
+//                    the pre-2026-08-25 backlog and its fixtures stay valid
+//
+// The absent case is closed off at the gate, not here: validateCard requires
+// an explicit `allDay` on any card whose start clock is 00:00, so an ingest
+// run cannot author an ambiguous midnight and the fallback never fires on the
+// live deck.
+const NY_START_CLOCK = new Intl.DateTimeFormat("en-US", {
+  hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "America/New_York",
+});
+
+export const isMidnightStart = (card) => {
+  if (card?.startsAt == null) return false;
+  const d = new Date(card.startsAt);
+  // A malformed startsAt is already an error of its own; asking it for a clock
+  // must not throw out of validateCard before that error is collected.
+  if (Number.isNaN(d.getTime())) return false;
+  return NY_START_CLOCK.format(d) === "00:00";
+};
+
+export function isAllDay(card) {
+  if (typeof card?.allDay === "boolean") return card.allDay;
+  return isMidnightStart(card);
+}
+
 export const CATEGORIES = [
   "new_business", "food_drink", "shopping", "service", "event",
   "arts_culture", "family_kids", "job", "shopkeeper_profile",
@@ -228,6 +268,18 @@ export function validateCard(card) {
   }
   if (card.recurring != null && typeof card.recurring !== "boolean") {
     err("recurring must be a boolean");
+  }
+  // All-day is STATED, not inferred (2026-08-25 — see isAllDay above). A card
+  // whose start clock is midnight must say which it means, so a sourced
+  // "12midnight" set can be carded without being read as an all-day event.
+  if (card.allDay != null && typeof card.allDay !== "boolean") {
+    err("allDay must be a boolean");
+  }
+  if (card.allDay == null && isMidnightStart(card)) {
+    err("00:00 start needs an explicit allDay (true = no clock sourced, false = a real midnight)");
+  }
+  if (card.allDay === true && card.startsAt != null && !isMidnightStart(card)) {
+    err("allDay: true needs a 00:00 start — a stated clock is not an all-day card");
   }
   // Recurrence (2026-08-08). `recurring` says "this repeats"; `recurrence.days`
   // says WHICH DAYS, which is what lets the feed place a weekly event on its

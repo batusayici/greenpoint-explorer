@@ -4031,6 +4031,7 @@
       "summary": "John Dorney plays the back room on Manhattan Avenue. The venue calendar lists the night without a set start time.",
       "startsAt": "2026-08-24T00:00:00-04:00",
       "endsAt": "2026-08-24T23:59:00-04:00",
+      "allDay": true,
       "sourceQuote": "summary: John Dorney\nstart.date: 2026-08-24"
     },
     {
@@ -4206,6 +4207,7 @@
       "free": false,
       "startsAt": "2026-08-25T00:00:00-04:00",
       "endsAt": "2026-08-25T23:59:00-04:00",
+      "allDay": true,
       "actions": [
         {
           "label": "Venue calendar",
@@ -4337,6 +4339,7 @@
       ],
       "startsAt": "2026-08-26T00:00:00-04:00",
       "endsAt": "2026-08-26T23:59:00-04:00",
+      "allDay": true,
       "locationName": "Troost",
       "address": "1011 Manhattan Ave",
       "summary": "Troost's own Google Calendar carries just the name: no support acts, no door time, no ticket link.",
@@ -4645,6 +4648,7 @@
       "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
       "startsAt": "2026-08-27T00:00:00-04:00",
       "endsAt": "2026-08-27T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -4995,6 +4999,7 @@
       "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
       "startsAt": "2026-08-29T00:00:00-04:00",
       "endsAt": "2026-08-29T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -5168,6 +5173,7 @@
       "summary": "Troost's own Google Calendar lists the night by name and description only — no set time, no support acts, no ticket link.",
       "startsAt": "2026-08-30T00:00:00-04:00",
       "endsAt": "2026-08-30T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -5210,6 +5216,7 @@
       "summary": "Troost's own Google Calendar lists the night by name and description only — no set time, no lineup, no ticket link.",
       "startsAt": "2026-08-31T00:00:00-04:00",
       "endsAt": "2026-08-31T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -5527,6 +5534,7 @@
       "summary": "Troost's own Google Calendar lists Phillip Santos, Michael Eaton and Evan Palmer by title only — no description and no ticket link.",
       "startsAt": "2026-09-01T00:00:00-04:00",
       "endsAt": "2026-09-01T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -5993,6 +6001,7 @@
       "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
       "startsAt": "2026-09-03T00:00:00-04:00",
       "endsAt": "2026-09-03T23:59:00-04:00",
+      "allDay": true,
       "locationName": "Troost",
       "address": "1011 Manhattan Ave",
       "lat": 40.733463,
@@ -6351,6 +6360,7 @@
       "summary": "A vinyl set at the Manhattan Avenue bar. The venue calendar lists the night without a start time.",
       "startsAt": "2026-09-04T00:00:00-04:00",
       "endsAt": "2026-09-04T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -6613,6 +6623,7 @@
       "summary": "The venue calendar lists this night by name only — no set time, no genre note and no cover charge are stated.",
       "startsAt": "2026-09-05T00:00:00-04:00",
       "endsAt": "2026-09-05T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -6656,6 +6667,7 @@
       "summary": "Troost's calendar carries the billing and the date and nothing else — no start time and no cover charge.",
       "startsAt": "2026-09-07T00:00:00-04:00",
       "endsAt": "2026-09-07T23:59:00-04:00",
+      "allDay": true,
       "filters": [
         "live_music"
       ],
@@ -7031,6 +7043,226 @@
       ],
       "lat": 40.728891,
       "lng": -73.957917
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-21",
+      "updatedAt": "2026-08-25",
+      "id": "eavesdrop-dan-piepenbring-0827",
+      "category": "event",
+      "free": false,
+      "title": "Dan Piepenbring at Eavesdrop",
+      "kicker": "Late set at the Manhattan Ave bar",
+      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
+      "startsAt": "2026-08-27T00:00:00-04:00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "allDay": false,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Eavesdrop",
+      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.724894,
+      "lng": -73.951181,
+      "sourceQuote": "Thursday, Aug 27\n12midnight\nDan Piepenbring",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "Eavesdrop",
+          "date": "2026-08-21"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-21",
+      "updatedAt": "2026-08-25",
+      "id": "eavesdrop-dynoman-0828",
+      "category": "event",
+      "free": false,
+      "title": "Dynoman at Eavesdrop",
+      "kicker": "Late set at the Manhattan Ave bar",
+      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
+      "startsAt": "2026-08-28T00:00:00-04:00",
+      "endsAt": "2026-08-28T23:59:00-04:00",
+      "allDay": false,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Eavesdrop",
+      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.724894,
+      "lng": -73.951181,
+      "sourceQuote": "Friday, Aug 28\n12midnight\nDynoman @eavesdrop",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "Eavesdrop",
+          "date": "2026-08-21"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-21",
+      "updatedAt": "2026-08-25",
+      "id": "eavesdrop-alien-d-0829",
+      "category": "event",
+      "free": false,
+      "title": "Alien D residency at Eavesdrop",
+      "kicker": "Late set at the Manhattan Ave bar",
+      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
+      "startsAt": "2026-08-29T00:00:00-04:00",
+      "endsAt": "2026-08-29T23:59:00-04:00",
+      "allDay": false,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Eavesdrop",
+      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.724894,
+      "lng": -73.951181,
+      "sourceQuote": "Saturday, Aug 29\n12midnight\nAlien D residency",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "Eavesdrop",
+          "date": "2026-08-21"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-21",
+      "updatedAt": "2026-08-25",
+      "id": "eavesdrop-hunnybunny-0830",
+      "category": "event",
+      "free": false,
+      "title": "HunnyBunny at Eavesdrop",
+      "kicker": "Late set at the Manhattan Ave bar",
+      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
+      "startsAt": "2026-08-30T00:00:00-04:00",
+      "endsAt": "2026-08-30T23:59:00-04:00",
+      "allDay": false,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Eavesdrop",
+      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.724894,
+      "lng": -73.951181,
+      "sourceQuote": "Sunday, Aug 30\n12midnight\nHunnyBunny @eavesdrop",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "Eavesdrop",
+          "date": "2026-08-21"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-21",
+      "updatedAt": "2026-08-25",
+      "id": "eavesdrop-kamilla-norova-0831",
+      "category": "event",
+      "free": false,
+      "title": "Kamilla Norova at Eavesdrop",
+      "kicker": "Late set at the Manhattan Ave bar",
+      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
+      "startsAt": "2026-08-31T00:00:00-04:00",
+      "endsAt": "2026-08-31T23:59:00-04:00",
+      "allDay": false,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Eavesdrop",
+      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.724894,
+      "lng": -73.951181,
+      "sourceQuote": "Monday, Aug 31\n12midnight\nKamilla Norova @eavesdrop",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "Eavesdrop",
+          "date": "2026-08-21"
+        }
+      ]
     }
   ]
 }

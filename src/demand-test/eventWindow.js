@@ -1,9 +1,11 @@
 // Track V — the when-line formatter. One rule: show the date/time once. A card
 // summary must not restate what this returns, and this must not repeat a date
-// within itself. Sentinels from the card schema: a 00:00 start = "all day from
-// this date", a 23:59 end = "through this date" — both render as bare dates so
-// no fake clock value (12:00 AM / 11:59 PM) reaches the reader.
-import { RECURRENCE_DAYS } from "./cardSchema.js";
+// within itself. Two readings from the card schema render as bare dates, so no
+// fake clock value reaches the reader: an ALL-DAY card (`allDay: true` — the
+// date was sourced and no clock was) and a 23:59 end ("through this date").
+// All-day is the card's own flag, not a clock reading (2026-08-25): a venue
+// that states a midnight start gets a real 12 AM, not a day-long event.
+import { RECURRENCE_DAYS, isAllDay } from "./cardSchema.js";
 
 const TZ = "America/New_York";
 const DATE = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: TZ });
@@ -19,12 +21,13 @@ const DAYKEY = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-dig
 const MONTH = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: TZ });
 const DAYNUM = new Intl.DateTimeFormat("en-US", { day: "numeric", timeZone: TZ });
 
-const isStartSentinel = (d) => CLOCK.format(d) === "00:00"; // all-day start
 const isEndSentinel = (d) => CLOCK.format(d) === "23:59"; // end-of-day
 const meridiem = (d) => MERIDIEM.format(d).replace(/[\d\s]/g, ""); // "AM" | "PM"
 
-// A timed instant as "Jul 9, 7:15 PM"; a sentinel instant as just "Jul 9".
-const instant = (d, sentinel) => (sentinel(d) ? DATE.format(d) : `${DATE.format(d)}, ${TIME.format(d)}`);
+// A timed instant as "Jul 9, 7:15 PM"; a bare one as just "Jul 9". The
+// caller decides which — an all-day card for the start, the 23:59 sentinel
+// for the end — because only the card knows whether a clock was sourced.
+const instant = (d, bare) => (bare ? DATE.format(d) : `${DATE.format(d)}, ${TIME.format(d)}`);
 
 // "Aug 13–14" inside one month, "Aug 15 – Sep 15" across two. Shared with
 // editionLabel so the header and a card's when-line name a range the same way.
@@ -56,7 +59,7 @@ export function isDailySitting(card) {
   const s = new Date(startsAt);
   const e = new Date(endsAt);
   if (DAYKEY.format(s) === DAYKEY.format(e)) return false;
-  if (isStartSentinel(s) || isEndSentinel(e)) return false;
+  if (isAllDay(card) || isEndSentinel(e)) return false;
   return minutesOfDay(e) > minutesOfDay(s);
 }
 
@@ -80,8 +83,8 @@ const ROW_TIME = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-
 export function rowTime(card) {
   if (card?.startsAt == null) return null;
   if (card.recurring && !(card.recurrence?.days?.length > 0)) return null;
+  if (isAllDay(card)) return null;
   const d = new Date(card.startsAt);
-  if (isStartSentinel(d)) return null;
   return ROW_TIME.format(d).replace(":00", "");
 }
 
@@ -93,8 +96,8 @@ export function formatWindow(card) {
 
   if (s && e && DAYKEY.format(s) === DAYKEY.format(e)) {
     // Same calendar day — never repeat the date.
-    if (isStartSentinel(s)) return DATE.format(s);
-    if (isEndSentinel(e)) return instant(s, isStartSentinel); // point-in-time start
+    if (isAllDay(card)) return DATE.format(s);
+    if (isEndSentinel(e)) return instant(s, false); // point-in-time start
     // Real start and end times: "Jul 9, 7:15–8:30 PM", sharing the meridiem
     // when both fall in the same half of the day.
     return `${DATE.format(s)}, ${timeRange(s, e)}`;
@@ -115,10 +118,10 @@ export function formatWindow(card) {
     // midnight — is not a daily sitting and keeps the continuous form rather
     // than being reformatted into a claim the source never made.
     if (isDailySitting(card)) return `${dateRange(s, e)}, ${timeRange(s, e)}`;
-    return `${instant(s, isStartSentinel)} → ${instant(e, isEndSentinel)}`;
+    return `${instant(s, isAllDay(card))} → ${instant(e, isEndSentinel(e))}`;
   }
-  if (s) return `From ${instant(s, isStartSentinel)}`;
-  return `Through ${instant(e, isEndSentinel)}`;
+  if (s) return `From ${instant(s, isAllDay(card))}`;
+  return `Through ${instant(e, isEndSentinel(e))}`;
 }
 
 // Span test (2026-07-29 punch list, P1 #3 corollary): the detail's when-line
@@ -195,8 +198,8 @@ const OCCURRENCE_GRACE = 60; // minutes past start when no end time was sourced
 // by a same-day comparison it would fail immediately.
 function occurrenceEndMinutes(card) {
   if (card.startsAt == null || card.endsAt == null) return DAY_END;
+  if (isAllDay(card)) return DAY_END;
   const startMin = minutesOfDay(new Date(card.startsAt));
-  if (startMin === 0) return DAY_END;
   const endMin = minutesOfDay(new Date(card.endsAt));
   if (endMin === DAY_END) return Math.min(startMin + OCCURRENCE_GRACE, DAY_END);
   return endMin < startMin ? DAY_END : endMin;

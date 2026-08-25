@@ -9,7 +9,7 @@
 // no invented clock time ever reaches a crawler (same contract as
 // calendarLink.js, whose helpers these are).
 import { isExpiredCard } from "./filterCards.js";
-import { isStartSentinel, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
+import { isAllDay, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 import { RECURRENCE_DAYS } from "./cardSchema.js";
 import { editionLabel, isDailySitting } from "./eventWindow.js";
 
@@ -43,7 +43,7 @@ export function eventJsonLd(card, origin) {
   const end = card.endsAt ? new Date(card.endsAt) : null;
 
   let startDate, endDate;
-  if (isStartSentinel(start)) {
+  if (isAllDay(card)) {
     startDate = nyDay(start);
     if (end && isEndSentinel(end)) endDate = nyDay(end);
   } else {
@@ -160,7 +160,7 @@ function firstOccurrence(card) {
   for (let i = 0; i < 7; i++) {
     const day = new Date(start.getTime() + i * 86400000);
     if (!card.recurrence.days.includes(nyWeekdayKey(day))) continue;
-    return i === 0 && !isStartSentinel(start) ? card.startsAt : nyDay(day);
+    return i === 0 && !isAllDay(card) ? card.startsAt : nyDay(day);
   }
   return null;
 }
@@ -180,9 +180,9 @@ export function recurringEventJsonLd(card, origin) {
   if (card.startsAt != null) {
     const start = new Date(card.startsAt);
     schedule.startDate = nyDay(start);
-    // A 00:00 start is the all-day sentinel — no clock time was ever stated,
-    // so none is emitted (same contract as eventJsonLd and calendarLink).
-    if (!isStartSentinel(start)) schedule.startTime = NY_CLOCK.format(start);
+    // An all-day card sourced no clock time, so none is emitted (same
+    // contract as eventJsonLd and calendarLink).
+    if (!isAllDay(card)) schedule.startTime = NY_CLOCK.format(start);
   }
   if (card.endsAt != null) schedule.endDate = nyDay(new Date(card.endsAt));
 
@@ -310,7 +310,7 @@ function windowLine(card) {
   const day = new Intl.DateTimeFormat("en-US", {
     weekday: "short", month: "short", day: "numeric", timeZone: "America/New_York",
   }).format(start);
-  if (isStartSentinel(start)) {
+  if (isAllDay(card)) {
     const end = card.endsAt ? new Date(card.endsAt) : null;
     if (end && isEndSentinel(end) && nyDay(end) !== nyDay(start)) {
       const endDay = new Intl.DateTimeFormat("en-US", {
@@ -576,7 +576,7 @@ export function icsText(cards, origin, now) {
     const start = new Date(c.startsAt);
     const end = c.endsAt ? new Date(c.endsAt) : null;
     lines.push("BEGIN:VEVENT", `UID:${c.id}@${host}`, `DTSTAMP:${stampNow}`);
-    if (isStartSentinel(start)) {
+    if (isAllDay(c)) {
       const lastDay = end && isEndSentinel(end) ? end : start;
       lines.push(
         `DTSTART;VALUE=DATE:${dateValue(start)}`,

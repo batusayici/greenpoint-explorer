@@ -1,16 +1,20 @@
 // V2-A, revised after Batu's 2026-07-25 phone test: the calendar action is a
 // Google Calendar template link, not an .ics download — it opens the prefilled
 // new-event screen, so "I'm going" is one tap with no file handling. Schema
-// sentinels carry over from eventWindow: a 00:00 NY start = all-day, a 23:59
-// NY end = through that date — both become bare date ranges so no fake clock
-// reaches the calendar.
+// readings carry over from eventWindow: an all-day card (`allDay: true`) and a
+// 23:59 NY end ("through that date") both become bare date ranges so no fake
+// clock reaches the calendar. A sourced midnight start is a real timed event.
+import { isAllDay } from "./cardSchema.js";
+
 const TZ = "America/New_York";
 const CLOCK = new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: TZ });
 const DAYKEY = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: TZ });
 
 // Shared with the AEO prerender (aeo.js): machine-facing dates must honor the
-// same sentinels — a 00:00 start or 23:59 end is a date, never a fake clock.
-export const isStartSentinel = (d) => CLOCK.format(d) === "00:00";
+// same reading — an all-day card or a 23:59 end is a date, never a fake clock.
+// All-day is now the card's own `allDay` field rather than a clock reading
+// (2026-08-25, cardSchema.js) so a sourced midnight start survives the trip.
+export { isAllDay };
 export const isEndSentinel = (d) => CLOCK.format(d) === "23:59";
 export const nyDay = (d) => DAYKEY.format(d); // YYYY-MM-DD in event tz
 
@@ -23,7 +27,7 @@ export function gcalEventUrl(card, { url } = {}) {
   const end = card.endsAt ? new Date(card.endsAt) : null;
 
   let dates;
-  if (isStartSentinel(start)) {
+  if (isAllDay(card)) {
     // Bare date range; the end date is exclusive, so name the day after.
     const lastDay = end && isEndSentinel(end) ? end : start;
     dates = `${dateValue(start)}/${dateValue(new Date(lastDay.getTime() + 86400000))}`;
