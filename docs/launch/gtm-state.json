@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-08-19",
+    "asOf": "2026-08-25",
     "lastDataPull": "2026-08-18",
-    "lastFeedCheck": "2026-08-19",
+    "lastFeedCheck": "2026-08-25",
     "nextReadout": "2026-08-25",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -1150,36 +1150,41 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-08-19",
-    "dayName": "Wednesday, August 19",
+    "ranAt": "2026-08-25",
+    "dayName": "Tuesday, August 25",
     "dueToday": [
+      "Readout reads Wave 1 results — gates nothing (D3)"
+    ],
+    "overdue": [
       {
-        "what": "D8 default-merge: feat/webview-instrumentation — veto by Thu 8/20 ~17:00 or it merges",
-        "detail": "In-app-browser tagging so Q2's return rate can be split from org channels instead of caveated. Non-visual, 710+8 tests green, browser-verified. Preview builds on the branch push.",
-        "owner": "Batu",
-        "needBy": "2026-08-20"
+        "label": "D3 parallel reach — Film Noir + arts wave, Nextdoor, FB-group answer posts, IG carousel, each on its own src",
+        "since": "2026-08-23"
       },
       {
-        "what": "Phone check (~15 min, only you can do it): open a Stoopwise link inside the Facebook app on iPhone AND Android",
-        "detail": "Q2 precondition. Post any stoopwise.com link into a private FB post or message yourself, tap it from inside the app, and confirm: the map renders (not the no-WebGL fallback), the feed lists cards, and tapping a card opens it. Screenshot anything wrong. This is the hostile-context class that produced the 8/13 map bug; the instrumentation shipping today measures the storage side, not whether the product works there.",
-        "owner": "Batu",
-        "needBy": "before 2026-09-08 (Q2)"
+        "label": "SummerStarz finale — be there (D4)",
+        "since": "2026-08-21"
+      },
+      {
+        "label": "First Monday send — the weekly cadence D2 ratified",
+        "since": "2026-08-24"
       }
     ],
-    "overdue": [],
     "waiting": [
       {
-        "what": "1 commit on main not pushed",
+        "what": "PR #48 — content(track-v): held cards, weekly 2026-08-24",
         "age": 0
+      },
+      {
+        "what": "PR #47 — content(track-v): held cards, daily 2026-08-22",
+        "age": 2
+      },
+      {
+        "what": "PR #46 — content(track-v): held cards, daily 2026-08-21",
+        "age": 3
       }
     ],
     "overnight": [
-      "growth: cycle-6 readout + four rulings (#45)",
-      "docs: record the analytics host gate, and the fake-prod-crash diagnostic",
-      "ingest: rule OpenTable un-allowlistable, skip Square; record why",
-      "settings: allowlist six PR #43 ticketing hosts for WebFetch",
-      "docs(launch): return-mechanisms branch merged — update state",
-      "Merge feat/return-mechanisms — D5: the missing product"
+      "content(track-v): Monday refresh — a long weekend cleared 24 events, and Ashbox Cafe is closing"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1188,12 +1193,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 76,
-      "reservoir": 21,
+      "dated": 59,
+      "reservoir": 14,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 162
+      "cards": 150
     }
   }
 }
