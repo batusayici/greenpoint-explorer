@@ -614,11 +614,16 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // date, and Go Green's own series page lists no Tuesday after August 25, so
   // there was nothing to re-verify it against. live_music is unchanged at 28
   // because the Flower Cat karaoke card's own count line already moved it.
-  assert.equal(seed.cards.length, 157);
+  // 2026-08-26 Wednesday Greenpointers pull: +7, all dated events off the
+  // 8/27-9/2 roundup — Daniel Lee's guest night at Di An Di, Zumba at Under
+  // the K Bridge Park, Culture House's poetry night, Big Night's fifth
+  // birthday, The Better Club's portrait night, the Bedford Slip hot dog
+  // fundraiser and Madeline's 9/1 comedy show.
+  assert.equal(seed.cards.length, 164);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.category === "event"), 81, "83 − 9 expired 8/25 items − the Tuesday yoga card + 8 added (2026-08-26)");
+  assert.equal(count((c) => c.category === "event"), 88, "81 + the 7 dated items off the 8/27-9/2 Greenpointers roundup (2026-08-26)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
   assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
   assert.equal(count((c) => c.filters.includes("live_music")), 29, "28 after Troost's 8/25 Lumens night expired out, + The Academy Blues Project on 9/9 (2026-08-26)");
@@ -806,6 +811,9 @@ test("free-ness is designated only where the source states it (tester feedback #
   // must not extend one line's free-ness across the whole day.
   assert.deepEqual(free, [
     // (acme-good-baklava-0821 expired out 2026-08-24)
+    // 2026-08-26 roundup: "Hosted by creative mental health community The
+    // Better Club. Free, RSVP here."
+    "better-club-portrait-night-0829",
     // 2026-08-10: Kindred's Thursday sunset session, same flyer as the
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
@@ -863,6 +871,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 24th to August 21st", so nothing rolls forward here until next summer.)
     // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
     // 2026-08-12 roundup: "No rhythm required! Free, RSVP here."
+    // 2026-08-26: the same NBK Parks Zumba series, back on the 8/27 roundup
+    // with the same line — "No rhythm required! Free, RSVP here."
+    "underthek-zumba-0827",
   ]);
 });
 
@@ -959,7 +970,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // a kids' discount in family_kids + deals_memberships (PR #18).
     "sparsa-greenpoint",
     // 2026-08-12: a free outdoor Zumba class — dance-as-movement, the cluster's
-    // core reading, so wellness rather than arts_culture.
+    // core reading, so wellness rather than arts_culture. 2026-08-26: the same
+    // series returns on the 8/27 roundup, filed the same way.
+    "underthek-zumba-0827",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
 });
@@ -1076,6 +1089,11 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // markets rule's class — a happening with a start and an end, not a
     // standing offer — so it files here and not in deals_memberships.
     "ashbox-farewell-sale-0825",
+    // 2026-08-26: a dinner-party shop's fifth-birthday party — cake, champagne,
+    // goodie bags and a gift-card raffle, on one afternoon. A dated happening
+    // inside a store is the same class as the runs above, so it files here
+    // rather than in deals_memberships, which takes standing offers only.
+    "big-night-fifth-birthday-0829",
     "cibone-ote",
     "cibone-restation-showcase-0815",
     // A kids' store. It keeps `family_kids` — the audience lens it already
@@ -1175,6 +1193,12 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   assert.deepEqual(civic, [
     "adopt-a-business",
     "bedford-slip-cleanup-0830",
+    // 2026-08-26: the Sunday hot dog stand at the same Open Street. It is here
+    // for what the roundup states outright — "a suggested donation (with all
+    // funds going to North Brooklyn Mutual Aid)". Mutual aid is half of what
+    // this lens is named for, so the filing is mechanical, not a read of how
+    // social the afternoon looks.
+    "bedford-slip-hot-dogs-0830",
     "bedford-slip-tree-care-0829",
     // 2026-08-26: Community Board 1's Environmental Protection Committee — a
     // public meeting on the Meeker plume, Newtown Creek and a battery storage

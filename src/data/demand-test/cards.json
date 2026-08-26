@@ -686,9 +686,12 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-08-26",
       "lat": 40.727962,
-      "lng": -73.953311
+      "lng": -73.953311,
+      "relatedCardIds": [
+        "culture-house-poetry-night-0828"
+      ]
     },
     {
       "id": "light-up-mccarren",
@@ -6892,7 +6895,8 @@
       "relatedCardIds": [
         "bedford-slip-weekend-0828",
         "bedford-slip-tree-care-0829",
-        "bedford-slip-cleanup-0830"
+        "bedford-slip-cleanup-0830",
+        "bedford-slip-hot-dogs-0830"
       ],
       "actions": [
         {
@@ -7361,6 +7365,363 @@
       "sourceQuote": "summary: THE ACADEMY BLUES PROJECT\ndescription: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily\nstart.date: 2026-09-09",
       "lat": 40.733463,
       "lng": -73.955035
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "id": "diandi-daniel-lee-0827",
+      "title": "Daniel Lee at Di An Di",
+      "kicker": "A guest chef, five original dishes",
+      "summary": "Gangjin chef Daniel Lee cooks a one-night menu; the regular Di An Di list runs shortened alongside it. The kitchen is taking reservations.",
+      "startsAt": "2026-08-27T17:00:00-04:00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "free": false,
+      "locationName": "Di An Di",
+      "address": "68 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "68 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Daniel Lee @ Di An Di, 5 p.m.: Featuring five original dishes from Gangjin chef Daniel Lee alongside a reduced Di An Di menu. Make a reservation here .\nDi An Di — an acclaimed local spot located at 68 Greenpoint Ave",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Behind the Toque: Interview with Chef Dennis Ngo of Di an Di",
+          "url": "https://greenpointers.com/2022/02/11/behind-the-toque-interview-with-chef-dennis-ngo-of-di-an-di/",
+          "publisher": "Greenpointers",
+          "date": "2022-02-11"
+        }
+      ],
+      "lat": 40.729519,
+      "lng": -73.958245
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "id": "underthek-zumba-0827",
+      "title": "Zumba at Under the K Bridge Park",
+      "kicker": "Dance fitness under the Kosciuszko",
+      "summary": "A certified instructor leads an all-ages, all-fitness-levels class — no rhythm required. It costs nothing but the park asks for an RSVP.",
+      "startsAt": "2026-08-27T19:00:00-04:00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "filters": [
+        "wellness"
+      ],
+      "free": true,
+      "locationName": "Under the K Bridge Park",
+      "address": "812 Meeker Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "Under the K Bridge Park, Brooklyn, NY",
+      "sourceQuote": "Zumba @ Under The K Bridge Park, 7 p.m.: Break a sweat to the beat at these all-ages, all fitness-levels classes lead by a certified Zumba instructor. No rhythm required! Free, RSVP here .\nPeople arriving via public transit should enter the park at 812 Meeker Ave .",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://support.nbkparks.org/event/fit-club-under-the-k/e823883/register/new/select-tickets"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Get to Know This Year’s Honorees for the NBK Parks 11th Annual Fundraising Gala",
+          "url": "https://greenpointers.com/2022/10/04/get-to-know-this-years-honorees-for-the-nbk-parks-11th-annual-fundraising-gala/",
+          "publisher": "Greenpointers",
+          "date": "2022-10-04"
+        }
+      ],
+      "lat": 40.72543,
+      "lng": -73.93228
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "id": "culture-house-poetry-night-0828",
+      "title": "Poetry Night at Culture House",
+      "kicker": "Five poets on one bill",
+      "summary": "Culture House bills it as an intimate evening of poetry and community, with sponsor goodies on hand. Twenty dollars a ticket.",
+      "startsAt": "2026-08-28T17:00:00-04:00",
+      "endsAt": "2026-08-28T19:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "locationName": "Culture House",
+      "address": "807 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "807 Manhattan Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "vault-gallery-culture-house"
+      ],
+      "sourceQuote": "Poetry Night @ Culture House, 5 p.m.: Hear from a lineup of five various poets. $20, get tickets here .\n\"description\":\"An intimate evening of poetry, community, good vibes, sponsor goodies, and more at Culture House Greenpoint.\"\n\"streetAddress\":\"807 Manhattan Avenue, Brooklyn, NY 11222\"\n\"startDate\":\"2026-08-28T17:00:00-04:00\"\n\"endDate\":\"2026-08-28T19:00:00-04:00\"",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/culture-house-greenpoint-poetry-night-tickets-1997479497949"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Culture House Greenpoint Poetry Night",
+          "url": "https://www.eventbrite.com/e/culture-house-greenpoint-poetry-night-tickets-1997479497949",
+          "publisher": "Culture House NYC",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.727962,
+      "lng": -73.953311
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "id": "big-night-fifth-birthday-0829",
+      "title": "Big Night turns five",
+      "kicker": "Cake, champagne and a $500 raffle",
+      "summary": "The dinner-party shop marks five years on Franklin Street. Goodie bags go to the first 50 through the door, and no RSVP is needed.",
+      "startsAt": "2026-08-29T13:00:00-04:00",
+      "endsAt": "2026-08-29T23:59:00-04:00",
+      "filters": [
+        "shopping"
+      ],
+      "free": false,
+      "locationName": "Big Night",
+      "address": "154 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "154 Franklin St, Brooklyn, NY 11222",
+      "sourceQuote": "5th Birthday Party @ Big Night, 1 p.m.: As the shop turns five, celebrate with cake, champagne, goodie bags for the first 50 guests, and a raffle for a $500 gift card. No RSVP needed.\nGreenpoint’s Big Night (154 Franklin St.), is having a big year.",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Community Cookbook: Big Night’s Party Mix",
+          "url": "https://greenpointers.com/2025/05/20/community-cookbook-big-nights-party-mix/",
+          "publisher": "Greenpointers",
+          "date": "2025-05-20"
+        }
+      ],
+      "lat": 40.730362,
+      "lng": -73.957465
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "id": "better-club-portrait-night-0829",
+      "title": "The Better Club: Portrait Night",
+      "kicker": "Collage a self-portrait, no skill needed",
+      "summary": "A creative mental-health community hosts its first night: sketchbooks, magazine cutouts, fabric scraps, pastels, beads and sequins provided, plus drinks and food for anyone who RSVPs.",
+      "startsAt": "2026-08-29T16:00:00-04:00",
+      "endsAt": "2026-08-29T18:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": true,
+      "locationName": "McCarren Parkhouse",
+      "address": "855 Lorimer St, Brooklyn, NY 11222",
+      "geocodeQuery": "855 Lorimer St, Brooklyn, NY 11222",
+      "sourceQuote": "The Better Club: Portrait Night! @ McCarren Parkhouse 4 p.m.: Leave the brushes and acrylics at home for a low-stakes evening of portrait making that invites you to see (and create) yourself in sequins, magazine scraps, ribbon, beads, and more. Hosted by creative mental health community The Better Club. Free, RSVP here .\nSketchbooks provided, plus magazines and collage cutouts, fabric scraps, pastels, colored pencils, watercolor paint, beads, and sequins, but bring anything that feels like you or that you’d love to work with. Drinks and food on us if you RSVP.\n\"location\":{\"@type\":\"Place\",\"name\":\"McCarren Parkhouse\",\"address\":\"855 Lorimer St, Brooklyn, NY 11222\"}\n\"startDate\":\"2026-08-29T20:00:00.000Z\"\n\"endDate\":\"2026-08-29T22:30:00.000Z\"",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://partiful.com/e/x4K3k2lYHhKW3SZ4p4Sg"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "The Better Club: Portrait Night!",
+          "url": "https://partiful.com/e/x4K3k2lYHhKW3SZ4p4Sg",
+          "publisher": "The Better Club",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.722304,
+      "lng": -73.9511
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "id": "bedford-slip-hot-dogs-0830",
+      "title": "Hot dog fundraiser at Bedford Slip",
+      "kicker": "Meat or veggie, for a suggested donation",
+      "summary": "Every dollar goes to North Brooklyn Mutual Aid, and the toppings are made with produce grown at the McCarren Park Demonstration Garden.",
+      "startsAt": "2026-08-30T12:00:00-04:00",
+      "endsAt": "2026-08-30T23:59:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "free": false,
+      "locationName": "Bedford Slip",
+      "address": "1 Bedford Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "bedford-slip-weekend-0829"
+      ],
+      "sourceQuote": "Hot Dog Fundraiser @ Bedford Slip, 12 p.m.: Do you like enjoying fresh local produce and supporting mutual aid? Get you a hot dog that can do both. Meat and veggie dogs will be available for a suggested donation (with all funds going to North Brooklyn Mutual Aid) using toppings made with produce from the McCarren Park Demonstration Garden. RSVP here .\n\"location\":{\"@type\":\"Place\",\"address\":\"1 Bedford Ave, Brooklyn, NY 11222\"}",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Bedford Slip Weekend",
+          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
+          "publisher": "NBK Open Streets",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.723854,
+      "lng": -73.951098
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "category": "event",
+      "id": "madelines-comedy-0901",
+      "title": "Madeline’s Comedy Show",
+      "kicker": "NYC standup for ten dollars",
+      "summary": "Gabe Gerry hosts a bill of comics with Netflix, Comedy Central and Fallon credits, in Madeline’s restaurant and cocktail lounge.",
+      "startsAt": "2026-09-01T20:00:00-04:00",
+      "endsAt": "2026-09-01T21:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "locationName": "Madeline’s",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "113 Franklin St, Brooklyn, NY 11222",
+      "sourceQuote": "Madeline’s Comedy Show @ Madeline’s, 8 p.m.: Standup comedy featuring talent seen on Netflix, Comedy Central, Fallon , and more. $10, get tickets here .\n\"description\":\"Intimate, hilarious comedy from NYC's best comedians. Hosted by Gabe Gerry at Madeline's Restaurant and Cocktail Lounge.\"\n\"streetAddress\":\"113 Franklin Street, #FC, Brooklyn, NY 11222\"\n\"startDate\":\"2026-03-12T20:00:00-04:00\"\n\"endDate\":\"2026-12-15T21:30:00-05:00\"",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Madeline's Comedy Show - Standup Comedy in Greenpoint",
+          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137",
+          "publisher": "Gabe Gerry",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.73024,
+      "lng": -73.957805
     }
   ]
 }

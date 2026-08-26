@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-26T09:30:00-04:00",
+  "lastRunAt": "2026-08-26T17:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1563,6 +1563,20 @@
       "publisher": "Stoopwise ingest",
       "processedAt": "2026-08-26",
       "outcome": "Daily thin refresh. Deck 159 → 150 (expiry) → 156 (7 adds, 1 delete). holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. Fetch exit 0, reach 54/62 (13% error, ceiling 15%): the eight failures are the known chromium CONNECT-reset browser fault. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Added four Film Noir screenings (KRIMINAL and BODY MELT 8/26, WHIRLPOOL 8/27, Film Noir Monday 8/31), the Sunday Longevity Stick sitting 8/30, a Greenpoint Library Tuesday day-card for 9/8, and Community Board 1's Environmental Protection Committee meeting 9/3. Folded the 3-4pm garden educator hour into the 9/4 library card, making it a grouped Friday day-card. Re-verified Pooch's Parlor's 20% first-groom offer at its Greenpointers article (R1) and bumped it through 9/8, rewriting a reconstructed sourceQuote to the article's actual words and persisting the read into the greenpointers snapshot. Deleted community-yoga-transmitter-tuesdays: FLAGGED past its verified-through date and Go Green's series page lists no Tuesday after August 25."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-26",
+      "outcome": "Wednesday scoped pull of the 8/27-9/2 roundup, 23 items. CARDED 7: diandi-daniel-lee-0827, underthek-zumba-0827, culture-house-poetry-night-0828, big-night-fifth-birthday-0829, better-club-portrait-night-0829, bedford-slip-hot-dogs-0830, madelines-comedy-0901. ALREADY COVERED 7, no duplicate authored: Teen Tech Time (library-thursday-programs-0827), the Charlotte movie night (charlotte-backyard-movie-nights, whose summary already names Julie & Julia for 8/27), Sunset Yoga (community-yoga-transmitter-thursdays), the garden educator hour and Myron the Magnificent (library-sensory-garden-0828), all three Bedford Slip Weekend days (bedford-slip-weekend-0828 / -0829) and the tree-care session (bedford-slip-tree-care-0829), and the St. Nicks housing clinic (library-tuesday-programs-0901). SKIPPED 3, all outside the bbox: the Brooklyn Brewery farewell (the line itself says 79 North 11th Street), the Love Island watch party at Moxy Williamsburg, and Drink & Draw at MASSA Art Cafe — its Luma listing states \"MASSA — Williamsburg, Brooklyn / 234 Grand Street NY 11211\". HELD 4: Shop & Sip at Plus BKLYN and the Otis & Finn back-to-school haircuts (both source-blocked — a multi-storefront business the source never ties to the Greenpoint address, and the page that would is refused at the routine's proxy), the SOTTE social market and the DSNY bagged compost pickup (both new-judgment lens questions). holds: 2 new-judgment · 0 rule-miss · 2 source-blocked."
+    },
+    {
+      "id": "run:2026-08-26-greenpointers-wednesday",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-26",
+      "outcome": "Wednesday Greenpointers pull. Deck 157 → 164 (7 adds, 0 deletes; expiry had nothing to remove). holds: 2 new-judgment · 0 rule-miss · 2 source-blocked. Scoped to the one feed source, which read clean (1/1, 0% error). R1 resolution fetches: luma.com, eventbrite.com, partiful.com and otisandfinn.com answered; diandi.nyc, bignightbk.com, bignight.nyc, plusbklyn.com, nbkparks.org, support.nbkparks.org and otisandfinn.as.me were all refused at the proxy, and opentable.com stays bot-blocked per the 2026-08-19 ruling. Di An Di's and Big Night's street addresses were recovered from Greenpointers' own archive through the WP REST API rather than held, which is what kept two same-week cards alive."
     }
   ],
   "senderRegistry": [
@@ -2137,11 +2151,21 @@
       "name": "Scrappleland — the front page shows only the NEXT occurrence of each club, so a recurring card's quote decays weekly",
       "note": "RECURRING MECHANIC, first hit 2026-08-26 by the quotes gate. scrappleland-backgammon-club quoted \"Tuesday Backgammon Club\\nAugust 25 @ 8:00pm - 10:00pm\"; the page had rolled that line to \"September 1 @ 8:00pm - 10:00pm\" and the gate failed the card. Not drift and not a fabrication — the source's OUR EVENTS block carries one dated line per club and advances it as each night passes, so any card quoting the dated line goes unverifiable within a week. Re-sourced to the current line. scrappleland-pinball-league has the same shape (currently quoting \"August 26 @ 8:00pm - 10:00pm\") and will fail the same way tomorrow — re-source it from the snapshot rather than treating it as new drift. A durable fix would quote the standing schedule phrasing instead of the dated line, if the page ever states one.",
       "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Shop & Sip at Plus BKLYN (8/28) — which storefront? plusbklyn.com is refused at the routine's proxy",
+      "note": "HELD 2026-08-26 (source-blocked), PR ingest/greenpointers-2026-08-26. Fully sourced except for where it is. The roundup states the event and its clock; the Partiful page (partiful.com/e/grM3kKD9Ckv5KDnbhXMJ) states \"Friday, Aug 28 6:00pm - 8:00pm ET\" and NO address at all — it carries no JSON-LD location, unlike the other two Partiful listings in the same roundup. Plus BKLYN has two storefronts and Greenpointers itself has named both: \"Plus BKLYN has finally opened their second location at 671 Manhattan Avenue\" (2024-09-11) and \"currently at 490 Metropolitan Avenue\" (2023-10-19), the second of which is Williamsburg. Under the 2026-08-12 attributability rule the claim is not tied to the Greenpoint address, so it cannot be pinned. WHAT WOULD RESOLVE IT: one read of plusbklyn.com or the shop's Instagram naming the store — plusbklyn.com is REFUSED at the routine's proxy (\"Request was cancelled\"), so this is one allowlist entry, or one interactive session, away.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Back-to-School Haircuts at Otis & Finn (8/31) — which of four shops? otisandfinn.as.me is refused at the routine's proxy",
+      "note": "HELD 2026-08-26 (source-blocked), PR ingest/greenpointers-2026-08-26. The roundup states the offer, the day and the 11 a.m. start and names no address. otisandfinn.com IS reachable and was read: it lists four shops — 11-16 44th Ave and 45-22 Pearson St in Long Island City, 197 Franklin St in Greenpoint, 154 Grand St in Williamsburg — and its /community page states the event exists (\"our annual free Back-to-School Haircutting Event\") without a location or a date. The booking page the roundup links, otisandfinn.as.me/schedule/e648f5dd/appointment/97364297, is the one page that would name the shop and it is REFUSED at the routine's proxy (\"Request was cancelled\"). Two of the four shops are in Queens, so guessing pins the card in the wrong borough. WHAT WOULD RESOLVE IT: allowlisting otisandfinn.as.me (an Acuity Scheduling host) for the routine, or one interactive-session fetch of that booking page.",
+      "addedAt": "2026-08-26"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
-    "greenpointers": "2026-08-23",
+    "greenpointers": "2026-08-25",
     "greenpoint-comedy-club": "2026-08-14",
     "film-noir-cinema": "2026-08-25",
     "scrappleland": "2026-08-06",

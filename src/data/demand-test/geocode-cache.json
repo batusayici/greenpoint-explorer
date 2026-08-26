@@ -3628,5 +3628,55 @@
         "-73.9533053"
       ]
     }
+  },
+  "154 Franklin St, Brooklyn, NY 11222": {
+    "query": "154 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-26T17:23:49.765Z",
+    "hit": {
+      "place_id": 359238485,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280137445,
+      "lat": "40.7303622",
+      "lon": "-73.9574651",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "154, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7303206",
+        "40.7304037",
+        "-73.9575568",
+        "-73.9573734"
+      ]
+    }
+  },
+  "855 Lorimer St, Brooklyn, NY 11222": {
+    "query": "855 Lorimer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-26T17:23:51.291Z",
+    "hit": {
+      "place_id": 413593326,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 587355767,
+      "lat": "40.7223040",
+      "lon": "-73.9511000",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "855, Lorimer Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7222540",
+        "40.7223540",
+        "-73.9511500",
+        "-73.9510500"
+      ]
+    }
   }
 }
