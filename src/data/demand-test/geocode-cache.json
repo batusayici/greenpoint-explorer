@@ -3628,5 +3628,30 @@
         "-73.9533053"
       ]
     }
+  },
+  "77 Commercial St, Brooklyn, NY 11222": {
+    "query": "77 Commercial St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-26T13:29:11.470Z",
+    "hit": {
+      "place_id": 359676946,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 990635624,
+      "lat": "40.7379560",
+      "lon": "-73.9569320",
+      "category": "building",
+      "type": "construction",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "Waterview at Greenpoint",
+      "display_name": "Waterview at Greenpoint, 77, Commercial Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7373558",
+        "40.7385346",
+        "-73.9576944",
+        "-73.9562625"
+      ]
+    }
   }
 }

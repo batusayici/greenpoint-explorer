@@ -614,13 +614,13 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // date, and Go Green's own series page lists no Tuesday after August 25, so
   // there was nothing to re-verify it against. live_music is unchanged at 28
   // because the Flower Cat karaoke card's own count line already moved it.
-  assert.equal(seed.cards.length, 157);
+  assert.equal(seed.cards.length, 158);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
+  assert.equal(count((c) => c.filters.includes("news")), 29, "28 + the HELD Commercial St shooting card (2026-08-26) — ships only if Batu rules crime news in");
   assert.equal(count((c) => c.category === "event"), 81, "83 − 9 expired 8/25 items − the Tuesday yoga card + 8 added (2026-08-26)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
-  assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
+  assert.equal(count((c) => c.category === "news"), 19, "18 + the HELD Commercial St shooting card (2026-08-26) — ships only if Batu rules crime news in");
   assert.equal(count((c) => c.filters.includes("live_music")), 29, "28 after Troost's 8/25 Lumens night expired out, + The Academy Blues Project on 9/9 (2026-08-26)");
   assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
@@ -761,7 +761,9 @@ test("news cards name their publisher and sit in the news layer", () => {
   // for a new home ahead of a six-story condo on its Greenpoint Ave site. The
   // Ashbox closure is paired with a dated card for its farewell inventory sale,
   // which is a happening and so is NOT filed here.
-  assert.equal(news.length, 18);
+  // 2026-08-26: +1 HELD — the Commercial St shooting. This count ships only if
+  // Batu rules that public-safety news belongs on the map; see the PR.
+  assert.equal(news.length, 19);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);

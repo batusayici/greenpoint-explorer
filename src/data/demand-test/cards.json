@@ -7361,6 +7361,46 @@
       "sourceQuote": "summary: THE ACADEMY BLUES PROJECT\ndescription: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily\nstart.date: 2026-09-09",
       "lat": 40.733463,
       "lng": -73.955035
+    },
+    {
+      "id": "commercial-st-shooting-0825",
+      "category": "news",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "title": "Man shot near 77 Commercial Street",
+      "kicker": "Police recovered four shell casings",
+      "filters": [
+        "news"
+      ],
+      "locationName": "77 Commercial St",
+      "address": "77 Commercial St, Brooklyn, NY 11222",
+      "summary": "The 32-year-old was hit in the chest and right arm around 1:15am Monday and is now stable. Police are looking for two men who fled on foot; no arrests so far.",
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/25/32-year-old-man-in-stable-condition-after-shooting-on-commercial-street/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "32-Year-Old Man in Stable Condition After Shooting on Commercial Street",
+          "url": "https://greenpointers.com/2026/08/25/32-year-old-man-in-stable-condition-after-shooting-on-commercial-street/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-25"
+        }
+      ],
+      "sourceQuote": "A 32-year-old man is recovering after an early morning shooting near 77 Commercial Street in Greenpoint.\nThe unnamed individual was shot in the chest and right arm around 1:15 am on Monday.\nPolice transported the man to NYC Health + Hospitals/Bellevue in critical condition; he is now in stable condition. The investigation is ongoing, and no arrests have been made.\nAn NYPD spokesperson told Greenpointers four shell casings were recovered. They are looking for two unidentified males who fled on foot.",
+      "lat": 40.737956,
+      "lng": -73.956932
     }
   ]
 }
