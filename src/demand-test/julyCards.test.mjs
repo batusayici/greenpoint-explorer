@@ -602,14 +602,26 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // one, because Friday runs 5-8PM and the other two days 10AM-8PM, and a
   // dated card's window states one sitting repeated daily — one card cannot
   // carry both patterns without lying about one of them.
-  assert.equal(seed.cards.length, 159);
+  // 2026-08-26 daily thin: expiry took the 9 passed 8/25 items (159 → 150) and
+  // the run added 7 — four Film Noir screenings (Kriminal and Body Melt tonight,
+  // Whirlpool Thursday, the secret-title Film Noir Monday on 8/31), the Sunday
+  // Longevity Stick sitting in Transmitter Park, a Greenpoint Library Tuesday
+  // day-card for 9/8, and Community Board 1's Environmental Protection
+  // Committee meeting on 9/3, and The Academy Blues Project at Troost on 9/9 —
+  // the last date inside the 14-day horizon, surfaced by the coverage gate.
+  // One deletion beyond expiry: the Tuesday morning
+  // Transmitter Park yoga card. It was FLAGGED as past its verified-through
+  // date, and Go Green's own series page lists no Tuesday after August 25, so
+  // there was nothing to re-verify it against. live_music is unchanged at 28
+  // because the Flower Cat karaoke card's own count line already moved it.
+  assert.equal(seed.cards.length, 157);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.category === "event"), 83, "79 + the four Bedford Slip cards (2026-08-26)");
+  assert.equal(count((c) => c.category === "event"), 81, "83 − 9 expired 8/25 items − the Tuesday yoga card + 8 added (2026-08-26)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
   assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 29, "24 + 5 Eavesdrop midnight sets (2026-08-25)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 29, "28 after Troost's 8/25 Lumens night expired out, + The Academy Blues Project on 9/9 (2026-08-26)");
   assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -797,7 +809,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-10: Kindred's Thursday sunset session, same flyer as the
     // Tuesday morning card — "Free Community Yoga".
     "community-yoga-transmitter-thursdays",
-    "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
+    // (community-yoga-transmitter-tuesdays deleted 2026-08-26: FLAGGED past its
+    // verified-through date, and Go Green's series page lists no Tuesday after
+    // August 25, so nothing could re-verify it.)
     // 2026-08-12 exhibition ruling: the gallery's own Visit block states "Free
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
@@ -812,11 +826,13 @@ test("free-ness is designated only where the source states it (tester feedback #
     // us on select Friday evenings as we flow in our free Longevity Stick
     // Classes" — and each card quotes that line, so it covers all three.
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
-    // 2026-08-21: the series' last stated Friday — the Go Green event page
-    // reads "Every Friday, 10:30 AM to 11:30 AM to September 4, 2026" and
-    // "Free" on the same listing.
-    "library-sensory-garden-0904",
+    // (library-sensory-garden-0904 dropped off this list 2026-08-26: the 9/4
+    // card became a grouped Friday day-card when the 3-4pm garden educator hour
+    // was folded in, and only the storytime states "Free" — same grouped-card
+    // rule as the other library day-cards below.)
     "longevity-stick-transmitter-0828",
+    // 2026-08-26: the Sunday morning sitting, covered by the same series line.
+    "longevity-stick-transmitter-0830",
     "longevity-stick-transmitter-thursdays",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
     // "teen interns are running a free scavenger hunt" and "You can get free
@@ -836,11 +852,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // expired out 2026-08-17, as did threes-flea-market-0815.)
     // (paulie-gees-jabberjaw-comedy-0811 expired out 2026-08-12)
     // 2026-08-13: the library's own record for the Sips & Scholars lecture
-    // states the series' free-ness in the body the card quotes — "the second
-    // annual Sips & Scholars series, free lectures set in bars, parks, cafes,
-    // and restaurants all over Brooklyn". This is a single event, not a
-    // grouped day-card, so the line covers the whole card.
-    "sips-scholars-parkhouse-0825",
+    // (sips-scholars-parkhouse-0825 expired out 2026-08-26)
     // 2026-08-06: the 8/7 Ford v Ferrari card was DELETED, not rolled forward —
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
@@ -923,7 +935,8 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     "bk-youth-ballet-adult-term",
     // (buffalo-firefly-soundbath-0813 expired out 2026-08-14)
     "community-yoga-transmitter-thursdays",
-    "community-yoga-transmitter-tuesdays",
+    // (community-yoga-transmitter-tuesdays deleted 2026-08-26 — past its
+    //  verified-through date with no Tuesday left on Go Green's series page)
     // (gather-sound-bath-0818 — a sound bath and Reiki session, filed here
     //  2026-08-12 as bodywork in the movement cluster — expired out 2026-08-19)
     "held-space-membership",
@@ -936,6 +949,8 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (library-chair-yoga-0824, the branch's Monday chair-yoga hour, expired
     // out 2026-08-25)
     "longevity-stick-transmitter-0828",
+    // 2026-08-26: the series adds one Sunday morning sitting, 8/30.
+    "longevity-stick-transmitter-0830",
     "longevity-stick-transmitter-thursdays",
     "moon-bunny-monthly-plans",
     "selformer-memberships",
@@ -1161,6 +1176,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "adopt-a-business",
     "bedford-slip-cleanup-0830",
     "bedford-slip-tree-care-0829",
+    // 2026-08-26: Community Board 1's Environmental Protection Committee — a
+    // public meeting on the Meeker plume, Newtown Creek and a battery storage
+    // proposal. Civic action with neighborhood stakes, not a social gathering.
+    "cb1-environmental-committee-0903",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",

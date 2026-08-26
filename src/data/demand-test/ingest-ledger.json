@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-25T09:30:00-04:00",
+  "lastRunAt": "2026-08-26T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1556,6 +1556,13 @@
       "publisher": "Stoopwise ingest",
       "processedAt": "2026-08-25",
       "outcome": "Daily thin refresh. Deck 155 → 149 (expiry) → 155 (6 adds). holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. Fetch exit 0, reach 55/61 (10% error, ceiling 15%): the six failures are the known chromium CONNECT-reset browser fault. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Added DENCHU-KOZO (Film Noir, 8/25), three Brooklyn Craft Company workshops (8/25, 8/29, 9/6), Flower Cat live band karaoke (8/28) and the last Leaves summer writing group (9/3). Fixed library-thursday-programs-0827, which was advertising drop-in sewing machine hours that the branch has canceled. Re-verified and bumped three standing cards: the Maison Jar refill happy hour, North Brooklyn Chess at the Parkhouse, and the McGolrick Bird Club. Held the Bedford Slip cleanup on a time conflict inside its own listing."
+    },
+    {
+      "id": "run:2026-08-26-daily-thin",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-26",
+      "outcome": "Daily thin refresh. Deck 159 → 150 (expiry) → 156 (7 adds, 1 delete). holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. Fetch exit 0, reach 54/62 (13% error, ceiling 15%): the eight failures are the known chromium CONNECT-reset browser fault. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Added four Film Noir screenings (KRIMINAL and BODY MELT 8/26, WHIRLPOOL 8/27, Film Noir Monday 8/31), the Sunday Longevity Stick sitting 8/30, a Greenpoint Library Tuesday day-card for 9/8, and Community Board 1's Environmental Protection Committee meeting 9/3. Folded the 3-4pm garden educator hour into the 9/4 library card, making it a grouped Friday day-card. Re-verified Pooch's Parlor's 20% first-groom offer at its Greenpointers article (R1) and bumped it through 9/8, rewriting a reconstructed sourceQuote to the article's actual words and persisting the read into the greenpointers snapshot. Deleted community-yoga-transmitter-tuesdays: FLAGGED past its verified-through date and Go Green's series page lists no Tuesday after August 25."
     }
   ],
   "senderRegistry": [
@@ -2100,17 +2107,47 @@
       "name": "The working snapshot loses its persisted evidence blocks at fetch time; only the baseline keeps them",
       "note": "SOURCE FACT found 2026-08-25, and it cost an extraction. `.ingest-cache/<id>.txt` is rewritten by every fetch WITHOUT the carried-forward `## [` blocks, while `<id>.ingested.txt` keeps them (promotion is the non-destructive step, per persistedBlocks.js). Measured this run: brooklyn-craft-company baseline 2 blocks / working 0, greenpointers 8 / 0, go-green-bk 73 / 11, film-noir-cinema 20 / 8, plus carcosa-club, clay-space-membership, hana-makgeolli-events, kettl-tea, macha-studio, selformer, tend-greenpoint, word-bookstore, yaro-studios and marianella-subscription-box. TWO CONSEQUENCES. (1) Extraction subagents read the WORKING snapshot, so they cannot see persisted evidence: the BCC subagent reported \"no NEWSLETTER PERSISTED block present in this snapshot\" and skipped all 30 workshops, and the orchestrator had to read the block out of the baseline by hand to card the three that shipped. (2) It explains the large `+0/-R` diffs on ten sources this run (golden-drum -571, selformer -282, kettl-tea -171, clay-space-membership -158, hana-makgeolli-events -114) — those removals are block turnover, not content the source dropped. The quotes gate is unaffected because it reads the baseline. NOTE this contradicts the 2026-08-15 entry's claim that \"the same guard now covers the working snapshot at fetch time\". PROPOSED FIX, human-gated because it is a code change: carry marked blocks into the working snapshot at fetch time as well, or point extraction prompts at `<id>.ingested.txt`.",
       "addedAt": "2026-08-25"
+    },
+    {
+      "name": "Town Square — Greencycle \"Back to School\" Swap, Sat Sep 26 12-3pm at JEMS",
+      "note": "Horizon only, nothing blocked. Verbatim from town-square-bk.txt: \"Greencycle \\\"Back to School\\\" Swap\\nSaturday, Sep t e m ber 26th, 12-3 PM\\nJEMS 126, Bayard St. bw Manhattan Ave. & Bayard St. , Brooklyn\\nBring some! Or take some! Let's reuse, recycle & renew!\". Note the source's own text mangles \"September\" with stray spaces and gives a self-contradictory cross-street (\"Bayard St. bw Manhattan Ave. & Bayard St.\"), so the address needs a second read before this is carded. Web source, re-snapshotted every run, so it rolls in on its own once inside the window.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Golden Drum — Dream Seed 9/16, Songs for Healing & Liberation 9/28, Alash Ensemble 10/21 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from golden-drum.txt: \"Dream Seed: A Journey Through Sound\\nWednesday, September 16, 2026\\n8:00 PM\", \"Songs for Healing & Liberation with Andy Fischer-Price & Rebecca Elatiki\\nMonday, September 28, 2026\" and \"Alash Ensemble, Kevin Nathaniel & Dream Seed Live in NYC\\nWednesday, October 21, 2026\". 97 Green St. G1. Web source, re-snapshotted every run.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Longevity Stick at Transmitter Park — Sun Sep 27, Oct 4, Oct 25, Nov 1 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from the go-green-bk detail block at https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-27/: \"Sun, Sep 27, 8:30 AM to 9:15 AM\\nSun, Oct 4, 8:30 AM to 9:15 AM\\nSun, Oct 25, 8:30 AM to 9:15 AM\\nSun, Nov 1, 8:30 AM to 9:15 AM\". Note the four-week gap after 8/30 — the series pauses through September, so a recurring card would invent sittings that do not exist. Card each singly as it enters the window.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Film Noir Cinema — SUPERSHORTS NY FILM FESTIVAL, Sep 25-27 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Three programme records with fullUrls /program/2026/9/25/supershorts-ny-film-festival and two variants, all dated from their ISO startDate per the 2026-08-08 slug rule. Web source (Squarespace collection JSON), re-snapshotted every run, so it rolls in on its own.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Greenpointers — shooting on Commercial Street: does the deck card crime and public-safety news at all? [RULE QUESTION for Batu]",
+      "note": "HELD 2026-08-26 (new-judgment), PR ingest/daily-2026-08-26. The item is fully sourced and squarely in Greenpoint — greenpointers.com/2026/08/25/32-year-old-man-in-stable-condition-after-shooting-on-commercial-street/, verbatim: \"A 32-year-old man is recovering after an early morning shooting near 77 Commercial Street in Greenpoint.\" Nothing about the sourcing is in doubt. What is in doubt is the class: all 18 live news cards are openings, closings, land use, transit and civic process, and the deck has never carded a crime story. That is a category the map has no precedent for, so it is a decision, not a mechanical filing. WHAT WOULD RESOLVE IT: Batu ruling once on whether public-safety incidents belong in the news lens — and if so, with what bar (injury/fatality, ongoing risk, arrest) so it does not become a police blotter.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Scrappleland — the front page shows only the NEXT occurrence of each club, so a recurring card's quote decays weekly",
+      "note": "RECURRING MECHANIC, first hit 2026-08-26 by the quotes gate. scrappleland-backgammon-club quoted \"Tuesday Backgammon Club\\nAugust 25 @ 8:00pm - 10:00pm\"; the page had rolled that line to \"September 1 @ 8:00pm - 10:00pm\" and the gate failed the card. Not drift and not a fabrication — the source's OUR EVENTS block carries one dated line per club and advances it as each night passes, so any card quoting the dated line goes unverifiable within a week. Re-sourced to the current line. scrappleland-pinball-league has the same shape (currently quoting \"August 26 @ 8:00pm - 10:00pm\") and will fail the same way tomorrow — re-source it from the snapshot rather than treating it as new drift. A durable fix would quote the standing schedule phrasing instead of the dated line, if the page ever states one.",
+      "addedAt": "2026-08-26"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
     "greenpointers": "2026-08-23",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-24",
+    "film-noir-cinema": "2026-08-25",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-24",
-    "greenpoint-library": "2026-08-20",
-    "bpl-north-brooklyn-calendar": "2026-08-20",
+    "greenpoint-library": "2026-08-25",
+    "bpl-north-brooklyn-calendar": "2026-08-25",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-18",
@@ -2127,9 +2164,9 @@
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-08-20",
+    "go-green-bk": "2026-08-25",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-23",
+    "troost": "2026-08-25",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-23",
     "town-square-bk": "2026-08-23",
@@ -2160,7 +2197,8 @@
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
     "action-city-comics": "2026-08-16",
-    "golden-drum": "2026-08-19"
+    "golden-drum": "2026-08-19",
+    "nbk-open-streets": "2026-08-25"
   },
   "coverageExplanations": [
     {
@@ -2248,13 +2286,6 @@
       "expiresAt": "2026-09-08"
     },
     {
-      "sourceId": "brooklyn-youth-ballet",
-      "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
-    },
-    {
       "sourceId": "greenpoint-trash-club",
       "gapKey": "NO SNAPSHOT",
       "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
@@ -2293,13 +2324,6 @@
       "sourceId": "macha-studio",
       "gapKey": "UNMARKED STANDING?",
       "reason": "Correctly flagged, and it resolves to a roster change this run cannot make. The Atom feed is `unchanged` this run and its two entries are still titled \"Summer Fridays listening party\" and \"Summer Fridays After Hours\", with NO date, NO time and no recurrence sentence in either body — the first reads in full \"Join us for an evening of records, conversation and try on's, discover something new or simply enjoy the tunes. RSVP\" and the second's body is empty. \"Fridays\" appears only inside the titles, which is too thin for `recurrence.days`. The page states a series but never a schedule, so nothing here is cardable without inventing a time. Proposed again in the review PR as a roster `standing` decision, which is human-gated.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
-    },
-    {
-      "sourceId": "sunshine-laundromat",
-      "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
       "addedAt": "2026-08-11",
       "expiresAt": "2026-08-25"
     },
@@ -2393,6 +2417,20 @@
       "reason": "ONGOING EXHIBITION, which belongs to the venue card and not to a dated event (SKILL.md class rule, Batu 2026-08-12). The single flagged date is 2026-09-08 and it is the CLOSING date of the current show, not a happening: the snapshot's whole dated content is \"There Are People Here\" / \"July 11 – September 8, 2026\" / \"Free admission unless stated otherwise\" / \"W-F (2-7pm) SAT/SUN (1-6pm)\". The live `dreams-on-command` venue card already carries exactly those four lines as its sourceQuote and states what is on view and through when. Carding a 7/11→9/8 run as an event would also park it in the Today lens every day until September, which is the failure the rule exists to prevent. WHAT WOULD CHANGE IT: a dated opening, closing reception or artist talk, which are real happenings and stay cardable.",
       "addedAt": "2026-08-25",
       "expiresAt": "2026-09-08"
+    },
+    {
+      "sourceId": "sunshine-laundromat",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Browser-path source and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run: the 2026-08-26 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside seven other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:33571\" — so headless Chromium's own CONNECT tunnel is refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Sunshine is `auto` and JS-thin (169 bytes of text on the plain path, measured 2026-08-10), so it falls through to the browser and dies with it. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-26",
+      "expiresAt": "2026-09-09"
+    },
+    {
+      "sourceId": "brooklyn-youth-ballet",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Browser-path source and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-26 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside seven other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:33571\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'. Additional source fact for this one: bkyouthballet.com/calendar/ answers HTTP 202 with a zero-byte body on the plain path (recorded 2026-08-11), so it falls through to the browser and dies with it.",
+      "addedAt": "2026-08-26",
+      "expiresAt": "2026-09-09"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-25",
+  "version": "2026-08-26",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -1002,13 +1002,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-25",
+      "updatedAt": "2026-08-26",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-cult-cinema-0825",
         "film-noir-film-club-0827",
-        "film-noir-denchu-kozo-0825"
+        "film-noir-kriminal-0826",
+        "film-noir-body-melt-0826",
+        "film-noir-whirlpool-0827",
+        "film-noir-monday-0831"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1307,15 +1309,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-21",
+      "updatedAt": "2026-08-26",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "sips-scholars-parkhouse-0825",
         "library-sensory-garden-0828",
         "library-tuesday-programs-0901",
         "library-wednesday-programs-0902",
-        "library-babies-books-0903"
+        "library-babies-books-0903",
+        "library-tuesday-programs-0908"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -2273,11 +2275,10 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-14",
+      "updatedAt": "2026-08-26",
       "lat": 40.729855,
       "lng": -73.960729,
       "relatedCardIds": [
-        "community-yoga-transmitter-tuesdays",
         "longevity-stick-transmitter-thursdays",
         "longevity-stick-transmitter-0828"
       ],
@@ -2300,7 +2301,7 @@
       ],
       "corridor": null,
       "recurring": true,
-      "endsAt": "2026-08-25T23:59:00-04:00",
+      "endsAt": "2026-09-08T23:59:00-04:00",
       "actions": [
         {
           "label": "Details",
@@ -2317,7 +2318,7 @@
           "title": "Pup need a summer cut? Get 'em groomed at Pooch's Parlor (sponsored)",
           "publisher": "Greenpointers",
           "url": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
-          "date": "2026-08-11"
+          "date": "2026-08-26"
         }
       ],
       "evidenceStrength": "medium_high",
@@ -2325,65 +2326,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-08-11",
+      "updatedAt": "2026-08-26",
       "lat": 40.732156,
       "lng": -73.955048,
       "relatedCardIds": [
         "poochs-parlor"
       ],
-      "sourceQuote": "[Sponsored] Mention Greenpointers for 20% off your first appointment at Pooch's Parlor (128 India St)!"
-    },
-    {
-      "id": "community-yoga-transmitter-tuesdays",
-      "category": "event",
-      "title": "Tuesday morning yoga in Transmitter Park",
-      "kicker": "Free waterfront yoga — bring a mat",
-      "startsAt": "2026-08-04T07:00:00-04:00",
-      "endsAt": "2026-08-25T23:59:00-04:00",
-      "recurring": true,
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729855,
-      "lng": -73.960729,
-      "filters": [
-        "wellness"
-      ],
-      "free": true,
-      "summary": "Kacey Weiniger of Kindred leads it for the Friends of Transmitter Park. Meet at the main entrance and walk to the shoreline lawn; bring a mat, towel or blanket.",
-      "audience": [
-        "resident"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://gogreenbk.org/event/yoga-transmitter-2026/2026-08-04/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Community Yoga in Transmitter Park",
-          "url": "https://gogreenbk.org/event/yoga-transmitter-2026/2026-08-04/",
-          "publisher": "Go Green Brooklyn",
-          "date": "2026-08-03"
-        }
-      ],
-      "sourceQuote": "Community Yoga in Transmitter Park\nTuesday, August 4th at 7:00 AM - 8:00 AM\nJoin us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park. Hosted by Kacey Weiniger of Kindred , in partnership with the Friends of Transmitter Park.\nWhat to Bring: A yoga mat if you have one, otherwise a towel or blanket.\nWhere to Meet: Main Entrance – WNYC Transmitter Park, Greenpoint, Brooklyn- then walk to the shoreline lawn edge\n2026 Current & Upcoming Months\nTuesday, August 4, 7:00 AM to 8:00 AM\nTuesday, August 11, 7:00 AM to 8:00 AM\nTuesday, August 18, 7:00 AM to 8:00 AM\nTuesday, August 25, 7:00 AM to 8:00 AM",
-      "relatedCardIds": [
-        "transmitter-park-restaurant-marina"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-13",
-      "recurrence": {
-        "days": [
-          "tue"
-        ]
-      }
+      "sourceQuote": "[Sponsored] Mention Greenpointers for 20% off your first appointment at Pooch’s Parlor (128 India St)!"
     },
     {
       "id": "bk-youth-ballet-adult-term",
@@ -2651,7 +2600,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-19",
+      "updatedAt": "2026-08-26",
       "endsAt": "2026-09-02T23:59:00-04:00",
       "id": "scrappleland-backgammon-club",
       "title": "Tuesday Backgammon Club at Scrappleland",
@@ -2666,7 +2615,7 @@
         "food_drink"
       ],
       "summary": "A backgammon meet at the pinball bar. The venue lists it as a regular club night.",
-      "sourceQuote": "Tuesday Backgammon Club\nAugust 25 @ 8:00pm - 10:00pm",
+      "sourceQuote": "Tuesday Backgammon Club\nSeptember 1 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -2679,7 +2628,7 @@
           "title": "Scrappleland",
           "url": "https://scrappleland.com",
           "publisher": "Scrappleland",
-          "date": "2026-08-07"
+          "date": "2026-08-26"
         }
       ],
       "relatedCardIds": [
@@ -3365,7 +3314,6 @@
       ],
       "sourceQuote": "4 classes a month - $87.00 per month (13% off)\n4 classes a month - $104.00 per month (13% off)\n4 classes a month - $139.00 per month (13% off)\nFree trial class",
       "relatedCardIds": [
-        "moon-bunny-two-day-camp-8-12-0824",
         "moon-bunny-two-day-camp-4-7-0827",
         "moon-bunny-weekend-camp-13-16-0829",
         "moon-bunny-two-day-camp-8-12-0901",
@@ -3934,15 +3882,12 @@
         }
       ],
       "sourceQuote": "sunset yoga in the park\naugust 20, 7pm\nWNYC transmitter park\njoin us for a sunset yoga practice by the water. free community yoga in collaboration with the friends of transmitter park.\nsunset yoga in the park\naugust 27, 7pm\nWNYC transmitter park",
-      "relatedCardIds": [
-        "community-yoga-transmitter-tuesdays"
-      ],
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-19",
+      "updatedAt": "2026-08-26",
       "recurrence": {
         "days": [
           "thu"
@@ -4096,96 +4041,6 @@
       ],
       "lat": 40.729705,
       "lng": -73.949195
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-11",
-      "id": "troost-lumens-0825",
-      "title": "LUMENS at Troost",
-      "kicker": "An evening of sonic mischief",
-      "summary": "Jeff Berner, Rob Heath and Tony Maimone play the Manhattan Avenue back room. The venue calendar lists the night without a set start time.",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "free": false,
-      "startsAt": "2026-08-25T00:00:00-04:00",
-      "endsAt": "2026-08-25T23:59:00-04:00",
-      "allDay": true,
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-11"
-        }
-      ],
-      "sourceQuote": "summary: LUMENS\ndescription: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone\nstart.date: 2026-08-25"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-11",
-      "updatedAt": "2026-08-25",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
-      "free": false,
-      "relatedCardIds": [
-        "moon-bunny-monthly-plans"
-      ],
-      "actions": [
-        {
-          "label": "Camp details",
-          "type": "learn_more",
-          "url": "https://moonbunnyaerial.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial events",
-          "url": "https://moonbunnyaerial.com",
-          "publisher": "Moon Bunny Aerial",
-          "date": "2026-08-11"
-        }
-      ],
-      "id": "moon-bunny-two-day-camp-8-12-0824",
-      "title": "Two-Day Circus Camp for 8–12s at Moon Bunny Aerial",
-      "kicker": "Final day of the two-day camp",
-      "summary": "The shorter format for the 8-to-12 group — aerial apparatus work plus acro, juggling and flow props. The studio's feed now lists only today's session.",
-      "startsAt": "2026-08-25T09:00:00-04:00",
-      "endsAt": "2026-08-25T15:00:00-04:00",
-      "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-08-25T13:00:00.000Z\nend_at: 2026-08-25T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.",
-      "lat": 40.736575,
-      "lng": -73.952327
     },
     {
       "category": "event",
@@ -4424,48 +4279,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-17",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-13"
-        }
-      ],
-      "id": "library-tuesday-programs-0825",
-      "category": "event",
-      "free": false,
-      "title": "Tuesday at Greenpoint Library",
-      "kicker": "Two adult drop-ins, no sign-up needed",
-      "summary": "Knitting, crochet, mending and cross-stitch with lessons for beginners, plus an English conversation group alongside it. The branch has canceled its beginner ESOL class.",
-      "startsAt": "2026-08-25T17:30:00-04:00",
-      "endsAt": "2026-08-25T19:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "sourceQuote": "ts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-08-25T21:30:00Z\nds_event_end_date: 2026-08-25T23:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-08-25T22:00:00Z\nts_title: Free English Class\nis_event_canceled: 1"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-13",
       "updatedAt": "2026-08-20",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
@@ -4498,52 +4311,6 @@
         "family_kids"
       ],
       "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-26T14:30:00Z\nts_title: Toddler Time\nds_event_start_date: 2026-08-26T15:15:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-26T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating!\nts_title: Teens DIY: Decorate a Teddy Bear\nds_event_start_date: 2026-08-26T20:00:00Z\nts_title: Computer Basics\nds_event_start_date: 2026-08-26T19:15:00Z\nts_title: Free English Class (We Speak NYC)\nds_event_start_date: 2026-08-26T19:30:00Z\nds_event_end_date: 2026-08-26T21:30:00Z\nts_title: Our Garden Club\nis_event_canceled: 1"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-13",
-      "id": "sips-scholars-parkhouse-0825",
-      "category": "event",
-      "free": true,
-      "title": "Sips & Scholars: Enlightenment and Counter-Enlightenment",
-      "kicker": "Free lecture in the parkhouse",
-      "summary": "Michael Stevenson of the Brooklyn Institute for Social Research reads the Counter-Enlightenment as a corrective rather than a rejection. RSVP in advance; refreshments provided.",
-      "startsAt": "2026-08-25T18:30:00-04:00",
-      "endsAt": "2026-08-25T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "McCarren Parkhouse",
-      "address": "McCarren Park, Brooklyn, NY 11222",
-      "geocodeQuery": "McCarren Park, Brooklyn, NY",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-13"
-        }
-      ],
-      "sourceQuote": "ts_title: Sips & Scholars: Enlightenment and Counter-Enlightenment with Michael Stevenson\nds_event_start_date: 2026-08-25T22:30:00Z\nss_event_location: McCarren Parkhouse\nts_body: Class is in session this summer! We’re partnering with the Brooklyn Institute of Social Research to offer the second annual Sips & Scholars series, free lectures set in bars, parks, cafes, and restaurants all over Brooklyn.",
-      "lat": 40.721159,
-      "lng": -73.952879
     },
     {
       "audience": [
@@ -5625,55 +5392,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-19",
       "updatedAt": "2026-08-19",
-      "id": "madelines-comedy-0825",
-      "category": "event",
-      "title": "Madeline’s Comedy Show",
-      "kicker": "Standup comedy, $10",
-      "summary": "A bill of comics with credits on Netflix, Comedy Central and Fallon takes the stage.",
-      "startsAt": "2026-08-25T20:00:00-04:00",
-      "endsAt": "2026-08-25T21:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": false,
-      "locationName": "Madeline’s",
-      "address": "113 Franklin St #FC, Brooklyn, NY 11222",
-      "geocodeQuery": "113 Franklin Street, Brooklyn, NY 11222",
-      "sourceQuote": "Madeline’s Comedy Show @ Madeline’s, 8 p.m.: Standup comedy featuring talent seen on Netflix, Comedy Central, Fallon , and more. $10, get tickets here .\n\"name\": \"Madeline's Comedy Show - Standup Comedy in Greenpoint\",\n\"startDate\": \"2026-03-12T20:00:00-04:00\",\n\"endDate\": \"2026-12-15T21:30:00-05:00\",\n\"location\":{\"@type\":\"Place\",\"name\":\"Madeline's\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Brooklyn\",\"addressRegion\":\"NY\",\"addressCountry\":\"US\",\"streetAddress\":\"113 Franklin Street, #FC, Brooklyn, NY 11222\"}}",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
-          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-19"
-        },
-        {
-          "title": "Madeline’s Comedy Show — Standup Comedy in Greenpoint",
-          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137",
-          "publisher": "Madeline’s",
-          "date": "2026-08-19"
-        }
-      ],
-      "lat": 40.730371,
-      "lng": -73.957833
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
       "id": "loft-story-live-island-0826",
       "category": "event",
       "title": "LIVE ISLAND: A Gay Dating Experience",
@@ -5712,52 +5430,6 @@
       ],
       "lat": 40.726647,
       "lng": -73.95229
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-25",
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "free": false,
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "id": "film-noir-cult-cinema-0825",
-      "title": "Cult Cinema at Film Noir Cinema",
-      "kicker": "No titles announced beforehand",
-      "summary": "The Meserole Avenue cinema bills it as a night of sheer cinematic madness dedicated to the most obscure films ever made.",
-      "startsAt": "2026-08-25T21:00:00-04:00",
-      "endsAt": "2026-08-25T22:00:00-04:00",
-      "relatedCardIds": [
-        "film-noir-cinema",
-        "film-noir-denchu-kozo-0825"
-      ],
-      "sourceQuote": "CULT CINEMA\nTuesday, August 25, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-20"
-        }
-      ]
     },
     {
       "audience": [
@@ -5891,49 +5563,6 @@
           "date": "2026-08-20"
         }
       ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-20",
-      "locationName": "Golden Drum",
-      "address": "97 Green St. G1, Brooklyn, NY 11222",
-      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
-      "free": false,
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "id": "golden-drum-sacred-roses-0825",
-      "title": "Sacred Roses with Ananda at Golden Drum",
-      "kicker": "Body-awareness workshop, $40",
-      "summary": "Movement, breath and sound drawn from Core Energetics body therapy, then the Sacred Roses practice tied to the Pentagram of Venus. No previous experience needed.",
-      "startsAt": "2026-08-25T19:00:00-04:00",
-      "endsAt": "2026-08-25T21:30:00-04:00",
-      "sourceQuote": "Unveiling the Temple Body with the Sacred Roses by Ananda (Brazil)\nTuesday, August 25, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nJoin Ananda for a two-hour experiential workshop exploring the body as a space for awareness, transformation, and deeper connection with ourselves.\nfollowed by a guided body-awareness practice inspired by Core Energetics Body Therapy\nAnanda will guide participants into the Sacred Roses practice , a symbolic and energetic activation connected to the Pentagram of Venus.\nNo previous experience is necessary.\nSacred rose with Ananda 08/25/26\n$40.00",
-      "actions": [
-        {
-          "label": "Workshop page",
-          "type": "learn_more",
-          "url": "https://www.goldendrum.org/calendar-1/sacredrose"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Golden Drum",
-          "url": "https://www.goldendrum.org/calendar-1/sacredrose",
-          "publisher": "Golden Drum",
-          "date": "2026-08-20"
-        }
-      ],
-      "lat": 40.733571,
-      "lng": -73.957721
     },
     {
       "category": "event",
@@ -6168,15 +5797,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-21",
+      "updatedAt": "2026-08-26",
       "id": "library-sensory-garden-0904",
       "category": "event",
-      "free": true,
-      "title": "Sensory Garden Hour at Greenpoint Library",
-      "kicker": "Rooftop garden hour for under-fives",
-      "summary": "A short garden-themed storytime and then play among the plants, with the series' final stated date. No registration; called off for rain or extreme heat.",
+      "free": false,
+      "title": "Friday at Greenpoint Library",
+      "kicker": "Rooftop garden, morning and afternoon",
+      "summary": "Storytime and play among the plants for the under-fives, then an experienced garden educator on hand for plant questions. Both are called off for rain or high heat.",
       "startsAt": "2026-09-04T10:30:00-04:00",
-      "endsAt": "2026-09-04T11:30:00-04:00",
+      "endsAt": "2026-09-04T16:00:00-04:00",
       "filters": [
         "family_kids"
       ],
@@ -6187,7 +5816,7 @@
       "relatedCardIds": [
         "greenpoint-library"
       ],
-      "sourceQuote": "Sensory Garden Hour (Greenpoint Library)\nEvery Friday, 10:30 AM to 11:30 AM to September 4, 2026 except for July 3\nFree\nFor ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures.\nJoin us at the Greenpoint Library for kids’ time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden.",
+      "sourceQuote": "Sensory Garden Hour (Greenpoint Library)\nEvery Friday, 10:30 AM to 11:30 AM to September 4, 2026 except for July 3\nJoin us at the Greenpoint Library for kids’ time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden.\nFor ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures.\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-09-04T19:00:00Z\nds_event_end_date: 2026-09-04T20:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather.",
       "actions": [
         {
           "label": "Event page",
@@ -6201,6 +5830,12 @@
           "url": "https://gogreenbk.org/event/sensory-garden-2026/2026-08-21/",
           "publisher": "Go Green Brooklyn",
           "date": "2026-08-21"
+        },
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-26"
         }
       ]
     },
@@ -7004,100 +6639,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-25",
       "updatedAt": "2026-08-25",
-      "id": "film-noir-denchu-kozo-0825",
-      "category": "event",
-      "title": "DENCHU-KOZO at Film Noir Cinema",
-      "kicker": "A 1987 Japanese cult oddity",
-      "summary": "Hikari has an electricity pole growing out of his back, and the other boys at school torment him for it — until a classmate named Momo comes to his rescue.",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "free": false,
-      "startsAt": "2026-08-25T20:00:00-04:00",
-      "endsAt": "2026-08-25T21:00:00-04:00",
-      "relatedCardIds": [
-        "film-noir-cinema",
-        "film-noir-cult-cinema-0825"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "DENCHU-KOZO — Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/4/8/denchu-kozo",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-25"
-        }
-      ],
-      "sourceQuote": "DENCHU-KOZO — Film Noir Cinema\nDENCHU-KOZO\nTuesday, August 25, 2026\n8:00 PM\n9:00 PM\nJP. 1987\nHikari is a boy who is bullied and teased by the other boys at school because he has the odd distinction of having an electricity pole growing out of his back. However, one of his classmates, a girl named Momo, comes to his rescue."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-25",
-      "updatedAt": "2026-08-25",
-      "id": "bcc-knitting-103-bandana-0825",
-      "category": "event",
-      "title": "Knitting 103: Summer Bandana at Brooklyn Craft Company",
-      "kicker": "Summer bandana, start to finish",
-      "summary": "Third step in the shop's knitting ladder, $85 for the session. Their workshops sell out fast, so check availability before turning up.",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
-      "lat": 40.730461,
-      "lng": -73.953114,
-      "free": false,
-      "startsAt": "2026-08-25T18:30:00-04:00",
-      "endsAt": "2026-08-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Workshop page",
-          "type": "learn_more",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-06"
-        },
-        {
-          "title": "Brooklyn Craft Company workshops",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-25"
-        }
-      ],
-      "sourceQuote": "Knitting 103: Summer Bandana\nIn Greenpoint:\nTues, 8/25 at 6:30pm\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train\n$85.00"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-25",
-      "updatedAt": "2026-08-25",
       "id": "bcc-crochet-102-tomatote-0829",
       "category": "event",
       "title": "Crochet 102: Tom-a-tote! at Brooklyn Craft Company",
@@ -7465,6 +7006,361 @@
         }
       ],
       "sourceQuote": "Bedford Slip\nSun, Aug 30 8:00 am\n1 Bedford Av Brooklyn, NY 11222\nAudience: All Ages Type: Workshop/Info Session\nVolunteer clean up from 11:00AM to 1:00PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "free": false,
+      "category": "event",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "id": "film-noir-kriminal-0826",
+      "title": "KRIMINAL at Film Noir Cinema",
+      "kicker": "Italian 1966 crime caper",
+      "summary": "A mastermind thief keeps outrunning the law after a narrow escape from execution, chasing one last big score. No admission price is stated.",
+      "filters": [
+        "arts_culture"
+      ],
+      "startsAt": "2026-08-26T19:00:00-04:00",
+      "endsAt": "2026-08-26T20:00:00-04:00",
+      "sourceQuote": "KRIMINAL\nWednesday, August 26, 2026\n7:00 PM\n8:00 PM\nIT. 1966\nA mastermind thief known as Kriminal narrowly escapes execution. He always manages to stay one step ahead of the law with each new crime he commits. Will Kriminal be able to pull his biggest score yet or will a double cross lead to his demise?",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-26"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "free": false,
+      "category": "event",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "id": "film-noir-body-melt-0826",
+      "title": "BODY MELT at Film Noir Cinema",
+      "kicker": "Australian 1992 body horror",
+      "summary": "Residents of a quiet cul-de-sac are unknowing test subjects for a drug that makes bodies decompose fast. No admission price is stated.",
+      "filters": [
+        "arts_culture"
+      ],
+      "startsAt": "2026-08-26T21:00:00-04:00",
+      "endsAt": "2026-08-26T22:00:00-04:00",
+      "sourceQuote": "BODY MELT\nWednesday, August 26, 2026\n9:00 PM\n10:00 PM\nAU. 1992\nResidents of peaceful Pebbles Court are being used unknowingly as test experiments for a new 'Body Drug' that causes rapid body decomposition.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/23/decompose"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/23/decompose",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-26"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "free": false,
+      "category": "event",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "id": "film-noir-whirlpool-0827",
+      "title": "WHIRLPOOL at Film Noir Cinema",
+      "kicker": "Spanish 1970 psychological thriller",
+      "summary": "A rich older woman brings a young model home to be photographed by the enigmatic photographer who lives with her. No admission price is stated.",
+      "filters": [
+        "arts_culture"
+      ],
+      "startsAt": "2026-08-27T19:00:00-04:00",
+      "endsAt": "2026-08-27T20:00:00-04:00",
+      "sourceQuote": "WHIRLPOOL\nThursday, August 27, 2026\n7:00 PM\n8:00 PM\nSP. 1970\nA rich older woman living in a country house brings home a new model to be photographed by a young enigmatic photographer who lives with her.",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/5/13/whirlpool"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/5/13/whirlpool",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-26"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "free": false,
+      "category": "event",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "id": "film-noir-monday-0831",
+      "title": "Film Noir Monday at Film Noir Cinema",
+      "kicker": "The title stays secret until it rolls",
+      "summary": "The Monday slot digs up lesser-known and international noir, and the cinema keeps the audience in the dark on purpose. No admission price is stated.",
+      "filters": [
+        "arts_culture"
+      ],
+      "startsAt": "2026-08-31T21:00:00-04:00",
+      "endsAt": "2026-08-31T22:00:00-04:00",
+      "sourceQuote": "FILM NOIR MONDAY\nMonday, August 31, 2026\n9:00 PM\n10:00 PM\nFilm Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.\nIn Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-26"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "free": true,
+      "category": "event",
+      "id": "longevity-stick-transmitter-0830",
+      "title": "Longevity Stick in Transmitter Park",
+      "kicker": "Free waterfront Tai Chi and yoga",
+      "summary": "A morning sitting rather than the usual Friday evening. Tyler Trocinski leads; sticks are provided, and they suggest a water bottle and a small towel.",
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "filters": [
+        "wellness"
+      ],
+      "startsAt": "2026-08-30T08:30:00-04:00",
+      "endsAt": "2026-08-30T09:15:00-04:00",
+      "relatedCardIds": [
+        "transmitter-park-restaurant-marina"
+      ],
+      "sourceQuote": "Longevity Stick (Transmitter Park)\nJoin us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nSun, Aug 30, 8:30 AM to 9:15 AM",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-27/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Longevity Stick (Transmitter Park)",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-27/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-08-26"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "free": false,
+      "category": "event",
+      "id": "library-tuesday-programs-0908",
+      "title": "Tuesday at Greenpoint Library",
+      "kicker": "Three adult drop-ins, afternoon on",
+      "summary": "Beginner ESOL that meets twice a week and needs no registration, free notary service (call ahead to check they are in), then knitting, crochet and mending with lessons for beginners.",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "filters": [
+        "arts_culture"
+      ],
+      "startsAt": "2026-09-08T14:00:00-04:00",
+      "endsAt": "2026-09-08T19:30:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-08T18:00:00Z\nds_event_end_date: 2026-09-08T20:00:00Z\nThe library offers free ESOL classes for beginners learning English. Classes meet twice a week\nRegistration is not necessary.\nts_title: Free Notary Services*\n* New hours are TUES and THUR from 2pm to 4pm. Please call Greenpoint Library to CONFIRM the notary is AVAILABLE the day you plan to visit: 718-389-4394.\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-09-08T21:30:00Z\nds_event_end_date: 2026-09-08T23:30:00Z\nJoin a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community.\nLessons are available for beginners in knitting, mending, or crochet.",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-26"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "free": false,
+      "category": "event",
+      "id": "cb1-environmental-committee-0903",
+      "title": "CB1 Environmental Protection Committee meeting",
+      "kicker": "Battery storage, the plume, Newtown Creek",
+      "summary": "Also on the agenda: the 1098 Manhattan Ave cleanup site, follow-up vapor testing at 83 Apollo St, the Greenpoint oil spill website, and PFAS in the local environment.",
+      "locationName": "176 Java Street",
+      "address": "176 Java St, Brooklyn, NY 11222",
+      "filters": [
+        "civic"
+      ],
+      "startsAt": "2026-09-03T18:15:00-04:00",
+      "endsAt": "2026-09-03T23:59:00-04:00",
+      "sourceQuote": "CB1 Environmental Protection Committee Meeting\nThu, Sep 3 6:15 pm\n176 Java Street Brooklyn, NY 11222\nAudience: All Ages Type: Community Meeting\n1. NinePoint Energy Battery Storage 421 Bushwick Avenue: Sam Brill\n3. 1098 Manhattan Avenue NYC Volunteer Cleanup Plan Site# 26CVCP061K: Discuss\n4. 83 Apollo Street Vapor Intrusion Investigation: Review and discuss results from\n• Meeker Ave Plume Superfund - Status update\n• Newtown Creek Superfund - Status update\n• Greenpoint Oil Spill Website\n• PFAS presence in our local environment",
+      "actions": [
+        {
+          "label": "Community calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "North Brooklyn Community Calendar",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.731533,
+      "lng": -73.953515
+    },
+    {
+      "id": "troost-academy-blues-0909",
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "title": "THE ACADEMY BLUES PROJECT at Troost",
+      "kicker": "Psychedelic rock, per the calendar blurb",
+      "filters": [
+        "live_music"
+      ],
+      "startsAt": "2026-09-09T00:00:00-04:00",
+      "endsAt": "2026-09-09T23:59:00-04:00",
+      "allDay": true,
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "summary": "The venue quotes New York Music Daily calling them a bucket-list act. No door time, support bill or ticket link is listed.",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-26"
+        }
+      ],
+      "sourceQuote": "summary: THE ACADEMY BLUES PROJECT\ndescription: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily\nstart.date: 2026-09-09",
+      "lat": 40.733463,
+      "lng": -73.955035
     }
   ]
 }

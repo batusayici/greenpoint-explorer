@@ -1,17 +1,27 @@
-title: DENCHU-KOZO
-startDate: 2026-08-26T00:00:00.000Z
-endDate: 2026-08-26T01:00:00.000Z
-fullUrl: /program/2026/4/8/denchu-kozo
+title: KRIMINAL
+startDate: 2026-08-26T23:00:00.789Z
+endDate: 2026-08-27T00:00:00.789Z
+fullUrl: /program/2026/8/22/krimi
 
-title: CULT CINEMA
-startDate: 2026-08-26T01:00:00.087Z
-endDate: 2026-08-26T02:00:00.087Z
-fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+title: BODY MELT
+startDate: 2026-08-27T01:00:00.880Z
+endDate: 2026-08-27T02:00:00.880Z
+fullUrl: /program/2026/8/23/decompose
+
+title: WHIRLPOOL
+startDate: 2026-08-27T23:00:00.059Z
+endDate: 2026-08-28T00:00:00.059Z
+fullUrl: /program/2026/5/13/whirlpool
 
 title: FILM CLUB
 startDate: 2026-08-28T01:00:00.592Z
 endDate: 2026-08-28T02:00:00.592Z
 fullUrl: /program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
+
+title: FILM NOIR MONDAY
+startDate: 2026-09-01T01:00:00.015Z
+endDate: 2026-09-01T02:00:00.015Z
+fullUrl: /program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
 
 title: TERROR TERROIR
 startDate: 2026-09-04T23:00:00.202Z
@@ -22,6 +32,21 @@ title: BLACK BOX
 startDate: 2026-09-11T23:00:00.000Z
 endDate: 2026-09-12T00:00:00.000Z
 fullUrl: /program/2026/9/11/black-box
+
+title: SUPERSHORTS NY FILM FESTIVAL
+startDate: 2026-09-25T22:00:00.000Z
+endDate: 2026-09-25T23:00:00.000Z
+fullUrl: /program/2026/9/25/supershorts-ny-film-festival
+
+title: SUPERSHORTS NY FILM FESTIVAL
+startDate: 2026-09-26T22:30:00.722Z
+endDate: 2026-09-26T23:30:00.722Z
+fullUrl: /program/2026/9/25/supershorts-ny-film-festival-ec94l
+
+title: SUPERSHORTS NY FILM FESTIVAL
+startDate: 2026-09-27T22:30:00.287Z
+endDate: 2026-09-27T23:30:00.287Z
+fullUrl: /program/2026/9/25/supershorts-ny-film-festival-ec94l-9g93a
 
 title: CLOWNSPIRACY
 startDate: 2026-10-24T23:00:00.304Z
@@ -38,8 +63,8 @@ startDate: 2026-11-02T00:00:00.000Z
 endDate: 2026-11-02T01:00:00.000Z
 fullUrl: /program/2026/11/1/secrets-of-the-dead
 
-## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
-CULT CINEMA — Film Noir Cinema
+## [DETAIL] https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
+FILM NOIR MONDAY — Film Noir Cinema
 Home
 Calendar
 Welcome
@@ -54,19 +79,20 @@ Program
 Location
 Contact
 Back to All Events
-CULT CINEMA
-Tuesday, August 25, 2026
+FILM NOIR MONDAY
+Monday, August 31, 2026
 9:00 PM
 10:00 PM
 21:00
 22:00
 Google Calendar
 ICS
-Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
-Earlier Event: August 25
-DENCHU-KOZO
-Later Event: August 27
+Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
+In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
+Earlier Event: August 27
 FILM CLUB
+Later Event: September 4
+TERROR TERROIR
 Back To Top
 Cart ( 0 )
 
@@ -97,10 +123,10 @@ ICS
 Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
 The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
 Pure cinematheque fun.
-Earlier Event: August 25
-CULT CINEMA
-Later Event: September 4
-TERROR TERROIR
+Earlier Event: August 27
+WHIRLPOOL
+Later Event: August 31
+FILM NOIR MONDAY
 Back To Top
 Cart ( 0 )
 
@@ -165,8 +191,8 @@ ICS
 US. 2026
 A small town high school misfit investigates the appearance of creepy clowns before an upcoming election, discovering the clowns are more than they appear.
 Tickets: https://www.eventbrite.com/e/clownspiracy-tickets-1990612090348?aff=oddtdtcreator
-Earlier Event: September 11
-BLACK BOX
+Earlier Event: September 27
+SUPERSHORTS NY FILM FESTIVAL
 Later Event: October 31
 HALLOWEEN PARTY
 Back To Top
@@ -199,6 +225,199 @@ ICS
 SECRETS OF THE DEAD Short Film Festival
 Earlier Event: October 31
 HALLOWEEN PARTY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/5/13/whirlpool
+WHIRLPOOL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+WHIRLPOOL
+Thursday, August 27, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+SP. 1970
+A rich older woman living in a country house brings home a new model to be photographed by a young enigmatic photographer who lives with her.
+Earlier Event: August 26
+BODY MELT
+Later Event: August 27
+FILM CLUB
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/8/22/krimi
+KRIMINAL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+KRIMINAL
+Wednesday, August 26, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+IT. 1966
+A mastermind thief known as Kriminal narrowly escapes execution. He always manages to stay one step ahead of the law with each new crime he commits. Will Kriminal be able to pull his biggest score yet or will a double cross lead to his demise?
+Earlier Event: August 25
+CULT CINEMA
+Later Event: August 26
+BODY MELT
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/8/23/decompose
+BODY MELT — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BODY MELT
+Wednesday, August 26, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+AU. 1992
+Residents of peaceful Pebbles Court are being used unknowingly as test experiments for a new 'Body Drug' that causes rapid body decomposition.
+Earlier Event: August 26
+KRIMINAL
+Later Event: August 27
+WHIRLPOOL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
+BLACK BOX — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BLACK BOX
+Friday, September 11, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Earlier Event: September 4
+TERROR TERROIR
+Later Event: September 25
+SUPERSHORTS NY FILM FESTIVAL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival
+SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SUPERSHORTS NY FILM FESTIVAL
+Friday, September 25, 2026
+6:00 PM
+7:00 PM
+18:00
+19:00
+Google Calendar
+ICS
+Earlier Event: September 11
+BLACK BOX
+Later Event: September 26
+SUPERSHORTS NY FILM FESTIVAL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+CULT CINEMA — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+CULT CINEMA
+Tuesday, August 25, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
+Earlier Event: August 25
+DENCHU-KOZO
+Later Event: August 27
+FILM CLUB
 Back To Top
 Cart ( 0 )
 
@@ -235,37 +454,6 @@ CULT CINEMA
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
-BLACK BOX — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-BLACK BOX
-Friday, September 11, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Earlier Event: September 4
-TERROR TERROIR
-Later Event: October 24
-CLOWNSPIRACY
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/9/4/terror-terroir
 TERROR TERROIR — Film Noir Cinema
 Home
@@ -294,39 +482,6 @@ Earlier Event: August 27
 FILM CLUB
 Later Event: September 11
 BLACK BOX
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
-FILM NOIR MONDAY — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-FILM NOIR MONDAY
-Monday, August 24, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
-In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
-Earlier Event: August 24
-PHEDRE
-Later Event: August 25
-CULT CINEMA
 Back To Top
 Cart ( 0 )
 
@@ -393,39 +548,6 @@ Earlier Event: August 23
 TURKISH BATHHOUSE
 Later Event: August 23
 SATAN'S SKIN
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/8/23/decompose
-BODY MELT — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-BODY MELT
-Sunday, August 23, 2026
-8:00 PM
-9:00 PM
-20:00
-21:00
-Google Calendar
-ICS
-AU. 1992
-Residents of peaceful Pebbles Court are being used unknowingly as test experiments for a new 'Body Drug' that causes rapid body decomposition.
-Earlier Event: August 23
-SATAN'S SKIN
-Later Event: August 24
-PHEDRE
 Back To Top
 Cart ( 0 )
 

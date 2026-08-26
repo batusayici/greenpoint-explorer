@@ -712,9 +712,7 @@ Stores
 Referral Program
 Gift Cards
 The Program App
-Return policy
 Jobs
-Terms of Service
 NEED SUPPORT?
 We're just an email away. Drop us a line and we'll get back to you within 48 hours for order related inquires.
 OPEN EMAIL
@@ -722,6 +720,7 @@ You have scrolled
 KM
 Privacy Policy
 Terms of Service
+Return Policy
 Accessibility
 Cart
 0

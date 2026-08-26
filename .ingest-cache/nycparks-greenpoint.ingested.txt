@@ -1,20 +1,6 @@
 ## McCarren Pool: Lap Swim
-http://www.nycgovparks.org/events/2026/08/25/mccarren-pool-lap-swim1
-Tue, 25 Aug 2026 00:00:04 EDT
-Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
-parkids: B058
-parknames: McCarren Park
-startdate: 2026-08-25
-enddate: 2026-08-25
-starttime: 7:00 am
-endtime: 8:30 am
-location: McCarren Park Pool (in McCarren Park)
-categories: Fitness | Swimming/Aquatics
-coordinates: 40.72015570000000000, -73.95174040000000000
-
-## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/26/mccarren-pool-lap-swim1
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -28,7 +14,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/08/26/bodycentric-circuit-training
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058
@@ -43,7 +29,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## Movies Under the Stars: Guardians of The Galaxy Vol. 2 (2017)
 http://www.nycgovparks.org/events/2026/08/26/movies-under-the-stars-guardians-of-the-galaxy-vol-2-2017
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor’s Office of Media and Entertainment will host family-friendly movie showings across the five boroughs.
 The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill’s true parentage. Old foes become new allies and fan-favorite characters from the classic comics will come to our heroes’ aid.
 Rated PG-13
@@ -63,7 +49,7 @@ image: http://www.nycgovparks.org/common_images/events/6a86a6b8779a1.png
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/27/mccarren-pool-lap-swim1
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -77,7 +63,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## McCarren Pool: Lap Swim
 http://www.nycgovparks.org/events/2026/08/28/mccarren-pool-lap-swim1
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 Take part in a long-distance lap swim competition. To participate in the competition, please speak to an Aquatics Specialist on the pool deck and indicate this on your application. An awards ceremony will be held at the end of August to celebrate the health and fitness achievements of swimmers who complete 25 miles or more. Visit https://www.nycgovparks.org/events/lap-swim to register.
 parkids: B058
 parknames: McCarren Park
@@ -91,7 +77,7 @@ coordinates: 40.72015570000000000, -73.95174040000000000
 
 ## Movies Under the Stars: Eternal Sunshine of the Spotless Mind
 http://www.nycgovparks.org/events/2026/08/29/movies-under-the-stars-eternal-sunshine-of-the-spotless-mind
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor’s Office of Media and Entertainment will host family-friendly movie showings across the five boroughs.
 Screenwriter Charlie Kaufman's bizarre love story about a man who has all memories of his girlfriend erased after they break up.
 Rated R
@@ -111,7 +97,7 @@ image: http://www.nycgovparks.org/common_images/events/6a86a71b31cc9.jpg
 
 ## It's My Park at WNYC Transmitter Park
 http://www.nycgovparks.org/events/2026/08/30/its-my-park-at-wnyc-transmitter-park
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 This It's My Park season, volunteer with Friends of WNYC Transmitter Park to beautify WNYC Transmitter Park. We look forward to cleaning up the park with you!
 parkids: B385
 parknames: WNYC Transmitter Park
@@ -125,7 +111,7 @@ coordinates: 40.72977066040000000, -73.96070861816400000
 
 ## CANCELED: Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/08/31/canceled-bodyweight-interval-training
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -139,7 +125,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/09/02/bodycentric-circuit-training
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058
@@ -154,7 +140,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## CANCELED: Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/09/07/canceled-bodyweight-interval-training
-Tue, 25 Aug 2026 00:00:04 EDT
+Wed, 26 Aug 2026 00:00:04 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -164,4 +150,19 @@ starttime: 5:45 pm
 endtime: 6:45 pm
 location: Multi-Use Room C (in McCarren Park)
 categories: Fitness | Shape Up NYC | Recreation Center Programming | Exercise Classes
+coordinates: 40.72010040000000000, -73.94999695000000000
+
+## Body-Centric Circuit Training
+http://www.nycgovparks.org/events/2026/09/09/bodycentric-circuit-training
+Wed, 26 Aug 2026 00:00:04 EDT
+A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
+Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
+parkids: B058
+parknames: McCarren Park
+startdate: 2026-09-09
+enddate: 2026-09-09
+starttime: 6:00 pm
+endtime: 6:45 pm
+location: Multi-Use Room A (in McCarren Park)
+categories: Fitness | Shape Up NYC | Recreation Center Programming | Exercise Classes | Strength Training/Weightlifting
 coordinates: 40.72010040000000000, -73.94999695000000000
