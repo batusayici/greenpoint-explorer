@@ -252,9 +252,10 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-26",
       "relatedCardIds": [
-        "g-train-closures"
+        "g-train-closures",
+        "sotte-social-market-0830"
       ],
       "kicker": "Plant-based Caribbean seafood"
     },
@@ -7722,6 +7723,203 @@
       ],
       "lat": 40.73024,
       "lng": -73.957805
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "trustRisk": "medium",
+      "id": "plusbklyn-shop-sip-0828",
+      "category": "event",
+      "title": "Shop & Sip at Plus BKLYN",
+      "kicker": "A Re/Dress book kickoff",
+      "summary": "Founder Deb is launching More Rump, Less Frump!, a photo archive of the 2000s plus-size resale shop Re/Dress, with leaders from NAAFA on hand. Free with an RSVP.",
+      "startsAt": "2026-08-28T18:00:00-04:00",
+      "endsAt": "2026-08-28T20:00:00-04:00",
+      "filters": [
+        "shopping"
+      ],
+      "free": true,
+      "locationName": "Plus BKLYN",
+      "address": "671 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "671 Manhattan Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Shop & Sip @ Plus BKLYN, 6 p.m.: If you remember Brooklyn’s Re/Dress from the 2000s, it’s coming back (in book form)! Join the kickstarting of founder Deb’s book Kickstarter with an evening of shopping, sipping, swapping stories, and meeting leaders from NAAFA (National Association to Advance Fat Acceptance). Free, RSVP here .\nShop & Sip: Re/Dress Kickstarter Kickoff Friday, Aug 28 6:00pm - 8:00pm ET Hosted by",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://partiful.com/e/grM3kKD9Ckv5KDnbhXMJ"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Shop & Sip: Re/Dress Kickstarter Kickoff",
+          "url": "https://partiful.com/e/grM3kKD9Ckv5KDnbhXMJ",
+          "publisher": "Plus BKLYN",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.724717,
+      "lng": -73.951624
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "trustRisk": "medium",
+      "id": "otis-finn-back-to-school-cuts-0831",
+      "category": "discount",
+      "title": "Free back-to-school haircuts at Otis & Finn",
+      "kicker": "Free cuts for teachers and students",
+      "summary": "The barbershop's annual back-to-school day covers barbering cuts no longer than shoulder length, for anyone in a local school. All hair types and textures welcome; register first.",
+      "startsAt": "2026-08-31T11:00:00-04:00",
+      "endsAt": "2026-08-31T23:59:00-04:00",
+      "filters": [
+        "deals_memberships"
+      ],
+      "free": true,
+      "locationName": "Otis & Finn",
+      "address": "197 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "197 Franklin St, Brooklyn, NY 11222",
+      "sourceQuote": "Back-to-School Haircuts @ Otis & Finn, 11 a.m.: If you’re a local educator, school admin, or student gearing up for the new year, get a free haircut (barbering techniques, shorter than shoulder length). All hair styles and textures are welcome. Free, register here .\nThroughout the year, we host a variety of community-centered events designed to uplift, connect, and celebrate. From our annual free Back-to-School Haircutting Event, to our Pride Party, we're proud to create spaces that bring people together.",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "signup",
+          "url": "https://otisandfinn.as.me/schedule/e648f5dd/appointment/97364297"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "Otis & Finn Barbershop — Community",
+          "url": "https://www.otisandfinn.com/community",
+          "publisher": "Otis & Finn",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.733583,
+      "lng": -73.958433
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "trustRisk": "low",
+      "id": "sotte-social-market-0830",
+      "category": "event",
+      "title": "Social Market at Sotteatery",
+      "kicker": "A market inside the vegan kitchen",
+      "summary": "Sotteatery gives over its Sunday afternoon to stalls from small local businesses, and serves food alongside. No RSVP needed.",
+      "startsAt": "2026-08-30T12:00:00-04:00",
+      "endsAt": "2026-08-30T23:59:00-04:00",
+      "filters": [
+        "shopping"
+      ],
+      "free": false,
+      "locationName": "Sotteatery",
+      "address": "685 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "685 Manhattan Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "sotteatery"
+      ],
+      "sourceQuote": "Social Market @ SOTTE Eatery, 12 p.m.: Support small businesses and enjoy good food during an afternoon market. No RSVP needed.",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.725011,
+      "lng": -73.951726
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-08-26",
+      "updatedAt": "2026-08-26",
+      "trustRisk": "low",
+      "id": "dsny-bagged-compost-0902",
+      "category": "event",
+      "title": "Free bagged compost at the Greenpoint yard",
+      "kicker": "Up to ten 40-lb bags per household",
+      "summary": "Sanitation and Big Apple Compost give away compost made from the city's own food scraps and yard waste. Registration is required and residents have to meet the stated conditions.",
+      "startsAt": "2026-09-02T17:00:00-04:00",
+      "endsAt": "2026-09-02T23:59:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "free": true,
+      "locationName": "DSNY Greenpoint Storage Yard",
+      "address": "459 N Henry St, Brooklyn, NY 11222",
+      "geocodeQuery": "459 North Henry St, Brooklyn, NY 11222",
+      "sourceQuote": "Bagged Compost Pickup @ DSNY Greenpoint Storage Yard, 5 p.m.: NYC residents are eligible for up to ten 40-lb bags of free compost made of local food scraps and yard waste courtesy of the Department of Sanitation and Big Apple Compost. Free, must register and meet requirements here .\n\"streetAddress\":\"459 North Henry Street, Brooklyn, NY 11222\"\n\"startDate\":\"2026-04-01T17:00:00-04:00\"",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "signup",
+          "url": "https://www.eventbrite.com/e/2026-bagged-compost-pick-up-for-nyc-residents-brooklyn-tickets-1984889930213"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
+          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-26"
+        },
+        {
+          "title": "2026 Bagged Compost Pick Up For NYC Residents - Brooklyn",
+          "url": "https://www.eventbrite.com/e/2026-bagged-compost-pick-up-for-nyc-residents-brooklyn-tickets-1984889930213",
+          "publisher": "NYC Department of Sanitation",
+          "date": "2026-08-26"
+        }
+      ],
+      "lat": 40.735591,
+      "lng": -73.944783
     }
   ]
 }

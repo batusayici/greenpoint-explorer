@@ -3678,5 +3678,80 @@
         "-73.9510500"
       ]
     }
+  },
+  "671 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "671 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-26T17:29:38.405Z",
+    "hit": {
+      "place_id": 355719338,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081486,
+      "lat": "40.7247167",
+      "lon": "-73.9516237",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "671, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7246454",
+        "40.7247879",
+        "-73.9517832",
+        "-73.9514641"
+      ]
+    }
+  },
+  "197 Franklin St, Brooklyn, NY 11222": {
+    "query": "197 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-26T17:29:40.047Z",
+    "hit": {
+      "place_id": 359771094,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280146067,
+      "lat": "40.7335834",
+      "lon": "-73.9584331",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "197, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7335373",
+        "40.7336295",
+        "-73.9585389",
+        "-73.9583274"
+      ]
+    }
+  },
+  "459 North Henry St, Brooklyn, NY 11222": {
+    "query": "459 North Henry St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-26T17:29:41.385Z",
+    "hit": {
+      "place_id": 413601707,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1108788014,
+      "lat": "40.7355908",
+      "lon": "-73.9447831",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "459, North Henry Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7355408",
+        "40.7356408",
+        "-73.9448331",
+        "-73.9447331"
+      ]
+    }
   }
 }

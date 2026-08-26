@@ -619,12 +619,16 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // the K Bridge Park, Culture House's poetry night, Big Night's fifth
   // birthday, The Better Club's portrait night, the Bedford Slip hot dog
   // fundraiser and Madeline's 9/1 comedy show.
-  assert.equal(seed.cards.length, 164);
+  // ingest/greenpointers-2026-08-26 (HELD, review branch): +4 more off the same
+  // roundup — Shop & Sip at Plus BKLYN, the Otis & Finn back-to-school haircuts,
+  // Sotteatery's social market and the DSNY bagged compost pickup. See the PR
+  // body for why each is held; none of them is on main.
+  assert.equal(seed.cards.length, 168);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.category === "event"), 88, "81 + the 7 dated items off the 8/27-9/2 Greenpointers roundup (2026-08-26)");
-  assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
+  assert.equal(count((c) => c.category === "event"), 91, "88 + the 3 held dated items on this review branch (2026-08-26)");
+  assert.equal(count((c) => c.category === "discount"), 7, "6 + the held Otis & Finn back-to-school haircut day (2026-08-26 review branch)");
   assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
   assert.equal(count((c) => c.filters.includes("live_music")), 29, "28 after Troost's 8/25 Lumens night expired out, + The Academy Blues Project on 9/9 (2026-08-26)");
   assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
@@ -722,7 +726,10 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // /discounts detail page.
   // 2026-08-24: −1 — the Tend Greenpoint plant sale ran out on its own 8/21
   // end date and expiry removed it. No new deals this run.
-  assert.equal(deals.length, 6);
+  // 2026-08-26 review branch: +1 — Otis & Finn's free back-to-school haircut day.
+  // A dated free offer at a business, so it files `discount` with a real endsAt,
+  // the same shape as the other dated deals here.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -824,6 +831,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
+    // 2026-08-26 review branch (HELD): "Free, must register and meet
+    // requirements here."
+    "dsny-bagged-compost-0902",
     // 2026-08-25: Flower Cat's live band karaoke night — the listing ends
     // "Free entry! 2 drink minimum! Tip your musicians & bartender!", so the
     // entry is stated free even though the bar expects a bar tab.
@@ -855,6 +865,12 @@ test("free-ness is designated only where the source states it (tester feedback #
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
     "mcgolrick-movies-eternal-sunshine-0829",
+    // 2026-08-26 review branch (HELD): "get a free haircut (barbering
+    // techniques, shorter than shoulder length) ... Free, register here."
+    "otis-finn-back-to-school-cuts-0831",
+    // 2026-08-26 review branch (HELD): "meeting leaders from NAAFA (National
+    // Association to Advance Fat Acceptance). Free, RSVP here."
+    "plusbklyn-shop-sip-0828",
     // (nbcb-canoe-newtown-creek-0822 expired out 2026-08-24)
     // (neptune-artists-makers-market-0816 and edys-anniversary-party-0816 both
     // expired out 2026-08-17, as did threes-flea-market-0815.)
@@ -1109,6 +1125,14 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // "Drinks, try on's and wishlist building" at a jewelry studio — retail at
     // a second store, the ruling's first extension beyond CIBONE.
     "macha-summer-fridays-after-hours",
+    // 2026-08-26 review branch, BOTH HELD. plusbklyn-shop-sip-0828 is a shop's
+    // dated evening — retail, filed like the runs above. sotte-social-market-0830
+    // is the held LENS question itself: a market of small businesses at a
+    // restaurant, which the markets rule sends to `shopping` unless the market
+    // IS food, and the source says only "enjoy good food during an afternoon
+    // market". Filed here so the card is reviewable; the PR asks for the ruling.
+    "plusbklyn-shop-sip-0828",
+    "sotte-social-market-0830",
     // (The markets rule's own class — general goods, not food — was carried by
     // neptune-artists-makers-market-0816 and threes-flea-market-0815 until both
     // expired out 2026-08-17. macha-summer-fridays-after-hours still holds it.)
@@ -1204,6 +1228,13 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // public meeting on the Meeker plume, Newtown Creek and a battery storage
     // proposal. Civic action with neighborhood stakes, not a social gathering.
     "cb1-environmental-committee-0903",
+    // 2026-08-26 review branch (HELD): the DSNY compost giveaway, and this
+    // filing is the held question. Every other card in this lens is something a
+    // reader DOES for the neighborhood; taking home ten bags of city compost is
+    // something a reader RECEIVES. No other lens fits it either, and no card
+    // ships lens-less any more, so the PR puts the rule to Batu rather than
+    // letting one run decide a class.
+    "dsny-bagged-compost-0902",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
@@ -1278,6 +1309,10 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // (2026-08-03, PR #18) — 10% off the kids' dance and aerial/acro packs.
     "moon-bunny-back-to-school-2026",
     "moon-bunny-monthly-plans",
+    // 2026-08-26 review branch (HELD): a dated free-haircut day at a barbershop.
+    // It is a time-bound OFFER, so it files `discount` + deals_memberships like
+    // the first-groom and intro offers around it, not as an event.
+    "otis-finn-back-to-school-cuts-0831",
     "poochs-parlor-first-groom",
     "selformer-memberships",
     // 2026-08-15: a DATED sale (through 8/21), so it is not recurring — the
