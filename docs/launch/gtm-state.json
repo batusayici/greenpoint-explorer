@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-08-25",
+    "asOf": "2026-08-26",
     "lastDataPull": "2026-08-18",
-    "lastFeedCheck": "2026-08-25",
+    "lastFeedCheck": "2026-08-26",
     "nextReadout": "2026-08-25",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -1184,41 +1184,31 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-08-25",
-    "dayName": "Tuesday, August 25",
-    "dueToday": [
-      "Readout reads Wave 1 results — gates nothing (D3)"
-    ],
-    "overdue": [
-      {
-        "label": "D3 parallel reach — Film Noir + arts wave, Nextdoor, FB-group answer posts, IG carousel, each on its own src",
-        "since": "2026-08-23"
-      },
-      {
-        "label": "SummerStarz finale — be there (D4)",
-        "since": "2026-08-21"
-      },
-      {
-        "label": "First Monday send — the weekly cadence D2 ratified",
-        "since": "2026-08-24"
-      }
-    ],
+    "ranAt": "2026-08-26",
+    "dayName": "Wednesday, August 26",
+    "dueToday": [],
+    "overdue": [],
     "waiting": [
       {
-        "what": "PR #48 — content(track-v): held cards, weekly 2026-08-24",
+        "what": "PR #50 — growth: readout 2026-08-25 [data pending: search]",
         "age": 0
       },
       {
-        "what": "PR #47 — content(track-v): held cards, daily 2026-08-22",
-        "age": 2
+        "what": "PR #48 — content(track-v): held cards, weekly 2026-08-24",
+        "age": 1
       },
       {
-        "what": "PR #46 — content(track-v): held cards, daily 2026-08-21",
+        "what": "PR #47 — content(track-v): held cards, daily 2026-08-22",
         "age": 3
       }
     ],
     "overnight": [
-      "content(track-v): Monday refresh — a long weekend cleared 24 events, and Ashbox Cafe is closing"
+      "ingest: add North Brooklyn Open Streets to the roster; fix a composed quote",
+      "content(track-v): Bedford Slip resolved — the clean up plus the weekend it sits inside (#49)",
+      "content(track-v): daily refresh — six new cards, one canceled class pulled",
+      "decide: Rana posts to several groups; warm re-invites retired; Perri met in person",
+      "decide: families awareness starts Sep 8; the two weeks before it are the supply build",
+      "chore: restamp freshness — Tend's card has no roster pulse now"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1227,12 +1217,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 59,
+      "dated": 64,
       "reservoir": 14,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 150
+      "cards": 159
     }
   }
 }
