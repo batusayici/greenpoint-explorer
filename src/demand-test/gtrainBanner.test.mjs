@@ -51,7 +51,11 @@ test("nextGtrainWindow picks the first window whose end is still ahead", () => {
   // Aug 24 5 AM used to be the end of the list; the Sep 11–14 weekend now
   // follows it (added 2026-08-13 from the alerts feed).
   assert.equal(nextGtrainWindow(new Date("2026-08-24T06:00:00-04:00")), GTRAIN_WINDOWS[3]);
-  assert.equal(nextGtrainWindow(new Date("2026-09-14T06:00:00-04:00")), null);
+  // 2026-08-27: the alerts feed added two more — the Sep 14–18 overnights,
+  // back-to-back with the Sep 11–14 weekend, and the Sep 25–28 weekend.
+  assert.equal(nextGtrainWindow(new Date("2026-09-14T06:00:00-04:00")), GTRAIN_WINDOWS[4]);
+  assert.equal(nextGtrainWindow(new Date("2026-09-18T06:00:00-04:00")), GTRAIN_WINDOWS[5]);
+  assert.equal(nextGtrainWindow(new Date("2026-09-28T06:00:00-04:00")), null);
 });
 
 test("after one window ends, the phase re-gates against the next (no dark gap, no early noise)", () => {
@@ -68,9 +72,17 @@ test("after one window ends, the phase re-gates against the next (no dark gap, n
   // The 7-day horizon is what keeps a known-but-distant closure off the slot.
   const t4 = new Date("2026-09-01T09:00:00-04:00");
   assert.equal(bannerPhase(t4, nextGtrainWindow(t4)), null);
+  // Mon Sep 14, 9 AM: the Sep 11–14 weekend ended at 5 AM and the overnights
+  // start at 9:45 PM the same day → near, the same back-to-back seam as
+  // Aug 21 (added 2026-08-27).
+  const t5 = new Date("2026-09-14T09:00:00-04:00");
+  assert.equal(bannerPhase(t5, nextGtrainWindow(t5)), "near");
+  // Fri Sep 18, 9 AM: overnights done, Sep 25–28 is 7.5 days out → silence.
+  const t6 = new Date("2026-09-18T09:00:00-04:00");
+  assert.equal(bannerPhase(t6, nextGtrainWindow(t6)), null);
   // After the LAST window → null for good.
-  const t5 = new Date("2026-09-15T09:00:00-04:00");
-  assert.equal(bannerPhase(t5, nextGtrainWindow(t5)), null);
+  const t7 = new Date("2026-09-28T09:00:00-04:00");
+  assert.equal(bannerPhase(t7, nextGtrainWindow(t7)), null);
 });
 
 // The Aug 24 → Sep 11 quiet stretch is a real state, not a bug: MTA has
@@ -106,7 +118,7 @@ test("bannerPhase with no window → null", () => {
 // updated Jul 23, sourced 2026-08-02), frozen, in chronological order.
 test("shipped windows match the MTA source and are frozen", () => {
   assert.ok(Object.isFrozen(GTRAIN_WINDOWS));
-  assert.equal(GTRAIN_WINDOWS.length, 4);
+  assert.equal(GTRAIN_WINDOWS.length, 6);
   assert.deepEqual(
     GTRAIN_WINDOWS.map((w) => [w.startsAt, w.endsAt]),
     [
@@ -116,6 +128,11 @@ test("shipped windows match the MTA source and are frozen", () => {
       // Added 2026-08-13 from the MTA alerts feed (mta-g-alerts), which
       // carried it weeks before the G-line article page mentioned September.
       ["2026-09-11T21:45:00-04:00", "2026-09-14T05:00:00-04:00"],
+      // Added 2026-08-27 from the same feed: a four-night overnight run
+      // ("Structural maintenance") and the weekend after it ("We're
+      // modernizing signals"). Both carry the Greenpoint stops G26/G28.
+      ["2026-09-14T21:45:00-04:00", "2026-09-18T05:00:00-04:00"],
+      ["2026-09-25T21:45:00-04:00", "2026-09-28T05:00:00-04:00"],
     ],
   );
   // Chronological, non-overlapping — nextGtrainWindow's find() assumes it.

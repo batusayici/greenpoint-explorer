@@ -1853,6 +1853,12 @@
         "event"
       ],
       "note": "570 Manhattan Ave. Onboarded 2026-08-17 (Batu). Comic shop with a Square-Online ticketed events widget on the homepage — Flesh & Blood, One Piece, and other TCG tournament nights, each individually ticketed (stock status shown per event). PRIMARY SOURCE IS THE WEB PAGE, not the newsletter: the homepage renders the live events list server-side (see ingest-sources.json id action-city-comics), so pull it every ingest. Batu also subscribed to the newsletter 2026-08-17 as a backup channel in case a tournament is announced there before it hits the site."
+    },
+    {
+      "match": "townsquarebk.org",
+      "name": "Town Square",
+      "addedAt": "2026-08-27",
+      "note": "Proposed 2026-08-27. Town Square is already a web roster source (town-square-bk), but its dated items keep arriving by email first: the Greencycle Back-to-School Swap of Sat 9/26 reached the inbox on 8/26 with its full venue line — \"John Ericsson MS 126, 424 Leonard Street, Brooklyn\" — while the website carried only the garbled \"Saturday, Sep t e m ber 26th, 12-3 PM\" and no address. Sender additions are human-gated, so this rides in a PR."
     }
   ],
   "declinedSenders": [

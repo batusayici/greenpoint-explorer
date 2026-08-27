@@ -459,6 +459,16 @@
           "date": "2026-09-11",
           "title": "Weekend closure (MTA-confirmed)",
           "summary": "No G between Court Sq and Bedford–Nostrand Avs, Fri Sep 11 9:45 PM to Mon Sep 14 5 AM — Greenpoint Av and Nassau Av closed, free T403 shuttle. The next Greenpoint closure after Aug 24: MTA has announced none in between."
+        },
+        {
+          "date": "2026-09-14",
+          "title": "Overnight closures (MTA-confirmed)",
+          "summary": "No G between Court Sq and Bedford–Nostrand Avs from 9:45 PM to 5 AM each weeknight, Mon Sep 14 through Fri morning Sep 18 — Greenpoint Av and Nassau Av closed overnight, free T403 shuttle. Back-to-back with the Sep 11–14 weekend."
+        },
+        {
+          "date": "2026-09-25",
+          "title": "Weekend closure (MTA-confirmed)",
+          "summary": "No G between Court Sq and Bedford–Nostrand Avs, Fri Sep 25 9:45 PM to Mon Sep 28 5 AM — Greenpoint Av and Nassau Av closed, free T403 shuttle. Signal modernization work."
         }
       ],
       "relatedCardIds": [
@@ -498,6 +508,12 @@
           "publisher": "MTA",
           "url": "https://new.mta.info/alerts",
           "date": "2026-08-13"
+        },
+        {
+          "title": "MTA subway service alerts — G line (Sep 14–18 overnights and Sep 25–28 closure)",
+          "publisher": "MTA",
+          "url": "https://new.mta.info/alerts",
+          "date": "2026-08-27"
         }
       ],
       "evidenceStrength": "high",
@@ -505,8 +521,9 @@
       "partnerRelevance": "high",
       "trustRisk": "medium",
       "createdAt": "2026-07-03",
-      "updatedAt": "2026-08-21",
-      "kicker": "Dates, shuttle, who's open"
+      "updatedAt": "2026-08-27",
+      "kicker": "Dates, shuttle, who's open",
+      "sourceQuote": "alert.header_text.translation.0.text: No [G] between Bedford-Nostrand Avs and Court Sq\nalert.active_period: [{\"start\":1789436700,\"end\":1789462800},{\"start\":1789523100,\"end\":1789549200},{\"start\":1789609500,\"end\":1789635600},{\"start\":1789695900,\"end\":1789722000}]\nalert.description_text.translation.0.text: [G] runs between Church Av and Bedford-Nostrand Avs, the last stop. [shuttle bus icon] Free T403 shuttle buses make stops between Bedford-Nostrand Avs and Court Sq. Transfer between [G] and [shuttle bus icon] at Bedford-Nostrand Avs. What's happening? Structural maintenance\nalert.header_text.translation.0.text: No [G] between Bedford-Nostrand Avs and Court Sq\nalert.active_period: [{\"start\":1790387100,\"end\":1790586000}]\nalert.description_text.translation.0.text: [G] runs every 10 minutes (days/evenings) between Church Av and Bedford-Nostrand Avs, the last stop. [shuttle bus icon] Free T403 shuttle buses make stops between Bedford-Nostrand Avs and Court Sq. Transfer between [G] and [shuttle bus icon] at Bedford-Nostrand Avs. What's happening? We're modernizing signals"
     },
     {
       "id": "adopt-a-business",
