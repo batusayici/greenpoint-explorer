@@ -619,14 +619,31 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // the K Bridge Park, Culture House's poetry night, Big Night's fifth
   // birthday, The Better Club's portrait night, the Bedford Slip hot dog
   // fundraiser and Madeline's 9/1 comedy show.
-  assert.equal(seed.cards.length, 164);
+  // 2026-08-27 daily thin: expiry took the 7 passed 8/26 items (164 → 157) and
+  // the run added 4. Three fill the back of the window, and two of those close
+  // dates the coverage reconciler had flagged as owed: Cult Cinema at Film Noir
+  // on 9/1 and DJ Barba Yiorgi at Troost on 9/10, plus a Greenpoint Library
+  // Wednesday day-card for 9/9. The fourth is Greenpointers' story on Simi &
+  // Sol Collective opening in the old La Merced storefront at 1008 Manhattan
+  // Ave. One deletion beyond expiry: comedy-wednesday-cysk, the Wednesday
+  // "Comedians You Should Know" residency. It was FLAGGED as past its
+  // verified-through date and its source is browser-only, so with the browser
+  // path down there was nothing to re-verify it against — the same call the
+  // 8/26 run made on the Tuesday yoga card. leaves-august-book-club goes the
+  // same way and for the same reason — Leaves' events page is browser-only too,
+  // and its August club is past both its verified-through date and its month.
+  // A third deletion is a different shape: moon-bunny-two-day-camp-4-7-0903.
+  // The studio's own feed reaches 9/10 and no longer lists any camp on 9/3 or
+  // 9/4 — the sittings the card quotes are simply gone from the source, which
+  // the post-promotion quotes check caught. 157 + 4 - 3 = 158.
+  assert.equal(seed.cards.length, 158);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 28, "26 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.category === "event"), 88, "81 + the 7 dated items off the 8/27-9/2 Greenpointers roundup (2026-08-26)");
+  assert.equal(count((c) => c.filters.includes("news")), 29, "28 + Simi & Sol Collective's opening (2026-08-27)");
+  assert.equal(count((c) => c.category === "event"), 81, "88 − the 7 events that ran 8/26 − three cards their sources no longer support, + Cult Cinema 9/1, the 9/9 library day-card and Troost 9/10 (2026-08-27)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
   assert.equal(count((c) => c.category === "news"), 18, "16 + Ashbox Cafe's closure and Kimchee Market's move (2026-08-24)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 29, "28 after Troost's 8/25 Lumens night expired out, + The Academy Blues Project on 9/9 (2026-08-26)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 29, "unchanged 2026-08-27: Troost's 8/26 Louis Prince night expired out and DJ Barba Yiorgi on 9/10 replaced it");
   assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -849,7 +866,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // (library-tuesday-programs-0811 expired out 2026-08-12)
     // 2026-08-18: two more Movies Under the Stars screenings, same NYC Parks
     // boilerplate as the 8/19 one — "This event is FREE and open to the public."
-    "mccarren-movies-guardians-2-0826",
+    // (mccarren-movies-guardians-2-0826 expired out 2026-08-27)
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
     // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
@@ -990,7 +1007,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // 2026-08-17: Action City Comics onboarded — three ticketed TCG tournament
     // nights sourced from the shop's own homepage events widget.
     // (action-city-fnb-armory-0818 expired out 2026-08-19)
-    "action-city-one-piece-op17-prerelease-0826",
+    // (action-city-one-piece-op17-prerelease-0826 expired out 2026-08-27)
     "black-rabbit",
     // 2026-08-07: Black Rabbit and Scrappleland are back after the standing-
     // programming fix — their weekly nights had silently stopped being carded
@@ -1112,6 +1129,11 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // (The markets rule's own class — general goods, not food — was carried by
     // neptune-artists-makers-market-0816 and threes-flea-market-0815 until both
     // expired out 2026-08-17. macha-summer-fridays-after-hours still holds it.)
+    // 2026-08-27: an art, design and handmade-goods store opens in the old La
+    // Merced juice bar space. A new_business card for a shop takes the venue's
+    // own type lens alongside `news`, the same shape as the food openings —
+    // and for a retail storefront that type lens is `shopping`.
+    "simi-sol-collective",
   ]);
 
   // VIEW or BUY, and the venue decides (2026-08-12). Both boundaries that
@@ -1389,10 +1411,12 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // 2026-08-12: expiry took the 8/11 Raanan Hershberg night and pruned the link.
   // 2026-08-17: expiry took the 8/15 Carmen Lagala and 8/16 Dani Castaneda
   // nights and pruned both links.
+  // 2026-08-27: the Wednesday "Comedians You Should Know" residency was dropped
+  // — past its verified-through date with the browser path down, so its source
+  // could not be read to renew it — and the prune took the link with it.
   assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
-    // 2026-08-07: the four standing showcases, carded once each as recurring
+    // 2026-08-07: the standing showcases, carded once each as recurring
     // after the coverage check flagged six uncovered showcase dates.
-    "comedy-wednesday-cysk",
     "comedy-thursday-showcase",
     "comedy-friday-showcase",
     "comedy-saturday-showcase",

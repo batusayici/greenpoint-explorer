@@ -3678,5 +3678,30 @@
         "-73.9510500"
       ]
     }
+  },
+  "1008 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "1008 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-27T13:22:13.254Z",
+    "hit": {
+      "place_id": 359115093,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280136612,
+      "lat": "40.7334434",
+      "lon": "-73.9545308",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "1008, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7333990",
+        "40.7334879",
+        "-73.9546524",
+        "-73.9544092"
+      ]
+    }
   }
 }

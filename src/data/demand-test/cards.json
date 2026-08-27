@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-26",
+  "version": "2026-08-27",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -959,7 +959,6 @@
       "lat": 40.729567,
       "lng": -73.958337,
       "relatedCardIds": [
-        "comedy-wednesday-cysk",
         "comedy-thursday-showcase",
         "comedy-friday-showcase",
         "comedy-saturday-showcase"
@@ -1010,8 +1009,6 @@
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-film-club-0827",
-        "film-noir-kriminal-0826",
-        "film-noir-body-melt-0826",
         "film-noir-whirlpool-0827",
         "film-noir-monday-0831"
       ],
@@ -2194,7 +2191,7 @@
       "filters": [
         "family_kids"
       ],
-      "summary": "Go Green Brooklyn lists it under free, outdoor, family programming.",
+      "summary": "The club's own newsletter says there is no outing on Saturday, August 29 — the whiteboard is still out for anyone who shows up and jots down what they notice. Free and outdoors.",
       "audience": [
         "resident",
         "family"
@@ -2220,7 +2217,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-25",
+      "updatedAt": "2026-08-27",
       "lat": 40.724458,
       "lng": -73.943361,
       "recurrence": {
@@ -2228,7 +2225,7 @@
           "sat"
         ]
       },
-      "sourceQuote": "Join the McGolrick Bird Club every Saturday at 9 AM at the corner of Russell St. and Driggs Ave."
+      "sourceQuote": "Join the McGolrick Bird Club every Saturday at 9 AM at the corner of Russell St. and Driggs Ave.\nUnmark your calendars. Brooklynites: no regularly scheduled McGolrick Bird Club outing this Saturday.*\n*The whiteboard will still be out. Show up anyway and jot down what you notice."
     },
     {
       "id": "transmitter-park-restaurant-marina",
@@ -2603,8 +2600,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-26",
-      "endsAt": "2026-09-02T23:59:00-04:00",
+      "updatedAt": "2026-08-27",
+      "endsAt": "2026-09-15T22:00:00-04:00",
       "id": "scrappleland-backgammon-club",
       "title": "Tuesday Backgammon Club at Scrappleland",
       "kicker": "All levels",
@@ -2631,7 +2628,7 @@
           "title": "Scrappleland",
           "url": "https://scrappleland.com",
           "publisher": "Scrappleland",
-          "date": "2026-08-26"
+          "date": "2026-08-27"
         }
       ],
       "relatedCardIds": [
@@ -2655,8 +2652,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-20",
-      "endsAt": "2026-09-02T23:59:00-04:00",
+      "updatedAt": "2026-08-27",
+      "endsAt": "2026-09-16T22:00:00-04:00",
       "id": "scrappleland-pinball-league",
       "title": "Wednesday Pinball League at Scrappleland",
       "kicker": "League night at the pinball bar",
@@ -2669,8 +2666,8 @@
         "games",
         "food_drink"
       ],
-      "summary": "The bar's pinball league on the arcade floor.",
-      "sourceQuote": "Wednesday Pinball League\nAugust 26 @ 8:00pm - 10:00pm",
+      "summary": "The venue's own listing gives the night and nothing else — no entry fee, sign-up or format stated.",
+      "sourceQuote": "Wednesday Pinball League\nSeptember 2 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -2683,7 +2680,7 @@
           "title": "Scrappleland",
           "url": "https://scrappleland.com",
           "publisher": "Scrappleland",
-          "date": "2026-08-07"
+          "date": "2026-08-27"
         }
       ],
       "recurrence": {
@@ -2736,54 +2733,6 @@
       ],
       "lat": 40.731017,
       "lng": -73.954192,
-      "recurrence": {
-        "days": [
-          "wed"
-        ]
-      }
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-14",
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729567,
-      "lng": -73.958337,
-      "id": "comedy-wednesday-cysk",
-      "title": "Comedians You Should Know",
-      "kicker": "$20",
-      "summary": "The club's midweek showcase.",
-      "filters": [
-        "arts_culture"
-      ],
-      "recurring": true,
-      "startsAt": "2026-08-12T20:00:00-04:00",
-      "endsAt": "2026-08-26T23:59:00-04:00",
-      "sourceQuote": "Wed Aug 19, 2026, 8:00 PM, Wed Aug 26, 2026, 8:00 PM\nComedians You Should Know @ 8:00 PM",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-07"
-        }
-      ],
       "recurrence": {
         "days": [
           "wed"
@@ -3320,8 +3269,7 @@
         "moon-bunny-two-day-camp-4-7-0827",
         "moon-bunny-weekend-camp-13-16-0829",
         "moon-bunny-two-day-camp-8-12-0901",
-        "moon-bunny-back-to-school-2026",
-        "moon-bunny-two-day-camp-4-7-0903"
+        "moon-bunny-back-to-school-2026"
       ]
     },
     {
@@ -3368,63 +3316,6 @@
         }
       ],
       "sourceQuote": "Romance Book Club - Every First Saturday @ WORD Brooklyn\nBook club selections are 10% off in the month leading up to the meeting."
-    },
-    {
-      "locationName": "Leaves",
-      "address": "140 Nassau Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "140 Nassau Avenue, Brooklyn, NY 11222",
-      "id": "leaves-august-book-club",
-      "category": "event",
-      "title": "August Book Club at Leaves",
-      "kicker": "Haunted houses — vote on the list",
-      "filters": [
-        "arts_culture"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "startsAt": "2026-08-12T20:00:00-04:00",
-      "endsAt": "2026-08-26T21:00:00-04:00",
-      "recurring": true,
-      "recurrence": {
-        "days": [
-          "wed"
-        ]
-      },
-      "summary": "An hour in the evening at the second-hand shop. This month the theme is gothic architecture, with picks running Shirley Jackson to Danielewski. Email events@leavesbookstore.com to sign up.",
-      "whyItMatters": "A free-to-join reading group on Nassau Ave that lives only on the shop's own calendar.",
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.leavesbookstore.com/pages/events/26/august-book-club"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "august book club — leaves calendar",
-          "publisher": "Leaves Bookstore",
-          "url": "https://www.leavesbookstore.com/pages/events/26/august-book-club",
-          "date": "2026-08-08"
-        }
-      ],
-      "sourceQuote": "august book club … location: leaves 140 nassau ave. brooklyn, ny 11222 … wednesdays from 8-9 pm … email events@leavesbookstore.com to sign up",
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-25",
-      "sourceCampaign": "leaves_onboarding_2026_08_08",
-      "lat": 40.724627,
-      "lng": -73.947732,
-      "relatedCardIds": [
-        "leaves-summer-writing-group-0903"
-      ]
     },
     {
       "id": "ymca-greenpoint-fall-1-registration",
@@ -4093,49 +3984,6 @@
       "lng": -73.952327
     },
     {
-      "id": "troost-louis-prince-0826",
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "title": "LOUIS PRINCE at Troost",
-      "kicker": "One line on the venue calendar",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-08-26T00:00:00-04:00",
-      "endsAt": "2026-08-26T23:59:00-04:00",
-      "allDay": true,
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "summary": "Troost's own Google Calendar carries just the name: no support acts, no door time, no ticket link.",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-12"
-        }
-      ],
-      "sourceQuote": "summary: LOUIS PRINCE\nstart.date: 2026-08-26",
-      "lat": 40.733463,
-      "lng": -73.955035
-    },
-    {
       "id": "star-deli-viral-boost",
       "category": "news",
       "audience": [
@@ -4272,48 +4120,6 @@
       "updatedAt": "2026-08-12",
       "lat": 40.730903,
       "lng": -73.957932
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-20",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-13"
-        }
-      ],
-      "id": "library-wednesday-programs-0826",
-      "category": "event",
-      "free": false,
-      "title": "Wednesday at Greenpoint Library",
-      "kicker": "Storytimes, then quiet study upstairs",
-      "summary": "Toddler Time at 10:30 and 11:15, the rooftop garden open 1–4, a beginner PC class and a We Speak NYC English class from mid-afternoon, teens decorating a teddy bear. Our Garden Club is canceled.",
-      "startsAt": "2026-08-26T10:30:00-04:00",
-      "endsAt": "2026-08-26T17:30:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "sourceQuote": "ts_title: Toddler Time\nds_event_start_date: 2026-08-26T14:30:00Z\nts_title: Toddler Time\nds_event_start_date: 2026-08-26T15:15:00Z\nts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-08-26T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating!\nts_title: Teens DIY: Decorate a Teddy Bear\nds_event_start_date: 2026-08-26T20:00:00Z\nts_title: Computer Basics\nds_event_start_date: 2026-08-26T19:15:00Z\nts_title: Free English Class (We Speak NYC)\nds_event_start_date: 2026-08-26T19:30:00Z\nds_event_end_date: 2026-08-26T21:30:00Z\nts_title: Our Garden Club\nis_event_canceled: 1"
     },
     {
       "audience": [
@@ -4972,48 +4778,6 @@
       "lng": -73.958144
     },
     {
-      "id": "action-city-one-piece-op17-prerelease-0826",
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-17",
-      "updatedAt": "2026-08-17",
-      "title": "One Piece OP-17 Constructed Prerelease",
-      "kicker": "Prerelease tournament, tickets sold out",
-      "summary": "A ticketed prerelease tournament for One Piece's OP-17 set at the Manhattan Ave comic shop. Tickets are already sold out as of this listing.",
-      "startsAt": "2026-08-26T19:00:00-04:00",
-      "endsAt": "2026-08-26T22:00:00-04:00",
-      "filters": [
-        "games"
-      ],
-      "locationName": "Action City Comics",
-      "address": "570 Manhattan Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Get tickets",
-          "type": "rsvp",
-          "url": "https://www.actioncitycomics.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Action City Comics — Events",
-          "url": "https://www.actioncitycomics.com/",
-          "publisher": "Action City Comics",
-          "date": "2026-08-17"
-        }
-      ],
-      "sourceQuote": "One Piece OP-17 Constructed Prerelease!\nWED, AUG 26 7:00 PM\nOut of stock\nGet tickets",
-      "lat": 40.722526,
-      "lng": -73.949837
-    },
-    {
       "category": "event",
       "audience": [
         "resident"
@@ -5069,49 +4833,6 @@
       ],
       "lat": 40.723129,
       "lng": -73.950141
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-18",
-      "updatedAt": "2026-08-18",
-      "id": "mccarren-movies-guardians-2-0826",
-      "category": "event",
-      "free": true,
-      "title": "Movies Under the Stars: Guardians of the Galaxy Vol. 2",
-      "kicker": "Free outdoor screening at McCarren",
-      "summary": "NYC Parks and the Mayor's Office of Media and Entertainment bring the 2017 sequel to the park. Rated PG-13. Grab a blanket; no ticket needed.",
-      "startsAt": "2026-08-26T20:00:00-04:00",
-      "endsAt": "2026-08-26T22:30:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "McCarren Park",
-      "address": "Driggs Ave & Lorimer St, Brooklyn, NY 11222",
-      "geocodeQuery": "McCarren Park, Brooklyn, NY",
-      "sourceQuote": "## Movies Under the Stars: Guardians of The Galaxy Vol. 2 (2017)\nparknames: McCarren Park\nstartdate: 2026-08-26\nstarttime: 8:00 pm\nendtime: 10:30 pm\nlocation: Driggs Avenue and Lorimer Street (in McCarren Park)\nMovies begin at dusk. This event is FREE and open to the public.",
-      "actions": [
-        {
-          "label": "Event page",
-          "type": "learn_more",
-          "url": "http://www.nycgovparks.org/events/2026/08/26/movies-under-the-stars-guardians-of-the-galaxy-vol-2-2017"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "NYC Parks events",
-          "url": "https://www.nycgovparks.org/events",
-          "publisher": "NYC Parks",
-          "date": "2026-08-18"
-        }
-      ],
-      "lat": 40.721159,
-      "lng": -73.952879
     },
     {
       "audience": [
@@ -5255,13 +4976,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-18",
-      "updatedAt": "2026-08-18",
+      "updatedAt": "2026-08-27",
       "id": "moon-bunny-two-day-camp-8-12-0901",
       "category": "event",
       "free": false,
-      "title": "Two-Day Circus Camp for 8–12s at Moon Bunny Aerial",
+      "title": "Two-Day Circus Camp at Moon Bunny Aerial",
       "kicker": "Two days on aerials, acro and juggling",
-      "summary": "The shorter camp format for the 8-to-12 group, run over two consecutive days. The studio states no prior experience is required.",
+      "summary": "The shorter camp format, run over two consecutive days — the studio's listing names no age range for this session. No prior experience is required.",
       "startsAt": "2026-09-01T09:00:00-04:00",
       "endsAt": "2026-09-02T15:00:00-04:00",
       "filters": [
@@ -5275,7 +4996,7 @@
       "relatedCardIds": [
         "moon-bunny-monthly-plans"
       ],
-      "sourceQuote": "name: Two Day Camp 8-12 yrs old\nstart_at: 2026-09-01T13:00:00.000Z\nend_at: 2026-09-01T19:00:00.000Z\n\nname: Two Day Camp 8-12 yrs old\nstart_at: 2026-09-02T13:00:00.000Z\nend_at: 2026-09-02T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\nNo prior experience is required.",
+      "sourceQuote": "name: Two Day Kids Camp\nstart_at: 2026-09-01T13:00:00.000Z\nend_at: 2026-09-01T19:00:00.000Z\n\nname: Two Day Kids Camp\nstart_at: 2026-09-02T13:00:00.000Z\nend_at: 2026-09-02T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\nWith two days to learn and practice, participants can build confidence, develop new skills, and enjoy an engaging introduction to circus arts. No prior experience is required.",
       "actions": [
         {
           "label": "Camp details",
@@ -5384,55 +5105,6 @@
           "date": "2026-08-19"
         }
       ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
-      "id": "loft-story-live-island-0826",
-      "category": "event",
-      "title": "LIVE ISLAND: A Gay Dating Experience",
-      "kicker": "Reality dating, staged live — $17.85",
-      "summary": "Gay singles meet their matches, weather unexpected twists and recouplings, and decide whether to close off, all in front of an audience.",
-      "startsAt": "2026-08-26T19:00:00-04:00",
-      "endsAt": "2026-08-26T23:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": false,
-      "locationName": "Loft Story",
-      "address": "748 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "748 Manhattan Avenue, Brooklyn, NY 11222",
-      "sourceQuote": "LIVE ISLAND: A Gay Dating Experience @ Loft Story, 7 p.m.: Always wanted to be a hot new bombshell entering the villa? Join a dating experience of gay singles meeting their matches, enduring unexpected twists and recouplings, and deciding whether or not they want to “close off” all in front of a live audience. $17.85, get tickets here .\n\"location\":{\"@type\":\"Place\",\"name\":\"LOFT STORY\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Brooklyn\",\"addressRegion\":\"NY\",\"addressCountry\":\"US\",\"streetAddress\":\"748 Manhattan Avenue, Brooklyn, NY 11222\"}}\n\"startDate\":\"2026-08-26T19:00:00-04:00\"\n\"endDate\":\"2026-08-26T23:30:00-04:00\"",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/live-island-a-gay-dating-experience-tickets-1993578759736"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Celebrate Marsha P Johnson, fall in love, and more — What’s Happening, Greenpoint? (8/20-26)",
-          "url": "https://greenpointers.com/2026/08/19/celebrate-marsha-p-johnson-fall-in-love-and-more-whats-happening-greenpoint-8-20-26/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-19"
-        },
-        {
-          "title": "LIVE ISLAND: A Gay Dating Experience",
-          "url": "https://www.eventbrite.com/e/live-island-a-gay-dating-experience-tickets-1993578759736",
-          "publisher": "Loft Story",
-          "date": "2026-08-19"
-        }
-      ],
-      "lat": 40.726647,
-      "lng": -73.95229
     },
     {
       "audience": [
@@ -5566,53 +5238,6 @@
           "date": "2026-08-20"
         }
       ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-20",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
-      "free": false,
-      "relatedCardIds": [
-        "moon-bunny-monthly-plans"
-      ],
-      "actions": [
-        {
-          "label": "Camp details",
-          "type": "learn_more",
-          "url": "https://moonbunnyaerial.com/summer-camps"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial summer camps",
-          "url": "https://moonbunnyaerial.com/summer-camps",
-          "publisher": "Moon Bunny Aerial",
-          "date": "2026-08-20"
-        }
-      ],
-      "id": "moon-bunny-two-day-camp-4-7-0903",
-      "title": "Two-Day Circus Camp for 4–7s at Moon Bunny Aerial",
-      "kicker": "No experience needed, lyra to trapeze",
-      "summary": "The shorter format for the youngest flyers, long enough to build confidence and pick up new skills — ground acro, juggling and flow props alongside the apparatus.",
-      "startsAt": "2026-09-03T09:00:00-04:00",
-      "endsAt": "2026-09-04T15:00:00-04:00",
-      "sourceQuote": "name: Two Day Camp 4-7 yrs old\nstart_at: 2026-09-03T13:00:00.000Z\nend_at: 2026-09-03T19:00:00.000Z\n\nname: Two Day Camp 4-7 yrs old\nstart_at: 2026-09-04T13:00:00.000Z\nend_at: 2026-09-04T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\n\nWith two days to learn and practice, participants can build confidence, develop new skills, and enjoy an engaging introduction to circus arts. No prior experience is required.",
-      "lat": 40.736575,
-      "lng": -73.952327
     },
     {
       "audience": [
@@ -6800,9 +6425,6 @@
       "startsAt": "2026-09-03T00:00:00-04:00",
       "endsAt": "2026-09-03T23:59:00-04:00",
       "allDay": true,
-      "relatedCardIds": [
-        "leaves-august-book-club"
-      ],
       "actions": [
         {
           "label": "Event details",
@@ -7030,96 +6652,6 @@
       "relatedCardIds": [
         "film-noir-cinema"
       ],
-      "id": "film-noir-kriminal-0826",
-      "title": "KRIMINAL at Film Noir Cinema",
-      "kicker": "Italian 1966 crime caper",
-      "summary": "A mastermind thief keeps outrunning the law after a narrow escape from execution, chasing one last big score. No admission price is stated.",
-      "filters": [
-        "arts_culture"
-      ],
-      "startsAt": "2026-08-26T19:00:00-04:00",
-      "endsAt": "2026-08-26T20:00:00-04:00",
-      "sourceQuote": "KRIMINAL\nWednesday, August 26, 2026\n7:00 PM\n8:00 PM\nIT. 1966\nA mastermind thief known as Kriminal narrowly escapes execution. He always manages to stay one step ahead of the law with each new crime he commits. Will Kriminal be able to pull his biggest score yet or will a double cross lead to his demise?",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-26"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "free": false,
-      "category": "event",
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "id": "film-noir-body-melt-0826",
-      "title": "BODY MELT at Film Noir Cinema",
-      "kicker": "Australian 1992 body horror",
-      "summary": "Residents of a quiet cul-de-sac are unknowing test subjects for a drug that makes bodies decompose fast. No admission price is stated.",
-      "filters": [
-        "arts_culture"
-      ],
-      "startsAt": "2026-08-26T21:00:00-04:00",
-      "endsAt": "2026-08-26T22:00:00-04:00",
-      "sourceQuote": "BODY MELT\nWednesday, August 26, 2026\n9:00 PM\n10:00 PM\nAU. 1992\nResidents of peaceful Pebbles Court are being used unknowingly as test experiments for a new 'Body Drug' that causes rapid body decomposition.",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/23/decompose"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/23/decompose",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-26"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "free": false,
-      "category": "event",
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
       "id": "film-noir-whirlpool-0827",
       "title": "WHIRLPOOL at Film Noir Cinema",
       "kicker": "Spanish 1970 psychological thriller",
@@ -7245,13 +6777,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
+      "updatedAt": "2026-08-27",
       "free": false,
       "category": "event",
       "id": "library-tuesday-programs-0908",
       "title": "Tuesday at Greenpoint Library",
-      "kicker": "Three adult drop-ins, afternoon on",
-      "summary": "Beginner ESOL that meets twice a week and needs no registration, free notary service (call ahead to check they are in), then knitting, crochet and mending with lessons for beginners.",
+      "kicker": "Four adult drop-ins, afternoon on",
+      "summary": "Beginner ESOL, free notary service (call ahead to check they are in), an English conversation drop-in, then knitting, crochet and mending with lessons for beginners.",
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "lat": 40.72606,
@@ -7264,7 +6796,7 @@
       "relatedCardIds": [
         "greenpoint-library"
       ],
-      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-08T18:00:00Z\nds_event_end_date: 2026-09-08T20:00:00Z\nThe library offers free ESOL classes for beginners learning English. Classes meet twice a week\nRegistration is not necessary.\nts_title: Free Notary Services*\n* New hours are TUES and THUR from 2pm to 4pm. Please call Greenpoint Library to CONFIRM the notary is AVAILABLE the day you plan to visit: 718-389-4394.\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-09-08T21:30:00Z\nds_event_end_date: 2026-09-08T23:30:00Z\nJoin a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community.\nLessons are available for beginners in knitting, mending, or crochet.",
+      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-08T18:00:00Z\nds_event_end_date: 2026-09-08T20:00:00Z\nThe library offers free ESOL classes for beginners learning English. Classes meet twice a week\nRegistration is not necessary.\nts_title: Free Notary Services*\n* New hours are TUES and THUR from 2pm to 4pm. Please call Greenpoint Library to CONFIRM the notary is AVAILABLE the day you plan to visit: 718-389-4394.\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-09-08T21:30:00Z\nds_event_end_date: 2026-09-08T23:30:00Z\nJoin a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community.\nLessons are available for beginners in knitting, mending, or crochet.\nts_title: English Conversation Group\nds_event_start_date: 2026-09-08T22:00:00Z\nds_event_end_date: 2026-09-08T23:30:00Z\nJoin other adults who are learning to speak English in this weekly English Conversation Group. This is a drop-in program.",
       "actions": [
         {
           "label": "Branch calendar",
@@ -7722,6 +7254,185 @@
       ],
       "lat": 40.73024,
       "lng": -73.957805
+    },
+    {
+      "id": "simi-sol-collective",
+      "title": "Simi & Sol Collective",
+      "category": "new_business",
+      "filters": [
+        "shopping",
+        "news"
+      ],
+      "locationName": "Simi & Sol Collective",
+      "address": "1008 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "1008 Manhattan Ave, Brooklyn, NY 11222",
+      "corridor": "manhattan-ave",
+      "kicker": "Independent art and design, by hand",
+      "summary": "Sol Sánchez and Simina Goldanescu opened in the old La Merced juice bar space on August 21 — paintings, clothing, jewelry and objects from independent makers in New York and abroad.",
+      "whyItMatters": "A storefront that had gone dark is trading again, and its stock comes from independent makers rather than a distributor.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/27/simi-sol-collective-opens-in-former-la-merced-storefront/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Simi & Sol Collective Opens in Former La Merced Storefront",
+          "url": "https://greenpointers.com/2026/08/27/simi-sol-collective-opens-in-former-la-merced-storefront/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-27"
+        }
+      ],
+      "sourceQuote": "La Merced , a beloved neighborhood juice bar, quietly shuttered a few months ago. Ricardo Rodriguez-Pacheco had run the immigrant-owned business at 1008 Manhattan Avenue since 2020, but now a new small business is taking over the space: Simi & Sol Collective had its official opening party on Friday, August 21 complete with a thumping DJ and crowd of newcomers. Founders Sol Sánchez and Simina Goldanescu shared with Greenpointers that the small business is a new home for independent art, design, and handmade work.",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-27",
+      "updatedAt": "2026-08-27",
+      "lat": 40.733443,
+      "lng": -73.954531
+    },
+    {
+      "id": "library-wednesday-programs-0909",
+      "title": "Wednesday at Greenpoint Library",
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "kicker": "Five programs, storytime to teen hour",
+      "summary": "Two ticketed toddler sittings, benefits and housing referrals from the library's social work team, the rooftop garden open for quiet study, a beginners' PC class and a back-to-school polaroid.",
+      "startsAt": "2026-09-09T10:30:00-04:00",
+      "endsAt": "2026-09-09T17:30:00-04:00",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "free": false,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-27"
+        }
+      ],
+      "sourceQuote": "ts_title: Toddler Time (for walking toddlers)\nds_event_start_date: 2026-09-09T14:30:00Z\nds_event_start_date: 2026-09-09T15:15:00Z\nts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.*\nts_title: Brooklyn Supports\nts_body: Join us to learn more about social support resources and benefits assistance! Brooklyn Public Library's Social Work Program will be available to assist with referrals for: Housing Assistance Food Assistance Employment Assistance Health Insurance Assistance Mental Health/Counseling\nts_title: Greenpoint Library Open Roof Hours\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting.\nts_title: Computer Basics\nts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer.\nts_title: Teens DIY: Back to School Polaroid Picture✧˖°📷 ༘ ⋆｡°\nds_event_end_date: 2026-09-09T21:30:00Z\nts_body: Teens 13+. Practice for a yearbook photo or make memories with friends by taking a polaroid photo to celebrate back to school!",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-27",
+      "updatedAt": "2026-08-27"
+    },
+    {
+      "id": "troost-barba-yiorgi-0910",
+      "title": "DJ Barba Yiorgi at Troost",
+      "category": "event",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "kicker": "World psychedelic groove",
+      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
+      "startsAt": "2026-09-10T00:00:00-04:00",
+      "endsAt": "2026-09-10T23:59:00-04:00",
+      "allDay": true,
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-27"
+        }
+      ],
+      "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-09-10",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-27",
+      "updatedAt": "2026-08-27"
+    },
+    {
+      "id": "film-noir-cult-cinema-0901",
+      "title": "Cult Cinema at Film Noir Cinema",
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "kicker": "A night of the most obscure films made",
+      "summary": "The cinema's recurring late slot on the Meserole Ave block — the programme page names no titles, guests or ticket price.",
+      "startsAt": "2026-09-01T21:00:00-04:00",
+      "endsAt": "2026-09-01T22:00:00-04:00",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-27"
+        }
+      ],
+      "sourceQuote": "CULT CINEMA\nTuesday, September 1, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-27",
+      "updatedAt": "2026-08-27"
     }
   ]
 }

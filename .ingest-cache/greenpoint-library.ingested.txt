@@ -1,80 +1,3 @@
-ts_title: Toddler Time
-ds_event_start_date: 2026-08-26T14:30:00Z
-ds_event_end_date: 2026-08-26T15:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Birth to Five Years
-sm_event_tags: ["first five years","storytime","toddler time"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books on Thursdays!
-
-ts_title: Toddler Time
-ds_event_start_date: 2026-08-26T15:15:00Z
-ds_event_end_date: 2026-08-26T15:45:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Birth to Five Years
-sm_event_tags: ["first five years","storytime","toddler time"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books on Thursdays!
-
-ts_title: Greenpoint Library Open Roof Hours
-ds_event_start_date: 2026-08-26T17:00:00Z
-ds_event_end_date: 2026-08-26T20:00:00Z
-ss_event_location: Greenpoint, Demonstration Garden
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["gardening"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather. All children under the age of 13 must be accompanied by an adult. All furniture is generously provided by the Friends of Greenpoint Library .
-
-ts_title: Computer Basics
-ds_event_start_date: 2026-08-26T19:15:00Z
-ds_event_end_date: 2026-08-26T21:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","computer basics","techknowledge"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer. This lesson introduces new PC users to the hardware, applications and techniques used to navigate a computer. In-person registration is required.
-
-ts_title: Free English Class (We Speak NYC)
-ds_event_start_date: 2026-08-26T19:30:00Z
-ds_event_end_date: 2026-08-26T21:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","ESOL","Immigrant Services","WeSpeakNYC"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: The library offers free English classes for beginners learning English. Classes meet once a week. Practice and improve your English with other adults. Watch We Speak NYC videos and learn about City services. Get information on rights and resources for immigrant New Yorkers. No registration required!
-
-ts_title: Teens DIY: Decorate a Teddy Bear
-ds_event_start_date: 2026-08-26T20:00:00Z
-ds_event_end_date: 2026-08-26T21:15:00Z
-ss_event_location: Greenpoint, Eco Lab 3 (Teens)
-ss_event_location_master: Greenpoint Library
-ss_event_age: Teens & Young Adults
-sm_event_tags: ["DIY","teen time"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Teens ages 13-19, stop by Eco Lab 3 to decorate a Teddy Bear with fabric markers.
-
-ts_title: Our Garden Club
-ds_event_start_date: 2026-08-26T20:30:00Z
-ds_event_end_date: 2026-08-26T21:30:00Z
-ss_event_location: Greenpoint, Demonstration Garden
-ss_event_location_master: Greenpoint Library
-ss_event_age: Kids
-sm_event_tags: ["ADHD","autism","developmental disabilities","gardening","Inclusive Services"]
-is_event_registration: 0
-is_event_canceled: 1
-ts_body: Let’s see what we can grow in Brooklyn! Plant seeds and watch them grow. Read stories, sing, dance, take home plants and flowers. For children with and without disabilities. Kids and tweens welcome - ages 6 to 12.
-
 ts_title: Babies & Books
 ds_event_start_date: 2026-08-27T14:30:00Z
 ds_event_end_date: 2026-08-27T15:00:00Z
@@ -437,3 +360,80 @@ sm_event_tags: ["adult learning","arts and crafts","fiber arts","knitting and cr
 is_event_registration: 0
 is_event_canceled: 0
 ts_body: Join a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community. Bring your handwork project to show off, get inspired, or get advice. Lessons are available for beginners in knitting, mending, or crochet. Learning supplies can be provided. All genders welcomed--teens too! **MEETS WEEKLY! If you need a lesson, shoot an email to MRogers@bklynlibrary.org.
+
+ts_title: English Conversation Group
+ds_event_start_date: 2026-09-08T22:00:00Z
+ds_event_end_date: 2026-09-08T23:30:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["adult learning","english conversation group","Immigrant Services"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join other adults who are learning to speak English in this weekly English Conversation Group. This is a drop-in program. Patrons will be admitted on a first-come, first-serve basis until the classroom reaches capacity.
+
+ts_title: Toddler Time (for walking toddlers)
+ds_event_start_date: 2026-09-09T14:30:00Z
+ds_event_end_date: 2026-09-09T15:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Birth to Five Years
+sm_event_tags: ["first five years","storytime","toddler time"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books!
+
+ts_title: Brooklyn Supports
+ds_event_start_date: 2026-09-09T15:00:00Z
+ds_event_end_date: 2026-09-09T17:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["benefit assistance","health and wellness","Healthy Communities","mental health"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us to learn more about social support resources and benefits assistance! Brooklyn Public Library's Social Work Program will be available to assist with referrals for: Housing Assistance Food Assistance Employment Assistance Health Insurance Assistance Mental Health/Counseling For more information please contact 718.230.2044 or healthybklyn@bklynlibrary.org.
+
+ts_title: Toddler Time (for walking toddlers)
+ds_event_start_date: 2026-09-09T15:15:00Z
+ds_event_end_date: 2026-09-09T15:45:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Birth to Five Years
+sm_event_tags: ["first five years","storytime","toddler time"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books!
+
+ts_title: Greenpoint Library Open Roof Hours
+ds_event_start_date: 2026-09-09T17:00:00Z
+ds_event_end_date: 2026-09-09T20:00:00Z
+ss_event_location: Greenpoint, Demonstration Garden
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["gardening"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather. All children under the age of 13 must be accompanied by an adult. All furniture is generously provided by the Friends of Greenpoint Library .
+
+ts_title: Computer Basics
+ds_event_start_date: 2026-09-09T19:15:00Z
+ds_event_end_date: 2026-09-09T21:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["adult learning","computer basics","techknowledge"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer. This lesson introduces new PC users to the hardware, applications and techniques used to navigate a computer. In-person registration is required.
+
+ts_title: Teens DIY: Back to School Polaroid Picture✧˖°📷 ༘ ⋆｡°
+ds_event_start_date: 2026-09-09T20:00:00Z
+ds_event_end_date: 2026-09-09T21:30:00Z
+ss_event_location: Greenpoint, Eco Lab 3 (Teens)
+ss_event_location_master: Greenpoint Library
+ss_event_age: Teens & Young Adults
+sm_event_tags: ["after school","DIY","photography","teen time"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Teens 13+. Practice for a yearbook photo or make memories with friends by taking a polaroid photo to celebrate back to school!
