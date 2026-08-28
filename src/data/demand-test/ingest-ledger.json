@@ -2268,6 +2268,21 @@
       "name": "Dandelion Wine announces tastings same-day and this run missed one by a day",
       "note": "FACT about the source, not a blocked item. The 2026-08-27 email (cheers@dandelionwinenyc.com, 18:50 UTC) read \"TASTING TONIGHT 6-8: Cruse Wine Co.'s California Sparkling!\" — announced and run on the same evening, so a next-morning daily thin can never card it in time. The registry note already says \"announces SAME-DAY tastings — only catchable on morning-of runs\"; this is the second measured instance. WHAT WOULD CHANGE IT: nothing we control; a same-day tasting is only cardable if a run happens between the send and the pour.",
       "addedAt": "2026-08-28"
+    },
+    {
+      "name": "HELD 2026-08-28 — Meeker Avenue CAG meeting, Wed 9/9 6pm: the source states no venue",
+      "note": "SOURCE-BLOCKED. The BPL North Brooklyn calendar carries the meeting in full except for where it is: \"Meeker Avenue CAG meeting / Wed, Sep 9 6:00 pm / TBD Brooklyn, NY 11222 / Audience: All Ages Type: Community Meeting\", with an agenda (\"-Introductions/new faces / -Site background / -March 2026 testing results / -Updated cluster maps / -Legislative updates / -Outreach strategy discussion\") and a Register link. Every other record in that snapshot names its room; this one says TBD, so pinning it would mean inventing the location, and a civic meeting people might travel to is the worst kind of card to guess at. This is 'the page doesn't say', not 'we couldn't open the page'. WHAT WOULD CHANGE IT: BPL or the CAG publishing the venue — it should land as a normal diff on bpl-north-brooklyn-calendar before 9/9.",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "name": "HELD 2026-08-28 — Garden Hours at Greenpoint Library, Fri 9/11 3–4pm: no lens fits",
+      "note": "NEW-JUDGMENT, and it is a rule question rather than a fact question — every fact is sourced. \"ts_title: Garden Hours with a Garden Educator / ds_event_start_date: 2026-09-11T19:00:00Z / ds_event_end_date: 2026-09-11T20:00:00Z / ss_event_age: Adults / ts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! ... Garden Educator will be on site from 3-4pm on Fridays, weather permitting.\" It is a dated happening you attend at a time, so the 2026-08-14 standing-amenity rule does NOT fold it into the venue card. But no live lens takes it: `wellness` is defined in cardSchema.js as the movement cluster (yoga/pilates/dance/run) and this is not movement; `arts_culture` is culture you attend or make; `family_kids` is what the live Friday library cards used, and only because a kids' sensory storytime shared the day — that storytime's series ends 9/4, so 9/11 is the adult garden hour alone. WHAT WOULD CHANGE IT: a ruling on where an adult outdoor/gardening drop-in files. This will recur — the hour runs every Friday.",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "name": "HELD 2026-08-28 — Cub Scouts Pack 7: the website and the newsletter disagree on where it meets",
+      "note": "NEW-JUDGMENT, source conflict. The live card pins the pack at American Playground's handball court, Fridays 6-8 PM, from townsquarebk.org (a roster source that fetched clean and unchanged this run, so it still states that). The 2026-08-26 Town Square newsletter states something else: \"Weekly Friday meetings will resume on Friday, September 11th, 6-7 PM / John's Lutheran Church, 155 Milton St., Greenpoint, Brooklyn\", repeated in its community calendar as \"St. John's Lutheran Church, 155 Milton St.\" — a different venue AND a different end time. The newsletter is newer and more specific, but it also arrives from an email sender the registry does not yet carry (that addition is already proposed in PR #53), which is a second, independent reason to hold. WHAT WOULD RESOLVE IT: Batu ruling which source wins when Town Square's site and newsletter disagree, plus the sender addition landing.",
+      "addedAt": "2026-08-28"
     }
   ],
   "sourcePulse": {
