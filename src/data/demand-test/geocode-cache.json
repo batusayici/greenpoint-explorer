@@ -3703,5 +3703,55 @@
         "-73.9544092"
       ]
     }
+  },
+  "55 McGuinness Blvd, Brooklyn, NY 11222": {
+    "query": "55 McGuinness Blvd, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-28T13:23:24.344Z",
+    "hit": {
+      "place_id": 358914008,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081339,
+      "lat": "40.7242711",
+      "lon": "-73.9482080",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "55, McGuinness Boulevard, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7242262",
+        "40.7243159",
+        "-73.9482675",
+        "-73.9481484"
+      ]
+    }
+  },
+  "94 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "94 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-28T13:23:25.873Z",
+    "hit": {
+      "place_id": 360537326,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081642,
+      "lat": "40.7238962",
+      "lon": "-73.9500421",
+      "category": "amenity",
+      "type": "pharmacy",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Murawski Pharmacy",
+      "display_name": "Murawski Pharmacy, 94, Nassau Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7238468",
+        "40.7239456",
+        "-73.9501334",
+        "-73.9499508"
+      ]
+    }
   }
 }

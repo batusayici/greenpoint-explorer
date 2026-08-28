@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-27T10:00:00-04:00",
+  "lastRunAt": "2026-08-28T10:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1598,6 +1598,27 @@
       "publisher": "Stoopwise ingest",
       "processedAt": "2026-08-27",
       "outcome": "Daily thin. Deck 164 → 158 (7 expired, 4 added, 3 deleted beyond expiry). holds: 1 new-judgment · 0 rule-miss · 1 source-blocked. Fetch exit 0, 53 of 62 sources read (15% error, at the ceiling): all 9 errors are the known browser-connect-reset fault, 4 browser-only sources plus 5 `auto` sources whose plain path degrades here. No EGRESS DENIED block; no R1 fetch was needed. Gmail pass ran and found two dated items — Town Square's Greencycle swap (past the horizon, now with its address) and the McGolrick Bird Club's cancellation of the 8/29 outing. Three deletions beyond expiry, all of them the source withdrawing evidence rather than a judgment call: comedy-wednesday-cysk and leaves-august-book-club (recurring events past their verified-through date whose browser-only sources cannot be read), and moon-bunny-two-day-camp-4-7-0903 (the studio's feed reaches 9/10 and no longer lists the 9/3-9/4 camp at all). Coverage gate 0 unexplained after the Troost 9/10 and Film Noir 9/1 gaps were closed with cards. Quotes gate green post-promotion."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/28/new-barbecue-joint-kirbees-soft-opens-this-sunday/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-28",
+      "outcome": "CARDED twice — kirbees-opening (new_business, food_drink + news) for the place, and kirbees-soft-launch-0830 (event, food_drink) for the Sunday 11am–2pm soft launch. Same shape as the Ashbox pair: a lasting card for the business, a dated card for the happening. 55 McGuinness Blvd, the old Peeps Kitchen."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/27/how-murawski-pharmacy-is-keeping-late-owners-legacy-alive/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-28",
+      "outcome": "CARDED murawski-pharmacy-legacy (news). Same shape as star-deli-viral-boost: a Greenpointers feature on a named Greenpoint business, filed news with the publisher on the source link."
+    },
+    {
+      "id": "run:2026-08-28-daily-thin",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-28",
+      "outcome": "Daily thin. Deck 158 → 149 (expiry) → 160 (15 adds, 4 deletes beyond expiry). holds: 2 new-judgment · 0 rule-miss · 1 source-blocked. All four deletes are recurring cards past their verified-through date. Two were re-verified against this run's snapshots and the programming has genuinely stopped: Kindred's page states nothing after August 27 (community-yoga-transmitter-thursdays) and Go Green's own schedule list runs Fri 8/28, Sun 8/30, then Sun Sep 27 with no Thursday left (longevity-stick-transmitter-thursdays). Two could not be read at all: comedy-thursday-showcase sits behind the still-down browser path, and charlotte-backyard-movie-nights has only an Instagram source the loop can never fetch — the same call the 8/26 and 8/27 runs made on the Tuesday yoga card, the Wednesday comedy residency and the Leaves August book club. Browser path still down (browser-connect-reset), 8 sources errored, reach 54/62."
     }
   ],
   "senderRegistry": [
@@ -2232,21 +2253,36 @@
       "name": "Two recurring OFFERS are past their verified-through date and their sources cannot be read",
       "note": "SOURCE-BLOCKED, 2026-08-27. Expiry FLAGGED four; two were resolved by deletion (the Wednesday comedy residency and the Leaves August club, both category `event`, which the refresh-discipline test forces). The other two are not events, so nothing forces them and they stay live: greenpoint-trash-club (verified through 2026-08-26 — greenpointtrashclub.org is a genuine SPA that reduces to 21 characters on the plain path, and the rotating meetup spot only ever exists on Instagram) and bios-apothecary-herbalist-consultation (verified through 2026-08-26 — biosapothecary.com is not a roster source at all, so no fetch in the loop can ever re-verify it). Both are first-party standing offers with no evidence they have stopped. WHAT WOULD CHANGE IT: the browser path for the first; onboarding biosapothecary.com to the roster for the second, which is a human-gated roster PR.",
       "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Town Square — Greencycle Back-to-School Swap, Sat 9/26 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. EMAIL IS ONE-SHOT, so recording it verbatim: \"Saturday, September 26, 2026, 12 PM ~ Town Square BK's Greencycle Back-to-School Swap. Bring some! Take some!! JEMS 126, 424 Leonard St. (Bayard St. entrance), Brooklyn, NY. RSVP here.\" and, from the same newsletter (hello@townsquarebk.org, 2026-08-26), \"Greencycle Back-to-School Swap 2026 / Saturday, September 26th, 12-3 PM / John Ericsson MS 126, 424 Leonard Street, Brooklyn\" plus \"Suggested donation: $10 a family to help cover costs and support local nonprofit Town Square BK and amazing Brooklyn scouts.\" Card it when 9/26 enters the window. Note the newsletter body contradicts itself once — one paragraph says \"Saturday, September 27th\" while the heading, the community calendar and the subject line all say Saturday 9/26, which is the actual Saturday.",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "name": "Town Square — Scouts BSA Troop 26 resumes Thu 9/17 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. EMAIL IS ONE-SHOT, so recording it verbatim from the 2026-08-26 Town Square newsletter: \"Weekly Thursday meetings will resume on September 17th, 5:30-7 PM / McCarren Park BBQ Area (Driggs Ave b/w Manhattan Ave & Lorimer St), Brooklyn\" and \"Thursday, September 17, 2026, 5:30 PM ~ Boy Scouts Troop 26 weekly meeting, Grades 6-12.\" The live town-square-scouts-troop-26 card already carries the standing Thursday 5:30–7pm slot at McCarren Park, so this only adds the resumption date — fold it in when 9/17 is in window.",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "name": "Dandelion Wine announces tastings same-day and this run missed one by a day",
+      "note": "FACT about the source, not a blocked item. The 2026-08-27 email (cheers@dandelionwinenyc.com, 18:50 UTC) read \"TASTING TONIGHT 6-8: Cruse Wine Co.'s California Sparkling!\" — announced and run on the same evening, so a next-morning daily thin can never card it in time. The registry note already says \"announces SAME-DAY tastings — only catchable on morning-of runs\"; this is the second measured instance. WHAT WOULD CHANGE IT: nothing we control; a same-day tasting is only cardable if a run happens between the send and the pour.",
+      "addedAt": "2026-08-28"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
-    "greenpointers": "2026-08-26",
+    "greenpointers": "2026-08-27",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-26",
+    "film-noir-cinema": "2026-08-27",
     "scrappleland": "2026-08-06",
-    "flower-cat": "2026-08-24",
-    "greenpoint-library": "2026-08-26",
-    "bpl-north-brooklyn-calendar": "2026-08-26",
+    "flower-cat": "2026-08-27",
+    "greenpoint-library": "2026-08-27",
+    "bpl-north-brooklyn-calendar": "2026-08-27",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
-    "hana-makgeolli-events": "2026-08-18",
-    "hana-makgeolli-soolschool": "2026-08-18",
+    "hana-makgeolli-events": "2026-08-27",
+    "hana-makgeolli-soolschool": "2026-08-27",
     "archestratus": "2026-07-24",
     "little-dance-school": "2026-07-24",
     "brooklyn-youth-ballet": "2026-08-02",
@@ -2261,9 +2297,9 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-25",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-26",
+    "troost": "2026-08-27",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-08-23",
+    "good-room": "2026-08-27",
     "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -2292,7 +2328,7 @@
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
     "action-city-comics": "2026-08-16",
-    "golden-drum": "2026-08-19",
+    "golden-drum": "2026-08-27",
     "nbk-open-streets": "2026-08-25"
   },
   "coverageExplanations": [
