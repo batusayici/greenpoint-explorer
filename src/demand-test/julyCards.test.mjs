@@ -637,33 +637,31 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // 9/4 — the sittings the card quotes are simply gone from the source, which
   // the post-promotion quotes check caught. 157 + 4 - 3 = 158.
   // 2026-08-28 daily thin: expiry took the 9 items that ran 8/27 (158 → 149)
-  // and the run added 15. Two are Greenpointers stories — Kirbee's, the Texas
-  // barbecue opening at 55 McGuinness in the old Peeps Kitchen (a place card
-  // plus a dated card for Sunday's soft launch), and Murawski Pharmacy keeping
-  // going after its owner's death. The rest fill the back of the window, which
-  // now reaches 9/11: Flower Cat's book swap, tarot workshop, gypsy jazz night
-  // and open mic; both Hana Makgeolli tours; Film Noir's ACID tonight and BLACK
-  // BOX on 9/11; DJ Timothy O'Keefe at Troost and Justin Strauss at Good Room,
-  // both 9/11; Golden Drum's September Anahata Session; and a Greenpoint
-  // Library Thursday day-card for 9/10. Two deletions beyond expiry, both
-  // recurring cards whose sources no longer state the night: the Thursday
-  // sunset yoga in Transmitter Park (Kindred's page shows nothing past Aug 27)
-  // and the Thursday morning Longevity Stick (Go Green's own schedule list
-  // jumps from Sun Aug 30 straight to Sun Sep 27). A third deletion is the
-  // same call the 8/26 and 8/27 runs made twice already: comedy-thursday-
-  // showcase, FLAGGED past its verified-through date with the comedy club's
-  // listings behind the browser path, which is still down — nothing could
-  // re-verify it. A fourth goes the same way for the same reason:
-  // charlotte-backyard-movie-nights, whose only source is Instagram and so can
-  // never be re-read by the loop at all. 149 + 15 - 4 = 160.
-  assert.equal(seed.cards.length, 160);
+  // and the run added 15. 2026-08-29 (daily): expiry took 10 finished Friday
+  // events, and the run added 5. The neighborhood story of the day is the
+  // Franklin Street fire — an all-hands job at 113 Franklin damaged Sereneco
+  // and closed Maman next door, per Greenpointers and the FDNY. Film Noir
+  // programmed four films back to back on the Saturday, which ships as ONE
+  // grouped day-card on the library-day-card precedent rather than four
+  // near-identical rows. The back of the window reaches 9/12 for the first
+  // time: Felipe Gordon at Good Room and DJ The Hefker Girl at Troost, both
+  // 9/12, which also close the two coverage gaps the reconciliation flagged.
+  // Tend Greenpoint's free-shipping code is the fifth, and its copy says
+  // web-only because the storefront is shut until it expires. Two deletions
+  // beyond expiry, both recurring cards past their verified-through date that
+  // no readable source could renew: macha-summer-fridays-after-hours, whose
+  // series the shop stated as "July - August" and whose evidence has now left
+  // the snapshot, and comedy-friday-showcase, the same call the 8/26, 8/27 and
+  // 8/28 runs each made once with the comedy club's listings still behind the
+  // dead browser path. 160 - 10 + 5 - 2 = 153.
+  assert.equal(seed.cards.length, 153);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 31, "29 + Kirbee's opening and the Murawski Pharmacy story (2026-08-28)");
-  assert.equal(count((c) => c.category === "event"), 81, "72 after expiry + 13 dated adds − four recurring cards past their verified-through date that no readable source could renew (2026-08-28)");
-  assert.equal(count((c) => c.category === "discount"), 6, "7 − the Tend plant sale, which ran out 8/21");
-  assert.equal(count((c) => c.category === "news"), 19, "18 + the Murawski Pharmacy story (2026-08-28)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 31, "27 after expiry + Troost 9/11, Good Room 9/11 and Flower Cat's jazz night and open mic (2026-08-28)");
+  assert.equal(count((c) => c.filters.includes("news")), 32, "31 + the Franklin Street fire (2026-08-29)");
+  assert.equal(count((c) => c.category === "event"), 72, "81 − 10 expired − the Macha and Friday-comedy recurring cards + the Film Noir Saturday, Good Room 9/12 and Troost 9/12 (2026-08-29)");
+  assert.equal(count((c) => c.category === "discount"), 7, "6 + Tend Greenpoint's free-shipping code (2026-08-29)");
+  assert.equal(count((c) => c.category === "news"), 20, "19 + the Franklin Street fire (2026-08-29)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 30, "31 − Friday's expired gigs + Good Room and Troost on 9/12 (2026-08-29)");
   assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -759,7 +757,9 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // /discounts detail page.
   // 2026-08-24: −1 — the Tend Greenpoint plant sale ran out on its own 8/21
   // end date and expiry removed it. No new deals this run.
-  assert.equal(deals.length, 6);
+  // 2026-08-29: +1 — Tend Greenpoint's free-shipping code, a dated offer with
+  // the shop's own stated 8/31 expiry, so it is NOT a flagged recurring deal.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -805,7 +805,9 @@ test("news cards name their publisher and sit in the news layer", () => {
   // which is a happening and so is NOT filed here.
   // 2026-08-28: +1 from Greenpointers — Murawski Pharmacy, 48 years on Nassau
   // Ave, carrying on after owner Timothy Murawski's death in July.
-  assert.equal(news.length, 19);
+  // 2026-08-29: +1 — the all-hands fire at 113 Franklin St that damaged
+  // Sereneco and closed Maman, in the same building, both indefinitely.
+  assert.equal(news.length, 20);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -866,7 +868,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-25: Flower Cat's live band karaoke night — the listing ends
     // "Free entry! 2 drink minimum! Tip your musicians & bartender!", so the
     // entry is stated free even though the bar expects a bar tab.
-    "flowercat-live-band-karaoke-0828",
     "greenpoint-trash-club",
     // 2026-08-14: three Longevity Stick sittings at Transmitter Park. The Go
     // Green detail page states the free-ness once for the whole series — "Join
@@ -877,7 +878,6 @@ test("free-ness is designated only where the source states it (tester feedback #
     // card became a grouped Friday day-card when the 3-4pm garden educator hour
     // was folded in, and only the storytime states "Free" — same grouped-card
     // rule as the other library day-cards below.)
-    "longevity-stick-transmitter-0828",
     // 2026-08-26: the Sunday morning sitting, covered by the same series line.
     "longevity-stick-transmitter-0830",
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28: Go Green's own
@@ -999,7 +999,6 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
     // (library-chair-yoga-0824, the branch's Monday chair-yoga hour, expired
     // out 2026-08-25)
-    "longevity-stick-transmitter-0828",
     // 2026-08-26: the series adds one Sunday morning sitting, 8/30.
     "longevity-stick-transmitter-0830",
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28 — the series
@@ -1126,7 +1125,6 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // kitchen tools over four days. A store's dated limited run is exactly the
     // markets rule's class — a happening with a start and an end, not a
     // standing offer — so it files here and not in deals_memberships.
-    "ashbox-farewell-sale-0825",
     // 2026-08-26: a dinner-party shop's fifth-birthday party — cake, champagne,
     // goodie bags and a gift-card raffle, on one afternoon. A dated happening
     // inside a store is the same class as the runs above, so it files here
@@ -1144,12 +1142,11 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // is exactly what this lens takes; it keeps `family_kids` alongside,
     // following the venue card's own filing.
     // (giggles-loma-popup-0822 expired out 2026-08-24)
-    // "Drinks, try on's and wishlist building" at a jewelry studio — retail at
-    // a second store, the ruling's first extension beyond CIBONE.
-    "macha-summer-fridays-after-hours",
-    // (The markets rule's own class — general goods, not food — was carried by
-    // neptune-artists-makers-market-0816 and threes-flea-market-0815 until both
-    // expired out 2026-08-17. macha-summer-fridays-after-hours still holds it.)
+    // (macha-summer-fridays-after-hours held the markets rule's own class —
+    //  general goods, not food — after neptune-artists-makers-market-0816 and
+    //  threes-flea-market-0815 expired out 2026-08-17. Deleted 2026-08-29: the
+    //  shop stated the series as "July - August" and its evidence has left the
+    //  snapshot, so nothing could renew it past its verified-through date.)
     // 2026-08-27: an art, design and handmade-goods store opens in the old La
     // Merced juice bar space. A new_business card for a shop takes the venue's
     // own type lens alongside `news`, the same shape as the food openings —
@@ -1334,6 +1331,11 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "tend-additional-20-off",
     // (tend-plant-sale-0821 expired out 2026-08-24 on its own stated 8/21
     //  deadline — the second Tend offer above runs to 9/7 and stays.)
+    // 2026-08-29: a free-shipping code from the same shop, on its own 8/31
+    // deadline. Online-only, and the card's copy says so — the storefront is
+    // shut until the day the code expires, so a storefront pin would otherwise
+    // imply you could walk there for it (the 2026-08-03 online/in-store rule).
+    "tend-free-shipping-0831",
     // 2026-08-10: a dated promo, so it sits beside the membership card rather
     // than replacing it — endsAt is the source's own "available through Aug 15".
     "word-membership",
@@ -1441,7 +1443,6 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
     // (comedy-thursday-showcase deleted 2026-08-28 — past its verified-through
     //  date with the club's listings behind the still-down browser path, so
     //  nothing could renew it; the prune took the link with it.)
-    "comedy-friday-showcase",
     "comedy-saturday-showcase",
   ]);
   // Scrappleland's club nights all expired 2026-08-06; the prune emptied its

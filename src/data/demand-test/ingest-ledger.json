@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-28T10:00:00-04:00",
+  "lastRunAt": "2026-08-29T10:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1619,6 +1619,36 @@
       "publisher": "Stoopwise ingest",
       "processedAt": "2026-08-28",
       "outcome": "Daily thin. Deck 158 → 149 (expiry) → 160 (15 adds, 4 deletes beyond expiry). holds: 2 new-judgment · 0 rule-miss · 1 source-blocked. All four deletes are recurring cards past their verified-through date. Two were re-verified against this run's snapshots and the programming has genuinely stopped: Kindred's page states nothing after August 27 (community-yoga-transmitter-thursdays) and Go Green's own schedule list runs Fri 8/28, Sun 8/30, then Sun Sep 27 with no Thursday left (longevity-stick-transmitter-thursdays). Two could not be read at all: comedy-thursday-showcase sits behind the still-down browser path, and charlotte-backyard-movie-nights has only an Instagram source the loop can never fetch — the same call the 8/26 and 8/27 runs made on the Tuesday yoga card, the Wednesday comedy residency and the Leaves August book club. Browser path still down (browser-connect-reset), 8 sources errored, reach 54/62."
+    },
+    {
+      "runAt": "2026-08-29",
+      "cadence": "daily-thin",
+      "shipped": [
+        "film-noir-saturday-0829",
+        "good-room-felipe-gordon-0912",
+        "troost-hefker-girl-0912",
+        "sereneco-franklin-st-fire",
+        "tend-free-shipping-0831"
+      ],
+      "updated": [
+        "acme-fish-friday-0814",
+        "bandit-running-greenpoint-runners",
+        "film-noir-cinema"
+      ],
+      "deleted": [
+        "macha-summer-fridays-after-hours",
+        "comedy-friday-showcase"
+      ],
+      "holds": "holds: 1 new-judgment · 0 rule-miss · 3 source-blocked",
+      "urls": [
+        "https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/",
+        "https://greenpointers.com/2026/08/28/greenpoint-this-week-ashbox-cafe-closes-el-puente-looking-for-new-home-and-more/",
+        "https://www.filmnoircinema.com/program/2026/8/22/krimi",
+        "https://donyc.com/venues/good-room",
+        "https://troostny.com/calendar/",
+        "https://www.tendgreenpoint.com/"
+      ],
+      "note": "Daily thin. Fetch exit 0, 54/62 sources read (13% error, all eight the known browser-connect-reset fault). Gmail pass ran: one registry sender (Tend Greenpoint) carried a new offer, Dandelion Wine re-sent a same-day tasting already past. Coverage gate needed two new explanations (macha-studio STANDING DARK after its Summer Fridays season ended, eavesdrop NO SNAPSHOT on the dead browser path)."
     }
   ],
   "senderRegistry": [
@@ -2268,13 +2298,43 @@
       "name": "Dandelion Wine announces tastings same-day and this run missed one by a day",
       "note": "FACT about the source, not a blocked item. The 2026-08-27 email (cheers@dandelionwinenyc.com, 18:50 UTC) read \"TASTING TONIGHT 6-8: Cruse Wine Co.'s California Sparkling!\" — announced and run on the same evening, so a next-morning daily thin can never card it in time. The registry note already says \"announces SAME-DAY tastings — only catchable on morning-of runs\"; this is the second measured instance. WHAT WOULD CHANGE IT: nothing we control; a same-day tasting is only cardable if a run happens between the send and the pour.",
       "addedAt": "2026-08-28"
+    },
+    {
+      "name": "Greenpoint Library — Garden Hours with a Garden Educator, Fri 9/11 3-4pm [RULE QUESTION for Batu]",
+      "addedAt": "2026-08-29",
+      "note": "HELD 2026-08-29 (new-judgment: lens). Everything else is stated and R1 was run — the Solr record carries the date, the clock, the room and the body: \"ts_title: Garden Hours with a Garden Educator\\nds_event_start_date: 2026-09-11T19:00:00Z\\nds_event_end_date: 2026-09-11T20:00:00Z\\nss_event_location: Greenpoint, Demonstration Garden\\nss_event_age: Adults\\nsm_event_tags: [\\\"gardening\\\",\\\"health and wellness\\\"]\" and \"Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! ... Garden Educator will be on site from 3-4pm on Fridays, weather permitting. ... All ages welcome.\" WHAT IS MISSING IS THE LENS, and no rule supplies it. R2: no standing rule covers an all-ages gardening hour. R3: every live Friday precedent (library-sensory-garden-0821/0828/0904) is `family_kids`, but each earned that from the ages-0-5 Sensory Garden Hour sharing the day — 9/11 has only this one programme, and the source calls it Adults. `wellness` is defined in cardSchema.js as the movement cluster (yoga/pilates/dance/run), which a garden conversation is not. THE RULE QUESTION: what lens does an all-ages gardening/nature programme take — `wellness` widened past movement, `family_kids` on the all-ages line, or `civic` on the stewardship line? Answer it once and every future garden hour, seed swap and tree-care talk files mechanically."
+    },
+    {
+      "name": "Greenpointers 8/28 roundup — El Puente and BE Yarn have no stated address",
+      "addedAt": "2026-08-29",
+      "note": "HELD 2026-08-29 (geography unstated, both). The roundup states each item in one line and never says where. Verbatim: \"El Puente is looking for a new permanent home.\" (the dedicated passage adds \"El Puente moved out of its headquarters last month.\" and \"El Puente , which supports community-led movements among low-income peoples, has moved its programming to other locations.\") and \"BE Yarn tells us that their landlord granted them a temporary extension, and they will remain open for the time being.\" Neither carries a street address anywhere in the snapshot, and the Greenpointers roundup covers Williamsburg as well as Greenpoint, so the bbox gate cannot be applied either way without inventing the location. WHAT WOULD RESOLVE IT: an address from either organisation, or a follow-up Greenpointers story that states one. NOT a fetch problem — no host was blocked."
+    },
+    {
+      "name": "Clay Space — Glaze Chemistry (8/29-30 + 9/2) and Body Mechanics (9/10) state no start time",
+      "addedAt": "2026-08-29",
+      "note": "HELD 2026-08-29 (source-blocked: the page does not say, AND the page that might is unreachable). Both are now INSIDE the 14-day window, which retires the horizon note filed 2026-08-18 for the glaze course — the blocker turns out not to have been the horizon at all. The workshops page states dates and description and no clock: \"Glaze Chemistry & Application with Michael Gundlach\\nUpcoming dates: August 29-30 + Sept 2\" and \"Body Mechanics with HanaKyle Moranz\\nUpcoming dates: September 10\\n...\\nThis workshop is 3 hours long.\" Two other workshops on the same page DO carry clocks (\"from 10am-2pm each day\", \"a one-day workshop (11am-5pm)\"), so the omission is per-workshop, not a parser gap. R1 could not resolve it: clayspacebk.com's detail pages are configured and both failed this run with \"browser unavailable (browser-connect-reset)\" — the known dead browser path, not an egress denial. Carding either would mean inventing a start time. WHAT WOULD RESOLVE IT: the browser path coming back, or Clay Space printing the time on the workshops page."
+    },
+    {
+      "name": "Good Room — DJ Plead and rrao, Thu 10/1 (past the 14-day window)",
+      "addedAt": "2026-08-29",
+      "note": "Horizon only, nothing blocked. Verbatim from good-room.txt: \"Thursday\\nOct 1\\nDJ Plead, rrao\\nGood Room\\n7:00PM\". Good Room's DoNYC listing is a web source re-snapshotted every run, so this rolls in on its own once the window reaches it — recorded for completeness, not as a deferral that needs re-finding."
+    },
+    {
+      "name": "Greenpoint Library — two September programmes are CANCELED in the feed",
+      "addedAt": "2026-08-29",
+      "note": "SOURCE FACT 2026-08-29, found by scanning the full snapshot for is_event_canceled rather than trusting the diff (the 2026-08-17 lesson: a flipped flag is invisible to a line-set diff). Exactly two records carry it: \"ts_title: Sunset Storytime\\nds_event_start_date: 2026-09-10T22:00:00Z\\nis_event_canceled: 1\" and \"ts_title: Sustainable Sewing: Sewing Machine Basics\\nds_event_start_date: 2026-09-12T14:30:00Z\\nis_event_canceled: 1\". NEITHER reaches a reader: library-thursday-programs-0910 already excludes Sunset Storytime (its six programmes are the six that are not canceled), and 9/12 has no library card at all. No action needed — recorded so a later run does not 'restore' them."
+    },
+    {
+      "name": "Two recurring cards are on their THIRD run past verified-through with unreadable sources [RULE QUESTION for Batu]",
+      "addedAt": "2026-08-29",
+      "note": "SOURCE-BLOCKED, escalated 2026-08-29 under the 'a card held twice for the same reason is a MISSING RULE' rule. `greenpoint-trash-club` (verified-through 2026-08-26) and `bios-apothecary-herbalist-consultation` (2026-08-26) were both FLAGGED by expiry again today and neither can be re-verified: greenpointtrashclub.org is a browser-only source and the browser path is down; biosapothecary.com is NOT a roster source at all, only a sender, and no Bios email arrived in the 2-day Gmail window. The 2026-08-27 run made the same call and left both live; this run has followed that precedent rather than re-arguing it. THE RULE QUESTION: when a recurring card's source becomes permanently unreadable, does the card stay live on its last verification, get deleted like the comedy and Leaves event cards were, or degrade to something the UI can show as unverified? Today the deck answers 'stays live' for offers and memberships and 'delete' for events, which is a split nobody chose."
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
-    "greenpointers": "2026-08-27",
+    "greenpointers": "2026-08-28",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-27",
+    "film-noir-cinema": "2026-08-28",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
     "greenpoint-library": "2026-08-27",
@@ -2297,9 +2357,9 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-25",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-27",
+    "troost": "2026-08-28",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-08-27",
+    "good-room": "2026-08-28",
     "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -2569,6 +2629,20 @@
       "reason": "Browser-path source and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-27 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside eight other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:45057\" — so headless Chromium own CONNECT tunnel is refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is \"we cannot read the source\", never \"the source is quiet\". bandit-running-gpr is `auto` and its plain path degrades in this environment, so it falls through to the browser and dies with it.",
       "addedAt": "2026-08-27",
       "expiresAt": "2026-09-10"
+    },
+    {
+      "sourceId": "macha-studio",
+      "gapKey": "STANDING DARK",
+      "addedAt": "2026-08-29",
+      "expiresAt": "2026-09-12",
+      "reason": "THE STANDING SERIES RAN ITS STATED COURSE — this is the flag doing its job on a season ending, not a night going dark. macha-studio's only recurring programming is Summer Fridays, and the shop states its season in the poster itself, transcribed into the [IMAGE READ 12 August 2026] block of this source's baseline: \"SUMMER FRIDAYS\\nJoin us for After Hours this Summer. Drinks, try on's and wishlist building\\nMacha Studio\\n135 Franklin St\\nGreenpoint, Brooklyn\\nSummer Fridays\\nJuly - August\\nFrom 3pm\". August's last Friday was 8/28, so `macha-summer-fridays-after-hours` was FLAGGED past its 2026-08-28 verified-through and DELETED this run rather than renewed — the source says the series is over, which is stronger evidence than being unable to re-check it. Nothing else on the page is dated: the listening party (8/7) and the poetry open-mic (7/31) have both passed, and the remaining Atom entries carry no dates at all. WHAT WOULD CHANGE IT: Macha posting a fall edition, which lands as a normal diff. PROPOSED TO BATU IN THE REVIEW PR: whether `standing: true` should stay set on a seasonal source between editions, or be reviewed each season — that is a roster change and human-gated."
+    },
+    {
+      "sourceId": "eavesdrop",
+      "gapKey": "NO SNAPSHOT",
+      "addedAt": "2026-08-29",
+      "expiresAt": "2026-09-12",
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run: the 2026-08-29 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the seven other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:44409\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet' — the deck still carries five live Eavesdrop gig cards authored while the page was readable."
     }
   ]
 }

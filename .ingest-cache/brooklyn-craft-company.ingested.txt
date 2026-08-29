@@ -172,7 +172,7 @@ Private Events
 Join our Team!
 Browse Workshops
 For adults ages 18+
-123
+124
 products
 Filter
 Sort by
@@ -200,7 +200,7 @@ crochet
 cross stitch
 (2)
 embroidery
-(7)
+(8)
 Embroidery
 (1)
 knitting
@@ -221,10 +221,10 @@ Product Type
 Past Workshop
 (3)
 Workshop
-(120)
+(121)
 Vendor
 Brooklyn Craft Company
-(123)
+(124)
 Community Craft Night: Embroidery w/ Plus BLKYN
 Regular Price
 $25.00
@@ -525,7 +525,7 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Showing items 1-30 of 123.
+Showing items 1-30 of 124.
 1
 2
 3

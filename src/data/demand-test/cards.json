@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-28",
+  "version": "2026-08-29",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -688,10 +688,7 @@
       "createdAt": "2026-07-15",
       "updatedAt": "2026-08-26",
       "lat": 40.727962,
-      "lng": -73.953311,
-      "relatedCardIds": [
-        "culture-house-poetry-night-0828"
-      ]
+      "lng": -73.953311
     },
     {
       "id": "light-up-mccarren",
@@ -959,7 +956,6 @@
       "lat": 40.729567,
       "lng": -73.958337,
       "relatedCardIds": [
-        "comedy-friday-showcase",
         "comedy-saturday-showcase"
       ]
     },
@@ -1003,11 +999,12 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-26",
+      "updatedAt": "2026-08-29",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-monday-0831"
+        "film-noir-monday-0831",
+        "film-noir-saturday-0829"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1118,8 +1115,7 @@
       "updatedAt": "2026-08-25",
       "address": "162 Noble St, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "flower-cat-subscription",
-        "flowercat-live-band-karaoke-0828"
+        "flower-cat-subscription"
       ],
       "lat": 40.728678,
       "lng": -73.954258
@@ -1310,7 +1306,6 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-sensory-garden-0828",
         "library-tuesday-programs-0901",
         "library-wednesday-programs-0902",
         "library-babies-books-0903",
@@ -2275,9 +2270,6 @@
       "updatedAt": "2026-08-28",
       "lat": 40.729855,
       "lng": -73.960729,
-      "relatedCardIds": [
-        "longevity-stick-transmitter-0828"
-      ],
       "sourceQuote": "City Council Member Lincoln Restler, State Senator Kristen Gonzalez, and State Assemblymember Emily Gallagher asked the NYC Parks Department to reconsider the controversial proposal, which sparked widespread backlash when Greenpointers first revealed the plans in July."
     },
     {
@@ -2746,54 +2738,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-14",
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729567,
-      "lng": -73.958337,
-      "id": "comedy-friday-showcase",
-      "title": "The Friday Showcase",
-      "kicker": "$25 — 8pm and 10pm sittings",
-      "summary": "The club's main Friday bill, run twice: an 8pm show and a later 10pm show, same night.",
-      "filters": [
-        "arts_culture"
-      ],
-      "recurring": true,
-      "startsAt": "2026-08-14T20:00:00-04:00",
-      "endsAt": "2026-08-28T22:00:00-04:00",
-      "sourceQuote": "Fri Aug 14, 2026, 8:00 PM, Fri Aug 21, 2026, 8:00 PM, Fri Aug 28, 2026, 8:00 PM and 4 more\nThe Friday Showcase Show @ 8:00 PM\nFri Aug 14, 2026, 10:00 PM, Fri Aug 21, 2026, 10:00 PM, Fri Aug 28, 2026, 10:00 PM and 4 more\nThe (Later) Friday Showcase @ 10:00 PM",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-07"
-        }
-      ],
-      "recurrence": {
-        "days": [
-          "fri"
-        ]
-      }
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
       "updatedAt": "2026-08-15",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
@@ -2842,13 +2786,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-24",
+      "updatedAt": "2026-08-29",
       "id": "acme-fish-friday-0814",
       "title": "Fish Friday at Acme Smoked Fish",
       "kicker": "Pre-orders close 11:30am",
-      "summary": "The Gem Street smokehouse opens its doors to the neighborhood — pre-orders close at 11:30am that morning.",
+      "summary": "The Gem Street smokehouse opens its doors to the neighborhood one morning a week, for pickup in person.",
       "startsAt": "2026-08-14T08:00:00-04:00",
-      "endsAt": "2026-09-04T13:00:00-04:00",
+      "endsAt": "2026-09-11T13:00:00-04:00",
       "recurring": true,
       "filters": [
         "food_drink"
@@ -2945,7 +2889,7 @@
       "kicker": "All paces, meets outside the shop",
       "locationName": "Bandit Running",
       "address": "37 Noble St, Brooklyn, NY 11222",
-      "summary": "Greenpoint Runners is Bandit Running's group run, meeting outside the Noble Street shop — open to all paces.",
+      "summary": "Greenpoint Runners is Bandit Running's group run from their Noble Street storefront; the page says to join for details on runs and events.",
       "actions": [
         {
           "label": "Learn more",
@@ -2971,7 +2915,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-29",
       "lat": 40.7284846,
       "lng": -73.9580072,
       "recurring": true,
@@ -2981,7 +2925,7 @@
         ]
       },
       "startsAt": "2026-08-08T09:30:00-04:00",
-      "endsAt": "2026-08-29T11:00:00-04:00"
+      "endsAt": "2026-09-12T11:00:00-04:00"
     },
     {
       "category": "subscription",
@@ -3214,7 +3158,6 @@
       ],
       "sourceQuote": "4 classes a month - $87.00 per month (13% off)\n4 classes a month - $104.00 per month (13% off)\n4 classes a month - $139.00 per month (13% off)\nFree trial class",
       "relatedCardIds": [
-        "moon-bunny-two-day-camp-4-7-0827",
         "moon-bunny-weekend-camp-13-16-0829",
         "moon-bunny-two-day-camp-8-12-0901",
         "moon-bunny-back-to-school-2026"
@@ -3836,53 +3779,6 @@
       "lng": -73.949195
     },
     {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-13",
-      "updatedAt": "2026-08-28",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
-      "free": false,
-      "relatedCardIds": [
-        "moon-bunny-monthly-plans"
-      ],
-      "actions": [
-        {
-          "label": "Camp details",
-          "type": "learn_more",
-          "url": "https://moonbunnyaerial.com/summer-camps"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial summer camps",
-          "url": "https://moonbunnyaerial.com/summer-camps",
-          "publisher": "Moon Bunny Aerial",
-          "date": "2026-08-13"
-        }
-      ],
-      "id": "moon-bunny-two-day-camp-4-7-0827",
-      "title": "Two-Day Circus Camp for 4–7s at Moon Bunny Aerial",
-      "kicker": "No experience needed, lyra to trapeze",
-      "summary": "The shorter format for the youngest flyers, long enough to build confidence and pick up new skills — ground acro, juggling and flow props alongside the apparatus. Day two of two.",
-      "startsAt": "2026-08-28T09:00:00-04:00",
-      "endsAt": "2026-08-28T15:00:00-04:00",
-      "sourceQuote": "name: Two Day Camp 4-7 yrs old\nstart_at: 2026-08-28T13:00:00.000Z\nend_at: 2026-08-28T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\n\nWith two days to learn and practice, participants can build confidence, develop new skills, and enjoy an engaging introduction to circus arts. No prior experience is required.",
-      "lat": 40.736575,
-      "lng": -73.952327
-    },
-    {
       "id": "star-deli-viral-boost",
       "category": "news",
       "audience": [
@@ -3970,144 +3866,6 @@
       "updatedAt": "2026-08-12",
       "lat": 40.7284753,
       "lng": -73.959146
-    },
-    {
-      "id": "macha-summer-fridays-after-hours",
-      "category": "event",
-      "title": "Summer Fridays After Hours at Macha Studio",
-      "kicker": "Drinks and try-ons at the jewelry studio",
-      "summary": "Macha keeps its Franklin St shop open past closing for the rest of the summer series, for wishlist building.",
-      "startsAt": "2026-08-14T15:00:00-04:00",
-      "endsAt": "2026-08-28T23:59:00-04:00",
-      "recurring": true,
-      "recurrence": {
-        "days": [
-          "fri"
-        ]
-      },
-      "filters": [
-        "shopping"
-      ],
-      "free": false,
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "locationName": "Macha Studio",
-      "address": "135 Franklin St, Brooklyn, NY 11222",
-      "sourceQuote": "Join us for After Hours this Summer. Drinks, try on's and wishlist building\nMacha Studio\n135 Franklin St\nGreenpoint, Brooklyn\nSummer Fridays\nJuly - August\nFrom 3pm",
-      "actions": [
-        {
-          "label": "See the studio",
-          "type": "learn_more",
-          "url": "https://machastudio.com/blogs/events/summer-fridays-after-hours"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Summer Fridays After Hours",
-          "url": "https://machastudio.com/blogs/events/summer-fridays-after-hours",
-          "publisher": "Macha Studio",
-          "date": "2026-08-12"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "lat": 40.730903,
-      "lng": -73.957932
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-14",
-      "updatedAt": "2026-08-14",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.726909,
-      "lng": -73.95281,
-      "id": "good-room-magnetic-0828",
-      "title": "Magnetic at Good Room",
-      "kicker": "Six-DJ Friday bill",
-      "summary": "Artwork headlines, with Alex Mccracken, UMA DJ b2b Boat Neck, Victor Florescu and Lee Cash b2b whydan across the night.",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-08-28T19:00:00-04:00",
-      "endsAt": "2026-08-28T23:59:00-04:00",
-      "sourceQuote": "Aug 28\nMagnetic ft Artwork, Alex Mccracken, UMA DJ b2b Boat Neck, Victor Florescu, Lee Cash b2b whydan",
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room via DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-14"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": true,
-      "filters": [
-        "wellness"
-      ],
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729855,
-      "lng": -73.960729,
-      "relatedCardIds": [
-        "transmitter-park-restaurant-marina"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Longevity Stick (Transmitter Park)",
-          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-14/",
-          "publisher": "Go Green Brooklyn",
-          "date": "2026-08-14"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-14",
-      "updatedAt": "2026-08-14",
-      "id": "longevity-stick-transmitter-0828",
-      "title": "Longevity Stick in Transmitter Park",
-      "kicker": "Free waterfront Tai Chi and yoga",
-      "summary": "The season's last listed evening sitting. The stick is handed out; bring a water bottle and a small towel. Registering helps them handle a rain delay.",
-      "startsAt": "2026-08-28T19:30:00-04:00",
-      "endsAt": "2026-08-28T20:30:00-04:00",
-      "sourceQuote": "Join us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nRegistering helps us track participants in the event of a rain delay or reschedule.\nFri, Aug 28, 7:30 PM to 8:30 PM"
     },
     {
       "category": "event",
@@ -4274,48 +4032,6 @@
           "title": "Good Room via DoNYC",
           "url": "https://donyc.com/venues/good-room",
           "publisher": "DoNYC",
-          "date": "2026-08-15"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-19",
-      "free": false,
-      "id": "library-sensory-garden-0828",
-      "category": "event",
-      "title": "Friday at Greenpoint Library",
-      "kicker": "Rooftop garden, then a magic show",
-      "summary": "Storytime for the under-fives, an educator on hand for plant questions, and Myron the Magnificent closing out summer reading with ASL interpretation.",
-      "startsAt": "2026-08-28T10:30:00-04:00",
-      "endsAt": "2026-08-28T16:00:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-08-28T14:30:00Z\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-08-28T19:00:00Z\nts_body: Garden Educator will be on site from 3-4pm on Fridays, weather permitting.\nts_title: Myron the Magnificent\nds_event_start_date: 2026-08-28T19:30:00Z\nts_body: Join us at the Greenpoint Library for an end of summer celebration! We will enjoy a spectacular magic show from Myron the Magnificent!\nThis event will feature ASL interpretation.",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
           "date": "2026-08-15"
         }
       ]
@@ -5431,59 +5147,6 @@
           "date": "2026-08-24"
         }
       ],
-      "relatedCardIds": [
-        "ashbox-farewell-sale-0825"
-      ],
-      "lat": 40.737769,
-      "lng": -73.955186
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-24",
-      "updatedAt": "2026-08-24",
-      "free": false,
-      "id": "ashbox-farewell-sale-0825",
-      "category": "event",
-      "title": "Ashbox Cafe farewell inventory sale",
-      "kicker": "Plates, cups, packaged food, tools",
-      "summary": "The closing cafe is clearing what is left of its kitchen. Greenpointers says to stop by to say goodbye to the chef even if you need nothing.",
-      "startsAt": "2026-08-25T11:30:00-04:00",
-      "endsAt": "2026-08-28T14:30:00-04:00",
-      "filters": [
-        "shopping"
-      ],
-      "locationName": "Ashbox Cafe",
-      "address": "1154 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1154 Manhattan Avenue, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "ashbox-cafe-closes"
-      ],
-      "sourceQuote": "Ashbox Cafe will host an inventory farewell sale to get rid of the eatery’s remaining stock of plates, cups, and bowls, packaged food, and kitchen tools. The sale will take place Tuesday, August 25 through Friday, August 28, 11:30 a.m. – 2:30 p.m.\nIf you are not in need of kitchen supplies, you can stop by the sale anyway to bid farewell to a beloved chef.",
-      "actions": [
-        {
-          "label": "Read the story",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/08/24/beloved-greenpoint-staple-ashbox-cafe-closes-its-doors/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Beloved Greenpoint Staple Ashbox Cafe Closes its Doors",
-          "url": "https://greenpointers.com/2026/08/24/beloved-greenpoint-staple-ashbox-cafe-closes-its-doors/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-24"
-        }
-      ],
       "lat": 40.737769,
       "lng": -73.955186
     },
@@ -5610,50 +5273,6 @@
       ],
       "lat": 40.728891,
       "lng": -73.957917
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-25",
-      "id": "eavesdrop-dynoman-0828",
-      "category": "event",
-      "free": false,
-      "title": "Dynoman at Eavesdrop",
-      "kicker": "Late set at the Manhattan Ave bar",
-      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
-      "startsAt": "2026-08-28T00:00:00-04:00",
-      "endsAt": "2026-08-28T23:59:00-04:00",
-      "allDay": false,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.724894,
-      "lng": -73.951181,
-      "sourceQuote": "Friday, Aug 28\n12midnight\nDynoman @eavesdrop",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-08-21"
-        }
-      ]
     },
     {
       "audience": [
@@ -5887,52 +5506,6 @@
       "audience": [
         "resident"
       ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-25",
-      "updatedAt": "2026-08-25",
-      "id": "flowercat-live-band-karaoke-0828",
-      "category": "event",
-      "title": "Live Band Karaoke: Summer of Soul at Flower Cat",
-      "kicker": "Sing with a live band behind you",
-      "summary": "Aretha, Amy, Alicia and the rest. Turn up at 7:30 to get on the list, and outside players can sit in on drums, bass, piano or guitar. Free entry, two-drink minimum.",
-      "filters": [
-        "live_music",
-        "food_drink"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "lat": 40.728678,
-      "lng": -73.954258,
-      "free": true,
-      "startsAt": "2026-08-28T19:30:00-04:00",
-      "endsAt": "2026-08-28T23:00:00-04:00",
-      "relatedCardIds": [
-        "flower-cat"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat events",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-25"
-        }
-      ],
-      "sourceQuote": "Live Band Karaoke: Summer of Soul\nFriday, August 28, 2026\n7:30 PM\n11:00 PM\nFlower Cat\nShow up at around 7:30pm to get on the list and pick your song & stick around to cheer on your fellow Flower Cat community members!\nOutside musicians are welcomed and encouraged to come jam along as well! Sub in on drums, bass, piano, guitar or bring your own. Free entry! 2 drink minimum! Tip your musicians & bartender!"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
@@ -5988,53 +5561,6 @@
       "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
       "lat": 40.7238537,
       "lng": -73.9510984,
-      "id": "bedford-slip-weekend-0828",
-      "title": "Bedford Slip Weekend opens",
-      "kicker": "Opening night of a three-day street run",
-      "summary": "The organisers put tables and chairs out on the car-free block and ask the neighborhood to bring a bite and sit down. It runs again the next two days, on longer daytime hours.",
-      "filters": [
-        "food_drink"
-      ],
-      "startsAt": "2026-08-28T17:00:00-04:00",
-      "endsAt": "2026-08-28T20:00:00-04:00",
-      "relatedCardIds": [
-        "bedford-slip-weekend-0829",
-        "bedford-slip-tree-care-0829",
-        "bedford-slip-cleanup-0830"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Bedford Slip Weekend",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
-          "publisher": "Partiful",
-          "date": "2026-08-26"
-        }
-      ],
-      "sourceQuote": "Bedford Slip Weekend starts Friday night! Come enjoy a bite in the street! We'll have tables & chairs ready for you. WHEN? Friday, August 28th 5PM-8PM Saturday, Aug 29th 10AM-8PM Sunday, Aug 30th 10AM-8PM"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "locationName": "Bedford Slip",
-      "address": "1 Bedford Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
-      "lat": 40.7238537,
-      "lng": -73.9510984,
       "id": "bedford-slip-weekend-0829",
       "title": "Bedford Slip Weekend",
       "kicker": "Two full days of tables in the street",
@@ -6045,7 +5571,6 @@
       "startsAt": "2026-08-29T10:00:00-04:00",
       "endsAt": "2026-08-30T20:00:00-04:00",
       "relatedCardIds": [
-        "bedford-slip-weekend-0828",
         "bedford-slip-tree-care-0829",
         "bedford-slip-cleanup-0830",
         "bedford-slip-hot-dogs-0830"
@@ -6094,7 +5619,6 @@
       "startsAt": "2026-08-29T13:00:00-04:00",
       "endsAt": "2026-08-29T14:00:00-04:00",
       "relatedCardIds": [
-        "bedford-slip-weekend-0828",
         "bedford-slip-weekend-0829",
         "bedford-slip-cleanup-0830"
       ],
@@ -6142,7 +5666,6 @@
       "startsAt": "2026-08-30T11:00:00-04:00",
       "endsAt": "2026-08-30T13:00:00-04:00",
       "relatedCardIds": [
-        "bedford-slip-weekend-0828",
         "bedford-slip-weekend-0829",
         "bedford-slip-tree-care-0829"
       ],
@@ -6382,58 +5905,6 @@
       "sourceQuote": "summary: THE ACADEMY BLUES PROJECT\ndescription: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily\nstart.date: 2026-09-09",
       "lat": 40.733463,
       "lng": -73.955035
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "id": "culture-house-poetry-night-0828",
-      "title": "Poetry Night at Culture House",
-      "kicker": "Five poets on one bill",
-      "summary": "Culture House bills it as an intimate evening of poetry and community, with sponsor goodies on hand. Twenty dollars a ticket.",
-      "startsAt": "2026-08-28T17:00:00-04:00",
-      "endsAt": "2026-08-28T19:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": false,
-      "locationName": "Culture House",
-      "address": "807 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "807 Manhattan Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "vault-gallery-culture-house"
-      ],
-      "sourceQuote": "Poetry Night @ Culture House, 5 p.m.: Hear from a lineup of five various poets. $20, get tickets here .\n\"description\":\"An intimate evening of poetry, community, good vibes, sponsor goodies, and more at Culture House Greenpoint.\"\n\"streetAddress\":\"807 Manhattan Avenue, Brooklyn, NY 11222\"\n\"startDate\":\"2026-08-28T17:00:00-04:00\"\n\"endDate\":\"2026-08-28T19:00:00-04:00\"",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/culture-house-greenpoint-poetry-night-tickets-1997479497949"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
-          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-26"
-        },
-        {
-          "title": "Culture House Greenpoint Poetry Night",
-          "url": "https://www.eventbrite.com/e/culture-house-greenpoint-poetry-night-tickets-1997479497949",
-          "publisher": "Culture House NYC",
-          "date": "2026-08-26"
-        }
-      ],
-      "lat": 40.727962,
-      "lng": -73.953311
     },
     {
       "audience": [
@@ -6960,51 +6431,6 @@
       "createdAt": "2026-08-28",
       "updatedAt": "2026-08-28",
       "free": false,
-      "id": "film-noir-acid-0828",
-      "category": "event",
-      "title": "ACID at Film Noir Cinema",
-      "kicker": "A kaleidoscopic audiovisual experience",
-      "summary": "Listed as GE. 2010 on the programme page, with no director, running time or ticket price given.",
-      "startsAt": "2026-08-28T19:00:00-04:00",
-      "endsAt": "2026-08-28T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/28/asidus"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/28/asidus",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "ACID\nFriday, August 28, 2026\n7:00 PM\n8:00 PM\nGE. 2010\nA kaleidoscopic audiovisual experience."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
       "id": "film-noir-black-box-0911",
       "category": "event",
       "title": "BLACK BOX at Film Noir Cinema",
@@ -7484,6 +6910,221 @@
         }
       ],
       "sourceQuote": "ts_title: Babies & Books (for non-walking babies)\nds_event_start_date: 2026-09-10T14:30:00Z\nds_event_start_date: 2026-09-10T15:15:00Z\nts_body: Join us for baby storytime! We will read some books, sing some songs, do some bounces and tickles and all sorts of fun things with our babies! Tickets are required and will be distributed on a first come, first served basis at the information desk.\nts_title: Read and Play\nds_event_start_date: 2026-09-10T17:00:00Z\nts_body: Today is Week 1 of our NEW Read & Play series! Registration is required in advance to attend this Storytime at the Greenpoint Library.\nPlease note: Group size is limited to 12 participants.\nts_title: Free English Class\nds_event_start_date: 2026-09-10T18:00:00Z\nts_body: The library offers free ESOL classes for beginners learning English.\nts_title: Free Notary Services*\nts_body: * New hours are TUES and THUR from 2pm to 4pm.\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-09-10T19:00:00Z\nds_event_end_date: 2026-09-10T21:00:00Z\nts_body: 13+. Join us for Teen Tech Time to hang out with friends and play video games!"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-29",
+      "updatedAt": "2026-08-29",
+      "free": false,
+      "id": "film-noir-saturday-0829",
+      "category": "event",
+      "title": "Four-film Saturday at Film Noir Cinema",
+      "kicker": "Four films back to back",
+      "summary": "KRIMINAL (Italy, 1966), CIRCUITO CHIUSO (Italy, 1978), ARREBATO (Spain, 1979) and SNOW WOMAN (Japan, 1968) run in that order. No admission price is stated.",
+      "startsAt": "2026-08-29T15:00:00-04:00",
+      "endsAt": "2026-08-29T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema programme",
+          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-29"
+        }
+      ],
+      "sourceQuote": "KRIMINAL\nSaturday, August 29, 2026\n3:00 PM\n4:00 PM\nCIRCUITO CHIUSO\nSaturday, August 29, 2026\n5:00 PM\n6:00 PM\nARREBATO\nSaturday, August 29, 2026\n7:00 PM\n8:00 PM\nSNOW WOMAN\nSaturday, August 29, 2026\n9:00 PM\n10:00 PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-29",
+      "updatedAt": "2026-08-29",
+      "free": false,
+      "id": "good-room-felipe-gordon-0912",
+      "category": "event",
+      "title": "Felipe Gordon at Good Room",
+      "kicker": "Razor-N-Tape on the bill",
+      "summary": "Four names on the DoNYC listing for the night, with beewack and Malachi rounding it out. No ticket price is given.",
+      "startsAt": "2026-09-12T19:00:00-04:00",
+      "endsAt": "2026-09-12T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-08-29"
+        }
+      ],
+      "sourceQuote": "Sep 12\nFelipe Gordon, Razor-N-Tape, beewack, Malachi\nGood Room\n7:00PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-29",
+      "updatedAt": "2026-08-29",
+      "free": false,
+      "id": "troost-hefker-girl-0912",
+      "category": "event",
+      "title": "DJ THE HEFKER GIRL at Troost",
+      "kicker": "Dub, mariachi and pirate radio",
+      "summary": "The Troost calendar carries the name, that genre line and the date — no set time, support bill or ticket link.",
+      "startsAt": "2026-09-12T00:00:00-04:00",
+      "endsAt": "2026-09-12T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-29"
+        }
+      ],
+      "sourceQuote": "summary: DJ THE HEFKER GIRL\ndescription: Decirculated Dub, Mariachi, Pirate Radio and Everything in between\nstart.date: 2026-09-12"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-29",
+      "updatedAt": "2026-08-29",
+      "free": false,
+      "id": "sereneco-franklin-st-fire",
+      "category": "news",
+      "title": "Fire damages Sereneco on Franklin St",
+      "kicker": "Sereneco and Maman are both closed",
+      "summary": "The FDNY took the call at 10:46am Friday and had the fire contained by 12:35pm; 79 responders worked it and firefighters with minor injuries went to NYU Langone. Cause under investigation.",
+      "filters": [
+        "news",
+        "food_drink"
+      ],
+      "locationName": "Sereneco",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "113 Franklin Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Fire on Franklin Street Damages Sereneco, Injures Multiple Firefighters",
+          "url": "https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-28"
+        }
+      ],
+      "sourceQuote": "An all-hands fire on Franklin Street caused damage to Sereneco (113 Franklin St.)\nthe FDNY told Greenpointers that they received a call about the situation at 10:46 this morning. A fire broke out on the second floor, requiring 79 FDNY and EMS personnel. Workers contained the fire by 12:35 p.m.\nFirefighters with minor injuries were transported to NYU Langone. The cause of the fire is still under investigation.\nSereneco wrote on Instagram that the fire “caused significant damage” and that they would close as they worked to assess next steps.\nI tried to stop by Maman (84 Kent St.) for a coffee but staff told me the fire required them to close (they are in the same building).",
+      "lat": 40.730371,
+      "lng": -73.957833
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-29",
+      "updatedAt": "2026-08-29",
+      "free": false,
+      "id": "tend-free-shipping-0831",
+      "category": "discount",
+      "title": "Free shipping at Tend Greenpoint",
+      "kicker": "Code SHIPFREE826 on orders over $40",
+      "summary": "Web store only, not a reason to walk down — the shop itself stays shut until the day this one runs out. They are shipping planters from Franca, Bergs Potter and Conifer Homewares.",
+      "endsAt": "2026-08-31T23:59:00-04:00",
+      "filters": [
+        "deals_memberships"
+      ],
+      "locationName": "Tend Greenpoint",
+      "address": "252 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "252 Franklin Street, Brooklyn, NY 11222",
+      "lat": 40.734612,
+      "lng": -73.958144,
+      "actions": [
+        {
+          "label": "Shop online",
+          "type": "order",
+          "url": "https://www.tendgreenpoint.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "This weekend only - FREE Shipping",
+          "url": "https://www.tendgreenpoint.com/",
+          "publisher": "Tend Greenpoint",
+          "date": "2026-08-28"
+        }
+      ],
+      "sourceQuote": "FREE SHIPPING!\nThis weekend only, Standard Shipping is on us when you spend $40 or more. Use this code at checkout.\nSHIPFREE826\nThis coupon becomes active on August 28, 2026 and expires on August 31, 2026. No cash value. Online only.\nLooking for plants? Come see us when we reopen on Monday, August 31."
     }
   ]
 }

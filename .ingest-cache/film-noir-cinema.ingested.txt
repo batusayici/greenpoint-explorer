@@ -1,17 +1,22 @@
-title: WHIRLPOOL
-startDate: 2026-08-27T23:00:00.059Z
-endDate: 2026-08-28T00:00:00.059Z
-fullUrl: /program/2026/5/13/whirlpool
+title: KRIMINAL
+startDate: 2026-08-29T19:00:00.000Z
+endDate: 2026-08-29T20:00:00.000Z
+fullUrl: /program/2026/8/22/krimi
 
-title: FILM CLUB
-startDate: 2026-08-28T01:00:00.592Z
-endDate: 2026-08-28T02:00:00.592Z
-fullUrl: /program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
+title: CIRCUITO CHIUSO
+startDate: 2026-08-29T21:00:00.304Z
+endDate: 2026-08-29T22:00:00.304Z
+fullUrl: /program/2026/4/11/chiuso
 
-title: ACID
-startDate: 2026-08-28T23:00:00.544Z
-endDate: 2026-08-29T00:00:00.544Z
-fullUrl: /program/2026/8/28/asidus
+title: ARREBATO
+startDate: 2026-08-29T23:00:00.919Z
+endDate: 2026-08-30T00:00:00.919Z
+fullUrl: /program/2026/8/8/arrebato
+
+title: SNOW WOMAN
+startDate: 2026-08-30T01:00:00.328Z
+endDate: 2026-08-30T02:00:00.328Z
+fullUrl: /program/2026/7/28/snow-witch
 
 title: FILM NOIR MONDAY
 startDate: 2026-09-01T01:00:00.015Z
@@ -89,8 +94,8 @@ Google Calendar
 ICS
 Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
 In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
-Earlier Event: August 28
-ACID
+Earlier Event: August 29
+SNOW WOMAN
 Later Event: September 1
 CULT CINEMA
 Back To Top
@@ -125,40 +130,6 @@ Earlier Event: August 31
 FILM NOIR MONDAY
 Later Event: September 4
 TERROR TERROIR
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
-FILM CLUB — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-FILM CLUB
-Thursday, August 27, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
-The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
-Pure cinematheque fun.
-Earlier Event: August 27
-WHIRLPOOL
-Later Event: August 28
-ACID
 Back To Top
 Cart ( 0 )
 
@@ -260,6 +231,203 @@ HALLOWEEN PARTY
 Back To Top
 Cart ( 0 )
 
+## [DETAIL] https://www.filmnoircinema.com/program/2026/4/11/chiuso
+CIRCUITO CHIUSO — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+CIRCUITO CHIUSO
+Saturday, August 29, 2026
+5:00 PM
+6:00 PM
+17:00
+18:00
+Google Calendar
+ICS
+IT. 1978
+After a man is shot dead in his seat during a matinee showing of a Spaghetti Western, the police prevent everyone inside the cinema from leaving in an effort to nab the culprit.
+Earlier Event: August 29
+KRIMINAL
+Later Event: August 29
+ARREBATO
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/7/28/snow-witch
+SNOW WOMAN — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SNOW WOMAN
+Saturday, August 29, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+JP. 1968
+The lives of a master sculptor and his young apprentice are changed forever when they meet an evil witch during a snow storm.
+Earlier Event: August 29
+ARREBATO
+Later Event: August 31
+FILM NOIR MONDAY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/8/22/krimi
+KRIMINAL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+KRIMINAL
+Saturday, August 29, 2026
+3:00 PM
+4:00 PM
+15:00
+16:00
+Google Calendar
+ICS
+IT. 1966
+A mastermind thief known as Kriminal narrowly escapes execution. He always manages to stay one step ahead of the law with each new crime he commits. Will Kriminal be able to pull his biggest score yet or will a double cross lead to his demise?
+Earlier Event: August 28
+ACID
+Later Event: August 29
+CIRCUITO CHIUSO
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/8/8/arrebato
+ARREBATO — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+ARREBATO
+Saturday, August 29, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+SP. 1979
+A low budget horror filmmaker gets in touch with an eccentric who is trying to film his consciousness during drug abuse.
+Earlier Event: August 29
+CIRCUITO CHIUSO
+Later Event: August 29
+SNOW WOMAN
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
+BLACK BOX — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BLACK BOX
+Friday, September 11, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Earlier Event: September 4
+TERROR TERROIR
+Later Event: September 25
+SUPERSHORTS NY FILM FESTIVAL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
+FILM CLUB — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+FILM CLUB
+Thursday, August 27, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
+The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
+Pure cinematheque fun.
+Earlier Event: August 27
+WHIRLPOOL
+Later Event: August 28
+ACID
+Back To Top
+Cart ( 0 )
+
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/5/13/whirlpool
 WHIRLPOOL — Film Noir Cinema
 Home
@@ -326,37 +494,6 @@ FILM NOIR MONDAY
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
-BLACK BOX — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-BLACK BOX
-Friday, September 11, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Earlier Event: September 4
-TERROR TERROIR
-Later Event: September 25
-SUPERSHORTS NY FILM FESTIVAL
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival
 SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
 Home
@@ -416,39 +553,6 @@ Earlier Event: September 25
 SUPERSHORTS NY FILM FESTIVAL
 Later Event: September 27
 SUPERSHORTS NY FILM FESTIVAL
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/8/22/krimi
-KRIMINAL — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-KRIMINAL
-Wednesday, August 26, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-IT. 1966
-A mastermind thief known as Kriminal narrowly escapes execution. He always manages to stay one step ahead of the law with each new crime he commits. Will Kriminal be able to pull his biggest score yet or will a double cross lead to his demise?
-Earlier Event: August 25
-CULT CINEMA
-Later Event: August 26
-BODY MELT
 Back To Top
 Cart ( 0 )
 
@@ -842,39 +946,6 @@ Earlier Event: August 13
 FILM CLUB
 Later Event: August 14
 ARREBATO
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/8/8/arrebato
-ARREBATO — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-ARREBATO
-Friday, August 14, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-SP. 1979
-A low budget horror filmmaker gets in touch with an eccentric who is trying to film his consciousness during drug abuse.
-Earlier Event: August 14
-WATCH ME
-Later Event: August 15
-WATCH ME
 Back To Top
 Cart ( 0 )
 
