@@ -302,6 +302,23 @@ export function validateCard(card) {
     if (card.startsAt == null && card.endsAt == null) {
       err("recurrence needs startsAt or endsAt to bound the repeat");
     }
+    // `except` — dates the series skips (2026-08-30). Cancelling one sitting
+    // used to mean choosing between showing a ghost row and ending the series
+    // early. Each entry is an NY calendar day; it only bites alongside stated
+    // days, so requiring them here keeps the field from looking like it can
+    // carve holes in a standing offer's span.
+    if (card.recurrence.except != null) {
+      const except = card.recurrence.except;
+      if (!Array.isArray(except) || except.length === 0) {
+        err("recurrence.except must be a non-empty array of YYYY-MM-DD days");
+      } else {
+        for (const d of except) {
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) err(`recurrence.except has a non-date "${d}"`);
+        }
+        if (new Set(except).size !== except.length) err("recurrence.except has duplicates");
+        if (!(days?.length > 0)) err("recurrence.except needs recurrence.days — a standing offer has no occurrence to skip");
+      }
+    }
   }
   if (card.category === "news" && !(card.sourceLinks ?? []).some((s) => str(s?.publisher))) {
     err("news needs a sourceLink with a publisher");

@@ -170,6 +170,49 @@ test("nextOccurrence finds today first, then the following week", () => {
   assert.equal(nextOccurrence(sewing, ny("2026-08-23")), null); // span exhausted
 });
 
+// ── Skipped occurrences (2026-08-30) ──────────────────────────────────────
+// The McGolrick Bird Club's own newsletter said there was no outing on Sat
+// Aug 29 — "Unmark your calendars" — and the card model could only run the
+// weekly or end it. Ending it would have lost the real Sep 5 walk, so the run
+// left Saturday showing and put the cancellation in the summary: a row in
+// front of readers on a day the thing is not happening. `recurrence.except`
+// is the third option — skip ONE date, keep the series.
+const birdClub = {
+  startsAt: "2026-08-15T09:00:00-04:00",
+  endsAt: "2026-09-05T10:00:00-04:00",
+  recurring: true,
+  recurrence: { days: ["sat"], except: ["2026-08-29"] },
+};
+
+test("a skipped date does not occur, and its neighbours still do", () => {
+  assert.equal(occursOn(birdClub, ny("2026-08-29")), false); // cancelled
+  assert.equal(occursOn(birdClub, ny("2026-08-22")), true);
+  assert.equal(occursOn(birdClub, ny("2026-09-05")), true); // the real walk survives
+});
+
+test("nextOccurrence steps over a skipped date", () => {
+  // The whole point: on the cancelled Saturday the feed must point at the
+  // NEXT real walk, not shelve the card and not show today's ghost row.
+  assert.equal(nextOccurrence(birdClub, ny("2026-08-29")), "2026-09-05");
+  // 8am on the 22nd — before that morning's walk, so today still counts.
+  assert.equal(nextOccurrence(birdClub, new Date("2026-08-22T08:00:00-04:00")), "2026-08-22");
+});
+
+test("two skipped dates in a row still find the next real sitting", () => {
+  // The 8-day scan horizon is the reason this needs its own test: without
+  // widening it for the skip list, a twice-cancelled weekly reports no next
+  // occurrence and gets shelved — the exact failure `except` exists to avoid.
+  const twice = { ...birdClub, recurrence: { days: ["sat"], except: ["2026-08-22", "2026-08-29"] } };
+  assert.equal(nextOccurrence(twice, ny("2026-08-16")), "2026-09-05");
+});
+
+test("except is inert on a card with no stated days", () => {
+  // A standing offer has no occurrences to skip; the date list must not
+  // quietly start carving days out of span containment.
+  const offer = { endsAt: "2026-09-09T23:59:00-04:00", recurring: true };
+  assert.equal(occursOn(offer, ny("2026-08-29")), true);
+});
+
 // 2026-08-08, Batu on stoopwise.com at 7:37pm: the Today group led with the
 // McCarren Greenmarket (Saturdays 8am–3pm), the bird club (9–10am) and the
 // runners (9:30–11am) — all finished that morning. A weekly card's endsAt is

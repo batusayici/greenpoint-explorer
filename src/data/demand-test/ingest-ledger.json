@@ -1708,9 +1708,10 @@
       "publisher": "Tend Greenpoint",
       "match": "d4sh8s6s9jcvd@squaremktg.com",
       "kinds": [
-        "discount"
+        "discount",
+        "event"
       ],
-      "note": "plant shop; sends via Square marketing relay"
+      "note": "plant shop; sends via Square marketing relay. EVENTS ADDED 2026-08-30 (Batu): the newsletter is now the ONLY way Tend reaches the map — its web source was removed from the fetch roster 2026-08-25 (never fetched once; content sits in a 215KB script body the `embedded` strategy cannot read), and both live Tend cards were quoted from these emails. `discount` alone meant a dated Tend event arriving by email had nowhere to go. Same publisher already trusted for offers; the usual per-card substantiation still applies."
     },
     {
       "publisher": "PRESS Modern Massage",
@@ -2334,11 +2335,6 @@
       "name": "Greenpoint Library — two September programmes are CANCELED in the feed",
       "addedAt": "2026-08-29",
       "note": "SOURCE FACT 2026-08-29, found by scanning the full snapshot for is_event_canceled rather than trusting the diff (the 2026-08-17 lesson: a flipped flag is invisible to a line-set diff). Exactly two records carry it: \"ts_title: Sunset Storytime\\nds_event_start_date: 2026-09-10T22:00:00Z\\nis_event_canceled: 1\" and \"ts_title: Sustainable Sewing: Sewing Machine Basics\\nds_event_start_date: 2026-09-12T14:30:00Z\\nis_event_canceled: 1\". NEITHER reaches a reader: library-thursday-programs-0910 already excludes Sunset Storytime (its six programmes are the six that are not canceled), and 9/12 has no library card at all. No action needed — recorded so a later run does not 'restore' them."
-    },
-    {
-      "name": "Two recurring cards are on their THIRD run past verified-through with unreadable sources [RULE QUESTION for Batu]",
-      "addedAt": "2026-08-29",
-      "note": "SOURCE-BLOCKED, escalated 2026-08-29 under the 'a card held twice for the same reason is a MISSING RULE' rule. `greenpoint-trash-club` (verified-through 2026-08-26) and `bios-apothecary-herbalist-consultation` (2026-08-26) were both FLAGGED by expiry again today and neither can be re-verified: greenpointtrashclub.org is a browser-only source and the browser path is down; biosapothecary.com is NOT a roster source at all, only a sender, and no Bios email arrived in the 2-day Gmail window. The 2026-08-27 run made the same call and left both live; this run has followed that precedent rather than re-arguing it. THE RULE QUESTION: when a recurring card's source becomes permanently unreadable, does the card stay live on its last verification, get deleted like the comedy and Leaves event cards were, or degrade to something the UI can show as unverified? Today the deck answers 'stays live' for offers and memberships and 'delete' for events, which is a split nobody chose."
     }
   ],
   "sourcePulse": {

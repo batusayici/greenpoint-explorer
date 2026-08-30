@@ -163,8 +163,23 @@ const statedDays = (card) => {
   return Array.isArray(days) && days.length > 0 ? days : null;
 };
 
-// Does this card happen on `date`? Span containment is the floor in both
-// branches: a stated day never reaches outside startsAt…endsAt.
+// ── Skipped occurrences (2026-08-30, Batu) ────────────────────────────────
+// A venue cancels ONE sitting of a weekly and the series carries on. Before
+// this the card model could only keep the weekly running or end it: the
+// McGolrick Bird Club's newsletter said there was no outing on Aug 29
+// ("Unmark your calendars") and ending the series would have lost the real
+// Sep 5 walk, so the run left Saturday showing with a note in the summary —
+// a row in front of readers on a day the thing was not happening.
+// `recurrence.except` lists NY calendar days ("YYYY-MM-DD") the series skips.
+// Only meaningful alongside stated days: a standing offer has no occurrences
+// to skip, so the list never carves days out of plain span containment.
+const skippedDays = (card) => {
+  const except = card?.recurrence?.except;
+  return Array.isArray(except) && except.length > 0 ? except : null;
+};
+
+// Does this card happen on `date`? Span containment is the floor in every
+// branch: a stated day never reaches outside startsAt…endsAt.
 export function occursOn(card, date) {
   const { startsAt, endsAt } = card;
   if (startsAt == null && endsAt == null) return true; // undated: always on
@@ -172,7 +187,9 @@ export function occursOn(card, date) {
   if (startsAt != null && DAYKEY.format(new Date(startsAt)) > day) return false;
   if (endsAt != null && DAYKEY.format(new Date(endsAt)) < day) return false;
   const days = statedDays(card);
-  return days ? days.includes(dayTokenOf(date)) : true;
+  if (!days) return true;
+  if (!days.includes(dayTokenOf(date))) return false;
+  return !skippedDays(card)?.includes(day);
 }
 
 // ── The occurrence clock (2026-08-08) ─────────────────────────────────────
@@ -221,9 +238,14 @@ const addDays = (ymd, n) => {
 // `from` is an instant, not a date: its clock is what decides whether today's
 // sitting still counts. Bounded by eight days — a week past the first day
 // examined, so a card whose sitting today is over can still find next week's.
+// A skipped date pushes the next real sitting a whole week further out, so the
+// horizon grows with the skip list — otherwise a card cancelled two Saturdays
+// running would report "no next occurrence" and be shelved, which is the bug
+// `except` exists to avoid.
 export function nextOccurrence(card, from) {
   const today = DAYKEY.format(from);
-  for (let i = 0; i < 8; i++) {
+  const horizon = 8 + 7 * (skippedDays(card)?.length ?? 0);
+  for (let i = 0; i < horizon; i++) {
     const day = addDays(today, i);
     if (!occursOn(card, nyNoon(day))) continue;
     if (day === today && minutesOfDay(from) > occurrenceEndMinutes(card)) continue;

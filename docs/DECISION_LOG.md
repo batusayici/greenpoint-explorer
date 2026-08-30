@@ -4,6 +4,112 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-30 — DEFERRED: route the ingest's fetches through a relay, before the second neighborhood
+
+**Batu, deferring — "log the fetch relay as a decision for later (before we expand beyond
+Greenpoint)."** This is a decision taken and postponed, not an open question. The gate is
+**expansion**: it must be built before a second neighborhood edition, and it does not need to be
+built for Greenpoint alone.
+
+**The problem.** Two different allowlists gate what the ingest can read, and only one of them is
+version-controlled. `.claude/settings.json` holds 106 `WebFetch` domains, and a run can add to it in
+the same change that adds a source — that half works. The other half is the cloud environment's own
+network setting at claude.ai, which nothing in the repo can touch. It is what produces "refused at
+the CONNECT tunnel" in run after run, and every new verified source costs Batu a manual step there.
+One-off lookups cost him one too: `otisandfinn.as.me` is a booking page the run needed to read once,
+not a roster source, and it blocked a fully-written card. Adding a source is therefore gated twice —
+once in the roster PR, once by hand at claude.ai — and the second gate buys nothing the first did
+not already decide.
+
+**The decision.** Put a small fetch relay on Vercel, on a stoopwise.com path the sandbox already
+reaches, and have `scripts/fetch-sources.mjs` go through it. The cloud environment then needs
+**exactly one host allowlisted, permanently**. The relay decides what it is willing to fetch from
+`ingest-sources.json` — so the roster PR that already gates a new source becomes the only gate, and
+the claude.ai step disappears. One-off R1 lookups pass through without a per-host gate, which
+retires that whole class of hold.
+
+**Why a relay and not simply opening egress.** Switching the environment to allow everything solves
+the same scaling problem in a minute. It also gives a routine that reads untrusted web pages, and
+holds a token that can push to production, an unconstrained outbound path — a hostile page and an
+exfiltration route in the same process. The relay constrains outbound traffic to one host we own,
+so it is better on both axes, not a tradeoff.
+
+**Costs, stated so they are not rediscovered later.** It puts a backend into a project whose
+architecture line reads "no backend", and it makes the whole ingest depend on a service that can go
+down — a relay outage looks exactly like a dead roster. It needs a shared secret and rate limiting
+or it is an open proxy. Rough estimate: half a day. **Not started; no spec written yet.**
+
+## 2026-08-30 — Seven standing rules, cleared in one pass: no crime, unverifiable cards get deleted, and a weekly can skip a date
+
+**Batu, clearing the backlog of held-card questions that had piled up across seven ingest PRs
+(#47, #48, #51, #52, #53, #54, #55).** Every one of them held a card on a question no run could
+settle alone, and the same questions kept coming back run after run because none of them had ever
+been answered. The cards themselves had mostly gone stale by the time they were read — which is the
+real cost of leaving a rule open, and the reason all seven were decided together.
+
+**1. Crime does not go on the map.** *"no crime does not go on the map. this isnt citizens app."*
+Shootings, stabbings, assaults, robberies, arrests, court outcomes — no card, whatever the sourcing.
+The `news` lens is what opened, what closed, what is being built and how the G is running: things a
+resident can act on. One incident card makes the next one a precedent, and the lens drifts into a
+police blotter that competes with Greenpointers instead of adding to them. This is closed — a future
+run drops the card and says so, and does not re-argue the bar by injury or arrest.
+`commercial-st-shooting-0825` is rejected and is not to be re-authored. **Boundary:** an incident's
+neighborhood consequence is still ordinary supply when stated and dated — a closed street, an
+evacuation, a boil-water notice. Card the closure, not the blotter.
+
+**2. An unverifiable card is deleted on its second flagged run.** The skill has always said "confirm
+at the source, or delete", but when a source could not be *reached* three consecutive runs did
+neither: they re-flagged, wrote up the asymmetry between offers and events, and left the card live.
+`greenpoint-trash-club` and `bios-apothecary-herbalist-consultation` were four days past their
+verified-through date on 8/30 as claims nothing could check. Both deleted. There is no
+standing-offer exemption; a broken browser path, an egress denial and a business that quietly closed
+all look identical to a reader.
+
+**3. Tending a shared growing space is `civic`.** A garden hour, seed swap, garden club or tree-care
+talk. Not `wellness` — that lens is the movement cluster and standing in a garden talking to an
+educator is not movement, whatever the venue's own tags say. Not `family_kids` unless the source
+states the audience; the Friday library garden cards only ever earned that from a kids' storytime
+sharing the day, and when that series ended the adult garden hour was held twice in two runs with
+nowhere to go.
+
+**4. A market hosted by a food business, with no stated vendor list, files `food_drink` — and
+ships.** The host is the only sourced fact about what is on offer, so guessing `shopping` is no more
+honest than guessing `food_drink`, and holding the card costs a real event over a lens label.
+**Ship it and note it in `watchItems`** so Batu can overturn the call afterwards. That trade — ship
+on the mechanical reading, flag for a human, never sit on a card while it goes stale — is the shape
+Batu asked for and is worth generalising the next time a lens question is this cheap to reverse.
+
+**5. A free municipal resource giveaway is `civic`.** Compost, mulch, seedlings, rain barrels. Every
+other `civic` card is something a reader *does* for the neighborhood and this is something a reader
+*receives*, which is why a run held the 9/2 compost giveaway. The lens is civic action **and mutual
+aid**, not civic labour only.
+
+**6. A recurring card can skip a single date.** `recurrence.except: ["2026-08-29"]` — NY calendar
+days the series does not happen, honoured by `occursOn` and `nextOccurrence`. Before this the model
+could only run a weekly or end it, so when the McGolrick Bird Club's newsletter said "Unmark your
+calendars" for one Saturday, the run left the row up with the cancellation buried in the summary
+rather than lose the real Sep 5 walk. A note in the summary is not a substitute. Venues cancel
+single occurrences constantly; this will keep happening.
+
+**7. A seasonal source drops `standing` between editions.** Macha Studio's only recurring
+programming is Summer Fridays and its own poster states the season, so the series ended with August
+and STANDING DARK would have fired every run until a fall edition posted. Unset the flag, restore it
+when a new series appears. No seasonal state in the roster schema — one source does not earn a
+field.
+
+**Also settled, and already done before this pass:** the Tend Greenpoint web source was removed from
+the fetch roster on 2026-08-25. It had never fetched once — its `embedded` strategy needs an
+attribute that does not exist, because the content lives in a 215KB script body — and it was burning
+an error slot on a run that finished at exactly the 15% ceiling that halts ingest. Nothing was lost:
+both live Tend cards were quoted from its emails. **Open, and named here so it is not lost again:**
+Tend is in the sender registry with `kinds: ["discount"]`, so its newsletter can carry offers but
+not events. If Tend's dated events are wanted, that is a one-word sender change and it is
+human-gated.
+
+**Tend Greenpoint's sender now carries `event`, not just `discount`.** With its web source gone,
+the newsletter is the only way Tend reaches the map, and a dated Tend event arriving by email had
+nowhere to go.
+
 ## 2026-08-26 — When a listing states a time twice, print the prose; and a multi-day run with different daily hours is more than one card
 
 **Batu, ruling on the one card PR #49 held.** A volunteer clean up at Bedford Slip on Sunday 8/30 was

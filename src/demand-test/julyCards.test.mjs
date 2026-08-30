@@ -654,15 +654,23 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // the snapshot, and comedy-friday-showcase, the same call the 8/26, 8/27 and
   // 8/28 runs each made once with the comedy club's listings still behind the
   // dead browser path. 160 - 10 + 5 - 2 = 153.
-  assert.equal(seed.cards.length, 153);
+  // 2026-08-30 (Batu): −2. `greenpoint-trash-club` and
+  // `bios-apothecary-herbalist-consultation` were both past their
+  // verified-through date and neither could be re-read — the trash club's site
+  // sits behind the broken browser path, and biosapothecary.com is a sender,
+  // not a roster source. Step 6 has always said "confirm at the source or
+  // delete"; three runs flagged them and none did either, so they stayed live
+  // as unverifiable claims. Deleted, and the skill now caps the drift at two
+  // runs.
+  assert.equal(seed.cards.length, 151);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 32, "31 + the Franklin Street fire (2026-08-29)");
   assert.equal(count((c) => c.category === "event"), 72, "81 − 10 expired − the Macha and Friday-comedy recurring cards + the Film Noir Saturday, Good Room 9/12 and Troost 9/12 (2026-08-29)");
-  assert.equal(count((c) => c.category === "discount"), 7, "6 + Tend Greenpoint's free-shipping code (2026-08-29)");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 − the Bios Apothecary consultation, unverifiable (2026-08-30)");
   assert.equal(count((c) => c.category === "news"), 20, "19 + the Franklin Street fire (2026-08-29)");
   assert.equal(count((c) => c.filters.includes("live_music")), 30, "31 − Friday's expired gigs + Good Room and Troost on 9/12 (2026-08-29)");
-  assert.equal(count((c) => c.category === "subscription"), 27, "25 + Town Square's two scout programmes (2026-08-24)");
+  assert.equal(count((c) => c.category === "subscription"), 26, "27 − Greenpoint Trash Club, unverifiable (2026-08-30)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -759,7 +767,8 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // end date and expiry removed it. No new deals this run.
   // 2026-08-29: +1 — Tend Greenpoint's free-shipping code, a dated offer with
   // the shop's own stated 8/31 expiry, so it is NOT a flagged recurring deal.
-  assert.equal(deals.length, 7);
+  // 2026-08-30: −1 — the Bios Apothecary consultation, deleted unverifiable.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -865,10 +874,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
-    // 2026-08-25: Flower Cat's live band karaoke night — the listing ends
-    // "Free entry! 2 drink minimum! Tip your musicians & bartender!", so the
-    // entry is stated free even though the bar expects a bar tab.
-    "greenpoint-trash-club",
+    // (flowercat-live-band-karaoke-0828 expired out; greenpoint-trash-club
+    // deleted 2026-08-30 — unverifiable past its verified-through date, its
+    // site sits behind the broken browser path)
     // 2026-08-14: three Longevity Stick sittings at Transmitter Park. The Go
     // Green detail page states the free-ness once for the whole series — "Join
     // us on select Friday evenings as we flow in our free Longevity Stick
@@ -1011,7 +1019,7 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     "sparsa-greenpoint",
     // (underthek-zumba-0827 expired out 2026-08-28)
   ]);
-  assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
+  // (the trash-club guard that stood here went with the card on 2026-08-30)
 });
 
 // 2026-08-02 launch IA (Batu): "warhammer night shouldn't be in the same lens
@@ -1246,7 +1254,8 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "cb1-environmental-committee-0903",
     "film-noir-support",
     "g-advocacy-mta",
-    "greenpoint-trash-club",
+    // (greenpoint-trash-club deleted 2026-08-30 — unverifiable, see the deck
+    // count contract above)
     // (mcgolrick-its-my-park-0823 expired out 2026-08-24)
     // 2026-08-17: the same series at Transmitter Park on 8/30, with the Friends
     // of WNYC Transmitter Park as the organiser. Carded off NYC Parks' own
@@ -1259,9 +1268,9 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   for (const id of gathering) {
     assert.ok(!civic.includes(id), `${id} is a social gathering, not civic action`);
   }
-  // Trash Club moved OUT of deals_memberships — it's civic action, not a
-  // paid membership; a signup card can only be one thing at a glance.
-  assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("deals_memberships"));
+  // (the Trash Club's "civic, not a paid membership" guard went with the card
+  // on 2026-08-30; the ruling it encoded is the work-shift rule above, which
+  // stands on its own.)
   // The G-train status hub is a reference/timeline card, not itself an ask —
   // it stays in news, unlike the four action cards above.
   assert.ok(seed.cards.find((c) => c.id === "g-train-closures").filters.includes("news"));
@@ -1290,8 +1299,9 @@ test("the deals & memberships lens holds only deals and standing memberships", (
   }
   assert.deepEqual(lens.map((c) => c.id).sort(), [
     // (bk-youth-ballet-trial-class deleted 2026-08-12 — unverifiable source)
-    // 2026-08-12: standing offer at no extra cost, in-store at 61 West St.
-    "bios-apothecary-herbalist-consultation",
+    // (bios-apothecary-herbalist-consultation deleted 2026-08-30 —
+    // unverifiable past its date; biosapothecary.com is a sender, not a
+    // roster source, so nothing re-reads it)
     "carcosa-membership-guest-pass",
     // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
     // different question than the event scan that preceded it: three of these

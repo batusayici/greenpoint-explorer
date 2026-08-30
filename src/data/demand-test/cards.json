@@ -1417,69 +1417,6 @@
       "lng": -73.949597
     },
     {
-      "id": "greenpoint-trash-club",
-      "category": "subscription",
-      "sourceCampaign": "tab_review_2026_07_22",
-      "title": "Greenpoint Trash Club",
-      "kicker": "Litter pickup — all supplies provided",
-      "locationName": "Rotating bar meetup — announced on Instagram",
-      "address": "105 Franklin St, Brooklyn, NY 11222",
-      "summary": "Every Wednesday night at 7:30 — rain, snow, or freezing cold — about 50 volunteers meet at a rotating neighborhood bar to clean the streets of North Brooklyn. 9,400+ lbs of litter picked up since August 2024. All supplies provided, just show up; this week's meetup spot lands on their Instagram early in the week.",
-      "filters": [
-        "civic"
-      ],
-      "audience": [
-        "resident",
-        "civic_actor"
-      ],
-      "corridor": null,
-      "free": true,
-      "startsAt": "2026-08-12T19:30:00-04:00",
-      "endsAt": "2026-08-26T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Join in",
-          "type": "join",
-          "url": "https://www.instagram.com/greenpointtrashclub/"
-        },
-        {
-          "label": "Donate",
-          "type": "learn_more",
-          "url": "https://greenpointtrashclub.org"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Trash Club — @greenpointtrashclub (bio: every Wednesday 7:30; Jul 20 post: Broken Land meetup)",
-          "publisher": "Greenpoint Trash Club",
-          "url": "https://www.instagram.com/greenpointtrashclub/",
-          "date": "2026-08-08"
-        },
-        {
-          "title": "greenpointtrashclub.org — mission & impact",
-          "publisher": "Greenpoint Trash Club",
-          "url": "https://greenpointtrashclub.org",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "high",
-      "trustRisk": "medium",
-      "geocodeQuery": "105 Franklin Street, Brooklyn, NY 11222",
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-08-12",
-      "lat": 40.729519,
-      "lng": -73.957799,
-      "recurring": true,
-      "recurrence": {
-        "days": [
-          "wed"
-        ]
-      },
-      "sourceQuote": "Every Wednesday night — rain, snow, or freezing cold — about 50 volunteers meet to clean the streets of North Brooklyn."
-    },
-    {
       "category": "food_drink",
       "audience": [
         "resident"
@@ -3838,51 +3775,6 @@
       "geocodeQuery": "176 Nassau Avenue, Brooklyn, NY 11222",
       "lat": 40.72522,
       "lng": -73.946139
-    },
-    {
-      "id": "bios-apothecary-herbalist-consultation",
-      "category": "discount",
-      "title": "Herbalist consult at no extra cost, Bios Apothecary",
-      "kicker": "In-store at 61 West St",
-      "summary": "Sit down with the shop's in-house herbalist and have a custom product blended for you — offered at no extra cost. In-store; ask at the counter (their emailed booking link is currently broken).",
-      "filters": [
-        "deals_memberships"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "recurring": true,
-      "endsAt": "2026-08-26T23:59:00-04:00",
-      "locationName": "Bios Apothecary",
-      "address": "61 West St, Brooklyn, NY 11222",
-      "sourceQuote": "Would you like to consult with our in-house herbalist and have a custom product created just for you? Now available to you at no extra cost!",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://www.biosapothecary.com/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Bespoke Skincare — Book a Consultation",
-          "publisher": "Bios Apothecary",
-          "url": "https://www.biosapothecary.com/",
-          "date": "2026-08-10"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "direct",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-12",
-      "updatedAt": "2026-08-12",
-      "lat": 40.7284753,
-      "lng": -73.959146
     },
     {
       "category": "event",

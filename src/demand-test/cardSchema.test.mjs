@@ -253,3 +253,36 @@ test("allDay: true contradicts a stated clock", () => {
   assert.equal(validateCard({ ...timed, allDay: false }).ok, true);
   assert.equal(validateCard({ ...good, allDay: "yes" }).ok, false, "allDay is a boolean");
 });
+
+// `recurrence.except` (2026-08-30, Batu). A venue cancels one sitting of a
+// weekly and the series carries on — before this the model could only run the
+// weekly or end it, so the McGolrick Bird Club's cancelled Aug 29 walk shipped
+// as a note in the summary with the row still on Saturday's shelf.
+const weekly = {
+  ...good,
+  category: "event",
+  startsAt: "2026-08-15T09:00:00-04:00",
+  endsAt: "2026-09-05T10:00:00-04:00",
+  recurring: true,
+  recurrence: { days: ["sat"] },
+};
+
+test("a recurring card may skip stated dates", () => {
+  assert.deepEqual(validateCard({ ...weekly, recurrence: { days: ["sat"], except: ["2026-08-29"] } }).errors, []);
+});
+
+test("skipped dates are calendar days, unique, and need stated days to skip", () => {
+  const withExcept = (except, days = ["sat"]) =>
+    validateCard({ ...weekly, recurrence: { days, except } });
+  assert.equal(withExcept(["Aug 29"]).ok, false, "prose is not a date");
+  assert.equal(withExcept(["2026-08-29", "2026-08-29"]).ok, false, "duplicates");
+  assert.equal(withExcept([]).ok, false, "an empty list states nothing");
+  // A standing offer repeats on no particular day, so it has no occurrence to
+  // skip; allowing this would make the field look like it carves holes in a
+  // span, which is not what it does.
+  assert.equal(
+    validateCard({ ...weekly, recurrence: { except: ["2026-08-29"] } }).ok,
+    false,
+    "except without days",
+  );
+});
