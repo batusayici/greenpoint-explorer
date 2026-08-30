@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-25T09:30:00-04:00",
+  "lastRunAt": "2026-08-29T10:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1556,6 +1556,99 @@
       "publisher": "Stoopwise ingest",
       "processedAt": "2026-08-25",
       "outcome": "Daily thin refresh. Deck 155 → 149 (expiry) → 155 (6 adds). holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. Fetch exit 0, reach 55/61 (10% error, ceiling 15%): the six failures are the known chromium CONNECT-reset browser fault. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Added DENCHU-KOZO (Film Noir, 8/25), three Brooklyn Craft Company workshops (8/25, 8/29, 9/6), Flower Cat live band karaoke (8/28) and the last Leaves summer writing group (9/3). Fixed library-thursday-programs-0827, which was advertising drop-in sewing machine hours that the branch has canceled. Re-verified and bumped three standing cards: the Maison Jar refill happy hour, North Brooklyn Chess at the Parkhouse, and the McGolrick Bird Club. Held the Bedford Slip cleanup on a time conflict inside its own listing."
+    },
+    {
+      "id": "run:2026-08-26-daily-thin",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-26",
+      "outcome": "Daily thin refresh. Deck 159 → 150 (expiry) → 156 (7 adds, 1 delete). holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. Fetch exit 0, reach 54/62 (13% error, ceiling 15%): the eight failures are the known chromium CONNECT-reset browser fault. Gmail pass NOT run — the connector is unauthenticated in the cloud routine and cannot be authorised non-interactively. Added four Film Noir screenings (KRIMINAL and BODY MELT 8/26, WHIRLPOOL 8/27, Film Noir Monday 8/31), the Sunday Longevity Stick sitting 8/30, a Greenpoint Library Tuesday day-card for 9/8, and Community Board 1's Environmental Protection Committee meeting 9/3. Folded the 3-4pm garden educator hour into the 9/4 library card, making it a grouped Friday day-card. Re-verified Pooch's Parlor's 20% first-groom offer at its Greenpointers article (R1) and bumped it through 9/8, rewriting a reconstructed sourceQuote to the article's actual words and persisting the read into the greenpointers snapshot. Deleted community-yoga-transmitter-tuesdays: FLAGGED past its verified-through date and Go Green's series page lists no Tuesday after August 25."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-26",
+      "outcome": "Wednesday scoped pull of the 8/27-9/2 roundup, 23 items. CARDED 7: diandi-daniel-lee-0827, underthek-zumba-0827, culture-house-poetry-night-0828, big-night-fifth-birthday-0829, better-club-portrait-night-0829, bedford-slip-hot-dogs-0830, madelines-comedy-0901. ALREADY COVERED 7, no duplicate authored: Teen Tech Time (library-thursday-programs-0827), the Charlotte movie night (charlotte-backyard-movie-nights, whose summary already names Julie & Julia for 8/27), Sunset Yoga (community-yoga-transmitter-thursdays), the garden educator hour and Myron the Magnificent (library-sensory-garden-0828), all three Bedford Slip Weekend days (bedford-slip-weekend-0828 / -0829) and the tree-care session (bedford-slip-tree-care-0829), and the St. Nicks housing clinic (library-tuesday-programs-0901). SKIPPED 3, all outside the bbox: the Brooklyn Brewery farewell (the line itself says 79 North 11th Street), the Love Island watch party at Moxy Williamsburg, and Drink & Draw at MASSA Art Cafe — its Luma listing states \"MASSA — Williamsburg, Brooklyn / 234 Grand Street NY 11211\". HELD 4: Shop & Sip at Plus BKLYN and the Otis & Finn back-to-school haircuts (both source-blocked — a multi-storefront business the source never ties to the Greenpoint address, and the page that would is refused at the routine's proxy), the SOTTE social market and the DSNY bagged compost pickup (both new-judgment lens questions). holds: 2 new-judgment · 0 rule-miss · 2 source-blocked."
+    },
+    {
+      "id": "run:2026-08-26-greenpointers-wednesday",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-26",
+      "outcome": "Wednesday Greenpointers pull. Deck 157 → 164 (7 adds, 0 deletes; expiry had nothing to remove). holds: 2 new-judgment · 0 rule-miss · 2 source-blocked. Scoped to the one feed source, which read clean (1/1, 0% error). R1 resolution fetches: luma.com, eventbrite.com, partiful.com and otisandfinn.com answered; diandi.nyc, bignightbk.com, bignight.nyc, plusbklyn.com, nbkparks.org, support.nbkparks.org and otisandfinn.as.me were all refused at the proxy, and opentable.com stays bot-blocked per the 2026-08-19 ruling. Di An Di's and Big Night's street addresses were recovered from Greenpointers' own archive through the WP REST API rather than held, which is what kept two same-week cards alive."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/27/simi-sol-collective-opens-in-former-la-merced-storefront/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-27",
+      "outcome": "CARDED simi-sol-collective (new_business, shopping + news) — an art, design and handmade-goods store open at 1008 Manhattan Ave in the former La Merced juice bar. The 8/29 \"come as your favorite painting\" event is NOT carded: the story frames it as an intention with no stated time. In watchItems."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/26/mediterranean-restaurant-liba-opens-in-former-home-of-isla-co/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-27",
+      "outcome": "SKIPPED — out of the bbox. The story's own first line states the address: \"A new kosher Mediterranean restaurant called Liba (107 N. 12th St.) opened earlier this month in the former home of Australian restaurant Isla & Co. at the base of The William Vale.\" That is Williamsburg."
+    },
+    {
+      "id": "run:2026-08-27-daily-thin",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-27",
+      "outcome": "Daily thin. Deck 164 → 158 (7 expired, 4 added, 3 deleted beyond expiry). holds: 1 new-judgment · 0 rule-miss · 1 source-blocked. Fetch exit 0, 53 of 62 sources read (15% error, at the ceiling): all 9 errors are the known browser-connect-reset fault, 4 browser-only sources plus 5 `auto` sources whose plain path degrades here. No EGRESS DENIED block; no R1 fetch was needed. Gmail pass ran and found two dated items — Town Square's Greencycle swap (past the horizon, now with its address) and the McGolrick Bird Club's cancellation of the 8/29 outing. Three deletions beyond expiry, all of them the source withdrawing evidence rather than a judgment call: comedy-wednesday-cysk and leaves-august-book-club (recurring events past their verified-through date whose browser-only sources cannot be read), and moon-bunny-two-day-camp-4-7-0903 (the studio's feed reaches 9/10 and no longer lists the 9/3-9/4 camp at all). Coverage gate 0 unexplained after the Troost 9/10 and Film Noir 9/1 gaps were closed with cards. Quotes gate green post-promotion."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/28/new-barbecue-joint-kirbees-soft-opens-this-sunday/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-28",
+      "outcome": "CARDED twice — kirbees-opening (new_business, food_drink + news) for the place, and kirbees-soft-launch-0830 (event, food_drink) for the Sunday 11am–2pm soft launch. Same shape as the Ashbox pair: a lasting card for the business, a dated card for the happening. 55 McGuinness Blvd, the old Peeps Kitchen."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/27/how-murawski-pharmacy-is-keeping-late-owners-legacy-alive/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-28",
+      "outcome": "CARDED murawski-pharmacy-legacy (news). Same shape as star-deli-viral-boost: a Greenpointers feature on a named Greenpoint business, filed news with the publisher on the source link."
+    },
+    {
+      "id": "run:2026-08-28-daily-thin",
+      "kind": "run",
+      "publisher": "Stoopwise ingest",
+      "processedAt": "2026-08-28",
+      "outcome": "Daily thin. Deck 158 → 149 (expiry) → 160 (15 adds, 4 deletes beyond expiry). holds: 2 new-judgment · 0 rule-miss · 1 source-blocked. All four deletes are recurring cards past their verified-through date. Two were re-verified against this run's snapshots and the programming has genuinely stopped: Kindred's page states nothing after August 27 (community-yoga-transmitter-thursdays) and Go Green's own schedule list runs Fri 8/28, Sun 8/30, then Sun Sep 27 with no Thursday left (longevity-stick-transmitter-thursdays). Two could not be read at all: comedy-thursday-showcase sits behind the still-down browser path, and charlotte-backyard-movie-nights has only an Instagram source the loop can never fetch — the same call the 8/26 and 8/27 runs made on the Tuesday yoga card, the Wednesday comedy residency and the Leaves August book club. Browser path still down (browser-connect-reset), 8 sources errored, reach 54/62."
+    },
+    {
+      "runAt": "2026-08-29",
+      "cadence": "daily-thin",
+      "shipped": [
+        "film-noir-saturday-0829",
+        "good-room-felipe-gordon-0912",
+        "troost-hefker-girl-0912",
+        "sereneco-franklin-st-fire",
+        "tend-free-shipping-0831"
+      ],
+      "updated": [
+        "acme-fish-friday-0814",
+        "bandit-running-greenpoint-runners",
+        "film-noir-cinema"
+      ],
+      "deleted": [
+        "macha-summer-fridays-after-hours",
+        "comedy-friday-showcase"
+      ],
+      "holds": "holds: 1 new-judgment · 0 rule-miss · 3 source-blocked",
+      "urls": [
+        "https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/",
+        "https://greenpointers.com/2026/08/28/greenpoint-this-week-ashbox-cafe-closes-el-puente-looking-for-new-home-and-more/",
+        "https://www.filmnoircinema.com/program/2026/8/22/krimi",
+        "https://donyc.com/venues/good-room",
+        "https://troostny.com/calendar/",
+        "https://www.tendgreenpoint.com/"
+      ],
+      "note": "Daily thin. Fetch exit 0, 54/62 sources read (13% error, all eight the known browser-connect-reset fault). Gmail pass ran: one registry sender (Tend Greenpoint) carried a new offer, Dandelion Wine re-sent a same-day tasting already past. Coverage gate needed two new explanations (macha-studio STANDING DARK after its Summer Fridays season ended, eavesdrop NO SNAPSHOT on the dead browser path)."
     }
   ],
   "senderRegistry": [
@@ -1811,6 +1904,12 @@
         "event"
       ],
       "note": "570 Manhattan Ave. Onboarded 2026-08-17 (Batu). Comic shop with a Square-Online ticketed events widget on the homepage — Flesh & Blood, One Piece, and other TCG tournament nights, each individually ticketed (stock status shown per event). PRIMARY SOURCE IS THE WEB PAGE, not the newsletter: the homepage renders the live events list server-side (see ingest-sources.json id action-city-comics), so pull it every ingest. Batu also subscribed to the newsletter 2026-08-17 as a backup channel in case a tournament is announced there before it hits the site."
+    },
+    {
+      "match": "townsquarebk.org",
+      "name": "Town Square",
+      "addedAt": "2026-08-27",
+      "note": "Proposed 2026-08-27. Town Square is already a web roster source (town-square-bk), but its dated items keep arriving by email first: the Greencycle Back-to-School Swap of Sat 9/26 reached the inbox on 8/26 with its full venue line — \"John Ericsson MS 126, 424 Leonard Street, Brooklyn\" — while the website carried only the garbled \"Saturday, Sep t e m ber 26th, 12-3 PM\" and no address. Sender additions are human-gated, so this rides in a PR."
     }
   ],
   "declinedSenders": [
@@ -2105,21 +2204,156 @@
       "name": "nbk-open-streets — swap the pinned detail URL once Bedford Slip Weekend is past (due 2026-08-31)",
       "note": "CHORE, not a card. The nbk-open-streets roster entry pins detail.urls to https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH, which is the 8/28-30 Bedford Slip Weekend. That page is where the per-day hours live — the coalition's profile page carries only a single start/end span for a whole multi-day run, so without a detail page a card off this source has no clock to quote and verify-quotes has nothing to check. FROM 2026-08-31 the pinned URL is dead weight. ON THE FIRST RUN ON OR AFTER 8/31: read https://partiful.com/u/N7B7Ape64RYAHsjXJK5qqhk5lwu2, take the soonest event whose stated location is in the Greenpoint bbox (their Berry Street events are Williamsburg and out of scope — the titles do not say which street, so open the event page), and replace detail.urls with it. If they have nothing upcoming in area, set detail.urls to [] rather than leaving the stale one — an empty list is honest, a stale URL reads as evidence that is not there. RESOLVES when the URL is swapped or emptied.",
       "addedAt": "2026-08-25"
+    },
+    {
+      "name": "Town Square — Greencycle \"Back to School\" Swap, Sat Sep 26 12-3pm at JEMS",
+      "note": "Horizon only, nothing blocked. Verbatim from town-square-bk.txt: \"Greencycle \\\"Back to School\\\" Swap\\nSaturday, Sep t e m ber 26th, 12-3 PM\\nJEMS 126, Bayard St. bw Manhattan Ave. & Bayard St. , Brooklyn\\nBring some! Or take some! Let's reuse, recycle & renew!\". Note the source's own text mangles \"September\" with stray spaces and gives a self-contradictory cross-street (\"Bayard St. bw Manhattan Ave. & Bayard St.\"), so the address needs a second read before this is carded. Web source, re-snapshotted every run, so it rolls in on its own once inside the window.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Golden Drum — Dream Seed 9/16, Songs for Healing & Liberation 9/28, Alash Ensemble 10/21 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from golden-drum.txt: \"Dream Seed: A Journey Through Sound\\nWednesday, September 16, 2026\\n8:00 PM\", \"Songs for Healing & Liberation with Andy Fischer-Price & Rebecca Elatiki\\nMonday, September 28, 2026\" and \"Alash Ensemble, Kevin Nathaniel & Dream Seed Live in NYC\\nWednesday, October 21, 2026\". 97 Green St. G1. Web source, re-snapshotted every run.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Longevity Stick at Transmitter Park — Sun Sep 27, Oct 4, Oct 25, Nov 1 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from the go-green-bk detail block at https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-27/: \"Sun, Sep 27, 8:30 AM to 9:15 AM\\nSun, Oct 4, 8:30 AM to 9:15 AM\\nSun, Oct 25, 8:30 AM to 9:15 AM\\nSun, Nov 1, 8:30 AM to 9:15 AM\". Note the four-week gap after 8/30 — the series pauses through September, so a recurring card would invent sittings that do not exist. Card each singly as it enters the window.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Film Noir Cinema — SUPERSHORTS NY FILM FESTIVAL, Sep 25-27 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Three programme records with fullUrls /program/2026/9/25/supershorts-ny-film-festival and two variants, all dated from their ISO startDate per the 2026-08-08 slug rule. Web source (Squarespace collection JSON), re-snapshotted every run, so it rolls in on its own.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Greenpointers — shooting on Commercial Street: does the deck card crime and public-safety news at all? [RULE QUESTION for Batu]",
+      "note": "HELD 2026-08-26 (new-judgment), PR ingest/daily-2026-08-26. The item is fully sourced and squarely in Greenpoint — greenpointers.com/2026/08/25/32-year-old-man-in-stable-condition-after-shooting-on-commercial-street/, verbatim: \"A 32-year-old man is recovering after an early morning shooting near 77 Commercial Street in Greenpoint.\" Nothing about the sourcing is in doubt. What is in doubt is the class: all 18 live news cards are openings, closings, land use, transit and civic process, and the deck has never carded a crime story. That is a category the map has no precedent for, so it is a decision, not a mechanical filing. WHAT WOULD RESOLVE IT: Batu ruling once on whether public-safety incidents belong in the news lens — and if so, with what bar (injury/fatality, ongoing risk, arrest) so it does not become a police blotter.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Scrappleland — the front page shows only the NEXT occurrence of each club, so a recurring card's quote decays weekly",
+      "note": "RECURRING MECHANIC, first hit 2026-08-26 by the quotes gate. scrappleland-backgammon-club quoted \"Tuesday Backgammon Club\\nAugust 25 @ 8:00pm - 10:00pm\"; the page had rolled that line to \"September 1 @ 8:00pm - 10:00pm\" and the gate failed the card. Not drift and not a fabrication — the source's OUR EVENTS block carries one dated line per club and advances it as each night passes, so any card quoting the dated line goes unverifiable within a week. Re-sourced to the current line. scrappleland-pinball-league has the same shape (currently quoting \"August 26 @ 8:00pm - 10:00pm\") and will fail the same way tomorrow — re-source it from the snapshot rather than treating it as new drift. A durable fix would quote the standing schedule phrasing instead of the dated line, if the page ever states one.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Shop & Sip at Plus BKLYN (8/28) — which storefront? plusbklyn.com is refused at the routine's proxy",
+      "note": "HELD 2026-08-26 (source-blocked), PR ingest/greenpointers-2026-08-26. Fully sourced except for where it is. The roundup states the event and its clock; the Partiful page (partiful.com/e/grM3kKD9Ckv5KDnbhXMJ) states \"Friday, Aug 28 6:00pm - 8:00pm ET\" and NO address at all — it carries no JSON-LD location, unlike the other two Partiful listings in the same roundup. Plus BKLYN has two storefronts and Greenpointers itself has named both: \"Plus BKLYN has finally opened their second location at 671 Manhattan Avenue\" (2024-09-11) and \"currently at 490 Metropolitan Avenue\" (2023-10-19), the second of which is Williamsburg. Under the 2026-08-12 attributability rule the claim is not tied to the Greenpoint address, so it cannot be pinned. WHAT WOULD RESOLVE IT: one read of plusbklyn.com or the shop's Instagram naming the store — plusbklyn.com is REFUSED at the routine's proxy (\"Request was cancelled\"), so this is one allowlist entry, or one interactive session, away.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Back-to-School Haircuts at Otis & Finn (8/31) — which of four shops? otisandfinn.as.me is refused at the routine's proxy",
+      "note": "HELD 2026-08-26 (source-blocked), PR ingest/greenpointers-2026-08-26. The roundup states the offer, the day and the 11 a.m. start and names no address. otisandfinn.com IS reachable and was read: it lists four shops — 11-16 44th Ave and 45-22 Pearson St in Long Island City, 197 Franklin St in Greenpoint, 154 Grand St in Williamsburg — and its /community page states the event exists (\"our annual free Back-to-School Haircutting Event\") without a location or a date. The booking page the roundup links, otisandfinn.as.me/schedule/e648f5dd/appointment/97364297, is the one page that would name the shop and it is REFUSED at the routine's proxy (\"Request was cancelled\"). Two of the four shops are in Queens, so guessing pins the card in the wrong borough. WHAT WOULD RESOLVE IT: allowlisting otisandfinn.as.me (an Acuity Scheduling host) for the routine, or one interactive-session fetch of that booking page.",
+      "addedAt": "2026-08-26"
+    },
+    {
+      "name": "Simi & Sol Collective — August 29 \"come as your favorite painting\" event",
+      "note": "HORIZON/NO CLOCK, 2026-08-27. Greenpointers' opening story states it only as an intention, not a listing: \"The store is also curious about hosting unique events, including one on August 29 where participants can come dressed as their favorite painting.\" No time, no ticket, no confirmation that it is happening — carding it would mean inventing the clock. The opening itself IS carded (simi-sol-collective). WHAT WOULD CHANGE IT: the store or the roundup stating a time.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Greenpoint Comedy Club — the Wednesday \"Comedians You Should Know\" residency, deleted 2026-08-27",
+      "note": "SOURCE-BLOCKED. comedy-wednesday-cysk was FLAGGED past its verified-through date of 2026-08-26 and jumpcomedy.com is a browser-only source (Phoenix LiveView over a WebSocket, no plain-fetchable endpoint), so with the browser path down there was nothing to re-verify it against and the refresh-discipline test will not let a past-dated event card ship. Deleted rather than renewed on faith — the same call the 8/26 run made on the Tuesday Transmitter Park yoga card. The Thursday, Friday and Saturday showcases are live through 8/27, 8/28 and 8/29 and will hit this exact wall on those days. WHAT WOULD CHANGE IT: the browser path coming back, or the club publishing a plain-fetchable listing.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Leaves — the August Book Club, deleted 2026-08-27",
+      "note": "SOURCE-BLOCKED, same shape as the comedy residency. leaves-august-book-club was FLAGGED past its verified-through date of 2026-08-26 and leavesbookstore.com/events.php is browser-only, so it could not be re-verified. August is also over, so a September club would be a new card rather than a renewal. leaves-summer-writing-group-0903 is unaffected and stays live. WHAT WOULD CHANGE IT: the browser path coming back.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Moon Bunny Aerial — the 9/3–9/4 camp for 4–7s vanished from the feed",
+      "note": "SOURCE FACT, 2026-08-27, caught by the post-promotion quotes check. moon-bunny-two-day-camp-4-7-0903 quoted \"start_at: 2026-09-03T13:00:00.000Z\" and the three sibling lines; the feather.rsvp feed now reaches 2026-09-10 and carries no camp at all on 9/3 or 9/4, only regular classes. So this is not the feed's known past-days roll-off — the future sittings themselves are gone. Card deleted rather than left asserting a camp the studio no longer lists. WHAT WOULD CHANGE IT: the studio re-listing it.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Moon Bunny Aerial — the 9/1–9/2 camp lost its age band in the source",
+      "note": "SOURCE FACT, 2026-08-27. The listing that read \"name: Two Day Camp 8-12 yrs old\" on 9/1 and 9/2 now reads \"name: Two Day Kids Camp\", and the string \"8-12\" appears nowhere in the snapshot. The card was re-authored to what the source now says — title \"Two-Day Circus Camp at Moon Bunny Aerial\", no age claim — keeping its id. Do not restore the 8–12 range from memory. WHAT WOULD CHANGE IT: the studio stating an age range again.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "G train — two new Greenpoint closure windows, Sep 14–18 overnights and Sep 25–28 weekend",
+      "note": "HELD 2026-08-27 (human-gated by rule, not by doubt), PR ingest/daily-2026-08-27. The MTA alerts feed carries two Greenpoint-closing windows the deck does not: \"No [G] between Bedford-Nostrand Avs and Court Sq\" with active_period [[1789436700,1789462800],[1789523100,1789549200],[1789609500,1789635600],[1789695900,1789722000]] — Mon Sep 14 through Fri Sep 18, 9:45 PM to 5 AM each night, \"What's happening? Structural maintenance\" — and the same header with active_period [[1790387100,1790586000]] — Fri Sep 25 9:45 PM to Mon Sep 28 5 AM, \"What's happening? We're modernizing signals\". Both carry the Greenpoint stops (the roster's include filter keys on stop_id G26/G28). GTRAIN_WINDOWS in src/demand-test/gtrainBanner.js is CODE, so per the mta-g-alerts roster note a new window is a human-gated change and never auto-ships with a content refresh. The Sep 14–18 overnight block was already in the previous baseline and had not been carded either.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Town Square — Greencycle \"Back to School\" Swap now has its address, Sat Sep 26 12-3 PM",
+      "note": "Horizon only, nothing blocked — updates the 2026-08-25 entry, which had the date but not the venue. Town Square's own newsletter of 2026-08-26 states it in full: \"Greencycle Back-to-School Swap 2026 / Saturday, September 26th, 12-3 PM / John Ericsson MS 126, 424 Leonard Street, Brooklyn\". Card it when 9/26 comes inside the 14-day window. Separately: hello@townsquarebk.org is NOT in senderRegistry and this is the second Town Square item to arrive by email — proposed as a sender addition in the same PR, which is human-gated.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "McGolrick Bird Club — no outing Saturday 8/29, and a recurring card cannot say so [RULE QUESTION for Batu]",
+      "note": "The club's own newsletter of 2026-08-26 states it: \"Unmark your calendars. Brooklynites: no regularly scheduled McGolrick Bird Club outing this Saturday.*\" and \"*The whiteboard will still be out. Show up anyway and jot down what you notice.\" The card model has no way to skip ONE occurrence of a recurring card, so the run put the exception in the card's summary and left the Saturday recurrence running through 9/5 — a reader who opens the card on 8/29 is told, but the row still appears in that day's lens. Two other shapes were available and both are worse: ending the series before 8/29 loses the real 9/5 walk, and deleting it loses the club. THE RULE QUESTION: should a recurring card carry an exceptions list (skipped dates), or is summary-only the intended answer? The newsletter is persisted into .ingest-cache/go-green-bk.txt as a [NEWSLETTER PERSISTED] block.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Troost — NOAH AMICK 10/12 and KEN KOBAYASHI 10/13 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from troost.txt: \"summary: NOAH AMICK\\ndescription: electric indie jazz\\nstart.date: 2026-10-12\\nend.date: 2026-10-13\" and \"summary: KEN KOBAYASHI\\nstart.date: 2026-10-13\\nend.date: 2026-10-14\". The Google Calendar feed is re-snapshotted every run, so these roll in on their own.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Two recurring OFFERS are past their verified-through date and their sources cannot be read",
+      "note": "SOURCE-BLOCKED, 2026-08-27. Expiry FLAGGED four; two were resolved by deletion (the Wednesday comedy residency and the Leaves August club, both category `event`, which the refresh-discipline test forces). The other two are not events, so nothing forces them and they stay live: greenpoint-trash-club (verified through 2026-08-26 — greenpointtrashclub.org is a genuine SPA that reduces to 21 characters on the plain path, and the rotating meetup spot only ever exists on Instagram) and bios-apothecary-herbalist-consultation (verified through 2026-08-26 — biosapothecary.com is not a roster source at all, so no fetch in the loop can ever re-verify it). Both are first-party standing offers with no evidence they have stopped. WHAT WOULD CHANGE IT: the browser path for the first; onboarding biosapothecary.com to the roster for the second, which is a human-gated roster PR.",
+      "addedAt": "2026-08-27"
+    },
+    {
+      "name": "Town Square — Greencycle Back-to-School Swap, Sat 9/26 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. EMAIL IS ONE-SHOT, so recording it verbatim: \"Saturday, September 26, 2026, 12 PM ~ Town Square BK's Greencycle Back-to-School Swap. Bring some! Take some!! JEMS 126, 424 Leonard St. (Bayard St. entrance), Brooklyn, NY. RSVP here.\" and, from the same newsletter (hello@townsquarebk.org, 2026-08-26), \"Greencycle Back-to-School Swap 2026 / Saturday, September 26th, 12-3 PM / John Ericsson MS 126, 424 Leonard Street, Brooklyn\" plus \"Suggested donation: $10 a family to help cover costs and support local nonprofit Town Square BK and amazing Brooklyn scouts.\" Card it when 9/26 enters the window. Note the newsletter body contradicts itself once — one paragraph says \"Saturday, September 27th\" while the heading, the community calendar and the subject line all say Saturday 9/26, which is the actual Saturday.",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "name": "Town Square — Scouts BSA Troop 26 resumes Thu 9/17 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. EMAIL IS ONE-SHOT, so recording it verbatim from the 2026-08-26 Town Square newsletter: \"Weekly Thursday meetings will resume on September 17th, 5:30-7 PM / McCarren Park BBQ Area (Driggs Ave b/w Manhattan Ave & Lorimer St), Brooklyn\" and \"Thursday, September 17, 2026, 5:30 PM ~ Boy Scouts Troop 26 weekly meeting, Grades 6-12.\" The live town-square-scouts-troop-26 card already carries the standing Thursday 5:30–7pm slot at McCarren Park, so this only adds the resumption date — fold it in when 9/17 is in window.",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "name": "Dandelion Wine announces tastings same-day and this run missed one by a day",
+      "note": "FACT about the source, not a blocked item. The 2026-08-27 email (cheers@dandelionwinenyc.com, 18:50 UTC) read \"TASTING TONIGHT 6-8: Cruse Wine Co.'s California Sparkling!\" — announced and run on the same evening, so a next-morning daily thin can never card it in time. The registry note already says \"announces SAME-DAY tastings — only catchable on morning-of runs\"; this is the second measured instance. WHAT WOULD CHANGE IT: nothing we control; a same-day tasting is only cardable if a run happens between the send and the pour.",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "name": "Greenpoint Library — Garden Hours with a Garden Educator, Fri 9/11 3-4pm [RULE QUESTION for Batu]",
+      "addedAt": "2026-08-29",
+      "note": "HELD 2026-08-29 (new-judgment: lens). Everything else is stated and R1 was run — the Solr record carries the date, the clock, the room and the body: \"ts_title: Garden Hours with a Garden Educator\\nds_event_start_date: 2026-09-11T19:00:00Z\\nds_event_end_date: 2026-09-11T20:00:00Z\\nss_event_location: Greenpoint, Demonstration Garden\\nss_event_age: Adults\\nsm_event_tags: [\\\"gardening\\\",\\\"health and wellness\\\"]\" and \"Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! ... Garden Educator will be on site from 3-4pm on Fridays, weather permitting. ... All ages welcome.\" WHAT IS MISSING IS THE LENS, and no rule supplies it. R2: no standing rule covers an all-ages gardening hour. R3: every live Friday precedent (library-sensory-garden-0821/0828/0904) is `family_kids`, but each earned that from the ages-0-5 Sensory Garden Hour sharing the day — 9/11 has only this one programme, and the source calls it Adults. `wellness` is defined in cardSchema.js as the movement cluster (yoga/pilates/dance/run), which a garden conversation is not. THE RULE QUESTION: what lens does an all-ages gardening/nature programme take — `wellness` widened past movement, `family_kids` on the all-ages line, or `civic` on the stewardship line? Answer it once and every future garden hour, seed swap and tree-care talk files mechanically."
+    },
+    {
+      "name": "Greenpointers 8/28 roundup — El Puente and BE Yarn have no stated address",
+      "addedAt": "2026-08-29",
+      "note": "HELD 2026-08-29 (geography unstated, both). The roundup states each item in one line and never says where. Verbatim: \"El Puente is looking for a new permanent home.\" (the dedicated passage adds \"El Puente moved out of its headquarters last month.\" and \"El Puente , which supports community-led movements among low-income peoples, has moved its programming to other locations.\") and \"BE Yarn tells us that their landlord granted them a temporary extension, and they will remain open for the time being.\" Neither carries a street address anywhere in the snapshot, and the Greenpointers roundup covers Williamsburg as well as Greenpoint, so the bbox gate cannot be applied either way without inventing the location. WHAT WOULD RESOLVE IT: an address from either organisation, or a follow-up Greenpointers story that states one. NOT a fetch problem — no host was blocked."
+    },
+    {
+      "name": "Clay Space — Glaze Chemistry (8/29-30 + 9/2) and Body Mechanics (9/10) state no start time",
+      "addedAt": "2026-08-29",
+      "note": "HELD 2026-08-29 (source-blocked: the page does not say, AND the page that might is unreachable). Both are now INSIDE the 14-day window, which retires the horizon note filed 2026-08-18 for the glaze course — the blocker turns out not to have been the horizon at all. The workshops page states dates and description and no clock: \"Glaze Chemistry & Application with Michael Gundlach\\nUpcoming dates: August 29-30 + Sept 2\" and \"Body Mechanics with HanaKyle Moranz\\nUpcoming dates: September 10\\n...\\nThis workshop is 3 hours long.\" Two other workshops on the same page DO carry clocks (\"from 10am-2pm each day\", \"a one-day workshop (11am-5pm)\"), so the omission is per-workshop, not a parser gap. R1 could not resolve it: clayspacebk.com's detail pages are configured and both failed this run with \"browser unavailable (browser-connect-reset)\" — the known dead browser path, not an egress denial. Carding either would mean inventing a start time. WHAT WOULD RESOLVE IT: the browser path coming back, or Clay Space printing the time on the workshops page."
+    },
+    {
+      "name": "Good Room — DJ Plead and rrao, Thu 10/1 (past the 14-day window)",
+      "addedAt": "2026-08-29",
+      "note": "Horizon only, nothing blocked. Verbatim from good-room.txt: \"Thursday\\nOct 1\\nDJ Plead, rrao\\nGood Room\\n7:00PM\". Good Room's DoNYC listing is a web source re-snapshotted every run, so this rolls in on its own once the window reaches it — recorded for completeness, not as a deferral that needs re-finding."
+    },
+    {
+      "name": "Greenpoint Library — two September programmes are CANCELED in the feed",
+      "addedAt": "2026-08-29",
+      "note": "SOURCE FACT 2026-08-29, found by scanning the full snapshot for is_event_canceled rather than trusting the diff (the 2026-08-17 lesson: a flipped flag is invisible to a line-set diff). Exactly two records carry it: \"ts_title: Sunset Storytime\\nds_event_start_date: 2026-09-10T22:00:00Z\\nis_event_canceled: 1\" and \"ts_title: Sustainable Sewing: Sewing Machine Basics\\nds_event_start_date: 2026-09-12T14:30:00Z\\nis_event_canceled: 1\". NEITHER reaches a reader: library-thursday-programs-0910 already excludes Sunset Storytime (its six programmes are the six that are not canceled), and 9/12 has no library card at all. No action needed — recorded so a later run does not 'restore' them."
+    },
+    {
+      "name": "Two recurring cards are on their THIRD run past verified-through with unreadable sources [RULE QUESTION for Batu]",
+      "addedAt": "2026-08-29",
+      "note": "SOURCE-BLOCKED, escalated 2026-08-29 under the 'a card held twice for the same reason is a MISSING RULE' rule. `greenpoint-trash-club` (verified-through 2026-08-26) and `bios-apothecary-herbalist-consultation` (2026-08-26) were both FLAGGED by expiry again today and neither can be re-verified: greenpointtrashclub.org is a browser-only source and the browser path is down; biosapothecary.com is NOT a roster source at all, only a sender, and no Bios email arrived in the 2-day Gmail window. The 2026-08-27 run made the same call and left both live; this run has followed that precedent rather than re-arguing it. THE RULE QUESTION: when a recurring card's source becomes permanently unreadable, does the card stay live on its last verification, get deleted like the comedy and Leaves event cards were, or degrade to something the UI can show as unverified? Today the deck answers 'stays live' for offers and memberships and 'delete' for events, which is a split nobody chose."
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
-    "greenpointers": "2026-08-23",
+    "greenpointers": "2026-08-28",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-24",
+    "film-noir-cinema": "2026-08-28",
     "scrappleland": "2026-08-06",
-    "flower-cat": "2026-08-24",
-    "greenpoint-library": "2026-08-20",
-    "bpl-north-brooklyn-calendar": "2026-08-20",
+    "flower-cat": "2026-08-27",
+    "greenpoint-library": "2026-08-27",
+    "bpl-north-brooklyn-calendar": "2026-08-27",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
-    "hana-makgeolli-events": "2026-08-18",
-    "hana-makgeolli-soolschool": "2026-08-18",
+    "hana-makgeolli-events": "2026-08-27",
+    "hana-makgeolli-soolschool": "2026-08-27",
     "archestratus": "2026-07-24",
     "little-dance-school": "2026-07-24",
     "brooklyn-youth-ballet": "2026-08-02",
@@ -2132,11 +2366,11 @@
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-08-20",
+    "go-green-bk": "2026-08-25",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-23",
+    "troost": "2026-08-28",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-08-23",
+    "good-room": "2026-08-28",
     "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -2165,7 +2399,8 @@
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
     "action-city-comics": "2026-08-16",
-    "golden-drum": "2026-08-19"
+    "golden-drum": "2026-08-27",
+    "nbk-open-streets": "2026-08-25"
   },
   "coverageExplanations": [
     {
@@ -2253,13 +2488,6 @@
       "expiresAt": "2026-09-08"
     },
     {
-      "sourceId": "brooklyn-youth-ballet",
-      "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
-    },
-    {
       "sourceId": "greenpoint-trash-club",
       "gapKey": "NO SNAPSHOT",
       "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
@@ -2302,13 +2530,6 @@
       "expiresAt": "2026-08-25"
     },
     {
-      "sourceId": "sunshine-laundromat",
-      "gapKey": "NO SNAPSHOT",
-      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned this run, not inherited: the 2026-08-11 fetch printed its own BROWSER PREFLIGHT FAILED block — \"page.goto: net::ERR_CONNECTION_RESET at https://example.com/\" — while plain fetch reached that same control URL through the same proxy without trouble, and all 7 browser-path sources errored together. Reported to platform support; NOT an allowlist gap, because allowlisting a host plain fetch already reaches does nothing. This is 'we cannot read the source', never 'the source is quiet', and it is separately alarmed by browserFetchDown in check-freshness.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
-    },
-    {
       "sourceId": "maison-jar",
       "gapKey": "GAP",
       "reason": "FALSE POSITIVE, verified against the snapshot 2026-08-13: the single flagged date is 2026-08-27 and it belongs to a PAST workshop in the page's archive, not to current supply. The snapshot reads \"August 27, 2025 - 04:00 PM TO 06:00 PM / Happy Hour - August 2025 / It's not summer without some cold and refreshing kombucha!\" — the year is 2025. extractDates reads the month and day and cannot see that the year is a season old, which is the same annotation-vs-event blindness recorded for the macha-studio image block on 2026-08-12. Maison Jar's live standing offer IS carded (maison-jar-refill-happy-hour, verified-through 8/24). No uncarded 2026 supply exists at this source.",
@@ -2339,9 +2560,9 @@
     {
       "sourceId": "go-green-bk",
       "gapKey": "GAP",
-      "reason": "GEOGRAPHY, re-earned 2026-08-25 against this run's snapshot. The two flagged dates are 8/31 and 9/8, and both belong to Brooklyn-wide programming outside Greenpoint: 8/31's only lines are \"Monday, August 31, 7:00 a.m.–9:00 a.m., It's My Park at Leif Ericson Park\" and \"...at Sunset Park\" (Bay Ridge and Sunset Park), and 9/8 is a Waterfront Walks occurrence whose Venue block reads \"Brooklyn Bridge Park, Pebble Beach, Brooklyn, NY 11201\". The source is a Brooklyn-wide series page, so out-of-neighborhood dates are its normal output, not a coverage loss. Every in-area item it carries in the window IS covered: the Transmitter Park yoga Tuesdays and Thursdays, the McGolrick Bird Club (re-verified and bumped through 9/5 this run), It's My Park at Transmitter Park on 8/30, and Keep Calm and Carry Yarn inside library-tuesday-programs-0825.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "GEOGRAPHY, re-earned 2026-08-27 against this run's snapshot. The single flagged date is 9/6, and it belongs to the Prospect Park Alliance's Battle of Brooklyn Tour, whose detail block reads \"This one-hour tour begins and ends at Lefferts Historic House\" and \"Dates: daily through September 6, 2026\" — Prospect Park, not Greenpoint. The source is a Brooklyn-wide series page, so out-of-neighborhood dates are its normal output, not a coverage loss. Every in-area item it carries in the window IS covered: the Transmitter Park yoga Thursdays, the McGolrick Bird Club (through 9/5), and It's My Park at Transmitter Park on 8/30.",
+      "addedAt": "2026-08-27",
+      "expiresAt": "2026-09-10"
     },
     {
       "sourceId": "eavesdrop",
@@ -2374,9 +2595,9 @@
     {
       "sourceId": "nycparks-greenpoint",
       "gapKey": "GAP",
-      "reason": "Re-earned 2026-08-25 against this run's snapshot. The flagged set is now 8/25, 8/27, 8/28, 8/31, 9/2 and 9/7, and every one carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule: \"McCarren Pool: Lap Swim\" on 8/25, 8/26, 8/27 and 8/28; \"Body-Centric Circuit Training\" (Shape Up NYC) on 8/26 and 9/2; \"CANCELED: Bodyweight Interval Training\" (Shape Up NYC) on 8/31 and 9/7. Every non-rec item the feed carries in the window IS carded — mccarren-movies-guardians-2-0826, mcgolrick-movies-eternal-sunshine-0829 and transmitter-its-my-park-0830 — so the flagged dates are the exclusion working, not supply we missed.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "Re-earned 2026-08-27 against this run's snapshot. The flagged set is now 8/27, 8/28, 8/31, 9/2, 9/7 and 9/9, and every one carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule: \"McCarren Pool: Lap Swim\" on 8/27 and 8/28; \"Body-Centric Circuit Training\" (Shape Up NYC) on 9/2 and 9/9 — the 9/9 record reads \"startdate: 2026-09-09 / starttime: 6:00 pm / location: Multi-Use Room A (in McCarren Park) / categories: Fitness | Shape Up NYC | Recreation Center Programming\"; and \"CANCELED: Bodyweight Interval Training\" (Shape Up NYC) on 8/31 and 9/7. Every non-rec item the feed carries in the window IS carded — mcgolrick-movies-eternal-sunshine-0829 and transmitter-its-my-park-0830 — so the flagged dates are the exclusion working, not supply we missed.",
+      "addedAt": "2026-08-27",
+      "expiresAt": "2026-09-10"
     },
     {
       "sourceId": "eavesdrop",
@@ -2398,6 +2619,41 @@
       "reason": "ONGOING EXHIBITION, which belongs to the venue card and not to a dated event (SKILL.md class rule, Batu 2026-08-12). The single flagged date is 2026-09-08 and it is the CLOSING date of the current show, not a happening: the snapshot's whole dated content is \"There Are People Here\" / \"July 11 – September 8, 2026\" / \"Free admission unless stated otherwise\" / \"W-F (2-7pm) SAT/SUN (1-6pm)\". The live `dreams-on-command` venue card already carries exactly those four lines as its sourceQuote and states what is on view and through when. Carding a 7/11→9/8 run as an event would also park it in the Today lens every day until September, which is the failure the rule exists to prevent. WHAT WOULD CHANGE IT: a dated opening, closing reception or artist talk, which are real happenings and stay cardable.",
       "addedAt": "2026-08-25",
       "expiresAt": "2026-09-08"
+    },
+    {
+      "sourceId": "sunshine-laundromat",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Browser-path source and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run: the 2026-08-26 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside seven other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:33571\" — so headless Chromium's own CONNECT tunnel is refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Sunshine is `auto` and JS-thin (169 bytes of text on the plain path, measured 2026-08-10), so it falls through to the browser and dies with it. This is 'we cannot read the source', never 'the source is quiet'.",
+      "addedAt": "2026-08-26",
+      "expiresAt": "2026-09-09"
+    },
+    {
+      "sourceId": "brooklyn-youth-ballet",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Browser-path source and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-26 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside seven other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:33571\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'. Additional source fact for this one: bkyouthballet.com/calendar/ answers HTTP 202 with a zero-byte body on the plain path (recorded 2026-08-11), so it falls through to the browser and dies with it.",
+      "addedAt": "2026-08-26",
+      "expiresAt": "2026-09-09"
+    },
+    {
+      "sourceId": "bandit-running-gpr",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Browser-path source and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-27 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside eight other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:45057\" — so headless Chromium own CONNECT tunnel is refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is \"we cannot read the source\", never \"the source is quiet\". bandit-running-gpr is `auto` and its plain path degrades in this environment, so it falls through to the browser and dies with it.",
+      "addedAt": "2026-08-27",
+      "expiresAt": "2026-09-10"
+    },
+    {
+      "sourceId": "macha-studio",
+      "gapKey": "STANDING DARK",
+      "addedAt": "2026-08-29",
+      "expiresAt": "2026-09-12",
+      "reason": "THE STANDING SERIES RAN ITS STATED COURSE — this is the flag doing its job on a season ending, not a night going dark. macha-studio's only recurring programming is Summer Fridays, and the shop states its season in the poster itself, transcribed into the [IMAGE READ 12 August 2026] block of this source's baseline: \"SUMMER FRIDAYS\\nJoin us for After Hours this Summer. Drinks, try on's and wishlist building\\nMacha Studio\\n135 Franklin St\\nGreenpoint, Brooklyn\\nSummer Fridays\\nJuly - August\\nFrom 3pm\". August's last Friday was 8/28, so `macha-summer-fridays-after-hours` was FLAGGED past its 2026-08-28 verified-through and DELETED this run rather than renewed — the source says the series is over, which is stronger evidence than being unable to re-check it. Nothing else on the page is dated: the listening party (8/7) and the poetry open-mic (7/31) have both passed, and the remaining Atom entries carry no dates at all. WHAT WOULD CHANGE IT: Macha posting a fall edition, which lands as a normal diff. PROPOSED TO BATU IN THE REVIEW PR: whether `standing: true` should stay set on a seasonal source between editions, or be reviewed each season — that is a roster change and human-gated."
+    },
+    {
+      "sourceId": "eavesdrop",
+      "gapKey": "NO SNAPSHOT",
+      "addedAt": "2026-08-29",
+      "expiresAt": "2026-09-12",
+      "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run: the 2026-08-29 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the seven other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:44409\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet' — the deck still carries five live Eavesdrop gig cards authored while the page was readable."
     }
   ]
 }
