@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-08-26",
+    "asOf": "2026-08-30",
     "lastDataPull": "2026-08-18",
-    "lastFeedCheck": "2026-08-26",
+    "lastFeedCheck": "2026-08-30",
     "nextReadout": "2026-08-25",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -1184,31 +1184,55 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-08-26",
-    "dayName": "Wednesday, August 26",
+    "ranAt": "2026-08-30",
+    "dayName": "Sunday, August 30",
     "dueToday": [],
-    "overdue": [],
+    "overdue": [
+      {
+        "label": "Fire the channels cleared on 8/17 and still unsent — Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir → WORD → Flower Cat), IG carousel",
+        "since": "2026-08-28"
+      }
+    ],
     "waiting": [
       {
-        "what": "PR #50 — growth: readout 2026-08-25 [data pending: search]",
+        "what": "PR #55 — content(track-v): held cards, daily 2026-08-29",
         "age": 0
       },
       {
-        "what": "PR #48 — content(track-v): held cards, weekly 2026-08-24",
+        "what": "PR #54 — content(track-v): held cards, daily 2026-08-28",
         "age": 1
       },
       {
-        "what": "PR #47 — content(track-v): held cards, daily 2026-08-22",
+        "what": "PR #53 — content(track-v): held cards, daily 2026-08-27",
+        "age": 2
+      },
+      {
+        "what": "PR #52 — content(track-v): held cards, Greenpointers 2026-08-26",
         "age": 3
+      },
+      {
+        "what": "PR #51 — content(track-v): held cards, daily 2026-08-26",
+        "age": 3
+      },
+      {
+        "what": "PR #50 — growth: readout 2026-08-25 [data pending: search]",
+        "age": 4
+      },
+      {
+        "what": "PR #48 — content(track-v): held cards, weekly 2026-08-24",
+        "age": 5
+      },
+      {
+        "what": "PR #47 — content(track-v): held cards, daily 2026-08-22",
+        "age": 7
+      },
+      {
+        "what": "1 commit on main not pushed",
+        "age": 0
       }
     ],
     "overnight": [
-      "ingest: add North Brooklyn Open Streets to the roster; fix a composed quote",
-      "content(track-v): Bedford Slip resolved — the clean up plus the weekend it sits inside (#49)",
-      "content(track-v): daily refresh — six new cards, one canceled class pulled",
-      "decide: Rana posts to several groups; warm re-invites retired; Perri met in person",
-      "decide: families awareness starts Sep 8; the two weeks before it are the supply build",
-      "chore: restamp freshness — Tend's card has no roster pulse now"
+      "content(track-v): daily refresh — the Franklin St fire, and the window reaches 9/12"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1217,11 +1241,11 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 64,
-      "reservoir": 14,
+      "dated": null,
+      "reservoir": null,
       "stale": false,
       "thin": false,
-      "fresh": true,
+      "fresh": false,
       "cards": 159
     }
   }
