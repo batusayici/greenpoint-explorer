@@ -66,6 +66,35 @@ export const GTRAIN_WINDOWS = Object.freeze([
     stops: "Greenpoint Av + Nassau Av",
     shuttle: "free T403 shuttle",
   }),
+  // Added 2026-08-27 from the same alerts feed. Both windows carry the
+  // "No [G] between Bedford-Nostrand Avs and Court Sq" header and the
+  // Greenpoint stops (G26/G28), so both close Greenpoint Av and Nassau Av.
+  // This one is a run of four overnights, not a weekend: its active_period is
+  // four separate periods, [[1789436700,1789462800],[1789523100,1789549200],
+  // [1789609500,1789635600],[1789695900,1789722000]], i.e. Mon Sep 14 through
+  // Fri Sep 18, 9:45 PM to 5 AM each night. It follows the Sep 11–14 weekend
+  // back-to-back, the same shape as Aug 17–21 → Aug 21–24. Reason given:
+  // "What's happening? Structural maintenance".
+  Object.freeze({
+    startsAt: "2026-09-14T21:45:00-04:00",
+    endsAt: "2026-09-18T05:00:00-04:00",
+    dates: "Mon Sep 14 – Fri Sep 18, nightly 9:45 PM – 5 AM",
+    shortDates: "Sep 14–18 nights",
+    stops: "Greenpoint Av + Nassau Av",
+    shuttle: "free T403 shuttle",
+  }),
+  // active_period [[1790387100,1790586000]] — Fri Sep 25, 9:45 PM to Mon
+  // Sep 28, 5 AM. Reason given: "What's happening? We're modernizing signals".
+  // The Sep 18 → Sep 25 gap is real: MTA has announced no Greenpoint closure
+  // in it, so the banner is silent for that week.
+  Object.freeze({
+    startsAt: "2026-09-25T21:45:00-04:00",
+    endsAt: "2026-09-28T05:00:00-04:00",
+    dates: "Fri Sep 25, 9:45 PM – Mon Sep 28, 5 AM",
+    shortDates: "Sep 25–28",
+    stops: "Greenpoint Av + Nassau Av",
+    shuttle: "free T403 shuttle",
+  }),
 ]);
 
 // The banner tracks exactly one window: the next one still in the future.
