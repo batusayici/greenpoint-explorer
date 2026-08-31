@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-08-30",
+    "asOf": "2026-08-31",
     "lastDataPull": "2026-08-18",
-    "lastFeedCheck": "2026-08-30",
+    "lastFeedCheck": "2026-08-31",
     "nextReadout": "2026-08-25",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -1184,8 +1184,8 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-08-30",
-    "dayName": "Sunday, August 30",
+    "ranAt": "2026-08-31",
+    "dayName": "Monday, August 31",
     "dueToday": [],
     "overdue": [
       {
@@ -1195,44 +1195,16 @@
     ],
     "waiting": [
       {
-        "what": "PR #55 — content(track-v): held cards, daily 2026-08-29",
-        "age": 0
-      },
-      {
-        "what": "PR #54 — content(track-v): held cards, daily 2026-08-28",
-        "age": 1
-      },
-      {
-        "what": "PR #53 — content(track-v): held cards, daily 2026-08-27",
-        "age": 2
-      },
-      {
-        "what": "PR #52 — content(track-v): held cards, Greenpointers 2026-08-26",
-        "age": 3
-      },
-      {
-        "what": "PR #51 — content(track-v): held cards, daily 2026-08-26",
-        "age": 3
-      },
-      {
         "what": "PR #50 — growth: readout 2026-08-25 [data pending: search]",
-        "age": 4
-      },
-      {
-        "what": "PR #48 — content(track-v): held cards, weekly 2026-08-24",
         "age": 5
-      },
-      {
-        "what": "PR #47 — content(track-v): held cards, daily 2026-08-22",
-        "age": 7
-      },
-      {
-        "what": "1 commit on main not pushed",
-        "age": 0
       }
     ],
     "overnight": [
-      "content(track-v): daily refresh — the Franklin St fire, and the window reaches 9/12"
+      "docs: never auto-merge cards.json across a content refresh",
+      "rules: settle seven held-card questions in one pass (2026-08-30)",
+      "Merge remote-tracking branch 'origin/main'",
+      "Merge pull request #53 from batusayici/ingest/daily-2026-08-27",
+      "cockpit: morning refresh 2026-08-30"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1241,12 +1213,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": null,
-      "reservoir": null,
+      "dated": 39,
+      "reservoir": 13,
       "stale": false,
       "thin": false,
-      "fresh": false,
-      "cards": 159
+      "fresh": true,
+      "cards": 151
     }
   }
 }
