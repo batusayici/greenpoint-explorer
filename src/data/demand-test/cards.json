@@ -4652,22 +4652,22 @@
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
-      "trustRisk": "low",
+      "trustRisk": "medium",
       "createdAt": "2026-08-24",
-      "updatedAt": "2026-08-24",
+      "updatedAt": "2026-08-31",
       "free": false,
       "id": "town-square-cub-scouts-pack-7",
       "category": "subscription",
       "title": "Coed Cub Scouts Lucky Pack 7 at American Playground",
-      "kicker": "Fridays 6–8pm, grades K–5",
-      "summary": "A coed pack that meets on the handball court, listed by Town Square. No fee, term length or sign-up deadline is stated.",
+      "kicker": "Fridays 6–7pm from 9/11, grades K–5",
+      "summary": "The pack moves indoors for the fall and restarts after the summer break. No fee, term length or sign-up deadline is stated.",
       "filters": [
         "family_kids"
       ],
-      "locationName": "American Playground",
-      "address": "Franklin St & Noble St, Brooklyn, NY 11222",
-      "geocodeQuery": "American Playground, Brooklyn, NY",
-      "sourceQuote": "Coed Cub Scouts Lucky Pack 7 (Grades K-5)\nFridays, 6-8 PM\nAmerican Playground handball court (Franklin St & Noble St), Brooklyn",
+      "locationName": "St. John's Lutheran Church",
+      "address": "155 Milton St, Brooklyn, NY 11222",
+      "geocodeQuery": "155 Milton St, Brooklyn, NY 11222",
+      "sourceQuote": "CUB SCOUTS PACK 7 (Coed K-5)\nWeekly Friday meetings will resume on Friday, September 11th, 6-7 PM\nJohn's Lutheran Church, 155 Milton St., Greenpoint, Brooklyn\nFriday, September 11, 2026, 6 PM ~ Cub Scouts Pack 7 weekly meeting. Coed Grades K-5. St. John's Lutheran Church, 155 Milton St., Brooklyn, NY.",
       "actions": [
         {
           "label": "Learn more",
@@ -4677,14 +4677,14 @@
       ],
       "sourceLinks": [
         {
-          "title": "Town Square",
+          "title": "Town Square BK newsletter, 26 August 2026",
           "url": "https://www.townsquarebk.org",
           "publisher": "Town Square",
-          "date": "2026-08-24"
+          "date": "2026-08-26"
         }
       ],
-      "lat": 40.728891,
-      "lng": -73.957917
+      "lat": 40.729456,
+      "lng": -73.955325
     },
     {
       "audience": [
