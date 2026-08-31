@@ -662,14 +662,37 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // delete"; three runs flagged them and none did either, so they stayed live
   // as unverifiable claims. Deleted, and the skill now caps the drift at two
   // runs.
-  assert.equal(seed.cards.length, 151);
+  // 2026-08-31 Monday full: expiry took the 22 items that finished over the
+  // long weekend (151 → 129) and the run added 7. Two fill the very back of the
+  // window — Spaghetti Eastern Electro Dub on 9/13 and Noah Amick on 9/14 at
+  // Troost, the two dates the coverage reconciler had flagged as owed. Two are
+  // Film Noir screenings the deck had no card for: Zimeklis tonight at 7pm (a
+  // separate bill from the 9pm secret-title Film Noir Monday, not a second
+  // sitting of it) and Film Club on 9/3. The Greenhouse Gang at Kingsland
+  // Wildflowers is a Newtown Creek Alliance nursery work shift and files
+  // `civic` under the growing-space rule; so does the 9/11 Garden Hours at the
+  // library, which needs its own card for the first time now that the Friday
+  // sensory storytime it used to share a day-card with has ended. The Virgo
+  // New Moon Meditation at Golden Drum on 9/12 came off an R1 fetch of the
+  // event's own detail page — the index carries the date and nothing else.
+  // Two deletions beyond expiry, both recurring cards past their
+  // verified-through date that nothing could renew — the same call the 8/26,
+  // 8/27, 8/28 and 8/29 runs each made once. comedy-saturday-showcase: the
+  // club publishes over a WebSocket, the browser path is down, and an R1 plain
+  // fetch of the Jump Comedy venue page returns the page shell with an empty
+  // listing area. mccarren-greenmarket: grownyc.org answers 403 to automated
+  // fetches (a bot wall, not an egress block, so no allowlist entry fixes it)
+  // and the source is browser-only too. Both are almost certainly still
+  // running; that belief is not a source, and this gate is what stops it being
+  // treated as one. 129 + 7 - 2 = 134.
+  assert.equal(seed.cards.length, 134);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 32, "31 + the Franklin Street fire (2026-08-29)");
-  assert.equal(count((c) => c.category === "event"), 72, "81 − 10 expired − the Macha and Friday-comedy recurring cards + the Film Noir Saturday, Good Room 9/12 and Troost 9/12 (2026-08-29)");
+  assert.equal(count((c) => c.filters.includes("news")), 32, "unchanged — this run added no news card (2026-08-31)");
+  assert.equal(count((c) => c.category === "event"), 56, "50 after expiry + 7 adds − the Saturday comedy showcase, unverifiable (2026-08-31)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − the Bios Apothecary consultation, unverifiable (2026-08-30)");
   assert.equal(count((c) => c.category === "news"), 20, "19 + the Franklin Street fire (2026-08-29)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 30, "31 − Friday's expired gigs + Good Room and Troost on 9/12 (2026-08-29)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 25, "23 after expiry + the two Troost gigs on 9/13 and 9/14 (2026-08-31)");
   assert.equal(count((c) => c.category === "subscription"), 26, "27 − Greenpoint Trash Club, unverifiable (2026-08-30)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -861,9 +884,7 @@ test("free-ness is designated only where the source states it (tester feedback #
   // must not extend one line's free-ness across the whole day.
   assert.deepEqual(free, [
     // (acme-good-baklava-0821 expired out 2026-08-24)
-    // 2026-08-26 roundup: "Hosted by creative mental health community The
-    // Better Club. Free, RSVP here."
-    "better-club-portrait-night-0829",
+    // (better-club-portrait-night-0829 expired out 2026-08-31)
     // (community-yoga-transmitter-thursdays deleted 2026-08-28: FLAGGED past
     //  its verified-through date, and Kindred's page states nothing after
     //  August 27, so nothing could re-verify it.)
@@ -874,6 +895,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
+    // 2026-08-31: the Go Green listing states it twice — "Free" under Cost and
+    // again in Event Categories — for a Newtown Creek Alliance nursery shift.
+    "kingsland-greenhouse-gang-0901",
     // (flowercat-live-band-karaoke-0828 expired out; greenpoint-trash-club
     // deleted 2026-08-30 — unverifiable past its verified-through date, its
     // site sits behind the broken browser path)
@@ -886,8 +910,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // card became a grouped Friday day-card when the 3-4pm garden educator hour
     // was folded in, and only the storytime states "Free" — same grouped-card
     // rule as the other library day-cards below.)
-    // 2026-08-26: the Sunday morning sitting, covered by the same series line.
-    "longevity-stick-transmitter-0830",
+    // (longevity-stick-transmitter-0830 expired out 2026-08-31)
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28: Go Green's own
     //  schedule list goes Fri Aug 28, Sun Aug 30, then Sun Sep 27 — the
     //  Thursday morning slot is no longer stated anywhere.)
@@ -903,7 +926,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
-    "mcgolrick-movies-eternal-sunshine-0829",
+    // (mcgolrick-movies-eternal-sunshine-0829 expired out 2026-08-31)
     // (nbcb-canoe-newtown-creek-0822 expired out 2026-08-24)
     // (neptune-artists-makers-market-0816 and edys-anniversary-party-0816 both
     // expired out 2026-08-17, as did threes-flea-market-0815.)
@@ -1007,8 +1030,7 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
     // (library-chair-yoga-0824, the branch's Monday chair-yoga hour, expired
     // out 2026-08-25)
-    // 2026-08-26: the series adds one Sunday morning sitting, 8/30.
-    "longevity-stick-transmitter-0830",
+    // (longevity-stick-transmitter-0830 expired out 2026-08-31)
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28 — the series
     //  schedule runs Fri 8/28, Sun 8/30, then Sun 9/27; no Thursday remains)
     "moon-bunny-monthly-plans",
@@ -1137,7 +1159,7 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // goodie bags and a gift-card raffle, on one afternoon. A dated happening
     // inside a store is the same class as the runs above, so it files here
     // rather than in deals_memberships, which takes standing offers only.
-    "big-night-fifth-birthday-0829",
+    // (big-night-fifth-birthday-0829 expired out 2026-08-31)
     "cibone-ote",
     "cibone-restation-showcase-0815",
     // A kids' store. It keeps `family_kids` — the audience lens it already
@@ -1238,22 +1260,28 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   // is for. The rest of that weekend is NOT here: the Friday and Saturday-
   // Sunday street cards are people eating at tables, which is exactly the
   // "merely social" the 2026-07-30 ruling evicted.
+  // 2026-08-31: the three Bedford Slip cards expired out with the weekend, and
+  // two stewardship cards take their place under the growing-space rule Batu
+  // settled on 2026-08-30. The Greenhouse Gang is an unambiguous work shift —
+  // "up-potting, weeding, and nursery maintenance" with Newtown Creek
+  // Alliance. The library's Garden Hours is the case that rule was written
+  // for: it needs its own card for the first time now that the Friday sensory
+  // storytime it shared a day-card with has ended, and with no kids' audience
+  // stated it has nowhere else to go. Not `wellness` — standing in a garden
+  // talking to an educator is not the movement cluster, whatever the branch's
+  // own "health and wellness" tag says.
   assert.deepEqual(civic, [
     "adopt-a-business",
-    "bedford-slip-cleanup-0830",
-    // 2026-08-26: the Sunday hot dog stand at the same Open Street. It is here
-    // for what the roundup states outright — "a suggested donation (with all
-    // funds going to North Brooklyn Mutual Aid)". Mutual aid is half of what
-    // this lens is named for, so the filing is mechanical, not a read of how
-    // social the afternoon looks.
-    "bedford-slip-hot-dogs-0830",
-    "bedford-slip-tree-care-0829",
+    // (bedford-slip-cleanup-0830, bedford-slip-hot-dogs-0830 and
+    //  bedford-slip-tree-care-0829 all expired out 2026-08-31)
     // 2026-08-26: Community Board 1's Environmental Protection Committee — a
     // public meeting on the Meeker plume, Newtown Creek and a battery storage
     // proposal. Civic action with neighborhood stakes, not a social gathering.
     "cb1-environmental-committee-0903",
     "film-noir-support",
     "g-advocacy-mta",
+    "kingsland-greenhouse-gang-0901",
+    "library-garden-hours-0911",
     // (greenpoint-trash-club deleted 2026-08-30 — unverifiable, see the deck
     // count contract above)
     // (mcgolrick-its-my-park-0823 expired out 2026-08-24)
@@ -1262,7 +1290,7 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // record ("categories: Volunteer | It's My Park"), which is why the work-
     // shift rule applies mechanically rather than by resemblance to the line
     // above it.
-    "transmitter-its-my-park-0830",
+    // (transmitter-its-my-park-0830 expired out 2026-08-31)
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {
@@ -1447,14 +1475,12 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // 2026-08-27: the Wednesday "Comedians You Should Know" residency was dropped
   // — past its verified-through date with the browser path down, so its source
   // could not be read to renew it — and the prune took the link with it.
-  assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
-    // 2026-08-07: the standing showcases, carded once each as recurring
-    // after the coverage check flagged six uncovered showcase dates.
-    // (comedy-thursday-showcase deleted 2026-08-28 — past its verified-through
-    //  date with the club's listings behind the still-down browser path, so
-    //  nothing could renew it; the prune took the link with it.)
-    "comedy-saturday-showcase",
-  ]);
+  // 2026-08-31: comedy-saturday-showcase went the same way as its Thursday,
+  // Friday and Wednesday siblings — past its verified-through date with the
+  // club's listings still behind the down browser path. That was the venue's
+  // last linked card, so the list is empty and the field is gone. The venue
+  // card itself stays: the club is open, we just cannot read its calendar.
+  assert.equal(byId("greenpoint-comedy-club").relatedCardIds, undefined);
   // Scrappleland's club nights all expired 2026-08-06; the prune emptied its
   // link list, so Carcosa now carries the games side of the place graph.
   assert.deepEqual(byId("scrappleland").relatedCardIds, ["scrappleland-backgammon-club", "scrappleland-pinball-league"]);

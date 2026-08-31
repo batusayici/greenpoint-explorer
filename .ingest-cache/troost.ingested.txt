@@ -1,15 +1,3 @@
-summary: DJs Lupe Loop and Mela
-description: feel good funk, international dance jams and vintage house
-start.date: 2026-08-29
-end.date: 2026-08-30
-htmlLink: https://www.google.com/calendar/event?eid=YWVnYmRkaHRuMzEwYjBybjEybmJ1aTg0Y21fMjAyNjA4MjcgdHJvb3N0bGl2ZUBt
-
-summary: Jon Madof & Nate Rappaport
-description: A set of improvised sounds and grooves with guitar, drums, percussion, and flutes.
-start.date: 2026-08-30
-end.date: 2026-08-31
-htmlLink: https://www.google.com/calendar/event?eid=XzZ0MzNnZ2E0Nm9vNDZiOW83NG9rNGI5azY0b2tjYjlvNjRvM2ViYTU2dDJqaWgxazc1MTMwaGhpOGsgdHJvb3N0bGl2ZUBt
-
 summary: ROB HEATH / NICE TRY KID
 description: Rob Heath's Nice Try, Kid!: a monthly night of unapproved and experimental music
 start.date: 2026-08-31
@@ -222,3 +210,13 @@ description: WORLD PSYCHEDELIC GROOVE
 start.date: 2026-10-15
 end.date: 2026-10-16
 htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjEwMTUgdHJvb3N0bGl2ZUBt
+
+summary: DANNY RAMOS
+start.date: 2026-10-16
+end.date: 2026-10-17
+htmlLink: https://www.google.com/calendar/event?eid=NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjEwMTYgdHJvb3N0bGl2ZUBt
+
+summary: DJ GUTZILA
+start.date: 2026-10-17
+end.date: 2026-10-18
+htmlLink: https://www.google.com/calendar/event?eid=NjA0Mm80NzkzZnZxaWlhZDV1NnBlN2E2NThfMjAyNjEwMTcgdHJvb3N0bGl2ZUBt

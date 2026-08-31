@@ -1,40 +1,6 @@
-## Movies Under the Stars: Eternal Sunshine of the Spotless Mind
-http://www.nycgovparks.org/events/2026/08/29/movies-under-the-stars-eternal-sunshine-of-the-spotless-mind
-Sat, 29 Aug 2026 00:00:03 EDT
-Grab a blanket and come enjoy a movie in a neighborhood park or playground! This summer, NYC Parks and The Mayor’s Office of Media and Entertainment will host family-friendly movie showings across the five boroughs.
-Screenwriter Charlie Kaufman's bizarre love story about a man who has all memories of his girlfriend erased after they break up.
-Rated R
-The following movie has been rated R. It is intended for mature audiences. Parents may wish to consider whether it should be viewed by children under 17.
-Movies begin at dusk. This event is FREE and open to the public. Glass bottles and alcoholic beverages are strictly prohibited. In the event of heavy rain or extreme weather, the screening may be canceled. The decision to cancel the event will be made prior to the screening and will be promptly posted on our website.
-For more information visit nyc.gov/parks or call 311. Contact (212) 360-1430 or accessibility@parks.nyc.gov for more information regarding accessibility.
-parkids: B114
-parknames: Msgr. McGolrick Park
-startdate: 2026-08-29
-enddate: 2026-08-29
-starttime: 8:00 pm
-endtime: 10:30 pm
-location: Lawn Area - Monitor Street and Driggs Avenue (in Msgr. McGolrick Park)
-categories: Film | Free Summer Movies | Movies Under the Stars
-coordinates: 40.72371204572400000, -73.94266104698100000
-image: http://www.nycgovparks.org/common_images/events/6a86a71b31cc9.jpg
-
-## It's My Park at WNYC Transmitter Park
-http://www.nycgovparks.org/events/2026/08/30/its-my-park-at-wnyc-transmitter-park
-Sat, 29 Aug 2026 00:00:03 EDT
-This It's My Park season, volunteer with Friends of WNYC Transmitter Park to beautify WNYC Transmitter Park. We look forward to cleaning up the park with you!
-parkids: B385
-parknames: WNYC Transmitter Park
-startdate: 2026-08-30
-enddate: 2026-08-30
-starttime: 10:00 am
-endtime: 12:00 pm
-location: WNYC Transmitter Park
-categories: Volunteer | It's My Park
-coordinates: 40.72977066040000000, -73.96070861816400000
-
 ## CANCELED: Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/08/31/canceled-bodyweight-interval-training
-Sat, 29 Aug 2026 00:00:03 EDT
+Mon, 31 Aug 2026 00:00:04 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -48,7 +14,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/09/02/bodycentric-circuit-training
-Sat, 29 Aug 2026 00:00:03 EDT
+Mon, 31 Aug 2026 00:00:04 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058
@@ -63,7 +29,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## CANCELED: Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/09/07/canceled-bodyweight-interval-training
-Sat, 29 Aug 2026 00:00:03 EDT
+Mon, 31 Aug 2026 00:00:04 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -77,7 +43,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/09/09/bodycentric-circuit-training
-Sat, 29 Aug 2026 00:00:03 EDT
+Mon, 31 Aug 2026 00:00:04 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058
@@ -88,4 +54,18 @@ starttime: 6:00 pm
 endtime: 6:45 pm
 location: Multi-Use Room A (in McCarren Park)
 categories: Fitness | Shape Up NYC | Recreation Center Programming | Exercise Classes | Strength Training/Weightlifting
+coordinates: 40.72010040000000000, -73.94999695000000000
+
+## Bodyweight Interval Training
+http://www.nycgovparks.org/events/2026/09/14/bodyweight-interval-training
+Mon, 31 Aug 2026 00:00:04 EDT
+Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and bodyweight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
+parkids: B058
+parknames: McCarren Park
+startdate: 2026-09-14
+enddate: 2026-09-14
+starttime: 6:00 pm
+endtime: 7:00 pm
+location: Multi-Use Room C (in McCarren Park)
+categories: Fitness | Shape Up NYC | Recreation Center Programming | Exercise Classes
 coordinates: 40.72010040000000000, -73.94999695000000000

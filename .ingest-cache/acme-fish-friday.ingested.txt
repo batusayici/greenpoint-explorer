@@ -412,7 +412,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Smoked Whiting (1 lb.)
 Hot Smoked
 Specialty

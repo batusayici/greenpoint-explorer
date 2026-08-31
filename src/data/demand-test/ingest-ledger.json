@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-29T10:00:00-04:00",
+  "lastRunAt": "2026-08-31T10:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1649,6 +1649,47 @@
         "https://www.tendgreenpoint.com/"
       ],
       "note": "Daily thin. Fetch exit 0, 54/62 sources read (13% error, all eight the known browser-connect-reset fault). Gmail pass ran: one registry sender (Tend Greenpoint) carried a new offer, Dandelion Wine re-sent a same-day tasting already past. Coverage gate needed two new explanations (macha-studio STANDING DARK after its Summer Fridays season ended, eavesdrop NO SNAPSHOT on the dead browser path)."
+    },
+    "gmail:1a03f1477abfd35e",
+    "gmail:1a0448f202c11e7d",
+    "https://www.goldendrum.org/calendar-1/virgonewmoon",
+    "https://gogreenbk.org/event/greenhouse-gang-2026/2026-09-01/",
+    "https://www.filmnoircinema.com/program/2026/4/19/zimeklis",
+    "https://www.bklynlibrary.org/locations/greenpoint#2026-09-11",
+    "https://troostny.com/calendar/#2026-09-13,2026-09-14",
+    {
+      "runAt": "2026-08-31",
+      "cadence": "monday-full",
+      "shipped": [
+        "troost-spaghetti-eastern-0913",
+        "troost-noah-amick-0914",
+        "film-noir-zimeklis-0831",
+        "film-noir-film-club-0903",
+        "kingsland-greenhouse-gang-0901",
+        "library-garden-hours-0911",
+        "golden-drum-virgo-new-moon-0912"
+      ],
+      "updated": [
+        "mcgolrick-farmers-market",
+        "film-noir-cinema",
+        "greenpoint-library",
+        "cibone-restation-showcase-0815",
+        "greenpoint-comedy-club"
+      ],
+      "deleted": [
+        "comedy-saturday-showcase",
+        "mccarren-greenmarket"
+      ],
+      "holds": "holds: 1 new-judgment · 0 rule-miss · 2 source-blocked",
+      "urls": [
+        "https://troostny.com/calendar/",
+        "https://www.filmnoircinema.com/program?format=json",
+        "https://gogreenbk.org",
+        "https://www.bklynlibrary.org/locations/greenpoint",
+        "https://www.goldendrum.org/calendar-1/virgonewmoon",
+        "https://downtoearthmarkets.com/"
+      ],
+      "note": "Monday full run. The map went from 151 cards to 136: expiry cleared 22 items that finished over the long weekend, and the run added 7. Two of the adds are the last two dates the coverage check said we owed (Troost, 9/13 and 9/14), so the deck now reaches the full fourteen days. Two are Film Noir screenings nobody had carded — Zimeklis tonight is a separate bill from the 9pm secret-title Monday show, not a second sitting of it. The library's Friday garden hour needed its own card for the first time now that the kids' sensory storytime it used to share a day with has ended; it files civic under the growing-space rule. Golden Drum's 9/12 new-moon sitting came off an R1 fetch of the event's own page, which was then written into the snapshot. HELD: the Cub Scouts Pack 7 venue — Town Square's newsletter and Town Square's own website name two different buildings. DELETED: the Saturday comedy showcase and the McCarren greenmarket, both past their verified-through date with no readable source — the comedy club publishes over a WebSocket behind the dead browser path, and grownyc.org bot-walls automated fetches at 403. Both are probably still running; that is not a source. Also re-quoted the CIBONE Re:STATION card after the shop reworded its post and dropped a clause the card's summary was leaning on. Gmail pass ran clean."
     }
   ],
   "senderRegistry": [
@@ -2335,17 +2376,42 @@
       "name": "Greenpoint Library — two September programmes are CANCELED in the feed",
       "addedAt": "2026-08-29",
       "note": "SOURCE FACT 2026-08-29, found by scanning the full snapshot for is_event_canceled rather than trusting the diff (the 2026-08-17 lesson: a flipped flag is invisible to a line-set diff). Exactly two records carry it: \"ts_title: Sunset Storytime\\nds_event_start_date: 2026-09-10T22:00:00Z\\nis_event_canceled: 1\" and \"ts_title: Sustainable Sewing: Sewing Machine Basics\\nds_event_start_date: 2026-09-12T14:30:00Z\\nis_event_canceled: 1\". NEITHER reaches a reader: library-thursday-programs-0910 already excludes Sunset Storytime (its six programmes are the six that are not canceled), and 9/12 has no library card at all. No action needed — recorded so a later run does not 'restore' them."
+    },
+    {
+      "name": "Town Square BK — Boy Scouts Troop 26 meetings resume 9/17 (past the horizon)",
+      "addedAt": "2026-08-31",
+      "note": "EMAIL IS ONE-SHOT, recorded so it is not lost. Town Square BK newsletter, 2026-08-26, hello@townsquarebk.org, verbatim: \"BOY SCOUTS TROOP 26 (Grades 6-12)\\nWeekly Thursday meetings will resume on September 17th, 5:30-7 PM\\nMcCarren Park BBQ Area (Driggs Ave b/w Manhattan Ave & Lorimer St), Brooklyn\" and, in the same newsletter's community calendar, \"Thursday, September 17, 2026, 5:30 PM ~ Boy Scouts Troop 26 weekly meeting, Grades 6-12. McCarren Park, BBQ area along Driggs Ave, btw Manhattan Ave & Lorimer St., Brooklyn, NY.\" 9/17 is outside the 14-day window this run cards to. Venue and time MATCH the live town-square-scouts-troop-26 card, so no conflict — only a resume date to fold in once 9/17 is inside the window."
+    },
+    {
+      "name": "Town Square BK — Greencycle Back-to-School Swap, 9/26 (past the horizon)",
+      "addedAt": "2026-08-31",
+      "note": "EMAIL IS ONE-SHOT, recorded so it is not lost. Town Square BK newsletter, 2026-08-26, hello@townsquarebk.org: \"Greencycle Back-to-School Swap 2026\\nSaturday, September 26th, 12-3 PM\\nJohn Ericsson MS 126, 424 Leonard Street, Brooklyn\" and \"Saturday, September 26, 2026, 12 PM ~ Town Square BK's Greencycle Back-to-School Swap. Bring some! Take some!! JEMS 126, 424 Leonard St. (Bayard St. entrance), Brooklyn, NY.\" Also stated: \"Suggested donation: $10 a family\" and \"all remaining items are donated to local homeless shelters\". ⚠ THE NEWSLETTER CONTRADICTS ITSELF ONCE, and the card will have to resolve it: the body reads \"Bring them to Greencycle Back-to-School Swap on Saturday, September 27th.\" September 26 2026 is a Saturday and the 27th is a Sunday, and the subject line, the headline and the community calendar all say the 26th — so the 27th is the outlier, but do not card the date off the body. 424 Leonard St is in the Greenpoint bbox. Files civic (mutual aid, and a free-swap of goods to neighbours) once it is inside the window."
+    },
+    {
+      "name": "Town Square BK — Cub Scouts Pack 7 venue: the newsletter and the website disagree",
+      "addedAt": "2026-08-31",
+      "note": "HELD 2026-08-31, new-judgment. The live card town-square-cub-scouts-pack-7 pins the pack at American Playground, quoting townsquarebk.org: \"Coed Cub Scouts Lucky Pack 7 (Grades K-5)\\nFridays, 6-8 PM\\nAmerican Playground handball court (Franklin St & Noble St), Brooklyn\" — and that page fetched CLEAN and UNCHANGED this run, so it is current. The 2026-08-26 newsletter states a different venue twice: \"Weekly Friday meetings will resume on Friday, September 11th, 6-7 PM\\nJohn's Lutheran Church, 155 Milton St., Greenpoint, Brooklyn\" and, in its standing-programmes footer, \"Cub Scouts Pack 7 is coed, PK to 5th grade & meets at 6 PM on Fridays (St. John's Lutheran Church, Greenpoint).\" Its community calendar agrees: \"Friday, September 11, 2026, 6 PM ~ Cub Scouts Pack 7 weekly meeting. Coed Grades K-5. St. John's Lutheran Church, 155 Milton St., Brooklyn, NY.\" Two live first-party surfaces from the same organisation, disagreeing on venue and on end time (6-8 PM vs 6-7 PM). The card was NOT rewritten on main; the rewrite is in the review PR. WHAT WOULD RESOLVE IT: townsquarebk.org updating its programmes page, or Batu confirming which surface wins when an organisation's newsletter and its own website disagree about a standing programme."
+    },
+    {
+      "name": "Greenpoint Comedy Club — the whole weekly showcase set is now uncarded",
+      "addedAt": "2026-08-31",
+      "note": "DELETED 2026-08-31: comedy-saturday-showcase, past its verified-through date (2026-08-29T22:00) with nothing able to renew it. That was the LAST of the four standing showcase cards — Wednesday went 8/27, Thursday 8/28, Friday 8/29 — so the club now has a venue card and no programming at all, while running shows most nights. Not a supply problem: a fetch problem. Jump Comedy is a Phoenix LiveView app that pushes its listings over a WebSocket after mount, so only the browser path can read it, and the browser path has been down on browser-connect-reset since 2026-08-05. R1 re-verify attempted this run and failed in the diagnostic way: https://www.jumpcomedy.com/v/greenpoint-comedy-club plain-fetches HTTP 200 with 26,466 bytes, and the rendered text is the page shell — \"Greenpoint Comedy Club 66 Greenpoint Ave NY, US Upcoming Upcoming Past Calendar\" — with zero shows in it. RE-CARD ALL FOUR SHOWCASES the first run after the browser path comes back, or from an interactive session, where egress is unrestricted."
+    },
+    {
+      "name": "McCarren Park Greenmarket — deleted, and grownyc.org cannot be allowlisted",
+      "addedAt": "2026-08-31",
+      "note": "DELETED 2026-08-31: mccarren-greenmarket, past its verified-through date (2026-08-29T15:00). The market is a year-round Saturday fixture and is very probably still running — that belief is not a source. TWO layers block re-verification and only one of them is fixable: the roster source is fetch:browser and the browser path is down, AND grownyc.org answers 403 to automated plain fetches. Probed this run: https://grownyc.org/greenmarket/brooklyn/mccarren-park returns HTTP 403 with a 103-byte body under the roster's own browser User-Agent. That is a BOT WALL, not an egress block — the same shape as opentable.com (SKILL.md, 2026-08-19) — so do NOT put grownyc.org on an allowlist ask; a network-policy entry cannot fix a host that answers the connection and refuses the request. The card is re-authorable from an interactive session, or once the browser path returns. Note the deck still carries mcgolrick-farmers-market, which re-verified cleanly this run off downtoearthmarkets.com, so Greenpoint is not left with zero farmers markets."
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
     "greenpointers": "2026-08-28",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-28",
+    "film-noir-cinema": "2026-08-30",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
-    "greenpoint-library": "2026-08-27",
-    "bpl-north-brooklyn-calendar": "2026-08-27",
+    "greenpoint-library": "2026-08-30",
+    "bpl-north-brooklyn-calendar": "2026-08-30",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-27",
@@ -2362,9 +2428,9 @@
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-08-25",
+    "go-green-bk": "2026-08-30",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-28",
+    "troost": "2026-08-30",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-28",
     "town-square-bk": "2026-08-23",
@@ -2395,7 +2461,7 @@
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
     "action-city-comics": "2026-08-16",
-    "golden-drum": "2026-08-27",
+    "golden-drum": "2026-08-30",
     "nbk-open-streets": "2026-08-25"
   },
   "coverageExplanations": [
@@ -2650,6 +2716,20 @@
       "addedAt": "2026-08-29",
       "expiresAt": "2026-09-12",
       "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run: the 2026-08-29 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the seven other browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:44409\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet' — the deck still carries five live Eavesdrop gig cards authored while the page was readable."
+    },
+    {
+      "sourceId": "macha-studio",
+      "gapKey": "UNMARKED STANDING?",
+      "addedAt": "2026-08-31",
+      "expiresAt": "2026-09-14",
+      "reason": "SEASONAL AND BETWEEN EDITIONS — `standing` is unset on purpose (Batu, 2026-08-30), so this signal will keep firing until a fall series posts, which the 8/30 note predicted in as many words. Re-earned against THIS run's snapshot: the newest entry in the Atom feed is \"## Summer Fridays listening party ... 2026-08-05T11:29:18-04:00\", and nothing in the file is dated inside 2026-08-31 → 2026-09-14. The season's own bound is the poster line read on 2026-08-12 and carried in this source's baseline under [IMAGE READ 12 August 2026]: \"Summer Fridays\\nJuly - August\\nFrom 3pm\" — August is over, and macha-summer-fridays-after-hours was retired on 2026-08-29 for that reason. Marking `standing: false` would be wrong: the recurring programming is genuine, and false would mute a source that publishes ~1 real card a season. WHAT WOULD CHANGE IT: a fall edition appearing in the feed, at which point the roster goes back to standing:true in a review PR."
+    },
+    {
+      "sourceId": "kindred-nyc",
+      "gapKey": "SILENT",
+      "addedAt": "2026-08-31",
+      "expiresAt": "2026-09-14",
+      "reason": "THE SERIES ENDED — the whole page is one past date. This run's snapshot is 791 bytes and its entire dated content is one item repeated three times: \"sunset yoga in the park\\naugust 27, 7pm\\nWNYC transmitter park\\njoin us for a sunset yoga practice by the water. free community yoga in collaboration with the friends of transmitter park.\" August 27 has passed and the page states nothing after it — which is the same finding that deleted community-yoga-transmitter-thursdays on 2026-08-28 and its Tuesday sibling on 2026-08-26. So the silence since the last card (2026-08-09) is the series running out, not supply we failed to card, and there is nothing here to re-author without inventing a date. WHAT WOULD CHANGE IT: Kindred posting a fall sunset-yoga date, which lands as a normal diff."
     }
   ]
 }

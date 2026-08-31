@@ -3753,5 +3753,55 @@
         "-73.9499508"
       ]
     }
+  },
+  "1011 Manhattan Ave": {
+    "query": "1011 Manhattan Ave",
+    "fetchedAt": "2026-08-31T13:32:20.820Z",
+    "hit": {
+      "place_id": 360511541,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 274688882,
+      "lat": "40.7334630",
+      "lon": "-73.9550346",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "1011, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7334187",
+        "40.7335072",
+        "-73.9551329",
+        "-73.9549363"
+      ]
+    }
+  },
+  "520 Kingsland Avenue, Brooklyn, NY 11222": {
+    "query": "520 Kingsland Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-31T13:32:22.288Z",
+    "hit": {
+      "place_id": 359167452,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 279804685,
+      "lat": "40.7351314",
+      "lon": "-73.9431597",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "520, Kingsland Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7342382",
+        "40.7357689",
+        "-73.9440232",
+        "-73.9424787"
+      ]
+    }
   }
 }

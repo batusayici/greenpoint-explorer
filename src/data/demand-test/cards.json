@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-29",
+  "version": "2026-08-31",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -968,13 +968,10 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-28",
+      "updatedAt": "2026-08-31",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
-      "lng": -73.958337,
-      "relatedCardIds": [
-        "comedy-saturday-showcase"
-      ]
+      "lng": -73.958337
     },
     {
       "id": "film-noir-cinema",
@@ -1016,12 +1013,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-29",
+      "updatedAt": "2026-08-31",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-monday-0831",
-        "film-noir-saturday-0829"
+        "film-noir-zimeklis-0831",
+        "film-noir-film-club-0903"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1319,14 +1317,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-26",
+      "updatedAt": "2026-08-31",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
         "library-tuesday-programs-0901",
         "library-wednesday-programs-0902",
         "library-babies-books-0903",
-        "library-tuesday-programs-0908"
+        "library-tuesday-programs-0908",
+        "library-garden-hours-0911"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -2691,54 +2690,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-15",
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729567,
-      "lng": -73.958337,
-      "id": "comedy-saturday-showcase",
-      "title": "The Saturday Showcase",
-      "kicker": "$25 — 8pm and 10pm sittings",
-      "summary": "The club's main Saturday bill, run twice: an 8pm show and The Late Saturday Showcase at 10pm.",
-      "filters": [
-        "arts_culture"
-      ],
-      "recurring": true,
-      "startsAt": "2026-08-08T20:00:00-04:00",
-      "endsAt": "2026-08-29T22:00:00-04:00",
-      "sourceQuote": "Sat Aug 15, 2026, 8:00 PM, Sat Aug 22, 2026, 8:00 PM, Sat Aug 29, 2026, 8:00 PM and 4 more\nThe Saturday Showcase @ 8:00 PM\nSat Aug 15, 2026, 10:00 PM, Sat Aug 22, 2026, 10:00 PM, Sat Aug 29, 2026, 10:00 PM and 4 more\nThe Late Saturday Showcase @ 10:00 PM",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-07"
-        }
-      ],
-      "recurrence": {
-        "days": [
-          "sat"
-        ]
-      }
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
       "createdAt": "2026-08-08",
       "updatedAt": "2026-08-29",
       "id": "acme-fish-friday-0814",
@@ -2777,58 +2728,6 @@
           "fri"
         ]
       }
-    },
-    {
-      "id": "mccarren-greenmarket",
-      "title": "McCarren Park Greenmarket",
-      "category": "food_drink",
-      "filters": [
-        "food_drink"
-      ],
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "kicker": "Year-round, with compost drop-off",
-      "locationName": "McCarren Park Greenmarket",
-      "address": "Union Ave between Driggs & N12th St, Brooklyn, NY 11222",
-      "summary": "GrowNYC's Saturday market beside the McCarren Park track and dog run, running since 1997 — local farms, cooking demos and family activities. Compost drop-off runs to 1:30pm, clothing collection to 1pm.",
-      "actions": [
-        {
-          "label": "Market info",
-          "type": "learn_more",
-          "url": "https://grownyc.org/locations/mccarren-park-greenmarket/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "McCarren Park Greenmarket — GrowNYC",
-          "url": "https://grownyc.org/locations/mccarren-park-greenmarket/",
-          "publisher": "GrowNYC",
-          "date": "2026-08-08"
-        }
-      ],
-      "sourceQuote": "Saturday 8:00 am - 3:00 pm. Compost Saturday 8:00 am - 1:30 pm. Clothing Collection Saturday 8:30 am - 1:00 pm. Located alongside the McCarren Park track and dog run, the McCarren Park Greenmarket has connected local farms and farmers to the residents of the Greenpoint and Williamsburg neighborhoods since 1997.",
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "low",
-      "trustRisk": "low",
-      "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
-      "lat": 40.7197171,
-      "lng": -73.9526115,
-      "recurring": true,
-      "recurrence": {
-        "days": [
-          "sat"
-        ]
-      },
-      "startsAt": "2026-08-08T08:00:00-04:00",
-      "endsAt": "2026-08-29T15:00:00-04:00"
     },
     {
       "id": "bandit-running-greenpoint-runners",
@@ -3112,7 +3011,6 @@
       ],
       "sourceQuote": "4 classes a month - $87.00 per month (13% off)\n4 classes a month - $104.00 per month (13% off)\n4 classes a month - $139.00 per month (13% off)\nFree trial class",
       "relatedCardIds": [
-        "moon-bunny-weekend-camp-13-16-0829",
         "moon-bunny-two-day-camp-8-12-0901",
         "moon-bunny-back-to-school-2026"
       ]
@@ -3543,7 +3441,7 @@
       "category": "event",
       "title": "Re:STATION: archival Comme des Garçons & Yohji Yamamoto",
       "kicker": "100+ archival pieces from Japan",
-      "summary": "Re:STATION, a Tokyo curator and longtime CIBONE partner, chose the pieces for their history and enduring influence. It sits inside the shop; no admission price is stated.",
+      "summary": "The pieces were chosen for their history, value and enduring influence. The showcase sits inside the shop; no admission price is stated.",
       "startsAt": "2026-08-15T11:00:00-04:00",
       "endsAt": "2026-09-15T20:00:00-04:00",
       "filters": [
@@ -3556,7 +3454,7 @@
       ],
       "locationName": "CIBONE O'TE",
       "address": "50 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "August 15 - September 15, 2026\nStore Hours: 11am - 8pm\nComme des Garçons and Yohji Yamamoto are two of Japan's most influential designer brands.\nRe:STATION, a trusted curator and longtime partner of CIBONE in Japan, brings together more than 100 archival pieces from these two iconic brands, selected through a deep understanding of their history, value, and enduring influence.\nAddress: 50 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "August 15–September 15, 2026\nStore Hours: 11am - 8pm\nComme des Garçons and Yohji Yamamoto are two of Japan’s most influential designer brands.Re:STATION brings together more than 100 archival pieces from these two iconic brands, selected through a deep understanding of their history, value, and enduring influence.\nAddress: 50 Norman Ave, Brooklyn, NY 11222",
       "actions": [
         {
           "label": "Details",
@@ -3580,7 +3478,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-08-31",
       "lat": 40.724611,
       "lng": -73.95359
     },
@@ -3609,7 +3507,7 @@
         ]
       },
       "startsAt": "2026-08-16T09:00:00-04:00",
-      "endsAt": "2026-08-30T14:00:00-04:00",
+      "endsAt": "2026-09-13T14:00:00-04:00",
       "actions": [
         {
           "label": "Market info",
@@ -3641,7 +3539,7 @@
       "partnerRelevance": "low",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-10"
+      "updatedAt": "2026-08-31"
     },
     {
       "audience": [
@@ -3777,48 +3675,6 @@
       "lng": -73.946139
     },
     {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "id": "comedy-goo-goo-0829",
-      "title": "Savannah DesOrmeaux's Goo Goo Comedy",
-      "kicker": "Early Saturday standup, $20",
-      "startsAt": "2026-08-29T18:00:00-04:00",
-      "endsAt": "2026-08-29T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729567,
-      "lng": -73.958337,
-      "summary": "Savannah DesOrmeaux's own comedy night, booked separately from the club's weekly Saturday Showcase later that evening.",
-      "sourceQuote": "Sat Aug 29, 2026, 6:00 PM\nSavannah DesOrmeaux’s Goo Goo Comedy\nUSD $20.00",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-15"
-        }
-      ]
-    },
-    {
       "audience": [
         "resident"
       ],
@@ -3867,135 +3723,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "free": false,
-      "id": "troost-lupe-loop-mela-0829",
-      "category": "event",
-      "title": "DJs Lupe Loop and Mela at Troost",
-      "kicker": "Feel-good funk and vintage house",
-      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
-      "startsAt": "2026-08-29T00:00:00-04:00",
-      "endsAt": "2026-08-29T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "sourceQuote": "summary: DJs Lupe Loop and Mela\ndescription: feel good funk, international dance jams and vintage house\nstart.date: 2026-08-29",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-15"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "free": false,
-      "id": "good-room-1morning-0829",
-      "category": "event",
-      "title": "1morning and Very J at Good Room",
-      "kicker": "Two-act Saturday bill",
-      "summary": "The DoNYC listing names the two acts on the booth at the Meserole Avenue club and nothing else — no support, no ticket price.",
-      "startsAt": "2026-08-29T19:00:00-04:00",
-      "endsAt": "2026-08-29T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.726909,
-      "lng": -73.95281,
-      "sourceQuote": "Aug 29\n1morning, Very J",
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room via DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-15"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-17",
-      "updatedAt": "2026-08-17",
-      "free": false,
-      "id": "troost-jon-madof-0830",
-      "category": "event",
-      "title": "Jon Madof & Nate Rappaport at Troost",
-      "kicker": "Improvised guitar, drums and flutes",
-      "summary": "Troost's own Google Calendar lists the night by name and description only — no set time, no support acts, no ticket link.",
-      "startsAt": "2026-08-30T00:00:00-04:00",
-      "endsAt": "2026-08-30T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "sourceQuote": "summary: Jon Madof & Nate Rappaport\ndescription: A set of improvised sounds and grooves with guitar, drums, percussion, and flutes.\nstart.date: 2026-08-30",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-17"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
       "createdAt": "2026-08-17",
       "updatedAt": "2026-08-17",
       "free": false,
@@ -4030,55 +3757,6 @@
           "date": "2026-08-17"
         }
       ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-17",
-      "updatedAt": "2026-08-17",
-      "free": false,
-      "id": "transmitter-its-my-park-0830",
-      "category": "event",
-      "title": "It's My Park at WNYC Transmitter Park",
-      "kicker": "Morning cleanup shift with the Friends",
-      "summary": "Friends of WNYC Transmitter Park runs the beautification session. NYC Parks files it under Volunteer and It's My Park, and the feed carries no registration link.",
-      "startsAt": "2026-08-30T10:00:00-04:00",
-      "endsAt": "2026-08-30T12:00:00-04:00",
-      "filters": [
-        "civic"
-      ],
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.nycgovparks.org/events/2026/08/30/its-my-park-at-wnyc-transmitter-park"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "It's My Park at WNYC Transmitter Park",
-          "url": "https://www.nycgovparks.org/events/2026/08/30/its-my-park-at-wnyc-transmitter-park",
-          "publisher": "NYC Parks",
-          "date": "2026-08-17"
-        },
-        {
-          "title": "It's My Park in Brooklyn (Aug 2026)",
-          "url": "https://gogreenbk.org",
-          "publisher": "Go Green Brooklyn",
-          "date": "2026-08-17"
-        }
-      ],
-      "sourceQuote": "This It's My Park season, volunteer with Friends of WNYC Transmitter Park to beautify WNYC Transmitter Park. We look forward to cleaning up the park with you!\nstartdate: 2026-08-30\nstarttime: 10:00 am\nendtime: 12:00 pm",
-      "lat": 40.729855,
-      "lng": -73.960729
     },
     {
       "audience": [
@@ -4132,48 +3810,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-18",
       "updatedAt": "2026-08-18",
-      "id": "mcgolrick-movies-eternal-sunshine-0829",
-      "category": "event",
-      "free": true,
-      "title": "Movies Under the Stars: Eternal Sunshine of the Spotless Mind",
-      "kicker": "Free outdoor screening, rated R",
-      "summary": "Charlie Kaufman's story of a man who has all memories of his girlfriend erased. NYC Parks rates it R and calls it intended for mature audiences.",
-      "startsAt": "2026-08-29T20:00:00-04:00",
-      "endsAt": "2026-08-29T22:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Msgr McGolrick Park",
-      "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
-      "sourceQuote": "## Movies Under the Stars: Eternal Sunshine of the Spotless Mind\nparknames: Msgr. McGolrick Park\nstartdate: 2026-08-29\nstarttime: 8:00 pm\nendtime: 10:30 pm\nlocation: Lawn Area - Monitor Street and Driggs Avenue (in Msgr. McGolrick Park)\nRated R\nMovies begin at dusk. This event is FREE and open to the public.",
-      "actions": [
-        {
-          "label": "Event page",
-          "type": "learn_more",
-          "url": "http://www.nycgovparks.org/events/2026/08/29/movies-under-the-stars-eternal-sunshine-of-the-spotless-mind"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "NYC Parks events",
-          "url": "https://www.nycgovparks.org/events",
-          "publisher": "NYC Parks",
-          "date": "2026-08-18"
-        }
-      ],
-      "lat": 40.724458,
-      "lng": -73.943361
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-18",
-      "updatedAt": "2026-08-18",
       "id": "troost-phillip-santos-0901",
       "category": "event",
       "free": false,
@@ -4203,53 +3839,6 @@
           "title": "Troost calendar",
           "url": "https://troostny.com/calendar/",
           "publisher": "Troost",
-          "date": "2026-08-18"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-18",
-      "updatedAt": "2026-08-18",
-      "id": "moon-bunny-weekend-camp-13-16-0829",
-      "category": "event",
-      "free": false,
-      "title": "Weekend Circus Camp for 13–16s at Moon Bunny Aerial",
-      "kicker": "A teen weekend on the aerial rig",
-      "summary": "The older bracket gets its own two-day session at the McGuinness Blvd studio, which runs full- and half-day camps for 4-to-7s, 7-to-12s and 13-to-17s.",
-      "startsAt": "2026-08-29T09:00:00-04:00",
-      "endsAt": "2026-08-30T15:00:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
-      "lat": 40.736575,
-      "lng": -73.952327,
-      "relatedCardIds": [
-        "moon-bunny-monthly-plans"
-      ],
-      "sourceQuote": "name: Weekend Camp 13-16 yrs old\nstart_at: 2026-08-29T13:00:00.000Z\nend_at: 2026-08-29T19:00:00.000Z\n\nname: Weekend Camp 13-16 yrs old\nstart_at: 2026-08-30T13:00:00.000Z\nend_at: 2026-08-30T19:00:00.000Z\n\nWe have full day and half day options for 4-7 years old, 7-12 years old, and 13-17 years old.",
-      "actions": [
-        {
-          "label": "Camp details",
-          "type": "learn_more",
-          "url": "https://moonbunnyaerial.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial events",
-          "url": "https://moonbunnyaerial.com",
-          "publisher": "Moon Bunny Aerial",
           "date": "2026-08-18"
         }
       ]
@@ -4765,92 +4354,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-21",
-      "id": "eavesdrop-antron-0829",
-      "category": "event",
-      "free": false,
-      "title": "Antron at Eavesdrop",
-      "kicker": "Saturday evening set",
-      "summary": "The Manhattan Avenue listening bar puts one name on the calendar for the evening slot — no support, no cover price and no stated end.",
-      "startsAt": "2026-08-29T18:00:00-04:00",
-      "endsAt": "2026-08-29T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Saturday, Aug 29\n6PM\nAntron @eavesdrop",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-08-21"
-        }
-      ],
-      "lat": 40.724894,
-      "lng": -73.951181
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-21",
-      "id": "eavesdrop-loggetto-0830",
-      "category": "event",
-      "free": false,
-      "title": "l'oggetto at Eavesdrop",
-      "kicker": "Sunday evening set",
-      "summary": "The Manhattan Avenue listening bar puts one name on the calendar for the evening slot — no support, no cover price and no stated end.",
-      "startsAt": "2026-08-30T18:00:00-04:00",
-      "endsAt": "2026-08-30T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Sunday, Aug 30\n6PM\nl'oggetto @eavesdrop",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-08-21"
-        }
-      ],
-      "lat": 40.724894,
-      "lng": -73.951181
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
       "createdAt": "2026-08-24",
       "updatedAt": "2026-08-24",
       "free": false,
@@ -5193,94 +4696,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-21",
       "updatedAt": "2026-08-25",
-      "id": "eavesdrop-alien-d-0829",
-      "category": "event",
-      "free": false,
-      "title": "Alien D residency at Eavesdrop",
-      "kicker": "Late set at the Manhattan Ave bar",
-      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
-      "startsAt": "2026-08-29T00:00:00-04:00",
-      "endsAt": "2026-08-29T23:59:00-04:00",
-      "allDay": false,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.724894,
-      "lng": -73.951181,
-      "sourceQuote": "Saturday, Aug 29\n12midnight\nAlien D residency",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-08-21"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-25",
-      "id": "eavesdrop-hunnybunny-0830",
-      "category": "event",
-      "free": false,
-      "title": "HunnyBunny at Eavesdrop",
-      "kicker": "Late set at the Manhattan Ave bar",
-      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
-      "startsAt": "2026-08-30T00:00:00-04:00",
-      "endsAt": "2026-08-30T23:59:00-04:00",
-      "allDay": false,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.724894,
-      "lng": -73.951181,
-      "sourceQuote": "Sunday, Aug 30\n12midnight\nHunnyBunny @eavesdrop",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-08-21"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-25",
       "id": "eavesdrop-kamilla-norova-0831",
       "category": "event",
       "free": false,
@@ -5314,54 +4729,6 @@
           "date": "2026-08-21"
         }
       ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-25",
-      "updatedAt": "2026-08-25",
-      "id": "bcc-crochet-102-tomatote-0829",
-      "category": "event",
-      "title": "Crochet 102: Tom-a-tote! at Brooklyn Craft Company",
-      "kicker": "Crochet a tomato-shaped tote",
-      "summary": "A step up from the beginner class, $45 for the session. Workshops at this shop sell out fast, so check availability first.",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
-      "lat": 40.730461,
-      "lng": -73.953114,
-      "free": false,
-      "startsAt": "2026-08-29T11:00:00-04:00",
-      "endsAt": "2026-08-29T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Workshop page",
-          "type": "learn_more",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-06"
-        },
-        {
-          "title": "Brooklyn Craft Company workshops",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-25"
-        }
-      ],
-      "sourceQuote": "Crochet 102: Tom-a-tote!\nIn Greenpoint:\nSat, 8/29 at 11am\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train\n$45.00"
     },
     {
       "audience": [
@@ -5459,147 +4826,6 @@
         "resident"
       ],
       "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "locationName": "Bedford Slip",
-      "address": "1 Bedford Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
-      "lat": 40.7238537,
-      "lng": -73.9510984,
-      "id": "bedford-slip-weekend-0829",
-      "title": "Bedford Slip Weekend",
-      "kicker": "Two full days of tables in the street",
-      "summary": "The car-free block stays set up with seating right through both days, and Sunday closes with a bring-your-own dinner eaten together.",
-      "filters": [
-        "food_drink"
-      ],
-      "startsAt": "2026-08-29T10:00:00-04:00",
-      "endsAt": "2026-08-30T20:00:00-04:00",
-      "relatedCardIds": [
-        "bedford-slip-tree-care-0829",
-        "bedford-slip-cleanup-0830",
-        "bedford-slip-hot-dogs-0830"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Bedford Slip Weekend",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
-          "publisher": "Partiful",
-          "date": "2026-08-26"
-        }
-      ],
-      "sourceQuote": "WHEN?\nFriday, August 28th 5PM-8PM\nSaturday, Aug 29th 10AM-8PM\nSunday, Aug 30th 10AM-8PM\nSaturday come play chess ♟️and learn about 🌳 tree care\nSaturday 1:00PM - 2:00PM Tree 🌳 Care Info Session with TreesNY\nSunday there’s fun the whole day ☀️ including byo dinner 🍽️ together."
-    },
-    {
-      "audience": [
-        "resident",
-        "civic_actor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "locationName": "Bedford Slip",
-      "address": "1 Bedford Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
-      "lat": 40.7238537,
-      "lng": -73.9510984,
-      "id": "bedford-slip-tree-care-0829",
-      "title": "Street Tree Care with TreesNY",
-      "kicker": "Learn to look after the trees on your block",
-      "summary": "A short info session run by TreesNY, tucked inside the weekend takeover of the car-free block.",
-      "filters": [
-        "civic"
-      ],
-      "startsAt": "2026-08-29T13:00:00-04:00",
-      "endsAt": "2026-08-29T14:00:00-04:00",
-      "relatedCardIds": [
-        "bedford-slip-weekend-0829",
-        "bedford-slip-cleanup-0830"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Bedford Slip Weekend",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
-          "publisher": "Partiful",
-          "date": "2026-08-26"
-        }
-      ],
-      "sourceQuote": "Saturday come play chess ♟️and learn about 🌳 tree care Saturday 1:00PM - 2:00PM Tree 🌳 Care Info Session with TreesNY"
-    },
-    {
-      "audience": [
-        "resident",
-        "civic_actor"
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "medium",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "locationName": "Bedford Slip",
-      "address": "1 Bedford Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
-      "lat": 40.7238537,
-      "lng": -73.9510984,
-      "id": "bedford-slip-cleanup-0830",
-      "title": "Volunteer cleanup at Bedford Slip",
-      "kicker": "A two-hour shift on the shoreline block",
-      "summary": "An all-ages volunteer clean up, listed by the North Brooklyn Environmental Community Calendar and falling inside the weekend takeover of the same block.",
-      "filters": [
-        "civic"
-      ],
-      "startsAt": "2026-08-30T11:00:00-04:00",
-      "endsAt": "2026-08-30T13:00:00-04:00",
-      "relatedCardIds": [
-        "bedford-slip-weekend-0829",
-        "bedford-slip-tree-care-0829"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "North Brooklyn Environmental Community Calendar",
-          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-25"
-        }
-      ],
-      "sourceQuote": "Bedford Slip\nSun, Aug 30 8:00 am\n1 Bedford Av Brooklyn, NY 11222\nAudience: All Ages Type: Workshop/Info Session\nVolunteer clean up from 11:00AM to 1:00PM"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
@@ -5636,51 +4862,6 @@
           "title": "Film Noir Cinema",
           "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
           "publisher": "Film Noir Cinema",
-          "date": "2026-08-26"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "free": true,
-      "category": "event",
-      "id": "longevity-stick-transmitter-0830",
-      "title": "Longevity Stick in Transmitter Park",
-      "kicker": "Free waterfront Tai Chi and yoga",
-      "summary": "A morning sitting rather than the usual Friday evening. Tyler Trocinski leads; sticks are provided, and they suggest a water bottle and a small towel.",
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729855,
-      "lng": -73.960729,
-      "filters": [
-        "wellness"
-      ],
-      "startsAt": "2026-08-30T08:30:00-04:00",
-      "endsAt": "2026-08-30T09:15:00-04:00",
-      "relatedCardIds": [
-        "transmitter-park-restaurant-marina"
-      ],
-      "sourceQuote": "Longevity Stick (Transmitter Park)\nJoin us on select Friday evenings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks.\nWhat to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages.\nInstructor: Tyler Trocinski\nWhat to Bring: Sticks are provided. We suggest a water bottle and a small towel.\nSun, Aug 30, 8:30 AM to 9:15 AM",
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-27/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Longevity Stick (Transmitter Park)",
-          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-08-27/",
-          "publisher": "Go Green Brooklyn",
           "date": "2026-08-26"
         }
       ]
@@ -5814,160 +4995,6 @@
       "sourceQuote": "summary: THE ACADEMY BLUES PROJECT\ndescription: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily\nstart.date: 2026-09-09",
       "lat": 40.733463,
       "lng": -73.955035
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "id": "big-night-fifth-birthday-0829",
-      "title": "Big Night turns five",
-      "kicker": "Cake, champagne and a $500 raffle",
-      "summary": "The dinner-party shop marks five years on Franklin Street. Goodie bags go to the first 50 through the door, and no RSVP is needed.",
-      "startsAt": "2026-08-29T13:00:00-04:00",
-      "endsAt": "2026-08-29T23:59:00-04:00",
-      "filters": [
-        "shopping"
-      ],
-      "free": false,
-      "locationName": "Big Night",
-      "address": "154 Franklin St, Brooklyn, NY 11222",
-      "geocodeQuery": "154 Franklin St, Brooklyn, NY 11222",
-      "sourceQuote": "5th Birthday Party @ Big Night, 1 p.m.: As the shop turns five, celebrate with cake, champagne, goodie bags for the first 50 guests, and a raffle for a $500 gift card. No RSVP needed.\nGreenpoint’s Big Night (154 Franklin St.), is having a big year.",
-      "actions": [
-        {
-          "label": "Read the roundup",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
-          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-26"
-        },
-        {
-          "title": "Community Cookbook: Big Night’s Party Mix",
-          "url": "https://greenpointers.com/2025/05/20/community-cookbook-big-nights-party-mix/",
-          "publisher": "Greenpointers",
-          "date": "2025-05-20"
-        }
-      ],
-      "lat": 40.730362,
-      "lng": -73.957465
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "id": "better-club-portrait-night-0829",
-      "title": "The Better Club: Portrait Night",
-      "kicker": "Collage a self-portrait, no skill needed",
-      "summary": "A creative mental-health community hosts its first night: sketchbooks, magazine cutouts, fabric scraps, pastels, beads and sequins provided, plus drinks and food for anyone who RSVPs.",
-      "startsAt": "2026-08-29T16:00:00-04:00",
-      "endsAt": "2026-08-29T18:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": true,
-      "locationName": "McCarren Parkhouse",
-      "address": "855 Lorimer St, Brooklyn, NY 11222",
-      "geocodeQuery": "855 Lorimer St, Brooklyn, NY 11222",
-      "sourceQuote": "The Better Club: Portrait Night! @ McCarren Parkhouse 4 p.m.: Leave the brushes and acrylics at home for a low-stakes evening of portrait making that invites you to see (and create) yourself in sequins, magazine scraps, ribbon, beads, and more. Hosted by creative mental health community The Better Club. Free, RSVP here .\nSketchbooks provided, plus magazines and collage cutouts, fabric scraps, pastels, colored pencils, watercolor paint, beads, and sequins, but bring anything that feels like you or that you’d love to work with. Drinks and food on us if you RSVP.\n\"location\":{\"@type\":\"Place\",\"name\":\"McCarren Parkhouse\",\"address\":\"855 Lorimer St, Brooklyn, NY 11222\"}\n\"startDate\":\"2026-08-29T20:00:00.000Z\"\n\"endDate\":\"2026-08-29T22:30:00.000Z\"",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://partiful.com/e/x4K3k2lYHhKW3SZ4p4Sg"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
-          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-26"
-        },
-        {
-          "title": "The Better Club: Portrait Night!",
-          "url": "https://partiful.com/e/x4K3k2lYHhKW3SZ4p4Sg",
-          "publisher": "The Better Club",
-          "date": "2026-08-26"
-        }
-      ],
-      "lat": 40.722304,
-      "lng": -73.9511
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "id": "bedford-slip-hot-dogs-0830",
-      "title": "Hot dog fundraiser at Bedford Slip",
-      "kicker": "Meat or veggie, for a suggested donation",
-      "summary": "Every dollar goes to North Brooklyn Mutual Aid, and the toppings are made with produce grown at the McCarren Park Demonstration Garden.",
-      "startsAt": "2026-08-30T12:00:00-04:00",
-      "endsAt": "2026-08-30T23:59:00-04:00",
-      "filters": [
-        "civic"
-      ],
-      "free": false,
-      "locationName": "Bedford Slip",
-      "address": "1 Bedford Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1 Bedford Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "bedford-slip-weekend-0829"
-      ],
-      "sourceQuote": "Hot Dog Fundraiser @ Bedford Slip, 12 p.m.: Do you like enjoying fresh local produce and supporting mutual aid? Get you a hot dog that can do both. Meat and veggie dogs will be available for a suggested donation (with all funds going to North Brooklyn Mutual Aid) using toppings made with produce from the McCarren Park Demonstration Garden. RSVP here .\n\"location\":{\"@type\":\"Place\",\"address\":\"1 Bedford Ave, Brooklyn, NY 11222\"}",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
-          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-26"
-        },
-        {
-          "title": "Bedford Slip Weekend",
-          "url": "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH",
-          "publisher": "NBK Open Streets",
-          "date": "2026-08-26"
-        }
-      ],
-      "lat": 40.723854,
-      "lng": -73.951098
     },
     {
       "audience": [
@@ -6220,9 +5247,6 @@
       "locationName": "Kirbee's",
       "address": "55 McGuinness Blvd",
       "geocodeQuery": "55 McGuinness Blvd, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "kirbees-soft-launch-0830"
-      ],
       "actions": [
         {
           "label": "Read the story",
@@ -6239,52 +5263,6 @@
         }
       ],
       "sourceQuote": "This weekend, Kirbee’s , a new barbecue joint from two award-winning Texans, is opening its doors at 55 McGuinness Boulevard, the former home of Peeps Kitchen , which now operates out of Scrappleland (1150 Manhattan Ave.).\nThe newcomer will then be fully open Labor Day weekend on. Its first official day is Friday, September 4, and its operating hours will be 11 a.m. to 4 p.m.\nKirbee’s is the brainchild of Goldee’s co-founder Jonny White and Chuck Charnichart, a Goldee’s alum who now owns Barbs B Q.",
-      "lat": 40.724271,
-      "lng": -73.948208
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "kirbees-soft-launch-0830",
-      "category": "event",
-      "title": "Kirbee's soft launch",
-      "kicker": "First plates out of the new pit",
-      "summary": "A three-hour trial run before the full opening the following Friday. The menu splits between Barbs B Q and Goldee's favourites; seating is a 24-seat room designed by Greenpoint firm Bolt.",
-      "startsAt": "2026-08-30T11:00:00-04:00",
-      "endsAt": "2026-08-30T14:00:00-04:00",
-      "filters": [
-        "food_drink"
-      ],
-      "locationName": "Kirbee's",
-      "address": "55 McGuinness Blvd",
-      "geocodeQuery": "55 McGuinness Blvd, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "kirbees-opening"
-      ],
-      "actions": [
-        {
-          "label": "Read the story",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/08/28/new-barbecue-joint-kirbees-soft-opens-this-sunday/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "New Barbecue Joint Kirbee's Soft Opens This Sunday",
-          "url": "https://greenpointers.com/2026/08/28/new-barbecue-joint-kirbees-soft-opens-this-sunday/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "On Sunday, August 30, Kirbee’s is having a soft launch from 11 a.m. to 2 p.m.\nKirbee’s menu will be split between favorites from Barbs and Goldee’s.\nKirbee’s customers can take the food to go or sit inside Kirbee’s 24-seat dining room, which was designed by Greenpoint-based firm Bolt.",
       "lat": 40.724271,
       "lng": -73.948208
     },
@@ -6459,51 +5437,6 @@
         }
       ],
       "sourceQuote": "Sep 11\nJustin Strauss (all night), Rissa Garcia, Ruez\nGood Room\n7:00PM"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "flowercat-book-swap-0829",
-      "category": "event",
-      "title": "Summer Book Swap at Flower Cat",
-      "kicker": "Bring a few, take a few",
-      "summary": "Spines intact and the words readable is the whole bar; five books maximum per person. Whatever is left goes to Little Libraries around Brooklyn — the last swap sent off 74.",
-      "startsAt": "2026-08-29T12:00:00-04:00",
-      "endsAt": "2026-08-29T15:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "lat": 40.728678,
-      "lng": -73.954258,
-      "relatedCardIds": [
-        "flower-cat"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat events",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "Summer Book Swap\nSaturday, August 29, 2026\nFrom noon-3, bring a book (or 2 or 3 or 4!) to offer up to other readers in the Flower Cat community and take a book (or 2 or 3 or 4!) to enjoy for yourself!\nA little rough around the edges is totally welcome but let's make sure spines are in tact and the words are readable and that we keep Greenpoint reading!!!\nAll leftover books will be donated to various Little Libraries around Brooklyn. 74 books were donated from our last Summer book swap!!!\n*Please bring a maximum of 5 books to we can schlep them accordingly*"
     },
     {
       "audience": [
@@ -6831,51 +5764,6 @@
       "createdAt": "2026-08-29",
       "updatedAt": "2026-08-29",
       "free": false,
-      "id": "film-noir-saturday-0829",
-      "category": "event",
-      "title": "Four-film Saturday at Film Noir Cinema",
-      "kicker": "Four films back to back",
-      "summary": "KRIMINAL (Italy, 1966), CIRCUITO CHIUSO (Italy, 1978), ARREBATO (Spain, 1979) and SNOW WOMAN (Japan, 1968) run in that order. No admission price is stated.",
-      "startsAt": "2026-08-29T15:00:00-04:00",
-      "endsAt": "2026-08-29T22:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema programme",
-          "url": "https://www.filmnoircinema.com/program/2026/8/22/krimi",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-29"
-        }
-      ],
-      "sourceQuote": "KRIMINAL\nSaturday, August 29, 2026\n3:00 PM\n4:00 PM\nCIRCUITO CHIUSO\nSaturday, August 29, 2026\n5:00 PM\n6:00 PM\nARREBATO\nSaturday, August 29, 2026\n7:00 PM\n8:00 PM\nSNOW WOMAN\nSaturday, August 29, 2026\n9:00 PM\n10:00 PM"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-29",
-      "updatedAt": "2026-08-29",
-      "free": false,
       "id": "good-room-felipe-gordon-0912",
       "category": "event",
       "title": "Felipe Gordon at Good Room",
@@ -7034,6 +5922,313 @@
         }
       ],
       "sourceQuote": "FREE SHIPPING!\nThis weekend only, Standard Shipping is on us when you spend $40 or more. Use this code at checkout.\nSHIPFREE826\nThis coupon becomes active on August 28, 2026 and expires on August 31, 2026. No cash value. Online only.\nLooking for plants? Come see us when we reopen on Monday, August 31."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-08-31",
+      "free": false,
+      "category": "event",
+      "id": "troost-spaghetti-eastern-0913",
+      "title": "SPAGHETTI EASTERN ELECTRO DUB at Troost",
+      "kicker": "Dub meets raga meets psychedelia",
+      "summary": "The venue calendar carries the name and that one genre line — no set time, no support bill and no ticket link.",
+      "startsAt": "2026-09-13T00:00:00-04:00",
+      "endsAt": "2026-09-13T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-31"
+        }
+      ],
+      "sourceQuote": "summary: SPAGHETTI EASTERN ELECTRO DUB\ndescription: Dub Meets Raga Meets Psychedelia\nstart.date: 2026-09-13\nend.date: 2026-09-14",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-08-31",
+      "free": false,
+      "category": "event",
+      "id": "troost-noah-amick-0914",
+      "title": "NOAH AMICK at Troost",
+      "kicker": "Electric indie jazz",
+      "summary": "The venue calendar carries the name and that one genre line — no set time, no support bill and no ticket link.",
+      "startsAt": "2026-09-14T00:00:00-04:00",
+      "endsAt": "2026-09-14T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-31"
+        }
+      ],
+      "sourceQuote": "summary: NOAH AMICK\ndescription: electric indie jazz\nstart.date: 2026-09-14\nend.date: 2026-09-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-08-31",
+      "free": false,
+      "category": "event",
+      "id": "film-noir-zimeklis-0831",
+      "title": "ZIMEKLIS at Film Noir Cinema",
+      "kicker": "An obscure Latvian film from 1992",
+      "summary": "A young woman agrees to model as the Virgin Mary for an artist whose influence tips her into delusions and nightmares. No admission price is stated.",
+      "startsAt": "2026-08-31T19:00:00-04:00",
+      "endsAt": "2026-08-31T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/4/19/zimeklis"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/4/19/zimeklis",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-31"
+        }
+      ],
+      "sourceQuote": "ZIMEKLIS\nMonday, August 31, 2026\n7:00 PM\n8:00 PM\nLT. 1992\nA young woman agrees to model for an artist as Virgin Mary. His strange influence triggers her repressed sexual urges causing her to have delusions and nightmares about spiders and other grotesque imagery.",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-08-31",
+      "free": false,
+      "category": "event",
+      "id": "film-noir-film-club-0903",
+      "title": "FILM CLUB at Film Noir Cinema",
+      "kicker": "Nobody but the chooser knows the film",
+      "summary": "A different member of the club picks the programme each time and keeps the title to themselves. No admission price is stated.",
+      "startsAt": "2026-09-03T21:00:00-04:00",
+      "endsAt": "2026-09-03T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-31"
+        }
+      ],
+      "sourceQuote": "FILM CLUB\nThursday, September 3, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.\nPure cinematheque fun.",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-08-31",
+      "free": true,
+      "category": "event",
+      "id": "kingsland-greenhouse-gang-0901",
+      "title": "Greenhouse Gang at Kingsland Wildflowers",
+      "kicker": "Up-pot and weed the native nursery",
+      "summary": "Newtown Creek Alliance's horticulturist is on site to guide the work and take questions. Free, but everyone has to fill in a liability and photo consent form first.",
+      "startsAt": "2026-09-01T17:00:00-04:00",
+      "endsAt": "2026-09-01T20:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Kingsland Wildflowers Green Roof and Community Engagement Center",
+      "address": "520 Kingsland Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "520 Kingsland Avenue, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://gogreenbk.org/event/greenhouse-gang-2026/2026-09-01/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenhouse Gang (Kingsland Wildflowers)",
+          "url": "https://gogreenbk.org/event/greenhouse-gang-2026/2026-09-01/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-08-31"
+        }
+      ],
+      "sourceQuote": "Greenhouse Gang (Kingsland Wildflowers)\nTuesday, September 1st at 5:00 PM - 8:00 PM\nFree\nJoin Newtown Creek Alliance as we work in up-potting, weeding, and nursery maintenance in our Newtown Native Greenhouse and Nursery!\nOur horticulturist Brenda Suchilt will be on site to help guide activities such as up-potting and plant maintenance, as well as answer any questions you may have.\nBefore the event, registrants are required to complete a liability waiver and photo consent form ( Adult form here and Minor form here ).",
+      "lat": 40.735131,
+      "lng": -73.94316
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-08-31",
+      "free": false,
+      "category": "event",
+      "id": "library-garden-hours-0911",
+      "title": "Garden Hours at Greenpoint Library",
+      "kicker": "Bring plant questions to the roof",
+      "summary": "An experienced garden educator is on the third-floor demonstration garden to talk about what is growing. All ages, and called off for rain, high heat or other bad weather.",
+      "startsAt": "2026-09-11T15:00:00-04:00",
+      "endsAt": "2026-09-11T16:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-31"
+        }
+      ],
+      "sourceQuote": "ts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-09-11T19:00:00Z\nds_event_end_date: 2026-09-11T20:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather. All ages welcome.",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-31",
+      "updatedAt": "2026-08-31",
+      "free": false,
+      "category": "event",
+      "id": "golden-drum-virgo-new-moon-0912",
+      "title": "Virgo New Moon Meditation at Golden Drum",
+      "kicker": "A sound bath on the new moon",
+      "summary": "Guided reflection on reviewing your life and getting things in order before winter, led by Cassie Luzenski and Adrian DiMatteo. Tickets are $25 and space is limited.",
+      "startsAt": "2026-09-12T19:00:00-04:00",
+      "endsAt": "2026-09-12T21:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Golden Drum",
+      "address": "97 Green St. G1, Brooklyn, NY 11222",
+      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.goldendrum.org/calendar-1/virgonewmoon"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Golden Drum events",
+          "url": "https://www.goldendrum.org/calendar-1/virgonewmoon",
+          "publisher": "Golden Drum",
+          "date": "2026-08-31"
+        }
+      ],
+      "sourceQuote": "Virgo New Moon Meditation\nSaturday, September 12, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nUnder the Virgo New Moon we are given an opportunity to analyze, not scrutinize, but from a neutral stance, review and look at our lives and make decisions as to how we may want to restructure or reorganize.\nJoin us for this moment of self-care through conscious connection to the astrological moment with a sound bath.\nVirgo New Moon 9/12/26\n$25.00",
+      "lat": 40.733571,
+      "lng": -73.957721
     }
   ]
 }

@@ -1,22 +1,7 @@
-title: KRIMINAL
-startDate: 2026-08-29T19:00:00.000Z
-endDate: 2026-08-29T20:00:00.000Z
-fullUrl: /program/2026/8/22/krimi
-
-title: CIRCUITO CHIUSO
-startDate: 2026-08-29T21:00:00.304Z
-endDate: 2026-08-29T22:00:00.304Z
-fullUrl: /program/2026/4/11/chiuso
-
-title: ARREBATO
-startDate: 2026-08-29T23:00:00.919Z
-endDate: 2026-08-30T00:00:00.919Z
-fullUrl: /program/2026/8/8/arrebato
-
-title: SNOW WOMAN
-startDate: 2026-08-30T01:00:00.328Z
-endDate: 2026-08-30T02:00:00.328Z
-fullUrl: /program/2026/7/28/snow-witch
+title: ZIMEKLIS
+startDate: 2026-08-31T23:00:00.047Z
+endDate: 2026-09-01T00:00:00.047Z
+fullUrl: /program/2026/4/19/zimeklis
 
 title: FILM NOIR MONDAY
 startDate: 2026-09-01T01:00:00.015Z
@@ -27,6 +12,11 @@ title: CULT CINEMA
 startDate: 2026-09-02T01:00:00.000Z
 endDate: 2026-09-02T02:00:00.000Z
 fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+
+title: FILM CLUB
+startDate: 2026-09-04T01:00:00.000Z
+endDate: 2026-09-04T02:00:00.000Z
+fullUrl: /program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
 
 title: TERROR TERROIR
 startDate: 2026-09-04T23:00:00.202Z
@@ -94,8 +84,8 @@ Google Calendar
 ICS
 Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
 In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
-Earlier Event: August 29
-SNOW WOMAN
+Earlier Event: August 31
+ZIMEKLIS
 Later Event: September 1
 CULT CINEMA
 Back To Top
@@ -128,6 +118,40 @@ ICS
 Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
 Earlier Event: August 31
 FILM NOIR MONDAY
+Later Event: September 3
+FILM CLUB
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
+FILM CLUB — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+FILM CLUB
+Thursday, September 3, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
+The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
+Pure cinematheque fun.
+Earlier Event: September 1
+CULT CINEMA
 Later Event: September 4
 TERROR TERROIR
 Back To Top
@@ -228,6 +252,132 @@ ICS
 SECRETS OF THE DEAD Short Film Festival
 Earlier Event: October 31
 HALLOWEEN PARTY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/4/19/zimeklis
+ZIMEKLIS — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+ZIMEKLIS
+Monday, August 31, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+LT. 1992
+A young woman agrees to model for an artist as Virgin Mary. His strange influence triggers her repressed sexual urges causing her to have delusions and nightmares about spiders and other grotesque imagery.
+Earlier Event: August 30
+YUMEMIRU
+Later Event: August 31
+FILM NOIR MONDAY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
+BLACK BOX — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BLACK BOX
+Friday, September 11, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Earlier Event: September 4
+TERROR TERROIR
+Later Event: September 25
+SUPERSHORTS NY FILM FESTIVAL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival
+SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SUPERSHORTS NY FILM FESTIVAL
+Friday, September 25, 2026
+6:00 PM
+7:00 PM
+18:00
+19:00
+Google Calendar
+ICS
+Earlier Event: September 11
+BLACK BOX
+Later Event: September 26
+SUPERSHORTS NY FILM FESTIVAL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival-ec94l
+SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SUPERSHORTS NY FILM FESTIVAL
+Saturday, September 26, 2026
+6:30 PM
+7:30 PM
+18:30
+19:30
+Google Calendar
+ICS
+Earlier Event: September 25
+SUPERSHORTS NY FILM FESTIVAL
+Later Event: September 27
+SUPERSHORTS NY FILM FESTIVAL
 Back To Top
 Cart ( 0 )
 
@@ -363,71 +513,6 @@ SNOW WOMAN
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
-BLACK BOX — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-BLACK BOX
-Friday, September 11, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Earlier Event: September 4
-TERROR TERROIR
-Later Event: September 25
-SUPERSHORTS NY FILM FESTIVAL
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
-FILM CLUB — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-FILM CLUB
-Thursday, August 27, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
-The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
-Pure cinematheque fun.
-Earlier Event: August 27
-WHIRLPOOL
-Later Event: August 28
-ACID
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/5/13/whirlpool
 WHIRLPOOL — Film Noir Cinema
 Home
@@ -491,68 +576,6 @@ Earlier Event: August 27
 FILM CLUB
 Later Event: August 31
 FILM NOIR MONDAY
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival
-SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-SUPERSHORTS NY FILM FESTIVAL
-Friday, September 25, 2026
-6:00 PM
-7:00 PM
-18:00
-19:00
-Google Calendar
-ICS
-Earlier Event: September 11
-BLACK BOX
-Later Event: September 26
-SUPERSHORTS NY FILM FESTIVAL
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival-ec94l
-SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-SUPERSHORTS NY FILM FESTIVAL
-Saturday, September 26, 2026
-6:30 PM
-7:30 PM
-18:30
-19:30
-Google Calendar
-ICS
-Earlier Event: September 25
-SUPERSHORTS NY FILM FESTIVAL
-Later Event: September 27
-SUPERSHORTS NY FILM FESTIVAL
 Back To Top
 Cart ( 0 )
 
