@@ -684,15 +684,21 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // fetches (a bot wall, not an egress block, so no allowlist entry fixes it)
   // and the source is browser-only too. Both are almost certainly still
   // running; that belief is not a source, and this gate is what stops it being
-  // treated as one. 129 + 7 - 2 = 134.
-  assert.equal(seed.cards.length, 134);
+  // treated as one.
+  //
+  // 2026-09-01 daily thin: expiry took 5 past items (134 → 129), then 5 adds
+  // and one deletion. The deletion is artistic-voices-artudio, a recurring kids
+  // workshop whose own copy read "Tuesdays through August" — the season it
+  // states is over, and the July Greenpointers roundup that sourced it rolled
+  // off the feed long ago, so nothing can renew it. 129 + 5 - 1 = 133.
+  assert.equal(seed.cards.length, 133);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 32, "unchanged — this run added no news card (2026-08-31)");
-  assert.equal(count((c) => c.category === "event"), 56, "50 after expiry + 7 adds − the Saturday comedy showcase, unverifiable (2026-08-31)");
-  assert.equal(count((c) => c.category === "discount"), 6, "7 − the Bios Apothecary consultation, unverifiable (2026-08-30)");
-  assert.equal(count((c) => c.category === "news"), 20, "19 + the Franklin Street fire (2026-08-29)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 25, "23 after expiry + the two Troost gigs on 9/13 and 9/14 (2026-08-31)");
+  assert.equal(count((c) => c.filters.includes("news")), 33, "32 + the 148 Noble Street opening (2026-09-01)");
+  assert.equal(count((c) => c.category === "event"), 55, "52 after expiry + 4 adds − the Artudio workshop, season over (2026-09-01)");
+  assert.equal(count((c) => c.category === "discount"), 5, "6 − the Tend free-shipping offer, expired 8/31");
+  assert.equal(count((c) => c.category === "news"), 21, "20 + the 148 Noble Street opening (2026-09-01)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 25, "23 after expiry + the two Troost gigs on 9/2 and 9/15 (2026-09-01)");
   assert.equal(count((c) => c.category === "subscription"), 26, "27 − Greenpoint Trash Club, unverifiable (2026-08-30)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -791,7 +797,9 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // 2026-08-29: +1 — Tend Greenpoint's free-shipping code, a dated offer with
   // the shop's own stated 8/31 expiry, so it is NOT a flagged recurring deal.
   // 2026-08-30: −1 — the Bios Apothecary consultation, deleted unverifiable.
-  assert.equal(deals.length, 6);
+  // 2026-09-01: −1 — Tend Greenpoint's free-shipping code reached the shop's
+  // own stated 8/31 end date and expiry removed it.
+  assert.equal(deals.length, 5);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -839,7 +847,9 @@ test("news cards name their publisher and sit in the news layer", () => {
   // Ave, carrying on after owner Timothy Murawski's death in July.
   // 2026-08-29: +1 — the all-hands fire at 113 Franklin St that damaged
   // Sereneco and closed Maman, in the same building, both indefinitely.
-  assert.equal(news.length, 20);
+  // 2026-09-01: +1 from Greenpointers — 148 Noble Street, the restaurant a
+  // Chez Ma Tante alum is opening mid-month in the old Noble wine bar space.
+  assert.equal(news.length, 21);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -1373,7 +1383,6 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // deadline. Online-only, and the card's copy says so — the storefront is
     // shut until the day the code expires, so a storefront pin would otherwise
     // imply you could walk there for it (the 2026-08-03 online/in-store rule).
-    "tend-free-shipping-0831",
     // 2026-08-10: a dated promo, so it sits beside the membership card rather
     // than replacing it — endsAt is the source's own "available through Aug 15".
     "word-membership",

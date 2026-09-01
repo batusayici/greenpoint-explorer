@@ -3803,5 +3803,30 @@
         "-73.9424787"
       ]
     }
+  },
+  "148 Noble Street, Brooklyn, NY 11222": {
+    "query": "148 Noble Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-01T13:20:14.377Z",
+    "hit": {
+      "place_id": 361812557,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842929239,
+      "lat": "40.7286204",
+      "lon": "-73.9544200",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "148, Noble Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7285704",
+        "40.7286704",
+        "-73.9544700",
+        "-73.9543700"
+      ]
+    }
   }
 }

@@ -1,28 +1,3 @@
-title: New Edition Painting Competition
-startDate: 2026-08-31T22:30:00.700Z
-endDate: 2026-08-31T23:30:00.700Z
-fullUrl: /events/2026/8/31/new-edition-painting-competition
-
-title: Twilight Imperium League 2026 - August
-startDate: 2026-08-22T14:00:00.884Z
-endDate: 2026-08-23T00:00:00.884Z
-fullUrl: /events/2026/8/22/twilight-imperium-league-2026-6ynmb-cx2pz-scaey-8d38k
-
-title: Carcosa HVAC Hot Dog Day
-startDate: 2026-08-15T14:00:00.542Z
-endDate: 2026-08-15T22:30:00.542Z
-fullUrl: /events/2026/8/5/carcosa-hvac-hot-dog-day
-
-title: Malifaux Monthly
-startDate: 2026-08-08T13:45:00.916Z
-endDate: 2026-08-08T22:00:00.916Z
-fullUrl: /events/2026/7/12/malifaux-monthly-b5wzj
-
-title: Warhammer 40k: Armageddon! RTT
-startDate: 2026-08-01T13:00:00.304Z
-endDate: 2026-08-02T01:00:00.304Z
-fullUrl: /events/2026/8/1/warhammer-40k-armageddon-rtt
-
 title: Twilight Imperium League 2026 - September
 startDate: 2026-09-26T14:00:00.307Z
 endDate: 2026-09-27T00:00:00.307Z
@@ -37,6 +12,11 @@ title: Malifaux Monthly
 startDate: 2026-09-12T13:45:00.019Z
 endDate: 2026-09-12T22:00:00.019Z
 fullUrl: /events/2026/7/12/malifaux-monthly-ytrrj
+
+title: Malifaux Monthly
+startDate: 2026-10-10T13:45:00.087Z
+endDate: 2026-10-10T22:00:00.087Z
+fullUrl: /events/2026/7/12/malifaux-monthly-pnytn
 
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 

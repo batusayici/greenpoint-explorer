@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-31",
+  "version": "2026-09-01",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -620,53 +620,6 @@
       "kicker": "Ask the MTA for better closures"
     },
     {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "4 Diamond St, Brooklyn, NY 11222",
-      "lat": 40.723169,
-      "lng": -73.945354,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-08-08",
-      "id": "artistic-voices-artudio",
-      "title": "Artistic Voices: kids' art workshop",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Artudio",
-      "summary": "A process-art workshop for ages 8–12 with illustrator Caroline Draws — Tuesdays through August.",
-      "startsAt": "2026-07-07T17:00:00-04:00",
-      "endsAt": "2026-08-31T23:59:00-04:00",
-      "recurring": true,
-      "actions": [
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Ages 8–12, process art",
-      "recurrence": {
-        "days": [
-          "tue"
-        ]
-      }
-    },
-    {
       "id": "vault-gallery-culture-house",
       "category": "news",
       "sourceCampaign": "greenpointers_week_2026_07_16",
@@ -1017,8 +970,6 @@
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-monday-0831",
-        "film-noir-zimeklis-0831",
         "film-noir-film-club-0903"
       ],
       "lat": 40.727314,
@@ -3719,49 +3670,6 @@
       "audience": [
         "resident"
       ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-17",
-      "updatedAt": "2026-08-17",
-      "free": false,
-      "id": "troost-rob-heath-0831",
-      "category": "event",
-      "title": "Rob Heath's Nice Try, Kid! at Troost",
-      "kicker": "A monthly night of unapproved music",
-      "summary": "Troost's own Google Calendar lists the night by name and description only — no set time, no lineup, no ticket link.",
-      "startsAt": "2026-08-31T00:00:00-04:00",
-      "endsAt": "2026-08-31T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "sourceQuote": "summary: ROB HEATH / NICE TRY KID\ndescription: Rob Heath's Nice Try, Kid!: a monthly night of unapproved and experimental music\nstart.date: 2026-08-31",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-17"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
       "evidenceStrength": "medium",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
@@ -4259,15 +4167,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-26",
+      "updatedAt": "2026-09-01",
       "id": "library-sensory-garden-0904",
       "category": "event",
       "free": false,
       "title": "Friday at Greenpoint Library",
-      "kicker": "Rooftop garden, morning and afternoon",
-      "summary": "Storytime and play among the plants for the under-fives, then an experienced garden educator on hand for plant questions. Both are called off for rain or high heat.",
+      "kicker": "Rooftop garden, then Paddington 2",
+      "summary": "Storytime and play among the plants for the under-fives, a garden educator on hand for plant questions, then a kid-friendly screening in the Eco Lab.",
       "startsAt": "2026-09-04T10:30:00-04:00",
-      "endsAt": "2026-09-04T16:00:00-04:00",
+      "endsAt": "2026-09-04T16:30:00-04:00",
       "filters": [
         "family_kids"
       ],
@@ -4278,7 +4186,7 @@
       "relatedCardIds": [
         "greenpoint-library"
       ],
-      "sourceQuote": "Sensory Garden Hour (Greenpoint Library)\nEvery Friday, 10:30 AM to 11:30 AM to September 4, 2026 except for July 3\nJoin us at the Greenpoint Library for kids’ time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden.\nFor ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures.\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-09-04T19:00:00Z\nds_event_end_date: 2026-09-04T20:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather.",
+      "sourceQuote": "Sensory Garden Hour (Greenpoint Library)\nEvery Friday, 10:30 AM to 11:30 AM to September 4, 2026 except for July 3\nJoin us at the Greenpoint Library for kids’ time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden.\nFor ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures.\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-09-04T19:00:00Z\nds_event_end_date: 2026-09-04T20:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather.\nts_title: Friday Kids' Movie\nds_event_start_date: 2026-09-04T19:00:00Z\nds_event_end_date: 2026-09-04T20:30:00Z\nss_event_age: Kids\nts_body: Join us on Friday afternoon for a kid-friendly movie! This week's movie will be: \"Paddington 2\" (2018 ) Rated PG, 104 minutes -",
       "actions": [
         {
           "label": "Event page",
@@ -4694,50 +4602,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-25",
-      "id": "eavesdrop-kamilla-norova-0831",
-      "category": "event",
-      "free": false,
-      "title": "Kamilla Norova at Eavesdrop",
-      "kicker": "Late set at the Manhattan Ave bar",
-      "summary": "The venue's calendar puts this one in its midnight slot and names nothing else — no support act, no cover price and no stated end.",
-      "startsAt": "2026-08-31T00:00:00-04:00",
-      "endsAt": "2026-08-31T23:59:00-04:00",
-      "allDay": false,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.724894,
-      "lng": -73.951181,
-      "sourceQuote": "Monday, Aug 31\n12midnight\nKamilla Norova @eavesdrop",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-08-21"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
       "createdAt": "2026-08-25",
       "updatedAt": "2026-08-25",
       "id": "bcc-beginner-patchwork-0906",
@@ -4820,51 +4684,6 @@
         }
       ],
       "sourceQuote": "meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "free": false,
-      "category": "event",
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "id": "film-noir-monday-0831",
-      "title": "Film Noir Monday at Film Noir Cinema",
-      "kicker": "The title stays secret until it rolls",
-      "summary": "The Monday slot digs up lesser-known and international noir, and the cinema keeps the audience in the dark on purpose. No admission price is stated.",
-      "filters": [
-        "arts_culture"
-      ],
-      "startsAt": "2026-08-31T21:00:00-04:00",
-      "endsAt": "2026-08-31T22:00:00-04:00",
-      "sourceQuote": "FILM NOIR MONDAY\nMonday, August 31, 2026\n9:00 PM\n10:00 PM\nFilm Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.\nIn Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-26"
-        }
-      ]
     },
     {
       "audience": [
@@ -5674,15 +5493,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
+      "updatedAt": "2026-09-01",
       "free": false,
-      "id": "golden-drum-anahata-0911",
+      "id": "golden-drum-anahata-0909",
       "category": "event",
       "title": "Anahata Sessions: September at Golden Drum",
       "kicker": "Write a letter, learn a song",
       "summary": "Guided reflection on Virgo season, then a love letter to your future self into a communal basket and redistributed at random, then a sacred song learned together. No singing experience needed.",
-      "startsAt": "2026-09-11T19:00:00-04:00",
-      "endsAt": "2026-09-11T21:30:00-04:00",
+      "startsAt": "2026-09-09T19:00:00-04:00",
+      "endsAt": "2026-09-09T21:30:00-04:00",
       "filters": [
         "arts_culture"
       ],
@@ -5701,10 +5520,10 @@
           "title": "Golden Drum events",
           "url": "https://www.goldendrum.org/calendar-1/anahata-09-11-26-4hnmb",
           "publisher": "Golden Drum",
-          "date": "2026-08-28"
+          "date": "2026-09-01"
         }
       ],
-      "sourceQuote": "Anahata Sessions: SEPTEMBER\nFriday, September 11, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nFrom this point of clarity and stillness, you will be invited into a ritual of self-devotion: writing a love letter to yourself.\nThese letters will be placed into a communal basket and later redistributed at random, allowing each participant to receive a mysterious message of love and insight—an echo from the collective heart, arriving right on time.\nFrom this place, we will learn a sacred song, weaving our voices together in a devotional practice that harmonizes breath, body, and spirit. No prior singing experience is needed—only a willingness to listen and be heard.\nWe are limited in space, so please buy your ticket ahead of time. Suggested donation $30 in advance, $40 at the door (no one will be turned away for lack of funds).",
+      "sourceQuote": "Anahata Sessions: SEPTEMBER\nWednesday, September 9, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nFrom this point of clarity and stillness, you will be invited into a ritual of self-devotion: writing a love letter to yourself.\nThese letters will be placed into a communal basket and later redistributed at random, allowing each participant to receive a mysterious message of love and insight\nFrom this place, we will learn a sacred song, weaving our voices together in a devotional practice that harmonizes breath, body, and spirit. No prior singing experience is needed\nWe are limited in space, so please buy your ticket ahead of time. Suggested donation $30 in advance, $40 at the door (no one will be turned away for lack of funds).",
       "lat": 40.733571,
       "lng": -73.957721
     },
@@ -5848,13 +5667,13 @@
       "partnerRelevance": "low",
       "trustRisk": "low",
       "createdAt": "2026-08-29",
-      "updatedAt": "2026-08-29",
+      "updatedAt": "2026-09-01",
       "free": false,
       "id": "sereneco-franklin-st-fire",
       "category": "news",
       "title": "Fire damages Sereneco on Franklin St",
       "kicker": "Sereneco and Maman are both closed",
-      "summary": "The FDNY took the call at 10:46am Friday and had the fire contained by 12:35pm; 79 responders worked it and firefighters with minor injuries went to NYU Langone. Cause under investigation.",
+      "summary": "Owner Billy Van Dolsen says it could take months before the restaurant reopens; a GoFundMe is running with all proceeds going directly to staff. Cause still under investigation.",
       "filters": [
         "news",
         "food_drink"
@@ -5874,54 +5693,12 @@
           "title": "Fire on Franklin Street Damages Sereneco, Injures Multiple Firefighters",
           "url": "https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/",
           "publisher": "Greenpointers",
-          "date": "2026-08-28"
+          "date": "2026-09-01"
         }
       ],
-      "sourceQuote": "An all-hands fire on Franklin Street caused damage to Sereneco (113 Franklin St.)\nthe FDNY told Greenpointers that they received a call about the situation at 10:46 this morning. A fire broke out on the second floor, requiring 79 FDNY and EMS personnel. Workers contained the fire by 12:35 p.m.\nFirefighters with minor injuries were transported to NYU Langone. The cause of the fire is still under investigation.\nSereneco wrote on Instagram that the fire “caused significant damage” and that they would close as they worked to assess next steps.\nI tried to stop by Maman (84 Kent St.) for a coffee but staff told me the fire required them to close (they are in the same building).",
+      "sourceQuote": "Update August 31, 2026: A GoFundMe has been started for Sereneco with 100% of the proceeds going directly to staff. Owner Billy Van Dolsen said it could take months before the restaurant reopens.\nAn all-hands fire on Franklin Street caused damage to Sereneco (113 Franklin St.)\nthe FDNY told Greenpointers that they received a call about the situation at 10:46 this morning. A fire broke out on the second floor, requiring 79 FDNY and EMS personnel. Workers contained the fire by 12:35 p.m.\nFirefighters with minor injuries were transported to NYU Langone. The cause of the fire is still under investigation.\nSereneco wrote on Instagram that the fire “caused significant damage” and that they would close as they worked to assess next steps.\nI tried to stop by Maman (84 Kent St.) for a coffee but staff told me the fire required them to close (they are in the same building).",
       "lat": 40.730371,
       "lng": -73.957833
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "medium",
-      "monetizationRelevance": "direct",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-29",
-      "updatedAt": "2026-08-29",
-      "free": false,
-      "id": "tend-free-shipping-0831",
-      "category": "discount",
-      "title": "Free shipping at Tend Greenpoint",
-      "kicker": "Code SHIPFREE826 on orders over $40",
-      "summary": "Web store only, not a reason to walk down — the shop itself stays shut until the day this one runs out. They are shipping planters from Franca, Bergs Potter and Conifer Homewares.",
-      "endsAt": "2026-08-31T23:59:00-04:00",
-      "filters": [
-        "deals_memberships"
-      ],
-      "locationName": "Tend Greenpoint",
-      "address": "252 Franklin St, Brooklyn, NY 11222",
-      "geocodeQuery": "252 Franklin Street, Brooklyn, NY 11222",
-      "lat": 40.734612,
-      "lng": -73.958144,
-      "actions": [
-        {
-          "label": "Shop online",
-          "type": "order",
-          "url": "https://www.tendgreenpoint.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "This weekend only - FREE Shipping",
-          "url": "https://www.tendgreenpoint.com/",
-          "publisher": "Tend Greenpoint",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "FREE SHIPPING!\nThis weekend only, Standard Shipping is on us when you spend $40 or more. Use this code at checkout.\nSHIPFREE826\nThis coupon becomes active on August 28, 2026 and expires on August 31, 2026. No cash value. Online only.\nLooking for plants? Come see us when we reopen on Monday, August 31."
     },
     {
       "audience": [
@@ -6021,51 +5798,6 @@
       "updatedAt": "2026-08-31",
       "free": false,
       "category": "event",
-      "id": "film-noir-zimeklis-0831",
-      "title": "ZIMEKLIS at Film Noir Cinema",
-      "kicker": "An obscure Latvian film from 1992",
-      "summary": "A young woman agrees to model as the Virgin Mary for an artist whose influence tips her into delusions and nightmares. No admission price is stated.",
-      "startsAt": "2026-08-31T19:00:00-04:00",
-      "endsAt": "2026-08-31T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/4/19/zimeklis"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/4/19/zimeklis",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-31"
-        }
-      ],
-      "sourceQuote": "ZIMEKLIS\nMonday, August 31, 2026\n7:00 PM\n8:00 PM\nLT. 1992\nA young woman agrees to model for an artist as Virgin Mary. His strange influence triggers her repressed sexual urges causing her to have delusions and nightmares about spiders and other grotesque imagery.",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-31",
-      "updatedAt": "2026-08-31",
-      "free": false,
-      "category": "event",
       "id": "film-noir-film-club-0903",
       "title": "FILM CLUB at Film Noir Cinema",
       "kicker": "Nobody but the chooser knows the film",
@@ -6151,17 +5883,18 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-31",
-      "updatedAt": "2026-08-31",
+      "updatedAt": "2026-09-01",
       "free": false,
       "category": "event",
       "id": "library-garden-hours-0911",
-      "title": "Garden Hours at Greenpoint Library",
-      "kicker": "Bring plant questions to the roof",
-      "summary": "An experienced garden educator is on the third-floor demonstration garden to talk about what is growing. All ages, and called off for rain, high heat or other bad weather.",
-      "startsAt": "2026-09-11T15:00:00-04:00",
+      "title": "Friday at Greenpoint Library",
+      "kicker": "Rooftop garden, morning and afternoon",
+      "summary": "A garden-themed storytime and sensory play for the under-fives in the morning, then an experienced garden educator on the roof for plant questions. Called off for rain or high heat.",
+      "startsAt": "2026-09-11T10:30:00-04:00",
       "endsAt": "2026-09-11T16:00:00-04:00",
       "filters": [
-        "civic"
+        "civic",
+        "family_kids"
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
@@ -6182,7 +5915,7 @@
           "date": "2026-08-31"
         }
       ],
-      "sourceQuote": "ts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-09-11T19:00:00Z\nds_event_end_date: 2026-09-11T20:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather. All ages welcome.",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-09-11T14:30:00Z\nds_event_end_date: 2026-09-11T15:30:00Z\nss_event_age: Birth to Five Years\nts_body: Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden.\nFor ages 0-5. No registration required.\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-09-11T19:00:00Z\nds_event_end_date: 2026-09-11T20:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting.",
       "relatedCardIds": [
         "greenpoint-library"
       ]
@@ -6229,6 +5962,223 @@
       "sourceQuote": "Virgo New Moon Meditation\nSaturday, September 12, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nUnder the Virgo New Moon we are given an opportunity to analyze, not scrutinize, but from a neutral stance, review and look at our lives and make decisions as to how we may want to restructure or reorganize.\nJoin us for this moment of self-care through conscious connection to the astrological moment with a sound bath.\nVirgo New Moon 9/12/26\n$25.00",
       "lat": 40.733571,
       "lng": -73.957721
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-01",
+      "updatedAt": "2026-09-01",
+      "free": false,
+      "category": "event",
+      "id": "film-noir-el-asesino-0901",
+      "title": "EL ASESINO DE MUNECAS at Film Noir Cinema",
+      "kicker": "Spanish 1975 psycho-horror, 7pm",
+      "summary": "A groundskeeper's son, unstable since childhood, kills his way through a world where he cannot tell people from mannequins. No admission price is stated.",
+      "startsAt": "2026-09-01T19:00:00-04:00",
+      "endsAt": "2026-09-01T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/2/25/el-asesino-de-munecas"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/2/25/el-asesino-de-munecas",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-01"
+        }
+      ],
+      "sourceQuote": "EL ASESINO DE MUNECAS\nTuesday, September 1, 2026\n7:00 PM\n8:00 PM\nSP. 1975\nA groundskeeper's son, who is mentally unstable due to childhood trauma, goes on a murdering spree where his perception of reality is distorted by imagining people as mannequins and vice versa."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-01",
+      "updatedAt": "2026-09-01",
+      "free": false,
+      "category": "event",
+      "id": "film-noir-szurkulet-0902",
+      "title": "SZURKULET at Film Noir Cinema",
+      "kicker": "Hungarian 1990 crime drama, 9pm",
+      "summary": "A schoolgirl is found dead in the woods and a detective on the edge of retirement takes one last run at the case. No admission price is stated.",
+      "startsAt": "2026-09-02T21:00:00-04:00",
+      "endsAt": "2026-09-02T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/3/27/szurkulet"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/3/27/szurkulet",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-01"
+        }
+      ],
+      "sourceQuote": "SZURKULET\nWednesday, September 2, 2026\n9:00 PM\n10:00 PM\nHU. 1990\nWhen a schoolgirl is found murdered in the woods, a retiring detective tries to find her murderer."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-01",
+      "updatedAt": "2026-09-01",
+      "free": false,
+      "category": "event",
+      "id": "troost-dervisi-0902",
+      "title": "DERVISI at Troost",
+      "kicker": "Punk-rebetika, first Wednesdays",
+      "summary": "The calendar bills them as the herbal remedy and promises odd meters. No set time, no support bill and no ticket link.",
+      "startsAt": "2026-09-02T00:00:00-04:00",
+      "endsAt": "2026-09-02T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-09-01"
+        }
+      ],
+      "sourceQuote": "summary: DERVISI\ndescription: Punk-Rebetika 1st Wednesdays - the herbal remedy - You will dance iin odd meters because Odd is Godd, Baby!\nstart.date: 2026-09-02\nend.date: 2026-09-03"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-01",
+      "updatedAt": "2026-09-01",
+      "free": false,
+      "category": "event",
+      "id": "troost-devin-gray-trio-0915",
+      "title": "DEVIN GRAY TRIO at Troost",
+      "kicker": "Freely improvised sonic landscapes",
+      "summary": "The venue calendar carries the name and that one genre line — no set time, no support bill and no ticket link.",
+      "startsAt": "2026-09-15T00:00:00-04:00",
+      "endsAt": "2026-09-15T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-09-01"
+        }
+      ],
+      "sourceQuote": "summary: DEVIN GRAY TRIO\ndescription: freely improvised sonic landscapes\nstart.date: 2026-09-15\nend.date: 2026-09-16"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-09-01",
+      "updatedAt": "2026-09-01",
+      "free": false,
+      "category": "news",
+      "id": "noble-148-opening",
+      "title": "148 Noble Street to open this month",
+      "kicker": "Chez Ma Tante alum takes The Noble's space",
+      "summary": "Chef Gabriel Borges is aiming for mid-September, opening Thursday through Monday to start, on a European menu leaning French and Italian with a wine-and-beer licence.",
+      "filters": [
+        "news"
+      ],
+      "locationName": "148 Noble Street",
+      "address": "148 Noble St, Brooklyn, NY 11222",
+      "geocodeQuery": "148 Noble Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/09/01/chez-ma-tante-alum-will-open-his-own-spot-148-noble-street-later-this-month/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Chez Ma Tante Alum Will Open His Own Spot, 148 Noble Street, Later This Month",
+          "url": "https://greenpointers.com/2026/09/01/chez-ma-tante-alum-will-open-his-own-spot-148-noble-street-later-this-month/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-01"
+        }
+      ],
+      "sourceQuote": "This September, Chez Ma Tante alum Chef Gabriel Borges is opening his own restaurant called 148 Noble Street.\nChef Borges’ new restaurant will be located in the former home of The Noble , a wine bar from Itir Aloba and Rick Curi that closed this past winter.\nChef Borges is aiming to open 148 Noble Street in “mid-September.” When it first opens, the restaurant will welcome guests five days a week, Thursday through Monday.\nChef Borges’ menu at 148 Noble Street will lean European, incorporating influences and techniques from French and Italian cuisine.\nThe restaurant will only have a wine and beer license, but Chef Borges said he and his team will get creative with vermouth and other non-grain alcohols for cocktails.",
+      "lat": 40.72862,
+      "lng": -73.95442
     }
   ]
 }

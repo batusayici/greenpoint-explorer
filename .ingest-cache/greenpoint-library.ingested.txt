@@ -207,6 +207,17 @@ is_event_registration: 0
 is_event_canceled: 0
 ts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather. All ages welcome. All furniture is generously provided by the Friends of Greenpoint Library .
 
+ts_title: Friday Kids' Movie
+ds_event_start_date: 2026-09-04T19:00:00Z
+ds_event_end_date: 2026-09-04T20:30:00Z
+ss_event_location: Greenpoint, Eco Lab 1
+ss_event_location_master: Greenpoint Library
+ss_event_age: Kids
+sm_event_tags: ["after school","family movie","kids","movies","movies at the library"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us on Friday afternoon for a kid-friendly movie! This week's movie will be: "Paddington 2" (2018 ) Rated PG, 104 minutes -
+
 ts_title: Free English Class
 ds_event_start_date: 2026-09-08T18:00:00Z
 ds_event_end_date: 2026-09-08T20:00:00Z
@@ -394,6 +405,17 @@ is_event_registration: 0
 is_event_canceled: 1
 ts_body: Join us for an all ages storytime on Thursday evenings! We will read some books, sing some songs and make some friends! Weather permitting, storytime will be held in the rooftop garden (take the elevator to the third floor)! When the weather is bad, we will meet on the rug in the children's area. This program is for kids of all ages, no tickets required!
 
+ts_title: Sensory Garden Hour
+ds_event_start_date: 2026-09-11T14:30:00Z
+ds_event_end_date: 2026-09-11T15:30:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Birth to Five Years
+sm_event_tags: ["first five years","gardening","storytime"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well. For ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures. Please be advised that the garden gets lots of very bright sun; we recommend bringing hats and/or other forms of sun protection.
+
 ts_title: Garden Hours with a Garden Educator
 ds_event_start_date: 2026-09-11T19:00:00Z
 ds_event_end_date: 2026-09-11T20:00:00Z
@@ -415,25 +437,3 @@ sm_event_tags: ["Cycle Alliance","health and wellness","mental health","teen tim
 is_event_registration: 0
 is_event_canceled: 0
 ts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours . If you are someone who would like to pick up a period wellness bag containing a variety of menstrual hygiene products brought to you by community donations, zines, and check out books please stop by our Teen Zone! This is open to all ages and genders .
-
-ts_title: Sustainable Sewing: Sewing Machine Basics
-ds_event_start_date: 2026-09-12T14:30:00Z
-ds_event_end_date: 2026-09-12T16:30:00Z
-ss_event_location: Greenpoint, Eco Lab 1
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["arts and crafts","climate and the environment","fiber arts","skillshare"]
-is_event_registration: 0
-is_event_canceled: 1
-ts_body: Join us to learn the basics and operation of a sewing machine . You will walk away with an understanding of: Sewing machine functions Stitch settings and when to use them Sewing machine presser foot functions and other accessories Bobbin creation and operation A project sewn by you to take home Sewing machines are provided but you are welcome to bring your own. This class will qualify you for sewing machine use in the branch at our monthly sewing circles. Also see our weekly and monthly fiber arts circles.
-
-ts_title: Saturday Family StoryTime
-ds_event_start_date: 2026-09-12T14:30:00Z
-ds_event_end_date: 2026-09-12T15:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Kids
-sm_event_tags: ["all ages","Events for Youth and Family","first five years","music","saturday storytime","stomp clap and sing","storytime"]
-is_event_registration: 0
-is_event_canceled: 1
-ts_body: Saturday Family StoryTime Join us for Saturday morning @ 10:30am for Family StoryTime in the Children's Area! We will be singing songs, reading books together, and enjoying our FREEDOM TO READ together. All ages are welcome *No Registration or tickets necessary*
