@@ -334,3 +334,37 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   72) plus that silence check. **The general rule both of these came from: a
   number that leaves the building gets an instrument; a number that cannot be
   defined twice the same way gets retired.**
+- **(proposed 2026-08-25, cycle 7 — pending ratification.)** **Every population
+  filter that appears in a headline number gets a named definition in the
+  readout, or an instrument.** Cycle 7 could not honestly trend "NYC-metro"
+  against cycle 6 because cycle 6 reported 69 without recording how it was
+  computed; the same filter read 85 or 80 depending on region-vs-borough. Cycle
+  8 applied it (locals = `$geoip_subdivision_1_name` in NY/NJ/CT, named in the
+  readout). Same rule as unique coverage, one level down — to the filters
+  underneath the numbers. Cheapest durable form: a `nycMetro()` helper beside
+  `uniqueCoverage()` in `coverage.js`, quoted rather than re-derived.
+- **(proposed 2026-09-01, cycle 8 — pending ratification.)** **Before reporting
+  a metric as zero, check that the query could ever return non-zero.** Four
+  consecutive readouts published "AI-referrer sessions: 0, all-time — zero, not
+  missing" while ChatGPT traffic sat in `utm_source=chatgpt.com`; the query
+  keyed on `$referring_domain`, and assistants strip the referrer. A zero from
+  an instrument that cannot see the thing is not a measurement. Concretely:
+  count assistant referrals on `utm_source` **and** `$current_url` query params
+  as well as `$referring_domain` — and ask *what would this query look like if
+  the answer were yes?* of any all-time zero before publishing it a second time.
+- **(proposed 2026-09-01, cycle 8 — pending ratification.)** **Every outbound
+  link in a draft goes on its own line as bare text, never inside code
+  formatting or a sentence.** The first weekly send produced two `src` values —
+  `digest` and `digest` with a trailing backtick — because the draft wrapped the
+  URL in backticks and one copy took the closing one with it. 47% of that send's
+  arrivals landed on a tag matching nothing in `channel-links.md`. The table
+  being correct is not enough; the readout has to hand over something that
+  survives a copy.
+- **(proposed 2026-09-01, cycle 8 — pending ratification.)** **An email click is
+  not a reader until a second event proves it.** 14 of the 15 arrivals on the
+  first weekly send were out-of-region, one event each, zero card opens — the
+  shape of mail-security link scanners pre-fetching the URL. D9 reads the
+  container question off `?src=digest` clicks against list size, so it must
+  count only clicks that produced at least one in-product event, or scanners
+  answer the question for us. This does not change D9's thresholds; it names
+  what a click is.
