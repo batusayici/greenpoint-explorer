@@ -3828,5 +3828,230 @@
         "-73.9543700"
       ]
     }
+  },
+  "200 Banker St, Brooklyn, NY 11222": {
+    "query": "200 Banker St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:29:52.692Z",
+    "hit": {
+      "place_id": 360389594,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 13819637001,
+      "lat": "40.7250533",
+      "lon": "-73.9557248",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Soft Bar",
+      "display_name": "Soft Bar, 200, Banker Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7250033",
+        "40.7251033",
+        "-73.9557748",
+        "-73.9556748"
+      ]
+    }
+  },
+  "1107 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "1107 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:30:05.168Z",
+    "hit": {
+      "place_id": 359179577,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280146577,
+      "lat": "40.7362921",
+      "lon": "-73.9555878",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "1107, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7362501",
+        "40.7363452",
+        "-73.9557746",
+        "-73.9554010"
+      ]
+    }
+  },
+  "178 Bayard St, Brooklyn, NY 11222": {
+    "query": "178 Bayard St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:32:07.725Z",
+    "hit": {
+      "place_id": 402465195,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 441904430,
+      "lat": "40.7203911",
+      "lon": "-73.9454678",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "178, Bayard Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7203411",
+        "40.7204411",
+        "-73.9455178",
+        "-73.9454178"
+      ]
+    }
+  },
+  "113 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "113 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:34:42.761Z",
+    "hit": {
+      "place_id": 359164937,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280115133,
+      "lat": "40.7243692",
+      "lon": "-73.9494613",
+      "category": "shop",
+      "type": "hairdresser",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "shop",
+      "name": "Blue Angel Day Spa",
+      "display_name": "Blue Angel Day Spa, 113, Nassau Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7243005",
+        "40.7244717",
+        "-73.9495462",
+        "-73.9493963"
+      ]
+    }
+  },
+  "58 Kent St, Brooklyn, NY 11222": {
+    "query": "58 Kent St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:36:00.797Z",
+    "hit": {
+      "place_id": 413604322,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 221686903,
+      "lat": "40.7303964",
+      "lon": "-73.9588707",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "58, Kent Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7303464",
+        "40.7304464",
+        "-73.9589207",
+        "-73.9588207"
+      ]
+    }
+  },
+  "29 Norman Ave, Brooklyn, NY 11222": {
+    "query": "29 Norman Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:36:13.588Z",
+    "hit": {
+      "place_id": 359212046,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842886300,
+      "lat": "40.7244710",
+      "lon": "-73.9550370",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "29, Norman Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7244210",
+        "40.7245210",
+        "-73.9550870",
+        "-73.9549870"
+      ]
+    }
+  },
+  "Bell Slip, Brooklyn, NY 11222": {
+    "query": "Bell Slip, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:40:16.242Z",
+    "hit": {
+      "place_id": 359022828,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 570159328,
+      "lat": "40.7367412",
+      "lon": "-73.9586326",
+      "category": "highway",
+      "type": "residential",
+      "place_rank": 26,
+      "importance": 0.05342509269855799,
+      "addresstype": "road",
+      "name": "Bell Slip",
+      "display_name": "Bell Slip, Greenpoint, Brooklyn, Kings County, New York, 11109, United States",
+      "boundingbox": [
+        "40.7363963",
+        "40.7370298",
+        "-73.9589934",
+        "-73.9583151"
+      ]
+    }
+  },
+  "165 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "165 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:46:08.561Z",
+    "hit": {
+      "place_id": 358904696,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280137465,
+      "lat": "40.7304606",
+      "lon": "-73.9531143",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "165, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7303871",
+        "40.7305462",
+        "-73.9531708",
+        "-73.9530597"
+      ]
+    }
+  },
+  "37 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "37 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-02T13:46:09.020Z",
+    "hit": {
+      "place_id": 359175737,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2276340237,
+      "lat": "40.7298686",
+      "lon": "-73.9590216",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Cozinha Latina",
+      "display_name": "Cozinha Latina, 37, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7298186",
+        "40.7299186",
+        "-73.9590716",
+        "-73.9589716"
+      ]
+    }
   }
 }

@@ -187,10 +187,9 @@ Location
 Kettl Greenpoint
 Kettl Los Feliz
 Kettl Matcha Sen Mon Ten
-Virtual
 Clear
 Clear all
-17 items
+16 items
 Sort
 Featured
 Most relevant
@@ -220,7 +219,6 @@ Location
 Kettl Greenpoint
 Kettl Los Feliz
 Kettl Matcha Sen Mon Ten
-Virtual
 Sort
 Featured
 Most relevant
@@ -243,15 +241,7 @@ Price, high to low
 Date, old to new
 Date, new to old
 Clear all
-See 17 items
-Virtual Class | An Introduction to Matcha
-Choose
-Virtual Class | An Introduction to Matcha
-Virtual Class | An Introduction to Matcha
-$30.00
-A virtual class exploring the fundamentals with matcha, available as a standalone ticket or with bundled tea and tools.
-Location
-Virtual
+See 16 items
 Class | Uji: The Home of Matcha, A Guided Tasting of Our Most Premium Offerings
 Choose
 Class | Uji: The Home of Matcha, A Guided Tasting of Our Most Premium Offerings
@@ -341,7 +331,7 @@ An immersive and educational tasting exploring the experience of terroir in milk
 Location
 Kettl Greenpoint
 Class | Houjicha: Experience the Art of Roasting Tea
-Add
+Choose
 Class | Houjicha: Experience the Art of Roasting Tea
 Class | Houjicha: Experience the Art of Roasting Tea
 $60.00
@@ -425,8 +415,8 @@ Tsubaki Matcha
 Tsubaki Matcha
 $45.00
 View all
-Get 15% off
 {"themeColor":"#574CD5","iconColor":"#574CD5","showLogo":true,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}
+Get 15% off
 
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 

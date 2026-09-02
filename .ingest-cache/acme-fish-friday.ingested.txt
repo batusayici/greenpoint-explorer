@@ -83,7 +83,7 @@ Orders Close - Friday 11:30AM
 In-person Pick-up
 Friday 8AM - 1PM
 All Fish Friday Products
-49
+50
 Filters
 Product Category
 Cold Smoked
@@ -156,7 +156,7 @@ Quantity
 Add to cart
 Salsa Verde Smoked Salmon - Gary's Special (1 lb.)
 Gary's Special
-No reviews
+1 review
 Regular price
 $23.99
 Sale price
@@ -204,11 +204,28 @@ Quantity
 Add to cart
 Sesame Crusted Smoked Ahi Tuna - 8 oz.
 Gary's Special
-25 reviews
+26 reviews
 Regular price
 $16.49
 Sale price
 $16.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Smoked Whitefish Head
+Hot Smoked
+Specialty
+No reviews
+Regular price
+$5.49
+Sale price
+$5.49
 Regular price
 Sale
 Sold out
@@ -252,7 +269,7 @@ Quantity
 Add to cart
 Pre-Sliced Pastrami Smoked Salmon (1 lb.)
 Cold Smoked
-63 reviews
+64 reviews
 Regular price
 $22.99
 Sale price
@@ -332,7 +349,7 @@ Quantity
 Add to cart
 Pre-Sliced Wild King Smoked Salmon (8 oz.)
 Cold Smoked
-3 reviews
+4 reviews
 Regular price
 $17.99
 Sale price
@@ -378,7 +395,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Kippered Salmon (1 lb.)
 Hot Smoked
 Specialty
@@ -395,7 +412,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Smoked Trout (1 lb.)
 Hot Smoked
 Specialty
@@ -412,7 +429,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Whiting (1 lb.)
 Hot Smoked
 Specialty
@@ -448,7 +465,7 @@ Quantity
 Add to cart
 Smoked Whitefish Salad (16 oz.)
 Salads
-32 reviews
+33 reviews
 Regular price
 $10.49
 Sale price
@@ -623,7 +640,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 BHB Spiced Matjes Herring (12 oz.)
 Herring
 1 review
@@ -655,7 +672,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Lemon Garlic Smoked Salmon (4 oz.)
 Hot Smoked
 4 reviews
@@ -703,7 +720,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Peppered Smoked Salmon (4 oz.)
 Hot Smoked
 No reviews
@@ -735,7 +752,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Royal Siberian Caviar (1 oz.)
 Specialty Caviar
 No reviews

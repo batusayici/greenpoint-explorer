@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-01",
+  "version": "2026-09-02",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -966,11 +966,12 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-31",
+      "updatedAt": "2026-09-02",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-film-club-0903"
+        "film-noir-film-club-0903",
+        "film-noir-monday-0914"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1268,15 +1269,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-31",
+      "updatedAt": "2026-09-02",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-tuesday-programs-0901",
         "library-wednesday-programs-0902",
         "library-babies-books-0903",
         "library-tuesday-programs-0908",
-        "library-garden-hours-0911"
+        "library-garden-hours-0911",
+        "library-monday-programs-0914"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -2259,7 +2260,7 @@
           "date": "2026-08-03"
         }
       ],
-      "sourceQuote": "Adult Ballet Workout\nExpert-led adult ballet workouts in Greenpoint, find a time based on your schedule\nRuns September 14, 2026 – June 25, 2027",
+      "sourceQuote": "Adult Ballet Workout\nExpert-led adult ballet workouts in Greenpoint\nFind a time based on your schedule.\nRuns September 14, 2026 – June 25, 2027",
       "relatedCardIds": [
         "bk-youth-ballet-enrollment"
       ],
@@ -2268,7 +2269,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
+      "updatedAt": "2026-09-02"
     },
     {
       "audience": [
@@ -2492,7 +2493,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-02",
       "endsAt": "2026-09-15T22:00:00-04:00",
       "id": "scrappleland-backgammon-club",
       "title": "Tuesday Backgammon Club at Scrappleland",
@@ -2507,7 +2508,7 @@
         "food_drink"
       ],
       "summary": "A backgammon meet at the pinball bar. The venue lists it as a regular club night.",
-      "sourceQuote": "Tuesday Backgammon Club\nSeptember 1 @ 8:00pm - 10:00pm",
+      "sourceQuote": "Tuesday Backgammon Club\nSeptember 8 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -3710,49 +3711,6 @@
     },
     {
       "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-18",
-      "updatedAt": "2026-08-18",
-      "id": "troost-phillip-santos-0901",
-      "category": "event",
-      "free": false,
-      "title": "Phillip Santos, Michael Eaton and Evan Palmer at Troost",
-      "kicker": "Three players, no set time announced",
-      "summary": "Troost's own Google Calendar lists Phillip Santos, Michael Eaton and Evan Palmer by title only — no description and no ticket link.",
-      "startsAt": "2026-09-01T00:00:00-04:00",
-      "endsAt": "2026-09-01T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "sourceQuote": "summary: Phillip Santos, Michael Eaton, Evan Palmer\nstart.date: 2026-09-01",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-18"
-        }
-      ]
-    },
-    {
-      "audience": [
         "resident",
         "family"
       ],
@@ -3887,51 +3845,6 @@
           "title": "Troost calendar",
           "url": "https://troostny.com/calendar/",
           "publisher": "Troost",
-          "date": "2026-08-20"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-20",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "free": false,
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "id": "library-tuesday-programs-0901",
-      "title": "Tuesday at Greenpoint Library",
-      "kicker": "Four adult drop-ins in one afternoon",
-      "summary": "Beginner ESOL, knitting and mending with lessons for first-timers, an English conversation group, and a St. Nicks Alliance clinic on tenant rights and fighting displacement.",
-      "startsAt": "2026-09-01T14:00:00-04:00",
-      "endsAt": "2026-09-01T19:30:00-04:00",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-01T18:00:00Z\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-09-01T21:30:00Z\nds_event_end_date: 2026-09-01T23:30:00Z\nts_title: English Conversation Group\nds_event_start_date: 2026-09-01T22:00:00Z\nts_title: St. Nicks Alliance Housing Legal Clinic\nts_body: Receive legal advice about your tenant rights and how to fight displacement & harassment.\nPresented by community development organization, St Nicks Alliance.",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
           "date": "2026-08-20"
         }
       ]
@@ -4816,55 +4729,6 @@
       "lng": -73.955035
     },
     {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "category": "event",
-      "id": "madelines-comedy-0901",
-      "title": "Madeline’s Comedy Show",
-      "kicker": "NYC standup for ten dollars",
-      "summary": "Gabe Gerry hosts a bill of comics with Netflix, Comedy Central and Fallon credits, in Madeline’s restaurant and cocktail lounge.",
-      "startsAt": "2026-09-01T20:00:00-04:00",
-      "endsAt": "2026-09-01T21:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": false,
-      "locationName": "Madeline’s",
-      "address": "113 Franklin St, Brooklyn, NY 11222",
-      "geocodeQuery": "113 Franklin St, Brooklyn, NY 11222",
-      "sourceQuote": "Madeline’s Comedy Show @ Madeline’s, 8 p.m.: Standup comedy featuring talent seen on Netflix, Comedy Central, Fallon , and more. $10, get tickets here .\n\"description\":\"Intimate, hilarious comedy from NYC's best comedians. Hosted by Gabe Gerry at Madeline's Restaurant and Cocktail Lounge.\"\n\"streetAddress\":\"113 Franklin Street, #FC, Brooklyn, NY 11222\"\n\"startDate\":\"2026-03-12T20:00:00-04:00\"\n\"endDate\":\"2026-12-15T21:30:00-05:00\"",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Catch a magic show, celebrate a birthday, and more — What’s Happening, Greenpoint? (8/27-9/2)",
-          "url": "https://greenpointers.com/2026/08/26/catch-a-magic-show-celebrate-a-birthday-and-more-whats-happening-greenpoint-8-27-9-2/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-26"
-        },
-        {
-          "title": "Madeline's Comedy Show - Standup Comedy in Greenpoint",
-          "url": "https://www.eventbrite.com/e/madelines-comedy-show-standup-comedy-in-greenpoint-tickets-1983694663137",
-          "publisher": "Gabe Gerry",
-          "date": "2026-08-26"
-        }
-      ],
-      "lat": 40.73024,
-      "lng": -73.957805
-    },
-    {
       "id": "simi-sol-collective",
       "title": "Simi & Sol Collective",
       "category": "new_business",
@@ -4991,51 +4855,6 @@
         }
       ],
       "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-09-10",
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-27",
-      "updatedAt": "2026-08-27"
-    },
-    {
-      "id": "film-noir-cult-cinema-0901",
-      "title": "Cult Cinema at Film Noir Cinema",
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "kicker": "A night of the most obscure films made",
-      "summary": "The cinema's recurring late slot on the Meserole Ave block — the programme page names no titles, guests or ticket price.",
-      "startsAt": "2026-09-01T21:00:00-04:00",
-      "endsAt": "2026-09-01T22:00:00-04:00",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-27"
-        }
-      ],
-      "sourceQuote": "CULT CINEMA\nTuesday, September 1, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.",
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
@@ -5493,15 +5312,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-28",
-      "updatedAt": "2026-09-01",
+      "updatedAt": "2026-09-02",
       "free": false,
-      "id": "golden-drum-anahata-0909",
+      "id": "golden-drum-anahata-0911",
       "category": "event",
       "title": "Anahata Sessions: September at Golden Drum",
       "kicker": "Write a letter, learn a song",
       "summary": "Guided reflection on Virgo season, then a love letter to your future self into a communal basket and redistributed at random, then a sacred song learned together. No singing experience needed.",
-      "startsAt": "2026-09-09T19:00:00-04:00",
-      "endsAt": "2026-09-09T21:30:00-04:00",
+      "startsAt": "2026-09-11T19:00:00-04:00",
+      "endsAt": "2026-09-11T21:30:00-04:00",
       "filters": [
         "arts_culture"
       ],
@@ -5523,7 +5342,7 @@
           "date": "2026-09-01"
         }
       ],
-      "sourceQuote": "Anahata Sessions: SEPTEMBER\nWednesday, September 9, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nFrom this point of clarity and stillness, you will be invited into a ritual of self-devotion: writing a love letter to yourself.\nThese letters will be placed into a communal basket and later redistributed at random, allowing each participant to receive a mysterious message of love and insight\nFrom this place, we will learn a sacred song, weaving our voices together in a devotional practice that harmonizes breath, body, and spirit. No prior singing experience is needed\nWe are limited in space, so please buy your ticket ahead of time. Suggested donation $30 in advance, $40 at the door (no one will be turned away for lack of funds).",
+      "sourceQuote": "Anahata Sessions: SEPTEMBER\nFriday, September 11, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nFrom this point of clarity and stillness, you will be invited into a ritual of self-devotion: writing a love letter to yourself.\nThese letters will be placed into a communal basket and later redistributed at random, allowing each participant to receive a mysterious message of love and insight\nFrom this place, we will learn a sacred song, weaving our voices together in a devotional practice that harmonizes breath, body, and spirit. No prior singing experience is needed\nWe are limited in space, so please buy your ticket ahead of time. Suggested donation $30 in advance, $40 at the door (no one will be turned away for lack of funds).",
       "lat": 40.733571,
       "lng": -73.957721
     },
@@ -5840,49 +5659,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-31",
-      "updatedAt": "2026-08-31",
-      "free": true,
-      "category": "event",
-      "id": "kingsland-greenhouse-gang-0901",
-      "title": "Greenhouse Gang at Kingsland Wildflowers",
-      "kicker": "Up-pot and weed the native nursery",
-      "summary": "Newtown Creek Alliance's horticulturist is on site to guide the work and take questions. Free, but everyone has to fill in a liability and photo consent form first.",
-      "startsAt": "2026-09-01T17:00:00-04:00",
-      "endsAt": "2026-09-01T20:00:00-04:00",
-      "filters": [
-        "civic"
-      ],
-      "locationName": "Kingsland Wildflowers Green Roof and Community Engagement Center",
-      "address": "520 Kingsland Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "520 Kingsland Avenue, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://gogreenbk.org/event/greenhouse-gang-2026/2026-09-01/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenhouse Gang (Kingsland Wildflowers)",
-          "url": "https://gogreenbk.org/event/greenhouse-gang-2026/2026-09-01/",
-          "publisher": "Go Green Brooklyn",
-          "date": "2026-08-31"
-        }
-      ],
-      "sourceQuote": "Greenhouse Gang (Kingsland Wildflowers)\nTuesday, September 1st at 5:00 PM - 8:00 PM\nFree\nJoin Newtown Creek Alliance as we work in up-potting, weeding, and nursery maintenance in our Newtown Native Greenhouse and Nursery!\nOur horticulturist Brenda Suchilt will be on site to help guide activities such as up-potting and plant maintenance, as well as answer any questions you may have.\nBefore the event, registrants are required to complete a liability waiver and photo consent form ( Adult form here and Minor form here ).",
-      "lat": 40.735131,
-      "lng": -73.94316
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-31",
       "updatedAt": "2026-09-01",
       "free": false,
       "category": "event",
@@ -5962,51 +5738,6 @@
       "sourceQuote": "Virgo New Moon Meditation\nSaturday, September 12, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nUnder the Virgo New Moon we are given an opportunity to analyze, not scrutinize, but from a neutral stance, review and look at our lives and make decisions as to how we may want to restructure or reorganize.\nJoin us for this moment of self-care through conscious connection to the astrological moment with a sound bath.\nVirgo New Moon 9/12/26\n$25.00",
       "lat": 40.733571,
       "lng": -73.957721
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-01",
-      "updatedAt": "2026-09-01",
-      "free": false,
-      "category": "event",
-      "id": "film-noir-el-asesino-0901",
-      "title": "EL ASESINO DE MUNECAS at Film Noir Cinema",
-      "kicker": "Spanish 1975 psycho-horror, 7pm",
-      "summary": "A groundskeeper's son, unstable since childhood, kills his way through a world where he cannot tell people from mannequins. No admission price is stated.",
-      "startsAt": "2026-09-01T19:00:00-04:00",
-      "endsAt": "2026-09-01T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/2/25/el-asesino-de-munecas"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/2/25/el-asesino-de-munecas",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-01"
-        }
-      ],
-      "sourceQuote": "EL ASESINO DE MUNECAS\nTuesday, September 1, 2026\n7:00 PM\n8:00 PM\nSP. 1975\nA groundskeeper's son, who is mentally unstable due to childhood trauma, goes on a murdering spree where his perception of reality is distorted by imagining people as mannequins and vice versa."
     },
     {
       "audience": [
@@ -6179,6 +5910,746 @@
       "sourceQuote": "This September, Chez Ma Tante alum Chef Gabriel Borges is opening his own restaurant called 148 Noble Street.\nChef Borges’ new restaurant will be located in the former home of The Noble , a wine bar from Itir Aloba and Rick Curi that closed this past winter.\nChef Borges is aiming to open 148 Noble Street in “mid-September.” When it first opens, the restaurant will welcome guests five days a week, Thursday through Monday.\nChef Borges’ menu at 148 Noble Street will lean European, incorporating influences and techniques from French and Italian cuisine.\nThe restaurant will only have a wine and beer license, but Chef Borges said he and his team will get creative with vermouth and other non-grain alcohols for cocktails.",
       "lat": 40.72862,
       "lng": -73.95442
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "soft-bar-strides-run-club-0903",
+      "title": "Soft Strides Anniversary Run Club",
+      "kicker": "Free run, then a DJ and doughnuts",
+      "summary": "Soft Bar turns one. Carl Radke leads a community run, and live DJ Kyle Cooke, B-12 shots, custom doughnuts and anniversary drinks follow.",
+      "startsAt": "2026-09-03T08:00:00-04:00",
+      "endsAt": "2026-09-03T10:00:00-04:00",
+      "free": true,
+      "filters": [
+        "wellness"
+      ],
+      "locationName": "Soft Bar",
+      "address": "200 Banker St, Brooklyn, NY 11222",
+      "geocodeQuery": "200 Banker St, Brooklyn, NY 11222",
+      "sourceQuote": "THURSDAY, SEPTEMBER 3 Soft Strides Anniversary Run Club @ Soft Bar, 8 a.m.: To celebrate one year of Soft Bar, Carl Radke will be leading a community run followed by live DJ Kyle Cooke, B-12 shots, custom doughnuts, and anniversary drinks. Free,\nSoft Strides: Anniversary Run Club\nstartDate: 2026-09-03T08:00:00-04:00\nendDate: 2026-09-03T10:00:00-04:00\nlocation: Soft Bar\nstreetAddress: 200 Banker Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/soft-strides-anniversary-run-club-tickets-1998996904553"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "Soft Strides: Anniversary Run Club",
+          "url": "https://www.eventbrite.com/e/soft-strides-anniversary-run-club-tickets-1998996904553",
+          "publisher": "Eventbrite",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.725053,
+      "lng": -73.955725
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "for-the-record-plantasia-0903",
+      "title": "Plantasia 50th anniversary listening party",
+      "kicker": "Fifty years of Mort Garson’s Plantasia",
+      "summary": "A full album session at For The Record with live DJs, giveaways, prizes and an in-store plant experience from Tend. No closing time was published.",
+      "startsAt": "2026-09-03T18:00:00-04:00",
+      "endsAt": "2026-09-03T23:59:00-04:00",
+      "free": true,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "For The Record",
+      "address": "1107 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "1107 Manhattan Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Mother Earth ‘s Plantasia 50th Anniversary Listening Party @ For the Record, 6 p.m.: In honor of Mort Garson’s 1976 electronic album, come together for giveaways, live DJs, prizes, an album-listening session, and in-store plant experience from Tend. Free,\nCelebrate 50 Years of Plantasia at For The Record\nstartDate: 2026-09-03T22:00:00.000Z\nlocation: For The Record\nstreetAddress: 1107 Manhattan Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://partiful.com/e/NId4xpJpyCar1pClLvjU"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "Celebrate 50 Years of Plantasia at For The Record",
+          "url": "https://partiful.com/e/NId4xpJpyCar1pClLvjU",
+          "publisher": "Partiful",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.736292,
+      "lng": -73.955588
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "lentol-garden-bwsf-opening-0904",
+      "title": "Brooklyn Wildlife Summer Festival opening night",
+      "kicker": "Blues, looping, rap and spoken word",
+      "summary": "Independent artists perform across the ArtEcologic opening in the community garden. Free with an RSVP through the listing.",
+      "startsAt": "2026-09-04T18:00:00-04:00",
+      "endsAt": "2026-09-04T21:00:00-04:00",
+      "free": true,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Lentol Garden",
+      "address": "178 Bayard St, Brooklyn, NY 11222",
+      "geocodeQuery": "178 Bayard St, Brooklyn, NY 11222",
+      "sourceQuote": "Brooklyn Wildlife Summer Festival @ Lentol Garden, 6 p.m.: Experience performances from independent artists across blues music, live looping, rapping, musical improv, and spoken word. Free,\nBWSF 2026 ArtEcologic Opening Night @ Lentol Garden\nstartDate: 2026-09-04T18:00:00-04:00\nendDate: 2026-09-04T21:00:00-04:00\nlocation: Lentol Garden\nstreetAddress: 178 Bayard Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/bwsf-2026-artecologic-opening-night-lentol-garden-tickets-1999035049646"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "BWSF 2026 ArtEcologic Opening Night @ Lentol Garden",
+          "url": "https://www.eventbrite.com/e/bwsf-2026-artecologic-opening-night-lentol-garden-tickets-1999035049646",
+          "publisher": "Eventbrite",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.720391,
+      "lng": -73.945468
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "bell-slip-ny-state-of-mine-0904",
+      "title": "NY State of MINE opening night",
+      "kicker": "Street photography, music and a raffle",
+      "summary": "Eric Rios’s exhibition opens with mingling in the lobby. Greenpointers lists no ticket price and no closing time.",
+      "startsAt": "2026-09-04T19:00:00-04:00",
+      "endsAt": "2026-09-04T23:59:00-04:00",
+      "free": false,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "1 Bell Slip Lobby",
+      "address": "1 Bell Slip, Brooklyn, NY 11222",
+      "geocodeQuery": "Bell Slip, Brooklyn, NY 11222",
+      "sourceQuote": "FRIDAY, SEPTEMBER 4\nNY State of MINE Opening Night Celebration @ 1 Bell Slip Lobby, 7 p.m.: A kickoff of the exhibition by street photographer Eric Rios featuring music, mingling, and a raffle.",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.736741,
+      "lng": -73.958633
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "kingsland-wildflowers-open-hours-0905",
+      "title": "Open Hours at Kingsland Wildflowers",
+      "kicker": "Green roof open, native plants for sale",
+      "summary": "Four hours to walk the green roof at the community engagement center and pick up native plants. Free with an RSVP.",
+      "startsAt": "2026-09-05T14:00:00-04:00",
+      "endsAt": "2026-09-05T18:00:00-04:00",
+      "free": true,
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Kingsland Wildflowers",
+      "address": "520 Kingsland Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "520 Kingsland Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Open Hours @ Kingsland Wildflowers 2 p.m.: Explore and purchase native plants. Free,\nKingsland Wildflowers Open Hours\nstartDate: 2026-09-05T14:00:00-04:00\nendDate: 2026-09-05T18:00:00-04:00\nlocation: Kingsland Wildflowers Green Roof & Community Engagement Center\nstreetAddress: 520 Kingsland Avenue, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/kingsland-wildflowers-open-hours-tickets-1997595245152"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "Kingsland Wildflowers Open Hours",
+          "url": "https://www.eventbrite.com/e/kingsland-wildflowers-open-hours-tickets-1997595245152",
+          "publisher": "Eventbrite",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.735131,
+      "lng": -73.94316
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "spritzenhaus-in-translation-0906",
+      "title": "IN TRANSLATION Book Club at Spritzenhaus33",
+      "kicker": "Debut novels in translation, $15",
+      "summary": "Book Club for Book Hoes takes on Beasts of the Sea by Iida Turpeinen, translated by David Hackston, over an hour at the beer hall.",
+      "startsAt": "2026-09-06T12:00:00-04:00",
+      "endsAt": "2026-09-06T13:00:00-04:00",
+      "free": false,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Spritzenhaus33",
+      "address": "33 Nassau Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "33 Nassau Ave, Brooklyn, NY 11222",
+      "sourceQuote": "IN TRANSLATION Book Club @ Spritzenhaus 33, 12 p.m.: Book Club for Book Hoes is supporting debut authors and their debut novels, this month discussing Beasts of the Sea by Iida Turpeinen and translated by David Hackston. $15,\nIN TRANSLATION Book Club\nstartDate: 2026-09-06T12:00:00-04:00\nendDate: 2026-09-06T13:00:00-04:00\nlocation: Spritzenhaus33\nstreetAddress: 33 Nassau Avenue, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/in-translation-book-club-tickets-1996116762972"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "IN TRANSLATION Book Club",
+          "url": "https://www.eventbrite.com/e/in-translation-book-club-tickets-1996116762972",
+          "publisher": "Eventbrite",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.723168,
+      "lng": -73.952948
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "mccarren-sunday-scoops-0906",
+      "title": "Sunday Scoops at McCarren Parkhouse",
+      "kicker": "Olive oil ice cream, free while it lasts",
+      "summary": "Graza and baker Rachel DiNuzio hand out savory scoops with chocolate-covered pretzel swirls. No closing time was published.",
+      "startsAt": "2026-09-06T13:00:00-04:00",
+      "endsAt": "2026-09-06T23:59:00-04:00",
+      "free": true,
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "McCarren Parkhouse",
+      "address": "McCarren Park, Brooklyn, NY 11222",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "sourceQuote": "SUNDAY, SEPTEMBER 6\nSunday Scoops @ McCarren Parkhouse, 1 p.m.: Savory flavors and ice cream are having a moment. Olive oil brand Graza is partnering with baker Rachel DiNuzio on olive oily scoops with chocolate-covered pretzel swirls. Free while supplies last.",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "lentol-garden-corvids-0906",
+      "title": "Corvids in Cahoots at Lentol Garden",
+      "kicker": "Songs and poems about birds and bees",
+      "summary": "An afternoon of performance among the native plants. Free, and no RSVP is needed.",
+      "startsAt": "2026-09-06T15:00:00-04:00",
+      "endsAt": "2026-09-06T23:59:00-04:00",
+      "free": true,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Lentol Garden",
+      "address": "178 Bayard St, Brooklyn, NY 11222",
+      "geocodeQuery": "178 Bayard St, Brooklyn, NY 11222",
+      "sourceQuote": "SUNDAY, SEPTEMBER 6\nCorvids in Cahoots @ Lentol Garden, 3 p.m.: Sit among native plants while hearing songs and poems about birds and bees. Free, no RSVP needed.\nlocation: Lentol Garden\nstreetAddress: 178 Bayard Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.720391,
+      "lng": -73.945468
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "prospect-butcher-sausage-class-0906",
+      "title": "Butcher class: make your own sausage",
+      "kicker": "Grind, season, crank and twist, $161.90",
+      "summary": "An hour and a half at Prospect Butcher Co. turning meat into your own links to take home.",
+      "startsAt": "2026-09-06T18:30:00-04:00",
+      "endsAt": "2026-09-06T20:00:00-04:00",
+      "free": false,
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "Prospect Butcher Co.",
+      "address": "113A Nassau Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "113 Nassau Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Make Your Own Sausage @ Prospect Butcher Co., 6:30 p.m.: Grind, season, crank, and twist your own links. $161.90,\nButcher Class: Make Your Own Sausage\nstartDate: 2026-09-06T18:30:00-04:00\nendDate: 2026-09-06T20:00:00-04:00\nlocation: Prospect Butcher Co. 2\nstreetAddress: 113A Nassau Avenue, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/butcher-class-make-your-own-sausage-tickets-1992801931221"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "Butcher Class: Make Your Own Sausage",
+          "url": "https://www.eventbrite.com/e/butcher-class-make-your-own-sausage-tickets-1992801931221",
+          "publisher": "Eventbrite",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.724369,
+      "lng": -73.949461
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "lighthouse-burning-thoughts-0908",
+      "title": "Burning Thoughts with Glynnis MacNicol",
+      "kicker": "Singlehood and modern dating, ages 12+",
+      "summary": "The memoirist talks about prioritizing pleasure and living on the razor’s edge of modern dating. Tickets $44.17.",
+      "startsAt": "2026-09-08T18:30:00-04:00",
+      "endsAt": "2026-09-08T21:00:00-04:00",
+      "free": false,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "The Lighthouse Campus",
+      "address": "58 Kent St, Brooklyn, NY 11222",
+      "geocodeQuery": "58 Kent St, Brooklyn, NY 11222",
+      "sourceQuote": "Burning Thoughts @ The Lighthouse Campus, 6:30 p.m.: A conversation with memoirist Glynnis MacNicol on singlehood, prioritizing pleasure, and living on the razor’s edge of modern dating. Ages 12+. $44.17,\nBurning Thoughts, ed 1: a convo w/ Glynnis MacNicol\nstartDate: 2026-09-08T18:30:00-04:00\nendDate: 2026-09-08T21:00:00-04:00\nlocation: The Lighthouse Campus\nstreetAddress: 58 Kent Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/burning-thoughts-ed-1-a-convo-w-glynnis-macnicol-tickets-1997159438643"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "Burning Thoughts, ed 1: a convo w/ Glynnis MacNicol",
+          "url": "https://www.eventbrite.com/e/burning-thoughts-ed-1-a-convo-w-glynnis-macnicol-tickets-1997159438643",
+          "publisher": "Eventbrite",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.730396,
+      "lng": -73.958871
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "bin-bin-sake-social-0909",
+      "title": "Sake Social: Pizza Party at Bin Bin Sake",
+      "kicker": "Sake, cheese and Fini pies, $33.85",
+      "summary": "Three favorite pairing brews alongside pizzas from Fini, plus an exclusive t-shirt while supplies last.",
+      "startsAt": "2026-09-09T18:00:00-04:00",
+      "endsAt": "2026-09-09T21:00:00-04:00",
+      "free": false,
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "Bin Bin Sake",
+      "address": "29 Norman Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "29 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Sake Social: Pizza Party @ Bin Bin Sake, 6 p.m.: Revel in the pairing of sake and cheese during a pizza party with pies from Fini, three favorite pairing brews, and an exclusive t-shirt while supplies last. $33.85,\nSake Social: Pizza Party at Bin Bin\nstartDate: 2026-09-09T18:00:00-04:00\nendDate: 2026-09-09T21:00:00-04:00\nlocation: Bin Bin Sake\nstreetAddress: 29 Norman Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/sake-social-pizza-party-at-bin-bin-tickets-1998813763774"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
+          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-02"
+        },
+        {
+          "title": "Sake Social: Pizza Party at Bin Bin",
+          "url": "https://www.eventbrite.com/e/sake-social-pizza-party-at-bin-bin-tickets-1998813763774",
+          "publisher": "Eventbrite",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.724471,
+      "lng": -73.955037
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "film-noir-monday-0914",
+      "title": "Film Noir Monday at Film Noir Cinema",
+      "kicker": "Title kept secret until it rolls",
+      "summary": "The Monday series digs out lesser-known and obscure noir, international titles included, and never announces what is screening.",
+      "startsAt": "2026-09-14T20:00:00-04:00",
+      "endsAt": "2026-09-14T21:00:00-04:00",
+      "free": false,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "sourceQuote": "Film Noir Mondays\nMonday, September 14, 2026\n8:00 PM\n9:00 PM\nFilm Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.\nIn Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Mondays",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "library-monday-programs-0914",
+      "title": "Monday at Greenpoint Library",
+      "kicker": "Chair yoga, then teen D&D",
+      "summary": "An accessible chair-and-mindfulness class with Stefanie Mihoulides for adults of any age and ability, then a teen-run Dungeons & Dragons table for 13s and up.",
+      "startsAt": "2026-09-14T13:30:00-04:00",
+      "endsAt": "2026-09-14T17:30:00-04:00",
+      "free": false,
+      "filters": [
+        "family_kids",
+        "wellness"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "sourceQuote": "ts_title: Chair Yoga for Adults\nds_event_start_date: 2026-09-14T17:30:00Z\nds_event_end_date: 2026-09-14T18:30:00Z\nJoin us for Chair Yoga + Mindfulness with Stefanie Mihoulides! This is an accessible yoga class suitable for adults of all ages and abilities.\nts_title: Gaming for Teens: Dungeons & Dragons\nds_event_start_date: 2026-09-14T20:00:00Z\nds_event_end_date: 2026-09-14T21:30:00Z\nTeens 13+, join us for Dungeons & Dragons! This is a teen run program led by a teen volunteer .",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-02"
+        }
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "bcc-beginner-embroidery-0910",
+      "title": "Beginner Embroidery at Brooklyn Craft Company",
+      "kicker": "Start from nothing, materials included",
+      "summary": "The entry class in the shop's embroidery ladder, and the one the Floral and Beaded sessions build on. Registration covers everything you sew with.",
+      "startsAt": "2026-09-10T18:30:00-04:00",
+      "endsAt": "2026-09-10T23:59:00-04:00",
+      "free": false,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "We’ve added new sessions of our Embroidery Workshops to the calendar for September. Check out Beginner Embroidery to start and then advance to Floral Embroidery and Beaded Embroidery . All materials for class are included with registration!\nBeginner Embroidery\nThurs, 9/10 at 6:30pm\nin Greenpoint\nVISIT OUR STORE IN BROOKLYN\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "rsvp",
+          "url": "https://www.brooklyncraftcompany.com/products/beginner-embroidery-workshop"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Get Thready to Embroider with New Workshops & Seasonal Kits!",
+          "url": "https://www.brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-31"
+        }
+      ],
+      "lat": 40.730461,
+      "lng": -73.953114
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "event",
+      "id": "bcc-floral-embroidery-0912",
+      "title": "Floral Embroidery at Brooklyn Craft Company",
+      "kicker": "Florals and texture, step two",
+      "summary": "The follow-on to the shop's beginner class, working flowers and raised texture. Registration covers all materials.",
+      "startsAt": "2026-09-12T15:00:00-04:00",
+      "endsAt": "2026-09-12T23:59:00-04:00",
+      "free": false,
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "We’ve added new sessions of our Embroidery Workshops to the calendar for September. Check out Beginner Embroidery to start and then advance to Floral Embroidery and Beaded Embroidery . All materials for class are included with registration!\nFloral Embroidery\nSat, 9/12 at 3:00pm\nin Greenpoint\nVISIT OUR STORE IN BROOKLYN\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "rsvp",
+          "url": "https://www.brooklyncraftcompany.com/products/embroidery-ii-florals-and-texture"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Get Thready to Embroider with New Workshops & Seasonal Kits!",
+          "url": "https://www.brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-31"
+        }
+      ],
+      "lat": 40.730461,
+      "lng": -73.953114
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-02",
+      "updatedAt": "2026-09-02",
+      "category": "subscription",
+      "id": "bcc-kids-sewing-afterschool",
+      "title": "Kids Sewing Afterschool at Brooklyn Craft Company",
+      "kicker": "Sewing machines, 8–12s, four to a teacher",
+      "summary": "A multi-week course where kids learn machine basics and make a run of projects. Classes cap at eight, and pickup runs from PS110, PS31 and PS34.",
+      "free": false,
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Brooklyn Craft Company Annex",
+      "address": "37 Greenpoint Ave, Suite 105, Brooklyn, NY 11222",
+      "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Kid Sewing Afterschool\nRegistration for our Kids Sewing Afterschool program for the Fall - Winter 2026 and Winter - Spring 2027 has begun.\nIn each multi-week course, children aged 8-12 will learn to sew with a sewing machine and gain an understanding of sewing basics as they make a variety of projects. Students will learn in a small group environment, with a max class size of 8. Our staff-child ratio is 1:4, allowing hands-on instruction for each student.\nMondays & Tuesdays 3-5p\nAll kids ages 8-12 welcome! Kids classes are held in Greenpoint.\nBrooklyn Craft Company Annex\n37 Greenpoint Ave., Suite 105\nBrooklyn, NY 11222\nAfterschool pickup available at PS110, PS31, and PS34.",
+      "actions": [
+        {
+          "label": "Enroll",
+          "type": "signup",
+          "url": "https://www.brooklyncraftcompany.com/apps/bookthatapp/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Get Thready to Embroider with New Workshops & Seasonal Kits!",
+          "url": "https://www.brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-31"
+        }
+      ],
+      "lat": 40.729869,
+      "lng": -73.959022
     }
   ]
 }

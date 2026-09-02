@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-01T09:15:00-04:00",
+  "lastRunAt": "2026-09-02T10:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1724,6 +1724,47 @@
         "https://www.bklynlibrary.org/locations/greenpoint"
       ],
       "note": "Daily thin. The map went from 134 cards to 133: expiry cleared five things that finished last night, the run added five and deleted one. The adds are two Film Noir screenings (a Spanish 1975 horror tonight and a Hungarian crime drama Wednesday, both separate bills from the late slots already carded), two Troost nights that close the last gaps the coverage check was still asking for, and the news that a Chez Ma Tante chef is opening 148 Noble Street mid-month in the old Noble wine bar space. Golden Drum moved its September Anahata Session from the 11th to the 9th and the card was still on the old date — fixed; the URL still says 09-11, which is why it was wrong in the first place. The library's Friday cards picked up a kids' movie on 9/4 and the sensory garden storytime, which is running again on 9/11 after its listing said it ended 9/4. The Sereneco card now carries the two facts added since the fire: it could be months before it reopens, and there is a GoFundMe for staff. DELETED: the Artudio kids' workshop — its own copy said 'Tuesdays through August' and August is over. HELD: one Film Noir screening whose listing gives a 7am start (see watchItems). Gmail pass did not run — the connector is not attached to this run."
+    },
+    {
+      "runAt": "2026-09-02",
+      "cadence": "daily-thin",
+      "shipped": [
+        "soft-bar-strides-run-club-0903",
+        "for-the-record-plantasia-0903",
+        "lentol-garden-bwsf-opening-0904",
+        "bell-slip-ny-state-of-mine-0904",
+        "kingsland-wildflowers-open-hours-0905",
+        "spritzenhaus-in-translation-0906",
+        "mccarren-sunday-scoops-0906",
+        "lentol-garden-corvids-0906",
+        "prospect-butcher-sausage-class-0906",
+        "lighthouse-burning-thoughts-0908",
+        "bin-bin-sake-social-0909",
+        "film-noir-monday-0914",
+        "library-monday-programs-0914",
+        "bcc-beginner-embroidery-0910",
+        "bcc-floral-embroidery-0912",
+        "bcc-kids-sewing-afterschool"
+      ],
+      "updated": [
+        "golden-drum-anahata-0911",
+        "film-noir-cinema",
+        "greenpoint-library",
+        "scrappleland-backgammon-club",
+        "bk-youth-ballet-adult-term"
+      ],
+      "deleted": [],
+      "holds": "holds: 1 new-judgment · 0 rule-miss · 3 source-blocked",
+      "urls": [
+        "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
+        "https://greenpointers.com/2026/09/01/nonnas-pizzeria-shut-down-by-health-department/",
+        "https://www.filmnoircinema.com/program?format=json",
+        "https://www.goldendrum.org/events-1",
+        "https://www.bklynlibrary.org/locations/greenpoint",
+        "https://data.accentapi.com/feed/66424.json",
+        "https://www.brooklyncraftcompany.com/collections/all-workshops"
+      ],
+      "note": "Daily thin, and a big one because the Greenpointers weekly roundup published this morning. The map went from 133 cards to 140: expiry cleared six things that finished last night, and the run added thirteen. Eleven come off the roundup. The roundup names venues and never addresses, so the ticket links were pulled out of the post's own HTML and each listing read for the street address, which is what let ten of the sixteen items ship the day they were announced instead of being held for geography. One item is out of area (a tortilla workshop at 234 Grand St, Williamsburg) and three are held. The other two adds are calendar sources: Film Noir's Monday series on 9/14 and a Monday library day-card on 9/14. One card was corrected: Golden Drum moved its September Anahata Session from Wednesday the 9th to Friday the 11th. The Gmail pass then added three more: Brooklyn Craft Company's 8/31 newsletter lists two September embroidery workshops and opens registration for the kids' afterschool sewing course, and it labels each session as Greenpoint, which is the thing that usually blocks this source."
     }
   ],
   "senderRegistry": [
@@ -2465,17 +2506,72 @@
       "name": "nbk-open-streets — the pinned detail URL is now a past event (roster chore, human-gated)",
       "addedAt": "2026-09-01",
       "note": "CHORE carried over from the 2026-08-25 entry, now due. The roster pins detail.urls to https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH, the 8/28-30 Bedford Slip Weekend, which is past. This run's diff from the source is three Manhattan events (the San Gennaro feast and the Greenwich Village Halloween Parade), which is what an unpinned organiser page yields. Swapping the pin is a roster edit and therefore human-gated — it cannot ship from a content run."
+    },
+    {
+      "name": "Opening Night of The Cultural Center @ St. John's Lutheran Church, Thu 9/3 6:30pm — viewcy.com is refused at the routine's proxy",
+      "note": "HELD 2026-09-02 (source-blocked, R1 host refused). The Greenpointers 9/3-9 roundup states the item in full except where it is: \"Opening Night of The Cultural Center @ St. John's Lutheran Church, 6:30 p.m.: Celebrate the establishment of a new accessible cultural and performing arts center for concerts, readings, screenings, and other programming. Opening night will include a performance by the GRAMMY-winning string quartet ETHEL. By donation ($20 suggested), get tickets here .\" The roundup's own ticket link is https://www.viewcy.com/event/ethelatstjohns, and a curl through the routine's proxy with the roster User-Agent returned \"CONNECT tunnel failed, response 403\" — an EGRESS denial, not a bot wall (the request never reached the host). HOST TO ALLOWLIST: viewcy.com. This is an R1 target, not a roster entry, so it can never appear in the fetch report's EGRESS DENIED block. WHAT WOULD RESOLVE IT: viewcy.com on the routine's egress allowlist, or an interactive session (egress unrestricted) reading the address off the listing.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Labor Day Weekend @ Threes Brewing — the roundup dates it only \"ALL WEEKEND\"",
+      "note": "HELD 2026-09-02 (source-blocked: the source does not state the dates). Verbatim from the Greenpointers 9/3-9 roundup: \"ALL WEEKEND Labor Day Weekend @ Threes Brewing: Showing the US Open along with “Last Set” pilsner specials, frozens, and their take on the famed honeydeuce.\" The heading is \"ALL WEEKEND\" and no calendar dates appear anywhere in the item, so carding it means inventing the span (Labor Day 2026 falls on Monday 9/7, which makes the weekend 9/5-9/7 — an inference, not a stated fact). The roundup also never states the address; Threes Brewing Greenpoint at 113 Franklin St is established from the 2026-08-12 listing, so geography is not the blocker here, the dates are. WHAT WOULD RESOLVE IT: Threes Brewing stating the dates on its own page, or the roundup being corrected.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Pull Up a Plate: Community Hang @ Smorgasburg, Sat 9/5 11am — no address stated",
+      "note": "HELD 2026-09-02 (geography unstated). Verbatim from the Greenpointers 9/3-9 roundup: \"Pull Up a Plate: Community Hang @ Smorgasburg, 11 a.m.: A day of community with live music, specials from local vendors, all-ages activities, and partnership with Java St. Garden. No RSVP needed.\" The roundup names no address and the item carries no ticket link, so there was no R1 target to follow. Smorgasburg's Brooklyn market is not a Greenpoint address in any source this run can read, and the Java St. Garden mention is a partner, not the venue. Carding it would mean guessing which side of the neighborhood line it falls on. WHAT WOULD RESOLVE IT: Smorgasburg or Greenpointers stating the location.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Nonna's Pizzeria (253 Nassau Ave) — Greenpointers reports a health-department shutdown it cannot confirm",
+      "note": "HELD 2026-09-02 (new-judgment). The article is fully sourced and squarely in Greenpoint, and the DOH inspection scores in it are checkable — but the closure itself is not: the piece opens \"Nonna's Pizzeria (253 Nassau Ave.), an affordable Greenpoint slice shop, has seemingly been shut down by the city's health department due to a number of violations. We do not know if this is a permanent closure or if Nonna's will reopen.\", says \"Greenpointers recently became aware of the closure from Reddit\", and ends \"Greenpointers reached out for comment and confirmation of the closure, but no one at Nonna's has responded to emails and messages or answered the phone.\" Every live closure card in the deck (wasabi-closing, ashbox-cafe-closes, archestratus-closed) rests on a confirmed closure; there is no precedent for carding one the publisher explicitly could not confirm, and the subject is a named business's standing. RULE QUESTION FOR BATU: does an unconfirmed closure reported by a trusted local publisher get a news card that carries the hedge, or does it wait for confirmation? WHAT WOULD RESOLVE IT: Greenpointers or the DOH confirming the closure or a reopening.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Lockwood — its Facebook events feed omits location_text on its own in-store events [RULE QUESTION for Batu]",
+      "note": "SECOND HOLD OF THE SAME SHAPE, so escalating the rule rather than re-triaging the card (SKILL.md: \"A card held twice for the same reason is a MISSING RULE, not a hard card\"). This run's diff adds \"name: Lockwood's Epic Clearance Sale!\\nstart_date_raw: 2026-09-14\\nstart_time: 10:00 am\\nend_date_raw: 2026-09-20\\nend_time: 9:00 pm\\nhtml_link: https://www.facebook.com/events/1091829239854633\" — a full date, a full clock, and no venue line, exactly like MetroCard Mystery Weekend (9/5-9/7, held since 2026-08-25) and Spark Session Night before it. THE NEW EVIDENCE: the same fetch carries \"name: Williamsburg's 5th Birthday Party!\" WITH a location_text line reading \"485 Driggs Ave, Brooklyn, NY 11211-2021, United States\". So the feed does emit location_text when an event is somewhere other than the shop, which is decent evidence that a blank one means the home store at 98 Greenpoint Ave. RULE QUESTION: may a business's own events feed be read as placing its unlocated events at its own address when that feed demonstrably labels the ones held elsewhere? A yes ships three held Lockwood items now and every future one mechanically; a no means this source produces nothing but holds and should probably leave the roster.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Lockwood — Williamsburg's 5th Birthday Party, Sat 9/12 (out of area)",
+      "note": "OUT OF AREA, recorded so a later run does not re-triage it. Verbatim from lockwood.txt: \"name: Williamsburg's 5th Birthday Party!\\nstart_date_raw: 2026-09-12\\nstart_time: 11:00 am\\nend_date_raw: 2026-09-12\\nend_time: 8:00 pm\\nlocation_text: 485 Driggs Ave, Brooklyn, NY 11211-2021, United States\". 11211 is Williamsburg; not mapped.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Greenpoint Library — nothing runs at the branch on Sat 9/12; both public programmes are cancelled in the feed",
+      "note": "SOURCE FACT 2026-09-02, recorded so the missing Saturday day-card does not read as a coverage miss. The Solr feed carries four 9/12 records: \"ts_title: Sustainable Sewing: Sewing Machine Basics\" and \"ts_title: Saturday Family StoryTime\" both carry \"is_event_canceled: 1\"; \"ts_title: Meeting room reservation\" has the body \"room reservation from local moms' meetup group\", which is not public programming; and the Cycle Alliance period pantry is a standing amenity whose own body reads \"Monday-Sunday during branch open hours\", so it belongs on the greenpoint-library venue card under the 2026-08-14 rule and not on a dated card. Same detection method as the 2026-08-29 entry: scan the snapshot for is_event_canceled rather than trusting the diff, which cannot see a flag flip.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Selformer — the roster note's price list is stale; the live card is right",
+      "note": "SOURCE FACT 2026-09-02, worth writing down because it looked like a drift finding and is not. ingest-sources.json's note for selformer still reads \"$147/$239/$369 a month for 4/8/16 classes; $399 unlimited; $350 on-demand video\". The current pricing page states \"Unlimited On-Demand Video Membership\\n$ 279 279$\", and the only $399 on the page belongs to a different product — \"10 Classes Discounted Pack\\n$ 399 399$\\n10 Classes of Your Choice – $39.90/class\\n3 Month Expiration\". The live card selformer-memberships already quotes the $279 figure and needs no change; it is the ROSTER NOTE that is out of date. Fixing it is a roster edit and therefore human-gated, so it is not being changed here.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Golden Drum — the September Anahata Session moved from Wed 9/9 to Fri 9/11",
+      "note": "RESOLVED 2026-09-02 by re-dating the card, and recorded because it is the second time this source's dates have moved under us (see the 2026-09-01 entry on the URL keeping the old date after a reschedule). The detail page at https://www.goldendrum.org/calendar-1/anahata-09-11-26-4hnmb now states \"Anahata Sessions: SEPTEMBER\\nFriday, September 11, 2026\\n7:00 PM\\n9:30 PM\" and the index line reads \"Anahata Sessions - September 11th 2026\". The card yesterday read Wednesday, September 9. Card id changed golden-drum-anahata-0909 → golden-drum-anahata-0911. LESSON: the slug (anahata-09-11-26) was right all along and the printed date was what moved, which is the mirror image of the 9/1 finding — so trust neither on its own; re-read the detail page's printed date every run this source is changed.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Film Noir Cinema — Film Noir Mondays, Mon 9/28 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from the programme JSON's detail block: \"Film Noir Mondays\\nMonday, September 28, 2026\\n8:00 PM\\n9:00 PM\". The 9/14 occurrence shipped this run as film-noir-monday-0914; the 9/28 one rolls in on a later run, since this source is re-snapshotted every fetch.",
+      "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Brooklyn Craft Company — Beaded Embroidery, Sun 9/27 3pm in Greenpoint (past the 14-day window)",
+      "note": "EMAIL IS ONE-SHOT, so recording it verbatim before the thread ages out. Brooklyn Craft Company newsletter, info@brooklyncraftcompany.com, 2026-08-31, subject \"Get Thready to Embroider with New Workshops & Seasonal Kits!\": \"Beaded Embroidery\\nSun, 9/27 at 3:00pm\\nin Greenpoint\". Booking page https://www.brooklyncraftcompany.com/products/beaded-embroidery. The two in-window sessions from the same email shipped this run (bcc-beginner-embroidery-0910, bcc-floral-embroidery-0912). Nothing is blocked here — this is horizon only, and the newsletter is persisted into .ingest-cache/brooklyn-craft-company.ingested.txt under [NEWSLETTER PERSISTED 2026-09-02], so the quote stays checkable when the date comes into range.",
+      "addedAt": "2026-09-02"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
-    "greenpointers": "2026-08-31",
+    "greenpointers": "2026-09-01",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-08-31",
+    "film-noir-cinema": "2026-09-01",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
-    "greenpoint-library": "2026-08-30",
-    "bpl-north-brooklyn-calendar": "2026-08-30",
+    "greenpoint-library": "2026-09-01",
+    "bpl-north-brooklyn-calendar": "2026-09-01",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-27",
@@ -2487,7 +2583,7 @@
     "yaro-studios": "2026-08-07",
     "yaro-kids-clay": "2026-08-07",
     "moon-bunny-aerial": "2026-08-19",
-    "brooklyn-craft-company": "2026-08-24",
+    "brooklyn-craft-company": "2026-09-01",
     "last-place-on-earth": "2026-07-26",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
@@ -2526,7 +2622,7 @@
     "lot-radio": "2026-08-13",
     "action-city-comics": "2026-08-16",
     "golden-drum": "2026-08-30",
-    "nbk-open-streets": "2026-08-25"
+    "nbk-open-streets": "2026-09-01"
   },
   "coverageExplanations": [
     {
@@ -2808,6 +2904,13 @@
       "addedAt": "2026-09-01",
       "expiresAt": "2026-09-15",
       "reason": "THE PAPER HAS PUBLISHED NOTHING LOCAL SINCE JUNE, and what it does publish is not Greenpoint supply. Re-earned against this run's snapshot: the newest post is \"Posted on June 28, 2026\", titled \"Who Inherits When Family Records Are Lost\", and it is syndicated legal marketing — it ends \"Contributed by Dan Rose, A Senior Local Business Guide Specializing in New York Kinship and Surrogate's Court Proceedings.\" and \"Law Offices of Roman Aminov, 147-17 Union Tpke, Queens, NY 11367\". A Queens law firm's advertorial is neither dated Greenpoint programming nor neighborhood news, so there is nothing here to card and the silence is the source's, not a coverage loss. The fetch is clean (plain HTTP, 200), so this is 'the source is quiet', not 'we cannot read it'. WHAT WOULD CHANGE IT: the Star resuming local reporting, which would land as an ordinary diff."
+    },
+    {
+      "sourceId": "archestratus",
+      "gapKey": "SILENT",
+      "addedAt": "2026-09-02",
+      "expiresAt": "2026-09-16",
+      "reason": "THE SHOP IS CLOSED AND THE SILENCE IS ITS OWN. Re-earned against this run's snapshot (1,924 bytes, plain fetch, clean): the page banner still reads \"OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE\", which is already carded as the news card archestratus-closed. The events page carries exactly two dated lines, and neither is cardable supply: \"SAT AUG 22 / Archestratus Hang at the Greenmarket\" is past (and is already the standing source-blocked watchItem from 2026-08-18), and \"SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)\" is both past the 14-day window (2026-09-02 → 2026-09-16) and virtual — the page says \"FOOD ALONE WAS NOT ENOUGH is a weekly (VIRTUAL) COMMUNITY HANG\", so there is no Greenpoint place to pin. This is 'the source is quiet because the venue closed', not 'we cannot read the source'. WHAT WOULD CHANGE IT: a reopening, or a dated in-person event, either of which lands as an ordinary diff."
     }
   ]
 }

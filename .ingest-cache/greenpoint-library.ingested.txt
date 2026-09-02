@@ -1,58 +1,3 @@
-ts_title: Free English Class
-ds_event_start_date: 2026-09-01T18:00:00Z
-ds_event_end_date: 2026-09-01T20:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","ESOL","Immigrant Services","Welcome ESOL"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: The library offers free ESOL classes for beginners learning English. Classes meet twice a week Improve your English Practice with other adults learning English This class is first-come, first-served until classroom hits capacity. Registration is not necessary. (For non-beginner classes, integrated English literacy, or classes outside of the Greenpoint Library, please visit https://www.bklynlibrary.org/adult-learning/esol )
-
-ts_title: Free Notary Services*
-ds_event_start_date: 2026-09-01T18:00:00Z
-ds_event_end_date: 2026-09-01T20:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["all ages","community partner","legal resources"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: * New hours are TUES and THUR from 2pm to 4pm. Please call Greenpoint Library to CONFIRM the notary is AVAILABLE the day you plan to visit: 718-389-4394. * Limit of three seals per signing, per day. Non-commercial only. Other restrictions may apply. * Library card not required. Valid photo ID with signature IS required (a current state ID or passport is necessary). * The person whose signature is being notarized must be present with appropriate ID. * Please complete paperwork EXCEPT DO NOT SIGN YOUR FORM until in the presence of the Notary.
-
-ts_title: Keep Calm & Carry Yarn - Sewists Welcome!
-ds_event_start_date: 2026-09-01T21:30:00Z
-ds_event_end_date: 2026-09-01T23:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","arts and crafts","fiber arts","knitting and crocheting"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community. Bring your handwork project to show off, get inspired, or get advice. Lessons are available for beginners in knitting, mending, or crochet. Learning supplies can be provided. All genders welcomed--teens too! **MEETS WEEKLY! If you need a lesson, shoot an email to MRogers@bklynlibrary.org.
-
-ts_title: English Conversation Group
-ds_event_start_date: 2026-09-01T22:00:00Z
-ds_event_end_date: 2026-09-01T23:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","english conversation group","Immigrant Services"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join other adults who are learning to speak English in this weekly English Conversation Group. This is a drop-in program. Patrons will be admitted on a first-come, first-serve basis until the classroom reaches capacity.
-
-ts_title: St. Nicks Alliance Housing Legal Clinic
-ds_event_start_date: 2026-09-01T22:00:00Z
-ds_event_end_date: 2026-09-01T23:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","Civic Engagement","community partner","legal resources","social services"]
-is_event_registration: 1
-is_event_canceled: 0
-ts_body: Receive legal advice about your tenant rights and how to fight displacement & harassment. Consult with an experienced attorney about any specific housing legal concerns. Presented by community development organization, St Nicks Alliance. Please register, although we will have space for walk-ins.
-
 ts_title: Toddler Time (for walking toddlers)
 ds_event_start_date: 2026-09-02T14:30:00Z
 ds_event_end_date: 2026-09-02T15:00:00Z
@@ -437,3 +382,57 @@ sm_event_tags: ["Cycle Alliance","health and wellness","mental health","teen tim
 is_event_registration: 0
 is_event_canceled: 0
 ts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours . If you are someone who would like to pick up a period wellness bag containing a variety of menstrual hygiene products brought to you by community donations, zines, and check out books please stop by our Teen Zone! This is open to all ages and genders .
+
+ts_title: Sustainable Sewing: Sewing Machine Basics
+ds_event_start_date: 2026-09-12T14:30:00Z
+ds_event_end_date: 2026-09-12T16:30:00Z
+ss_event_location: Greenpoint, Eco Lab 1
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["arts and crafts","climate and the environment","fiber arts","skillshare"]
+is_event_registration: 0
+is_event_canceled: 1
+ts_body: Join us to learn the basics and operation of a sewing machine . You will walk away with an understanding of: Sewing machine functions Stitch settings and when to use them Sewing machine presser foot functions and other accessories Bobbin creation and operation A project sewn by you to take home Sewing machines are provided but you are welcome to bring your own. This class will qualify you for sewing machine use in the branch at our monthly sewing circles. Also see our weekly and monthly fiber arts circles.
+
+ts_title: Saturday Family StoryTime
+ds_event_start_date: 2026-09-12T14:30:00Z
+ds_event_end_date: 2026-09-12T15:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Kids
+sm_event_tags: ["all ages","Events for Youth and Family","first five years","music","saturday storytime","stomp clap and sing","storytime"]
+is_event_registration: 0
+is_event_canceled: 1
+ts_body: Saturday Family StoryTime Join us for Saturday morning @ 10:30am for Family StoryTime in the Children's Area! We will be singing songs, reading books together, and enjoying our FREEDOM TO READ together. All ages are welcome *No Registration or tickets necessary*
+
+ts_title: Meeting room reservation
+ds_event_start_date: 2026-09-12T14:30:00Z
+ds_event_end_date: 2026-09-12T17:30:00Z
+ss_event_location: Greenpoint, Eco Lab 1
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: room reservation from local moms' meetup group
+
+ts_title: Chair Yoga for Adults
+ds_event_start_date: 2026-09-14T17:30:00Z
+ds_event_end_date: 2026-09-14T18:30:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["health and wellness","yoga and meditation"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us for Chair Yoga + Mindfulness with Stefanie Mihoulides! This is an accessible yoga class suitable for adults of all ages and abilities. Connect breath to movement as you build strength and mobility through a fundamental chair-focused sequence with guided breathwork.
+
+ts_title: Gaming for Teens: Dungeons & Dragons
+ds_event_start_date: 2026-09-14T20:00:00Z
+ds_event_end_date: 2026-09-14T21:30:00Z
+ss_event_location: Greenpoint, Eco Lab 3 (Teens)
+ss_event_location_master: Greenpoint Library
+ss_event_age: Teens & Young Adults
+sm_event_tags: ["after school","table-top & board games","teen time"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Teens 13+, join us for Dungeons & Dragons! This is a teen run program led by a teen volunteer .

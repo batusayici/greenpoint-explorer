@@ -5,8 +5,7 @@ Cart
 Workshops
 View By Calendar
 View All Workshops
-Drop-In Workshops
-Summer Friday Crafty Hours
+Drop-In Workshops in Manhattan
 Sewing
 Embroidery & Needlework
 Weaving & Fiber
@@ -91,8 +90,7 @@ Cart
 Workshops
 View By Calendar
 View All Workshops
-Drop-In Workshops
-Summer Friday Crafty Hours
+Drop-In Workshops in Manhattan
 Sewing
 Embroidery & Needlework
 Weaving & Fiber
@@ -172,7 +170,7 @@ Private Events
 Join our Team!
 Browse Workshops
 For adults ages 18+
-124
+120
 products
 Filter
 Sort by
@@ -221,10 +219,10 @@ Product Type
 Past Workshop
 (3)
 Workshop
-(121)
+(117)
 Vendor
 Brooklyn Craft Company
-(124)
+(120)
 Community Craft Night: Embroidery w/ Plus BLKYN
 Regular Price
 $25.00
@@ -290,16 +288,6 @@ Regular Price
 $60.00
 Sale Price
 $60.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-CRAFTY HOUR: Embroidered Hats
-Regular Price
-$25.00
-Sale Price
-$25.00
 Regular Price
 Unit Price
 / per
@@ -525,12 +513,21 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Showing items 1-30 of 124.
+5-Week Sewing Course - Ilford Jacket
+Regular Price
+$350.00
+Sale Price
+$350.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Showing items 1-30 of 120.
 1
 2
 3
-…
-5
+4
 Brooklyn Craft Company is a modern craft store and DIY workshop space located in Greenpoint, Brooklyn.
 Shop
 Workshops
@@ -667,4 +664,43 @@ Tues, 9/15 at 6:30pm
 Crochet 102: Tom-a-tote!
 In Greenpoint:
 Sat, 8/29 at 11am
+165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train
+
+## [NEWSLETTER PERSISTED 2026-09-02] info@brooklyncraftcompany.com, 2026-08-31
+# "Get Thready to Embroider with New Workshops & Seasonal Kits!"
+# This source's evidence IS the newsletter (roster note): the Shopify collection
+# page carries names and prices and no dates at all, because the schedule lives
+# in a BookThatApp widget automation cannot read. Transcribed verbatim from the
+# email body so ingest:quotes can re-check the cards authored from it. NOTE the
+# per-session location labels — this newsletter states "in Greenpoint" under
+# each session individually, which is what makes these pinnable at all (the
+# 2026-08-03 lesson bars pinning when the newsletter says only "In Greenpoint
+# and Lower Manhattan" across a whole list).
+
+We’ve added new sessions of our Embroidery Workshops to the calendar for September. Check out Beginner Embroidery to start and then advance to Floral Embroidery and Beaded Embroidery . All materials for class are included with registration!
+
+Beginner Embroidery
+Thurs, 9/10 at 6:30pm
+in Greenpoint
+
+Floral Embroidery
+Sat, 9/12 at 3:00pm
+in Greenpoint
+
+Beaded Embroidery
+Sun, 9/27 at 3:00pm
+in Greenpoint
+
+Kid Sewing Afterschool
+Registration for our Kids Sewing Afterschool program for the Fall - Winter 2026 and Winter - Spring 2027 has begun.
+In each multi-week course, children aged 8-12 will learn to sew with a sewing machine and gain an understanding of sewing basics as they make a variety of projects. Students will learn in a small group environment, with a max class size of 8. Our staff-child ratio is 1:4, allowing hands-on instruction for each student.
+Mondays & Tuesdays 3-5p
+All kids ages 8-12 welcome! Kids classes are held in Greenpoint.
+Brooklyn Craft Company Annex
+37 Greenpoint Ave., Suite 105
+Brooklyn, NY 11222
+Afterschool pickup available at PS110, PS31, and PS34.
+Contact kids@brooklyncraftcompany.com for details.
+
+VISIT OUR STORE IN BROOKLYN
 165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train

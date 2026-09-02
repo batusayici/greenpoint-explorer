@@ -691,15 +691,31 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // workshop whose own copy read "Tuesdays through August" — the season it
   // states is over, and the July Greenpointers roundup that sourced it rolled
   // off the feed long ago, so nothing can renew it. 129 + 5 - 1 = 133.
-  assert.equal(seed.cards.length, 133);
+  //
+  // 2026-09-02 daily thin: expiry took 6 past items (133 → 127), then 13 adds.
+  // Eleven of them are the Greenpointers "9/3-9" roundup, which published this
+  // morning — the roundup names its venues and never their addresses, so each
+  // ticketing link was harvested out of the post's own HTML and the listing
+  // behind it read for the address (persisted into the source snapshot). Two
+  // more come from sources that publish their own calendars: Film Noir Monday
+  // on 9/14, and a Monday library day-card for 9/14 (chair yoga, teen D&D).
+  // The Gmail pass added three more from Brooklyn Craft Company's 8/31
+  // newsletter — two September embroidery workshops and the kids' afterschool
+  // sewing enrollment. That newsletter IS this source's evidence (its Shopify
+  // page carries no dates at all), and it labels each session "in Greenpoint"
+  // individually, which is what makes them pinnable: the 2026-08-03 rule only
+  // bars pinning when the newsletter says "In Greenpoint and Lower Manhattan"
+  // across a whole list without saying which date is where.
+  // 127 + 13 + 3 = 143.
+  assert.equal(seed.cards.length, 143);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "32 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.category === "event"), 55, "52 after expiry + 4 adds − the Artudio workshop, season over (2026-09-01)");
+  assert.equal(count((c) => c.category === "event"), 64, "49 after expiry + 15 dated adds (2026-09-02)");
   assert.equal(count((c) => c.category === "discount"), 5, "6 − the Tend free-shipping offer, expired 8/31");
   assert.equal(count((c) => c.category === "news"), 21, "20 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 25, "23 after expiry + the two Troost gigs on 9/2 and 9/15 (2026-09-01)");
-  assert.equal(count((c) => c.category === "subscription"), 26, "27 − Greenpoint Trash Club, unverifiable (2026-08-30)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 24, "25 − the 9/1 Troost gig, expired (2026-09-02)");
+  assert.equal(count((c) => c.category === "subscription"), 27, "26 + the Brooklyn Craft Company kids sewing enrollment (2026-09-02)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -905,9 +921,18 @@ test("free-ness is designated only where the source states it (tester feedback #
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
-    // 2026-08-31: the Go Green listing states it twice — "Free" under Cost and
-    // again in Event Categories — for a Newtown Creek Alliance nursery shift.
-    "kingsland-greenhouse-gang-0901",
+    // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
+    // 2026-09-02, all five off the Greenpointers "9/3-9" roundup, each stating
+    // free-ness in the line its card quotes: "Free, RSVP here" on the Plantasia
+    // listening party, the Brooklyn Wildlife festival opening and the Kingsland
+    // Wildflowers open hours; "Free, no RSVP needed" on Corvids in Cahoots; and
+    // "Free while supplies last." on Sunday Scoops. The Eventbrite listings
+    // behind three of them independently carry lowPrice 0.0.
+    "for-the-record-plantasia-0903",
+    "kingsland-wildflowers-open-hours-0905",
+    "lentol-garden-bwsf-opening-0904",
+    "lentol-garden-corvids-0906",
+    "mccarren-sunday-scoops-0906",
     // (flowercat-live-band-karaoke-0828 expired out; greenpoint-trash-club
     // deleted 2026-08-30 — unverifiable past its verified-through date, its
     // site sits behind the broken browser path)
@@ -933,6 +958,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // boilerplate as the 8/19 one — "This event is FREE and open to the public."
     // (mccarren-movies-guardians-2-0826 expired out 2026-08-27)
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
+    // 2026-09-02: Soft Bar's anniversary run club — the roundup line the card
+    // quotes ends "Free," and the Eventbrite listing carries lowPrice 0.0.
+    "soft-bar-strides-run-club-0903",
     // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
@@ -1021,6 +1049,13 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   // 2026-08-10: Kindred's Thursday sunset session joins its Tuesday morning
   // sibling — same series, second weekly slot (flyer sighting near
   // Transmitter Park).
+  // 2026-09-02: two dated adds. Soft Bar's anniversary run club is a community
+  // run — the run half of the cluster this lens names, the same reading as
+  // Bandit Running. The Monday library day-card is here for its chair yoga
+  // hour ("Chair Yoga + Mindfulness ... an accessible yoga class"), alongside
+  // the family_kids it earns from the teen D&D table; that pairing is allowed,
+  // because the no-double-file rule bars family_kids with arts_culture and
+  // games, not with an audience-neutral movement lens.
   assert.deepEqual(wellness, [
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
@@ -1040,11 +1075,13 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
     // (library-chair-yoga-0824, the branch's Monday chair-yoga hour, expired
     // out 2026-08-25)
+    "library-monday-programs-0914",
     // (longevity-stick-transmitter-0830 expired out 2026-08-31)
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28 — the series
     //  schedule runs Fri 8/28, Sun 8/30, then Sun 9/27; no Thursday remains)
     "moon-bunny-monthly-plans",
     "selformer-memberships",
+    "soft-bar-strides-run-club-0903",
     // 2026-08-10: the Summer Fling promo is a DEAL at a Pilates studio, so it
     // double-files wellness + deals_memberships on the same reading that puts
     // a kids' discount in family_kids + deals_memberships (PR #18).
@@ -1290,7 +1327,14 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "cb1-environmental-committee-0903",
     "film-noir-support",
     "g-advocacy-mta",
-    "kingsland-greenhouse-gang-0901",
+    // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
+    // 2026-09-02: Kingsland Wildflowers open hours — four hours on the green
+    // roof at a community engagement center, with native plants to take home.
+    // The growing-space rule Batu settled on 2026-08-30 puts this here and not
+    // in shopping: the plant sale is part of an open day at a shared growing
+    // space, not a retail happening, and it is not wellness because standing
+    // on a green roof is not the movement cluster.
+    "kingsland-wildflowers-open-hours-0905",
     "library-garden-hours-0911",
     // (greenpoint-trash-club deleted 2026-08-30 — unverifiable, see the deck
     // count contract above)

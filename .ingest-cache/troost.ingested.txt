@@ -1,8 +1,3 @@
-summary: Phillip Santos, Michael Eaton, Evan Palmer
-start.date: 2026-09-01
-end.date: 2026-09-02
-htmlLink: https://www.google.com/calendar/event?eid=M2Y2Nm5zMnJzOTQwM3RpYmgwNHZoNm4xN2QgdHJvb3N0bGl2ZUBt
-
 summary: DERVISI
 description: Punk-Rebetika 1st Wednesdays - the herbal remedy - You will dance iin odd meters because Odd is Godd, Baby!
 start.date: 2026-09-02
@@ -221,3 +216,8 @@ summary: DANNY RAMOS
 start.date: 2026-10-16
 end.date: 2026-10-17
 htmlLink: https://www.google.com/calendar/event?eid=NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjEwMTYgdHJvb3N0bGl2ZUBt
+
+summary: DJ GUTZILA
+start.date: 2026-10-17
+end.date: 2026-10-18
+htmlLink: https://www.google.com/calendar/event?eid=NjA0Mm80NzkzZnZxaWlhZDV1NnBlN2E2NThfMjAyNjEwMTcgdHJvb3N0bGl2ZUBt

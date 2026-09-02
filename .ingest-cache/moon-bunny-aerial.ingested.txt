@@ -1,24 +1,4 @@
 name: Two Day Kids Camp
-start_at: 2026-09-01T13:00:00.000Z
-end_at: 2026-09-01T19:00:00.000Z
-
-name: Aerial Conditioning
-start_at: 2026-09-01T20:00:00.000Z
-end_at: 2026-09-01T21:00:00.000Z
-
-name: Dance Trapeze
-start_at: 2026-09-01T21:00:00.000Z
-end_at: 2026-09-01T22:00:00.000Z
-
-name: Silks
-start_at: 2026-09-01T22:00:00.000Z
-end_at: 2026-09-01T23:00:00.000Z
-
-name: K-Pop Dance
-start_at: 2026-09-01T23:30:00.000Z
-end_at: 2026-09-02T00:30:00.000Z
-
-name: Two Day Kids Camp
 start_at: 2026-09-02T13:00:00.000Z
 end_at: 2026-09-02T19:00:00.000Z
 
@@ -262,7 +242,7 @@ name: Aerial Conditioning
 start_at: 2026-09-10T22:30:00.000Z
 end_at: 2026-09-10T23:30:00.000Z
 
-name: K-Pop Dance
+name: K-Pop Dance (Loveshot by EXO)
 start_at: 2026-09-10T22:30:00.000Z
 end_at: 2026-09-10T23:30:00.000Z
 
@@ -398,6 +378,26 @@ name: Beginner Poi
 start_at: 2026-09-14T22:30:00.000Z
 end_at: 2026-09-14T23:30:00.000Z
 
+name: Open Gym
+start_at: 2026-09-14T22:30:00.000Z
+end_at: 2026-09-14T23:30:00.000Z
+
+name: Lyra
+start_at: 2026-09-14T22:30:00.000Z
+end_at: 2026-09-14T23:30:00.000Z
+
+name: Flexibility
+start_at: 2026-09-14T23:30:00.000Z
+end_at: 2026-09-15T00:30:00.000Z
+
+name: Hula Hoop 101
+start_at: 2026-09-14T23:30:00.000Z
+end_at: 2026-09-15T00:30:00.000Z
+
+name: Hammock
+start_at: 2026-09-14T23:30:00.000Z
+end_at: 2026-09-15T00:30:00.000Z
+
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial
 0
@@ -528,3 +528,13 @@ end_at: 2026-08-29T19:00:00.000Z
 name: Weekend Camp 13-16 yrs old
 start_at: 2026-08-30T13:00:00.000Z
 end_at: 2026-08-30T19:00:00.000Z
+
+## [ROLLED-OFF EVIDENCE PERSISTED 2026-09-02] Two Day Kids Camp, 9/1-9/2
+# Carried forward from this source's PREVIOUS baseline (git HEAD of
+# .ingest-cache/moon-bunny-aerial.ingested.txt, commit 5cda203). The feather.rsvp
+# feed drops a multi-day camp's past days as they pass, so the evidence for
+# moon-bunny-two-day-camp-8-12-0901 vanished mid-camp while the card is still
+# live (it ends tonight). Recorded as the standing watchItem of 2026-08-18.
+name: Two Day Kids Camp
+start_at: 2026-09-01T13:00:00.000Z
+end_at: 2026-09-01T19:00:00.000Z
