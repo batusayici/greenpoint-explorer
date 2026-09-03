@@ -1,9 +1,3 @@
-summary: DERVISI
-description: Punk-Rebetika 1st Wednesdays - the herbal remedy - You will dance iin odd meters because Odd is Godd, Baby!
-start.date: 2026-09-02
-end.date: 2026-09-03
-htmlLink: https://www.google.com/calendar/event?eid=MTZ1M24xajd2MnBqY2Z2MnF0czcwbDBuNDJfMjAyNjA5MDIgdHJvb3N0bGl2ZUBt
-
 summary: DJ Barba Yiorgi
 description: WORLD PSYCHEDELIC GROOVE
 start.date: 2026-09-03
@@ -221,3 +215,9 @@ summary: DJ GUTZILA
 start.date: 2026-10-17
 end.date: 2026-10-18
 htmlLink: https://www.google.com/calendar/event?eid=NjA0Mm80NzkzZnZxaWlhZDV1NnBlN2E2NThfMjAyNjEwMTcgdHJvb3N0bGl2ZUBt
+
+summary: SPAGHETTI EASTERN ELECTRO DUB
+description: Dub Meets Raga Meets Psychedelia
+start.date: 2026-10-18
+end.date: 2026-10-19
+htmlLink: https://www.google.com/calendar/event?eid=XzcwcWplYzI0NjBzMzZiOW44a29qZWI5azZkMGs2YmExNzBwazJiOWk2b3I0OGc5cDZrcjM4ZDFvNmMgdHJvb3N0bGl2ZUBt

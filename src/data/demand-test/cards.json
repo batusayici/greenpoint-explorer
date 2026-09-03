@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-02",
+  "version": "2026-09-03",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -1273,7 +1273,6 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-wednesday-programs-0902",
         "library-babies-books-0903",
         "library-tuesday-programs-0908",
         "library-garden-hours-0911",
@@ -2545,7 +2544,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-03",
       "endsAt": "2026-09-16T22:00:00-04:00",
       "id": "scrappleland-pinball-league",
       "title": "Wednesday Pinball League at Scrappleland",
@@ -2560,7 +2559,7 @@
         "food_drink"
       ],
       "summary": "The venue's own listing gives the night and nothing else — no entry fee, sign-up or format stated.",
-      "sourceQuote": "Wednesday Pinball League\nSeptember 2 @ 8:00pm - 10:00pm",
+      "sourceQuote": "Wednesday Pinball League\nSeptember 9 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -2963,7 +2962,6 @@
       ],
       "sourceQuote": "4 classes a month - $87.00 per month (13% off)\n4 classes a month - $104.00 per month (13% off)\n4 classes a month - $139.00 per month (13% off)\nFree trial class",
       "relatedCardIds": [
-        "moon-bunny-two-day-camp-8-12-0901",
         "moon-bunny-back-to-school-2026"
       ]
     },
@@ -3711,53 +3709,6 @@
     },
     {
       "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-18",
-      "updatedAt": "2026-08-27",
-      "id": "moon-bunny-two-day-camp-8-12-0901",
-      "category": "event",
-      "free": false,
-      "title": "Two-Day Circus Camp at Moon Bunny Aerial",
-      "kicker": "Two days on aerials, acro and juggling",
-      "summary": "The shorter camp format, run over two consecutive days — the studio's listing names no age range for this session. No prior experience is required.",
-      "startsAt": "2026-09-01T09:00:00-04:00",
-      "endsAt": "2026-09-02T15:00:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Moon Bunny Aerial",
-      "address": "394 McGuinness Blvd #208",
-      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222",
-      "lat": 40.736575,
-      "lng": -73.952327,
-      "relatedCardIds": [
-        "moon-bunny-monthly-plans"
-      ],
-      "sourceQuote": "name: Two Day Kids Camp\nstart_at: 2026-09-01T13:00:00.000Z\nend_at: 2026-09-01T19:00:00.000Z\n\nname: Two Day Kids Camp\nstart_at: 2026-09-02T13:00:00.000Z\nend_at: 2026-09-02T19:00:00.000Z\n\nOur Two-Day Circus Camp is a great option for families looking for a shorter camp experience. Campers will explore a variety of circus arts, including aerial apparatuses such as lyra, silks, hammock, and dance trapeze, as well as ground activities like acro, juggling, and flow props.\nWith two days to learn and practice, participants can build confidence, develop new skills, and enjoy an engaging introduction to circus arts. No prior experience is required.",
-      "actions": [
-        {
-          "label": "Camp details",
-          "type": "learn_more",
-          "url": "https://moonbunnyaerial.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Moon Bunny Aerial events",
-          "url": "https://moonbunnyaerial.com",
-          "publisher": "Moon Bunny Aerial",
-          "date": "2026-08-18"
-        }
-      ]
-    },
-    {
-      "audience": [
         "resident"
       ],
       "evidenceStrength": "high",
@@ -3845,51 +3796,6 @@
           "title": "Troost calendar",
           "url": "https://troostny.com/calendar/",
           "publisher": "Troost",
-          "date": "2026-08-20"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-21",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "free": false,
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "id": "library-wednesday-programs-0902",
-      "title": "Wednesday at Greenpoint Library",
-      "kicker": "Five programs, storytime to teen hour",
-      "summary": "Two ticketed toddler sittings, the rooftop demonstration garden open for quiet study, a beginners' PC class, a free We Speak NYC English class, and a sensory-friendly hour for teens 13+.",
-      "startsAt": "2026-09-02T10:30:00-04:00",
-      "endsAt": "2026-09-02T17:30:00-04:00",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "sourceQuote": "ts_title: Toddler Time (for walking toddlers)\nds_event_start_date: 2026-09-02T14:30:00Z\nds_event_start_date: 2026-09-02T15:15:00Z\nts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.*\nts_title: Greenpoint Library Open Roof Hours\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting.\nts_title: Computer Basics\nts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer.\nts_title: Free English Class (We Speak NYC)\nts_title: Teen Time: Sensory Friendly Hour\nds_event_end_date: 2026-09-02T21:30:00Z\nts_body: Feeling overwhelmed and overstimulated? Teens 13+, join us in the Teen Zone for some sensory-friendly, low-stimulation, accessible, and inclusive activities.",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
           "date": "2026-08-20"
         }
       ]
@@ -5355,14 +5261,14 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
+      "updatedAt": "2026-09-03",
       "free": false,
       "id": "library-thursday-programs-0910",
       "category": "event",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Six programmes, babies to teens",
-      "summary": "Two ticketed lapsit sittings for babies not yet walking, week one of a new inclusive Read & Play storytime (register in advance, twelve places), free beginner ESOL, the notary desk, and video games for 13+.",
-      "startsAt": "2026-09-10T10:30:00-04:00",
+      "kicker": "Four programmes, storytime to teens",
+      "summary": "Week one of the new Read & Play series (register in advance, twelve places), free beginner ESOL, the notary desk, and video games for 13+.",
+      "startsAt": "2026-09-10T13:00:00-04:00",
       "endsAt": "2026-09-10T17:00:00-04:00",
       "filters": [
         "family_kids"
@@ -5389,7 +5295,7 @@
           "date": "2026-08-28"
         }
       ],
-      "sourceQuote": "ts_title: Babies & Books (for non-walking babies)\nds_event_start_date: 2026-09-10T14:30:00Z\nds_event_start_date: 2026-09-10T15:15:00Z\nts_body: Join us for baby storytime! We will read some books, sing some songs, do some bounces and tickles and all sorts of fun things with our babies! Tickets are required and will be distributed on a first come, first served basis at the information desk.\nts_title: Read and Play\nds_event_start_date: 2026-09-10T17:00:00Z\nts_body: Today is Week 1 of our NEW Read & Play series! Registration is required in advance to attend this Storytime at the Greenpoint Library.\nPlease note: Group size is limited to 12 participants.\nts_title: Free English Class\nds_event_start_date: 2026-09-10T18:00:00Z\nts_body: The library offers free ESOL classes for beginners learning English.\nts_title: Free Notary Services*\nts_body: * New hours are TUES and THUR from 2pm to 4pm.\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-09-10T19:00:00Z\nds_event_end_date: 2026-09-10T21:00:00Z\nts_body: 13+. Join us for Teen Tech Time to hang out with friends and play video games!"
+      "sourceQuote": "ts_title: Read and Play\nds_event_start_date: 2026-09-10T17:00:00Z\nds_event_end_date: 2026-09-10T17:45:00Z\nToday is Week 1 of our NEW Read & Play series! Registration is required in advance to attend this Storytime at the Greenpoint Library.\nPlease note: Group size is limited to 12 participants.\nts_title: Free English Class\nds_event_start_date: 2026-09-10T18:00:00Z\nThe library offers free ESOL classes for beginners learning English.\nts_title: Free Notary Services*\n* New hours are TUES and THUR from 2pm to 4pm.\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-09-10T19:00:00Z\nds_event_end_date: 2026-09-10T21:00:00Z\n13+. Join us for Teen Tech Time to hang out with friends and play video games!"
     },
     {
       "audience": [
@@ -5738,94 +5644,6 @@
       "sourceQuote": "Virgo New Moon Meditation\nSaturday, September 12, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nUnder the Virgo New Moon we are given an opportunity to analyze, not scrutinize, but from a neutral stance, review and look at our lives and make decisions as to how we may want to restructure or reorganize.\nJoin us for this moment of self-care through conscious connection to the astrological moment with a sound bath.\nVirgo New Moon 9/12/26\n$25.00",
       "lat": 40.733571,
       "lng": -73.957721
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-01",
-      "updatedAt": "2026-09-01",
-      "free": false,
-      "category": "event",
-      "id": "film-noir-szurkulet-0902",
-      "title": "SZURKULET at Film Noir Cinema",
-      "kicker": "Hungarian 1990 crime drama, 9pm",
-      "summary": "A schoolgirl is found dead in the woods and a detective on the edge of retirement takes one last run at the case. No admission price is stated.",
-      "startsAt": "2026-09-02T21:00:00-04:00",
-      "endsAt": "2026-09-02T22:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/3/27/szurkulet"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/3/27/szurkulet",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-01"
-        }
-      ],
-      "sourceQuote": "SZURKULET\nWednesday, September 2, 2026\n9:00 PM\n10:00 PM\nHU. 1990\nWhen a schoolgirl is found murdered in the woods, a retiring detective tries to find her murderer."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-01",
-      "updatedAt": "2026-09-01",
-      "free": false,
-      "category": "event",
-      "id": "troost-dervisi-0902",
-      "title": "DERVISI at Troost",
-      "kicker": "Punk-rebetika, first Wednesdays",
-      "summary": "The calendar bills them as the herbal remedy and promises odd meters. No set time, no support bill and no ticket link.",
-      "startsAt": "2026-09-02T00:00:00-04:00",
-      "endsAt": "2026-09-02T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-09-01"
-        }
-      ],
-      "sourceQuote": "summary: DERVISI\ndescription: Punk-Rebetika 1st Wednesdays - the herbal remedy - You will dance iin odd meters because Odd is Godd, Baby!\nstart.date: 2026-09-02\nend.date: 2026-09-03"
     },
     {
       "audience": [
@@ -6650,6 +6468,356 @@
       ],
       "lat": 40.729869,
       "lng": -73.959022
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": false,
+      "category": "event",
+      "id": "film-noir-black-gravel-0903",
+      "title": "BLACK GRAVEL at Film Noir Cinema",
+      "kicker": "West German noir from 1961",
+      "summary": "Tensions arise when a US military base is built in a small village in post-war Germany. The programme page gives no ticket price.",
+      "startsAt": "2026-09-03T19:00:00-04:00",
+      "endsAt": "2026-09-03T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/7/10/schwarz"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/7/10/schwarz",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-03"
+        }
+      ],
+      "sourceQuote": "title: BLACK GRAVEL\nstartDate: 2026-09-03T23:00:00.411Z\nendDate: 2026-09-04T00:00:00.411Z\nBLACK GRAVEL\nThursday, September 3, 2026\nGE. 1961\nTensions arise when a US military base is built in a small village in post-war Germany."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": true,
+      "category": "event",
+      "id": "nypd-94th-community-council-0903",
+      "title": "94th Precinct Community Council meeting",
+      "kicker": "Monthly sit-down with the precinct",
+      "summary": "The council meets on the first Thursday of every month except July and August. Free, and open to anyone who wants to get informed and engaged.",
+      "startsAt": "2026-09-03T19:00:00-04:00",
+      "endsAt": "2026-09-03T20:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Church of the Ascension",
+      "address": "127 Kent St, Brooklyn, NY 11222",
+      "geocodeQuery": "127 Kent St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Event page",
+          "type": "learn_more",
+          "url": "https://gogreenbk.org/event/nypd-94th-2026/2026-09-03/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NYPD 94th Precinct's Monthly Community Council Meeting",
+          "url": "https://gogreenbk.org/event/nypd-94th-2026/2026-09-03/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-09-03"
+        }
+      ],
+      "sourceQuote": "NYPD 94th Precinct’s Monthly Community Council Meeting\nThursday, September 3rd at 7:00 PM - 8:00 PM\nFree\nThe 94th Precinct Community Council meetings take place on the First Thursday of every month, with the exception of July and August at 127 Kent Street, Brooklyn NY, 7pm. Get informed and engaged!",
+      "lat": 40.730849,
+      "lng": -73.955855
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": false,
+      "category": "event",
+      "id": "good-room-skin-on-skin-0910",
+      "title": "Skin On Skin at Good Room",
+      "kicker": "Three names on a Thursday bill",
+      "summary": "Day Cart and Wig-Wam are the other two on the listing, which gives no ticket price.",
+      "startsAt": "2026-09-10T19:00:00-04:00",
+      "endsAt": "2026-09-10T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-09-03"
+        }
+      ],
+      "sourceQuote": "Sep 10\nSkin On Skin, Day Cart & Wig-Wam\nGood Room\n7:00PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": false,
+      "category": "event",
+      "id": "good-room-otha-0917",
+      "title": "Otha at Good Room",
+      "kicker": "Club 20 Tour, presented by Elsewhere",
+      "summary": "DoNYC carries the night twice, once at 7pm and once at 8pm, and states no ticket price either time.",
+      "startsAt": "2026-09-17T19:00:00-04:00",
+      "endsAt": "2026-09-17T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-09-03"
+        }
+      ],
+      "sourceQuote": "Sep 17\nElsewhere Presents: Otha - Club 20 Tour 2026\nGood Room\n7:00PM\nElsewhere Presents\nOtha - Club 20 Tour 2026\nGood Room\n8:00PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": false,
+      "category": "event",
+      "id": "troost-barba-yiorgi-0917",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
+      "startsAt": "2026-09-17T00:00:00-04:00",
+      "endsAt": "2026-09-17T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-09-03"
+        }
+      ],
+      "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-09-17"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": false,
+      "category": "event",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-03"
+        }
+      ],
+      "id": "library-tuesday-programs-0915",
+      "title": "Tuesday at Greenpoint Library",
+      "kicker": "Four adult drop-ins, afternoon on",
+      "summary": "Beginner ESOL, free notary service (call ahead to check they are in), an English conversation drop-in, then knitting, crochet and mending with lessons for beginners.",
+      "startsAt": "2026-09-15T14:00:00-04:00",
+      "endsAt": "2026-09-15T19:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-15T18:00:00Z\nds_event_end_date: 2026-09-15T20:00:00Z\nThe library offers free ESOL classes for beginners learning English. Classes meet twice a week\nRegistration is not necessary.\nts_title: Free Notary Services*\n* New hours are TUES and THUR from 2pm to 4pm. Please call Greenpoint Library to CONFIRM the notary is AVAILABLE the day you plan to visit: 718-389-4394.\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-09-15T21:30:00Z\nds_event_end_date: 2026-09-15T23:30:00Z\nJoin a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community.\nLessons are available for beginners in knitting, mending, or crochet.\nts_title: English Conversation Group\nds_event_start_date: 2026-09-15T22:00:00Z\nds_event_end_date: 2026-09-15T23:30:00Z\nJoin other adults who are learning to speak English in this weekly English Conversation Group. This is a drop-in program."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": false,
+      "category": "event",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-03"
+        }
+      ],
+      "id": "library-toddler-time-0916",
+      "title": "Toddler Time at Greenpoint Library",
+      "kicker": "Two ticketed storytime sittings",
+      "summary": "Songs, rhymes and books for walking toddlers, run twice back to back. Tickets go out at the information desk, first come first served, and a caregiver has to be there to collect one.",
+      "startsAt": "2026-09-16T10:30:00-04:00",
+      "endsAt": "2026-09-16T11:45:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "ts_title: Toddler Time (for walking toddlers)\nds_event_start_date: 2026-09-16T14:30:00Z\nds_event_end_date: 2026-09-16T15:00:00Z\nds_event_start_date: 2026-09-16T15:15:00Z\nds_event_end_date: 2026-09-16T15:45:00Z\nJoin us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "free": false,
+      "category": "event",
+      "id": "golden-drum-dream-seed-0916",
+      "title": "Dream Seed at Golden Drum",
+      "kicker": "A sound healing ensemble by the house",
+      "summary": "The Golden Drum-based ensemble runs immersive sound journeys with didgeridoos, crystal singing bowls, gongs, bells and harmoniums. Suggested donation is $25.",
+      "startsAt": "2026-09-16T19:00:00-04:00",
+      "endsAt": "2026-09-16T21:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Golden Drum",
+      "address": "97 Green St. G1, Brooklyn, NY 11222",
+      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.goldendrum.org/calendar-1/dream-seed-sound-healing-9-16-26"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Golden Drum events",
+          "url": "https://www.goldendrum.org/calendar-1/dream-seed-sound-healing-9-16-26",
+          "publisher": "Golden Drum",
+          "date": "2026-09-03"
+        }
+      ],
+      "sourceQuote": "Dream Seed: A Journey Through Sound\nWednesday, September 16, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nDream Seed is a sound healing ensemble created by members of Golden Drum, a sacred arts and cultural center in Greenpoint, Brooklyn, and the Sacred Arts Research Foundation and Didge Project. Through shamanic chanting, mantra, overtone singing, indigenous music traditions, and sacred sound practices, Dream Seed creates immersive sound healing journeys using didgeridoos, crystal singing bowls, gongs, bells, harmoniums, tuning forks, and other overtone-rich instruments.\nSuggested Donation: $25\n$25.00",
+      "lat": 40.733571,
+      "lng": -73.957721
     }
   ]
 }

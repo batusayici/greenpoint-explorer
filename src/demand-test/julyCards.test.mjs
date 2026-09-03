@@ -707,14 +707,29 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // bars pinning when the newsletter says "In Greenpoint and Lower Manhattan"
   // across a whole list without saying which date is where.
   // 127 + 13 + 3 = 143.
-  assert.equal(seed.cards.length, 143);
+  //
+  // 2026-09-03 daily thin: expiry took 4 past items (143 → 139), then 7 adds.
+  // Three fill the back of the window, which the coverage check had flagged as
+  // the only two dates in the next fortnight with supply in a snapshot and
+  // nothing on the map: Good Room on 9/10 and 9/17, Troost on 9/17. Two more
+  // are tonight's — BLACK GRAVEL at Film Noir Cinema, and the 94th Precinct
+  // Community Council meeting off Go Green Brooklyn. The last two are library
+  // day-cards for 9/15 and 9/16. The 9/10 library card was rewritten rather
+  // than added: both Babies & Books sittings and Sunset Storytime are now
+  // marked canceled in the branch feed, so that card starts at 1pm now.
+  // Then +1: Dream Seed at Golden Drum on 9/16 — the coverage check had
+  // flagged 9/16 for that source, and the venue's own listing carries a real
+  // event with a real clock. Detail page fetched via R1 and persisted into
+  // the source snapshot before the quotes gate ran.
+  // 139 + 7 + 1 = 147.
+  assert.equal(seed.cards.length, 147);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "32 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.category === "event"), 64, "49 after expiry + 15 dated adds (2026-09-02)");
+  assert.equal(count((c) => c.category === "event"), 68, "60 after expiry + 8 dated adds (2026-09-03)");
   assert.equal(count((c) => c.category === "discount"), 5, "6 − the Tend free-shipping offer, expired 8/31");
   assert.equal(count((c) => c.category === "news"), 21, "20 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 24, "25 − the 9/1 Troost gig, expired (2026-09-02)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 26, "23 after expiry + Good Room 9/10 and 9/17 and Troost 9/17 (2026-09-03)");
   assert.equal(count((c) => c.category === "subscription"), 27, "26 + the Brooklyn Craft Company kids sewing enrollment (2026-09-02)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -958,6 +973,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     // boilerplate as the 8/19 one — "This event is FREE and open to the public."
     // (mccarren-movies-guardians-2-0826 expired out 2026-08-27)
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
+    // 2026-09-03: the 94th Precinct Community Council meeting — Go Green
+    // Brooklyn's event page states it twice, as a bare "Free" under the date
+    // line and again as "Cost: Free" in the details block.
+    "nypd-94th-community-council-0903",
     // 2026-09-02: Soft Bar's anniversary run club — the roundup line the card
     // quotes ends "Free," and the Eventbrite listing carries lowPrice 0.0.
     "soft-bar-strides-run-club-0903",
@@ -1336,6 +1355,12 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // on a green roof is not the movement cluster.
     "kingsland-wildflowers-open-hours-0905",
     "library-garden-hours-0911",
+    // 2026-09-03: the 94th Precinct's monthly Community Council meeting. Same
+    // shape as the CB1 committee above — a public neighborhood meeting a
+    // resident attends, which is civic action. Note what it is NOT: the crime
+    // rule (Batu, 2026-08-30) bars incident cards, and this is a standing
+    // civic meeting, not an incident.
+    "nypd-94th-community-council-0903",
     // (greenpoint-trash-club deleted 2026-08-30 — unverifiable, see the deck
     // count contract above)
     // (mcgolrick-its-my-park-0823 expired out 2026-08-24)

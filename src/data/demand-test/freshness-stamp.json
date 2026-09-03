@@ -1,6 +1,6 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-09-02T10:30:00-04:00",
+  "lastRunAt": "2026-09-03T10:30:00-04:00",
   "cardChecked": {
     "sailor-and-siren": "2026-09-01",
     "core-press": null,
@@ -79,10 +79,8 @@
     "star-deli-viral-boost": "2026-09-01",
     "matches-enids-space": "2026-09-01",
     "tend-additional-20-off": null,
-    "moon-bunny-two-day-camp-8-12-0901": "2026-08-19",
     "moon-bunny-back-to-school-2026": "2026-08-19",
     "troost-barba-yiorgi-0903": "2026-08-31",
-    "library-wednesday-programs-0902": "2026-09-01",
     "gtrain-december-shutdown-rally": "2026-09-01",
     "film-noir-terror-terroir-0904": "2026-09-01",
     "troost-first-vinyl-fridays-0904": "2026-08-31",
@@ -97,7 +95,7 @@
     "kimchee-market-new-space": "2026-09-01",
     "town-square-scouts-troop-26": "2026-08-23",
     "town-square-cub-scouts-pack-7": "2026-08-23",
-    "bcc-beginner-patchwork-0906": "2026-08-24",
+    "bcc-beginner-patchwork-0906": "2026-09-01",
     "leaves-summer-writing-group-0903": "2026-08-24",
     "library-tuesday-programs-0908": "2026-09-01",
     "cb1-environmental-committee-0903": "2026-09-01",
@@ -125,8 +123,6 @@
     "film-noir-film-club-0903": "2026-09-01",
     "library-garden-hours-0911": "2026-09-01",
     "golden-drum-virgo-new-moon-0912": "2026-08-30",
-    "film-noir-szurkulet-0902": "2026-09-01",
-    "troost-dervisi-0902": "2026-08-31",
     "troost-devin-gray-trio-0915": "2026-08-31",
     "noble-148-opening": "2026-09-01",
     "soft-bar-strides-run-club-0903": "2026-09-01",
@@ -142,8 +138,15 @@
     "bin-bin-sake-social-0909": "2026-09-01",
     "film-noir-monday-0914": "2026-09-01",
     "library-monday-programs-0914": "2026-09-01",
-    "bcc-beginner-embroidery-0910": "2026-08-24",
-    "bcc-floral-embroidery-0912": "2026-08-24",
-    "bcc-kids-sewing-afterschool": "2026-08-24"
+    "bcc-beginner-embroidery-0910": "2026-09-01",
+    "bcc-floral-embroidery-0912": "2026-09-01",
+    "bcc-kids-sewing-afterschool": "2026-09-01",
+    "film-noir-black-gravel-0903": "2026-09-01",
+    "nypd-94th-community-council-0903": "2026-08-30",
+    "good-room-skin-on-skin-0910": "2026-08-28",
+    "good-room-otha-0917": "2026-08-28",
+    "troost-barba-yiorgi-0917": "2026-08-31",
+    "library-tuesday-programs-0915": "2026-09-01",
+    "library-toddler-time-0916": "2026-09-01"
   }
 }

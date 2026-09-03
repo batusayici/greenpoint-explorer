@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-02T10:30:00-04:00",
+  "lastRunAt": "2026-09-03T10:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1765,6 +1765,40 @@
         "https://www.brooklyncraftcompany.com/collections/all-workshops"
       ],
       "note": "Daily thin, and a big one because the Greenpointers weekly roundup published this morning. The map went from 133 cards to 140: expiry cleared six things that finished last night, and the run added thirteen. Eleven come off the roundup. The roundup names venues and never addresses, so the ticket links were pulled out of the post's own HTML and each listing read for the street address, which is what let ten of the sixteen items ship the day they were announced instead of being held for geography. One item is out of area (a tortilla workshop at 234 Grand St, Williamsburg) and three are held. The other two adds are calendar sources: Film Noir's Monday series on 9/14 and a Monday library day-card on 9/14. One card was corrected: Golden Drum moved its September Anahata Session from Wednesday the 9th to Friday the 11th. The Gmail pass then added three more: Brooklyn Craft Company's 8/31 newsletter lists two September embroidery workshops and opens registration for the kids' afterschool sewing course, and it labels each session as Greenpoint, which is the thing that usually blocks this source."
+    },
+    {
+      "runAt": "2026-09-03",
+      "cadence": "daily-thin",
+      "shipped": [
+        "film-noir-black-gravel-0903",
+        "nypd-94th-community-council-0903",
+        "good-room-skin-on-skin-0910",
+        "good-room-otha-0917",
+        "troost-barba-yiorgi-0917",
+        "library-tuesday-programs-0915",
+        "library-toddler-time-0916",
+        "golden-drum-dream-seed-0916"
+      ],
+      "updated": [
+        "library-thursday-programs-0910",
+        "scrappleland-pinball-league"
+      ],
+      "deleted": [],
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 0 source-blocked",
+      "urls": [
+        "https://www.filmnoircinema.com/program/2026/7/10/schwarz",
+        "https://gogreenbk.org/event/nypd-94th-2026/2026-09-03/",
+        "https://donyc.com/venues/good-room",
+        "https://troostny.com/calendar/",
+        "https://www.bklynlibrary.org/locations/greenpoint",
+        "https://scrappleland.com",
+        "https://www.goldendrum.org/calendar-1/dream-seed-sound-healing-9-16-26"
+      ],
+      "gmailMessageIds": [
+        "1a061a4f162800ed",
+        "1a0623dde3153085"
+      ],
+      "note": "Daily thin. The map went from 143 cards to 146: expiry cleared four things that finished last night, and the run added eight. Three of them fill the back of the window — Good Room on 9/10 and 9/17 and Troost on 9/17 were the only two dates in the next fortnight where a source's own calendar carried a night the map did not, and the coverage check was flagging both. Two are tonight: BLACK GRAVEL at Film Noir Cinema at 7pm, Dream Seed at Golden Drum on 9/16, and the 94th Precinct's monthly Community Council meeting at Church of the Ascension at 7pm, which is a standing civic meeting and not an incident card. The last two are library day-cards for 9/15 and 9/16. One card was re-cut rather than added: the branch has cancelled both Babies & Books sittings and Sunset Storytime on 9/10, so the Thursday card no longer opens at 10:30am with a lapsit storytime — it starts at 1pm. Scrappleland's pinball card was re-sourced against the current page, which shows only the next occurrence and so decays its own quote weekly. The Gmail pass ran and produced nothing cardable: Shop Small Greenpoint's September newsletter puts its whole events list inside images, and Town Square's swap is on 9/26, past the horizon."
     }
   ],
   "senderRegistry": [
@@ -2561,17 +2595,52 @@
       "name": "Brooklyn Craft Company — Beaded Embroidery, Sun 9/27 3pm in Greenpoint (past the 14-day window)",
       "note": "EMAIL IS ONE-SHOT, so recording it verbatim before the thread ages out. Brooklyn Craft Company newsletter, info@brooklyncraftcompany.com, 2026-08-31, subject \"Get Thready to Embroider with New Workshops & Seasonal Kits!\": \"Beaded Embroidery\\nSun, 9/27 at 3:00pm\\nin Greenpoint\". Booking page https://www.brooklyncraftcompany.com/products/beaded-embroidery. The two in-window sessions from the same email shipped this run (bcc-beginner-embroidery-0910, bcc-floral-embroidery-0912). Nothing is blocked here — this is horizon only, and the newsletter is persisted into .ingest-cache/brooklyn-craft-company.ingested.txt under [NEWSLETTER PERSISTED 2026-09-02], so the quote stays checkable when the date comes into range.",
       "addedAt": "2026-09-02"
+    },
+    {
+      "name": "Troost — DJ GUTZILA 10/17 and SPAGHETTI EASTERN ELECTRO DUB 10/18 (past the 14-day window)",
+      "addedAt": "2026-09-03",
+      "note": "Horizon only, nothing blocked. Verbatim from troost.txt: \"summary: DJ GUTZILA\\nstart.date: 2026-10-17\\nend.date: 2026-10-18\" and \"summary: SPAGHETTI EASTERN ELECTRO DUB\\ndescription: Dub Meets Raga Meets Psychedelia\\nstart.date: 2026-10-18\\nend.date: 2026-10-19\". Troost is a Google Calendar feed and is re-snapshotted every run, so both roll in on their own once the horizon reaches them."
+    },
+    {
+      "name": "Scrappleland — Dog Snack Tasting, Wed 10/28 3:30-5pm (past the 14-day window)",
+      "addedAt": "2026-09-03",
+      "note": "Horizon only, nothing blocked. Verbatim from scrappleland.txt: \"Dog Snack Tasting\\nOctober 28 @ 3:30pm - 5:00pm\". The front page shows only the next occurrence of each listed item, so this one line is the whole of what the source states — no price, no format. Rolls in when the horizon reaches it."
+    },
+    {
+      "name": "Greenpoint Library — three programmes on Thu 9/10 are cancelled in the feed",
+      "addedAt": "2026-09-03",
+      "note": "SOURCE FACT 2026-09-03, found by scanning the full snapshot for is_event_canceled rather than trusting the diff (the 2026-08-17 lesson: a flipped flag adds no new line, so it is invisible to a line-set diff). Both \"Babies & Books (for non-walking babies)\" sittings on 9/10 (14:30Z and 15:15Z) and \"Sunset Storytime\" (22:00Z) now carry is_event_canceled: 1. library-thursday-programs-0910 was re-cut this run: it had opened at 10:30am on the two lapsit sittings and now starts at 1pm with Read and Play, running to 5pm on ESOL, the notary desk and Teen Tech Time. WHAT WOULD CHANGE IT: the branch un-cancelling them, which lands as a flag flip the diff will again not show — so keep scanning the snapshot, not the diff."
+    },
+    {
+      "name": "Go Green Brooklyn — \"Movies Under the Stars (Sep 2026)\" exists but its page has never been harvested",
+      "addedAt": "2026-09-03",
+      "note": "SOURCE FACT 2026-09-03, and it is probably real Greenpoint supply. The string appears six times in go-green-bk.txt and every one is a prev/next navigation link on some other event's detail page (\"Movies Under the Stars (Sep 2026) &raquo;\"), so the series has a page on gogreenbk.org the run has never read: no date, no time and no park is stated anywhere in the snapshot. The roster pins detail.urls to the Transmitter Park yoga and McGolrick Bird Club series only, and the match regex harvests listing links, which a nav link is not. The homepage also carries a story headline \"Free Movies at WNYC Transmitter Park\". WHAT WOULD RESOLVE IT: adding the series URL to go-green-bk's detail.urls — a roster edit, so human-gated in a review PR."
+    },
+    {
+      "name": "Shop Small Greenpoint — the September newsletter's Extracurriculars are images, and the alt text is now only a day number",
+      "addedAt": "2026-09-03",
+      "note": "SOURCE FACT 2026-09-03, restating and sharpening the 2026-08-07 entry. The 9/2 \"September in Greenpoint\" email (shopsmallgp, 2026-09-02) renders six Extracurriculars as bare image links whose only alt text is the day of the month — \"Block 15th\", \"Block 17th\", \"Block 19th\", \"Block 21st\", \"Block 23rd\", \"Block 25th\" — with no title, time, venue or price in the text anywhere. The destination URLs are the only other signal: the 17th goes to eventbrite.com \"butcher-class-make-your-own-sausage\", the 21st to instagram.com/maisonjar.nyc, the 23rd to bestpotterintheworld.com/makepottery-workshop, the 25th to nyc.zumschneider.com/oktoberfest-26 (Zum Schneider is Manhattan, out of area). Nothing is cardable without inventing the event. Only the 15th and 17th are inside this run's horizon, and eventbrite.com is a standing R1 refusal at the routine's proxy. Also in that email and NOT carded: a Streetsblog NYC piece on a Citi Bike dock shortage stranding riders in Greenpoint during the G shutdowns — nyc.streetsblog.org is not a roster source, and a first-time source is human-gated by rule."
+    },
+    {
+      "name": "Good Room — DoNYC lists the 9/17 Otha show twice, at 7pm and at 8pm",
+      "addedAt": "2026-09-03",
+      "note": "SOURCE FACT 2026-09-03. The venue listing carries \"Sep 17 / Elsewhere Presents: Otha - Club 20 Tour 2026 / Good Room / 7:00PM\" and then, with no date header of its own and identical counters, \"Elsewhere Presents / Otha - Club 20 Tour 2026 / Good Room / 8:00PM\". Every other Good Room row in the same snapshot reads 7:00PM, so 7pm looks like DoNYC's venue-level door convention and 8pm like the set — but the listing never says that. good-room-otha-0917 shipped at 7pm with both clocks named in its summary, per the SKILL rule that a doors time and a set time are two facts and the card names both. WHAT WOULD RESOLVE IT: Good Room or Elsewhere stating doors and showtime separately."
+    },
+    {
+      "name": "Good Room — Love Games 9/19 and FIXED 9/25 (past the 14-day window)",
+      "addedAt": "2026-09-03",
+      "note": "Horizon only, nothing blocked. Verbatim from good-room.txt: \"Saturday\\nSep 19\\nLove Games: Tony Humphries, Lauren Murada & Finn Jones, TYLERFROMWHERE, Steph Vaye\\nGood Room\\n7:00PM\" and \"Friday\\nSep 25\\nFIXED with James Axon b2b JDH (all night), A lana (all night)\\nGood Room\\n7:00PM\". The DoNYC listing is re-snapshotted every run, so both roll in on their own. (The 9/18 Eli Escobar night is already recorded under the 2026-08-20 entry.)"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
     "greenpointers": "2026-09-01",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-09-01",
+    "film-noir-cinema": "2026-09-02",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
-    "greenpoint-library": "2026-09-01",
-    "bpl-north-brooklyn-calendar": "2026-09-01",
+    "greenpoint-library": "2026-09-02",
+    "bpl-north-brooklyn-calendar": "2026-09-02",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-27",
@@ -2588,11 +2657,11 @@
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-08-30",
+    "go-green-bk": "2026-09-02",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-08-31",
+    "troost": "2026-09-02",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-08-28",
+    "good-room": "2026-09-02",
     "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -2621,7 +2690,7 @@
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
     "action-city-comics": "2026-08-16",
-    "golden-drum": "2026-08-30",
+    "golden-drum": "2026-09-02",
     "nbk-open-streets": "2026-09-01"
   },
   "coverageExplanations": [

@@ -1,22 +1,12 @@
-title: EL ASESINO DE MUNECAS
-startDate: 2026-09-01T23:00:00.000Z
-endDate: 2026-09-02T00:00:00.000Z
-fullUrl: /program/2026/2/25/el-asesino-de-munecas
-
-title: CULT CINEMA
-startDate: 2026-09-02T01:00:00.000Z
-endDate: 2026-09-02T02:00:00.000Z
-fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
-
-title: LADY TERMINATOR
-startDate: 2026-09-02T11:00:00.838Z
-endDate: 2026-09-02T12:00:00.838Z
-fullUrl: /program/2026/4/10/pembalasan
-
 title: SZURKULET
 startDate: 2026-09-03T01:00:00.465Z
 endDate: 2026-09-03T02:00:00.465Z
 fullUrl: /program/2026/3/27/szurkulet
+
+title: BLACK GRAVEL
+startDate: 2026-09-03T23:00:00.411Z
+endDate: 2026-09-04T00:00:00.411Z
+fullUrl: /program/2026/7/10/schwarz
 
 title: FILM CLUB
 startDate: 2026-09-04T01:00:00.000Z
@@ -139,38 +129,6 @@ CLOWNSPIRACY
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
-CULT CINEMA — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-CULT CINEMA
-Tuesday, September 1, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
-Earlier Event: September 1
-EL ASESINO DE MUNECAS
-Later Event: September 2
-LADY TERMINATOR
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
 FILM CLUB — Film Noir Cinema
 Home
@@ -198,8 +156,8 @@ ICS
 Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
 The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
 Pure cinematheque fun.
-Earlier Event: September 2
-SZURKULET
+Earlier Event: September 3
+BLACK GRAVEL
 Later Event: September 4
 TERROR TERROIR
 Back To Top
@@ -303,6 +261,166 @@ HALLOWEEN PARTY
 Back To Top
 Cart ( 0 )
 
+## [DETAIL] https://www.filmnoircinema.com/program/2026/3/27/szurkulet
+SZURKULET — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SZURKULET
+Wednesday, September 2, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+HU. 1990
+When a schoolgirl is found murdered in the woods, a retiring detective tries to find her murderer.
+Earlier Event: September 2
+LADY TERMINATOR
+Later Event: September 3
+BLACK GRAVEL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/7/10/schwarz
+BLACK GRAVEL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BLACK GRAVEL
+Thursday, September 3, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+GE. 1961
+Tensions arise when a US military base is built in a small village in post-war Germany.
+Earlier Event: September 2
+SZURKULET
+Later Event: September 3
+FILM CLUB
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
+BLACK BOX — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BLACK BOX
+Friday, September 11, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Earlier Event: September 4
+TERROR TERROIR
+Later Event: September 14
+FILM NOIR MONDAY
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival
+SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SUPERSHORTS NY FILM FESTIVAL
+Friday, September 25, 2026
+6:00 PM
+7:00 PM
+18:00
+19:00
+Google Calendar
+ICS
+Earlier Event: September 14
+FILM NOIR MONDAY
+Later Event: September 26
+SUPERSHORTS NY FILM FESTIVAL
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+CULT CINEMA — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+CULT CINEMA
+Tuesday, September 1, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
+Earlier Event: September 1
+EL ASESINO DE MUNECAS
+Later Event: September 2
+LADY TERMINATOR
+Back To Top
+Cart ( 0 )
+
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/2/25/el-asesino-de-munecas
 EL ASESINO DE MUNECAS — Film Noir Cinema
 Home
@@ -333,39 +451,6 @@ Earlier Event: August 31
 ZIMEKLIS
 Later Event: September 1
 CULT CINEMA
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/3/27/szurkulet
-SZURKULET — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-SZURKULET
-Wednesday, September 2, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-HU. 1990
-When a schoolgirl is found murdered in the woods, a retiring detective tries to find her murderer.
-Earlier Event: September 2
-LADY TERMINATOR
-Later Event: September 3
-FILM CLUB
 Back To Top
 Cart ( 0 )
 
@@ -432,68 +517,6 @@ Earlier Event: August 30
 YUMEMIRU
 Later Event: August 31
 FILM NOIR MONDAY
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
-BLACK BOX — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-BLACK BOX
-Friday, September 11, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Earlier Event: September 4
-TERROR TERROIR
-Later Event: September 25
-SUPERSHORTS NY FILM FESTIVAL
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival
-SUPERSHORTS NY FILM FESTIVAL — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-SUPERSHORTS NY FILM FESTIVAL
-Friday, September 25, 2026
-6:00 PM
-7:00 PM
-18:00
-19:00
-Google Calendar
-ICS
-Earlier Event: September 11
-BLACK BOX
-Later Event: September 26
-SUPERSHORTS NY FILM FESTIVAL
 Back To Top
 Cart ( 0 )
 

@@ -1,69 +1,3 @@
-ts_title: Toddler Time (for walking toddlers)
-ds_event_start_date: 2026-09-02T14:30:00Z
-ds_event_end_date: 2026-09-02T15:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Birth to Five Years
-sm_event_tags: ["first five years","storytime","toddler time"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books!
-
-ts_title: Toddler Time (for walking toddlers)
-ds_event_start_date: 2026-09-02T15:15:00Z
-ds_event_end_date: 2026-09-02T15:45:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Birth to Five Years
-sm_event_tags: ["first five years","storytime","toddler time"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books!
-
-ts_title: Greenpoint Library Open Roof Hours
-ds_event_start_date: 2026-09-02T17:00:00Z
-ds_event_end_date: 2026-09-02T20:00:00Z
-ss_event_location: Greenpoint, Demonstration Garden
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["gardening"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting. *Please note the garden will be closed in event of rain, high heat, or other inclement weather. All children under the age of 13 must be accompanied by an adult. All furniture is generously provided by the Friends of Greenpoint Library .
-
-ts_title: Computer Basics
-ds_event_start_date: 2026-09-02T19:15:00Z
-ds_event_end_date: 2026-09-02T21:00:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","computer basics","techknowledge"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer. This lesson introduces new PC users to the hardware, applications and techniques used to navigate a computer. In-person registration is required.
-
-ts_title: Free English Class (We Speak NYC)
-ds_event_start_date: 2026-09-02T19:30:00Z
-ds_event_end_date: 2026-09-02T21:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Adults
-sm_event_tags: ["adult learning","ESOL","Immigrant Services","WeSpeakNYC"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: The library offers free English classes for beginners learning English. Classes meet once a week. Practice and improve your English with other adults. Watch We Speak NYC videos and learn about City services. Get information on rights and resources for immigrant New Yorkers. No registration required!
-
-ts_title: Teen Time: Sensory Friendly Hour
-ds_event_start_date: 2026-09-02T20:00:00Z
-ds_event_end_date: 2026-09-02T21:30:00Z
-ss_event_location: Greenpoint, Eco Lab 3 (Teens)
-ss_event_location_master: Greenpoint Library
-ss_event_age: Teens & Young Adults
-sm_event_tags: ["after school","Inclusive Services","teen time"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Feeling overwhelmed and overstimulated? Teens 13+, join us in the Teen Zone for some sensory-friendly, low-stimulation, accessible, and inclusive activities.
-
 ts_title: Babies & Books (for non-walking babies)
 ds_event_start_date: 2026-09-03T14:30:00Z
 ds_event_end_date: 2026-09-03T15:00:00Z
@@ -281,7 +215,7 @@ ss_event_location_master: Greenpoint Library
 ss_event_age: Birth to Five Years
 sm_event_tags: ["babies & books","first five years","storytime"]
 is_event_registration: 0
-is_event_canceled: 0
+is_event_canceled: 1
 ts_body: Join us for baby storytime! We will read some books, sing some songs, do some bounces and tickles and all sorts of fun things with our babies! Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . *This is a lapsit storytime for infants who are not yet walking. Walking toddlers should attend the Toddler Time programs on Wednesdays!
 
 ts_title: Babies & Books (for non-walking babies)
@@ -292,7 +226,7 @@ ss_event_location_master: Greenpoint Library
 ss_event_age: Birth to Five Years
 sm_event_tags: ["babies & books","first five years","storytime"]
 is_event_registration: 0
-is_event_canceled: 0
+is_event_canceled: 1
 ts_body: Join us for baby storytime! We will read some books, sing some songs, do some bounces and tickles and all sorts of fun things with our babies! Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . *This is a lapsit storytime for infants who are not yet walking. Walking toddlers should attend the Toddler Time programs on Wednesdays!
 
 ts_title: Read and Play
@@ -436,3 +370,69 @@ sm_event_tags: ["after school","table-top & board games","teen time"]
 is_event_registration: 0
 is_event_canceled: 0
 ts_body: Teens 13+, join us for Dungeons & Dragons! This is a teen run program led by a teen volunteer .
+
+ts_title: Free English Class
+ds_event_start_date: 2026-09-15T18:00:00Z
+ds_event_end_date: 2026-09-15T20:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["adult learning","ESOL","Immigrant Services","Welcome ESOL"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: The library offers free ESOL classes for beginners learning English. Classes meet twice a week Improve your English Practice with other adults learning English This class is first-come, first-served until classroom hits capacity. Registration is not necessary. (For non-beginner classes, integrated English literacy, or classes outside of the Greenpoint Library, please visit https://www.bklynlibrary.org/adult-learning/esol )
+
+ts_title: Free Notary Services*
+ds_event_start_date: 2026-09-15T18:00:00Z
+ds_event_end_date: 2026-09-15T20:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["all ages","community partner","legal resources"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: * New hours are TUES and THUR from 2pm to 4pm. Please call Greenpoint Library to CONFIRM the notary is AVAILABLE the day you plan to visit: 718-389-4394. * Limit of three seals per signing, per day. Non-commercial only. Other restrictions may apply. * Library card not required. Valid photo ID with signature IS required (a current state ID or passport is necessary). * The person whose signature is being notarized must be present with appropriate ID. * Please complete paperwork EXCEPT DO NOT SIGN YOUR FORM until in the presence of the Notary.
+
+ts_title: Keep Calm & Carry Yarn - Sewists Welcome!
+ds_event_start_date: 2026-09-15T21:30:00Z
+ds_event_end_date: 2026-09-15T23:30:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["adult learning","arts and crafts","fiber arts","knitting and crocheting"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community. Bring your handwork project to show off, get inspired, or get advice. Lessons are available for beginners in knitting, mending, or crochet. Learning supplies can be provided. All genders welcomed--teens too! **MEETS WEEKLY! If you need a lesson, shoot an email to MRogers@bklynlibrary.org.
+
+ts_title: English Conversation Group
+ds_event_start_date: 2026-09-15T22:00:00Z
+ds_event_end_date: 2026-09-15T23:30:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["adult learning","english conversation group","Immigrant Services"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join other adults who are learning to speak English in this weekly English Conversation Group. This is a drop-in program. Patrons will be admitted on a first-come, first-serve basis until the classroom reaches capacity.
+
+ts_title: Toddler Time (for walking toddlers)
+ds_event_start_date: 2026-09-16T14:30:00Z
+ds_event_end_date: 2026-09-16T15:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Birth to Five Years
+sm_event_tags: ["first five years","storytime","toddler time"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books!
+
+ts_title: Toddler Time (for walking toddlers)
+ds_event_start_date: 2026-09-16T15:15:00Z
+ds_event_end_date: 2026-09-16T15:45:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Birth to Five Years
+sm_event_tags: ["first five years","storytime","toddler time"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers. Infants who are not yet walking should attend Babies and Books!

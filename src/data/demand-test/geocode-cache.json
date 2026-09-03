@@ -4053,5 +4053,30 @@
         "-73.9589716"
       ]
     }
+  },
+  "127 Kent St, Brooklyn, NY 11222": {
+    "query": "127 Kent St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-03T13:21:46.293Z",
+    "hit": {
+      "place_id": 413616952,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 221686898,
+      "lat": "40.7308489",
+      "lon": "-73.9558552",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "127, Kent Street, Greenpoint, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7307989",
+        "40.7308989",
+        "-73.9559052",
+        "-73.9558052"
+      ]
+    }
   }
 }

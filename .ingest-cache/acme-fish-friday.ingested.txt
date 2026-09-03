@@ -138,7 +138,7 @@ Specialty Caviar
 Acme
 Blue Hill Bay
 No Fish For You.
-Jalapeño Tequila - Gary's Special (1 lb.) - Kosher for Passover
+Jalapeño Tequila - Gary's Special (1 lb.)
 Gary's Special
 10 reviews
 Regular price
@@ -395,7 +395,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Kippered Salmon (1 lb.)
 Hot Smoked
 Specialty
@@ -412,7 +412,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Trout (1 lb.)
 Hot Smoked
 Specialty
