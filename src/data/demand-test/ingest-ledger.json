@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-03T10:30:00-04:00",
+  "lastRunAt": "2026-09-04T10:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1799,6 +1799,43 @@
         "1a0623dde3153085"
       ],
       "note": "Daily thin. The map went from 143 cards to 146: expiry cleared four things that finished last night, and the run added eight. Three of them fill the back of the window — Good Room on 9/10 and 9/17 and Troost on 9/17 were the only two dates in the next fortnight where a source's own calendar carried a night the map did not, and the coverage check was flagging both. Two are tonight: BLACK GRAVEL at Film Noir Cinema at 7pm, Dream Seed at Golden Drum on 9/16, and the 94th Precinct's monthly Community Council meeting at Church of the Ascension at 7pm, which is a standing civic meeting and not an incident card. The last two are library day-cards for 9/15 and 9/16. One card was re-cut rather than added: the branch has cancelled both Babies & Books sittings and Sunset Storytime on 9/10, so the Thursday card no longer opens at 10:30am with a lapsit storytime — it starts at 1pm. Scrappleland's pinball card was re-sourced against the current page, which shows only the next occurrence and so decays its own quote weekly. The Gmail pass ran and produced nothing cardable: Shop Small Greenpoint's September newsletter puts its whole events list inside images, and Town Square's swap is on 9/26, past the horizon."
+    },
+    {
+      "runAt": "2026-09-04",
+      "cadence": "daily-thin",
+      "shipped": [
+        "film-noir-cult-cinema-0908",
+        "golden-drum-wixarika-healing-0918",
+        "troost-danny-ramos-0918",
+        "good-room-eli-escobar-0918",
+        "library-babies-books-0917",
+        "bellocq-end-of-summer-sale",
+        "selformer-open-house-intro-pass"
+      ],
+      "updated": [
+        "library-wednesday-programs-0916",
+        "acme-fish-friday-0814",
+        "film-noir-cinema",
+        "greenpoint-library"
+      ],
+      "deleted": [],
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 0 source-blocked",
+      "urls": [
+        "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
+        "https://www.goldendrum.org/calendar-1/wixarikahealingceremony",
+        "https://troostny.com/calendar/",
+        "https://donyc.com/venues/good-room",
+        "https://www.bklynlibrary.org/locations/greenpoint",
+        "https://bellocqtea.com/collections/tea-tastings-nyc",
+        "https://www.selformer.com/plans-pricing",
+        "https://acmesmokedfish.com/collections/fish-friday"
+      ],
+      "gmailMessageIds": [
+        "1a067bbb22218cfe",
+        "1a068ea236021aaf",
+        "1a068878df839bbb"
+      ],
+      "note": "Daily thin. The map went from 147 cards to 144: ten things finished last night and came off, and seven went on. Four of the seven fill the far end of the window, which is where the feed keeps running out — CULT CINEMA at Film Noir on 9/8, and three on 9/18: Danny Ramos at Troost, Eli Escobar and Eternal Love at Good Room, and a Wixárika healing ceremony at Golden Drum, whose start time only exists on the event's own page, so that page was fetched and written into the source snapshot. One is a library storytime on 9/17. The last two are standing offers that state no end date — 15% off at Bellocq Tea with the code SOLEIL26, and Selformer's $25 intro pass covering a client and a guest — which the rules fill with a re-check date rather than hold. One card was rewritten instead of added: the branch put four more programmes on 9/16, so the toddler card became a Wednesday day-card running to 5:30pm. Acme's Fish Friday was re-verified against today's page and its through-date moved out to 9/18. Nothing was held. Nine sources could not be read, all of them the known broken browser path."
     }
   ],
   "senderRegistry": [
@@ -2630,17 +2667,27 @@
       "name": "Good Room — Love Games 9/19 and FIXED 9/25 (past the 14-day window)",
       "addedAt": "2026-09-03",
       "note": "Horizon only, nothing blocked. Verbatim from good-room.txt: \"Saturday\\nSep 19\\nLove Games: Tony Humphries, Lauren Murada & Finn Jones, TYLERFROMWHERE, Steph Vaye\\nGood Room\\n7:00PM\" and \"Friday\\nSep 25\\nFIXED with James Axon b2b JDH (all night), A lana (all night)\\nGood Room\\n7:00PM\". The DoNYC listing is re-snapshotted every run, so both roll in on their own. (The 9/18 Eli Escobar night is already recorded under the 2026-08-20 entry.)"
+    },
+    {
+      "name": "Greenpoint YMCA — 120th anniversary gala, 10/14 (past the window, and the venue is Williamsburg)",
+      "addedAt": "2026-09-04",
+      "note": "Horizon plus a geography question, recorded now because a newsletter is read once. Verbatim from the 9/3 email (greenpoint@emails.ymcanyc.org, a registry sender): \"Greenpoint YMCA / 9th Annual \\\"Spirit of Community\\\" / Service Awards Dinner / and 120th Anniversary Celebration\", \"Wednesday, October 14, 2026\", \"Cocktails | 6:30 pm\", \"Dinner and Program | 7:15 pm – 9:30 pm\", \"Giando on the Water\", \"400 Kent Avenue, Brooklyn, NY 11249\". Two things to settle before it could ship when it enters the window: 400 Kent Ave is Williamsburg, so it needs the Newtown Creek CAG-style call on whether a Greenpoint institution's own fundraiser held nearby is in scope; and the email states no ticket price, only a \"Purchase your tickets today\" link. WHAT WOULD RESOLVE IT: Batu's call on the geography, plus a stated ticket price."
+    },
+    {
+      "name": "Moon Bunny Aerial — four class sessions in the window that the deck's shape has no home for",
+      "addedAt": "2026-09-04",
+      "note": "RULE QUESTION, not a blocked fact. The studio's feed carries four titles inside 9/4–9/18 that appear once each rather than weekly: \"name: K-Pop Dance (Boompala by le sserafim) / start_at: 2026-09-08T23:30:00.000Z\", \"name: Intro to Handstands / start_at: 2026-09-09T00:30:00.000Z\", \"name: Kids K-Pop Dance / start_at: 2026-09-10T21:15:00.000Z\" and \"name: K-Pop Dance (Loveshot by EXO) / start_at: 2026-09-10T22:30:00.000Z\". Every other title in the feed repeats on a weekly slot and is plainly the standing schedule. These four were not carded: the feed states a name and a clock and nothing else — no price, no description, nothing distinguishing a one-off from a rotating class — and this source has only ever produced the plans card and a discount card, never per-class cards. That is the same shape as the lot-radio ruling, but nobody has actually ruled it here. WHAT WOULD RESOLVE IT: Batu saying whether a drop-in studio class with a name and a time is cardable supply, or whether the plans card is the coverage."
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-08-20",
     "greenpointers": "2026-09-01",
     "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-09-02",
+    "film-noir-cinema": "2026-09-03",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
-    "greenpoint-library": "2026-09-02",
-    "bpl-north-brooklyn-calendar": "2026-09-02",
+    "greenpoint-library": "2026-09-03",
+    "bpl-north-brooklyn-calendar": "2026-09-03",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-27",
@@ -2659,9 +2706,9 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-09-02",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-09-02",
+    "troost": "2026-09-03",
     "carcosa-club": "2026-08-07",
-    "good-room": "2026-09-02",
+    "good-room": "2026-09-03",
     "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -2676,7 +2723,7 @@
     "greenpoint-ymca": "2026-08-07",
     "marianella-subscription-box": "2026-08-07",
     "held-space": "2026-08-07",
-    "selformer": "2026-08-09",
+    "selformer": "2026-09-03",
     "clay-space-membership": "2026-08-09",
     "clay-space-workshops": "2026-08-09",
     "clay-space-semester-classes": "2026-08-09",
@@ -2690,8 +2737,9 @@
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
     "action-city-comics": "2026-08-16",
-    "golden-drum": "2026-09-02",
-    "nbk-open-streets": "2026-09-01"
+    "golden-drum": "2026-09-03",
+    "nbk-open-streets": "2026-09-01",
+    "bellocq-tea": "2026-09-03"
   },
   "coverageExplanations": [
     {
@@ -2851,9 +2899,9 @@
     {
       "sourceId": "go-green-bk",
       "gapKey": "GAP",
-      "reason": "GEOGRAPHY, re-earned 2026-08-27 against this run's snapshot. The single flagged date is 9/6, and it belongs to the Prospect Park Alliance's Battle of Brooklyn Tour, whose detail block reads \"This one-hour tour begins and ends at Lefferts Historic House\" and \"Dates: daily through September 6, 2026\" — Prospect Park, not Greenpoint. The source is a Brooklyn-wide series page, so out-of-neighborhood dates are its normal output, not a coverage loss. Every in-area item it carries in the window IS covered: the Transmitter Park yoga Thursdays, the McGolrick Bird Club (through 9/5), and It's My Park at Transmitter Park on 8/30.",
-      "addedAt": "2026-08-27",
-      "expiresAt": "2026-09-10"
+      "addedAt": "2026-09-04",
+      "expiresAt": "2026-09-14",
+      "reason": "GEOGRAPHY, re-earned 2026-09-04 against this run's snapshot and its 11 persisted detail pages. The six flagged dates (9/6, 9/7, 9/9, 9/12, 9/13, 9/14) belong to a Brooklyn-wide series page, and every item on them is outside Greenpoint: the Domino Park Summer Fitness Series (Williamsburg, barred by the 2026-08-06 ruling), \"Fido's Coffee Bark\" at the Prospect Park Picnic House, \"Nature Journaling\" at Brooklyn Bridge Park's Pebble Beach, and \"It's My Park in Brooklyn\" whose venue field reads \"Many venues\" and whose own schedule names Sunset Park, Cooper Park, Lt. Federico Narvaez Tot Lot, Marine Park, Rainbow Playground and Owl's Head Park — none of them here. Every in-area item the source carries in the window IS covered: the 9/4 Sensory Garden Hour at Greenpoint Library and the McGolrick Bird Club on 9/5. Out-of-neighborhood dates are this source's normal output, not a coverage loss. WHAT WOULD CHANGE IT: a Greenpoint-addressed date the deck has nothing for."
     },
     {
       "sourceId": "eavesdrop",
@@ -2886,9 +2934,9 @@
     {
       "sourceId": "nycparks-greenpoint",
       "gapKey": "GAP",
-      "reason": "Re-earned 2026-08-27 against this run's snapshot. The flagged set is now 8/27, 8/28, 8/31, 9/2, 9/7 and 9/9, and every one carries ONLY standing municipal rec programming, which the roster notes and SKILL.md exclude by rule: \"McCarren Pool: Lap Swim\" on 8/27 and 8/28; \"Body-Centric Circuit Training\" (Shape Up NYC) on 9/2 and 9/9 — the 9/9 record reads \"startdate: 2026-09-09 / starttime: 6:00 pm / location: Multi-Use Room A (in McCarren Park) / categories: Fitness | Shape Up NYC | Recreation Center Programming\"; and \"CANCELED: Bodyweight Interval Training\" (Shape Up NYC) on 8/31 and 9/7. Every non-rec item the feed carries in the window IS carded — mcgolrick-movies-eternal-sunshine-0829 and transmitter-its-my-park-0830 — so the flagged dates are the exclusion working, not supply we missed.",
-      "addedAt": "2026-08-27",
-      "expiresAt": "2026-09-10"
+      "addedAt": "2026-09-04",
+      "expiresAt": "2026-09-14",
+      "reason": "THE REC-CLASS EXCLUSION WORKING, re-earned 2026-09-04 against this run's snapshot, in which all five records are new. Every one of the five flagged dates carries only standing municipal rec programming, which the roster notes and SKILL.md exclude by rule: \"CANCELED: Bodyweight Interval Training\" on 9/7 (5:45–6:45pm, Multi-Use Room C in McCarren Park), \"Body-Centric Circuit Training\" on 9/9 and 9/16 (6:00–6:45pm), \"BollyX\" on 9/12 (10:00–11:00am) and \"Bodyweight Interval Training\" on 9/14 (6:00–7:00pm) — each tagged \"Fitness | Shape Up NYC | Recreation Center Programming\". The feed carried no non-rec item at any in-scope Greenpoint park in the window. WHAT WOULD CHANGE IT: a park event outside the Shape Up NYC / recreation-centre programme."
     },
     {
       "sourceId": "eavesdrop",
@@ -2980,6 +3028,20 @@
       "addedAt": "2026-09-02",
       "expiresAt": "2026-09-16",
       "reason": "THE SHOP IS CLOSED AND THE SILENCE IS ITS OWN. Re-earned against this run's snapshot (1,924 bytes, plain fetch, clean): the page banner still reads \"OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE\", which is already carded as the news card archestratus-closed. The events page carries exactly two dated lines, and neither is cardable supply: \"SAT AUG 22 / Archestratus Hang at the Greenmarket\" is past (and is already the standing source-blocked watchItem from 2026-08-18), and \"SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)\" is both past the 14-day window (2026-09-02 → 2026-09-16) and virtual — the page says \"FOOD ALONE WAS NOT ENOUGH is a weekly (VIRTUAL) COMMUNITY HANG\", so there is no Greenpoint place to pin. This is 'the source is quiet because the venue closed', not 'we cannot read the source'. WHAT WOULD CHANGE IT: a reopening, or a dated in-person event, either of which lands as an ordinary diff."
+    },
+    {
+      "sourceId": "lot-radio",
+      "gapKey": "SILENT",
+      "addedAt": "2026-09-04",
+      "expiresAt": "2026-09-18",
+      "reason": "THIS SOURCE PRODUCES ONE STANDING VENUE CARD AND NEVER PER-SET CARDS — a roster ruling by Batu on 2026-08-13, and the card it names is live as `the-lot-radio`, so the silence is the design working, not a dark source. Re-earned against this run's snapshot (1,036 bytes, plain fetch, clean): both facts the venue card rests on are present verbatim — \"EVERYDAY from 10AM to MIDNIGHT\" and \"17 Nassau Ave, Brooklyn, NY 11222\". The calendar expands only the current day's broadcast lineup (12 named slots between 10am and midnight on 09.04, from \"Beta World Peace with Andy Beta\" to \"Bushwig\"); the next six days render as bare headings — \"Sat urday 09.05.2026\", \"Sun day 09.06.2026\" … \"Thu rsday 09.10.2026\" — with no lineup under them, so this page cannot support a dated card even if the ruling allowed one. WHAT WOULD CHANGE IT: Batu reversing the per-set ruling, or the station publishing forward-dated in-person programming."
+    },
+    {
+      "sourceId": "mta-g-alerts",
+      "gapKey": "SILENT",
+      "addedAt": "2026-09-04",
+      "expiresAt": "2026-09-18",
+      "reason": "THIS SOURCE FEEDS CODE AND A STANDING CARD, NOT DATED CARDS — its output is GTRAIN_WINDOWS in src/demand-test/gtrainBanner.js plus the undated `g-train-closures` card, so it can fetch clean for weeks without producing a new card. Re-earned against this run's snapshot: every Greenpoint-closing window it carries is ALREADY in GTRAIN_WINDOWS. The mechanical test is the G26/G28 header \"No [G] between Bedford-Nostrand Avs and Court Sq\", and the feed's three instances are active_period [[1789177500,1789376400]] (Fri Sep 11 9:45 PM – Mon Sep 14 5 AM), the four-overnight run [[1789436700,1789462800],[1789523100,1789549200],[1789609500,1789635600],[1789695900,1789722000]] (Mon Sep 14 – Fri Sep 18) and [[1790387100,1790586000]] (Fri Sep 25 9:45 PM – Mon Sep 28 5 AM) — all three already carried in the code, added 2026-08-13 and 2026-08-27. The rest of the filtered set is south-Brooklyn stop-skips that leave Greenpoint Av and Nassau Av open. The diff this run was +0/-1. WHAT WOULD CHANGE IT: a new G26/G28 window, which is a human-gated code change per the roster note."
     }
   ]
 }

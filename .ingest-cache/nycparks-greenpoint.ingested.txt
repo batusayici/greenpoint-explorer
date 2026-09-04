@@ -1,6 +1,6 @@
 ## CANCELED: Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/09/07/canceled-bodyweight-interval-training
-Thu, 03 Sep 2026 00:00:05 EDT
+Fri, 04 Sep 2026 00:00:02 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and body weight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -14,7 +14,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/09/09/bodycentric-circuit-training
-Thu, 03 Sep 2026 00:00:05 EDT
+Fri, 04 Sep 2026 00:00:02 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058
@@ -27,9 +27,23 @@ location: Multi-Use Room A (in McCarren Park)
 categories: Fitness | Shape Up NYC | Recreation Center Programming | Exercise Classes | Strength Training/Weightlifting
 coordinates: 40.72010040000000000, -73.94999695000000000
 
+## BollyX
+http://www.nycgovparks.org/events/2026/09/12/bollyx
+Fri, 04 Sep 2026 00:00:02 EDT
+BollyX is a Bollywood inspired cardio dance fitness class inspired and is driven by the heart-pumping, energetic rhythms of cultural music from all parts of India. The class embodies dynamic choreography and easy-to-follow dance aerobics. Choreography and workout routines have been set so everyone can enjoy the class (modifications for individual steps can be provided in class). No dance experience or Bollywood familiarity is required - just come with comfortable shoes, water, and your smiles!
+parkids: B058
+parknames: McCarren Park
+startdate: 2026-09-12
+enddate: 2026-09-12
+starttime: 10:00 am
+endtime: 11:00 am
+location: Multi-Use Room A (in McCarren Park)
+categories: Dance | Fitness | Shape Up NYC | Recreation Center Programming | Exercise Classes
+coordinates: 40.72010040000000000, -73.94999695000000000
+
 ## Bodyweight Interval Training
 http://www.nycgovparks.org/events/2026/09/14/bodyweight-interval-training
-Thu, 03 Sep 2026 00:00:05 EDT
+Fri, 04 Sep 2026 00:00:02 EDT
 Bodyweight Interval Training is an energetic yet low impact exercise class that will get your muscles moving! This mix of cardio and bodyweight strength exercises is a great way to get a full body workout. Whether you're new to exercise or not, the modifications offered in this class make it open to all fitness levels. Come check it out! Please bring your own yoga mat!
 parkids: B058
 parknames: McCarren Park
@@ -43,7 +57,7 @@ coordinates: 40.72010040000000000, -73.94999695000000000
 
 ## Body-Centric Circuit Training
 http://www.nycgovparks.org/events/2026/09/16/bodycentric-circuit-training
-Thu, 03 Sep 2026 00:00:05 EDT
+Fri, 04 Sep 2026 00:00:02 EDT
 A low impact bodyweight workout, integrating holistic body empowering movements for improved overall strength and endurance. Align with your mindfulness to support inner strength and to connect with your body for a fulfilling fitness experience. All levels are welcome!
 Participants must sign in at the front desk and bring locks to lock up their bags. The center does not allow anyone to bring their bags to the dance room except towel, water and phone.
 parkids: B058

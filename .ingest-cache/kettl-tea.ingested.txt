@@ -347,7 +347,7 @@ Join us for an experiential tasting exploring the range of Japan's most popular 
 Location
 Kettl Greenpoint
 Class | Sencha: Japan's Most Popular Tea
-Add
+Choose
 Class | Sencha: Japan's Most Popular Tea
 Class | Sencha: Japan's Most Popular Tea
 $60.00
@@ -415,8 +415,8 @@ Tsubaki Matcha
 Tsubaki Matcha
 $45.00
 View all
-{"themeColor":"#574CD5","iconColor":"#574CD5","showLogo":true,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}
 Get 15% off
+{"themeColor":"#574CD5","iconColor":"#574CD5","showLogo":true,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}
 
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 

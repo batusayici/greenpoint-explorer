@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-03",
+  "version": "2026-09-04",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -966,12 +966,12 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-09-02",
+      "updatedAt": "2026-09-04",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-film-club-0903",
-        "film-noir-monday-0914"
+        "film-noir-monday-0914",
+        "film-noir-cult-cinema-0908"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1269,14 +1269,14 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-09-02",
+      "updatedAt": "2026-09-04",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-babies-books-0903",
         "library-tuesday-programs-0908",
         "library-garden-hours-0911",
-        "library-monday-programs-0914"
+        "library-monday-programs-0914",
+        "library-babies-books-0917"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -2642,13 +2642,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-29",
+      "updatedAt": "2026-09-04",
       "id": "acme-fish-friday-0814",
       "title": "Fish Friday at Acme Smoked Fish",
       "kicker": "Pre-orders close 11:30am",
       "summary": "The Gem Street smokehouse opens its doors to the neighborhood one morning a week, for pickup in person.",
       "startsAt": "2026-08-14T08:00:00-04:00",
-      "endsAt": "2026-09-11T13:00:00-04:00",
+      "endsAt": "2026-09-18T13:00:00-04:00",
       "recurring": true,
       "filters": [
         "food_drink"
@@ -3765,49 +3765,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "createdAt": "2026-08-20",
-      "updatedAt": "2026-08-20",
-      "free": false,
-      "category": "event",
-      "filters": [
-        "live_music"
-      ],
-      "id": "troost-barba-yiorgi-0903",
-      "title": "DJ Barba Yiorgi at Troost",
-      "kicker": "World psychedelic groove",
-      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
-      "startsAt": "2026-09-03T00:00:00-04:00",
-      "endsAt": "2026-09-03T23:59:00-04:00",
-      "allDay": true,
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-09-03",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-20"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
       "createdAt": "2026-08-21",
       "updatedAt": "2026-08-21",
       "id": "gtrain-december-shutdown-rally",
@@ -4025,51 +3982,6 @@
           "url": "https://www.bklynlibrary.org/locations/greenpoint",
           "publisher": "Brooklyn Public Library",
           "date": "2026-08-26"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-21",
-      "updatedAt": "2026-08-21",
-      "id": "library-babies-books-0903",
-      "category": "event",
-      "free": false,
-      "title": "Babies & Books at Greenpoint Library",
-      "kicker": "Two sittings, tickets at the desk",
-      "summary": "Books, songs, bounces and tickles for infants not yet walking. A caregiver has to be present to collect the first-come ticket; walking toddlers go to Toddler Time instead.",
-      "startsAt": "2026-09-03T10:30:00-04:00",
-      "endsAt": "2026-09-03T11:45:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "sourceQuote": "ts_title: Babies & Books (for non-walking babies)\nds_event_start_date: 2026-09-03T14:30:00Z\nds_event_end_date: 2026-09-03T15:00:00Z\nds_event_start_date: 2026-09-03T15:15:00Z\nds_event_end_date: 2026-09-03T15:45:00Z\nts_body: Join us for baby storytime! We will read some books, sing some songs, do some bounces and tickles and all sorts of fun things with our babies! Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . *This is a lapsit storytime for infants who are not yet walking. Walking toddlers should attend the Toddler Time programs on Wednesdays!",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-21"
         }
       ]
     },
@@ -4465,49 +4377,6 @@
       "audience": [
         "resident"
       ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-25",
-      "updatedAt": "2026-08-25",
-      "id": "leaves-summer-writing-group-0903",
-      "category": "event",
-      "title": "Summer Writing Group at Leaves",
-      "kicker": "Last of an eight-week run",
-      "summary": "The biweekly group closes out its summer session at the second-hand bookshop. Leaves states the date but no start time — check with the shop before heading over.",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Leaves",
-      "address": "140 Nassau Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "140 Nassau Avenue, Brooklyn, NY 11222",
-      "lat": 40.724627,
-      "lng": -73.947732,
-      "startsAt": "2026-09-03T00:00:00-04:00",
-      "endsAt": "2026-09-03T23:59:00-04:00",
-      "allDay": true,
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.leavesbookstore.com/events.php"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Leaves events",
-          "url": "https://www.leavesbookstore.com/events.php",
-          "publisher": "Leaves",
-          "date": "2026-08-11"
-        }
-      ],
-      "sourceQuote": "meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
@@ -4548,48 +4417,6 @@
           "date": "2026-08-26"
         }
       ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "free": false,
-      "category": "event",
-      "id": "cb1-environmental-committee-0903",
-      "title": "CB1 Environmental Protection Committee meeting",
-      "kicker": "Battery storage, the plume, Newtown Creek",
-      "summary": "Also on the agenda: the 1098 Manhattan Ave cleanup site, follow-up vapor testing at 83 Apollo St, the Greenpoint oil spill website, and PFAS in the local environment.",
-      "locationName": "176 Java Street",
-      "address": "176 Java St, Brooklyn, NY 11222",
-      "filters": [
-        "civic"
-      ],
-      "startsAt": "2026-09-03T18:15:00-04:00",
-      "endsAt": "2026-09-03T23:59:00-04:00",
-      "sourceQuote": "CB1 Environmental Protection Committee Meeting\nThu, Sep 3 6:15 pm\n176 Java Street Brooklyn, NY 11222\nAudience: All Ages Type: Community Meeting\n1. NinePoint Energy Battery Storage 421 Bushwick Avenue: Sam Brill\n3. 1098 Manhattan Avenue NYC Volunteer Cleanup Plan Site# 26CVCP061K: Discuss\n4. 83 Apollo Street Vapor Intrusion Investigation: Review and discuss results from\n• Meeker Ave Plume Superfund - Status update\n• Newtown Creek Superfund - Status update\n• Greenpoint Oil Spill Website\n• PFAS presence in our local environment",
-      "actions": [
-        {
-          "label": "Community calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "North Brooklyn Community Calendar",
-          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-26"
-        }
-      ],
-      "lat": 40.731533,
-      "lng": -73.953515
     },
     {
       "id": "troost-academy-blues-0909",
@@ -4981,51 +4808,6 @@
         }
       ],
       "sourceQuote": "Sep 11\nJustin Strauss (all night), Rissa Garcia, Ruez\nGood Room\n7:00PM"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "flowercat-spiritual-alchemy-0903",
-      "category": "event",
-      "title": "Spiritual Alchemy at Flower Cat",
-      "kicker": "Tarot, journaling and release",
-      "summary": "Second in the series: which inherited stories you are ready to let go of, and what replaces them. Judy of Brujula Healing leads. Registration is by a link on the events page; no price is stated.",
-      "startsAt": "2026-09-03T18:30:00-04:00",
-      "endsAt": "2026-09-03T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "lat": 40.728678,
-      "lng": -73.954258,
-      "relatedCardIds": [
-        "flower-cat"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat events",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "Spiritual Alchemy: Reclaiming Your Authentic Story\nThursday, September 3, 2026\n6:30 PM\n8:00 PM\nSecond workshop in the Spiritual Alchemy series, where we will focus on (re)creating the story Chiron is helping us navigate. What stories have you inherited, and what stories are you now ready to release and transmute into your authentic narrative? Join Judy from Brujula Healing for an evening of tarot, reflection, guided journaling, conversation, release and creation.\nRegister Here."
     },
     {
       "audience": [
@@ -5520,51 +5302,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-31",
-      "updatedAt": "2026-08-31",
-      "free": false,
-      "category": "event",
-      "id": "film-noir-film-club-0903",
-      "title": "FILM CLUB at Film Noir Cinema",
-      "kicker": "Nobody but the chooser knows the film",
-      "summary": "A different member of the club picks the programme each time and keeps the title to themselves. No admission price is stated.",
-      "startsAt": "2026-09-03T21:00:00-04:00",
-      "endsAt": "2026-09-03T22:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-31"
-        }
-      ],
-      "sourceQuote": "FILM CLUB\nThursday, September 3, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.\nPure cinematheque fun.",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-31",
       "updatedAt": "2026-09-01",
       "free": false,
       "category": "event",
@@ -5728,104 +5465,6 @@
       "sourceQuote": "This September, Chez Ma Tante alum Chef Gabriel Borges is opening his own restaurant called 148 Noble Street.\nChef Borges’ new restaurant will be located in the former home of The Noble , a wine bar from Itir Aloba and Rick Curi that closed this past winter.\nChef Borges is aiming to open 148 Noble Street in “mid-September.” When it first opens, the restaurant will welcome guests five days a week, Thursday through Monday.\nChef Borges’ menu at 148 Noble Street will lean European, incorporating influences and techniques from French and Italian cuisine.\nThe restaurant will only have a wine and beer license, but Chef Borges said he and his team will get creative with vermouth and other non-grain alcohols for cocktails.",
       "lat": 40.72862,
       "lng": -73.95442
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-02",
-      "updatedAt": "2026-09-02",
-      "category": "event",
-      "id": "soft-bar-strides-run-club-0903",
-      "title": "Soft Strides Anniversary Run Club",
-      "kicker": "Free run, then a DJ and doughnuts",
-      "summary": "Soft Bar turns one. Carl Radke leads a community run, and live DJ Kyle Cooke, B-12 shots, custom doughnuts and anniversary drinks follow.",
-      "startsAt": "2026-09-03T08:00:00-04:00",
-      "endsAt": "2026-09-03T10:00:00-04:00",
-      "free": true,
-      "filters": [
-        "wellness"
-      ],
-      "locationName": "Soft Bar",
-      "address": "200 Banker St, Brooklyn, NY 11222",
-      "geocodeQuery": "200 Banker St, Brooklyn, NY 11222",
-      "sourceQuote": "THURSDAY, SEPTEMBER 3 Soft Strides Anniversary Run Club @ Soft Bar, 8 a.m.: To celebrate one year of Soft Bar, Carl Radke will be leading a community run followed by live DJ Kyle Cooke, B-12 shots, custom doughnuts, and anniversary drinks. Free,\nSoft Strides: Anniversary Run Club\nstartDate: 2026-09-03T08:00:00-04:00\nendDate: 2026-09-03T10:00:00-04:00\nlocation: Soft Bar\nstreetAddress: 200 Banker Street, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/soft-strides-anniversary-run-club-tickets-1998996904553"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
-          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
-          "publisher": "Greenpointers",
-          "date": "2026-09-02"
-        },
-        {
-          "title": "Soft Strides: Anniversary Run Club",
-          "url": "https://www.eventbrite.com/e/soft-strides-anniversary-run-club-tickets-1998996904553",
-          "publisher": "Eventbrite",
-          "date": "2026-09-02"
-        }
-      ],
-      "lat": 40.725053,
-      "lng": -73.955725
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-02",
-      "updatedAt": "2026-09-02",
-      "category": "event",
-      "id": "for-the-record-plantasia-0903",
-      "title": "Plantasia 50th anniversary listening party",
-      "kicker": "Fifty years of Mort Garson’s Plantasia",
-      "summary": "A full album session at For The Record with live DJs, giveaways, prizes and an in-store plant experience from Tend. No closing time was published.",
-      "startsAt": "2026-09-03T18:00:00-04:00",
-      "endsAt": "2026-09-03T23:59:00-04:00",
-      "free": true,
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "For The Record",
-      "address": "1107 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1107 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Mother Earth ‘s Plantasia 50th Anniversary Listening Party @ For the Record, 6 p.m.: In honor of Mort Garson’s 1976 electronic album, come together for giveaways, live DJs, prizes, an album-listening session, and in-store plant experience from Tend. Free,\nCelebrate 50 Years of Plantasia at For The Record\nstartDate: 2026-09-03T22:00:00.000Z\nlocation: For The Record\nstreetAddress: 1107 Manhattan Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://partiful.com/e/NId4xpJpyCar1pClLvjU"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
-          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
-          "publisher": "Greenpointers",
-          "date": "2026-09-02"
-        },
-        {
-          "title": "Celebrate 50 Years of Plantasia at For The Record",
-          "url": "https://partiful.com/e/NId4xpJpyCar1pClLvjU",
-          "publisher": "Partiful",
-          "date": "2026-09-02"
-        }
-      ],
-      "lat": 40.736292,
-      "lng": -73.955588
     },
     {
       "audience": [
@@ -6481,94 +6120,6 @@
       "updatedAt": "2026-09-03",
       "free": false,
       "category": "event",
-      "id": "film-noir-black-gravel-0903",
-      "title": "BLACK GRAVEL at Film Noir Cinema",
-      "kicker": "West German noir from 1961",
-      "summary": "Tensions arise when a US military base is built in a small village in post-war Germany. The programme page gives no ticket price.",
-      "startsAt": "2026-09-03T19:00:00-04:00",
-      "endsAt": "2026-09-03T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/7/10/schwarz"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/7/10/schwarz",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-03"
-        }
-      ],
-      "sourceQuote": "title: BLACK GRAVEL\nstartDate: 2026-09-03T23:00:00.411Z\nendDate: 2026-09-04T00:00:00.411Z\nBLACK GRAVEL\nThursday, September 3, 2026\nGE. 1961\nTensions arise when a US military base is built in a small village in post-war Germany."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-09-03",
-      "updatedAt": "2026-09-03",
-      "free": true,
-      "category": "event",
-      "id": "nypd-94th-community-council-0903",
-      "title": "94th Precinct Community Council meeting",
-      "kicker": "Monthly sit-down with the precinct",
-      "summary": "The council meets on the first Thursday of every month except July and August. Free, and open to anyone who wants to get informed and engaged.",
-      "startsAt": "2026-09-03T19:00:00-04:00",
-      "endsAt": "2026-09-03T20:00:00-04:00",
-      "filters": [
-        "civic"
-      ],
-      "locationName": "Church of the Ascension",
-      "address": "127 Kent St, Brooklyn, NY 11222",
-      "geocodeQuery": "127 Kent St, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Event page",
-          "type": "learn_more",
-          "url": "https://gogreenbk.org/event/nypd-94th-2026/2026-09-03/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "NYPD 94th Precinct's Monthly Community Council Meeting",
-          "url": "https://gogreenbk.org/event/nypd-94th-2026/2026-09-03/",
-          "publisher": "Go Green Brooklyn",
-          "date": "2026-09-03"
-        }
-      ],
-      "sourceQuote": "NYPD 94th Precinct’s Monthly Community Council Meeting\nThursday, September 3rd at 7:00 PM - 8:00 PM\nFree\nThe 94th Precinct Community Council meetings take place on the First Thursday of every month, with the exception of July and August at 127 Kent Street, Brooklyn NY, 7pm. Get informed and engaged!",
-      "lat": 40.730849,
-      "lng": -73.955855
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-03",
-      "updatedAt": "2026-09-03",
-      "free": false,
-      "category": "event",
       "id": "good-room-skin-on-skin-0910",
       "title": "Skin On Skin at Good Room",
       "kicker": "Three names on a Thursday bill",
@@ -6740,7 +6291,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-03",
-      "updatedAt": "2026-09-03",
+      "updatedAt": "2026-09-04",
       "free": false,
       "category": "event",
       "locationName": "Greenpoint Library",
@@ -6765,16 +6316,16 @@
           "date": "2026-09-03"
         }
       ],
-      "id": "library-toddler-time-0916",
-      "title": "Toddler Time at Greenpoint Library",
-      "kicker": "Two ticketed storytime sittings",
-      "summary": "Songs, rhymes and books for walking toddlers, run twice back to back. Tickets go out at the information desk, first come first served, and a caregiver has to be there to collect one.",
+      "id": "library-wednesday-programs-0916",
+      "title": "Wednesday at Greenpoint Library",
+      "kicker": "Five programmes, toddlers to teens",
+      "summary": "Two ticketed toddler sittings, week one of the new Read & Play series (register ahead, twelve places), the rooftop garden open for quiet study, a beginners' PC class and teen board games.",
       "startsAt": "2026-09-16T10:30:00-04:00",
-      "endsAt": "2026-09-16T11:45:00-04:00",
+      "endsAt": "2026-09-16T17:30:00-04:00",
       "filters": [
         "family_kids"
       ],
-      "sourceQuote": "ts_title: Toddler Time (for walking toddlers)\nds_event_start_date: 2026-09-16T14:30:00Z\nds_event_end_date: 2026-09-16T15:00:00Z\nds_event_start_date: 2026-09-16T15:15:00Z\nds_event_end_date: 2026-09-16T15:45:00Z\nJoin us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket . This is a program for walking toddlers."
+      "sourceQuote": "ts_title: Toddler Time (for walking toddlers)\nds_event_start_date: 2026-09-16T14:30:00Z\nds_event_start_date: 2026-09-16T15:15:00Z\nts_body: Join us for Toddler StoryTime! We will be singing songs, learning rhymes, and reading books together. *Tickets are required and will be distributed on a first come, first served basis at the information desk.*\nts_title: Read and Play\nts_body: Today is Week 1 of our NEW Read & Play series! Registration is required in advance to attend this Storytime at the Greenpoint Library.\nPlease note: Group size is limited to 12 participants.\nts_title: Greenpoint Library Open Roof Hours\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting.\nts_title: Computer Basics\nts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer.\nts_title: Teen Time: Board Games!\nds_event_end_date: 2026-09-16T21:30:00Z\nts_body: Teens (ages 13-19), stop by the Teen Zone to play board games!"
     },
     {
       "audience": [
@@ -6818,6 +6369,319 @@
       "sourceQuote": "Dream Seed: A Journey Through Sound\nWednesday, September 16, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nDream Seed is a sound healing ensemble created by members of Golden Drum, a sacred arts and cultural center in Greenpoint, Brooklyn, and the Sacred Arts Research Foundation and Didge Project. Through shamanic chanting, mantra, overtone singing, indigenous music traditions, and sacred sound practices, Dream Seed creates immersive sound healing journeys using didgeridoos, crystal singing bowls, gongs, bells, harmoniums, tuning forks, and other overtone-rich instruments.\nSuggested Donation: $25\n$25.00",
       "lat": 40.733571,
       "lng": -73.957721
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-09-04",
+      "free": false,
+      "id": "film-noir-cult-cinema-0908",
+      "category": "event",
+      "title": "CULT CINEMA at Film Noir Cinema",
+      "kicker": "The most obscure films ever made",
+      "summary": "A programme the cinema runs under one banner rather than a title, so the listing names no film and no ticket price.",
+      "startsAt": "2026-09-08T21:00:00-04:00",
+      "endsAt": "2026-09-08T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "CULT CINEMA",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-04"
+        }
+      ],
+      "sourceQuote": "CULT CINEMA\nTuesday, September 8, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-09-04",
+      "free": false,
+      "id": "golden-drum-wixarika-healing-0918",
+      "category": "event",
+      "title": "Healing Ceremony with Wixárika Elder",
+      "kicker": "Limpias led by a Wixárika elder",
+      "summary": "Candles, feathers, incense and sacred words, with each person asked to come with a clear intention and say what they need. Requested contribution is $44.",
+      "startsAt": "2026-09-18T19:00:00-04:00",
+      "endsAt": "2026-09-18T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Golden Drum",
+      "address": "97 Green St. G1, Brooklyn, NY 11222",
+      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
+      "lat": 40.733571,
+      "lng": -73.957721,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.goldendrum.org/calendar-1/wixarikahealingceremony"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Golden Drum events",
+          "url": "https://www.goldendrum.org/calendar-1/wixarikahealingceremony",
+          "publisher": "Golden Drum",
+          "date": "2026-09-04"
+        }
+      ],
+      "sourceQuote": "Healing Ceremony with Wixárika Elder\nFriday, September 18, 2026\n7:00 PM\n10:00 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nHealing is a collaboration between the participant, the healer, spirits and ancestors who are called upon to assist in the ceremony. Therefore, each participant should come with clear intentions and be prepared to express their feelings and needs.\nThe requested contribution is $44."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-09-04",
+      "free": false,
+      "id": "troost-danny-ramos-0918",
+      "category": "event",
+      "title": "DANNY RAMOS at Troost",
+      "kicker": "One name on the venue calendar",
+      "summary": "Troost's own Google Calendar carries the booking and nothing else — no genre line, no set time, no support bill and no ticket link.",
+      "startsAt": "2026-09-18T00:00:00-04:00",
+      "endsAt": "2026-09-18T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-09-04"
+        }
+      ],
+      "sourceQuote": "summary: DANNY RAMOS\nstart.date: 2026-09-18\nend.date: 2026-09-19"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-09-04",
+      "free": false,
+      "id": "good-room-eli-escobar-0918",
+      "category": "event",
+      "title": "Eli Escobar and Eternal Love at Good Room",
+      "kicker": "Two bills, both billed all night",
+      "summary": "DoNYC lists a 7pm start for the room and states no ticket price.",
+      "startsAt": "2026-09-18T19:00:00-04:00",
+      "endsAt": "2026-09-18T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-09-04"
+        }
+      ],
+      "sourceQuote": "Friday\nSep 18\nEli Escobar (all night), Eternal Love (all night)\nGood Room\n7:00PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-09-04",
+      "free": false,
+      "id": "library-babies-books-0917",
+      "category": "event",
+      "title": "Babies & Books at Greenpoint Library",
+      "kicker": "Lapsit storytime, tickets at the desk",
+      "summary": "Books, songs, bounces and tickles for infants not yet walking. Tickets go out first come, first served, and a caregiver has to be present to collect one.",
+      "startsAt": "2026-09-17T10:30:00-04:00",
+      "endsAt": "2026-09-17T11:00:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library events",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-04"
+        }
+      ],
+      "sourceQuote": "ts_title: Babies & Books (for non-walking babies)\nds_event_start_date: 2026-09-17T14:30:00Z\nds_event_end_date: 2026-09-17T15:00:00Z\nts_body: Join us for baby storytime! We will read some books, sing some songs, do some bounces and tickles and all sorts of fun things with our babies! Tickets are required and will be distributed on a first come, first served basis at the information desk.* Caregiver and Child must be present to receive a ticket ."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-09-04",
+      "free": false,
+      "id": "bellocq-end-of-summer-sale",
+      "category": "discount",
+      "title": "End of summer sale at Bellocq Tea",
+      "kicker": "15% off with the code SOLEIL26",
+      "summary": "The West Street tea atelier is running it as a banner on its own shop, applied at checkout. No end date is stated, so it gets re-checked each refresh.",
+      "recurring": true,
+      "endsAt": "2026-09-18T23:59:00-04:00",
+      "filters": [
+        "deals_memberships"
+      ],
+      "locationName": "Bellocq Tea Atelier",
+      "address": "104 West Street, Brooklyn, NY 11222",
+      "geocodeQuery": "104 West St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Shop",
+          "type": "learn_more",
+          "url": "https://bellocqtea.com/collections/tea-tastings-nyc"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Bellocq Tea Atelier",
+          "url": "https://bellocqtea.com/collections/tea-tastings-nyc",
+          "publisher": "Bellocq Tea Atelier",
+          "date": "2026-09-04"
+        }
+      ],
+      "sourceQuote": "End of Summer Sale! Enjoy 15% with code: SOLEIL26\n104 West Street\nBrooklyn\nNew York 11222",
+      "lat": 40.73032,
+      "lng": -73.95923
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-04",
+      "updatedAt": "2026-09-04",
+      "free": false,
+      "id": "selformer-open-house-intro-pass",
+      "category": "discount",
+      "title": "Selformer intro pass for two",
+      "kicker": "$25 for you and a guest",
+      "summary": "Covers any session the studio runs — group class, private video room or self service — and stays good for a month after you buy it. Marked a limited-time offer with no end date given.",
+      "recurring": true,
+      "endsAt": "2026-09-18T23:59:00-04:00",
+      "filters": [
+        "deals_memberships"
+      ],
+      "locationName": "Selformer",
+      "address": "67 West St",
+      "geocodeQuery": "67 West St, Brooklyn, NY 11222",
+      "lat": 40.728561,
+      "lng": -73.959184,
+      "actions": [
+        {
+          "label": "See plans",
+          "type": "join",
+          "url": "https://www.selformer.com/plans-pricing"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Selformer plans & pricing",
+          "url": "https://www.selformer.com/plans-pricing",
+          "publisher": "Selformer",
+          "date": "2026-09-04"
+        }
+      ],
+      "sourceQuote": "Neighborhood Open House Intro Pass\n$ 25 25$\nPilates is better with company: $25 for any Selformer experience, group, video, or self service for you and your guest.\nValid for one month\nGET STARTED\nLimited time offer"
     }
   ]
 }

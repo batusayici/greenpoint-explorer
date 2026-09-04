@@ -1,44 +1,4 @@
 name: Kids Aerial
-start_at: 2026-09-03T20:00:00.000Z
-end_at: 2026-09-03T21:00:00.000Z
-
-name: Kids Aerial
-start_at: 2026-09-03T21:00:00.000Z
-end_at: 2026-09-03T22:00:00.000Z
-
-name: Kids K-Pop Dance
-start_at: 2026-09-03T21:15:00.000Z
-end_at: 2026-09-03T22:15:00.000Z
-
-name: Private Silks Lesson
-start_at: 2026-09-03T21:30:00.000Z
-end_at: 2026-09-03T22:30:00.000Z
-
-name: Lyra
-start_at: 2026-09-03T22:15:00.000Z
-end_at: 2026-09-03T23:15:00.000Z
-
-name: K-Pop Dance (Guilty by Taemin)
-start_at: 2026-09-03T22:30:00.000Z
-end_at: 2026-09-03T23:30:00.000Z
-
-name: Aerial Conditioning
-start_at: 2026-09-03T22:30:00.000Z
-end_at: 2026-09-03T23:30:00.000Z
-
-name: Silks
-start_at: 2026-09-03T23:30:00.000Z
-end_at: 2026-09-04T00:30:00.000Z
-
-name: Act Creation
-start_at: 2026-09-03T23:30:00.000Z
-end_at: 2026-09-04T00:30:00.000Z
-
-name: Flexibility
-start_at: 2026-09-04T00:30:00.000Z
-end_at: 2026-09-04T01:30:00.000Z
-
-name: Kids Aerial
 start_at: 2026-09-04T20:00:00.000Z
 end_at: 2026-09-04T21:00:00.000Z
 
@@ -134,10 +94,6 @@ name: Lyra
 start_at: 2026-09-06T16:00:00.000Z
 end_at: 2026-09-06T17:00:00.000Z
 
-name: Private point rental
-start_at: 2026-09-06T17:00:00.000Z
-end_at: 2026-09-06T18:00:00.000Z
-
 name: Spiral Sunday
 start_at: 2026-09-06T17:00:00.000Z
 end_at: 2026-09-06T18:00:00.000Z
@@ -146,7 +102,7 @@ name: Act Creation
 start_at: 2026-09-06T18:00:00.000Z
 end_at: 2026-09-06T19:00:00.000Z
 
-name: Private Spiral Point Rental
+name: Private Spiral and Hammock Point Rental
 start_at: 2026-09-06T18:00:00.000Z
 end_at: 2026-09-06T19:00:00.000Z
 
@@ -397,6 +353,50 @@ end_at: 2026-09-14T22:30:00.000Z
 name: Beginner Poi
 start_at: 2026-09-14T22:30:00.000Z
 end_at: 2026-09-14T23:30:00.000Z
+
+name: Open Gym
+start_at: 2026-09-14T22:30:00.000Z
+end_at: 2026-09-14T23:30:00.000Z
+
+name: Lyra
+start_at: 2026-09-14T22:30:00.000Z
+end_at: 2026-09-14T23:30:00.000Z
+
+name: Flexibility
+start_at: 2026-09-14T23:30:00.000Z
+end_at: 2026-09-15T00:30:00.000Z
+
+name: Hula Hoop 101
+start_at: 2026-09-14T23:30:00.000Z
+end_at: 2026-09-15T00:30:00.000Z
+
+name: Hammock
+start_at: 2026-09-14T23:30:00.000Z
+end_at: 2026-09-15T00:30:00.000Z
+
+name: Dance Trapeze
+start_at: 2026-09-15T00:30:00.000Z
+end_at: 2026-09-15T01:30:00.000Z
+
+name: Lyra
+start_at: 2026-09-15T00:30:00.000Z
+end_at: 2026-09-15T01:30:00.000Z
+
+name: Pokeball
+start_at: 2026-09-15T01:30:00.000Z
+end_at: 2026-09-15T02:30:00.000Z
+
+name: Aerial Conditioning
+start_at: 2026-09-15T20:00:00.000Z
+end_at: 2026-09-15T21:00:00.000Z
+
+name: Dance Trapeze
+start_at: 2026-09-15T21:00:00.000Z
+end_at: 2026-09-15T22:00:00.000Z
+
+name: Aerial Flow
+start_at: 2026-09-15T21:30:00.000Z
+end_at: 2026-09-15T22:30:00.000Z
 
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial

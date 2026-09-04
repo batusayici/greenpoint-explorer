@@ -4078,5 +4078,30 @@
         "-73.9558052"
       ]
     }
+  },
+  "104 West St, Brooklyn, NY 11222": {
+    "query": "104 West St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-04T13:24:16.656Z",
+    "hit": {
+      "place_id": 415914148,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 221686897,
+      "lat": "40.7303200",
+      "lon": "-73.9592300",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "104, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7302700",
+        "40.7303700",
+        "-73.9592800",
+        "-73.9591800"
+      ]
+    }
   }
 }

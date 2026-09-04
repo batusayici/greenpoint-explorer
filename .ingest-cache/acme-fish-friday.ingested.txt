@@ -83,7 +83,7 @@ Orders Close - Friday 11:30AM
 In-person Pick-up
 Friday 8AM - 1PM
 All Fish Friday Products
-50
+56
 Filters
 Product Category
 Cold Smoked
@@ -92,10 +92,10 @@ Salads
 Herring
 Specialty
 Gary's Special
-Specialty Caviar
 Brand
 Acme
 Blue Hill Bay
+Spence
 Sort By
 Featured
 Alphabetically, A-Z
@@ -109,11 +109,10 @@ Hot Smoked
 Salads
 Herring
 Specialty
-Specialty Caviar
 Gary's Special
-Specialty Caviar
 Acme
 Blue Hill Bay
+Spence
 Clear Filters
 Filter By
 Cold Smoked
@@ -121,11 +120,10 @@ Hot Smoked
 Salads
 Herring
 Specialty
-Specialty Caviar
 Gary's Special
-Specialty Caviar
 Acme
 Blue Hill Bay
+Spence
 Clear Filters
 Apply Filters
 Cold Smoked
@@ -134,29 +132,13 @@ Salads
 Herring
 Specialty
 Gary's Special
-Specialty Caviar
 Acme
 Blue Hill Bay
+Spence
 No Fish For You.
 Jalapeño Tequila - Gary's Special (1 lb.)
 Gary's Special
 10 reviews
-Regular price
-$23.99
-Sale price
-$23.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Salsa Verde Smoked Salmon - Gary's Special (1 lb.)
-Gary's Special
-1 review
 Regular price
 $23.99
 Sale price
@@ -201,7 +183,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Sesame Crusted Smoked Ahi Tuna - 8 oz.
 Gary's Special
 26 reviews
@@ -379,6 +361,23 @@ Quantity
 -
 +
 Add to cart
+Smoked Eels (1 lb.) - Not Kosher
+Hot Smoked
+Specialty
+8 reviews
+Regular price
+$17.99
+Sale price
+$17.99
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
 Whitefish (M/L)
 Hot Smoked
 Specialty
@@ -421,6 +420,23 @@ Regular price
 $10.49
 Sale price
 $10.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Smoked Sablefish (1 lb.)
+Cold Smoked
+Specialty
+56 reviews
+Regular price
+$32.99
+Sale price
+$32.99
 Regular price
 Sale
 Sold out
@@ -512,6 +528,38 @@ Quantity
 -
 +
 Add to cart
+Smoked Fish Dip (7 oz.)
+Salads
+2 reviews
+Regular price
+$5.49
+Sale price
+$5.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Wild Alaskan Smoked Salmon Spread (8 oz.)
+Salads
+5 reviews
+Regular price
+$7.49
+Sale price
+$7.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
 Nova Smoked Salmon (8 oz.)
 Cold Smoked
 22 reviews
@@ -519,6 +567,22 @@ Regular price
 $12.49
 Sale price
 $12.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Sold out
+Scottish Smoked Salmon (4 oz.)
+Cold Smoked
+2 reviews
+Regular price
+$7.49
+Sale price
+$7.49
 Regular price
 Sale
 Sold out
@@ -544,6 +608,86 @@ Quantity
 -
 +
 Add to cart
+Sockeye Smoked Salmon (3 oz.)
+Cold Smoked
+No reviews
+Regular price
+$7.49
+Sale price
+$7.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Coho Smoked Salmon (3 oz.)
+Cold Smoked
+2 reviews
+Regular price
+$7.49
+Sale price
+$7.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Organic Smoked Salmon (3 oz.)
+Cold Smoked
+2 reviews
+Regular price
+$7.49
+Sale price
+$7.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Danish Double-Smoked Salmon (4 oz.)
+Cold Smoked
+1 review
+Regular price
+$12.49
+Sale price
+$12.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Sashimi Style Smoked Salmon (5.2 oz.)
+Cold Smoked
+3 reviews
+Regular price
+$9.49
+Sale price
+$9.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
 Smoked Trout Fillets (5 oz.)
 Hot Smoked
 Specialty
@@ -552,6 +696,40 @@ Regular price
 $7.49
 Sale price
 $7.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Lox in a Box™ (Cream Cheese) 3.25 oz.
+Cold Smoked
+Specialty
+No reviews
+Regular price
+$6.49
+Sale price
+$6.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Lox in a Box™ (Avocado) 4.25 oz.
+Cold Smoked
+Specialty
+No reviews
+Regular price
+$6.49
+Sale price
+$6.49
 Regular price
 Sale
 Sold out
@@ -641,6 +819,86 @@ Quantity
 -
 +
 Add to cart
+Homestyle Herring (32 oz.)
+Herring
+2 reviews
+Regular price
+$7.49
+Sale price
+$7.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+BHB Homestyle Herring (12 oz.)
+Herring
+No reviews
+Regular price
+$5.49
+Sale price
+$5.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+BHB Herring in Wine (12 oz.)
+Herring
+1 review
+Regular price
+$5.49
+Sale price
+$5.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+BHB Herring in Cream (12 oz.)
+Herring
+No reviews
+Regular price
+$5.49
+Sale price
+$5.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+BHB Herring in Dill Marinade (12 oz.)
+Herring
+No reviews
+Regular price
+$5.49
+Sale price
+$5.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
 BHB Spiced Matjes Herring (12 oz.)
 Herring
 1 review
@@ -705,9 +963,42 @@ Quantity
 -
 +
 Add to cart
+BBQ Smoked Salmon Portion (4 oz.)
+Hot Smoked
+1 review
+Regular price
+$6.49
+Sale price
+$6.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
 Honey Maple Smoked Salmon (4 oz.)
 Hot Smoked
 No reviews
+Regular price
+$6.49
+Sale price
+$6.49
+Regular price
+Sale
+Sold out
+Unit price
+/
+Quantity
+-
++
+Add to cart
+Herb Baked Salmon (4 oz.)
+Hot Smoked
+Specialty
+2 reviews
 Regular price
 $6.49
 Sale price
@@ -744,198 +1035,6 @@ Regular price
 $23.49
 Sale price
 $23.49
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Royal Siberian Caviar (1 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$76.99
-Sale price
-$76.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Royal Siberian Caviar (2 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$154.99
-Sale price
-$154.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Classic Osetra Caviar (1 oz.)
-Specialty Caviar
-1 review
-Regular price
-$89.99
-Sale price
-$89.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Classic Osetra Caviar (2 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$169.99
-Sale price
-$169.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Wild Hackleback Caviar (1 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$47.99
-Sale price
-$47.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Wild Hackleback Caviar (2 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$94.99
-Sale price
-$94.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Prestige Sturgeon Caviar (1 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$104.99
-Sale price
-$104.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Prestige Sturgeon Caviar (2 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$209.99
-Sale price
-$209.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Smoked Trout Roe (4.4 oz.)
-Specialty Caviar
-1 review
-Regular price
-$60.49
-Sale price
-$60.49
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Smoked Trout Roe (8.8 oz.)
-Specialty Caviar
-No reviews
-Regular price
-$112.99
-Sale price
-$112.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Buffalo Horn and Spoon Set
-Specialty Caviar
-No reviews
-Regular price
-$57.99
-Sale price
-$57.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Zen Mother of Pearl Caviar Spoon
-Specialty Caviar
-3 reviews
-Regular price
-$11.99
-Sale price
-$11.99
 Regular price
 Sale
 Sold out

@@ -722,14 +722,29 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // event with a real clock. Detail page fetched via R1 and persisted into
   // the source snapshot before the quotes gate ran.
   // 139 + 7 + 1 = 147.
-  assert.equal(seed.cards.length, 147);
+  //
+  // 2026-09-04 daily thin: expiry took 10 past items (147 → 137), then 7 adds.
+  // Four fill the back of the window, all four flagged by the coverage check
+  // as dates a source's own calendar carried and the map did not: CULT CINEMA
+  // at Film Noir on 9/8, and three on 9/18 — DANNY RAMOS at Troost, Eli
+  // Escobar and Eternal Love at Good Room, and the Wixárika healing ceremony
+  // at Golden Drum (detail page fetched via R1 and persisted into the source
+  // snapshot before the quotes gate ran). One more is a library card for 9/17.
+  // The last two are standing offers with no stated end date, which the
+  // recurring + verified-through rule fills rather than holds: 15% off at
+  // Bellocq Tea with a code, and Selformer's $25 intro pass for two.
+  // The 9/16 library card was rewritten rather than added: the branch feed
+  // added four more programmes to a day that had held only the two toddler
+  // sittings, so it is now a Wednesday day-card running to 5:30pm.
+  // 137 + 7 = 144.
+  assert.equal(seed.cards.length, 144);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "32 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.category === "event"), 68, "60 after expiry + 8 dated adds (2026-09-03)");
-  assert.equal(count((c) => c.category === "discount"), 5, "6 − the Tend free-shipping offer, expired 8/31");
+  assert.equal(count((c) => c.category === "event"), 63, "58 after expiry + 5 dated adds (2026-09-04)");
+  assert.equal(count((c) => c.category === "discount"), 7, "5 + Bellocq's sale and Selformer's intro pass (2026-09-04)");
   assert.equal(count((c) => c.category === "news"), 21, "20 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 26, "23 after expiry + Good Room 9/10 and 9/17 and Troost 9/17 (2026-09-03)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 27, "25 after expiry + Troost and Good Room on 9/18 (2026-09-04)");
   assert.equal(count((c) => c.category === "subscription"), 27, "26 + the Brooklyn Craft Company kids sewing enrollment (2026-09-02)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -830,7 +845,11 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // 2026-08-30: −1 — the Bios Apothecary consultation, deleted unverifiable.
   // 2026-09-01: −1 — Tend Greenpoint's free-shipping code reached the shop's
   // own stated 8/31 end date and expiry removed it.
-  assert.equal(deals.length, 5);
+  // 2026-09-04: +2 — Bellocq Tea's end-of-summer 15% code and Selformer's $25
+  // intro pass for two. Neither states an end date, so both take the standing
+  // recurring + verified-through shape rather than a hold, with endsAt at the
+  // end of the edition window for the next run to re-check.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -937,13 +956,13 @@ test("free-ness is designated only where the source states it (tester feedback #
     // now lives on this venue card rather than a dated event card.
     "dreams-on-command",
     // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
-    // 2026-09-02, all five off the Greenpointers "9/3-9" roundup, each stating
+    // 2026-09-02, off the Greenpointers "9/3-9" roundup, each stating
     // free-ness in the line its card quotes: "Free, RSVP here" on the Plantasia
     // listening party, the Brooklyn Wildlife festival opening and the Kingsland
     // Wildflowers open hours; "Free, no RSVP needed" on Corvids in Cahoots; and
     // "Free while supplies last." on Sunday Scoops. The Eventbrite listings
     // behind three of them independently carry lowPrice 0.0.
-    "for-the-record-plantasia-0903",
+    // (for-the-record-plantasia-0903 expired out 2026-09-04)
     "kingsland-wildflowers-open-hours-0905",
     "lentol-garden-bwsf-opening-0904",
     "lentol-garden-corvids-0906",
@@ -973,13 +992,12 @@ test("free-ness is designated only where the source states it (tester feedback #
     // boilerplate as the 8/19 one — "This event is FREE and open to the public."
     // (mccarren-movies-guardians-2-0826 expired out 2026-08-27)
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
-    // 2026-09-03: the 94th Precinct Community Council meeting — Go Green
-    // Brooklyn's event page states it twice, as a bare "Free" under the date
-    // line and again as "Cost: Free" in the details block.
-    "nypd-94th-community-council-0903",
-    // 2026-09-02: Soft Bar's anniversary run club — the roundup line the card
-    // quotes ends "Free," and the Eventbrite listing carries lowPrice 0.0.
-    "soft-bar-strides-run-club-0903",
+    // (nypd-94th-community-council-0903 expired out 2026-09-04 — Go Green
+    // Brooklyn's page had stated it twice, as a bare "Free" under the date
+    // line and again as "Cost: Free" in the details block.)
+    // (soft-bar-strides-run-club-0903 expired out 2026-09-04 — the roundup
+    // line it quoted ended "Free," and its Eventbrite listing carried
+    // lowPrice 0.0.)
     // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
     // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
     // same grouped-card rule as above.
@@ -1100,7 +1118,7 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     //  schedule runs Fri 8/28, Sun 8/30, then Sun 9/27; no Thursday remains)
     "moon-bunny-monthly-plans",
     "selformer-memberships",
-    "soft-bar-strides-run-club-0903",
+    // (soft-bar-strides-run-club-0903 expired out 2026-09-04)
     // 2026-08-10: the Summer Fling promo is a DEAL at a Pilates studio, so it
     // double-files wellness + deals_memberships on the same reading that puts
     // a kids' discount in family_kids + deals_memberships (PR #18).
@@ -1340,10 +1358,8 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "adopt-a-business",
     // (bedford-slip-cleanup-0830, bedford-slip-hot-dogs-0830 and
     //  bedford-slip-tree-care-0829 all expired out 2026-08-31)
-    // 2026-08-26: Community Board 1's Environmental Protection Committee — a
-    // public meeting on the Meeker plume, Newtown Creek and a battery storage
-    // proposal. Civic action with neighborhood stakes, not a social gathering.
-    "cb1-environmental-committee-0903",
+    // (cb1-environmental-committee-0903 expired out 2026-09-04 — Community
+    // Board 1's Environmental Protection Committee met on 9/3.)
     "film-noir-support",
     "g-advocacy-mta",
     // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
@@ -1355,12 +1371,9 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // on a green roof is not the movement cluster.
     "kingsland-wildflowers-open-hours-0905",
     "library-garden-hours-0911",
-    // 2026-09-03: the 94th Precinct's monthly Community Council meeting. Same
-    // shape as the CB1 committee above — a public neighborhood meeting a
-    // resident attends, which is civic action. Note what it is NOT: the crime
-    // rule (Batu, 2026-08-30) bars incident cards, and this is a standing
-    // civic meeting, not an incident.
-    "nypd-94th-community-council-0903",
+    // (nypd-94th-community-council-0903 expired out 2026-09-04 — the 94th
+    // Precinct's monthly Community Council meeting, a standing civic meeting
+    // and never an incident card under the crime rule.)
     // (greenpoint-trash-club deleted 2026-08-30 — unverifiable, see the deck
     // count contract above)
     // (mcgolrick-its-my-park-0823 expired out 2026-08-24)
@@ -1409,6 +1422,9 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // (bios-apothecary-herbalist-consultation deleted 2026-08-30 —
     // unverifiable past its date; biosapothecary.com is a sender, not a
     // roster source, so nothing re-reads it)
+    // 2026-09-04: an end-of-summer 15% code on the tea atelier's own shop.
+    // No end date stated, so recurring + verified-through, not a membership.
+    "bellocq-end-of-summer-sale",
     "carcosa-membership-guest-pass",
     // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
     // different question than the event scan that preceded it: three of these
@@ -1437,6 +1453,10 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
     "selformer-memberships",
+    // 2026-09-04: a $25 intro pass covering any session for a client and a
+    // guest. "Limited time offer" with no date attached, so it is the
+    // recurring + verified-through shape, not a hold.
+    "selformer-open-house-intro-pass",
     // 2026-08-15: a DATED sale (through 8/21), so it is not recurring — the
     // email states its own closing date, unlike the Marianella and Pooch's
     // offers above. The shop's second offer (20% off already-reduced stock,
