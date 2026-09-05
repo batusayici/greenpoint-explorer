@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-04T10:30:00-04:00",
+  "lastRunAt": "2026-09-05T10:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1836,6 +1836,29 @@
         "1a068878df839bbb"
       ],
       "note": "Daily thin. The map went from 147 cards to 144: ten things finished last night and came off, and seven went on. Four of the seven fill the far end of the window, which is where the feed keeps running out — CULT CINEMA at Film Noir on 9/8, and three on 9/18: Danny Ramos at Troost, Eli Escobar and Eternal Love at Good Room, and a Wixárika healing ceremony at Golden Drum, whose start time only exists on the event's own page, so that page was fetched and written into the source snapshot. One is a library storytime on 9/17. The last two are standing offers that state no end date — 15% off at Bellocq Tea with the code SOLEIL26, and Selformer's $25 intro pass covering a client and a guest — which the rules fill with a re-check date rather than hold. One card was rewritten instead of added: the branch put four more programmes on 9/16, so the toddler card became a Wednesday day-card running to 5:30pm. Acme's Fish Friday was re-verified against today's page and its through-date moved out to 9/18. Nothing was held. Nine sources could not be read, all of them the known broken browser path."
+    },
+    {
+      "runAt": "2026-09-05",
+      "cadence": "daily-thin",
+      "shipped": [],
+      "updated": [],
+      "deleted": [
+        "moon-bunny-back-to-school-2026",
+        "film-noir-terror-terroir-0904",
+        "troost-first-vinyl-fridays-0904",
+        "good-room-lloyds-bday-0904",
+        "library-sensory-garden-0904",
+        "flowercat-gypsy-jazz-0904",
+        "hana-tour-tasting-0904",
+        "lentol-garden-bwsf-opening-0904",
+        "bell-slip-ny-state-of-mine-0904"
+      ],
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 0 source-blocked",
+      "urls": [],
+      "gmailMessageIds": [
+        "1a06cb0bf91ca58a"
+      ],
+      "note": "Daily thin, HALTED before ingesting and shipped nothing. Nine things that finished last night came off the map (144 to 135) and nothing went on, because the roster could not be read: 10 of 62 sources errored, 16%, over the 15% ceiling that stops a run. All ten failed the same way — the headless browser cannot open a connection through this sandbox's proxy — and four of them (eavesdrop, kindred-nyc, happy-medium, action-city-comics) are ordinary sources that fell back to the browser when their plain fetch degraded, which is what pushed the count over the line. A run that only deletes is exactly the shape that shrank the deck from 95 to 75 in July, so the deletions went to a review PR instead of to production. The Gmail pass ran and found one new thing worth keeping: Brooklyn Craft Company's Farewell Summer Sale, 20% off adult workshops with code SEEYASUMMER through 9/7, plus eight dated workshops from 9/6 to 10/11. It is written into watchItems verbatim rather than carded, since a newsletter is read once and this run had no authority to card anything."
     }
   ],
   "senderRegistry": [
@@ -2677,6 +2700,16 @@
       "name": "Moon Bunny Aerial — four class sessions in the window that the deck's shape has no home for",
       "addedAt": "2026-09-04",
       "note": "RULE QUESTION, not a blocked fact. The studio's feed carries four titles inside 9/4–9/18 that appear once each rather than weekly: \"name: K-Pop Dance (Boompala by le sserafim) / start_at: 2026-09-08T23:30:00.000Z\", \"name: Intro to Handstands / start_at: 2026-09-09T00:30:00.000Z\", \"name: Kids K-Pop Dance / start_at: 2026-09-10T21:15:00.000Z\" and \"name: K-Pop Dance (Loveshot by EXO) / start_at: 2026-09-10T22:30:00.000Z\". Every other title in the feed repeats on a weekly slot and is plainly the standing schedule. These four were not carded: the feed states a name and a clock and nothing else — no price, no description, nothing distinguishing a one-off from a rotating class — and this source has only ever produced the plans card and a discount card, never per-class cards. That is the same shape as the lot-radio ruling, but nobody has actually ruled it here. WHAT WOULD RESOLVE IT: Batu saying whether a drop-in studio class with a name and a time is cardable supply, or whether the plans card is the coverage."
+    },
+    {
+      "name": "Brooklyn Craft Company — Farewell Summer Sale (20% off adult workshops, code SEEYASUMMER, ends 9/7) and eight dated workshops",
+      "addedAt": "2026-09-05",
+      "note": "NOT a hold — this run never reached triage. The roster fetch exited 1 (10 of 62 sources errored, 16%, over the 15% ceiling), which is a hard stop on ingesting, so nothing was carded. Recorded here because a newsletter is read once and this one is gone the moment it ages out of the Gmail window. Verbatim from the 9/4 email (info@brooklyncraftcompany.com, a registry sender): \"Starting now through Monday, September 7th at midnight, take 20% off all workshops with code:\", \"SEEYASUMMER\", \"Sale ends Monday, 9/7/26 at 11:59pm PST. Discount code SEEYASUMMER must be entered at checkout. Discount applies to adult workshops only. Discount does not apply to Kids Afterschool Sewing or Lower Manhattan Drop-In Crafts. Discount cannot be applied to previous workshops registrations or purchases.\" The dated workshops it lists: \"Beginner Patchwork\" \"Sun, 9/6 at 12:00pm *THIS WEEKEND!*\" and \"Sun, 10/11 at 11:00am\"; \"Sewing 101: Tote Bag\" \"Sat, 9/12 at 11:00am\" and \"Tues, 9/22 at 6:30pm\"; \"Sewing Course: Jumpsuit (4 Parts)\" \"Starts Sun, 9/13 at 11:00am\"; \"Watercolor Nebulas + Galaxies\" \"Sat, 9/12 at 11:30am\"; \"Natural Bundle Dye Workshop\" \"Sat, 9/12 at 4:00pm\"; \"Knitting 104: Sock Knitting\" \"Tues, 9/15 at 6:30pm\"; \"Sewing Course: Ilford Jacket (5 Parts)\" \"Starts Thurs, 9/17 at 6:30pm\". The sale itself looks cardable on its face: the exclusion line ties it to the adult workshops and away from the Lower Manhattan pop-up, and the store is \"165 Greenpoint Avenue\". The eight workshops are NOT all attributable yet — unlike the 8/31 newsletter, this one carries no per-session \"In Greenpoint:\" heading, and only two are Greenpoint by their own URL (greenpoint-workshop-sock-knitting, greenpoint-workshop-4-week-sewing-course-ilford-jacket). WHAT WOULD RESOLVE IT: a readable roster on the next run, then R1 on each product page to attribute the other six to a location before pinning them at 165 Greenpoint Ave."
+    },
+    {
+      "name": "Three dates the coverage check says the map owes a card: Troost 9/19, Good Room 9/19, Film Noir Cinema 9/10",
+      "addedAt": "2026-09-05",
+      "note": "NOT blocked and NOT explained away — these are cards this run owed and could not author, because the roster fetch exited 1 (16% of sources errored) and that is a hard stop on ingesting. All three sources fetched CLEANLY this run, so the supply is sitting in .ingest-cache right now and nothing about it is doubtful; only the run-level stop kept it off the map. They are the back end of the window, which is exactly where the feed keeps running out, and the freshness check is already warning that dated-upcoming fell 70 to 45 over 21 days. WHAT WOULD RESOLVE IT: the next run with a readable roster cards all three off their own snapshots. If the browser path is still down tomorrow and the ceiling trips again, this needs Batu to either fix the browser tunnel or re-run with --allow-degraded so the clean sources can still be carded."
     }
   ],
   "sourcePulse": {
