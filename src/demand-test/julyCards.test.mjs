@@ -737,14 +737,23 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // added four more programmes to a day that had held only the two toddler
   // sittings, so it is now a Wednesday day-card running to 5:30pm.
   // 137 + 7 = 144.
-  assert.equal(seed.cards.length, 144);
+  //
+  // 2026-09-05 daily thin: expiry took 9 past items (144 → 135) and nothing was
+  // added. The roster was not readable this run — 10 of 62 sources errored
+  // (16%, over the 15% ceiling), all of them on the browser path that this
+  // sandbox's proxy relay resets — so the run stopped before extracting any
+  // card, per the 2026-08-03 rule. A degraded run that only deletes is exactly
+  // the shape that shrank the deck 95 → 75 in July, which is why these
+  // deletions went to a review PR rather than straight to production.
+  // 144 − 9 = 135.
+  assert.equal(seed.cards.length, 135);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "32 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.category === "event"), 63, "58 after expiry + 5 dated adds (2026-09-04)");
-  assert.equal(count((c) => c.category === "discount"), 7, "5 + Bellocq's sale and Selformer's intro pass (2026-09-04)");
+  assert.equal(count((c) => c.category === "event"), 55, "63 − 8 events expired (2026-09-05)");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 − the Moon Bunny back-to-school offer, ended 9/4 (2026-09-05)");
   assert.equal(count((c) => c.category === "news"), 21, "20 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 27, "25 after expiry + Troost and Good Room on 9/18 (2026-09-04)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 24, "27 − three 9/4 gigs expired (2026-09-05)");
   assert.equal(count((c) => c.category === "subscription"), 27, "26 + the Brooklyn Craft Company kids sewing enrollment (2026-09-02)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -849,7 +858,9 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // intro pass for two. Neither states an end date, so both take the standing
   // recurring + verified-through shape rather than a hold, with endsAt at the
   // end of the edition window for the next run to re-check.
-  assert.equal(deals.length, 7);
+  // 2026-09-05: −1 — Moon Bunny's back-to-school offer reached its own stated
+  // 9/4 end date and expiry removed it.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -964,7 +975,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // behind three of them independently carry lowPrice 0.0.
     // (for-the-record-plantasia-0903 expired out 2026-09-04)
     "kingsland-wildflowers-open-hours-0905",
-    "lentol-garden-bwsf-opening-0904",
+    // (lentol-garden-bwsf-opening-0904 expired out 2026-09-05)
     "lentol-garden-corvids-0906",
     "mccarren-sunday-scoops-0906",
     // (flowercat-live-band-karaoke-0828 expired out; greenpoint-trash-club
@@ -1447,9 +1458,10 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     //  email closed the sale at midnight on 8/16. moon-bunny-back-to-school
     //  expired the same run.)
     "marianella-subscription-box",
-    // 2026-08-18: a kids DEAL double-files family_kids + deals_memberships
-    // (2026-08-03, PR #18) — 10% off the kids' dance and aerial/acro packs.
-    "moon-bunny-back-to-school-2026",
+    // (moon-bunny-back-to-school-2026 expired out 2026-09-05 on its own stated
+    //  9/4 end date. It was the worked example of the 2026-08-03 PR #18 rule
+    //  that a kids DEAL double-files family_kids + deals_memberships; the rule
+    //  stands and the next one files the same way.)
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
     "selformer-memberships",
