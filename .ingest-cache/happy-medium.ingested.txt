@@ -20,26 +20,6 @@ Party Size
 2
 +
 Art Cafe
-Mon, Sep 7 · 2:15 PM - 4:15 PM
-Market Street
-$15 deposit
-Art Cafe
-Mon, Sep 7 · 4:30 PM - 6:30 PM
-Market Street
-$15 deposit
-Art Cafe
-Mon, Sep 7 · 5:00 PM - 7:00 PM
-Greenpoint
-$15 deposit
-Art Cafe
-Mon, Sep 7 · 5:30 PM - 7:30 PM
-Greenpoint
-$15 deposit
-Art Cafe
-Mon, Sep 7 · 6:00 PM - 8:00 PM
-Greenpoint
-$15 deposit
-Art Cafe
 Mon, Sep 7 · 6:30 PM - 8:30 PM
 Greenpoint
 $15 deposit
@@ -61,13 +41,13 @@ Greenpoint
 $15 deposit
 Art Cafe
 Tue, Sep 8 · 5:00 PM - 7:00 PM
-Greenpoint
-$15 deposit
-Art Cafe
-Tue, Sep 8 · 5:00 PM - 7:00 PM
 Market Street
 $15 deposit
 1 spot left
+Art Cafe
+Tue, Sep 8 · 5:00 PM - 7:00 PM
+Greenpoint
+$15 deposit
 Art Cafe
 Tue, Sep 8 · 5:30 PM - 7:30 PM
 Greenpoint
@@ -99,6 +79,26 @@ Greenpoint
 $15 deposit
 Art Cafe
 Wed, Sep 9 · 5:00 PM - 7:00 PM
+Market Street
+$15 deposit
+Art Cafe
+Wed, Sep 9 · 5:00 PM - 7:00 PM
+Greenpoint
+$15 deposit
+Art Cafe
+Wed, Sep 9 · 5:30 PM - 7:30 PM
+Greenpoint
+$15 deposit
+Art Cafe
+Wed, Sep 9 · 6:00 PM - 8:00 PM
+Greenpoint
+$15 deposit
+Art Cafe
+Wed, Sep 9 · 6:00 PM - 8:00 PM
+Market Street
+$15 deposit
+Art Cafe
+Wed, Sep 9 · 6:30 PM - 8:30 PM
 Greenpoint
 $15 deposit
 Be brave enough to be terrible.

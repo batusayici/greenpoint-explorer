@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-04",
+  "version": "2026-09-07",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -7640,6 +7640,436 @@
       "sourceQuote": "McCarren Park Greenmarket\nYear Round\nSaturday\n8:00 am - 3:00 pm",
       "lat": 40.721159,
       "lng": -73.952879
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave",
+      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "id": "transmitter-longevity-stick-0910",
+      "category": "event",
+      "free": true,
+      "title": "Longevity Stick class at WNYC Transmitter Park",
+      "kicker": "Free, 8am, Tai Chi with a stick",
+      "summary": "Tyler Trocinski teaches it; sticks are provided, so bring water and a small towel. Meet at the pier entrance.",
+      "startsAt": "2026-09-10T08:00:00-04:00",
+      "endsAt": "2026-09-10T09:00:00-04:00",
+      "filters": [
+        "wellness"
+      ],
+      "sourceQuote": "Longevity Stick Class (Thursday Morning)9/10/26\nJoin us on select Thursday Mornings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks. What to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages. Instructor: Tyler Trocinski What to Bring: Sticks are provided. We suggest a water bottle and a small towel. Where to Meet: Pier Entrance Sign up here Registering helps us track participants in the event of a rain delay or reschedule.",
+      "actions": [
+        {
+          "label": "Sign up",
+          "type": "signup",
+          "url": "https://transmitterpark.org/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Longevity Stick Class (Thursday Morning)",
+          "url": "https://transmitterpark.org/events",
+          "publisher": "Friends of WNYC Transmitter Park",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave",
+      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "id": "transmitter-longevity-stick-0911",
+      "category": "event",
+      "free": true,
+      "title": "Longevity Stick class at sunset, WNYC Transmitter Park",
+      "kicker": "Free, 7:30pm, by the water",
+      "summary": "Same class as Thursday mornings, run at sunset. Tyler Trocinski teaches; sticks provided. Meet at the pier entrance.",
+      "startsAt": "2026-09-11T19:30:00-04:00",
+      "endsAt": "2026-09-11T20:30:00-04:00",
+      "filters": [
+        "wellness"
+      ],
+      "sourceQuote": "Longevity Stick Class (FRIDAY SUNSET) 9/11/26\nJoin us on select Fridays at Sunset, as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks. What to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages. Instructor: Tyler Trocinski What to Bring: Sticks are provided. We suggest a water bottle and a small towel. Where to Meet: Pier Entrance Sign up here Registering helps us track participants in the event of a rain delay or reschedule.",
+      "relatedCardIds": [
+        "transmitter-longevity-stick-0910"
+      ],
+      "actions": [
+        {
+          "label": "Sign up",
+          "type": "signup",
+          "url": "https://transmitterpark.org/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Longevity Stick Class (FRIDAY SUNSET)",
+          "url": "https://transmitterpark.org/events",
+          "publisher": "Friends of WNYC Transmitter Park",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "locationName": "Under the K Bridge Park",
+      "address": "Meeker Ave & Van Dam St",
+      "geocodeQuery": "Under the K Bridge Park, Brooklyn, NY",
+      "lat": 40.72543,
+      "lng": -73.93228,
+      "id": "nbk-fit-club-thursdays",
+      "category": "event",
+      "free": true,
+      "title": "Fit Club Zumba at Under the K Bridge Park",
+      "kicker": "Free Zumba, 7pm, all abilities",
+      "summary": "Vivian Megias teaches an hour of it at the Welcome Plaza. No booking mentioned beyond the sign-up link.",
+      "startsAt": "2026-09-10T19:00:00-04:00",
+      "endsAt": "2026-09-17T20:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      },
+      "filters": [
+        "wellness"
+      ],
+      "sourceQuote": "Join instructor Vivian Megias, for a free, hour-long, all-abilities Zumbas class. Shake off the day, break a sweat, and connect with neighbors. Meet at the Welcome Plaza at Meeker Ave & Van Dam St (7PM – 8PM).",
+      "actions": [
+        {
+          "label": "Sign up",
+          "type": "signup",
+          "url": "https://nbkparks.org/programs-events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Fit Club – Under the K Bridge Park",
+          "url": "https://nbkparks.org/programs-events/",
+          "publisher": "North Brooklyn Parks Alliance",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "locationName": "NBK Parks Native Nursery",
+      "address": "465 Scott Ave",
+      "geocodeQuery": "465 Scott Ave, Brooklyn, NY 11222",
+      "lat": 40.72709,
+      "lng": -73.93049,
+      "id": "nbk-plant-giveaway-fridays",
+      "category": "event",
+      "free": true,
+      "title": "Free native plant giveaway at the NBK Parks nursery",
+      "kicker": "Free natives, 10am-5pm",
+      "summary": "Hard-to-find native species from the nursery's own stock, given away through 30 October. Weekend hours are shorter.",
+      "startsAt": "2026-09-11T10:00:00-04:00",
+      "endsAt": "2026-09-18T17:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "fri"
+        ]
+      },
+      "filters": [
+        "civic"
+      ],
+      "sourceQuote": "From September 11 – October 30 don’t miss our annual free plant giveaway, which provides an excellent opportunity to obtain hard-to-find native species and contribute to the rewilding of our communities. Meet In The Nursery | 465 Scott Ave (10AM – 5PM).",
+      "actions": [
+        {
+          "label": "More info",
+          "type": "learn_more",
+          "url": "https://nbkparks.org/programs-events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Fall Plant Giveaway – Native Nursery",
+          "url": "https://nbkparks.org/programs-events/",
+          "publisher": "North Brooklyn Parks Alliance",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "locationName": "NBK Parks Native Nursery",
+      "address": "465 Scott Ave",
+      "geocodeQuery": "465 Scott Ave, Brooklyn, NY 11222",
+      "lat": 40.72709,
+      "lng": -73.93049,
+      "id": "nbk-plant-giveaway-weekends",
+      "category": "event",
+      "free": true,
+      "title": "Free native plant giveaway at the nursery, weekends",
+      "kicker": "Free natives, 10am-2pm",
+      "summary": "The same giveaway as the longer Friday session, on a shorter day. Both run through 30 October.",
+      "startsAt": "2026-09-12T10:00:00-04:00",
+      "endsAt": "2026-09-20T14:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sat",
+          "sun"
+        ]
+      },
+      "filters": [
+        "civic"
+      ],
+      "sourceQuote": "From September 11 – October 30 don’t miss our annual free plant giveaway, which provides an excellent opportunity to obtain hard-to-find native species and contribute to the rewilding of our communities. Meet In The Nursery | 465 Scott Ave (10AM – 5PM).\nMORE INFO\n09/12/2026\nFall Plant Giveaway – Native Nursery at Under the K Bridge Park\nFrom September 11 – October 30 don’t miss our annual free plant giveaway, which provides an excellent opportunity to obtain hard-to-find native species and contribute to the rewilding of our communities. Meet In The Nursery | 465 Scott Ave (10AM – 2PM).",
+      "relatedCardIds": [
+        "nbk-plant-giveaway-fridays"
+      ],
+      "actions": [
+        {
+          "label": "More info",
+          "type": "learn_more",
+          "url": "https://nbkparks.org/programs-events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Fall Plant Giveaway – Native Nursery",
+          "url": "https://nbkparks.org/programs-events/",
+          "publisher": "North Brooklyn Parks Alliance",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "id": "giggles-music-with-shana",
+      "category": "event",
+      "free": false,
+      "locationName": "Giggles & Wiggles",
+      "address": "42 West St, Unit 103",
+      "geocodeQuery": "42 West St, Brooklyn, NY 11222",
+      "lat": 40.728078,
+      "lng": -73.958665,
+      "title": "Music with Shana at Giggles & Wiggles",
+      "kicker": "Two sittings, 10:30 and 11:30",
+      "summary": "An educational music class for little ones, with the later slot there so it can work around a nap. Capacity is limited and they ask you to book ahead.",
+      "startsAt": "2026-09-09T10:30:00-04:00",
+      "endsAt": "2026-09-30T11:30:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      },
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "Every Wednesday: Music with Shana\n⏰ 10:30 AM & 11:30 AM | 📍 Giggles & Wiggles | All September\nAn engaging, educational music class your little one will love — with two class times so it fits around nap schedules. Capacity is limited, so RSVP each week!",
+      "relatedCardIds": [
+        "giggles-and-wiggles"
+      ],
+      "actions": [
+        {
+          "label": "Events page",
+          "type": "learn_more",
+          "url": "https://www.gigglesandwiggles.co/pages/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Events",
+          "url": "https://www.gigglesandwiggles.co/pages/events",
+          "publisher": "Giggles & Wiggles",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "id": "kingsland-open-hours-saturdays",
+      "category": "event",
+      "free": false,
+      "locationName": "Kingsland Wildflowers",
+      "address": "520 Kingsland Ave",
+      "geocodeQuery": "520 Kingsland Ave, Brooklyn, NY 11222",
+      "lat": 40.735131,
+      "lng": -73.94316,
+      "title": "Green roof open hours at Kingsland Wildflowers",
+      "kicker": "2-5pm, green roofs open",
+      "summary": "Newtown Creek Alliance runs these, and 19 September is the last one this season. You can buy native plants while you are up there.",
+      "startsAt": "2026-09-12T14:00:00-04:00",
+      "endsAt": "2026-09-19T17:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      },
+      "filters": [
+        "civic"
+      ],
+      "sourceQuote": "Come join NCA select Saturdays from September 5 to September 19 to see the green roofs at Kingsland Wildflowers and explore (and purchase) plants from our Native Plant Nursery .",
+      "actions": [
+        {
+          "label": "Event listing",
+          "type": "learn_more",
+          "url": "https://www.kingslandwildflowers.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Events",
+          "url": "https://www.kingslandwildflowers.com/events",
+          "publisher": "Kingsland Wildflowers",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "locationName": "Polish & Slavic Center",
+      "address": "177 Kent St",
+      "geocodeQuery": "177 Kent St, Brooklyn, NY 11222",
+      "lat": 40.731052,
+      "lng": -73.953716,
+      "id": "psc-zapiski-oficera-0911",
+      "category": "event",
+      "free": false,
+      "title": "Zapiski Oficera Armii Czerwonej at the Polish & Slavic Center",
+      "kicker": "Polish-language play, 6:30pm",
+      "summary": "A one-man staging of Sergiusz Piasecki's novel about a Soviet officer entering Poland in 1939, performed by Piotr Cyrwus.",
+      "startsAt": "2026-09-11T18:30:00-04:00",
+      "endsAt": "2026-09-11T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Zapraszamy na spektakl : Zapiski Oficera Armii Czerwonej, 11 września, 177 Kent St., 6:30 pm",
+      "actions": [
+        {
+          "label": "Announcement",
+          "type": "learn_more",
+          "url": "https://polishslaviccenter.org/zapraszamy-na-spektakl-zapiski-oficera-armii-czerwonej-11-wrzesnia-177-kent-st-630-pm/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Zapraszamy na spektakl: Zapiski Oficera Armii Czerwonej",
+          "url": "https://polishslaviccenter.org/zapraszamy-na-spektakl-zapiski-oficera-armii-czerwonej-11-wrzesnia-177-kent-st-630-pm/",
+          "publisher": "Centrum Polsko-Słowiańskie",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "locationName": "Polish & Slavic Center",
+      "address": "177 Kent St",
+      "geocodeQuery": "177 Kent St, Brooklyn, NY 11222",
+      "lat": 40.731052,
+      "lng": -73.953716,
+      "id": "psc-piaseczny-concert-0919",
+      "category": "event",
+      "free": false,
+      "title": "Andrzej Piaseczny at the Polish & Slavic Center",
+      "kicker": "Polish singer, 7pm on Kent St",
+      "summary": "The Center ran an interview with him ahead of the night, headlined with his line that music is his fire and his life.",
+      "startsAt": "2026-09-19T19:00:00-04:00",
+      "endsAt": "2026-09-19T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "“MUZYKA TO MÓJ OGIEŃ I MOJE ŻYCIE” – rozmowa z Andrzejem Piasecznym, tuż przed koncertem który odbędzie się w Centrum Polsko Słowiańkim – 19 Września, 177 Kent St, 7pm",
+      "relatedCardIds": [
+        "psc-zapiski-oficera-0911"
+      ],
+      "actions": [
+        {
+          "label": "Interview",
+          "type": "learn_more",
+          "url": "https://polishslaviccenter.org/muzyka-to-moj-ogien-i-moje-zycie-rozmowa-z-andrzejem-piasecznym-tuz-przed-koncertem-ktory-odbedzie-sie-w-centrum-polsko-slowiankim-19-wrzesnia-177-kent-st-7pm/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "„Muzyka to mój ogień i moje życie” – rozmowa z Andrzejem Piasecznym",
+          "url": "https://polishslaviccenter.org/muzyka-to-moj-ogien-i-moje-zycie-rozmowa-z-andrzejem-piasecznym-tuz-przed-koncertem-ktory-odbedzie-sie-w-centrum-polsko-slowiankim-19-wrzesnia-177-kent-st-7pm/",
+          "publisher": "Centrum Polsko-Słowiańskie",
+          "date": "2026-09-07"
+        }
+      ]
     }
   ]
 }

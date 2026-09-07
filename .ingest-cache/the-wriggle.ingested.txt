@@ -1,0 +1,269 @@
+title: Tot Time
+startDate: 2026-09-10T14:00:00.291Z
+endDate: 2026-09-10T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4
+
+title: Family Storytime
+startDate: 2026-09-12T14:30:00.746Z
+endDate: 2026-09-12T15:00:00.746Z
+excerpt: Join for songs, learning rhymes, and reading books together.
+location: {"mapZoom":12,"mapLat":40.7260429,"mapLng":-73.9506351,"markerLat":40.7260429,"markerLng":-73.9506351,"addressTitle":"Greenpoint Library","addressLine1":"107 Norman Avenue","addressLine2":"Brooklyn, New York, 11222","addressCountry":"United States"}
+tags: ["All Ages","Saturday","Free"]
+categories: ["Greenpoint Library","Literacy & Language","Saturday","Dance & Music"]
+fullUrl: /event-listings/toddler-time-1m-j5bnh-x4hjg
+
+title: Family Sundays
+startDate: 2026-09-13T13:00:00.994Z
+endDate: 2026-09-13T17:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays
+
+title: Play in the Square!
+startDate: 2026-09-13T16:00:00.557Z
+endDate: 2026-09-13T19:00:00.557Z
+excerpt: Bring the family for a fun-filled Sunday afternoon, featuring programming by local, talented children's performers and educators.
+location: {"mapZoom":12,"mapLat":40.7148803,"mapLng":-73.967851,"markerLat":40.7148803,"markerLng":-73.967851,"addressTitle":"Domino Park","addressLine1":"15 River Street","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Free","Outdoors","Environment","2 yrs","3 yrs","4 yrs","5 yrs","6 yrs","7 yrs","8 yrs","9 yrs","10 yrs","11 yrs","12 yrs","14 yrs","15 yrs","16 yrs","17 yrs","Sunday","All Ages"]
+categories: ["Domino Square","Domino Park","Sunday","Art & Drama"]
+fullUrl: /event-listings/play-in-the-square-enc6n-g6zhg-b9ap9
+
+title: Tot Time
+startDate: 2026-09-17T14:00:00.291Z
+endDate: 2026-09-17T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4-pkl88
+
+title: Coastal Clean-up
+startDate: 2026-09-19T14:00:00.291Z
+endDate: 2026-09-19T16:00:00.291Z
+excerpt: Help clean up the beach and beautify our shoreline!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Saturday","Free","Outdoors","8 yrs","9 yrs","10 yrs","11 yrs","12 yrs","13 yrs","14 yrs","15 yrs","16 yrs","17 yrs","18 yrs"]
+categories: ["Saturday","Community & Environment","Marsha P Johnson State Park"]
+fullUrl: /event-listings/coastal-cleanup-sep26
+
+title: Family Sundays : Open Studio
+startDate: 2026-09-20T13:00:00.994Z
+endDate: 2026-09-20T17:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a
+
+title: Mahjong & Mingle
+startDate: 2026-09-23T22:30:00.589Z
+endDate: 2026-09-24T01:30:00.589Z
+excerpt: ​Join The Mommy Archives for a fun, social evening of Mahjong designed specifically for NYC parents.
+location: {"mapZoom":12,"mapLat":40.720452,"mapLng":-73.9608148,"markerLat":40.720452,"markerLng":-73.9608148,"addressTitle":"The Bees Knees","addressLine1":"65 North 7th Street","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Adults","Adult","Caregiver","Wednesday","After School"]
+categories: ["Play & Games","Wednesday","Community & Environment","The Mommy Archives"]
+fullUrl: /event-listings/mahjong-mingle
+
+title: Tot Time
+startDate: 2026-09-24T14:00:00.291Z
+endDate: 2026-09-24T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4-pkl88-slfmb
+
+title: Wildflower at the Park
+startDate: 2026-09-26T14:30:00.589Z
+endDate: 2026-09-26T16:00:00.589Z
+excerpt: A morning of music, stories, creativity, and outdoor play for little ones ages 2–6
+location: {"mapZoom":12,"mapLat":40.7200912,"mapLng":-73.9499416,"markerLat":40.7200912,"markerLng":-73.9499416,"addressTitle":"McCarren Park","addressLine1":"776 Lorimer Street","addressLine2":"Brooklyn, New York, 11222","addressCountry":"United States"}
+tags: ["1 yrs","2 yrs","3 yrs","4 yrs","5 yrs"]
+categories: ["Play & Games","Community & Environment","The Mommy Archives","Saturday","Wildflower Forest BK"]
+fullUrl: /event-listings/mahjong-mingle-5e88m
+
+title: Family Storytime
+startDate: 2026-09-26T14:30:00.746Z
+endDate: 2026-09-26T15:00:00.746Z
+excerpt: Join for songs, learning rhymes, and reading books together.
+location: {"mapZoom":12,"mapLat":40.7260429,"mapLng":-73.9506351,"markerLat":40.7260429,"markerLng":-73.9506351,"addressTitle":"Greenpoint Library","addressLine1":"107 Norman Avenue","addressLine2":"Brooklyn, New York, 11222","addressCountry":"United States"}
+tags: ["All Ages","Saturday","Free"]
+categories: ["Greenpoint Library","Literacy & Language","Saturday","Dance & Music"]
+fullUrl: /event-listings/toddler-time-1m-j5bnh-x4hjg-x9cmb
+
+title: Family Sundays : Open Studio
+startDate: 2026-09-27T13:00:00.994Z
+endDate: 2026-09-27T17:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht
+
+title: Play in the Square!
+startDate: 2026-09-27T16:00:00.557Z
+endDate: 2026-09-27T19:00:00.557Z
+excerpt: Bring the family for a fun-filled Sunday afternoon, featuring programming by local, talented children's performers and educators.
+location: {"mapZoom":12,"mapLat":40.7148803,"mapLng":-73.967851,"markerLat":40.7148803,"markerLng":-73.967851,"addressTitle":"Domino Park","addressLine1":"15 River Street","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Free","Outdoors","Environment","2 yrs","3 yrs","4 yrs","5 yrs","6 yrs","7 yrs","8 yrs","9 yrs","10 yrs","11 yrs","12 yrs","14 yrs","15 yrs","16 yrs","17 yrs","Sunday","All Ages"]
+categories: ["Domino Square","Domino Park","Sunday","Art & Drama"]
+fullUrl: /event-listings/play-in-the-square-enc6n-g6zhg-b9ap9-ywkyn
+
+title: Tot Time
+startDate: 2026-10-01T14:00:00.291Z
+endDate: 2026-10-01T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4-pkl88-slfmb-bpyff
+
+title: NBPA Gala
+startDate: 2026-10-01T23:30:00.117Z
+endDate: 2026-10-02T03:00:00.117Z
+excerpt: Party with purpose & support North Brooklyn Parks Alliance in this annual gala raising funds for our local parks and community.
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Under the K Bridge Park","addressLine1":"","addressLine2":"","addressCountry":""}
+tags: ["Adult","Adults","Caregiver","Thursday","Outdoors"]
+categories: ["Thursday","North Brooklyn Parks Alliance","Under the K","Community & Environment"]
+fullUrl: /event-listings/nbpa-gala
+
+title: Family Sundays : Open Studio
+startDate: 2026-10-04T13:00:00.994Z
+endDate: 2026-10-04T17:00:00.994Z
+excerpt: A relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together.
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a
+
+title: Tot Time
+startDate: 2026-10-08T14:00:00.291Z
+endDate: 2026-10-08T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4-pkl88-slfmb-bpyff-hcdej
+
+title: Pinocchio and Gepetto’s Big Apple Adventure
+startDate: 2026-10-10T15:00:00.162Z
+endDate: 2026-10-10T16:00:00.162Z
+excerpt: A free fresh take on the classic fairytale Pinocchio
+location: {"mapZoom":12,"mapLat":40.7256191,"mapLng":-73.9445014,"markerLat":40.7256191,"markerLng":-73.9445014,"addressTitle":"McGolrick park","addressLine1":"","addressLine2":"Brooklyn, New York, 11222","addressCountry":"United States"}
+tags: ["All Ages","Saturday","Outdoors","Free"]
+categories: ["Community & Environment","McGolrick Park","Art & Drama","Saturday"]
+fullUrl: /event-listings/pinocchio-and-gepettos-big-apple-adventure
+
+title: Family Sundays : Open Studio
+startDate: 2026-10-11T13:00:00.994Z
+endDate: 2026-10-11T17:00:00.994Z
+excerpt: A relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together.
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh
+
+title: Tot Time
+startDate: 2026-10-15T14:00:00.291Z
+endDate: 2026-10-15T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4-pkl88-slfmb-bpyff-hcdej-btya5
+
+title: Family Sundays : Open Studio
+startDate: 2026-10-18T13:00:00.994Z
+endDate: 2026-10-18T17:00:00.994Z
+excerpt: A relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together.
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8
+
+title: Tot Time
+startDate: 2026-10-22T14:00:00.291Z
+endDate: 2026-10-22T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4-pkl88-slfmb-bpyff-hcdej-btya5-wj6sn
+
+title: Family Sundays : Open Studio
+startDate: 2026-10-25T13:00:00.994Z
+endDate: 2026-10-25T17:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8-9j4a4
+
+title: Tot Time
+startDate: 2026-10-29T14:00:00.291Z
+endDate: 2026-10-29T15:00:00.291Z
+excerpt: Learn about a different nature theme each week with a craft and guided storytime!
+location: {"mapZoom":12,"mapLat":40.7207559,"mapLng":-74.0007613,"markerLat":40.7207559,"markerLng":-74.0007613,"addressTitle":"Marsha P. Johnson State ParkBrooklyn, NY","addressLine1":"Brooklyn, NY","addressLine2":"","addressCountry":""}
+tags: ["Free","Outdoors","Thursday","1 yrs","2 yrs","3 yrs","4 yrs"]
+categories: ["Community & Environment","Thursday","Art & Drama"]
+fullUrl: /event-listings/tot-time-2026-sep-mdmy4-pkl88-slfmb-bpyff-hcdej-btya5-wj6sn-kpdzs
+
+title: Family Sundays : Open Studio
+startDate: 2026-11-08T14:00:00.994Z
+endDate: 2026-11-08T18:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8-9j4a4-c9lr9
+
+title: Family Sundays : Open Studio
+startDate: 2026-11-15T14:00:00.994Z
+endDate: 2026-11-15T18:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8-9j4a4-c9lr9-zgg9z
+
+title: Family Sundays : Open Studio
+startDate: 2026-11-22T14:00:00.994Z
+endDate: 2026-11-22T18:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8-9j4a4-c9lr9-zgg9z-kbld4
+
+title: Family Sundays : Open Studio
+startDate: 2026-12-06T14:00:00.994Z
+endDate: 2026-12-06T18:00:00.994Z
+excerpt: A relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together.
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8-9j4a4-c9lr9-zgg9z-kbld4-g6f8f
+
+title: Family Sundays : Open Studio
+startDate: 2026-12-13T14:00:00.994Z
+endDate: 2026-12-13T18:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8-9j4a4-c9lr9-zgg9z-kbld4-g6f8f-3elmb
+
+title: Family Sundays : Open Studio
+startDate: 2026-12-20T14:00:00.994Z
+endDate: 2026-12-20T18:00:00.994Z
+excerpt: Sundays just got more creative: Family Open Studio is a relaxed, come-as-you-are morning for the whole family to slow down, make something beautiful, and actually enjoy it together
+location: {"mapZoom":12,"mapLat":40.7147446,"mapLng":-73.9652634,"markerLat":40.7147446,"markerLng":-73.9652634,"addressTitle":"A Rosie Day","addressLine1":"338 Wythe Avenue","addressLine2":"Brooklyn, New York, 11249","addressCountry":"United States"}
+tags: ["Under $50","`Drop in","All Ages","Sunday"]
+categories: ["Sunday","A Rosie Day","Art & Drama"]
+fullUrl: /event-listings/family-sundays-fbl4a-pz6ht-smg4a-n5ksh-mf9g8-9j4a4-c9lr9-zgg9z-kbld4-g6f8f-3elmb-2h2gl

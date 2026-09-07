@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-07T00:00:00-04:00",
+  "lastRunAt": "2026-09-07T18:40:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -2687,6 +2687,36 @@
       "name": "Happy Medium — Art Cafe drop-in painting, 224 Franklin St",
       "note": "HELD 2026-09-07: the page states no standing schedule. Its calendar lists individual bookable slots and interleaves two locations — the same snapshot carries \"Art Cafe\\nMon, Sep 7 · 2:15 PM - 4:15 PM\\nMarket Street\" (Manhattan) alongside the Greenpoint ones, so the location is per-slot. There is no line saying the Greenpoint room runs on any particular day or hours, so a standing card would be inventing the schedule and a dated card would be one arbitrary slot. Read the source again when it publishes a recurring line, or card a specific session it dates.",
       "addedAt": "2026-09-07"
+    },
+    {
+      "name": "North Brooklyn Parks Alliance — Brooklyn Pollinator Project, Wed 9/16 at Bushwick Inlet Park",
+      "note": "HELD 2026-09-07 (source-blocked). The listing gives a date and a description and NOTHING ELSE: \"The Brooklyn Pollinator Project is a volunteer initiative founded and led by horticulturalist Jeff Hewitt, focused on supporting crucial pollinator plants that support our local ecosystem!\" — no time, and no meeting point. That second gap is the blocker, not the first: Bushwick Inlet Park STRADDLES the Greenpoint/Williamsburg line, and the same page's Garden Club entry proves the organiser does state a meeting point when it wants to (\"Meet at Kent Ave and N. 12th\", which is the Williamsburg side and was skipped for that reason). So a blank one here cannot be read as 'therefore Greenpoint'. R1 blocked: the listing's MORE INFO button carries no href in the fetched text. UNBLOCKS when the page states a meeting point, or the alliance's Eventbrite (already allowlisted) carries the event with one.",
+      "addedAt": "2026-09-07"
+    },
+    {
+      "name": "Kingsland Wildflowers — Greenhouse Gang September session",
+      "note": "HELD 2026-09-07. The page states the series bounds and the rhythm — every third Tuesday of the month between Tue May 5 2026 and Tue Oct 6 2026 — but never prints the September date itself. Carding it would mean COMPUTING a date rather than reading one, which is inventing it. Note a Greenhouse Gang card did ship for 9/01 and expired out 2026-09-02, so the series is real and only this occurrence is unsourced. UNBLOCKS when the page lists the September date outright.",
+      "addedAt": "2026-09-07"
+    },
+    {
+      "name": "GWYSL fall season — real supply, but the page names no field",
+      "note": "HELD 2026-09-07 on location, and this is the run's most annoying hold because the source is otherwise perfect. The homepage states the season and the registration state in its own words — \"Fall season starts on 9/12.\", \"Registration is closed.\", \"You can still join the waitlist by registering.\" — which is exactly what a parent needs. What it does NOT state anywhere is a venue or address: grep for mccarren/bushwick/field/park/location/address across the whole snapshot returns nothing. McCarren Park and Bushwick Inlet Park appear only in OUR roster notes, and a card cannot be pinned from our own notes (the precedent-card rule: same shape never supplies a fact). The game schedule that would name the fields is a Google Doc we cannot fetch. UNBLOCKS if the site states a field, or if Batu is content to pin the league at McCarren on his own knowledge — which is a call for him, not for the run.",
+      "addedAt": "2026-09-07"
+    },
+    {
+      "name": "Greenpoint YMCA holiday camp page is serving LAST year's calendar",
+      "note": "SOURCE FACT 2026-09-07, found by the camp pages added to this source's detail block in PR #63. ymcanyc.org/greenpoint-holiday-camp still shows the 2025-2026 school-closure table (Rosh Hashanah Sept 23-24, Indigenous Peoples' Day Oct 13, Election Day Nov 4, Winter Recess Dec 26-30, MLK Jan 19, Mid-Winter Feb 17-20, Eid-al-Fitr Mar 20, Spring Recess Apr 6-10, Clerical Day Jun 5). The tell that it is last year's and not this year's: it dates Rosh Hashanah to Sept 23-24, which was 2025 — in 2026 it falls Sept 11-13. Every date on it has passed, and fees read \"$ TBD\". Nothing is cardable until the 2026-2027 table posts. The camps index is likewise past-tense (\"Thanks for an AWESOME Summer Camp season in 2026!\") and the only forward fact is \"REGISTRATION OPENS DECEMBER 2026\" for the 2027 season, with no day stated. So the repoint was still right — it is now visible that the source is stale, which it was not before — but it produced no card this run.",
+      "addedAt": "2026-09-07"
+    },
+    {
+      "name": "PLAY Greenpoint — Fall 2026 movie nights announced, no dates yet",
+      "note": "2026-09-07: the repoint to /classes-events (PR #63) shows the series is NOT dead, which resolves the UNMARKED STANDING? flag this source has carried. The page now advertises a Fall Edition 2026 — \"Select Fridays: 5:30-8:30 pm... ENROLLMENT WILL OPEN SOON!\" — replacing the Summer 2026 edition whose four dates (Jul 10, Jul 24, Aug 7, Aug 21) have all passed. No Friday dates are stated yet, so nothing is cardable. Same state for the STEAM/after-school programme (\"FALL SEMESTER 2026 is open for registrations soon!\") and the one-day drop-off camps (\"ENROLLING NOW!\" with a schedule button but no dates in the text). Card as soon as dates post; do NOT mark this source standing:false.",
+      "addedAt": "2026-09-07"
+    },
+    {
+      "name": "Brooklyn Youth Ballet trial class — still no price in the source",
+      "note": "2026-09-07, re-checked against a fresh readable snapshot (the site is answering properly again, +98/-90). The trial is stated by name — \"New to the studio? Trial a class before enrolling for a full semester.\" plus a Trial a Class button — but NO dollar figure appears anywhere, and the same was true of the prior baseline. So the $40 trial card deleted 2026-08-12 still cannot be re-authored without inventing the price, even though the original blocker (an unreadable site) is gone. This narrows the earlier watch item: the blocker is no longer access, it is that the price is not published. UNBLOCKS if a price appears on the site.",
+      "addedAt": "2026-09-07"
     }
   ],
   "sourcePulse": {
@@ -2750,7 +2780,12 @@
     "golden-drum": "2026-09-03",
     "nbk-open-streets": "2026-09-01",
     "bellocq-tea": "2026-09-03",
-    "lockwood": "2026-09-06"
+    "lockwood": "2026-09-06",
+    "friends-of-transmitter-park": "2026-09-06",
+    "nbk-parks-alliance": "2026-09-06",
+    "giggles-and-wiggles-events": "2026-09-06",
+    "kingsland-wildflowers": "2026-09-06",
+    "polish-slavic-center": "2026-09-06"
   },
   "coverageExplanations": [
     {
@@ -2922,13 +2957,6 @@
       "expiresAt": "2026-09-08"
     },
     {
-      "sourceId": "play-kids-greenpoint",
-      "gapKey": "UNMARKED STANDING?",
-      "reason": "REVIEWED 2026-08-24: the recurring phrase is real but the SCHEDULE IS EXHAUSTED, which is a third state the flag does not have a slot for. The page frames the series standing — \"Drop-Off Events & Movie Nights / SUMMER 2026 Edition / FRIDAY evenings\", \"When: Fridays!\", \"What time: 5:30 - 8:30 pm\" — but every dated instance it lists has already happened: \"Friday, July 10, 5:30 pm\" (ASTERIX & OBELIX), \"Friday, July 24, 5:30 pm\" (GOAT), \"Friday, August 7, 5:30 pm\" (A MINECRAFT MOVIE) and \"Friday, August 21, 5:30 pm\" (TOY STORY 5). The last of those WAS carded (playkids-toy-story-0821) and expired on schedule this morning, so the deck reading empty is the series running out, not the source going dark. Carding a future Friday would mean inventing a date and a film the page does not state. This is deliberately NOT proposed as `standing: false` — the recurring programming is genuine, it is between editions, and the roster flag should be decided when the fall edition posts. WHAT WOULD CHANGE IT: PLAY Kids publishing a Fall 2026 edition, which will land as a normal diff.",
-      "addedAt": "2026-08-24",
-      "expiresAt": "2026-09-07"
-    },
-    {
       "sourceId": "dreams-on-command",
       "gapKey": "GAP",
       "reason": "ONGOING EXHIBITION, which belongs to the venue card and not to a dated event (SKILL.md class rule, Batu 2026-08-12). The single flagged date is 2026-09-08 and it is the CLOSING date of the current show, not a happening: the snapshot's whole dated content is \"There Are People Here\" / \"July 11 – September 8, 2026\" / \"Free admission unless stated otherwise\" / \"W-F (2-7pm) SAT/SUN (1-6pm)\". The live `dreams-on-command` venue card already carries exactly those four lines as its sourceQuote and states what is on view and through when. Carding a 7/11→9/8 run as an event would also park it in the Today lens every day until September, which is the failure the rule exists to prevent. WHAT WOULD CHANGE IT: a dated opening, closing reception or artist talk, which are real happenings and stay cardable.",
@@ -3079,6 +3107,27 @@
       "sourceId": "lockwood",
       "gapKey": "GAP",
       "reason": "RESOLVED BY THE NEW RULE, and what remains is not supply. Batu approved the events-feed rule on 2026-09-07 (PR #58), so Lockwood's Epic Clearance Sale shipped this run as lockwood-clearance-sale-0914, covering 9/14 through 9/20. Of the other flagged dates: 9/12 is out of area — the same feed prints \"location_text: 485 Driggs Ave, Brooklyn, NY 11211-2021\" for Williamsburg's 5th Birthday Party — and 9/07 is the MetroCard Mystery Weekend, which the feed ends at \"end_time: 8:00 pm\" tonight, so a card would be dead before the next run and the date leaves the window tomorrow. WHAT WOULD CHANGE IT: nothing outstanding.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "gwysl-youth-soccer",
+      "gapKey": "GAP",
+      "reason": "THE SOURCE NAMES NO PLACE, SO THERE IS NOTHING TO PIN. The homepage states the season and the registration state in its own words — \"Fall season starts on 9/12.\", \"Registration is closed.\", \"You can still join the waitlist by registering.\" — and that is genuinely useful supply, which is why this is a hold and not a dismissal. But grep for mccarren/bushwick/field/park/location/address across the whole snapshot returns NOTHING. McCarren Park and Bushwick Inlet Park appear only in our own roster notes, and the precedent-card rule is explicit that same shape never supplies a fact, so pinning from our notes is out. The 9/12 game schedule that would name the fields is a Google Doc the fetcher cannot read. WHAT WOULD CHANGE IT: the site stating a field, or Batu authorising a pin at McCarren on his own knowledge — his call, not the run's.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "the-wriggle",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "NEW SOURCE, FIRST RUN — it has not been reviewed for the standing flag yet, and this run deliberately did not decide it. What the first fetch established is that this source is an AGGREGATOR of other people's family events across Greenpoint AND Williamsburg, not a venue with programming of its own, so the recurring phrasing the flag is reacting to describes other organisations' series. Of the 7 items it carried inside the window, 6 are Williamsburg (Marsha P. Johnson State Park, A Rosie Day at 338 Wythe, Domino Park) and the 7th is the Greenpoint Library's Saturday Family StoryTime, which we read first-hand and which the library's OWN calendar marks is_event_canceled: 1 — so the aggregator was advertising a cancelled event. Nothing was carded from it, correctly. WHAT WOULD CHANGE IT: a decision on whether this source earns its roster place at all, which belongs in a review PR alongside that cancellation finding.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "play-kids-greenpoint",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "BETWEEN EDITIONS, AND NOW WE CAN SEE THAT DIRECTLY. The 2026-08-24 explanation said the summer movie-night series had run out and the flag should be decided when a fall edition posts. It has: the page repointed in PR #63 now states \"Select Fridays: 5:30-8:30 pm... ENROLLMENT WILL OPEN SOON!\" for a Fall Edition 2026, replacing the Summer 2026 edition whose four dates (Jul 10, Jul 24, Aug 7, Aug 21) have all passed. No Friday dates are stated yet, so nothing is cardable without inventing one. The same is true of the newly-visible STEAM/after-school programme (\"FALL SEMESTER 2026 is open for registrations soon!\") and the one-day drop-off camps (\"ENROLLING NOW!\" with a schedule button but no dates in the text). So the deck reading empty is the series being between editions, not the source going dark, and standing:false would be wrong. WHAT WOULD CHANGE IT: PLAY Greenpoint publishing the fall dates, which lands as an ordinary diff.",
       "addedAt": "2026-09-07",
       "expiresAt": "2026-09-21"
     }

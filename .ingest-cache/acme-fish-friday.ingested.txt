@@ -596,7 +596,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Salty Lox (3 oz.)
 Specialty
 3 reviews

@@ -1,6 +1,6 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-09-07T00:00:00-04:00",
+  "lastRunAt": "2026-09-07T18:40:00-04:00",
   "cardChecked": {
     "sailor-and-siren": "2026-09-06",
     "core-press": null,
@@ -168,6 +168,15 @@
     "action-city-one-piece-0910": "2026-09-06",
     "action-city-shadow-throne-0918": "2026-09-06",
     "action-city-shadow-throne-0919": "2026-09-06",
-    "mccarren-park-greenmarket": "2026-09-06"
+    "mccarren-park-greenmarket": "2026-09-06",
+    "transmitter-longevity-stick-0910": "2026-09-06",
+    "transmitter-longevity-stick-0911": "2026-09-06",
+    "nbk-fit-club-thursdays": "2026-09-06",
+    "nbk-plant-giveaway-fridays": "2026-09-06",
+    "nbk-plant-giveaway-weekends": "2026-09-06",
+    "giggles-music-with-shana": "2026-09-06",
+    "kingsland-open-hours-saturdays": "2026-09-06",
+    "psc-zapiski-oficera-0911": "2026-09-06",
+    "psc-piaseczny-concert-0919": "2026-09-06"
   }
 }

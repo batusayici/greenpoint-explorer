@@ -766,11 +766,24 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // nine held were NOT shipped: Sparrow's GRASP group meets monthly and the
   // card model only expresses weekly days, and Happy Medium's Art Cafe is a
   // booking calendar of individual slots with no standing schedule stated. 167.
-  assert.equal(seed.cards.length, 167);
+  //
+  // 2026-09-07, fourth pass: +9, the first run against the eight family/kids
+  // sources merged in PR #63. Free outdoor programming the roster had no source
+  // for at all: two Longevity Stick classes at Transmitter Park (Thursday
+  // morning and Friday sunset), Fit Club Zumba at Under the K Bridge, and the
+  // NBK Parks native plant giveaway, which is TWO cards because the page states
+  // different hours on Fridays (10-5) than at weekends (10-2) and one window
+  // cannot carry both. Plus Music with Shana at Giggles & Wiggles, green roof
+  // open hours at Kingsland, and the Polish & Slavic Center's first two cards
+  // ever — a Polish-language play on 9/11 and the Piaseczny concert on 9/19.
+  // Transmitter Park's community yoga was NOT added: already carded from Go
+  // Green as transmitter-park-yoga-tuesdays, which is the source overlap the
+  // PR predicted. 176.
+  assert.equal(seed.cards.length, 176);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
-  assert.equal(count((c) => c.category === "event"), 86, "46 after expiry + 34 dated adds + 6 cleared holds (2026-09-07)");
+  assert.equal(count((c) => c.category === "event"), 95, "86 + 9 dated adds from the new family/kids sources (2026-09-07, fourth pass)");
   assert.equal(count((c) => c.category === "discount"), 7, "7 − Moon Bunny's expired back-to-school discount + Lockwood's clearance sale (2026-09-07)");
   assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
@@ -1024,6 +1037,19 @@ test("free-ness is designated only where the source states it (tester feedback #
     // boilerplate as the 8/19 one — "This event is FREE and open to the public."
     // (mccarren-movies-guardians-2-0826 expired out 2026-08-27)
     "mcgolrick-bird-club-0808",
+    // 2026-09-07, fourth pass: the first free programming off the North
+    // Brooklyn Parks Alliance source. Its own page says both outright — the
+    // Zumba is "a free, hour-long, all-abilities Zumbas class" and the nursery
+    // giveaway is "our annual free plant giveaway".
+    "nbk-fit-club-thursdays",
+    "nbk-plant-giveaway-fridays",
+    "nbk-plant-giveaway-weekends",
+    // Same run: the Longevity Stick classes at Transmitter Park. The free-ness
+    // is on the EVENT'S OWN detail page, not the listing — "as we flow in our
+    // free Longevity Stick Classes" — which is why both detail pages were
+    // fetched and persisted into the snapshot before these shipped.
+    "transmitter-longevity-stick-0910",
+    "transmitter-longevity-stick-0911",
     // 2026-09-07: the free Tuesday yoga at Transmitter Park, re-authored after
     // the coverage check flagged 9/8 and 9/15. Go Green states it outright:
     // "a free outdoor yoga practice at WNYC Transmitter Park".
@@ -1153,12 +1179,21 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28 — the series
     //  schedule runs Fri 8/28, Sun 8/30, then Sun 9/27; no Thursday remains)
     "moon-bunny-monthly-plans",
+    // 2026-09-07, fourth pass: the Under the K Fit Club is a Zumba class, so
+    // it lands in the movement cluster even though the North Brooklyn Parks
+    // Alliance's other programming this run is civic stewardship.
+    "nbk-fit-club-thursdays",
     "selformer-memberships",
     // (soft-bar-strides-run-club-0903 expired out 2026-09-04)
     // 2026-08-10: the Summer Fling promo is a DEAL at a Pilates studio, so it
     // double-files wellness + deals_memberships on the same reading that puts
     // a kids' discount in family_kids + deals_memberships (PR #18).
     "sparsa-greenpoint",
+    // 2026-09-07, fourth pass: the park's Longevity Stick classes are "a mix
+    // of Tai Chi and yoga", so they are movement, not the civic stewardship
+    // their organiser's other programming files under.
+    "transmitter-longevity-stick-0910",
+    "transmitter-longevity-stick-0911",
     // 2026-09-07: free Tuesday yoga at Transmitter Park. Wellness, not civic —
     // the 2026-08-30 growing-space rule sends gardening to civic, but this is
     // the movement cluster the lens is defined by.
@@ -1457,7 +1492,23 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // space, not a retail happening, and it is not wellness because standing
     // on a green roof is not the movement cluster.
     // (kingsland-wildflowers-open-hours-0905 expired out 2026-09-07)
+    // 2026-09-07, fourth pass: the two remaining open-hours dates, 9/12 and
+    // 9/19, now carded as ONE recurring Saturday card rather than one per date
+    // the way 0905 was — the source states them as a single "select Saturdays
+    // from September 5 to September 19" series, and two near-identical rows is
+    // the duplication the skill's grouping rule exists to avoid. Same civic
+    // reading as 0905, unchanged. Read off the roster's own source now, which
+    // is new: kingslandwildflowers.com had been in the WebFetch allowlist for
+    // weeks without ever being in the roster, so nothing had read it.
+    "kingsland-open-hours-saturdays",
     "library-garden-hours-0911",
+    // 2026-09-07: the North Brooklyn Parks Alliance native plant giveaway, two
+    // cards because the page states different hours on Fridays than at
+    // weekends. Civic under the same growing-space rule as the Kingsland line
+    // above, and under the 2026-08-30 ruling that a free municipal resource
+    // giveaway is civic even though the resident RECEIVES rather than does.
+    "nbk-plant-giveaway-fridays",
+    "nbk-plant-giveaway-weekends",
     // (nypd-94th-community-council-0903 expired out 2026-09-04 — the 94th
     // Precinct's monthly Community Council meeting, a standing civic meeting
     // and never an incident card under the crime rule.)
