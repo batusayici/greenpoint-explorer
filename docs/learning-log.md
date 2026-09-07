@@ -205,7 +205,7 @@ both news-shaped — a fire and an opening — which is a category the product
 covers but does not lead with, and one week against one prior week at these
 volumes is a small base where a single story moves the total.
 
-### L2026-08-31 — First ChatGPT-tagged arrivals, and a webhook that never delivered (analytics pull)
+### L2026-08-31 — First ChatGPT-tagged arrivals, and a webhook that started failing (analytics pull)
 
 Source: PostHog HogQL pulls run 2026-08-31 covering 2026-08-01 → 2026-08-31,
 plus the PostHog "Data Pipeline Failures" email Batu received 2026-08-30.
@@ -233,6 +233,30 @@ failed. It is an outbound forwarding destination — nothing in this repo
 defines it, targets it, or reads from it, and product event capture is
 unaffected. The read key is scoped `query:read`, so the destination's target
 URL and error body cannot be inspected from here (`hog_function:read` denied).
+
+**CORRECTION 2026-09-07 — it had been working, and the heading of this entry
+was wrong (it read "a webhook that never delivered").** PostHog's metrics over
+30 days show **48 successes against 19 failures**: it delivered on 8/14, 8/18,
+8/24 and 8/25, and the failures only begin around 9/1. The error is a mistake
+about the instrument, not about the destination: PostHog's alert email reports
+a **24-hour window**, and "Successful runs: 0 | Failed runs: 3" was read here
+as an all-time count. **A window is not a lifetime** — the same shape as the
+2026-08-10 lesson that a conclusion drawn from a broken instrument has to be
+re-earned, and worth carrying to any alert email that quotes a count without
+naming its period.
+
+What it is: Batu's own phone notification, posting to ntfy.sh so he hears when
+someone visits. Read in the browser 2026-09-07, which the query-scoped key
+could not do. The failures are **HTTP 429, "limit reached: daily message
+quota"**. ntfy.sh allows 250 messages a day per visitor and identifies an
+anonymous visitor **by IP address**, so the allowance is shared with every
+other PostHog customer publishing to ntfy from the same outbound address — his
+own volume is nowhere near it. An access token was added 2026-09-07 and the
+429s continued, which suggests a free ntfy.sh account does not get an
+allowance of its own. Two changes were made the same day: the destination now
+fires on `card_open` rather than `$pageview`, because bots do not open cards
+(L2026-08-11), and the message reads as the card id plus the visitor's city
+rather than a raw URL.
 
 Read: **resolved 2026-09-07 — these are real referrals.** Batu confirms
 neither he nor family produced the 8/29 chatgpt-tagged sessions, which was the
