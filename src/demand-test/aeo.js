@@ -491,6 +491,59 @@ export function homeBodyHtml(cards, origin, now) {
   ].join("\n");
 }
 
+// ---- the dead-link page (2026-09-07) ---------------------------------------
+// Every expired card's URL used to answer 200 with the HOME PAGE. vercel.json
+// rewrote `/e/:slug` to `/` for any slug with no prerendered file, so the 312
+// dead URLs a year of weekly expiry had produced all served identical bytes
+// carrying the home canonical. Google crawled them, decided they were copies of
+// one page, and mailed "Duplicate, Google chose different canonical than user"
+// on 2026-09-06 for pages it had therefore declined to index.
+//
+// That rewrite is gone. This ships as dist/404.html, which Vercel serves with a
+// real 404 for any unmatched path — so a dead /e/ link now SAYS it is dead.
+//
+// Readers lose nothing: the SPA boots from this shell exactly as it does from a
+// card page, resolveDeepLink returns dead, and CardPanel shows "That one's
+// wrapped" above the live feed. `createRoot()` replaces `#root` wholesale, so
+// the prose below is only ever seen by a machine, or in the moment before JS.
+//
+// NO CANONICAL. Declaring one is precisely what taught Google to read these as
+// copies of `/`; a 404 asserts nothing about which URL is preferred. noindex
+// covers anything that reads the body without honouring the status line.
+//
+// The sentence is verbatim what CardPanel renders (same rule homeBodyHtml
+// follows) — a crawler-only headline would show machines a page no reader gets.
+export function notFoundBodyHtml() {
+  return [
+    "<main>",
+    "<h1>That one\u2019s wrapped</h1>",
+    "<p>That event has finished, so its page is gone. Stoopwise Greenpoint has this week\u2019s events, openings, deals and neighborhood news for Greenpoint, Brooklyn \u2014 verified and sourced.</p>",
+    '<p><a href="/">See what\u2019s on in Greenpoint this week</a></p>',
+    "</main>",
+  ].join("\n");
+}
+
+export function injectNotFoundPage(template) {
+  const title = "That one\u2019s wrapped \u2014 Stoopwise Greenpoint";
+  const description =
+    "That event has finished, so its page is gone. See what\u2019s on in Greenpoint, Brooklyn this week.";
+
+  let html = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(title)}</title>`);
+  html = replaceMeta(html, "name", "description", description);
+  html = replaceMeta(html, "property", "og:title", title);
+  html = replaceMeta(html, "property", "og:description", description);
+  html = replaceMeta(html, "name", "twitter:title", title);
+  html = replaceMeta(html, "name", "twitter:description", description);
+
+  // Drop the home canonical the shell carries and put noindex in its place.
+  html = html.replace(
+    /<link\s+rel="canonical"[^>]*>/,
+    '<meta name="robots" content="noindex" />',
+  );
+
+  return html.replace('<div id="root"></div>', `<div id="root">${notFoundBodyHtml()}</div>`);
+}
+
 export function injectHomePage(template, cards, origin, now) {
   const scripts = homeJsonLd(cards, origin, now)
     .map((ld) => `    <script type="application/ld+json">${JSON.stringify(ld, null, 1)}</script>`)

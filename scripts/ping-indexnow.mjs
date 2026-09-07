@@ -20,7 +20,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { AEO_ORIGIN, liveCards } from "../src/demand-test/aeo.js";
-import { cardsToAnnounce } from "../src/demand-test/indexNow.js";
+import { cardsToAnnounce, retiredToAnnounce } from "../src/demand-test/indexNow.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -59,19 +59,30 @@ const changed = cardsToAnnounce(liveCards(seed.cards, now), {
   fallbackDays: DAYS,
 });
 
-if (changed.length === 0) {
+// Cards that EXPIRED since the last run (2026-09-07). Their pages are deleted,
+// so these URLs now answer 404 — submitting them is how IndexNow is asked to
+// drop a URL. Announcing only new cards is why dead links sat in indexes until
+// a crawler wandered back.
+const retired = retiredToAnnounce(ledger.retiredCards, {
+  lastRunAt: has("--days") ? null : ledger.lastRunAt,
+  now,
+  fallbackDays: DAYS,
+});
+
+if (changed.length === 0 && retired.length === 0) {
   // The fix for the 403: a deploy that changed no content has nothing to
   // announce, and saying so anyway is what got the second ping rejected.
-  console.log(`[indexnow] no cards changed since the last ingest run (${ledger.lastRunAt}) — nothing to announce`);
+  console.log(`[indexnow] no cards changed or retired since the last ingest run (${ledger.lastRunAt}) — nothing to announce`);
   process.exit(0);
 }
 
 const urlList = [
   `${AEO_ORIGIN}/`, // the home page's ItemList changes whenever any card does
   ...changed.map((c) => `${AEO_ORIGIN}/e/${encodeURIComponent(c.id)}`),
+  ...retired.map((id) => `${AEO_ORIGIN}/e/${encodeURIComponent(id)}`),
 ];
 
-console.log(`[indexnow] ${changed.length} card(s) changed since ${ledger.lastRunAt} → ${urlList.length} URL(s)`);
+console.log(`[indexnow] ${changed.length} changed + ${retired.length} retired since ${ledger.lastRunAt} → ${urlList.length} URL(s)`);
 
 if (DRY) {
   for (const u of urlList) console.log("  ", u);

@@ -39,7 +39,11 @@ const MIME = {
 };
 
 // Minimal static server over dist/. Vercel serves real files before rewrites,
-// so /e/<slug>/index.html resolves the same way here as in production.
+// so /e/<slug>/index.html resolves the same way here as in production — and an
+// unmatched navigation gets dist/404.html at a real 404, which is what Vercel
+// does with a 404.html in the output directory. Modelling that matters: this
+// server used to hand back index.html at 200 instead, which is exactly the
+// production bug (2026-09-07) it would then have been unable to see.
 function serve() {
   return new Promise((ready) => {
     const server = createServer((req, res) => {
@@ -56,7 +60,10 @@ function serve() {
           res.writeHead(404).end();
           return;
         }
-        path = resolve(DIST, "index.html");
+        const notFound = resolve(DIST, "404.html");
+        res.writeHead(404, { "content-type": "text/html" });
+        res.end(readFileSync(notFound));
+        return;
       }
       res.writeHead(200, { "content-type": MIME[extname(path)] ?? "application/octet-stream" });
       res.end(readFileSync(path));
@@ -138,6 +145,22 @@ try {
     check(words > 20, `/e/${firstCard} rendered only ${words} words`);
   }
 
+  // ---- a dead /e/ link says it is dead, and still gives the reader a feed ---
+  // Both halves at once, because either alone is a regression. A 200 here is
+  // the 2026-09-07 bug: expired card URLs served the home page, and Google read
+  // 312 identical pages as duplicates and stopped indexing them. An empty page
+  // here is the other failure — the reader who followed a stale invite link
+  // deserves this week's feed and the notice, not a bare error.
+  const dead = await page.goto(`${origin}/e/definitely-not-a-live-card`, { waitUntil: "networkidle" });
+  check(dead?.status() === 404, `a dead /e/ link answered ${dead?.status()}, not 404`);
+  check((await page.locator(".july-crash").count()) === 0, "the dead-link page showed the crash screen");
+  check(
+    (await page.locator(".july-notice").count()) > 0,
+    "the dead-link page never showed the \u201cthat one\u2019s wrapped\u201d notice",
+  );
+  const deadCards = await page.locator(".july-card").count();
+  check(deadCards > 0, `the dead-link page rendered ${deadCards} cards — the reader gets no feed`);
+
   // A page error is not automatically fatal — the map's own failure is logged
   // deliberately — but an UNCAUGHT one means something escaped containment.
   const uncaught = pageErrors.filter((m) => !/WebGL|SecurityError|Access is denied/i.test(m));
@@ -154,4 +177,7 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("✓ agent browser: feed renders, degrades honestly, and stays usable without WebGL or storage");
+console.log(
+  "✓ agent browser: feed renders, degrades honestly, stays usable without WebGL or storage, " +
+    "and a dead /e/ link answers 404 with the week's feed",
+);

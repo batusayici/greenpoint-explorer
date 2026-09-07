@@ -1,6 +1,5 @@
 {
   "rewrites": [
-    { "source": "/e/:slug", "destination": "/" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/privacy", "destination": "/privacy.html" }
   ],

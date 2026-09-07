@@ -4,6 +4,46 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-07 — An expired card's URL answers 404, not the home page
+
+**Trigger.** Google Search Console mailed four times on 2026-09-06: pages it will not index,
+reason "Duplicate, Google chose different canonical than user."
+
+**What was wrong.** `vercel.json` rewrote `/e/:slug` to `/` for any slug with no prerendered file.
+A live card has a real file so it was never affected, but an expired one — and every invented slug —
+answered **200 with the home page**, carrying the home canonical. Weekly expiry had produced 312 such
+URLs by this date, growing 40-60 a week, and many had been crawled and indexed while they were live.
+Google recrawled them, found hundreds of identical pages all claiming `/` as their canonical, and
+stopped indexing them. Checked and cleared at the same time: canonicals on live card pages, sitemap
+parity, the greenpoint-explorer.vercel.app mirror, `/terms` vs `/terms.html`, trailing-slash variants,
+and `/week`'s noindex. Verified per-URL against the Search Console URL Inspection API — live card
+pages show Google agreeing with the declared canonical.
+
+**The decision.** Delete the rewrite. The prerender step now writes `dist/404.html` from the same
+built shell, which Vercel serves with a real 404 for any unmatched path. The reader sees what they
+saw before: the SPA boots, `resolveDeepLink` returns dead, and CardPanel shows "That one's wrapped"
+above the live feed. The page declares **no canonical** — declaring one is what taught Google to read
+these as copies of `/` — plus noindex for anything that reads a body without honouring a status line.
+
+**Why 404 and not 410.** 410 needs a serverless function, which the "no backend" architecture line
+rules out for no gain: Google's documentation treats 404 and 410 the same, with 410 processed only
+slightly faster.
+
+**What it costs.** Link unfurls. An expired link pasted into Slack or iMessage used to preview as the
+home page and now previews as nothing. Old invite links do get reshared. Accepted: a preview of a
+page the link does not lead to is worse than no preview.
+
+**Gates added in the same change**, because nothing would otherwise have caught this — the routing was
+wrong for months and every test passed. `verify:aeo` fails if any `/e/` rewrite exists or if
+`404.html` is missing, has a canonical, or is not built from the app shell. `verify:agent-browser`
+drives a dead link in a real browser and fails on any status but 404, or on a page with no notice and
+no feed. Both were confirmed to fail with the bug reintroduced.
+
+**Also fixed.** IndexNow announced live cards only, so a deleted URL left Bing and Yandex whenever a
+crawler next wandered by. `expire-cards.mjs` now records what it deleted in the ingest ledger (90-day
+window, one entry per id) and the ping submits those URLs, which is how IndexNow is asked to drop one.
+The 312 URLs already dead are not backfilled — Google does not use IndexNow and drops them on recrawl.
+
 ## 2026-08-30 — DEFERRED: route the ingest's fetches through a relay, before the second neighborhood
 
 **Batu, deferring — "log the fetch relay as a decision for later (before we expand beyond

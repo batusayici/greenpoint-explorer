@@ -53,3 +53,43 @@ export function cardsToAnnounce(cards, { lastRunAt, now = new Date(), fallbackDa
     return day !== "" && day >= cutoffDay;
   });
 }
+
+// ---- retired cards (2026-09-07) --------------------------------------------
+// When a card expires, scripts/expire-cards.mjs deletes it and its /e/ page
+// goes with it (the standing no-archive rule), so the URL starts answering 404.
+// Nothing announced that. The ping walked the LIVE deck, so a URL could only
+// leave an index whenever a crawler next happened by — which for Google meant
+// months of recrawling dead links, and the 2026-09-06 duplicate-canonical mail.
+//
+// IndexNow is explicitly for this: submitting a deleted URL is how you ask for
+// it to be dropped. The cutoff is the same day-string comparison cardsToAnnounce
+// uses, for the same reason — see the two bugs documented at the top of this
+// file. Entries come from the ledger as { id, day }.
+export function retiredToAnnounce(retired, { lastRunAt, now = new Date(), fallbackDays = 1 } = {}) {
+  const runDay = lastRunAt ? nyDayKey(lastRunAt) : null;
+  const cutoffDay = runDay ?? nyDayKey(new Date(now.getTime() - fallbackDays * 86400000));
+  if (!cutoffDay) return [];
+  return (retired ?? [])
+    .filter((r) => r && typeof r.id === "string" && typeof r.day === "string")
+    .filter((r) => r.day.slice(0, 10) >= cutoffDay)
+    .map((r) => r.id);
+}
+
+// The ledger is committed, so this list has to stay bounded. 90 days is well
+// past any crawler's recheck interval and keeps a re-run of an old ingest from
+// re-announcing a URL that has been gone since spring. One entry per id, newest
+// kept: a slug can be retired twice (re-ingested, then expired again) and
+// announcing it twice is what got an earlier ping 403'd.
+export const RETIRED_WINDOW_DAYS = 90;
+
+export function trimRetired(retired, { now = new Date(), windowDays = RETIRED_WINDOW_DAYS } = {}) {
+  const cutoff = nyDayKey(new Date(now.getTime() - windowDays * 86400000));
+  const newest = new Map();
+  for (const r of retired ?? []) {
+    if (!r || typeof r.id !== "string" || typeof r.day !== "string") continue;
+    if (r.day.slice(0, 10) < cutoff) continue;
+    const prev = newest.get(r.id);
+    if (!prev || r.day > prev.day) newest.set(r.id, { id: r.id, day: r.day });
+  }
+  return [...newest.values()].sort((a, b) => (a.day === b.day ? a.id.localeCompare(b.id) : a.day.localeCompare(b.day)));
+}

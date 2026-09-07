@@ -3,10 +3,12 @@
 // Reads dist/index.html as the shell (so hashed asset refs survive) and the
 // live cards JSON, then writes the machine-readable surface into dist/:
 //   dist/e/<slug>/index.html   per live card (raw facts + schema.org JSON-LD)
+//   dist/404.html              the dead-link page, served at a real 404
 //   dist/sitemap.xml, dist/rss.xml, dist/events.ics, dist/llms.txt, dist/robots.txt
-// Vercel serves real files before rewrites, so expired/unknown /e/ slugs still
-// fall through to the SPA's dead-link notice. Freshness rides the deploy: every
-// ingest PR merge rebuilds this surface from the refreshed cards.
+// A live card has a real file, so it is served whatever the routing does. An
+// expired or unknown /e/ slug matches nothing and lands on 404.html — see
+// injectNotFoundPage for why that replaced the old rewrite to `/`. Freshness
+// rides the deploy: every ingest PR merge rebuilds this surface.
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
@@ -19,6 +21,7 @@ import {
   rssXml,
   icsText,
   llmsTxt,
+  injectNotFoundPage,
 } from "../src/demand-test/aeo.js";
 import { weekSheetHtml, weekSheetGroups } from "../src/demand-test/weekSheet.js";
 
@@ -54,6 +57,11 @@ writeFileSync(
 );
 const weekCount = weekSheetGroups(seed.cards, now).reduce((n, g) => n + g.cards.length, 0);
 
+// The dead-link page (2026-09-07). Vercel serves dist/404.html with a 404 for
+// any path that matches no file, which is every expired and every invented /e/
+// slug. Built from the same shell so the SPA boots and shows the live feed.
+writeFileSync(resolve(DIST, "404.html"), injectNotFoundPage(template));
+
 writeFileSync(resolve(DIST, "sitemap.xml"), sitemapXml(seed.cards, AEO_ORIGIN, now));
 writeFileSync(resolve(DIST, "rss.xml"), rssXml(seed.cards, AEO_ORIGIN, now));
 writeFileSync(resolve(DIST, "events.ics"), icsText(seed.cards, AEO_ORIGIN, now));
@@ -64,5 +72,5 @@ writeFileSync(
 );
 
 console.log(
-  `AEO prerender: home JSON-LD + ${live.length} card pages + /week sheet (${weekCount} dated) + sitemap/rss/ics/llms.txt/robots.txt -> dist/`,
+  `AEO prerender: home JSON-LD + ${live.length} card pages + /week sheet (${weekCount} dated) + 404 + sitemap/rss/ics/llms.txt/robots.txt -> dist/`,
 );

@@ -12,9 +12,11 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 import { expireCards, nyToday } from "../src/demand-test/ingestExpiry.js";
+import { trimRetired } from "../src/demand-test/indexNow.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CARDS_PATH = join(ROOT, "src/data/demand-test/cards.json");
+const LEDGER_PATH = join(ROOT, "src/data/demand-test/ingest-ledger.json");
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
@@ -48,6 +50,21 @@ if (deleted.length > 0) {
 if (!DRY && (deleted.length > 0 || pruned.length > 0)) {
   writeFileSync(CARDS_PATH, JSON.stringify({ ...seed, cards: kept }, null, 2) + "\n");
   console.log(`\nwrote ${CARDS_PATH}`);
+}
+
+// Record what was retired so the IndexNow ping can ask for those URLs to be
+// DROPPED (2026-09-07). This is the only place that knows: the card is gone
+// from cards.json a moment later and its /e/ page goes with it, so a build step
+// reading the live deck can never work out what used to be there. Before this,
+// a dead URL left an index only when a crawler next happened by.
+if (!DRY && deleted.length > 0) {
+  const ledger = JSON.parse(readFileSync(LEDGER_PATH, "utf8"));
+  ledger.retiredCards = trimRetired(
+    [...(ledger.retiredCards ?? []), ...deleted.map((d) => ({ id: d.id, day: today }))],
+    { now: new Date(`${today}T12:00:00-04:00`) },
+  );
+  writeFileSync(LEDGER_PATH, JSON.stringify(ledger, null, 2) + "\n");
+  console.log(`wrote ${LEDGER_PATH} (${ledger.retiredCards.length} retired URL(s) pending announcement)`);
 } else if (DRY) {
   console.log("\ndry run — nothing written");
 }

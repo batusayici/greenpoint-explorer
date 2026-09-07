@@ -208,6 +208,48 @@ if (keyFiles.length !== 1) {
   }
 }
 
+// 7. A dead /e/ link must ANSWER AS DEAD (2026-09-07). It used to answer 200
+//    with the home page: vercel.json rewrote `/e/:slug` to `/` whenever no
+//    prerendered file matched, so every expired card URL — 312 of them by the
+//    time this was written, and 40-60 more each week — served identical bytes
+//    under the home canonical. Google read them as copies of one page and
+//    stopped indexing them ("Duplicate, Google chose different canonical than
+//    user", mailed 2026-09-06).
+//
+//    Both halves are checked because either alone brings the bug back: the
+//    rewrite must be gone, AND 404.html must exist for Vercel to serve in its
+//    place. This reads vercel.json rather than dist/ — routing is the thing
+//    that was wrong, and no artefact in dist/ can show it.
+const vercelConfig = JSON.parse(readFileSync(resolve(ROOT, "vercel.json"), "utf8"));
+for (const rule of vercelConfig.rewrites ?? []) {
+  if (String(rule.source).startsWith("/e/")) {
+    fail(
+      "vercel.json",
+      `rewrite ${rule.source} -> ${rule.destination} makes every expired card URL answer 200 with another page; ` +
+        "expired slugs must fall through to 404.html",
+    );
+  }
+}
+
+if (!existsSync(resolve(DIST, "404.html"))) {
+  fail("/404.html", "missing — an unmatched path would get Vercel's bare error page, not the feed");
+} else {
+  const nf = read("404.html");
+  // No canonical: declaring `/` here is what made these pages duplicates.
+  const nfCanonicals = [...nf.matchAll(/<link rel="canonical"/g)].length;
+  if (nfCanonicals !== 0) fail("/404.html", `must declare no canonical, found ${nfCanonicals}`);
+  if (!/<meta name="robots" content="noindex"/.test(nf)) fail("/404.html", "missing noindex");
+  // Prose, for the same reason every other page here needs it: a crawler that
+  // does not run JS must be told what it landed on.
+  if (visibleWords(nf) < 20) fail("/404.html", `only ${visibleWords(nf)} visible words`);
+  if ([...nf.matchAll(/<h1[\s>]/g)].length !== 1) fail("/404.html", "expected exactly 1 <h1>");
+  // The SPA has to boot from this shell — that is what puts the live feed and
+  // the "That one's wrapped" notice under a reader who followed a stale link.
+  if (!/<div id="root">/.test(nf) || !/<script[^>]+src="\/assets\//.test(nf)) {
+    fail("/404.html", "not built from the app shell — the SPA will not boot, so the reader gets no feed");
+  }
+}
+
 // ---- report ----------------------------------------------------------------
 
 if (failures.length > 0) {
@@ -219,5 +261,6 @@ if (failures.length > 0) {
 
 console.log(
   `✓ AEO surface: ${live.length} card pages, ${listed.size} sitemap URLs, ` +
-    `${list?.itemListElement?.length ?? 0} dated events on the home page`,
+    `${list?.itemListElement?.length ?? 0} dated events on the home page, ` +
+    `dead /e/ links fall through to 404.html`,
 );
