@@ -4,6 +4,56 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-07 — Eight family/kids sources added; a Squarespace event feed's coordinates are never the venue
+
+**Trigger.** Batu asked what the family and kids coverage actually was. It was thin in a way the
+numbers hid: 19 cards carried the `family_kids` filter, but 6 of the 7 that were *events* were
+Greenpoint Library, and everything else was a standing class or membership card that never changes.
+A parent checking the map on a Saturday saw almost nothing new. Three parallel research passes swept
+kids classes and camps, schools and parent groups, and family venues and park programming.
+
+**What was missing.** Free outdoor family programming had no source at all — Friends of McGolrick
+Park (Puppetmobile puppet shows, art club, family bird walks, the Halloween trick-or-treat event),
+Friends of WNYC Transmitter Park, and North Brooklyn Parks Alliance were all absent. So was the
+Greenpoint Williamsburg Youth Soccer League, whose fall season had already started. Added those four
+plus Giggles & Wiggles' events page, The Wriggle, the Polish & Slavic Center, and Kingsland
+Wildflowers — the last of which had been in the WebFetch allowlist for weeks but was never in the
+roster, so nothing had ever read it. Roster is 72 → 80. All nine fetched clean on the first real run.
+
+**Two roster entries were pointed at the wrong page**, which is the quieter failure: PLAY Greenpoint
+was set to `/movie-nights`, one programme out of many, so its semester classes and family workshops
+were never read; the YMCA was set to the evergreen programs index rather than the camps calendar,
+where the dated school-break sessions that actually expire live. Both repointed, with the old URLs
+kept in a detail block so nothing that was being read stopped being read.
+
+**The durable finding — a Squarespace event feed's `location` coordinates are a default, not the
+venue.** Every event on both park calendars came back at 40.7207559 / -74.0007613, which is in lower
+Manhattan: 4.8km from McGolrick Park, 3.5km from Transmitter Park. The Wriggle is worse, because it
+is *mixed* — its Greenpoint Library row carried correct coordinates and a full street address, while
+its Tot Time row carried the same bogus default, and the two rows look identical. **Geocode from the
+address text, never from a Squarespace `location` lat/lng.** No shipped card is affected: the two
+Squarespace sources already in the roster (film-noir-cinema, carcosa-club) never requested the
+`location` field. This is written into all three new sources' notes because the next one will.
+
+**Also worth knowing.** Transmitter Park reuses one description across unrelated events — its
+Community Yoga and Longevity Stick entries both ship the Sunday Gardening blurb verbatim, so the
+excerpt cannot be a `sourceQuote`. `mcgolrickpark.org`, which still ranks in Google and appears in
+third-party listings, is a dead domain; the live one is `mcgolrick.org`. Two researchers disagreed
+and it was settled by curl.
+
+**Left out deliberately.** St. Stanislaus Kostka Academy publishes a public Google Calendar with
+3,281 events, and Greenpoint Reformed Church another with 1,584 — both verified live. Neither can be
+ingested: `fetch-sources.mjs` has no ICS reader, and `feed` throws on anything without RSS/Atom
+entries. Both are also mostly internal items needing a filter. That is a code change and its own
+piece of work. Sawyer (hisawyer.com) and union.fit 403 plain curl, not just our WebFetch tool, which
+keeps out ARTUDIO, Eckford Street Studio's pay-what-you-wish Saturday open studio, Greenpoint
+Gymnastics, and SPARŚA's baby music and prenatal yoga. Macaroni KID's calendar is a JavaScript shell.
+
+**The parents wedge has a wall.** All four Greenpoint public schools push event detail into
+ParentSquare, which needs a login, and their PTAs post only to Instagram and Facebook. School
+calendars cannot feed the map. Brooklyn Bridge Parents' District 14 open-house roundups are the
+closest available substitute and are not yet in the roster.
+
 ## 2026-09-07 — An expired card's URL answers 404, not the home page
 
 **Trigger.** Google Search Console mailed four times on 2026-09-06: pages it will not index,
