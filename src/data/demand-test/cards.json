@@ -7333,6 +7333,49 @@
       "sourceQuote": "Join us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park. … Tuesday, September 8, 7:00 AM to 8:00 AM\nTuesday, September 15, 7:00 AM to 8:00 AM",
       "lat": 40.729855,
       "lng": -73.960729
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "discount",
+      "id": "lockwood-clearance-sale-0914",
+      "title": "Clearance sale at Lockwood",
+      "kicker": "A week of it, 10am to 9pm daily",
+      "summary": "The shop's own events feed gives the run and the daily hours; it names no discount and no terms.",
+      "startsAt": "2026-09-14T10:00:00-04:00",
+      "endsAt": "2026-09-20T21:00:00-04:00",
+      "filters": [
+        "deals_memberships"
+      ],
+      "locationName": "Lockwood",
+      "address": "98 Greenpoint Ave",
+      "geocodeQuery": "98 Greenpoint Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Event",
+          "type": "learn_more",
+          "url": "https://www.facebook.com/events/1091829239854633"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Lockwood events feed",
+          "url": "https://lockwoodshop.com/pages/events",
+          "publisher": "Lockwood",
+          "date": "2026-09-07"
+        }
+      ],
+      "sourceQuote": "name: Lockwood's Epic Clearance Sale!\nstart_date_raw: 2026-09-14\nstart_time: 10:00 am\nend_date_raw: 2026-09-20\nend_time: 9:00 pm",
+      "lat": 40.729758,
+      "lng": -73.956966
     }
   ]
 }

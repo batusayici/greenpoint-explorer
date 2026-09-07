@@ -2739,7 +2739,8 @@
     "action-city-comics": "2026-08-16",
     "golden-drum": "2026-09-03",
     "nbk-open-streets": "2026-09-01",
-    "bellocq-tea": "2026-09-03"
+    "bellocq-tea": "2026-09-03",
+    "lockwood": "2026-09-06"
   },
   "coverageExplanations": [
     {
@@ -2911,13 +2912,6 @@
       "expiresAt": "2026-09-08"
     },
     {
-      "sourceId": "golden-drum",
-      "gapKey": "GAP",
-      "reason": "REPLACES the 2026-08-14 explanation, which said Golden Drum \"publishes nothing dated inside 2026-08-19 → 2026-09-02\" and is now wrong: this run's fetch added 51 lines carrying two real in-window workshops, and BOTH are carded (golden-drum-yara-drum-workshop-0824, golden-drum-sacred-roses-0825) — the source's first cards ever. What remains flagged is 2026-08-26, and that one IS still the annotation false positive the old note described: the only 8/26-looking string in the file is \"Sagittarius New Moon 12/08/26\", a DD/MM/YY label for December 8, 2026 that extractDates reads as August 26. Same annotation-vs-event blindness recorded for maison-jar and macha-studio. LESSON WORTH KEEPING: a \"this source has no supply\" explanation goes stale the moment the source publishes, so it must be re-earned against the CURRENT snapshot, never inherited.",
-      "addedAt": "2026-08-20",
-      "expiresAt": "2026-09-03"
-    },
-    {
       "sourceId": "play-kids-greenpoint",
       "gapKey": "UNMARKED STANDING?",
       "reason": "REVIEWED 2026-08-24: the recurring phrase is real but the SCHEDULE IS EXHAUSTED, which is a third state the flag does not have a slot for. The page frames the series standing — \"Drop-Off Events & Movie Nights / SUMMER 2026 Edition / FRIDAY evenings\", \"When: Fridays!\", \"What time: 5:30 - 8:30 pm\" — but every dated instance it lists has already happened: \"Friday, July 10, 5:30 pm\" (ASTERIX & OBELIX), \"Friday, July 24, 5:30 pm\" (GOAT), \"Friday, August 7, 5:30 pm\" (A MINECRAFT MOVIE) and \"Friday, August 21, 5:30 pm\" (TOY STORY 5). The last of those WAS carded (playkids-toy-story-0821) and expired on schedule this morning, so the deck reading empty is the series running out, not the source going dark. Carding a future Friday would mean inventing a date and a film the page does not state. This is deliberately NOT proposed as `standing: false` — the recurring programming is genuine, it is between editions, and the roster flag should be decided when the fall edition posts. WHAT WOULD CHANGE IT: PLAY Kids publishing a Fall 2026 edition, which will land as a normal diff.",
@@ -3044,13 +3038,6 @@
       "expiresAt": "2026-09-14"
     },
     {
-      "sourceId": "lockwood",
-      "gapKey": "GAP",
-      "reason": "ALL FOUR ARE THE HELD RULE QUESTION, not new work. The SociableKit feed prints a name, a date and a clock with no venue line for its own in-store events, and the rule that would place them at 98 Greenpoint Ave is proposed in PR #58 and NOT in force. Carding them now would pre-empt Batu's decision. The 9/12 item is separately out of area — \"name: Williamsburg's 5th Birthday Party!\" carries \"location_text: 485 Driggs Ave\". WHAT WOULD CHANGE IT: Batu ruling on the Lockwood rule in PR #58.",
-      "addedAt": "2026-09-07",
-      "expiresAt": "2026-09-21"
-    },
-    {
       "sourceId": "grownyc-mccarren-greenmarket",
       "gapKey": "STANDING DARK",
       "reason": "READ FOR THE FIRST TIME TODAY, AND ITS CARD IS IN THIS RUN'S REVIEW PR. The browser path that this source needs has been broken in the cloud routine for weeks and works on the machine this run used, so the page finally rendered: \"Saturday\\n8:00 am - 3:00 pm\", year-round, corroborated independently by the NYC Open Data farmers-market dataset. It is held only because it is a first-time-readable source, which the triage rules send to review. WHAT WOULD CHANGE IT: merging the review PR, which closes this line permanently.",
@@ -3068,6 +3055,20 @@
       "sourceId": "greenpoint-trash-club",
       "gapKey": "UNMARKED STANDING?",
       "reason": "THE SITE IS UNREADABLE BY EVERYONE, NOT JUST US, so this is not a source we failed to review. greenpointtrashclub.org errored this run with net::ERR_CERT_COMMON_NAME_INVALID, and an independent check of the certificate shows why: the host serves Netlify's wildcard \"CN=*.netlify.app\", which does not cover their own domain, so HTTPS fails for any visitor. The club's card was already deleted 2026-08-30 as unverifiable (its 7:30pm start existed only in an Instagram bio), and the standing flag cannot be decided from a page nobody can load. Deliberately NOT marked standing:false — the recurring programming is probably real; the site is broken. WHAT WOULD CHANGE IT: the club provisioning a certificate for their custom domain, or Batu deciding to drop the source.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "golden-drum",
+      "gapKey": "GAP",
+      "reason": "THE FLAGGED 9/21 DATE IS THE 22 METHOD, AND BATU RULED IT DOES NOT CARD (2026-09-07). The listing header prints \"Monday, September 21, 2026 / 12:00 PM\" and the body of the same page says \"September 21 - November 11, 2026: PLEASE NOTE THAT THE TIME WILL BE ADJUSTED TO ACCOMMODATE PARTICIPANTS WORLDWIDE.\" A dated card states one sitting a reader can turn up to, so a clock the venue has already said it will change is not a card. The rule is now in SKILL.md and turns on the SITTING, not on online-vs-in-person, so Golden Drum's other hybrid programming still cards when its time is fixed. WHAT WOULD CHANGE IT: the venue publishing a fixed time for this course.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "lockwood",
+      "gapKey": "GAP",
+      "reason": "RESOLVED BY THE NEW RULE, and what remains is not supply. Batu approved the events-feed rule on 2026-09-07 (PR #58), so Lockwood's Epic Clearance Sale shipped this run as lockwood-clearance-sale-0914, covering 9/14 through 9/20. Of the other flagged dates: 9/12 is out of area — the same feed prints \"location_text: 485 Driggs Ave, Brooklyn, NY 11211-2021\" for Williamsburg's 5th Birthday Party — and 9/07 is the MetroCard Mystery Weekend, which the feed ends at \"end_time: 8:00 pm\" tonight, so a card would be dead before the next run and the date leaves the window tomorrow. WHAT WOULD CHANGE IT: nothing outstanding.",
       "addedAt": "2026-09-07",
       "expiresAt": "2026-09-21"
     }

@@ -754,12 +754,16 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Tuesday yoga at Transmitter Park, re-authored as a recurring card after
   // the coverage check flagged 9/8 and 9/15 as dates Go Green carried and the
   // deck did not. 126 + 34 = 160.
-  assert.equal(seed.cards.length, 160);
+  //
+  // 2026-09-07, later the same day: +1. Batu approved the Lockwood events-feed
+  // rule (PR #58), so the clearance sale that had been held four times over
+  // could finally be pinned at the shop's own address. 161.
+  assert.equal(seed.cards.length, 161);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
   assert.equal(count((c) => c.category === "event"), 80, "46 after expiry + 34 dated adds (2026-09-07)");
-  assert.equal(count((c) => c.category === "discount"), 6, "7 − Moon Bunny's back-to-school discount, which expired 9/4 (2026-09-07)");
+  assert.equal(count((c) => c.category === "discount"), 7, "7 − Moon Bunny's expired back-to-school discount + Lockwood's clearance sale (2026-09-07)");
   assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
   assert.equal(count((c) => c.category === "subscription"), 27, "unchanged (2026-09-07)");
@@ -869,7 +873,10 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // 2026-09-07: −1 — Moon Bunny's back-to-school discount reached its own
   // stated "until Sept 4th" deadline and expiry removed it. This Monday full
   // refresh added no deals: its 33 adds are all dated events.
-  assert.equal(deals.length, 6);
+  // 2026-09-07 (later): +1 — Lockwood's clearance sale, 9/14-9/20, dated by
+  // its own feed and so correctly NOT recurring. Unblocked by the events-feed
+  // rule Batu approved that afternoon.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -1468,6 +1475,10 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // 2026-08-10, first non-degraded run: a standing monthly bulk-refill offer
     // at the zero-waste grocery. The page states the cadence but never a date,
     // which is the recurring + verified-through case, not a hold.
+    // 2026-09-07: Lockwood's clearance sale, unblocked by the events-feed rule.
+    // A shop's dated sale is a deal, not a shopping happening — same filing as
+    // Marianella's anniversary sale (2026-07-26 fold).
+    "lockwood-clearance-sale-0914",
     "maison-jar-refill-happy-hour",
     // (marianella-19th-anniversary-sale dropped 2026-08-17: the shop's own
     //  email closed the sale at midnight on 8/16. moon-bunny-back-to-school

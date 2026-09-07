@@ -4153,5 +4153,30 @@
         "-73.9509055"
       ]
     }
+  },
+  "98 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "98 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-07T17:58:35.308Z",
+    "hit": {
+      "place_id": 359198254,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132640,
+      "lat": "40.7297579",
+      "lon": "-73.9569663",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "98, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7296847",
+        "40.7298311",
+        "-73.9570231",
+        "-73.9569095"
+      ]
+    }
   }
 }
