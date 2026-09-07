@@ -35,7 +35,12 @@ section only when evidence answers it — then it becomes a belief.
   engage in-feed, not whether they'd install anything, so a positive result
   argues "meet them where they are," not specifically "build an app."
   _Evidence: L2026-08-15, and the near-total absence of generic-intent search
-  in L2026-08-17 is weakly consistent with it._
+  in L2026-08-17 is weakly consistent with it._ **First evidence on the other
+  side, 2026-09-01:** seven people reached the product through ChatGPT and six
+  of them opened a card, which means the web page worked as an answer's
+  substrate for people who never chose to open a browser. That addresses the
+  arrival half of Q1, not the return half, and does not displace the carousel
+  test. _Evidence: L2026-09-01._
 - **Q2 — Does the scan-layer failure hold for residents with a real errand?**
   Both testers who hit it (Sagar, and Josh in the opposite direction) are
   non-residents browsing without a task. A resident asking "what's on tonight"
@@ -110,34 +115,40 @@ when revised, and retired ones are struck rather than renumbered.
 
 ### How people arrive
 
-- **B9 — Search discovery is people hunting one specific thing, and it is the
-  only channel growing on its own.** Revised 2026-09-07. Every query is a place
-  or business name — `kirbees greenpoint`, `sereneco fire`, `bedford slip`;
-  still zero generic "what's happening in Greenpoint" queries, now across a
-  full month rather than the first 8 days. Volume doubled week over week
-  without anything being pushed (10 → 21 clicks, 228 → 456 impressions,
-  position 13.4 → 10.7), and it lands on individual card pages, not the home
-  page: the Sereneco fire card and the Kirbee's opening took 12 of 21 clicks
-  between them. Those arrivals also convert best — 6 of 7 Google visitors did
-  something, against 0 of 20 untagged direct arrivals. Caveat: both top pages
-  are news-shaped, a category the product carries but does not lead with.
-  _Evidence: L2026-09-07, L2026-08-17, L2026-08-11._
-- **B10 — Personal messages convert; nothing else has yet.** The
-  friends-and-family WhatsApp send produced 15 people, 39 card opens and 4
-  high-intent actions — the first campaign link in the project's history to
-  produce sessions at all. Organic sharing runs at a trickle (a few people via
-  the share button). _Evidence: L2026-08-13._
-- **B14 — An AI assistant has sent real readers, once.** On 2026-08-29 seven
+- **B9 — Discovery through machines is our best traffic, and it is the only
+  channel growing on its own.** Revised 2026-09-07, merging the 09-01 readout's
+  PostHog read with the first working Search Console pull. Every query is a
+  place or business name — `kirbees greenpoint`, `sereneco fire`, `bedford
+  slip` — and there are still zero generic "what's happening in Greenpoint"
+  queries, now across a full month rather than the first 8 days. Volume doubled
+  week over week without anything being pushed (10 → 21 clicks, 228 → 456
+  impressions, average position 13.4 → 10.7), Google is up to 38 people, and
+  Bing and Ecosia have started appearing. It lands on individual card pages
+  rather than the home page: the Sereneco fire and the Kirbee's opening took 12
+  of 21 clicks between them. These arrivals also convert best — 6 of 7 Google
+  visitors did something, against 0 of 20 untagged direct arrivals — and they
+  come from neither a link Batu sent nor the share button. Caveat: both top
+  pages are news-shaped, a category the product carries but does not lead with.
+  _Evidence: L2026-09-07, L2026-09-01, L2026-08-17, L2026-08-11._
+- **B14 — A metric can read zero because nothing is there, or because the
+  query cannot see it, and the readout cannot tell those apart on its own.**
+  Four consecutive readouts published "AI-referrer sessions: 0, all-time —
+  zero, not missing" while ChatGPT traffic sat in `utm_source`, because the
+  query keyed on `$referring_domain` and assistants strip it. Not a user
+  insight — an operational one, the measurement twin of B13.
+  _Evidence: L2026-09-01._
+- **B15 — An AI assistant has sent real readers, once.** On 2026-08-29 seven
   people arrived carrying `utm_source=chatgpt.com` — all New York, all Mobile
   Safari, and six of the seven opened a card, against 29% for locals overall.
   Batu confirmed 2026-09-07 that none of it was him or family, which was the
   competing explanation. It is one day that has not recurred, and ChatGPT's
   in-app browser does not carry an id between link taps, so the seven may be
   fewer humans. Read it as the first evidence the answer-engine bet works, not
-  as a channel. Note the measurement trap it exposed: ChatGPT strips the
-  referrer and tags the link instead, so four consecutive readouts reported
-  "AI referrers: zero" when the question had never been asked.
-  _Evidence: L2026-08-31, L2026-09-07._
+  as a channel. _Evidence: L2026-08-31, L2026-09-07._- **B10 — Personal messages convert; nothing else has yet.** The
+  friends-and-family WhatsApp send produced 15 people, 39 card opens and 4
+  high-intent actions — the first campaign link in the project's history to
+  produce sessions at all. Organic sharing runs at a trickle (a few people via
+  the share button). _Evidence: L2026-08-13._
 - **B11 — Aggregate visitor counts are heavily inflated by bots.** At the last
   geo split, 62 of 103 recorded "people" were automated: datacenter cities, one
   pageview each, not a single card open. The population has grown to 173 since
@@ -234,6 +245,73 @@ one or two people; and one day of tagged traffic that did not recur is not a
 channel. The webhook failure is not urgent and does not touch the numbers
 above.
 
+### L2026-09-01 — ChatGPT sent seven local readers, and our instrument had been reporting zero (analytics pull)
+
+Source: PostHog HogQL, pulled 2026-09-01 as part of the Tuesday growth readout
+(`docs/growth/readouts/2026-09-01.md`). Production hosts only.
+
+Facts: on 2026-08-29, seven distinct ids arrived carrying
+`utm_source=chatgpt.com` — 43 events across 13 URLs, twelve of them individual
+`/e/<slug>` card pages. All seven read as New York, Mobile Safari, mobile. Six
+of the seven opened a card (14 opens total); one `action_tap`, one
+`related_tap`, two filter taps, four pin taps. Two registered a second visit
+the same day. No ChatGPT-tagged traffic exists before or after that date. Over
+the same all-time window, locals open a card at 29% and all-production at 17%.
+The prior readouts' "AI-referrer sessions: 0, all-time" line was queried
+against `$referring_domain`, which reads `$direct` for these visitors —
+ChatGPT strips the referrer and tags the URL instead. The project's first
+production `$exception` ever recorded (`Script error.`, unhandled, Mobile
+Safari 26.6 / iOS, on `/e/bedford-slip-weekend-0829`) belongs to one of these
+seven. Separately in the same pull: Google 38 people (35 local, 37 landing
+pages), Bing 8, Ecosia 1.
+
+Read: Loop C has its first non-search evidence, and it converts better than
+anything else we have measured — which is what you would expect from an
+arrival that already knows what it came for. Two things temper it. The
+identity count is soft: PostHog here is cookieless, so seven ids on one day
+from the same region, browser and device could be fewer humans, though
+sessions spanning 15:24–22:01 with two incremented visit counts argue against
+one person. And it is a single day, so this is one assistant answer, not a
+channel yet. The durable lesson is about the instrument, not the traffic: we
+published "zero, not missing" four times about something we had no way to see.
+Before a metric is reported as zero, the query has to be able to return
+non-zero.
+
+Bearing on Q1 (is a website the right medium): weakly positive, and worth
+naming because it is the first evidence of any kind on that question. An
+assistant citing card pages means the container works for at least one arrival
+path that does not require anyone to open a browser on purpose — the person
+asked ChatGPT and the web page was the answer's substrate. It does not answer
+whether people would return to a site, which is the harder half of Q1, and it
+does not displace the Instagram carousel as the test that separates medium
+from messenger.
+
+### L2026-09-01 — The first weekly send: a broken tag, and mostly scanners (analytics pull)
+
+Source: same pull; Tally pulled live for all three forms the same session.
+
+Facts: the first weekly note went out 2026-08-25 and produced 15 arrivals
+across two `src` values — 8 on `digest` and 7 on `digest` with a trailing
+backtick, a tag that does not exist in `channel-links.md`. Fourteen of the
+fifteen geolocated to Oregon, Iowa, Georgia and Texas; each produced exactly
+two events and opened no cards. One arrival was in New York (Chrome on iOS)
+and also opened nothing. There are zero `?src=digest` events on or after
+2026-08-26. Signup list unchanged at 4 completions, 0 segmented, since
+2026-08-13; 31 form visits. Submit form: 10 visits, 0 starts, 0 submissions
+all-time. Feedback form: 1 submission (8/14, a mechanism check). The Follow
+ask has rendered for every visitor since 2026-08-19 and has been tapped zero
+times; the last Follow tap of any kind was 2026-08-13, and there have been six
+in the product's history.
+
+Read: the send's apparent click count is almost entirely mail-security link
+scanners pre-fetching URLs, which matters beyond this one send because D9
+reads the container question off `?src=digest` clicks. A click has to mean a
+click that produced a second, in-product event, or the scanners answer that
+question for us. The broken tag is a copy-fidelity failure one step upstream
+of `channel-links.md`: the table was right, and the readout handed over a URL
+wrapped in code formatting that a copy could take a character from. Both are
+cheap to fix and neither says anything yet about whether a weekly note works —
+one send, list of four, and no second send followed.
 ### L2026-08-17 — Google Search Console, first snapshot (analytics pull)
 
 Source: GSC Performance report for stoopwise.com, pulled 2026-08-17, covering

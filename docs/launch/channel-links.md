@@ -18,7 +18,7 @@ or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
 
 | Channel | `src` | Link (copy exactly) | Note |
 |---|---|---|---|
-| Weekly digest (R1 control arm) | `digest` | https://stoopwise.com/?src=digest | **new 2026-07-28** |
+| Weekly digest (R1 control arm) | `digest` | https://stoopwise.com/?src=digest | **new 2026-07-28** · ⚠ **first send 2026-08-25 lost 7 of 15 arrivals to a trailing backtick** — the link was copied out of a readout draft that wrapped it in code formatting, and the copy took the closing character with it, producing an orphan ``digest` `` tag that matches no row here. Copy the cell above and nothing around it. |
 | Follow — Family & Kids (R1 treatment) | `follow-family-kids` | https://stoopwise.com/?src=follow-family-kids | **new 2026-08-03** |
 | Follow — Food & Drink (R1 treatment) | `follow-food-drink` | https://stoopwise.com/?src=follow-food-drink | **new 2026-08-03** |
 | Follow — Arts & Culture (R1 treatment) | `follow-arts-culture` | https://stoopwise.com/?src=follow-arts-culture | **new 2026-08-03** |
