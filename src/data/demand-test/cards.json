@@ -8070,6 +8070,101 @@
           "date": "2026-09-07"
         }
       ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "id": "bk-youth-ballet-trial-class",
+      "category": "discount",
+      "free": false,
+      "title": "$40 trial class at Brooklyn Youth Ballet",
+      "kicker": "$40 to try before you enrol",
+      "summary": "One class at the studio's own price, meant for families weighing up the full semester rather than committing to it blind.",
+      "locationName": "Brooklyn Youth Ballet",
+      "address": "37 Greenpoint Ave, Suite 106",
+      "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY 11222",
+      "recurring": true,
+      "endsAt": "2026-09-21T23:59:00-04:00",
+      "filters": [
+        "family_kids",
+        "deals_memberships"
+      ],
+      "sourceQuote": "New to the studio? Trial a class before enrolling for a full semester.\nTrial Class\n$40.00 USD",
+      "relatedCardIds": [
+        "bk-youth-ballet-enrollment"
+      ],
+      "actions": [
+        {
+          "label": "Book a trial",
+          "type": "signup",
+          "url": "https://bkyouthballet.myshopify.com/products/trial-class?variant=52459122950375"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Trial a class",
+          "url": "https://bkyouthballet.com/calendar/",
+          "publisher": "Brooklyn Youth Ballet",
+          "date": "2026-09-07"
+        },
+        {
+          "title": "Trial Class",
+          "url": "https://bkyouthballet.myshopify.com/products/trial-class?variant=52459122950375",
+          "publisher": "Brooklyn Youth Ballet",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.729869,
+      "lng": -73.959022
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "id": "gwysl-fall-waitlist",
+      "category": "subscription",
+      "free": false,
+      "title": "Youth soccer waitlist at McCarren Park",
+      "kicker": "Season under way, waitlist still open",
+      "summary": "An all-volunteer league for ages 5 to 19, playing weeknights and weekends. Registration has closed but the system will still let you on if a place opens. Games are at McCarren or Bushwick Inlet.",
+      "locationName": "McCarren Park",
+      "address": "Driggs Ave & Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY",
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "Fall season starts on 9/12.\nRegistration is closed.\nYou can still join the waitlist by registering.\nIf there is room on the waitlist, the system will let you join.",
+      "actions": [
+        {
+          "label": "Join the waitlist",
+          "type": "signup",
+          "url": "https://www.gwysl.org/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Williamsburg Youth Soccer League",
+          "url": "https://www.gwysl.org/",
+          "publisher": "GWYSL",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.721159,
+      "lng": -73.952879
     }
   ]
 }

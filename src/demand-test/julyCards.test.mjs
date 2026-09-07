@@ -779,15 +779,22 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Transmitter Park's community yoga was NOT added: already carded from Go
   // Green as transmitter-park-yoga-tuesdays, which is the source overlap the
   // PR predicted. 176.
-  assert.equal(seed.cards.length, 176);
+  //
+  // 2026-09-07, fifth pass (Batu working the holds one by one): +2. The soccer
+  // league's fall waitlist, pinned at McCarren on Batu's own statement that
+  // "Games will be played at McCarren Park OR Bushwick Inlet Park" — the site
+  // itself names no field, which is what had held it. And the $40 Brooklyn
+  // Youth Ballet trial, back after Batu supplied the link: the price was never
+  // missing, it was on a SEPARATE myshopify host the roster does not read. 178.
+  assert.equal(seed.cards.length, 178);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
   assert.equal(count((c) => c.category === "event"), 95, "86 + 9 dated adds from the new family/kids sources (2026-09-07, fourth pass)");
-  assert.equal(count((c) => c.category === "discount"), 7, "7 − Moon Bunny's expired back-to-school discount + Lockwood's clearance sale (2026-09-07)");
+  assert.equal(count((c) => c.category === "discount"), 8, "7 + the re-authored Brooklyn Youth Ballet $40 trial (2026-09-07, fifth pass)");
   assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
-  assert.equal(count((c) => c.category === "subscription"), 27, "unchanged (2026-09-07)");
+  assert.equal(count((c) => c.category === "subscription"), 28, "27 + the GWYSL fall waitlist (2026-09-07, fifth pass)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -897,7 +904,16 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // 2026-09-07 (later): +1 — Lockwood's clearance sale, 9/14-9/20, dated by
   // its own feed and so correctly NOT recurring. Unblocked by the events-feed
   // rule Batu approved that afternoon.
-  assert.equal(deals.length, 7);
+  // 2026-09-07 (fifth pass): +1 — bk-youth-ballet-trial-class is BACK, 26 days
+  // after it was deleted above for having no readable price. The price was
+  // never missing: the roster reads bkyouthballet.com/calendar/ and the
+  // commerce lives on a separate host, bkyouthballet.myshopify.com, whose
+  // product page states "Trial Class" at "$40.00 USD". Batu supplied the link;
+  // the page was fetched and persisted into this source's snapshot before the
+  // card shipped. Recurring + verified-through, since no closing date is
+  // stated. The generalisable bit is in watchItems: check a business's STORE
+  // host before concluding a price is unpublished.
+  assert.equal(deals.length, 8);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -1563,6 +1579,10 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // 2026-09-04: an end-of-summer 15% code on the tea atelier's own shop.
     // No end date stated, so recurring + verified-through, not a membership.
     "bellocq-end-of-summer-sale",
+    // 2026-09-07, fifth pass: the $40 Brooklyn Youth Ballet trial, restored.
+    // A kids' deal double-files family_kids + deals_memberships on the PR #18
+    // reading, so its presence here is the rule working, not a lens collision.
+    "bk-youth-ballet-trial-class",
     "carcosa-membership-guest-pass",
     // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
     // different question than the event scan that preceded it: three of these

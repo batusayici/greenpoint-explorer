@@ -989,7 +989,12 @@
           "fullUrl"
         ]
       },
-      "notes": "WNYC Transmitter Park, Greenpoint Ave at the East River, 11222. Added 2026-09-07 from the family/kids source audit. Free recurring outdoor programming: Community Yoga (morning and sunset), Longevity Stick classes, Sunday Gardening volunteer mornings, Films Under the SummerStarz on Friday evenings in season, City of Water Day, City of Forest Day, Pollinator Party. Same Squarespace shape as friends-of-mcgolrick — verified 2026-09-07 with 15 items in `upcoming`, 30 in `past`. READ `upcoming` ONLY. startDate/endDate are epoch MILLISECONDS. Titles here often carry the date inline (\"Community Yoga (Morning) 9/8/26\") because each occurrence is its own record, so a recurring series arrives as many near-identical rows — card the SERIES, not one row per session, or the feed floods. ⚠ THE `excerpt` DOES NOT DESCRIBE THE EVENT IT IS ATTACHED TO. Measured 2026-09-07 on the first real fetch: 14 events came back carrying just 2 distinct excerpts between them — the Community Yoga and Longevity Stick entries both shipped the Sunday Gardening blurb word for word (\"we roll our sleeves and care for WNYC Transmitter Park's gardens and trees\"). The site owner is reusing one description across unrelated events. NEVER quote this field as the sourceQuote and never summarise from it; the title and the dates are trustworthy, the prose is not, so open the event's own fullUrl for anything a card needs to say. ⚠ IGNORE THE `location` COORDINATES for the same reason as friends-of-mcgolrick — every row here also carries the 40.7207559 / -74.0007613 Squarespace default, 3.5km from the actual park. Unlike McGolrick, this one DOES fill addressTitle (\"WNYC Transmitter Park\") and addressLine2 (\"Brooklyn, NY 11222\"), which are usable; the lat/lng are not. OVERLAP IS REAL AND ALREADY IN THE ROSTER: go-green-bk's notes name \"Friends of Transmitter Park classes, Movies Under the Stars\" and town-square-bk carries SummerStarz at this same park. Three sources can now describe one event; dedupe across all three."
+      "notes": "WNYC Transmitter Park, Greenpoint Ave at the East River, 11222. Added 2026-09-07 from the family/kids source audit. Free recurring outdoor programming: Community Yoga (morning and sunset), Longevity Stick classes, Sunday Gardening volunteer mornings, Films Under the SummerStarz on Friday evenings in season, City of Water Day, City of Forest Day, Pollinator Party. Same Squarespace shape as friends-of-mcgolrick — verified 2026-09-07 with 15 items in `upcoming`, 30 in `past`. READ `upcoming` ONLY. startDate/endDate are epoch MILLISECONDS. Titles here often carry the date inline (\"Community Yoga (Morning) 9/8/26\") because each occurrence is its own record, so a recurring series arrives as many near-identical rows — card the SERIES, not one row per session, or the feed floods. ⚠ THE `excerpt` DOES NOT DESCRIBE THE EVENT IT IS ATTACHED TO. Measured 2026-09-07 on the first real fetch: 14 events came back carrying just 2 distinct excerpts between them — the Community Yoga and Longevity Stick entries both shipped the Sunday Gardening blurb word for word (\"we roll our sleeves and care for WNYC Transmitter Park's gardens and trees\"). The site owner is reusing one description across unrelated events. NEVER quote this field as the sourceQuote and never summarise from it; the title and the dates are trustworthy, the prose is not, so open the event's own fullUrl for anything a card needs to say. ⚠ IGNORE THE `location` COORDINATES for the same reason as friends-of-mcgolrick — every row here also carries the 40.7207559 / -74.0007613 Squarespace default, 3.5km from the actual park. Unlike McGolrick, this one DOES fill addressTitle (\"WNYC Transmitter Park\") and addressLine2 (\"Brooklyn, NY 11222\"), which are usable; the lat/lng are not. OVERLAP IS REAL AND ALREADY IN THE ROSTER: go-green-bk's notes name \"Friends of Transmitter Park classes, Movies Under the Stars\" and town-square-bk carries SummerStarz at this same park. Three sources can now describe one event; dedupe across all three.",
+      "detail": {
+        "match": "transmitterpark\\.org/events/event-",
+        "limit": 12,
+        "delayMs": 400
+      }
     },
     {
       "id": "nbk-parks-alliance",
@@ -1017,29 +1022,6 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "42 West St, Unit 103, entrance on Noble St, 11222; Tue-Sun 10:30am-6:30pm; opened May 2026, stroller ramp. Added 2026-09-07 from the family/kids source audit. WE ALREADY HAD A CARD FOR THIS SHOP and it came from the Shop Small Greenpoint newsletter (July 2026), but their own events page was never a source — so the weekly Music with Shana, the Stay Small Art Club sessions, the STRONG (As a Mother) run club and the pediatric CPR workshops were all invisible. Verified plain-fetchable 2026-09-07 with real dated prose: dated one-offs (\"Sep 24 Stay Small Art Club ⏰ Thursday, September 24 · 12:30 PM\") AND a recurring block (\"Every Wednesday: Music with Shana, 10:30 AM & 11:30 AM\") that then lists each Wednesday date explicitly. The recurring block is the trap: card it as ONE weekly series, not five cards. Shopify site, but there is no events blog — /blogs/events.atom 404s — so the rendered page is the only surface. Several sessions are run by outside providers at this address (Stay Small Art Club, EXO), so check whose event it is before attributing."
-    },
-    {
-      "id": "the-wriggle",
-      "name": "The Wriggle (Greenpoint + Williamsburg family listings)",
-      "url": "https://www.thewriggle.com/event-listings?format=json",
-      "group": "roundup",
-      "cadence": "weekly",
-      "fetch": "json",
-      "citeHost": "thewriggle.com",
-      "json": {
-        "path": "upcoming",
-        "fields": [
-          "title",
-          "startDate",
-          "endDate",
-          "excerpt",
-          "location",
-          "tags",
-          "categories",
-          "fullUrl"
-        ]
-      },
-      "notes": "Added 2026-09-07 from the family/kids source audit. A family-events calendar built for exactly this catchment — Greenpoint plus Williamsburg — which is rare enough to be worth carrying even though it is secondhand. Verified 2026-09-07: `upcoming` carried 30 items, 15 of which mention Greenpoint, with clean structured fields and useful tags (Free, All Ages, age bands, day of week) and categories that often name the venue outright (\"Greenpoint Library\"). READ `upcoming` ONLY; `past` is on the same payload. TWO RULES, BOTH LEARNED ELSEWHERE IN THIS ROSTER. First, geography is not mechanical: half these listings are Williamsburg and the titles do not say so, which is the same trap as nbk-open-streets (Berry St vs Bedford Slip) and the Greenpointers Williamsburg-address gate — check the stated venue against the bbox on EVERY item. Second, THIS IS A DISCOVERY SURFACE, NOT THE SOURCE OF TRUTH: it is an aggregator and it re-describes other people's events, several of which we already read directly (Greenpoint Library is in the roster twice over). Use it to find things, then cite and quote the venue's own listing wherever one exists, and dedupe hard against greenpoint-library, friends-of-mcgolrick and the venue sources before carding. THE `location` COORDINATES HERE ARE MIXED, WHICH IS WORSE THAN UNIFORMLY WRONG — measured 2026-09-07: the Greenpoint Library row carried a correct 40.7260429/-73.9506351 with a full street address, while the Tot Time row carried the same 40.7207559/-74.0007613 Squarespace default that friends-of-mcgolrick and friends-of-transmitter-park ship. So some rows are trustworthy and some are not, and they look identical. Geocode from the addressTitle, never from the lat/lng. That same Tot Time row is also the geography rule in action: its venue is Marsha P. Johnson State Park, which is Williamsburg, and nothing in the title says so."
     },
     {
       "id": "polish-slavic-center",
