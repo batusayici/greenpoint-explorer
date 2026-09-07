@@ -33,7 +33,18 @@ Enabling the API is not access. Open
 <https://search.google.com/search-console> → Settings → **Users and permissions**
 → Add user → paste the service account's `client_email` (it looks like
 `gsc-read@stoopwise.iam.gserviceaccount.com`, and it's in the key file) →
-permission **Full**.
+permission **Restricted** — verified sufficient 2026-09-07.
+
+Do not grant Full. The script asks only for the `webmasters.readonly` scope and
+makes one read call, so Full buys nothing and costs a lot: it would let anyone
+holding the key use the Removals tool to pull the site out of Google's index
+for ~6 months, which is the single worst thing that could happen to a project
+betting on search and answer-engine visibility. The key is pasted into a cloud
+routine environment that warns it is readable by anyone using it, so assume the
+key is only as safe as the permission behind it. Give the service account no
+GCP IAM roles either (step 1) — it then has no access to anything in the Cloud
+project. If the key is ever exposed, delete it in GCP → service account → Keys;
+revocation is instant and a replacement takes a minute.
 
 Without this, the script fails with `SENSOR DOWN (auth): … HTTP 403` and tells
 you to come back here.
@@ -66,8 +77,21 @@ honest failures (DECISION_LOG 2026-08-10).
 ## 5. Cloud routine (do this when the readout runs unattended)
 
 The weekly readout routine at claude.ai/code needs the same two values in its
-environment. `GSC_SERVICE_ACCOUNT_JSON` accepts the key JSON **inline** as well
-as a path — paste the whole file contents as the variable value.
+environment. A path is useless there — the cloud routine has no filesystem with
+your key on it — so `GSC_SERVICE_ACCOUNT_JSON` takes the key JSON **inline**.
+
+**It must be minified to a single line first.** The downloaded key file is
+pretty-printed across ~28 lines, and the environment editor parses a paste as
+`.env` lines, so a multi-line paste fails on line 2 with
+`Couldn't parse ""type": "service_account",". Use KEY=value format.` Put the
+one-line form on the clipboard with:
+
+```bash
+node -e 'process.stdout.write(JSON.stringify(require(process.env.HOME+"/.config/stoopwise/gsc-service-account.json")))' | pbcopy
+```
+
+Then paste that as the value. The script accepts it because it treats a value
+starting with `{` as the key itself and anything else as a path.
 
 The routine's environment also has to allow egress to `oauth2.googleapis.com`
 and `searchconsole.googleapis.com`. If it doesn't, the script says so by name;

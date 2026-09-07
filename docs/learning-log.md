@@ -110,18 +110,34 @@ when revised, and retired ones are struck rather than renumbered.
 
 ### How people arrive
 
-- **B9 — Search discovery is branded lookup, but it converts.** People find us
-  by searching a business they already know; zero generic "what's happening in
-  Greenpoint" queries in the first 8 days. Yet those arrivals are our best
-  traffic: 6 of 7 Google visitors did something, against 0 of 20 untagged
-  direct arrivals. Low volume, high intent — and the first acquisition that
-  came from neither a link Batu sent nor the share button.
-  _Evidence: L2026-08-17, L2026-08-11._
+- **B9 — Search discovery is people hunting one specific thing, and it is the
+  only channel growing on its own.** Revised 2026-09-07. Every query is a place
+  or business name — `kirbees greenpoint`, `sereneco fire`, `bedford slip`;
+  still zero generic "what's happening in Greenpoint" queries, now across a
+  full month rather than the first 8 days. Volume doubled week over week
+  without anything being pushed (10 → 21 clicks, 228 → 456 impressions,
+  position 13.4 → 10.7), and it lands on individual card pages, not the home
+  page: the Sereneco fire card and the Kirbee's opening took 12 of 21 clicks
+  between them. Those arrivals also convert best — 6 of 7 Google visitors did
+  something, against 0 of 20 untagged direct arrivals. Caveat: both top pages
+  are news-shaped, a category the product carries but does not lead with.
+  _Evidence: L2026-09-07, L2026-08-17, L2026-08-11._
 - **B10 — Personal messages convert; nothing else has yet.** The
   friends-and-family WhatsApp send produced 15 people, 39 card opens and 4
   high-intent actions — the first campaign link in the project's history to
   produce sessions at all. Organic sharing runs at a trickle (a few people via
   the share button). _Evidence: L2026-08-13._
+- **B14 — An AI assistant has sent real readers, once.** On 2026-08-29 seven
+  people arrived carrying `utm_source=chatgpt.com` — all New York, all Mobile
+  Safari, and six of the seven opened a card, against 29% for locals overall.
+  Batu confirmed 2026-09-07 that none of it was him or family, which was the
+  competing explanation. It is one day that has not recurred, and ChatGPT's
+  in-app browser does not carry an id between link taps, so the seven may be
+  fewer humans. Read it as the first evidence the answer-engine bet works, not
+  as a channel. Note the measurement trap it exposed: ChatGPT strips the
+  referrer and tags the link instead, so four consecutive readouts reported
+  "AI referrers: zero" when the question had never been asked.
+  _Evidence: L2026-08-31, L2026-09-07._
 - **B11 — Aggregate visitor counts are heavily inflated by bots.** At the last
   geo split, 62 of 103 recorded "people" were automated: datacenter cities, one
   pageview each, not a single card open. The population has grown to 173 since
@@ -141,6 +157,82 @@ when revised, and retired ones are struck rather than renumbered.
   _Evidence: L2026-07-21._
 
 ## Log
+
+### L2026-09-07 — Search Console sensor live; search doubled in a week (analytics pull)
+
+Source: `npm run growth:gsc` run locally 2026-09-07, window 2026-08-29 →
+2026-09-04 against prior week, property `sc-domain:stoopwise.com`. First
+successful run of this script — the sensor had been down since it shipped.
+
+Facts: 21 clicks and 456 impressions, against 10 and 228 the week before.
+CTR 4.6% (prior 4.4%), average position 10.7 (prior 13.4). Ninety-two pages
+drew impressions across 14 queries. Two pages carry most of it: the Sereneco
+Franklin St fire card (8 clicks, 151 impressions, position 7.1) and the
+Kirbee's opening card (4 clicks, 95 impressions, position 11.7); the home page
+took 2 clicks on 23 impressions. Every query is a place or business name —
+`kirbees greenpoint`, `sereneco fire`, `bedford slip`, `troost greenpoint`,
+`film noir cinema`. The heuristic split records zero brand-name and zero
+generic-intent queries. One page clears the ≥10-impression zero-click bar:
+`/e/ashbox-cafe-closes`, 10 impressions at position 10.6. Google separately
+mailed a "50 clicks in 28 days" milestone dated 2026-09-04.
+
+The sensor had been reported for two cycles (readouts 2026-08-25 and
+2026-09-01) as two unset environment variables. That was not the blocker: the
+service account in `docs/growth/search-console-setup.md` steps 1–3 had never
+been created, so there was nothing for the variables to point at. Batu created
+it 2026-09-07 and granted it on the property; this session added the two
+variables to `.env.local`. The cloud routine's environment is still unset, so
+the scheduled readout stays `[data pending: search]` until that is done.
+
+Read: search is the only channel this project has that grew without being
+pushed, and it grew on individual card pages, not the home page — people are
+finding a specific dated thing, not a neighborhood map. That is the shape the
+answer-engine bet predicted (see L2026-08-31, where the ChatGPT arrivals landed
+the same way, and where the question of whether those were real referrals or
+Batu's own checking is still open). Carry two caveats: the two top pages are
+both news-shaped — a fire and an opening — which is a category the product
+covers but does not lead with, and one week against one prior week at these
+volumes is a small base where a single story moves the total.
+
+### L2026-08-31 — First ChatGPT-tagged arrivals, and a webhook that never delivered (analytics pull)
+
+Source: PostHog HogQL pulls run 2026-08-31 covering 2026-08-01 → 2026-08-31,
+plus the PostHog "Data Pipeline Failures" email Batu received 2026-08-30.
+
+Facts: on **2026-08-29**, 11 pageviews from 7 distinct ids carried
+`utm_source=chatgpt.com` — the first such arrivals in the project's history.
+All were Mobile Safari on iOS, all inside that one day, none returned on any
+other day. Landings: 24 pageviews on the home page and 12 across `/e/` card
+pages (`bedford-slip-weekend-0829`, `madelines-comedy-0825`,
+`brew-inn-greenpoint-trivia`, `kirbees-soft-launch-0830`, and nine others).
+Those ids produced 14 card opens, 4 pin taps, 2 filter taps, 1 action tap and
+1 related tap. Two of the seven sessions moved at machine speed: one opened 8
+cards in 2 minutes, another hit 7 distinct `/e/` pages in 56 seconds. 8/29 was
+the month's biggest interaction day (24 card opens, 14 people on pageviews);
+8/30 and 8/31 fell back to 3–7 pageviews.
+
+One `$exception` fired in the last 14 days — 2026-08-29 20:23 on
+`/e/bedford-slip-weekend-0829`, iOS Safari 26.6, unhandled, value
+`"Script error."` with no type, message, or stack (cross-origin). Single
+occurrence.
+
+The PostHog alert is about an **HTTP Webhook destination** in the Stoopwise
+project, created and last edited by Batu on 2026-08-14: 2 runs in 24h, both
+failed. It is an outbound forwarding destination — nothing in this repo
+defines it, targets it, or reads from it, and product event capture is
+unaffected. The read key is scoped `query:read`, so the destination's target
+URL and error body cannot be inspected from here (`hog_function:read` denied).
+
+Read: **resolved 2026-09-07 — these are real referrals.** Batu confirms
+neither he nor family produced the 8/29 chatgpt-tagged sessions, which was the
+alternative explanation the same-day-only, all-iOS, zero-return pattern also
+fit. So this is the first evidence for the answer-engine bet (see L2026-08-11,
+where the equivalent Google claim was made at n=7 and graduated nothing). Two
+caveats hold regardless: ChatGPT's in-app browser does not carry a stored id
+between link taps, so each tap can register as a fresh "person" — the 7 may be
+one or two people; and one day of tagged traffic that did not recur is not a
+channel. The webhook failure is not urgent and does not touch the numbers
+above.
 
 ### L2026-08-17 — Google Search Console, first snapshot (analytics pull)
 
