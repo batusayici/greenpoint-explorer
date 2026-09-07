@@ -4103,5 +4103,80 @@
         "-73.9591800"
       ]
     }
+  },
+  "664 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "664 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-07T13:28:59.233Z",
+    "hit": {
+      "place_id": 355523080,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081478,
+      "lat": "40.7247069",
+      "lon": "-73.9510708",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "664, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7246323",
+        "40.7247701",
+        "-73.9512027",
+        "-73.9509055"
+      ]
+    }
+  },
+  "WNYC Transmitter Park, Brooklyn, NY 11222": {
+    "query": "WNYC Transmitter Park, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-07T13:29:00.767Z",
+    "hit": {
+      "place_id": 358992001,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 239575014,
+      "lat": "40.7300774",
+      "lon": "-73.9604149",
+      "category": "leisure",
+      "type": "playground",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "leisure",
+      "name": "WNYC Transmitter Park Playground",
+      "display_name": "WNYC Transmitter Park Playground, Kent Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7299499",
+        "40.7301968",
+        "-73.9605510",
+        "-73.9603326"
+      ]
+    }
+  },
+  "1069 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "1069 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-07T13:29:02.151Z",
+    "hit": {
+      "place_id": 413604319,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 352429770,
+      "lat": "40.7353140",
+      "lon": "-73.9552088",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "1069, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7352640",
+        "40.7353640",
+        "-73.9552588",
+        "-73.9551588"
+      ]
+    }
   }
 }
