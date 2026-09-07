@@ -1320,6 +1320,45 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
   }
 });
 
+test("a title that names a venue agrees with the card's own locationName (2026-09-07)", () => {
+  // The Cub Scouts correction moved every field to St. John's Lutheran Church
+  // and left the title reading "at American Playground", so the h1, the
+  // <title>, the og/twitter titles and the JSON-LD name all contradicted the
+  // body of the same page — with the wrong half in the search result and the
+  // answer-engine citation. Nothing caught it: the quotes gate deliberately
+  // skips titles (a title is our words, not the source's) and no test compared
+  // the two. It surfaced by reading the live page after the deploy, which is
+  // not a gate.
+  //
+  // Deliberately a CLASS rule with no id allowlist, per the 2026-08-12 lesson:
+  // only exact-id entries go stale. The match is loose on purpose — a title
+  // says "at Troost" where locationName is "Troost", "at the Parkhouse" where
+  // it is "McCarren Parkhouse", "at Brooklyn Craft Company" where it is
+  // "Brooklyn Craft Company (BCC Shop)". So this asserts the two OVERLAP, not
+  // that they are equal: one contains the other, or they share a significant
+  // word. That is enough to catch a title naming an entirely different place,
+  // which is the only failure this exists for.
+  const norm = (v) => (v ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const STOP = new Set(["the", "and", "at", "of", "a", "brooklyn", "greenpoint", "new", "york"]);
+  const offenders = [];
+  for (const c of seed.cards) {
+    const m = / at (?:the )?(.+)$/i.exec(c.title ?? "");
+    if (!m || !c.locationName) continue;
+    const inTitle = norm(m[1]);
+    const venue = norm(c.locationName);
+    if (!inTitle || !venue) continue;
+    const shares = venue.includes(inTitle)
+      || inTitle.includes(venue)
+      || inTitle.split(" ").some((w) => w.length > 3 && !STOP.has(w) && venue.includes(w));
+    if (!shares) offenders.push(`${c.id}: title says "${m[1]}", locationName is "${c.locationName}"`);
+  }
+  assert.deepEqual(
+    offenders,
+    [],
+    "a title naming a different venue than the card is the half readers and crawlers see first — correct the title with the venue",
+  );
+});
+
 test("no card is lens-less (2026-08-13: the markets rule got its lens)", () => {
   // Empty filters (All-only) was a placeholder in July — the six 2026-07-25
   // stragglers all resolved into Civic or Arts & Culture same day. Between
