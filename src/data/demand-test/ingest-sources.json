@@ -1024,6 +1024,37 @@
       "notes": "42 West St, Unit 103, entrance on Noble St, 11222; Tue-Sun 10:30am-6:30pm; opened May 2026, stroller ramp. Added 2026-09-07 from the family/kids source audit. WE ALREADY HAD A CARD FOR THIS SHOP and it came from the Shop Small Greenpoint newsletter (July 2026), but their own events page was never a source — so the weekly Music with Shana, the Stay Small Art Club sessions, the STRONG (As a Mother) run club and the pediatric CPR workshops were all invisible. Verified plain-fetchable 2026-09-07 with real dated prose: dated one-offs (\"Sep 24 Stay Small Art Club ⏰ Thursday, September 24 · 12:30 PM\") AND a recurring block (\"Every Wednesday: Music with Shana, 10:30 AM & 11:30 AM\") that then lists each Wednesday date explicitly. The recurring block is the trap: card it as ONE weekly series, not five cards. Shopify site, but there is no events blog — /blogs/events.atom 404s — so the rendered page is the only surface. Several sessions are run by outside providers at this address (Stay Small Art Club, EXO), so check whose event it is before attributing."
     },
     {
+      "id": "st-stans-academy",
+      "name": "St. Stanislaus Kostka Academy (public Google Calendar)",
+      "url": "https://calendar.google.com/calendar/ical/ststansacademy.org_ji98jpmcb2sqi96ci7baop9k58%40group.calendar.google.com/public/basic.ics",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "ics",
+      "citeHost": "ststansacademy.org",
+      "ics": {
+        "windowDays": 21,
+        "exclude": [
+          "i-Ready", "Dress Down", "Dismissal", "No School", "Half Day", "Day of Classes",
+          "Orientation", "Confession", "Assessment", "Uniform", "Report Card",
+          "Progress Report", "Picture Day", "Faculty", "Staff", "Early Release", "Exam"
+        ]
+      },
+      "notes": "12 Newell St, 11222 — the parish school of St. Stanislaus Kostka, the largest Polish Catholic congregation in Brooklyn. Added 2026-09-07 with the `ics` reader built the same day; before that there was no way to read this format at all and the whole calendar was invisible. THE CALENDAR IS 3,281 EVENTS GOING BACK TO 2016 and it is overwhelmingly INTERNAL SCHOOL HOUSEKEEPING — dismissal times, i-Ready assessment windows, dress-down days, uniform notices. Measured 2026-09-07: the raw file yields 22 events in a 21-day window, and the exclude list above cuts that to 8. Do not remove the exclude list to \"see more\" — what it removes is not neighborhood supply, and without it this source floods every run. ⚠ THE PUBLIC EVENTS ARE A MINORITY AND THEY ARE WHAT WE ARE HERE FOR: the parish picnic, the back-to-school BBQ, school Masses explicitly marked \"Parents Welcome To Attend\", bake sales and fundraisers. A dismissal time is not a card; a picnic is. ⚠ ALMOST EVERY ENTRY IS ALL-DAY (VALUE=DATE), so DTSTART renders as a bare date with no clock — that is the source being honest, not a parse failure, and a card built from one takes `allDay: true` per the 2026-08-25 rule. Several summaries carry the real clock in their TEXT (\"8:15am School Mass\", \"6:30pm Back To School Parent Meeting\"), which IS a sourced time and can be carded as one. The site's /announcements page is stale (last dated Sept 2025) — this calendar is the live surface, not that page."
+    },
+    {
+      "id": "greenpoint-reformed-church",
+      "name": "Greenpoint Reformed Church (public Google Calendar)",
+      "url": "https://calendar.google.com/calendar/ical/bcr9e2gn3bnp5uko3f1l1cbkec%40group.calendar.google.com/public/basic.ics",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "ics",
+      "citeHost": "greenpointchurch.org",
+      "ics": {
+        "windowDays": 21
+      },
+      "notes": "136 Milton St, 11222. Added 2026-09-07 with the `ics` reader. 1,584 events, 237 of them recurring, and unlike St. Stans this one needs NO exclude list — measured 2026-09-07 it yields 18 events in 21 days and they are nearly all genuinely public. What it carries that the map wants: the Greenpoint Hunger Program's community meal and food pantry (real neighborhood utility, and the pantry line states the Milton St address outright), Sunday worship and family ministry, and a lot of AA and other 12-step meetings held upstairs in the Manse. ⚠ RECURRENCE IS THE WHOLE SOURCE HERE. Most entries are RRULEs seeded YEARS ago — the reader expands them into the window, so a series that began in 2014 correctly shows this week's dates. The seed date in the file is not the event date; read DTSTART, which is already expanded. EXDATE is honoured, so a cancelled single occurrence is skipped, which is exactly the `recurrence.except` shape a card wants. ⚠ ONE SOURCE CONFLICT IS ALREADY VISIBLE and will recur: the Community Meal's description says \"Each Wednesday afternoon\" while its RRULE says BYDAY=TU and its DTSTART is a Tuesday. Prose and rule disagree — apply the 2026-08-26 rule and prefer what a person wrote only when it is describing the same fact; here they are two different claims about the day, so the card must resolve it against the church before stating a day. Recurring 12-step meetings are almost certainly not cardable supply; judge per the lens rules rather than carding the calendar wholesale."
+    },
+    {
       "id": "polish-slavic-center",
       "name": "Polish & Slavic Center (WP REST)",
       "url": "https://polishslaviccenter.org/wp-json/wp/v2/posts?per_page=15",

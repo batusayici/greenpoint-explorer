@@ -35,6 +35,14 @@
 // Prefer "feed" wherever a source publishes one: it is the cheapest strategy,
 // it carries more than the rendered page, and it is immune to the browser
 // path being unavailable (2026-08-05).
+// "ics" = plain HTTP against an iCalendar (.ics) URL, added 2026-09-07 for the
+// parish and church calendars the family/kids audit found (St. Stanislaus
+// Kostka Academy, Greenpoint Reformed Church). It is NOT interchangeable with
+// "feed", which throws on anything without <item>/<entry>. Its config block is
+// `ics: { windowDays, include, exclude, fields }`, and windowDays plus exclude
+// are what make it usable at all: these calendars carry thousands of events
+// going back a decade, 99% of them internal housekeeping, so an unwindowed
+// snapshot is unreadable and churns the diff forever.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
@@ -42,6 +50,7 @@ import { createHash } from "node:crypto";
 import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
 import { decode, htmlToText } from "../src/demand-test/sourceText.js";
 import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
+import { icsToText } from "../src/demand-test/sourceIcs.js";
 import { classifyFetchFailure, isPolicyDenial, assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
 import { carryForwardBlocks, writeSnapshotPreservingBlocks } from "../src/demand-test/persistedBlocks.js";
 
@@ -478,6 +487,7 @@ const sourceUrls = (src) => (Array.isArray(src.urls) && src.urls.length ? src.ur
 const plainText = async (src) => htmlToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"));
 const feedText = async (src) => feedToText(await rawGet(sourceUrls(src)[0], "application/rss+xml,application/xml,text/xml"), src.feed ?? {});
 const browserPage = async (src) => browserText(sourceUrls(src)[0]);
+const icsText = async (src) => icsToText(await rawGet(sourceUrls(src)[0], "text/calendar,text/plain"), src.ics ?? {});
 
 async function jsonText(src) {
   const blocks = [];
@@ -511,8 +521,8 @@ async function probeHostDenial(src) {
   }
 }
 
-const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"], embedded: ["embedded"] }; // default: plain, then browser
-const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, embedded: embeddedText, browser: browserPage };
+const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"], embedded: ["embedded"], ics: ["ics"] }; // default: plain, then browser
+const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, embedded: embeddedText, browser: browserPage, ics: icsText };
 
 async function fetchSource(src) {
   const attempts = ATTEMPTS[src.fetch] ?? ["plain", "browser"];
