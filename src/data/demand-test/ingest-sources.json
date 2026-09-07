@@ -171,12 +171,19 @@
     },
     {
       "id": "play-kids-greenpoint",
-      "name": "PLAY Kids Greenpoint (movie nights)",
-      "url": "https://www.playgreenpoint.com/movie-nights",
+      "name": "PLAY Kids Greenpoint (classes & events)",
+      "url": "https://www.playgreenpoint.com/classes-events",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Batu 2026-08-05: the movie nights are here, not on /calendar. The /calendar page is the Wix Events widget that was verified EMPTY 2026-08-03 — that finding was correct but pointed at the wrong page. /movie-nights is plain-fetchable and carries real dates: verified 2026-08-05 with Friday Aug 7 and Friday Aug 21, drop-off 5:30-8:30pm. Kids-authored, so family_kids and NOT arts_culture (DECISION_LOG 2026-08-02). Also worth a look when a run needs more kids supply: /classes-events and /summer-camp are plain-fetchable on the same site."
+      "notes": "33 Nassau Ave (second location 31 Nassau). Batu 2026-08-05: the movie nights are on /movie-nights, not /calendar. The /calendar page is the Wix Events widget that was verified EMPTY 2026-08-03 — that finding was correct but pointed at the wrong page. /movie-nights is plain-fetchable and carries real dates: verified 2026-08-05 with Friday Aug 7 and Friday Aug 21, drop-off 5:30-8:30pm. REPOINTED 2026-09-07 (family/kids source audit): the primary URL was /movie-nights, which is ONE programme out of many, so semester classes, family workshops and enrichment were never being read — /classes-events is the fuller listing and /movie-nights now rides along in the detail block, so nothing that was being read stopped being read. Kids-authored, so family_kids and NOT arts_culture (DECISION_LOG 2026-08-02). Note the site also hosts Learn French BK's older-kids programme and, since The Play Lab folded into it, /the-play-lab — if a future run surfaces \"The Play Lab\" as a NEW venue it is this card, not a new one. Their Sawyer schedules (hisawyer.com/providers/play-greenpoint/...) are the live booking calendar but Sawyer 403s both our WebFetch tool AND plain curl, so they are not usable from the roster today.",
+      "detail": {
+        "urls": [
+          "https://www.playgreenpoint.com/movie-nights",
+          "https://www.playgreenpoint.com/summer-camp"
+        ],
+        "limit": 2
+      }
     },
     {
       "id": "last-place-on-earth",
@@ -633,7 +640,14 @@
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "99 Meserole Ave, Brooklyn NY 11222; 212-912-2260; open Mon-Fri 6am-11pm, Sat/Sun 6am-9pm. Onboarded 2026-08-08 — Batu is subscribed to the BRANCH list and nothing was reading it. Family/kids and wellness supply the roster otherwise lacks: swim, dance, early childhood, afterschool (3-6pm school days), teen programs, holiday camp. SEASONAL, NOT WEEKLY — programming runs in terms (Fall 1 starts Sept 8) with two registration gates, members first then community. Expect `unchanged` between terms; check at term boundaries, and card the REGISTRATION WINDOW, not individual class instances (same treatment as the dance-school fall registrations). A branch of a citywide nonprofit is IN SCOPE — the same reasoning that puts Greenpoint Library and NYC Parks on the map. This is not the PRESS Modern Massage multi-location case, which was a commercial chain."
+      "notes": "99 Meserole Ave, Brooklyn NY 11222; 212-912-2260; open Mon-Fri 6am-11pm, Sat/Sun 6am-9pm. Onboarded 2026-08-08 — Batu is subscribed to the BRANCH list and nothing was reading it. Family/kids and wellness supply the roster otherwise lacks: swim, dance, early childhood, afterschool (3-6pm school days), teen programs, holiday camp. SEASONAL, NOT WEEKLY — programming runs in terms (Fall 1 starts Sept 8) with two registration gates, members first then community. Expect `unchanged` between terms; check at term boundaries, and card the REGISTRATION WINDOW, not individual class instances (same treatment as the dance-school fall registrations). A branch of a citywide nonprofit is IN SCOPE — the same reasoning that puts Greenpoint Library and NYC Parks on the map. This is not the PRESS Modern Massage multi-location case, which was a commercial chain. CAMP PAGES ADDED 2026-09-07 (family/kids source audit): the programs-classes index is an evergreen menu, so between terms it says nothing and the school-break camps — which ARE dated and DO expire, exactly the shape the feed wants — were never being read. They live on /camps and /greenpoint-holiday-camp, now in the detail block.",
+      "detail": {
+        "urls": [
+          "https://ymcanyc.org/locations/greenpoint-ymca/programs-classes/camps",
+          "https://ymcanyc.org/greenpoint-holiday-camp"
+        ],
+        "limit": 2
+      }
     },
     {
       "id": "macha-studio",
@@ -934,6 +948,126 @@
         ],
         "limit": 1
       }
+    },
+    {
+      "id": "friends-of-mcgolrick",
+      "name": "Friends of McGolrick Park (Squarespace JSON)",
+      "url": "https://mcgolrick.org/calendar?format=json",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "json",
+      "citeHost": "mcgolrick.org",
+      "json": {
+        "path": "upcoming",
+        "fields": [
+          "title",
+          "startDate",
+          "endDate",
+          "excerpt",
+          "location",
+          "fullUrl"
+        ]
+      },
+      "notes": "Msgr. McGolrick Park, Driggs Ave / Monitor St, 11222. Added 2026-09-07 from the family/kids source audit, where it was the single best find: free all-ages programming year round — Puppetmobile puppet shows and puppet-making, McGolrick Art Club, family bird walks, Earth Day festival with kids' storytime and book swap, the McGhoulrick Halloween trick-or-treat event, monthly park cleanups, Park-to-Park walks. ⚠ THE DOMAIN EVERYONE LINKS TO IS DEAD. `mcgolrickpark.org` is NXDOMAIN — it still ranks in Google and still appears in third-party listings, and it resolves to nothing; two researchers disagreed on this and it was settled by curl on 2026-09-07 (mcgolrick.org 200/466KB, mcgolrickpark.org connection failure). The live domain is `mcgolrick.org`. If a source or a card ever cites mcgolrickpark.org, it is citing a dead host. Squarespace events collection, so ?format=json returns the whole upcoming set in one plain call — verified 2026-09-07, `upcoming` carried 2 dated events (Harvest Moon Walk 9/26, Puppetmobile 10/10) alongside 30 in `past`. READ `upcoming` ONLY: `past` is a live key on the same payload and ingesting it would ship finished events. startDate/endDate are epoch MILLISECONDS, not ISO. fullUrl is site-relative (/calendar/slug) so prefix the host when citing. ⚠ IGNORE THE `location` BLOCK'S COORDINATES — measured 2026-09-07 on the first real fetch, every event on this calendar carries mapLat 40.7207559 / mapLng -74.0007613, which is a Squarespace default sitting in lower Manhattan, 4.8km from McGolrick Park. It is not the venue. Geocode from the park name via the normal ingest:geocode path; taking these numbers would drop pins across the river. The `addressTitle`/`addressLine` fields inside the same block came back EMPTY here, so this source gives no usable address at all — the park is the venue, always. OVERLAP: go-green-bk already carries an organizer page for this group and its pinned detail URLs include mcgolrick-bird-club-2026, so expect some events to arrive twice — dedupe against go-green-bk before carding, don't assume a new id means a new event."
+    },
+    {
+      "id": "friends-of-transmitter-park",
+      "name": "Friends of WNYC Transmitter Park (Squarespace JSON)",
+      "url": "https://transmitterpark.org/events?format=json",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "json",
+      "citeHost": "transmitterpark.org",
+      "json": {
+        "path": "upcoming",
+        "fields": [
+          "title",
+          "startDate",
+          "endDate",
+          "excerpt",
+          "location",
+          "fullUrl"
+        ]
+      },
+      "notes": "WNYC Transmitter Park, Greenpoint Ave at the East River, 11222. Added 2026-09-07 from the family/kids source audit. Free recurring outdoor programming: Community Yoga (morning and sunset), Longevity Stick classes, Sunday Gardening volunteer mornings, Films Under the SummerStarz on Friday evenings in season, City of Water Day, City of Forest Day, Pollinator Party. Same Squarespace shape as friends-of-mcgolrick — verified 2026-09-07 with 15 items in `upcoming`, 30 in `past`. READ `upcoming` ONLY. startDate/endDate are epoch MILLISECONDS. Titles here often carry the date inline (\"Community Yoga (Morning) 9/8/26\") because each occurrence is its own record, so a recurring series arrives as many near-identical rows — card the SERIES, not one row per session, or the feed floods. ⚠ THE `excerpt` DOES NOT DESCRIBE THE EVENT IT IS ATTACHED TO. Measured 2026-09-07 on the first real fetch: 14 events came back carrying just 2 distinct excerpts between them — the Community Yoga and Longevity Stick entries both shipped the Sunday Gardening blurb word for word (\"we roll our sleeves and care for WNYC Transmitter Park's gardens and trees\"). The site owner is reusing one description across unrelated events. NEVER quote this field as the sourceQuote and never summarise from it; the title and the dates are trustworthy, the prose is not, so open the event's own fullUrl for anything a card needs to say. ⚠ IGNORE THE `location` COORDINATES for the same reason as friends-of-mcgolrick — every row here also carries the 40.7207559 / -74.0007613 Squarespace default, 3.5km from the actual park. Unlike McGolrick, this one DOES fill addressTitle (\"WNYC Transmitter Park\") and addressLine2 (\"Brooklyn, NY 11222\"), which are usable; the lat/lng are not. OVERLAP IS REAL AND ALREADY IN THE ROSTER: go-green-bk's notes name \"Friends of Transmitter Park classes, Movies Under the Stars\" and town-square-bk carries SummerStarz at this same park. Three sources can now describe one event; dedupe across all three."
+    },
+    {
+      "id": "nbk-parks-alliance",
+      "name": "North Brooklyn Parks Alliance",
+      "url": "https://nbkparks.org/programs-events/",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Native Nursery at 465 Scott Ave, 11222; programs across McCarren, Bushwick Inlet, Transmitter, Newtown Barge and Under the K. Added 2026-09-07 from the family/kids source audit. Publishes dated all-ages programming: Garden Club volunteer mornings (Sundays 10am-12pm, April-November), fall plant giveaways, native nursery volunteer days, weeding sessions, Fit Club. THIS IS THE OPEN SPACE ALLIANCE FOR NORTH BROOKLYN UNDER ITS NEW NAME (renamed 2018) — do NOT add OSA as a second source, it is the same organisation and would double-count every event. Plain fetch of the page works (verified 2026-09-07, 200/55KB with dated content), but their WordPress feed and REST API BOTH answer 429 rate-limited to the same client that just read the page fine, so `auto` on the HTML page is deliberate here — do not \"upgrade\" this to fetch:feed or a wp-json URL without re-testing, it will look like a dead source. The rate limiting is intermittent, not fixed: the first real run on 2026-09-07 fell through plain and landed on the BROWSER attempt, even though plain curl had read the page fine minutes earlier — so expect this source to cost a browser page some weeks. ⚠ THE SAME BLURB REPEATS WITH DIFFERENT HOURS. The fall plant giveaway text appears against several entries on this page, once saying \"465 Scott Ave (10AM – 5PM)\" and twice saying \"(10AM – 2PM)\" — the page contradicts itself on times, so a card must resolve the hours against the specific event, not the first match. Same failure shape as the Bedford Slip clean-up whose two conflicting times were settled by going to the organiser's own page. They also mirror to Eventbrite (eventbrite.com/o/north-brooklyn-parks-alliance-20230695455), which is already allowlisted, if the page ever stops being enough."
+    },
+    {
+      "id": "gwysl-youth-soccer",
+      "name": "Greenpoint Williamsburg Youth Soccer League",
+      "url": "https://www.gwysl.org/",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "All-volunteer non-profit youth soccer (AYSO Region 1328), games at McCarren Park and Bushwick Inlet Park, divisions U6 through U14-19. Added 2026-09-07 from the family/kids source audit — the biggest single thing the roster was missing for families, and nothing about it reached the map before. The HOMEPAGE is the source of record for the state that matters to a parent: verified 2026-09-07 carrying \"Fall season starts on 9/12. Registration is closed. You can still join the waitlist by registering.\" That registration/waitlist state is the cardable fact; it changes a few times a season and then sits still. SEASONAL, NOT WEEKLY, despite the cadence — expect long `unchanged` runs between the fall and spring windows, and check hardest at season boundaries. THE ACTUAL GAME SCHEDULE IS NOT FETCHABLE: it lives in a Google Doc linked off the site, and registration runs through GWYSL.InLeague.org. Card the season and the registration window, never individual games. Site is bilingual English/Spanish."
+    },
+    {
+      "id": "giggles-and-wiggles-events",
+      "name": "Giggles & Wiggles (events page)",
+      "url": "https://www.gigglesandwiggles.co/pages/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "42 West St, Unit 103, entrance on Noble St, 11222; Tue-Sun 10:30am-6:30pm; opened May 2026, stroller ramp. Added 2026-09-07 from the family/kids source audit. WE ALREADY HAD A CARD FOR THIS SHOP and it came from the Shop Small Greenpoint newsletter (July 2026), but their own events page was never a source — so the weekly Music with Shana, the Stay Small Art Club sessions, the STRONG (As a Mother) run club and the pediatric CPR workshops were all invisible. Verified plain-fetchable 2026-09-07 with real dated prose: dated one-offs (\"Sep 24 Stay Small Art Club ⏰ Thursday, September 24 · 12:30 PM\") AND a recurring block (\"Every Wednesday: Music with Shana, 10:30 AM & 11:30 AM\") that then lists each Wednesday date explicitly. The recurring block is the trap: card it as ONE weekly series, not five cards. Shopify site, but there is no events blog — /blogs/events.atom 404s — so the rendered page is the only surface. Several sessions are run by outside providers at this address (Stay Small Art Club, EXO), so check whose event it is before attributing."
+    },
+    {
+      "id": "the-wriggle",
+      "name": "The Wriggle (Greenpoint + Williamsburg family listings)",
+      "url": "https://www.thewriggle.com/event-listings?format=json",
+      "group": "roundup",
+      "cadence": "weekly",
+      "fetch": "json",
+      "citeHost": "thewriggle.com",
+      "json": {
+        "path": "upcoming",
+        "fields": [
+          "title",
+          "startDate",
+          "endDate",
+          "excerpt",
+          "location",
+          "tags",
+          "categories",
+          "fullUrl"
+        ]
+      },
+      "notes": "Added 2026-09-07 from the family/kids source audit. A family-events calendar built for exactly this catchment — Greenpoint plus Williamsburg — which is rare enough to be worth carrying even though it is secondhand. Verified 2026-09-07: `upcoming` carried 30 items, 15 of which mention Greenpoint, with clean structured fields and useful tags (Free, All Ages, age bands, day of week) and categories that often name the venue outright (\"Greenpoint Library\"). READ `upcoming` ONLY; `past` is on the same payload. TWO RULES, BOTH LEARNED ELSEWHERE IN THIS ROSTER. First, geography is not mechanical: half these listings are Williamsburg and the titles do not say so, which is the same trap as nbk-open-streets (Berry St vs Bedford Slip) and the Greenpointers Williamsburg-address gate — check the stated venue against the bbox on EVERY item. Second, THIS IS A DISCOVERY SURFACE, NOT THE SOURCE OF TRUTH: it is an aggregator and it re-describes other people's events, several of which we already read directly (Greenpoint Library is in the roster twice over). Use it to find things, then cite and quote the venue's own listing wherever one exists, and dedupe hard against greenpoint-library, friends-of-mcgolrick and the venue sources before carding. THE `location` COORDINATES HERE ARE MIXED, WHICH IS WORSE THAN UNIFORMLY WRONG — measured 2026-09-07: the Greenpoint Library row carried a correct 40.7260429/-73.9506351 with a full street address, while the Tot Time row carried the same 40.7207559/-74.0007613 Squarespace default that friends-of-mcgolrick and friends-of-transmitter-park ship. So some rows are trustworthy and some are not, and they look identical. Geocode from the addressTitle, never from the lat/lng. That same Tot Time row is also the geography rule in action: its venue is Marsha P. Johnson State Park, which is Williamsburg, and nothing in the title says so."
+    },
+    {
+      "id": "polish-slavic-center",
+      "name": "Polish & Slavic Center (WP REST)",
+      "url": "https://polishslaviccenter.org/wp-json/wp/v2/posts?per_page=15",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "json",
+      "citeHost": "polishslaviccenter.org",
+      "json": {
+        "path": "",
+        "fields": [
+          "title.rendered",
+          "link",
+          "date",
+          "content.rendered"
+        ]
+      },
+      "notes": "177 Kent St and 176 Java St, 11222 — the anchor institution for Polish Greenpoint, and the roster had nothing from it. Added 2026-09-07 from the family/kids source audit. Runs real family programming alongside its adult and senior services: Children's Carnival Ball, Easter fairs and Easter Bunny meet-and-greets, Polish Heritage Day, concerts, theatre. ⚠ THE CONTENT IS IN POLISH and that is deliberate — the English mirrors (en.polishslaviccenter.org, en.polishslaviccenter.us) are SIX MONTHS STALE, last posting March 2026, so pointing the ingest at the readable-looking English site would quietly read a dead feed. Read the Polish one and translate at card time; the sourceQuote must be the Polish verbatim, per the truth rules, with the translation in the summary. Site is fragmented across four hostnames — the canonical one is `polishslaviccenter.org` with NO www; the others are mirrors or stale. Every one of these hosts 403s our WebFetch tool, but the WP REST endpoint answers 200 to plain curl (verified 2026-09-07, 12KB, newest post four days old), which is why this is fetch:json against wp-json and not a page scrape — a WebFetch probe will make this live route look dead. Some events also post to Eventbrite (eventbrite.com/o/polish-and-slavic-center-inc-52323829763), already allowlisted, and ticketing runs through /shop/. NOT EVERY POST IS AN EVENT — the feed mixes recaps of things that already happened (\"Tak świętowaliśmy sierpniowe urodziny\") with announcements; card only the forward-dated ones."
+    },
+    {
+      "id": "kingsland-wildflowers",
+      "name": "Kingsland Wildflowers (green roof events)",
+      "url": "https://www.kingslandwildflowers.com/events",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "520 Kingsland Ave, 11222. Added 2026-09-07 from the family/kids source audit, closing an oversight rather than finding something new: kingslandwildflowers.com has been in the .claude/settings.json WebFetch allowlist for a while but was NEVER in this roster, so nothing was ever reading it. Publishes free public green-roof Open Hours (Fridays, spring and autumn seasons), Greenhouse Gang volunteer sessions, and an annual free family festival. Verified plain-fetchable 2026-09-07 (200/301KB). ⚠ THE PAGE KEEPS PAST EVENTS VISIBLE — 2024 and 2025 events still render alongside current ones, so filter by date before carding or you will ship a two-year-old festival. Low volume, hence monthly. OVERLAPS the Newtown Creek Alliance calendar, which programmes this same roof; expect duplicates if NCA is ever added."
     }
   ],
   "manualSources": [
