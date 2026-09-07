@@ -737,15 +737,32 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // added four more programmes to a day that had held only the two toddler
   // sittings, so it is now a Wednesday day-card running to 5:30pm.
   // 137 + 7 = 144.
-  assert.equal(seed.cards.length, 144);
+  //
+  // 2026-09-07 Monday full refresh, run LOCALLY because the cloud routine's
+  // browser path is broken by its proxy and this machine's is not: expiry took
+  // 18 past items (144 → 126), then 33 adds. The largest single block is
+  // eavesdrop, which had NO cards at all — the venue publishes two bills most
+  // nights and the coverage check never flagged it, because it cannot parse
+  // that snapshot's date format and so reports no signal rather than no
+  // supply. 13 of its nights are now carded. The rest fill the back of the
+  // window the coverage check DID flag: Troost on 9/19-9/21, Good Room's Love
+  // Games on 9/19 and FILM CLUB at Film Noir on 9/10. Six named one-off bills
+  // at Greenpoint Comedy Club (the weekly showcases stay uncarded), five
+  // Brooklyn Craft Company sessions whose newsletter line names the Shop or
+  // the Annex outright, Malifaux Monthly at Carcosa, Ayune's opening and the
+  // two Palette Cleanser nights at Greenpoint Loft. The 34th is the free
+  // Tuesday yoga at Transmitter Park, re-authored as a recurring card after
+  // the coverage check flagged 9/8 and 9/15 as dates Go Green carried and the
+  // deck did not. 126 + 34 = 160.
+  assert.equal(seed.cards.length, 160);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 33, "32 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.category === "event"), 63, "58 after expiry + 5 dated adds (2026-09-04)");
-  assert.equal(count((c) => c.category === "discount"), 7, "5 + Bellocq's sale and Selformer's intro pass (2026-09-04)");
-  assert.equal(count((c) => c.category === "news"), 21, "20 + the 148 Noble Street opening (2026-09-01)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 27, "25 after expiry + Troost and Good Room on 9/18 (2026-09-04)");
-  assert.equal(count((c) => c.category === "subscription"), 27, "26 + the Brooklyn Craft Company kids sewing enrollment (2026-09-02)");
+  assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
+  assert.equal(count((c) => c.category === "event"), 80, "46 after expiry + 34 dated adds (2026-09-07)");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 − Moon Bunny's back-to-school discount, which expired 9/4 (2026-09-07)");
+  assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
+  assert.equal(count((c) => c.category === "subscription"), 27, "unchanged (2026-09-07)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -849,7 +866,10 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // intro pass for two. Neither states an end date, so both take the standing
   // recurring + verified-through shape rather than a hold, with endsAt at the
   // end of the edition window for the next run to re-check.
-  assert.equal(deals.length, 7);
+  // 2026-09-07: −1 — Moon Bunny's back-to-school discount reached its own
+  // stated "until Sept 4th" deadline and expiry removed it. This Monday full
+  // refresh added no deals: its 33 adds are all dated events.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -963,10 +983,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // "Free while supplies last." on Sunday Scoops. The Eventbrite listings
     // behind three of them independently carry lowPrice 0.0.
     // (for-the-record-plantasia-0903 expired out 2026-09-04)
-    "kingsland-wildflowers-open-hours-0905",
-    "lentol-garden-bwsf-opening-0904",
-    "lentol-garden-corvids-0906",
-    "mccarren-sunday-scoops-0906",
+
     // (flowercat-live-band-karaoke-0828 expired out; greenpoint-trash-club
     // deleted 2026-08-30 — unverifiable past its verified-through date, its
     // site sits behind the broken browser path)
@@ -991,7 +1008,11 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-18: two more Movies Under the Stars screenings, same NYC Parks
     // boilerplate as the 8/19 one — "This event is FREE and open to the public."
     // (mccarren-movies-guardians-2-0826 expired out 2026-08-27)
-    "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
+    "mcgolrick-bird-club-0808",
+    // 2026-09-07: the free Tuesday yoga at Transmitter Park, re-authored after
+    // the coverage check flagged 9/8 and 9/15. Go Green states it outright:
+    // "a free outdoor yoga practice at WNYC Transmitter Park".
+    "transmitter-park-yoga-tuesdays", // "Free" on the Go Green Brooklyn listing
     // (nypd-94th-community-council-0903 expired out 2026-09-04 — Go Green
     // Brooklyn's page had stated it twice, as a bare "Free" under the date
     // line and again as "Cost: Free" in the details block.)
@@ -1123,6 +1144,10 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // double-files wellness + deals_memberships on the same reading that puts
     // a kids' discount in family_kids + deals_memberships (PR #18).
     "sparsa-greenpoint",
+    // 2026-09-07: free Tuesday yoga at Transmitter Park. Wellness, not civic —
+    // the 2026-08-30 growing-space rule sends gardening to civic, but this is
+    // the movement cluster the lens is defined by.
+    "transmitter-park-yoga-tuesdays",
     // (underthek-zumba-0827 expired out 2026-08-28)
   ]);
   // (the trash-club guard that stood here went with the card on 2026-08-30)
@@ -1149,6 +1174,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     "black-rabbit-nerd-alert-trivia",
     "black-rabbit-sunday-bingo",
     "brew-inn-greenpoint-trivia",
+      "carcosa-malifaux-monthly-0912",
     // 2026-08-06: Carcosa Club enters the graph on the first 14-day fill run —
     // the Squarespace JSON finally carried dated events (Malifaux 8/8, Hot Dog
     // Day 8/15). A game club's programme is play by definition.
@@ -1369,7 +1395,7 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // in shopping: the plant sale is part of an open day at a shared growing
     // space, not a retail happening, and it is not wellness because standing
     // on a green roof is not the movement cluster.
-    "kingsland-wildflowers-open-hours-0905",
+    // (kingsland-wildflowers-open-hours-0905 expired out 2026-09-07)
     "library-garden-hours-0911",
     // (nypd-94th-community-council-0903 expired out 2026-09-04 — the 94th
     // Precinct's monthly Community Council meeting, a standing civic meeting
@@ -1449,7 +1475,7 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "marianella-subscription-box",
     // 2026-08-18: a kids DEAL double-files family_kids + deals_memberships
     // (2026-08-03, PR #18) — 10% off the kids' dance and aerial/acro packs.
-    "moon-bunny-back-to-school-2026",
+
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
     "selformer-memberships",

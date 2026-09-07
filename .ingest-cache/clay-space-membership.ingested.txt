@@ -137,12 +137,6 @@ See the dimension and price
 Contact us ‍ ‍ COVID 19 protocols ‍ ‍ Career
 Copyright © 2025. All rights reserved.
 
-## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
-# Captured by the new roster `detail` mechanism and merged here so the
-# sourceQuote gate can re-check these cards. Merged rather than promoted via
-# --mark-ingested on purpose: marking would flag unreviewed content as already
-# processed and hide real supply from the next run.
-
 ## [DETAIL] https://www.clayspacebk.com/membership
 SKIP TO CONTENT
 For Adults
@@ -293,3 +287,9 @@ Masking:
 Clay Space is mask optional. If the CDC guidelines change at any point before or during the session we will follow the state’s requirements. In the event of a shut down, wherever possible, we will provide materials and online instruction to fulfill the remainder of the session. Where this is not possible, we will give you credit towards another current or future class, firing, or materials.
 Contact us‍ ‍COVID 19 protocols‍ ‍Career
 Copyright © 2025. All rights reserved.
+
+## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
+# Captured by the new roster `detail` mechanism and merged here so the
+# sourceQuote gate can re-check these cards. Merged rather than promoted via
+# --mark-ingested on purpose: marking would flag unreviewed content as already
+# processed and hide real supply from the next run.

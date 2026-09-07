@@ -4104,29 +4104,54 @@
       ]
     }
   },
-    "155 Milton St, Brooklyn, NY 11222": {
-      "query": "155 Milton St, Brooklyn, NY 11222",
-      "fetchedAt": "2026-08-31T13:42:26.477Z",
-      "hit": {
-        "place_id": 413604558,
-        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
-        "osm_type": "way",
-        "osm_id": 273326372,
-        "lat": "40.7294560",
-        "lon": "-73.9553248",
-        "category": "place",
-        "type": "house",
-        "place_rank": 30,
-        "importance": 9.99999999995449e-06,
-        "addresstype": "place",
-        "name": "",
-        "display_name": "155, Milton Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
-        "boundingbox": [
-          "40.7294060",
-          "40.7295060",
-          "-73.9553748",
-          "-73.9552748"
-        ]
-      }
+  "155 Milton St, Brooklyn, NY 11222": {
+    "query": "155 Milton St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-31T13:42:26.477Z",
+    "hit": {
+      "place_id": 413604558,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 273326372,
+      "lat": "40.7294560",
+      "lon": "-73.9553248",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "155, Milton Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294060",
+        "40.7295060",
+        "-73.9553748",
+        "-73.9552748"
+      ]
     }
+  },
+  "664 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "664 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-07T17:22:00.570Z",
+    "hit": {
+      "place_id": 359102597,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081478,
+      "lat": "40.7247069",
+      "lon": "-73.9510708",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "664, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7246323",
+        "40.7247701",
+        "-73.9512027",
+        "-73.9509055"
+      ]
+    }
+  }
 }

@@ -1,0 +1,3999 @@
+marketname: 175th Street Greenmarket
+borough: Manhattan
+streetaddress: W. 175th St. bet. Wadsworth Ave. & Broadway
+latitude: 40.845948
+longitude: -73.937811
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 4p.m.
+open_year_round: No
+year: 2025
+
+marketname: 4th Ave Sunset Park Greenmarket
+borough: Brooklyn
+streetaddress: 4th Ave. 60th St.
+latitude: 40.647975
+longitude: -74.003744
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: 57th Street Greenmarket
+borough: Manhattan
+streetaddress: 57th St. & 10th Ave.
+latitude: 40.769117
+longitude: -73.988559
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: 79th Street Greenmarket
+borough: Manhattan
+streetaddress: 79th St. & Columbus Ave.
+latitude: 40.782295
+longitude: -73.975244
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m
+open_year_round: Yes
+year: 2025
+
+marketname: 7th Ave Sunset Park Greenmarket
+borough: Brooklyn
+streetaddress: 7th Ave. & 44th St.
+latitude: 40.645841
+longitude: -74.002402
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: 82nd Street Greenmarket
+borough: Manhattan
+streetaddress: 82nd St. bet. 1st & York Aves
+latitude: 40.774292
+longitude: -73.951262
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2:30 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: 97th Street Greenmarket
+borough: Manhattan
+streetaddress: 97th St. bet. Columbus & Amsterdam Aves
+latitude: 40.794003
+longitude: -73.96807
+daysoperation: Friday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Abingdon Square Park Greenmarket
+borough: Manhattan
+streetaddress: Hudson St. & W 12th St.
+latitude: 40.737553
+longitude: -74.005687
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Bartel-Pritchard Square Greenmarket
+borough: Brooklyn
+streetaddress: Prospect Park W at 15th St.
+latitude: 40.661354
+longitude: -73.96968
+daysoperation: Wednesday & Sunday (starting 5/5)
+hoursoperations: 8 a.m. - 2 p.m. (W); 9 a.m. - 2 p.m. (SU)
+open_year_round: Yes (Wednesday)
+year: 2025
+
+marketname: Bay Ridge Greenmarket
+borough: Brooklyn
+streetaddress: 3rd Ave. & 95th St.
+latitude: 40.61781
+longitude: -74.03338
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Bed-Stuy Farmstand
+borough: Brooklyn
+streetaddress: Decatur St & Lewis Ave
+latitude: 40.681376
+longitude: -73.933948
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2:30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Bensonhurst Greenmarket
+borough: Brooklyn
+streetaddress: 18th Ave. bet. 81st & 82nd Sts
+latitude: 40.609588
+longitude: -73.999677
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Bissel Gardens Farmers Market
+borough: Bronx
+streetaddress: Baychester Ave & E 241st St
+latitude: 40.90152
+longitude: -73.846937
+daysoperation: Saturday
+hoursoperations: 10 a.m.- 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Black Radish Farmstand
+borough: Brooklyn
+streetaddress: 12020 Flatlands Ave.
+latitude: 40.651172
+longitude: -73.889936
+daysoperation: Saturday
+hoursoperations: noon - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Boro Park Greenmarket
+borough: Brooklyn
+streetaddress: 14th Ave. bet. 49th & 50th Sts
+latitude: 40.633285
+longitude: -73.990548
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Bowling Green Greenmarket
+borough: Manhattan
+streetaddress: Broadway at Battery Pl.
+latitude: 40.704549
+longitude: -74.01429
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Bro Sis Green Youth Market
+borough: Manhattan
+streetaddress: Amsterdam bet W 143rd & 144th Sts., at Johnny Hartman Plaza
+latitude: 40.82394
+longitude: -73.948552
+daysoperation: Wednesday
+hoursoperations: 10:30 a.m. - 6 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Bronx Borough Hall Greenmarket
+borough: Bronx
+streetaddress: 161st St. & Grand Concourse
+latitude: 40.827335
+longitude: -73.922911
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Bronx Park East (BxPE) Farmers Market
+borough: Bronx
+streetaddress: 2045 Bronx Park East, Bronx Park (Bradley Playground)
+latitude: 40.851713
+longitude: -73.867786
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: BronxWorks Farm Stand
+borough: Bronx
+streetaddress: 1130 Grand Concourse
+latitude: 40.832759
+longitude: -73.919296
+daysoperation: Thursday
+hoursoperations: 10 a.m.-2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Brooklyn Borough Hall Greenmarket
+borough: Brooklyn
+streetaddress: Montague & Court Sts
+latitude: 40.693722
+longitude: -73.990455
+daysoperation: Tusday & Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Brownsville Pitkin Farmstand
+borough: Brooklyn
+streetaddress: Pitkin Ave. & Thomas Boyland St.
+latitude: 40.669234
+longitude: -73.913698
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Carroll Gardens Greenmarket
+borough: Brooklyn
+streetaddress: Smith & Carroll Sts
+latitude: 40.680761
+longitude: -73.99552
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - CS211
+borough: Bronx
+streetaddress: 1919 Prospect Ave.
+latitude: 40.843546
+longitude: -73.889755
+daysoperation: Thursday
+hoursoperations: 1:30 p.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - Goodhue Center
+borough: Staten Island
+streetaddress: 304 Prospect Ave.
+latitude: 40.638936
+longitude: -74.097966
+daysoperation: Tuesday
+hoursoperations: 1:30 p.m. - 4:30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - Milbank Center
+borough: Manhattan
+streetaddress: 14-32 W. 118th St.
+latitude: 40.802317
+longitude: -73.946351
+daysoperation: Wednesday
+hoursoperations: 2:30 p.m. - 5:30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - PS 152
+borough: Manhattan
+streetaddress: 93 Nagle Ave.
+latitude: 40.860412
+longitude: -73.927936
+daysoperation: Tuesday
+hoursoperations: 2 p.m - 5 p.m.
+open_year_round: No
+year: 2025
+
+marketname: City Hall Greenmarket
+borough: Manhattan
+streetaddress: Broadway btw Chambers St and Warrent St
+latitude: 40.713696
+longitude: -74.00672
+daysoperation: Tuesdays
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Columbia Greenmarket
+borough: Manhattan
+streetaddress: Broadway & W. 114th St.
+latitude: 40.807145
+longitude: -73.964265
+daysoperation: Thursday & Sunday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Corona Greenmarket
+borough: Queens
+streetaddress: Roosevelt Ave. & 103rd St.
+latitude: 40.749869
+longitude: -73.862726
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Cortelyou Greenmarket
+borough: Brooklyn
+streetaddress: Cortelyou Rd. bet. Rugby & Argyle Rds
+latitude: 40.64051
+longitude: -73.966021
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Crown Heights Farmstand
+borough: Brooklyn
+streetaddress: Nostrand Ave. & Crown St. (NW corner)
+latitude: 40.666472
+longitude: -73.950807
+daysoperation: Friday
+hoursoperations: 9:30 a.m. - 2:30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Cypress Hills Farmstand
+borough: Brooklyn
+streetaddress: Fulton St. between Richmond and Logan Sts. ((in front of Cypress Hills Senior Center)
+latitude: 40.682391
+longitude: -73.913554
+daysoperation: Friday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Dag Hammarskjold Greenmarket
+borough: Manhattan
+streetaddress: E 47th St & 2nd Ave
+latitude: 40.752122
+longitude: -73.968154
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Domino Park Greenmarket
+borough: Brooklyn
+streetaddress: River St. bet. S 2nd & S 3rd Sts
+latitude: 40.715404
+longitude: -73.967423
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Down to Earth Chelsea Farmers Market
+borough: Manhattan
+streetaddress: 355 W. 23rd St.
+latitude: 40.745944
+longitude: -74.000004
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Down to Earth Cunningham Park Farmers Market
+borough: Queens
+streetaddress: 19600 Union Turnpike
+latitude: 40.730929
+longitude: -73.774773
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Down to Earth McGolrick Park Farmers Market
+borough: Brooklyn
+streetaddress: 108 Russell St.
+latitude: 40.724305
+longitude: -73.944271
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Down to Earth Morningside Park Farmers Market
+borough: Manhattan
+streetaddress: 237-331 Manhattan Ave.
+latitude: 40.801263
+longitude: -73.959582
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Down to Earth Park Slope Farmers Market
+borough: Brooklyn
+streetaddress: 289 4th St.
+latitude: 40.672424
+longitude: -73.984257
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: East New York Farm Stand
+borough: Brooklyn
+streetaddress: Euclid & Pitkin Aves.
+latitude: 40.675404
+longitude: -73.871914
+daysoperation: Thursday
+hoursoperations: 1-5 p.m.
+open_year_round: No
+year: 2025
+
+marketname: East New York Farmers Market
+borough: Brooklyn
+streetaddress: Schenck Avenue between New Lots and Livonia Avenues
+latitude: 40.665296
+longitude: -73.886557
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Eastchester Farmstand
+borough: Bronx
+streetaddress: E 229th St. bet. Schieffelin Pl. & Needham Ave.
+latitude: 40.88372
+longitude: -73.842046
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Edgemere Farm Market
+borough: Queens
+streetaddress: 385 Beach 45th St
+latitude: 40.595255
+longitude: -73.776524
+daysoperation: Friday & Saturday
+hoursoperations: 3 p.m. - 6 p.m. (Friday); 10 a.m. - 1 p.m. (Saturday)
+open_year_round: No
+year: 2025
+
+marketname: Elmhurst Hospital Greenmarket
+borough: Queens
+streetaddress: 41st Ave. bet. 80th & 81st Sts
+latitude: 40.745794
+longitude: -73.885489
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Far Rock Farm Stand
+borough: Queens
+streetaddress: 45-55 Beach Channel Dr.
+latitude: 40.595572
+longitude: -73.777001
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Flushing Greenmarket
+borough: Queens
+streetaddress: Sanford Ave. & Union St. (Bowne Playground)
+latitude: 40.757731
+longitude: -73.824852
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Forest Hills Greenmarket
+borough: Queens
+streetaddress: Queens Blvd. & 70th Ave.
+latitude: 40.722054
+longitude: -73.847155
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Forest Park Farmstand
+borough: Queens
+streetaddress: Park Lane S. & Myrtle Ave. (My Buddy Statue plaza)
+latitude: 40.701192
+longitude: -73.841597
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2:30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Fort Greene Greenmarket
+borough: Brooklyn
+streetaddress: Washington Park & Dekalb Ave.
+latitude: 40.691457
+longitude: -73.973421
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Fort Washington Greenmarket
+borough: Manhattan
+streetaddress: 168th St. & Ft. Washington Ave.
+latitude: 40.842296
+longitude: -73.942027
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Fresh Vibes Market at Brookdale Hospital
+borough: Brooklyn
+streetaddress: 1 Brookdale Plaza
+latitude: 40.654163
+longitude: -73.911584
+daysoperation: Friday (1st and 3rd of each month)
+hoursoperations: 11 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Fresh Vibes Market at Emblem Health Crown Heights
+borough: Brooklyn
+streetaddress: 546 Eastern Pkwy
+latitude: 40.669826
+longitude: -73.949958
+daysoperation: Wednesday (3rd Wednesday of each month)
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Fresh Vibes Market at Emblem Health East New York
+borough: Brooklyn
+streetaddress: 101 Pennsylvania Ave.
+latitude: 40.6753
+longitude: -73.896728
+daysoperation: Wednesday (2nd of each month)
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Fresh Vibes Market at Medgar Evers College
+borough: Brooklyn
+streetaddress: 1650 Bedford Ave.
+latitude: 40.666269
+longitude: -73.956676
+daysoperation: Monday (1st and 3rd)
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Fresh Vibes Market at the Bureau of Brooklyn Neighborhood Health
+borough: Brooklyn
+streetaddress: 485 Throop Ave.
+latitude: 40.685654
+longitude: -73.941462
+daysoperation: Friday (2nd and 4th)
+hoursoperations: 11 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Fresh Vibes Market at the Local Development Corportation of Crown Heights, Inc.
+borough: Brooklyn
+streetaddress: 252 Kingston Ave.
+latitude: 40.670929
+longitude: -73.942062
+daysoperation: Tuesday (1st of each month)
+hoursoperations: 11 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Fulton Stall Market (indoor farmers market)
+borough: Manhattan
+streetaddress: 91 South St. bet. Fulton & John Sts.
+latitude: 40.705865
+longitude: -74.003769
+daysoperation: Mon-Sat
+hoursoperations: 11:30 a.m. - 5 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Gouverneur Health Farmstand
+borough: Manhattan
+streetaddress: Madison St. bet. Clinton & Jefferson Sts.
+latitude: 40.712905
+longitude: -73.986928
+daysoperation: Friday
+hoursoperations: 8:30 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Grand Army Plaza Greenmarket
+borough: Brooklyn
+streetaddress: Grand Army Plaza
+latitude: 40.672525
+longitude: -73.969799
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Grass Roots Farmers' Market
+borough: Manhattan
+streetaddress: W 145th St bet Edgecombe & Bradhurst Aves, at Jackie Robinson Park
+latitude: 40.823647
+longitude: -73.943844
+daysoperation: Tuesday & Saturday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Greenmarket at Rockefeller Center
+borough: Manhattan
+streetaddress: Rockefeller Center Plaza at 50th St.
+latitude: 40.759204
+longitude: -73.978335
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 5 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harlem Health Market
+borough: Manhattan
+streetaddress: 163 W 125th St.
+latitude: 40.8089152
+longitude: -73.9475966
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harvest Home Coney Island Hospital Farmers Market
+borough: Brooklyn
+streetaddress: Ocean Pkwy bet. Avenue Z & Shore Pkwy.
+latitude: 40.5867
+longitude: -73.96615
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harvest Home Co-op City Farm Stand
+borough: Bronx
+streetaddress: Asch Loop & Aldrich Ave.
+latitude: 40.8702
+longitude: -73.830963
+daysoperation: Wednesday & Saturdays
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harvest Home East Harlem Farmers Market
+borough: Manhattan
+streetaddress: E. 104th St. & 3rd Ave.
+latitude: 40.7903
+longitude: -73.945635
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harvest Home Hunts Point Farm Stand
+borough: Bronx
+streetaddress: Southern Blvd. bet. Barretto & Tiffany Sts. (Luis Suarez Memorial Park)
+latitude: 40.81894
+longitude: -73.893492
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harvest Home Jacobi Hospital Farmers Market
+borough: Bronx
+streetaddress: 1400 Pelham Pkwy
+latitude: 40.8574
+longitude: -73.847079
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harvest Home Metropolitan Hospital Farmers Market
+borough: Manhattan
+streetaddress: E. 97th St. & 2nd Ave.
+latitude: 40.784943
+longitude: -73.946589
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Harvest Home Mt. Eden Malls Farmers Market
+borough: Bronx
+streetaddress: Mt. Eden & Morris Aves. (Claremont Park)
+latitude: 40.8429
+longitude: -73.909558
+daysoperation: Tuesday & Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Heritage Farm Stand (Compost Demonstration Site)
+borough: Staten Island
+streetaddress: 1000 Richmond Terrace (compost demonstration site)
+latitude: 40.645075
+longitude: -74.104753
+daysoperation: Thursday & Saturday
+hoursoperations: 3:30 p.m. - 6 p.m. (Thursday); 9 a.m. - 12 p.m. (Saturday)
+open_year_round: No
+year: 2025
+
+marketname: Inwood Greenmarket
+borough: Manhattan
+streetaddress: Isham St. bet. Seaman Ave. & Cooper St.
+latitude: 40.869001
+longitude: -73.920896
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Isabahlia Farmers Market at ISO Student Farm
+borough: Brooklyn
+streetaddress: 514 Rockaway Ave (ISO Student Farm)
+latitude: 40.667554
+longitude: -73.910207
+daysoperation: Friday & Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Isabahlia Farmers Market at Powell Street Garden
+borough: Brooklyn
+streetaddress: 410 Livonia Ave (In Front of Powell Street Garden)
+latitude: 40.663532
+longitude: -73.902236
+daysoperation: Friday & Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Jackson Heights Greenmarket
+borough: Queens
+streetaddress: 34th Ave. & 79th St.
+latitude: 40.753607
+longitude: -73.887739
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: JBOLC Garden Community Farmers Market
+borough: Bronx
+streetaddress: 100 W Mosholu Pkwy (James Baldwin Plaza)
+latitude: 40.882178
+longitude: -73.88691
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: La Familia Verde Farmers Market
+borough: Bronx
+streetaddress: E. Tremont Ave. bet. Arthur Ave & LaFontaine Ave.
+latitude: 40.846448
+longitude: -73.893563
+daysoperation: Tuesday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: La Familia Verde Farmers Market Highbridge Farmers Market
+borough: Bronx
+streetaddress: 1430 Plimpton Avenue
+latitude: 40.843627
+longitude: -73.922243
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: La Familia Verde Southern Boulevard Farmers Market
+borough: Bronx
+streetaddress: 1070 Southern Boulevard
+latitude: 40.824955
+longitude: -73.891918
+daysoperation: Thursday
+hoursoperations: 10 a.m. - 1 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Lenox Hill Farmstand
+borough: Manhattan
+streetaddress: 1st Ave. & 70th St. (Lenox Hill Neighborhood House)
+latitude: 40.766925
+longitude: -73.95795
+daysoperation: Thursday
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Lincoln Hospital Greenmarket
+borough: Bronx
+streetaddress: E. 149th St. bet. Park & Morris Aves
+latitude: 40.818013
+longitude: -73.925185
+daysoperation: Tuesdays & Fridays
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Lower East Side Farmstand
+borough: Manhattan
+streetaddress: Grand St. bet. Pitt & Willett Sts. (outside of Abrons Arts Center)
+latitude: 40.71521
+longitude: -73.984258
+daysoperation: Friday
+hoursoperations: 9 a.m. - 1 :30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: McCarren Park Greenmarket
+borough: Brooklyn
+streetaddress: N 12th btwn Union & Driggs Aves
+latitude: 40.719219
+longitude: -73.952479
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Morning Glory Market at the New York Botanical Gardens
+borough: Bronx
+streetaddress: 2900 Southern Blvd. (inside the Moshulu Gate entrance)
+latitude: 40.865684
+longitude: -73.883312
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Morris Heights Farmstand
+borough: Bronx
+streetaddress: University Avenue and W Burnside Ave. (NE corner)
+latitude: 40.854925
+longitude: -73.911078
+daysoperation: Wednesday
+hoursoperations: 9:30 a.m. - 2:30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Morrisania Farmstand
+borough: Bronx
+streetaddress: 169th St. & Boston Rd. (at McKinley Square)
+latitude: 40.83118
+longitude: -73.900545
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Mott Haven Farm Stand
+borough: Bronx
+streetaddress: 541 E 139th St. (Padre Plaza Garden)
+latitude: 40.807883
+longitude: -73.917885
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 1 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Mount Sinai Greenmarket
+borough: Manhattan
+streetaddress: 99th St. & Madison Ave.
+latitude: 40.789386
+longitude: -73.952595
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: New Roots Farm Stand
+borough: Bronx
+streetaddress: 670 Grand Concourse
+latitude: 40.821447
+longitude: -73.925492
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Norwood Farmstand
+borough: Bronx
+streetaddress: E. Gun Hill Rd. & Dekalb Ave. (SE corner)
+latitude: 40.88222
+longitude: -73.880458
+daysoperation: Thursday
+hoursoperations: 9:30 a.m. - 2:30 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Parkchester Greenmarket
+borough: Bronx
+streetaddress: Westchester Ave. & White Plains Rd.
+latitude: 40.833279
+longitude: -73.862833
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Perez Farm Stand
+borough: Queens
+streetaddress: 134-20 Jamaica Avenue, by the Axel Building
+latitude: 40.70236
+longitude: -73.818531
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Poe Park Greenmarket
+borough: Bronx
+streetaddress: E 192nd St. bet. Grand Concourse & Valentine
+latitude: 40.864310
+longitude: -73.895379
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Project EATS & St. Barnabas Hospital Farm Stand
+borough: Bronx
+streetaddress: 4507 3rd Ave.
+latitude: 40.853237
+longitude: -73.891742
+daysoperation: Wednesday
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Project EATS Brownsville Farm Stand
+borough: Brooklyn
+streetaddress: 300 Chester St.
+latitude: 40.664477
+longitude: -73.910384
+daysoperation: Thursday
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Project EATS Farm Stand at Essex Crossing
+borough: Manhattan
+streetaddress: 115 Delancey St.
+latitude: 40.719322
+longitude: -73.987817
+daysoperation: TBD
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Project EATS Farm Stand at The Crossing
+borough: Manhattan
+streetaddress: 1956 1st Avenue
+latitude: 40.786236
+longitude: -73.942511
+daysoperation: Saturday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: PS 11 Farm Market
+borough: Manhattan
+streetaddress: 320 W. 21st St.
+latitude: 40.744349
+longitude: -74.000253
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 10 a.m.
+open_year_round: No
+year: 2025
+
+marketname: PS 178 Farmers Market
+borough: Brooklyn
+streetaddress: 2163 Dean St.
+latitude: 40.675024
+longitude: -73.915778
+daysoperation: Wednesday
+hoursoperations: noon - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: PS 57 Farmstand
+borough: Manhattan
+streetaddress: 115th St. & 3rd Ave. (SW corner)
+latitude: 40.797577
+longitude: -73.94128
+daysoperation: Thursday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Queens County Farm Museum Farm Stand
+borough: Queens
+streetaddress: 73-50 Little Neck Pkwy
+latitude: 40.748163
+longitude: -73.719431
+daysoperation: Wednesday - Sunday
+hoursoperations: 10 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Queens Farm - Queens Borough Hall
+borough: Queens
+streetaddress: 120-55 QueensBlvd.
+latitude: 40.713318
+longitude: -73.82858
+daysoperation: Thursday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Queens Farm @ Jamaica Hospital
+borough: Queens
+streetaddress: 134-20 Jamaica Ave.
+latitude: 40.70236
+longitude: -73.818531
+daysoperation: Friday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Red Hook Farm Stand
+borough: Brooklyn
+streetaddress: 560 Columbia St.
+latitude: 40.672524
+longitude: -74.00871
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Ridgewood Farmstand
+borough: Queens
+streetaddress: Cypress Ave bet. Myrtle & Putnam Aves.
+latitude: 40.700403
+longitude: -73.90668
+daysoperation: Saturday
+hoursoperations: 9:30 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: RiseBoro Farmers Markets at Hope Ballfield
+borough: Brooklyn
+streetaddress: Knickerbocker Ave. bet. Menahan & Grove Sts.
+latitude: 40.69768
+longitude: -73.916366
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: RiseBoro Farmers Markets at Irving Square Park
+borough: Brooklyn
+streetaddress: Knickerbocker Ave., bet. Weirfield & Halsey Sts.
+latitude: 40.693761
+longitude: -73.909497
+daysoperation: Sunday
+hoursoperations: 9a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: RiseBoro Farmers Markets at Maria Hernandez
+borough: Brooklyn
+streetaddress: Knickerbocker Ave. bet. Suydam & Starr Sts.
+latitude: 40.702811
+longitude: -73.92539
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Riverdale Neighborhood House Youth Market
+borough: Bronx
+streetaddress: 5521 Mosholu Ave.
+latitude: 40.903039
+longitude: -73.90375
+daysoperation: Thursday
+hoursoperations: 1 p.m. - 6 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Riverdale Y Sunday Market
+borough: Bronx
+streetaddress: 4545 Independence Ave.
+latitude: 40.891762
+longitude: -73.912208
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Ruppert Park Greenmarket
+borough: Manhattan
+streetaddress: 90th Street & 2nd Avenue
+latitude: 40.780294
+longitude: -73.949521
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Saratoga Farm Stand
+borough: Brooklyn
+streetaddress: 1965-1971 Fulton St.
+latitude: 40.678562
+longitude: -0.000079704
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: St. George Greenmarket
+borough: Staten Island
+streetaddress: St Marks Pl. & Hyatt St.
+latitude: 40.641586
+longitude: -74.0779
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 1 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Staten Island Mall Greenmarket
+borough: Staten Island
+streetaddress: Marsh Ave. & Ring Rd.
+latitude: 40.583804
+longitude: -74.161245
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Stuyvesant Town Greenmarket
+borough: Manhattan
+streetaddress: North end of Stuyvesant Town Oval (near 20th St. Loop)
+latitude: 40.731498
+longitude: -73.97818
+daysoperation: Sunday
+hoursoperations: 9:30 a.m. - 4 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Sunnyside Greenmarket
+borough: Queens
+streetaddress: Skillman Ave. & 43rd St.
+latitude: 40.74701
+longitude: -73.92173
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Tompkins Square Greenmarket
+borough: Manhattan
+streetaddress: 7th St. & Avenue A
+latitude: 40.726054
+longitude: -73.983534
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Tribeca Greenmarket
+borough: Manhattan
+streetaddress: Greenwich & Chambers Sts.
+latitude: 40.716303
+longitude: -74.010966
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Tucker Square Greenmarket
+borough: Manhattan
+streetaddress: 66th St. & Broadway
+latitude: 40.773709
+longitude: -73.98196
+daysoperation: Thursday & Saturday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Two Bridges Youth Market
+borough: Manhattan
+streetaddress: 50 Madison St.
+latitude: 40.711958
+longitude: -73.997825
+daysoperation: Sunday
+hoursoperations: 10:30 a.m. - 3:00 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Union Square Greenmarket
+borough: Manhattan
+streetaddress: Union Square West & 17th St.
+latitude: 40.737133
+longitude: -73.990329
+daysoperation: Monday, Wednesday, Friday & Saturday
+hoursoperations: 8 a.m. - 6 p.m.
+open_year_round: Yes
+year: 2025
+
+marketname: Uptown Good Food Farm Stand & CSA
+borough: Manhattan
+streetaddress: 330 St. Nicholas Ave.
+latitude: 40.81172
+longitude: -73.951795
+daysoperation: Thursday
+hoursoperations: 4 p.m. - 7 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Uptown Good Food Farmers Market
+borough: Manhattan
+streetaddress: St Nicholas Ave &, W 137th St (St. Nicholas Park)
+latitude: 40.818521
+longitude: -73.947392
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Uptown Grand Central Farmstand
+borough: Manhattan
+streetaddress: 125th St. & Park Ave.
+latitude: 40.805396
+longitude: -73.939818
+daysoperation: Wednesday
+hoursoperations: 1:30 p.m. - 7 p.m
+open_year_round: No
+year: 2025
+
+marketname: Van Cortlandt Park Alliance Farm Stand
+borough: Bronx
+streetaddress: Orloff Ave & Gale Pl
+latitude: 40.884532
+longitude: -73.892172
+daysoperation: Wednesday
+hoursoperations: 2 p.m. - 7 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Woodhull Hospital Farmstand
+borough: Brooklyn
+streetaddress: Graham Ave. & Broadway
+latitude: 40.701022
+longitude: -73.942202
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2025
+
+marketname: Wyckoff House Museum Farmstand
+borough: Brooklyn
+streetaddress: 5816 Clarendon Rd
+latitude: 40.64497
+longitude: -73.920914
+daysoperation: Saturday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: No
+year: 2025
+
+marketname: 170 Farm Stand
+borough: Bronx
+streetaddress: 1406 Townsend Ave.
+latitude: 40.840138
+longitude: -73.916591
+daysoperation: Wednesday
+hoursoperations: 2 p.m. - 6 p.m.
+open_year_round: no
+year: 2024
+
+marketname: 175th Street Greenmarket
+borough: Manhattan
+streetaddress: W. 175th St. bet. Wadsworth Ave. & Broadway
+latitude: 40.845948
+longitude: -73.937811
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 4p.m.
+open_year_round: no
+year: 2024
+
+marketname: 4th Ave Sunset Park Greenmarket
+borough: Brooklyn
+streetaddress: 4th Ave. 60th St.
+latitude: 40.647975
+longitude: -74.003744
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: 57th Street Greenmarket
+borough: Manhattan
+streetaddress: 57th St. & 10th Ave.
+latitude: 40.769117
+longitude: -73.988559
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: 79th Street Greenmarket
+borough: Manhattan
+streetaddress: 79th St. & Columbus Ave.
+latitude: 40.782295
+longitude: -73.975244
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m
+open_year_round: yes
+year: 2024
+
+marketname: 7th Ave Sunset Park Greenmarket
+borough: Brooklyn
+streetaddress: 7th Ave. & 44th St.
+latitude: 40.645841
+longitude: -74.002402
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: 82nd Street Greenmarket
+borough: Manhattan
+streetaddress: 82nd St. bet. 1st & York Aves
+latitude: 40.774292
+longitude: -73.951262
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2:30 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: 92nd Street Greenmarket
+borough: Manhattan
+streetaddress: 92nd St. & 1st Ave.
+latitude: 40.781968
+longitude: -73.945267
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: 97th Street Greenmarket
+borough: Manhattan
+streetaddress: 97th St. bet. Columbus & Amsterdam Aves
+latitude: 40.794003
+longitude: -73.96807
+daysoperation: Friday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Abingdon Square Greenmarket
+borough: Manhattan
+streetaddress: Hudson St. & W 12th St.
+latitude: 40.737553
+longitude: -74.005687
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Astor Place Greenmarket
+borough: Manhattan
+streetaddress: E 8th St. & Lafayette Ave.
+latitude: 40.729820
+longitude: -73.991023
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 5 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Bartel-Pritchard Square Greenmarket
+borough: Brooklyn
+streetaddress: Prospect Park W at 15th St.
+latitude: 40.661354
+longitude: -73.969680
+daysoperation: Wednesday & Sunday (starting 5/5)
+hoursoperations: 8 a.m. - 2 p.m. (W); 9 a.m. - 2 p.m. (SU)
+open_year_round: Yes (Wed only)
+year: 2024
+
+marketname: Bay Ridge Greenmarket
+borough: Brooklyn
+streetaddress: 3rd Ave. & 95th St.
+latitude: 40.617810
+longitude: -74.033380
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Bed Stuy Farmstand
+borough: Brooklyn
+streetaddress: Decatur St & Lewis Ave
+latitude: 40.681371
+longitude: -73.934002
+daysoperation: Saturday
+hoursoperations: 9 a.m - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Bensonhurst Greenmarket
+borough: Brooklyn
+streetaddress: 18th Ave. bet. 81st & 82nd Sts
+latitude: 40.609588
+longitude: -73.999677
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Bissel Gardens Farmers Market
+borough: Bronx
+streetaddress: Baychester Ave & E 241st St
+latitude: 40.90152
+longitude: -73.846937
+daysoperation: Saturday
+hoursoperations: 10 a.m.- 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Boro Park Greenmarket
+borough: Brooklyn
+streetaddress: 14th Ave. bet. 49th & 50th Sts
+latitude: 40.633285
+longitude: -73.990548
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Bowling Green Greenmarket
+borough: Manhattan
+streetaddress: Broadway at Battery Pl.
+latitude: 40.704549
+longitude: -74.01429
+daysoperation: Tuesday & Thursday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Bro Sis Green Youth Market
+borough: Manhattan
+streetaddress: Amsterdam bet W 143rd & 144th Sts., at Johnny Hartman Plaza
+latitude: 40.82394
+longitude: -73.948552
+daysoperation: Wednesday
+hoursoperations: 10:30 a.m. - 6 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Bronx Borough Hall Greenmarket
+borough: Bronx
+streetaddress: 161st St. & Grand Concourse
+latitude: 40.827335
+longitude: -73.922911
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Bronx Park East (BxPE) Farmers Market
+borough: Bronx
+streetaddress: 2045 Bronx Park East, Bronx Park (Bradley Playground)
+latitude: 40.851713
+longitude: -73.867786
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: BronxWorks Farm Stand
+borough: Bronx
+streetaddress: 1130 Grand Concourse
+latitude: 40.832759
+longitude: -73.919296
+daysoperation: Thursday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Brooklyn Borough Hall Greenmarket
+borough: Brooklyn
+streetaddress: Montague & Court Sts
+latitude: 40.693722
+longitude: -73.990455
+daysoperation: Tusday & Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Brooklyn Grange Farm Stand
+borough: Brooklyn
+streetaddress: 850 3rd Ave (Roof)
+latitude: 40.658518
+longitude: -74.003327
+daysoperation: Sunday (monthly)
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Brownsville Pitkin Farmstand
+borough: Brooklyn
+streetaddress: Pitkin Ave. & Thomas Boyland St.
+latitude: 40.669234
+longitude: -73.913698
+daysoperation: Saturday
+hoursoperations: 8:30 a.m. - 1:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Carroll Gardens Greenmarket
+borough: Brooklyn
+streetaddress: Smith & Carroll Sts
+latitude: 40.680761
+longitude: -73.99552
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Chelsea's Down to Earth Farmers Market
+borough: Manhattan
+streetaddress: W. 23rd St btwn 8th & 9th Aves
+latitude: 40.745293
+longitude: -73.998488
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - CS211
+borough: Bronx
+streetaddress: 1919 Prospect Ave.
+latitude: 40.843546
+longitude: -73.889755
+daysoperation: Thursday
+hoursoperations: 1:30 p.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - Goodhue Center
+borough: Staten Island
+streetaddress: 304 Prospect Ave.
+latitude: 40.638936
+longitude: -74.097966
+daysoperation: Tuesday
+hoursoperations: 1 p.m. - 3:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - Milbank Center
+borough: Manhattan
+streetaddress: 14-32 W. 118th St.
+latitude: 40.802317
+longitude: -73.946351
+daysoperation: Wednesday
+hoursoperations: 2:30 p.m. - 5:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - PS 152
+borough: Manhattan
+streetaddress: 93 Nagle Ave.
+latitude: 40.860412
+longitude: -73.927936
+daysoperation: Tuesday
+hoursoperations: 2:30 p.m - 5 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Columbia Greenmarket
+borough: Manhattan
+streetaddress: Broadway & 114th St.
+latitude: 40.807145
+longitude: -73.964265
+daysoperation: Thursday & Sunday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Corona Greenmarket
+borough: Queens
+streetaddress: Roosevelt Ave. & 103rd St.
+latitude: 40.749869
+longitude: -73.862726
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Cortelyou Greenmarket
+borough: Brooklyn
+streetaddress: Cortelyou Rd. bet. Rugby & Argyle Rds
+latitude: 40.640510
+longitude: -73.966021
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Crown Heights Farmstand
+borough: Brooklyn
+streetaddress: Nostrand Ave. & Crown St.
+latitude: 40.666472
+longitude: -73.950807
+daysoperation: Friday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Cunningham Park's Down to Earth Farmers Market
+borough: Queens
+streetaddress: Union Turnpike & 196th Place
+latitude: 40.731082
+longitude: -73.773997
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Cypress Hills Farmstand
+borough: Brooklyn
+streetaddress: Fulton St. between Richmond and Logan Sts.
+latitude: 40.682391
+longitude: -73.913554
+daysoperation: Friday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Dag Hammarskjold Greenmarket
+borough: Manhattan
+streetaddress: 47th St & 2nd Ave
+latitude: 40.752122
+longitude: -73.968154
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Domino Park Greenmarket
+borough: Brooklyn
+streetaddress: River St. bet. S 1st & S 3rd Sts
+latitude: 40.715385
+longitude: -73.967441
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: East New York Farmers Market
+borough: Brooklyn
+streetaddress: Schenck Avenue between New Lots and Livonia Avenues
+latitude: 40.665296
+longitude: -73.886557
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: East New York Farmers Stand I
+borough: Brooklyn
+streetaddress: Euclid & Pitkin Aves.
+latitude: 40.675404
+longitude: -73.871914
+daysoperation: Thursday
+hoursoperations: 1:30 p.m. - 5:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Eastchester Farmstand
+borough: Bronx
+streetaddress: 1250 E 229th St. (Northeast Bronx YMCA)
+latitude: 40.88372
+longitude: -73.842046
+daysoperation: Wednesday
+hoursoperations: 9:30 a.m. - 2:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Edgemere Farm Market
+borough: Queens
+streetaddress: 385 Beach 45th St
+latitude: 40.595255
+longitude: -73.776524
+daysoperation: Friday
+hoursoperations: 3 p.m. - 7 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Edible Schoolyard NYC's Farm Stand at PS 216
+borough: Brooklyn
+streetaddress: 350 Avenue X
+latitude: 40.590564
+longitude: -73.969964
+daysoperation: Friday
+hoursoperations: 1:30 p.m. - 3:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Elmhurst Hospital Greenmarket
+borough: Queens
+streetaddress: 41st Ave. bet. 80th & 81st Sts
+latitude: 40.745794
+longitude: -73.885489
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Far Rock Farm Stand
+borough: Queens
+streetaddress: 45-55 Beach Channel Dr.
+latitude: 40.595572
+longitude: -73.777001
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Flushing Greenmarket
+borough: Queens
+streetaddress: Sanford Ave. & Union St. (Bowne Playground)
+latitude: 40.757731
+longitude: -73.824852
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Forest Hills Greenmarket
+borough: Queens
+streetaddress: Queens Blvd. & 70th Ave.
+latitude: 40.722054
+longitude: -73.847155
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Forest Park Farmstand
+borough: Queens
+streetaddress: Park Lane S. & Myrtle Ave.
+latitude: 40.701192
+longitude: -73.841597
+daysoperation: Saturday
+hoursoperations: 8:30 a.m. - 2 p.m.
+open_year_round: TBD
+year: 2024
+
+marketname: Fort Greene Greenmarket
+borough: Brooklyn
+streetaddress: Washington Park & Dekalb Ave.
+latitude: 40.691457
+longitude: -73.973421
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Fort Washington Greenmarket
+borough: Manhattan
+streetaddress: 168th St. & Ft. Washington Ave.
+latitude: 40.842296
+longitude: -73.942027
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Fresh Vibes Market at Emblem Health Crown Heights
+borough: Brooklyn
+streetaddress: 546 Eastern Pkwy
+latitude: 40.669826
+longitude: -73.949958
+daysoperation: Wednesday (3rd)
+hoursoperations: 12 p.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Fresh Vibes Market at Emblem Health East New York
+borough: Brooklyn
+streetaddress: 101 Pennsylvania Avenue
+latitude: 40.6753
+longitude: -73.896728
+daysoperation: Wednesday (2nd)
+hoursoperations: 12 p.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Fresh Vibes Market at the Bureau of Brooklyn Neighborhood Health
+borough: Brooklyn
+streetaddress: 485 Throop Avenue
+latitude: 40.685654
+longitude: -73.941462
+daysoperation: Friday (2nd and 3rd)
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Fulton Stall Market (indoor farmers market)
+borough: Manhattan
+streetaddress: 91 South St.
+latitude: 40.705865
+longitude: -74.003769
+daysoperation: Mon-Sat
+hoursoperations: 11:30 a.m. - 5 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Gouverneur Health Farmstand
+borough: Manhattan
+streetaddress: Madison St. bet. Clinton & Jefferson Sts.
+latitude: 40.712905
+longitude: -73.986928
+daysoperation: Friday
+hoursoperations: 8:30 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Grand Army Plaza Greenmarket
+borough: Brooklyn
+streetaddress: Grand Army Plaza
+latitude: 40.672525
+longitude: -73.969799
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Grass Roots Farmers' Market
+borough: Manhattan
+streetaddress: W 145th St bet Edgecombe & Bradhurst Aves, at Jackie Robinson Park
+latitude: 40.823647
+longitude: -73.943844
+daysoperation: Tuesday & Saturday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Greenmarket at the Oculus
+borough: Manhattan
+streetaddress: Church at Fulton St.
+latitude: 40.711466
+longitude: -74.010662
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 5 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harlem Health Market
+borough: Manhattan
+streetaddress: 163 W 125th St.
+latitude: 40.808644
+longitude: -73.947524
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Brower Park Farm Stand
+borough: Brooklyn
+streetaddress: Brooklyn Ave. & Prospect Pl.
+latitude: 40.674
+longitude: -73.944544
+daysoperation: Thursday
+hoursoperations: 8 a.m - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Coney Island Hospital Farmers Market
+borough: Brooklyn
+streetaddress: Ocean Pkwy bet. Avenue Z & Shore Pkwy.
+latitude: 40.5867
+longitude: -73.96615
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Co-op City Farm Stand
+borough: Bronx
+streetaddress: Asch Loop & Aldrich Ave.
+latitude: 40.8702
+longitude: -73.830963
+daysoperation: Wednesday & Saturdays
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home East Harlem Farmers Market
+borough: Manhattan
+streetaddress: E. 104th St. & 3rd Ave.
+latitude: 40.7903
+longitude: -73.945635
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Harlem Hospital Farmers Market
+borough: Manhattan
+streetaddress: W. 137th St. & Lenox Ave.
+latitude: 40.815403
+longitude: -73.93991
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Hunts Point Farm Stand
+borough: Bronx
+streetaddress: Southern Blvd. bet. Barretto & Tiffany Sts. (Luis Suarez Memorial Park)
+latitude: 40.81894
+longitude: -73.893492
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Jacobi Hospital Farmers Market
+borough: Bronx
+streetaddress: 1400 Pelham Pkwy
+latitude: 40.8574
+longitude: -73.847079
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Kings County Hospital Farmers Market
+borough: Brooklyn
+streetaddress: Clarkson Ave. bet. E. 37th & 38th Sts.
+latitude: 40.6558
+longitude: -73.943355
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Lenox Avenue Farm Stand
+borough: Manhattan
+streetaddress: Lenox Ave. bet. W. 117th & 118th Sts.
+latitude: 40.802699
+longitude: -73.949186
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Metropolitan Hospital Farmers Market
+borough: Manhattan
+streetaddress: E. 97th St. & 2nd Ave.
+latitude: 40.784943
+longitude: -73.946589
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Mt. Eden Malls Farmers Market
+borough: Bronx
+streetaddress: Mt. Eden & Morris Aves. (Claremont Park)
+latitude: 40.8429
+longitude: -73.909558
+daysoperation: Tuesday & Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home North Central Bronx Farmers Market
+borough: Bronx
+streetaddress: Mosholu Pkwy & Jerome Ave.
+latitude: 40.8797
+longitude: -73.884661
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home St. Mary's Park Farm Stand
+borough: Bronx
+streetaddress: E. 149th St. & Eagle Ave. (St. Mary's Park)
+latitude: 40.8139
+longitude: -73.911812
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Harvest Home Utica Avenue Farmers Market
+borough: Brooklyn
+streetaddress: Eastern Pkwy bet. Utica & Rochester Aves.
+latitude: 40.668754
+longitude: -73.930136
+daysoperation: Wednesday
+hoursoperations: 11 a.m. - 6 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Hattie Carthan Community Market
+borough: Brooklyn
+streetaddress: 363-365 Clifton Place
+latitude: 40.689628
+longitude: -73.946882
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Hattie Carthan Herbal Apothecary/ Market
+borough: Brooklyn
+streetaddress: 48 Van Buren
+latitude: 40.690036
+longitude: -73.943557
+daysoperation: Sunday
+hoursoperations: 1 p.m. - 6 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Inwood Park Greenmarket
+borough: Manhattan
+streetaddress: Isham St. bet. Seaman Ave. & Cooper St.
+latitude: 40.869001
+longitude: -73.920896
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Isabahlia Farmers Market at ISO Student Farm
+borough: Brooklyn
+streetaddress: 514 Rockaway Ave (ISO Student Farm)
+latitude: 40.667554
+longitude: -73.910207
+daysoperation: Friday & Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Isabahlia Farmers Market at Powell Street Garden
+borough: Brooklyn
+streetaddress: 410 Livonia Ave (In Front of Powell Street Garden)
+latitude: 40.663532
+longitude: -73.902236
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Jackson Heights Greenmarket
+borough: Queens
+streetaddress: 34th Ave. & 79th St.
+latitude: 40.753607
+longitude: -73.887739
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: JBOLC Garden Community Farmers Market
+borough: Bronx
+streetaddress: Sedgwick Ave. & Goulden Ave.
+latitude: 40.882647
+longitude: -73.886562
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: La Familia Verde Farmers Market
+borough: Bronx
+streetaddress: E. Tremont Ave. bet. Arthur Ave & LaFontaine Ave.
+latitude: 40.846448
+longitude: -73.893563
+daysoperation: Tuesday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: La Familia Verde Farmers Market / Highbridge Farmers Market
+borough: Bronx
+streetaddress: 1430 Plimpton Avenue
+latitude: 40.843627
+longitude: -73.922243
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Lenox Hill Farmstand
+borough: Manhattan
+streetaddress: 1st Ave. & 70th St.
+latitude: 40.766925
+longitude: -73.95795
+daysoperation: Thursday
+hoursoperations: 12 p.m. - 5 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Lincoln Hospital Greenmarket
+borough: Bronx
+streetaddress: E. 149th St. bet. Park & Morris Aves
+latitude: 40.818013
+longitude: -73.925185
+daysoperation: Tuesdays & Fridays
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Lower East Side Farmstand
+borough: Manhattan
+streetaddress: Grand St. bet. Pitt & Willett Sts.
+latitude: 40.71521
+longitude: -73.984258
+daysoperation: Friday
+hoursoperations: 9 a.m. - 1 :30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Market in the Heights at CCNY
+borough: Manhattan
+streetaddress: 138th St. & Convent Ave.
+latitude: 40.819196
+longitude: -73.950221
+daysoperation: Thursday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: McCarren Park Greenmarket
+borough: Brooklyn
+streetaddress: N 12th btwn Union & Driggs Aves
+latitude: 40.719219
+longitude: -73.952479
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: McGolrick Park's Down to Earth Farmers Market
+borough: Brooklyn
+streetaddress: Russell St. & Nassau Ave. (center of park)
+latitude: 40.725617
+longitude: -73.944497
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Morning Glory Market at the New York Botanical Gardens
+borough: Bronx
+streetaddress: 2900 Southern Blvd. (inside the Moshulu Gate entrance)
+latitude: 40.865684
+longitude: -73.883312
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Morningside Park's Down to Earth Farmers Market
+borough: Manhattan
+streetaddress: W. 110th St & Manhattan Ave
+latitude: 40.801155
+longitude: -73.959647
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Morris Heights Farmstand
+borough: Bronx
+streetaddress: 85 W Burnside Ave.
+latitude: 40.854655
+longitude: -73.91063
+daysoperation: Wednesday
+hoursoperations: 9:30 a.m. - 2:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Morrisania Farmstand
+borough: Bronx
+streetaddress: 169th St. & Boston Rd. (at McKinley Square)
+latitude: 40.83118
+longitude: -73.900545
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Mott Haven Farm Stand
+borough: Bronx
+streetaddress: 541 E 139th St. (Padre Plaza Garden)
+latitude: 40.807883
+longitude: -73.917885
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 1 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Mount Sinai Greenmarket
+borough: Manhattan
+streetaddress: 99th St. & Madison Ave.
+latitude: 40.789386
+longitude: -73.952595
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Myrtle-Wyckoff Greenmarket
+borough: Queens
+streetaddress: Wyckoff btwn Gates & Myrtle avenues
+latitude: 40.699798
+longitude: -73.911523
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: New Roots Farm Stand
+borough: Bronx
+streetaddress: 670 Grand Concourse
+latitude: 40.821447
+longitude: -73.925492
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Norwood Farmstand
+borough: Bronx
+streetaddress: E. Gun Hill Rd. & Dekalb Ave.
+latitude: 40.88222
+longitude: -73.880458
+daysoperation: Thursday
+hoursoperations: 9:30 a.m. - 2:30 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Park Slope's Down to Earth Farmers Market
+borough: Brooklyn
+streetaddress: 4th St & 5th Ave
+latitude: 40.672194
+longitude: -73.983785
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Parkchester Greenmarket
+borough: Bronx
+streetaddress: Westchester Ave. & White Plains Rd.
+latitude: 40.833279
+longitude: -73.862833
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Perez Farm Stand
+borough: Queens
+streetaddress: 134-20 Jamaica Avenue, by the Axel Building
+latitude: 40.70236
+longitude: -73.818531
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Poe Park Greenmarket
+borough: Bronx
+streetaddress: E 192nd St. bet. Grand Concourse & Valentine
+latitude: 40.864310
+longitude: -73.895379
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Project EATS & St. Barnabas Hospital Farm Stand
+borough: Bronx
+streetaddress: 4507 3rd Ave.
+latitude: 40.853237
+longitude: -73.891742
+daysoperation: Wednesday
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Project EATS Brownsville Farm Stand
+borough: Brooklyn
+streetaddress: 300 Chester St.
+latitude: 40.664477
+longitude: -73.910384
+daysoperation: Thursday
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Project EATS Farm Stand at The Crossing
+borough: Manhattan
+streetaddress: 1956 1st Avenue
+latitude: 40.786236
+longitude: -73.942511
+daysoperation: Saturday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: PS 57 Farmstand
+borough: Manhattan
+streetaddress: 115th St. & 3rd Ave.
+latitude: 40.797577
+longitude: -73.94128
+daysoperation: Thursday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Queens County Farm Museum Farm Stand
+borough: Queens
+streetaddress: 73-50 Little Neck Pkwy
+latitude: 40.748163
+longitude: -73.719431
+daysoperation: Wednesday - Sunday
+hoursoperations: 10 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Queens Farm @ Jamaica Hospital
+borough: Queens
+streetaddress: 134-20 Jamaica Ave.
+latitude: 40.70236
+longitude: -73.818531
+daysoperation: Friday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Red Hook Farm Stand
+borough: Brooklyn
+streetaddress: 560 Columbia St.
+latitude: 40.672524
+longitude: -74.00871
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Ridgewood Farmstand
+borough: Queens
+streetaddress: Cypress Ave. & Myrtle Ave.
+latitude: 40.700403
+longitude: -73.90668
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 1:30 p.m.
+open_year_round: no
+year: 2024
+
+marketname: RiseBoro Farmers Markets at Hope Ballfield
+borough: Brooklyn
+streetaddress: Knickerbocker Ave between Menahan St and Grove St
+latitude: 40.69768
+longitude: -73.916366
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: RiseBoro Farmers Markets at Irving Square Park
+borough: Brooklyn
+streetaddress: Knickerbocker Avenue, between Weirfield St and Halsey St
+latitude: 40.693293
+longitude: 73.90864
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 1 p.m.
+open_year_round: no
+year: 2024
+
+marketname: RiseBoro Farmers Markets at Maria Hernandez
+borough: Brooklyn
+streetaddress: Knickerbocker Ave between Sudyam St and Starr St
+latitude: 40.702811
+longitude: -73.92539
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Riverdale Neighborhood House Youth Market
+borough: Bronx
+streetaddress: 5521 Mosholu Ave.
+latitude: 40.903039
+longitude: -73.90375
+daysoperation: Thursday
+hoursoperations: 1 p.m. - 6 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Riverdale Y Sunday Farmers Market
+borough: Bronx
+streetaddress: 4545 Independence Ave.
+latitude: 40.891762
+longitude: -73.912208
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Rockaway Market Street @ Beach 60th
+borough: Queens
+streetaddress: Under the elevated A-train tracks between Beach 59th and Beach 60th streets on Rockaway Freeway
+latitude: 40.592902
+longitude: -73.789051
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 1 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Rockefeller Center Greenmarket
+borough: Manhattan
+streetaddress: Rockefeller Center Plaza at 50th St.
+latitude: 40.759204
+longitude: -73.978335
+daysoperation: Wednesday
+hoursoperations: TBD
+open_year_round: no
+year: 2024
+
+marketname: Saratoga Farm Stand
+borough: Brooklyn
+streetaddress: 1965-1971 Fulton St.
+latitude: 40.678562
+longitude: -0.000079704
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: St. George Greenmarket
+borough: Staten Island
+streetaddress: St Marks Pl. & Hyatt St.
+latitude: 40.641586
+longitude: -74.0779
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 1 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Staten Island Mall Greenmarket
+borough: Staten Island
+streetaddress: Marsh Ave. & Ring Rd.
+latitude: 40.583804
+longitude: -74.161245
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Stuyvesant Town Greenmarket
+borough: Manhattan
+streetaddress: North end of Stuyvesant Town Oval (near 20th St. Loop)
+latitude: 40.731498
+longitude: -73.97818
+daysoperation: Sunday
+hoursoperations: 9:30 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Sunnyside Greenmarket
+borough: Queens
+streetaddress: Skillman Ave. & 43rd St.
+latitude: 40.747010
+longitude: -73.92173
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: The Market at Preston
+borough: Bronx
+streetaddress: 2780 Schurz Avenue (Preston High School)
+latitude: 40.814256
+longitude: -73.819339
+daysoperation: Tuesday
+hoursoperations: 4 p.m. - 7 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Tompkins Square Greenmarket
+borough: Manhattan
+streetaddress: 7th St. & Avenue A
+latitude: 40.726054
+longitude: -73.983534
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Tribeca Greenmarket
+borough: Manhattan
+streetaddress: Greenwich & Chambers Sts.
+latitude: 40.716303
+longitude: -74.010966
+daysoperation: Wednesday & Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes (Sat only)
+year: 2024
+
+marketname: Tucker Square Greenmarket
+borough: Manhattan
+streetaddress: 66th St. & Broadway
+latitude: 40.773709
+longitude: -73.98196
+daysoperation: Thursday & Saturday
+hoursoperations: 8 a.m. - 3 p.m. (Thurs); 8 a.m. - 4 p.m. (Sat)
+open_year_round: yes
+year: 2024
+
+marketname: Two Bridges Youth Market
+borough: Manhattan
+streetaddress: 50 Madison St.
+latitude: 40.711958
+longitude: -73.997825
+daysoperation: Sunday
+hoursoperations: 10:30 a.m. - 3:00 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Union Square Greenmarket
+borough: Manhattan
+streetaddress: Union Square West & 17th St.
+latitude: 40.737133
+longitude: -73.990329
+daysoperation: Monday, Wednesday, Friday & Saturday
+hoursoperations: 8 a.m. - 6 p.m.
+open_year_round: yes
+year: 2024
+
+marketname: Uptown Good Food Farm Stand
+borough: Manhattan
+streetaddress: 330 St. Nicholas Ave.
+latitude: 40.81172
+longitude: -73.951795
+daysoperation: Thursday
+hoursoperations: 2 p.m. - 7 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Uptown Good Food Farmers Market
+borough: Manhattan
+streetaddress: St Nicholas Ave &, W 137th St (St. Nicholas Park)
+latitude: 40.818521
+longitude: -73.947392
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Uptown Grand Central Farmstand
+borough: Manhattan
+streetaddress: 125th St. & Park Ave.
+latitude: 40.805258
+longitude: -73.938875
+daysoperation: Wednesday
+hoursoperations: 1:30 p.m. - 7 p.m
+open_year_round: yes
+year: 2024
+
+marketname: Van Cortlandt Park Alliance Amalgamated Housing Youth Farmstand
+borough: Bronx
+streetaddress: Orloff Ave & Gale Pl
+latitude: 40.884532
+longitude: -73.892172
+daysoperation: Wednesday
+hoursoperations: 2 p.m. - 7 p.m.
+open_year_round: no
+year: 2024
+
+marketname: White Plains Road (WPR) Farmers Market
+borough: Bronx
+streetaddress: Williamsbridge Square, E 211th St.
+latitude: 40.87744
+longitude: -73.866451
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Woodhull Hospital Farmstand
+borough: Brooklyn
+streetaddress: Graham Ave. & Broadway
+latitude: 40.701022
+longitude: -73.942202
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: no
+year: 2024
+
+marketname: Wyckoff House Museum Farmstand
+borough: Brooklyn
+streetaddress: 5816 Clarendon Rd
+latitude: 40.64497
+longitude: -73.920914
+daysoperation: Saturday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: no
+year: 2024
+
+marketname: 170 Farm Stand
+borough: Bronx
+streetaddress: 1406 Townsend Ave.
+latitude: 40.840138
+longitude: -73.916591
+daysoperation: Wednesday
+hoursoperations: 2 p.m. - 6 p.m.
+open_year_round: No
+year: 2023
+
+marketname: 175th Street Greenmarket
+borough: Manhattan
+streetaddress: W. 175th St. bet. Wadsworth Ave. & Broadway
+latitude: 40.845948
+longitude: -73.937811
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: 4th Ave Sunset Park Greenmarket
+borough: Brooklyn
+streetaddress: 4th Ave. 60th St.
+latitude: 40.647975
+longitude: -74.003744
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: 57th Street Greenmarket
+borough: Manhattan
+streetaddress: W. 57th St. & 10th Ave.
+latitude: 40.769117
+longitude: -73.988559
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: 79th Street Greenmarket
+borough: Manhattan
+streetaddress: 79th St & Columbus Ave
+latitude: 40.781947
+longitude: -73.976105
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: 7th Ave Sunset Park Greenmarket
+borough: Brooklyn
+streetaddress: 7th Ave & 44th St
+latitude: 40.645807
+longitude: -74.002414
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: 82nd Street Greenmarket
+borough: Manhattan
+streetaddress: E 82nd St bet 1st & York Aves
+latitude: 40.774292
+longitude: -73.951262
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2:30 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: 94th Street Greenmarket
+borough: Manhattan
+streetaddress: E. 94th St. & 1st Ave.
+latitude: 40.781968
+longitude: -73.945267
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: 97th Street Greenmarket
+borough: Manhattan
+streetaddress: 97th St bet Columbus & Amsterdam Aves
+latitude: 40.794226
+longitude: -73.968334
+daysoperation: Friday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Abingdon Square Greenmarket
+borough: Manhattan
+streetaddress: Hudson St & W 12th St
+latitude: 40.737553
+longitude: -74.005687
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Astor Place Greenmarket
+borough: Manhattan
+streetaddress: E 8th Street & Lafayette
+latitude: 40.729820
+longitude: -73.991023
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 5 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Bartel-Pritchard Square Greenmarket
+borough: Brooklyn
+streetaddress: Prospect Park W at 15th St
+latitude: 40.661354
+longitude: -73.969680
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m. (W); 9 a.m. - 3 p.m. (Su)
+open_year_round: Yes
+year: 2023
+
+marketname: Bay Ridge Greenmarket
+borough: Brooklyn
+streetaddress: 3rd Ave & 95th St.
+latitude: 40.617810
+longitude: -74.033380
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Bensonhurst Greenmarket
+borough: Brooklyn
+streetaddress: 18th Ave btw 81st & 82nd streets
+latitude: 40.609588
+longitude: -73.999677
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Boro Park Greenmarket
+borough: Brooklyn
+streetaddress: 14th Ave. bet. 49th & 50th streets
+latitude: 40.633285
+longitude: -73.990548
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Bowling Green Greenmarket
+borough: Manhattan
+streetaddress: Broadway at Battery Pl
+latitude: 40.704549
+longitude: -74.01429
+daysoperation: Tuesday & Thursday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Bro Sis Green Youth Market
+borough: Manhattan
+streetaddress: Amsterdam bet W 143rd & 144th Sts., at Johnny Hartman Plaza
+latitude: 40.82394
+longitude: -73.948552
+daysoperation: Wednesday
+hoursoperations: 10:30 a.m. - 6 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Bronx Borough Hall Greenmarket
+borough: Bronx
+streetaddress: 161st & Grand Concourse
+latitude: 40.827335
+longitude: -73.922911
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Bronx Park East Farmers Market
+borough: Bronx
+streetaddress: 2222 Bronx Park E. (near Bradley Playground)
+latitude: 40.851713
+longitude: -73.867786
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: BronxWorks Farm Stand
+borough: Bronx
+streetaddress: 1130 Grand Concourse
+latitude: 40.832759
+longitude: -73.919296
+daysoperation: Thursday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Brooklyn Borough Hall Greenmarket
+borough: Brooklyn
+streetaddress: Montague & Court streets
+latitude: 40.693722
+longitude: -73.990455
+daysoperation: Tusday & Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Brooklyn Grange Farm Stand at Sunset Park
+borough: Brooklyn
+streetaddress: 850 3rd Ave (Roof)
+latitude: 40.658518
+longitude: -74.003327
+daysoperation: Sunday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Brownsville Pitkin Farmstand
+borough: Brooklyn
+streetaddress: Pitkin Ave. btw Thomas Boyland and Amboy st
+latitude: 40.669234
+longitude: -73.913698
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Carroll Gardens Greenmarket
+borough: Brooklyn
+streetaddress: Smith & Carroll streets
+latitude: 40.680426
+longitude: 40.680426
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Chelsea's Down to Earth Farmers Market
+borough: Manhattan
+streetaddress: W. 23rd St btwn 8th & 9th Aves
+latitude: 40.745293
+longitude: -73.998488
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - Milbank Center
+borough: Manhattan
+streetaddress: 14-32 W. 118th St.
+latitude: 40.802317
+longitude: -73.946351
+daysoperation: Wednesday
+hoursoperations: 2 p.m. - 4:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Children's Aid Go!Healthy Food Box + Farmstand - CS211
+borough: Bronx
+streetaddress: 1919 Prospect Ave.
+latitude: 40.843546
+longitude: -73.889755
+daysoperation: Thursday
+hoursoperations: 2 p.m. - 4:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Children's Aid Society Go!Healthy Food Box + Famstand - Goodhue Center
+borough: Staten Island
+streetaddress: 304 Prospect Ave.
+latitude: 40.638936
+longitude: -74.097966
+daysoperation: Tuesday
+hoursoperations: 1 p.m. - 3:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Columbia Greenmarket
+borough: Manhattan
+streetaddress: Broadway & 114th St.
+latitude: 40.807145
+longitude: -73.964265
+daysoperation: Thursdays & Sundays
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Corona Greenmarket
+borough: Queens
+streetaddress: Roosevelt Ave. & 103rd St.
+latitude: 40.749869
+longitude: -73.862726
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Cortelyou Greenmarket
+borough: Brooklyn
+streetaddress: Cortelyou btw Rugby & Argyle
+latitude: 40.640510
+longitude: -73.966021
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Crown Heights Farmstand
+borough: Brooklyn
+streetaddress: Nostrand Avenue and Crown St (NW corner)
+latitude: 40.666472
+longitude: -73.950807
+daysoperation: Friday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Cunningham Park's Down to Earth Farmers Market
+borough: Queens
+streetaddress: Union Turnpike & 196th Place
+latitude: 40.731082
+longitude: -73.773997
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Cypress Hills Farmstand
+borough: Brooklyn
+streetaddress: Fulton St. between Richmond and Logan Sts (in front of Cypress Hills Senior Center)
+latitude: 40.682391
+longitude: -73.913554
+daysoperation: Friday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Dag Hammarskjold Greenmarket
+borough: Manhattan
+streetaddress: 47th St & 2nd Ave
+latitude: 40.752122
+longitude: -73.968154
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Domino Park Greenmarket
+borough: Brooklyn
+streetaddress: River St. between S 1st Street and S 3rd St
+latitude: 40.715385
+longitude: -73.967441
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: East New York Farmers Market
+borough: Brooklyn
+streetaddress: Schenck Avenue between New Lots and Livonia Avenues
+latitude: 40.665296
+longitude: -73.886557
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: East New York Farmers Stand I
+borough: Brooklyn
+streetaddress: Euclid & Pitkin Aves.
+latitude: 40.675404
+longitude: -73.871914
+daysoperation: Thursday
+hoursoperations: 2 p.m. - 6:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Eastchester Farmstand
+borough: Bronx
+streetaddress: Not confirmed yet
+latitude: 40.88503
+longitude: -73.843146
+daysoperation: Thursday
+hoursoperations: 9:30 a.m. - 1 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Edgemere Farm Market
+borough: Queens
+streetaddress: 385 Beach 45th St
+latitude: 40.595255
+longitude: -73.776524
+daysoperation: Sunday
+hoursoperations: 10 a.m. - 1 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Elmhurst Hospital Greenmarket
+borough: Queens
+streetaddress: 41st Ave. bet. 80th & 81st streets
+latitude: 40.745794
+longitude: -73.885489
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Flushing Greenmarket
+borough: Queens
+streetaddress: Sanford Ave & Union Street (Bowne Playground)
+latitude: 40.757731
+longitude: -73.824852
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Forest Hills Greenmarket
+borough: Queens
+streetaddress: Queens Blvd. & 70th Ave.
+latitude: 40.722054
+longitude: -73.847155
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Forest Park Farmstand
+borough: Queens
+streetaddress: Park Lane South and Myrtle Ave (My Buddy Statue plaza)
+latitude: 40.701192
+longitude: -73.841597
+daysoperation: Saturday
+hoursoperations: 9:30 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Fort Greene Greenmarket
+borough: Brooklyn
+streetaddress: Washington Park & Dekalb Ave.
+latitude: 40.691457
+longitude: -73.973421
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Fort Washington Greenmarket
+borough: Manhattan
+streetaddress: 168th St. & Ft. Washington Ave.
+latitude: 40.842296
+longitude: -73.942027
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Gouverneur Health Farmstand
+borough: Manhattan
+streetaddress: Madison St. bet. Clinton & Jefferson Sts.
+latitude: 40.712905
+longitude: -73.986928
+daysoperation: Thursday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Grand Army Plaza Greenmarket
+borough: Brooklyn
+streetaddress: Grand Army Plaza
+latitude: 40.672525
+longitude: -73.969799
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Grass Roots Farmers' Market
+borough: Manhattan
+streetaddress: W 145th St bet Edgecombe & Bradhurst Aves, at Jackie Robinson Park
+latitude: 40.823647
+longitude: -73.943844
+daysoperation: Tuesday & Saturday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Greenmarket at the Oculus
+borough: Manhattan
+streetaddress: Church at Fulton Street
+latitude: 40.711466
+longitude: -74.010662
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 5 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harlem Meer Farmstand
+borough: Manhattan
+streetaddress: Central Park N and Malcom X Blvd
+latitude: 40.798038
+longitude: -73.951910
+daysoperation: Saturdays
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Brower Park Farm Stand
+borough: Brooklyn
+streetaddress: Brooklyn Ave. & Prospect Place
+latitude: 40.674
+longitude: -73.944544
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Coney Island Hospital Farmers Market
+borough: Brooklyn
+streetaddress: Ocean Parkway bet. Ave. Z & Shore Parkway
+latitude: 40.5867
+longitude: -73.96615
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Co-op City Farm Stand
+borough: Bronx
+streetaddress: Asch Loop & Aldrich Ave.
+latitude: 40.8702
+longitude: -73.830963
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home East Harlem Farmers Market
+borough: Manhattan
+streetaddress: E. 104th St. & 3rd Ave.
+latitude: 40.7903
+longitude: -73.945635
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Harlem Hospital Farmers Market
+borough: Manhattan
+streetaddress: W. 137th St. & Lenox Ave.
+latitude: 40.815403
+longitude: -73.93991
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Jacobi Hospital Farmers Market
+borough: Bronx
+streetaddress: 1400 Pelham Parkway
+latitude: 40.8574
+longitude: -73.847079
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Kings County Hospital Farmers Market
+borough: Brooklyn
+streetaddress: Clarkson Ave. bet. E. 37th & 38th Sts.
+latitude: 40.6558
+longitude: -73.943355
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Lenox Avenue Farm Stand
+borough: Manhattan
+streetaddress: Lenox Ave. bet. W. 117 & 118 Sts.
+latitude: 40.802699
+longitude: -73.949186
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Metropolitan Hospital Farmers Market
+borough: Manhattan
+streetaddress: E. 97th St. & 2nd Ave.
+latitude: 40.784943
+longitude: -73.946589
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home Mt. Eden Malls Farmers Market
+borough: Bronx
+streetaddress: Mt. Eden & Morris Aves. (Claremont Park)
+latitude: 40.8429
+longitude: -73.909558
+daysoperation: Tuesday & Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home North Central Bronx Farmers Market
+borough: Bronx
+streetaddress: Mosholu Parkway & Jerome Ave.
+latitude: 40.8797
+longitude: -73.884661
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Harvest Home St. Mary's Park Farm Stand
+borough: Bronx
+streetaddress: E. 149th St. & Eagle Ave. (St. Mary's Park)
+latitude: 40.8139
+longitude: -73.911812
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Hattie Carthan Community Market
+borough: Brooklyn
+streetaddress: 363-365 Clifton Place
+latitude: 40.689628
+longitude: -73.946882
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: no
+year: 2023
+
+marketname: Hattie Carthan Herbal Apothecary/ Market
+borough: Brooklyn
+streetaddress: 48 Van Buren
+latitude: 40.690036
+longitude: -73.943557
+daysoperation: Sunday
+hoursoperations: 1 p.m. - 6 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Heritage Farm Stand (Compost Demonstration Site)
+borough: Staten Island
+streetaddress: 1000 Richmond Terrace (compost demonstration site)
+latitude: 40.645075
+longitude: -74.104753
+daysoperation: Friday
+hoursoperations: 3:30 p.m. - 6 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Heritage Farm Stand (Gazebo Road)
+borough: Staten Island
+streetaddress: 1000 Richmond Terrace (Gazebo road)
+latitude: 40.645075
+longitude: -74.104753
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Inwood Park Greenmarket
+borough: Manhattan
+streetaddress: Isham St bet Seaman Ave & Cooper St
+latitude: 40.869001
+longitude: -73.920896
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Isabahlia Farmers Market
+borough: Brooklyn
+streetaddress: 410 Livonia Ave (In Front of Powell Street Garden)
+latitude: 40.663532
+longitude: -73.902236
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Isabahlia Farmers Market
+borough: Brooklyn
+streetaddress: 514 Rockaway Ave (ISO Student Farm)
+latitude: 40.667554
+longitude: -73.910207
+daysoperation: Friday & Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Jackson Heights Greenmarket
+borough: Queens
+streetaddress: 34th Ave. & 79th St.
+latitude: 40.753607
+longitude: -73.887739
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: JBOLC Garden Community Farmers Market
+borough: Bronx
+streetaddress: Sedgwick Ave. & Goulden Ave.
+latitude: 40.882647
+longitude: -73.886562
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: La Familia Verde Farmers Market
+borough: Bronx
+streetaddress: E. Tremont Ave. bet. Arthur Ave & LaFontaine Ave.
+latitude: 40.846448
+longitude: -73.893563
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: La Familia Verde Farmers Market / Highbridge Farmers Market
+borough: Bronx
+streetaddress: 1430 Plimpton Avenye
+latitude: 40.843627
+longitude: -73.922243
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Lincoln Hospital Greenmarket
+borough: Bronx
+streetaddress: E. 149th St. bet. Park & Morris avenues
+latitude: 40.818013
+longitude: -73.925185
+daysoperation: Tuesdays & Fridays
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Lower East Side Farmstand
+borough: Manhattan
+streetaddress: Grand St. btwn Pitt and Willett streets (outside of Abrons Arts Center)
+latitude: 40.71521
+longitude: -73.984258
+daysoperation: Thursday
+hoursoperations: 8:30 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: McCarren Park Greenmarket
+borough: Brooklyn
+streetaddress: N 12th btwn Union & Driggs
+latitude: 40.719219
+longitude: -73.952479
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: McGolrick Park's Down to Earth Farmers Market
+borough: Brooklyn
+streetaddress: Russell St. & Nassau Ave. (center of park)
+latitude: 40.725617
+longitude: -73.944497
+daysoperation: Sunday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Morning Glory Market at the New York Botanical Gardens
+borough: Bronx
+streetaddress: 2900 Southern Blvd.
+latitude: 40.865684
+longitude: -73.883312
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Morningside Park's Down to Earth Farmers Market
+borough: Manhattan
+streetaddress: W. 110th St & Manhattan Ave
+latitude: 40.801155
+longitude: -73.959647
+daysoperation: Saturday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Morris Heights Farmstand
+borough: Bronx
+streetaddress: University Ave. and W 179th St.
+latitude: 40.854567
+longitude: 40.854567
+daysoperation: Wednesday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Morrisania Farmstand
+borough: Bronx
+streetaddress: 169th St. & Boston Rd. (at McKinley Square)
+latitude: 40.83118
+longitude: -73.900545
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Mott Haven Farm Stand
+borough: Bronx
+streetaddress: 541 E 139th St. (Padre Plaza Garden)
+latitude: 40.807883
+longitude: -73.917885
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 1 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Mount Sinai Greenmarket
+borough: Manhattan
+streetaddress: Madison & 99th St.
+latitude: 40.789386
+longitude: -73.952595
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Myrtle-Wyckoff Greenmarket
+borough: Queens
+streetaddress: Wyckoff btwn Gates & Myrtle avenues
+latitude: 40.699798
+longitude: -73.911523
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: New Roots Farm Stand
+borough: Bronx
+streetaddress: 670 Grand Concourse
+latitude: 40.821447
+longitude: -73.925492
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Norwood Farmstand
+borough: Bronx
+streetaddress: E. Gun Hill Rd. & Dekalb Ave. (SE corner)
+latitude: 40.88222
+longitude: -73.880458
+daysoperation: Thursday
+hoursoperations: 8:30 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Park Slope's Down to Earth Farmers Market
+borough: Brooklyn
+streetaddress: 4th St & 5th Ave
+latitude: 40.672194
+longitude: -73.983785
+daysoperation: Sunday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Parkchester Greenmarket
+borough: Bronx
+streetaddress: Westchester Avenue & White Plains Road
+latitude: 40.833279
+longitude: -73.862833
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Perez Farm Stand
+borough: Queens
+streetaddress: 134-20 Jamaica Avenue, by the Axel Building
+latitude: 40.70236
+longitude: -73.818531
+daysoperation: Wednesday
+hoursoperations: 10 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Poe Park Greenmarket
+borough: Bronx
+streetaddress: E 192nd St. btw Grand Concourse & Valentine
+latitude: 40.864310
+longitude: -73.895379
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Project EATS Brownsville Farm Stand
+borough: Brooklyn
+streetaddress: 300 Chester St.
+latitude: 40.664477
+longitude: -73.910384
+daysoperation: Thursday
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Project EATS Farm Stand at Essex Crossing
+borough: Manhattan
+streetaddress: 115 Delancey St.
+latitude: 40.719322
+longitude: -73.987817
+daysoperation: Wednesday-Sunday
+hoursoperations: 11 a.m. - 7 p.m.
+open_year_round: No
+year: 2023
+
+marketname: PS 11 Farm Market
+borough: Manhattan
+streetaddress: 320 W. 21st St.
+latitude: 40.744349
+longitude: -74.000253
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 10 a.m.
+open_year_round: No
+year: 2023
+
+marketname: PS 57 Farmstand
+borough: Manhattan
+streetaddress: 115th St. & 3rd Ave. (SW corner)
+latitude: 40.797577
+longitude: -73.94128
+daysoperation: Wednesday
+hoursoperations: 9:30 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Queens County Farm Museum Farm Stand
+borough: Queens
+streetaddress: 73-50 Little Neck Pkwy
+latitude: 40.748163
+longitude: -73.719431
+daysoperation: Wednesday - Sunday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Queens Farm - Queens Borough Hall
+borough: Queens
+streetaddress: 120-55 QueensBlvd.
+latitude: 40.713318
+longitude: -73.82858
+daysoperation: Thursday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Queens Farm @ Jamaica Hospital
+borough: Queens
+streetaddress: 134-20 Jamaica Ave.
+latitude: 40.70236
+longitude: -73.818531
+daysoperation: Friday
+hoursoperations: 10 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Red Hook Farm Stand
+borough: Brooklyn
+streetaddress: 560 Columbia St.
+latitude: 40.672524
+longitude: -74.00871
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Ridgewood Farmstand
+borough: Queens
+streetaddress: Cypress Ave btw Myrtle Ave. and Putnam Ave.
+latitude: 40.700403
+longitude: -73.90668
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: RiseBoro Farmers Market at Hopefield
+borough: Brooklyn
+streetaddress: Knickerbocker Ave between Menahan St and Grove St
+latitude: 40.69768
+longitude: -73.916366
+daysoperation: Wednesday
+hoursoperations: 9 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: RiseBoro Farmers Market at Maria Hernandez Park
+borough: Brooklyn
+streetaddress: Knickerbocker Ave between Sudyam St and Starr St
+latitude: 40.702811
+longitude: -73.92539
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Riverdale Neighborhood House
+borough: Bronx
+streetaddress: 5521 Moshulu Ave.
+latitude: 40.903039
+longitude: -73.90375
+daysoperation: Thursday
+hoursoperations: 1 p.m. - 6 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Riverdale Y Sunday Farmers Market
+borough: Bronx
+streetaddress: 4545 Independence Ave.
+latitude: 40.891762
+longitude: -73.912208
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Rockaway Market @ Beach 60th
+borough: Queens
+streetaddress: Rockaway Freeway & Beach 60th St.
+latitude: 40.592902
+longitude: -73.789051
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 1 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Socrates Sculpture Park
+borough: Queens
+streetaddress: 32-01 Vernon Blvd
+latitude: 40.767634
+longitude: -73.936314
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: St. Barnabas Hospital Farm Stand
+borough: Bronx
+streetaddress: 4507 3rd Ave.
+latitude: 40.853237
+longitude: -73.891742
+daysoperation: Wednesday
+hoursoperations: 11 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: St. George Greenmarket
+borough: Staten Island
+streetaddress: St Marks Pl. & Hyatt St.
+latitude: 40.641586
+longitude: -74.0779
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Staten Island Mall Greenmarket
+borough: Staten Island
+streetaddress: Marsh Ave & Ring Rd
+latitude: 40.583804
+longitude: -74.161245
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Stuyvesant Town Greenmarket
+borough: Manhattan
+streetaddress: South end of Stuyvesant Town Oval
+latitude: 40.731498
+longitude: -73.97818
+daysoperation: Sunday
+hoursoperations: 9:30 a.m. - 4 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Sunnyside Greenmarket
+borough: Queens
+streetaddress: Skillman Avenue & 43rd Street
+latitude: 40.747010
+longitude: -73.92173
+daysoperation: Saturday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Sunset Park Farmstand
+borough: Brooklyn
+streetaddress: 7th Ave and 44th st
+latitude: 40.645841
+longitude: -74.002402
+daysoperation: Saturdays
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Tompkins Square Greenmarket
+borough: Manhattan
+streetaddress: 7th St. & Avenue A
+latitude: 40.726054
+longitude: -73.983534
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 4 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Tribeca Greenmarket
+borough: Manhattan
+streetaddress: Greenwich & Chambers streets
+latitude: 40.716303
+longitude: -74.010966
+daysoperation: Wednesday & Saturday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Tucker Square Greenmarket
+borough: Manhattan
+streetaddress: Columbus & 66th St.
+latitude: 40.773709
+longitude: -73.98196
+daysoperation: Thursday & Saturday
+hoursoperations: 8 a.m. - 3 p.m. (Th); 8 a.m. - 4 p.m. (Sat)
+open_year_round: Yes
+year: 2023
+
+marketname: Two Bridges Youth Market
+borough: Manhattan
+streetaddress: 50 Madison St.
+latitude: 40.711958
+longitude: -73.997825
+daysoperation: Sunday
+hoursoperations: 10:30 a.m. - 3:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Union Square Greenmarket
+borough: Manhattan
+streetaddress: Union Square West & 17th Street
+latitude: 40.737133
+longitude: -73.990329
+daysoperation: Monday, Wednesday, Friday & Saturday
+hoursoperations: 8 a.m. - 6 p.m.
+open_year_round: Yes
+year: 2023
+
+marketname: Uptown Good Food
+borough: Manhattan
+streetaddress: 330 St. Nicholas Ave. (St. Nicholas Miracle Garden)
+latitude: 40.81172
+longitude: -73.951795
+daysoperation: Thursday
+hoursoperations: 3 p.m. - 7 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Urban Oasis
+borough: Brooklyn
+streetaddress: 681 Clarkson Avenue
+latitude: 40.657269
+longitude: -73.934066
+daysoperation: Wednesday
+hoursoperations: 2 p.m. - 5:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Van Cortlandt Park Alliance Amalgamated Housing Youth Farmstand
+borough: Bronx
+streetaddress: Orloff Ave & Gale Pl
+latitude: 40.884532
+longitude: -73.892172
+daysoperation: Wednesday
+hoursoperations: 2 p.m. - 7 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Woodhull Hospital Farmstand
+borough: Brooklyn
+streetaddress: Graham Ave. & Broadway
+latitude: 40.700281
+longitude: -73.94115
+daysoperation: Wednesday
+hoursoperations: 9:30 a.m. - 2:30 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Wyckoff House Museum Farmstand
+borough: Brooklyn
+streetaddress: 5816 Clarendon Rd
+latitude: 40.64497
+longitude: -73.920914
+daysoperation: Saturday
+hoursoperations: 11 a.m. - 3 p.m.
+open_year_round: No
+year: 2023
+
+marketname: Children's Aid Society Go!Healthy Food Box + Famstand - Goodhue Center
+borough: Staten Island
+streetaddress: 304 Prospect Ave.
+latitude: 40.638936
+longitude: -74.097966
+daysoperation: Tuesday (every other)
+hoursoperations: 1-4 p.m.
+open_year_round: Yes
+year: 2022
+
+marketname: Corona Greenmarket
+borough: Queens
+streetaddress: Roosevelt Ave. & 103rd St.
+latitude: 40.749869
+longitude: -73.862726
+daysoperation: Friday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Cunningham Park's Down to Earth Farmers Market
+borough: Queens
+streetaddress: Union Turnpike & 196th Place
+latitude: 40.731082
+longitude: -73.773997
+daysoperation: Sunday
+hoursoperations: 9 a.m. - 2 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Ditmars Park Farmstand
+borough: Queens
+streetaddress: Steinway St. bet. Ditmars Blvd. & 23rd Ave.
+latitude: 40.772854
+longitude: -73.906061
+daysoperation: Saturday
+hoursoperations: 9:30 a.m. - 2 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Elmhurst Hospital Greenmarket
+borough: Queens
+streetaddress: 41st Ave. bet. 80th & 81st Sts.
+latitude: 40.745794
+longitude: -73.885489
+daysoperation: Tuesday
+hoursoperations: 8 a.m. - 4 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Far Rock Farm Stand
+borough: Queens
+streetaddress: 45-55 Beach Channel Dr.
+latitude: 40.595572
+longitude: -73.777001
+daysoperation: Saturday
+hoursoperations: 10 a.m. - 2 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Flushing Greenmarket
+borough: Queens
+streetaddress: Sanford Ave. & Union St. (Bowne Playground)
+latitude: 40.757731
+longitude: -73.824852
+daysoperation: Wednesday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Forest Hills Greenmarket
+borough: Queens
+streetaddress: 70th Ave. & QueensBlvd.
+latitude: 40.72188
+longitude: -73.846383
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2022
+
+marketname: Forest Park Farmstand
+borough: Queens
+streetaddress: Myrtle Ave. & Park Lane South
+latitude: 40.701101
+longitude: -73.841562
+daysoperation: Saturday
+hoursoperations: 8:30 a.m. - 3 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Heritage Farm Stand (Compost Demonstration Site)
+borough: Staten Island
+streetaddress: 1000 Richmond Terrace (compost demonstration site)
+latitude: 40.645075
+longitude: -74.104753
+daysoperation: Thursday
+hoursoperations: 3-7 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Heritage Farm Stand (Gazebo Road)
+borough: Staten Island
+streetaddress: 1000 Richmond Terrace (Gazebo road)
+latitude: 40.645075
+longitude: -74.104753
+daysoperation: Saturday
+hoursoperations: 9 a.m - 3:30 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Jackson Heights Greenmarket
+borough: Queens
+streetaddress: 34th Ave. bet 79th & 80th Sts
+latitude: 40.753435
+longitude: -73.887822
+daysoperation: Sunday
+hoursoperations: 8 a.m. - 2 p.m.
+open_year_round: Yes
+year: 2022
+
+marketname: Myrtle Wycoff Greenmarket
+borough: Queens
+streetaddress: Myrtle Ave. bet. Wyckoff & Gates Aves.
+latitude: 40.699798
+longitude: -73.911523
+daysoperation: Thursday
+hoursoperations: 8 a.m. - 3 p.m.
+open_year_round: No
+year: 2022
+
+marketname: Perez Farm Stand
+borough: Queens
+streetaddress: 134-20 Jamaica Ave., by the Axel Building
+latitude: 40.70236
+longitude: -73.818531
+daysoperation: Wednesdays
+hoursoperations: 10:00 a.m. - 4:00 p.m.
+open_year_round: No
+year: 2022
+
+marketname: PS 57 Farmstand
+borough: Manhattan
+streetaddress: 115th St. & 3rd Ave.
+latitude: 40.797261
+longitude: -73.940519
+daysoperation: Wednesday
+hoursoperations: 9:30 a.m. - 4 p.m.
+open_year_round: No
+year: 2022
+
+marketname: QueensCounty Farm Museum Farm Stand
+borough: Queens
+streetaddress: 73-50 Little Neck Pkwy
+latitude: 40.748163
+longitude: -73.719431
+daysoperation: Wednesday - Sunday
+hoursoperations: 11 a.m. - 3 p.m. (W); 11 a.m. - 5 p.m. (T-S)
+open_year_round: No
+year: 2022
