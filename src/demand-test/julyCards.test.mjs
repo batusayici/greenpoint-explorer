@@ -786,11 +786,19 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // itself names no field, which is what had held it. And the $40 Brooklyn
   // Youth Ballet trial, back after Batu supplied the link: the price was never
   // missing, it was on a SEPARATE myshopify host the roster does not read. 178.
-  assert.equal(seed.cards.length, 178);
+  //
+  // 2026-09-07, sixth pass: +2, from a RULE not a source. Batu ruled Bushwick
+  // Inlet Park is Greenpoint and in scope, overturning the out-of-area call the
+  // fifth pass made off its 11249 postal zip. The two North Brooklyn Parks
+  // Alliance events that call had excluded are now carded: the 9/13 Garden Club
+  // weeding session and the 9/16 Brooklyn Pollinator Project. The rule is in
+  // SKILL.md so this is not re-argued per event, and it does NOT extend to
+  // Domino Park or Marsha P. Johnson State Park. 180.
+  assert.equal(seed.cards.length, 180);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
-  assert.equal(count((c) => c.category === "event"), 95, "86 + 9 dated adds from the new family/kids sources (2026-09-07, fourth pass)");
+  assert.equal(count((c) => c.category === "event"), 97, "95 + the two Bushwick Inlet events the scope ruling unblocked (2026-09-07, sixth pass)");
   assert.equal(count((c) => c.category === "discount"), 8, "7 + the re-authored Brooklyn Youth Ballet $40 trial (2026-09-07, fifth pass)");
   assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
@@ -1060,6 +1068,13 @@ test("free-ness is designated only where the source states it (tester feedback #
     "nbk-fit-club-thursdays",
     "nbk-plant-giveaway-fridays",
     "nbk-plant-giveaway-weekends",
+    // NOT here, deliberately: the two Bushwick Inlet events added in the sixth
+    // pass. Both are volunteer sessions and both are almost certainly free, but
+    // the North Brooklyn Parks Alliance page says so for the Zumba and the
+    // giveaway and says nothing either way for the Garden Club or the
+    // Pollinator Project — so they do not get the flag. A test caught this:
+    // the two ids were added here by a careless edit that matched the same two
+    // lines in the civic list below, which is exactly what a pinned list is for.
     // Same run: the Longevity Stick classes at Transmitter Park. The free-ness
     // is on the EVENT'S OWN detail page, not the listing — "as we flow in our
     // free Longevity Stick Classes" — which is why both detail pages were
@@ -1523,8 +1538,14 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // weekends. Civic under the same growing-space rule as the Kingsland line
     // above, and under the 2026-08-30 ruling that a free municipal resource
     // giveaway is civic even though the resident RECEIVES rather than does.
+    // 2026-09-07, sixth pass: both Bushwick Inlet events, unblocked by Batu's
+    // ruling that the park is in scope. The Garden Club is a weeding shift and
+    // the Pollinator Project a planting volunteer day, so both are civic under
+    // the growing-space rule — the same reading as the giveaway below.
+    "nbk-garden-club-bip-0913",
     "nbk-plant-giveaway-fridays",
     "nbk-plant-giveaway-weekends",
+    "nbk-pollinator-project-bip-0916",
     // (nypd-94th-community-council-0903 expired out 2026-09-04 — the 94th
     // Precinct's monthly Community Council meeting, a standing civic meeting
     // and never an incident card under the crime rule.)

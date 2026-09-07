@@ -8165,6 +8165,96 @@
       ],
       "lat": 40.721159,
       "lng": -73.952879
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "locationName": "Bushwick Inlet Park",
+      "address": "86 Kent Ave",
+      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
+      "id": "nbk-garden-club-bip-0913",
+      "category": "event",
+      "title": "Garden Club weeding session at Bushwick Inlet Park",
+      "kicker": "Two hours in the pollinator beds",
+      "summary": "A working session in the waterfront gardens, Manhattan across the river. Meet at Kent Ave and N. 12th.",
+      "startsAt": "2026-09-13T10:00:00-04:00",
+      "endsAt": "2026-09-13T12:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "sourceQuote": "Get a weeding workout at a waterfront park with amazing Manhattan views and gorgeous pollinator gardens. Meet at Kent Ave and N. 12th (10AM – 12PM).",
+      "actions": [
+        {
+          "label": "Sign up",
+          "type": "signup",
+          "url": "https://nbkparks.org/programs-events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Garden Club – Bushwick Inlet Park",
+          "url": "https://nbkparks.org/programs-events/",
+          "publisher": "North Brooklyn Parks Alliance",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.722349,
+      "lng": -73.961382
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "locationName": "Bushwick Inlet Park",
+      "address": "86 Kent Ave",
+      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
+      "id": "nbk-pollinator-project-bip-0916",
+      "category": "event",
+      "title": "Brooklyn Pollinator Project at Bushwick Inlet Park",
+      "kicker": "Volunteer day in the pollinator planting",
+      "summary": "Horticulturalist Jeff Hewitt founded and leads it, working on the plants the local ecosystem depends on. No start time is published.",
+      "startsAt": "2026-09-16T00:00:00-04:00",
+      "endsAt": "2026-09-16T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "civic"
+      ],
+      "sourceQuote": "The Brooklyn Pollinator Project is a volunteer initiative founded and led by horticulturalist Jeff Hewitt, focused on supporting crucial pollinator plants that support our local ecosystem!",
+      "relatedCardIds": [
+        "nbk-garden-club-bip-0913"
+      ],
+      "actions": [
+        {
+          "label": "More info",
+          "type": "learn_more",
+          "url": "https://nbkparks.org/programs-events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Pollinator Project – Bushwick Inlet Park",
+          "url": "https://nbkparks.org/programs-events/",
+          "publisher": "North Brooklyn Parks Alliance",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.722349,
+      "lng": -73.961382
     }
   ]
 }

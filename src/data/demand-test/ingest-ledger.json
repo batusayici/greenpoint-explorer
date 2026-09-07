@@ -2689,8 +2689,8 @@
       "addedAt": "2026-09-07"
     },
     {
-      "name": "North Brooklyn Parks Alliance — Brooklyn Pollinator Project, Wed 9/16 at Bushwick Inlet Park",
-      "note": "RESOLVED 2026-09-07 as OUT OF AREA, not as a hold. Settled by geocoding rather than by argument: Bushwick Inlet Park's own address, 86 Kent Ave, geocodes to zip 11249 — Williamsburg. So both of this source's Bushwick Inlet items are out of scope: the Garden Club, which states \"Meet at Kent Ave and N. 12th\", and the Brooklyn Pollinator Project, which states no meeting point at all. The park does run north toward Greenpoint, which is why this looked like a judgment call, but its address and the one stated meeting point are both Williamsburg and nothing in the source puts either event on the Greenpoint end. The same source's Under the K Bridge Park items ARE in area — 465 Scott Ave geocodes inside the bbox — which is why the plant giveaway and the Fit Club shipped. WHAT WOULD CHANGE IT: a stated meeting point on the Greenpoint end of the park.",
+      "name": "North Brooklyn Parks Alliance — Bushwick Inlet Park items [RULE CHANGED 2026-09-07]",
+      "note": "OVERTURNED THE SAME DAY, AND THE RULE IS NOW IN SKILL.md. This run held the Brooklyn Pollinator Project, then resolved it as out of area on the strength of Bushwick Inlet Park's postal zip: its address, 86 Kent Ave, geocodes to 11249. Batu: \"Bushwick Inlet Park should be considered greenpoint and in scope.\" Both items were then carded — nbk-garden-club-bip-0913 (9/13, 10am-12pm, meeting at Kent Ave and N. 12th) and nbk-pollinator-project-bip-0916 (9/16, allDay because the page publishes no time). Geocode from the park NAME, which lands at 40.7223/-73.9614 inside the bbox; the Kent Ave and N. 12th corner returns no result from Nominatim at all. Do not reopen this per event on the strength of a Williamsburg zip. The ruling does NOT extend to Domino Park or Marsha P. Johnson State Park, both of which stay out.",
       "addedAt": "2026-09-07"
     },
     {
