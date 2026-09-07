@@ -3454,7 +3454,7 @@
         ]
       },
       "startsAt": "2026-08-16T09:00:00-04:00",
-      "endsAt": "2026-09-13T14:00:00-04:00",
+      "endsAt": "2026-09-20T14:00:00-04:00",
       "actions": [
         {
           "label": "Market info",
@@ -3486,7 +3486,7 @@
       "partnerRelevance": "low",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-08-31"
+      "updatedAt": "2026-09-07"
     },
     {
       "audience": [
@@ -7376,6 +7376,270 @@
       "sourceQuote": "name: Lockwood's Epic Clearance Sale!\nstart_date_raw: 2026-09-14\nstart_time: 10:00 am\nend_date_raw: 2026-09-20\nend_time: 9:00 pm",
       "lat": 40.729758,
       "lng": -73.956966
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave",
+      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "games"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-09-07"
+        }
+      ],
+      "id": "action-city-flesh-blood-0908",
+      "title": "Flesh & Blood Armory - Classic Constructed at Action City Comics",
+      "kicker": "Classic Constructed, ticketed",
+      "summary": "An Armory-level night in the Manhattan Ave shop. The listing gives a start and no finish.",
+      "startsAt": "2026-09-08T19:00:00-04:00",
+      "endsAt": "2026-09-08T23:59:00-04:00",
+      "sourceQuote": "Flesh & Blood Armory - Classic Constructed\nTUE, SEP 8 7:00 PM",
+      "lat": 40.722526,
+      "lng": -73.949837
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave",
+      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "games"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-09-07"
+        }
+      ],
+      "id": "action-city-one-piece-0909",
+      "title": "One Piece Tournament - Wednesday! at Action City Comics",
+      "kicker": "The midweek One Piece table",
+      "summary": "One of two One Piece nights this week. The listing gives a start and no finish.",
+      "startsAt": "2026-09-09T19:00:00-04:00",
+      "endsAt": "2026-09-09T23:59:00-04:00",
+      "sourceQuote": "One Piece Tournament - Wednesday!\nWED, SEP 9 7:00 PM",
+      "lat": 40.722526,
+      "lng": -73.949837
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave",
+      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "games"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-09-07"
+        }
+      ],
+      "id": "action-city-one-piece-0910",
+      "title": "One Piece Tournament - Thursday! at Action City Comics",
+      "kicker": "The Thursday One Piece table",
+      "summary": "One of two One Piece nights this week. The listing gives a start and no finish.",
+      "startsAt": "2026-09-10T19:00:00-04:00",
+      "endsAt": "2026-09-10T23:59:00-04:00",
+      "sourceQuote": "One Piece Tournament - Thursday!\nTHU, SEP 10 7:00 PM",
+      "lat": 40.722526,
+      "lng": -73.949837
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave",
+      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "games"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-09-07"
+        }
+      ],
+      "id": "action-city-shadow-throne-0918",
+      "title": "Usurp the Shadow Throne Sealed Prerelease - Part 1 at Action City Comics",
+      "kicker": "Prerelease night one of two",
+      "summary": "A sealed prerelease across two evenings. The listing gives a start and no finish.",
+      "startsAt": "2026-09-18T19:00:00-04:00",
+      "endsAt": "2026-09-18T23:59:00-04:00",
+      "sourceQuote": "Usurp the Shadow Throne Sealed Prerelease - Part 1\nFRI, SEP 18 7:00 PM",
+      "lat": 40.722526,
+      "lng": -73.949837
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave",
+      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "games"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-09-07"
+        }
+      ],
+      "id": "action-city-shadow-throne-0919",
+      "title": "Usurp the Shadow Throne Sealed Prerelease - Part 2 at Action City Comics",
+      "kicker": "Prerelease night two of two",
+      "summary": "A sealed prerelease across two evenings. The listing gives a start and no finish.",
+      "startsAt": "2026-09-19T19:00:00-04:00",
+      "endsAt": "2026-09-19T23:59:00-04:00",
+      "sourceQuote": "Usurp the Shadow Throne Sealed Prerelease - Part 2\nSAT, SEP 19 7:00 PM",
+      "lat": 40.722526,
+      "lng": -73.949837
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "id": "mccarren-park-greenmarket",
+      "title": "McCarren Park Greenmarket",
+      "kicker": "8am to 3pm, year round",
+      "summary": "GrowNYC also runs compost drop-off and a clothing collection alongside it on the same morning.",
+      "startsAt": "2026-09-12T08:00:00-04:00",
+      "endsAt": "2026-09-19T15:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      },
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "McCarren Park Greenmarket",
+      "address": "Union Ave between Driggs Ave and N 12th St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY",
+      "actions": [
+        {
+          "label": "Market page",
+          "type": "learn_more",
+          "url": "https://www.grownyc.org/greenmarket/brooklyn/mccarren-park"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park Greenmarket",
+          "url": "https://www.grownyc.org/greenmarket/brooklyn/mccarren-park",
+          "publisher": "GrowNYC",
+          "date": "2026-09-07"
+        }
+      ],
+      "sourceQuote": "McCarren Park Greenmarket\nYear Round\nSaturday\n8:00 am - 3:00 pm",
+      "lat": 40.721159,
+      "lng": -73.952879
     }
   ]
 }

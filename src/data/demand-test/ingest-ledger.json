@@ -2677,6 +2677,16 @@
       "name": "Moon Bunny Aerial — four class sessions in the window that the deck's shape has no home for",
       "addedAt": "2026-09-04",
       "note": "RULE QUESTION, not a blocked fact. The studio's feed carries four titles inside 9/4–9/18 that appear once each rather than weekly: \"name: K-Pop Dance (Boompala by le sserafim) / start_at: 2026-09-08T23:30:00.000Z\", \"name: Intro to Handstands / start_at: 2026-09-09T00:30:00.000Z\", \"name: Kids K-Pop Dance / start_at: 2026-09-10T21:15:00.000Z\" and \"name: K-Pop Dance (Loveshot by EXO) / start_at: 2026-09-10T22:30:00.000Z\". Every other title in the feed repeats on a weekly slot and is plainly the standing schedule. These four were not carded: the feed states a name and a clock and nothing else — no price, no description, nothing distinguishing a one-off from a rotating class — and this source has only ever produced the plans card and a discount card, never per-class cards. That is the same shape as the lot-radio ruling, but nobody has actually ruled it here. WHAT WOULD RESOLVE IT: Batu saying whether a drop-in studio class with a name and a time is cardable supply, or whether the plans card is the coverage."
+    },
+    {
+      "name": "Sparrow Funerals — GRASP grief recovery group, last Monday monthly 6:30pm",
+      "note": "HELD 2026-09-07 as a MODEL LIMIT, not a sourcing problem. The page states it plainly — \"Last Monday of every month\\n6:30PM\" at 161 Driggs Ave — but `recurrence.days` models WEEKLY days only, so a monthly group cannot be expressed without either inventing a weekly cadence or carding single occurrences by hand. Same limitation already recorded for Leaves' biweekly writing group. The next occurrence is Monday 2026-09-28, outside this run's window anyway. Card it as a single dated event when 9/28 enters the window, or extend the recurrence model, which is a human-gated code change.",
+      "addedAt": "2026-09-07"
+    },
+    {
+      "name": "Happy Medium — Art Cafe drop-in painting, 224 Franklin St",
+      "note": "HELD 2026-09-07: the page states no standing schedule. Its calendar lists individual bookable slots and interleaves two locations — the same snapshot carries \"Art Cafe\\nMon, Sep 7 · 2:15 PM - 4:15 PM\\nMarket Street\" (Manhattan) alongside the Greenpoint ones, so the location is per-slot. There is no line saying the Greenpoint room runs on any particular day or hours, so a standing card would be inventing the schedule and a dated card would be one arbitrary slot. Read the source again when it publishes a recurring line, or card a specific session it dates.",
+      "addedAt": "2026-09-07"
     }
   ],
   "sourcePulse": {
@@ -2715,7 +2725,7 @@
     "brew-inn-trivia": "2026-08-06",
     "play-kids-greenpoint": "2026-08-06",
     "acme-fish-friday": "2026-08-07",
-    "grownyc-mccarren-greenmarket": "2026-08-07",
+    "grownyc-mccarren-greenmarket": "2026-09-06",
     "bandit-running-gpr": "2026-08-07",
     "dreams-on-command": "2026-08-07",
     "kettl-tea": "2026-08-07",
@@ -2736,7 +2746,7 @@
     "macha-studio": "2026-08-11",
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
-    "action-city-comics": "2026-08-16",
+    "action-city-comics": "2026-09-06",
     "golden-drum": "2026-09-03",
     "nbk-open-streets": "2026-09-01",
     "bellocq-tea": "2026-09-03",

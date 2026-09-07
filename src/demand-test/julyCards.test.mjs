@@ -758,11 +758,19 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // 2026-09-07, later the same day: +1. Batu approved the Lockwood events-feed
   // rule (PR #58), so the clearance sale that had been held four times over
   // could finally be pinned at the shop's own address. 161.
-  assert.equal(seed.cards.length, 161);
+  //
+  // 2026-09-07, third pass: +6. The held cards from sources that became
+  // readable for the first time today, once Batu cleared them — five ticketed
+  // tournaments at Action City Comics and the McCarren Park Greenmarket, which
+  // closes the standing-dark line that source has carried for weeks. Two of the
+  // nine held were NOT shipped: Sparrow's GRASP group meets monthly and the
+  // card model only expresses weekly days, and Happy Medium's Art Cafe is a
+  // booking calendar of individual slots with no standing schedule stated. 167.
+  assert.equal(seed.cards.length, 167);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
-  assert.equal(count((c) => c.category === "event"), 80, "46 after expiry + 34 dated adds (2026-09-07)");
+  assert.equal(count((c) => c.category === "event"), 86, "46 after expiry + 34 dated adds + 6 cleared holds (2026-09-07)");
   assert.equal(count((c) => c.category === "discount"), 7, "7 − Moon Bunny's expired back-to-school discount + Lockwood's clearance sale (2026-09-07)");
   assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
@@ -1174,6 +1182,13 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // nights sourced from the shop's own homepage events widget.
     // (action-city-fnb-armory-0818 expired out 2026-08-19)
     // (action-city-one-piece-op17-prerelease-0826 expired out 2026-08-27)
+    // 2026-09-07: five ticketed tournaments at Action City Comics, cleared from
+    // the hold pile once Batu approved shipping the first-read sources.
+    "action-city-flesh-blood-0908",
+    "action-city-one-piece-0909",
+    "action-city-one-piece-0910",
+    "action-city-shadow-throne-0918",
+    "action-city-shadow-throne-0919",
     "black-rabbit",
     // 2026-08-07: Black Rabbit and Scrappleland are back after the standing-
     // programming fix — their weekly nights had silently stopped being carded
