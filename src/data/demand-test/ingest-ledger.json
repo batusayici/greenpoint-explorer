@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-04T10:30:00-04:00",
+  "lastRunAt": "2026-09-07T00:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -2680,10 +2680,10 @@
     }
   ],
   "sourcePulse": {
-    "eavesdrop": "2026-08-20",
-    "greenpointers": "2026-09-01",
-    "greenpoint-comedy-club": "2026-08-14",
-    "film-noir-cinema": "2026-09-03",
+    "eavesdrop": "2026-09-06",
+    "greenpointers": "2026-09-06",
+    "greenpoint-comedy-club": "2026-09-06",
+    "film-noir-cinema": "2026-09-06",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
     "greenpoint-library": "2026-09-03",
@@ -2699,16 +2699,16 @@
     "yaro-studios": "2026-08-07",
     "yaro-kids-clay": "2026-08-07",
     "moon-bunny-aerial": "2026-08-19",
-    "brooklyn-craft-company": "2026-09-01",
+    "brooklyn-craft-company": "2026-09-06",
     "last-place-on-earth": "2026-07-26",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-09-02",
+    "go-green-bk": "2026-09-06",
     "nycparks-greenpoint": "2026-08-17",
-    "troost": "2026-09-03",
-    "carcosa-club": "2026-08-07",
-    "good-room": "2026-09-03",
+    "troost": "2026-09-06",
+    "carcosa-club": "2026-09-06",
+    "good-room": "2026-09-06",
     "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-08-09",
     "hide-and-seek": "2026-08-06",
@@ -2848,13 +2848,6 @@
       "expiresAt": "2026-09-08"
     },
     {
-      "sourceId": "lockwood",
-      "gapKey": "GAP",
-      "reason": "Re-earned 2026-08-25 against this run's snapshot: three flagged dates, 8/25, 9/5 and 9/7, and all belong to items that are HELD, not uncarded, for one reason — the SociableKit feed states a name and a clock and nothing else. \"name: Spark Session Night\\nstart_date_raw: 2026-08-25\\nstart_time: 5:00 pm\" and \"name: MetroCard Mystery Weekend\\nstart_date_raw: 2026-09-05\\nstart_time: 11:00 am\\nend_date_raw: 2026-09-07\" carry no venue, no address and nothing stating what the item IS, and each links only a login-walled facebook.com event page that R1 cannot open. Carding either would mean inventing both the location and the offer. Both are in watchItems. WHAT WOULD CHANGE IT: Lockwood publishing the detail anywhere fetchable.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
-    },
-    {
       "sourceId": "cibone-ote",
       "gapKey": "GAP",
       "reason": "The 8/13 date is the closing day of \"HOZUBAG LIMITED EVENT\", verbatim \"July 11 – August 13, 2026\" — a retail pop-up that opened a month before this edition window. It is HELD on a genuine lens conflict, not missed: SKILL.md's markets/vendor rule says general-goods retail \"carries no lens and shows in All only\", but the repo test `no card is lens-less` asserts zero lens-less cards, so the answer the rule gives cannot ship. Needs Batu to reconcile the two before this class of item can be carded.",
@@ -2897,13 +2890,6 @@
       "expiresAt": "2026-09-01"
     },
     {
-      "sourceId": "go-green-bk",
-      "gapKey": "GAP",
-      "addedAt": "2026-09-04",
-      "expiresAt": "2026-09-14",
-      "reason": "GEOGRAPHY, re-earned 2026-09-04 against this run's snapshot and its 11 persisted detail pages. The six flagged dates (9/6, 9/7, 9/9, 9/12, 9/13, 9/14) belong to a Brooklyn-wide series page, and every item on them is outside Greenpoint: the Domino Park Summer Fitness Series (Williamsburg, barred by the 2026-08-06 ruling), \"Fido's Coffee Bark\" at the Prospect Park Picnic House, \"Nature Journaling\" at Brooklyn Bridge Park's Pebble Beach, and \"It's My Park in Brooklyn\" whose venue field reads \"Many venues\" and whose own schedule names Sunset Park, Cooper Park, Lt. Federico Narvaez Tot Lot, Marine Park, Rainbow Playground and Owl's Head Park — none of them here. Every in-area item the source carries in the window IS covered: the 9/4 Sensory Garden Hour at Greenpoint Library and the McGolrick Bird Club on 9/5. Out-of-neighborhood dates are this source's normal output, not a coverage loss. WHAT WOULD CHANGE IT: a Greenpoint-addressed date the deck has nothing for."
-    },
-    {
       "sourceId": "eavesdrop",
       "gapKey": "SILENT",
       "reason": "THE FETCHABLE PAGE IS NOT THE CALENDAR — already recorded as a roster fact (\"REAL CALENDAR IS INSTAGRAM, IN TWO PARTS\", Batu 2026-08-13), and re-earned against this run's snapshot: eavesdrop.nyc/calendar fetched clean at 1,754 bytes and its LATEST listing is \"Sunday, Jul 12\" — five weeks stale, with nothing dated after it. So the page is not quiet, it is frozen, and the live calendar lives at instagram.com/eavesdrop.nyc/ which needs the Browser pane (IG blocks headless) while the browser path is down with the known browser-connect-reset fault. This is \"we cannot read the source\", never \"the source has no supply\". WHAT WOULD CHANGE IT: the browser path recovering, or the venue publishing dates on a plain-fetchable page.",
@@ -2930,20 +2916,6 @@
       "reason": "REPLACES the 2026-08-14 explanation, which said Golden Drum \"publishes nothing dated inside 2026-08-19 → 2026-09-02\" and is now wrong: this run's fetch added 51 lines carrying two real in-window workshops, and BOTH are carded (golden-drum-yara-drum-workshop-0824, golden-drum-sacred-roses-0825) — the source's first cards ever. What remains flagged is 2026-08-26, and that one IS still the annotation false positive the old note described: the only 8/26-looking string in the file is \"Sagittarius New Moon 12/08/26\", a DD/MM/YY label for December 8, 2026 that extractDates reads as August 26. Same annotation-vs-event blindness recorded for maison-jar and macha-studio. LESSON WORTH KEEPING: a \"this source has no supply\" explanation goes stale the moment the source publishes, so it must be re-earned against the CURRENT snapshot, never inherited.",
       "addedAt": "2026-08-20",
       "expiresAt": "2026-09-03"
-    },
-    {
-      "sourceId": "nycparks-greenpoint",
-      "gapKey": "GAP",
-      "addedAt": "2026-09-04",
-      "expiresAt": "2026-09-14",
-      "reason": "THE REC-CLASS EXCLUSION WORKING, re-earned 2026-09-04 against this run's snapshot, in which all five records are new. Every one of the five flagged dates carries only standing municipal rec programming, which the roster notes and SKILL.md exclude by rule: \"CANCELED: Bodyweight Interval Training\" on 9/7 (5:45–6:45pm, Multi-Use Room C in McCarren Park), \"Body-Centric Circuit Training\" on 9/9 and 9/16 (6:00–6:45pm), \"BollyX\" on 9/12 (10:00–11:00am) and \"Bodyweight Interval Training\" on 9/14 (6:00–7:00pm) — each tagged \"Fitness | Shape Up NYC | Recreation Center Programming\". The feed carried no non-rec item at any in-scope Greenpoint park in the window. WHAT WOULD CHANGE IT: a park event outside the Shape Up NYC / recreation-centre programme."
-    },
-    {
-      "sourceId": "eavesdrop",
-      "gapKey": "GAP",
-      "reason": "PARTIALLY CLOSED, remainder HELD — 2026-08-21. The venue's own /calendar came back to life this run carrying dated listings with clock times (it had stated nothing past Aug 1 since the 2026-08-13 review), so Eavesdrop has cards again for the first time since its venue card was deleted. Each calendar day carries at most two listings: a \"6PM\" set and a \"12midnight\" set. The four 6pm sets are CARDED (eavesdrop-bodega-bruja-0822, eavesdrop-dj-dan-ce-0823, eavesdrop-antron-0829, eavesdrop-loggetto-0830), which covers 8/22, 8/23, 8/29 and 8/30. The dates still flagged — 8/24, 8/27, 8/28, 8/31 — carry ONLY a midnight set (verbatim: \"Monday, Aug 24 / 12midnight / NoahShea @eavesdrop\", \"Thursday, Aug 27 / 12midnight / Dan Piepenbring\", \"Friday, Aug 28 / 12midnight / Dynoman @eavesdrop\", \"Monday, Aug 31 / 12midnight / Kamilla Norova @eavesdrop\"), and a midnight start cannot be expressed: 00:00 is the all-day sentinel in eventWindow.js, so carding the sourced time would tell the feed the set runs all day. All eight midnight sets are authored and held in the review PR with the rule question. WHAT WOULD CHANGE IT: a ruling on how a midnight start is written.",
-      "addedAt": "2026-08-21",
-      "expiresAt": "2026-09-04"
     },
     {
       "sourceId": "play-kids-greenpoint",
@@ -3042,6 +3014,62 @@
       "addedAt": "2026-09-04",
       "expiresAt": "2026-09-18",
       "reason": "THIS SOURCE FEEDS CODE AND A STANDING CARD, NOT DATED CARDS — its output is GTRAIN_WINDOWS in src/demand-test/gtrainBanner.js plus the undated `g-train-closures` card, so it can fetch clean for weeks without producing a new card. Re-earned against this run's snapshot: every Greenpoint-closing window it carries is ALREADY in GTRAIN_WINDOWS. The mechanical test is the G26/G28 header \"No [G] between Bedford-Nostrand Avs and Court Sq\", and the feed's three instances are active_period [[1789177500,1789376400]] (Fri Sep 11 9:45 PM – Mon Sep 14 5 AM), the four-overnight run [[1789436700,1789462800],[1789523100,1789549200],[1789609500,1789635600],[1789695900,1789722000]] (Mon Sep 14 – Fri Sep 18) and [[1790387100,1790586000]] (Fri Sep 25 9:45 PM – Mon Sep 28 5 AM) — all three already carried in the code, added 2026-08-13 and 2026-08-27. The rest of the filtered set is south-Brooklyn stop-skips that leave Greenpoint Av and Nassau Av open. The diff this run was +0/-1. WHAT WOULD CHANGE IT: a new G26/G28 window, which is a human-gated code change per the roster note."
+    },
+    {
+      "sourceId": "nycparks-greenpoint",
+      "gapKey": "GAP",
+      "reason": "ALL SEVEN FLAGGED DATES ARE SHAPE UP NYC, which this skill skips by standing rule (\"Skip recurring municipal rec classes (pool lessons, Shape Up NYC)\"). The feed's own titles say so: \"Body-Centric Circuit Training\", \"BollyX\" and \"Bodyweight Interval Training\" at McCarren Park Multi-Use Rooms A and C, each tagged Recreation Center Programming. One more, a 9/12 \"CANCELED: Bodyweight Interval Training\", is cancelled in its own title. So the deck covering 0 of 7 is the rule working, not a coverage loss. WHAT WOULD CHANGE IT: NYC Parks programming a one-off Greenpoint event that is not a rec-centre class, which lands as an ordinary diff.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "greenpoint-comedy-club",
+      "gapKey": "GAP",
+      "reason": "THE FIVE FLAGGED DATES ARE THE WEEKLY SHOWCASES, which the roster note says to leave uncarded in favour of the named one-off bills: 9/9 \"Comedians You Should Know\", 9/10 and 9/17 \"The Thursday Showcase\", 9/11 and 9/18 \"The Friday Showcase Show\" plus \"The (Later) Friday Showcase\". Six named bills from the same snapshot DID ship this run (9/12, 9/13, 9/15, 9/17, 9/19, 9/20), so the source is fully read and the gap is editorial. WHAT WOULD CHANGE IT: Batu reversing the roster note, which would add a recurring card per showcase.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "go-green-bk",
+      "gapKey": "GAP",
+      "reason": "FOUR OF THE FIVE ARE CITYWIDE ITEMS OUTSIDE GREENPOINT and the fifth is a rain date. Verbatim from the snapshot: \"Wednesday, September 9, 9:30 a.m.-11:30 a.m., It's My Park at Marine Park\" and \"Sunday, September 13, 11 :00 a.m.-1:00 p.m., It's My Park at Rainbow Playground\" are both far-south Brooklyn; 9/17 carries \"In case of rain or extreme heat, the event will be postponed to Thursday, September 17 at the same time.\", which is a contingency, not a scheduled happening. 9/8 and 9/15 ARE Greenpoint and are now carded as transmitter-park-yoga-tuesdays. WHAT WOULD CHANGE IT: a dated Greenpoint item on one of these days.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "eavesdrop",
+      "gapKey": "GAP",
+      "reason": "THE ONE FLAGGED DATE IS TODAY'S ALREADY-FINISHED MIDNIGHT SET. The venue prints \"Monday, Sep 7 / 12midnight / Youngbloods w/ lostverb @eavesdrop\", and a stated midnight start with no sourced end retires an hour in under the 2026-08-25 allDay rule, so carding it would put a dead row at the top of today's feed. The other nine nights in the window shipped this run — this source had NO cards at all before today. WHAT WOULD CHANGE IT: nothing; the date passes out of the window tomorrow.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-14"
+    },
+    {
+      "sourceId": "lockwood",
+      "gapKey": "GAP",
+      "reason": "ALL FOUR ARE THE HELD RULE QUESTION, not new work. The SociableKit feed prints a name, a date and a clock with no venue line for its own in-store events, and the rule that would place them at 98 Greenpoint Ave is proposed in PR #58 and NOT in force. Carding them now would pre-empt Batu's decision. The 9/12 item is separately out of area — \"name: Williamsburg's 5th Birthday Party!\" carries \"location_text: 485 Driggs Ave\". WHAT WOULD CHANGE IT: Batu ruling on the Lockwood rule in PR #58.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "grownyc-mccarren-greenmarket",
+      "gapKey": "STANDING DARK",
+      "reason": "READ FOR THE FIRST TIME TODAY, AND ITS CARD IS IN THIS RUN'S REVIEW PR. The browser path that this source needs has been broken in the cloud routine for weeks and works on the machine this run used, so the page finally rendered: \"Saturday\\n8:00 am - 3:00 pm\", year-round, corroborated independently by the NYC Open Data farmers-market dataset. It is held only because it is a first-time-readable source, which the triage rules send to review. WHAT WOULD CHANGE IT: merging the review PR, which closes this line permanently.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "action-city-comics",
+      "gapKey": "SILENT",
+      "reason": "READ FOR THE FIRST TIME TODAY AND ITS FIVE CARDS ARE IN THIS RUN'S REVIEW PR. Another browser-path source the cloud routine could not reach; it carries five dated ticketed tournaments inside the window (9/8, 9/9, 9/10, 9/18, 9/19). Held only as a first-time-readable source. WHAT WOULD CHANGE IT: merging the review PR.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "greenpoint-trash-club",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "THE SITE IS UNREADABLE BY EVERYONE, NOT JUST US, so this is not a source we failed to review. greenpointtrashclub.org errored this run with net::ERR_CERT_COMMON_NAME_INVALID, and an independent check of the certificate shows why: the host serves Netlify's wildcard \"CN=*.netlify.app\", which does not cover their own domain, so HTTPS fails for any visitor. The club's card was already deleted 2026-08-30 as unverifiable (its 7:30pm start existed only in an Instagram bio), and the standing flag cannot be decided from a page nobody can load. Deliberately NOT marked standing:false — the recurring programming is probably real; the site is broken. WHAT WOULD CHANGE IT: the club provisioning a certificate for their custom domain, or Batu deciding to drop the source.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
     }
   ]
 }

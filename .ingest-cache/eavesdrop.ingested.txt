@@ -6,52 +6,100 @@ reserve
 calendar
 private events
 ‹ calendar
-1AM
-SGLD residency
-<
-Saturday, Aug 22
 12midnight
-Marco Weibel residency
+Renata Do Valle residency
 <
 6PM
-BODEGA BRUJA @eavesdrop
+DJ Polar Seltzer @eavesdrop
 <
-Sunday, Aug 23
+Sunday, Sep 6
 12midnight
-Cosmo @eavesdrop
+datadata @eavesdrop
 <
 6PM
-DJ DAN. CE @eavesdrop
+Andy Beta @eavesdrop
 <
-Monday, Aug 24
+Monday, Sep 7
 12midnight
-NoahShea @eavesdrop
+Youngbloods w/ lostverb @eavesdrop
 <
-Thursday, Aug 27
+Thursday, Sep 10
 12midnight
-Dan Piepenbring
+A––Z Radio residency
 <
-Friday, Aug 28
+Friday, Sep 11
 12midnight
-Dynoman @eavesdrop
+DJ Pepperazzi @eavesdrop
 <
-Saturday, Aug 29
+Saturday, Sep 12
 12midnight
-Alien D residency
+Timo Lee residency
 <
 6PM
-Antron @eavesdrop
+Dialectic Disco @eavesdrop
 <
-Sunday, Aug 30
+Sunday, Sep 13
 12midnight
-HunnyBunny @eavesdrop
+Charolastra @eavesdrop
 <
 6PM
-l'oggetto @eavesdrop
+Henry Solomon @eavesdrop
 <
-Monday, Aug 31
+Monday, Sep 14
 12midnight
-Kamilla Norova @eavesdrop
+Miles Robbins @eavesdrop
+<
+Friday, Sep 18
+12midnight
+Playr1 @eavesdrop
+<
+Saturday, Sep 19
+12midnight
+Tommy Castro residency
+<
+6PM
+DJ Anton residency
+<
+Sunday, Sep 20
+12midnight
+Niyah West @eavesdrop
+<
+6PM
+Daniel Lynch @eavesdrop
+<
+Monday, Sep 21
+12midnight
+690 Woodward Garage Night @eavesdrop
+<
+Thursday, Sep 24
+12midnight
+NAP @eavesdrop
+<
+Friday, Sep 25
+12midnight
+Marjorine @eavesdrop
+<
+Saturday, Sep 26
+12midnight
+Miss Hap @eavesdrop
+<
+6PM
+Shane Doss @eavesdrop
+<
+Sunday, Sep 27
+2AM
+Jeff Mendoza (Soul Summit) @eavesdrop
+<
+6PM
+Naomi Shamble @eavesdrop
+<
+Monday, Sep 28
+12midnight
+Manny Steelo @eavesdrop
+<
+Thursday, Oct 1
+12midnight
+FLEE Project @eavesdrop
 <
 — 674
 Manhattan

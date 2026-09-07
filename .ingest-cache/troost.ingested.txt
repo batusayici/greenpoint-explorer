@@ -1,13 +1,3 @@
-summary: First Vinyl Fridays with Steph
-start.date: 2026-09-04
-end.date: 2026-09-05
-htmlLink: https://www.google.com/calendar/event?eid=NGh2cXIwOHFocGlycXFyN25tbGF1NGk5a2xfMjAyNjA5MDQgdHJvb3N0bGl2ZUBt
-
-summary: DJ SUKI DIAZ
-start.date: 2026-09-05
-end.date: 2026-09-06
-htmlLink: https://www.google.com/calendar/event?eid=XzhwMWppZTlnOG9yNGFiOW44a3E0OGI5azhjcjQyYmEyNnAxM2ViYTQ2MHFqNGQ5bjg1MTQ4ZHBuNmMgdHJvb3N0bGl2ZUBt
-
 summary: TIRED HORSES
 description: psychedelic indie jazz quintet
 start.date: 2026-09-07
@@ -220,3 +210,15 @@ summary: DIMES
 start.date: 2026-10-19
 end.date: 2026-10-20
 htmlLink: https://www.google.com/calendar/event?eid=M2twcXZpcGIxY3Q3N3RodmIzZ2YyazBmYnIgdHJvb3N0bGl2ZUBt
+
+summary: MIDDLE BLUE
+description: Funk Blues
+start.date: 2026-10-20
+end.date: 2026-10-21
+htmlLink: https://www.google.com/calendar/event?eid=XzYwcms2Y2hqNzRyM2liOXA4Y3M0NmI5azZoMGs4YmEyNjhxNDhiOWs3NHNqNGRhMTg4cTQ0aDFuOG8gdHJvb3N0bGl2ZUBt
+
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-10-22
+end.date: 2026-10-23
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjEwMjIgdHJvb3N0bGl2ZUBt
