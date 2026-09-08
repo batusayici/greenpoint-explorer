@@ -1,0 +1,66 @@
+# TEMPORARY diagnostic — delete before merge. Answers one question for plan
+# Task 4: what do the eight runner-only failures actually send a GitHub runner?
+name: probe-runner
+on:
+  push:
+    branches: [feat/ingest-fetch-on-actions]
+    paths: [.github/workflows/probe-runner.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: plain fetch probes
+        run: |
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+          for u in \
+            "https://www.nycgovparks.org/xml/events_300_rss.xml" \
+            "https://www.nycgovparks.org/events" \
+            "https://www.sunshinelaundromat.com/" \
+            "https://www.leavesbookstore.com/events.php" \
+            "https://www.happy-medium.co/" \
+            "https://grownyc.org/locations/mccarren-park-greenmarket/" \
+            "https://www.hisawyer.com/artudio-1/schedules" \
+            "https://www.union.fit/orgs/sparsa-brooklyn"; do
+            printf '%-70s ' "$u"
+            curl -sS -L -A "$UA" -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" -o /tmp/body -w "%{http_code} %{size_download}B %{time_total}s" "$u" || true
+            echo
+            grep -o -i -E 'cloudflare|just a moment|performing security|access denied|captcha|405|method not allowed' /tmp/body | sort | uniq -c | head -3 || true
+          done
+      - name: browser probes with waitUntil=load
+        run: |
+          cat > /tmp/probe.mjs <<'JS'
+          import { chromium } from "playwright";
+          const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
+          const urls = [
+            "https://www.hisawyer.com/artudio-1/schedules",
+            "https://www.union.fit/orgs/sparsa-brooklyn",
+            "https://www.hisawyer.com/play-greenpoint/schedules",
+            "https://www.sunshinelaundromat.com/",
+            "https://www.leavesbookstore.com/events.php",
+            "https://www.happy-medium.co/",
+          ];
+          const b = await chromium.launch();
+          for (const u of urls) {
+            const p = await b.newPage({ userAgent: UA });
+            const t0 = Date.now();
+            try {
+              const r = await p.goto(u, { waitUntil: "load", timeout: 40000 });
+              await p.waitForTimeout(6000);
+              const text = (await p.evaluate(() => document.body?.innerText ?? "")).replace(/\s+/g, " ").trim();
+              console.log(`${u}\n  status=${r?.status()} loadMs=${Date.now() - t0} chars=${text.length}\n  head: ${text.slice(0, 220)}`);
+            } catch (e) {
+              console.log(`${u}\n  ERROR ${String(e.message).split("\n")[0]}`);
+            }
+            await p.close();
+          }
+          await b.close();
+          JS
+          node /tmp/probe.mjs
