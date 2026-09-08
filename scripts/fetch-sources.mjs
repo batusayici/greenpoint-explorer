@@ -403,8 +403,15 @@ async function browserText(url, opts = {}) {
     return text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
   };
   try {
-    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
-    await page.waitForTimeout(2500); // let JS-rendered calendars settle
+    // Per-source overrides, from a roster `browser: { waitUntil, settleMs,
+    // scroll }` block (2026-09-07). The booking portals the family/kids push
+    // opened up need more than the default: iClassPro (Ms. J's) is a 196-char
+    // shell at domcontentloaded+2.5s and a full schedule at networkidle+3s.
+    // The MIN_TEXT_CHARS retry below would have rescued that one, but not a
+    // page that passes the size check while its schedule widget is still
+    // loading — which is the phantom-shrink case, so set it explicitly.
+    await page.goto(url, { waitUntil: opts.waitUntil ?? "domcontentloaded", timeout: 40000 });
+    await page.waitForTimeout(opts.settleMs ?? 2500); // let JS-rendered calendars settle
     if (opts.scroll) {
       // Walk the page so intersection-observer content mounts, then return to
       // the top and let it settle before reading.
@@ -418,6 +425,17 @@ async function browserText(url, opts = {}) {
       await page.waitForTimeout(1500);
     }
     let text = await readText();
+    // A challenge page is not content (2026-09-07). Sawyer and union.fit serve
+    // their landing views to a browser with no challenge, which is why they
+    // are on this path at all — but a click into a tab or a second page hits
+    // Cloudflare's "Performing security verification", and if that ever moves
+    // to the landing view the right outcome is a loud error, not a snapshot
+    // of the interstitial that then reads downstream as "the source shrank".
+    // Getting past a challenge is out of bounds (Batu, 2026-08-06); this only
+    // makes sure we notice one.
+    if (/performing security verification|just a moment\.\.\.|verify you are human|checking your browser/i.test(text)) {
+      throw new Error(`bot challenge presented by ${new URL(url).host} — not read, not routed around`);
+    }
     // The remaining browser-only sources render from a WebSocket, and 2500ms is
     // sometimes not enough — observed 2026-08-05, when one run captured the
     // comedy club's shell (13 lines, no shows) while every other run got all 18.
@@ -486,7 +504,7 @@ const sourceUrls = (src) => (Array.isArray(src.urls) && src.urls.length ? src.ur
 
 const plainText = async (src) => htmlToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"));
 const feedText = async (src) => feedToText(await rawGet(sourceUrls(src)[0], "application/rss+xml,application/xml,text/xml"), src.feed ?? {});
-const browserPage = async (src) => browserText(sourceUrls(src)[0]);
+const browserPage = async (src) => browserText(sourceUrls(src)[0], src.browser ?? {});
 const icsText = async (src) => icsToText(await rawGet(sourceUrls(src)[0], "text/calendar,text/plain"), src.ics ?? {});
 
 async function jsonText(src) {

@@ -8255,6 +8255,813 @@
       ],
       "lat": 40.722349,
       "lng": -73.961382
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "civic_action",
+      "filters": [
+        "civic"
+      ],
+      "id": "java-street-community-garden",
+      "title": "Java Street Community Garden",
+      "kicker": "Open weekends, 10am to 3pm",
+      "summary": "A GreenThumb garden at the Franklin and West end of Java Street. Closed on weekdays; the gate is open Saturday and Sunday.",
+      "locationName": "Java Street Community Garden",
+      "address": "59 Java St",
+      "geocodeQuery": "59 Java St, Brooklyn, NY 11222",
+      "lat": 40.731425,
+      "lng": -73.958817,
+      "sourceQuote": "gardenname: Java Street Community Garden\naddress: 59 Java Street\ncrossstreets: Franklin St. and West St.\nstatus: Active\nopenhrssa: 10:00 a.m. - 3:00 p.m.\nopenhrssu: 10:00 a.m. - 3:00 p.m.",
+      "actions": [
+        {
+          "label": "Garden info",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/greenthumb"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "GreenThumb Garden Info (NYC Open Data)",
+          "url": "https://data.cityofnewyork.us/resource/p78i-pat6.json?$where=zipcode=%2711222%27",
+          "publisher": "NYC Parks GreenThumb",
+          "date": "2026-09-07"
+        }
+      ],
+      "relatedCardIds": [
+        "61-franklin-street-garden",
+        "lentol-garden"
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "civic_action",
+      "filters": [
+        "civic"
+      ],
+      "id": "61-franklin-street-garden",
+      "title": "61 Franklin Street Garden",
+      "kicker": "Open weekends, 10am to 6pm",
+      "summary": "A GreenThumb garden at Calyer and Oak. Closed on weekdays; the longest weekend hours of the three Greenpoint gardens.",
+      "locationName": "61 Franklin Street Garden",
+      "address": "61 Franklin St",
+      "geocodeQuery": "61 Franklin St, Brooklyn, NY 11222",
+      "lat": 40.727543,
+      "lng": -73.957459,
+      "sourceQuote": "gardenname: 61 Franklin Street Garden\naddress: 61 Franklin Street\ncrossstreets: Calyer and Oak street\nstatus: Active\nopenhrssa: 10:00 a.m. - 6:00 p.m.\nopenhrssu: 10:00 a.m. - 6:00 p.m.",
+      "actions": [
+        {
+          "label": "Garden info",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/greenthumb"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "GreenThumb Garden Info (NYC Open Data)",
+          "url": "https://data.cityofnewyork.us/resource/p78i-pat6.json?$where=zipcode=%2711222%27",
+          "publisher": "NYC Parks GreenThumb",
+          "date": "2026-09-07"
+        }
+      ],
+      "relatedCardIds": [
+        "java-street-community-garden",
+        "lentol-garden"
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "civic_action",
+      "filters": [
+        "civic"
+      ],
+      "id": "lentol-garden",
+      "title": "Lentol Garden",
+      "kicker": "Open six days, evenings included",
+      "summary": "The one Greenpoint garden with weekday hours: Monday and Thursday evenings 5 to 7, Tuesday and Friday mornings 10 to 12, weekends 10 to 2. No Wednesday hours are published.",
+      "locationName": "Lentol Garden",
+      "address": "478 Graham Ave",
+      "geocodeQuery": "478 Graham Ave, Brooklyn, NY 11222",
+      "lat": 40.719702,
+      "lng": -73.945689,
+      "sourceQuote": "gardenname: Lentol Garden\naddress: 478 Graham Avenue\ncrossstreets: Bayard Street and Meeker Ave\nstatus: Active\nopenhrsm: 5:00 p.m. - 7:00 p.m.\nopenhrstu: 10:00 a.m. - 12:00 p.m.\nopenhrsth: 5:00 p.m - 7:00 p.m\nopenhrsf: 10:00 a.m. - 12:00 p.m.\nopenhrssa: 10:00 a.m - 2:00 p.m.\nopenhrssu: 10:00 a.m - 2:00 p.m.",
+      "actions": [
+        {
+          "label": "Garden info",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/greenthumb"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "GreenThumb Garden Info (NYC Open Data)",
+          "url": "https://data.cityofnewyork.us/resource/p78i-pat6.json?$where=zipcode=%2711222%27",
+          "publisher": "NYC Parks GreenThumb",
+          "date": "2026-09-07"
+        }
+      ],
+      "relatedCardIds": [
+        "java-street-community-garden",
+        "61-franklin-street-garden"
+      ]
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "subscription",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "msjs-greenpoint-fall-term",
+      "title": "Fall classes at Ms. J's Gymnastics & Dance",
+      "kicker": "Infants to 10s, some sittings waitlisted",
+      "summary": "Term starts in September. Tot Party for under-2s, Movers, Leapers and Cartwheelers by age, plus Tiny TuTus ballet-and-tap and K-POP dance. Several sittings show a waitlist rather than open places.",
+      "locationName": "Ms. J's Gymnastics & Dance",
+      "address": "71 India St, 2nd Floor",
+      "geocodeQuery": "71 India St, Brooklyn, NY 11222",
+      "sourceQuote": "Sept '26 START / / Tot Party (infant-24mo)\nMon\n9:00 AM – 9:45 AM\nWAITLIST\nSept '26 START / / Movers (24mo-41mo)\nSept '26 START / / Leapers (3.25yr - 5yr)\nSept '26 START / / Cartwheelers (5yr-6.5yr) + PUP\nSept '26 START / /Ballet + Tap COMBO *Tiny TuTus* (Guardian Assisted: infants-41mo)\nSept '26 START / / K-POP Dance *Twirlers* (3.25yr & older)\n71 India Street (2nd Floor) • Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "See the schedule",
+          "type": "signup",
+          "url": "https://portal.iclasspro.com/msjsgreenpoint/classes"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Ms. J's Greenpoint class schedule",
+          "url": "https://portal.iclasspro.com/msjsgreenpoint/classes",
+          "publisher": "Ms. J's Gymnastics & Dance",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.732156,
+      "lng": -73.957575
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "subscription",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "artudio-fall-mornings",
+      "title": "Toddler and baby art mornings at ARTUDIO",
+      "kicker": "Drop in from $34, or take the term",
+      "summary": "Artudio Minis for 1.5 to 3s on Wednesday 11am and Thursday 9:30am, and Baby's First Art for 6 to 12 months on Thursday 11:15am, running from 9 September to late October.",
+      "locationName": "ARTUDIO",
+      "address": "4 Diamond St",
+      "geocodeQuery": "4 Diamond St, Brooklyn, NY 11222",
+      "sourceQuote": "Artudio Minis\n1.5 – 3 yrs\nWed\n11:00am - 12:00pm EDT\nSep 9, 2026 - Oct 28, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$300 or $40/class\nThu\n9:30am - 10:30am EDT\nSep 10, 2026 - Oct 29, 2026\nBaby's First Art\n6 mo – 1 yrs\n11:15am - 12:00pm EDT\n$240 or $34/class",
+      "actions": [
+        {
+          "label": "Book on Sawyer",
+          "type": "signup",
+          "url": "https://www.hisawyer.com/artudio-1/schedules"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "ARTUDIO schedules",
+          "url": "https://www.hisawyer.com/artudio-1/schedules",
+          "publisher": "ARTUDIO",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.723169,
+      "lng": -73.945354
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "subscription",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "artudio-fall-after-school",
+      "title": "After-school art at ARTUDIO, Tuesdays and Thursdays",
+      "kicker": "Ages 4 to 9, two spots left on Tuesdays",
+      "summary": "3 to 5:30pm through December. Thursdays start 10 September at $952 for the term, Tuesdays start the 15th at $1,020; either is $80 as a single session.",
+      "locationName": "ARTUDIO",
+      "address": "4 Diamond St",
+      "geocodeQuery": "4 Diamond St, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "artudio-fall-mornings"
+      ],
+      "sourceQuote": "FALL 2026 - ARTUDIO After School - Thursdays\n4 – 9 yrs\n3:00pm - 5:30pm EDT\nSep 10, 2026 - Dec 17, 2026\n$952 or $80/class\nFALL 2026 - ARTUDIO After School - Tuesdays\nSep 15, 2026 - Dec 22, 2026\n2 spots left!\n$1,020 or $80/class",
+      "actions": [
+        {
+          "label": "Book on Sawyer",
+          "type": "signup",
+          "url": "https://www.hisawyer.com/artudio-1/schedules"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "ARTUDIO schedules",
+          "url": "https://www.hisawyer.com/artudio-1/schedules",
+          "publisher": "ARTUDIO",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.723169,
+      "lng": -73.945354
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "subscription",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "space-club-member-classes",
+      "title": "Weekday classes for members at Space Club",
+      "kicker": "10am and 11am, Monday to Friday, ages 1 to 5",
+      "summary": "Music, art, sensory play and movement in rotation, included with a membership and not with a single-visit pass. The indoor play space itself is open 8am to 7pm every day.",
+      "locationName": "Space Club Greenpoint",
+      "address": "220 Newel St",
+      "geocodeQuery": "220 Newel St, Brooklyn, NY 11222",
+      "sourceQuote": "Space Club offers free classes to our members at 10am and 11am every Monday - Friday\nA Space Club membership is required to attend our free weekday classes. Classes are not included with Single Pass or ThreezyPass visits.\nThey are primarily intended for children 1 - 5",
+      "actions": [
+        {
+          "label": "Class schedule",
+          "type": "learn_more",
+          "url": "https://spaceclub.com/pages/classes"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Classes",
+          "url": "https://spaceclub.com/pages/classes",
+          "publisher": "Space Club",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.72949,
+      "lng": -73.949933
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "subscription",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "last-place-kids-after-school",
+      "title": "After-school clubs at Last Place on Earth",
+      "kicker": "Weekday clubs, 3:30 to 5:30, ages 5 to 14",
+      "summary": "A different club each afternoon: tabletop and arts on Monday, Pokémon Tuesday, acting and filmmaking Wednesday, D&D Thursday, Tiny Wizards for 6-to-8s on Friday. From $75 a day.",
+      "locationName": "Last Place on Earth",
+      "address": "531 Graham Ave",
+      "geocodeQuery": "531 Graham Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "last-place-chess-chill"
+      ],
+      "sourceQuote": "we begin at 3:30pm for the kids who are either coming on their own or coming from a far distance\nWe end at 5:30pm.\nWe begin the first day of school and end on the last! Our first semester will run until the last day of January.\nDay Pass: $75 | Month to Month / 4 Weeks: $300 | One Semester: $1,200 |Full Year: $2,000\nArts & Crafts Club\nAges 5 - 10 | 10 Seats Available\nwitchcraft coven\nAges 8 - 14 | 5 Seats Available\nacting 101\nCineMakers\nTiny Wizards & Mighty Beasts\nAges 6 - 8 | 18 Seats Available",
+      "actions": [
+        {
+          "label": "Clubs and pricing",
+          "type": "learn_more",
+          "url": "https://www.lastplacebk.com/kids"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Kids after-school clubs",
+          "url": "https://www.lastplacebk.com/kids",
+          "publisher": "Last Place on Earth",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.721326,
+      "lng": -73.947
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Kuei Luck",
+      "address": "171 Calyer St",
+      "geocodeQuery": "171 Calyer St, Brooklyn, NY 11222",
+      "id": "birthsmarter-weekend-childbirth-0912",
+      "title": "Weekend childbirth education with Birthsmarter",
+      "kicker": "Two mornings, Saturday and Sunday",
+      "summary": "A two-day course for expecting parents, 10am to 3:30pm each day at Kuei Luck on Calyer St. Birthsmarter says to ask about alternative pricing rather than skip it over cost.",
+      "startsAt": "2026-09-12T10:00:00-04:00",
+      "endsAt": "2026-09-13T15:30:00-04:00",
+      "sourceQuote": "September 2026\n12\nWeekend Childbirth Education\n2:00 PM UTC -\n7:30 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC\n13",
+      "actions": [
+        {
+          "label": "Book a class",
+          "type": "signup",
+          "url": "https://birthsmarter.com/schedule"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Weekend Childbirth Education",
+          "url": "https://birthsmarter.com/schedule",
+          "publisher": "Birthsmarter",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.72802,
+      "lng": -73.953889
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Kuei Luck",
+      "address": "171 Calyer St",
+      "geocodeQuery": "171 Calyer St, Brooklyn, NY 11222",
+      "id": "birthsmarter-one-day-childbirth-0919",
+      "title": "One-day childbirth education with Birthsmarter",
+      "kicker": "The whole course in one Saturday",
+      "summary": "10am to 4:30pm at Kuei Luck on Calyer St, for expecting parents who can't do the two-day weekend version. Ask about alternative pricing.",
+      "startsAt": "2026-09-19T10:00:00-04:00",
+      "endsAt": "2026-09-19T16:30:00-04:00",
+      "relatedCardIds": [
+        "birthsmarter-weekend-childbirth-0912"
+      ],
+      "sourceQuote": "19\nOne-Day Childbirth Education\n2:00 PM UTC -\n8:30 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC",
+      "actions": [
+        {
+          "label": "Book a class",
+          "type": "signup",
+          "url": "https://birthsmarter.com/schedule"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "One-Day Childbirth Education",
+          "url": "https://birthsmarter.com/schedule",
+          "publisher": "Birthsmarter",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.72802,
+      "lng": -73.953889
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Kuei Luck",
+      "address": "171 Calyer St",
+      "geocodeQuery": "171 Calyer St, Brooklyn, NY 11222",
+      "id": "birthsmarter-newborn-lactation-0920",
+      "title": "Newborn and lactation classes with Birthsmarter",
+      "kicker": "Two classes, 10am and 2pm",
+      "summary": "The Newborn Class runs 10 to 1, then The Lactation Class 2 to 5, both at Kuei Luck on Calyer St. Take one or both. Ask about alternative pricing.",
+      "startsAt": "2026-09-20T10:00:00-04:00",
+      "endsAt": "2026-09-20T17:00:00-04:00",
+      "relatedCardIds": [
+        "birthsmarter-weekend-childbirth-0912"
+      ],
+      "sourceQuote": "20\nThe Newborn Class\n2:00 PM UTC -\n5:00 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC\nThe Lactation Class\n6:00 PM UTC -\n9:00 PM UTC",
+      "actions": [
+        {
+          "label": "Book a class",
+          "type": "signup",
+          "url": "https://birthsmarter.com/schedule"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "The Newborn Class / The Lactation Class",
+          "url": "https://birthsmarter.com/schedule",
+          "publisher": "Birthsmarter",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.72802,
+      "lng": -73.953889
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "sparsa-tuesday-prenatal-baby-0908",
+      "title": "Prenatal and Baby & Me yoga at SPARŚA",
+      "kicker": "Prenatal at 10, Baby & Me at 11:30",
+      "summary": "Both with Adele Loux-Turner at the Greenpoint studio on Manhattan Ave, back to back so you can do one or stay for both.",
+      "locationName": "SPARŚA Greenpoint",
+      "address": "1006 Manhattan Ave",
+      "geocodeQuery": "1006 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.733382,
+      "lng": -73.954458,
+      "startsAt": "2026-09-08T10:00:00-04:00",
+      "endsAt": "2026-09-08T12:45:00-04:00",
+      "relatedCardIds": [
+        "sparsa-greenpoint"
+      ],
+      "sourceQuote": "Tuesday, September 8\n10:00 AM - 11:05 AM EDT\nPrenatal / Gentle Yoga with Adele Loux-Turner\nSPARŚA Greenpoint\n11:30 AM - 12:45 PM EDT\nBaby & Me Yoga with Adele Loux-Turner",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "signup",
+          "url": "https://www.union.fit/orgs/sparsa-brooklyn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "SPARŚA schedule",
+          "url": "https://www.union.fit/orgs/sparsa-brooklyn",
+          "publisher": "SPARŚA",
+          "date": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": true,
+      "category": "event",
+      "filters": [
+        "family_kids",
+        "wellness"
+      ],
+      "id": "mccarren-pool-last-week-0913",
+      "title": "Last week of the free outdoor pool at McCarren",
+      "kicker": "Closes after Sunday the 13th",
+      "summary": "NYC Parks keeps the Olympic-size outdoor pools open through this Sunday, then they shut for the year. Free, as always. Check the pool's own page for the day's hours before you go.",
+      "locationName": "McCarren Park Pool",
+      "address": "776 Lorimer St",
+      "geocodeQuery": "776 Lorimer St, Brooklyn, NY 11222",
+      "startsAt": "2026-09-08T00:00:00-04:00",
+      "endsAt": "2026-09-13T23:59:00-04:00",
+      "allDay": true,
+      "sourceQuote": "Cool off and enjoy the summer at free outdoor pools across the city.\nOur Olympic- and intermediate-sized outdoor pools will remain open through Sunday, September 13. Mini pools will remain open through Labor Day.\nMcCarren Park Pool",
+      "actions": [
+        {
+          "label": "Pool details",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/facilities/outdoor-pools"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Outdoor Pools",
+          "url": "https://www.nycgovparks.org/facilities/outdoor-pools",
+          "publisher": "NYC Parks",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.718773,
+      "lng": -73.950033
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "civic"
+      ],
+      "id": "greenpoint-church-food-pantry",
+      "title": "Food pantry at Greenpoint Reformed Church",
+      "kicker": "4 to 7pm, just turn up",
+      "summary": "The Greenpoint Hunger Program's pantry at the church on Milton St. No sign-up is mentioned on the calendar.",
+      "locationName": "Greenpoint Reformed Church",
+      "address": "136 Milton St",
+      "geocodeQuery": "136 Milton St, Brooklyn, NY 11222",
+      "startsAt": "2026-09-10T16:00:00-04:00",
+      "endsAt": "2026-09-17T19:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      },
+      "sourceQuote": "SUMMARY: Food Pantry\nDTSTART: 2026-09-10T20:00:00.000Z\nDTEND: 2026-09-10T23:00:00.000Z\nLOCATION: 136 Milton St, Brooklyn, NY 11222, USA\nRRULE: FREQ=WEEKLY",
+      "actions": [
+        {
+          "label": "Hunger program",
+          "type": "learn_more",
+          "url": "https://greenpointhungerprogram.org/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Church calendar",
+          "url": "https://greenpointchurch.org/about-us/calendar/",
+          "publisher": "Greenpoint Reformed Church",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.729208,
+      "lng": -73.954973
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "st-stans-parish-picnic-0913",
+      "title": "Parish picnic at St. Stanislaus Kostka",
+      "kicker": "The Polish parish's picnic",
+      "summary": "On the academy's calendar for the 13th with a date but no time, so treat it as daytime and check the church for details.",
+      "locationName": "St. Stanislaus Kostka",
+      "address": "607 Humboldt St",
+      "geocodeQuery": "St. Stanislaus Kostka Church, 607 Humboldt St, Brooklyn, NY 11222",
+      "startsAt": "2026-09-13T00:00:00-04:00",
+      "endsAt": "2026-09-13T23:59:00-04:00",
+      "allDay": true,
+      "sourceQuote": "SUMMARY: Parish Picnic\nDTSTART: 2026-09-13\nSTATUS: CONFIRMED",
+      "actions": [
+        {
+          "label": "School calendar",
+          "type": "learn_more",
+          "url": "https://ststansacademy.org/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "St. Stanislaus Kostka Academy calendar",
+          "url": "https://ststansacademy.org/calendar",
+          "publisher": "St. Stanislaus Kostka Academy",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.722792,
+      "lng": -73.945348
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "subscription",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "play-greenpoint-after-school-fall",
+      "title": "After-school with school pickup at PLAY Greenpoint",
+      "kicker": "Picked up from PS 110, 31 and 34",
+      "summary": "Art and clay, dance, French, soccer and coding by age, 2:30 to 6pm, with a drop-off option for other schools. Terms start the week of 14 September; several rows are down to one or two spots.",
+      "locationName": "PLAY Greenpoint",
+      "address": "33 Nassau Ave",
+      "geocodeQuery": "33 Nassau Ave, Brooklyn, NY 11222",
+      "sourceQuote": "PS110 | Monday : Art & Clay Studio | 4-6 years old | Fall/Winter 2026\n2:30pm - 6:00pm EDT\nSep 14, 2026 - Dec 14, 2026\nPLAY Greenpoint , 33 Nassau Ave, Greenpoint\n$1,080\nFully Booked\nSep 15, 2026 - Dec 15, 2026\n$1,260",
+      "actions": [
+        {
+          "label": "Book on Sawyer",
+          "type": "signup",
+          "url": "https://www.hisawyer.com/play-greenpoint/schedules"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "PLAY Greenpoint schedules",
+          "url": "https://www.hisawyer.com/play-greenpoint/schedules",
+          "publisher": "PLAY Greenpoint",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.723168,
+      "lng": -73.952948
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "subscription",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "art-101-after-school-artists",
+      "title": "After School Artists at ART 101",
+      "kicker": "Drop in any weekday, $65",
+      "summary": "3 to 5pm Monday to Friday from the first day of school through 17 December, ages 4 to 10, no term commitment. Studio is in the Greenpoint Ave building at suite 113.",
+      "locationName": "ART 101",
+      "address": "61 Greenpoint Ave, Ste 113",
+      "geocodeQuery": "61 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "After School Artists (GREENPOINT)\nMon–Fri, 3:00pm – 5:00pm EDT (Sep 10 – Dec 17)\nAges 4 – 10 yrs\n$65/class",
+      "actions": [
+        {
+          "label": "Book on Sawyer",
+          "type": "signup",
+          "url": "https://www.hisawyer.com/providers/art-101/17826-art-101"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "ART 101 (Greenpoint)",
+          "url": "https://www.hisawyer.com/providers/art-101/17826-art-101",
+          "publisher": "ART 101",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.730012,
+      "lng": -73.95837
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "id": "msjs-yom-kippur-camp-0921",
+      "title": "Yom Kippur day camp at Ms. J's",
+      "kicker": "9am to 3pm, ages 3 to 8",
+      "summary": "A one-day camp on the Monday schools are closed, at the India St gym. Booking is through their portal.",
+      "locationName": "Ms. J's Gymnastics & Dance",
+      "address": "71 India St, 2nd Floor",
+      "geocodeQuery": "71 India St, Brooklyn, NY 11222",
+      "startsAt": "2026-09-21T09:00:00-04:00",
+      "endsAt": "2026-09-21T15:00:00-04:00",
+      "relatedCardIds": [
+        "msjs-greenpoint-fall-term"
+      ],
+      "sourceQuote": "9/21 * GREENPOINT Yom Kippur: School Year Camp 9am-3pm (ages 3- 8yrs)\nSep 21st, 2026 - Sep 21st, 2026",
+      "actions": [
+        {
+          "label": "Book the camp",
+          "type": "signup",
+          "url": "https://portal.iclasspro.com/msjsgreenpoint/camps/2"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Ms. J's Greenpoint camps",
+          "url": "https://portal.iclasspro.com/msjsgreenpoint/camps/2",
+          "publisher": "Ms. J's Gymnastics & Dance",
+          "date": "2026-09-07"
+        }
+      ],
+      "lat": 40.732156,
+      "lng": -73.957575
     }
   ]
 }

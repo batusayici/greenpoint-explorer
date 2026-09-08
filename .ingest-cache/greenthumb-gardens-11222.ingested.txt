@@ -1,0 +1,40 @@
+gardenname: Java Street Community Garden
+address: 59 Java Street
+crossstreets: Franklin St. and West St.
+status: Active
+openhrsm: CLOSED
+openhrstu: CLOSED
+openhrsw: CLOSED
+openhrsth: CLOSED
+openhrsf: CLOSED
+openhrssa: 10:00 a.m. - 3:00 p.m.
+openhrssu: 10:00 a.m. - 3:00 p.m.
+lat: 40.731425
+lon: -73.958817
+
+gardenname: 61 Franklin Street Garden
+address: 61 Franklin Street
+crossstreets: Calyer and Oak street
+status: Active
+openhrsm: CLOSED
+openhrstu: CLOSED
+openhrsw: CLOSED
+openhrsth: CLOSED
+openhrsf: CLOSED
+openhrssa: 10:00 a.m. - 6:00 p.m.
+openhrssu: 10:00 a.m. - 6:00 p.m.
+lat: 40.727543
+lon: -73.957459
+
+gardenname: Lentol Garden
+address: 478 Graham Avenue
+crossstreets: Bayard Street and Meeker Ave
+status: Active
+openhrsm: 5:00 p.m. - 7:00 p.m.
+openhrstu: 10:00 a.m. - 12:00 p.m.
+openhrsth: 5:00 p.m - 7:00 p.m
+openhrsf: 10:00 a.m. - 12:00 p.m.
+openhrssa: 10:00 a.m - 2:00 p.m.
+openhrssu: 10:00 a.m - 2:00 p.m.
+lat: 40.719702
+lon: -73.945689

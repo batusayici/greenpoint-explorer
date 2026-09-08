@@ -2160,8 +2160,8 @@
       "addedAt": "2026-08-07"
     },
     {
-      "name": "nyplays / hisawyer.com — Cloudflare bot challenge on the whole host",
-      "note": "BLOCKED 2026-08-06, diagnosed 2026-08-07. Cloudflare 'Just a moment...' interstitial to every non-browser client; bare / browser-UA / UA+Accept+Referer / the public schedules page all 403. Deliberately NOT routed around — headless-browser evasion of a fresh bot challenge is out of bounds. No supply impact: the source has never produced a dated card and its undated subscription card is unaffected. UNBLOCKS IF Cloudflare is relaxed (a plain fetch starts returning JSON again) or Batu authorises a direct ask to New York Society of Play. Otherwise this source is a drop candidate.",
+      "name": "hisawyer.com — REOPENED 2026-09-07: no bot challenge is presented to a real browser",
+      "note": "Batu, 2026-09-07: \"execute all of this\", approving the recommendation to reopen. The 2026-08-06 ruling stands on its own terms — getting past a bot challenge is out of bounds — but the premise no longer holds. Rendered in headless Chromium with a desktop UA on 2026-09-07: hisawyer.com/artudio-1/schedules loaded fully with NO interstitial, no 'Just a moment', no verification step — 898 chars of real schedule (\"Artudio Minis 1.5 – 3 yrs Wed 11:00am - 12:00pm EDT Sep 9, 2026 - Oct 28, 2026\"). Plain curl still 403s. So this is the WORD / comedy-club shape — a JS app that answers a browser and not a script — not the Cloudflare-challenge shape. Route Sawyer providers through fetch: browser like those two. Nothing here licenses solving a challenge if one ever appears; if a render shows an interstitial, stop and report it. The nyplays source removed 2026-08-10 for this same block can come back on the same terms.",
       "addedAt": "2026-08-07"
     },
     {
@@ -2717,6 +2717,56 @@
       "name": "The Wriggle — dropped from the roster 2026-09-07, re-add when we cover Williamsburg",
       "note": "Batu: \"drop for now. we'll add this source when we expand to williamsburg.\" Recorded here so the URL and the finding are not lost. Source was https://www.thewriggle.com/event-listings?format=json — a Squarespace events collection, fetch:json, path `upcoming`, fields title/startDate/endDate/excerpt/location/tags/categories/fullUrl. It is a family-events calendar built for Greenpoint AND Williamsburg, which is exactly why it is worth having LATER and not now: on its only run, 6 of the 7 items inside the 14-day window were Williamsburg (Marsha P. Johnson State Park, A Rosie Day at 338 Wythe, Domino Park) and the 7th was the Greenpoint Library's Saturday Family StoryTime — which the library's own calendar marks `is_event_canceled: 1`. So the aggregator was advertising a cancelled event, and reading the library first-hand is what caught it. Two gotchas to carry forward when it is re-added: its `location` coordinates are MIXED (the library row carried real coords, the Tot Time row carried the 40.7207559/-74.0007613 Squarespace default) so geocode from the address text; and it re-describes other people's events, so cite the venue's own listing wherever one exists.",
       "addedAt": "2026-09-07"
+    },
+    {
+      "name": "Greenpoint Reformed Church — Community Meal, day conflict (HELD)",
+      "addedAt": "2026-09-07",
+      "note": "HELD 2026-09-07. The calendar entry says two different things about the day: DESCRIPTION \"Each Wednesday afternoon, volunteers cook a meal for the community… just show up at 6PM\"; RRULE FREQ=WEEKLY;WKST=MO;BYDAY=TU with a Tuesday DTSTART (2026-09-08T22:00Z = 6pm ET Tuesday). A card that picks either day risks sending someone to a locked door. UNBLOCKS when the church corrects one or the Hunger Program page (greenpointhungerprogram.org) states the day — check that page first, it is the organiser's own."
+    },
+    {
+      "name": "Greenpoint Shotokan Karate — kids schedule stamped 2023 (HELD)",
+      "addedAt": "2026-09-07",
+      "note": "HELD 2026-09-07. greenpoint-karate.com/schedule is plain-fetchable and states a full Mon-Fri kids grid (Pee Wees 5-7 at 3 or 4pm, Children 7+ at 4 and 5pm), BUT the page itself reads \"Updated March 13th, 2023\" and \"PLEASE NOTE: CLASS SCHEDULE SUBJECT TO CHANGE / Please contact us regarding availability.\" That is the source disclaiming its own currency, so the times are not a stated current fact. A venue card without times would be honest; a schedule card would not. UNBLOCKS if the page is re-stamped or the studio confirms."
+    },
+    {
+      "name": "Learn French BK — behind a real Cloudflare challenge",
+      "addedAt": "2026-09-07",
+      "note": "SOURCE FACT 2026-09-07. learnfrenchbrooklyn.com serves a 'Just a moment…' interstitial to plain fetch on every path. Unlike Sawyer this IS the challenge shape, so it is out of bounds and was not attempted in a browser. Its partner site frenchforlittleones.com (33 Nassau Ave) is Wix and renders nothing without JS; the only fact readable is 'Applications for the 2026-2027 school year are now open!'. Their older-kids programme runs inside PLAY Greenpoint, so that source may carry it."
+    },
+    {
+      "name": "Puppetsburg at SPARŚA — starts Tue 9/22, one day past this window",
+      "addedAt": "2026-09-07",
+      "note": "Fully sourced and in area, just beyond the horizon: puppetsburg.com/sign-up.html states \"Brooklyn / SPARŚA / Greenpoint / Tuesdays at 4pm (starting September 22nd!) / $38. Siblings receive 30% off.\" Ages 0-5, a different show each week (the weekly title is Instagram-only; the slot is on the web). Plain-fetchable web source, so it rolls in on its own next run. Card as a recurring Tuesday series with a 9/22 start; venue is SPARŚA Greenpoint, 1006 Manhattan Ave, which the page does not print — the venue name is the sourced fact."
+    },
+    {
+      "name": "Weekend family picks for 9/11-9/13 are not published yet — re-sweep Wed/Thu",
+      "addedAt": "2026-09-07",
+      "note": "2026-09-07 sweep: Greenpointers' current guide covers 9/3-9/9 and the 9/10-9/16 one is not out; Macaroni KID Brooklyn NW's latest weekend picks are Labor Day. Both publish midweek. Mommy Poppins' Greenpoint date feed returns zero events for every date (dead), New York Family's API has 106 events across the week and none in 11222, Brooklyn Bridge Parents' roundup has one Greenpoint line (the library). A Wednesday re-sweep of Greenpointers and Macaroni KID is where a school-week pop-up would surface; nothing else needs re-checking."
+    },
+    {
+      "name": "Library Sensory Garden Hour 9/11 — two BPL surfaces disagree",
+      "addedAt": "2026-09-07",
+      "note": "Shipped inside library-garden-hours-0911 off the branch's own Solr calendar, which lists it 10:30-11:30am Fri 9/11, ages 0-5, weather-dependent. The BPL North Brooklyn community calendar grid lists it 9/4 and 9/18 but not 9/11. The branch calendar is the source of record for branch programming and is what every library card quotes, so the card stands; noting the discrepancy so a cancellation is not missed — the 9/10 run should re-check is_event_canceled on that record."
+    },
+    {
+      "name": "Sawyer and union.fit — the challenge is ONE CLICK IN, not on the landing view",
+      "addedAt": "2026-09-07",
+      "note": "Measured 2026-09-07 across seven portal renders. Landing views of hisawyer.com/artudio-1/schedules, hisawyer.com/play-greenpoint/schedules, the ART 101 provider page, union.fit/orgs/sparsa-brooklyn and portal.iclasspro.com/msjsgreenpoint all load in headless Chromium with no challenge. Clicking a TAB (Sawyer Drop-ins, Sawyer Camps/Events) or a SECOND PAGE (union.fit /classes page 2) returned Cloudflare 'Performing security verification' every time, and the researcher stopped on each. So: the roster reads landing views only, which is within the 2026-08-06 ruling; nothing behind a tab is reachable and nothing here tries. browserText now throws on a challenge page rather than snapshotting it. Consequence to remember: PLAY's drop-off movie nights (Camps/Events tab), ARTUDIO's Drop-ins tab and Sawyer pagination are all unreadable, so a listing that lives past page 1 is invisible and that is not a coverage loss to explain away each run — it is the wall."
+    },
+    {
+      "name": "Eckford Street Studio — no reachable source at all",
+      "addedAt": "2026-09-07",
+      "note": "2026-09-07: the Sawyer provider URL (hisawyer.com/providers/eckford-stree-studio/12508-ps34) redirects to a marketplace search reading 'No activities scheduled at this time'; hisawyer.com/eckford-street-studio/schedules 404s; eckfordstreetstudio.com is a Wix domain not connected to a site; esscp.org (the nonprofit) loads but carries no schedule. The pay-what-you-wish Saturday Family Open Studio is real per third-party listings and cannot be carded from anything fetchable. UNBLOCKS if esscp.org publishes a schedule or their Sawyer page comes back."
+    },
+    {
+      "name": "Greenpoint Gymnastics (189 Driggs) — Sawyer page is an unclaimed stub",
+      "addedAt": "2026-09-07",
+      "note": "2026-09-07: hisawyer.com/listings/providers/2693-greenpoint-gymnastics renders 'Unclaimed' and 'doesn't have upcoming classes on Sawyer... yet!' with a two-sentence description. Nothing to card; not added to the roster. Re-check if a claimed page appears."
+    },
+    {
+      "name": "SPARŚA publishes nothing past Sep 12 on union.fit",
+      "addedAt": "2026-09-07",
+      "note": "2026-09-07 render: the weeks Sep 15-21 and Sep 22-28 both read 'No events to display'. The 9/8 prenatal + Baby & Me card is therefore a one-off as authored, not a truncated series. Musicraftory / Tunes for Tykes / Strawberry Tunes do not appear in any rendered view or in the 21-item Event filter; classes page 2 (Cloudflare-blocked) is the only place they could be."
     }
   ],
   "sourcePulse": {
@@ -2740,12 +2790,12 @@
     "yaro-kids-clay": "2026-08-07",
     "moon-bunny-aerial": "2026-08-19",
     "brooklyn-craft-company": "2026-09-06",
-    "last-place-on-earth": "2026-07-26",
+    "last-place-on-earth": "2026-09-06",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-09-06",
-    "nycparks-greenpoint": "2026-08-17",
+    "nycparks-greenpoint": "2026-09-06",
     "troost": "2026-09-06",
     "carcosa-club": "2026-09-06",
     "good-room": "2026-09-06",
@@ -2771,7 +2821,7 @@
     "cibone-ote": "2026-08-11",
     "kindred-nyc": "2026-08-09",
     "down-to-earth-markets": "2026-08-09",
-    "nyc-open-data-farmers-markets": "2026-08-09",
+    "nyc-open-data-farmers-markets": "2026-09-06",
     "maison-jar": "2026-08-09",
     "macha-studio": "2026-08-11",
     "mta-g-alerts": "2026-08-13",
@@ -2786,7 +2836,17 @@
     "giggles-and-wiggles-events": "2026-09-06",
     "kingsland-wildflowers": "2026-09-06",
     "polish-slavic-center": "2026-09-06",
-    "gwysl-youth-soccer": "2026-09-06"
+    "gwysl-youth-soccer": "2026-09-06",
+    "artudio": "2026-09-06",
+    "play-greenpoint-sawyer": "2026-09-06",
+    "art-101-sawyer": "2026-09-06",
+    "greenthumb-gardens-11222": "2026-09-06",
+    "msjs-greenpoint": "2026-09-06",
+    "space-club-greenpoint": "2026-09-06",
+    "birthsmarter": "2026-09-06",
+    "sparsa-union-fit": "2026-09-06",
+    "greenpoint-reformed-church": "2026-09-06",
+    "st-stans-academy": "2026-09-06"
   },
   "coverageExplanations": [
     {
@@ -3124,6 +3184,104 @@
       "reason": "BOTH FLAGGED DATES ARE ALREADY ON THE MAP, CREDITED TO THE OTHER SOURCE. 9/8 and 9/15 are the Community Yoga mornings, and the deck carries them as transmitter-park-yoga-tuesdays — a recurring Tuesday card authored from Go Green Brooklyn, whose listing states the free-ness outright. This script attributes a card to the source its sourceLinks name, so a date covered by a DIFFERENT source's card reads as a gap here. That double-coverage is not an accident: it is the overlap PR #63 predicted when this source was added, and dedupe is why the yoga did not ship twice today. The other two dates this source carries in-window, the Thursday-morning and Friday-sunset Longevity Stick classes, DID ship (transmitter-longevity-stick-0910 and -0911) and are counted as covered. WHAT WOULD CHANGE IT: Go Green dropping the series, at which point this source becomes the primary and the card gets re-cited.",
       "addedAt": "2026-09-07",
       "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "greenpoint-reformed-church",
+      "gapKey": "GAP",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21",
+      "reason": "FIRST RUN OF A NEW SOURCE; one card shipped, one held, the rest is not supply. The Food Pantry shipped (greenpoint-church-food-pantry, Thursdays 4-7pm, \"LOCATION: 136 Milton St, Brooklyn, NY 11222, USA\"). The Community Meal is HELD on a source conflict: its DESCRIPTION says \"Each Wednesday afternoon, volunteers cook a meal\" and \"just show up at 6PM\", while its RRULE is BYDAY=TU and its expanded DTSTART is a Tuesday — two different claims about the day, so the 2026-08-26 prose-wins rule does not settle it and the card waits on the church. The remaining in-window rows are Sunday worship and five 12-step meetings (Into Action AA, Drink & Die, Greenpoint Agnostics & Freethinkers…), which are not cardable supply under any lens. WHAT WOULD CHANGE IT: the church fixing the meal's day, or a dated family event appearing."
+    },
+    {
+      "sourceId": "st-stans-academy",
+      "gapKey": "GAP",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21",
+      "reason": "FIRST RUN; the one public event shipped and the rest is school housekeeping BY DESIGN. Parish Picnic 9/13 shipped (st-stans-parish-picnic-0913, allDay because the entry is VALUE=DATE). Everything else the window carries after the exclude list — \"First Full Day For Private Pre-K\", \"Full Day Classes Begin\", \"Back To School Parent Meeting -Kinder-8th Grade Families Only\", a school Mass — is for enrolled families, not the neighborhood, and the roster note says so. WHAT WOULD CHANGE IT: a bake sale, fundraiser or open house appearing, which the exclude list does not touch."
+    },
+    {
+      "sourceId": "sparsa-union-fit",
+      "gapKey": "GAP",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21",
+      "reason": "THE UNCARDED ROWS ARE THE WILLIAMSBURG STUDIO. This page lists both SPARŚA locations and prints the location AFTER each class name; the Greenpoint rows in the window (Tuesday prenatal 10:00 and Baby & Me 11:30) shipped as sparsa-tuesday-prenatal-baby-0908, and every other prenatal / Baby & Me / Infant Developmental Movement row reads \"SPARŚA Williamsburg\" and is out of scope. Adult yoga rows at Greenpoint are not this source's job (the venue card sparsa-greenpoint covers the studio). WHAT WOULD CHANGE IT: a kids' music class (Musicraftory, Tunes for Tykes) appearing on union.fit — none is there today, though other listings say they run."
+    },
+    {
+      "sourceId": "birthsmarter",
+      "gapKey": "GAP",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21",
+      "reason": "ALL FIVE IN-WINDOW GREENPOINT SESSIONS SHIPPED as three cards (the weekend course is one two-day card, the Sunday newborn + lactation pair is one grouped card). Anything else this page carries in the window is at Kids at Work in Manhattan, St. John's Preschool in Salt Lake City, or Virtual — the page lists every Birthsmarter city. WHAT WOULD CHANGE IT: nothing outstanding."
+    },
+    {
+      "sourceId": "msjs-greenpoint",
+      "gapKey": "UNMARKED STANDING?",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21",
+      "reason": "REVIEWED ON ITS FIRST RUN: the recurring programming is real and is CARDED as a term card (msjs-greenpoint-fall-term), per the YMCA / dance-school precedent that a class term is one subscription, not a card per weekly sitting. The roster flag stays unset deliberately for one run so the next run can confirm the term card is the right shape before locking standing:true."
+    },
+    {
+      "sourceId": "artudio",
+      "gapKey": "UNMARKED STANDING?",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21",
+      "reason": "REVIEWED ON ITS FIRST RUN: two term cards shipped (artudio-fall-mornings, artudio-fall-after-school) covering every listing in the window. Same reasoning as msjs-greenpoint — flag confirmed next run."
+    },
+    {
+      "sourceId": "art-101-sawyer",
+      "gapKey": "GAP",
+      "reason": "THE UNCARDED DATES ARE THE LAST TWO DAYS OF SUMMER CAMP. 9/8 and 9/9 are the final days of 'Full Day Camp (GREENPOINT)' and 'Summer Camp A.M.' (Jun 29 – Sep 9); a camp in its last 48 hours is not something to send a family to sign up for. After School Artists (Sep 10 – Dec 17) shipped as art-101-after-school-artists. Crafternoons states no start or end date, so its Sundays are inferred and it is not carded as dated. WHAT WOULD CHANGE IT: nothing outstanding.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "play-greenpoint-sawyer",
+      "gapKey": "GAP",
+      "reason": "ONE TERM CARD COVERS EVERY ROW, BY DESIGN. The landing view lists ~40 rows that are one programme family (school-pickup after-school) crossed with pickup school (PS110/PS31/PS34/DROP-OFF), weekday and age band; they shipped as play-greenpoint-after-school-fall per the rule that a term is one subscription, not a card per row. Anything past page 1, and the Camps/Events tab where the drop-off movie nights live, is behind a Cloudflare challenge and is not reachable — that is the wall, not a gap.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "play-greenpoint-sawyer",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "Marked standing:true in the roster on its first run; the term card play-greenpoint-after-school-fall is the standing card. If this still fires it is the pulse not yet stamped — it clears on the pre-ship coverage run.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "space-club-greenpoint",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "Marked standing:true; the standing card is space-club-member-classes (members-only weekday grid). Clears once the pulse is stamped.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "greenthumb-gardens-11222",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "Standing OPEN HOURS, not standing programming — three venue cards (java-street-community-garden, 61-franklin-street-garden, lentol-garden) carry the hours. A venue card is the right shape; there is no 'night' to card. Leaving `standing` unset on purpose: the flag models recurring events, and this source has none.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "st-stans-academy",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "A school calendar's recurring phrases are timetable, not programming — 'Full Day Classes', 'School Mass' every week. The one public event in window shipped (parish picnic). `standing` deliberately unset; standing:false would be the honest value once a second run confirms the shape.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "greenpoint-reformed-church",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "Recurring programming is real and one standing card shipped (greenpoint-church-food-pantry, Thursdays). The Community Meal is held on its Tue/Wed conflict. Worship and 12-step meetings recur but are not cardable supply. Flag decided next run once the pantry card has survived a re-fetch.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "troost",
+      "gapKey": "GAP",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-14",
+      "reason": "NOT RE-FETCHED THIS RUN, SO THIS IS THE CLOUD BASELINE'S GAP, NOT NEW SUPPLY. troost errored in this local session with 'missing env var TROOST_CALENDAR_API_KEY' — the Google Calendar key lives in the cloud routine's environment, not on this machine — so the snapshot being compared is the last cloud run's baseline, unchanged. 13 of its 14 in-window dates are carded; the one uncovered date is whatever that run left, and it is that run's coverage report (which passed) that owns it. WHAT WOULD CHANGE IT: the next cloud run, which fetches with the key and re-reconciles."
     }
   ]
 }

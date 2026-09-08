@@ -794,20 +794,32 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // weeding session and the 9/16 Brooklyn Pollinator Project. The rule is in
   // SKILL.md so this is not re-argued per event, and it does NOT extend to
   // Domino Park or Marsha P. Johnson State Park. 180.
-  assert.equal(seed.cards.length, 180);
+  //
+  // 2026-09-07, seventh pass — the school-opening push, everything Batu approved
+  // with "execute all of this": +18. Eight new sources came online in one
+  // evening. Three GreenThumb gardens as venue cards. Seven term cards from
+  // the booking portals that were written off as blocked and turned out to
+  // render in a browser — Ms. J's, ARTUDIO (two), Space Club, Last Place on
+  // Earth's kids clubs, PLAY Greenpoint's school-pickup after-school, ART 101.
+  // Eight dated events: three Birthsmarter classes at Kuei Luck, SPARŚA's
+  // Tuesday prenatal + Baby & Me pair, the last week of the free McCarren
+  // pool, the church food pantry, St. Stans' parish picnic, and Ms. J's Yom
+  // Kippur camp. The two calendar-format sources built earlier today yielded
+  // their first cards here. 198.
+  assert.equal(seed.cards.length, 198);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
-  assert.equal(count((c) => c.category === "event"), 97, "95 + the two Bushwick Inlet events the scope ruling unblocked (2026-09-07, sixth pass)");
+  assert.equal(count((c) => c.category === "event"), 105, "97 + 8 dated family/civic events from the school-opening push (2026-09-07, seventh pass)");
   assert.equal(count((c) => c.category === "discount"), 8, "7 + the re-authored Brooklyn Youth Ballet $40 trial (2026-09-07, fifth pass)");
   assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
-  assert.equal(count((c) => c.category === "subscription"), 28, "27 + the GWYSL fall waitlist (2026-09-07, fifth pass)");
+  assert.equal(count((c) => c.category === "subscription"), 35, "28 + 7 fall term cards off the booking portals (2026-09-07, seventh pass)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
   // surfaces for a decision instead of rotting unseen.
-  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "3 G-train cards + Film Noir support");
+  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 7, "4 (3 G-train cards + Film Noir support) + the 3 GreenThumb garden venue cards, category civic_action (2026-09-07, seventh pass)");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
@@ -1060,6 +1072,13 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-18: two more Movies Under the Stars screenings, same NYC Parks
     // boilerplate as the 8/19 one — "This event is FREE and open to the public."
     // (mccarren-movies-guardians-2-0826 expired out 2026-08-27)
+    // 2026-09-07, seventh pass: the last week of McCarren's outdoor pool. NYC
+    // Parks' own outdoor-pools page says it in the second line — "Cool off and
+    // enjoy the summer at free outdoor pools across the city." — and that line
+    // is in the quote. The three GreenThumb gardens added the same evening are
+    // NOT here: the dataset states hours and never states free, so they don't
+    // get the flag even though a community garden charges nothing.
+    "mccarren-pool-last-week-0913",
     "mcgolrick-bird-club-0808",
     // 2026-09-07, fourth pass: the first free programming off the North
     // Brooklyn Parks Alliance source. Its own page says both outright — the
@@ -1209,6 +1228,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (longevity-stick-transmitter-0830 expired out 2026-08-31)
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28 — the series
     //  schedule runs Fri 8/28, Sun 8/30, then Sun 9/27; no Thursday remains)
+    // 2026-09-07, seventh pass: the outdoor pool is swimming, so it double-
+    // files family_kids + wellness — the movement cluster, not a civic amenity.
+    "mccarren-pool-last-week-0913",
     "moon-bunny-monthly-plans",
     // 2026-09-07, fourth pass: the Under the K Fit Club is a Zumba class, so
     // it lands in the movement cluster even though the North Brooklyn Parks
@@ -1508,6 +1530,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   // talking to an educator is not the movement cluster, whatever the branch's
   // own "health and wellness" tag says.
   assert.deepEqual(civic, [
+    // 2026-09-07, seventh pass: three GreenThumb community gardens as VENUE
+    // cards (standing open hours from NYC Open Data, not events) — a shared
+    // growing space is civic under the 2026-08-30 rule.
+    "61-franklin-street-garden",
     "adopt-a-business",
     // (bedford-slip-cleanup-0830, bedford-slip-hot-dogs-0830 and
     //  bedford-slip-tree-care-0829 all expired out 2026-08-31)
@@ -1515,6 +1541,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // Board 1's Environmental Protection Committee met on 9/3.)
     "film-noir-support",
     "g-advocacy-mta",
+    // 2026-09-07, seventh pass: the church food pantry — mutual aid, the other
+    // half of what this lens is for. First card ever off an iCalendar source.
+    "greenpoint-church-food-pantry",
+    "java-street-community-garden",
     // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
     // 2026-09-02: Kingsland Wildflowers open hours — four hours on the green
     // roof at a community engagement center, with native plants to take home.
@@ -1532,6 +1562,7 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // is new: kingslandwildflowers.com had been in the WebFetch allowlist for
     // weeks without ever being in the roster, so nothing had read it.
     "kingsland-open-hours-saturdays",
+    "lentol-garden",
     "library-garden-hours-0911",
     // 2026-09-07: the North Brooklyn Parks Alliance native plant giveaway, two
     // cards because the page states different hours on Fridays than at

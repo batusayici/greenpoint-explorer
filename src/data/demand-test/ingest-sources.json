@@ -192,7 +192,11 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "531 Graham Ave, Brooklyn NY 11222 (Greenpoint zip); board game shop + community hub — D&D nights across the week, murder mysteries, one-shots, kids' afterschool. Owner-operated by Whitney Wolfe; sister space '3rd Place from the Sun' still upcoming, so single location as of the 2026-07-25 snapshot. Not a bar and not a coffee shop; outside food/drink allowed, $20 corking fee. Batu 2026-07-27: point at /events, not the homepage — the homepage snapshot carries the about/FAQ/address but NO dated listings, which is exactly why. One of the three game-club sources to keep in every scan. The /events URL itself is NOT YET FETCHED (network allowlist) — confirm it carries dated listings on the first successful fetch. CHANNEL: email is NOT viable — owner Whitney replied to Batu 2026-07-22 from lastplaceonearthbk@gmail.com, 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' So /events is the primary source and their Discord is where the schedule actually lives; if /events proves thin, Discord is the gap-filler to raise with Batu (it needs an invite, not a scrape)."
+      "notes": "531 Graham Ave, Brooklyn NY 11222 (Greenpoint zip); board game shop + community hub — D&D nights across the week, murder mysteries, one-shots, kids' afterschool. Owner-operated by Whitney Wolfe; sister space '3rd Place from the Sun' still upcoming, so single location as of the 2026-07-25 snapshot. Not a bar and not a coffee shop; outside food/drink allowed, $20 corking fee. Batu 2026-07-27: point at /events, not the homepage — the homepage snapshot carries the about/FAQ/address but NO dated listings, which is exactly why. One of the three game-club sources to keep in every scan. The /events URL itself is NOT YET FETCHED (network allowlist) — confirm it carries dated listings on the first successful fetch. CHANNEL: email is NOT viable — owner Whitney replied to Batu 2026-07-22 from lastplaceonearthbk@gmail.com, 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' So /events is the primary source and their Discord is where the schedule actually lives; if /events proves thin, Discord is the gap-filler to raise with Batu (it needs an invite, not a scrape).",
+      "detail": {
+        "urls": ["https://www.lastplacebk.com/kids"],
+        "limit": 1
+      }
     },
     {
       "id": "word-bookstore",
@@ -1053,6 +1057,98 @@
         "windowDays": 21
       },
       "notes": "136 Milton St, 11222. Added 2026-09-07 with the `ics` reader. 1,584 events, 237 of them recurring, and unlike St. Stans this one needs NO exclude list — measured 2026-09-07 it yields 18 events in 21 days and they are nearly all genuinely public. What it carries that the map wants: the Greenpoint Hunger Program's community meal and food pantry (real neighborhood utility, and the pantry line states the Milton St address outright), Sunday worship and family ministry, and a lot of AA and other 12-step meetings held upstairs in the Manse. ⚠ RECURRENCE IS THE WHOLE SOURCE HERE. Most entries are RRULEs seeded YEARS ago — the reader expands them into the window, so a series that began in 2014 correctly shows this week's dates. The seed date in the file is not the event date; read DTSTART, which is already expanded. EXDATE is honoured, so a cancelled single occurrence is skipped, which is exactly the `recurrence.except` shape a card wants. ⚠ ONE SOURCE CONFLICT IS ALREADY VISIBLE and will recur: the Community Meal's description says \"Each Wednesday afternoon\" while its RRULE says BYDAY=TU and its DTSTART is a Tuesday. Prose and rule disagree — apply the 2026-08-26 rule and prefer what a person wrote only when it is describing the same fact; here they are two different claims about the day, so the card must resolve it against the church before stating a day. Recurring 12-step meetings are almost certainly not cardable supply; judge per the lens rules rather than carding the calendar wholesale."
+    },
+    {
+      "id": "greenthumb-gardens-11222",
+      "name": "GreenThumb community gardens in 11222 (NYC Open Data)",
+      "url": "https://data.cityofnewyork.us/resource/p78i-pat6.json?$where=zipcode=%2711222%27",
+      "group": "institution",
+      "cadence": "monthly",
+      "fetch": "json",
+      "citeHost": "data.cityofnewyork.us",
+      "json": {
+        "path": "",
+        "fields": ["gardenname", "address", "crossstreets", "status", "openhrsm", "openhrstu", "openhrsw", "openhrsth", "openhrsf", "openhrssa", "openhrssu", "lat", "lon"]
+      },
+      "notes": "Added 2026-09-07 when Batu asked about community gardens during the family/kids push. NYC Parks' GreenThumb dataset, filtered to zip 11222 in the query itself, so the snapshot is only Greenpoint: three active gardens on 2026-09-07 — Java Street Community Garden (59 Java St, Franklin & West), 61 Franklin Street Garden (Calyer & Oak), and Lentol Garden (478 Graham Ave, Bayard & Meeker). STANDING OPEN HOURS, NOT EVENTS: each row carries a per-day open-hours field (openhrsm … openhrssu, with CLOSED spelled out), so these are VENUE cards with hours, not dated cards — the same shape as a shop card. Monthly cadence because the dataset changes rarely. The lat/lon here are the CITY'S OWN parcel coordinates and are trustworthy, unlike a Squarespace `location` block — pin from them. A garden whose `status` stops being Active gets its card retired, not edited. Lens is civic under the 2026-08-30 growing-space rule; the dataset states no audience, so it does not earn family_kids on its own even though a parent is exactly who uses it — that is a rule for Batu to change, not a run."
+    },
+    {
+      "id": "msjs-greenpoint",
+      "name": "Ms. J's Gymnastics & Dance Greenpoint (iClassPro portal)",
+      "url": "https://portal.iclasspro.com/msjsgreenpoint/classes",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "browser": { "waitUntil": "networkidle", "settleMs": 3000 },
+      "citeHost": "msjsgym.com",
+      "notes": "71 India St (2nd Floor), 11222; 347-384-2069. Added 2026-09-07 in the school-opening push. The business's own site (msjsgym.com) is a landing page that points at this iClassPro portal, so the portal IS the schedule. IT IS A JAVASCRIPT APP: plain fetch returns a 10KB shell reading 'Customer Portal / Loading…', and every /api/* path returns that same shell because it is the SPA's catch-all route, not an API — do not go hunting for one. Under the roster's DEFAULT browser settings (domcontentloaded + 2.5s) it is STILL a 196-char shell; under networkidle + 3s it is a full 2,900-char schedule with ~48 clock times (measured 2026-09-07), hence the browser block above. Renders a term-based class grid by age band — Tot Party (infant-24mo), Movers (24mo-41mo), and up — each with a weekday and time and a WAITLIST/enrol state, plus a /camps/2 page for school-break camps. Card the TERM and its registration state per the YMCA precedent, not each weekly session; a WAITLIST marker is a sourced fact and belongs on the card. Kids-authored, so family_kids.",
+      "detail": { "urls": [ { "url": "https://portal.iclasspro.com/msjsgreenpoint/camps/2", "fetch": "browser" } ], "limit": 1 }
+    },
+    {
+      "id": "artudio",
+      "name": "ARTUDIO (Sawyer schedules)",
+      "url": "https://www.hisawyer.com/artudio-1/schedules",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "browser": { "waitUntil": "networkidle", "settleMs": 3000 },
+      "citeHost": "artudiony.com",
+      "notes": "4 Diamond St, 11222 — process-art studio, opened Feb 2025; Rocking Chair Music and AudraRox also teach here since The Wild on Driggs closed. Added 2026-09-07 when Batu reopened Sawyer: the 2026-08-06 block was a Cloudflare 'Just a moment' interstitial to non-browser clients, and on 2026-09-07 headless Chromium loaded this page with NO challenge presented — the same JS-app shape as WORD and the comedy club, not the challenge shape. If a render ever shows an interstitial, STOP and report it; nothing here licenses getting past one. Plain curl still 403s, so this can never be `auto`. Renders dated semester listings with an age band, a weekday and time, a date range and a price — e.g. 'Artudio Minis 1.5 – 3 yrs Wed 11:00am - 12:00pm EDT Sep 9, 2026 - Oct 28, 2026, $300 or $40/class' — across Drop-ins / Semesters / Camps tabs. Each listing is a TERM: card the term with its date range and price, per the dance-school precedent, not a card per Wednesday. Kids-authored, so family_kids. The '$40/class' drop-in price is a sourced fact worth carrying."
+    },
+    {
+      "id": "sparsa-union-fit",
+      "name": "SPARŚA Greenpoint (union.fit schedule)",
+      "url": "https://www.union.fit/orgs/sparsa-brooklyn",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "browser": { "waitUntil": "networkidle", "settleMs": 3000 },
+      "citeHost": "sparsabrooklyn.com",
+      "notes": "1006 Manhattan Ave (between Green & Huron), 11222. Added 2026-09-07 in the school-opening push. The deck already carries a venue card (sparsa-greenpoint, a Pilates studio on the service shelf); THIS source is for its KIDS and PARENT programming — Musicraftory (0-6), Strawberry Tunes, Tunes for Tykes, Baby & Me Yoga, Infant Developmental Movement Playgroup, Prenatal / Gentle Yoga — which no source was reading. ⚠ THE URL IS THE ORG ROOT, NOT /calendar, AND THAT WAS MEASURED: /calendar renders 3,935 chars of class NAMES and ZERO clock times under every browser setting tried; the org root renders ~3,700 chars with ~50 clock times. Plain curl 403s on every union.fit path, so this can never be `auto`. Under the roster's default browser wait the class list loads but the schedule grid does not, and the page passes the size check while missing every time — the phantom-shrink shape — hence the networkidle + 3s block. Each row is one dated sitting (e.g. '7:30 AM - 8:30 AM EDT'), so a weekly class arrives as many near-identical rows: card the SERIES with recurrence.days, not one row per sitting. Kids classes are family_kids; the prenatal and Baby & Me classes are family-audience and file the same way (precedent: town-square-cub-scouts, giggles-and-wiggles)."
+    },
+    {
+      "id": "space-club-greenpoint",
+      "name": "Space Club Greenpoint (member classes)",
+      "url": "https://spaceclub.com/pages/classes",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "citeHost": "spaceclub.com",
+      "notes": "220 Newel St, 11222; three-floor indoor play centre, open 8am-7pm every day. Added 2026-09-07. Plain-fetchable, verified 2026-09-07. Publishes a STANDING weekday grid — 'free classes to our members at 10am and 11am every Monday - Friday', ages 1-5 — and states outright that a membership is required and single passes do not include classes, so this is a SUBSCRIPTION card, not events. ⚠ THE PAGE CONTRADICTS ITSELF: it renders the grid twice (desktop and mobile copies) and the two copies disagree — Wednesday is 'Sensory Play' in one and 'Playdoh' in the other, and one says 'No need to book, just come on down!' while the other says bookings open every Friday for the coming week. A card must not assert either disputed detail; state the days and times, which agree, and leave Wednesday's subject and the booking rule off. Monthly cadence because a standing grid rarely changes.",
+      "standing": true
+    },
+    {
+      "id": "birthsmarter",
+      "name": "Birthsmarter (Greenpoint classes at Kuei Luck)",
+      "url": "https://birthsmarter.com/schedule",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "citeHost": "birthsmarter.com",
+      "notes": "Teaches monthly in Greenpoint at Kuei Luck, 171 Calyer St, 11222; the schedule page itself prints only 'Kuei Luck Greenpoint | Brooklyn | NYC' with no street address, so the venue NAME is the sourced fact and the address comes from geocoding it, as with a park. Added 2026-09-07. Plain-fetchable, verified. Dated childbirth education, newborn care and lactation classes — the only Greenpoint lactation offering found with a public dated calendar. ⚠ TIMES ARE PRINTED IN UTC ONLY ('2:00 PM UTC - 7:30 PM UTC'), with no local time anywhere on the page. A card's startsAt is that instant expressed in America/New_York, which is a conversion of a stated fact, not an invention — but the sourceQuote must carry the UTC line as printed. ONLY Greenpoint rows are in scope; the same page lists Manhattan and other Brooklyn venues. A weekend childbirth course spans two consecutive days with the same sitting each day and is ONE card. Family-audience programming for expecting and new parents, filed family_kids on the same reading as the cub scouts and the kids' shop; no price is stated on the schedule page, only 'alternative pricing' is offered."
+    },
+    {
+      "id": "play-greenpoint-sawyer",
+      "name": "PLAY Greenpoint after-school (Sawyer schedules)",
+      "url": "https://www.hisawyer.com/play-greenpoint/schedules",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "browser": { "waitUntil": "networkidle", "settleMs": 3000 },
+      "citeHost": "playgreenpoint.com",
+      "notes": "33 Nassau Ave (and 31 Nassau), 11222. Added 2026-09-07. The Wix site (play-kids-greenpoint) announces programmes; THIS is where the actual bookable schedule lives. The two Sawyer PROVIDER pages (/providers/play-greenpoint/…) render 'We didn't find anything that matched your search' — the listings are only on /play-greenpoint/schedules. Landing view is the semester after-school grid: school-pickup programmes prefixed PS110 / PS31 / PS34 plus a DROP-OFF variant, Mon-Fri, 2:30-6pm, $1,080-$1,260 a term, with '1 spot left!' / '2 spots left!' / 'Fully Booked' states per row — those are sourced facts. ⚠ LANDING VIEW ONLY, BY DESIGN: clicking the Camps/Events tab (where the drop-off movie nights live) returned Cloudflare 'Performing security verification' on 2026-09-07, and getting past a challenge is out of bounds. Page 1 of 3 is what a plain load returns; pages 2-3 are behind pagination clicks. The browserText guard throws if the landing view itself ever serves the challenge. Card the TERM per school-pickup programme family, not a card per PS-and-day row.",
+      "standing": true
+    },
+    {
+      "id": "art-101-sawyer",
+      "name": "ART 101 Greenpoint (Sawyer)",
+      "url": "https://www.hisawyer.com/providers/art-101/17826-art-101",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "browser": { "waitUntil": "networkidle", "settleMs": 3000 },
+      "citeHost": "art101bk.com",
+      "notes": "61 Greenpoint Ave, Ste 113, 11222; (917) 887-1760. Added 2026-09-07. The studio's own site (art101bk.com) has an events page that renders a heading and no listings; Sawyer is the real schedule. This is the GREENPOINT provider page — reviews mention a Williamsburg location, which is a separate page, and every row here is tagged Greenpoint. Landing view renders four items with age range, price and a DROP-IN / SEMESTER / CAMP tag: After School Artists Mon-Fri 3-5pm Sep 10-Dec 17 ($65/class, ages 4-10) is the school-year one; the two summer camps end Sep 9; Crafternoons (Sun 2-4pm, $45) states NO start or end date, so its Sundays are inferred and it is not carded as dated. No challenge on the landing view 2026-09-07; same landing-view-only caveat as play-greenpoint-sawyer."
     },
     {
       "id": "polish-slavic-center",

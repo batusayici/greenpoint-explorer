@@ -97,3 +97,52 @@ endtime: 7:00 pm
 location: Multi-Use Room C (in McCarren Park)
 categories: Fitness | Shape Up NYC | Recreation Center Programming | Exercise Classes
 coordinates: 40.72010040000000000, -73.94999695000000000
+
+## [R1 PERSISTED 2026-09-07] https://www.nycgovparks.org/facilities/outdoor-pools
+&gt; Outdoor Pools
+Free Outdoor Pools
+Cool off and enjoy the summer at free outdoor pools across the city.
+Every day during our summer pool season, thousands of visitors head to our city’s free public outdoor pools. Learn more about our pools, and dive in to find an outdoor pool near you!
+Cool Pools
+Check out our Cool Pools and their fun amenities.
+Learn about our Cool Pools initiative
+Celebrating 90 Years of Public Swimming
+Celebrate 90 years of public swimming in New York City and explore the history, legacy, and lasting impact of our pools on generations of New Yorkers.
+Explore the history of pools then and now
+Pool Hours
+Our Olympic- and intermediate-sized outdoor pools will remain open through Sunday, September 13. Mini pools will remain open through Labor Day.
+Outdoor pool hours are from
+11:00 a.m.
+hrough
+7:00 p.m.
+daily, with a break for pool cleaning between 3:00 p.m. and 4:00 p.m.
+
+All
+Intermediate and Olympic
+ pools will remain open
+until 8pm
+(
+not 8:30pm
+) Thursday through Saturday (August 6 - August 8).
+
+-->
+Free Swim Programs
+Find out more about our learn to swim program, lap swim hours, our youth swim team, and programs for seniors and people with disabilities.
+Learn more about free swim programs
+Looking for our free Learn to Swim program? Find out more by visiting our
+Kosciuszko Pool Details
+Lindower Park Pool
+E. 60th St, Mill Rd. & Strickland Avenue
+-->
+Outdoor Mini Pool
+Dimensions: 40' x 20' x 3'
+Lindower Park Pool Details
+McCarren Park Pool
+McCarren Park
+-->
+Outdoor Olympic Pool
+Dimensions: 329' x 151' x 4.6'
+McCarren Park Pool Details
+PS 20 Playground Pool
+Between Clermont Ave. & Adelphi St.
+-->

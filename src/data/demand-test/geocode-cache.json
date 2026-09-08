@@ -4178,5 +4178,190 @@
         "-73.9569095"
       ]
     }
+  },
+  "71 India St, Brooklyn, NY 11222": {
+    "query": "71 India St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:30:13.422Z",
+    "hit": {
+      "place_id": 359164619,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2843008369,
+      "lat": "40.7321556",
+      "lon": "-73.9575748",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "71, India Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7321056",
+        "40.7322056",
+        "-73.9576248",
+        "-73.9575248"
+      ]
+    }
+  },
+  "220 Newel St, Brooklyn, NY 11222": {
+    "query": "220 Newel St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:30:14.907Z",
+    "hit": {
+      "place_id": 414132851,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 676204231,
+      "lat": "40.7294896",
+      "lon": "-73.9499327",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "220, Newel Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294396",
+        "40.7295396",
+        "-73.9499827",
+        "-73.9498827"
+      ]
+    }
+  },
+  "Kuei Luck, 171 Calyer St, Brooklyn, NY 11222": {
+    "query": "Kuei Luck, 171 Calyer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:30:16.858Z",
+    "hit": null
+  },
+  "McCarren Park Pool, 776 Lorimer St, Brooklyn, NY 11222": {
+    "query": "McCarren Park Pool, 776 Lorimer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:30:19.418Z",
+    "hit": null
+  },
+  "136 Milton St, Brooklyn, NY 11222": {
+    "query": "136 Milton St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:30:20.868Z",
+    "hit": {
+      "place_id": 357390568,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280131977,
+      "lat": "40.7292081",
+      "lon": "-73.9549728",
+      "category": "amenity",
+      "type": "place_of_worship",
+      "place_rank": 30,
+      "importance": 1e-10,
+      "addresstype": "amenity",
+      "name": "Greenpoint Reformed Church",
+      "display_name": "Greenpoint Reformed Church, 136, Milton Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7290939",
+        "40.7292793",
+        "-73.9550701",
+        "-73.9548756"
+      ]
+    }
+  },
+  "St. Stanislaus Kostka Church, 607 Humboldt St, Brooklyn, NY 11222": {
+    "query": "St. Stanislaus Kostka Church, 607 Humboldt St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:30:22.496Z",
+    "hit": {
+      "place_id": 360556441,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842721361,
+      "lat": "40.7227920",
+      "lon": "-73.9453480",
+      "category": "amenity",
+      "type": "place_of_worship",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Saint Stanislaus Kostka Vincentian Fathers Church",
+      "display_name": "Saint Stanislaus Kostka Vincentian Fathers Church, 607, Humboldt Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7227420",
+        "40.7228420",
+        "-73.9453980",
+        "-73.9452980"
+      ]
+    }
+  },
+  "171 Calyer St, Brooklyn, NY 11222": {
+    "query": "171 Calyer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:31:07.004Z",
+    "hit": {
+      "place_id": 414145920,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 133804489,
+      "lat": "40.7280195",
+      "lon": "-73.9538895",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "171, Calyer Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7279695",
+        "40.7280695",
+        "-73.9539395",
+        "-73.9538395"
+      ]
+    }
+  },
+  "776 Lorimer St, Brooklyn, NY 11222": {
+    "query": "776 Lorimer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:31:08.454Z",
+    "hit": {
+      "place_id": 402058068,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1203375872,
+      "lat": "40.7187725",
+      "lon": "-73.9500326",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "776, Lorimer Street, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+      "boundingbox": [
+        "40.7187225",
+        "40.7188225",
+        "-73.9500826",
+        "-73.9499826"
+      ]
+    }
+  },
+  "61 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "61 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-08T10:34:47.021Z",
+    "hit": {
+      "place_id": 358958198,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140861,
+      "lat": "40.7300118",
+      "lon": "-73.9583704",
+      "category": "amenity",
+      "type": "studio",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Salt Mastering",
+      "display_name": "Salt Mastering, 61, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7298858",
+        "40.7301655",
+        "-73.9587393",
+        "-73.9580060"
+      ]
+    }
   }
 }
