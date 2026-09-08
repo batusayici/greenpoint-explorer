@@ -11,6 +11,11 @@ on:
   schedule:
     - cron: "30 11 * * *" # 7:30am New York, an hour before the daily routine
   workflow_dispatch: {}
+  # TEMPORARY, remove before merge: GitHub only registers a workflow for
+  # dispatch once it exists on the default branch, so the pre-merge dry run
+  # (plan Task 4) is triggered by pushing this branch instead.
+  push:
+    branches: [feat/ingest-fetch-on-actions]
 
 permissions:
   contents: read
