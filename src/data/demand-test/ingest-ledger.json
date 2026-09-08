@@ -3297,5 +3297,19 @@
       "expiresAt": "2026-09-21",
       "reason": "A DISCOVERY SURFACE, BOROUGH-WIDE, ON ITS FIRST RUN. The nine dates this script reads off it belong to the weekly 'Free kid-friendly events this week in Brooklyn' roundup and the openings posts — 25-plus items a week across Prospect Park, DUMBO, Park Slope, Williamsburg and the rest, of which the 2026-09-07 sweep found exactly ONE in 11222 (the library week), already carded first-hand from the branch calendar. Under the aggregator rule nothing is ever carded from this source directly; a Greenpoint line here is where a run learns to go read the organiser. So 'deck covers 0 of 9' will read low every week by construction and is not a gap. WHAT WOULD CHANGE IT: a Greenpoint item here whose organiser page we have NOT carded — that is the signal, and it lands as an ordinary diff."
     }
+  ],
+  "retiredCards": [
+    {
+      "id": "ayune-grand-opening-0907",
+      "day": "2026-09-08"
+    },
+    {
+      "id": "tend-additional-20-off",
+      "day": "2026-09-08"
+    },
+    {
+      "id": "troost-tired-horses-0907",
+      "day": "2026-09-08"
+    }
   ]
 }

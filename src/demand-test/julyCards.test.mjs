@@ -806,15 +806,27 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // pool, the church food pantry, St. Stans' parish picnic, and Ms. J's Yom
   // Kippur camp. The two calendar-format sources built earlier today yielded
   // their first cards here. 198.
-  assert.equal(seed.cards.length, 198);
+  //
+  // 2026-09-08 daily thin refresh — EXPIRY-ONLY, and the run stopped there.
+  // The fetch could not read enough of the roster to ingest from: 14 of 78
+  // sources failed because headless Chromium cannot get through the sandbox
+  // proxy, which is 18% and over the 15% ceiling that halts a run. So nothing
+  // was authored off a source today. Expiry took the three things that had
+  // finished on 9/7 — Tend's extra 20% off, Troost's Tired Horses, Ayune's
+  // grand opening. The four standing weekly cards that came up for re-check
+  // (Black Rabbit trivia and bingo, Hide & Seek's Wednesday jazz, Brew Inn
+  // trivia) were re-verified against snapshots that fetched cleanly today and
+  // carry their schedule lines unchanged, so they were pushed out to 9/21
+  // rather than dropped. 195.
+  assert.equal(seed.cards.length, 195);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — this refresh added no news cards (2026-09-07)");
-  assert.equal(count((c) => c.category === "event"), 105, "97 + 8 dated family/civic events from the school-opening push (2026-09-07, seventh pass)");
-  assert.equal(count((c) => c.category === "discount"), 8, "7 + the re-authored Brooklyn Youth Ballet $40 trial (2026-09-07, fifth pass)");
-  assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-07)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 38, "21 after expiry + 13 eavesdrop, 3 Troost, 1 Good Room (2026-09-07)");
-  assert.equal(count((c) => c.category === "subscription"), 35, "28 + 7 fall term cards off the booking portals (2026-09-07, seventh pass)");
+  assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — expiry-only refresh (2026-09-08)");
+  assert.equal(count((c) => c.category === "event"), 103, "105 − Troost Tired Horses and the Ayune opening, both ran 9/7 (2026-09-08)");
+  assert.equal(count((c) => c.category === "discount"), 7, "8 − Tend's additional 20% off, which ended 9/7 (2026-09-08)");
+  assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-08)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 37, "38 − Troost Tired Horses (2026-09-08)");
+  assert.equal(count((c) => c.category === "subscription"), 35, "unchanged (2026-09-08)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -933,7 +945,8 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // card shipped. Recurring + verified-through, since no closing date is
   // stated. The generalisable bit is in watchItems: check a business's STORE
   // host before concluding a price is unpublished.
-  assert.equal(deals.length, 8);
+  // 2026-09-08: −1 — Tend's additional 20% off ran out on 9/7 and expiry took it.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -1679,7 +1692,7 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // 2026-08-17: the second offer finally lands as its own card, exactly as the
     // note above said it should — its terms line states "Valid through
     // September 7, 2026", a different deadline from the plant sale's 8/21.
-    "tend-additional-20-off",
+    // (tend-additional-20-off expired out 2026-09-08 on that stated 9/7 deadline.)
     // (tend-plant-sale-0821 expired out 2026-08-24 on its own stated 8/21
     //  deadline — the second Tend offer above runs to 9/7 and stays.)
     // 2026-08-29: a free-shipping code from the same shop, on its own 8/31

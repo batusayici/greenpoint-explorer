@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-07",
+  "version": "2026-09-08",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -2342,8 +2342,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-24",
-      "endsAt": "2026-09-07T23:59:00-04:00",
+      "updatedAt": "2026-09-08",
+      "endsAt": "2026-09-21T23:59:00-04:00",
       "id": "black-rabbit-nerd-alert-trivia",
       "title": "Nerd Alert! Trivia at Black Rabbit",
       "kicker": "No cover",
@@ -2394,8 +2394,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-24",
-      "endsAt": "2026-09-07T23:59:00-04:00",
+      "updatedAt": "2026-09-08",
+      "endsAt": "2026-09-21T23:59:00-04:00",
       "id": "black-rabbit-sunday-bingo",
       "title": "Sunday bingo at Black Rabbit",
       "kicker": "Bingo night",
@@ -2443,8 +2443,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-24",
-      "endsAt": "2026-09-07T23:59:00-04:00",
+      "updatedAt": "2026-09-08",
+      "endsAt": "2026-09-21T23:59:00-04:00",
       "id": "hide-and-seek-wine-down-jazz",
       "title": "Wine Down Wednesday live jazz",
       "kicker": "Standing midweek session",
@@ -2593,12 +2593,12 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-24",
+      "updatedAt": "2026-09-08",
       "id": "brew-inn-greenpoint-trivia",
       "title": "Greenpoint Trivia Night at The Brew Inn",
       "kicker": "Run by the NYC Trivia League",
       "startsAt": "2026-08-12T19:00:00-04:00",
-      "endsAt": "2026-09-07T23:59:00-04:00",
+      "endsAt": "2026-09-21T23:59:00-04:00",
       "locationName": "The Brew Inn",
       "address": "924 Manhattan Ave, Brooklyn, NY 11222",
       "geocodeQuery": "924 Manhattan Ave, Brooklyn, NY 11222",
@@ -3666,48 +3666,6 @@
       "audience": [
         "resident"
       ],
-      "evidenceStrength": "medium",
-      "monetizationRelevance": "direct",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-17",
-      "updatedAt": "2026-08-17",
-      "free": false,
-      "id": "tend-additional-20-off",
-      "category": "discount",
-      "title": "20% off already-reduced items at Tend Greenpoint",
-      "kicker": "Sale planters, linens and seed packs",
-      "summary": "The markdown stacks on top of existing sale prices, in store and online, applied automatically at checkout. The shop says its hours are abbreviated through Labor Day.",
-      "endsAt": "2026-09-07T23:59:00-04:00",
-      "filters": [
-        "deals_memberships"
-      ],
-      "locationName": "Tend Greenpoint",
-      "address": "252 Franklin St, Brooklyn, NY 11222",
-      "geocodeQuery": "252 Franklin Street, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Shop the sale",
-          "type": "order",
-          "url": "https://www.tendgreenpoint.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Save on Favorites!",
-          "url": "https://www.tendgreenpoint.com/",
-          "publisher": "Tend Greenpoint",
-          "date": "2026-08-13"
-        }
-      ],
-      "sourceQuote": "Save an Additional 20% OFF Already Reduced Merchandise\nFor a limited time, save 20% off already reduced favorites including Bergs Potter's Daisy Wall Planter!\nOur entire remaining selection of Hawkins NY linens and dining pieces is 20% OFF!\nOur 2026 Hudson Valley Seed Co. Art Packs are now 20% OFF!\nOur shop hours will be abbreviated through Labor Day.\n*Valid In-store and Online. Not valid on previous purchases. Multiple online discounts may not be combined nor used concurrently. The discount is automatically applied at checkout. No coupon code is needed. Limited time only. Other conditions and exclusions may apply. Valid through September 7, 2026. May be canceled at any time.",
-      "lat": 40.734612,
-      "lng": -73.958144
-    },
-    {
-      "audience": [
-        "resident"
-      ],
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
@@ -3748,50 +3706,6 @@
       ],
       "lat": 40.729705,
       "lng": -73.949195
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-24",
-      "updatedAt": "2026-08-24",
-      "free": false,
-      "id": "troost-tired-horses-0907",
-      "category": "event",
-      "title": "TIRED HORSES at Troost",
-      "kicker": "Psychedelic indie jazz quintet",
-      "summary": "Troost's calendar carries the billing and the date and nothing else — no start time and no cover charge.",
-      "startsAt": "2026-09-07T00:00:00-04:00",
-      "endsAt": "2026-09-07T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "geocodeQuery": "1011 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "summary: TIRED HORSES\ndescription: psychedelic indie jazz quintet\nstart.date: 2026-09-07",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-24"
-        }
-      ],
-      "lat": 40.733463,
-      "lng": -73.955035
     },
     {
       "audience": [
@@ -7152,50 +7066,6 @@
       "sourceQuote": "title: Malifaux Monthly\nstartDate: 2026-09-12T13:45:00.019Z\nendDate: 2026-09-12T22:00:00.019Z",
       "lat": 40.732676,
       "lng": -73.954395
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "id": "ayune-grand-opening-0907",
-      "title": "Ayune opens on Manhattan Ave",
-      "kicker": "The Wasabi team's hand-roll bar",
-      "summary": "Greenpointers dates the opening but gives no hour, so the card runs the day.",
-      "startsAt": "2026-09-07T00:00:00-04:00",
-      "endsAt": "2026-09-07T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "food_drink"
-      ],
-      "locationName": "Ayune",
-      "address": "664 Manhattan Ave",
-      "geocodeQuery": "664 Manhattan Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Read more",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/09/04/wasabi-owners-open-new-hand-roll-bar-ayune-in-greenpoint/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Wasabi owners open new hand roll bar Ayune in Greenpoint",
-          "url": "https://greenpointers.com/2026/09/04/wasabi-owners-open-new-hand-roll-bar-ayune-in-greenpoint/",
-          "publisher": "Greenpointers",
-          "date": "2026-09-04"
-        }
-      ],
-      "sourceQuote": "A grand opening will happen on Monday, September 7.",
-      "lat": 40.724707,
-      "lng": -73.951071
     },
     {
       "audience": [
