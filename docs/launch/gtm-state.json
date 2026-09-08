@@ -1317,12 +1317,12 @@
     ],
     "waiting": [],
     "overnight": [
-      "feat(ingest): read iCalendar feeds, unlocking the parish and church calendars",
-      "content(track-v): Bushwick Inlet Park is in scope — rule in SKILL.md, two events carded",
-      "content(track-v): work the held items — two cards back, Wriggle out, Transmitter Park self-persists",
-      "content(track-v): daily refresh — nine cards from the new family/kids sources",
-      "Merge pull request #63 from batusayici/content/family-kids-sources-2026-09-07",
-      "content(roster): eight family/kids sources, and two entries that pointed at the wrong page"
+      "docs(growth): one link for Rana's posts, landing on the family view",
+      "content(ingest): the daily refresh now carries the midweek family publishers; allowlist audited; decision log",
+      "content(track-v): the school-opening push — eight new sources, eighteen cards, browser path opened",
+      "test: check the Facebook in-app browser, the way readers actually arrive",
+      "fix(growth): the signup link carries the channel it came from",
+      "cockpit: morning refresh 2026-09-08"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1331,12 +1331,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 69,
-      "reservoir": 29,
+      "dated": 74,
+      "reservoir": 32,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 180
+      "cards": 198
     }
   }
 }
