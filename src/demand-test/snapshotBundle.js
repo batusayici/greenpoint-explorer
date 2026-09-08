@@ -15,10 +15,15 @@ export function rosterHash(sources) {
   return createHash("sha256").update(lines.join("\n")).digest("hex").slice(0, 16);
 }
 
-export function buildManifest({ now = new Date(), includeMonthly, rosterHash, productCommit, report }) {
+export function buildManifest({ now, includeMonthly, rosterHash, productCommit, report }) {
   const sources = Array.isArray(report?.sources) ? report.sources : [];
+  let fetchedAt = now;
+  if (!fetchedAt) {
+    const generated = report?.generatedAt ? new Date(report.generatedAt) : null;
+    fetchedAt = generated && !Number.isNaN(generated.getTime()) ? generated : new Date();
+  }
   return {
-    fetchedAt: now.toISOString(),
+    fetchedAt: fetchedAt.toISOString(),
     includeMonthly: !!includeMonthly,
     rosterHash,
     productCommit: productCommit ?? null,

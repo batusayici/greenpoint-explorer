@@ -70,7 +70,7 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
           git clone --depth 1 "$SNAPSHOTS_REPO" "$RUNNER_TEMP/snapshots"
-          npm run -s ingest:publish -- --to "$RUNNER_TEMP/snapshots" --include-monthly
+          npm run -s ingest:publish -- --to "$RUNNER_TEMP/snapshots"
           cd "$RUNNER_TEMP/snapshots"
           git config user.name "ingest-fetch"
           git config user.email "ingest-fetch@users.noreply.github.com"

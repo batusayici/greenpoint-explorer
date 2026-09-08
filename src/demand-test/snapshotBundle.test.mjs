@@ -39,6 +39,38 @@ test("buildManifest counts sources and errors from the runner report", () => {
   });
 });
 
+test("buildManifest: with no now, fetchedAt comes from the report's generatedAt", () => {
+  const m = buildManifest({
+    includeMonthly: false,
+    rosterHash: "abc",
+    productCommit: "d431329",
+    report: { generatedAt: "2026-09-09T11:32:10.000Z", sources: [] },
+  });
+  assert.equal(m.fetchedAt, "2026-09-09T11:32:10.000Z");
+});
+
+test("buildManifest: an unparseable generatedAt still yields a valid ISO fetchedAt", () => {
+  const m = buildManifest({
+    includeMonthly: false,
+    rosterHash: "abc",
+    productCommit: "d431329",
+    report: { generatedAt: "not-a-date", sources: [] },
+  });
+  assert.equal(Number.isNaN(Date.parse(m.fetchedAt)), false);
+});
+
+test("buildManifest: an explicit now wins over the report's generatedAt", () => {
+  const now = new Date("2026-09-09T12:00:00Z");
+  const m = buildManifest({
+    now,
+    includeMonthly: false,
+    rosterHash: "abc",
+    productCommit: "d431329",
+    report: { generatedAt: "2026-09-09T11:32:10.000Z", sources: [] },
+  });
+  assert.equal(m.fetchedAt, "2026-09-09T12:00:00.000Z");
+});
+
 test("assessBundle: fresh and matching is ok", () => {
   const a = assessBundle({
     manifest: { fetchedAt: "2026-09-09T11:40:00Z", rosterHash: "abc" },

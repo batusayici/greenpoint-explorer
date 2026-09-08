@@ -3,7 +3,7 @@
 // checkout of the snapshots repo). Runs on the GitHub Actions runner after
 // `npm run ingest:fetch`; the workflow commits and pushes what this writes.
 //
-// Usage: node scripts/publish-snapshots.mjs --to <dir> [--include-monthly]
+// Usage: node scripts/publish-snapshots.mjs --to <dir>
 //
 // Writes:  <dir>/manifest.json      fetchedAt, roster hash, product commit, counts
 //          <dir>/fetch-report.json  changes.json as the runner produced it
@@ -21,12 +21,12 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CACHE_DIR = join(ROOT, ".ingest-cache");
 const args = process.argv.slice(2);
 const toIdx = args.indexOf("--to");
-if (toIdx === -1 || !args[toIdx + 1]) {
-  console.error("usage: publish-snapshots.mjs --to <dir> [--include-monthly]");
+const toValue = toIdx === -1 ? undefined : args[toIdx + 1];
+if (toIdx === -1 || !toValue || toValue.startsWith("--")) {
+  console.error("usage: publish-snapshots.mjs --to <dir>");
   process.exit(2);
 }
-const TO = args[toIdx + 1];
-const INCLUDE_MONTHLY = args.includes("--include-monthly");
+const TO = toValue;
 
 const reportPath = join(CACHE_DIR, "changes.json");
 if (!existsSync(reportPath)) {
@@ -50,10 +50,15 @@ mkdirSync(snapDir, { recursive: true });
 
 const owned = new Set();
 let copied = 0;
+let missing = 0;
 for (const entry of report.sources ?? []) {
   if (!entry.textPath) continue;
   const from = join(ROOT, entry.textPath);
-  if (!existsSync(from)) continue;
+  if (!existsSync(from)) {
+    console.error(`  missing snapshot for ${entry.id} (${entry.textPath})`);
+    missing++;
+    continue;
+  }
   copyFileSync(from, join(snapDir, `${entry.id}.txt`));
   owned.add(`${entry.id}.txt`);
   copied++;
@@ -66,8 +71,9 @@ for (const f of readdirSync(snapDir)) {
   }
 }
 
+const includeMonthly = !(report.sources ?? []).some((s) => s.status === "skipped_monthly");
 const manifest = buildManifest({
-  includeMonthly: INCLUDE_MONTHLY,
+  includeMonthly,
   rosterHash: rosterHash(sources),
   productCommit,
   report,
@@ -76,5 +82,5 @@ writeFileSync(join(TO, "fetch-report.json"), JSON.stringify(report, null, 2) + "
 writeFileSync(join(TO, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
 console.log(
   `published ${copied} snapshot(s) to ${TO} (${removed} stale file(s) removed); ` +
-    `${manifest.errorCount} of ${manifest.sourceCount} sources errored; roster ${manifest.rosterHash}; product ${manifest.productCommit}`,
+    `${manifest.errorCount} of ${manifest.sourceCount} sources errored; roster ${manifest.rosterHash}; product ${manifest.productCommit}, ${missing} missing`,
 );
