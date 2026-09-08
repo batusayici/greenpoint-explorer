@@ -6,7 +6,15 @@
 //
 // Usage: node scripts/fetch-sources.mjs [--only id,id] [--include-monthly] [--force]
 //                                       [--no-browser] [--allow-degraded]
+//        node scripts/fetch-sources.mjs --offline [--only id,id] [--include-monthly] [--force] [--allow-degraded]
 //        node scripts/fetch-sources.mjs --mark-ingested [--only id,id]
+//
+// --offline (2026-09-08): read .ingest-cache/bundle/ — the runner's fetch,
+// brought in by `npm run ingest:pull` — instead of the network. The cloud
+// routine runs this way because the sandbox proxy refuses browser tunnels and
+// has broken the fetch three separate ways since July. Everything after the
+// read is shared with the online path: hashing, diff against the tracked
+// baselines, carry-forward, the 15% ceiling and the exit code.
 //
 // Exit codes: 0 = the roster was readable. 1 = DEGRADED — errored sources
 // exceeded 15%, or every browser fetch failed. A degraded run must not be
@@ -53,6 +61,7 @@ import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-tes
 import { icsToText } from "../src/demand-test/sourceIcs.js";
 import { classifyFetchFailure, isPolicyDenial, assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
 import { carryForwardBlocks, writeSnapshotPreservingBlocks } from "../src/demand-test/persistedBlocks.js";
+import { resolveOfflineSource } from "../src/demand-test/snapshotBundle.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -72,6 +81,8 @@ const NO_BROWSER = args.includes("--no-browser");
 // --allow-degraded to proceed deliberately, which leaves that choice visible
 // in the command rather than buried in the exit code.
 const ALLOW_DEGRADED = args.includes("--allow-degraded");
+const OFFLINE = args.includes("--offline");
+const BUNDLE_DIR = join(CACHE_DIR, "bundle");
 const MAX_ERROR_RATE = 0.15;
 
 const UA =
@@ -84,6 +95,35 @@ const BLOCK_RE = /403 Forbidden|Access denied|Verify you are human|Just a moment
 mkdirSync(CACHE_DIR, { recursive: true });
 const state = existsSync(STATE_PATH) ? JSON.parse(readFileSync(STATE_PATH, "utf8")) : {};
 const { sources } = JSON.parse(readFileSync(SOURCES_PATH, "utf8"));
+
+// --offline: the bundle must be a completed pull (the .pulled marker is the
+// last thing pull-snapshots.mjs writes). Statuses in the runner's report are
+// informational; this run re-derives them against its own baselines.
+let bundle = null;
+if (OFFLINE) {
+  if (!existsSync(join(BUNDLE_DIR, ".pulled"))) {
+    console.error("--offline: no completed bundle in .ingest-cache/bundle — run `npm run ingest:pull` first");
+    process.exit(1);
+  }
+  const manifest = JSON.parse(readFileSync(join(BUNDLE_DIR, "manifest.json"), "utf8"));
+  const report = JSON.parse(readFileSync(join(BUNDLE_DIR, "fetch-report.json"), "utf8"));
+  bundle = {
+    manifest,
+    reportById: new Map((report.sources ?? []).map((s) => [s.id, s])),
+    pulledAt: readFileSync(join(BUNDLE_DIR, ".pulled"), "utf8").trim(),
+  };
+  console.log(`offline: reading the runner's bundle fetched ${manifest.fetchedAt} (product ${String(manifest.productCommit ?? "?").slice(0, 7)})`);
+}
+
+// One source, from the bundle. Detail pages are already inside the runner's
+// snapshot text, so there is no second read here.
+function offlineSource(src) {
+  const entry = bundle.reportById.get(src.id);
+  const snapPath = join(BUNDLE_DIR, "snapshots", `${src.id}.txt`);
+  const r = resolveOfflineSource(src, entry, existsSync(snapPath));
+  if (r.kind === "error") throw new Error(r.message);
+  return { text: readFileSync(snapPath, "utf8").replace(/\n$/, ""), method: r.method, detail: entry.detail };
+}
 
 // --mark-ingested: promote current snapshots to ingested baselines (no
 // network). Run at ship time, after the review gate — including for sources
@@ -720,7 +760,9 @@ const selected = sources.filter(
 const browserRequired = selected.some((s) => s.fetch === "browser");
 
 let browserPreflight = { ok: true, skipped: true };
-if (browserRequired && !NO_BROWSER) {
+if (OFFLINE) {
+  browserPreflight = { ok: true, skipped: true, offline: true };
+} else if (browserRequired && !NO_BROWSER) {
   browserPreflight = await preflightBrowser();
   if (browserPreflight.ok) {
     console.log(`browser preflight: ok (${browserPreflight.engine}, ${browserPreflight.proxy})`);
@@ -750,15 +792,27 @@ for (const src of sources) {
   const snapPath = join(CACHE_DIR, `${src.id}.txt`);
   const entry = { id: src.id, name: src.name, url: src.url, group: src.group, notes: src.notes || undefined };
   try {
-    const { text: listingText, method } = await fetchSource(src);
-    // Detail pages are part of the snapshot, not a side file: they must be
-    // hashed, diffed and re-checkable exactly like the listing they came from.
-    const detail = await detailText(src, listingText);
-    const text = listingText + detail.block;
-    if (src.detail) {
-      entry.detail = { fetched: detail.fetched, ...(detail.failed.length ? { failed: detail.failed } : {}) };
-      const note = detail.failed.length ? `, ${detail.failed.length} failed` : "";
-      console.log(`  detail: ${detail.fetched} page(s) persisted for ${src.id}${note}`);
+    let text;
+    let method;
+    if (OFFLINE) {
+      const got = offlineSource(src);
+      text = got.text;
+      method = got.method;
+      // The runner already followed detail pages into this text; carry its
+      // count so the PR body reads the same either way.
+      if (got.detail) entry.detail = got.detail;
+    } else {
+      const got = await fetchSource(src);
+      method = got.method;
+      // Detail pages are part of the snapshot, not a side file: they must be
+      // hashed, diffed and re-checkable exactly like the listing they came from.
+      const detail = await detailText(src, got.text);
+      text = got.text + detail.block;
+      if (src.detail) {
+        entry.detail = { fetched: detail.fetched, ...(detail.failed.length ? { failed: detail.failed } : {}) };
+        const note = detail.failed.length ? `, ${detail.failed.length} failed` : "";
+        console.log(`  detail: ${detail.fetched} page(s) persisted for ${src.id}${note}`);
+      }
     }
     const h = hash(text);
     const prev = state[src.id] ?? {};
@@ -822,7 +876,7 @@ for (const src of sources) {
     // cannot read the source either way, but WHICH fix applies still matters,
     // so spend one diagnostic request to tell the two apart. Only runs for a
     // source that has already failed, so it costs nothing on a healthy run.
-    if (!denied && PROXY && /browser unavailable/.test(entry.error)) {
+    if (!denied && !OFFLINE && PROXY && /browser unavailable/.test(entry.error)) {
       denied = await probeHostDenial(src);
       if (denied) entry.error += ` — and its host is egress-denied (${denied}), so the browser is not the only blocker`;
     }
@@ -844,6 +898,9 @@ writeFileSync(
       playwright: !!pw,
       browserRequired,
       browserPreflight,
+      ...(OFFLINE
+        ? { offline: { fetchedAt: bundle.manifest.fetchedAt, productCommit: bundle.manifest.productCommit, pulledAt: bundle.pulledAt } }
+        : {}),
       sources: results,
     },
     null,
