@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-09-07",
+    "asOf": "2026-09-08",
     "lastDataPull": "2026-09-01",
-    "lastFeedCheck": "2026-09-07",
+    "lastFeedCheck": "2026-09-08",
     "nextReadout": "2026-09-08",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -1280,27 +1280,49 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-08-31",
-    "dayName": "Monday, August 31",
-    "dueToday": [],
+    "ranAt": "2026-09-08",
+    "dayName": "Tuesday, September 8",
+    "dueToday": [
+      "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning"
+    ],
     "overdue": [
       {
         "label": "Fire the channels cleared on 8/17 and still unsent — Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir → WORD → Flower Cat), IG carousel",
         "since": "2026-08-28"
-      }
-    ],
-    "waiting": [
+      },
       {
-        "what": "PR #50 — growth: readout 2026-08-25 [data pending: search]",
-        "age": 5
+        "label": "Verify the FB in-app webview on real iOS + Android — Q2's highest-stakes open precondition now that Rana posts to multiple groups",
+        "since": "2026-09-03"
+      },
+      {
+        "label": "Add school-year and fall-registration sources to the ingest roster (PTAs, District 14, after-school and class providers) and build out Sep 7-13 family supply",
+        "since": "2026-09-04"
+      },
+      {
+        "label": "Signup-ask rebuild merged and live, soaked on smaller traffic first",
+        "since": "2026-09-04"
+      },
+      {
+        "label": "Redistributor asks — library children's librarian, PS 31/34/110 PTAs, Town Square, class providers — so they carry us in first-week comms",
+        "since": "2026-09-03"
+      },
+      {
+        "label": "Rana's group list from Batu → one parents-<slug> src row per group, copy finalized",
+        "since": "2026-09-05"
+      },
+      {
+        "label": "Perri — in person at her shop, week of Sep 5",
+        "since": "2026-09-07"
       }
     ],
+    "waiting": [],
     "overnight": [
-      "docs: never auto-merge cards.json across a content refresh",
-      "rules: settle seven held-card questions in one pass (2026-08-30)",
-      "Merge remote-tracking branch 'origin/main'",
-      "Merge pull request #53 from batusayici/ingest/daily-2026-08-27",
-      "cockpit: morning refresh 2026-08-30"
+      "feat(ingest): read iCalendar feeds, unlocking the parish and church calendars",
+      "content(track-v): Bushwick Inlet Park is in scope — rule in SKILL.md, two events carded",
+      "content(track-v): work the held items — two cards back, Wriggle out, Transmitter Park self-persists",
+      "content(track-v): daily refresh — nine cards from the new family/kids sources",
+      "Merge pull request #63 from batusayici/content/family-kids-sources-2026-09-07",
+      "content(roster): eight family/kids sources, and two entries that pointed at the wrong page"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1309,12 +1331,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 39,
-      "reservoir": 13,
+      "dated": 69,
+      "reservoir": 29,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 151
+      "cards": 180
     }
   }
 }
