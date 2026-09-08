@@ -10,6 +10,7 @@
     "test": "TZ=America/New_York node --test \"src/**/*.test.mjs\"",
     "test:dom": "TZ=America/New_York vitest run",
     "ingest:fetch": "NODE_USE_ENV_PROXY=1 node scripts/fetch-sources.mjs",
+    "ingest:publish": "node scripts/publish-snapshots.mjs",
     "ingest:expire": "node scripts/expire-cards.mjs",
     "ingest:geocode": "NODE_USE_ENV_PROXY=1 node scripts/geocode-demand-cards.mjs",
     "ingest:index": "node scripts/card-index.mjs",
