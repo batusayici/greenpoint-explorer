@@ -83,7 +83,19 @@ export function submitHref(formUrl, ref) {
 // L5's sibling for the resident side: the Follow ask carries its object into
 // the form as a hidden field, so a segment is captured with no backend
 // (growth-engine §2 R1 — the smallest test is one extra Tally question).
-export function followHref(formUrl, ref) {
+//
+// `search` is the current window.location.search, and its ?src= channel tag
+// rides along as a second hidden field (2026-09-08). Without it every signup
+// looks the same no matter which Facebook group, subreddit or digest sent the
+// reader — the attribution hole the untagged wave-1 invites already cost us
+// once, and the Sep 8 families push exists to measure exactly that split.
+// An untagged visit appends nothing rather than an empty param, so the form's
+// hidden field stays blank instead of recording the string "".
+// NOTE: Tally only captures a query param it has a matching hidden field for,
+// so a `src` field has to exist on the form or this is inert.
+export function followHref(formUrl, ref, search = "") {
   const sep = formUrl.includes("?") ? "&" : "?";
-  return `${formUrl}${sep}follow=${encodeURIComponent(ref)}`;
+  const href = `${formUrl}${sep}follow=${encodeURIComponent(ref)}`;
+  const src = new URLSearchParams(search).get("src");
+  return src ? `${href}&src=${encodeURIComponent(src)}` : href;
 }

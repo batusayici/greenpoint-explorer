@@ -409,7 +409,7 @@ function FollowPrompt({ filter, onDismiss, placement }) {
         <p className="july-fbanner-terms">Stay up to date with one weekly email</p>
         <a
           className="july-fbanner-cta"
-          href={followHref(SIGNUP_URL, ref)}
+          href={followHref(SIGNUP_URL, ref, window.location.search)}
           target="_blank"
           rel="noreferrer"
           onClick={() => {
@@ -919,7 +919,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             <footer className="july-ctas">
               <a
                 className="july-cta july-cta--primary"
-                href={followHref(SIGNUP_URL, "all")}
+                href={followHref(SIGNUP_URL, "all", window.location.search)}
                 target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
                 rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
                 onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement: "footer", object: "all" })}

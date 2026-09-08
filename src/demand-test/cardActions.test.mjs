@@ -137,3 +137,30 @@ test("followHref appends to an existing query string", async () => {
   const { followHref } = await import("./cardActions.js");
   assert.equal(followHref("https://tally.so/r/abc123?x=1", "all"), "https://tally.so/r/abc123?x=1&follow=all");
 });
+
+// The channel tag rides along too (2026-09-08). Without it a signup from a
+// parents Facebook group is indistinguishable from one off Reddit or the
+// digest, which is the whole thing the Sep 8 families push has to measure —
+// the same attribution hole the untagged wave-1 invites left.
+test("followHref carries the arrival channel when there is one", async () => {
+  const { followHref } = await import("./cardActions.js");
+  assert.equal(
+    followHref("https://tally.so/r/abc123", "all", "?src=parents-gp-moms"),
+    "https://tally.so/r/abc123?follow=all&src=parents-gp-moms",
+  );
+});
+
+test("followHref omits the channel entirely when the visit was untagged", async () => {
+  const { followHref } = await import("./cardActions.js");
+  assert.equal(followHref("https://tally.so/r/abc123", "all", "?fbclid=IwAR3x"), "https://tally.so/r/abc123?follow=all");
+  assert.equal(followHref("https://tally.so/r/abc123", "all", ""), "https://tally.so/r/abc123?follow=all");
+  assert.equal(followHref("https://tally.so/r/abc123", "all"), "https://tally.so/r/abc123?follow=all");
+});
+
+test("followHref encodes a channel tag that needs it", async () => {
+  const { followHref } = await import("./cardActions.js");
+  assert.equal(
+    followHref("https://tally.so/r/abc123", "lens:family_kids", "?src=parents%2Fgp%20moms"),
+    "https://tally.so/r/abc123?follow=lens%3Afamily_kids&src=parents%2Fgp%20moms",
+  );
+});
