@@ -4,6 +4,75 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-07 (evening) — The school-opening push: five rulings that outlive the week
+
+**Trigger.** The 2026-08-25 goal was to make the week school opens (Thursday 2026-09-10) the
+densest family week the map has had, and to hold the parents-facing outreach until the roster
+could carry it. On the afternoon of the 7th the family week read six dated occurrences, and six of
+the seven family events on the map were the library's own. Batu: "execute all of this." By the
+end of the evening the same rolling week read sixteen, the family/kids layer had gone from 22 cards
+to 36, and the deck from 180 to 198. Six of the sixteen are one card — the McCarren pool's last
+free week, counted once a day — so the like-for-like number is ten against six. Still the densest
+week the deck has shown. What follows is what was decided along the way, because each will come
+up again.
+
+**1. Bushwick Inlet Park is Greenpoint and in scope.** A run had ruled two North Brooklyn Parks
+Alliance events out of area on the strength of the park's postal address, 86 Kent Ave, which
+geocodes to 11249. Batu overturned it the same day: the zip is a postal fact about a park that
+runs the length of the waterfront, not a ruling about which neighbourhood uses it. The rule is in
+`SKILL.md` so it is not re-argued per event, and it is written to close the exact way it was got
+wrong. It does **not** extend to Domino Park or Marsha P. Johnson State Park, which stay out.
+
+**2. Sawyer and union.fit are back on the browser path, and the reason is precise.** The
+2026-08-06 ruling — getting past a bot challenge is out of bounds — stands. What changed is the
+premise: rendered in headless Chromium on 2026-09-07, the *landing view* of every one of these
+portals (hisawyer.com schedules and provider pages, union.fit's org root, portal.iclasspro.com)
+loads with no challenge at all. The challenge is real but it is **one click in** — a tab, a second
+page — and the researcher who found it stopped every time. The roster reads landing views only and
+never clicks, so nothing here gets past anything; `browserText` now throws if a challenge page is
+ever served to it rather than snapshotting the interstitial as content. Consequence: whatever
+lives behind a tab (PLAY's drop-off movie nights, ARTUDIO's drop-ins, Sawyer pagination) is
+invisible, and that is the wall, not a coverage gap to explain away each run. A per-source
+`browser: { waitUntil, settleMs }` block was added because iClassPro is a 196-character shell at
+the default wait and a full schedule at networkidle + 3s.
+
+**3. The ingest can read iCalendar.** A fifth fetch strategy, `ics`, with the parser kept pure in
+`sourceIcs.js`. Two properties do all the work and both are about volume: `windowDays` and
+`exclude`, because these calendars are a decade of history and internal housekeeping (St.
+Stanislaus Kostka Academy: 3,281 events, 9 in the window after excludes). Three things only showed
+up against the real files and are now tests: an all-day entry must render as a bare date, never a
+midnight instant — which in New York is the evening before; descriptions carry HTML; Google
+exports in creation order. The church's food pantry and the parish picnic are the first cards off
+it. The church's community meal is held: its description says Wednesday, its recurrence rule says
+Tuesday.
+
+**4. The daily refresh now carries the midweek family publishers, so the "Wednesday re-sweep" is
+not a thing anyone has to remember.** Greenpointers was already read daily (weekly-cadence sources
+fetch on every run; only monthly is gated). Brooklyn Bridge Parents is added as a REST source with
+`search=greenpoint` in the URL, so WordPress pre-filters to posts that mention the neighbourhood;
+Macaroni KID Brooklyn NW is added by its server-rendered *articles* listing with a detail block
+that follows the weekend-picks posts — its events calendar is a JavaScript shell and must never
+be the URL. Both are discovery surfaces under the aggregator rule: the card cites the organiser.
+Both measured near-zero Greenpoint yield on 2026-09-07; if that holds for a month, `SILENT` flags
+them and they go the way of The Wriggle, which is the system working.
+
+**5. The allowlist is now audited mechanically, and it is not the allowlist that matters for the
+cloud.** Every roster URL and detail URL host was checked against `.claude/settings.json` and the
+gaps closed. But that file gates only the interactive `WebFetch` tool. The cloud routine's egress
+is a separate allowlist in claude.ai settings (DECISION_LOG 2026-07-28, 2026-08-10), and a source
+added without its host there is born blocked and reports as a browser outage. The hosts new to the
+roster today, measured against the last commit before PR #63 — add these to the cloud routine's
+egress allowlist in one pass; the next cloud run's `EGRESS DENIED` block is the check that it
+happened:
+
+`birthsmarter.com` · `brooklynbridgeparents.com` · `brooklynnw.macaronikid.com` ·
+`calendar.google.com` · `mcgolrick.org` · `nbkparks.org` · `polishslaviccenter.org` ·
+`portal.iclasspro.com` · `spaceclub.com` · `transmitterpark.org` · `www.gigglesandwiggles.co` ·
+`www.gwysl.org` · `www.hisawyer.com` · `www.kingslandwildflowers.com` · `www.union.fit`
+
+**Standing instruction (Batu, 2026-09-07).** Update this log when a decision is made; do not ask
+first. Decisions live here, not in conversation.
+
 ## 2026-09-07 — Eight family/kids sources added; a Squarespace event feed's coordinates are never the venue
 
 **Trigger.** Batu asked what the family and kids coverage actually was. It was thin in a way the

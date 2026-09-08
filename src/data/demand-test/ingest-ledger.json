@@ -3282,6 +3282,20 @@
       "addedAt": "2026-09-07",
       "expiresAt": "2026-09-14",
       "reason": "NOT RE-FETCHED THIS RUN, SO THIS IS THE CLOUD BASELINE'S GAP, NOT NEW SUPPLY. troost errored in this local session with 'missing env var TROOST_CALENDAR_API_KEY' — the Google Calendar key lives in the cloud routine's environment, not on this machine — so the snapshot being compared is the last cloud run's baseline, unchanged. 13 of its 14 in-window dates are carded; the one uncovered date is whatever that run left, and it is that run's coverage report (which passed) that owns it. WHAT WOULD CHANGE IT: the next cloud run, which fetches with the key and re-reconciles."
+    },
+    {
+      "sourceId": "macaroni-kid-brooklyn-nw",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "A DISCOVERY SURFACE COVERING GREENPOINT, WILLIAMSBURG AND BUSHWICK, ON ITS FIRST RUN. The dates come from the six weekend-picks articles the detail block now follows (July 31 through Labor Day); the 9/11-13 picks are not published yet, which is the whole reason this source exists. The 2026-09-07 sweep found zero Greenpoint mentions in its September monthly post. Nothing is carded from an aggregator; a Greenpoint pick is a pointer to the organiser's page. Low 'deck covers' is expected. WHAT WOULD CHANGE IT: the 9/11-13 picks naming a Greenpoint event we have not carded first-hand.",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21"
+    },
+    {
+      "sourceId": "brooklyn-bridge-parents-greenpoint",
+      "gapKey": "GAP",
+      "addedAt": "2026-09-07",
+      "expiresAt": "2026-09-21",
+      "reason": "A DISCOVERY SURFACE, BOROUGH-WIDE, ON ITS FIRST RUN. The nine dates this script reads off it belong to the weekly 'Free kid-friendly events this week in Brooklyn' roundup and the openings posts — 25-plus items a week across Prospect Park, DUMBO, Park Slope, Williamsburg and the rest, of which the 2026-09-07 sweep found exactly ONE in 11222 (the library week), already carded first-hand from the branch calendar. Under the aggregator rule nothing is ever carded from this source directly; a Greenpoint line here is where a run learns to go read the organiser. So 'deck covers 0 of 9' will read low every week by construction and is not a gap. WHAT WOULD CHANGE IT: a Greenpoint item here whose organiser page we have NOT carded — that is the signal, and it lands as an ordinary diff."
     }
   ]
 }

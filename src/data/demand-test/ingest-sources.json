@@ -1151,6 +1151,28 @@
       "notes": "61 Greenpoint Ave, Ste 113, 11222; (917) 887-1760. Added 2026-09-07. The studio's own site (art101bk.com) has an events page that renders a heading and no listings; Sawyer is the real schedule. This is the GREENPOINT provider page — reviews mention a Williamsburg location, which is a separate page, and every row here is tagged Greenpoint. Landing view renders four items with age range, price and a DROP-IN / SEMESTER / CAMP tag: After School Artists Mon-Fri 3-5pm Sep 10-Dec 17 ($65/class, ages 4-10) is the school-year one; the two summer camps end Sep 9; Crafternoons (Sun 2-4pm, $45) states NO start or end date, so its Sundays are inferred and it is not carded as dated. No challenge on the landing view 2026-09-07; same landing-view-only caveat as play-greenpoint-sawyer."
     },
     {
+      "id": "brooklyn-bridge-parents-greenpoint",
+      "name": "Brooklyn Bridge Parents — posts mentioning Greenpoint (WP REST)",
+      "url": "https://brooklynbridgeparents.com/wp-json/wp/v2/posts?per_page=10&search=greenpoint",
+      "group": "roundup",
+      "cadence": "weekly",
+      "fetch": "json",
+      "citeHost": "brooklynbridgeparents.com",
+      "json": { "path": "", "fields": ["title.rendered", "link", "date", "content.rendered"] },
+      "notes": "Added 2026-09-07 so the DAILY refresh, not a hand sweep, catches the midweek family roundups. Borough-wide parents site with an open WordPress REST API; the `search=greenpoint` in the URL makes WordPress return only posts whose text mentions Greenpoint, so the snapshot is pre-filtered and the diff only moves when a Greenpoint-mentioning post lands. What it publishes that matters: the weekly 'Free kid-friendly events this week in Brooklyn' roundup (Sundays/Mondays), the weekly 'The Week in Brooklyn', monthly new-openings and new-family-amenities posts, and District 14 3K/UPK/Kindergarten open-house roundups — the closest thing to a school-calendar feed, since every Greenpoint PTA is on Instagram or behind ParentSquare. DISCOVERY SURFACE ONLY: a roundup line is where you learn an event exists; the card cites and quotes the organiser's own page, per the aggregator rule. Measured 2026-09-07: its 9/7-9/13 roundup carried exactly one Greenpoint item (the library week, already carded first-hand), so expect most weeks to yield nothing — SILENT will flag it if that stays true for a month, and that is the correct outcome."
+    },
+    {
+      "id": "macaroni-kid-brooklyn-nw",
+      "name": "Macaroni KID Brooklyn NW — articles (weekend picks)",
+      "url": "https://brooklynnw.macaronikid.com/articles",
+      "group": "roundup",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "citeHost": "brooklynnw.macaronikid.com",
+      "detail": { "match": "macaronikid\\.com/articles/[a-z0-9]+/.*weekend-event-picks", "limit": 8, "delayMs": 400 },
+      "notes": "Added 2026-09-07 so the DAILY refresh catches the '20 Weekend Event Picks (Sep 11-13)' article the moment it posts — it usually lands Wed/Thu, and the 2026-09-07 sweep found the 9/11-13 one not yet published. ⚠ THE EVENTS CALENDAR ON THIS SITE IS A JAVASCRIPT SHELL (/events/calendar renders 13KB with no events, no JSON-LD, nothing in a browser either) — do not point at it. The ARTICLES listing is server-rendered and so are the individual article pages, which is what the detail block follows: the newest weekend-picks / event-picks / family-events posts, capped at 3. Covers Greenpoint, Williamsburg and Bushwick, so the Williamsburg-address gate applies to every item. DISCOVERY SURFACE ONLY, same as brooklyn-bridge-parents-greenpoint: verify and quote the organiser. ⚠ THE DETAIL HARVEST IS PAGE-ORDER, NOT NEWEST-FIRST: with limit 3 the first run followed July 31, Aug 7 and the monthly 'top 20' post and missed the current week entirely, so the match is narrowed to weekend-event-picks only and the limit raised to 8 — eight cheap plain GETs a week is the price of always having the newest picks in the snapshot. Measured 2026-09-07: the 'Top 20 September Family Events in Brooklyn' article mentioned Greenpoint zero times; if the weekend picks turn out the same over a month, SILENT flags it and it goes the way of The Wriggle."
+    },
+    {
       "id": "polish-slavic-center",
       "name": "Polish & Slavic Center (WP REST)",
       "url": "https://polishslaviccenter.org/wp-json/wp/v2/posts?per_page=15",
