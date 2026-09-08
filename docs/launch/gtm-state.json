@@ -433,10 +433,10 @@
       "status": "scheduled",
       "slot": true,
       "hypothesis": "Parents/camps is the sharpest unmet need in the neighborhood (the Sawyer gap). A member-share in a parent group reaches them where they already ask 'what do we do this weekend'.",
-      "smallestTest": "Rana posts in her own words with exact tagged links, one src per group. Group list comes from Batu closer to Sep 8.",
-      "rule": "Pooled parents-* sessions + week-2 return vs the other srcs. Double down only if pooled return beats other srcs. PRE-REGISTERED 2026-08-25, before any send: with Rana posting to an unknown number of groups, the DECISION reads the pooled parents family; per-group srcs are diagnostics only and never fire the rule on their own — at this traffic a single group would read n≈3 and the rule could not fire honestly.",
+      "smallestTest": "Rana posts in her own words to the parents groups, every post carrying the same link: https://stoopwise.com/?src=parents&lens=family_kids. One source for all groups (Batu, 2026-09-08).",
+      "rule": "Pooled parents sessions + week-2 return vs the other srcs. Double down only if it beats them. PRE-REGISTERED 2026-08-25 and unaffected by the 2026-09-08 one-source ruling: the decision always read the pooled parents family, and a single src is that family. What is given up is the per-group diagnostic, which could never fire the rule on its own at n≈3.",
       "target": "Week-2 return beats other srcs",
-      "actual": "Not sent. Sep 7-13 supply is 3 dated family/kids cards, all Greenpoint Library; whole deck has 17 dated cards that week. School-year sources still absent from the 72-source roster. FB webview still unverified. Rana group list not in, so no parents-<slug> rows exist.",
+      "actual": "Not yet sent as of 2026-09-08 morning. Sep 8-13 now carries 8 dated family/kids cards (pool, SPARSA prenatal yoga, Giggles & Wiggles, three library days, Birthsmarter, St. Stans picnic) plus 21 undated, up from 3 all-library a week ago. Facebook in-app browser now checked at the engine level by npm run verify:fb-webview; the app itself still needs a phone. Signup link carries its channel and the Tally form has a matching src field, both shipped 2026-09-08.",
       "readAt": "2026-09-01",
       "verdict": "not yet read",
       "scheduledFor": "Tue Sep 8 (ratified 2026-08-15; scope widened 2026-08-25 — Sep 7-8 is now the start of ALL parents-facing awareness, not just this post. Sep 7 is Labor Day and school opens Thu Sep 10, so the usable days are Tue 9/8 and Wed 9/9.)",
@@ -444,10 +444,10 @@
       "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels (P1). Multiple groups make that worse, not better: a larger share of the October cohort now arrives through one webview, so a measurement artifact could depress the demand gate itself rather than just one channel's read. Groups also overlap in membership — the same parent may see the post several times, which is a cost to Rana's standing, not ours to spend. Cohorts entering Sep 8 also sit at the top of the September rebound, which flatters return against a year-round baseline; the two effects pull opposite ways on the same people.",
       "source": "growth §4; roster",
       "preconditions": [
-        "FB in-app webview verified on real iOS + Android — NOW THE HIGHEST-STAKES OPEN ITEM: ~100% of Q2 taps arrive through it and the wave just got bigger. Needs a row in environmental-dependencies.md in the same change.",
-        "Dated family/kids cards live for Sep 7-13 — today the inventory ends Sep 4 and that week has none (roster criterion 3)",
-        "School-year sources on the ingest roster — no PTA (PS 31/34/110), no District 14, no after-school or fall-registration feed exists today",
-        "Rana's group list from Batu, then one src row per group in channel-links.md before any copy is finalized",
+        "Facebook in-app browser — engine level DONE 2026-09-08 (npm run verify:fb-webview, both engines, in the verify chain). App-level behaviour still open: open the link in Messenger on a real handset once.",
+        "Dated family/kids cards live for Sep 7-13 — DONE 2026-09-08, 8 dated in Sep 8-13",
+        "School-year sources on the ingest roster — eight family/kids sources added 2026-09-07",
+        "Group list and src rows — RESOLVED 2026-09-08 by the one-source ruling; the link is in channel-links.md and needs nothing from Rana but her own words",
         "Signup-ask rebuild merged and live by ~Sep 4, soaked on smaller traffic first",
         "Redistributor asks out ~Sep 1-3 (library children's librarian, three PTAs, Town Square, class providers)"
       ]
@@ -899,23 +899,23 @@
     },
     {
       "src": "parents",
-      "label": "Parents-group posts (Q2) — shared tag, SUPERSEDED",
+      "label": "Parents-group posts (Q2) — Rana, all groups, one source",
       "wave": "1→moved",
       "sent": null,
       "firstSession": null,
       "shared": null,
       "reply": null,
-      "status": "do not send — one src per group, per the one-src-per-channel rule. Row kept because the link exists in channel-links.md."
+      "status": "SEND THIS ONE. Revived 2026-09-08: Batu ruled the moms groups are tracked as one source, not one per group, so the 8/19 reason for retiring it is gone and the row has never been sent. Link carries &lens=family_kids so readers land on the Family & Kids view. Rana writes her own copy."
     },
     {
       "src": "parents-<group-slug>",
-      "label": "Q2 parents groups (Rana, multiple) — rows created when Batu hands over the list",
+      "label": "Q2 per-group rows — RETIRED 2026-09-08",
       "wave": "1→moved",
       "sent": null,
       "firstSession": null,
       "shared": null,
       "reply": null,
-      "status": "posts Tue Sep 8, morning. Rana posts in her own words to multiple groups; Batu supplies the list closer to the date and each group gets its own parents-<slug> row in channel-links.md before copy is final. The DECISION reads the pooled parents-* family; per-group rows are diagnostics (Q2 rule, pre-registered 2026-08-25). Guidance: Williamsburg & Greenpoint BK Parents is dormant, 0 posts/month."
+      "status": "Retired. Batu ruled one source for all the moms groups, so no parents-<slug> row was ever created and none should be. Q2 reads the pooled parents family, which a single src satisfies."
     },
     {
       "src": "org-film-noir",

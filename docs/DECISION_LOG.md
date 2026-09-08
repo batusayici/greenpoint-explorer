@@ -4,6 +4,31 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-08 — Rana's posts carry one link, and it lands on the family view
+
+**Batu, this morning:** Rana writes her own posts, and the Facebook moms groups are tracked as
+**one source**, not one per group. That reverses the 2026-08-25 scheme, which would have given each
+group its own `parents-<slug>` tag. No such row was ever created, so nothing is orphaned.
+
+Q2's decision rule is untouched. It was pre-registered on 2026-08-25 to read the **pooled** parents
+family precisely because a single group reads n≈3 and could never fire the rule honestly. A single
+source *is* that pooled family. What is given up is the per-group diagnostic, which was never
+allowed to decide anything on its own.
+
+The link she shares is `https://stoopwise.com/?src=parents&lens=family_kids` — the retired `parents`
+row revived, plus the lens deep link so a reader arrives on Family & Kids rather than the general
+feed with the chip left for them to find. Verified in the Facebook in-app browser: the chip comes up
+active on 36 cards, and the signup ask that follows records both the lens and the channel.
+
+**Two fixes shipped ahead of it, same morning.** The Follow link went to Tally carrying only which
+category was followed, so a signup from a moms group would have looked identical to one off Reddit
+or the digest — the same hole the untagged July invites left, on the day it would cost the most. It
+now carries the arrival channel, and the Tally form has a matching `src` field to receive it.
+Separately, `npm run verify:fb-webview` now drives the built site with the two engines Facebook
+embeds, WebKit for its iOS app and Chromium for Android, so the environment nearly every Q2 arrival
+lands in is checked on every run instead of being a known gap waiting for a phone. The app around
+the engine is still unchecked and still needs a handset once.
+
 ## 2026-09-07 (evening) — The school-opening push: five rulings that outlive the week
 
 **Trigger.** The 2026-08-25 goal was to make the week school opens (Thursday 2026-09-10) the
