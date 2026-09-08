@@ -42,6 +42,7 @@ Two corollaries, both learned the hard way:
 | **WebGL** | MapLibre (`MapView.jsx`) | Map cannot render at all | try/catch on construction → `onUnavailable`; `FeatureBoundary` for later throws; `map.on("error")` for async death. Map zone leaves the layout, feed goes full width, one line says so | `mapContainment.test.jsx` (8 tests, both failure shapes) + **`npm run verify:agent-browser`** (real browser, real bundle, WebGL stubbed off) |
 | **localStorage / sessionStorage** | `returnVisit.js` (R0 retention), `firstVisitOrientation.js` | Property read throws (`SecurityError`) when site data is blocked → module dies before `createRoot` → **blank page**, no boundary can help | `safeStorage()` guards the read; consumers fail closed on `null`; `bootSafely()` isolates the step | `boot.test.mjs` + **`npm run verify:agent-browser`** (storage getter throws) |
 | **localStorage *persistence* past 7 days** (Safari ITP) | `returnVisit.js` (R0 retention — the demand gate's own instrument) | Storage is present and writable, so nothing throws and no test fails — but Safari **deletes all script-written storage after ~7 days of browser use without a first-party visit**. A weekly-cadence product sits exactly on that edge: a reader returning on day 8 arrives with `gl_first_seen` gone and re-registers as a **brand-new visitor with `weekIndex` 0, forever**. Silent, one-directional, and it under-counts precisely the behaviour the gate measures, on the audience's dominant browser | **Accepted and measured, not fixed (Batu, 2026-08-19).** The planned server-set cookie mirror is **dropped** — `privacy.html` promises no cookies in three places, and the bias only runs one way: an evicted reader re-registers as new, inflating the denominator and deflating the numerator, so it can produce a false fail but never a false pass. Instead the Tuesday readout carries a return-rate-by-browser-family line and the October read carries that gap as a label. Home-screen install (D5) still exempts a user entirely, and a tagged digest click counts as a return under D1 regardless of storage. DECISION_LOG 2026-08-19 sixth entry | **None yet — needs a real iPhone**, which is the point of the row. No stub can reproduce a 7-day eviction, so this is the first dependency here whose proof must be a device, not a test |
+| **The Facebook in-app browser** | every arrival from a group post — Facebook opens links inside its own browser, not Safari or Chrome | Unknown until tested, which was the problem: no reviewer's browser can produce it, the same shape as the WebGL bug above. ~100% of a parents-group post's arrivals land here | Nothing specific to it; it inherits every containment in this table | **`npm run verify:fb-webview`** (2026-09-08) — the built site under both engines Facebook embeds (WebKit for iOS, Chromium for Android), each with the in-app browser's user agent, a phone viewport, touch input and the `fbclid` Facebook staples onto every link. Checks the feed, the map, storage, tap filtering, shared `/e/` links, and that the `?src=` tag reaches both signup asks. **The engine only** — see Known gaps |
 | **Any boot side-effect** (analytics `inject()`, PostHog init, `URLSearchParams`) | `main.jsx` | Throw at module scope → render never runs → blank page | `bootSafely()` per step, so one dead vendor cannot cost another step | `boot.test.mjs` ("one failing boot step does not skip the steps after it") |
 | **`matchMedia`** | `JulyApp.jsx` (mobile breakpoint), `CardPanel.jsx` (reduced motion) | Layout flag defaults to desktop; motion guard defaults to animated | Already safe — every call site uses `window.matchMedia?.(…)`, and optional chaining short-circuits the whole chain | Covered indirectly by the jsdom suite (stubbed in `testSetup.dom.js`) |
 | **`navigator.share`** | `CardPanel.jsx` share action | Falls back to clipboard | Explicit `if (navigator.share)` branch | — |
@@ -57,11 +58,18 @@ Two corollaries, both learned the hard way:
   Whether that matters is an open question tied to the answer-engine goal, not a bug.
 - **`Intl` and `MutationObserver` have no containment.** Judged baseline, deliberately — noted here
   so the judgement is visible rather than implied.
-- **No real-device matrix.** Everything is verified via stubs, jsdom, or one browser pane. Older
-  Safari, Firefox and real mobile hardware are unsampled. **Two open items now depend on this
-  gap directly** (both D5, 2026-08-17): the Safari 7-day eviction row above, and the **Facebook
-  in-app webview** — ~100% of the Q2 parents post's arrivals will come through it, and it is the
-  same hostile-context class as the 2026-08-13 WebGL bug. Both need a phone, not a test.
+- **No real-device matrix.** Everything is verified via stubs, jsdom, one browser pane, or
+  Playwright's engines. Older Safari, Firefox and real mobile hardware are unsampled. Two open
+  items depended on this (both D5, 2026-08-17); one has moved:
+  - The **Safari 7-day eviction** row above is unchanged. No stub can reproduce a timer, so its
+    proof is still a phone.
+  - The **Facebook in-app browser** is now half covered. `npm run verify:fb-webview` (2026-09-08)
+    drives the built site with the two engines Facebook actually embeds, so an engine-level break
+    — the class the 2026-08-13 WebGL bug belonged to — would now fail a run. What it cannot see is
+    the app around the engine: how Facebook's wrapper handles a link that asks for a new tab,
+    whether its data store survives between sessions, and how much room its own toolbars leave.
+    Those need a phone. Opening a link in Messenger on a real handset covers all three in a minute
+    and is the cheapest thing that closes the rest of this row.
 
 - **A capability can be *present* and still fail you.** Every other row here asks "what if this is
   missing?" The ITP row is the first that asks "what if this works, but not for as long as we
