@@ -1,0 +1,91 @@
+# Fetch every ingest source on a plain runner and publish the snapshots, so the
+# Claude routine never fetches through the cloud sandbox's proxy again
+# (spec: docs/superpowers/specs/2026-09-08-ingest-fetch-on-github-actions-design.md).
+#
+# This job reads untrusted web pages. It must never hold a credential that can
+# write this repo: contents is read-only, and the only secret is a deploy key
+# scoped to the snapshots repo. The repo's Actions default is read-only too.
+name: ingest-fetch
+
+on:
+  schedule:
+    - cron: "30 10 * * *" # 6:30am New York in summer (5:30 in winter); the home Mac follows at 7:15, the routine at 8:30
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ingest-fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      # A secret cannot be tested in a step `if:` directly; surface its presence here.
+      HAS_KEY: ${{ secrets.SNAPSHOTS_DEPLOY_KEY != '' }}
+      SNAPSHOTS_REPO: git@github.com:batusayici/stoopwise-snapshots.git
+    steps:
+      # Nothing in this job uses the workflow token, and the job reads untrusted
+      # pages: don't leave a credential for this repo in the checkout's git config.
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps chromium firefox
+
+      # Exit 1 here means the roster was not readable (>15% errored). The
+      # report still has to be published so the routine halts on the same
+      # evidence, so do not fail the job yet.
+      - id: fetch
+        run: npm run ingest:fetch -- --include-monthly
+        continue-on-error: true
+        env:
+          TROOST_CALENDAR_API_KEY: ${{ secrets.TROOST_CALENDAR_API_KEY }}
+
+      # Always available, key or no key — this is what the dry run compares.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fetch-report
+          path: .ingest-cache/changes.json
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Publish the bundle to the snapshots repo
+        if: env.HAS_KEY == 'true'
+        env:
+          DEPLOY_KEY: ${{ secrets.SNAPSHOTS_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          (umask 077; printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519)
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+          git clone --depth 1 "$SNAPSHOTS_REPO" "$RUNNER_TEMP/snapshots"
+          npm run -s ingest:publish -- --to "$RUNNER_TEMP/snapshots" --fetcher github --yield-hours 3
+          cd "$RUNNER_TEMP/snapshots"
+          git config user.name "ingest-fetch"
+          git config user.email "ingest-fetch@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing changed since the last fetch"
+          else
+            git commit -m "fetch $(date -u +%Y-%m-%dT%H:%M:%SZ) from ${GITHUB_SHA::7}"
+            git push origin HEAD
+          fi
+
+      - name: Report the roster as unreadable
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "::error::ingest:fetch exited non-zero — the roster was not readable (over the 15% ceiling). The report was still published."
+          exit 1
