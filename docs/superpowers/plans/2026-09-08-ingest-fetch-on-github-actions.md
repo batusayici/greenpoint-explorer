@@ -1043,3 +1043,15 @@ The body must name: what happened (three sandbox network failures since July, to
 **Placeholders.** Task 4 Step 5 and Task 7 Step 3 carry `<…>` placeholders on purpose — measurement numbers that do not exist until Task 4 runs — and both say to fill them before committing.
 
 **Type consistency.** `resolveOfflineSource(src, reportEntry, hasSnapshot)` returns `{kind:"text",method}` or `{kind:"error",message}` in Task 1 and is consumed exactly so in Task 6. `assessBundle` returns `{ok, stale, ageHours, rosterMismatch, reasons}` in Task 1 and Task 5 reads those five fields. Bundle layout (`manifest.json`, `fetch-report.json`, `snapshots/<id>.txt`, `.pulled`) is the same in Tasks 2, 5, 6.
+
+## Execution record (2026-09-08)
+
+Tasks 0–7 executed on `feat/ingest-fetch-on-actions`. Task 4's measurement did not meet the
+switch-over rule (eight runner-only failures, all IP reputation), so a Task 6b was added after Batu's
+decision: two fetchers, one bundle, a 3-hour yield rule, `scripts/home-fetch.sh` + `.plist`, cron moved
+to 6:30am New York, and the Troost key as an Actions secret. `ingest:publish` lost its
+`--include-monthly` flag (derived from the report) and gained `--fetcher` / `--yield-hours`; the
+verification commands above that still show `ingest:publish -- --include-monthly` predate that. A
+temporary `push:` trigger on the branch and a one-run `probe-runner.yml` were used for the dry run and
+removed before the PR. Task 8's manual steps grew: the home clone, the env file, the plist, a second
+deploy key, and the Troost secret — the PR body lists them.

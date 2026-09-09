@@ -1,5 +1,66 @@
 # Decision Log
 
+## 2026-09-08 — the ingest fetch leaves the sandbox: GitHub Actions reads the roster every morning, the home Mac reads it again, the routine diffs what landed
+
+**Batu, after the daily run halted for the third distinct sandbox-network reason since July.** The
+proxy in the claude.ai cloud sandbox refuses the tunnel headless Chromium and Firefox open, while
+plain fetch and curl through the same proxy work (08-05, unanswered by Anthropic). It had already
+reverted its network preset (07-27) and shipped a Chromium older than Playwright's (07-28). Last
+night's family push added eight browser sources, so today 14 of 78 sources came back empty, 18%
+against the 15% ceiling, and the run expired three cards and added none. That is the daily shape for
+as long as the fetch stays inside a sandbox we do not control.
+
+**The decision.** The fetch runs outside the sandbox, on the same script, from two places. A GitHub
+Actions workflow (`ingest-fetch`, 6:30am New York daily and on demand) fetches the whole roster on a
+plain Ubuntu runner. A launchd job on Batu's Mac (`scripts/home-fetch.sh`) fetches the whole roster
+again at 7:15 from home when the Mac is awake and publishes over it. Both push to a small public repo,
+`batusayici/stoopwise-snapshots`; GitHub yields to a home bundle younger than three hours so a late
+cron cannot overwrite the fuller read. The routine pulls that bundle (`npm run ingest:pull`), refuses
+one older than six hours, and runs the existing fetch script in `--offline` mode, which changes only
+the read: hashing, the diff against the tracked baselines, carry-forward, the 15% ceiling and the exit
+code are the same code as a live fetch. Local interactive runs still fetch live.
+
+**Why two fetchers, measured rather than assumed.** The runner was tried against the roster before
+anything switched (workflow run 34287195654, 2026-09-08 22:49Z): it read 80 of 91 sources; a same-day
+fetch from Batu's connection read 88 of 91 (the three misses are the site's own: a bad certificate, an
+unset Troost key, one page that never renders anywhere). The eight runner-only failures are Cloudflare
+and Imperva challenging GitHub's Azure addresses — hisawyer (×2), union.fit, Sunshine Laundromat,
+GrowNYC, Leaves, Happy Medium, and NYC Parks answering a CAPTCHA page with a 405. Three of the eight
+are the family sources added the night before. The 2026-08-06 rule stands: nothing here gets past a
+challenge. So the datacenter reads what it can, predictably, every day; the home address reads the
+rest.
+
+**What this is not.** The laptop is a stopgap, not the design. A residential address is the scarce
+thing, and the set of sites that challenge datacenters only grows (Cloudflare turns bot blocking on by
+default for new sites). The durable order of fixes, agreed today: first, read the JSON those portals'
+schedule pages hydrate from instead of the pages — the same move as Greenpointers going to its feed
+on 08-05, and a roster change for its own PR; second, an always-on box at home for whatever remains;
+third, for sites that yield to no machine, the newsletter path and businesses submitting directly.
+
+**Why this shape.** The runner reads untrusted pages, so it holds nothing that can write this repo:
+workflow permissions are read-only and its secrets are a deploy key to the snapshots repo and the
+Troost calendar key. A branch in this repo would have given it write access to a repo whose `main` is
+production with no branch protection; workflow artifacts download from changing Azure hosts the
+sandbox allowlist would have to admit, and they expire. The separate repo needs no new allowlisted
+host, and its history is a record of what every source said on every day. It is public because the
+routine can then clone it with no credential; the ingested baselines were already public. Making it
+private later costs one token in the sandbox.
+
+**What it retires.** The per-host allowlist step at claude.ai for roster sources — the roster PR is
+now the only gate, which is what the deferred 2026-08-30 fetch-relay decision asked for, so that entry
+is satisfied by this one. The Playwright pin to the sandbox's stale Chromium can go once nothing in
+the sandbox launches a browser. Two options were considered and not taken: bridging the tunnel inside
+the sandbox with a local Node proxy (an hour's probe that stays inside the dependency that keeps
+failing, and would not help with IP reputation), and a hosted rendering service (a paid dependency
+that has the same datacenter addresses).
+
+**Rules that did not move.** No stopgap to the ceiling: excluding browser errors from it would reopen
+the second gate removed on 2026-08-05, and shielding cards whose source was unreadable would
+contradict the 2026-08-30 rule that they delete on the second flagged run. Halting stays the fallback:
+stale bundle, unreachable bundle, ceiling tripped by either fetcher — every one stops the run before
+anything thin ships. Spec: `docs/superpowers/specs/2026-09-08-ingest-fetch-on-github-actions-design.md`;
+plan: `docs/superpowers/plans/2026-09-08-ingest-fetch-on-github-actions.md`.
+
 ## Current Use Note
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.

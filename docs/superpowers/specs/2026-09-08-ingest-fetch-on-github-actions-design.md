@@ -1,6 +1,6 @@
 # Ingest fetch moves to GitHub Actions
 
-Date: 2026-09-08. Owner: Batu. Status: draft for review.
+Date: 2026-09-08. Owner: Batu. Status: approved 2026-09-08 and implemented on branch feat/ingest-fetch-on-actions; amended the same day after the runner measurement — see "Amendment" at the end.
 
 ## The problem
 
@@ -147,3 +147,16 @@ the 2026-08-05 decision removed, and protecting cards whose source was unreadabl
 Batu's 2026-08-30 rule that an unreadable source deletes on the second flagged run. If tomorrow's
 run arrives before this ships, it halts as today did, which is the safe outcome; `--allow-degraded`
 remains the knowing override.
+
+## Amendment (2026-09-08, after the runner measurement)
+
+The dry run read 80 of 91 sources from a GitHub-hosted runner; eight fail only there because
+Cloudflare and Imperva challenge GitHub's Azure addresses (hisawyer ×2, union.fit, Sunshine
+Laundromat, GrowNYC, Leaves, Happy Medium, NYC Parks). The switch-over rule in "The runner IP risk"
+was therefore not met as written, and Batu approved this shape instead: GitHub stays the daily fetcher
+at 6:30am New York; a launchd job on Batu's Mac (`scripts/home-fetch.sh`, `scripts/home-fetch.plist`)
+fetches the whole roster again at 7:15 from home and publishes over it; the manifest records
+`fetcher`, and GitHub yields to a home bundle younger than three hours. The routine pulls whichever
+landed. Follow-ups agreed: probe the JSON endpoints behind the three portal schedule pages in the next
+roster PR; an always-on home box replaces the laptop for whatever remains. Decision log entry of the
+same date has the reasoning.
