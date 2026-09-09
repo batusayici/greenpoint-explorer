@@ -1,5 +1,9 @@
 # Decision Log
 
+## Current Use Note
+
+This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
+
 ## 2026-09-08 — the ingest fetch leaves the sandbox: GitHub Actions reads the roster every morning, the home Mac reads it again, the routine diffs what landed
 
 **Batu, after the daily run halted for the third distinct sandbox-network reason since July.** The
@@ -60,10 +64,6 @@ contradict the 2026-08-30 rule that they delete on the second flagged run. Halti
 stale bundle, unreachable bundle, ceiling tripped by either fetcher — every one stops the run before
 anything thin ships. Spec: `docs/superpowers/specs/2026-09-08-ingest-fetch-on-github-actions-design.md`;
 plan: `docs/superpowers/plans/2026-09-08-ingest-fetch-on-github-actions.md`.
-
-## Current Use Note
-
-This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
 ## 2026-09-08 — Rana's posts carry one link, and it lands on the family view
 
