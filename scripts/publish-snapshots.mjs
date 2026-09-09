@@ -3,7 +3,7 @@
 // checkout of the snapshots repo). Runs on the GitHub Actions runner after
 // `npm run ingest:fetch`; the workflow commits and pushes what this writes.
 //
-// Usage: node scripts/publish-snapshots.mjs --to <dir>
+// Usage: node scripts/publish-snapshots.mjs --to <dir> --fetcher <github|home> [--yield-hours <n>]
 //
 // Writes:  <dir>/manifest.json      fetchedAt, roster hash, product commit, counts
 //          <dir>/fetch-report.json  changes.json as the runner produced it
@@ -15,18 +15,49 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync, readd
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 import { execFileSync } from "node:child_process";
-import { rosterHash, buildManifest } from "../src/demand-test/snapshotBundle.js";
+import { rosterHash, buildManifest, shouldYield } from "../src/demand-test/snapshotBundle.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CACHE_DIR = join(ROOT, ".ingest-cache");
 const args = process.argv.slice(2);
-const toIdx = args.indexOf("--to");
-const toValue = toIdx === -1 ? undefined : args[toIdx + 1];
-if (toIdx === -1 || !toValue || toValue.startsWith("--")) {
-  console.error("usage: publish-snapshots.mjs --to <dir>");
+const USAGE = "usage: publish-snapshots.mjs --to <dir> --fetcher <github|home> [--yield-hours <n>]";
+function flag(name) {
+  const i = args.indexOf(name);
+  const v = i === -1 ? undefined : args[i + 1];
+  if (i === -1 || !v || v.startsWith("--")) return undefined;
+  return v;
+}
+const TO = flag("--to");
+const FETCHER = flag("--fetcher");
+if (!TO || !FETCHER) {
+  console.error(USAGE);
   process.exit(2);
 }
-const TO = toValue;
+let YIELD_HOURS;
+if (args.includes("--yield-hours")) {
+  YIELD_HOURS = Number(flag("--yield-hours"));
+  if (!(YIELD_HOURS > 0)) {
+    console.error(USAGE);
+    process.exit(2);
+  }
+}
+
+// Two fetchers write this bundle (see shouldYield): don't clobber a fresher
+// read from the other one.
+const existingManifestPath = join(TO, "manifest.json");
+if (existsSync(existingManifestPath)) {
+  let existing = null;
+  try {
+    existing = JSON.parse(readFileSync(existingManifestPath, "utf8"));
+  } catch {
+    existing = null;
+  }
+  const verdict = shouldYield({ existing, fetcher: FETCHER, yieldHours: YIELD_HOURS });
+  if (verdict.yield) {
+    console.log(`yielding: ${verdict.reason} — not publishing`);
+    process.exit(0);
+  }
+}
 
 const reportPath = join(CACHE_DIR, "changes.json");
 if (!existsSync(reportPath)) {
@@ -77,10 +108,11 @@ const manifest = buildManifest({
   rosterHash: rosterHash(sources),
   productCommit,
   report,
+  fetcher: FETCHER,
 });
 writeFileSync(join(TO, "fetch-report.json"), JSON.stringify(report, null, 2) + "\n");
 writeFileSync(join(TO, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
 console.log(
-  `published ${copied} snapshot(s) to ${TO} (${removed} stale file(s) removed); ` +
+  `published ${copied} snapshot(s) to ${TO} by ${FETCHER} (${removed} stale file(s) removed); ` +
     `${manifest.errorCount} of ${manifest.sourceCount} sources errored; roster ${manifest.rosterHash}; product ${manifest.productCommit}, ${missing} missing`,
 );

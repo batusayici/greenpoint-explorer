@@ -9,7 +9,7 @@ name: ingest-fetch
 
 on:
   schedule:
-    - cron: "30 11 * * *" # 7:30am New York, an hour before the daily routine
+    - cron: "30 10 * * *" # 6:30am New York in summer (5:30 in winter); the home Mac follows at 7:15, the routine at 8:30
   workflow_dispatch: {}
   # TEMPORARY, remove before merge: GitHub only registers a workflow for
   # dispatch once it exists on the default branch, so the pre-merge dry run
@@ -50,6 +50,8 @@ jobs:
       - id: fetch
         run: npm run ingest:fetch -- --include-monthly
         continue-on-error: true
+        env:
+          TROOST_CALENDAR_API_KEY: ${{ secrets.TROOST_CALENDAR_API_KEY }}
 
       # Always available, key or no key — this is what the dry run compares.
       - uses: actions/upload-artifact@v4
@@ -71,7 +73,7 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
           git clone --depth 1 "$SNAPSHOTS_REPO" "$RUNNER_TEMP/snapshots"
-          npm run -s ingest:publish -- --to "$RUNNER_TEMP/snapshots"
+          npm run -s ingest:publish -- --to "$RUNNER_TEMP/snapshots" --fetcher github --yield-hours 3
           cd "$RUNNER_TEMP/snapshots"
           git config user.name "ingest-fetch"
           git config user.email "ingest-fetch@users.noreply.github.com"

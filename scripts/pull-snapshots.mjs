@@ -58,7 +58,7 @@ const verdict = assessBundle({ manifest, rosterHash: rosterHash(sources) });
 
 console.log(
   `bundle: fetched ${manifest.fetchedAt} (${verdict.ageHours.toFixed(1)}h ago), ` +
-    `${manifest.sourceCount} sources, ${manifest.errorCount} errored, product ${String(manifest.productCommit ?? "?").slice(0, 7)}`,
+    `${manifest.sourceCount} sources, ${manifest.errorCount} errored, product ${String(manifest.productCommit ?? "?").slice(0, 7)} by ${manifest.fetcher ?? "unknown"}`,
 );
 if (verdict.rosterMismatch) {
   const inBundle = new Set((JSON.parse(readFileSync(join(BUNDLE_DIR, "fetch-report.json"), "utf8")).sources ?? []).map((s) => s.id));

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.stoopwise.home-fetch</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/batusayici/Projects/Greenpoint Explorer/scripts/home-fetch.sh</string>
+  </array>
+  <!-- 7:15 local, after the GitHub runner (6:30) and before the routine (8:30).
+       A run missed while asleep fires once at wake. -->
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>15</integer></dict>
+  <key>StandardOutPath</key><string>/tmp/com.stoopwise.home-fetch.out</string>
+  <key>StandardErrorPath</key><string>/tmp/com.stoopwise.home-fetch.err</string>
+</dict>
+</plist>

@@ -15,7 +15,7 @@ export function rosterHash(sources) {
   return createHash("sha256").update(lines.join("\n")).digest("hex").slice(0, 16);
 }
 
-export function buildManifest({ now, includeMonthly, rosterHash, productCommit, report }) {
+export function buildManifest({ now, includeMonthly, rosterHash, productCommit, report, fetcher = "unknown" }) {
   const sources = Array.isArray(report?.sources) ? report.sources : [];
   let fetchedAt = now;
   if (!fetchedAt) {
@@ -27,9 +27,28 @@ export function buildManifest({ now, includeMonthly, rosterHash, productCommit, 
     includeMonthly: !!includeMonthly,
     rosterHash,
     productCommit: productCommit ?? null,
+    fetcher,
     sourceCount: sources.length,
     errorCount: sources.filter((s) => s.status === "error").length,
   };
+}
+
+// Two fetchers write the same bundle: the GitHub runner every morning, and
+// the home Mac on top of it when awake, because a residential address reads
+// the eight Cloudflare/Imperva-fronted sources a datacenter cannot (measured
+// 2026-09-08). GitHub's cron can slip past the home run, so it must not
+// overwrite a fresher, fuller read. Only a DIFFERENT fetcher's recent bundle
+// is yielded to; a fetcher always replaces its own.
+export function shouldYield({ existing, fetcher, now = new Date(), yieldHours }) {
+  if (!(yieldHours > 0)) return { yield: false, reason: "no yield window" };
+  if (!existing?.fetcher || existing.fetcher === fetcher) return { yield: false, reason: "no other fetcher's bundle" };
+  const at = new Date(existing.fetchedAt ?? NaN);
+  if (Number.isNaN(at.getTime())) return { yield: false, reason: "existing bundle has no usable fetchedAt" };
+  const ageHours = (now - at) / 36e5;
+  if (ageHours < yieldHours) {
+    return { yield: true, reason: `${existing.fetcher} bundle is ${ageHours.toFixed(1)}h old (window ${yieldHours}h)` };
+  }
+  return { yield: false, reason: `${existing.fetcher} bundle is ${ageHours.toFixed(1)}h old, past the ${yieldHours}h window` };
 }
 
 // Stale halts (exit 1 upstream, the same roster-unreadable contract as the 15%

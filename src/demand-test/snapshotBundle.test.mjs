@@ -1,7 +1,7 @@
 // src/demand-test/snapshotBundle.test.mjs
 import test from "node:test";
 import assert from "node:assert/strict";
-import { rosterHash, buildManifest, assessBundle, resolveOfflineSource } from "./snapshotBundle.js";
+import { rosterHash, buildManifest, assessBundle, resolveOfflineSource, shouldYield } from "./snapshotBundle.js";
 
 // The fetch moved off the sandbox proxy on 2026-09-08 (spec in docs/superpowers/specs).
 // These are the decisions the pull and offline paths make; the scripts only move files.
@@ -34,6 +34,7 @@ test("buildManifest counts sources and errors from the runner report", () => {
     includeMonthly: true,
     rosterHash: "abc",
     productCommit: "d431329",
+    fetcher: "unknown",
     sourceCount: 3,
     errorCount: 1,
   });
@@ -138,4 +139,30 @@ test("resolveOfflineSource: a runner-skipped monthly source is an error naming t
   const r = resolveOfflineSource({ id: "a" }, { id: "a", status: "skipped_monthly" }, false);
   assert.equal(r.kind, "error");
   assert.match(r.message, /include_monthly/);
+});
+
+test("buildManifest records who fetched, defaulting to unknown", () => {
+  const base = { includeMonthly: false, rosterHash: "h", productCommit: null, report: { sources: [] } };
+  assert.equal(buildManifest({ ...base, fetcher: "home" }).fetcher, "home");
+  assert.equal(buildManifest(base).fetcher, "unknown");
+});
+
+test("shouldYield: github yields to a home bundle younger than the window", () => {
+  const r = shouldYield({
+    existing: { fetcher: "home", fetchedAt: "2026-09-09T11:15:00Z" },
+    fetcher: "github",
+    now: new Date("2026-09-09T11:40:00Z"),
+    yieldHours: 3,
+  });
+  assert.equal(r.yield, true);
+  assert.match(r.reason, /home bundle is 0\.4h old/);
+});
+
+test("shouldYield: not to an old bundle, not to itself, not without a window", () => {
+  const now = new Date("2026-09-09T11:40:00Z");
+  assert.equal(shouldYield({ existing: { fetcher: "home", fetchedAt: "2026-09-09T06:00:00Z" }, fetcher: "github", now, yieldHours: 3 }).yield, false);
+  assert.equal(shouldYield({ existing: { fetcher: "github", fetchedAt: "2026-09-09T11:30:00Z" }, fetcher: "github", now, yieldHours: 3 }).yield, false);
+  assert.equal(shouldYield({ existing: { fetcher: "home", fetchedAt: "2026-09-09T11:30:00Z" }, fetcher: "github", now }).yield, false);
+  assert.equal(shouldYield({ existing: null, fetcher: "github", now, yieldHours: 3 }).yield, false);
+  assert.equal(shouldYield({ existing: { fetcher: "home", fetchedAt: "garbage" }, fetcher: "github", now, yieldHours: 3 }).yield, false);
 });
