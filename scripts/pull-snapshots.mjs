@@ -21,10 +21,19 @@ const CACHE_DIR = join(ROOT, ".ingest-cache");
 const BUNDLE_DIR = join(CACHE_DIR, "bundle");
 const REPO = process.env.GL_SNAPSHOTS_REPO || "https://github.com/batusayici/stoopwise-snapshots.git";
 
+const USAGE = "usage: pull-snapshots.mjs [--allow-stale] [--from <dir>]";
 const args = process.argv.slice(2);
 const ALLOW_STALE = args.includes("--allow-stale");
 const fromIdx = args.indexOf("--from");
-const FROM = fromIdx !== -1 ? args[fromIdx + 1] : null;
+let FROM = null;
+if (fromIdx !== -1) {
+  const v = args[fromIdx + 1];
+  if (!v || v.startsWith("--")) {
+    console.error(USAGE);
+    process.exit(2);
+  }
+  FROM = v;
+}
 
 const { sources } = JSON.parse(readFileSync(join(ROOT, "src/data/demand-test/ingest-sources.json"), "utf8"));
 
@@ -33,6 +42,10 @@ mkdirSync(CACHE_DIR, { recursive: true });
 
 if (FROM) {
   cpSync(FROM, BUNDLE_DIR, { recursive: true });
+  // A replayed bundle can carry a stale .pulled marker from whatever produced
+  // it (a previous pull, a scratch fixture); a fresh pull must always re-earn
+  // that marker by running the verdict below, not inherit someone else's.
+  rmSync(join(BUNDLE_DIR, ".pulled"), { force: true });
   console.log(`bundle copied from ${FROM}`);
 } else {
   try {
@@ -48,20 +61,40 @@ if (FROM) {
   console.log(`bundle cloned from ${REPO} @ ${head}`);
 }
 
+// A bundle whose JSON cannot even parse is malformed the same way a missing
+// file is — never handed to assessBundle to guess at.
+function readBundleJson(path, label) {
+  const raw = readFileSync(path, "utf8");
+  try {
+    return JSON.parse(raw);
+  } catch {
+    console.error(`\n=== SNAPSHOTS MALFORMED — ${label} is not valid JSON ===`);
+    process.exit(1);
+  }
+}
+
 const manifestPath = join(BUNDLE_DIR, "manifest.json");
 if (!existsSync(manifestPath) || !existsSync(join(BUNDLE_DIR, "fetch-report.json"))) {
   console.error("\n=== SNAPSHOTS MALFORMED — no manifest.json / fetch-report.json in the bundle ===");
   process.exit(1);
 }
-const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+const manifest = readBundleJson(manifestPath, "manifest.json");
 const verdict = assessBundle({ manifest, rosterHash: rosterHash(sources) });
+
+// An unusable fetchedAt is malformed, not stale, and --allow-stale is not a
+// license to guess an age: halt regardless of the flag, before the log line
+// below would otherwise have to print a null/Infinity age.
+if (verdict.ageHours === null) {
+  console.error("\n=== SNAPSHOTS MALFORMED — manifest has no usable fetchedAt ===");
+  process.exit(1);
+}
 
 console.log(
   `bundle: fetched ${manifest.fetchedAt} (${verdict.ageHours.toFixed(1)}h ago), ` +
     `${manifest.sourceCount} sources, ${manifest.errorCount} errored, product ${String(manifest.productCommit ?? "?").slice(0, 7)} by ${manifest.fetcher ?? "unknown"}`,
 );
 if (verdict.rosterMismatch) {
-  const inBundle = new Set((JSON.parse(readFileSync(join(BUNDLE_DIR, "fetch-report.json"), "utf8")).sources ?? []).map((s) => s.id));
+  const inBundle = new Set((readBundleJson(join(BUNDLE_DIR, "fetch-report.json"), "fetch-report.json").sources ?? []).map((s) => s.id));
   const missing = sources.filter((s) => !inBundle.has(s.id)).map((s) => s.id);
   console.warn("\n=== ROSTER CHANGED SINCE THE FETCH ===");
   console.warn(`  The runner read a different roster (${manifest.rosterHash} vs ${rosterHash(sources)} now).`);

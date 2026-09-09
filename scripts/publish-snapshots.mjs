@@ -79,6 +79,14 @@ if (!productCommit) {
 const snapDir = join(TO, "snapshots");
 mkdirSync(snapDir, { recursive: true });
 
+// Publishing from a warm local .ingest-cache ships `## [` blocks carried
+// forward from a previous working snapshot (R1 PERSISTED / IMAGE READ, see
+// persistedBlocks.js) — evidence a fresh runner never had, because it never
+// fetched a prior snapshot to carry anything forward from. A local replay
+// that means to compare hashes against a clean runner-equivalent read must
+// publish from a cold cache (`rm -rf .ingest-cache` first), or the diff is
+// comparing the runner's fetch against something richer than it could ever
+// produce.
 const owned = new Set();
 let copied = 0;
 let missing = 0;
@@ -102,9 +110,7 @@ for (const f of readdirSync(snapDir)) {
   }
 }
 
-const includeMonthly = !(report.sources ?? []).some((s) => s.status === "skipped_monthly");
 const manifest = buildManifest({
-  includeMonthly,
   rosterHash: rosterHash(sources),
   productCommit,
   report,

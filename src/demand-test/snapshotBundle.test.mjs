@@ -95,10 +95,12 @@ test("assessBundle: older than the limit halts, with the age in the reason", () 
   assert.match(a.reasons[0], /25\.3h old \(limit 6h\)/);
 });
 
-test("assessBundle: missing fetchedAt halts", () => {
+test("assessBundle: missing fetchedAt halts, but is malformed, not stale", () => {
   const a = assessBundle({ manifest: {}, rosterHash: "abc", now: new Date() });
   assert.equal(a.ok, false);
   assert.match(a.reasons[0], /fetchedAt/);
+  assert.equal(a.ageHours, null);
+  assert.equal(a.stale, false);
 });
 
 test("assessBundle: a roster mismatch is a warning, not a halt", () => {
@@ -122,10 +124,16 @@ test("resolveOfflineSource: a runner error is surfaced verbatim, prefixed", () =
   assert.equal(r.message, "runner: HTTP 403");
 });
 
+test("resolveOfflineSource: a runner error with no error detail falls back to 'unknown error'", () => {
+  const r = resolveOfflineSource({ id: "a" }, { id: "a", status: "error" }, false);
+  assert.equal(r.kind, "error");
+  assert.equal(r.message, "runner: unknown error");
+});
+
 test("resolveOfflineSource: absent from the report means the roster moved after the fetch", () => {
   const r = resolveOfflineSource({ id: "zzz" }, undefined, false);
   assert.equal(r.kind, "error");
-  assert.match(r.message, /not in the runner's fetch report/);
+  assert.match(r.message, /^zzz: not in the runner's fetch report/);
   assert.match(r.message, /re-dispatch/);
 });
 
@@ -145,6 +153,22 @@ test("buildManifest records who fetched, defaulting to unknown", () => {
   const base = { includeMonthly: false, rosterHash: "h", productCommit: null, report: { sources: [] } };
   assert.equal(buildManifest({ ...base, fetcher: "home" }).fetcher, "home");
   assert.equal(buildManifest(base).fetcher, "unknown");
+});
+
+test("buildManifest derives includeMonthly from the report when the option is not passed", () => {
+  const base = { rosterHash: "h", productCommit: null };
+  assert.equal(
+    buildManifest({ ...base, report: { sources: [{ status: "skipped_monthly" }] } }).includeMonthly,
+    false,
+  );
+  assert.equal(
+    buildManifest({ ...base, report: { sources: [{ status: "changed" }] } }).includeMonthly,
+    true,
+  );
+  assert.equal(
+    buildManifest({ ...base, includeMonthly: false, report: { sources: [{ status: "changed" }] } }).includeMonthly,
+    false,
+  );
 });
 
 test("shouldYield: github yields to a home bundle younger than the window", () => {

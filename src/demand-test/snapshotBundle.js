@@ -15,17 +15,21 @@ export function rosterHash(sources) {
   return createHash("sha256").update(lines.join("\n")).digest("hex").slice(0, 16);
 }
 
-export function buildManifest({ now, includeMonthly, rosterHash, productCommit, report, fetcher = "unknown" }) {
+export function buildManifest({ now, includeMonthly, rosterHash: roster, productCommit, report, fetcher = "unknown" }) {
   const sources = Array.isArray(report?.sources) ? report.sources : [];
   let fetchedAt = now;
   if (!fetchedAt) {
     const generated = report?.generatedAt ? new Date(report.generatedAt) : null;
     fetchedAt = generated && !Number.isNaN(generated.getTime()) ? generated : new Date();
   }
+  // When the caller doesn't say, derive it from the report itself: any
+  // skipped_monthly entry means this run didn't cover monthly sources.
+  const resolvedIncludeMonthly =
+    includeMonthly === undefined ? !sources.some((s) => s.status === "skipped_monthly") : !!includeMonthly;
   return {
     fetchedAt: fetchedAt.toISOString(),
-    includeMonthly: !!includeMonthly,
-    rosterHash,
+    includeMonthly: resolvedIncludeMonthly,
+    rosterHash: roster,
     productCommit: productCommit ?? null,
     fetcher,
     sourceCount: sources.length,
@@ -55,14 +59,17 @@ export function shouldYield({ existing, fetcher, now = new Date(), yieldHours })
 // ceiling). A roster mismatch only warns: the sources added since the fetch
 // surface as errors one by one through resolveOfflineSource, which is the
 // honest count, and the fix is to dispatch the workflow again.
-export function assessBundle({ manifest, rosterHash, now = new Date(), maxAgeHours = 6 }) {
+export function assessBundle({ manifest, rosterHash: roster, now = new Date(), maxAgeHours = 6 }) {
   const reasons = [];
   const fetchedAt = manifest?.fetchedAt ? new Date(manifest.fetchedAt) : null;
-  const ageHours = fetchedAt && !Number.isNaN(fetchedAt.getTime()) ? (now - fetchedAt) / 36e5 : Infinity;
-  if (ageHours === Infinity) reasons.push("manifest has no usable fetchedAt");
-  const stale = ageHours > maxAgeHours;
-  if (stale && ageHours !== Infinity) reasons.push(`snapshots are ${ageHours.toFixed(1)}h old (limit ${maxAgeHours}h)`);
-  const rosterMismatch = !!rosterHash && manifest?.rosterHash !== rosterHash;
+  const parsed = !!fetchedAt && !Number.isNaN(fetchedAt.getTime());
+  // A missing/unparseable fetchedAt is a malformed manifest, not an old one:
+  // ageHours stays null rather than a stale-reading Infinity.
+  const ageHours = parsed ? (now - fetchedAt) / 36e5 : null;
+  if (!parsed) reasons.push("manifest has no usable fetchedAt");
+  const stale = parsed && ageHours > maxAgeHours;
+  if (stale) reasons.push(`snapshots are ${ageHours.toFixed(1)}h old (limit ${maxAgeHours}h)`);
+  const rosterMismatch = !!roster && manifest?.rosterHash !== roster;
   return { ok: reasons.length === 0, stale, ageHours, rosterMismatch, reasons };
 }
 
@@ -72,10 +79,10 @@ export function resolveOfflineSource(src, reportEntry, hasSnapshot) {
   if (!reportEntry) {
     return {
       kind: "error",
-      message: `not in the runner's fetch report — added to the roster after the fetch? re-dispatch ingest-fetch`,
+      message: `${src.id}: not in the runner's fetch report — added to the roster after the fetch? re-dispatch ingest-fetch`,
     };
   }
-  if (reportEntry.status === "error") return { kind: "error", message: `runner: ${reportEntry.error}` };
+  if (reportEntry.status === "error") return { kind: "error", message: `runner: ${reportEntry.error ?? "unknown error"}` };
   if (reportEntry.status === "skipped_monthly") {
     return { kind: "error", message: "runner skipped this monthly source — dispatch ingest-fetch with include_monthly" };
   }

@@ -884,7 +884,9 @@ for (const src of sources) {
     console.warn(`  ERROR     ${src.id} — ${entry.error}`);
   }
   results.push(entry);
-  await sleep(300);
+  // No host is being contacted offline — the pause between sources exists
+  // only to be polite to the ones we're actually fetching live.
+  if (!OFFLINE) await sleep(300);
 }
 
 if (browser) await browser.close();
