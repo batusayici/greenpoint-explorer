@@ -1,11 +1,3 @@
-SUMMARY: Community Meal
-DTSTART: 2026-09-08T22:00:00.000Z
-DTEND: 2026-09-08T23:00:00.000Z
-LOCATION: Social Hall
-DESCRIPTION: Each Wednesday afternoon, volunteers cook a meal for the community. If you would like to volunteer, please email hunger@greenpointchurch.org. If you want to come eat, just show up at 6PM. All are welcome!
-STATUS: CONFIRMED
-RRULE: FREQ=WEEKLY;WKST=MO;BYDAY=TU
-
 SUMMARY: Food Pantry
 DTSTART: 2026-09-10T20:00:00.000Z
 DTEND: 2026-09-10T23:00:00.000Z
@@ -134,3 +126,11 @@ DTEND: 2026-09-28T02:00:00.000Z
 LOCATION: Upstairs in the Manse
 STATUS: CONFIRMED
 RRULE: FREQ=WEEKLY;BYDAY=MO
+
+SUMMARY: Community Meal
+DTSTART: 2026-09-29T22:00:00.000Z
+DTEND: 2026-09-29T23:00:00.000Z
+LOCATION: Social Hall
+DESCRIPTION: Each Wednesday afternoon, volunteers cook a meal for the community. If you would like to volunteer, please email hunger@greenpointchurch.org. If you want to come eat, just show up at 6PM. All are welcome!
+STATUS: CONFIRMED
+RRULE: FREQ=WEEKLY;WKST=MO;BYDAY=TU

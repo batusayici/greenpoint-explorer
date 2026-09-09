@@ -83,7 +83,7 @@ Orders Close - Friday 11:30AM
 In-person Pick-up
 Friday 8AM - 1PM
 All Fish Friday Products
-68
+67
 Filters
 Product Category
 Cold Smoked
@@ -145,22 +145,6 @@ No Fish For You.
 Korean BBQ Cold Smoked Salmon - Gary's Special (1 lb.)
 Gary's Special
 5 reviews
-Regular price
-$23.99
-Sale price
-$23.99
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Jalapeño Tequila - Gary's Special (1 lb.)
-Gary's Special
-10 reviews
 Regular price
 $23.99
 Sale price
@@ -416,11 +400,11 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Kippered Salmon (1 lb.)
 Hot Smoked
 Specialty
-28 reviews
+29 reviews
 Regular price
 $20.99
 Sale price

@@ -818,15 +818,22 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // trivia) were re-verified against snapshots that fetched cleanly today and
   // carry their schedule lines unchanged, so they were pushed out to 9/21
   // rather than dropped. 195.
-  assert.equal(seed.cards.length, 195);
+  // 2026-09-09 daily thin refresh: expiry took the six events that finished on
+  // 9/8 (195 → 189). +12: two Film Noir screenings tonight, the Friends of
+  // Bushwick Inlet Park weeding series, Moon Bunny's Yom Kippur day camp, the
+  // library's Friday 9/18 storytime, the CB1 Parks committee at Bushwick Inlet
+  // Park, the Greenpoint Bike Clinic pop-up, four standing comedy-club
+  // showcases the deck had never carried, and a Happy Medium venue card.
+  // 189 + 12 = 201.
+  assert.equal(seed.cards.length, 201);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — expiry-only refresh (2026-09-08)");
-  assert.equal(count((c) => c.category === "event"), 103, "105 − Troost Tired Horses and the Ayune opening, both ran 9/7 (2026-09-08)");
-  assert.equal(count((c) => c.category === "discount"), 7, "8 − Tend's additional 20% off, which ended 9/7 (2026-09-08)");
-  assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-08)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 37, "38 − Troost Tired Horses (2026-09-08)");
-  assert.equal(count((c) => c.category === "subscription"), 35, "unchanged (2026-09-08)");
+  assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged (2026-09-09)");
+  assert.equal(count((c) => c.category === "event"), 108, "103 − 6 expired + 11 added (2026-09-09)");
+  assert.equal(count((c) => c.category === "discount"), 7, "unchanged (2026-09-09)");
+  assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-09)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 37, "unchanged (2026-09-09)");
+  assert.equal(count((c) => c.category === "subscription"), 35, "unchanged (2026-09-09)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -1051,7 +1058,12 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-12 exhibition ruling: the gallery's own Visit block states "Free
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
+    // 2026-09-09: the Friends of Bushwick Inlet Park weeding series prints
+    // "Free" on its own listing and again under "Cost:"; the Greenpoint Bike
+    // Clinic pop-up states "All services are free, and open to all!".
+    "bip-weeding-wednesdays",
     "dreams-on-command",
+    "greenpoint-bike-clinic-0919",
     // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
     // 2026-09-02, off the Greenpointers "9/3-9" roundup, each stating
     // free-ness in the line its card quotes: "Free, RSVP here" on the Plantasia
@@ -1285,7 +1297,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // (action-city-one-piece-op17-prerelease-0826 expired out 2026-08-27)
     // 2026-09-07: five ticketed tournaments at Action City Comics, cleared from
     // the hold pile once Batu approved shipping the first-read sources.
-    "action-city-flesh-blood-0908",
+    // (action-city-flesh-blood-0908 expired out 2026-09-09)
     "action-city-one-piece-0909",
     "action-city-one-piece-0910",
     "action-city-shadow-throne-0918",
@@ -1548,6 +1560,12 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // growing space is civic under the 2026-08-30 rule.
     "61-franklin-street-garden",
     "adopt-a-business",
+    // 2026-09-09: the Friends of Bushwick Inlet Park weeding series — a work
+    // shift on a shared growing space, civic under the 2026-08-30 rule; and
+    // Community Board 1's Parks and Waterfront Committee, the same shape as
+    // the Environmental Protection Committee card that expired on 9/4.
+    "bip-weeding-wednesdays",
+    "cb1-parks-waterfront-0915",
     // (bedford-slip-cleanup-0830, bedford-slip-hot-dogs-0830 and
     //  bedford-slip-tree-care-0829 all expired out 2026-08-31)
     // (cb1-environmental-committee-0903 expired out 2026-09-04 — Community
@@ -1556,6 +1574,9 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "g-advocacy-mta",
     // 2026-09-07, seventh pass: the church food pantry — mutual aid, the other
     // half of what this lens is for. First card ever off an iCalendar source.
+    // 2026-09-09: the Greenpoint Bike Clinic pop-up in the library's rooftop
+    // garden — free neighbour-to-neighbour repair, mutual aid like the pantry.
+    "greenpoint-bike-clinic-0919",
     "greenpoint-church-food-pantry",
     "java-street-community-garden",
     // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
@@ -1576,6 +1597,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // weeks without ever being in the roster, so nothing had read it.
     "kingsland-open-hours-saturdays",
     "lentol-garden",
+    // 2026-09-09: the 9/17 library day-card picked up civic when the monthly
+    // housing legal clinic and the local elected officials' office hours
+    // folded into it.
+    "library-babies-books-0917",
     "library-garden-hours-0911",
     // 2026-09-07: the North Brooklyn Parks Alliance native plant giveaway, two
     // cards because the page states different hours on Fridays than at
