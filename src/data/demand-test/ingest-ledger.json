@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-09T12:30:00-04:00",
+  "lastRunAt": "2026-09-09T17:15:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1842,6 +1842,33 @@
       "kind": "run",
       "processedAt": "2026-09-09T12:30:00-04:00",
       "outcome": "DAILY. First run on the new fetch path's data (the fetch itself now runs on GitHub Actions and on Batu's Mac; this run fetched live locally, which is the documented interactive path). EXPIRY: 195 -> 189 (6 past events; 2 relatedCardIds pruned). FETCH: 91 sources, 87 read (4 errors, 5%, ceiling 15%) — troost errored on a missing env key and was re-fetched with it; kindred-nyc never renders, greenpointtrashclub.org serves a certificate for the wrong domain, play-kids-greenpoint timed out. CHANGED: 45 sources. The yield is the Greenpointers 9/10-16 roundup, recovered in full from the site's WordPress API and persisted, plus the library's forward calendar, WORD, the BPL calendar and Film Noir. SHIPPED 30 cards, 189 -> 219 (+15.9%, inside the +/-40% gate). Ms. J's 39 class records, ARTUDIO's 5 terms and Moon Bunny's 19 weekly slots were NOT carded individually — all are already covered by live term and membership cards, which is the dedupe working. GMAIL: 16 threads in the 3-day window. One card off it — NYC Ferry's fall schedule, which starts 9/14 and changes which East River route calls at the Greenpoint landing. Brooklyn Craft Company's newsletter was all Lower Manhattan this time. PRESS Modern Massage's anniversary offer stays out under the attributability rule. DROPPED 3 as Williamsburg once their addresses were resolved: REVENANT at The Twisted Spine (306 Grand St), Animation Nights at The Gutter (200 N 14th St), Nice Moms Coffee Club at Balkan Grind (5 Withers St). RE-VERIFIED and pushed to 9/23: poochs-parlor-first-groom, nb-chess-parkhouse-0806, ymca-greenpoint-fall-1-registration, maison-jar-refill-happy-hour — all four still stated at their sources on their first flagged run. HELD 2: ART 101's Holiday Camp and Edy's Grocer dinner, both for a date the source never states. holds: 0 new-judgment - 0 rule-miss - 2 source-blocked"
+    },
+    {
+      "id": "https://greenpointers.com/2026/09/09/swap-clothes-and-books-clean-up-parks-and-more-whats-happening-greenpoint-9-10-16/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-09-09",
+      "outcome": "ALREADY INGESTED by the daily run at 12:30 today, which recovered the body from the WP REST API and persisted it as [R1 PERSISTED 2026-09-09]. Recorded here because that run logged only a run entry, so the URL itself was missing from processedItems and the next Wednesday pull's step-2 check would not have found it. This run re-read the persisted body and checked all 24 items against the deck: 21 in-scope items are carded (Read & Play and Chair Yoga inside the library day-cards, Zumba as the recurring nbk-fit-club-thursdays, After-School Improv as a subscription, the other 17 as their own cards), and 3 are the Williamsburg drops the daily named — REVENANT at The Twisted Spine, Nice Moms Coffee Club at Balkan Grind, Animation Nights at The Gutter. Nothing outstanding."
+    },
+    {
+      "id": "https://greenpointers.com/2026/09/09/sweet-chick-has-closed-its-williamsburg-location/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-09-09",
+      "outcome": "SKIPPED, on two independent gates. Out of area: the story is about the Bedford Avenue flagship and says so in its own title. And the closure is unconfirmed in the publisher's own words — \"Sweet Chick appears to have quietly closed the doors\", \"has not made any formal announcement about the closure\", \"As of press time, Sweet Chick has not responded to our request for comment\" — which is the 2026-09-07 unconfirmed-closure rule (Nonna's Pizzeria). No card even if it had been in the bbox."
+    },
+    {
+      "runAt": "2026-09-09",
+      "cadence": "wednesday-greenpointers",
+      "shipped": [],
+      "updated": [],
+      "deleted": [],
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 0 source-blocked",
+      "urls": [
+        "https://greenpointers.com/2026/09/09/swap-clothes-and-books-clean-up-parks-and-more-whats-happening-greenpoint-9-10-16/",
+        "https://greenpointers.com/2026/09/09/sweet-chick-has-closed-its-williamsburg-location/"
+      ],
+      "note": "Wednesday Greenpointers pull, and there was nothing left to card. The 9/10-16 roundup published this morning and today's daily run at 12:30 had already taken it in full, so this run's job came down to checking the work and closing the ledger. All 24 roundup items are accounted for: 21 carded, 3 dropped as Williamsburg. Expiry deleted nothing, the deck stayed at 218 cards, and the freshness reading was already stamped by the daily (datedUpcoming7d=92, reservoir 35, Troost 8%, FRESH). The only thing the fetch turned up that the daily had not seen is a 1:01pm story about Sweet Chick closing on Bedford Avenue, which is Williamsburg and which Greenpointers itself has not confirmed. The greenpointers baseline was promoted so that story does not come back as a pending diff tomorrow. The coverage gate exited 1, but every one of its 85 flagged lines is NO SNAPSHOT and every one is an artifact of a scoped run in a fresh checkout: only the latest .ingested.txt baselines are tracked in git, so the 90 sources this run deliberately did not fetch have no <id>.txt on disk to reconcile against. There are zero GAP, STANDING DARK, UNMARKED STANDING or SILENT lines. No coverageExplanations were written for those lines, because explaining away a measurement this run chose not to take would be exactly the rubber-stamp the explanation mechanism exists to prevent."
     }
   ],
   "senderRegistry": [

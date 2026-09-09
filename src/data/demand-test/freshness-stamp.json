@@ -1,6 +1,6 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-09-09T12:30:00-04:00",
+  "lastRunAt": "2026-09-09T17:15:00-04:00",
   "cardChecked": {
     "sailor-and-siren": "2026-09-08",
     "core-press": null,
