@@ -13,7 +13,12 @@ mkdir -p "$WORK"
 exec >>"$LOG" 2>&1
 echo "=== home-fetch $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
 # shellcheck disable=SC1090
+# set -a exports everything the env file defines; sourced alone, the
+# variables stay shell-local and the fetch never sees the Troost key
+# (2026-09-09, first home run).
+set -a
 [ -f "$HOME/.config/stoopwise/fetch.env" ] && . "$HOME/.config/stoopwise/fetch.env"
+set +a
 export GIT_SSH_COMMAND="ssh -i ${SNAPSHOTS_DEPLOY_KEY_PATH:-$HOME/.ssh/stoopwise-snapshots} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
