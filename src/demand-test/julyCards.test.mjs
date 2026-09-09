@@ -818,15 +818,37 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // trivia) were re-verified against snapshots that fetched cleanly today and
   // carry their schedule lines unchanged, so they were pushed out to 9/21
   // rather than dropped. 195.
-  assert.equal(seed.cards.length, 195);
+  //
+  // 2026-09-09 daily refresh. The 9/8 expiry-only run left the deck at 189 —
+  // six lower than the number pinned here, because that run stopped before it
+  // could update this contract. Today's run authored 30 and the deck lands on
+  // 219. Two Film Noir screenings on the 9th; the Wednesday weeding shift at
+  // Bushwick Inlet Park; sixteen items off the Greenpointers 9/10-16 roundup
+  // plus its Santa Chiara opening story; three WORD Bookstore evenings; the
+  // Heather Shaw night on 9/23, the last comedy show the club has listed;
+  // free canoe rides on Newtown Creek on 9/19; four Greenpoint Library day
+  // cards (9/17, 9/18, 9/19, 9/21); Moon Bunny's Yom Kippur camp; and the NYC
+  // Ferry fall-schedule change, which starts 9/14.
+  //
+  // Three roundup items were DROPPED as Williamsburg, each resolved to a
+  // street address rather than judged by name: REVENANT at The Twisted Spine
+  // (306 Grand St, 11211 — the same venue the 2026-07-22 run verified out),
+  // Nice Moms Coffee Club at Balkan Grind (5 Withers St; Greenpointers' own
+  // opening story is headlined "opens in Williamsburg"), and Animation Nights
+  // at The Gutter (200 N 14th St, 11249).
+  // 2026-09-09 (quote repair): −1 — bellocq-end-of-summer-sale DELETED. The
+  // shop replaced its banner and the SOLEIL26 code is gone from the page, so a
+  // discount card whose code the merchant no longer advertises has nothing left
+  // to stand on. Deck 219 -> 218, discount 7 -> 6.
+  assert.equal(seed.cards.length, 218);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 33, "unchanged — expiry-only refresh (2026-09-08)");
-  assert.equal(count((c) => c.category === "event"), 103, "105 − Troost Tired Horses and the Ayune opening, both ran 9/7 (2026-09-08)");
-  assert.equal(count((c) => c.category === "discount"), 7, "8 − Tend's additional 20% off, which ended 9/7 (2026-09-08)");
-  assert.equal(count((c) => c.category === "news"), 21, "unchanged (2026-09-08)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 37, "38 − Troost Tired Horses (2026-09-08)");
-  assert.equal(count((c) => c.category === "subscription"), 35, "unchanged (2026-09-08)");
+  assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
+  assert.equal(count((c) => c.category === "event"), 124, "97 after the 9/8 expiry + 27 dated cards (2026-09-09)");
+  assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
+  assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 37, "unchanged (2026-09-09)");
+  assert.equal(count((c) => c.category === "subscription"), 36, "35 + the 12-week after-school improv series at Greenpoint Comedy Club (2026-09-09)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -946,7 +968,13 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // stated. The generalisable bit is in watchItems: check a business's STORE
   // host before concluding a price is unpublished.
   // 2026-09-08: −1 — Tend's additional 20% off ran out on 9/7 and expiry took it.
-  assert.equal(deals.length, 7);
+  // 2026-09-09: −1 — Bellocq's end-of-summer 15% code, DELETED not expired. The
+  // shop's banner now reads free shipping over $100 and SOLEIL26 appears nowhere
+  // on the page, so the offer ended before the 9/18 verified-through this card
+  // was carrying. Caught by ingest:quotes, the same way the Selformer Summer
+  // Fling was on 8/13 — a recurring deal's printed endsAt is a re-check date,
+  // never evidence the offer is still running.
+  assert.equal(deals.length, 6);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -996,7 +1024,10 @@ test("news cards name their publisher and sit in the news layer", () => {
   // Sereneco and closed Maman, in the same building, both indefinitely.
   // 2026-09-01: +1 from Greenpointers — 148 Noble Street, the restaurant a
   // Chez Ma Tante alum is opening mid-month in the old Noble wine bar space.
-  assert.equal(news.length, 21);
+  // 2026-09-09: +2 — Santa Chiara Caffè's Greenpoint opening at 227 West St,
+  // and NYC Ferry's Fall 2026 schedule, which starts 9/14 and moves East River
+  // B to peak-only on weekdays while the local keeps every stop off-peak.
+  assert.equal(news.length, 23);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -1051,7 +1082,26 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-12 exhibition ruling: the gallery's own Visit block states "Free
     // admission unless stated otherwise" beside the on-view dates, and the show
     // now lives on this venue card rather than a dated event card.
+    // 2026-09-09, all off the Greenpointers 9/10-16 roundup unless noted, each
+    // stating free-ness in the line its card quotes: "Free, register here" on
+    // the D.A.N.C.E. cleanup, the Goddard open house, the McCarren bike class
+    // and the Newtown Creek planting day; "Free, no RSVP needed" on the Maison
+    // Jar clothing swap, the Java St. Garden plant-medicine session and the
+    // Peek Inn book swap; "Free, RSVP here" on the Lovebirds writing group and
+    // the Parkhouse trivia; "Free while supplies last." on Sunday Scoops.
+    "dance-cleanup-transmitter-0912",
     "dreams-on-command",
+    "goddard-day-of-fun-0912",
+    "java-st-garden-plant-medicine-0912",
+    // 2026-09-09: the library's bike clinic is the one library card here, and
+    // it is here for the reason the grouped day-cards are not — it is a SINGLE
+    // programme, so there is no other line for one line's free-ness to leak
+    // onto, and its own body says it twice ("free community-based bicycle
+    // repair", "All services are free, and open to all!").
+    "library-bike-clinic-0919",
+    "lovebirds-writing-group-0915",
+    "maison-jar-clothing-swap-0912",
+    "mccarren-bike-skills-0913",
     // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
     // 2026-09-02, off the Greenpointers "9/3-9" roundup, each stating
     // free-ness in the line its card quotes: "Free, RSVP here" on the Plantasia
@@ -1092,7 +1142,14 @@ test("free-ness is designated only where the source states it (tester feedback #
     // NOT here: the dataset states hours and never states free, so they don't
     // get the flag even though a community garden charges nothing.
     "mccarren-pool-last-week-0913",
+    "mccarren-sunday-scoops-0913",
+    "mccarren-trivia-club-0914",
     "mcgolrick-bird-club-0808",
+    // 2026-09-09: the North Brooklyn Community Boathouse's 9/19 paddles, the
+    // same free walk-up series as the 8/22 card — BPL's calendar entry is
+    // titled "Free canoe rides on Newtown Creek" and says "FREE informal
+    // paddles" in the body.
+    "nbcb-canoe-newtown-creek-0919",
     // 2026-09-07, fourth pass: the first free programming off the North
     // Brooklyn Parks Alliance source. Its own page says both outright — the
     // Zumba is "a free, hour-long, all-abilities Zumbas class" and the nursery
@@ -1100,6 +1157,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     "nbk-fit-club-thursdays",
     "nbk-plant-giveaway-fridays",
     "nbk-plant-giveaway-weekends",
+    "newtown-creek-planting-day-0915",
+    "peek-inn-book-swap-0913",
     // NOT here, deliberately: the two Bushwick Inlet events added in the sixth
     // pass. Both are volunteer sessions and both are almost certainly free, but
     // the North Brooklyn Parks Alliance page says so for the Zumba and the
@@ -1117,6 +1176,11 @@ test("free-ness is designated only where the source states it (tester feedback #
     // the coverage check flagged 9/8 and 9/15. Go Green states it outright:
     // "a free outdoor yoga practice at WNYC Transmitter Park".
     "transmitter-park-yoga-tuesdays", // "Free" on the Go Green Brooklyn listing
+    // 2026-09-09: Go Green Brooklyn's own listing prints a bare "Free" under
+    // the date line for the Bushwick Inlet weeding shift, which is the line the
+    // card quotes — so this one DOES get the flag, unlike the two North
+    // Brooklyn Parks Alliance sessions noted just below.
+    "weeding-wednesdays-bip-0909",
     // (nypd-94th-community-council-0903 expired out 2026-09-04 — Go Green
     // Brooklyn's page had stated it twice, as a bare "Free" under the date
     // line and again as "Cost: Free" in the details block.)
@@ -1228,6 +1292,11 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     //  verified-through date with no Tuesday left on Go Green's series page)
     // (gather-sound-bath-0818 — a sound bath and Reiki session, filed here
     //  2026-08-12 as bodywork in the movement cluster — expired out 2026-08-19)
+    // 2026-09-09: a beer mile is a running race, so it files to the movement
+    // cluster and not to food_drink — the four beers per mile are non-alcoholic
+    // and are the format, not the point.
+    "brooklyn-beer-mile-0912",
+    "held-space-mat-pilates-0912",
     "held-space-membership",
     // 2026-08-14: Longevity Stick at Transmitter Park, "a mix of Tai Chi and
     // yoga" on Go Green's own detail page — the movement cluster this lens
@@ -1243,6 +1312,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     //  schedule runs Fri 8/28, Sun 8/30, then Sun 9/27; no Thursday remains)
     // 2026-09-07, seventh pass: the outdoor pool is swimming, so it double-
     // files family_kids + wellness — the movement cluster, not a civic amenity.
+    // 2026-09-09: the 9/21 library day card, same shape as its 9/14 sibling —
+    // chair yoga is the movement half, the teen D&D table the family_kids half.
+    "library-monday-programs-0921",
     "mccarren-pool-last-week-0913",
     "moon-bunny-monthly-plans",
     // 2026-09-07, fourth pass: the Under the K Fit Club is a Zumba class, so
@@ -1285,7 +1357,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // (action-city-one-piece-op17-prerelease-0826 expired out 2026-08-27)
     // 2026-09-07: five ticketed tournaments at Action City Comics, cleared from
     // the hold pile once Batu approved shipping the first-read sources.
-    "action-city-flesh-blood-0908",
+    // (action-city-flesh-blood-0908 expired out 2026-09-09 — it ran 9/8)
     "action-city-one-piece-0909",
     "action-city-one-piece-0910",
     "action-city-shadow-throne-0918",
@@ -1310,6 +1382,10 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // re-authored as `recurring` through 8/20 — the Greenpointers piece states
     // "weekly chess nights every Thursday from 7 to 11pm", so a single-night
     // card was under-reading its own source.
+    // 2026-09-09: the Parkhouse's Monday trivia, off the Greenpointers roundup.
+    // Trivia is play, so it never touches arts_culture — the same reading that
+    // put the Black Rabbit and Brew Inn quizzes here.
+    "mccarren-trivia-club-0914",
     "nb-chess-parkhouse-0806",
     "scrappleland",
     "scrappleland-backgammon-club",
@@ -1414,6 +1490,14 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // Merced juice bar space. A new_business card for a shop takes the venue's
     // own type lens alongside `news`, the same shape as the food openings —
     // and for a retail storefront that type lens is `shopping`.
+    // 2026-09-09: two swaps off the Greenpointers roundup. Neither sells
+    // anything, and that is the point — you leave with goods, which is the
+    // reader's question this lens answers, and the alternatives read worse
+    // (a clothing swap is not wellness or arts_culture; a book swap at a bar
+    // is not food_drink just because there is a martini in the room). The
+    // Leaves book-club boundary below still holds: that is a thing you ATTEND.
+    "maison-jar-clothing-swap-0912",
+    "peek-inn-book-swap-0913",
     "simi-sol-collective",
   ]);
 
@@ -1552,6 +1636,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     //  bedford-slip-tree-care-0829 all expired out 2026-08-31)
     // (cb1-environmental-committee-0903 expired out 2026-09-04 — Community
     // Board 1's Environmental Protection Committee met on 9/3.)
+    // 2026-09-09: D.A.N.C.E. — Dedicated Artists Now Cleaning the Environment —
+    // running a park cleanup at Transmitter Park. A cleanup is the lens's
+    // founding case; the fact that artists organise it does not make it culture.
+    "dance-cleanup-transmitter-0912",
     "film-noir-support",
     "g-advocacy-mta",
     // 2026-09-07, seventh pass: the church food pantry — mutual aid, the other
@@ -1576,7 +1664,15 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // weeks without ever being in the roster, so nothing had read it.
     "kingsland-open-hours-saturdays",
     "lentol-garden",
+    // 2026-09-09: free community bike repair in the library's Demonstration
+    // Garden — mutual aid with a work shift attached, the same reading as the
+    // garden sessions above rather than a service listing.
+    "library-bike-clinic-0919",
     "library-garden-hours-0911",
+    // 2026-09-09: the 9/17 day card carries civic alongside family_kids and
+    // arts_culture because one of its six programmes is a housing legal clinic
+    // running with the office hours of three local elected officials.
+    "library-thursday-programs-0917",
     // 2026-09-07: the North Brooklyn Parks Alliance native plant giveaway, two
     // cards because the page states different hours on Fridays than at
     // weekends. Civic under the same growing-space rule as the Kingsland line
@@ -1590,6 +1686,9 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "nbk-plant-giveaway-fridays",
     "nbk-plant-giveaway-weekends",
     "nbk-pollinator-project-bip-0916",
+    // 2026-09-09: 400 native perennials going into the Newtown Creek Nature
+    // Walk, plus weeding — the growing-space rule, unchanged.
+    "newtown-creek-planting-day-0915",
     // (nypd-94th-community-council-0903 expired out 2026-09-04 — the 94th
     // Precinct's monthly Community Council meeting, a standing civic meeting
     // and never an incident card under the crime rule.)
@@ -1602,6 +1701,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // shift rule applies mechanically rather than by resemblance to the line
     // above it.
     // (transmitter-its-my-park-0830 expired out 2026-08-31)
+    // 2026-09-09: the Wednesday volunteer weeding shift at Bushwick Inlet Park,
+    // off Go Green Brooklyn. Same growing-space rule as the two North Brooklyn
+    // Parks Alliance sessions at the same park.
+    "weeding-wednesdays-bip-0909",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {
@@ -1641,9 +1744,8 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // (bios-apothecary-herbalist-consultation deleted 2026-08-30 —
     // unverifiable past its date; biosapothecary.com is a sender, not a
     // roster source, so nothing re-reads it)
-    // 2026-09-04: an end-of-summer 15% code on the tea atelier's own shop.
-    // No end date stated, so recurring + verified-through, not a membership.
-    "bellocq-end-of-summer-sale",
+    // (bellocq-end-of-summer-sale deleted 2026-09-09 — the shop pulled the
+    // SOLEIL26 banner, so the deal had no source left)
     // 2026-09-07, fifth pass: the $40 Brooklyn Youth Ballet trial, restored.
     // A kids' deal double-files family_kids + deals_memberships on the PR #18
     // reading, so its presence here is the rule working, not a lens collision.

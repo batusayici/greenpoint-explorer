@@ -12,10 +12,3 @@ end_date_raw: 2026-09-12
 end_time: 8:00 pm
 location_text: 485 Driggs Ave, Brooklyn, NY 11211-2021, United States
 html_link: https://www.facebook.com/events/1711873366709336
-
-name: MetroCard Mystery Weekend
-start_date_raw: 2026-09-05
-start_time: 11:00 am
-end_date_raw: 2026-09-07
-end_time: 8:00 pm
-html_link: https://www.facebook.com/events/4525018494443102

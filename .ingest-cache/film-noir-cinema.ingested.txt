@@ -1,11 +1,16 @@
-title: CULT CINEMA
-startDate: 2026-09-09T01:00:00.737Z
-endDate: 2026-09-09T02:00:00.737Z
-fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+title: RUNAWAY NIGHTMARE
+startDate: 2026-09-09T23:00:00.440Z
+endDate: 2026-09-10T00:00:00.440Z
+fullUrl: /program/2026/3/25/runaway-nightmare
+
+title: SINTOMAS
+startDate: 2026-09-10T01:00:00.048Z
+endDate: 2026-09-10T02:00:00.048Z
+fullUrl: /program/2026/7/31/sintomas
 
 title: FILM CLUB
-startDate: 2026-09-11T01:00:00.000Z
-endDate: 2026-09-11T02:00:00.000Z
+startDate: 2026-09-10T23:00:00.000Z
+endDate: 2026-09-11T00:00:00.000Z
 fullUrl: /program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
 
 title: BLACK BOX
@@ -53,15 +58,20 @@ startDate: 2026-10-24T23:00:00.304Z
 endDate: 2026-10-25T00:00:00.304Z
 fullUrl: /program/2026/10/24/clownspiracy
 
+title: SECRETS OF THE DEAD
+startDate: 2026-10-29T23:00:00.000Z
+endDate: 2026-10-30T00:00:00.000Z
+fullUrl: /program/2026/11/1/secrets-of-the-dead
+
+title: TERROR TERROIR
+startDate: 2026-10-30T23:00:00.711Z
+endDate: 2026-10-31T00:00:00.711Z
+fullUrl: /program/2026/9/4/terror-terroir
+
 title: HALLOWEEN PARTY
 startDate: 2026-11-01T01:00:00.560Z
 endDate: 2026-11-01T02:00:00.560Z
 fullUrl: /program/2021/10/30/halloween-party
-
-title: SECRETS OF THE DEAD
-startDate: 2026-11-02T00:00:00.000Z
-endDate: 2026-11-02T01:00:00.000Z
-fullUrl: /program/2026/11/1/secrets-of-the-dead
 
 ## [DETAIL] https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
 FILM NOIR MONDAY — Film Noir Cinema
@@ -129,38 +139,6 @@ CULT CINEMA
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
-CULT CINEMA — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-CULT CINEMA
-Tuesday, September 8, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
-Earlier Event: September 4
-TERROR TERROIR
-Later Event: September 10
-FILM CLUB
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn-shpsb
 CULT CINEMA — Film Noir Cinema
 Home
@@ -211,17 +189,17 @@ Contact
 Back to All Events
 FILM CLUB
 Thursday, September 10, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
+7:00 PM
+8:00 PM
+19:00
+20:00
 Google Calendar
 ICS
 Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
 The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
 Pure cinematheque fun.
-Earlier Event: September 8
-CULT CINEMA
+Earlier Event: September 9
+SINTOMAS
 Later Event: September 11
 BLACK BOX
 Back To Top
@@ -288,10 +266,8 @@ ICS
 Welcome to 2026 Halloween Party at Film Noir Cinema.
 The screening of a secret horror film will follow after the reception.
 “DRESS TO IMPRESS”
-Earlier Event: October 24
-CLOWNSPIRACY
-Later Event: November 1
-SECRETS OF THE DEAD
+Earlier Event: October 30
+TERROR TERROIR
 Back To Top
 Cart ( 0 )
 
@@ -324,8 +300,8 @@ A small town high school misfit investigates the appearance of creepy clowns bef
 Tickets: https://www.eventbrite.com/e/clownspiracy-tickets-1990612090348?aff=oddtdtcreator
 Earlier Event: September 30
 CULT CINEMA
-Later Event: October 31
-HALLOWEEN PARTY
+Later Event: October 29
+SECRETS OF THE DEAD
 Back To Top
 Cart ( 0 )
 
@@ -346,7 +322,7 @@ Location
 Contact
 Back to All Events
 SECRETS OF THE DEAD
-Sunday, November 1, 2026
+Thursday, October 29, 2026
 7:00 PM
 8:00 PM
 19:00
@@ -354,8 +330,108 @@ Sunday, November 1, 2026
 Google Calendar
 ICS
 SECRETS OF THE DEAD Short Film Festival
-Earlier Event: October 31
-HALLOWEEN PARTY
+Earlier Event: October 24
+CLOWNSPIRACY
+Later Event: October 30
+TERROR TERROIR
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/3/25/runaway-nightmare
+RUNAWAY NIGHTMARE — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+RUNAWAY NIGHTMARE
+Wednesday, September 9, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+US. 1982
+Two dorky Nevada worm wranglers are kidnapped by a gang of beautiful women as part of a plot to steal plutonium from the Mafia.
+Earlier Event: September 8
+CULT CINEMA
+Later Event: September 9
+SINTOMAS
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/7/31/sintomas
+SINTOMAS — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+SINTOMAS
+Wednesday, September 9, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+UK. 1974
+A young woman is invited by her friend, who lives in an English country mansion, to stay there with her. The estate, however, isn't quite what it seems and neither is the friend who issued the invitation.
+Earlier Event: September 9
+RUNAWAY NIGHTMARE
+Later Event: September 10
+FILM CLUB
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+CULT CINEMA — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+CULT CINEMA
+Tuesday, September 8, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
+Earlier Event: September 4
+TERROR TERROIR
+Later Event: September 10
+FILM CLUB
 Back To Top
 Cart ( 0 )
 

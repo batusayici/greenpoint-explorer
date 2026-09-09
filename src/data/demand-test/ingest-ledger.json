@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-07T18:40:00-04:00",
+  "lastRunAt": "2026-09-09T12:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1836,6 +1836,12 @@
         "1a068878df839bbb"
       ],
       "note": "Daily thin. The map went from 147 cards to 144: ten things finished last night and came off, and seven went on. Four of the seven fill the far end of the window, which is where the feed keeps running out — CULT CINEMA at Film Noir on 9/8, and three on 9/18: Danny Ramos at Troost, Eli Escobar and Eternal Love at Good Room, and a Wixárika healing ceremony at Golden Drum, whose start time only exists on the event's own page, so that page was fetched and written into the source snapshot. One is a library storytime on 9/17. The last two are standing offers that state no end date — 15% off at Bellocq Tea with the code SOLEIL26, and Selformer's $25 intro pass covering a client and a guest — which the rules fill with a re-check date rather than hold. One card was rewritten instead of added: the branch put four more programmes on 9/16, so the toddler card became a Wednesday day-card running to 5:30pm. Acme's Fish Friday was re-verified against today's page and its through-date moved out to 9/18. Nothing was held. Nine sources could not be read, all of them the known broken browser path."
+    },
+    {
+      "id": "daily-2026-09-09",
+      "kind": "run",
+      "processedAt": "2026-09-09T12:30:00-04:00",
+      "outcome": "DAILY. First run on the new fetch path's data (the fetch itself now runs on GitHub Actions and on Batu's Mac; this run fetched live locally, which is the documented interactive path). EXPIRY: 195 -> 189 (6 past events; 2 relatedCardIds pruned). FETCH: 91 sources, 87 read (4 errors, 5%, ceiling 15%) — troost errored on a missing env key and was re-fetched with it; kindred-nyc never renders, greenpointtrashclub.org serves a certificate for the wrong domain, play-kids-greenpoint timed out. CHANGED: 45 sources. The yield is the Greenpointers 9/10-16 roundup, recovered in full from the site's WordPress API and persisted, plus the library's forward calendar, WORD, the BPL calendar and Film Noir. SHIPPED 30 cards, 189 -> 219 (+15.9%, inside the +/-40% gate). Ms. J's 39 class records, ARTUDIO's 5 terms and Moon Bunny's 19 weekly slots were NOT carded individually — all are already covered by live term and membership cards, which is the dedupe working. GMAIL: 16 threads in the 3-day window. One card off it — NYC Ferry's fall schedule, which starts 9/14 and changes which East River route calls at the Greenpoint landing. Brooklyn Craft Company's newsletter was all Lower Manhattan this time. PRESS Modern Massage's anniversary offer stays out under the attributability rule. DROPPED 3 as Williamsburg once their addresses were resolved: REVENANT at The Twisted Spine (306 Grand St), Animation Nights at The Gutter (200 N 14th St), Nice Moms Coffee Club at Balkan Grind (5 Withers St). RE-VERIFIED and pushed to 9/23: poochs-parlor-first-groom, nb-chess-parkhouse-0806, ymca-greenpoint-fall-1-registration, maison-jar-refill-happy-hour — all four still stated at their sources on their first flagged run. HELD 2: ART 101's Holiday Camp and Edy's Grocer dinner, both for a date the source never states. holds: 0 new-judgment - 0 rule-miss - 2 source-blocked"
     }
   ],
   "senderRegistry": [
@@ -2771,13 +2777,13 @@
   ],
   "sourcePulse": {
     "eavesdrop": "2026-09-06",
-    "greenpointers": "2026-09-06",
-    "greenpoint-comedy-club": "2026-09-06",
-    "film-noir-cinema": "2026-09-06",
+    "greenpointers": "2026-09-08",
+    "greenpoint-comedy-club": "2026-09-08",
+    "film-noir-cinema": "2026-09-08",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
-    "greenpoint-library": "2026-09-03",
-    "bpl-north-brooklyn-calendar": "2026-09-03",
+    "greenpoint-library": "2026-09-08",
+    "bpl-north-brooklyn-calendar": "2026-09-08",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-27",
@@ -2788,19 +2794,19 @@
     "dance-space-ny": "2026-07-24",
     "yaro-studios": "2026-08-07",
     "yaro-kids-clay": "2026-08-07",
-    "moon-bunny-aerial": "2026-08-19",
+    "moon-bunny-aerial": "2026-09-08",
     "brooklyn-craft-company": "2026-09-06",
     "last-place-on-earth": "2026-09-06",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
-    "go-green-bk": "2026-09-06",
+    "go-green-bk": "2026-09-08",
     "nycparks-greenpoint": "2026-09-06",
     "troost": "2026-09-06",
     "carcosa-club": "2026-09-06",
     "good-room": "2026-09-06",
     "town-square-bk": "2026-08-23",
-    "word-bookstore": "2026-08-09",
+    "word-bookstore": "2026-09-08",
     "hide-and-seek": "2026-08-06",
     "brew-inn-trivia": "2026-08-06",
     "play-kids-greenpoint": "2026-08-06",
@@ -3014,13 +3020,6 @@
       "sourceId": "action-city-comics",
       "gapKey": "NO SNAPSHOT",
       "reason": "Browser-dependent source, and the browser path is down with the known `browser-connect-reset` fault. Re-earned against THIS run, not inherited: the 2026-08-25 fetch errored it as \"browser unavailable (browser-connect-reset)\" alongside the other five browser-path sources, and printed its own BROWSER PATH DOWN block — \"plain fetch reached https://example.com/ fine through the same http://127.0.0.1:37019\" — so headless Chromium's own CONNECT tunnel is being refused for a host plain fetch reaches without trouble. NOT an allowlist gap; allowlisting a host plain fetch already reaches does nothing. Reported to platform support. This is 'we cannot read the source', never 'the source is quiet'.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
-    },
-    {
-      "sourceId": "dreams-on-command",
-      "gapKey": "GAP",
-      "reason": "ONGOING EXHIBITION, which belongs to the venue card and not to a dated event (SKILL.md class rule, Batu 2026-08-12). The single flagged date is 2026-09-08 and it is the CLOSING date of the current show, not a happening: the snapshot's whole dated content is \"There Are People Here\" / \"July 11 – September 8, 2026\" / \"Free admission unless stated otherwise\" / \"W-F (2-7pm) SAT/SUN (1-6pm)\". The live `dreams-on-command` venue card already carries exactly those four lines as its sourceQuote and states what is on view and through when. Carding a 7/11→9/8 run as an event would also park it in the Today lens every day until September, which is the failure the rule exists to prevent. WHAT WOULD CHANGE IT: a dated opening, closing reception or artist talk, which are real happenings and stay cardable.",
       "addedAt": "2026-08-25",
       "expiresAt": "2026-09-08"
     },
@@ -3296,6 +3295,20 @@
       "addedAt": "2026-09-07",
       "expiresAt": "2026-09-21",
       "reason": "A DISCOVERY SURFACE, BOROUGH-WIDE, ON ITS FIRST RUN. The nine dates this script reads off it belong to the weekly 'Free kid-friendly events this week in Brooklyn' roundup and the openings posts — 25-plus items a week across Prospect Park, DUMBO, Park Slope, Williamsburg and the rest, of which the 2026-09-07 sweep found exactly ONE in 11222 (the library week), already carded first-hand from the branch calendar. Under the aggregator rule nothing is ever carded from this source directly; a Greenpoint line here is where a run learns to go read the organiser. So 'deck covers 0 of 9' will read low every week by construction and is not a gap. WHAT WOULD CHANGE IT: a Greenpoint item here whose organiser page we have NOT carded — that is the signal, and it lands as an ordinary diff."
+    },
+    {
+      "sourceId": "msjs-greenpoint",
+      "gapKey": "GAP",
+      "reason": "A TERM ENROLMENT IS ONE CARD, AND IT IS ALREADY LIVE. The source moved to iClassPro's API on 2026-09-09, so it now emits every class occurrence as its own dated record — 41 of them, e.g. \"name: Sept '26 START / / Tot Party (infant-24mo)\" with \"schedule: [{\\\"dayNumber\\\":2,\\\"startTime\\\":\\\"9:00AM\\\",\\\"endTime\\\":\\\"9:45AM\\\",\\\"dayName\\\":\\\"Mon\\\"}]\" and \"startDate: 2026-09-14\". The coverage script therefore sees 7 dated days with no dated card against them. The deck covers this venue with `msjs-greenpoint-fall-term`, an undated subscription card, which the skill's own rule says represents standing programming and counts as full coverage; the one genuinely dated item, the Yom Kippur day camp, is carded as `msjs-yom-kippur-camp-0921`. Carding the 41 weekly slots individually would put 41 near-identical rows for one venue into a 218-card feed, which is the scan-layer failure a tester named on 2026-08-14. WHAT WOULD CHANGE IT: Ms. J's announcing a one-off event outside the term, which cards normally.",
+      "addedAt": "2026-09-09",
+      "expiresAt": "2026-09-23"
+    },
+    {
+      "sourceId": "dreams-on-command",
+      "gapKey": "SILENT",
+      "reason": "THE GALLERY IS BETWEEN SHOWS, AND A SHOW IS NOT A DATED CARD ANYWAY. Re-earned against today's snapshot: the exhibition page now reads \"Past Exhibition\" / \"There Are People Here\" / \"July 11 – September 8, 2026\", so the summer show closed on 8 September and nothing has replaced it — the page announces no upcoming exhibition and no opening or closing reception. The standing rule (2026-08-12) puts an ongoing exhibition on the venue's own card rather than a dated event card, so this source is expected to yield dated cards only at openings and artist talks; silence between shows is the rule working, not a source going dark. The fetch is clean. WHAT WOULD CHANGE IT: a new show with an opening date, which cards as an event.",
+      "addedAt": "2026-09-09",
+      "expiresAt": "2026-09-23"
     }
   ],
   "retiredCards": [
@@ -3310,6 +3323,30 @@
     {
       "id": "troost-tired-horses-0907",
       "day": "2026-09-08"
+    },
+    {
+      "id": "action-city-flesh-blood-0908",
+      "day": "2026-09-09"
+    },
+    {
+      "id": "film-noir-cult-cinema-0908",
+      "day": "2026-09-09"
+    },
+    {
+      "id": "library-tuesday-programs-0908",
+      "day": "2026-09-09"
+    },
+    {
+      "id": "lighthouse-burning-thoughts-0908",
+      "day": "2026-09-09"
+    },
+    {
+      "id": "palette-cleanser-mosaics-0908",
+      "day": "2026-09-09"
+    },
+    {
+      "id": "sparsa-tuesday-prenatal-baby-0908",
+      "day": "2026-09-09"
     }
   ]
 }
