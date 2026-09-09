@@ -4,7 +4,7 @@ The daily ingest no longer fetches from inside the claude.ai sandbox. Two machin
 source roster every morning and publish what they read to a small public repo,
 `batusayici/stoopwise-snapshots`; the routine pulls that bundle at 8:30 and diffs it.
 
-- **GitHub Actions** (`.github/workflows/ingest-fetch.yml`) runs at **6:30 local** and reads most
+- **GitHub Actions** (`.github/workflows/ingest-fetch.yml`) runs at **6:30 local in summer, 5:30 in winter** (the cron is 10:30 UTC) and reads most
   of the roster.
 - **This job on Batu's Mac** (`scripts/home-fetch.sh`, installed by `scripts/home-fetch.plist`)
   runs at **7:15 local** — after GitHub, before the routine — and publishes over GitHub's bundle.
