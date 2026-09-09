@@ -6,10 +6,13 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/batusayici/Projects/Greenpoint Explorer/scripts/home-fetch.sh</string>
+    <string>/Users/batusayici/.stoopwise-fetch/greenpoint-explorer/scripts/home-fetch.sh</string>
   </array>
   <!-- 7:15 local, after the GitHub runner (6:30) and before the routine (8:30).
-       A run missed while asleep fires once at wake. -->
+       A run missed while asleep fires once at wake. The clone must exist
+       before the first run: git clone https://github.com/batusayici/greenpoint-explorer.git
+       ~/.stoopwise-fetch/greenpoint-explorer — after that the script keeps
+       it current itself. -->
   <key>StartCalendarInterval</key>
   <dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>15</integer></dict>
   <key>StandardOutPath</key><string>/tmp/com.stoopwise.home-fetch.out</string>

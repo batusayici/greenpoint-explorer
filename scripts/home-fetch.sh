@@ -14,17 +14,34 @@ exec >>"$LOG" 2>&1
 echo "=== home-fetch $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
 # shellcheck disable=SC1090
 [ -f "$HOME/.config/stoopwise/fetch.env" ] && . "$HOME/.config/stoopwise/fetch.env"
-export GIT_SSH_COMMAND="ssh -i ${SNAPSHOTS_DEPLOY_KEY_PATH:-$HOME/.ssh/stoopwise-snapshots} -o IdentitiesOnly=yes"
+export GIT_SSH_COMMAND="ssh -i ${SNAPSHOTS_DEPLOY_KEY_PATH:-$HOME/.ssh/stoopwise-snapshots} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
 if [ ! -d "$PRODUCT/.git" ]; then git clone --quiet https://github.com/batusayici/greenpoint-explorer.git "$PRODUCT"; fi
-git -C "$PRODUCT" fetch --quiet origin main && git -C "$PRODUCT" reset --quiet --hard origin/main
-(cd "$PRODUCT" && npm ci --silent && npx playwright install chromium firefox >/dev/null)
-(cd "$PRODUCT" && npm run -s ingest:fetch -- --include-monthly) || echo "ingest:fetch exited $? (over the ceiling?) — publishing the report anyway"
+git -C "$PRODUCT" fetch --quiet origin main
+git -C "$PRODUCT" reset --quiet --hard origin/main
+(
+  cd "$PRODUCT"
+  npm ci --silent
+  npx playwright install chromium firefox >/dev/null
+)
+# Delete any previous report so a crashed fetch can't get republished as today's.
+rm -f "$PRODUCT/.ingest-cache/changes.json"
+set +e
+(cd "$PRODUCT" && npm run -s ingest:fetch -- --include-monthly)
+FETCH_EXIT=$?
+set -e
+if [ "$FETCH_EXIT" -ne 0 ]; then
+  echo "ingest:fetch exited $FETCH_EXIT — over the 15% ceiling, or the run crashed; publishing whatever report exists so the routine halts on the same evidence"
+fi
 
 if [ ! -d "$SNAPS/.git" ]; then git clone --quiet git@github.com:batusayici/stoopwise-snapshots.git "$SNAPS"; fi
-git -C "$SNAPS" fetch --quiet origin && git -C "$SNAPS" reset --quiet --hard origin/HEAD
-(cd "$PRODUCT" && npm run -s ingest:publish -- --to "$SNAPS" --fetcher home)
+git -C "$SNAPS" fetch --quiet origin
+git -C "$SNAPS" reset --quiet --hard origin/HEAD
+(
+  cd "$PRODUCT"
+  npm run -s ingest:publish -- --to "$SNAPS" --fetcher home
+)
 cd "$SNAPS"
 git add -A
 if git diff --cached --quiet; then
