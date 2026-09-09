@@ -57,7 +57,20 @@ if (FROM) {
     console.error("  workflow at github.com/batusayici/greenpoint-explorer/actions and that github.com is reachable.");
     process.exit(1);
   }
-  const head = execFileSync("git", ["-C", BUNDLE_DIR, "rev-parse", "--short", "HEAD"], { encoding: "utf8" }).trim();
+  // A clone of a repo with no commits succeeds and then has no HEAD: that is a
+  // snapshots repo nobody has published to yet, not a crash.
+  let head;
+  try {
+    head = execFileSync("git", ["-C", BUNDLE_DIR, "rev-parse", "--short", "HEAD"], {
+      stdio: ["ignore", "pipe", "pipe"],
+      encoding: "utf8",
+    }).trim();
+  } catch {
+    console.error("\n=== SNAPSHOTS MALFORMED — the snapshots repo has no commits yet ===");
+    console.error("  Nothing has been published to it. Dispatch the fetch (gh workflow run ingest-fetch.yml),");
+    console.error("  wait for it to finish, and pull again.\n");
+    process.exit(1);
+  }
   console.log(`bundle cloned from ${REPO} @ ${head}`);
 }
 
@@ -79,6 +92,10 @@ if (!existsSync(manifestPath) || !existsSync(join(BUNDLE_DIR, "fetch-report.json
   process.exit(1);
 }
 const manifest = readBundleJson(manifestPath, "manifest.json");
+// Parsed here, not only where the roster-mismatch warning needs it: a report
+// that cannot be read at all is a malformed bundle, and the pull is where the
+// routine should learn that, not the offline run twenty minutes later.
+const report = readBundleJson(join(BUNDLE_DIR, "fetch-report.json"), "fetch-report.json");
 const verdict = assessBundle({ manifest, rosterHash: rosterHash(sources) });
 
 // An unusable fetchedAt is malformed, not stale, and --allow-stale is not a
@@ -94,11 +111,11 @@ console.log(
     `${manifest.sourceCount} sources, ${manifest.errorCount} errored, product ${String(manifest.productCommit ?? "?").slice(0, 7)} by ${manifest.fetcher ?? "unknown"}`,
 );
 if (verdict.rosterMismatch) {
-  const inBundle = new Set((readBundleJson(join(BUNDLE_DIR, "fetch-report.json"), "fetch-report.json").sources ?? []).map((s) => s.id));
+  const inBundle = new Set((report.sources ?? []).map((s) => s.id));
   const missing = sources.filter((s) => !inBundle.has(s.id)).map((s) => s.id);
   console.warn("\n=== ROSTER CHANGED SINCE THE FETCH ===");
   console.warn(`  The runner read a different roster (${manifest.rosterHash} vs ${rosterHash(sources)} now).`);
-  console.warn(`  ${missing.length} source(s) not in the bundle will count as errors: ${missing.join(", ") || "(none — a url or fetch strategy changed)"}`);
+  console.warn(`  ${missing.length} source(s) not in the bundle will count as errors: ${missing.join(", ") || "(none missing — a source's config changed; the run will name it)"}`);
   console.warn("  Fix: gh workflow run ingest-fetch.yml, then pull again.\n");
 }
 if (!verdict.ok) {

@@ -17,7 +17,8 @@ as long as the fetch stays inside a sandbox we do not control.
 **The decision.** The fetch runs outside the sandbox, on the same script, from two places. A GitHub
 Actions workflow (`ingest-fetch`, 6:30am New York daily and on demand) fetches the whole roster on a
 plain Ubuntu runner. A launchd job on Batu's Mac (`scripts/home-fetch.sh`) fetches the whole roster
-again at 7:15 from home when the Mac is awake and publishes over it. Both push to a small public repo,
+again at 7:15 from home when the Mac is awake and publishes over it, installed by the steps in
+`docs/ops/home-fetch.md`. Both push to a small public repo,
 `batusayici/stoopwise-snapshots`; GitHub yields to a home bundle younger than three hours so a late
 cron cannot overwrite the fuller read. The routine pulls that bundle (`npm run ingest:pull`), refuses
 one older than six hours, and runs the existing fetch script in `--offline` mode, which changes only

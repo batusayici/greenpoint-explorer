@@ -7,17 +7,40 @@ import { rosterHash, buildManifest, assessBundle, resolveOfflineSource, shouldYi
 // These are the decisions the pull and offline paths make; the scripts only move files.
 
 const SOURCES = [
-  { id: "b", url: "https://b.example/", fetch: "browser", notes: "x" },
+  { id: "b", url: "https://b.example/", fetch: "browser", notes: "x", name: "B", group: "news" },
   { id: "a", url: "https://a.example/feed/", fetch: "feed" },
 ];
 
-test("rosterHash ignores notes and order, changes on id/url/fetch", () => {
+test("rosterHash ignores name/notes/group and order, changes on id/url/fetch", () => {
   const h = rosterHash(SOURCES);
   assert.equal(h.length, 16);
   assert.equal(rosterHash([...SOURCES].reverse()), h);
-  assert.equal(rosterHash(SOURCES.map((s) => ({ ...s, notes: "different" }))), h);
+  assert.equal(
+    rosterHash(SOURCES.map((s) => ({ ...s, notes: "different", name: "renamed", group: "events" }))),
+    h,
+  );
   assert.notEqual(rosterHash([...SOURCES, { id: "c", url: "https://c.example/" }]), h);
   assert.notEqual(rosterHash(SOURCES.map((s) => (s.id === "a" ? { ...s, fetch: "json" } : s))), h);
+});
+
+test("rosterHash changes when a detail block changes", () => {
+  const withDetail = SOURCES.map((s) =>
+    s.id === "a" ? { ...s, detail: { linkSelector: "a.event", max: 8 } } : s,
+  );
+  assert.notEqual(rosterHash(withDetail), rosterHash(SOURCES));
+  assert.notEqual(
+    rosterHash(withDetail.map((s) => (s.id === "a" ? { ...s, detail: { ...s.detail, max: 12 } } : s))),
+    rosterHash(withDetail),
+  );
+});
+
+test("rosterHash changes when a json block changes", () => {
+  const withJson = SOURCES.map((s) => (s.id === "b" ? { ...s, json: { path: "events", fields: ["title"] } } : s));
+  assert.notEqual(rosterHash(withJson), rosterHash(SOURCES));
+  assert.notEqual(
+    rosterHash(withJson.map((s) => (s.id === "b" ? { ...s, json: { ...s.json, fields: ["title", "start"] } } : s))),
+    rosterHash(withJson),
+  );
 });
 
 test("buildManifest counts sources and errors from the runner report", () => {
@@ -135,6 +158,26 @@ test("resolveOfflineSource: absent from the report means the roster moved after 
   assert.equal(r.kind, "error");
   assert.match(r.message, /^zzz: not in the runner's fetch report/);
   assert.match(r.message, /re-dispatch/);
+});
+
+test("resolveOfflineSource: a url edited since the fetch is an error, not a stale read", () => {
+  const r = resolveOfflineSource(
+    { id: "a", url: "https://a.example/events/" },
+    { id: "a", url: "https://a.example/", status: "changed", method: "plain" },
+    true,
+  );
+  assert.equal(r.kind, "error");
+  assert.match(r.message, /^a: url changed since the fetch \(runner read https:\/\/a\.example\/\)/);
+  assert.match(r.message, /re-dispatch ingest-fetch/);
+  // Same url on both sides stays a normal read.
+  assert.deepEqual(
+    resolveOfflineSource(
+      { id: "a", url: "https://a.example/" },
+      { id: "a", url: "https://a.example/", status: "changed", method: "plain" },
+      true,
+    ),
+    { kind: "text", method: "plain" },
+  );
 });
 
 test("resolveOfflineSource: a read without a snapshot file is an error", () => {

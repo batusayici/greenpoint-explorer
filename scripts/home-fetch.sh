@@ -25,8 +25,14 @@ git -C "$PRODUCT" reset --quiet --hard origin/main
   npm ci --silent
   npx playwright install chromium firefox >/dev/null
 )
-# Delete any previous report so a crashed fetch can't get republished as today's.
-rm -f "$PRODUCT/.ingest-cache/changes.json"
+# Fetch from a cold cache, the way the GitHub runner always does: it is a fresh
+# checkout, so it never carries forward `## [` evidence blocks or a previous
+# report, and a warm cache here would make the two fetchers publish different
+# text for the same page — and let a crashed run's report ship as today's. The
+# tracked *.ingested.txt baselines stay; they are the diff's other side.
+if [ -d "$PRODUCT/.ingest-cache" ]; then
+  find "$PRODUCT/.ingest-cache" -mindepth 1 -maxdepth 1 ! -name '*.ingested.txt' -exec rm -rf {} +
+fi
 set +e
 (cd "$PRODUCT" && npm run -s ingest:fetch -- --include-monthly)
 FETCH_EXIT=$?

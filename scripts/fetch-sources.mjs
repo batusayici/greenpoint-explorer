@@ -761,7 +761,15 @@ const browserRequired = selected.some((s) => s.fetch === "browser");
 
 let browserPreflight = { ok: true, skipped: true };
 if (OFFLINE) {
-  browserPreflight = { ok: true, skipped: true, offline: true };
+  // No browser runs here, so there is nothing to preflight — but if the bundle's
+  // browser sources all came back empty, the fix line below must point at the
+  // fetcher that actually held the browser, not at this sandbox.
+  browserPreflight = {
+    ok: true,
+    skipped: true,
+    offline: true,
+    fix: "the bundle's fetcher could not use a browser — check that fetcher's run, not this sandbox",
+  };
 } else if (browserRequired && !NO_BROWSER) {
   browserPreflight = await preflightBrowser();
   if (browserPreflight.ok) {

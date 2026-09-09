@@ -6,13 +6,32 @@
 // the --offline mode of fetch-sources.mjs carry no judgment of their own.
 import { createHash } from "node:crypto";
 
-// Identity of the roster as the runner saw it: id, url and fetch strategy per
-// source, order-free. Notes and per-source config are deliberately excluded —
-// editing a note must not make the routine think the runner read a different
-// roster.
+// Identity of the roster as the runner saw it: everything about a source that
+// changes what gets read — url, fetch strategy, and every config block (urls,
+// json, feed, embedded, ics, detail, browser, standing) — order-free. Only the
+// human-facing fields are excluded, so editing a name, a note or a group must
+// not make the routine think the runner read a different roster, while changing
+// any part of how a source is read must.
+const ROSTER_HASH_IGNORED = new Set(["name", "notes", "group"]);
+
 export function rosterHash(sources) {
-  const lines = sources.map((s) => `${s.id}\t${s.url}\t${s.fetch ?? "auto"}`).sort();
+  const lines = sources
+    .map((s) => stableJson(Object.fromEntries(Object.entries(s).filter(([k]) => !ROSTER_HASH_IGNORED.has(k)))))
+    .sort();
   return createHash("sha256").update(lines.join("\n")).digest("hex").slice(0, 16);
+}
+
+// JSON with object keys sorted at every depth, so reordering keys in the roster
+// file is not a roster change but editing a value at any depth is.
+function stableJson(value) {
+  if (Array.isArray(value)) return `[${value.map(stableJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value)
+      .sort()
+      .map((k) => `${JSON.stringify(k)}:${stableJson(value[k])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value) ?? "null";
 }
 
 export function buildManifest({ now, includeMonthly, rosterHash: roster, productCommit, report, fetcher = "unknown" }) {
@@ -80,6 +99,12 @@ export function resolveOfflineSource(src, reportEntry, hasSnapshot) {
     return {
       kind: "error",
       message: `${src.id}: not in the runner's fetch report — added to the roster after the fetch? re-dispatch ingest-fetch`,
+    };
+  }
+  if (reportEntry.url && reportEntry.url !== src.url) {
+    return {
+      kind: "error",
+      message: `${src.id}: url changed since the fetch (runner read ${reportEntry.url}) — re-dispatch ingest-fetch`,
     };
   }
   if (reportEntry.status === "error") return { kind: "error", message: `runner: ${reportEntry.error ?? "unknown error"}` };

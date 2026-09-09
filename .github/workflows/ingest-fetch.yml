@@ -28,7 +28,11 @@ jobs:
       HAS_KEY: ${{ secrets.SNAPSHOTS_DEPLOY_KEY != '' }}
       SNAPSHOTS_REPO: git@github.com:batusayici/stoopwise-snapshots.git
     steps:
+      # Nothing in this job uses the workflow token, and the job reads untrusted
+      # pages: don't leave a credential for this repo in the checkout's git config.
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
