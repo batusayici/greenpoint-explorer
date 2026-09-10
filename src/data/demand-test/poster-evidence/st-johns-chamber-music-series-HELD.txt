@@ -1,0 +1,45 @@
+# Poster: "THE CULTURAL CENTER AT ST JOHN'S — CHAMBER MUSIC SERIES"
+# Photographed by Batu, 2026-09-10
+# Seen at: storefront window, partly overlapped by two other flyers
+# STATUS: HELD — no individual concert dates readable (gate 1)
+
+THE CULTURAL CENTER
+AT ST JOHN'S
+
+CHAMB[ER]
+MUSIC
+SERIES
+
+[15]5 MILTON ST          SEP 3 - NOV [illegible]
+[B]ROOKLYN, NY           7PM
+
+# The street number and the series end date are covered by the flyers taped over
+# this one. 155 Milton St is St. John's Evangelical Lutheran Church, already on
+# the map as town-square-cub-scouts-pack-7.
+#
+# ── Corroboration, fetched 2026-09-10 from brooklynpaper.com ──
+# "St. John's Evangelical Lutheran Church, 155 Milton St. in Greenpoint" launches
+# The Cultural Center at St. John's on "Thursday, Sept. 3" at "6:30 p.m." with
+# Grammy-winning string quartet ETHEL, "$20 suggested donation", "no one turned
+# away". Tickets: https://www.viewcy.com/event/ethelatstjohns
+#
+# WHY HELD: a series poster with no individual concert dates is not a card, and
+# the one date anyone has published (Sept 3) is past. The poster's "7PM" also
+# conflicts with the article's 6:30 p.m. for opening night, so even that sitting
+# is source-conflicted. viewcy.com/o/thecenteratstjohns 404s — the venue's
+# calendar URL is not known.
+# TO UNBLOCK: the venue's calendar page. This is the batch's best roster lead.
+
+# ── UPDATE 2026-09-10: Batu supplied the calendar —
+# https://www.stjohnsgreenpoint.com/cultural-center
+# That page renders in JavaScript, but the site's event sitemap
+# (/event-pages-sitemap.xml) enumerates every event page, and each
+# /event-details/ page states its date, time and address in plain text. The
+# venue is now on the fetch roster as `cultural-center-st-johns`.
+# THE CARD STAYS HELD ANYWAY: the only cultural-center event the site publishes
+# is ethel-opening-night, "Sep 03, 2026, 6:30 PM – 8:30 PM", which is past and
+# marked "Registration is closed". No further chamber concert has been posted,
+# so the Sep–Nov series the poster advertises still has no dates to card. The
+# roster source means the next concert arrives on its own, without a photograph.
+# The venue's own page also settles the time conflict: 6:30 PM, not the
+# poster's 7PM.

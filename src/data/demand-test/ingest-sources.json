@@ -151,7 +151,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "76 Kent St; ceramics/fiber/print classes.",
+      "notes": "76 Kent St; ceramics/fiber/print classes. ⚠ THIS PAGE RENDERS ITS LISTINGS IN JAVASCRIPT (measured 2026-09-10): a plain fetch of yarostudios.com/workshops-1 returns navigation and footer only, no workshop titles, dates or prices. That is why a street-poster batch on 2026-09-10 found two Yaro workshops the roster had never carded — Plate Pals (9/26) and a free kids clay-creature hour (9/15) — both printed on the studio's own board outside the door. Fetch strategy needs to move to browser, or the listings need to be found on a JSON route, or this source keeps looking healthy while returning nothing.",
       "detail": {
         "urls": [
           "https://yarostudios.com/membership"
@@ -1280,6 +1280,21 @@
       "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — a Dada Strain show flyer in a window, for a venue nothing on the roster covered. Private Greenpoint loft with a vintage 4-point Klipsch system and a dense music/deep-listening calendar. Plain fetch reads it fine (555 chars, measured 2026-09-10) and the index carries DATE + TITLE ONLY — every time, lineup and location lives inside the event page's flyer IMAGE, so this is a detailsInImages source: read each /e/ flyer and write what you read into the snapshot before extracting, same rule as macha-studio. ⚠ THE VENUE DOES NOT PUBLISH ITS ADDRESS, BY DESIGN — its own flyer reads \"SECRET ADDRESS DM FOR INFO\", its poster says \"(RSVP FOR LOCATION)\" and its Luma page names the venue \"L&SD (address with rsvp)\". Its cards therefore carry `locationPrivate: true` and NO coords, address or venues; the schema rejects that combination, so a run cannot flag one private and pin it anyway. NEVER resolve this by publishing an address found on a third-party listing (Oh My Rockness, RA) — the venue chose not to publish it (Batu, 2026-09-10, DECISION_LOG). ⚠ THE INDEX IS NOT A GEOGRAPHY SOURCE: the 9/20 \"Last Sun Day\" it listed is at Rockaway Beach, which only the flyer says. Read the flyer before assuming a listed event is in Greenpoint. Some flyers state no clock at all (Present Sounds, 9/10) — those take the all-day sentinel, not an invented time.",
       "detailsInImages": true,
       "standing": true
+    },
+    {
+      "id": "cultural-center-st-johns",
+      "name": "The Cultural Center at St John's (Wix events)",
+      "url": "https://www.stjohnsgreenpoint.com/event-pages-sitemap.xml",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "citeHost": "stjohnsgreenpoint.com",
+      "notes": "155 Milton St. Onboarded 2026-09-10 (Batu supplied the URL after a poster batch surfaced the venue). St. John's Lutheran Church opened a cultural center on 2026-09-03 with string quartet ETHEL and a fall chamber music series; the church hall is also home to a recurring 'Coconspirators' discussion series. THE LISTING PAGE IS NOT FETCHABLE: /cultural-center is Wix and renders entirely in JavaScript — a plain fetch returns nav and footer, and ?format=json is a Squarespace trick that does nothing here (both measured 2026-09-10). THE EVENT SITEMAP IS. It enumerates every event page, and each /event-details/ page carries its date, time and full address in PLAIN VISIBLE TEXT, no script needed — measured on ethel-opening-night: \"ETHEL - OPENING NIGHT Thu, Sep 03 | 155 Milton St ... Sep 03, 2026, 6:30 PM - 8:30 PM 155 Milton St, 155 Milton St, Brooklyn, NY 11222, USA\". So the sitemap is the discovery surface and `detail` does the real reading. The pages also carry JSON-LD with startDate/endDate if the plain text ever stops being enough. NOTE the sitemap lists PAST events too and offers no upcoming filter — date-gate at parse time. ALSO NOTE a source conflict on the one date anyone published: the street poster says 7PM, Brooklyn Paper said 6:30 p.m., and the venue's own page says 6:30 PM — the venue's page wins.",
+      "detail": {
+        "match": "/event-details/",
+        "limit": 35,
+        "delayMs": 400
+      }
     }
   ],
   "manualSources": [
@@ -1314,6 +1329,22 @@
       "status": "manual-instagram",
       "reason": "NOT ADDED TO THE FETCH ROSTER 2026-09-10, after a street-poster batch surfaced it (a taped-up sheet reading \"FREE STAND UP COMEDY AT YOUR FAVORITE SLICE SHOP / EVERY TUESDAY NIGHT THIS SUMMER\"). The show is real — Greenpointers covered it in the 6/18-24 roundup — and free, which makes it exactly the kind of supply this product wants. It has no fetchable schedule. Paulie Gee's own slice-shop page is 186KB of restaurant marketing with no events section (measured 2026-09-10). The only fetchable listing anywhere, thecomedybureau.com/show/jabberjaw-in-nyc, shows ONE date, 8/18/2026, marked \"This event has passed\", with no recurrence stated and no future dates. The schedule lives on instagram.com/jabberjawcomedy — blocked to headless fetch, same shape as Razor-N-Tape and Greenpoint Trash Club. The poster's own words also date it: \"this summer\" ended, so nothing confirms it is still running in September.",
       "revisitIf": "Jabberjaw or Paulie Gee's publishes a schedule anywhere fetchable (an /events page, a feed, a ticketing listing), or the Instagram-ingest question in docs/PLAN.md is settled in favour of a human-in-the-loop pass — a free weekly comedy night on Franklin St is a first-batch candidate. Batu can also just confirm the night is still running and it can be carded by hand as a recurring card."
+    },
+    {
+      "id": "oak-and-iron",
+      "name": "Oak & Iron",
+      "address": "147 Franklin St",
+      "status": "manual-instagram-accepted",
+      "reason": "ON THE ROSTER AS A MANUAL WATCH — Batu said add it, 2026-09-10. It cannot be a fetch source: there is no events page anywhere on the web, the bar's only listed website is a Facebook page (blocked to headless fetch), and Instagram is the live channel. A single poster batch surfaced TWO standing programs at this bar that nothing on the map had: Tarot Tuesdays from 7pm (readings by Soror Sophia, running since August 25) and a La Maison Tachon dessert pop-up every Saturday. That is the highest programme density of any venue in the batch. It has nothing fetchable: no events page anywhere on the web, and the only public channel is instagram.com/oakandiron — blocked to headless fetch, same shape as Razor-N-Tape and Jabberjaw. La Maison Tachon's own site (lamaisontachon.com) renders in JavaScript and returned only its <title> on 2026-09-10, so it cannot corroborate its own pop-up either.",
+      "revisitIf": "Oak & Iron publishes a schedule anywhere fetchable, or the Instagram-ingest question in docs/PLAN.md is settled. Until then the two poster cards (Tarot Tuesdays, the La Maison Tachon Saturday pop-up) are the whole of the coverage here and both expire 2026-10-10, so a human has to re-confirm them. Greenpointers also covers this bar's history nights, so some of its programming arrives through the roundup source."
+    },
+    {
+      "id": "madelines-nyc",
+      "name": "Madeline's",
+      "address": "113 Franklin St",
+      "status": "manual-static-page",
+      "reason": "PROPOSED 2026-09-10 as a LOW-PRIORITY add. madelinesnyc.com is plainly fetchable and states its standing programme in one line (\"Our recurring Trivia Night is Wednesday at 7:30pm\"), which is what let the trivia card ship at trustRisk low. But it is a static page with no dated listings, so it will never produce a diff — the same shape as Black Rabbit and Scrappleland before the standing-programming fix. It earns a roster slot only if standing-programming re-reads are the intent, not a change feed. NOTE a discrepancy this batch settled: the brooklyn-hearts-club entry records Madeline's at 117 Franklin St; the venue's own site and the geocode cache both say 113 Franklin St. Cards here use 113.",
+      "revisitIf": "Batu wants standing programmes re-read on a cadence, or Madeline's starts publishing dated events."
     }
   ]
 }
