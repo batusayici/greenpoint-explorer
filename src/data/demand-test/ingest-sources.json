@@ -1260,6 +1260,15 @@
       "cadence": "monthly",
       "fetch": "auto",
       "notes": "520 Kingsland Ave, 11222. Added 2026-09-07 from the family/kids source audit, closing an oversight rather than finding something new: kingslandwildflowers.com has been in the .claude/settings.json WebFetch allowlist for a while but was NEVER in this roster, so nothing was ever reading it. Publishes free public green-roof Open Hours (Fridays, spring and autumn seasons), Greenhouse Gang volunteer sessions, and an annual free family festival. Verified plain-fetchable 2026-09-07 (200/301KB). ⚠ THE PAGE KEEPS PAST EVENTS VISIBLE — 2024 and 2025 events still render alongside current ones, so filter by date before carding or you will ship a two-year-old festival. Low volume, hence monthly. OVERLAPS the Newtown Creek Alliance calendar, which programmes this same roof; expect duplicates if NCA is ever added."
+    },
+    {
+      "id": "salsa-pizzeria",
+      "name": "Salsa Pizzeria Greenpoint — classes & events",
+      "url": "https://salsapizzeria.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — the shop's Class Week sheet was in a window and nothing about it was on the roster. The page lists each class with its own date, start AND end time, and names the location as \"Salsa Greenpoint\" or \"Salsa Rego Park\", so Greenpoint attribution is explicit per card and the Queens sittings are skippable on the listing's own words. No price is published anywhere. Classes appear to run as a monthly \"class week\". Plain fetch returns nothing readable and auto falls straight through to the browser path, so it is declared browser to save the wasted attempt (measured 2026-09-10: 1640 chars via Chromium, carrying every class with its full time range)."
     }
   ],
   "manualSources": [

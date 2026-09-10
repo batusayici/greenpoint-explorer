@@ -10326,6 +10326,226 @@
       "sourceQuote": "Art Cafe\nWed, Sep 9 · 5:00 PM - 7:00 PM\nGreenpoint\n$15 deposit\nArt Cafe\nWed, Sep 9 · 8:00 PM - 10:00 PM\nGreenpoint\n$15 deposit",
       "lat": 40.73327,
       "lng": -73.957578
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "locationName": "Salsa Pizzeria (Greenpoint)",
+      "address": "40 Clifford Pl",
+      "geocodeQuery": "40 Clifford Place, Brooklyn, NY 11222",
+      "id": "salsa-adults-pizza-class-0923",
+      "category": "event",
+      "title": "Adults' pizza class at Salsa Greenpoint",
+      "kicker": "Dough to done, aperitivo included",
+      "summary": "Three hours in the Clifford Place kitchen, reservations through Salsa's own site. Neither the poster nor the booking page states a price.",
+      "startsAt": "2026-09-23T19:00:00-04:00",
+      "endsAt": "2026-09-23T22:00:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "relatedCardIds": [
+        "salsa-adults-pasta-class-0924",
+        "salsa-kids-pizza-0926"
+      ],
+      "sourceQuote": "CLASS WEEK AT SALSA\nSEPTEMBER 21-27\nIt's Pizza Pasta Salad\n\nWED 23\nBROOKLYN ADULTS PIZZA CLASS\nFROM DOUGH TO DONE\nSTART AT 7PM\nAperitivo, snacks and a full hands on pizza making class",
+      "actions": [
+        {
+          "label": "Book",
+          "type": "signup",
+          "url": "https://salsapizzeria.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Poster in a Greenpoint storefront window, photographed 2026-09-10",
+          "publisher": "Salsa Pizzeria",
+          "date": "2026-09-10"
+        },
+        {
+          "title": "Salsa Pizzeria — Events",
+          "url": "https://salsapizzeria.com/events",
+          "publisher": "Salsa Pizzeria",
+          "date": "2026-09-10"
+        }
+      ],
+      "lat": 40.726436,
+      "lng": -73.955208
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "locationName": "Salsa Pizzeria (Greenpoint)",
+      "address": "40 Clifford Pl",
+      "geocodeQuery": "40 Clifford Place, Brooklyn, NY 11222",
+      "id": "salsa-adults-pasta-class-0924",
+      "category": "event",
+      "title": "Adults' pasta class at Salsa Greenpoint",
+      "kicker": "This month it's ravioli",
+      "summary": "Three hours the night after the pizza class, and the shop asks for reservations up front rather than walk-ins.",
+      "startsAt": "2026-09-24T19:00:00-04:00",
+      "endsAt": "2026-09-24T22:00:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "relatedCardIds": [
+        "salsa-adults-pizza-class-0923",
+        "salsa-kids-pizza-0926"
+      ],
+      "sourceQuote": "CLASS WEEK AT SALSA\nSEPTEMBER 21-27\nIt's Pizza Pasta Salad\n\nTHU 24\nBROOKLYN ADULTS PASTA CLASS\nTHIS MONTH RAVIOLI\nSTART AT 7PM\nLearn, create, eat! Reservations required.",
+      "actions": [
+        {
+          "label": "Book",
+          "type": "signup",
+          "url": "https://salsapizzeria.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Poster in a Greenpoint storefront window, photographed 2026-09-10",
+          "publisher": "Salsa Pizzeria",
+          "date": "2026-09-10"
+        },
+        {
+          "title": "Salsa Pizzeria — Events",
+          "url": "https://salsapizzeria.com/events",
+          "publisher": "Salsa Pizzeria",
+          "date": "2026-09-10"
+        }
+      ],
+      "lat": 40.726436,
+      "lng": -73.955208
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "locationName": "Salsa Pizzeria (Greenpoint)",
+      "address": "40 Clifford Pl",
+      "geocodeQuery": "40 Clifford Place, Brooklyn, NY 11222",
+      "id": "salsa-kids-pizza-0926",
+      "category": "event",
+      "title": "Kids make pizza at Salsa Greenpoint",
+      "kicker": "Trivia and prizes with the dough",
+      "summary": "A three-hour Saturday afternoon session for children. The Sunday repeat on the poster is at Salsa's Rego Park shop in Queens, not this one.",
+      "startsAt": "2026-09-26T12:00:00-04:00",
+      "endsAt": "2026-09-26T15:00:00-04:00",
+      "filters": [
+        "family_kids",
+        "food_drink"
+      ],
+      "relatedCardIds": [
+        "salsa-adults-pizza-class-0923",
+        "salsa-adults-pasta-class-0924"
+      ],
+      "sourceQuote": "CLASS WEEK AT SALSA\nSEPTEMBER 21-27\nIt's Pizza Pasta Salad\n\nSAT 26\nKIDS MAKE PIZZA IN BROOKLYN\nTRIVIA - GAMES - PRIZES\nSTART AT 12PM",
+      "actions": [
+        {
+          "label": "Book",
+          "type": "signup",
+          "url": "https://salsapizzeria.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Poster in a Greenpoint storefront window, photographed 2026-09-10",
+          "publisher": "Salsa Pizzeria",
+          "date": "2026-09-10"
+        },
+        {
+          "title": "Salsa Pizzeria — Events",
+          "url": "https://salsapizzeria.com/events",
+          "publisher": "Salsa Pizzeria",
+          "date": "2026-09-10"
+        }
+      ],
+      "lat": 40.726436,
+      "lng": -73.955208
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "id": "csa-607-winter-share",
+      "category": "subscription",
+      "free": false,
+      "title": "The 607 CSA's winter veggie share is open",
+      "kicker": "Catskills produce, January to May",
+      "summary": "Sign-ups are open now for bi-weekly boxes that start in January. Greenpoint pickup is Tuesdays at Dandelion Wine on Franklin or the Sunview on Nassau, and pricing is sliding scale with SNAP accepted.",
+      "filters": [
+        "deals_memberships",
+        "food_drink"
+      ],
+      "locationName": "Dandelion Wine (Greenpoint pickup)",
+      "address": "153 Franklin St",
+      "geocodeQuery": "153 Franklin Street, Brooklyn, NY 11222",
+      "venues": [
+        {
+          "name": "Dandelion Wine",
+          "geocodeQuery": "153 Franklin Street, Brooklyn, NY 11222",
+          "lat": 40.731664,
+          "lng": -73.958113
+        },
+        {
+          "name": "The Sunview Luncheonette",
+          "geocodeQuery": "257 Nassau Avenue, Brooklyn, NY 11222",
+          "lat": 40.726078,
+          "lng": -73.941468
+        }
+      ],
+      "sourceQuote": "Sign up today for a\nWinter\nVEGGIE SHARE\n\nDelivering bi-weekly January 13 through May 5.\nDelicious Catskills veggies, including storage crops, greens,\nmicrogreens, dried legumes, and a selection of other healthy\nand yummy seasonal produce.\n\nWeekly market items such as eggs, dairy, meat/poultry,\npantry goods, and more.\nSliding scale pricing, SNAP accepted.",
+      "actions": [
+        {
+          "label": "Join",
+          "type": "join",
+          "url": "https://www.the607csa.com/winter-locations"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Poster in a Greenpoint shop window, photographed 2026-09-10",
+          "publisher": "The 607 CSA",
+          "date": "2026-09-10"
+        },
+        {
+          "title": "Winter CSA 2026 Pickup Locations",
+          "url": "https://www.the607csa.com/winter-locations",
+          "publisher": "The 607 CSA",
+          "date": "2026-09-10"
+        }
+      ],
+      "lat": 40.728871,
+      "lng": -73.94979
     }
   ]
 }

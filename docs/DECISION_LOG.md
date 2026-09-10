@@ -4,6 +4,22 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-10 — street posters become a supply source: photograph it, transcribe it, card it; the venue behind a dead poster is the real yield
+
+**Batu.** He walks past taped-up posters on light poles and shop windows constantly — events, classes, block parties, CSA signups — and none of it reaches the map, because none of it is on the web anywhere a fetch can find. He asked for a way to hand over a batch of photos and get cards.
+
+**The decisions, all three his call on 2026-09-10.**
+
+**A poster may ship as the only source.** It is first-party, it is printed by the organiser, and it is the same allowance the ingest already makes for `detailsInImages` flyer sources — under the same condition, that the image read is written down. The alternative (require online corroboration) was rejected on measurement: of the first eleven posters, most had no findable listing at all, so the rule would have killed the feature it was meant to protect. A poster nobody else published gets `trustRisk: "medium"` and a `watchItems` entry naming the claim as unre-checkable, exactly like the Instagram-only facts the ingest already carries.
+
+**The transcription is committed, not cached.** `src/data/demand-test/poster-evidence/<card-id>.txt`, in the repo, with a header naming who photographed it, when, and where it was seen. Every other source in this product can be re-fetched; a poster is gone the day someone tapes another one over it, so `.ingest-cache/` (gitignored, disposable) would leave the card permanently unverifiable by anyone including the next run. This is the 2026-08-12 evidence rule applied to a source that has exactly one chance to be recorded.
+
+**A dead poster still pays, through the roster.** Six of the first eleven were already past — posters stay up for months — and one was for a Ridgewood venue. They still identified five Greenpoint venues that program regularly and were not on the roster: Maison Jar, Greenpoint Comedy Club, Culture House Greenpoint, Light & Sound Design Studios, Salsa Pizzeria. A venue added once produces cards every week; a poster produces one card and expires. So every photo gets a venue lookup regardless of whether its own event is alive, and roster proposals stay human-gated in the PR like all roster changes.
+
+**Two rules the first batch forced.** A private individual's phone number, Venmo handle or home address is never carded and never transcribed — redacted in the evidence file — no matter that the poster's author printed it (a Calyer Street block-party sheet carried a neighbor's mobile under "suggested donation $25"). And a poster listing several dates is several cards, never one span: Salsa Pizzeria's "Class Week Sept 21–27" is four classes on four days at two start times, and carding it as one 9/21→9/27 window would be the 2026-08-13 sitting bug arriving by a new route. Posters are the likeliest repeat offender for that bug, because a season or a class week prints as one sheet.
+
+**Shape:** a `/poster` skill, photos pasted into chat, one branch and PR per batch — cards, evidence files and proposed roster entries together — reporting what ships, what is held and what would unblock it, and which venues to add.
+
 ## 2026-09-08 — the ingest fetch leaves the sandbox: GitHub Actions reads the roster every morning, the home Mac reads it again, the routine diffs what landed
 
 **Batu, after the daily run halted for the third distinct sandbox-network reason since July.** The

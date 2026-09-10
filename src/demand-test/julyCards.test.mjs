@@ -858,15 +858,24 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // already passed; the library Friday card and the bike clinic were dropped as
   // duplicates of `library-sensory-garden-0918` and `library-bike-clinic-0919`,
   // which main already carries with better end times. Deck 218 -> 225.
-  assert.equal(seed.cards.length, 225);
+  //
+  // 2026-09-10 (posters): +4. First batch through the `/poster` skill — eleven
+  // photos of street posters and shop-window flyers, most of them already past
+  // or out of area. Three are Salsa Pizzeria's Greenpoint class week (pizza
+  // 9/23, pasta 9/24, kids 9/26 — one poster, three sittings, never one span),
+  // corroborated line-for-line by salsapizzeria.com/events; the fourth is The
+  // 607 CSA's winter veggie share, whose Greenpoint Tuesday pickups at
+  // Dandelion Wine and the Sunview the farm's own site confirms. Deck 225 -> 229,
+  // event 129 -> 132, subscription 37 -> 38.
+  assert.equal(seed.cards.length, 229);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.category === "event"), 129, "123 + the 6 dated cards recovered from the 9/9 run (2026-09-10 rebuild)");
+  assert.equal(count((c) => c.category === "event"), 132, "129 + the three Salsa class-week sittings (2026-09-10 posters)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "37 − the 9/9 Troost night + LUMENS 9/22 and Barba Yiorgi 9/24 (2026-09-10)");
-  assert.equal(count((c) => c.category === "subscription"), 37, "36 + Artudio's Friday open studio (2026-09-10)");
+  assert.equal(count((c) => c.category === "subscription"), 38, "37 + The 607 CSA winter veggie share (2026-09-10 posters)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -1773,6 +1782,7 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     );
   }
   assert.deepEqual(lens.map((c) => c.id).sort(), [
+    // (csa-607-winter-share added 2026-09-10 — poster batch)
     // (bk-youth-ballet-trial-class deleted 2026-08-12 — unverifiable source)
     // (bios-apothecary-herbalist-consultation deleted 2026-08-30 —
     // unverifiable past its date; biosapothecary.com is a sender, not a
@@ -1790,6 +1800,7 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // to sell live, priced memberships. "Publishes dated events" does not
     // predict "sells a club" — see docs/review/2026-08-08-ssg-directory-roster-scan.md.
     "clay-space-membership",
+    "csa-607-winter-share",
     "driftaway-coffee-subscriptions",
     "falu-tinned-fish-club",
     "flower-cat-subscription",
