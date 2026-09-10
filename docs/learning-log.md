@@ -40,7 +40,14 @@ section only when evidence answers it — then it becomes a belief.
   of them opened a card, which means the web page worked as an answer's
   substrate for people who never chose to open a browser. That addresses the
   arrival half of Q1, not the return half, and does not displace the carousel
-  test. _Evidence: L2026-09-01._
+  test. _Evidence: L2026-09-01._ **Held up a week later, 2026-09-08:** sixteen
+  people across six days, nine of whom opened a card — no longer one Saturday,
+  and too spread out to be Batu's own checking. **And a second, harder edge to
+  the same question:** two weeks of Search Console show zero generic-intent
+  queries. People reach the web page by looking up a name they already have,
+  never by asking what is on. So the browser works as a destination for a
+  known thing and is unproven as a place anyone goes to browse — which is
+  closer to the carousel's premise than against it. _Evidence: L2026-09-08._
 - **Q2 — Does the scan-layer failure hold for residents with a real errand?**
   Both testers who hit it (Sagar, and Josh in the opposite direction) are
   non-residents browsing without a task. A resident asking "what's on tonight"
@@ -168,6 +175,48 @@ when revised, and retired ones are struck rather than renumbered.
   _Evidence: L2026-07-21._
 
 ## Log
+
+### L2026-09-08 — Search finds us by name, never by question; ChatGPT became a trickle (analytics pull)
+
+Source: the Tuesday growth routine, 2026-09-08 — `scripts/posthog-pull.sh` and
+eighteen follow-up HogQL queries, plus `npm run growth:gsc` (window 2026-08-30
+→ 2026-09-05 against the prior week, property `sc-domain:stoopwise.com`). First
+GSC read from the **cloud routine's own environment**; L2026-09-07 recorded the
+first local one and noted the routine was still unset. It is set now.
+
+Facts — search: 20 clicks and 425 impressions against 8 and 248 the week
+before; CTR 4.7% (prior 3.2%), average position 10.5 (prior 13.7). Thirteen
+queries drew impressions. Every one is a place, address or event name —
+`kirbees greenpoint`, `sereneco fire`, `bedford slip`, `troost greenpoint`,
+`211 meserole ave brooklyn ny`. **Zero generic-intent queries, zero brand
+queries**, second consecutive week. Twelve of the twenty clicks land on two
+news cards, `/e/sereneco-franklin-st-fire` and `/e/kirbees-opening`. No
+high-impression zero-click pages this window.
+
+Facts — assistants: 16 people arrived on ChatGPT-marked links across six days
+(8/29, 9/1, 9/4, 9/5, 9/6, 9/7), up from 7 on a single day. Fifteen of the
+sixteen are New York; fourteen are on Mobile Safari. Nine of the sixteen opened
+a card, 22 opens in total, across 19 distinct landing pages. Two of the sixteen
+carry `$referring_domain=chatgpt.com`; the other fourteen carry only
+`utm_source=chatgpt.com`.
+
+Facts — the weekly email: two sends, 8/25 and 9/1, drew 28 distinct arrivals.
+Zero card opens, zero events of any kind beyond a pageview and a return_visit,
+and 27 of the 28 outside New York. The signup list holds five people.
+
+Read: search works, and it works as a lookup service rather than as an answer
+engine. Nobody has yet reached us by asking a general question; they arrive
+with a name already in their head, usually of something that happened. Loop C
+is compounding — position improved three places while the deck grew 49% — but
+through the corpus, not through the question the loop was drawn around. The
+assistant traffic partly answers the L2026-08-31 open question of whether the
+first arrivals were real or Batu's own checking: sixteen people across six days
+on nineteen landing pages, mostly mobile, is not one person spot-checking,
+though cookieless identity means the count is an upper bound on humans. The
+email finding is the sharpest: a channel whose entire measured population is
+mail-security scanners cannot answer the container question (D9) at any list
+size we currently have, so nothing about the digest's performance is yet a
+reading of the digest.
 
 ### L2026-09-07 — Search Console sensor live; search doubled in a week (analytics pull)
 
