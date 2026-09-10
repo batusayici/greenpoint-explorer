@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-09",
+  "version": "2026-09-10",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -312,7 +312,7 @@
       "lat": 40.728078,
       "lng": -73.958665,
       "corridor": "west-st",
-      "summary": "Contemporary art gallery (Suite 105) with a social and political focus. On view now: “There Are People Here,” through September 8, 2026. Free admission unless stated otherwise.",
+      "summary": "A Suite 105 space with a social and political focus. Its summer show closed on 8 September and nothing has been announced in its place. Free admission unless stated otherwise.",
       "audience": [
         "resident",
         "visitor",
@@ -333,7 +333,7 @@
         {
           "title": "Shop Small Greenpoint — July 2026 newsletter",
           "publisher": "Shop Small Greenpoint",
-          "date": "2026-07-01"
+          "date": "2026-09-10"
         },
         {
           "title": "Dreams On Command — On View",
@@ -347,9 +347,9 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-09-10",
       "kicker": "Contemporary art gallery",
-      "sourceQuote": "There Are People Here\nJuly 11 – September 8, 2026\nFree admission unless stated otherwise\nW-F (2-7pm) SAT/SUN (1-6pm)",
+      "sourceQuote": "Past Exhibition\nThere Are People Here\nJuly 11 – September 8, 2026\n…\nFree admission unless stated otherwise\n…\nW-F (2-7pm) SAT/SUN (1-6pm)",
       "free": true
     },
     {
@@ -921,10 +921,14 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-31",
+      "updatedAt": "2026-09-10",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
-      "lng": -73.958337
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "comedy-greenpoint-nights-0924",
+        "comedy-do-you-still-like-me-0924"
+      ]
     },
     {
       "id": "film-noir-cinema",
@@ -966,13 +970,12 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-09-04",
+      "updatedAt": "2026-09-10",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-monday-0914",
-        "film-noir-runaway-nightmare-0909",
-        "film-noir-sintomas-0909"
+        "film-noir-film-club-0924"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1270,7 +1273,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-09-04",
+      "updatedAt": "2026-09-10",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
@@ -1280,7 +1283,8 @@
         "library-thursday-programs-0917",
         "library-sensory-garden-0918",
         "library-bike-clinic-0919",
-        "library-monday-programs-0921"
+        "library-monday-programs-0921",
+        "library-tuesday-programs-0922"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -1431,7 +1435,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-09-10",
       "id": "sparsa-greenpoint",
       "title": "SPARŚA Greenpoint",
       "kicker": "Yoga & meditation, 13 classes a week",
@@ -1458,7 +1462,10 @@
         }
       ],
       "lat": 40.733382,
-      "lng": -73.954458
+      "lng": -73.954458,
+      "relatedCardIds": [
+        "sparsa-prenatal-gentle-yoga-0913"
+      ]
     },
     {
       "category": "discount",
@@ -2499,8 +2506,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-09-09",
-      "endsAt": "2026-09-15T22:00:00-04:00",
+      "updatedAt": "2026-09-10",
+      "endsAt": "2026-09-22T22:00:00-04:00",
       "id": "scrappleland-backgammon-club",
       "title": "Tuesday Backgammon Club at Scrappleland",
       "kicker": "All levels",
@@ -2527,7 +2534,7 @@
           "title": "Scrappleland",
           "url": "https://scrappleland.com",
           "publisher": "Scrappleland",
-          "date": "2026-08-27"
+          "date": "2026-09-10"
         }
       ],
       "relatedCardIds": [
@@ -2551,8 +2558,8 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-09-03",
-      "endsAt": "2026-09-16T22:00:00-04:00",
+      "updatedAt": "2026-09-10",
+      "endsAt": "2026-09-23T22:00:00-04:00",
       "id": "scrappleland-pinball-league",
       "title": "Wednesday Pinball League at Scrappleland",
       "kicker": "League night at the pinball bar",
@@ -2566,7 +2573,7 @@
         "food_drink"
       ],
       "summary": "The venue's own listing gives the night and nothing else — no entry fee, sign-up or format stated.",
-      "sourceQuote": "Wednesday Pinball League\nSeptember 9 @ 8:00pm - 10:00pm",
+      "sourceQuote": "Wednesday Pinball League\nSeptember 16 @ 8:00pm - 10:00pm",
       "actions": [
         {
           "label": "Venue site",
@@ -2579,7 +2586,7 @@
           "title": "Scrappleland",
           "url": "https://scrappleland.com",
           "publisher": "Scrappleland",
-          "date": "2026-08-27"
+          "date": "2026-09-10"
         }
       ],
       "recurrence": {
@@ -2717,16 +2724,16 @@
           "title": "Bandit Running — Greenpoint Runners",
           "url": "https://banditrunning.com/pages/gpr",
           "publisher": "Bandit Running",
-          "date": "2026-08-08"
+          "date": "2026-09-10"
         }
       ],
-      "sourceQuote": "Saturdays at 9:30 am. 37 Noble Street, Brooklyn NY. Join for more information about our weekly runs, events and more.",
+      "sourceQuote": "GREENPOINT RUNNERS\nJoin for more information about our weekly runs, events and more.\nSaturdays at 9:30 am\n37 Noble Street, Brooklyn NY",
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-29",
+      "updatedAt": "2026-09-10",
       "lat": 40.7284846,
       "lng": -73.9580072,
       "recurring": true,
@@ -2736,7 +2743,7 @@
         ]
       },
       "startsAt": "2026-08-08T09:30:00-04:00",
-      "endsAt": "2026-09-12T11:00:00-04:00"
+      "endsAt": "2026-09-19T11:00:00-04:00"
     },
     {
       "category": "subscription",
@@ -3821,20 +3828,20 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-24",
-      "updatedAt": "2026-08-24",
+      "updatedAt": "2026-09-10",
       "free": false,
       "id": "town-square-scouts-troop-26",
       "category": "subscription",
       "title": "Scouts BSA Troop 26 at McCarren Park",
-      "kicker": "Thursdays 5:30–7pm, grades 6–12",
-      "summary": "Town Square lists the troop among its North Brooklyn youth programmes. No fee, term length or sign-up deadline is stated.",
+      "kicker": "Back Thursdays 5:30–7pm from 9/17",
+      "summary": "The troop restarts after the summer break, meeting in the park by the barbecue area. No fee, term length or sign-up deadline is stated.",
       "filters": [
         "family_kids"
       ],
       "locationName": "McCarren Park",
       "address": "Driggs Ave & Manhattan Ave, Brooklyn, NY 11222",
       "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
-      "sourceQuote": "Scouts BSA\nBoy Scouts Troop 26 (Grades 6-12)\nThursdays, 5:30-7 PM,\nMcCarren Park (Driggs/Manhattan Ave), Brooklyn",
+      "sourceQuote": "BOY SCOUTS TROOP 26 (Grades 6-12)\nWeekly Thursday meetings will resume on September 17th, 5:30-7 PM\nMcCarren Park BBQ Area (Driggs Ave b/w Manhattan Ave & Lorimer St), Brooklyn",
       "actions": [
         {
           "label": "Learn more",
@@ -3844,10 +3851,9 @@
       ],
       "sourceLinks": [
         {
-          "title": "Town Square",
-          "url": "https://www.townsquarebk.org",
+          "title": "Town Square BK newsletter, 9 September 2026",
           "publisher": "Town Square",
-          "date": "2026-08-24"
+          "date": "2026-09-09"
         }
       ],
       "lat": 40.722039,
@@ -3894,49 +3900,6 @@
       "lng": -73.955325
     },
     {
-      "id": "troost-academy-blues-0909",
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-26",
-      "updatedAt": "2026-08-26",
-      "title": "THE ACADEMY BLUES PROJECT at Troost",
-      "kicker": "Psychedelic rock, per the calendar blurb",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-09-09T00:00:00-04:00",
-      "endsAt": "2026-09-09T23:59:00-04:00",
-      "allDay": true,
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "summary": "The venue quotes New York Music Daily calling them a bucket-list act. No door time, support bill or ticket link is listed.",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-26"
-        }
-      ],
-      "sourceQuote": "summary: THE ACADEMY BLUES PROJECT\ndescription: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily\nstart.date: 2026-09-09",
-      "lat": 40.733463,
-      "lng": -73.955035
-    },
-    {
       "id": "simi-sol-collective",
       "title": "Simi & Sol Collective",
       "category": "new_business",
@@ -3980,52 +3943,6 @@
       "updatedAt": "2026-08-27",
       "lat": 40.733443,
       "lng": -73.954531
-    },
-    {
-      "id": "library-wednesday-programs-0909",
-      "title": "Wednesday at Greenpoint Library",
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "kicker": "Rooftop garden, PC basics, teen polaroids",
-      "summary": "The rooftop demonstration garden opens for quiet study, a beginners' computer class runs, and teens make back-to-school polaroids.",
-      "startsAt": "2026-09-09T13:00:00-04:00",
-      "endsAt": "2026-09-09T17:30:00-04:00",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "free": false,
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-27"
-        }
-      ],
-      "sourceQuote": "ts_title: Greenpoint Library Open Roof Hours\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting.\nts_title: Computer Basics\nts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer.\nts_title: Teens DIY: Back to School Polaroid Picture✧˖°📷 ༘ ⋆｡°\nds_event_end_date: 2026-09-09T21:30:00Z\nts_body: Teens 13+. Practice for a yearbook photo or make memories with friends by taking a polaroid photo to celebrate back to school!",
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-27",
-      "updatedAt": "2026-09-09"
     },
     {
       "id": "troost-barba-yiorgi-0910",
@@ -4849,55 +4766,6 @@
       "sourceQuote": "This September, Chez Ma Tante alum Chef Gabriel Borges is opening his own restaurant called 148 Noble Street.\nChef Borges’ new restaurant will be located in the former home of The Noble , a wine bar from Itir Aloba and Rick Curi that closed this past winter.\nChef Borges is aiming to open 148 Noble Street in “mid-September.” When it first opens, the restaurant will welcome guests five days a week, Thursday through Monday.\nChef Borges’ menu at 148 Noble Street will lean European, incorporating influences and techniques from French and Italian cuisine.\nThe restaurant will only have a wine and beer license, but Chef Borges said he and his team will get creative with vermouth and other non-grain alcohols for cocktails.",
       "lat": 40.72862,
       "lng": -73.95442
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-02",
-      "updatedAt": "2026-09-02",
-      "category": "event",
-      "id": "bin-bin-sake-social-0909",
-      "title": "Sake Social: Pizza Party at Bin Bin Sake",
-      "kicker": "Sake, cheese and Fini pies, $33.85",
-      "summary": "Three favorite pairing brews alongside pizzas from Fini, plus an exclusive t-shirt while supplies last.",
-      "startsAt": "2026-09-09T18:00:00-04:00",
-      "endsAt": "2026-09-09T21:00:00-04:00",
-      "free": false,
-      "filters": [
-        "food_drink"
-      ],
-      "locationName": "Bin Bin Sake",
-      "address": "29 Norman Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "29 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "Sake Social: Pizza Party @ Bin Bin Sake, 6 p.m.: Revel in the pairing of sake and cheese during a pizza party with pies from Fini, three favorite pairing brews, and an exclusive t-shirt while supplies last. $33.85,\nSake Social: Pizza Party at Bin Bin\nstartDate: 2026-09-09T18:00:00-04:00\nendDate: 2026-09-09T21:00:00-04:00\nlocation: Bin Bin Sake\nstreetAddress: 29 Norman Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Get tickets",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/sake-social-pizza-party-at-bin-bin-tickets-1998813763774"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Experience live music, make tortillas, and more — What’s Happening, Greenpoint? (9/3-9)",
-          "url": "https://greenpointers.com/2026/09/02/experience-live-music-make-tortillas-and-more-whats-happening-greenpoint-9-3-9/",
-          "publisher": "Greenpointers",
-          "date": "2026-09-02"
-        },
-        {
-          "title": "Sake Social: Pizza Party at Bin Bin",
-          "url": "https://www.eventbrite.com/e/sake-social-pizza-party-at-bin-bin-tickets-1998813763774",
-          "publisher": "Eventbrite",
-          "date": "2026-09-02"
-        }
-      ],
-      "lat": 40.724471,
-      "lng": -73.955037
     },
     {
       "audience": [
@@ -6358,15 +6226,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-10",
       "free": false,
       "category": "event",
       "id": "film-noir-film-club-0910",
       "title": "FILM CLUB at Film Noir Cinema",
       "kicker": "An evening with moving image",
-      "summary": "The programme states a 9pm start and a 10pm finish; no admission price is given.",
-      "startsAt": "2026-09-10T21:00:00-04:00",
-      "endsAt": "2026-09-10T22:00:00-04:00",
+      "summary": "A different club member picks the film each time, and nobody else knows the title until it screens. No admission price is stated.",
+      "startsAt": "2026-09-10T19:00:00-04:00",
+      "endsAt": "2026-09-10T20:00:00-04:00",
       "filters": [
         "arts_culture"
       ],
@@ -6385,10 +6253,10 @@
           "title": "Film Noir Cinema programme",
           "url": "https://www.filmnoircinema.com/program",
           "publisher": "Film Noir Cinema",
-          "date": "2026-09-07"
+          "date": "2026-09-10"
         }
       ],
-      "sourceQuote": "Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.",
+      "sourceQuote": "FILM CLUB\nThursday, September 10, 2026\n7:00 PM\n8:00 PM\n…\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.",
       "lat": 40.727314,
       "lng": -73.951608
     },
@@ -6573,7 +6441,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-10",
       "free": false,
       "category": "event",
       "locationName": "Greenpoint Comedy Club",
@@ -6594,16 +6462,16 @@
           "title": "Greenpoint Comedy Club listings",
           "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
           "publisher": "Jump Comedy",
-          "date": "2026-09-07"
+          "date": "2026-09-10"
         }
       ],
       "id": "comedy-yall-gay-0919",
-      "title": "Y'all Gay at Greenpoint Comedy Club",
+      "title": "Y’all Gay at Greenpoint Comedy Club",
       "kicker": "A queer stand-up showcase",
-      "summary": "Tickets are twenty dollars; the listing gives a start but no finish.",
+      "summary": "Ali Clayton and Ever Mainard are on the bill. Tickets are twenty dollars and the listing gives a start but no finish.",
       "startsAt": "2026-09-19T18:00:00-04:00",
       "endsAt": "2026-09-19T23:59:00-04:00",
-      "sourceQuote": "Sat Sep 19, 2026, 6:00 PM\nY'all Gay\nUSD $20.00",
+      "sourceQuote": "Sat Sep 19, 2026, 6:00 PM\nY'all Gay with Ali Clayton + Ever Mainard\nNY, US\nUSD $20.00",
       "lat": 40.729567,
       "lng": -73.958337
     },
@@ -6913,50 +6781,6 @@
       "trustRisk": "low",
       "createdAt": "2026-09-07",
       "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "id": "palette-cleanser-vase-0909",
-      "title": "Palette Cleanser: vase painting at Greenpoint Loft",
-      "kicker": "The second night of the series",
-      "summary": "Greenpointers names the day but no hour, so the card runs the day.",
-      "startsAt": "2026-09-09T00:00:00-04:00",
-      "endsAt": "2026-09-09T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Greenpoint Loft",
-      "address": "67 West St",
-      "geocodeQuery": "67 West St, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Read more",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/09/04/jenscribblesny-launches-an-art-workshop-series-at-greenpoint-loft/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "JenScribblesNY launches an art workshop series at Greenpoint Loft",
-          "url": "https://greenpointers.com/2026/09/04/jenscribblesny-launches-an-art-workshop-series-at-greenpoint-loft/",
-          "publisher": "Greenpointers",
-          "date": "2026-09-04"
-        }
-      ],
-      "sourceQuote": "The series will kick off with a mosaics class on September 8, followed by vase painting on the 9th.",
-      "lat": 40.728561,
-      "lng": -73.959184
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
       "free": true,
       "category": "event",
       "id": "transmitter-park-yoga-tuesdays",
@@ -7038,49 +6862,6 @@
       "sourceQuote": "name: Lockwood's Epic Clearance Sale!\nstart_date_raw: 2026-09-14\nstart_time: 10:00 am\nend_date_raw: 2026-09-20\nend_time: 9:00 pm",
       "lat": 40.729758,
       "lng": -73.956966
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "locationName": "Action City Comics",
-      "address": "570 Manhattan Ave",
-      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
-      "filters": [
-        "games"
-      ],
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "rsvp",
-          "url": "https://www.actioncitycomics.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Action City Comics events",
-          "url": "https://www.actioncitycomics.com/",
-          "publisher": "Action City Comics",
-          "date": "2026-09-07"
-        }
-      ],
-      "id": "action-city-one-piece-0909",
-      "title": "One Piece Tournament - Wednesday! at Action City Comics",
-      "kicker": "The midweek One Piece table",
-      "summary": "One of two One Piece nights this week. The listing gives a start and no finish.",
-      "startsAt": "2026-09-09T19:00:00-04:00",
-      "endsAt": "2026-09-09T23:59:00-04:00",
-      "sourceQuote": "One Piece Tournament - Wednesday!\nWED, SEP 9 7:00 PM",
-      "lat": 40.722526,
-      "lng": -73.949837
     },
     {
       "audience": [
@@ -7826,10 +7607,7 @@
         }
       ],
       "lat": 40.722349,
-      "lng": -73.961382,
-      "relatedCardIds": [
-        "weeding-wednesdays-bip-0909"
-      ]
+      "lng": -73.961382
     },
     {
       "audience": [
@@ -7858,8 +7636,7 @@
       ],
       "sourceQuote": "The Brooklyn Pollinator Project is a volunteer initiative founded and led by horticulturalist Jeff Hewitt, focused on supporting crucial pollinator plants that support our local ecosystem!",
       "relatedCardIds": [
-        "nbk-garden-club-bip-0913",
-        "weeding-wednesdays-bip-0909"
+        "nbk-garden-club-bip-0913"
       ],
       "actions": [
         {
@@ -8639,145 +8416,6 @@
       ],
       "lat": 40.732156,
       "lng": -73.957575
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
-      "id": "film-noir-runaway-nightmare-0909",
-      "category": "event",
-      "free": false,
-      "title": "RUNAWAY NIGHTMARE at Film Noir Cinema",
-      "kicker": "A plot to steal plutonium, 1982",
-      "summary": "Two dorky Nevada worm wranglers are kidnapped by a gang of beautiful women who have the Mafia in their sights.",
-      "startsAt": "2026-09-09T19:00:00-04:00",
-      "endsAt": "2026-09-09T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "sourceQuote": "RUNAWAY NIGHTMARE\nWednesday, September 9, 2026\n7:00 PM\n8:00 PM\nUS. 1982\nTwo dorky Nevada worm wranglers are kidnapped by a gang of beautiful women as part of a plot to steal plutonium from the Mafia.",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/3/25/runaway-nightmare"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "RUNAWAY NIGHTMARE",
-          "url": "https://www.filmnoircinema.com/program/2026/3/25/runaway-nightmare",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-09"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
-      "id": "film-noir-sintomas-0909",
-      "category": "event",
-      "free": false,
-      "title": "SINTOMAS at Film Noir Cinema",
-      "kicker": "An English mansion that isn't right",
-      "summary": "A young woman accepts an invitation to stay at a friend's country estate, and neither the house nor the friend turns out to be what they seem. UK, 1974.",
-      "startsAt": "2026-09-09T21:00:00-04:00",
-      "endsAt": "2026-09-09T22:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "sourceQuote": "SINTOMAS\nWednesday, September 9, 2026\n9:00 PM\n10:00 PM\nUK. 1974\nA young woman is invited by her friend, who lives in an English country mansion, to stay there with her. The estate, however, isn't quite what it seems and neither is the friend who issued the invitation.",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "SINTOMAS",
-          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-09"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
-      "id": "weeding-wednesdays-bip-0909",
-      "category": "event",
-      "free": true,
-      "title": "Weeding Wednesdays at Bushwick Inlet Park",
-      "kicker": "Volunteer weeding, sign up first",
-      "summary": "An evening in the park's beds; the exact meeting spot comes by email or Instagram once you have registered.",
-      "startsAt": "2026-09-09T18:00:00-04:00",
-      "endsAt": "2026-09-09T19:30:00-04:00",
-      "filters": [
-        "civic"
-      ],
-      "locationName": "Bushwick Inlet Park",
-      "address": "Kent Ave & N 9th St",
-      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
-      "lat": 40.722349,
-      "lng": -73.961382,
-      "relatedCardIds": [
-        "nbk-garden-club-bip-0913",
-        "nbk-pollinator-project-bip-0916"
-      ],
-      "sourceQuote": "Weeding Wednesdays at Bushwick Inlet Park\nWednesday, September 9th at 6:00 PM - 7:30 PM\nFree",
-      "actions": [
-        {
-          "label": "Sign up",
-          "type": "signup",
-          "url": "https://gogreenbk.org/event/weeding-bip-2026/2026-09-09/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Weeding Wednesdays at Bushwick Inlet Park",
-          "url": "https://gogreenbk.org/event/weeding-bip-2026/2026-09-09/",
-          "publisher": "Go Green Brooklyn",
-          "date": "2026-09-09"
-        }
-      ]
     },
     {
       "audience": [
@@ -9987,6 +9625,363 @@
           "date": "2026-09-09"
         }
       ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "event",
+      "id": "film-noir-film-club-0924",
+      "title": "FILM CLUB at Film Noir Cinema",
+      "kicker": "An evening with moving image",
+      "summary": "A different club member picks the film each time, and nobody else knows the title until it screens. No admission price is stated.",
+      "startsAt": "2026-09-24T21:00:00-04:00",
+      "endsAt": "2026-09-24T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave",
+      "geocodeQuery": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema programme",
+          "url": "https://www.filmnoircinema.com/program",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "FILM CLUB\nThursday, September 24, 2026\n9:00 PM\n10:00 PM\n…\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.",
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "event",
+      "id": "troost-lumens-0922",
+      "title": "LUMENS at Troost",
+      "kicker": "An evening of sonic mischief",
+      "summary": "Jeff Berner, Rob Heath and Tony Maimone. Troost's own calendar names the night and the players and nothing else — no door time, no ticket link.",
+      "startsAt": "2026-09-22T00:00:00-04:00",
+      "endsAt": "2026-09-22T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "summary: LUMENS\ndescription: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone\nstart.date: 2026-09-22"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "event",
+      "id": "troost-barba-yiorgi-0924",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
+      "startsAt": "2026-09-24T00:00:00-04:00",
+      "endsAt": "2026-09-24T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-09-24"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "event",
+      "id": "library-tuesday-programs-0922",
+      "title": "Tuesday at Greenpoint Library",
+      "kicker": "Three adult drop-ins, afternoon on",
+      "summary": "Beginner ESOL, free notary service (call ahead to check the notary is in), then knitting, crochet and mending, with lessons for beginners.",
+      "startsAt": "2026-09-22T14:00:00-04:00",
+      "endsAt": "2026-09-22T19:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-22T18:00:00Z\nds_event_end_date: 2026-09-22T20:00:00Z\nThe library offers free ESOL classes for beginners learning English.\nts_title: Free Notary Services*\n* New hours are TUES and THUR from 2pm to 4pm. Please call Greenpoint Library to CONFIRM the notary is AVAILABLE the day you plan to visit: 718-389-4394.\nts_title: Keep Calm & Carry Yarn - Sewists Welcome!\nds_event_start_date: 2026-09-22T21:30:00Z\nds_event_end_date: 2026-09-22T23:30:00Z\nJoin a group of like-minded folks to knit or crochet (or mending, cross-stitch or embroidery!) for two hours of friendship and community.\nLessons are available for beginners in knitting, mending, or crochet."
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "subscription",
+      "id": "artudio-open-studio-fridays",
+      "title": "Friday open studio at ARTUDIO",
+      "kicker": "Drop in for an hour, $25, ages 1 up",
+      "summary": "Three back-to-back Friday-morning slots, running from 11 September through 4 December. Book a single slot or take the term.",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "ARTUDIO",
+      "address": "4 Diamond St",
+      "geocodeQuery": "4 Diamond St, Brooklyn, NY 11222",
+      "lat": 40.723169,
+      "lng": -73.945354,
+      "actions": [
+        {
+          "label": "Book on Sawyer",
+          "type": "signup",
+          "url": "https://www.hisawyer.com/artudio-1/schedules"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "ARTUDIO schedules",
+          "url": "https://www.hisawyer.com/artudio-1/schedules",
+          "publisher": "ARTUDIO",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "Artudio Open Studio!\n1 – 18+ yrs\nFri\n9:00am - 10:00am EDT\nSep 11, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class\n…\nArtudio Open Studio!\n1 – 18+ yrs\nFri\n10:00am - 11:00am EDT\nSep 11, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class\n…\nArtudio Open Studio!\n1 – 18+ yrs\nFri\n11:00am - 12:00pm EDT\nSep 11, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "event",
+      "id": "sparsa-prenatal-gentle-yoga-0913",
+      "title": "Prenatal and gentle yoga at SPARŚA Greenpoint",
+      "kicker": "Sunday late morning, 70 minutes",
+      "summary": "Kendra Brody teaches it. The studio's booking page states no price and no level requirement for this session.",
+      "startsAt": "2026-09-13T11:00:00-04:00",
+      "endsAt": "2026-09-13T12:10:00-04:00",
+      "filters": [
+        "wellness"
+      ],
+      "locationName": "SPARŚA Greenpoint",
+      "address": "1006 Manhattan Ave",
+      "geocodeQuery": "1006 Manhattan Ave, Brooklyn, NY",
+      "lat": 40.733382,
+      "lng": -73.954458,
+      "relatedCardIds": [
+        "sparsa-greenpoint"
+      ],
+      "actions": [
+        {
+          "label": "Register",
+          "type": "signup",
+          "url": "https://www.union.fit/orgs/sparsa-brooklyn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "SPARŚA Brooklyn schedule",
+          "url": "https://www.union.fit/orgs/sparsa-brooklyn",
+          "publisher": "SPARŚA Greenpoint",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "Sunday, September 13\n…\n11:00 AM - 12:10 PM EDT\nPrenatal / Gentle Yoga with Kendra Brody\nSPARŚA Greenpoint"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "event",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "filters": [
+        "arts_culture"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club listings",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Jump Comedy",
+          "date": "2026-09-10"
+        }
+      ],
+      "id": "comedy-greenpoint-nights-0924",
+      "title": "Greenpoint Nights at Greenpoint Comedy Club",
+      "kicker": "The venue bills this one itself",
+      "summary": "Twenty dollars. No comedians are named and no finish time is given.",
+      "startsAt": "2026-09-24T19:30:00-04:00",
+      "endsAt": "2026-09-24T23:59:00-04:00",
+      "sourceQuote": "Thu Sep 24, 2026, 7:30 PM\nGreenpoint Nights\nNY, US\nUSD $20.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "free": false,
+      "category": "event",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "filters": [
+        "arts_culture"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club listings",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Jump Comedy",
+          "date": "2026-09-10"
+        }
+      ],
+      "id": "comedy-do-you-still-like-me-0924",
+      "title": "Do You Still Like Me? at Greenpoint Comedy Club",
+      "kicker": "A comedy dating show, late slot",
+      "summary": "Twenty dollars. The listing carries the show name and nothing about who is on or when it ends.",
+      "startsAt": "2026-09-24T21:30:00-04:00",
+      "endsAt": "2026-09-24T23:59:00-04:00",
+      "sourceQuote": "Thu Sep 24, 2026, 9:30 PM\nDo You Still Like Me? - A Comedy Dating Show\nNY, US\nUSD $20.00"
     }
   ]
 }

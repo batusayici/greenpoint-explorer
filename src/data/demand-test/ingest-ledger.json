@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-09T12:30:00-04:00",
+  "lastRunAt": "2026-09-10T13:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1842,6 +1842,54 @@
       "kind": "run",
       "processedAt": "2026-09-09T12:30:00-04:00",
       "outcome": "DAILY. First run on the new fetch path's data (the fetch itself now runs on GitHub Actions and on Batu's Mac; this run fetched live locally, which is the documented interactive path). EXPIRY: 195 -> 189 (6 past events; 2 relatedCardIds pruned). FETCH: 91 sources, 87 read (4 errors, 5%, ceiling 15%) — troost errored on a missing env key and was re-fetched with it; kindred-nyc never renders, greenpointtrashclub.org serves a certificate for the wrong domain, play-kids-greenpoint timed out. CHANGED: 45 sources. The yield is the Greenpointers 9/10-16 roundup, recovered in full from the site's WordPress API and persisted, plus the library's forward calendar, WORD, the BPL calendar and Film Noir. SHIPPED 30 cards, 189 -> 219 (+15.9%, inside the +/-40% gate). Ms. J's 39 class records, ARTUDIO's 5 terms and Moon Bunny's 19 weekly slots were NOT carded individually — all are already covered by live term and membership cards, which is the dedupe working. GMAIL: 16 threads in the 3-day window. One card off it — NYC Ferry's fall schedule, which starts 9/14 and changes which East River route calls at the Greenpoint landing. Brooklyn Craft Company's newsletter was all Lower Manhattan this time. PRESS Modern Massage's anniversary offer stays out under the attributability rule. DROPPED 3 as Williamsburg once their addresses were resolved: REVENANT at The Twisted Spine (306 Grand St), Animation Nights at The Gutter (200 N 14th St), Nice Moms Coffee Club at Balkan Grind (5 Withers St). RE-VERIFIED and pushed to 9/23: poochs-parlor-first-groom, nb-chess-parkhouse-0806, ymca-greenpoint-fall-1-registration, maison-jar-refill-happy-hour — all four still stated at their sources on their first flagged run. HELD 2: ART 101's Holiday Camp and Edy's Grocer dinner, both for a date the source never states. holds: 0 new-judgment - 0 rule-miss - 2 source-blocked"
+    },
+    {
+      "runAt": "2026-09-10",
+      "cadence": "daily-thin",
+      "shipped": [
+        "film-noir-film-club-0924",
+        "troost-lumens-0922",
+        "troost-barba-yiorgi-0924",
+        "library-tuesday-programs-0922",
+        "artudio-open-studio-fridays",
+        "sparsa-prenatal-gentle-yoga-0913",
+        "comedy-greenpoint-nights-0924",
+        "comedy-do-you-still-like-me-0924"
+      ],
+      "updated": [
+        "film-noir-film-club-0910",
+        "dreams-on-command",
+        "scrappleland-pinball-league",
+        "scrappleland-backgammon-club",
+        "bandit-running-greenpoint-runners",
+        "comedy-yall-gay-0919",
+        "town-square-scouts-troop-26",
+        "sereneco-franklin-st-fire"
+      ],
+      "deleted": [
+        "troost-academy-blues-0909",
+        "library-wednesday-programs-0909",
+        "bin-bin-sake-social-0909",
+        "palette-cleanser-vase-0909",
+        "action-city-one-piece-0909",
+        "film-noir-runaway-nightmare-0909",
+        "film-noir-sintomas-0909",
+        "weeding-wednesdays-bip-0909"
+      ],
+      "holds": "holds: 1 new-judgment · 0 rule-miss · 1 source-blocked",
+      "urls": [
+        "https://www.filmnoircinema.com/program",
+        "https://troostny.com/calendar/",
+        "https://www.bklynlibrary.org/locations/greenpoint",
+        "https://www.hisawyer.com/artudio-1/schedules",
+        "https://www.union.fit/orgs/sparsa-brooklyn",
+        "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+        "https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/"
+      ],
+      "gmail": [
+        "1a0861614b954456",
+        "1a08230c7f4dd072"
+      ]
     }
   ],
   "senderRegistry": [
@@ -2773,17 +2821,72 @@
       "name": "SPARŚA publishes nothing past Sep 12 on union.fit",
       "addedAt": "2026-09-07",
       "note": "2026-09-07 render: the weeks Sep 15-21 and Sep 22-28 both read 'No events to display'. The 9/8 prenatal + Baby & Me card is therefore a one-off as authored, not a truncated series. Musicraftory / Tunes for Tykes / Strawberry Tunes do not appear in any rendered view or in the 21-item Event filter; classes page 2 (Cloudflare-blocked) is the only place they could be."
+    },
+    {
+      "name": "Town Square — Greencycle Back-to-School Swap, Sat 9/26 (past the 14-day window)",
+      "note": "Horizon only, nothing blocked. Verbatim from the Town Square newsletter of 9 September 2026: \"Saturday, September 26, 2026, 12 PM ~ Town Square BK's Greencycle Back-to-School Swap. Bring some! Take some!! JEMS 126, 424 Leonard St. (Bayard St. entrance), Brooklyn, NY. RSVP here.\" Also stated in the body: \"Saturday, September 26th, 12-3 PM / John Ericsson MS 126, 424 Leonard Street, Brooklyn\" and \"Suggested donation: $10 a family\". Recorded because a newsletter is read once — card it on the run of 12 September or later.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Town Square — Greenpoint Children's Spooktacular and Halloween Parade, Sat 10/31",
+      "note": "Horizon only. Verbatim from the same 9 September newsletter: \"Saturday, October 31, 2026, 10 AM ~ Town Square BK's Greenpoint Children's Spooktacular Party. More info to come\" and \"Saturday, October 31, 2026, 12 PM ~ Town Square BK's Greenpoint Children's Halloween Parade. More info to come\". No venue is stated for either yet, so both need the detail before they can be pinned.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Brooklyn Hearts Club — 9/13 craft social states nothing but its title",
+      "note": "SOURCE-BLOCKED 2026-09-10, and the geography is unconfirmed too. The Linktree carries the whole item as one line — \"9/13 Self led Craft Social: Decoupage Vases with Pressed Flowers\" — with no time, no venue and no address. Every located event on the same page is at Crystal Lake (647 Grand St, Williamsburg), and the club describes itself borough-wide (\"An art Club for ALL adults. Spreading through art, the BKLYN way.\"), so there is no basis to pin it in Greenpoint. UNBLOCKS WHEN: the club states a Greenpoint venue and a time, on the Linktree or on the Instagram the Linktree points to.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Ms. J's Gymnastics — the School Year Camps block is no longer in the snapshot",
+      "note": "SOURCE FACT 2026-09-10. The roster moved this source to iClassPro's classes API on 2026-09-09, and that endpoint returns classes only — the \"## [DETAIL] https://portal.iclasspro.com/msjsgreenpoint/camps/2\" block that carried the Yom Kippur, Indigenous Peoples' Day, Election Day and winter-recess camps exists in the baseline and not in the fresh fetch. This is the endpoint changing, NOT the camps being cancelled: msjs-yom-kippur-camp-0921 still stands on the persisted baseline block, which promotion carries forward. UNBLOCKS WHEN: the camps URL is added to this source's detail block in a roster PR, so the camp evidence is fetched every run again.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Marianella — the subscription page states two different monthly prices",
+      "note": "SOURCE CONFLICT 2026-09-10, inside one page. The description says \"For just $68 a month\" while the checkout lines say \"Sale price $48.00\", \"Deliver every month, $48.00\" and \"$48.00 USD\". The live card marianella-subscription-box states $48, which is what the buy button charges, and its quote deliberately stops before the $68 sentence. Left as is rather than re-argued each run. UNBLOCKS WHEN: the shop reconciles the two, or Batu confirms which is current.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Dreams On Command — the page states two different sets of opening hours",
+      "note": "SOURCE CONFLICT 2026-09-10. The header reads \"Open · W-F (2-7pm) SAT/SUN (1-6pm)\" and the footer of the same page reads \"Thursday-Sunday · 12-6 PM\". The venue card quotes the header pair and does not print hours in its summary, so nothing reader-facing turns on it today. UNBLOCKS WHEN: the gallery settles on one, which will show up as an ordinary diff.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Greenpoint Comedy Club — Cartoon Strips with Hilary Campbell, Thu 10/1",
+      "note": "Horizon only. Verbatim from the Jump Comedy listing: \"Thu Oct 1, 2026, 8:00 PM / Cartoon Strips with Hilary Campbell / NY, US / USD $20.00\". Web source, re-snapshotted every run, so it rolls in on its own once inside the window.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Troost — DJ R DUBBS 10/23 and DJs Lupe Loop and Mela 10/24",
+      "note": "Horizon only. Both sit in Troost's Google Calendar feed past the 14-day window and roll in on a later run; recorded so a gap in late October is not read as the venue going quiet.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Scrappleland — Dog Snack Tasting, 10/28",
+      "note": "Horizon only. Verbatim from the venue page: \"Dog Snack Tasting / October 28 @ 3:30pm - 5:00pm\". A one-off, not part of the standing Tuesday/Wednesday club nights.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Sparrow Funerals — A Gathering for End of Life Doulas, Thu 9/24 (HELD, no lens fits)",
+      "note": "HELD 2026-09-10 as a NEW JUDGMENT, not a sourcing problem — the source states everything. Verbatim: \"Date & Time: Thursday September 24 / 6-8PM\" and \"Location: Sparrow Funerals, 161 Driggs Ave, Brooklyn NY 11222\", with \"an exclusive gathering, co-hosted by Sparrow Funerals and the All's Well Initiative, dedicated to practicing End of Life Doulas like you\" and \"RSVP emma@allswellinitiative.com\". FILTER_IDS has nowhere for a professional networking evening: it is not civic action or mutual aid, not the movement cluster, and not culture you attend or make. No card ships lens-less, so it cannot be authored without a ruling. This is the same shape as the church-service question already on this list. RESOLVES WHEN: Batu rules on where a trade or practitioner gathering files.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "name": "Brooklyn Craft Company — the 9/8 newsletter is all Lower Manhattan",
+      "note": "SOURCE FACT 2026-09-10, recorded so the next run does not re-read it hoping for Greenpoint sessions. The newsletter of 8 September announces the pop-up extension at 225 Broadway (\"we're officially staying put in Lower Manhattan @ 225 Broadway for a bit longer! Visit us through 10/24\") and one dated workshop, \"Fabric Pocket Altars / Sat, 9/19 at 3:00pm / In Lower Manhattan\", plus five drop-in crafts \"At our Lower Manhattan Pop-up!\". Nothing in it is dated at 165 Greenpoint Ave.",
+      "addedAt": "2026-09-10"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-09-06",
     "greenpointers": "2026-09-08",
-    "greenpoint-comedy-club": "2026-09-08",
-    "film-noir-cinema": "2026-09-08",
+    "greenpoint-comedy-club": "2026-09-09",
+    "film-noir-cinema": "2026-09-09",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
-    "greenpoint-library": "2026-09-08",
-    "bpl-north-brooklyn-calendar": "2026-09-08",
+    "greenpoint-library": "2026-09-09",
+    "bpl-north-brooklyn-calendar": "2026-09-09",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-27",
@@ -2802,7 +2905,7 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-09-08",
     "nycparks-greenpoint": "2026-09-06",
-    "troost": "2026-09-06",
+    "troost": "2026-09-09",
     "carcosa-club": "2026-09-06",
     "good-room": "2026-09-06",
     "town-square-bk": "2026-08-23",
@@ -2843,14 +2946,14 @@
     "kingsland-wildflowers": "2026-09-06",
     "polish-slavic-center": "2026-09-06",
     "gwysl-youth-soccer": "2026-09-06",
-    "artudio": "2026-09-06",
-    "play-greenpoint-sawyer": "2026-09-06",
-    "art-101-sawyer": "2026-09-06",
+    "artudio": "2026-09-09",
+    "play-greenpoint-sawyer": "2026-09-09",
+    "art-101-sawyer": "2026-09-09",
     "greenthumb-gardens-11222": "2026-09-06",
     "msjs-greenpoint": "2026-09-06",
     "space-club-greenpoint": "2026-09-06",
     "birthsmarter": "2026-09-06",
-    "sparsa-union-fit": "2026-09-06",
+    "sparsa-union-fit": "2026-09-09",
     "greenpoint-reformed-church": "2026-09-06",
     "st-stans-academy": "2026-09-06"
   },
@@ -3309,6 +3412,27 @@
       "reason": "THE GALLERY IS BETWEEN SHOWS, AND A SHOW IS NOT A DATED CARD ANYWAY. Re-earned against today's snapshot: the exhibition page now reads \"Past Exhibition\" / \"There Are People Here\" / \"July 11 – September 8, 2026\", so the summer show closed on 8 September and nothing has replaced it — the page announces no upcoming exhibition and no opening or closing reception. The standing rule (2026-08-12) puts an ongoing exhibition on the venue's own card rather than a dated event card, so this source is expected to yield dated cards only at openings and artist talks; silence between shows is the rule working, not a source going dark. The fetch is clean. WHAT WOULD CHANGE IT: a new show with an opening date, which cards as an event.",
       "addedAt": "2026-09-09",
       "expiresAt": "2026-09-23"
+    },
+    {
+      "sourceId": "greenpoint-trash-club",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE SITE'S OWN CERTIFICATE IS BROKEN, AND NOTHING ON OUR SIDE FIXES IT. Both fetchers reported it this morning: \"runner: page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://greenpointtrashclub.org/\". A certificate that does not match its hostname is the site's to renew; this is not an egress denial and not the browser path. The club has no live card to protect — greenpoint-trash-club was deleted on 2026-08-30 under the second-flagged-run rule — so no claim is standing on evidence we cannot read. WHAT WOULD CHANGE IT: the club renewing its certificate, or a card sourced from their Instagram, which is where the rotating meetup spot lives anyway.",
+      "addedAt": "2026-09-10",
+      "expiresAt": "2026-09-24"
+    },
+    {
+      "sourceId": "brooklyn-hearts-club",
+      "gapKey": "GAP",
+      "reason": "THE ITEM IS ONE LINE OF TITLE, AND THE CLUB IS BOROUGH-WIDE. The flagged 9/13 date is \"9/13 Self led Craft Social: Decoupage Vases with Pressed Flowers\" — the whole listing, on a Linktree, with no time, no venue and no address. Every located event on the same page names Crystal Lake (647 Grand St, Williamsburg), and the bio reads \"An art Club for ALL adults. Spreading through art, the BKLYN way.\" so there is no basis to pin this in Greenpoint. Recorded as a watchItem rather than carded. WHAT WOULD CHANGE IT: the club stating a Greenpoint venue and a time.",
+      "addedAt": "2026-09-10",
+      "expiresAt": "2026-09-24"
+    },
+    {
+      "sourceId": "sparrow-nesting",
+      "gapKey": "GAP",
+      "reason": "THE 9/24 ITEM IS AUTHORED AND HELD FOR A LENS RULING, NOT MISSED. Sparrow's page states it in full — \"Date & Time: Thursday September 24 / 6-8PM\", \"Location: Sparrow Funerals, 161 Driggs Ave, Brooklyn NY 11222\" — and it is \"an exclusive gathering ... dedicated to practicing End of Life Doulas like you\". FILTER_IDS carries no lens for a professional gathering (not civic action or mutual aid, not the movement cluster, not culture you attend or make) and no card ships lens-less, so it is in the review PR with the rule question rather than on the map. WHAT WOULD CHANGE IT: Batu ruling on where a practitioner gathering files.",
+      "addedAt": "2026-09-10",
+      "expiresAt": "2026-09-24"
     }
   ],
   "retiredCards": [
@@ -3347,6 +3471,38 @@
     {
       "id": "sparsa-tuesday-prenatal-baby-0908",
       "day": "2026-09-09"
+    },
+    {
+      "id": "action-city-one-piece-0909",
+      "day": "2026-09-10"
+    },
+    {
+      "id": "bin-bin-sake-social-0909",
+      "day": "2026-09-10"
+    },
+    {
+      "id": "film-noir-runaway-nightmare-0909",
+      "day": "2026-09-10"
+    },
+    {
+      "id": "film-noir-sintomas-0909",
+      "day": "2026-09-10"
+    },
+    {
+      "id": "library-wednesday-programs-0909",
+      "day": "2026-09-10"
+    },
+    {
+      "id": "palette-cleanser-vase-0909",
+      "day": "2026-09-10"
+    },
+    {
+      "id": "troost-academy-blues-0909",
+      "day": "2026-09-10"
+    },
+    {
+      "id": "weeding-wednesdays-bip-0909",
+      "day": "2026-09-10"
     }
   ]
 }

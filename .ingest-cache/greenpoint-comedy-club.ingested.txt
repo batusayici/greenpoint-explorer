@@ -11,11 +11,6 @@ NY, US
 Upcoming
 Past
 Calendar
-Wed Sep 9, 2026, 8:00 PM, Wed Sep 16, 2026, 8:00 PM, Wed Sep 23, 2026, 9:15 PM
-Comedians You Should Know @ 8:00 PM
-NY, US
-USD $20.00
-In Stock
 Thu Sep 10, 2026, 8:00 PM, Thu Sep 17, 2026, 8:00 PM, Thu Sep 24, 2026, 8:00 PM
 The Thursday Showcase @ 8:00PM
 NY, US
@@ -56,13 +51,18 @@ The Lineup
 NY, US
 USD $20.00
 In Stock
+Wed Sep 16, 2026, 8:00 PM, Wed Sep 23, 2026, 9:15 PM
+Comedians You Should Know @ 8:00 PM
+NY, US
+USD $20.00
+In Stock
 Thu Sep 17, 2026, 9:30 PM
 Ammar Farooki - Live Music Event
 NY, US
 USD $20.00
 In Stock
 Sat Sep 19, 2026, 6:00 PM
-Y'all Gay
+Y'all Gay with Ali Clayton + Ever Mainard
 NY, US
 USD $20.00
 In Stock
@@ -76,13 +76,23 @@ Greenpoint Comedy Club Presents: Heather Shaw
 NY, US
 USD $25.00
 In Stock
-Thu Sep 24, 2026, 8:00 PM
+Thu Sep 24, 2026, 7:30 PM
 Greenpoint Nights
+NY, US
+USD $20.00
+In Stock
+Thu Sep 24, 2026, 9:30 PM
+Do You Still Like Me? - A Comedy Dating Show
 NY, US
 USD $20.00
 In Stock
 Sat Sep 26, 2026, 6:00 PM
 Savannah DesOrmeaux’s Goo Goo Comedy
+NY, US
+USD $20.00
+In Stock
+Thu Oct 1, 2026, 8:00 PM
+Cartoon Strips with Hilary Campbell
 NY, US
 USD $20.00
 In Stock
@@ -118,16 +128,6 @@ USD $25.00
 In Stock
 Tue Nov 10, 2026, 7:00 PM
 New York Comedy Festival Presents: Thunder Davis and Friends
-NY, US
-USD $25.00
-In Stock
-Thu Nov 12, 2026, 7:30 PM
-New York Comedy Festival Presents: Casey and Friends Named Casey
-NY, US
-USD $20.00
-In Stock
-Fri Nov 13, 2026, 8:00 PM
-New York Comedy Festival Showcase Show
 NY, US
 USD $25.00
 In Stock

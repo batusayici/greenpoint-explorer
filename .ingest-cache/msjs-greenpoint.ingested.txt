@@ -1,156 +1,152 @@
-name: Sept '26 START / / Tot Party (infant-24mo)
+name: Tot Party (infant-24mo)
 schedule: [{"dayNumber":2,"startTime":"9:00AM","endTime":"9:45AM","dayName":"Mon","timeStamp":32400,"tsId":1778695124462}]
 startDate: 2026-09-14
 
-name: Sept '26 START / / Movers (24mo-41mo)
+name: Movers (24mo-41mo)
 schedule: [{"dayNumber":2,"startTime":"9:50AM","endTime":"10:35AM","dayName":"Mon","timeStamp":35400,"tsId":1778695242205}]
 startDate: 2026-09-14
 
-name: Sept '26 START / / Cartwheelers (5yr-6.5yr) + PUP
+name: Cartwheelers (5yr-6.5yr) + PUP
 schedule: [{"dayNumber":2,"startTime":"3:15PM","endTime":"4:15PM","dayName":"Mon","timeStamp":54900,"tsId":1778685073474}]
 startDate: 2026-09-14
 
-name: Sept '26 START / / Purple (6.5yr - 8yr) + PUP
+name: Purple (6.5yr - 8yr) + PUP
 schedule: [{"dayNumber":2,"startTime":"4:15PM","endTime":"5:15PM","dayName":"Mon","timeStamp":58500,"tsId":1778694022909}]
 startDate: 2026-09-14
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr)
+name: Leapers (3.25yr - 5yr)
 schedule: [{"dayNumber":2,"startTime":"5:30PM","endTime":"6:15PM","dayName":"Mon","timeStamp":63000,"tsId":1778694362998}]
 startDate: 2026-09-14
 
-name: Sept '26 START / / Movers (24mo-41mo)
+name: Movers (24mo-41mo)
 schedule: [{"dayNumber":2,"startTime":"5:30PM","endTime":"6:15PM","dayName":"Mon","timeStamp":63000,"tsId":1778694362998}]
 startDate: 2026-09-14
 
-name: Sept '26 START / /Ballet + Tap COMBO *Tiny TuTus* (Guardian Assisted: infants-41mo)
+name: Ballet + Tap COMBO *Tiny TuTus* (Guardian Assisted: infants-41mo)
 schedule: [{"dayNumber":3,"startTime":"9:00AM","endTime":"9:45AM","dayName":"Tue","timeStamp":32400,"tsId":1779480059643}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / Adult Barre Class (+Plus Childcare)
+name: Adult Barre Class (+Plus Childcare)
 schedule: [{"dayNumber":3,"startTime":"9:50AM","endTime":"10:50AM","dayName":"Tue","timeStamp":35400,"tsId":1779831834141}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / Purple (6.5yr - 8yr) + PUP
+name: Purple (6.5yr - 8yr) + PUP
 schedule: [{"dayNumber":3,"startTime":"3:15PM","endTime":"4:15PM","dayName":"Tue","timeStamp":54900,"tsId":1778874777915}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / K-POP Dance *Twirlers* (3.25yr & older)
+name: K-POP Dance *Twirlers* (3.25yr & older)
 schedule: [{"dayNumber":3,"startTime":"3:15PM","endTime":"4:00PM","dayName":"Tue","timeStamp":54900,"tsId":1779479864797}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr) + PUP
+name: Leapers (3.25yr - 5yr) + PUP
 schedule: [{"dayNumber":3,"startTime":"4:15PM","endTime":"5:00PM","dayName":"Tue","timeStamp":58500,"tsId":1778874742379}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / Cartwheelers (5yr-6.5yr) + PUP
+name: Cartwheelers (5yr-6.5yr) + PUP
 schedule: [{"dayNumber":3,"startTime":"4:15PM","endTime":"5:15PM","dayName":"Tue","timeStamp":58500,"tsId":1778874821947}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / SALSA *Twirlers* (3.25yr & older)
+name: SALSA *Twirlers* (3.25yr & older)
 schedule: [{"dayNumber":3,"startTime":"4:15PM","endTime":"5:00PM","dayName":"Tue","timeStamp":58500,"tsId":1779480441239}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / ** Green (6yr+) RECOMMENDATION ONLY**
+name: ** Green (6yr+) RECOMMENDATION ONLY**
 schedule: [{"dayNumber":3,"startTime":"5:15PM","endTime":"6:15PM","dayName":"Tue","timeStamp":62100,"tsId":1778874956301}]
 startDate: 2026-09-15
 
-name: Sept '26 START / / Tot Party (infant-24mo)
+name: Tot Party (infant-24mo)
 schedule: [{"dayNumber":4,"startTime":"9:00AM","endTime":"9:45AM","dayName":"Wed","timeStamp":32400,"tsId":1778947303448}]
 startDate: 2026-09-16
 
-name: Sept '26 START / / Movers (24mo-41mo)
+name: Movers (24mo-41mo)
 schedule: [{"dayNumber":4,"startTime":"9:50AM","endTime":"10:35AM","dayName":"Wed","timeStamp":35400,"tsId":1778947341368}]
 startDate: 2026-09-16
 
-name: Sept '26 START / / Cartwheelers (5yr-6.5yr) + PUP
+name: Cartwheelers (5yr-6.5yr) + PUP
 schedule: [{"dayNumber":4,"startTime":"3:15PM","endTime":"4:15PM","dayName":"Wed","timeStamp":54900,"tsId":1778875713481}]
 startDate: 2026-09-16
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr)
+name: Leapers (3.25yr - 5yr)
 schedule: [{"dayNumber":4,"startTime":"4:15PM","endTime":"5:00PM","dayName":"Wed","timeStamp":58500,"tsId":1778875853438}]
 startDate: 2026-09-16
 
-name: Sept '26 START / / Purple (6.5yr - 8yr)
+name: Purple (6.5yr - 8yr)
 schedule: [{"dayNumber":4,"startTime":"5:30PM","endTime":"6:30PM","dayName":"Wed","timeStamp":63000,"tsId":1778876179325}]
 startDate: 2026-09-16
 
-name: Sept '26 START / / Blue (7.5yr-10yr)
+name: Blue (7.5yr-10yr)
 schedule: [{"dayNumber":4,"startTime":"5:30PM","endTime":"6:30PM","dayName":"Wed","timeStamp":63000,"tsId":1778876203308}]
 startDate: 2026-09-16
 
-name: Sept '26 START / / Cartwheelers (5yr-6.5yr) + PUP
+name: Cartwheelers (5yr-6.5yr) + PUP
 schedule: [{"dayNumber":5,"startTime":"3:15PM","endTime":"4:15PM","dayName":"Thu","timeStamp":54900,"tsId":1778946152467}]
 startDate: 2026-09-10
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr) + PUP
+name: Leapers (3.25yr - 5yr) + PUP
 schedule: [{"dayNumber":5,"startTime":"3:15PM","endTime":"4:00PM","dayName":"Thu","timeStamp":54900,"tsId":1778946235542}]
 startDate: 2026-09-10
 
-name: Sept '26 START / / JAZZ (3.25yr & older)
-schedule: [{"dayNumber":5,"startTime":"3:15PM","endTime":"4:00PM","dayName":"Thu","timeStamp":54900,"tsId":1779480550807}]
-startDate: 2026-09-10
-
-name: Sept '26 START / / Leapers (3.25yr - 5yr) + PUP
+name: Leapers (3.25yr - 5yr) + PUP
 schedule: [{"dayNumber":5,"startTime":"4:15PM","endTime":"5:00PM","dayName":"Thu","timeStamp":58500,"tsId":1778946253345}]
 startDate: 2026-09-10
 
-name: Sept '26 START / / Movers (24mo-41mo)
+name: Movers (24mo-41mo)
 schedule: [{"dayNumber":5,"startTime":"4:15PM","endTime":"5:00PM","dayName":"Thu","timeStamp":58500,"tsId":1778946335932}]
 startDate: 2026-09-10
 
-name: Sept '26 START / / K-POP Dance *Twirlers* (3.25yr & older)
+name: K-POP Dance *Twirlers* (3.25yr & older)
 schedule: [{"dayNumber":5,"startTime":"4:15PM","endTime":"5:00PM","dayName":"Thu","timeStamp":58500,"tsId":1779480344390}]
 startDate: 2026-09-10
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr)
+name: Leapers (3.25yr - 5yr)
 schedule: [{"dayNumber":5,"startTime":"5:15PM","endTime":"6:00PM","dayName":"Thu","timeStamp":62100,"tsId":1778946282260}]
 startDate: 2026-09-10
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr)
+name: Leapers (3.25yr - 5yr)
 schedule: [{"dayNumber":6,"startTime":"3:15PM","endTime":"4:00PM","dayName":"Fri","timeStamp":54900,"tsId":1778946749060}]
 startDate: 2026-09-11
 
-name: Sept '26 START / / Purple + Blue (6.5yr - 10yr) *hybrid
+name: Purple + Blue (6.5yr - 10yr) *hybrid
 schedule: [{"dayNumber":6,"startTime":"4:15PM","endTime":"5:15PM","dayName":"Fri","timeStamp":58500,"tsId":1778946786606}]
 startDate: 2026-09-11
 
-name: Sept '26 START / / Tot Party (infant-24mo)
+name: Tot Party (infant-24mo)
 schedule: [{"dayNumber":7,"startTime":"9:00AM","endTime":"9:45AM","dayName":"Sat","timeStamp":32400,"tsId":1778947285983}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Movers (24mo-41mo)
+name: Movers (24mo-41mo)
 schedule: [{"dayNumber":7,"startTime":"9:00AM","endTime":"9:45AM","dayName":"Sat","timeStamp":32400,"tsId":1778947387077}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Movers (24mo-41mo)
+name: Movers (24mo-41mo)
 schedule: [{"dayNumber":7,"startTime":"10:00AM","endTime":"10:45AM","dayName":"Sat","timeStamp":36000,"tsId":1778947418529}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr)
+name: Leapers (3.25yr - 5yr)
 schedule: [{"dayNumber":7,"startTime":"10:00AM","endTime":"10:45AM","dayName":"Sat","timeStamp":36000,"tsId":1778947461380}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Cartwheelers (5yr-6.5yr)
+name: Cartwheelers (5yr-6.5yr)
 schedule: [{"dayNumber":7,"startTime":"10:00AM","endTime":"11:00AM","dayName":"Sat","timeStamp":36000,"tsId":1778947517598}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Ballet + Tap COMBO *Twirlers* (3.25yr - 6yr)
+name: Ballet + Tap COMBO *Twirlers* (3.25yr - 6yr)
 schedule: [{"dayNumber":7,"startTime":"10:00AM","endTime":"10:45AM","dayName":"Sat","timeStamp":36000,"tsId":1779480648443}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Leapers (3.25yr - 5yr)
+name: Leapers (3.25yr - 5yr)
 schedule: [{"dayNumber":7,"startTime":"11:00AM","endTime":"11:45AM","dayName":"Sat","timeStamp":39600,"tsId":1778947484913}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Purple (6.5yr - 8yr)
+name: Purple (6.5yr - 8yr)
 schedule: [{"dayNumber":7,"startTime":"11:00AM","endTime":"12:00PM","dayName":"Sat","timeStamp":39600,"tsId":1778947610117}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / Cartwheelers (5yr-6.5yr)
+name: Cartwheelers (5yr-6.5yr)
 schedule: [{"dayNumber":7,"startTime":"12:00PM","endTime":"1:00PM","dayName":"Sat","timeStamp":43200,"tsId":1778947528752}]
 startDate: 2026-09-12
 
-name: Sept '26 START / / ** Green (6yr+) RECOMMENDATION ONLY**
+name: ** Green (6yr+) RECOMMENDATION ONLY**
 schedule: [{"dayNumber":7,"startTime":"12:00PM","endTime":"1:00PM","dayName":"Sat","timeStamp":43200,"tsId":1778947668780}]
 startDate: 2026-09-12
 
