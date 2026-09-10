@@ -859,6 +859,15 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // duplicates of `library-sensory-garden-0918` and `library-bike-clinic-0919`,
   // which main already carries with better end times. Deck 218 -> 225.
   //
+  // 2026-09-10 (Light & Sound Design): +5. The first venue carded without a pin.
+  // Its calendar came out of the poster batch, it fetches clean, and every one
+  // of its events was uncardable until Batu allowed a card whose location the
+  // source deliberately withholds ("SECRET ADDRESS DM FOR INFO" on its own
+  // flyer). Two Quadraphonics sittings on 9/12, then 9/13, 9/18 and 9/19.
+  // Skipped on geography: the 9/20 "Last Sun Day" the index lists is at Rockaway
+  // Beach, which only the flyer says. Deck 230 -> 235, event 133 -> 138,
+  // live_music 38 -> 43.
+  //
   // 2026-09-10 (posters, second pass): +1. Batu supplied the month the Calyer
   // Street poster had lost to the sun, so the block party ships as 9/12 — the
   // same shape as the Batu-supplied venue fact on the macha-studio roster entry,
@@ -872,14 +881,14 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // 607 CSA's winter veggie share, whose Greenpoint Tuesday pickups at
   // Dandelion Wine and the Sunview the farm's own site confirms. Deck 225 -> 229,
   // event 129 -> 132, subscription 37 -> 38.
-  assert.equal(seed.cards.length, 230);
+  assert.equal(seed.cards.length, 235);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.category === "event"), 133, "129 + the three Salsa class-week sittings + the Calyer Street block party (2026-09-10 posters)");
+  assert.equal(count((c) => c.category === "event"), 138, "129 + three Salsa classes + the Calyer block party + five Light & Sound nights (2026-09-10)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 38, "37 − the 9/9 Troost night + LUMENS 9/22 and Barba Yiorgi 9/24 (2026-09-10)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 43, "38 + five Light & Sound Design nights (2026-09-10)");
   assert.equal(count((c) => c.category === "subscription"), 38, "37 + The 607 CSA winter veggie share (2026-09-10 posters)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -1897,8 +1906,26 @@ test("every card validates", () => {
 
 test("every card is geocoded inside Greenpoint (run scripts/geocode-demand-cards.mjs)", () => {
   for (const card of seed.cards) {
+    // A venue that deliberately withholds its address has no coords to derive
+    // (2026-09-10) — Light & Sound Design's own flyer reads "SECRET ADDRESS DM
+    // FOR INFO". Those cards ride the feed with no marker; the schema enforces
+    // that the flag and real coords can never coexist, so exempting them here
+    // cannot be used to smuggle an ungeocoded card through.
+    if (card.locationPrivate) continue;
     assert.ok(inGreenpoint(card), `${card.id} has no derived coords`);
   }
+});
+
+test("a pinless card is deliberate, never an oversight (2026-09-10)", () => {
+  const pinless = seed.cards.filter((c) => !inGreenpoint(c) && !(c.venues?.length > 0));
+  for (const c of pinless) {
+    assert.equal(c.locationPrivate, true, `${c.id} has no pin and no reason for it`);
+    assert.ok(c.locationName, `${c.id} must still name where it is`);
+  }
+  // The five Light & Sound Design nights carded from its flyers on 2026-09-10.
+  // If this number moves, a run either onboarded another address-private venue
+  // (fine, say so) or dropped a pin it should have derived (not fine).
+  assert.equal(pinless.length, 5);
 });
 
 // The World Cup watch-party cluster (world-cup-watch) aged out in the

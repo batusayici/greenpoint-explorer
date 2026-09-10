@@ -362,7 +362,29 @@ export function validateCard(card) {
     if (!str(v.name)) err("venue missing name");
     if (v.lat != null && !inGreenpoint(v)) err(`venue "${v.name}" outside Greenpoint`);
   }
-  if (!hasCoords && venues.length === 0) err("needs coords or venues to appear on the map");
+  // Location deliberately private (2026-09-10, Batu — DECISION_LOG). Some real
+  // Greenpoint venues do not publish where they are: Light & Sound Design
+  // Studios says "RSVP FOR LOCATION" on its posters and names itself "L&SD
+  // (address with rsvp)" on its own ticketing page. Its calendar is dense and
+  // entirely uncardable under a pin requirement, and the address IS findable on
+  // third-party listings — which is exactly why this exists instead. **We do not
+  // out a venue that chose not to publish.** So the card ships without a pin: it
+  // appears in the feed, drops no marker, and says on its own row that the
+  // address comes with the RSVP. `mapPins` already skips a card with no coords
+  // and `aeo` already omits `geo`, so nothing downstream needed convincing.
+  //
+  // The flag is a CLAIM, not a shortcut: it means the source deliberately
+  // withholds the address, never that a run could not be bothered to geocode.
+  // A card that simply lacks coords still fails here.
+  if (card.locationPrivate != null && typeof card.locationPrivate !== "boolean") {
+    err("locationPrivate must be a boolean");
+  }
+  if (card.locationPrivate) {
+    if (hasCoords || venues.length > 0) err("locationPrivate card must not carry coords or venues");
+    if (str(card.address)) err("locationPrivate card must not carry an address");
+  } else if (!hasCoords && venues.length === 0) {
+    err("needs coords or venues to appear on the map");
+  }
 
   return { ok: errors.length === 0, errors };
 }

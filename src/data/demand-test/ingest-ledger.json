@@ -2920,8 +2920,13 @@
       "addedAt": "2026-09-10"
     },
     {
-      "item": "light-and-sound-design — fetches clean and carries a dense dated calendar, but every event is uncardable because the venue does not publish its address (\"RSVP FOR LOCATION\"; its Luma page reads \"L&SD (address with rsvp)\") and the schema needs a pin.",
-      "condition": "Batu settles whether the map can carry an event whose location is deliberately private. Do NOT unblock it by publishing an address found on a third-party listing.",
+      "item": "light-and-sound-design 10/3/2026 — ARTO LINDSAY & MELVIN GIBBS, DR S+M, BEAT DETECTIVES, Exoplex, Stewey Decimal at L&SD. Flyer read 2026-09-10; it states NO time. Past the 14-day horizon on the day it was read, so recorded rather than carded.",
+      "condition": "Card it once 10/3 is inside the horizon. No clock is stated on the flyer — use the all-day sentinel unless L&SD publishes a time; do not invent one.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "item": "light-and-sound-design 9/16 'dance practice: Taia + dominique' — sells through luma.com/p1eliske, which showed both named tiers (8:30pm entry, work trade) SOLD OUT on 2026-09-10, so it was not carded.",
+      "condition": "Card it if Luma shows availability, or drop it once the date passes.",
       "addedAt": "2026-09-10"
     }
   ],
