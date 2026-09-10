@@ -54,7 +54,7 @@ or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
 
 1. Link copied from the table above — never hand-typed, never bare.
 2. New channel → add the row here **first** (kebab-case `src`, committed).
-3. **Posting to Facebook — run the link through the [Sharing Debugger](https://developers.facebook.com/tools/debug/) first.** Facebook caches its preview per exact URL, query string included, so a freshly tagged link it has never seen shows as a bare `stoopwise.com` with no headline until it scrapes. Seen on 2026-09-10: the first post of `?src=verify&lens=family_kids` rendered with no title and no description; one "Scrape Again" and the same URL came back with the full card — title, description and the map image. Every one of Rana's group links is a URL Facebook has never seen.
+3. **Posting to Facebook — if the card comes up bare, run the link through the [Sharing Debugger](https://developers.facebook.com/tools/debug/) and hit Scrape Again.** Not needed as a routine step: tested 2026-09-10, `?src=verify&lens=civic` was a query string Facebook had never seen and its card rendered complete on the first post. Facebook follows `og:url` to `https://stoopwise.com/` and treats every tagged variant as the same object, so one good scrape of the root covers them all. The bare card seen earlier that day was Facebook rendering the post before it had finished fetching, not a per-URL cache miss.
 4. Within a day of sending, spot-check the `src` shows up:
    `./scripts/posthog-pull.sh` → Channels table.
 
