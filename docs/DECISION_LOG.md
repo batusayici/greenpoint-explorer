@@ -4,6 +4,30 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-10 — a hidden address is not the same as an unknown borough; `locationPrivate` covers only the first
+
+**Batu, second poster batch.** A postcard for SOIL: Field of Awareness, a two-night Butoh-puppetry
+performance on 26–27 September made with Newtown Creek Alliance, North Brooklyn Parks Alliance and
+NYC Cultural Affairs. Its Luma page states the times and then says "Register to See Address" —
+the same withheld-address shape that `locationPrivate` was created for a day earlier, for Light &
+Sound Design.
+
+**It does not qualify, and Batu confirmed the hold.** The two cases only look alike. Light & Sound
+is a known Greenpoint venue that declines to publish its street address; SOIL is an event whose
+*neighborhood* nobody has established at all. The only locational hint on either the postcard or
+the Luma page is a "Penny Bridge" badge, and Penny Bridge sits on the Queens side of Newtown Creek.
+Carding it would have put an event on the Greenpoint feed on the strength of a guess.
+
+**The rule.** `locationPrivate` is a claim about a source that withholds a *known* location, not a
+way past the geography gate. Before the flag can be used, the run must be able to say the thing is
+in Greenpoint on evidence — a named venue, a stated neighborhood, an organiser whose address is
+known. If the only thing missing is the street number, the flag applies; if the borough is missing,
+the card is held. The schema cannot catch this one (a private card carries no coords to bbox-test),
+so it lives here and in the `/poster` skill.
+
+**What would unblock it:** someone registers and reads the address, or one of the named partner
+organisations states the site publicly.
+
 ## 2026-09-10 — street posters become a supply source: photograph it, transcribe it, card it; the venue behind a dead poster is the real yield
 
 **Batu.** He walks past taped-up posters on light poles and shop windows constantly — events, classes, block parties, CSA signups — and none of it reaches the map, because none of it is on the web anywhere a fetch can find. He asked for a way to hand over a batch of photos and get cards.

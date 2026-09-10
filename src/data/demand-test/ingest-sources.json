@@ -1280,6 +1280,21 @@
       "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — a Dada Strain show flyer in a window, for a venue nothing on the roster covered. Private Greenpoint loft with a vintage 4-point Klipsch system and a dense music/deep-listening calendar. Plain fetch reads it fine (555 chars, measured 2026-09-10) and the index carries DATE + TITLE ONLY — every time, lineup and location lives inside the event page's flyer IMAGE, so this is a detailsInImages source: read each /e/ flyer and write what you read into the snapshot before extracting, same rule as macha-studio. ⚠ THE VENUE DOES NOT PUBLISH ITS ADDRESS, BY DESIGN — its own flyer reads \"SECRET ADDRESS DM FOR INFO\", its poster says \"(RSVP FOR LOCATION)\" and its Luma page names the venue \"L&SD (address with rsvp)\". Its cards therefore carry `locationPrivate: true` and NO coords, address or venues; the schema rejects that combination, so a run cannot flag one private and pin it anyway. NEVER resolve this by publishing an address found on a third-party listing (Oh My Rockness, RA) — the venue chose not to publish it (Batu, 2026-09-10, DECISION_LOG). ⚠ THE INDEX IS NOT A GEOGRAPHY SOURCE: the 9/20 \"Last Sun Day\" it listed is at Rockaway Beach, which only the flyer says. Read the flyer before assuming a listed event is in Greenpoint. Some flyers state no clock at all (Present Sounds, 9/10) — those take the all-day sentinel, not an invented time.",
       "detailsInImages": true,
       "standing": true
+    },
+    {
+      "id": "cultural-center-st-johns",
+      "name": "The Cultural Center at St John's (Wix events)",
+      "url": "https://www.stjohnsgreenpoint.com/event-pages-sitemap.xml",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "citeHost": "stjohnsgreenpoint.com",
+      "notes": "155 Milton St. Onboarded 2026-09-10 (Batu supplied the URL after a poster batch surfaced the venue). St. John's Lutheran Church opened a cultural center on 2026-09-03 with string quartet ETHEL and a fall chamber music series; the church hall is also home to a recurring 'Coconspirators' discussion series. THE LISTING PAGE IS NOT FETCHABLE: /cultural-center is Wix and renders entirely in JavaScript — a plain fetch returns nav and footer, and ?format=json is a Squarespace trick that does nothing here (both measured 2026-09-10). THE EVENT SITEMAP IS. It enumerates every event page, and each /event-details/ page carries its date, time and full address in PLAIN VISIBLE TEXT, no script needed — measured on ethel-opening-night: \"ETHEL - OPENING NIGHT Thu, Sep 03 | 155 Milton St ... Sep 03, 2026, 6:30 PM - 8:30 PM 155 Milton St, 155 Milton St, Brooklyn, NY 11222, USA\". So the sitemap is the discovery surface and `detail` does the real reading. The pages also carry JSON-LD with startDate/endDate if the plain text ever stops being enough. NOTE the sitemap lists PAST events too and offers no upcoming filter — date-gate at parse time. ALSO NOTE a source conflict on the one date anyone published: the street poster says 7PM, Brooklyn Paper said 6:30 p.m., and the venue's own page says 6:30 PM — the venue's page wins.",
+      "detail": {
+        "match": "/event-details/",
+        "limit": 35,
+        "delayMs": 400
+      }
     }
   ],
   "manualSources": [
@@ -1319,17 +1334,9 @@
       "id": "oak-and-iron",
       "name": "Oak & Iron",
       "address": "147 Franklin St",
-      "status": "manual-instagram",
-      "reason": "PROPOSED, NOT ADDED TO THE FETCH ROSTER 2026-09-10 — needs Batu. A single poster batch surfaced TWO standing programs at this bar that nothing on the map had: Tarot Tuesdays from 7pm (readings by Soror Sophia, running since August 25) and a La Maison Tachon dessert pop-up every Saturday. That is the highest programme density of any venue in the batch. It has nothing fetchable: no events page anywhere on the web, and the only public channel is instagram.com/oakandiron — blocked to headless fetch, same shape as Razor-N-Tape and Jabberjaw. La Maison Tachon's own site (lamaisontachon.com) renders in JavaScript and returned only its <title> on 2026-09-10, so it cannot corroborate its own pop-up either.",
-      "revisitIf": "Oak & Iron publishes a schedule anywhere fetchable, or the Instagram-ingest question in docs/PLAN.md is settled. Until then both cards are poster-sourced with trustRisk medium and expire 2026-10-10, so the next batch has to re-earn them."
-    },
-    {
-      "id": "cultural-center-st-johns",
-      "name": "The Cultural Center at St John's",
-      "address": "155 Milton St",
-      "status": "manual-no-calendar-url",
-      "reason": "PROPOSED, NOT ADDED TO THE FETCH ROSTER 2026-09-10 — needs a calendar URL, then it is the best roster lead of this batch. A brand-new venue: St. John's Evangelical Lutheran Church launched a cultural center on Sept 3 2026 with Grammy-winning string quartet ETHEL, opening a fall chamber music series that the poster dates SEP 3 - NOV [covered by another flyer], 7PM. A church hall running a season of concerts on Milton St is exactly the recurring supply this roster is short of, and the address is already on the map (town-square-cub-scouts-pack-7). What is missing is a URL: thecenteratstjohns.org does not resolve, viewcy.com/o/thecenteratstjohns is a 404, and the only fetchable page anywhere is the single ETHEL ticket listing at viewcy.com/event/ethelatstjohns. Brooklyn Paper's coverage also conflicts with the poster on time — 6:30 p.m. for opening night against the poster's 7PM — so even that one sitting is source-conflicted.",
-      "revisitIf": "The venue names its calendar page (likely a Viewcy organizer profile under a handle nobody has found yet, or a page on stjohnsgreenpoint.weebly.com). Batu could also ask the church directly; the series card is held until individual concert dates exist."
+      "status": "manual-instagram-accepted",
+      "reason": "ON THE ROSTER AS A MANUAL WATCH — Batu said add it, 2026-09-10. It cannot be a fetch source: there is no events page anywhere on the web, the bar's only listed website is a Facebook page (blocked to headless fetch), and Instagram is the live channel. A single poster batch surfaced TWO standing programs at this bar that nothing on the map had: Tarot Tuesdays from 7pm (readings by Soror Sophia, running since August 25) and a La Maison Tachon dessert pop-up every Saturday. That is the highest programme density of any venue in the batch. It has nothing fetchable: no events page anywhere on the web, and the only public channel is instagram.com/oakandiron — blocked to headless fetch, same shape as Razor-N-Tape and Jabberjaw. La Maison Tachon's own site (lamaisontachon.com) renders in JavaScript and returned only its <title> on 2026-09-10, so it cannot corroborate its own pop-up either.",
+      "revisitIf": "Oak & Iron publishes a schedule anywhere fetchable, or the Instagram-ingest question in docs/PLAN.md is settled. Until then the two poster cards (Tarot Tuesdays, the La Maison Tachon Saturday pop-up) are the whole of the coverage here and both expire 2026-10-10, so a human has to re-confirm them. Greenpointers also covers this bar's history nights, so some of its programming arrives through the roundup source."
     },
     {
       "id": "madelines-nyc",

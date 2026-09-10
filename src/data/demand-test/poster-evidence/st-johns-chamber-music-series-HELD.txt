@@ -29,3 +29,17 @@ SERIES
 # is source-conflicted. viewcy.com/o/thecenteratstjohns 404s — the venue's
 # calendar URL is not known.
 # TO UNBLOCK: the venue's calendar page. This is the batch's best roster lead.
+
+# ── UPDATE 2026-09-10: Batu supplied the calendar —
+# https://www.stjohnsgreenpoint.com/cultural-center
+# That page renders in JavaScript, but the site's event sitemap
+# (/event-pages-sitemap.xml) enumerates every event page, and each
+# /event-details/ page states its date, time and address in plain text. The
+# venue is now on the fetch roster as `cultural-center-st-johns`.
+# THE CARD STAYS HELD ANYWAY: the only cultural-center event the site publishes
+# is ethel-opening-night, "Sep 03, 2026, 6:30 PM – 8:30 PM", which is past and
+# marked "Registration is closed". No further chamber concert has been posted,
+# so the Sep–Nov series the poster advertises still has no dates to card. The
+# roster source means the next concert arrives on its own, without a photograph.
+# The venue's own page also settles the time conflict: 6:30 PM, not the
+# poster's 7PM.
