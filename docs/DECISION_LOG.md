@@ -29,6 +29,29 @@ This is a historical decision log. Older entries may contain status language tha
 **Jabberjaw's free Tuesday comedy at Paulie Gee's goes to `manualSources`, not the fetch roster.** The show is real and free, but its schedule exists only on Instagram: Paulie Gee's own page is 186KB of restaurant marketing with no events section, and the one fetchable listing shows a single date in August marked passed. Recorded with what would reopen it, so a later run does not re-onboard it and rediscover the same wall.
 
 **Shape:** a `/poster` skill, photos pasted into chat, one branch and PR per batch — cards, evidence files and proposed roster entries together — reporting what ships, what is held and what would unblock it, and which venues to add.
+## 2026-09-10 — an event whose source states a closed audience does not card
+
+**Batu, approving the rule PR #71 proposed.** Sparrow Funerals listed a gathering for practicing
+end-of-life doulas on 24 September at 161 Driggs Ave. The source states everything a card needs —
+date, time, address, RSVP — and the run still could not author it, because `FILTER_IDS` has nowhere
+to file a professional gathering and no card ships without a lens. Rather than rule on that one item,
+the question was put as a rule.
+
+**The decision.** When the source itself names who may come and that group is not the neighborhood —
+one profession, one school's enrolled families, one company's staff — there is nothing on offer to a
+reader who taps the pin, so it does not card. The test is the source's stated audience, not the
+subject or the venue: a talk *about* end-of-life care that anyone may attend still cards, at whatever
+lens the activity earns.
+
+**Why this was a missing rule rather than a new one.** The `st-stans-academy` coverage explanation has
+closed that source's window on exactly this reading every run — *"for enrolled families, not the
+neighborhood"* — while the rule underneath it was written nowhere, which is why this item got argued
+from scratch. It adds no lens and no schema field. The Sparrow item is off `watchItems`; it will not
+card.
+
+**Still open:** religious services. Sunday worship at Greenpoint Reformed Church and the masses at St.
+Stanislaus Kostka are open to everyone, so this rule does not touch them. Their problem is that no lens
+fits, and that stays in `watchItems`.
 
 ## 2026-09-08 — the ingest fetch leaves the sandbox: GitHub Actions reads the roster every morning, the home Mac reads it again, the routine diffs what landed
 
