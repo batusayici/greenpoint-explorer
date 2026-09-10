@@ -1890,6 +1890,29 @@
         "1a0861614b954456",
         "1a08230c7f4dd072"
       ]
+    },
+    {
+      "runAt": "2026-09-10",
+      "cadence": "rebuild",
+      "shipped": [
+        "bip-weeding-wednesdays",
+        "cb1-parks-waterfront-0915",
+        "comedy-cysk-wednesdays",
+        "comedy-thursday-showcase",
+        "comedy-friday-showcase",
+        "comedy-saturday-showcase",
+        "happy-medium-art-cafe"
+      ],
+      "updated": [],
+      "deleted": [],
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 0 source-blocked",
+      "outcome": "REBUILD, not a fetch. The 2026-09-09 daily run's branch (PR #69) fell two deck-rewriting commits behind main and, under the 2026-08-30 rule, could not be merged or rebased, so it was closed and the cards it had verified were re-applied against the current deck instead. Seven of its twelve came across. Three were dropped as already covered: the two Film Noir screenings on the 9th had passed, and the library Friday card and the bike clinic duplicate library-sensory-garden-0918 and library-bike-clinic-0919, which main already carries with real end times rather than the 23:59 sentinel. Every card kept its original sourceQuote and sourceLinks from the 9/9 verification; nothing was re-authored. The find is the Greenpoint Comedy Club's four standing weekly showcases (Wed/Thu/Fri/Sat), which the deck had never carried — only the one-off named bills. Deck 218 -> 225, event 123 -> 129.",
+      "urls": [
+        "https://gogreenbk.org/event/weeding-bip-2026/2026-09-09/",
+        "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+        "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+        "https://happy-medium.co/art-cafe"
+      ]
     }
   ],
   "senderRegistry": [

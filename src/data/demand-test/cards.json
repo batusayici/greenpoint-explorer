@@ -9982,6 +9982,350 @@
       "startsAt": "2026-09-24T21:30:00-04:00",
       "endsAt": "2026-09-24T23:59:00-04:00",
       "sourceQuote": "Thu Sep 24, 2026, 9:30 PM\nDo You Still Like Me? - A Comedy Dating Show\nNY, US\nUSD $20.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "locationName": "Bushwick Inlet Park",
+      "address": "86 Kent Ave",
+      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
+      "lat": 40.722349,
+      "lng": -73.961382,
+      "free": true,
+      "category": "event",
+      "id": "bip-weeding-wednesdays",
+      "title": "Weeding Wednesdays at Bushwick Inlet Park",
+      "kicker": "Free volunteer gardening, tools provided",
+      "summary": "Friends of Bushwick Inlet Park weed, mulch and tend the beds. Sign-up is required, and they email the meeting spot — it alternates between two Kent Avenue sites.",
+      "startsAt": "2026-09-09T18:00:00-04:00",
+      "endsAt": "2026-09-23T19:30:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      },
+      "filters": [
+        "civic"
+      ],
+      "relatedCardIds": [
+        "nbk-garden-club-bip-0913"
+      ],
+      "actions": [
+        {
+          "label": "Sign up",
+          "type": "rsvp",
+          "url": "https://gogreenbk.org/event/weeding-bip-2026/2026-09-09/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Weeding Wednesdays at Bushwick Inlet Park",
+          "url": "https://gogreenbk.org/event/weeding-bip-2026/2026-09-09/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-09-09"
+        }
+      ],
+      "sourceQuote": "Weeding Wednesdays at Bushwick Inlet Park\nWednesday, September 9th at 6:00 PM - 7:30 PM\nFree\nJoin us every week on Wednesday from 6pm to sunset as we weed, mulch, tend plants and blossoms, sometimes plant and water (if necessary). We have tools and gloves (but bring yours if you have them/prefer).\nRequired signup.\nWe focus on open spaces at 50 Kent Avenue and 86 Kent Avenue. Please keep an eye on your email (or instagram) after registering to confirm which location we’ll meet at on a given day!"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "locationName": "Bushwick Inlet Park",
+      "address": "86 Kent Ave",
+      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
+      "lat": 40.722349,
+      "lng": -73.961382,
+      "free": false,
+      "category": "event",
+      "id": "cb1-parks-waterfront-0915",
+      "title": "CB1 Parks and Waterfront Committee at Bushwick Inlet Park",
+      "kicker": "Community Board 1 committee meeting",
+      "summary": "On the agenda: concessions at Transmitter Park, the Renew Crew from NYC Parks, a Metropolitan Pool update and Steinberg Park issues. No finish time is listed.",
+      "startsAt": "2026-09-15T18:00:00-04:00",
+      "endsAt": "2026-09-15T23:59:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "actions": [
+        {
+          "label": "Community calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "North Brooklyn community calendar",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-09"
+        }
+      ],
+      "sourceQuote": "CB1 Parks and Waterfront Committee\nTue, Sep 15 6:00 pm\n86 Kent Avenue Brooklyn, NY 11249\nAudience: All Ages Type: Community Meeting\nAGENDA\n1. Transmitter Park: Presenting Parks Concessions\n2. Renew Crew: Presenting – From NYC Parks, Mary Salig-Husain, Park Administrator\n3. Metropolitan Pool Update (Discussion)\n4. Steinberg Park Issues"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club listings",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Jump Comedy",
+          "date": "2026-09-09"
+        }
+      ],
+      "free": false,
+      "category": "event",
+      "id": "comedy-cysk-wednesdays",
+      "title": "Comedians You Should Know at Greenpoint Comedy Club",
+      "kicker": "A midweek stand-up showcase",
+      "summary": "Twenty dollars. The club lists a later start on 23 September, which this card does not cover.",
+      "startsAt": "2026-09-09T20:00:00-04:00",
+      "endsAt": "2026-09-16T20:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      },
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Wed Sep 9, 2026, 8:00 PM, Wed Sep 16, 2026, 8:00 PM, Wed Sep 23, 2026, 9:15 PM\nComedians You Should Know @ 8:00 PM\nUSD $20.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club listings",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Jump Comedy",
+          "date": "2026-09-09"
+        }
+      ],
+      "free": false,
+      "category": "event",
+      "id": "comedy-thursday-showcase",
+      "title": "The Thursday Showcase at Greenpoint Comedy Club",
+      "kicker": "A regular stand-up bill at 8pm",
+      "summary": "Twenty dollars. The listing gives a start but no finish.",
+      "startsAt": "2026-09-10T20:00:00-04:00",
+      "endsAt": "2026-09-24T20:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      },
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Thu Sep 10, 2026, 8:00 PM, Thu Sep 17, 2026, 8:00 PM, Thu Sep 24, 2026, 8:00 PM\nThe Thursday Showcase @ 8:00PM\nUSD $20.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club listings",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Jump Comedy",
+          "date": "2026-09-09"
+        }
+      ],
+      "free": false,
+      "category": "event",
+      "id": "comedy-friday-showcase",
+      "title": "The Friday Showcase at Greenpoint Comedy Club",
+      "kicker": "Two stand-up bills, 8pm and 10pm",
+      "summary": "The club runs its showcase twice over, with a separate later line-up on the same stage. Twenty-five dollars for either.",
+      "startsAt": "2026-09-11T20:00:00-04:00",
+      "endsAt": "2026-09-25T22:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "fri"
+        ]
+      },
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Fri Sep 11, 2026, 8:00 PM, Fri Sep 18, 2026, 8:00 PM, Fri Sep 25, 2026, 8:00 PM and 5 more\nThe Friday Showcase Show @ 8:00 PM\nUSD $25.00\nFri Sep 11, 2026, 10:00 PM, Fri Sep 18, 2026, 10:00 PM, Fri Sep 25, 2026, 10:00 PM and 5 more\nThe (Later) Friday Showcase @ 10:00 PM\nUSD $25.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club listings",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Jump Comedy",
+          "date": "2026-09-09"
+        }
+      ],
+      "free": false,
+      "category": "event",
+      "id": "comedy-saturday-showcase",
+      "title": "The Saturday Showcase at Greenpoint Comedy Club",
+      "kicker": "Two stand-up bills, 8pm and 10pm",
+      "summary": "Same shape as the Friday night: an early showcase and a late one with its own line-up. Twenty-five dollars for either.",
+      "startsAt": "2026-09-12T20:00:00-04:00",
+      "endsAt": "2026-09-26T22:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      },
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Sat Sep 12, 2026, 8:00 PM, Sat Sep 19, 2026, 8:00 PM, Sat Sep 26, 2026, 8:00 PM and 5 more\nThe Saturday Showcase @ 8:00 PM\nUSD $25.00\nSat Sep 12, 2026, 10:00 PM, Sat Sep 19, 2026, 10:00 PM, Sat Sep 26, 2026, 10:00 PM and 4 more\nThe Late Saturday Showcase @ 10:00 PM\nUSD $25.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-09",
+      "free": false,
+      "category": "arts_culture",
+      "id": "happy-medium-art-cafe",
+      "title": "Happy Medium Art Cafe",
+      "kicker": "Drop-in art sessions, $15 deposit",
+      "summary": "Two-hour painting and craft slots run several times a day from mid-afternoon into the evening. The same company runs a Manhattan room, so check the location on the booking page.",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Happy Medium",
+      "address": "224 Franklin St",
+      "geocodeQuery": "224 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Book a seat",
+          "type": "rsvp",
+          "url": "https://happy-medium.co/art-cafe"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Happy Medium — Art Cafe",
+          "url": "https://happy-medium.co/art-cafe",
+          "publisher": "Happy Medium",
+          "date": "2026-09-09"
+        }
+      ],
+      "sourceQuote": "Art Cafe\nWed, Sep 9 · 5:00 PM - 7:00 PM\nGreenpoint\n$15 deposit\nArt Cafe\nWed, Sep 9 · 8:00 PM - 10:00 PM\nGreenpoint\n$15 deposit",
+      "lat": 40.73327,
+      "lng": -73.957578
     }
   ]
 }

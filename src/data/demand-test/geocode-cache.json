@@ -4363,5 +4363,30 @@
         "-73.9580060"
       ]
     }
+  },
+  "224 Franklin St, Brooklyn, NY 11222": {
+    "query": "224 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-09T13:22:46.216Z",
+    "hit": {
+      "place_id": 360489205,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 491213356,
+      "lat": "40.7332695",
+      "lon": "-73.9575782",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "The Springs",
+      "display_name": "The Springs, 224, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7331196",
+        "40.7334025",
+        "-73.9580366",
+        "-73.9574546"
+      ]
+    }
   }
 }
