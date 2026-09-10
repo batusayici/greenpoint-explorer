@@ -15,7 +15,8 @@
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { AEO_ORIGIN, liveCards } from "../src/demand-test/aeo.js";
+import { AEO_ORIGIN, liveCards, lensPagePaths, LENS_PAGE_FLOOR } from "../src/demand-test/aeo.js";
+import { LENS_PAGES } from "../src/demand-test/deepLink.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = resolve(ROOT, "dist");
@@ -129,13 +130,79 @@ for (const card of live) {
   if (canonicals !== 1) fail(where, `expected 1 canonical, found ${canonicals}`);
 }
 
+// 1b. The lens landing pages (2026-09-10). Same bar as a card page — prose, one
+//     canonical, typed structured data — because they exist for the same reader:
+//     a crawler that never runs the app. The extra check here is that a page was
+//     written for every lens above the floor and for no lens below it, since the
+//     sitemap trusts the same function.
+const lensPaths = lensPagePaths(seed.cards, new Date());
+for (const path of lensPaths) {
+  const rel = `${path}/index.html`;
+  const where = `/${path}`;
+  if (!existsSync(resolve(DIST, rel))) {
+    fail(where, "lens is above the floor but has no prerendered page");
+    continue;
+  }
+  const html = read(rel);
+
+  const words = visibleWords(html);
+  if (words < MIN_CARD_WORDS) fail(where, `only ${words} visible words (min ${MIN_CARD_WORDS})`);
+
+  const canonicals = [...html.matchAll(/<link rel="canonical"/g)].length;
+  if (canonicals !== 1) fail(where, `expected 1 canonical, found ${canonicals}`);
+  if (!html.includes(`<link rel="canonical" href="${AEO_ORIGIN}/${path}" />`)) {
+    fail(where, "canonical does not point at this page");
+  }
+
+  // The head must be the LENS's, not the shell's. A page that ships the home
+  // page's title is the exact failure these pages were built to end: every
+  // group post previewing as the same generic headline.
+  const title = /<title>([\s\S]*?)<\/title>/.exec(html)?.[1] ?? "";
+  if (/^What's on in Greenpoint, Brooklyn this week/.test(title)) {
+    fail(where, "still carries the home page title — the share preview would be generic");
+  }
+  const ogTitle = /<meta property="og:title" content="([^"]*)"/.exec(html)?.[1] ?? "";
+  if (ogTitle !== title) fail(where, "og:title and <title> disagree");
+  if (!/greenpoint/i.test(title)) {
+    fail(where, 'title does not carry "Greenpoint" — the keyword search matches on');
+  }
+
+  const lds = jsonLdBlocks(html, where);
+  if (lds.length !== 1) fail(where, `expected exactly 1 JSON-LD block, found ${lds.length}`);
+  const itemList = lds.find((l) => l["@type"] === "ItemList");
+  if (!itemList) fail(where, "lens page has no ItemList JSON-LD");
+  else {
+    for (const entry of itemList.itemListElement ?? []) {
+      const item = entry.item;
+      if (!item) fail(where, `ItemList position ${entry.position} carries no item`);
+      else if (!item.startDate) fail(where, `ItemList item "${item.name}" carries no startDate`);
+    }
+  }
+}
+
+// A lens below the floor must not have been written — a stale page from an
+// earlier build would keep being served and keep being announced.
+for (const path of Object.keys(LENS_PAGES)) {
+  if (lensPaths.includes(path)) continue;
+  if (existsSync(resolve(DIST, path, "index.html"))) {
+    fail(`/${path}`, `below the ${LENS_PAGE_FLOOR}-card floor but a page was written anyway`);
+  }
+}
+
 // 2. Sitemap parity — no drift in either direction, and nothing listed that
 //    isn't on disk (a 404 in the sitemap teaches a crawler to trust it less).
 const sitemap = read("sitemap.xml");
 const listed = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));
 const cardUrls = live.map((c) => `${AEO_ORIGIN}/e/${encodeURIComponent(c.id)}`);
 for (const url of cardUrls) if (!listed.has(url)) fail("sitemap.xml", `live card missing: ${url}`);
+const lensUrls = lensPaths.map((p) => `${AEO_ORIGIN}/${p}`);
+for (const url of lensUrls) {
+  if (!listed.has(url)) fail("sitemap.xml", `built lens page missing: ${url}`);
+}
 for (const url of listed) {
+  // A lens URL is announced only when its page was built — checked above from
+  // both sides, so here we only need it not to be mistaken for a card.
+  if (lensUrls.includes(url)) continue;
   if (!url.includes("/e/")) continue;
   if (!cardUrls.includes(url)) fail("sitemap.xml", `lists a card that is not live: ${url}`);
   const slug = decodeURIComponent(url.split("/e/")[1]);

@@ -13,6 +13,9 @@ import {
   rssXml,
   icsText,
   llmsTxt,
+  injectLensPage,
+  lensPagePaths,
+  LENS_PAGE_FLOOR,
 } from "./aeo.js";
 
 const NOW = new Date("2026-07-26T12:00:00-04:00");
@@ -501,4 +504,73 @@ test("llms.txt names the product and points at the machine surfaces", () => {
 
 test("AEO_ORIGIN is the current production origin", () => {
   assert.equal(AEO_ORIGIN, "https://stoopwise.com");
+});
+
+// ---- lens landing pages (2026-09-10) ---------------------------------------
+// `?lens=` can never carry its own share preview — Facebook keys the preview on
+// `og:url`, so every variant collapses back to the root object. These pages
+// exist so the two lenses we actually post carry their own headline, their own
+// prose and their own structured data. The prose is the part that outlives the
+// share card: the home page prerenders three lines of boilerplate and no list
+// of what is on, so a crawler that does not run JS learns nothing about the
+// week. A lens page lists it.
+
+const kidsCard = { ...timed, id: "storytime-0730", title: "Storytime", filters: ["family_kids"] };
+const kidsCard2 = { ...timed, id: "playgroup-0731", title: "Playgroup", filters: ["family_kids"] };
+const expiredKids = { ...expired, filters: ["family_kids"] };
+
+test("injectLensPage gives the lens its own title, description and canonical", () => {
+  const html = injectLensPage(TEMPLATE, "kids", [kidsCard, timed], ORIGIN, NOW);
+  assert.match(html, /<title>[^<]*Kids[^<]*Greenpoint[^<]*<\/title>/);
+  assert.match(html, /<meta property="og:url" content="https:\/\/example\.test\/kids" \/>/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/example\.test\/kids" \/>/);
+  assert.ok(!html.includes("site description"), "site meta description replaced");
+  assert.ok(!html.includes("site og description"), "og description replaced");
+  const canonicals = [...html.matchAll(/<link rel="canonical"/g)].length;
+  assert.equal(canonicals, 1, "a second canonical would make the page two indexable copies");
+});
+
+test("a lens page lists its own live cards as prose and leaves the others out", () => {
+  const html = injectLensPage(TEMPLATE, "kids", [kidsCard, kidsCard2, timed, expiredKids], ORIGIN, NOW);
+  assert.match(html, /Storytime/);
+  assert.match(html, /Playgroup/);
+  assert.ok(!html.includes("DJ Night"), "a live_music card does not belong on the kids page");
+  assert.ok(!html.includes("gone-0720"), "an expired card does not belong on any page");
+});
+
+test("a lens page links each card at its own crawlable URL", () => {
+  const html = injectLensPage(TEMPLATE, "kids", [kidsCard], ORIGIN, NOW);
+  assert.match(html, /href="https:\/\/example\.test\/e\/storytime-0730"/);
+});
+
+test("lensPagePaths emits a path only once the lens clears the floor", () => {
+  // A thin page teaches a crawler the site has little to say, so a lens with
+  // almost nothing live is better left unpublished than published empty. It
+  // comes back on its own the next build — the deck is rebuilt every ingest.
+  const thin = Array.from({ length: LENS_PAGE_FLOOR - 1 }, (_, i) => ({
+    ...kidsCard,
+    id: `kid-${i}`,
+  }));
+  assert.deepEqual(lensPagePaths(thin, NOW), []);
+
+  const stocked = Array.from({ length: LENS_PAGE_FLOOR }, (_, i) => ({
+    ...kidsCard,
+    id: `kid-${i}`,
+  }));
+  assert.deepEqual(lensPagePaths(stocked, NOW), ["kids"]);
+});
+
+test("the sitemap announces a lens page only when that page is built", () => {
+  const stocked = Array.from({ length: LENS_PAGE_FLOOR }, (_, i) => ({
+    ...kidsCard,
+    id: `kid-${i}`,
+  }));
+  const xml = sitemapXml(stocked, ORIGIN, NOW);
+  assert.match(xml, /<loc>https:\/\/example\.test\/kids<\/loc>/);
+  assert.ok(!xml.includes("/civic"), "civic has nothing live here, so it is not announced");
+
+  // The parity rule that matters: a sitemap must never list a URL with no page
+  // behind it. Below the floor no page is written, so none is announced.
+  const thinXml = sitemapXml([kidsCard], ORIGIN, NOW);
+  assert.ok(!thinXml.includes("/kids"), "a page that was not built is not announced");
 });

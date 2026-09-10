@@ -161,6 +161,34 @@ try {
   const deadCards = await page.locator(".july-card").count();
   check(deadCards > 0, `the dead-link page rendered ${deadCards} cards — the reader gets no feed`);
 
+  // ---- the lens landing pages (2026-09-10) ---------------------------------
+  // /kids and /civic exist so a group post can carry its own share preview and
+  // its own crawlable prose. Three things have to hold, and each has already
+  // failed once in development:
+  //   1. the path serves a real file, not the 404 shell;
+  //   2. the app boots on it with THAT lens active, not "All";
+  //   3. the address bar still says /kids afterwards — the history effect runs
+  //      on first render with no card selected, and before the base-path fix it
+  //      rewrote the URL to / before the reader had touched anything.
+  for (const [path, label] of [["kids", "Family & Kids"], ["civic", "Civic"]]) {
+    const res = await page.goto(`${origin}/${path}`, { waitUntil: "networkidle" });
+    if (res?.status() === 404) continue; // below the floor this build — nothing to check
+    check(res?.status() === 200, `/${path} answered ${res?.status()}`);
+    check((await page.locator(".july-crash").count()) === 0, `/${path} showed the crash screen`);
+
+    const active = await page.locator(".july-chip.is-active").first().innerText().catch(() => "");
+    check(
+      active.includes(label),
+      `/${path} booted with "${active.trim() || "nothing"}" active, not ${label}`,
+    );
+
+    const here = new URL(page.url()).pathname.replace(/(.)\/$/, "$1");
+    check(here === `/${path}`, `/${path} rewrote its own address bar to ${here}`);
+
+    const cards = await page.locator(".july-card").count();
+    check(cards > 0, `/${path} rendered no cards`);
+  }
+
   // A page error is not automatically fatal — the map's own failure is logged
   // deliberately — but an UNCAUGHT one means something escaped containment.
   const uncaught = pageErrors.filter((m) => !/WebGL|SecurityError|Access is denied/i.test(m));
@@ -179,5 +207,5 @@ if (failures.length > 0) {
 
 console.log(
   "✓ agent browser: feed renders, degrades honestly, stays usable without WebGL or storage, " +
-    "and a dead /e/ link answers 404 with the week's feed",
+    "a dead /e/ link answers 404 with the week's feed, and /kids and /civic boot on their own lens",
 );

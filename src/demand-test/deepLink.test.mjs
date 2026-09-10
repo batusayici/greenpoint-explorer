@@ -1,6 +1,15 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { cardIdFromPath, deepLinkUrl, resolveDeepLink, lensFromSearch } from "./deepLink.js";
+import {
+  cardIdFromPath,
+  deepLinkUrl,
+  resolveDeepLink,
+  lensFromSearch,
+  lensFromPath,
+  lensPagePath,
+  LENS_PAGES,
+} from "./deepLink.js";
+import { FILTERS } from "./filterCards.js";
 
 // Phase 3.1 share infra: per-card deep links are real paths (/e/<slug>) so
 // every event gets a crawlable URL (answer-engine decision 2026-07-21).
@@ -62,4 +71,68 @@ test("lensFromSearch accepts a real filter id and rejects everything else", () =
   assert.equal(lensFromSearch("?lens="), null);
   assert.equal(lensFromSearch(""), null);
   assert.equal(lensFromSearch("?src=parents"), null);
+});
+
+// ---- lens landing pages (2026-09-10) ---------------------------------------
+// A lens on a query string can never have its own share preview: Facebook keys
+// its preview on the `og:url` in the head, so every `?lens=` variant collapses
+// back to the root object. Proved from the other side on 2026-09-10 — a query
+// string Facebook had never seen previewed correctly on its first post, because
+// the root had already been scraped. A distinct preview needs a distinct URL,
+// which is why these are paths and not parameters.
+
+test("lensFromPath maps the two published lens paths", () => {
+  assert.equal(lensFromPath("/kids"), "family_kids");
+  assert.equal(lensFromPath("/civic"), "civic");
+});
+
+test("lensFromPath tolerates a trailing slash", () => {
+  assert.equal(lensFromPath("/kids/"), "family_kids");
+});
+
+test("lensFromPath returns null for anything else", () => {
+  // Deliberately including the lens IDS themselves: only the published paths
+  // resolve, so adding a lens to FILTER_IDS never silently opens a URL that
+  // has no prerendered page behind it.
+  assert.equal(lensFromPath("/family_kids"), null);
+  assert.equal(lensFromPath("/food_drink"), null);
+  assert.equal(lensFromPath("/"), null);
+  assert.equal(lensFromPath("/kids/extra"), null);
+  assert.equal(lensFromPath("/e/some-card"), null);
+});
+
+test("every published lens path names a real lens", () => {
+  for (const [path, id] of Object.entries(LENS_PAGES)) {
+    assert.ok(FILTERS.some((f) => f.id === id), `${path} points at unknown lens ${id}`);
+    assert.ok(/^[a-z-]+$/.test(path), `${path} is not a plain lowercase path segment`);
+  }
+});
+
+test("a lens path does not collide with the card path shape", () => {
+  for (const path of Object.keys(LENS_PAGES)) {
+    assert.equal(cardIdFromPath(`/${path}`), null);
+  }
+});
+
+test("deepLinkUrl returns to the lens page it started on, not to the root", () => {
+  // The history effect runs on first render with no card selected, so without
+  // a base path a reader who opened /kids had the address bar rewritten to /
+  // before touching anything — and closing a card would strand them on the
+  // general feed. Copying the URL at that point shares the wrong page.
+  assert.equal(deepLinkUrl(null, "?src=parents", "/kids"), "/kids?src=parents");
+  assert.equal(deepLinkUrl("storytime", "?src=parents", "/kids"), "/e/storytime?src=parents");
+  assert.equal(deepLinkUrl(null, "", "/civic"), "/civic");
+});
+
+test("deepLinkUrl still defaults to the root", () => {
+  assert.equal(deepLinkUrl(null, "?src=wave2"), "/?src=wave2");
+  assert.equal(deepLinkUrl(null, ""), "/");
+});
+
+test("lensPagePath names the page a pathname belongs to, or the root", () => {
+  assert.equal(lensPagePath("/kids"), "/kids");
+  assert.equal(lensPagePath("/kids/"), "/kids");
+  assert.equal(lensPagePath("/civic"), "/civic");
+  assert.equal(lensPagePath("/"), "/");
+  assert.equal(lensPagePath("/e/some-card"), "/");
 });

@@ -107,6 +107,41 @@ organisations states the site publicly.
 **Jabberjaw's free Tuesday comedy at Paulie Gee's goes to `manualSources`, not the fetch roster.** The show is real and free, but its schedule exists only on Instagram: Paulie Gee's own page is 186KB of restaurant marketing with no events section, and the one fetchable listing shows a single date in August marked passed. Recorded with what would reopen it, so a later run does not re-onboard it and rediscover the same wall.
 
 **Shape:** a `/poster` skill, photos pasted into chat, one branch and PR per batch — cards, evidence files and proposed roster entries together — reporting what ships, what is held and what would unblock it, and which venues to add.
+## 2026-09-10 — two lenses get real pages: /kids and /civic
+
+**Batu, after the Facebook preview test that morning.** Every lens link previewed on Facebook as the
+same generic headline. The reason is not fixable with a rewrite: Facebook resolves a link to the
+`og:url` in its head and keys the preview on that object, so `/?lens=family_kids` and
+`/?lens=civic` both collapse back to the root. That was proved from the other direction the same
+day — a query string Facebook had never seen previewed correctly on its first post, because the root
+had already been scraped. **A different preview requires a different URL.**
+
+**The decision.** Two prerendered pages, `/kids` and `/civic`, built by the same code that builds
+card pages: their own title, description, canonical, `ItemList` structured data, and prose listing
+that lens's live cards. Paths are deliberately not the lens ids — `/kids` is what a person says out
+loud and types, `family_kids` is a schema key — and the map is explicit, so adding a lens to
+`FILTER_IDS` never silently opens a URL with no page behind it. `?lens=` keeps working; links
+already sent do not break, and the path wins when both are present.
+
+**Two lenses, not ten.** `family_kids` and `civic` are the ones Rana posts, and both are stocked.
+A lens below an eight-card floor publishes nothing and is not announced in the sitemap — a thin page
+teaches a crawler the site has little to say about the thing it is titled for, and the deck is
+rebuilt every ingest, so the page reappears on its own once the lens refills.
+
+**The share card is the smaller half.** Every search query that has found this site was somebody
+looking up a name they already had; nothing arrives from a general question. A page titled for kids'
+events in Greenpoint, carrying the week's kids' events as readable text, is the shape that answers
+one. This is also the first page other than a card page to prerender a LIST. `homeBodyHtml`
+deliberately does not, because prerendering the feed on the home page changes what the first screen
+says and collides with product calls already made; no such call existed for a page that did not
+exist, and the precedent that fits is the card page.
+
+**One bug worth recording, because it was invisible without a browser.** The history effect runs on
+first render with no card selected, so it rewrote `/kids` to `/` before the reader had touched
+anything — and closing a card stranded them on the general feed with the wrong URL to copy.
+`deepLinkUrl` now takes a base path, read once from the pathname the visit started on. Every unit
+test passed while this was broken; `verify:agent-browser` now checks the address bar directly.
+
 ## 2026-09-10 — an event whose source states a closed audience does not card
 
 **Batu, approving the rule PR #71 proposed.** Sparrow Funerals listed a gathering for practicing
