@@ -10546,6 +10546,48 @@
       ],
       "lat": 40.728871,
       "lng": -73.94979
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "medium",
+      "createdAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "id": "calyer-street-block-party-0912",
+      "category": "event",
+      "free": false,
+      "title": "Calyer Street block party",
+      "kicker": "Street closed, hydrant open, raffle",
+      "summary": "The block shuts to traffic for the day and the fire hydrant runs. Neighbours are asked for a $25 suggested donation toward the bouncy house.",
+      "startsAt": "2026-09-12T11:00:00-04:00",
+      "endsAt": "2026-09-12T19:00:00-04:00",
+      "filters": [
+        "civic",
+        "family_kids"
+      ],
+      "locationName": "Calyer Street",
+      "geocodeQuery": "Calyer Street, Brooklyn, NY 11222",
+      "sourceQuote": "SAVE the DATE\nCALYER STREET\nBLOCK [illegible]\n\nSATURDAY\n12TH\n11 AM - 7 PM\n\nStreet Closure and\nFire Hydrant Open!\nRAFFLE!\nNO PARKING\n\nSuggested Donation $25",
+      "actions": [
+        {
+          "label": "Directions",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Poster on a street tree on Calyer Street, photographed 2026-09-10",
+          "publisher": "Calyer Street block party organisers",
+          "date": "2026-09-10"
+        }
+      ],
+      "lat": 40.729133,
+      "lng": -73.950248
     }
   ]
 }

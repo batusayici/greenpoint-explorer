@@ -859,6 +859,11 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // duplicates of `library-sensory-garden-0918` and `library-bike-clinic-0919`,
   // which main already carries with better end times. Deck 218 -> 225.
   //
+  // 2026-09-10 (posters, second pass): +1. Batu supplied the month the Calyer
+  // Street poster had lost to the sun, so the block party ships as 9/12 — the
+  // same shape as the Batu-supplied venue fact on the macha-studio roster entry,
+  // and the card's watchItem says so. Deck 229 -> 230, event 132 -> 133.
+  //
   // 2026-09-10 (posters): +4. First batch through the `/poster` skill — eleven
   // photos of street posters and shop-window flyers, most of them already past
   // or out of area. Three are Salsa Pizzeria's Greenpoint class week (pizza
@@ -867,11 +872,11 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // 607 CSA's winter veggie share, whose Greenpoint Tuesday pickups at
   // Dandelion Wine and the Sunview the farm's own site confirms. Deck 225 -> 229,
   // event 129 -> 132, subscription 37 -> 38.
-  assert.equal(seed.cards.length, 229);
+  assert.equal(seed.cards.length, 230);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.category === "event"), 132, "129 + the three Salsa class-week sittings (2026-09-10 posters)");
+  assert.equal(count((c) => c.category === "event"), 133, "129 + the three Salsa class-week sittings + the Calyer Street block party (2026-09-10 posters)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "37 − the 9/9 Troost night + LUMENS 9/22 and Barba Yiorgi 9/24 (2026-09-10)");
@@ -1673,6 +1678,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // meeting on 9/15 — stewardship you turn up and do, and the public meeting
     // where the same parks get decided.
     "bip-weeding-wednesdays",
+    // 2026-09-10 (posters): a Calyer Street block party — the block closed to
+    // traffic, hydrant open, raffle. The lens's founding pass named stoop sales
+    // as its future home; a block party is the same thing at street scale.
+    "calyer-street-block-party-0912",
     "cb1-parks-waterfront-0915",
     // (bedford-slip-cleanup-0830, bedford-slip-hot-dogs-0830 and
     //  bedford-slip-tree-care-0829 all expired out 2026-08-31)

@@ -2913,6 +2913,16 @@
       "name": "Brooklyn Craft Company — the 9/8 newsletter is all Lower Manhattan",
       "note": "SOURCE FACT 2026-09-10, recorded so the next run does not re-read it hoping for Greenpoint sessions. The newsletter of 8 September announces the pop-up extension at 225 Broadway (\"we're officially staying put in Lower Manhattan @ 225 Broadway for a bit longer! Visit us through 10/24\") and one dated workshop, \"Fabric Pocket Altars / Sat, 9/19 at 3:00pm / In Lower Manhattan\", plus five drop-in crafts \"At our Lower Manhattan Pop-up!\". Nothing in it is dated at 165 Greenpoint Ave.",
       "addedAt": "2026-09-10"
+    },
+    {
+      "item": "calyer-street-block-party-0912 — the poster's MONTH is illegible; September 2026 came from Batu's own knowledge of the block, not from any source. Everything else on the card is quoted from the sheet.",
+      "condition": "Permanently unverifiable by fetch — a future run must not 'fix' this by inventing a source. If the block association ever posts the date anywhere citable, cite it.",
+      "addedAt": "2026-09-10"
+    },
+    {
+      "item": "light-and-sound-design — fetches clean and carries a dense dated calendar, but every event is uncardable because the venue does not publish its address (\"RSVP FOR LOCATION\"; its Luma page reads \"L&SD (address with rsvp)\") and the schema needs a pin.",
+      "condition": "Batu settles whether the map can carry an event whose location is deliberately private. Do NOT unblock it by publishing an address found on a third-party listing.",
+      "addedAt": "2026-09-10"
     }
   ],
   "sourcePulse": {

@@ -4463,5 +4463,30 @@
         "-73.9414236"
       ]
     }
+  },
+  "Calyer Street, Brooklyn, NY 11222": {
+    "query": "Calyer Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-10T16:57:18.101Z",
+    "hit": {
+      "place_id": 422212873,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1538986478,
+      "lat": "40.7291328",
+      "lon": "-73.9502482",
+      "category": "highway",
+      "type": "residential",
+      "place_rank": 26,
+      "importance": 0.05342509269855799,
+      "addresstype": "road",
+      "name": "Calyer Street",
+      "display_name": "Calyer Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7290212",
+        "40.7292440",
+        "-73.9505853",
+        "-73.9499110"
+      ]
+    }
   }
 }
