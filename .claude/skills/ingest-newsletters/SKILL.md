@@ -360,7 +360,7 @@ review cycle and, on a same-week item, usually the card itself.
 
 **Also always human-gated, regardless of card quality:** sender additions, business submissions, and any code change.
 
-**Roster additions are NOT, since 2026-09-10.** A source that passes the seven tests in `CLAUDE.md` ships with the run — including the `WebFetch(domain:…)` line in the tracked `.claude/settings.json` that has to land in the same change. Name every added source in the run's report and in the commit subject, with the measurement that passed it. Fail any test, or genuinely doubt one, and it goes to Batu instead. A source that refuses automated readers in `robots.txt` always goes to Batu.
+**Roster additions are NOT, since 2026-09-10.** A source that passes the seven tests in `CLAUDE.md` ships with the run — including the `WebFetch(domain:…)` line in the tracked `.claude/settings.json` that has to land in the same change. Name every added source in the run's report and in the commit subject, with the measurement that passed it. Fail any test, or genuinely doubt one, and it goes to Batu instead. A source that refuses automated readers in `robots.txt` is declined outright — write it into `manualSources` with the measurement and what would reopen it, and do not ask Batu to re-decide it (2026-09-10).
 
 ### 4. Ship
 

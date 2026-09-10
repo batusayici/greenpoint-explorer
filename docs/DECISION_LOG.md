@@ -37,13 +37,26 @@ crawlers including `anthropic-ai`, while allowing everything else — and the fe
 user-agent, so it would have sailed straight through. Routing around a publisher's stated position on
 a technicality is not a call a run gets to make on its own.
 
-**Brooklyn Paper was added anyway, on Batu's explicit yes**, by the RSS feed rather than the WordPress
-API, because the feed is the channel the publisher offers for outside reading. Measured the same day:
-10 items, full article text, 3,824–13,036 chars, ending on the same closing quote as the API copy, so
-nothing is truncated. Low volume — about three Greenpoint posts a month — but it carries development
-and civic reporting Greenpointers doesn't, and it had the St John's cultural center story two weeks
-before a street poster surfaced the venue. **Not a precedent:** the next source that refuses automated
-readers still goes to Batu.
+**Brooklyn Paper was added and then removed the same day, and the removal is the rule.** It was added
+first on Batu's yes, then he asked the right question: does their block mean they prohibit what we're
+doing? Strictly, no. Their terms say nothing about reuse of their articles, and what a card publishes
+is our own summary plus a link — the verbatim `sourceQuote` is internal evidence, read only by
+`scripts/verify-quotes.mjs` and rendered to no one. The feed is clean too: 10 items, full article
+text, 3,824–13,036 chars, ending on the same closing quote as the same article read through their
+WordPress API.
+
+**Batu pulled it anyway, and hardened test 4 in the process.** He does not want a source whose
+publisher has said it doesn't want its content taken by AI, credit and link included. The
+uncomfortable fact underneath: on output we look like any aggregator, but on input we are exactly
+what they blocked, and our fetcher only gets through because it sends a Chrome user-agent. That is a
+gap in their enforcement, not their consent. So test 4 is now a NO by default rather than a question
+routed to Batu — a publisher that blocks AI crawlers is declined and written into `manualSources`
+with what would reopen it. **The way to reopen one is to ask the publisher.** Schneps Media may well
+say yes to a neighborhood map that links back, and their reporting genuinely adds what Greenpointers
+doesn't — Monitor Point at City Council, the landmark firehouse condo plan, the McGuinness Boulevard
+redesign data, the Sereneco fire GoFundMe, and the St John's cultural center story two weeks before a
+street poster surfaced the venue. Re-measuring the feed is not the way; the feed was never the
+problem. Cost of declining: about three Greenpoint posts a month.
 
 ## 2026-09-10 — a hidden address is not the same as an unknown borough; `locationPrivate` covers only the first
 
