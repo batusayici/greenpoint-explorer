@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-09-08",
+    "asOf": "2026-09-10",
     "lastDataPull": "2026-09-01",
-    "lastFeedCheck": "2026-09-08",
+    "lastFeedCheck": "2026-09-10",
     "nextReadout": "2026-09-08",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -1280,11 +1280,9 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-09-08",
-    "dayName": "Tuesday, September 8",
-    "dueToday": [
-      "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning"
-    ],
+    "ranAt": "2026-09-10",
+    "dayName": "Thursday, September 10",
+    "dueToday": [],
     "overdue": [
       {
         "label": "Fire the channels cleared on 8/17 and still unsent — Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir → WORD → Flower Cat), IG carousel",
@@ -1313,16 +1311,28 @@
       {
         "label": "Perri — in person at her shop, week of Sep 5",
         "since": "2026-09-07"
+      },
+      {
+        "label": "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
+        "since": "2026-09-08"
       }
     ],
-    "waiting": [],
+    "waiting": [
+      {
+        "what": "PR #70 — content(track-v): held cards, Greenpointers 2026-09-09",
+        "age": 0
+      },
+      {
+        "what": "PR #69 — content(track-v): held cards, daily 2026-09-09 — and main is four commits behind",
+        "age": 0
+      },
+      {
+        "what": "PR #65 — growth: readout 2026-09-08",
+        "age": 1
+      }
+    ],
     "overnight": [
-      "docs(growth): one link for Rana's posts, landing on the family view",
-      "content(ingest): the daily refresh now carries the midweek family publishers; allowlist audited; decision log",
-      "content(track-v): the school-opening push — eight new sources, eighteen cards, browser path opened",
-      "test: check the Facebook in-app browser, the way readers actually arrive",
-      "fix(growth): the signup link carries the channel it came from",
-      "cockpit: morning refresh 2026-09-08"
+      "content(track-v): daily refresh 2026-09-09 — 30 cards, the week's roundup and the library's forward calendar"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1331,12 +1341,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 74,
-      "reservoir": 32,
+      "dated": 86,
+      "reservoir": 34,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 198
+      "cards": 218
     }
   }
 }
