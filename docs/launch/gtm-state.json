@@ -1340,7 +1340,7 @@
     ],
     "waiting": [
       {
-        "what": "PR #72 — content(track-v): rebuild what PRs #69 and #70 were carrying",
+        "what": "PR #73 — growth: readout 2026-09-08, rebuilt onto the current main",
         "age": 0
       },
       {
@@ -1348,17 +1348,16 @@
         "age": 0
       },
       {
-        "what": "PR #65 — growth: readout 2026-09-08",
-        "age": 2
-      },
-      {
         "what": "1 commit on main not pushed",
         "age": 0
       }
     ],
     "overnight": [
-      "content(track-v): daily refresh 2026-09-10 — eight cards on, and tonight's film time was wrong",
-      "content(track-v): daily refresh 2026-09-09 — 30 cards, the week's roundup and the library's forward calendar"
+      "Merge pull request #72 from batusayici/ingest/rebuild-0909-cards",
+      "data: refresh the freshness stamp for the seven recovered cards",
+      "ingest: record the Greenpointers roundup and the Sweet Chick skip in the ledger",
+      "content(track-v): the seven cards the 9/9 run verified but never shipped",
+      "content(track-v): daily refresh 2026-09-10 — eight cards on, and tonight's film time was wrong"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1367,12 +1366,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 87,
-      "reservoir": 32,
+      "dated": 94,
+      "reservoir": 35,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 218
+      "cards": 225
     }
   }
 }
