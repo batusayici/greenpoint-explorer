@@ -1621,6 +1621,20 @@
       "outcome": "Daily thin. Deck 158 → 149 (expiry) → 160 (15 adds, 4 deletes beyond expiry). holds: 2 new-judgment · 0 rule-miss · 1 source-blocked. All four deletes are recurring cards past their verified-through date. Two were re-verified against this run's snapshots and the programming has genuinely stopped: Kindred's page states nothing after August 27 (community-yoga-transmitter-thursdays) and Go Green's own schedule list runs Fri 8/28, Sun 8/30, then Sun Sep 27 with no Thursday left (longevity-stick-transmitter-thursdays). Two could not be read at all: comedy-thursday-showcase sits behind the still-down browser path, and charlotte-backyard-movie-nights has only an Instagram source the loop can never fetch — the same call the 8/26 and 8/27 runs made on the Tuesday yoga card, the Wednesday comedy residency and the Leaves August book club. Browser path still down (browser-connect-reset), 8 sources errored, reach 54/62."
     },
     {
+      "id": "https://greenpointers.com/2026/09/09/swap-clothes-and-books-clean-up-parks-and-more-whats-happening-greenpoint-9-10-16/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-09-09",
+      "outcome": "ALREADY INGESTED by the daily run at 12:30 today, which recovered the body from the WP REST API and persisted it as [R1 PERSISTED 2026-09-09]. Recorded here because that run logged only a run entry, so the URL itself was missing from processedItems and the next Wednesday pull's step-2 check would not have found it. This run re-read the persisted body and checked all 24 items against the deck: 21 in-scope items are carded (Read & Play and Chair Yoga inside the library day-cards, Zumba as the recurring nbk-fit-club-thursdays, After-School Improv as a subscription, the other 17 as their own cards), and 3 are the Williamsburg drops the daily named — REVENANT at The Twisted Spine, Nice Moms Coffee Club at Balkan Grind, Animation Nights at The Gutter. Nothing outstanding."
+    },
+    {
+      "id": "https://greenpointers.com/2026/09/09/sweet-chick-has-closed-its-williamsburg-location/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-09-09",
+      "outcome": "SKIPPED, on two independent gates. Out of area: the story is about the Bedford Avenue flagship and says so in its own title. And the closure is unconfirmed in the publisher's own words — \"Sweet Chick appears to have quietly closed the doors\", \"has not made any formal announcement about the closure\", \"As of press time, Sweet Chick has not responded to our request for comment\" — which is the 2026-09-07 unconfirmed-closure rule (Nonna's Pizzeria). No card even if it had been in the bbox."
+    },
+    {
       "runAt": "2026-08-29",
       "cadence": "daily-thin",
       "shipped": [
@@ -1889,6 +1903,29 @@
       "gmail": [
         "1a0861614b954456",
         "1a08230c7f4dd072"
+      ]
+    },
+    {
+      "runAt": "2026-09-10",
+      "cadence": "rebuild",
+      "shipped": [
+        "bip-weeding-wednesdays",
+        "cb1-parks-waterfront-0915",
+        "comedy-cysk-wednesdays",
+        "comedy-thursday-showcase",
+        "comedy-friday-showcase",
+        "comedy-saturday-showcase",
+        "happy-medium-art-cafe"
+      ],
+      "updated": [],
+      "deleted": [],
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 0 source-blocked",
+      "outcome": "REBUILD, not a fetch. The 2026-09-09 daily run's branch (PR #69) fell two deck-rewriting commits behind main and, under the 2026-08-30 rule, could not be merged or rebased, so it was closed and the cards it had verified were re-applied against the current deck instead. Seven of its twelve came across. Three were dropped as already covered: the two Film Noir screenings on the 9th had passed, and the library Friday card and the bike clinic duplicate library-sensory-garden-0918 and library-bike-clinic-0919, which main already carries with real end times rather than the 23:59 sentinel. Every card kept its original sourceQuote and sourceLinks from the 9/9 verification; nothing was re-authored. The find is the Greenpoint Comedy Club's four standing weekly showcases (Wed/Thu/Fri/Sat), which the deck had never carried — only the one-off named bills. Deck 218 -> 225, event 123 -> 129.",
+      "urls": [
+        "https://gogreenbk.org/event/weeding-bip-2026/2026-09-09/",
+        "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+        "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+        "https://happy-medium.co/art-cafe"
       ]
     }
   ],
