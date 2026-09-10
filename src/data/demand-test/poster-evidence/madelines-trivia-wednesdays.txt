@@ -1,0 +1,21 @@
+# Poster: "TRIVIA! WEDNESDAYS @ 7:30", window sign at Madeline's
+# Photographed by Batu, 2026-09-10
+# Seen at: storefront window under the "Madeline's" window lettering, Franklin St
+
+TRIVIA!
+WEDNESDAYS @ 7:30
+PRIZES · DRINK SPECIALS · CHAOS
+
+NEW CATAGORIES AND BONUS ROUNDS EVERY WEEK!
+
+# [sic] "CATAGORIES" is spelled that way on the sign.
+# The sign itself names no venue; the window lettering behind it reads "...deline..."
+# and Batu, who photographed it, states it is Madeline's (2026-09-10).
+#
+# ── Corroboration, fetched 2026-09-10 from https://madelinesnyc.com/ ──
+# "Our recurring Trivia Night is Wednesday at 7:30pm."
+# "113 Franklin Street Greenpoint, BK"
+#
+# NOTE a roster discrepancy: ingest-sources.json's brooklyn-hearts-club entry
+# records Madeline's at 117 Franklin St. The venue's own site says 113, and the
+# geocode cache already resolves "Madeline's" to 113 Franklin St. 113 is used here.

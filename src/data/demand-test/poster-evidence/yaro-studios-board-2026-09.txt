@@ -1,0 +1,39 @@
+# Poster board: four sheets at Yaro Studios, 76 Kent St
+# Photographed by Batu, 2026-09-10
+# Seen at: wooden board outside the studio, 76 Kent St
+
+── SHEET 1 ──
+yaro
+PLATE PALS
+hand build your own ceramic plate
+[QR code — destination not resolvable from the photograph]
+Saturday, September 26
+10:00AM-12:00PM
+Ages 6+
+76 KENT STREET
+GREENPOINT
+
+── SHEET 2 (and SHEET 3, identical) ──
+YARO STUDIOS
+GREENPOINT
+POTTERY CLASSES
+WHEEL THROWING · HANDBUILDING
+MEMBERSHIP
+[QR code]
+WWW.YAROSTUDIOS.COM
+
+── SHEET 4 ──
+yaro
+Make a Clay Creature!
+FREE 1-hour workshop for Kids
+Tuesday 9/15
+1pm & 2pm
+76 Kent St
+
+# No price is printed for Plate Pals. The clay creature workshop is printed FREE.
+# September 26 2026 is a Saturday; September 15 2026 is a Tuesday.
+# yarostudios.com/workshops-1 (already on the ingest roster) was fetched
+# 2026-09-10 and returned only navigation — the listings render in JavaScript,
+# which is why neither of these two workshops reached the deck from the roster.
+# The pottery-classes and membership sheets are already carded
+# (yaro-studio-membership, yaro-kids-clay-lab) — no new card from them.

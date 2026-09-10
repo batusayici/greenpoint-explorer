@@ -881,11 +881,23 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // 607 CSA's winter veggie share, whose Greenpoint Tuesday pickups at
   // Dandelion Wine and the Sunview the farm's own site confirms. Deck 225 -> 229,
   // event 129 -> 132, subscription 37 -> 38.
-  assert.equal(seed.cards.length, 235);
+  //
+  // 2026-09-10 (posters, second batch): +7. Twelve more photos, and again most
+  // are not cards — two out of area (Rockaway, Prospect Park), one already on
+  // the map (the Held Space Pilates workshop, whose poster did correct its end
+  // time from the 23:59 "never sourced" sentinel to a real 12:30pm), one a
+  // private tutor's flyer carrying personal contact details, two held. What
+  // ships: trivia Wednesdays at Madeline's and a Burgundy tasting at Le Gamin
+  // (both venue-identified by Batu, who took the photos), Tarot Tuesdays and a
+  // Saturday La Maison Tachon pop-up at Oak & Iron, two Yaro Studios kids
+  // workshops the roster's own Yaro source could not see because that page
+  // renders its listings in JavaScript, and a Sunday all-levels ballet class at
+  // Triskelion. Deck 235 -> 242, event 138 -> 142.
+  assert.equal(seed.cards.length, 242);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.category === "event"), 138, "129 + three Salsa classes + the Calyer block party + five Light & Sound nights (2026-09-10)");
+  assert.equal(count((c) => c.category === "event"), 142, "138 + the second poster batch: Madeline's trivia, the Le Gamin tasting, Tarot Tuesdays and the Triskelion ballet class (2026-09-10)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
   assert.equal(count((c) => c.filters.includes("live_music")), 43, "38 + five Light & Sound Design nights (2026-09-10)");
@@ -1222,6 +1234,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // the coverage check flagged 9/8 and 9/15. Go Green states it outright:
     // "a free outdoor yoga practice at WNYC Transmitter Park".
     "transmitter-park-yoga-tuesdays", // "Free" on the Go Green Brooklyn listing
+    // 2026-09-10 poster batch: the Yaro board prints "FREE 1-hour workshop for Kids".
+    "yaro-clay-creature-0915",
     // (weeding-wednesdays-bip-0909 expired out 2026-09-10 — Go Green Brooklyn's
     // listing had printed a bare "Free" under its date line, which is the line
     // the card quoted, so it carried the flag unlike the two North Brooklyn
@@ -1328,6 +1342,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   // because the no-double-file rule bars family_kids with arts_culture and
   // games, not with an audience-neutral movement lens.
   assert.deepEqual(wellness, [
+    // 2026-09-10 poster batch: a Sunday all-levels barre class at Triskelion,
+    // read off a light-pole poster — dance, the same reading as the ballet term.
+    "all-levels-ballet-triskelion",
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
     // (buffalo-firefly-soundbath-0813 expired out 2026-08-14)
@@ -1435,6 +1452,9 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // 2026-09-09: the Parkhouse's Monday trivia, off the Greenpointers roundup.
     // Trivia is play, so it never touches arts_culture — the same reading that
     // put the Black Rabbit and Brew Inn quizzes here.
+    // 2026-09-10 poster batch: the window sign at Madeline's, corroborated by
+    // the bar's own site ("Our recurring Trivia Night is Wednesday at 7:30pm").
+    "madelines-trivia-wednesdays",
     "mccarren-trivia-club-0914",
     "nb-chess-parkhouse-0806",
     "scrappleland",

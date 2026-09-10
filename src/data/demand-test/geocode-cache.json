@@ -4488,5 +4488,60 @@
         "-73.9499110"
       ]
     }
+  },
+  "Light & Sound Design, Greenpoint, Brooklyn, NY": {
+    "query": "Light & Sound Design, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-09-10T19:55:03.365Z",
+    "hit": null
+  },
+  "108 Franklin St, Brooklyn, NY 11222": {
+    "query": "108 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-10T19:55:04.872Z",
+    "hit": {
+      "place_id": 360328184,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132651,
+      "lat": "40.7282928",
+      "lon": "-73.9571351",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "108, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7282530",
+        "40.7283347",
+        "-73.9572115",
+        "-73.9570292"
+      ]
+    }
+  },
+  "147 Franklin St, Brooklyn, NY 11222": {
+    "query": "147 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-10T19:55:06.354Z",
+    "hit": {
+      "place_id": 359852158,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140670,
+      "lat": "40.7314582",
+      "lon": "-73.9580795",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "147, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7314146",
+        "40.7315017",
+        "-73.9581842",
+        "-73.9579748"
+      ]
+    }
   }
 }
