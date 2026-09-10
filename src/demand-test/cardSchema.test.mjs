@@ -87,6 +87,29 @@ test("rejects a card with neither coords nor venues", () => {
   assert.equal(validateCard({ ...good, lat: null, lng: null, venues: [] }).ok, false);
 });
 
+test("locationPrivate: a venue that withholds its address ships without a pin (2026-09-10)", () => {
+  // Light & Sound Design Studios says "RSVP FOR LOCATION" on its posters and
+  // "L&SD (address with rsvp)" on its own ticketing page. The address IS
+  // findable on third-party listings; carding it would out a venue that chose
+  // not to publish. So the card ships pinless instead.
+  const { lat, lng, address, ...noPin } = good;
+  assert.equal(validateCard(noPin).ok, false, "a card that merely lacks coords still fails");
+  const private_ = { ...noPin, locationPrivate: true };
+  assert.deepEqual(validateCard(private_).errors, []);
+
+  // The flag is a claim about the SOURCE, so it cannot coexist with the very
+  // fields it says do not exist — that combination means someone published an
+  // address anyway and flagged it private, which is the failure this prevents.
+  assert.equal(validateCard({ ...private_, lat, lng }).ok, false, "coords contradict it");
+  assert.equal(validateCard({ ...private_, address }).ok, false, "an address contradicts it");
+  assert.equal(
+    validateCard({ ...private_, venues: [{ name: "Somewhere", lat, lng }] }).ok,
+    false,
+    "venues contradict it",
+  );
+  assert.equal(validateCard({ ...noPin, locationPrivate: "yes" }).ok, false, "must be a boolean");
+});
+
 test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, actions: [] }).ok, false);
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);

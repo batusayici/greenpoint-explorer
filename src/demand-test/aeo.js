@@ -328,7 +328,12 @@ function windowLine(card) {
 
 function cardBodyHtml(card, origin) {
   const when = windowLine(card);
-  const where = [card.locationName, card.address].filter(Boolean).join(" · ");
+  // A venue that deliberately withholds its address (2026-09-10) states that in
+  // the crawlable prose too — an answer engine reading "Light & Sound Design
+  // Studios" alone would otherwise report a Greenpoint address it invented.
+  const where = [card.locationName, card.locationPrivate ? "address with RSVP" : card.address]
+    .filter(Boolean)
+    .join(" · ");
   const sources = (card.sourceLinks ?? [])
     .map((s) =>
       s.url

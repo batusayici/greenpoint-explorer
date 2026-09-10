@@ -1,0 +1,49 @@
+# Poster: "CLASS WEEK AT SALSA", Salsa Pizzeria, September 21–27 2026
+# Photographed by Batu, shared 2026-09-10
+# Seen at: storefront window, Greenpoint
+
+SALSA
+PIZZERIA
+— GREENPOINT — REGO PARK —
+
+CLASS WEEK AT SALSA
+SEPTEMBER 21-27
+It's Pizza Pasta Salad
+
+WED 23
+BROOKLYN ADULTS PIZZA CLASS
+FROM DOUGH TO DONE
+START AT 7PM
+Aperitivo, snacks and a full hands on pizza making class
+
+THU 24
+BROOKLYN ADULTS PASTA CLASS
+THIS MONTH RAVIOLI
+START AT 7PM
+Learn, create, eat! Reservations required.
+
+SAT 26
+KIDS MAKE PIZZA IN BROOKLYN
+TRIVIA - GAMES - PRIZES
+START AT 12PM
+
+SUN 27
+KIDS MAKE PIZZA IN QUEENS
+TRIVIA - GAMES - PRIZES
+START AT 12PM
+
+SEE YOU AT SALSA!
+BOOK ORDER RSERVE
+salsapizzeria.com
+@salsapizzeria
+
+# ── Corroboration, fetched 2026-09-10 from https://salsapizzeria.com/events ──
+# (separate source, quoted separately on the cards)
+BROOKLYN - ADULTS PIZZA CLASS — Wednesday, September 23, 2026 — 7-10 PM — Salsa Greenpoint
+BROOKLYN ADULTS PASTA CLASS — Thursday, September 24, 2026 — 7-10 PM — Salsa Greenpoint
+BROOKLYN KIDS MAKE PIZZA SEPTEMBER 2026 — Saturday, September 26, 2026 — 12-3 PM — Salsa Greenpoint
+QUEENS KIDS MAKE PIZZA CLASS — Sunday, September 27, 2026 — 12-3 PM — Salsa Rego Park
+# Greenpoint address, from https://salsapizzeria.com/salsagreenpoint : "40 Clifford Pl, Brooklyn, NY 11222", "(347) 542-4680"
+# No price is stated on the poster or on either page.
+# Roster: salsapizzeria.com/events added to ingest-sources.json 2026-09-10, so
+# the next class week arrives without another photograph.

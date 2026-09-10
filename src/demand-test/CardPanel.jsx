@@ -191,11 +191,16 @@ function cardSubline(card) {
   // A venue already named in the title ("Sticker Buffet at Yoseka Land") is
   // not repeated in the row.
   const named = (s) => s && card.title.toLowerCase().includes(s.toLowerCase());
-  const where = card.address
-    ? card.address.replace(/,\s*Brooklyn.*$/i, "")
-    : !named(card.locationName)
-      ? card.locationName
-      : null;
+  // A venue that withholds its address (2026-09-10) says so in the row rather
+  // than reading as a card someone forgot to finish. The label is the venue's
+  // own words, not a euphemism we invented for a missing field.
+  const where = card.locationPrivate
+    ? `${named(card.locationName) ? "" : card.locationName + ", "}address with RSVP`
+    : card.address
+      ? card.address.replace(/,\s*Brooklyn.*$/i, "")
+      : !named(card.locationName)
+        ? card.locationName
+        : null;
   // Recurring deals (standing happy hours): endsAt is only the verified-through
   // date, so printing "ends Jul 22" would state a deadline the source doesn't.
   const ends =

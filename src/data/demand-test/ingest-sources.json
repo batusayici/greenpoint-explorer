@@ -1260,6 +1260,26 @@
       "cadence": "monthly",
       "fetch": "auto",
       "notes": "520 Kingsland Ave, 11222. Added 2026-09-07 from the family/kids source audit, closing an oversight rather than finding something new: kingslandwildflowers.com has been in the .claude/settings.json WebFetch allowlist for a while but was NEVER in this roster, so nothing was ever reading it. Publishes free public green-roof Open Hours (Fridays, spring and autumn seasons), Greenhouse Gang volunteer sessions, and an annual free family festival. Verified plain-fetchable 2026-09-07 (200/301KB). ⚠ THE PAGE KEEPS PAST EVENTS VISIBLE — 2024 and 2025 events still render alongside current ones, so filter by date before carding or you will ship a two-year-old festival. Low volume, hence monthly. OVERLAPS the Newtown Creek Alliance calendar, which programmes this same roof; expect duplicates if NCA is ever added."
+    },
+    {
+      "id": "salsa-pizzeria",
+      "name": "Salsa Pizzeria Greenpoint — classes & events",
+      "url": "https://salsapizzeria.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — the shop's Class Week sheet was in a window and nothing about it was on the roster. The page lists each class with its own date, start AND end time, and names the location as \"Salsa Greenpoint\" or \"Salsa Rego Park\", so Greenpoint attribution is explicit per card and the Queens sittings are skippable on the listing's own words. No price is published anywhere. Classes appear to run as a monthly \"class week\". Plain fetch returns nothing readable and auto falls straight through to the browser path, so it is declared browser to save the wasted attempt (measured 2026-09-10: 1640 chars via Chromium, carrying every class with its full time range)."
+    },
+    {
+      "id": "light-and-sound-design",
+      "name": "Light & Sound Design Studios (L&SD) — upcoming",
+      "url": "https://lightandsound.design/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — a Dada Strain show flyer in a window, for a venue nothing on the roster covered. Private Greenpoint loft with a vintage 4-point Klipsch system and a dense music/deep-listening calendar. Plain fetch reads it fine (555 chars, measured 2026-09-10) and the index carries DATE + TITLE ONLY — every time, lineup and location lives inside the event page's flyer IMAGE, so this is a detailsInImages source: read each /e/ flyer and write what you read into the snapshot before extracting, same rule as macha-studio. ⚠ THE VENUE DOES NOT PUBLISH ITS ADDRESS, BY DESIGN — its own flyer reads \"SECRET ADDRESS DM FOR INFO\", its poster says \"(RSVP FOR LOCATION)\" and its Luma page names the venue \"L&SD (address with rsvp)\". Its cards therefore carry `locationPrivate: true` and NO coords, address or venues; the schema rejects that combination, so a run cannot flag one private and pin it anyway. NEVER resolve this by publishing an address found on a third-party listing (Oh My Rockness, RA) — the venue chose not to publish it (Batu, 2026-09-10, DECISION_LOG). ⚠ THE INDEX IS NOT A GEOGRAPHY SOURCE: the 9/20 \"Last Sun Day\" it listed is at Rockaway Beach, which only the flyer says. Read the flyer before assuming a listed event is in Greenpoint. Some flyers state no clock at all (Present Sounds, 9/10) — those take the all-day sentinel, not an invented time.",
+      "detailsInImages": true,
+      "standing": true
     }
   ],
   "manualSources": [
@@ -1286,6 +1306,14 @@
       "status": "manual-newsletter",
       "reason": "REMOVED FROM THE FETCH ROSTER 2026-08-25 (Batu), not from the neighborhood. The web source NEVER fetched once in its life: `fetch: \"embedded\"` needs an `attr` naming the HTML attribute the JSON sits in, the entry never had one, and the fetcher refuses before it opens a socket — so every run spent an error on it. It cannot simply be given the attribute: the content is not in an attribute at all (no attribute on the page exceeds 400 chars, no hydration markers), it lives in the body of a 215KB script tag, which `embedded` cannot read. That mattered beyond tidiness — the 2026-08-24 run finished at EXACTLY the 15% error ceiling that halts ingest, so a source that can never contribute was one slot away from stopping a Monday run. Its supply is already covered: Tend is a trusted sender in the ledger's senderRegistry (messages+d4sh8s6s9jcvd@squaremktg.com, a Square marketing relay, kinds: discount), and the roster note said it itself — dated offers arrive by email only, the page carried just the standing promo banner. ⚠ BOTH HOSTS STAY ALLOWLISTED (tendgreenpoint.com and www.tendgreenpoint.com) for R1 lookups: they are separate hosts to the egress gateway and un-allowlisting either re-creates the 2026-08-15 confusion where one worked and the other 403'd. NOTHING IS LOST: the 2026-08-17 coverage explanation settled this — both live Tend cards were quoted from its emails, not the page, which is why the deck had supply here while the web snapshot stayed empty.",
       "revisitIf": "The `embedded` fetch strategy learns to read a script BODY rather than only an attribute, or Tend's site starts serving its content server-rendered. Either would make the homepage's standing promo re-verifiable; the dated offers would still come from the newsletter."
+    },
+    {
+      "id": "jabberjaw-paulie-gees",
+      "name": "Jabberjaw Comedy at Paulie Gee's Slice Shop",
+      "address": "110 Franklin St",
+      "status": "manual-instagram",
+      "reason": "NOT ADDED TO THE FETCH ROSTER 2026-09-10, after a street-poster batch surfaced it (a taped-up sheet reading \"FREE STAND UP COMEDY AT YOUR FAVORITE SLICE SHOP / EVERY TUESDAY NIGHT THIS SUMMER\"). The show is real — Greenpointers covered it in the 6/18-24 roundup — and free, which makes it exactly the kind of supply this product wants. It has no fetchable schedule. Paulie Gee's own slice-shop page is 186KB of restaurant marketing with no events section (measured 2026-09-10). The only fetchable listing anywhere, thecomedybureau.com/show/jabberjaw-in-nyc, shows ONE date, 8/18/2026, marked \"This event has passed\", with no recurrence stated and no future dates. The schedule lives on instagram.com/jabberjawcomedy — blocked to headless fetch, same shape as Razor-N-Tape and Greenpoint Trash Club. The poster's own words also date it: \"this summer\" ended, so nothing confirms it is still running in September.",
+      "revisitIf": "Jabberjaw or Paulie Gee's publishes a schedule anywhere fetchable (an /events page, a feed, a ticketing listing), or the Instagram-ingest question in docs/PLAN.md is settled in favour of a human-in-the-loop pass — a free weekly comedy night on Franklin St is a first-batch candidate. Batu can also just confirm the night is still running and it can be carded by hand as a recurring card."
     }
   ]
 }
