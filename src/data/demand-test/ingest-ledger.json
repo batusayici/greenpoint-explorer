@@ -2915,8 +2915,9 @@
       "addedAt": "2026-09-10"
     },
     {
-      "item": "light-and-sound-design 10/3/2026 — ARTO LINDSAY & MELVIN GIBBS, DR S+M, BEAT DETECTIVES, Exoplex, Stewey Decimal at L&SD. Flyer read 2026-09-10; it states NO time. Past the 14-day horizon on the day it was read, so recorded rather than carded.",
-      "condition": "Card it once 10/3 is inside the horizon. No clock is stated on the flyer — use the all-day sentinel unless L&SD publishes a time; do not invent one.",
+      "item": "light-and-sound-design 10/3/2026 — ARTO LINDSAY & MELVIN GIBBS / DR S+M / BEAT DETECTIVES / Exoplex / Stewey Decimal, at L&SD. Flyer read 2026-09-10 from https://lightandsound.design/e/100326; it states the date, the bill and the venue initials, and NO time. Past the 14-day horizon on the day it was read.",
+      "condition": "UNBLOCKS 2026-09-19, the first run where 10/3 is inside the 14-day horizon. Batu asked for this one by name on 2026-09-10, so card it on the first run on or after that date rather than deferring it again. Card as: allDay true, no clock (the flyer states none — do NOT invent one, and do NOT take a time from a third-party listing), locationPrivate true with locationName \"Light & Sound Design\" and no coords/address/venues like the other five L&SD cards, filters [\"live_music\"], action + sourceLink to https://lightandsound.design/e/100326, sourceQuote the flyer read verbatim: \"10 - 3 - 2026\\nARTO LINDSAY & MELVIN GIBBS\\nDR S+M\\nBEAT DETECTIVES\\nExoplex     Stewey Decimal\\nL & S D\". Re-read the flyer first in case a time or a support act has been added.",
+      "unblocksOn": "2026-09-19",
       "addedAt": "2026-09-10"
     },
     {
