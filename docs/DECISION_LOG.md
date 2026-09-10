@@ -4,6 +4,47 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-10 — roster additions ship on the run's own judgment; Batu gets told, not asked
+
+**Batu, after being asked to approve a Brooklyn Paper PR that had nothing in it he needed to read.**
+His words: revise the rule so I'm notified of roster additions but don't need to approve them if they
+fit Stoopwise criteria.
+
+**What changed.** A new source no longer waits for him. It ships with the run — including the
+`WebFetch(domain:…)` line in the tracked `.claude/settings.json` that has to land in the same change
+— provided it passes seven tests, written out in `CLAUDE.md` and pointed at from `AGENTS.md` and both
+ingest skills. In short: it covers Greenpoint or its items carry addresses; it is locally owned and
+not paying for placement; it publishes facts a card can quote; it does not refuse automated readers;
+nothing is paywalled or truncated; it is public and carries no private individual's contact details;
+and **it was actually fetched in that session with the measurement written into its `notes`**.
+
+**The last test is the one that matters most.** A source added from reputation rather than a fetch is
+the one that looks healthy for months while returning nothing — Yaro Studios sat on the roster with a
+JavaScript-rendered workshops page hiding two kids' classes until a street poster found them, and
+Greenpointers' RSS served 2 of 25 items behind a clean 200. Neither would have passed a measurement
+written into the notes at onboarding time.
+
+**Being told is part of the rule, not a courtesy.** Every added source is named in the run's report to
+Batu and in the commit subject, with what was measured and why it passed. A source that appears in the
+roster and nowhere else breaks this rule even if it meets every test.
+
+**What still needs him:** sender additions (his own inbox), business submissions, and any code change.
+Unchanged.
+
+**And a deliberate escape hatch: a source that blocks AI agents goes to him.** Test 4 exists because
+of the source that prompted this. brooklynpaper.com's robots.txt gives `Disallow: /` to 170 named AI
+crawlers including `anthropic-ai`, while allowing everything else — and the fetcher sends a Chrome
+user-agent, so it would have sailed straight through. Routing around a publisher's stated position on
+a technicality is not a call a run gets to make on its own.
+
+**Brooklyn Paper was added anyway, on Batu's explicit yes**, by the RSS feed rather than the WordPress
+API, because the feed is the channel the publisher offers for outside reading. Measured the same day:
+10 items, full article text, 3,824–13,036 chars, ending on the same closing quote as the API copy, so
+nothing is truncated. Low volume — about three Greenpoint posts a month — but it carries development
+and civic reporting Greenpointers doesn't, and it had the St John's cultural center story two weeks
+before a street poster surfaced the venue. **Not a precedent:** the next source that refuses automated
+readers still goes to Batu.
+
 ## 2026-09-10 — a hidden address is not the same as an unknown borough; `locationPrivate` covers only the first
 
 **Batu, second poster batch.** A postcard for SOIL: Field of Awareness, a two-night Butoh-puppetry

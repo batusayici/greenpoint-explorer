@@ -1295,6 +1295,17 @@
         "limit": 35,
         "delayMs": 400
       }
+    },
+    {
+      "id": "brooklyn-paper-greenpoint",
+      "name": "Brooklyn Paper — Greenpoint category (RSS)",
+      "url": "https://www.brooklynpaper.com/category/neighborhoods/greenpoint/feed/",
+      "group": "roundup",
+      "cadence": "weekly",
+      "fetch": "feed",
+      "citeHost": "brooklynpaper.com",
+      "notes": "Onboarded 2026-09-10 at Batu's request. Neighborhood NEWS, not events — expect `news` cards, and date-gate anything that reads like a listing. MEASURED 2026-09-10: the feed returns 10 items with FULL article text in content:encoded, 3,824-13,036 chars, no paywall marker; the tail of the top item ends on the same closing quote as the same article read through the site's WordPress API, so nothing is truncated. The API route (wp-json/wp/v2/posts?categories=1003&per_page=15) works too and returns 15, but the FEED is what the publisher offers for outside reading, so use it — revisit only if the feed ever starts truncating the way Greenpointers' did (DECISION_LOG 2026-08-12). VOLUME IS LOW: 15 posts between April and September 2026, about three a month, so a run with no Brooklyn Paper change is normal and not a dark source. WHAT IT ADDS over Greenpointers: development and civic reporting the roundup does not carry — Monitor Point at City Council, the landmark firehouse condo plan, McGuinness Boulevard redesign data, the Sereneco fire GoFundMe, Peter Pan Donuts' matriarch. It also ran the St John's cultural center story on 2026-08-26, two weeks before a street poster surfaced the venue. WARNING — THIS SOURCE FAILS TEST 4 OF THE ROSTER RULE AND WAS ADDED ANYWAY, ON BATU'S EXPLICIT YES 2026-09-10: brooklynpaper.com/robots.txt gives `Disallow: /` to 170 named AI crawlers including `anthropic-ai`, while `User-agent: *` allows everything but /wp-admin/. The fetcher sends a Chrome user-agent so it is not in the blocked list, and an RSS feed is the publisher's own syndication channel, but the position is theirs and it was put to Batu before adding. Cards cite and link back. A future run must not treat this as precedent — the next source that refuses automated readers goes to Batu too.",
+      "feed": {}
     }
   ],
   "manualSources": [

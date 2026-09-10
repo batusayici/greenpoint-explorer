@@ -18,7 +18,19 @@ npm run ingest:fetch -- --offline   # cloud routine only: diff that bundle inste
 npm run ingest:publish -- --to <dir> --fetcher <github|home>   # fetcher side only (GitHub workflow / home launchd job)
 ```
 
-Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill). **Since 2026-08-02 routine updates auto-ship** — push to `main` = production. Cards are triaged **per card**: one that is substantiated (carries a verbatim `sourceQuote`) and mechanically categorized ships; one that is unsourced, ambiguously categorized, inferred, or source-conflicted is **held in a review PR — never shipped, never silently dropped**. Roster/sender additions, business submissions, and code changes are always human-gated. Truth rules are unchanged; `sourceQuote` is schema-checked and a dated test fails any card created on/after 2026-08-02 without one.
+Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill). **Since 2026-08-02 routine updates auto-ship** — push to `main` = production. Cards are triaged **per card**: one that is substantiated (carries a verbatim `sourceQuote`) and mechanically categorized ships; one that is unsourced, ambiguously categorized, inferred, or source-conflicted is **held in a review PR — never shipped, never silently dropped**. **Roster additions no longer need Batu's approval (2026-09-10)** — they need to fit the tests below, and Batu needs to be told. Sender additions, business submissions, and code changes are still his call.
+
+**A source can be added on the run's own judgment when ALL of these hold.** Any miss, or any genuine doubt on one, and it goes to Batu instead:
+
+1. It covers Greenpoint inside the bbox — or its items carry addresses, so each one can be gated on its own.
+2. It is locally owned and not a chain (the same test that kept Warsaw off the roster for being Live Nation-operated), and it is neither paying for placement nor asking for it. Coverage is never for sale.
+3. It publishes facts a card can quote verbatim — dates, times, prices, addresses — not just marketing prose.
+4. It does not refuse automated readers. Check `robots.txt` and any stated terms. **A site that blocks AI agents fails this test and goes to Batu**, even though the fetcher sends a browser user-agent and would sail through — that is his call to make, not a technicality to route around.
+5. Nothing behind it is paywalled or truncated. Measure the body, don't assume (Greenpointers' RSS looked healthy while serving 2 of 25 items — DECISION_LOG 2026-08-12).
+6. It is a public published surface — not a private group, not a personal social account, and it carries no private individual's phone, email or home address.
+7. **It was actually fetched in the same session and the measurement is written into its `notes`**: the URL, the strategy, what came back, character counts. A source added from reputation rather than a fetch is the one that looks healthy for months while returning nothing (that is how Yaro's JavaScript-rendered workshops page hid two kids' classes until a street poster found them).
+
+**Telling Batu is not optional.** Every added source is named in the run's report to him and in the commit subject, with what was measured and why it passed. A source that appears in the roster and nowhere else breaks this rule even if it meets every test above. Truth rules are unchanged; `sourceQuote` is schema-checked and a dated test fails any card created on/after 2026-08-02 without one.
 
 ## Communication style (2026-08-19)
 

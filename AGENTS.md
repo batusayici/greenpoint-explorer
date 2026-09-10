@@ -11,7 +11,7 @@ Supersedes: v2 (2026-06-11), which governed the now-parked 3D explorer track
 
 ## Roles
 
-- **Batu owns:** product direction, taste, scope, verdicts, **code** publish/deploy approvals, and sending every outbound message. *(Routine content ingest is the one carve-out — substantiated cards auto-ship since 2026-08-02; unsourced or ambiguous ones are still held for review. DECISION_LOG.)*
+- **Batu owns:** product direction, taste, scope, verdicts, **code** publish/deploy approvals, and sending every outbound message. *(Routine content ingest is the one carve-out — substantiated cards auto-ship since 2026-08-02; unsourced or ambiguous ones are still held for review. Since 2026-09-10 roster additions auto-ship too, when they pass the seven tests in `CLAUDE.md` and the run names them to Batu; senders, business submissions and code are unchanged and still his. DECISION_LOG.)*
 - **Agent owns:** the weekly PM/Design/PMM/Analyst loop — ingest, builds, drafts, readouts, verification, plan upkeep — and proposing options with tradeoffs when a taste call is needed.
 
 ## Working Loop
