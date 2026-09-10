@@ -711,6 +711,7 @@ Saturdays at 9:30 am
 37 Noble Street, Brooklyn NY
 Get Updates
 Email
+Subscribe to newsletter
 FAQ
 Login
 The B-Mail
@@ -3088,7 +3089,6 @@ Initial 1
 Initial 2
 Initial 3
 Your Initials
-close
 select
 sock size →
 XS/S

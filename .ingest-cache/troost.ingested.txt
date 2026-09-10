@@ -1,9 +1,3 @@
-summary: THE ACADEMY BLUES PROJECT
-description: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily
-start.date: 2026-09-09
-end.date: 2026-09-10
-htmlLink: https://www.google.com/calendar/event?eid=Xzg5MjNjZ3BqNm9wajZiYTU3MG8zNGI5azhvb2s0YjlwOGNvMzRiYTQ4Y3FqaWM5bjZjcDRhY3E1ODggdHJvb3N0bGl2ZUBt
-
 summary: DJ Barba Yiorgi
 description: WORLD PSYCHEDELIC GROOVE
 start.date: 2026-09-10
@@ -221,3 +215,9 @@ summary: DJ R DUBBS
 start.date: 2026-10-23
 end.date: 2026-10-24
 htmlLink: https://www.google.com/calendar/event?eid=XzZkMzMyZ3BtODUxajBiOWo2b3EzMmI5azYwcjMyYjlvNmNxajRiOWw2b29qZ2RpMjZjcGplY2k2NmMgdHJvb3N0bGl2ZUBt
+
+summary: DJs Lupe Loop and Mela
+description: feel good funk, international dance jams and vintage house
+start.date: 2026-10-24
+end.date: 2026-10-25
+htmlLink: https://www.google.com/calendar/event?eid=aG92cWlvaWk3ZTE2ZmM3NzRiZms1ZmtjN25fMjAyNjEwMjQgdHJvb3N0bGl2ZUBt

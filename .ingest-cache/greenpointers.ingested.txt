@@ -1,3 +1,8 @@
+title.rendered: Sweet Chick Has Closed Its Williamsburg Location
+link: https://greenpointers.com/2026/09/09/sweet-chick-has-closed-its-williamsburg-location/
+date: 2026-09-09T13:01:16
+content.rendered: Sweet Chick appears to have quietly closed the doors on its flagship location, after 13 years on Bedford Avenue. New York native John Seymour launched the spot in 2013. The microchain specialized in chicken and waffles, along with other Southern-style specialties. Seymour cited inspiration from the Harlem jazz clubs where the dish has its roots. He eventually earned the backing of iconic rapper Nas. The restaurant’s quick success allowed it to expand to the Lower East Side, Long Island City, and Prospect Heights, and Union Square, as well as Los Angeles. As far as we can tell, Sweet Chick has not made any formal announcement about the closure, but recently privatized its Instagram account ( @sweetchicklife ), which does not bode well for the other locations The concurrent news that Partners Coffee (fka Toby’s Estate) will close its North 6th Street location feels like a sign of the times (Partners has cited rent affordability as the issue for its closure). Both opened during an earlier phase of gentrification, at the zenith of Williamsburg’s cultural cache, expanding beyond their local origins. As of press time, Sweet Chick has not responded to our request for comment.
+
 title.rendered: Swap clothes and books, clean up parks, and more — What’s Happening, Greenpoint? (9/10-16)
 link: https://greenpointers.com/2026/09/09/swap-clothes-and-books-clean-up-parks-and-more-whats-happening-greenpoint-9-10-16/
 date: 2026-09-09T11:41:19
@@ -67,11 +72,6 @@ title.rendered: Greenpoint This Week: Ashbox Cafe Closes, El Puente Looking for 
 link: https://greenpointers.com/2026/08/28/greenpoint-this-week-ashbox-cafe-closes-el-puente-looking-for-new-home-and-more/
 date: 2026-08-28T16:34:12
 content.rendered: Good evening, Greenpointers. Summer might be starting to draw to a close (say it ain’t so!), so make those beach day and picnic plans while you can (and be sure to schedule a rain date, since we’re apparently living under a constant flood watch). Catch a magic show, celebrate a small business’s birthday, and other things to do while you wait out the rain. A staple of northern Greenpoint, Ashbox Cafe has officially closed after nearly 20 years. And in more closure news, Williamsburg’s Barcade is probably going to close …one day. El Puente is looking for a new permanent home. Thankfully, it’s because they have raised enough funds, not because of a rent increase or getting pushed out! BE Yarn tells us that their landlord granted them a temporary extension, and they will remain open for the time being. A shooting on Commercial Street injured a 32-year-old man. Police are still looking for the perpetrators. Sereneco has temporarily closed, after a fire broke out on Franklin Street today. New barbecue joint Kirbee’s soft opens this Sunday before opening for good next week. Small Change has taken over from Lady Jay’s on Grand Street. A new restaurant has opened in the Isla & Co. space. How Murawski Pharmacy is working to keep the late owner’s legacy alive. An independent design shop, Simi and Sol Collective , has taken over the La Merced storefront, which quietly closed after six years. In and around North Brooklyn Time Out visited U Omakase. Keep these kinds of gimmicks to Fifth Avenue, please. The Great Ice Cream Fair returns to Smorgasburg this Saturday.
-
-title.rendered: Fire on Franklin Street Damages Sereneco, Injures Multiple Firefighters
-link: https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/
-date: 2026-08-28T15:38:14
-content.rendered: Update August 31, 2026: A GoFundMe has been started for Sereneco with 100% of the proceeds going directly to staff. Owner Billy Van Dolsen said it could take months before the restaurant reopens. An all-hands fire on Franklin Street caused damage to Sereneco (113 Franklin St.) Details about what happened are still unfolding, but the FDNY told Greenpointers that they received a call about the situation at 10:46 this morning. A fire broke out on the second floor, requiring 79 FDNY and EMS personnel. Workers contained the fire by 12:35 p.m., though crews were still on the scene when this reporter walked by around 1 p.m. The incident prompted a pretty significant response, as FDNY, NYPD, and EMS personnel took up several blocks. Photo: Julia Moak Firefighters with minor injuries were transported to NYU Langone. The cause of the fire is still under investigation. The Instagram account @fdny_response_videos shared additional details about the situation, reporting that “[t]he fire was located in the kitchen walls in a large 2 story, 100×100, non-fireproof commercial building.” “This was a labor-intensive job as members worked to open up the roof around the ductwork.” Sereneco wrote on Instagram that the fire “caused significant damage” and that they would close as they worked to assess next steps. 113 Franklin Street is one building that houses several businesses, including Azure Gourmet, Chama Mama, and Threes Brewing. I tried to stop by Maman (84 Kent St.) for a coffee but staff told me the fire required them to close (they are in the same building). We will update this story if we learn anything new!
 
 ## [R1 PERSISTED 2026-08-12b] Wednesday Greenpointers pull — full roundup body + linked listings
 # Evidence rule, DECISION_LOG 2026-08-12. The greenpointers RSS feed is now
@@ -809,3 +809,27 @@ Running a small business always comes with unique challenges, but several factor
 A PBS report from 2025 found that “[f]rom 2010 to 2021, 30% of drugstores in the U.S. closed,” with the problem increasing in 2024. “In 2024 alone, about 2,300 pharmacies closed , half of them being independent or mid-sized businesses.”
 What’s more, the monopolization of pharmacy benefit managers (firms that act as middlemen between manufacturers, insurance companies, and pharmacies) has spelled catastrophe for these smaller businesses. These managers often slash reimbursement rates to lower drug costs, and that shrinking rate can hurt an independent pharmacy’s bottom line.
 For a small, family-owned business like Murawski, customer support means everything. So stop in, whether to pick up a prescription or for a friendly chat.
+
+## [R1 PERSISTED 2026-09-10] https://greenpointers.com/2026/08/28/fire-on-franklin-street-damages-sereneco-injures-multiple-firefighters/
+Fire on Franklin Street Damages Sereneco, Injures Multiple Firefighters
+Update August 31, 2026: A GoFundMe has been started for Sereneco with 100% of the proceeds going directly to staff. Owner Billy Van Dolsen said it could take months before the restaurant reopens. 
+
+An all-hands fire on Franklin Street caused damage to Sereneco (113 Franklin St.)
+
+Details about what happened are still unfolding, but the FDNY told Greenpointers that they received a call about the situation at 10:46 this morning.
+
+A fire broke out on the second floor, requiring 79 FDNY and EMS personnel. Workers contained the fire by 12:35 p.m., though crews were still on the scene when this reporter walked by around 1 p.m. The incident prompted a pretty significant response, as FDNY, NYPD, and EMS personnel took up several blocks. 
+
+Photo: Julia Moak
+
+Firefighters with minor injuries were transported to NYU Langone. 
+
+The cause of the fire is still under investigation. The Instagram account @fdny_response_videos shared additional details about the situation, reporting that “[t]he fire was located in the kitchen walls in a large 2 story, 100&#215;100, non-fireproof commercial building.”
+
+“This was a labor-intensive job as members worked to open up the roof around the ductwork.”
+
+Sereneco wrote on Instagram that the fire “caused significant damage” and that they would close as they worked to assess next steps. 
+
+113 Franklin Street is one building that houses several businesses, including Azure Gourmet, Chama Mama, and Threes Brewing. I tried to stop by Maman (84 Kent St.) for a coffee but staff told me the fire required them to close (they are in the same building).
+
+We will update this story if we learn anything new!

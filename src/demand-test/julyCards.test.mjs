@@ -840,15 +840,33 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // shop replaced its banner and the SOLEIL26 code is gone from the page, so a
   // discount card whose code the merchant no longer advertises has nothing left
   // to stand on. Deck 219 -> 218, discount 7 -> 6.
-  assert.equal(seed.cards.length, 218);
+  //
+  // 2026-09-10 daily refresh. Expiry took eight cards that finished on the 9th
+  // and the run authored eight, so the deck lands back on 218. The eight new
+  // ones: FILM CLUB at Film Noir on 9/24; two Troost nights (LUMENS 9/22, DJ
+  // Barba Yiorgi 9/24); a Tuesday library day card for 9/22; Artudio's Friday
+  // open studio, three drop-in slots a morning through 4 December; the Sunday
+  // prenatal and gentle yoga class at SPARŚA Greenpoint on 9/13; and two named
+  // bills at Greenpoint Comedy Club on 9/24 (Greenpoint Nights, Do You Still
+  // Like Me?). Event 124 -> 123 (eight off, seven on), subscription 36 -> 37
+  // (Artudio open studio), live_music 37 -> 38 (two Troost nights on, one off).
+  //
+  // 2026-09-10 (rebuild): +7. Seven cards verified in the 9/9 run never reached
+  // `main` — that run's branch fell behind the deck and, under the 2026-08-30
+  // rule, could not be merged or rebased, so it was closed and its still-valid
+  // cards were re-applied here. The two Film Noir screenings on the 9th had
+  // already passed; the library Friday card and the bike clinic were dropped as
+  // duplicates of `library-sensory-garden-0918` and `library-bike-clinic-0919`,
+  // which main already carries with better end times. Deck 218 -> 225.
+  assert.equal(seed.cards.length, 225);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.category === "event"), 124, "97 after the 9/8 expiry + 27 dated cards (2026-09-09)");
+  assert.equal(count((c) => c.category === "event"), 129, "123 + the 6 dated cards recovered from the 9/9 run (2026-09-10 rebuild)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 37, "unchanged (2026-09-09)");
-  assert.equal(count((c) => c.category === "subscription"), 36, "35 + the 12-week after-school improv series at Greenpoint Comedy Club (2026-09-09)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 38, "37 − the 9/9 Troost night + LUMENS 9/22 and Barba Yiorgi 9/24 (2026-09-10)");
+  assert.equal(count((c) => c.category === "subscription"), 37, "36 + Artudio's Friday open studio (2026-09-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -1089,6 +1107,11 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Jar clothing swap, the Java St. Garden plant-medicine session and the
     // Peek Inn book swap; "Free, RSVP here" on the Lovebirds writing group and
     // the Parkhouse trivia; "Free while supplies last." on Sunday Scoops.
+    // 2026-09-10 rebuild: the weekly weeding shift at Bushwick Inlet Park.
+    // Recovered from the 9/9 run, whose branch could not be merged. Free-ness
+    // is stated on its own line in the listing this card quotes ("Free"), and
+    // it is a single programme, so there is nothing for it to leak onto.
+    "bip-weeding-wednesdays",
     "dance-cleanup-transmitter-0912",
     "dreams-on-command",
     "goddard-day-of-fun-0912",
@@ -1176,11 +1199,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     // the coverage check flagged 9/8 and 9/15. Go Green states it outright:
     // "a free outdoor yoga practice at WNYC Transmitter Park".
     "transmitter-park-yoga-tuesdays", // "Free" on the Go Green Brooklyn listing
-    // 2026-09-09: Go Green Brooklyn's own listing prints a bare "Free" under
-    // the date line for the Bushwick Inlet weeding shift, which is the line the
-    // card quotes — so this one DOES get the flag, unlike the two North
-    // Brooklyn Parks Alliance sessions noted just below.
-    "weeding-wednesdays-bip-0909",
+    // (weeding-wednesdays-bip-0909 expired out 2026-09-10 — Go Green Brooklyn's
+    // listing had printed a bare "Free" under its date line, which is the line
+    // the card quoted, so it carried the flag unlike the two North Brooklyn
+    // Parks Alliance sessions noted just below.)
     // (nypd-94th-community-council-0903 expired out 2026-09-04 — Go Green
     // Brooklyn's page had stated it twice, as a bare "Free" under the date
     // line and again as "Cost: Free" in the details block.)
@@ -1327,6 +1349,11 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // double-files wellness + deals_memberships on the same reading that puts
     // a kids' discount in family_kids + deals_memberships (PR #18).
     "sparsa-greenpoint",
+    // 2026-09-10: the Sunday prenatal and gentle yoga class at the Greenpoint
+    // studio — adult movement, filed the same way as the 9/8 prenatal and
+    // Baby & Me card the run before it. (The same class runs Thursday evening
+    // and Saturday morning at SPARŚA Williamsburg, which is out of area.)
+    "sparsa-prenatal-gentle-yoga-0913",
     // 2026-09-07, fourth pass: the park's Longevity Stick classes are "a mix
     // of Tai Chi and yoga", so they are movement, not the civic stewardship
     // their organiser's other programming files under.
@@ -1358,7 +1385,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // 2026-09-07: five ticketed tournaments at Action City Comics, cleared from
     // the hold pile once Batu approved shipping the first-read sources.
     // (action-city-flesh-blood-0908 expired out 2026-09-09 — it ran 9/8)
-    "action-city-one-piece-0909",
+    // (action-city-one-piece-0909 expired out 2026-09-10 — it ran 9/9)
     "action-city-one-piece-0910",
     "action-city-shadow-throne-0918",
     "action-city-shadow-throne-0919",
@@ -1632,6 +1659,12 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // growing space is civic under the 2026-08-30 rule.
     "61-franklin-street-garden",
     "adopt-a-business",
+    // 2026-09-10 rebuild, both recovered from the 9/9 run: the weekly weeding
+    // shift at Bushwick Inlet Park, and CB1's Parks and Waterfront Committee
+    // meeting on 9/15 — stewardship you turn up and do, and the public meeting
+    // where the same parks get decided.
+    "bip-weeding-wednesdays",
+    "cb1-parks-waterfront-0915",
     // (bedford-slip-cleanup-0830, bedford-slip-hot-dogs-0830 and
     //  bedford-slip-tree-care-0829 all expired out 2026-08-31)
     // (cb1-environmental-committee-0903 expired out 2026-09-04 — Community
@@ -1701,10 +1734,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // shift rule applies mechanically rather than by resemblance to the line
     // above it.
     // (transmitter-its-my-park-0830 expired out 2026-08-31)
-    // 2026-09-09: the Wednesday volunteer weeding shift at Bushwick Inlet Park,
-    // off Go Green Brooklyn. Same growing-space rule as the two North Brooklyn
-    // Parks Alliance sessions at the same park.
-    "weeding-wednesdays-bip-0909",
+    // (weeding-wednesdays-bip-0909 expired out 2026-09-10 — the Wednesday
+    // volunteer weeding shift at Bushwick Inlet Park, off Go Green Brooklyn,
+    // under the same growing-space rule as the two North Brooklyn Parks
+    // Alliance sessions at the same park.)
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {
@@ -1907,7 +1940,13 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // club's listings still behind the down browser path. That was the venue's
   // last linked card, so the list is empty and the field is gone. The venue
   // card itself stays: the club is open, we just cannot read its calendar.
-  assert.equal(byId("greenpoint-comedy-club").relatedCardIds, undefined);
+  // 2026-09-10: the club's calendar is readable again and it has linked cards
+  // once more — the two named bills it has listed for 9/24. The named one-off
+  // shows are still what gets carded; the recurring showcases are not.
+  assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
+    "comedy-greenpoint-nights-0924",
+    "comedy-do-you-still-like-me-0924",
+  ]);
   // Scrappleland's club nights all expired 2026-08-06; the prune emptied its
   // link list, so Carcosa now carries the games side of the place graph.
   assert.deepEqual(byId("scrappleland").relatedCardIds, ["scrappleland-backgammon-club", "scrappleland-pinball-league"]);

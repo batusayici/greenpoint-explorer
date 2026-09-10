@@ -253,17 +253,17 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Beginner Embroidery
+Sewing 101 - Tote Bag
 Regular Price
-$50.00
+$95.00
 Sale Price
-$50.00
+$95.00
 Regular Price
 Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Sewing 101 - Tote Bag
+Sewing 101 - Make a Skirt
 Regular Price
 $95.00
 Sale Price
@@ -313,6 +313,26 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+5-Week Sewing Course - Ilford Jacket
+Regular Price
+$350.00
+Sale Price
+$350.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Knitting 104: Sock Knitting
+Regular Price
+$125.00
+Sale Price
+$125.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 Macramé Plant Hanger
 Regular Price
 $65.00
@@ -343,31 +363,21 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+Beginner Embroidery
+Regular Price
+$50.00
+Sale Price
+$50.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 Intro to Garment Sewing - Free Range Slacks (Weeknights, 3 parts)
 Regular Price
 $225.00
 Sale Price
 $225.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Knitting 104: Sock Knitting
-Regular Price
-$125.00
-Sale Price
-$125.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-5-Week Sewing Course - Ilford Jacket
-Regular Price
-$350.00
-Sale Price
-$350.00
 Regular Price
 Unit Price
 / per
@@ -390,16 +400,6 @@ Regular Price
 $65.00
 Sale Price
 $65.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Sewing 101 - Make a Skirt
-Regular Price
-$95.00
-Sale Price
-$95.00
 Regular Price
 Unit Price
 / per
