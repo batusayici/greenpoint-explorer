@@ -368,3 +368,41 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   count only clicks that produced at least one in-product event, or scanners
   answer the question for us. This does not change D9's thresholds; it names
   what a click is.
+- **(proposed 2026-09-08, cycle 9 — pending ratification.)** **A fix that lives
+  only in the readout is not a fix — put it where the work is copied from.**
+  Cycle 8 corrected the digest link in its draft and the broken link shipped
+  again seven days later, because the weekly send is composed from last week's
+  email rather than from the readout. When a readout identifies a defect in a
+  recurring artifact, it names the artifact that has to change — the sent email,
+  the `channel-links.md` row, the template — and states that as the action,
+  rather than publishing the corrected version and assuming it gets picked up.
+- **(proposed 2026-09-08, cycle 9 — pending ratification.)** **When a metric the
+  readout has been reporting turns out to have been counted wrong, say so in the
+  line that reports it, not only in the finding.** Cycle 8 reported six Follow
+  taps; there are three, because four `cta_tap` events belong to an older
+  `signup` CTA. A number that changed for a reason other than the world changing
+  gets that reason attached in the metrics table, or the next cycle reads the
+  correction as movement.
+- **(proposed 2026-09-08, cycle 9 — pending ratification.)** **A readout PR is a
+  same-day artifact: if it is not merged or closed within about a day, it is
+  stale.** It writes `gtm-state.json`, `docs/launch/cockpit.html` and
+  `docs/learning-log.md` — three files every other run also writes — so a branch
+  left open conflicts on all three within days and the cheapest resolution
+  becomes closing it. Cycle 7 (PR #50) was discarded on exactly that ground
+  after thirteen days: "26 commits behind main and conflicts on the cockpit, the
+  GTM state and the learning log." Same rule and same reason as the repo's
+  `cards.json` rule. If a readout cannot be reviewed the day it lands, close it
+  deliberately and carry its findings forward rather than letting it age into a
+  conflict.
+- **(proposed 2026-09-08, cycle 9 — pending ratification.)** **When a sensor
+  reports a missing credential, check that the thing the credential points at
+  exists before naming the fix.** `growth:gsc` exits 3 saying `GSC_SITE_URL`
+  and/or `GSC_SERVICE_ACCOUNT_JSON` are unset, because that is the only state it
+  can observe. Cycles 7 and 8 both reported that as the diagnosis and named "add
+  them to the routine's environment" as the fix; the actual blocker was that the
+  service account in `docs/growth/search-console-setup.md` steps 1-3 had never
+  been created, so there was nothing for the variables to hold (Batu, closing PR
+  #50). Read the existing three-failure-mode instruction as covering this too:
+  **"env vars absent" is a symptom with at least two causes — nobody set them,
+  or there is nothing to set them to** — and the setup doc's own steps are where
+  you check which.

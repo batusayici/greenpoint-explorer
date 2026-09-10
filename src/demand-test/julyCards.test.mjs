@@ -850,11 +850,19 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // bills at Greenpoint Comedy Club on 9/24 (Greenpoint Nights, Do You Still
   // Like Me?). Event 124 -> 123 (eight off, seven on), subscription 36 -> 37
   // (Artudio open studio), live_music 37 -> 38 (two Troost nights on, one off).
-  assert.equal(seed.cards.length, 218);
+  //
+  // 2026-09-10 (rebuild): +7. Seven cards verified in the 9/9 run never reached
+  // `main` — that run's branch fell behind the deck and, under the 2026-08-30
+  // rule, could not be merged or rebased, so it was closed and its still-valid
+  // cards were re-applied here. The two Film Noir screenings on the 9th had
+  // already passed; the library Friday card and the bike clinic were dropped as
+  // duplicates of `library-sensory-garden-0918` and `library-bike-clinic-0919`,
+  // which main already carries with better end times. Deck 218 -> 225.
+  assert.equal(seed.cards.length, 225);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.category === "event"), 123, "124 − 8 expired on the 9th + 7 dated cards (2026-09-10)");
+  assert.equal(count((c) => c.category === "event"), 129, "123 + the 6 dated cards recovered from the 9/9 run (2026-09-10 rebuild)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "37 − the 9/9 Troost night + LUMENS 9/22 and Barba Yiorgi 9/24 (2026-09-10)");
@@ -1099,6 +1107,11 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Jar clothing swap, the Java St. Garden plant-medicine session and the
     // Peek Inn book swap; "Free, RSVP here" on the Lovebirds writing group and
     // the Parkhouse trivia; "Free while supplies last." on Sunday Scoops.
+    // 2026-09-10 rebuild: the weekly weeding shift at Bushwick Inlet Park.
+    // Recovered from the 9/9 run, whose branch could not be merged. Free-ness
+    // is stated on its own line in the listing this card quotes ("Free"), and
+    // it is a single programme, so there is nothing for it to leak onto.
+    "bip-weeding-wednesdays",
     "dance-cleanup-transmitter-0912",
     "dreams-on-command",
     "goddard-day-of-fun-0912",
@@ -1646,6 +1659,12 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // growing space is civic under the 2026-08-30 rule.
     "61-franklin-street-garden",
     "adopt-a-business",
+    // 2026-09-10 rebuild, both recovered from the 9/9 run: the weekly weeding
+    // shift at Bushwick Inlet Park, and CB1's Parks and Waterfront Committee
+    // meeting on 9/15 — stewardship you turn up and do, and the public meeting
+    // where the same parks get decided.
+    "bip-weeding-wednesdays",
+    "cb1-parks-waterfront-0915",
     // (bedford-slip-cleanup-0830, bedford-slip-hot-dogs-0830 and
     //  bedford-slip-tree-care-0829 all expired out 2026-08-31)
     // (cb1-environmental-committee-0903 expired out 2026-09-04 — Community
