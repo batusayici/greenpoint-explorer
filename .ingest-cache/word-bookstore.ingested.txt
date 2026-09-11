@@ -71,6 +71,14 @@ Terms of Use
 Trust & Privacy
 Contact
 
+## [FRAME] https://app.chatwoot.com/widget
+Hi 👋
+Can we help you with your membership?
+We are away at the moment
+Typically replies in a few minutes
+Start Conversation
+Powered by Chatwoot
+
 ## [DETAIL] https://withfriends.co/word/join
 Discover bookstores
 Pricing
@@ -185,6 +193,14 @@ Code of Conduct
 Terms of Use
 Trust & Privacy
 Contact
+
+## [FRAME] https://app.chatwoot.com/widget
+Hi 👋
+Can we help you with your membership?
+We are away at the moment
+Typically replies in a few minutes
+Start Conversation
+Powered by Chatwoot
 
 ## [R1 PERSISTED 2026-08-12] https://withfriends.co/word/join (browser-rendered)
 # Evidence-persistence rule (DECISION_LOG 2026-08-12). The roster snapshot is

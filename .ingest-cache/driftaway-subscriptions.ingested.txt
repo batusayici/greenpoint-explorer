@@ -2588,7 +2588,6 @@ Terms of service
 Refund policy
 Choosing a selection results in a full page refresh.
 Opens in a new window.
-{"themeColor":"#006838","iconColor":"#006838","showLogo":false,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}
 Close
 Remove
 Gifting has never been easier
@@ -2686,6 +2685,7 @@ Expired on
 Balance:
 Initial balance:
 Expires on:
+{"themeColor":"#006838","iconColor":"#006838","showLogo":false,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}
 
 ## [DETAIL] https://store.driftaway.coffee/collections/subscriptions
 Skip to content

@@ -3408,8 +3408,7 @@
       "relatedCardIds": [
         "cibone-restation-showcase-0815",
         "cibone-commune-shop-popup-0918",
-        "cibone-trunk-speliopoulos-0919",
-        "cibone-trunk-sri-threads-0926"
+        "cibone-trunk-speliopoulos-0919"
       ],
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
@@ -4527,7 +4526,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-31",
-      "updatedAt": "2026-09-01",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "event",
       "id": "library-garden-hours-0911",
@@ -4559,7 +4558,7 @@
           "date": "2026-08-31"
         }
       ],
-      "sourceQuote": "ts_title: Sensory Garden Hour\nds_event_start_date: 2026-09-11T14:30:00Z\nds_event_end_date: 2026-09-11T15:30:00Z\nss_event_age: Birth to Five Years\nts_body: Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden.\nFor ages 0-5. No registration required.\nts_title: Garden Hours with a Garden Educator\nds_event_start_date: 2026-09-11T19:00:00Z\nds_event_end_date: 2026-09-11T20:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator! Bring your questions, learn about what's growing, and enjoy the surroundings. Garden Educator will be on site from 3-4pm on Fridays, weather permitting.",
+      "sourceQuote": "Garden Hours with a Garden Educator\nFri, Sep 11 3:00 pm\nGreenpoint, Demonstration Garden\nGreenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator!",
       "relatedCardIds": [
         "greenpoint-library"
       ]
@@ -7950,7 +7949,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "subscription",
       "filters": [
@@ -7963,7 +7962,7 @@
       "locationName": "ART 101",
       "address": "61 Greenpoint Ave, Ste 113",
       "geocodeQuery": "61 Greenpoint Ave, Brooklyn, NY 11222",
-      "sourceQuote": "After School Artists (GREENPOINT)\nMon–Fri, 3:00pm – 5:00pm EDT (Sep 10 – Dec 17)\nAges 4 – 10 yrs\n$65/class",
+      "sourceQuote": "After School Artists (GREENPOINT)\nMon–Fri, 3:00pm – 5:00pm EDT (Sep 11 – Dec 18)",
       "actions": [
         {
           "label": "Book on Sawyer",
@@ -9704,7 +9703,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-11",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave",
       "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
@@ -9734,8 +9733,8 @@
       "title": "Comedians You Should Know at Greenpoint Comedy Club",
       "kicker": "A midweek stand-up showcase",
       "summary": "Twenty dollars. The club lists a later start on 23 September, which this card does not cover.",
-      "startsAt": "2026-09-09T20:00:00-04:00",
-      "endsAt": "2026-09-16T20:00:00-04:00",
+      "startsAt": "2026-09-16T20:00:00-04:00",
+      "endsAt": "2026-09-16T21:00:00-04:00",
       "recurring": true,
       "recurrence": {
         "days": [
@@ -9745,7 +9744,7 @@
       "filters": [
         "arts_culture"
       ],
-      "sourceQuote": "Wed Sep 9, 2026, 8:00 PM, Wed Sep 16, 2026, 8:00 PM, Wed Sep 23, 2026, 9:15 PM\nComedians You Should Know @ 8:00 PM\nUSD $20.00"
+      "sourceQuote": "Wed Sep 16, 2026, 8:00 PM, Wed Sep 23, 2026, 9:15 PM\nComedians You Should Know @ 8:00 PM\nUSD $20.00"
     },
     {
       "audience": [
@@ -9912,9 +9911,9 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-11",
       "free": false,
-      "category": "arts_culture",
+      "category": "subscription",
       "id": "happy-medium-art-cafe",
       "title": "Happy Medium Art Cafe",
       "kicker": "Drop-in art sessions, $15 deposit",
@@ -9940,7 +9939,7 @@
           "date": "2026-09-09"
         }
       ],
-      "sourceQuote": "Art Cafe\nWed, Sep 9 · 5:00 PM - 7:00 PM\nGreenpoint\n$15 deposit\nArt Cafe\nWed, Sep 9 · 8:00 PM - 10:00 PM\nGreenpoint\n$15 deposit",
+      "sourceQuote": "Art Cafe\nFri, Sep 11 · 2:15 PM - 4:15 PM\nGreenpoint\n$15 deposit\nArt Cafe\nFri, Sep 11 · 4:30 PM - 6:30 PM\nGreenpoint\n$15 deposit",
       "lat": 40.73327,
       "lng": -73.957578
     },
@@ -10215,7 +10214,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-09-10",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "id": "lsd-quadraphonics-0912-matinee",
       "category": "event",
       "filters": [
@@ -10246,7 +10245,7 @@
       "relatedCardIds": [
         "lsd-quadraphonics-0912-evening"
       ],
-      "sourceQuote": "QUADRAPHONICS AT L&SD\n2 SHOWS\nSAT 9/12\n2:30PM\n7:30PM\nOLIVIA BLOCK PRESENTS \"BREACH\" (4-CHANNEL VERSION)\nKEITH FULLERTON WHITMAN\nLEA BERTUCCI\nSECRET ADDRESS DM FOR INFO"
+      "sourceQuote": "QUADRAPHONICS [2:30 PM]\nSat 09.12.2026\n2:30PM\n-\n5:30PM\nAn evening of abstract electronic music in mesmeric quadraphonic sound by three heavy hitters in the experimental canon.\nThis is the RSVP link for the 2:30 PM show"
     },
     {
       "audience": [
@@ -10257,7 +10256,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-09-10",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "id": "lsd-quadraphonics-0912-evening",
       "category": "event",
       "filters": [
@@ -10288,7 +10287,7 @@
       "relatedCardIds": [
         "lsd-quadraphonics-0912-matinee"
       ],
-      "sourceQuote": "QUADRAPHONICS AT L&SD\n2 SHOWS\nSAT 9/12\n2:30PM\n7:30PM\nOLIVIA BLOCK PRESENTS \"BREACH\" (4-CHANNEL VERSION)\nKEITH FULLERTON WHITMAN\nLEA BERTUCCI\nSECRET ADDRESS DM FOR INFO"
+      "sourceQuote": "QUADRAPHONICS [7:30 PM]\nSat 09.12.2026\n7:30PM\n-\n9:30PM\nAn evening of abstract electronic music in mesmeric quadraphonic sound by three heavy hitters in the experimental canon."
     },
     {
       "audience": [
@@ -10299,7 +10298,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-09-10",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "id": "lsd-churning-sonic-0913",
       "category": "event",
       "filters": [
@@ -10327,7 +10326,7 @@
       "summary": "Octonomy and Geo Blake premiere Atavistic Echoes, with JHK, Madeline Stepien, Sync Sapro, Unique Devices and Water Sign across four hours.",
       "startsAt": "2026-09-13T19:00:00-04:00",
       "endsAt": "2026-09-13T23:00:00-04:00",
-      "sourceQuote": "CHURNING SONIC CONSTRUCTIONS & ATAVISTIC ECHOES FROM THE DEEP\nJHK + MADELINE STEPIEN (VINYL DJ SET)\nSYNC SAPRO (LIVE)\nOCTONOMY + GEO BLAKE PRESENT ATAVISTIC ECHOES (LIVE)\nUNIQUE DEVICES (LIVE)\nWATER SIGN (OCTONOMY + UNIQUE DEVICES) (VINYL DJ SET)\nL&SD          7-11PM          SEPTEMBER 13"
+      "sourceQuote": "churning sonic construcitons & atavastic echoes from the deep\nSun 09.13.2026\n7:00PM\n-\n11:00PM\nChurning sonic constructions meld together in a viscous mess as six artists perform sets that flow into each other through this night of durational drone/ambient/noise/electronic and vinyl b2b sets."
     },
     {
       "audience": [
@@ -10338,7 +10337,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-09-10",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "id": "lsd-echoes-archive-0918",
       "category": "event",
       "filters": [
@@ -10366,7 +10365,7 @@
       "summary": "Chaia, Solpara, Omar Ahmad, Sunny Love and Roland Santana across four hours, billed as archival exploration with somatic movement.",
       "startsAt": "2026-09-18T19:00:00-04:00",
       "endsAt": "2026-09-18T23:00:00-04:00",
-      "sourceQuote": "Echoes of the Archive\nARCHIVAL EXPLORATIONS\nDIASPORIC SOUNDS\nSOMATIC MOVEMENT\nDEEP LISTENING\nChaia\nSolpara\nOmar Ahmad\nSunny Love\nRoland Santana\nFRIDAY 09.18.2026          7pm-11pm @ L&SD"
+      "sourceQuote": "Echoes of the Archive\nFri 09.18.2026\n7:00PM\n-\n11:00PM\nEchoes of the Archive is returning to L&SD September 18th!! Join 4 DJs electronically reimagining traditional archival and diasporic music."
     },
     {
       "audience": [
@@ -10377,7 +10376,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-09-10",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "id": "lsd-mess-is-lore-0919",
       "category": "event",
       "filters": [
@@ -10405,7 +10404,7 @@
       "summary": "Elori Saxl and Henry Solomon play live alongside San Huan and UCC Harlo, with Ben Bondy and Marble Rye DJing and elixirs from Sacred Software.",
       "startsAt": "2026-09-19T19:30:00-04:00",
       "endsAt": "2026-09-20T00:30:00-04:00",
-      "sourceQuote": "Me(s)s (i)s Lo¯Φ VO(L)Um℮ 7\nSeptember 19, 2026\nLight and Sound Design\nNew York City\n730 pm - 1230 am\nELORI SAXL & HENRY SOLOMON Live\nBEN BONDY DJ\nSAN HUAN Live\nUCC HARLO Live\nMARBLE RYE DJ\nElixirs By SACRED SOFTWARE"
+      "sourceQuote": "MΣƧƧ IƧ ᄂӨЯΣ /// VOL 7.\nSat 09.19.2026\n7:30PM\n-\n12:30AM\nA requiem for the end of the world. Elori Saxl & Henry Solomon (LIVE), Ben Bondy (DJ), San Huan (LIVE), UCC Harlo (LIVE), and Marble Rye (DJ)."
     },
     {
       "createdAt": "2026-09-10",
@@ -10607,14 +10606,14 @@
     },
     {
       "createdAt": "2026-09-10",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "id": "yaro-plate-pals-0926",
       "category": "family_kids",
       "title": "Plate Pals at Yaro Studios",
-      "kicker": "Ages 6+, one morning",
-      "summary": "Hand-build your own ceramic plate — the studio's animal-face plates are the house style. Two hours on a Saturday morning; no price is posted.",
+      "kicker": "Ages 5 and up, $95",
+      "summary": "Hand-build your own ceramic plate; the studio's animal-face plates are the house style. Two hours on a Saturday, booked through Yaro's own schedule.",
       "startsAt": "2026-09-26T10:00:00-04:00",
       "endsAt": "2026-09-26T12:00:00-04:00",
       "filters": [
@@ -10629,7 +10628,7 @@
       "geocodeQuery": "76 Kent St, Brooklyn, NY",
       "evidenceStrength": "high",
       "trustRisk": "medium",
-      "sourceQuote": "PLATE PALS\nhand build your own ceramic plate\nSaturday, September 26\n10:00AM-12:00PM\nAges 6+\n76 KENT STREET GREENPOINT",
+      "sourceQuote": "Plate Pals - Hand Build Your Own Ceramic Plate\n5 – 18+ yrs\nSat\n10:00am - 12:00pm EDT\nSep 26, 2026 - Sep 26, 2026\nyaro studios, 76 Kent St, Greenpoint\n$95",
       "actions": [
         {
           "label": "Details",
@@ -10638,6 +10637,12 @@
         }
       ],
       "sourceLinks": [
+        {
+          "title": "Yaro Studios class schedule",
+          "url": "https://www.hisawyer.com/yaro/schedules",
+          "publisher": "Yaro Studios",
+          "date": "2026-09-11"
+        },
         {
           "title": "Poster board outside Yaro Studios, 76 Kent St, photographed 2026-09-10",
           "publisher": "Yaro Studios",
@@ -10972,54 +10977,7 @@
           "date": "2026-09-10"
         }
       ],
-      "sourceQuote": "Peter Speliopoulos\nSaturday, September 19, 2:00 PM – 6:00 PM\nIn addition to the items typically available at Commune Shop, Peter himself will bring in works of gallery-exhibition quality."
-    },
-    {
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-11",
-      "updatedAt": "2026-09-11",
-      "free": false,
-      "id": "cibone-trunk-sri-threads-0926",
-      "category": "event",
-      "title": "Sri Threads trunk show at CIBONE O'TE",
-      "kicker": "Antique textiles, normally by appointment",
-      "summary": "Stephen Szepanek brings pillows made from his own vintage fabrics and antique textiles collected around the world. His Brooklyn space is usually appointment-only.",
-      "startsAt": "2026-09-26T14:00:00-04:00",
-      "endsAt": "2026-09-26T18:00:00-04:00",
-      "filters": [
-        "shopping"
-      ],
-      "locationName": "CIBONE O'TE",
-      "address": "50 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.724611,
-      "lng": -73.95359,
-      "relatedCardIds": [
-        "cibone-ote",
-        "cibone-commune-shop-popup-0918"
-      ],
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Commune Shop POP-UP",
-          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te",
-          "publisher": "CIBONE O'TE",
-          "date": "2026-09-10"
-        }
-      ],
-      "sourceQuote": "Stephen Szepanek / Sri Threads\nSaturday, September 26, 2:00 PM – 6:00 PM\nAlongside special pillows crafted from Stephen’s personal vintage fabrics, a selection of antique and vintage textiles collected from around the world will be showcased.\n*As Stephen’s Brooklyn space is normally appointment-only, this is a special opportunity for a wider audience to view his collection in person."
+      "sourceQuote": "We will also be hosting trunk shows where the artists themselves will bring in special pieces and collections.\nPeter Speliopoulos\nSaturday, September 19, 2:00 PM – 6:00 PM\nPeter Speliopoulos is a multidisciplinary artist creating ceramics and home objects."
     },
     {
       "audience": [
@@ -11299,8 +11257,8 @@
       ],
       "locationName": "Madeline's",
       "address": "117 Franklin St, Brooklyn, NY 11222",
-      "kicker": "Adult art club, every second Wednesday",
-      "summary": "A drop-in art club for adults that meets at Madeline's on Franklin St on the second Wednesday of every month. The club states no start time and no price — turn up and ask, or check their Linktree.",
+      "kicker": "Second Wednesday of the month",
+      "summary": "A drop-in art club for adults at the Franklin St bar. No start time and no price are stated anywhere — turn up and ask, or check their Linktree.",
       "whyItMatters": "The club has no website of its own and its Linktree carries no dates, so the only place this recurrence is written down is the Shop Small Greenpoint directory.",
       "audience": [
         "resident"
@@ -11351,7 +11309,7 @@
       "locationPrivate": true,
       "locationNote": "meeting point posted on Instagram that morning",
       "kicker": "Every Wednesday, 7:30pm",
-      "summary": "A weekly litter pick-up around the neighbourhood — about 45 minutes, then a drink at wherever the group met. All supplies are provided; just turn up. The meeting point changes week to week and goes up on the club's Instagram that day; the club states no price.",
+      "summary": "About 45 minutes of litter picking, then a drink at wherever the group met. Supplies are provided and the club states no price.",
       "whyItMatters": "3,631 people follow it and their own website has been unreachable since August, so the week's meeting point exists only on Instagram.",
       "audience": [
         "resident"
@@ -11600,6 +11558,459 @@
       ],
       "lat": 40.728299,
       "lng": -73.956362
+    },
+    {
+      "id": "triskelion-beyond-black-box-0923",
+      "category": "event",
+      "title": "Beyond the Black Box at Triskelion Arts",
+      "kicker": "Three nights, doors 6:30pm",
+      "summary": "The fourth Black Black Black Week — a different line-up of dancers, choreographers and musicians each night. Early birds $22, $26 at the door, $17 Hearts tickets, all seating general admission.",
+      "startsAt": "2026-09-23T19:30:00-04:00",
+      "endsAt": "2026-09-25T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "locationName": "Triskelion Arts",
+      "address": "106 Calyer St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.triskelionarts.org/fall-2026-performances/beyond-the-black-box"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Beyond the Black Box | Sept 23-25",
+          "url": "https://www.triskelionarts.org/fall-2026-performances/beyond-the-black-box",
+          "publisher": "Triskelion Arts",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "BEYOND THE BLACK BOX\nSEPTEMBER 23-25\nDOORS: 6:30PM\nSHOW: 7:30PM\nEARLY BIRDS\n$22 / $30 SUPERFAN / $50 🌟 SUPPORTER\n$17 HEARTS\nAT-THE-DOOR\n$26 / $30 SUPERFAN / $50 🌟 SUPPORTER\n$17 HEARTS\nAll seating is general admission.\nTHE BLACK BLACK BLACK WEEK",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.726972,
+      "lng": -73.95656
+    },
+    {
+      "id": "yaro-throw-down-weekends",
+      "category": "subscription",
+      "title": "Throw Down one-time wheel class at Yaro Studios",
+      "kicker": "Saturdays and Sundays, 7pm, $90",
+      "summary": "A drop-in wheel class for adults, no course to commit to — pay for the day you turn up. The studio lists it running through 27 September.",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Yaro Studios",
+      "address": "76 Kent St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Book",
+          "type": "learn_more",
+          "url": "https://www.hisawyer.com/yaro/schedules"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Yaro Studios class schedule",
+          "url": "https://www.hisawyer.com/yaro/schedules",
+          "publisher": "Yaro Studios",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "Throw Down - One Time Wheel Class\nAdults\nSat, Sun\n7:00pm - 9:00pm EDT\nMay 31, 2026 - Sep 27, 2026\nyaro studios, 76 Kent St, Greenpoint\n$90/day",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "yaro-studio-membership",
+        "yaro-kids-clay-lab"
+      ],
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.730374,
+      "lng": -73.958119
+    },
+    {
+      "id": "threes-dj-henry-james-fridays",
+      "category": "event",
+      "title": "DJ Henry James at Threes Brewing Greenpoint",
+      "kicker": "A DJ set in the main bar",
+      "summary": "The brewery's calendar carries it through 25 September and states no cover.",
+      "startsAt": "2026-09-11T20:00:00-04:00",
+      "endsAt": "2026-09-25T23:59:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "fri"
+        ]
+      },
+      "filters": [
+        "live_music"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: DJ Henry James\nstart_date: 2026-09-18T20:00:00.000Z\nend_date: 2026-09-18T23:59:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA\ndescription: Greenpoint: Dj Henry James in the main bar",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "threes-greenpoint-social-club-tuesdays",
+      "category": "event",
+      "title": "Greenpoint Social Club at Threes Brewing",
+      "kicker": "The brewery's own evening gathering",
+      "summary": "Threes runs it under its own name and says nothing about a ticket or a door charge. The calendar carries it through 22 September.",
+      "startsAt": "2026-09-15T19:00:00-04:00",
+      "endsAt": "2026-09-22T21:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "tue"
+        ]
+      },
+      "filters": [
+        "food_drink"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: Greenpoint Social Club\nstart_date: 2026-09-15T19:00:00.000Z\nend_date: 2026-09-15T21:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "threes-board-game-speed-dating-0914",
+      "category": "event",
+      "title": "Board Game Speed Dating at Threes Brewing Greenpoint",
+      "kicker": "Ages 25 to 39, ticketed",
+      "summary": "Quirk Events runs a speed-dating night across board games in the taproom. Two hours on a Monday evening; the ticket page carries the price, which the calendar does not state.",
+      "startsAt": "2026-09-14T19:00:00-04:00",
+      "endsAt": "2026-09-14T21:00:00-04:00",
+      "filters": [
+        "games"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/board-game-speed-dating-threes-brewing-greenpoint-nyc-ages-25-39-tickets-1998023993550?aff=oddtdtcreator&keep_tld=true"
+        },
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: Quirk Events: Board Game Speed Dating\nstart_date: 2026-09-14T19:00:00.000Z\nend_date: 2026-09-14T21:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA\ndescription: Board Game Speed Dating - Threes Brewing - Greenpoint NYC (Ages 25-39)",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "threes-amelia-ritthaler-0916",
+      "category": "event",
+      "title": "Amelia Ritthaler at Threes Brewing Greenpoint",
+      "kicker": "Live comedy in the Studio",
+      "summary": "A stand-up show upstairs in the brewery's Studio room. Two hours on a Wednesday evening; no price is stated.",
+      "startsAt": "2026-09-16T20:00:00-04:00",
+      "endsAt": "2026-09-16T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "The comedian",
+          "type": "learn_more",
+          "url": "https://www.instagram.com/ameliaplease/?hl=en"
+        },
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: Amelia Ritthaler (Comedy Show)\nstart_date: 2026-09-16T20:00:00.000Z\nend_date: 2026-09-16T22:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA\ndescription: Live Comedy in the Studio: Amelia Ritthaler",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "threes-222-0917",
+      "category": "event",
+      "title": "222 at Threes Brewing Greenpoint",
+      "kicker": "Thursday, 9 to 11pm",
+      "summary": "Threes runs 222 as a recurring variety strand — past editions on its calendar were a magic show and a reptile show. For this one the brewery lists only the name.",
+      "startsAt": "2026-09-17T21:00:00-04:00",
+      "endsAt": "2026-09-17T23:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: 222\nstart_date: 2026-09-17T21:00:00.000Z\nend_date: 2026-09-17T23:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "threes-slice-pint-launch-0919",
+      "category": "event",
+      "title": "NYC Slice + Pint Launch Party at Threes Brewing Greenpoint",
+      "kicker": "Slices and a DJ, 6 to 9pm",
+      "summary": "The brewery launches a month-long Slice + Pint Crawl with a pilsner it made for New York's pizza. DJ Vinyl Tap plays the main bar the same evening.",
+      "startsAt": "2026-09-19T18:00:00-04:00",
+      "endsAt": "2026-09-19T21:00:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.eventbrite.com/e/nyc-slice-pint-crawl-launch-party-tickets-1997051075526?aff=oddtdtcreator"
+        },
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: NYC Slice + Pint Launch Party\nstart_date: 2026-09-19T18:00:00.000Z\nend_date: 2026-09-19T21:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA\ndescription: GREENPOINT: Try the pilsner made for NY pizza. Slices, a DJ, and the start of our month-long Slice + Pint Crawl. 6–9pm.",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "threes-informal-proofs-0923",
+      "category": "event",
+      "title": "Informal Proofs, an AI Salon at Threes Brewing Greenpoint",
+      "kicker": "Wednesday evening, 6 to 9pm",
+      "summary": "A salon the brewery lists by name only — no description, no speakers and no price are stated on its calendar.",
+      "startsAt": "2026-09-23T18:00:00-04:00",
+      "endsAt": "2026-09-23T21:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: Informal Proofs, an AI Salon\nstart_date: 2026-09-23T18:00:00.000Z\nend_date: 2026-09-23T21:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "library-friday-garden-0925",
+      "category": "event",
+      "title": "Friday at Greenpoint Library",
+      "kicker": "Two rooftop sessions, morning and afternoon",
+      "summary": "Storytime and play for ages 0 to 5 up on the roof, then an expert on hand later to answer questions about what is growing. Weather-dependent; no registration needed.",
+      "startsAt": "2026-09-25T10:30:00-04:00",
+      "endsAt": "2026-09-25T16:00:00-04:00",
+      "filters": [
+        "civic",
+        "family_kids"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Branch page",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "North Brooklyn community calendar",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "Sensory Garden Hour\nFri, Sep 25 10:30 am\nGreenpoint Library\nFor ages 0-5. No registration required.\nGarden Hours with a Garden Educator\nFri, Sep 25 3:00 pm\nGreenpoint, Demonstration Garden",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.72606,
+      "lng": -73.950709
     }
   ]
 }

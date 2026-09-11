@@ -25,11 +25,11 @@ Market Street
 $15 deposit
 Art Cafe
 Fri, Sep 11 · 2:15 PM - 4:15 PM
-Market Street
+Greenpoint
 $15 deposit
 Art Cafe
 Fri, Sep 11 · 2:15 PM - 4:15 PM
-Greenpoint
+Market Street
 $15 deposit
 Art Cafe
 Fri, Sep 11 · 4:30 PM - 6:30 PM
@@ -41,11 +41,11 @@ Greenpoint
 $15 deposit
 Art Cafe
 Fri, Sep 11 · 6:45 PM - 8:45 PM
-Greenpoint
+Market Street
 $15 deposit
 Art Cafe
 Fri, Sep 11 · 6:45 PM - 8:45 PM
-Market Street
+Greenpoint
 $15 deposit
 Art Cafe
 Fri, Sep 11 · 9:00 PM - 11:00 PM
@@ -61,11 +61,11 @@ Market Street
 $15 deposit
 Art Cafe
 Sat, Sep 12 · 2:15 PM - 4:15 PM
-Greenpoint
+Market Street
 $15 deposit
 Art Cafe
 Sat, Sep 12 · 2:15 PM - 4:15 PM
-Market Street
+Greenpoint
 $15 deposit
 Art Cafe
 Sat, Sep 12 · 4:30 PM - 6:30 PM
@@ -77,11 +77,11 @@ Greenpoint
 $15 deposit
 Art Cafe
 Sat, Sep 12 · 6:45 PM - 8:45 PM
-Greenpoint
+Market Street
 $15 deposit
 Art Cafe
 Sat, Sep 12 · 6:45 PM - 8:45 PM
-Market Street
+Greenpoint
 $15 deposit
 Art Cafe
 Sun, Sep 13 · 12:00 PM - 2:00 PM

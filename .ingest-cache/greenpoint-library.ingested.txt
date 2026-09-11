@@ -1,14 +1,3 @@
-ts_title: Sensory Garden Hour
-ds_event_start_date: 2026-09-11T14:30:00Z
-ds_event_end_date: 2026-09-11T15:30:00Z
-ss_event_location: Greenpoint Library
-ss_event_location_master: Greenpoint Library
-ss_event_age: Birth to Five Years
-sm_event_tags: ["first five years","gardening","storytime"]
-is_event_registration: 0
-is_event_canceled: 0
-ts_body: Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well. For ages 0-5. No registration required. This program may be cancelled in the event of rain or extremely high temperatures. Please be advised that the garden gets lots of very bright sun; we recommend bringing hats and/or other forms of sun protection.
-
 ts_title: Garden Hours with a Garden Educator
 ds_event_start_date: 2026-09-11T19:00:00Z
 ds_event_end_date: 2026-09-11T20:00:00Z
@@ -436,3 +425,14 @@ sm_event_tags: ["movies","movies at the library","teen time"]
 is_event_registration: 0
 is_event_canceled: 0
 ts_body: Teens aged 13-19, come to the Teen Zone to watch 10 Things I Hate About You. T About the movie: 10 Things I Hate About You is a 1999 adaptation of William Shakespeare's The Taming of the Shrew, set in a West Coast high school. After discovering his high school crush can't date until her brash older sister does, a lovesick teen enlists a bad-boy classmate to woo her. Comedy, coming of age, romance. Run time is 1 hour 39 mins. Rated PG-13.
+
+ts_title: Free English Class
+ds_event_start_date: 2026-09-24T18:00:00Z
+ds_event_end_date: 2026-09-24T20:00:00Z
+ss_event_location: Greenpoint Library
+ss_event_location_master: Greenpoint Library
+ss_event_age: Adults
+sm_event_tags: ["adult learning","ESOL","Immigrant Services","Welcome ESOL"]
+is_event_registration: 0
+is_event_canceled: 0
+ts_body: The library offers free ESOL classes for beginners learning English. Classes meet twice a week Improve your English Practice with other adults learning English This class is first-come, first-served until classroom hits capacity. Registration is not necessary. (For non-beginner classes, integrated English literacy, or classes outside of the Greenpoint Library, please visit https://www.bklynlibrary.org/adult-learning/esol )

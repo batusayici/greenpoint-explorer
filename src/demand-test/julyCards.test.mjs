@@ -934,15 +934,29 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Saturdays) and Greenpoint Shul (four — the family shofar workshop, the
   // community-wide Tashlich, the K-6 sukkah decorating party and the all-ages
   // sukkah film). Deck 247 -> 252.
-  assert.equal(seed.cards.length, 252);
+  //
+  // 2026-09-11 (daily refresh, rebuilt onto main after the Tunes for Tykes /
+  // Greenpoint Shul run landed first): +10, −1. Rebuilt rather than merged,
+  // per the CLAUDE.md rule — a cards-touching branch behind main merges
+  // CLEANLY into a deck that is silently wrong, and these pinned counts are
+  // the only thing that catches it.
+  // The adds are Threes Brewing's first seven cards — its calendar was never
+  // fetched until today — plus Triskelion Arts' Beyond the Black Box, the
+  // first card that source has ever produced; a Friday 25 September library
+  // day the branch feed does not reach but the borough calendar does; and
+  // Yaro's weekend drop-in wheel class. The deletion is CIBONE's Sri Threads
+  // trunk show, which the venue removed from its own announcement.
+  // Happy Medium's art cafe also moves arts_culture -> subscription (Batu).
+  // Deck 252 -> 261, event 149 -> 157, subscription 40 -> 42, live_music 41 -> 42.
+  assert.equal(seed.cards.length, 261);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 36, "35 + the Limousine opening (2026-09-11)");
-  assert.equal(count((c) => c.category === "event"), 149, "144 + the Tunes for Tykes park circle and the four Greenpoint Shul programmes (2026-09-11)");
+  assert.equal(count((c) => c.category === "event"), 157, "144 + the Tunes for Tykes park circle and the four Greenpoint Shul programmes (2026-09-11)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 41, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
-  assert.equal(count((c) => c.category === "subscription"), 40, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 42, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
+  assert.equal(count((c) => c.category === "subscription"), 42, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -1510,6 +1524,10 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     "scrappleland",
     "scrappleland-backgammon-club",
     "scrappleland-pinball-league",
+    // 2026-09-11: Quirk Events' board-game speed dating at Threes Brewing
+    // Greenpoint. A speed-dating night played across board games is play, and
+    // the games rule names board/tabletop events outright.
+    "threes-board-game-speed-dating-0914",
   ]);
   // The whole point of the cut: play and culture no longer share a shelf.
   for (const id of games) {
@@ -1598,7 +1616,6 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // with their own clocks, the same split the gallery rule draws between a
     // show and the talks inside it.
     "cibone-trunk-speliopoulos-0919",
-    "cibone-trunk-sri-threads-0926",
     // A kids' store. It keeps `family_kids` — the audience lens it already
     // earned — and ADDS shopping, which is what makes the rule mechanical:
     // every category:shopping card carries the shopping lens. Before this, the
@@ -1812,6 +1829,10 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // Garden — mutual aid with a work shift attached, the same reading as the
     // garden sessions above rather than a service listing.
     "library-bike-clinic-0919",
+    // 2026-09-11: the Friday 25 September library day — a rooftop garden
+    // session with an educator, which is stewardship of a growing space under
+    // the 2026-08-30 rule, alongside the kids' sensory hour on the same roof.
+    "library-friday-garden-0925",
     "library-garden-hours-0911",
     // 2026-09-09: the 9/17 day card carries civic alongside family_kids and
     // arts_culture because one of its six programmes is a housing legal clinic
