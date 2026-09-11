@@ -2973,6 +2973,13 @@
       "item": "light-and-sound-design is declared detailsInImages but no fetch reads its flyers.",
       "condition": "The roster flags the source detailsInImages: true, and the skill says a detailsInImages source gets each event image downloaded, read, and written into the snapshot before cards are extracted. The cloud routine cannot do that — the fetch is done off-box by the GitHub and home fetchers, and neither reads images. So this source will keep producing an index of date+title pairs that cannot become cards, and its five existing cards will keep failing the quote gate. Needs a decision from Batu: either the fetchers learn to persist image reads, or the source is carded only from interactive sessions where a flyer can be read by hand.",
       "addedAt": "2026-09-11"
+    },
+    {
+      "id": "greenpoint-trash-club-weekly",
+      "addedAt": "2026-09-11",
+      "what": "Greenpoint Trash Club, every Wednesday 7:30pm, litter pick-up around Greenpoint followed by a drink.",
+      "blockedOn": "A CARD SHAPE FOR A MEETUP WHOSE MEETING POINT MOVES. Batu confirmed 2026-09-11 that the club runs every Wednesday at the same time and announces the week's meeting point on Instagram THAT DAY. The recurrence and the 7:30 start are sourced — the bio says \"Every Wednesday night at 7:30!\" and \"Come pick up litter with us around Greenpoint!\", transcribed in poster-evidence/greenpoint-trash-club-ig-2026-09-11.txt. What is not sourced is a place. `locationPrivate` is the only no-pin shape the schema has, and its own comment says it is a CLAIM that the source deliberately WITHHOLDS the address; this club does not withhold, it has not announced yet — and CardPanel prints the hardcoded words \"address with RSVP\", which this club has never said. Using it would put a sentence on the card the source never wrote.",
+      "whatWouldUnblockIt": "Batu ruling on how a moving meetup cards. The recommendation put to him on 2026-09-11: let a no-pin card supply its own location line instead of inheriting \"address with RSVP\", so this one can read \"meeting point posted on Instagram that morning\" and Light & Sound Design keeps saying what it says today."
     }
   ],
   "sourcePulse": {

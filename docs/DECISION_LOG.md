@@ -4,6 +4,50 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — the truth gate could not see poster evidence; and a weekly meetup with no fixed place
+
+**Batu was right about where the failing quotes came from.** Of the eleven cards `ingest:quotes` was
+failing on, four rest on evidence he photographed himself — and the gate was looking in the wrong
+place. The `/poster` skill landed **2026-09-10** and writes each read into
+`src/data/demand-test/poster-evidence/`, in the repo, deliberately not into `.ingest-cache`, because a
+poster is gone the day someone tapes another one over it. `verify-quotes.mjs` only ever read
+`.ingest-cache`. So the first poster batch produced correctly-sourced cards that the gate called
+fabrications the next morning. **Fixed: the whole poster-evidence directory now joins every card's
+evidence base.** Three Salsa class-week cards pass immediately; verified 177 → 180, mismatch 11 → 8.
+
+- **Joined wholesale rather than matched by filename**, because one photo routinely sources several
+  cards (`salsa-class-week-2026-09.txt` carries three) and the filenames are batch names, not card ids.
+  A card could in principle match another card's poster; that is worth far less than the false
+  failures it removes, since every file there was photographed by a person and reviewed.
+- **This is the shape to watch for whenever a new kind of evidence is added.** A truth gate that fails
+  honest cards gets widened until it is toothless — the one outcome that file exists to prevent — and
+  the poster skill was one day old when it happened.
+
+**The remaining eight are real and the next run fixes them first (Batu's instruction, written into
+`SKILL.md` step 5).** Five Light & Sound Design cards were authored from FLYER IMAGES on the venue's
+event pages and the image read was never written down, which the 2026-08-12 rule requires; the source
+needs `detailsInImages: true` and an `## [IMAGE READ …]` block. Held Space's poster is a TWO-COLUMN
+layout the card correctly reads DOWN the columns, which is not a contiguous string in the row-wise
+transcription. The comedy club and Happy Medium quote a 9 September sitting that has rolled off the
+listing since.
+
+**Greenpoint Trash Club: everything is sourced except a place, and the schema has no shape for that.**
+Batu supplied Instagram screenshots on 2026-09-11 — bio and the 9 September post — transcribed into
+`poster-evidence/greenpoint-trash-club-ig-2026-09-11.txt`. The bio states the recurrence outright,
+"Every Wednesday night at 7:30!" and "Come pick up litter with us around Greenpoint!", which is the
+fact the 2026-08-30 deletion said existed only in an Instagram bio nobody had written down. Now it is
+written down. **What is still unsourced is WHERE**, and by design: Batu confirms the meeting point
+changes weekly and is announced on Instagram that day. Troost was 9 September and that date has passed.
+
+- **`locationPrivate` is the wrong flag and using it would put words on the card the club never said.**
+  Its own comment says the flag is a CLAIM that the source *deliberately withholds* the address — this
+  club does not withhold, it has not announced yet — and `CardPanel` prints the hardcoded phrase
+  "address with RSVP", which is Light & Sound Design's language, not theirs.
+- **Held as a `watchItem`, and the rule question goes to Batu.** *Recommended:* let a card with no pin
+  supply its own location line instead of inheriting "address with RSVP", so this one can read
+  "meeting point posted on Instagram that morning" and L&SD keeps saying exactly what it says today.
+  It is a small change to one hardcoded string, and Greenpoint plainly has more than one moving meetup.
+
 ## 2026-09-11 — the Brooklyn Hearts Club card, a flag corrected within the hour, and five live cards whose quotes cannot be checked
 
 **The card its own roster note had called for since 2026-08-08 finally exists.** `brooklyn-hearts-club-art-night`,

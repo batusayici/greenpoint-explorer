@@ -391,6 +391,25 @@ review cycle and, on a same-week item, usually the card itself.
    Promotion is now non-destructive (`persistedBlocks.js`): a marked block the new snapshot lacks is **carried forward** and the run prints which ones it rescued. That makes the greenpointers roster note's "CARRY THE [R1 PERSISTED] BLOCKS FORWARD when re-marking this baseline" a property of the code rather than a warning someone has to remember. The post-promotion check stays anyway — it is what would catch the next variant of this. Then **`node scripts/check-freshness.mjs --record`** to stamp today's `datedUpcoming7d` into `freshness-history.json` — that history is the only input to the L11c trend alarm, so a run that skips it leaves the alarm blind. **Read the output**: a `WARN: feed declining` line is the supply signal the floor cannot see, and it does not exit non-zero, so it will not stop you — that is deliberate, and ignoring it is a choice. **`--record` runs on every path, mini-ingests included** — the 8/5 run skipped it and cost the alarm a data point on a day it shipped 10 cards.
 
    **Also read `reservoir7-14d` (L11d, 2026-08-06).** It counts cards dated 7–14 days out — next week's window. Below 10 prints `WARN: reservoir hollow`, and that is the only alarm that fires *before* the feed thins rather than after: on 8/6 it read **0** while every other gate was green. Treat it as the run's own to-do list, not a report — the fill rule in step 2 is how you clear it.
+   **⚠ FIRST TASK FOR THE NEXT RUN AFTER 2026-09-11, BEFORE ANYTHING ELSE SHIPS (Batu).** `npm run ingest:quotes`
+   exits 1 on eight live cards whose quotes cannot be found in any committed evidence. **Re-read each source and
+   re-quote each card, or hold it — do not edit a quote to something the source does say without re-reading what it
+   claims.** The diagnosis is already done, so start from it:
+   - **`lsd-quadraphonics-0912-matinee`, `-evening`, `lsd-churning-sonic-0913`, `lsd-echoes-archive-0918`,
+     `lsd-mess-is-lore-0919`** — authored 2026-09-10 from FLYER IMAGES on lightandsound.design's event pages
+     (`sourceLinks[].title` says "event flyer"), and the image read was never written down, which the 2026-08-12
+     rule requires. The nine `/e/<slug>` pages are now persisted, so the prose is there; the ALL-CAPS flyer lines
+     the cards quote are not. **Mark the source `detailsInImages: true`, read the flyers, and write each read into
+     the snapshot under `## [IMAGE READ …]` — then re-quote from that.**
+   - **`held-space-mat-pilates-0912`** — the evidence IS committed, in
+     `poster-evidence/held-space-mat-pilates-0912-NOCARD.txt`, but the poster is a TWO-COLUMN layout
+     ("WHEN / WHERE" over "SEPTEMBER 12 / HELD SPACE" over "11AM - 12:30PM / GREENPOINT, NY") and the card quotes
+     it read DOWN the columns, which is the right reading of the poster and not a contiguous string in the
+     row-wise transcription. Re-quote to match the transcription, or record the column reading in the
+     transcription. Do not delete the card: every fact on it is on the poster.
+   - **`comedy-cysk-wednesdays`, `happy-medium-art-cafe`** — both quote a 9 September sitting that has since rolled
+     off the listing, so the snapshot no longer carries it. Re-quote against the current listing.
+
 5. Run the step-3 run-level gates, **including `npm run ingest:coverage -- --gate`** (this pre-ship invocation is also what stamps the just-authored cards into `sourcePulse`). All green → commit the **shipping** cards (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
 6. **Held cards go to a PR** (`ingest/review-<date>`) with a one-line reason each and what would resolve it. Ship first, then PR — a doubtful card must never delay the clean ones.
 7. **Report every run in the summary**, whether or not it shipped: what shipped, what was held and why, and the gate results. Autonomy without a log is not autonomy, it's drift.
