@@ -578,3 +578,83 @@ test("extractDates: the lower-case verb still does not mint a date", () => {
   assert.deepEqual(extractDates("you may 3 times a week", { now }), []);
   assert.deepEqual(extractDates("May 3", { now }), ["2026-05-03"], "capitalised, it is the month again");
 });
+
+// ---- READS EMPTY: the source→snapshot side, which nothing checked (2026-09-11) ----
+// Every signal above compares the SNAPSHOT to the DECK. None of them asks
+// whether the snapshot contains what the source publishes, so a page returning
+// navigation instead of listings reads `ok` forever. Yaro Studios did exactly
+// that for a month, and a card from another route (its undated Wednesday clay
+// lab) kept even the SILENT check quiet, because an undated subscription card
+// covers every day in the window by design.
+const EMPTY_NOW = new Date("2026-09-11T12:00:00-04:00");
+const navOnly = "Workshops\nAbout\nTeam\nClasses\nMembership\nContact\nPowered by Squarespace";
+
+test("READS EMPTY: a listing page that parses to no dates is flagged", () => {
+  const sources = [{ id: "yaro-studios", url: "https://yarostudios.com/workshops-1", datedListing: true }];
+  const [row] = reconcile({
+    sources, cards: [], snapshots: new Map([["yaro-studios", navOnly]]), now: EMPTY_NOW,
+  });
+  assert.equal(row.state, "READS EMPTY");
+  assert.ok(isFlagged(row));
+});
+
+test("READS EMPTY fires even while a live card covers the whole window", () => {
+  // The exact shape that kept Yaro green: an undated subscription card credits
+  // the source for every day, so GAP, quiet and SILENT are all impossible.
+  const sources = [{ id: "yaro-studios", url: "https://yarostudios.com/workshops-1", datedListing: true }];
+  const cards = [{ id: "yaro-kids-clay-lab", category: "subscription", sourceLinks: [{ url: "https://yarostudios.com/kidsclayclasses" }] }];
+  const [row] = reconcile({
+    sources, cards, snapshots: new Map([["yaro-studios", navOnly]]), now: EMPTY_NOW,
+    pulse: { "yaro-studios": "2026-09-09" },
+  });
+  assert.equal(row.state, "READS EMPTY", "a card from another route must not vouch for the fetch");
+});
+
+test("recurring prose keeps a page out of READS EMPTY — it proves we read it", () => {
+  // Black Rabbit, Brew Inn and PLAY Greenpoint between seasons. A page stating
+  // its programming in words was plainly read, so STANDING DARK is the right
+  // diagnosis; calling it unread sends the reviewer to the fetch layer instead
+  // of to the card that is owed. The two states are mutually exclusive rather
+  // than ranked, which matters because a changed state voids a live explanation.
+  const sources = [{ id: "x", url: "https://x.test", datedListing: true, standing: true }];
+  const [row] = reconcile({
+    sources, cards: [], snapshots: new Map([["x", "Trivia every Thursday\nAbout\nContact"]]), now: EMPTY_NOW,
+  });
+  assert.equal(row.state, "STANDING DARK");
+});
+
+test("a static page reviewed as dateless is not flagged", () => {
+  const sources = [{ id: "held-space", url: "https://heldspacebk.test/membership", datedListing: false }];
+  const [row] = reconcile({
+    sources, cards: [], snapshots: new Map([["held-space", "Membership tiers\n$260/mo half shelf"]]), now: EMPTY_NOW,
+  });
+  assert.notEqual(row.state, "READS EMPTY");
+});
+
+test("a listing page that parses dates is not flagged", () => {
+  const sources = [{ id: "x", url: "https://x.test", datedListing: true }];
+  const [row] = reconcile({
+    sources, cards: [], snapshots: new Map([["x", "SEPT 23 — Beyond the Black Box"]]), now: EMPTY_NOW,
+  });
+  assert.notEqual(row.state, "READS EMPTY");
+});
+
+test("an unreviewed source is asked about, not flagged", () => {
+  // Same three-state shape as `standing`, but the unset case is an INFO line
+  // rather than a flagged state: 94 sources were unset the day this shipped,
+  // and 94 flagged lines would have made the report unreadable and the gate a
+  // rubber stamp on day one.
+  const sources = [{ id: "x", url: "https://x.test" }];
+  const [row] = reconcile({
+    sources, cards: [], snapshots: new Map([["x", navOnly]]), now: EMPTY_NOW,
+  });
+  assert.equal(row.datedListingUnset, true);
+  assert.equal(isFlagged(row), false);
+});
+
+test("extractDates: backDays widens the window without moving the year inference", () => {
+  const now = new Date("2026-09-11T12:00:00-04:00");
+  assert.deepEqual(extractDates("august 13, 7pm", { now }), [], "last month is outside the default window");
+  assert.deepEqual(extractDates("august 13, 7pm", { now, backDays: 365 }), ["2026-08-13"],
+    "and winding `now` back instead would have resolved it to 2025");
+});

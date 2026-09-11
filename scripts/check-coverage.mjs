@@ -117,6 +117,16 @@ for (const r of flagged) {
     );
     continue;
   }
+  if (r.state === "READS EMPTY") {
+    console.log(
+      `  READS EMPTY   ${r.id} — roster says this URL is a dated listing, and the snapshot parses to NO dates.\n` +
+        "       Open the snapshot before anything else: this is what a page handing back navigation\n" +
+        "       instead of listings looks like (Yaro Studios, DECISION_LOG 2026-09-11). If the page is\n" +
+        "       genuinely between seasons, explain it; if it is a static page, set `datedListing: false`." +
+        explainedSuffix(r),
+    );
+    continue;
+  }
   if (r.state === "SILENT") {
     console.log(`  SILENT        ${r.id} — last shipped card ${r.lastCardedAt}, past 3× its cadence; fetches clean but yields nothing${explainedSuffix(r)}`);
     continue;
@@ -134,6 +144,19 @@ for (const r of flagged) {
 // not silence — fixing the roster converges these lines to SILENT/ok.
 if (neverCarded.length) {
   console.log(`\n  never carded (info): ${neverCarded.map((r) => r.id).join(", ")}`);
+}
+
+// Info, never flagged — the `datedListing` question nobody has answered for
+// these sources yet. Empty on the day this shipped, because the one-time pass
+// over all 94 came with it; a line here means a source was added without the
+// call being made.
+const undecided = rows.filter((r) => r.datedListingUnset);
+if (undecided.length) {
+  console.log(
+    `\n  datedListing unset (info): ${undecided.map((r) => r.id).join(", ")}\n` +
+      "  Is each of these URLs a calendar/listing whose content is dated items (true), or a venue,\n" +
+      "  membership or dataset page where no dates is normal (false)? Set it in the roster.",
+  );
 }
 
 // Unique coverage — ratified 2026-08-19, printed here so the readout quotes an

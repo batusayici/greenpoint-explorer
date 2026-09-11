@@ -74,6 +74,22 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
    |---|---|
    | `detailsInImages: true` | the page's dates/times live in event images — **read them** |
 
+   **`READS EMPTY` (2026-09-11) — the one signal that looks at the FETCH, not the deck.** Every other
+   line in this report compares the snapshot to the deck. This one asks whether the snapshot contains
+   anything the source publishes: a `datedListing: true` source whose snapshot parses no date at all,
+   anywhere, with no recurring-programming prose either. **Open the snapshot before anything else** —
+   that is what a page handing back navigation instead of listings looks like, and it is how Yaro
+   Studios fetched "clean" for a month while returning no workshop, no date and no price
+   (DECISION_LOG 2026-09-11). Do not explain it away as a quiet week: check the URL in a browser
+   first, and if the listings are in an embedded widget, point the roster at the widget's own URL the
+   way `yaro-studios` now does. If the page really is static, set `datedListing: false` and say why.
+
+   | `datedListing` | meaning |
+   |---|---|
+   | `true` | this URL's content IS dated items — a calendar, a listing, an events feed |
+   | `false` | reviewed; a venue page, a membership or pricing page, a product collection or a dataset, where no dates is normal |
+   | *unset* | never reviewed — the report asks for it as an info line, and a new source should not leave it unset |
+
    **For a `detailsInImages` source: download each event image and read it, then write what you read into that source's snapshot file** before extracting cards. That keeps one uniform truth rule — the `sourceQuote` verification below checks the snapshot, with no image exemption — and it makes the image read auditable and diffable across runs, so a changed flyer produces a real diff like any other source. **`macha-studio` events are at 135 Franklin St unless the event itself states otherwise** (Batu-supplied venue fact; every other claim on the card still needs its own quote). Instagram-first venues are the same shape — expect this flag to spread.
 
 4. Read `changes.json` (the report only — not the snapshots). Sources with status `unchanged` are DONE — do not open them, do not "double-check" them. **ONE EXCEPTION, and it is a big one (2026-08-07): a source marked `standing: true` in the roster.**

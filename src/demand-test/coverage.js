@@ -104,9 +104,14 @@ const MONTH_DAY_RE = new RegExp(
   "gi",
 );
 
-export function extractDates(raw, { now, windowDays = 14 } = {}) {
+// `backDays` widens the window BACKWARDS without moving `now` (2026-09-11).
+// Winding `now` back instead would break year inference, which picks the year
+// putting a bare "Aug 13" nearest today — anchor it a year ago and last
+// August's date resolves to the August before that, then falls outside the
+// window it was meant to be inside. Only the READS EMPTY check uses it.
+export function extractDates(raw, { now, windowDays = 14, backDays = 0 } = {}) {
   const text = stripAnnotationLines(stripEndLines(raw));
-  const from = nyDay(now);
+  const from = nyDay(backDays ? new Date(now.getTime() - backDays * 864e5) : now);
   const to = nyDay(new Date(now.getTime() + windowDays * 864e5));
   const out = new Set();
 
@@ -297,6 +302,10 @@ const daysBetween = (fromDay, toDay) =>
 // at least visible in every run. gapKey is the state string, not a dates hash —
 // dates roll daily and a hash would void every explanation every run; the
 // coarser match is bounded by expiresAt (SKILL rule: default ≤ 14 days).
+// Every date the snapshot carries, a year either side of today — the question
+// "did we read this page at all", as against "is anything on this fortnight".
+const anyDates = (text, now) => extractDates(text, { now, windowDays: 365, backDays: 365 });
+
 export function reconcile({ sources, cards, snapshots, now, windowDays = 14, pulse = {}, explanations = [] }) {
   const hostMap = buildHostMap(sources);
   const covered = coveredDays(cards, hostMap, { now });
@@ -326,8 +335,45 @@ export function reconcile({ sources, cards, snapshots, now, windowDays = 14, pul
     //   false     — reviewed, the recurring phrase is incidental (bin-bin-sake's
     //               "shipments go out every Thursday" is a SHIPPING line)
     //   undefined — never reviewed, so ask: UNMARKED STANDING?
+    // READS EMPTY (2026-09-11) — the one question every other signal here skips.
+    // Everything above compares the SNAPSHOT to the DECK. Nothing asks whether
+    // the snapshot contains what the SOURCE publishes, so a page handing back
+    // navigation instead of listings reads `ok` forever. Yaro Studios did that
+    // for a month: its workshops render from a hisawyer.com iframe, the plain
+    // fetch returned Squarespace chrome, and its undated Wednesday clay-lab
+    // card covered every day in the window — which makes GAP, `quiet` and
+    // SILENT all impossible by construction. It was found by a poster on a
+    // sidewalk. See DECISION_LOG 2026-09-11.
+    //
+    // `datedListing` is three-state for the same reason `standing` is:
+    //   true      — this URL's content IS dated items; zero dates means we are
+    //               probably not reading it
+    //   false     — reviewed; this URL is a venue page, a membership page or a
+    //               dataset, and zero dates is its normal state
+    //   undefined — never reviewed, reported as an info line (see below)
+    //
+    // Deliberately about the PAGE, not the venue's mood. "Does this venue have
+    // programming right now" is unanswerable from a snapshot and would make a
+    // gallery between shows read broken. "Is this URL a calendar" is a fact
+    // about the page that stays true whether or not anything is on.
+    // Prose stating recurring programming ("every Thursday", "Fridays 5:30pm")
+    // is PROOF the page was read, so it cannot be READS EMPTY however few dates
+    // it parses — that is Black Rabbit, Brew Inn and PLAY Greenpoint between
+    // seasons, and the `standing` signals below are the right diagnosis for
+    // them. The two are mutually exclusive rather than ranked, which matters
+    // because a row whose state changes voids its live explanation.
+    //
+    // And this asks about the WHOLE SNAPSHOT, not the 14-day window. "Can we
+    // read this page" is not "does this venue have something on next fortnight"
+    // — Clay Space between sessions and Polish & Slavic between concerts both
+    // parse a year of dates and nothing inside the window, and calling either
+    // unread would be a lie that expires by itself next week.
+    const readsEmpty =
+      s.datedListing === true && !recurringText && anyDates(text, now).length === 0;
+
     let state = "ok";
-    if (dark && s.standing === false) state = "ok";
+    if (readsEmpty) state = "READS EMPTY";
+    else if (dark && s.standing === false) state = "ok";
     else if (dark && s.standing) state = "STANDING DARK";
     // A source nobody marked `standing` that states recurring programming,
     // publishes no dated items and has no cards is the EXACT pre-fix shape of
@@ -366,12 +412,18 @@ export function reconcile({ sources, cards, snapshots, now, windowDays = 14, pul
     finish({
       id: s.id, state, srcCount: srcDates.length, coveredCount: mine.size, missing,
       standing: !!s.standing, lastCardedAt,
+      // Info, never flagged. 94 sources were unset the day this shipped, and 94
+      // flagged lines would have made the report unreadable and the gate a
+      // rubber stamp on day one — the failure the --only fix of 2026-08-12 had
+      // to undo. The one-time pass that set the field shipped in the same PR,
+      // so this line is empty until someone adds a source without deciding.
+      datedListingUnset: s.datedListing === undefined,
     });
   }
   return rows;
 }
 
-export const FLAGGED_STATES = ["GAP", "STANDING DARK", "UNMARKED STANDING?", "NO SNAPSHOT", "SILENT"];
+export const FLAGGED_STATES = ["GAP", "STANDING DARK", "UNMARKED STANDING?", "NO SNAPSHOT", "SILENT", "READS EMPTY"];
 export const isFlagged = (r) => FLAGGED_STATES.includes(r.state);
 // The ship-decision predicate (--gate in check-coverage.mjs): a flagged row
 // with no live matching explanation disqualifies auto-ship. NEVER CARDED is

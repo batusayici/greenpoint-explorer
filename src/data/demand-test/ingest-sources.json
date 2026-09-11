@@ -1,5 +1,5 @@
 {
-  "description": "Track V ingest web-source roster — the machine-readable half of .claude/skills/ingest-newsletters/SKILL.md (policy stays in the skill; URLs + fetch mechanics live here). Driven by scripts/fetch-sources.mjs, which snapshots each source and emits .ingest-cache/changes.json so the ingest only spends model attention on sources that actually changed. fetch: \"auto\" = plain HTTP first, headless-browser fallback; \"browser\" = known to 403/JS-wall plain fetches. cadence: \"monthly\" sources are checked on the first Monday run of the month only. `manualSources` (2026-08-13) is INERT to the fetch loop — the script destructures `sources` only — and records venues deliberately NOT fetched, each with the measurement that settled it and what would reopen it, so a later run does not re-onboard them and re-discover the same failure.",
+  "description": "Track V ingest web-source roster — the machine-readable half of .claude/skills/ingest-newsletters/SKILL.md (policy stays in the skill; URLs + fetch mechanics live here). Driven by scripts/fetch-sources.mjs, which snapshots each source and emits .ingest-cache/changes.json so the ingest only spends model attention on sources that actually changed. fetch: \"auto\" = plain HTTP first, headless-browser fallback; \"browser\" = known to 403/JS-wall plain fetches. cadence: \"monthly\" sources are checked on the first Monday run of the month only. `manualSources` (2026-08-13) is INERT to the fetch loop — the script destructures `sources` only — and records venues deliberately NOT fetched, each with the measurement that settled it and what would reopen it, so a later run does not re-onboard them and re-discover the same failure. `datedListing` (2026-09-11) says whether THIS URL's content is dated items: true for a calendar, listing or events feed, false for a venue page, a membership or pricing page, a product collection or a dataset where no dates is the normal state. A `true` source whose snapshot parses no date at all — anywhere, not just in the coverage window — reads READS EMPTY, which is how a page handing back navigation instead of listings gets caught. Deliberately about the PAGE, not the venue's mood: 'does this venue have programming right now' cannot be read off a snapshot and would make a gallery between shows look broken. Set on all 94 sources on 2026-09-11 by measurement — true where the snapshot had ever parsed a date, false where it never had — so an unset value means a source was added without the call being made, and the coverage report asks for it.",
   "sources": [
     {
       "id": "greenpointers",
@@ -18,7 +18,8 @@
           "date",
           "content.rendered"
         ]
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "troost",
@@ -40,7 +41,8 @@
           "htmlLink"
         ]
       },
-      "citeHost": "troostny.com"
+      "citeHost": "troostny.com",
+      "datedListing": true
     },
     {
       "id": "eavesdrop",
@@ -49,7 +51,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "THE VENUE'S OWN /calendar IS PUBLISHING AGAIN, WITH TIMES (2026-08-21) — this supersedes the practical implication below, which said a card needs the weekly Instagram reel for a real startsAt. The plain-fetched snapshot now carries day headings Aug 22 through Aug 31, each artist preceded by its own clock label, either \"6PM\" or \"12midnight\" (e.g. \"Saturday, Aug 22 / 12midnight / Marco Weibel residency / 6PM / BODEGA BRUJA @eavesdrop\"). Cross-checked against the monthly IG lineup Batu transcribed on 2026-08-13 — that post has \"Sat 22 ☀️ BODEGA BRUJA 🌙 Cosmo\", and the site files BODEGA BRUJA at 6PM on Aug 22 and Cosmo at 12midnight on Aug 23, so the site dates a post-midnight set to the following calendar day and the two sources agree. The 6pm sets are cardable as-is. The MIDNIGHT sets are cardable too as of 2026-08-25: the schema carries an explicit allDay flag, so a stated 12midnight start is written as startsAt 00:00 with allDay: false and is no longer read as an all-day card. Card the set on the date the venue prints, never the date the night started. Keep the Instagram notes below as the fallback for weeks the site does not update.\n674 Manhattan Ave. REAL CALENDAR IS INSTAGRAM, IN TWO PARTS (Batu, 2026-08-13) — the venue's own /calendar page isn't neglected, it was just never the real source (resolves 'QUIET SINCE 2026-08-01' below). Both live at instagram.com/eavesdrop.nyc/ and both require the Browser pane (IG blocks headless fetch, same shape as Greenpoint Trash Club / Razor-N-Tape) — logged OUT, the grid loads but thumbnails are too small to read and opening any single post/reel hits a hard login wall ('Sign up or login to see eavesdrop.nyc's post'), verified 2026-08-13. A logged-in view is needed to actually read either part.\n1. MONTHLY LINEUP POST ('<Month> Lineup', e.g. 'August 2026 Lineup') — one artist per date across the whole month, with a sun/moon marker per slot (☀️ = day set, 🌙 = night set) but NO clock time. Example (verbatim, Batu 2026-08-13): 'Thu 13 🌙 Kiitsu / Fri 14 🌙 theoretic / Sat 15 ☀️ DJ Anton 🌙 Muscle Memory / Sun 16 ☀️ neubabylon 🌙 Slim / Wed 19 🌙 Neil Kryszak / Thu 20 🌙 SGLD / Fri 21 🌙 Marco Weibel / Sat 22 ☀️ BODEGA BRUJA 🌙 Cosmo / Sun 23 ☀️ DJ DAN C.E. 🌙 NoahShea / Thu 27 🌙 Dynoman / Fri 28 🌙 Alien D / Sat 29 ☀️ Antron 🌙 HunnyBunny / Sun 30 ☀️ l'oggetto 🌙 Kamilla Norova'. Gives day-out-to-14-days visibility (the artist/day skeleton) but is NOT enough on its own to card a startsAt time.\n2. WEEKLY 'THIS WEEK' REEL (e.g. 'THIS WEEK AUG 3-9') — that week's schedule WITH explicit clock times, e.g. (Batu 2026-08-13 screenshot): 'A--Z Radio w/ Plushie & Flynn WED 8pm · Jimmy Q THU 8pm · Frantz FRI 8pm · Mustafa SAT 2pm · Prince Language SAT 8pm · Damian Ashton SUN 2pm · Phil Spank SUN 8pm'. Only covers the current week — posted closer to the date, so exact times for a given night aren't knowable until this reel goes up. OBSERVED PATTERN, NOT YET CONFIRMED ACROSS MULTIPLE WEEKS: on the one week seen, single-set weekdays ran 8pm and Sat/Sun day-slot sets ran 2pm — consistent with ☀️=2pm / 🌙=8pm in the monthly post, but this is an inference, not a stated fact; verify per-week from the reel before using it to fill a missing time, never assume it.\nPRACTICAL IMPLICATION: a card needs the WEEKLY reel for a real startsAt; the monthly post alone only supports a dated skeleton with no time, which is an incomplete field under the truth rules (hold, don't invent the clock time from the emoji pattern). Cadence stays weekly so the current 'This Week' reel is checked each run; also check the monthly lineup post when it changes for the far-window skeleton. QUIET SINCE 2026-08-01 (superseded context, kept for the RA history below): the /calendar page IS plain server-rendered HTML (h2 day headings + event rows), so plain fetch reaches it and extraction is correct: the snapshot carries all 24 day headings the HTML carries, Jun 27 through Aug 1, and the last event on the venue's own page is Sat Aug 1. A 2026-08-07 check briefly read this as a lossy-extraction bug by comparing the 1,745-char snapshot against 350,986 bytes of raw HTML — that ratio is meaningless, the HTML is almost entirely Tailwind class attributes. RA PAGE CONSIDERED AND REJECTED AS A SOURCE (Batu asked, 2026-08-07): ra.co/clubs/194009 IS Eavesdrop (674 Manhattan Avenue, matches) and its calendar IS fresher than the venue's own site. It still cannot go in the roster. ra.co runs DataDome (x-datadome: protected, geo.captcha-delivery.com): plain fetch 403s, and headless Chromium is blocked outright by Cloudflare ('Sorry, you have been blocked'). RA's robots.txt does permit /clubs/, so a real browser read would have been legitimate — that was tried and blocked too, and getting past the block would mean defeating bot detection. DO NOT retry with stealth drivers, proxies, or challenge-solving, and do not re-litigate this each run."
+      "notes": "THE VENUE'S OWN /calendar IS PUBLISHING AGAIN, WITH TIMES (2026-08-21) — this supersedes the practical implication below, which said a card needs the weekly Instagram reel for a real startsAt. The plain-fetched snapshot now carries day headings Aug 22 through Aug 31, each artist preceded by its own clock label, either \"6PM\" or \"12midnight\" (e.g. \"Saturday, Aug 22 / 12midnight / Marco Weibel residency / 6PM / BODEGA BRUJA @eavesdrop\"). Cross-checked against the monthly IG lineup Batu transcribed on 2026-08-13 — that post has \"Sat 22 ☀️ BODEGA BRUJA 🌙 Cosmo\", and the site files BODEGA BRUJA at 6PM on Aug 22 and Cosmo at 12midnight on Aug 23, so the site dates a post-midnight set to the following calendar day and the two sources agree. The 6pm sets are cardable as-is. The MIDNIGHT sets are cardable too as of 2026-08-25: the schema carries an explicit allDay flag, so a stated 12midnight start is written as startsAt 00:00 with allDay: false and is no longer read as an all-day card. Card the set on the date the venue prints, never the date the night started. Keep the Instagram notes below as the fallback for weeks the site does not update.\n674 Manhattan Ave. REAL CALENDAR IS INSTAGRAM, IN TWO PARTS (Batu, 2026-08-13) — the venue's own /calendar page isn't neglected, it was just never the real source (resolves 'QUIET SINCE 2026-08-01' below). Both live at instagram.com/eavesdrop.nyc/ and both require the Browser pane (IG blocks headless fetch, same shape as Greenpoint Trash Club / Razor-N-Tape) — logged OUT, the grid loads but thumbnails are too small to read and opening any single post/reel hits a hard login wall ('Sign up or login to see eavesdrop.nyc's post'), verified 2026-08-13. A logged-in view is needed to actually read either part.\n1. MONTHLY LINEUP POST ('<Month> Lineup', e.g. 'August 2026 Lineup') — one artist per date across the whole month, with a sun/moon marker per slot (☀️ = day set, 🌙 = night set) but NO clock time. Example (verbatim, Batu 2026-08-13): 'Thu 13 🌙 Kiitsu / Fri 14 🌙 theoretic / Sat 15 ☀️ DJ Anton 🌙 Muscle Memory / Sun 16 ☀️ neubabylon 🌙 Slim / Wed 19 🌙 Neil Kryszak / Thu 20 🌙 SGLD / Fri 21 🌙 Marco Weibel / Sat 22 ☀️ BODEGA BRUJA 🌙 Cosmo / Sun 23 ☀️ DJ DAN C.E. 🌙 NoahShea / Thu 27 🌙 Dynoman / Fri 28 🌙 Alien D / Sat 29 ☀️ Antron 🌙 HunnyBunny / Sun 30 ☀️ l'oggetto 🌙 Kamilla Norova'. Gives day-out-to-14-days visibility (the artist/day skeleton) but is NOT enough on its own to card a startsAt time.\n2. WEEKLY 'THIS WEEK' REEL (e.g. 'THIS WEEK AUG 3-9') — that week's schedule WITH explicit clock times, e.g. (Batu 2026-08-13 screenshot): 'A--Z Radio w/ Plushie & Flynn WED 8pm · Jimmy Q THU 8pm · Frantz FRI 8pm · Mustafa SAT 2pm · Prince Language SAT 8pm · Damian Ashton SUN 2pm · Phil Spank SUN 8pm'. Only covers the current week — posted closer to the date, so exact times for a given night aren't knowable until this reel goes up. OBSERVED PATTERN, NOT YET CONFIRMED ACROSS MULTIPLE WEEKS: on the one week seen, single-set weekdays ran 8pm and Sat/Sun day-slot sets ran 2pm — consistent with ☀️=2pm / 🌙=8pm in the monthly post, but this is an inference, not a stated fact; verify per-week from the reel before using it to fill a missing time, never assume it.\nPRACTICAL IMPLICATION: a card needs the WEEKLY reel for a real startsAt; the monthly post alone only supports a dated skeleton with no time, which is an incomplete field under the truth rules (hold, don't invent the clock time from the emoji pattern). Cadence stays weekly so the current 'This Week' reel is checked each run; also check the monthly lineup post when it changes for the far-window skeleton. QUIET SINCE 2026-08-01 (superseded context, kept for the RA history below): the /calendar page IS plain server-rendered HTML (h2 day headings + event rows), so plain fetch reaches it and extraction is correct: the snapshot carries all 24 day headings the HTML carries, Jun 27 through Aug 1, and the last event on the venue's own page is Sat Aug 1. A 2026-08-07 check briefly read this as a lossy-extraction bug by comparing the 1,745-char snapshot against 350,986 bytes of raw HTML — that ratio is meaningless, the HTML is almost entirely Tailwind class attributes. RA PAGE CONSIDERED AND REJECTED AS A SOURCE (Batu asked, 2026-08-07): ra.co/clubs/194009 IS Eavesdrop (674 Manhattan Avenue, matches) and its calendar IS fresher than the venue's own site. It still cannot go in the roster. ra.co runs DataDome (x-datadome: protected, geo.captcha-delivery.com): plain fetch 403s, and headless Chromium is blocked outright by Cloudflare ('Sorry, you have been blocked'). RA's robots.txt does permit /clubs/, so a real browser read would have been legitimate — that was tried and blocked too, and getting past the block would mean defeating bot detection. DO NOT retry with stealth drivers, proxies, or challenge-solving, and do not re-litigate this each run.",
+      "datedListing": true
     },
     {
       "id": "greenpoint-comedy-club",
@@ -62,7 +65,8 @@
       "citeHost": [
         "jumpcomedy.com",
         "tickets.greenpointcomedyclub.com"
-      ]
+      ],
+      "datedListing": true
     },
     {
       "id": "film-noir-cinema",
@@ -85,7 +89,8 @@
       "detail": {
         "match": "filmnoircinema\\.com/program/",
         "limit": 10
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "good-room",
@@ -94,7 +99,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Venue's own site is JS-thin — the DoNYC listing is the working calendar."
+      "notes": "Venue's own site is JS-thin — the DoNYC listing is the working calendar.",
+      "datedListing": true
     },
     {
       "id": "archestratus",
@@ -104,7 +110,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "BRICK + MORTAR CLOSED per site banner (2026-07-25) — online only now; keep for closure/reopening news + the virtual book club, expect no venue events. NOT  (reviewed 2026-08-07): the page mentions a weekly virtual community hang, but the shop CLOSED (see the archestratus-closed news card) and no future date is listed. Marked standing:false so the L12 UNMARKED STANDING signal stays quiet — revisit only if a dated hang reappears.",
-      "standing": false
+      "standing": false,
+      "datedListing": true
     },
     {
       "id": "flower-cat",
@@ -113,7 +120,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Often empty — they announce late; the venue card carries the \"check their channels\" note."
+      "notes": "Often empty — they announce late; the venue card carries the \"check their channels\" note.",
+      "datedListing": true
     },
     {
       "id": "hide-and-seek",
@@ -123,7 +131,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "Recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat. STANDING PROGRAMMING (2026-08-07): Wine Down Wednesday live jazz 7pm; DJs every Friday and Saturday night. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
-      "standing": true
+      "standing": true,
+      "datedListing": false
     },
     {
       "id": "scrappleland",
@@ -133,7 +142,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "ScrappleLeague Wednesdays; re-verify the season is running. STANDING PROGRAMMING (2026-08-07): Tuesday Backgammon Club; Wednesday Pinball League. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
-      "standing": true
+      "standing": true,
+      "datedListing": true
     },
     {
       "id": "brooklyn-craft-company",
@@ -142,7 +152,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) — the Shopify collection page hides dated listings (2026-07-25 lesson). VENUE IS NOT STATED PER DATE (2026-08-03 lesson, PR #18): the newsletter lists a class's dates then says \"In Greenpoint and Lower Manhattan\" — it never says which date is where, and BCC runs a concurrent Lower Manhattan pop-up (225 Broadway). NEVER pin a newsletter workshop at 165 Greenpoint Ave on the newsletter alone. The per-session location lives in a BookThatApp widget that is unreadable by automation — verified three ways: invisible to WebFetch (\"Date & Time: select above\"), does not render headless (a control on a known-live session shows the same empty \"Notify Me\" state), and absent from Shopify's product JSON (single Default Title variant). Resolving a date needs a human in a real browser or an email to BCC — so these go to watchItems, not to a weekly re-author. DETAIL PAGES DELIBERATELY NOT CONFIGURED (2026-08-12): tried and removed. The product pages carry no dates either — the per-session schedule is inside the BookThatApp widget — so following them added three irrelevant products (gift card, Galentines coasters) and zero evidence. THIS SOURCE'S EVIDENCE IS THE NEWSLETTER, which is persisted by hand into the snapshot at ingest time. Do not re-add a `detail` block expecting dates."
+      "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) — the Shopify collection page hides dated listings (2026-07-25 lesson). VENUE IS NOT STATED PER DATE (2026-08-03 lesson, PR #18): the newsletter lists a class's dates then says \"In Greenpoint and Lower Manhattan\" — it never says which date is where, and BCC runs a concurrent Lower Manhattan pop-up (225 Broadway). NEVER pin a newsletter workshop at 165 Greenpoint Ave on the newsletter alone. The per-session location lives in a BookThatApp widget that is unreadable by automation — verified three ways: invisible to WebFetch (\"Date & Time: select above\"), does not render headless (a control on a known-live session shows the same empty \"Notify Me\" state), and absent from Shopify's product JSON (single Default Title variant). Resolving a date needs a human in a real browser or an email to BCC — so these go to watchItems, not to a weekly re-author. DETAIL PAGES DELIBERATELY NOT CONFIGURED (2026-08-12): tried and removed. The product pages carry no dates either — the per-session schedule is inside the BookThatApp widget — so following them added three irrelevant products (gift card, Galentines coasters) and zero evidence. THIS SOURCE'S EVIDENCE IS THE NEWSLETTER, which is persisted by hand into the snapshot at ingest time. Do not re-add a `detail` block expecting dates.",
+      "datedListing": false
     },
     {
       "id": "yaro-studios",
@@ -166,7 +177,8 @@
       "citeHost": [
         "yarostudios.com",
         "hisawyer.com"
-      ]
+      ],
+      "datedListing": true
     },
     {
       "id": "yaro-kids-clay",
@@ -183,7 +195,8 @@
       "citeHost": [
         "yarostudios.com",
         "hisawyer.com"
-      ]
+      ],
+      "datedListing": true
     },
     {
       "id": "play-kids-greenpoint",
@@ -199,7 +212,8 @@
           "https://www.playgreenpoint.com/summer-camp"
         ],
         "limit": 2
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "last-place-on-earth",
@@ -214,7 +228,8 @@
           "https://www.lastplacebk.com/kids"
         ],
         "limit": 1
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "word-bookstore",
@@ -237,7 +252,8 @@
           }
         ],
         "limit": 2
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "carcosa-club",
@@ -267,7 +283,8 @@
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "little-dance-school",
@@ -276,7 +293,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "106 Calyer St (inside Triskelion); kids dance, Fall 2026–Spring 2027 schedule. Independently owned local; UK curriculum license does not make it a chain."
+      "notes": "106 Calyer St (inside Triskelion); kids dance, Fall 2026–Spring 2027 schedule. Independently owned local; UK curriculum license does not make it a chain.",
+      "datedListing": true
     },
     {
       "id": "dance-space-ny",
@@ -288,7 +306,8 @@
       "notes": "61 Greenpoint Ave. Batu 2026-08-05: the adult class schedule lives at /adultdanceclasses — the old /studiodates URL now 302s to the homepage, which is why this looked like a dead source. Podia hydrates from JSON in data-props attributes, so tag-stripping saw 18 chars; the embedded strategy reads the payload instead. Verified 2026-08-05: Adult Ballet Mon 6:45-8pm, Beginner Tap Tue 6:30-7:30pm, Intermediate Tap Thu 6:30-7:30pm, Beginner Jazz Thu 7:30-8:30pm, Sneaker Jazz Fri 7-8:30pm. ADULT DANCE ENROLLMENTS ARE wellness, NOT arts_culture (DECISION_LOG 2026-08-03). Site also points at IG @thedancespaceny for live updates, so treat a term change there as unconfirmed until the page shows it.",
       "embedded": {
         "attr": "data-props"
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "black-rabbit",
@@ -298,7 +317,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "91 Greenpoint Ave; Tue \"Nerd Alert!\" trivia, Sun Buckaroo Bingo. STANDING PROGRAMMING (2026-08-07): Nerd Alert! Trivia every Tuesday 8pm; bingo Sundays 7pm. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
-      "standing": true
+      "standing": true,
+      "datedListing": false
     },
     {
       "id": "brew-inn-trivia",
@@ -308,7 +328,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "924 Manhattan Ave; Wed trivia. The venue's own domain is squatted — use the league listing only. STANDING PROGRAMMING (2026-08-07): Greenpoint Trivia Night, Wednesdays 7pm. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not. ADDRESS: 924 Manhattan Ave, Brooklyn, NY 11222 — phone (718) 564-7155. IT IS IN THE SNAPSHOT and always was, but the listing emits structured microdata in DOM order, so the extractor writes the street name on the line BEFORE the number:\n  Manhattan Avenue\n  924\n  11222\nA 2026-08-07 check grepped for `<number> <street>` only, found nothing, and held the card as source-blocked — a rule-miss, not a source limitation. When an address looks absent from a listings-directory source, read the raw snapshot lines around the venue name before concluding anything.",
-      "standing": true
+      "standing": true,
+      "datedListing": false
     },
     {
       "id": "sunshine-laundromat",
@@ -317,7 +338,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "860 Manhattan Ave; \"Our Events\" section."
+      "notes": "860 Manhattan Ave; \"Our Events\" section.",
+      "datedListing": false
     },
     {
       "id": "hana-makgeolli-events",
@@ -333,7 +355,8 @@
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "hana-makgeolli-soolschool",
@@ -342,7 +365,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": ""
+      "notes": "",
+      "datedListing": true
     },
     {
       "id": "greenhook-ginsmiths",
@@ -351,7 +375,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "208 Dupont St; no calendar found — newsletter is the primary channel."
+      "notes": "208 Dupont St; no calendar found — newsletter is the primary channel.",
+      "datedListing": false
     },
     {
       "id": "heaven-and-earth",
@@ -360,7 +385,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "290 Nassau Ave; natural wine bar."
+      "notes": "290 Nassau Ave; natural wine bar.",
+      "datedListing": false
     },
     {
       "id": "bin-bin-sake",
@@ -370,7 +396,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "29 Norman Ave; bookable tastings. STANDING PROGRAMMING (2026-08-07): A standing every-Thursday pour — verify the line before carding. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not. NOT `standing: true` (corrected 2026-08-07): it was marked so on a regex hit on 'shipments go out every Thursday', which is a SHIPPING line, not programming. Its only recurring event is a first-Thursday-of-the-month sake tasting, and every date the page lists (Thursday March 6th, Thursday April 3rd…) is in the past. Card the tasting only when a future date appears.",
-      "standing": false
+      "standing": false,
+      "datedListing": false
     },
     {
       "id": "kettl-tea",
@@ -386,7 +413,8 @@
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "bellocq-tea",
@@ -395,7 +423,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "104 West St; Tasting Sessions."
+      "notes": "104 West St; Tasting Sessions.",
+      "datedListing": false
     },
     {
       "id": "triskelion-arts",
@@ -404,7 +433,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Season performances page (verified 2026-08-03 in a real browser). The old URL (/availability-calendar) was the rehearsal-STUDIO rental booker — no public programming, which is why this source produced nothing. Seasons post in blocks (Spring 2026 was the last listed on 8/3); expect a Fall block. Dance performances -> arts_culture."
+      "notes": "Season performances page (verified 2026-08-03 in a real browser). The old URL (/availability-calendar) was the rehearsal-STUDIO rental booker — no public programming, which is why this source produced nothing. Seasons post in blocks (Spring 2026 was the last listed on 8/3); expect a Fall block. Dance performances -> arts_culture.",
+      "datedListing": true
     },
     {
       "id": "brooklyn-youth-ballet",
@@ -413,7 +443,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "37 Greenpoint Ave, Suite 106; kids + adult programs."
+      "notes": "37 Greenpoint Ave, Suite 106; kids + adult programs.",
+      "datedListing": true
     },
     {
       "id": "moon-bunny-aerial",
@@ -439,7 +470,8 @@
           "https://moonbunnyaerial.com/discounts"
         ],
         "limit": 2
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "acme-fish-friday",
@@ -449,7 +481,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "30 Gem St; every Friday 8am–1pm, pre-orders close Fri 11:30am — re-pin the weekly event card each run; watch for closure weeks (e.g. 7/3)."
+      "notes": "30 Gem St; every Friday 8am–1pm, pre-orders close Fri 11:30am — re-pin the weekly event card each run; watch for closure weeks (e.g. 7/3).",
+      "datedListing": false
     },
     {
       "id": "dashi-okume",
@@ -458,7 +491,8 @@
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 — monthly check only."
+      "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 — monthly check only.",
+      "datedListing": true
     },
     {
       "id": "greenpoint-library",
@@ -483,7 +517,8 @@
           "ts_body"
         ]
       },
-      "citeHost": "bklynlibrary.org"
+      "citeHost": "bklynlibrary.org",
+      "datedListing": true
     },
     {
       "id": "bpl-north-brooklyn-calendar",
@@ -492,7 +527,8 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "North Brooklyn Environmental Community Calendar. Mostly overlaps the branch calendar — scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG). Was fetch=browser on a \"403s plain fetches\" note; re-verified 2026-08-05: plain fetch returns 200 with ~28k chars of real listings, with or without a spoofed UA. Set to auto so it takes the cheap path and still falls back to the browser. If it 403s again in the cloud but not locally, that is IP/ASN-level blocking, not a header problem — do not add UA tricks, report it."
+      "notes": "North Brooklyn Environmental Community Calendar. Mostly overlaps the branch calendar — scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG). Was fetch=browser on a \"403s plain fetches\" note; re-verified 2026-08-05: plain fetch returns 200 with ~28k chars of real listings, with or without a spoofed UA. Set to auto so it takes the cheap path and still falls back to the browser. If it 403s again in the cloud but not locally, that is IP/ASN-level blocking, not a header problem — do not add UA tricks, report it.",
+      "datedListing": true
     },
     {
       "id": "go-green-bk",
@@ -509,7 +545,8 @@
           "https://gogreenbk.org/event/yoga-transmitter-2026/2026-08-04/",
           "https://gogreenbk.org/event/mcgolrick-bird-club-2026/2026-08-01/"
         ]
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "kindred-nyc",
@@ -518,7 +555,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Onboarded 2026-08-10 after a street flyer surfaced an August Thursday sunset yoga series (7pm) that gogreenbk.org's own Tuesday-morning listing doesn't carry — the two sources cover different slots of the same Kindred/Friends of Transmitter Park program, so keep both. Single venue (WNYC Transmitter Park, Greenpoint) — no other neighborhood or location mentioned anywhere on the site, so it clears the locally-owned/single-location gate. Static HTML, no feed/JSON; registration is via Google Form links, not a booking widget, so plain fetch (auto) reads the schedule directly — not browser-dependent. Apply the same Brooklyn-only geography gate as any other source if a listing is ever ambiguous."
+      "notes": "Onboarded 2026-08-10 after a street flyer surfaced an August Thursday sunset yoga series (7pm) that gogreenbk.org's own Tuesday-morning listing doesn't carry — the two sources cover different slots of the same Kindred/Friends of Transmitter Park program, so keep both. Single venue (WNYC Transmitter Park, Greenpoint) — no other neighborhood or location mentioned anywhere on the site, so it clears the locally-owned/single-location gate. Static HTML, no feed/JSON; registration is via Google Form links, not a booking widget, so plain fetch (auto) reads the schedule directly — not browser-dependent. Apply the same Brooklyn-only geography gate as any other source if a listing is ever ambiguous.",
+      "datedListing": true
     },
     {
       "id": "town-square-bk",
@@ -527,7 +565,8 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "SummerStarz free Friday movies at Transmitter Park through Aug 21 (in season), scouts programs."
+      "notes": "SummerStarz free Friday movies at Transmitter Park through Aug 21 (in season), scouts programs.",
+      "datedListing": true
     },
     {
       "id": "greenpoint-trash-club",
@@ -536,7 +575,8 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup — the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run."
+      "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup — the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run.",
+      "datedListing": false
     },
     {
       "id": "nycparks-greenpoint",
@@ -553,7 +593,8 @@
           "Newtown Barge"
         ]
       },
-      "notes": "Replaced the four per-park page scrapes (mcgolrick/mccarren/transmitter/newtown-barge) 2026-08-08: the citywide RSS is plain-fetchable, rebuilds daily ~04:00 GMT with a 14-day window, and its event: fields carry startdate/starttime/location/coordinates/registration_url — MORE than the rendered pages did, with zero browser exposure (those pages fell through to the dead browser path in the 2026-08-08 cloud outage). The include filter scopes the snapshot to the Greenpoint parks. Feed items link the event's own page — that per-event URL is the sourceLink of record (R1). CloudFront still 403s bare/headless UAs, so plain fetch with the script's browser UA is load-bearing. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only. McCarren straddles the Williamsburg line: the geography gate stays per-event."
+      "notes": "Replaced the four per-park page scrapes (mcgolrick/mccarren/transmitter/newtown-barge) 2026-08-08: the citywide RSS is plain-fetchable, rebuilds daily ~04:00 GMT with a 14-day window, and its event: fields carry startdate/starttime/location/coordinates/registration_url — MORE than the rendered pages did, with zero browser exposure (those pages fell through to the dead browser path in the 2026-08-08 cloud outage). The include filter scopes the snapshot to the Greenpoint parks. Feed items link the event's own page — that per-event URL is the sourceLink of record (R1). CloudFront still 403s bare/headless UAs, so plain fetch with the script's browser UA is load-bearing. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only. McCarren straddles the Williamsburg line: the geography gate stays per-event.",
+      "datedListing": true
     },
     {
       "id": "greenpoint-star",
@@ -562,7 +603,8 @@
       "group": "roundup",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Civic/news coverage the venue roster never carries (Monitor Point, McGuinness, land use, transit). Added 2026-07-27 after the civic coverage-gap fix — backs monitor-point-approved. News cards only where the story is Greenpoint-side; verify claims at the named primary source (Council, DOT, EPA) when one is cited."
+      "notes": "Civic/news coverage the venue roster never carries (Monitor Point, McGuinness, land use, transit). Added 2026-07-27 after the civic coverage-gap fix — backs monitor-point-approved. News cards only where the story is Greenpoint-side; verify claims at the named primary source (Council, DOT, EPA) when one is cited.",
+      "datedListing": true
     },
     {
       "id": "epa-meeker-plume",
@@ -571,7 +613,8 @@
       "group": "institution",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "Superfund site updates (CAG meetings, sampling milestones). Backs meeker-plume-monitoring — a diff here means updating that card's timeline, not a new card. Added 2026-07-27."
+      "notes": "Superfund site updates (CAG meetings, sampling milestones). Backs meeker-plume-monitoring — a diff here means updating that card's timeline, not a new card. Added 2026-07-27.",
+      "datedListing": false
     },
     {
       "id": "nyc-dot-mcguinness",
@@ -580,7 +623,8 @@
       "group": "institution",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "Plain fetch returns 200 with the full release (verified 2026-08-03); it is headless Chromium that gets bot-walled here, so this must stay `auto` and never `browser` — the old note said the opposite and was wrong. Backs mcguinness-redesign; watch for the completion announcement (city says early fall 2026), then update that card's timeline. CAVEAT: this is a single static press release, so it will never itself announce anything new — it verifies the existing card, it does not surface the next update. See ledger watchItems."
+      "notes": "Plain fetch returns 200 with the full release (verified 2026-08-03); it is headless Chromium that gets bot-walled here, so this must stay `auto` and never `browser` — the old note said the opposite and was wrong. Backs mcguinness-redesign; watch for the completion announcement (city says early fall 2026), then update that card's timeline. CAVEAT: this is a single static press release, so it will never itself announce anything new — it verifies the existing card, it does not surface the next update. See ledger watchItems.",
+      "datedListing": false
     },
     {
       "id": "grownyc-mccarren-greenmarket",
@@ -590,7 +634,8 @@
       "cadence": "monthly",
       "fetch": "browser",
       "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found it uncarded). Plain WebFetch 403s — headless-browser fetch works and returns the static schedule page. STANDING PROGRAMMING: year-round Saturday market, 8am-3pm, Union Ave between Driggs & N12th St; compost drop-off Sat 8-1:30pm, clothing collection Sat 8:30am-1pm. Card is undated (mccarren-greenmarket) — this is a static schedule page so it will report `unchanged` most weeks; only re-author the card if the stated hours/services change. CADENCE DROPPED TO MONTHLY 2026-08-10. Re-probed that day and the 403 is a BLANKET EDGE BLOCK, not a UA rule and not our proxy: the roster URL, the www. variant and even /robots.txt all 403, with a real browser UA and without. Only a headless browser gets through, so while the Chromium CONNECT fault stands this source cannot be read at all and was contributing an error to every weekly and daily run. Monthly keeps it in the roster (it is the authoritative operator, and the card cites it) without paying that cost 6 days a week. VERIFICATION PATH MEANWHILE: nyc-open-data-farmers-markets carries this market’s day/hours/EBT/year-round status and agrees with the card. It does NOT carry the compost or clothing-collection hours, so those two lines are only re-verifiable here.",
-      "standing": true
+      "standing": true,
+      "datedListing": false
     },
     {
       "id": "down-to-earth-markets",
@@ -600,7 +645,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "Onboarded 2026-08-10. Operator of the McGolrick Park Farmers Market (Sundays 9am-2pm, year-round, at the centre of the park off Russell St) — a standing Greenpoint market that no roster source covered and that was missing from the map entirely. Found via the NYC Open Data farmers-market dataset, then verified at the operator’s own site rather than carded off the dataset: Open Data’s newest row is 2025, so carding a 2026 market from it would have been inference. THE MARKET INFO IS ON THE HOMEPAGE, not a per-market page — there are no /markets/<slug>/ permalinks, and the WP REST API returns 2.2MB for a search without a McGolrick page in it. Plain fetch of the homepage is 2.2MB of HTML that htmlToText reduces to ~5k chars carrying the market block intact, so `auto` is correct and it never needs the browser. NOTE the market name and hours sit on SEPARATE LINES in the extraction (“McGolrick Park” then “Market open Sundays…”) — a single-line regex will miss it. Both www. and bare hosts resolve to https://downtoearthmarkets.com/, which is the host to allowlist. Also lists Park Slope and other non-Greenpoint markets: apply the geography gate per market.",
-      "standing": true
+      "standing": true,
+      "datedListing": false
     },
     {
       "id": "nyc-open-data-farmers-markets",
@@ -624,7 +670,8 @@
           "year"
         ]
       },
-      "citeHost": "data.cityofnewyork.us"
+      "citeHost": "data.cityofnewyork.us",
+      "datedListing": false
     },
     {
       "id": "bandit-running-gpr",
@@ -634,7 +681,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found it uncarded). STANDING PROGRAMMING: weekly group run, Saturdays 9:30am, meets at 37 Noble St. Card is undated (bandit-running-greenpoint-runners) — static schedule page, expect `unchanged` most weeks; re-author only if day/time changes.",
-      "standing": true
+      "standing": true,
+      "datedListing": false
     },
     {
       "id": "dreams-on-command",
@@ -644,7 +692,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found the site's current exhibit, 'There Are People Here' closing 8/8, uncarded — the map only had the generic July venue blurb). Gallery's own site names its current exhibition with open/close dates and hours (W-F 2-7pm, Sat/Sun 1-6pm), so dated exhibit cards should be authored from here going forward instead of relying on secondhand newsletter mentions.",
-      "standing": false
+      "standing": false,
+      "datedListing": true
     },
     {
       "id": "leaves-bookstore",
@@ -653,7 +702,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "140 Nassau Ave, Brooklyn NY 11222 (second-hand shop, open daily 10am-8pm). Onboarded 2026-08-08 at Batu's request — the calendar was carrying uncarded Greenpoint events and the source was in neither the roster nor the sender registry. BROWSER-ONLY: plain fetch gets HTTP 429 'Checking your browser… JavaScript is required' on the whole host; it reads fine in a real browser. Do not add UA tricks. RE-VERIFIED 2026-08-10 FROM A CLEAN PATH and the verdict holds — worth stating because TWO confounds applied when this was first diagnosed on 2026-08-08: plain fetch was silently egressing direct-and-intercepted (the NODE_USE_ENV_PROXY bug), and www.leavesbookstore.com was itself egress-denied at the proxy until the round-2 allowlist. Either could have faked a JS wall. Probed again from an interactive session with unrestricted egress and the script’s own browser UA: /events.php returns 406 with an empty body, the homepage returns 429 with a noindex ‘One moment…’ interstitial. So the challenge is real and this stays `browser`. TWO LOCATIONS — apply the geography gate PER EVENT: the Greenpoint shop (140 Nassau Ave) and an appointment-only rare book room in BUSHWICK (350 Harman St, 11237). The calendar mixes them ('midsommar collage night at leaves rare books' was Bushwick). The gate is mechanical: each event's DETAIL page at /pages/events/<id>/<slug> prints a 'location:' block with the street address — always open the detail page, never card off the list. READ THE BODY, NOT THE HEADER RANGE: their own listings emit reversed ranges (august book club shows 'wednesday august 5, 2026 - wednesday july 29, 2026'). That is a data error on their site. The real schedule is in the body text ('wednesdays from 8-9 pm'; the writing group body lists its exact dates). NEWSLETTER: Batu subscribed 2026-08-08 (leavesbookstore@buttondown.email) — in senderRegistry."
+      "notes": "140 Nassau Ave, Brooklyn NY 11222 (second-hand shop, open daily 10am-8pm). Onboarded 2026-08-08 at Batu's request — the calendar was carrying uncarded Greenpoint events and the source was in neither the roster nor the sender registry. BROWSER-ONLY: plain fetch gets HTTP 429 'Checking your browser… JavaScript is required' on the whole host; it reads fine in a real browser. Do not add UA tricks. RE-VERIFIED 2026-08-10 FROM A CLEAN PATH and the verdict holds — worth stating because TWO confounds applied when this was first diagnosed on 2026-08-08: plain fetch was silently egressing direct-and-intercepted (the NODE_USE_ENV_PROXY bug), and www.leavesbookstore.com was itself egress-denied at the proxy until the round-2 allowlist. Either could have faked a JS wall. Probed again from an interactive session with unrestricted egress and the script’s own browser UA: /events.php returns 406 with an empty body, the homepage returns 429 with a noindex ‘One moment…’ interstitial. So the challenge is real and this stays `browser`. TWO LOCATIONS — apply the geography gate PER EVENT: the Greenpoint shop (140 Nassau Ave) and an appointment-only rare book room in BUSHWICK (350 Harman St, 11237). The calendar mixes them ('midsommar collage night at leaves rare books' was Bushwick). The gate is mechanical: each event's DETAIL page at /pages/events/<id>/<slug> prints a 'location:' block with the street address — always open the detail page, never card off the list. READ THE BODY, NOT THE HEADER RANGE: their own listings emit reversed ranges (august book club shows 'wednesday august 5, 2026 - wednesday july 29, 2026'). That is a data error on their site. The real schedule is in the body text ('wednesdays from 8-9 pm'; the writing group body lists its exact dates). NEWSLETTER: Batu subscribed 2026-08-08 (leavesbookstore@buttondown.email) — in senderRegistry.",
+      "datedListing": true
     },
     {
       "id": "greenpoint-ymca",
@@ -669,7 +719,8 @@
           "https://ymcanyc.org/greenpoint-holiday-camp"
         ],
         "limit": 2
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "macha-studio",
@@ -680,7 +731,8 @@
       "fetch": "feed",
       "notes": "135 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan (docs/review/2026-08-08-ssg-directory-roster-scan.md). Shopify blog, so the .atom feed is the source of record. Entry <updated> is the POST time, not the event date. CITE cards to https://machastudio.com. CORRECTED 2026-08-12 (Batu): the claim that the feed 'carries the full entry body' was WRONG, and it cost three runs. The bodies are empty or near-empty because EVERY date, time and address lives inside the event IMAGE — one entry body reads in full 'Join us for an evening of records, conversation and try on's...' with no schedule at all. Reading the bodies alone, three consecutive runs (PRs #29/#30/#32) concluded 'the page states a series but never a schedule' and proposed standing:false, which would have muted a source publishing ~12 events (Summer Poetry Open-Mic, Sunday Soundscapes, Bread & Brooches, trunk shows). SO: this is a detailsInImages source — fetch https://machastudio.com/blogs/events, read each event image, and WRITE WHAT YOU READ INTO THE SNAPSHOT before extracting, so the sourceQuote gate can check it like any other source. Events are at 135 Franklin St unless the event itself states otherwise (Batu-supplied venue fact; every other claim still needs its own quote). YIELD CORRECTED 2026-08-12, after the first run that actually read the posters: the \"~12 events\" above describes the BLOG ARCHIVE, not live supply. Of the 12 posts, most are 2024-2025; only three were posted in 2026, and of those exactly ONE was still upcoming (Summer Fridays After Hours — the other two, the 8/7 listening party and Poetry Open-Mic Vol. 25 on 7/31, had already passed). Rejecting standing:false was still right — there IS standing programming and it is now carded as macha-summer-fridays-after-hours — but the expected yield here is ABOUT ONE CARD, not twelve. Do not go hunting for eleven more. SEASONAL, standing UNSET 2026-08-30 (Batu): Macha's only recurring programming is Summer Fridays, and the shop's own poster states the season — \"Summer Fridays / July - August / From 3pm\" — so the series ended with August and macha-summer-fridays-after-hours was retired. With standing:true left on, STANDING DARK would fire every run until a fall edition posts, training the run to explain the same non-problem away week after week. RESTORE standing:true the run after a new dated series appears in the feed. This is the pattern for any seasonal source: unset between editions rather than inventing a seasonal state in the roster schema.",
       "citeHost": "machastudio.com",
-      "detailsInImages": true
+      "detailsInImages": true,
+      "datedListing": true
     },
     {
       "id": "maison-jar",
@@ -689,7 +741,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "566 Leonard St, zero-waste grocery. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. Workshops are listed on the HOMEPAGE (class=\"event\" blocks), not on a dedicated events path — the directory's deep link is a text-fragment URL into the homepage, so the homepage is the real source. Verified 2026-08-08: 26 dated hits on plain fetch, e.g. a workshop on queer botany & native seed balls with a plant-based dinner. Plain fetch is sufficient; no browser needed."
+      "notes": "566 Leonard St, zero-waste grocery. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. Workshops are listed on the HOMEPAGE (class=\"event\" blocks), not on a dedicated events path — the directory's deep link is a text-fragment URL into the homepage, so the homepage is the real source. Verified 2026-08-08: 26 dated hits on plain fetch, e.g. a workshop on queer botany & native seed balls with a plant-based dinner. Plain fetch is sufficient; no browser needed.",
+      "datedListing": true
     },
     {
       "id": "lockwood",
@@ -712,7 +765,8 @@
           "html_link"
         ]
       },
-      "citeHost": "lockwoodshop.com"
+      "citeHost": "lockwoodshop.com",
+      "datedListing": true
     },
     {
       "id": "sparrow-nesting",
@@ -722,7 +776,8 @@
       "cadence": "monthly",
       "fetch": "feed",
       "notes": "159-161 Driggs Ave, gift shop attached to Sparrow Funerals. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. LOW YIELD BY DESIGN and deliberately on monthly cadence: last feed update 2026-06-23, a handful of entries a year (\"A Gathering for End of Life Doulas\", \"GRASP Grief Recovery\"). Kept because the feed costs one plain GET and the supply — grief support and end-of-life community gatherings — is genuinely uncovered by every other source on the roster. A quiet month here is the expected state, not a fault.",
-      "citeHost": "sparrowny.com"
+      "citeHost": "sparrowny.com",
+      "datedListing": true
     },
     {
       "id": "happy-medium",
@@ -732,7 +787,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "notes": "224 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: drop-in Art Cafe sessions run ~8-10 slots a day continuously ($15 deposit) — this is one undated card, NOT a dated card per session. FILTER PER ITEM IF YOU EVER READ SESSIONS: the schedule interleaves two locations, \"Greenpoint\" and \"Market Street\" (Manhattan) — apply the geography gate exactly as for WORD/Jersey City. FETCH COST, KNOWN: the plain path returns ~48 chars because the schedule hydrates from a POST to /api/graphql, which the json strategy cannot call (it issues GETs). So `auto` will fall through to the headless browser here — this is a browser-dependent source in practice, and it counts against the 15% error ceiling during a browser outage. It is accepted anyway because a standing card changes rarely; if the browser path is down, treat this source as known-state, not a new failure.",
-      "standing": true
+      "standing": true,
+      "datedListing": true
     },
     {
       "id": "brooklyn-hearts-club",
@@ -741,7 +797,8 @@
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "Hosted at Madeline's, 117 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: adult art club, EVERY SECOND WEDNESDAY of the month — card it undated against that recurrence rule. The club has no site of its own; the linktr.ee is the only public URL and it carries no dates, so the recurrence rule is sourced from the Shop Small Greenpoint directory entry itself (that is the sourceQuote of record, not the linktree). NOTE THE VENUE SPLIT: the club is the organiser, Madeline's is the address — the card belongs at 117 Franklin St."
+      "notes": "Hosted at Madeline's, 117 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: adult art club, EVERY SECOND WEDNESDAY of the month — card it undated against that recurrence rule. The club has no site of its own; the linktr.ee is the only public URL and it carries no dates, so the recurrence rule is sourced from the Shop Small Greenpoint directory entry itself (that is the sourceQuote of record, not the linktree). NOTE THE VENUE SPLIT: the club is the organiser, Madeline's is the address — the card belongs at 117 Franklin St.",
+      "datedListing": true
     },
     {
       "id": "edys-grocer",
@@ -760,7 +817,8 @@
           "publishOn"
         ]
       },
-      "citeHost": "edysgrocer.com"
+      "citeHost": "edysgrocer.com",
+      "datedListing": true
     },
     {
       "id": "held-space",
@@ -777,7 +835,8 @@
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "selformer",
@@ -794,7 +853,8 @@
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "clay-space-membership",
@@ -812,7 +872,8 @@
         ],
         "limit": 2,
         "fetch": "browser"
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "clay-space-workshops",
@@ -821,7 +882,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "275 Calyer St. THIS is Clay Space's live dated supply, and finding it corrected a 2026-08-08 miss: the roster scan had rejected the business on /events, which lists only PAST events (the newest was Jun 12 against an Aug 8 scan) — the conclusion \"Clay Space publishes nothing current\" was drawn from the wrong page. Workshops are one-off, named, and forward-dated in prose (\"Upcoming dates: August 29-30 + Sept 2\"), NOT in a machine-readable field, so read the dates from the visible text. Many entries say \"Fall 2026 (tba)\" — those are NOT cardable until a real date appears. Plain fetch reaches the full list; no browser needed."
+      "notes": "275 Calyer St. THIS is Clay Space's live dated supply, and finding it corrected a 2026-08-08 miss: the roster scan had rejected the business on /events, which lists only PAST events (the newest was Jun 12 against an Aug 8 scan) — the conclusion \"Clay Space publishes nothing current\" was drawn from the wrong page. Workshops are one-off, named, and forward-dated in prose (\"Upcoming dates: August 29-30 + Sept 2\"), NOT in a machine-readable field, so read the dates from the visible text. Many entries say \"Fall 2026 (tba)\" — those are NOT cardable until a real date appears. Plain fetch reaches the full list; no browser needed.",
+      "datedListing": true
     },
     {
       "id": "clay-space-semester-classes",
@@ -831,7 +893,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "275 Calyer St. Term registration, so `subscription` on the audience lens, never deals_memberships (same rule as the YMCA and the ballet term). Fall 2026: Sunday September 13 to Saturday December 12, 12-week session, $760 per full semester ($900 independent study), public registration opens Aug 10 2026. Winter 2027 (January-March) is stated to release in late November — expect the page to turn over then. The registration-opens date is the newsworthy beat here, not the semester start."
+      "notes": "275 Calyer St. Term registration, so `subscription` on the audience lens, never deals_memberships (same rule as the YMCA and the ballet term). Fall 2026: Sunday September 13 to Saturday December 12, 12-week session, $760 per full semester ($900 independent study), public registration opens Aug 10 2026. Winter 2027 (January-March) is stated to release in late November — expect the page to turn over then. The registration-opens date is the newsworthy beat here, not the semester start.",
+      "datedListing": true
     },
     {
       "id": "driftaway-subscriptions",
@@ -849,7 +912,8 @@
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "marianella-subscription-box",
@@ -866,7 +930,8 @@
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "datedListing": false
     },
     {
       "id": "otis-and-finn",
@@ -876,7 +941,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "standing": true,
-      "notes": "197 Franklin St. Onboarded 2026-08-08 alongside the email sender Batu subscribed to. EXPECT LOW WEB YIELD BY DESIGN: this page describes the programme (\"annual free Back-to-School Haircutting Event\", Pride Party) but publishes NO dates — it is an email-signup page, so the SENDER is the real source and this URL is the standing description. Marked standing:true so the L12 UNMARKED STANDING signal stays quiet. The Back-to-School haircut event is an August beat: watch the sender for it rather than waiting on this page to sprout a date."
+      "notes": "197 Franklin St. Onboarded 2026-08-08 alongside the email sender Batu subscribed to. EXPECT LOW WEB YIELD BY DESIGN: this page describes the programme (\"annual free Back-to-School Haircutting Event\", Pride Party) but publishes NO dates — it is an email-signup page, so the SENDER is the real source and this URL is the standing description. Marked standing:true so the L12 UNMARKED STANDING signal stays quiet. The Back-to-School haircut event is an August beat: watch the sender for it rather than waiting on this page to sprout a date.",
+      "datedListing": false
     },
     {
       "id": "cibone-ote",
@@ -890,7 +956,8 @@
       "detail": {
         "match": "cibone-us\\.com/blogs/news/",
         "limit": 6
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "golden-drum",
@@ -904,7 +971,8 @@
       "detail": {
         "match": "goldendrum\\.org/calendar-1/",
         "limit": 8
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "lot-radio",
@@ -915,7 +983,8 @@
       "fetch": "auto",
       "notes": "17 Nassau Ave. DECIDED 2026-08-13 (Batu): THIS SOURCE PRODUCES ONE STANDING VENUE CARD AND NEVER PER-SET CARDS. That card ALREADY EXISTED as `the-lot-radio` (authored 2026-07-16 under venue_calendar_expansion, arts_culture + live_music) — a second one was written on 2026-08-13 and deleted before commit; check the card index for this venue before authoring anything here. The calendar carries ~10+ named DJ slots EVERY day — measured on first fetch: 9 named shows between 12pm and midnight on 08.13 alone — so carding the slots would push a single venue far past the 25% concentration warning and bury every other source in the feed, and a rotating hour-long slot is weak reader value next to a dated event you would plan around. A genuinely notable guest set is real supply, but that is a per-set judgment call that cannot survive an unattended routine, so it is not the default. `standing: true` is set deliberately: the venue card IS the coverage, and STANDING DARK should fire if it ever goes missing. FETCH: clean plain fetch, ~1,081 chars, no browser needed. The snapshot carries the two venue facts the card rests on — 'EVERYDAY from 10AM to MIDNIGHT' and '17 Nassau Ave, Brooklyn, NY 11222' — plus show names and genre tags; re-verify the card against those each run. Only TODAY's slots expand; later days are bare date headings, so this page can never support a dated gig card anyway. Independent 24/7 internet radio station. DEDUPE TRAP, and it cost a card: the roster id is `lot-radio` and the card id is `the-lot-radio`, so an id-shaped grep for the source id finds nothing and the venue looks uncarded. It was caught only because freshness-stamp.json stamped the new card 2026-07-15 — a date that could only have come from the existing card's source pulse. Match on the HOST (thelotradio.com), never on the id.",
       "citeHost": "thelotradio.com",
-      "standing": true
+      "standing": true,
+      "datedListing": true
     },
     {
       "id": "mta-g-alerts",
@@ -940,7 +1009,8 @@
         ]
       },
       "citeHost": "mta.info",
-      "standing": true
+      "standing": true,
+      "datedListing": true
     },
     {
       "id": "action-city-comics",
@@ -953,7 +1023,8 @@
         "actioncitycomics.com",
         "www.actioncitycomics.com"
       ],
-      "notes": "570 Manhattan Ave — comic shop, onboarded 2026-08-17 (Batu). STILL BROWSER-ONLY and provably so: the site is a Vue SPA on Square Online/Weebly infrastructure (window.__BOOTSTRAP_STATE__, editmysite.com map iframe); plain WebFetch of the homepage returns just the page title, no body. The homepage itself carries an \"Events\" block, server-rendered on browser load with title, date, start time, and live ticket-stock status (\"Low stock\"/\"Out of stock\") per event — confirmed 2026-08-17: Flesh & Blood Armory Tue Aug 18 7pm, One Piece Tournament Wed Aug 19 7pm, One Piece OP-17 Constructed Prerelease Wed Aug 26 7pm. Each event is a ticketed line item with a \"Get tickets\" submit button, not a distinct URL — there is no per-event permalink, so cite the homepage itself. Address/hours/phone/email also live on the same page (Location & Hours block), confirmed against the page's own embedded Google Map (lat 40.722538, lng -73.949837, matches Nominatim). Weekly recurring themes stated on /gaming: \"Join us Tuesdays for Flesh and Blood and Sundays for Sorcery!\" — no specific time given for that general statement, so only the individually dated/ticketed tournaments get carded, not an inferred recurring card."
+      "notes": "570 Manhattan Ave — comic shop, onboarded 2026-08-17 (Batu). STILL BROWSER-ONLY and provably so: the site is a Vue SPA on Square Online/Weebly infrastructure (window.__BOOTSTRAP_STATE__, editmysite.com map iframe); plain WebFetch of the homepage returns just the page title, no body. The homepage itself carries an \"Events\" block, server-rendered on browser load with title, date, start time, and live ticket-stock status (\"Low stock\"/\"Out of stock\") per event — confirmed 2026-08-17: Flesh & Blood Armory Tue Aug 18 7pm, One Piece Tournament Wed Aug 19 7pm, One Piece OP-17 Constructed Prerelease Wed Aug 26 7pm. Each event is a ticketed line item with a \"Get tickets\" submit button, not a distinct URL — there is no per-event permalink, so cite the homepage itself. Address/hours/phone/email also live on the same page (Location & Hours block), confirmed against the page's own embedded Google Map (lat 40.722538, lng -73.949837, matches Nominatim). Weekly recurring themes stated on /gaming: \"Join us Tuesdays for Flesh and Blood and Sundays for Sorcery!\" — no specific time given for that general statement, so only the individually dated/ticketed tournaments get carded, not an inferred recurring card.",
+      "datedListing": true
     },
     {
       "id": "nbk-open-streets",
@@ -969,7 +1040,8 @@
           "https://partiful.com/e/bcKEB1zJ5V3Z3l6WomwH"
         ],
         "limit": 1
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "friends-of-mcgolrick",
@@ -990,7 +1062,8 @@
           "fullUrl"
         ]
       },
-      "notes": "Msgr. McGolrick Park, Driggs Ave / Monitor St, 11222. Added 2026-09-07 from the family/kids source audit, where it was the single best find: free all-ages programming year round — Puppetmobile puppet shows and puppet-making, McGolrick Art Club, family bird walks, Earth Day festival with kids' storytime and book swap, the McGhoulrick Halloween trick-or-treat event, monthly park cleanups, Park-to-Park walks. ⚠ THE DOMAIN EVERYONE LINKS TO IS DEAD. `mcgolrickpark.org` is NXDOMAIN — it still ranks in Google and still appears in third-party listings, and it resolves to nothing; two researchers disagreed on this and it was settled by curl on 2026-09-07 (mcgolrick.org 200/466KB, mcgolrickpark.org connection failure). The live domain is `mcgolrick.org`. If a source or a card ever cites mcgolrickpark.org, it is citing a dead host. Squarespace events collection, so ?format=json returns the whole upcoming set in one plain call — verified 2026-09-07, `upcoming` carried 2 dated events (Harvest Moon Walk 9/26, Puppetmobile 10/10) alongside 30 in `past`. READ `upcoming` ONLY: `past` is a live key on the same payload and ingesting it would ship finished events. startDate/endDate are epoch MILLISECONDS, not ISO. fullUrl is site-relative (/calendar/slug) so prefix the host when citing. ⚠ IGNORE THE `location` BLOCK'S COORDINATES — measured 2026-09-07 on the first real fetch, every event on this calendar carries mapLat 40.7207559 / mapLng -74.0007613, which is a Squarespace default sitting in lower Manhattan, 4.8km from McGolrick Park. It is not the venue. Geocode from the park name via the normal ingest:geocode path; taking these numbers would drop pins across the river. The `addressTitle`/`addressLine` fields inside the same block came back EMPTY here, so this source gives no usable address at all — the park is the venue, always. OVERLAP: go-green-bk already carries an organizer page for this group and its pinned detail URLs include mcgolrick-bird-club-2026, so expect some events to arrive twice — dedupe against go-green-bk before carding, don't assume a new id means a new event."
+      "notes": "Msgr. McGolrick Park, Driggs Ave / Monitor St, 11222. Added 2026-09-07 from the family/kids source audit, where it was the single best find: free all-ages programming year round — Puppetmobile puppet shows and puppet-making, McGolrick Art Club, family bird walks, Earth Day festival with kids' storytime and book swap, the McGhoulrick Halloween trick-or-treat event, monthly park cleanups, Park-to-Park walks. ⚠ THE DOMAIN EVERYONE LINKS TO IS DEAD. `mcgolrickpark.org` is NXDOMAIN — it still ranks in Google and still appears in third-party listings, and it resolves to nothing; two researchers disagreed on this and it was settled by curl on 2026-09-07 (mcgolrick.org 200/466KB, mcgolrickpark.org connection failure). The live domain is `mcgolrick.org`. If a source or a card ever cites mcgolrickpark.org, it is citing a dead host. Squarespace events collection, so ?format=json returns the whole upcoming set in one plain call — verified 2026-09-07, `upcoming` carried 2 dated events (Harvest Moon Walk 9/26, Puppetmobile 10/10) alongside 30 in `past`. READ `upcoming` ONLY: `past` is a live key on the same payload and ingesting it would ship finished events. startDate/endDate are epoch MILLISECONDS, not ISO. fullUrl is site-relative (/calendar/slug) so prefix the host when citing. ⚠ IGNORE THE `location` BLOCK'S COORDINATES — measured 2026-09-07 on the first real fetch, every event on this calendar carries mapLat 40.7207559 / mapLng -74.0007613, which is a Squarespace default sitting in lower Manhattan, 4.8km from McGolrick Park. It is not the venue. Geocode from the park name via the normal ingest:geocode path; taking these numbers would drop pins across the river. The `addressTitle`/`addressLine` fields inside the same block came back EMPTY here, so this source gives no usable address at all — the park is the venue, always. OVERLAP: go-green-bk already carries an organizer page for this group and its pinned detail URLs include mcgolrick-bird-club-2026, so expect some events to arrive twice — dedupe against go-green-bk before carding, don't assume a new id means a new event.",
+      "datedListing": true
     },
     {
       "id": "friends-of-transmitter-park",
@@ -1016,7 +1089,8 @@
         "match": "transmitterpark\\.org/events/event-",
         "limit": 12,
         "delayMs": 400
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "nbk-parks-alliance",
@@ -1025,7 +1099,8 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Native Nursery at 465 Scott Ave, 11222; programs across McCarren, Bushwick Inlet, Transmitter, Newtown Barge and Under the K. Added 2026-09-07 from the family/kids source audit. Publishes dated all-ages programming: Garden Club volunteer mornings (Sundays 10am-12pm, April-November), fall plant giveaways, native nursery volunteer days, weeding sessions, Fit Club. THIS IS THE OPEN SPACE ALLIANCE FOR NORTH BROOKLYN UNDER ITS NEW NAME (renamed 2018) — do NOT add OSA as a second source, it is the same organisation and would double-count every event. Plain fetch of the page works (verified 2026-09-07, 200/55KB with dated content), but their WordPress feed and REST API BOTH answer 429 rate-limited to the same client that just read the page fine, so `auto` on the HTML page is deliberate here — do not \"upgrade\" this to fetch:feed or a wp-json URL without re-testing, it will look like a dead source. The rate limiting is intermittent, not fixed: the first real run on 2026-09-07 fell through plain and landed on the BROWSER attempt, even though plain curl had read the page fine minutes earlier — so expect this source to cost a browser page some weeks. ⚠ THE SAME BLURB REPEATS WITH DIFFERENT HOURS. The fall plant giveaway text appears against several entries on this page, once saying \"465 Scott Ave (10AM – 5PM)\" and twice saying \"(10AM – 2PM)\" — the page contradicts itself on times, so a card must resolve the hours against the specific event, not the first match. Same failure shape as the Bedford Slip clean-up whose two conflicting times were settled by going to the organiser's own page. They also mirror to Eventbrite (eventbrite.com/o/north-brooklyn-parks-alliance-20230695455), which is already allowlisted, if the page ever stops being enough."
+      "notes": "Native Nursery at 465 Scott Ave, 11222; programs across McCarren, Bushwick Inlet, Transmitter, Newtown Barge and Under the K. Added 2026-09-07 from the family/kids source audit. Publishes dated all-ages programming: Garden Club volunteer mornings (Sundays 10am-12pm, April-November), fall plant giveaways, native nursery volunteer days, weeding sessions, Fit Club. THIS IS THE OPEN SPACE ALLIANCE FOR NORTH BROOKLYN UNDER ITS NEW NAME (renamed 2018) — do NOT add OSA as a second source, it is the same organisation and would double-count every event. Plain fetch of the page works (verified 2026-09-07, 200/55KB with dated content), but their WordPress feed and REST API BOTH answer 429 rate-limited to the same client that just read the page fine, so `auto` on the HTML page is deliberate here — do not \"upgrade\" this to fetch:feed or a wp-json URL without re-testing, it will look like a dead source. The rate limiting is intermittent, not fixed: the first real run on 2026-09-07 fell through plain and landed on the BROWSER attempt, even though plain curl had read the page fine minutes earlier — so expect this source to cost a browser page some weeks. ⚠ THE SAME BLURB REPEATS WITH DIFFERENT HOURS. The fall plant giveaway text appears against several entries on this page, once saying \"465 Scott Ave (10AM – 5PM)\" and twice saying \"(10AM – 2PM)\" — the page contradicts itself on times, so a card must resolve the hours against the specific event, not the first match. Same failure shape as the Bedford Slip clean-up whose two conflicting times were settled by going to the organiser's own page. They also mirror to Eventbrite (eventbrite.com/o/north-brooklyn-parks-alliance-20230695455), which is already allowlisted, if the page ever stops being enough.",
+      "datedListing": true
     },
     {
       "id": "gwysl-youth-soccer",
@@ -1034,7 +1109,8 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "All-volunteer non-profit youth soccer (AYSO Region 1328), games at McCarren Park and Bushwick Inlet Park, divisions U6 through U14-19. Added 2026-09-07 from the family/kids source audit — the biggest single thing the roster was missing for families, and nothing about it reached the map before. The HOMEPAGE is the source of record for the state that matters to a parent: verified 2026-09-07 carrying \"Fall season starts on 9/12. Registration is closed. You can still join the waitlist by registering.\" That registration/waitlist state is the cardable fact; it changes a few times a season and then sits still. SEASONAL, NOT WEEKLY, despite the cadence — expect long `unchanged` runs between the fall and spring windows, and check hardest at season boundaries. THE ACTUAL GAME SCHEDULE IS NOT FETCHABLE: it lives in a Google Doc linked off the site, and registration runs through GWYSL.InLeague.org. Card the season and the registration window, never individual games. Site is bilingual English/Spanish."
+      "notes": "All-volunteer non-profit youth soccer (AYSO Region 1328), games at McCarren Park and Bushwick Inlet Park, divisions U6 through U14-19. Added 2026-09-07 from the family/kids source audit — the biggest single thing the roster was missing for families, and nothing about it reached the map before. The HOMEPAGE is the source of record for the state that matters to a parent: verified 2026-09-07 carrying \"Fall season starts on 9/12. Registration is closed. You can still join the waitlist by registering.\" That registration/waitlist state is the cardable fact; it changes a few times a season and then sits still. SEASONAL, NOT WEEKLY, despite the cadence — expect long `unchanged` runs between the fall and spring windows, and check hardest at season boundaries. THE ACTUAL GAME SCHEDULE IS NOT FETCHABLE: it lives in a Google Doc linked off the site, and registration runs through GWYSL.InLeague.org. Card the season and the registration window, never individual games. Site is bilingual English/Spanish.",
+      "datedListing": true
     },
     {
       "id": "giggles-and-wiggles-events",
@@ -1043,7 +1119,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "42 West St, Unit 103, entrance on Noble St, 11222; Tue-Sun 10:30am-6:30pm; opened May 2026, stroller ramp. Added 2026-09-07 from the family/kids source audit. WE ALREADY HAD A CARD FOR THIS SHOP and it came from the Shop Small Greenpoint newsletter (July 2026), but their own events page was never a source — so the weekly Music with Shana, the Stay Small Art Club sessions, the STRONG (As a Mother) run club and the pediatric CPR workshops were all invisible. Verified plain-fetchable 2026-09-07 with real dated prose: dated one-offs (\"Sep 24 Stay Small Art Club ⏰ Thursday, September 24 · 12:30 PM\") AND a recurring block (\"Every Wednesday: Music with Shana, 10:30 AM & 11:30 AM\") that then lists each Wednesday date explicitly. The recurring block is the trap: card it as ONE weekly series, not five cards. Shopify site, but there is no events blog — /blogs/events.atom 404s — so the rendered page is the only surface. Several sessions are run by outside providers at this address (Stay Small Art Club, EXO), so check whose event it is before attributing."
+      "notes": "42 West St, Unit 103, entrance on Noble St, 11222; Tue-Sun 10:30am-6:30pm; opened May 2026, stroller ramp. Added 2026-09-07 from the family/kids source audit. WE ALREADY HAD A CARD FOR THIS SHOP and it came from the Shop Small Greenpoint newsletter (July 2026), but their own events page was never a source — so the weekly Music with Shana, the Stay Small Art Club sessions, the STRONG (As a Mother) run club and the pediatric CPR workshops were all invisible. Verified plain-fetchable 2026-09-07 with real dated prose: dated one-offs (\"Sep 24 Stay Small Art Club ⏰ Thursday, September 24 · 12:30 PM\") AND a recurring block (\"Every Wednesday: Music with Shana, 10:30 AM & 11:30 AM\") that then lists each Wednesday date explicitly. The recurring block is the trap: card it as ONE weekly series, not five cards. Shopify site, but there is no events blog — /blogs/events.atom 404s — so the rendered page is the only surface. Several sessions are run by outside providers at this address (Stay Small Art Club, EXO), so check whose event it is before attributing.",
+      "datedListing": true
     },
     {
       "id": "st-stans-academy",
@@ -1075,7 +1152,8 @@
           "Exam"
         ]
       },
-      "notes": "12 Newell St, 11222 — the parish school of St. Stanislaus Kostka, the largest Polish Catholic congregation in Brooklyn. Added 2026-09-07 with the `ics` reader built the same day; before that there was no way to read this format at all and the whole calendar was invisible. THE CALENDAR IS 3,281 EVENTS GOING BACK TO 2016 and it is overwhelmingly INTERNAL SCHOOL HOUSEKEEPING — dismissal times, i-Ready assessment windows, dress-down days, uniform notices. Measured 2026-09-07: the raw file yields 22 events in a 21-day window, and the exclude list above cuts that to 8. Do not remove the exclude list to \"see more\" — what it removes is not neighborhood supply, and without it this source floods every run. ⚠ THE PUBLIC EVENTS ARE A MINORITY AND THEY ARE WHAT WE ARE HERE FOR: the parish picnic, the back-to-school BBQ, school Masses explicitly marked \"Parents Welcome To Attend\", bake sales and fundraisers. A dismissal time is not a card; a picnic is. ⚠ ALMOST EVERY ENTRY IS ALL-DAY (VALUE=DATE), so DTSTART renders as a bare date with no clock — that is the source being honest, not a parse failure, and a card built from one takes `allDay: true` per the 2026-08-25 rule. Several summaries carry the real clock in their TEXT (\"8:15am School Mass\", \"6:30pm Back To School Parent Meeting\"), which IS a sourced time and can be carded as one. The site's /announcements page is stale (last dated Sept 2025) — this calendar is the live surface, not that page."
+      "notes": "12 Newell St, 11222 — the parish school of St. Stanislaus Kostka, the largest Polish Catholic congregation in Brooklyn. Added 2026-09-07 with the `ics` reader built the same day; before that there was no way to read this format at all and the whole calendar was invisible. THE CALENDAR IS 3,281 EVENTS GOING BACK TO 2016 and it is overwhelmingly INTERNAL SCHOOL HOUSEKEEPING — dismissal times, i-Ready assessment windows, dress-down days, uniform notices. Measured 2026-09-07: the raw file yields 22 events in a 21-day window, and the exclude list above cuts that to 8. Do not remove the exclude list to \"see more\" — what it removes is not neighborhood supply, and without it this source floods every run. ⚠ THE PUBLIC EVENTS ARE A MINORITY AND THEY ARE WHAT WE ARE HERE FOR: the parish picnic, the back-to-school BBQ, school Masses explicitly marked \"Parents Welcome To Attend\", bake sales and fundraisers. A dismissal time is not a card; a picnic is. ⚠ ALMOST EVERY ENTRY IS ALL-DAY (VALUE=DATE), so DTSTART renders as a bare date with no clock — that is the source being honest, not a parse failure, and a card built from one takes `allDay: true` per the 2026-08-25 rule. Several summaries carry the real clock in their TEXT (\"8:15am School Mass\", \"6:30pm Back To School Parent Meeting\"), which IS a sourced time and can be carded as one. The site's /announcements page is stale (last dated Sept 2025) — this calendar is the live surface, not that page.",
+      "datedListing": true
     },
     {
       "id": "greenpoint-reformed-church",
@@ -1088,7 +1166,8 @@
       "ics": {
         "windowDays": 21
       },
-      "notes": "136 Milton St, 11222. Added 2026-09-07 with the `ics` reader. 1,584 events, 237 of them recurring, and unlike St. Stans this one needs NO exclude list — measured 2026-09-07 it yields 18 events in 21 days and they are nearly all genuinely public. What it carries that the map wants: the Greenpoint Hunger Program's community meal and food pantry (real neighborhood utility, and the pantry line states the Milton St address outright), Sunday worship and family ministry, and a lot of AA and other 12-step meetings held upstairs in the Manse. ⚠ RECURRENCE IS THE WHOLE SOURCE HERE. Most entries are RRULEs seeded YEARS ago — the reader expands them into the window, so a series that began in 2014 correctly shows this week's dates. The seed date in the file is not the event date; read DTSTART, which is already expanded. EXDATE is honoured, so a cancelled single occurrence is skipped, which is exactly the `recurrence.except` shape a card wants. ⚠ ONE SOURCE CONFLICT IS ALREADY VISIBLE and will recur: the Community Meal's description says \"Each Wednesday afternoon\" while its RRULE says BYDAY=TU and its DTSTART is a Tuesday. Prose and rule disagree — apply the 2026-08-26 rule and prefer what a person wrote only when it is describing the same fact; here they are two different claims about the day, so the card must resolve it against the church before stating a day. Recurring 12-step meetings are almost certainly not cardable supply; judge per the lens rules rather than carding the calendar wholesale."
+      "notes": "136 Milton St, 11222. Added 2026-09-07 with the `ics` reader. 1,584 events, 237 of them recurring, and unlike St. Stans this one needs NO exclude list — measured 2026-09-07 it yields 18 events in 21 days and they are nearly all genuinely public. What it carries that the map wants: the Greenpoint Hunger Program's community meal and food pantry (real neighborhood utility, and the pantry line states the Milton St address outright), Sunday worship and family ministry, and a lot of AA and other 12-step meetings held upstairs in the Manse. ⚠ RECURRENCE IS THE WHOLE SOURCE HERE. Most entries are RRULEs seeded YEARS ago — the reader expands them into the window, so a series that began in 2014 correctly shows this week's dates. The seed date in the file is not the event date; read DTSTART, which is already expanded. EXDATE is honoured, so a cancelled single occurrence is skipped, which is exactly the `recurrence.except` shape a card wants. ⚠ ONE SOURCE CONFLICT IS ALREADY VISIBLE and will recur: the Community Meal's description says \"Each Wednesday afternoon\" while its RRULE says BYDAY=TU and its DTSTART is a Tuesday. Prose and rule disagree — apply the 2026-08-26 rule and prefer what a person wrote only when it is describing the same fact; here they are two different claims about the day, so the card must resolve it against the church before stating a day. Recurring 12-step meetings are almost certainly not cardable supply; judge per the lens rules rather than carding the calendar wholesale.",
+      "datedListing": true
     },
     {
       "id": "greenthumb-gardens-11222",
@@ -1116,7 +1195,8 @@
           "lon"
         ]
       },
-      "notes": "Added 2026-09-07 when Batu asked about community gardens during the family/kids push. NYC Parks' GreenThumb dataset, filtered to zip 11222 in the query itself, so the snapshot is only Greenpoint: three active gardens on 2026-09-07 — Java Street Community Garden (59 Java St, Franklin & West), 61 Franklin Street Garden (Calyer & Oak), and Lentol Garden (478 Graham Ave, Bayard & Meeker). STANDING OPEN HOURS, NOT EVENTS: each row carries a per-day open-hours field (openhrsm … openhrssu, with CLOSED spelled out), so these are VENUE cards with hours, not dated cards — the same shape as a shop card. Monthly cadence because the dataset changes rarely. The lat/lon here are the CITY'S OWN parcel coordinates and are trustworthy, unlike a Squarespace `location` block — pin from them. A garden whose `status` stops being Active gets its card retired, not edited. Lens is civic under the 2026-08-30 growing-space rule; the dataset states no audience, so it does not earn family_kids on its own even though a parent is exactly who uses it — that is a rule for Batu to change, not a run."
+      "notes": "Added 2026-09-07 when Batu asked about community gardens during the family/kids push. NYC Parks' GreenThumb dataset, filtered to zip 11222 in the query itself, so the snapshot is only Greenpoint: three active gardens on 2026-09-07 — Java Street Community Garden (59 Java St, Franklin & West), 61 Franklin Street Garden (Calyer & Oak), and Lentol Garden (478 Graham Ave, Bayard & Meeker). STANDING OPEN HOURS, NOT EVENTS: each row carries a per-day open-hours field (openhrsm … openhrssu, with CLOSED spelled out), so these are VENUE cards with hours, not dated cards — the same shape as a shop card. Monthly cadence because the dataset changes rarely. The lat/lon here are the CITY'S OWN parcel coordinates and are trustworthy, unlike a Squarespace `location` block — pin from them. A garden whose `status` stops being Active gets its card retired, not edited. Lens is civic under the 2026-08-30 growing-space rule; the dataset states no audience, so it does not earn family_kids on its own even though a parent is exactly who uses it — that is a rule for Batu to change, not a run.",
+      "datedListing": false
     },
     {
       "id": "msjs-greenpoint",
@@ -1135,7 +1215,8 @@
           "startDate",
           "endDate"
         ]
-      }
+      },
+      "datedListing": true
     },
     {
       "id": "artudio",
@@ -1149,7 +1230,8 @@
         "settleMs": 3000
       },
       "citeHost": "artudiony.com",
-      "notes": "4 Diamond St, 11222 — process-art studio, opened Feb 2025; Rocking Chair Music and AudraRox also teach here since The Wild on Driggs closed. Added 2026-09-07 when Batu reopened Sawyer: the 2026-08-06 block was a Cloudflare 'Just a moment' interstitial to non-browser clients, and on 2026-09-07 headless Chromium loaded this page with NO challenge presented — the same JS-app shape as WORD and the comedy club, not the challenge shape. If a render ever shows an interstitial, STOP and report it; nothing here licenses getting past one. Plain curl still 403s, so this can never be `auto`. Renders dated semester listings with an age band, a weekday and time, a date range and a price — e.g. 'Artudio Minis 1.5 – 3 yrs Wed 11:00am - 12:00pm EDT Sep 9, 2026 - Oct 28, 2026, $300 or $40/class' — across Drop-ins / Semesters / Camps tabs. Each listing is a TERM: card the term with its date range and price, per the dance-school precedent, not a card per Wednesday. Kids-authored, so family_kids. The '$40/class' drop-in price is a sourced fact worth carrying."
+      "notes": "4 Diamond St, 11222 — process-art studio, opened Feb 2025; Rocking Chair Music and AudraRox also teach here since The Wild on Driggs closed. Added 2026-09-07 when Batu reopened Sawyer: the 2026-08-06 block was a Cloudflare 'Just a moment' interstitial to non-browser clients, and on 2026-09-07 headless Chromium loaded this page with NO challenge presented — the same JS-app shape as WORD and the comedy club, not the challenge shape. If a render ever shows an interstitial, STOP and report it; nothing here licenses getting past one. Plain curl still 403s, so this can never be `auto`. Renders dated semester listings with an age band, a weekday and time, a date range and a price — e.g. 'Artudio Minis 1.5 – 3 yrs Wed 11:00am - 12:00pm EDT Sep 9, 2026 - Oct 28, 2026, $300 or $40/class' — across Drop-ins / Semesters / Camps tabs. Each listing is a TERM: card the term with its date range and price, per the dance-school precedent, not a card per Wednesday. Kids-authored, so family_kids. The '$40/class' drop-in price is a sourced fact worth carrying.",
+      "datedListing": true
     },
     {
       "id": "sparsa-union-fit",
@@ -1163,7 +1245,8 @@
         "settleMs": 3000
       },
       "citeHost": "sparsabrooklyn.com",
-      "notes": "1006 Manhattan Ave (between Green & Huron), 11222. Added 2026-09-07 in the school-opening push. The deck already carries a venue card (sparsa-greenpoint, a Pilates studio on the service shelf); THIS source is for its KIDS and PARENT programming — Musicraftory (0-6), Strawberry Tunes, Tunes for Tykes, Baby & Me Yoga, Infant Developmental Movement Playgroup, Prenatal / Gentle Yoga — which no source was reading. ⚠ THE URL IS THE ORG ROOT, NOT /calendar, AND THAT WAS MEASURED: /calendar renders 3,935 chars of class NAMES and ZERO clock times under every browser setting tried; the org root renders ~3,700 chars with ~50 clock times. Plain curl 403s on every union.fit path, so this can never be `auto`. Under the roster's default browser wait the class list loads but the schedule grid does not, and the page passes the size check while missing every time — the phantom-shrink shape — hence the networkidle + 3s block. Each row is one dated sitting (e.g. '7:30 AM - 8:30 AM EDT'), so a weekly class arrives as many near-identical rows: card the SERIES with recurrence.days, not one row per sitting. Kids classes are family_kids; the prenatal and Baby & Me classes are family-audience and file the same way (precedent: town-square-cub-scouts, giggles-and-wiggles)."
+      "notes": "1006 Manhattan Ave (between Green & Huron), 11222. Added 2026-09-07 in the school-opening push. The deck already carries a venue card (sparsa-greenpoint, a Pilates studio on the service shelf); THIS source is for its KIDS and PARENT programming — Musicraftory (0-6), Strawberry Tunes, Tunes for Tykes, Baby & Me Yoga, Infant Developmental Movement Playgroup, Prenatal / Gentle Yoga — which no source was reading. ⚠ THE URL IS THE ORG ROOT, NOT /calendar, AND THAT WAS MEASURED: /calendar renders 3,935 chars of class NAMES and ZERO clock times under every browser setting tried; the org root renders ~3,700 chars with ~50 clock times. Plain curl 403s on every union.fit path, so this can never be `auto`. Under the roster's default browser wait the class list loads but the schedule grid does not, and the page passes the size check while missing every time — the phantom-shrink shape — hence the networkidle + 3s block. Each row is one dated sitting (e.g. '7:30 AM - 8:30 AM EDT'), so a weekly class arrives as many near-identical rows: card the SERIES with recurrence.days, not one row per sitting. Kids classes are family_kids; the prenatal and Baby & Me classes are family-audience and file the same way (precedent: town-square-cub-scouts, giggles-and-wiggles).",
+      "datedListing": true
     },
     {
       "id": "space-club-greenpoint",
@@ -1174,7 +1257,8 @@
       "fetch": "auto",
       "citeHost": "spaceclub.com",
       "notes": "220 Newel St, 11222; three-floor indoor play centre, open 8am-7pm every day. Added 2026-09-07. Plain-fetchable, verified 2026-09-07. Publishes a STANDING weekday grid — 'free classes to our members at 10am and 11am every Monday - Friday', ages 1-5 — and states outright that a membership is required and single passes do not include classes, so this is a SUBSCRIPTION card, not events. ⚠ THE PAGE CONTRADICTS ITSELF: it renders the grid twice (desktop and mobile copies) and the two copies disagree — Wednesday is 'Sensory Play' in one and 'Playdoh' in the other, and one says 'No need to book, just come on down!' while the other says bookings open every Friday for the coming week. A card must not assert either disputed detail; state the days and times, which agree, and leave Wednesday's subject and the booking rule off. Monthly cadence because a standing grid rarely changes.",
-      "standing": true
+      "standing": true,
+      "datedListing": false
     },
     {
       "id": "birthsmarter",
@@ -1184,7 +1268,8 @@
       "cadence": "weekly",
       "fetch": "auto",
       "citeHost": "birthsmarter.com",
-      "notes": "Teaches monthly in Greenpoint at Kuei Luck, 171 Calyer St, 11222; the schedule page itself prints only 'Kuei Luck Greenpoint | Brooklyn | NYC' with no street address, so the venue NAME is the sourced fact and the address comes from geocoding it, as with a park. Added 2026-09-07. Plain-fetchable, verified. Dated childbirth education, newborn care and lactation classes — the only Greenpoint lactation offering found with a public dated calendar. ⚠ TIMES ARE PRINTED IN UTC ONLY ('2:00 PM UTC - 7:30 PM UTC'), with no local time anywhere on the page. A card's startsAt is that instant expressed in America/New_York, which is a conversion of a stated fact, not an invention — but the sourceQuote must carry the UTC line as printed. ONLY Greenpoint rows are in scope; the same page lists Manhattan and other Brooklyn venues. A weekend childbirth course spans two consecutive days with the same sitting each day and is ONE card. Family-audience programming for expecting and new parents, filed family_kids on the same reading as the cub scouts and the kids' shop; no price is stated on the schedule page, only 'alternative pricing' is offered."
+      "notes": "Teaches monthly in Greenpoint at Kuei Luck, 171 Calyer St, 11222; the schedule page itself prints only 'Kuei Luck Greenpoint | Brooklyn | NYC' with no street address, so the venue NAME is the sourced fact and the address comes from geocoding it, as with a park. Added 2026-09-07. Plain-fetchable, verified. Dated childbirth education, newborn care and lactation classes — the only Greenpoint lactation offering found with a public dated calendar. ⚠ TIMES ARE PRINTED IN UTC ONLY ('2:00 PM UTC - 7:30 PM UTC'), with no local time anywhere on the page. A card's startsAt is that instant expressed in America/New_York, which is a conversion of a stated fact, not an invention — but the sourceQuote must carry the UTC line as printed. ONLY Greenpoint rows are in scope; the same page lists Manhattan and other Brooklyn venues. A weekend childbirth course spans two consecutive days with the same sitting each day and is ONE card. Family-audience programming for expecting and new parents, filed family_kids on the same reading as the cub scouts and the kids' shop; no price is stated on the schedule page, only 'alternative pricing' is offered.",
+      "datedListing": false
     },
     {
       "id": "play-greenpoint-sawyer",
@@ -1199,7 +1284,8 @@
       },
       "citeHost": "playgreenpoint.com",
       "notes": "33 Nassau Ave (and 31 Nassau), 11222. Added 2026-09-07. The Wix site (play-kids-greenpoint) announces programmes; THIS is where the actual bookable schedule lives. The two Sawyer PROVIDER pages (/providers/play-greenpoint/…) render 'We didn't find anything that matched your search' — the listings are only on /play-greenpoint/schedules. Landing view is the semester after-school grid: school-pickup programmes prefixed PS110 / PS31 / PS34 plus a DROP-OFF variant, Mon-Fri, 2:30-6pm, $1,080-$1,260 a term, with '1 spot left!' / '2 spots left!' / 'Fully Booked' states per row — those are sourced facts. ⚠ LANDING VIEW ONLY, BY DESIGN: clicking the Camps/Events tab (where the drop-off movie nights live) returned Cloudflare 'Performing security verification' on 2026-09-07, and getting past a challenge is out of bounds. Page 1 of 3 is what a plain load returns; pages 2-3 are behind pagination clicks. The browserText guard throws if the landing view itself ever serves the challenge. Card the TERM per school-pickup programme family, not a card per PS-and-day row.",
-      "standing": true
+      "standing": true,
+      "datedListing": true
     },
     {
       "id": "art-101-sawyer",
@@ -1213,7 +1299,8 @@
         "settleMs": 3000
       },
       "citeHost": "art101bk.com",
-      "notes": "61 Greenpoint Ave, Ste 113, 11222; (917) 887-1760. Added 2026-09-07. The studio's own site (art101bk.com) has an events page that renders a heading and no listings; Sawyer is the real schedule. This is the GREENPOINT provider page — reviews mention a Williamsburg location, which is a separate page, and every row here is tagged Greenpoint. Landing view renders four items with age range, price and a DROP-IN / SEMESTER / CAMP tag: After School Artists Mon-Fri 3-5pm Sep 10-Dec 17 ($65/class, ages 4-10) is the school-year one; the two summer camps end Sep 9; Crafternoons (Sun 2-4pm, $45) states NO start or end date, so its Sundays are inferred and it is not carded as dated. No challenge on the landing view 2026-09-07; same landing-view-only caveat as play-greenpoint-sawyer."
+      "notes": "61 Greenpoint Ave, Ste 113, 11222; (917) 887-1760. Added 2026-09-07. The studio's own site (art101bk.com) has an events page that renders a heading and no listings; Sawyer is the real schedule. This is the GREENPOINT provider page — reviews mention a Williamsburg location, which is a separate page, and every row here is tagged Greenpoint. Landing view renders four items with age range, price and a DROP-IN / SEMESTER / CAMP tag: After School Artists Mon-Fri 3-5pm Sep 10-Dec 17 ($65/class, ages 4-10) is the school-year one; the two summer camps end Sep 9; Crafternoons (Sun 2-4pm, $45) states NO start or end date, so its Sundays are inferred and it is not carded as dated. No challenge on the landing view 2026-09-07; same landing-view-only caveat as play-greenpoint-sawyer.",
+      "datedListing": true
     },
     {
       "id": "brooklyn-bridge-parents-greenpoint",
@@ -1232,7 +1319,8 @@
           "content.rendered"
         ]
       },
-      "notes": "Added 2026-09-07 so the DAILY refresh, not a hand sweep, catches the midweek family roundups. Borough-wide parents site with an open WordPress REST API; the `search=greenpoint` in the URL makes WordPress return only posts whose text mentions Greenpoint, so the snapshot is pre-filtered and the diff only moves when a Greenpoint-mentioning post lands. What it publishes that matters: the weekly 'Free kid-friendly events this week in Brooklyn' roundup (Sundays/Mondays), the weekly 'The Week in Brooklyn', monthly new-openings and new-family-amenities posts, and District 14 3K/UPK/Kindergarten open-house roundups — the closest thing to a school-calendar feed, since every Greenpoint PTA is on Instagram or behind ParentSquare. DISCOVERY SURFACE ONLY: a roundup line is where you learn an event exists; the card cites and quotes the organiser's own page, per the aggregator rule. Measured 2026-09-07: its 9/7-9/13 roundup carried exactly one Greenpoint item (the library week, already carded first-hand), so expect most weeks to yield nothing — SILENT will flag it if that stays true for a month, and that is the correct outcome."
+      "notes": "Added 2026-09-07 so the DAILY refresh, not a hand sweep, catches the midweek family roundups. Borough-wide parents site with an open WordPress REST API; the `search=greenpoint` in the URL makes WordPress return only posts whose text mentions Greenpoint, so the snapshot is pre-filtered and the diff only moves when a Greenpoint-mentioning post lands. What it publishes that matters: the weekly 'Free kid-friendly events this week in Brooklyn' roundup (Sundays/Mondays), the weekly 'The Week in Brooklyn', monthly new-openings and new-family-amenities posts, and District 14 3K/UPK/Kindergarten open-house roundups — the closest thing to a school-calendar feed, since every Greenpoint PTA is on Instagram or behind ParentSquare. DISCOVERY SURFACE ONLY: a roundup line is where you learn an event exists; the card cites and quotes the organiser's own page, per the aggregator rule. Measured 2026-09-07: its 9/7-9/13 roundup carried exactly one Greenpoint item (the library week, already carded first-hand), so expect most weeks to yield nothing — SILENT will flag it if that stays true for a month, and that is the correct outcome.",
+      "datedListing": true
     },
     {
       "id": "macaroni-kid-brooklyn-nw",
@@ -1247,7 +1335,8 @@
         "limit": 8,
         "delayMs": 400
       },
-      "notes": "Added 2026-09-07 so the DAILY refresh catches the '20 Weekend Event Picks (Sep 11-13)' article the moment it posts — it usually lands Wed/Thu, and the 2026-09-07 sweep found the 9/11-13 one not yet published. ⚠ THE EVENTS CALENDAR ON THIS SITE IS A JAVASCRIPT SHELL (/events/calendar renders 13KB with no events, no JSON-LD, nothing in a browser either) — do not point at it. The ARTICLES listing is server-rendered and so are the individual article pages, which is what the detail block follows: the newest weekend-picks / event-picks / family-events posts, capped at 3. Covers Greenpoint, Williamsburg and Bushwick, so the Williamsburg-address gate applies to every item. DISCOVERY SURFACE ONLY, same as brooklyn-bridge-parents-greenpoint: verify and quote the organiser. ⚠ THE DETAIL HARVEST IS PAGE-ORDER, NOT NEWEST-FIRST: with limit 3 the first run followed July 31, Aug 7 and the monthly 'top 20' post and missed the current week entirely, so the match is narrowed to weekend-event-picks only and the limit raised to 8 — eight cheap plain GETs a week is the price of always having the newest picks in the snapshot. Measured 2026-09-07: the 'Top 20 September Family Events in Brooklyn' article mentioned Greenpoint zero times; if the weekend picks turn out the same over a month, SILENT flags it and it goes the way of The Wriggle."
+      "notes": "Added 2026-09-07 so the DAILY refresh catches the '20 Weekend Event Picks (Sep 11-13)' article the moment it posts — it usually lands Wed/Thu, and the 2026-09-07 sweep found the 9/11-13 one not yet published. ⚠ THE EVENTS CALENDAR ON THIS SITE IS A JAVASCRIPT SHELL (/events/calendar renders 13KB with no events, no JSON-LD, nothing in a browser either) — do not point at it. The ARTICLES listing is server-rendered and so are the individual article pages, which is what the detail block follows: the newest weekend-picks / event-picks / family-events posts, capped at 3. Covers Greenpoint, Williamsburg and Bushwick, so the Williamsburg-address gate applies to every item. DISCOVERY SURFACE ONLY, same as brooklyn-bridge-parents-greenpoint: verify and quote the organiser. ⚠ THE DETAIL HARVEST IS PAGE-ORDER, NOT NEWEST-FIRST: with limit 3 the first run followed July 31, Aug 7 and the monthly 'top 20' post and missed the current week entirely, so the match is narrowed to weekend-event-picks only and the limit raised to 8 — eight cheap plain GETs a week is the price of always having the newest picks in the snapshot. Measured 2026-09-07: the 'Top 20 September Family Events in Brooklyn' article mentioned Greenpoint zero times; if the weekend picks turn out the same over a month, SILENT flags it and it goes the way of The Wriggle.",
+      "datedListing": true
     },
     {
       "id": "polish-slavic-center",
@@ -1266,7 +1355,8 @@
           "content.rendered"
         ]
       },
-      "notes": "177 Kent St and 176 Java St, 11222 — the anchor institution for Polish Greenpoint, and the roster had nothing from it. Added 2026-09-07 from the family/kids source audit. Runs real family programming alongside its adult and senior services: Children's Carnival Ball, Easter fairs and Easter Bunny meet-and-greets, Polish Heritage Day, concerts, theatre. ⚠ THE CONTENT IS IN POLISH and that is deliberate — the English mirrors (en.polishslaviccenter.org, en.polishslaviccenter.us) are SIX MONTHS STALE, last posting March 2026, so pointing the ingest at the readable-looking English site would quietly read a dead feed. Read the Polish one and translate at card time; the sourceQuote must be the Polish verbatim, per the truth rules, with the translation in the summary. Site is fragmented across four hostnames — the canonical one is `polishslaviccenter.org` with NO www; the others are mirrors or stale. Every one of these hosts 403s our WebFetch tool, but the WP REST endpoint answers 200 to plain curl (verified 2026-09-07, 12KB, newest post four days old), which is why this is fetch:json against wp-json and not a page scrape — a WebFetch probe will make this live route look dead. Some events also post to Eventbrite (eventbrite.com/o/polish-and-slavic-center-inc-52323829763), already allowlisted, and ticketing runs through /shop/. NOT EVERY POST IS AN EVENT — the feed mixes recaps of things that already happened (\"Tak świętowaliśmy sierpniowe urodziny\") with announcements; card only the forward-dated ones."
+      "notes": "177 Kent St and 176 Java St, 11222 — the anchor institution for Polish Greenpoint, and the roster had nothing from it. Added 2026-09-07 from the family/kids source audit. Runs real family programming alongside its adult and senior services: Children's Carnival Ball, Easter fairs and Easter Bunny meet-and-greets, Polish Heritage Day, concerts, theatre. ⚠ THE CONTENT IS IN POLISH and that is deliberate — the English mirrors (en.polishslaviccenter.org, en.polishslaviccenter.us) are SIX MONTHS STALE, last posting March 2026, so pointing the ingest at the readable-looking English site would quietly read a dead feed. Read the Polish one and translate at card time; the sourceQuote must be the Polish verbatim, per the truth rules, with the translation in the summary. Site is fragmented across four hostnames — the canonical one is `polishslaviccenter.org` with NO www; the others are mirrors or stale. Every one of these hosts 403s our WebFetch tool, but the WP REST endpoint answers 200 to plain curl (verified 2026-09-07, 12KB, newest post four days old), which is why this is fetch:json against wp-json and not a page scrape — a WebFetch probe will make this live route look dead. Some events also post to Eventbrite (eventbrite.com/o/polish-and-slavic-center-inc-52323829763), already allowlisted, and ticketing runs through /shop/. NOT EVERY POST IS AN EVENT — the feed mixes recaps of things that already happened (\"Tak świętowaliśmy sierpniowe urodziny\") with announcements; card only the forward-dated ones.",
+      "datedListing": true
     },
     {
       "id": "kingsland-wildflowers",
@@ -1275,7 +1365,8 @@
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "520 Kingsland Ave, 11222. Added 2026-09-07 from the family/kids source audit, closing an oversight rather than finding something new: kingslandwildflowers.com has been in the .claude/settings.json WebFetch allowlist for a while but was NEVER in this roster, so nothing was ever reading it. Publishes free public green-roof Open Hours (Fridays, spring and autumn seasons), Greenhouse Gang volunteer sessions, and an annual free family festival. Verified plain-fetchable 2026-09-07 (200/301KB). ⚠ THE PAGE KEEPS PAST EVENTS VISIBLE — 2024 and 2025 events still render alongside current ones, so filter by date before carding or you will ship a two-year-old festival. Low volume, hence monthly. OVERLAPS the Newtown Creek Alliance calendar, which programmes this same roof; expect duplicates if NCA is ever added."
+      "notes": "520 Kingsland Ave, 11222. Added 2026-09-07 from the family/kids source audit, closing an oversight rather than finding something new: kingslandwildflowers.com has been in the .claude/settings.json WebFetch allowlist for a while but was NEVER in this roster, so nothing was ever reading it. Publishes free public green-roof Open Hours (Fridays, spring and autumn seasons), Greenhouse Gang volunteer sessions, and an annual free family festival. Verified plain-fetchable 2026-09-07 (200/301KB). ⚠ THE PAGE KEEPS PAST EVENTS VISIBLE — 2024 and 2025 events still render alongside current ones, so filter by date before carding or you will ship a two-year-old festival. Low volume, hence monthly. OVERLAPS the Newtown Creek Alliance calendar, which programmes this same roof; expect duplicates if NCA is ever added.",
+      "datedListing": true
     },
     {
       "id": "salsa-pizzeria",
@@ -1284,7 +1375,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — the shop's Class Week sheet was in a window and nothing about it was on the roster. The page lists each class with its own date, start AND end time, and names the location as \"Salsa Greenpoint\" or \"Salsa Rego Park\", so Greenpoint attribution is explicit per card and the Queens sittings are skippable on the listing's own words. No price is published anywhere. Classes appear to run as a monthly \"class week\". Plain fetch returns nothing readable and auto falls straight through to the browser path, so it is declared browser to save the wasted attempt (measured 2026-09-10: 1640 chars via Chromium, carrying every class with its full time range)."
+      "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — the shop's Class Week sheet was in a window and nothing about it was on the roster. The page lists each class with its own date, start AND end time, and names the location as \"Salsa Greenpoint\" or \"Salsa Rego Park\", so Greenpoint attribution is explicit per card and the Queens sittings are skippable on the listing's own words. No price is published anywhere. Classes appear to run as a monthly \"class week\". Plain fetch returns nothing readable and auto falls straight through to the browser path, so it is declared browser to save the wasted attempt (measured 2026-09-10: 1640 chars via Chromium, carrying every class with its full time range).",
+      "datedListing": true
     },
     {
       "id": "light-and-sound-design",
@@ -1295,7 +1387,8 @@
       "fetch": "auto",
       "notes": "Added 2026-09-10 from a street-poster batch (/poster skill) — a Dada Strain show flyer in a window, for a venue nothing on the roster covered. Private Greenpoint loft with a vintage 4-point Klipsch system and a dense music/deep-listening calendar. Plain fetch reads it fine (555 chars, measured 2026-09-10) and the index carries DATE + TITLE ONLY — every time, lineup and location lives inside the event page's flyer IMAGE, so this is a detailsInImages source: read each /e/ flyer and write what you read into the snapshot before extracting, same rule as macha-studio. ⚠ THE VENUE DOES NOT PUBLISH ITS ADDRESS, BY DESIGN — its own flyer reads \"SECRET ADDRESS DM FOR INFO\", its poster says \"(RSVP FOR LOCATION)\" and its Luma page names the venue \"L&SD (address with rsvp)\". Its cards therefore carry `locationPrivate: true` and NO coords, address or venues; the schema rejects that combination, so a run cannot flag one private and pin it anyway. NEVER resolve this by publishing an address found on a third-party listing (Oh My Rockness, RA) — the venue chose not to publish it (Batu, 2026-09-10, DECISION_LOG). ⚠ THE INDEX IS NOT A GEOGRAPHY SOURCE: the 9/20 \"Last Sun Day\" it listed is at Rockaway Beach, which only the flyer says. Read the flyer before assuming a listed event is in Greenpoint. Some flyers state no clock at all (Present Sounds, 9/10) — those take the all-day sentinel, not an invented time.",
       "detailsInImages": true,
-      "standing": true
+      "standing": true,
+      "datedListing": true
     },
     {
       "id": "cultural-center-st-johns",
@@ -1310,7 +1403,8 @@
         "match": "/event-details/",
         "limit": 35,
         "delayMs": 400
-      }
+      },
+      "datedListing": true
     }
   ],
   "manualSources": [
