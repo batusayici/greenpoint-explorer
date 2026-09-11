@@ -1327,19 +1327,14 @@
         "since": "2026-09-08"
       }
     ],
-    "waiting": [
-      {
-        "what": "PR #79 — docs: the Facebook in-app browser is verified on a real iPhone",
-        "age": 0
-      }
-    ],
+    "waiting": [],
     "overnight": [
-      "Merge pull request #80 from batusayici/docs/lens-landing-pages-scope",
-      "Merge pull request #82 from batusayici/growth/lens-page-links",
-      "growth: Rana's links point at /kids and /civic",
-      "Merge pull request #81 from batusayici/feat/lens-landing-pages",
-      "Merge pull request #77 from batusayici/growth/rana-group-rows",
-      "content(track-v): daily refresh — 12 cards on, 8 finished, 1 moved out of Greenpoint"
+      "Merge pull request #85 from batusayici/fix/source-reads-empty",
+      "Merge pull request #84 from batusayici/fix/fetch-health",
+      "feat(ingest): the coverage report now asks whether a source can be read at all",
+      "fix(ingest): read lower-case months too — two sources write dates that way",
+      "fix(ingest): the ISO date pattern has never matched a calendar feed",
+      "fix(ingest): a source that returns navigation is no longer read as healthy"
     ],
     "unanswered": [
       "action-city-comics",
