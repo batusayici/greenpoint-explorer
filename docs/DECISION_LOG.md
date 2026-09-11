@@ -4,6 +4,66 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — a source that fetches "clean" and returns nothing, and the three instruments that let it
+
+**What happened.** Batu photographed Yaro Studios' poster board on 2026-09-10 and it carried two
+workshops the roster had never seen, from a source that had been on the roster since July and had
+reported healthy in every run. Its workshops page renders its listings from a hisawyer.com iframe,
+so a plain fetch returned Squarespace navigation and a footer: no workshop, no date, no price. The
+investigation the next day found three separate reasons nothing caught it, and the fix is all three,
+because any one of them alone leaves the failure re-armed.
+
+**This is the same shape as the Greenpointers paywall (2026-08-12), whose entry named it: "the fetch
+is a clean 200 and the diff looks healthy."** That one was fixed for Greenpointers. The general
+version was never built, which is the fix-the-class rule failing in the most expensive way — the
+second instance cost a month of a venue's programming and was found by a person on a sidewalk.
+
+1. **The browser retry now turns on substance, not size.** The old rule retried a plain fetch under
+   500 characters. Yaro's nav came back at **516** — sixteen over — so it never retried. A listing
+   page's substance is dates, times and prices; navigation has none, and neither does an unrendered
+   shell. Text with none of the three is not a listing however much it weighs. The floor stays for
+   genuinely broken reads; this joins it. `src/demand-test/fetchEscalation.js`, with the 516-char
+   snapshot as a test case.
+   - **The same test replaces the size floor on the BROWSER path**, which was wrong in the other
+     direction: Yaro's kids schedule is a fully rendered **446 characters** — two classes with times,
+     dates and prices, which is everything the studio runs — and the floor rejected it as unrendered.
+2. **The browser now reads cross-origin frames.** `document.body.innerText` reads the top frame only,
+   so switching Yaro to `fetch: browser` would have returned *the same navigation*. An embedded
+   booking widget is part of the page. Frames land in the snapshot under a `## [FRAME] <url>` header,
+   diffable like `[DETAIL]` blocks; payments, analytics, consent and media frames are skipped, and
+   the header drops the query string because Squarespace appends a fresh `_ga_cid` per load that
+   would otherwise flap the hash every run.
+3. **The coverage date parser was blind to formats fifteen sources actually publish.** It required a
+   trailing year or a leading weekday, so a venue writing its season as bare `SEPT 23-25` parsed to
+   nothing — and 0 dates is read as *no signal*, which is never flagged. **Triskelion Arts' entire
+   fall season has been sitting uncarded in its own snapshot for that reason.** Now reading:
+   four-letter months, all-caps months, ordinals (`September 26th`), month-name ranges (`Oct 15-17`,
+   expanded to every night), and dot dates (`09.12.2026`, which is lightandsound.design's whole
+   listing). Month names are listed in full rather than "three letters plus anything", because with a
+   bare `Month D` now matching, "anything" turns *Marathon 5K* into March 5.
+
+**What this costs on the next run.** Eighteen sources now parse dates they did not before, and seven
+lines that read `ok` or `quiet` now read `GAP`: Triskelion (3 dates), Light and Sound Design (6),
+Happy Medium (3), Lot Radio (6), BPL North Brooklyn (7), Greenpoint YMCA (2), Archestratus (1). Every
+one was checked by hand against its snapshot and the dates are real. Under the existing rule each is
+a card owed or a `coverageExplanations` entry, so **the next refresh takes the review-PR path rather
+than auto-shipping until they are closed.** That is the instrument starting to work, not a
+regression — Lot Radio's, for instance, is already covered by the 2026-08-13 per-set ruling and needs
+its explanation re-keyed from `SILENT` to `GAP`.
+
+**Yaro resumes on the widget's own URL**, `hisawyer.com/yaro/schedules`, the same shape as artudio,
+play-greenpoint-sawyer and art-101-sawyer. Measured in this session: 2,134 chars for the adult view
+and 446 for the kids view, every class with day, clock time, date range, address and price.
+`citeHost` keeps `yarostudios.com` so cards linking the studio's own page still credit the source.
+
+**Still open, and the bigger half.** Nothing yet asks whether a snapshot contains what its source
+publishes — coverage compares the snapshot to the deck, never the source to the snapshot. A source
+that returns nothing still reads `ok` forever if a card from any other route keeps its pulse fresh,
+which is exactly what Yaro's undated Wednesday clay-lab card did. The proposed fix is a three-state
+roster field, shaped like `standing`, saying whether a source is expected to publish dated items; set
+to yes, a snapshot parsing to zero dates becomes an alarm instead of a shrug. It needs a one-time
+pass over ~43 roster entries and lands as its own PR.
+
 ## 2026-09-10 — roster additions ship on the run's own judgment; Batu gets told, not asked
 
 **Batu, after being asked to approve a Brooklyn Paper PR that had nothing in it he needed to read.**

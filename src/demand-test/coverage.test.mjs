@@ -471,3 +471,58 @@ test("unique coverage: an unsourced card is not unique", () => {
   assert.equal(uniqueCoverage([{ id: "bare", sourceLinks: [] }]).unique, 0);
   assert.equal(uniqueCoverage([{ id: "missing" }]).unique, 0);
 });
+
+// ---- Date formats the roster actually publishes (2026-09-11) ----
+// The Yaro investigation found these reading as "0 dates", which the report
+// treats as NO SIGNAL and never flags. Triskelion Arts' whole fall season sat
+// in its snapshot uncarded for that reason: the venue writes "SEPT 23-25", and
+// the month regex required exactly three letters followed by a comma-and-year
+// or a weekday prefix. Fifteen sources were affected. Each case below is a
+// verbatim line from a live snapshot on 2026-09-11.
+const SEPT_NOW = new Date("2026-09-11T12:00:00-04:00");
+
+test("extractDates: a four-letter month abbreviation is still a month", () => {
+  // triskelion-arts, https://www.triskelionarts.org/happenings-3
+  assert.deepEqual(
+    extractDates("BEYOND THE BLACK BOX | SEPT 23-25", { now: SEPT_NOW, windowDays: 30 }),
+    ["2026-09-23", "2026-09-24", "2026-09-25"],
+    "a run of nights is every night, the same as a dated range elsewhere",
+  );
+});
+
+test("extractDates: a month-name range covers every day in it", () => {
+  // triskelion-arts, same page, one line down
+  assert.deepEqual(
+    extractDates("KIMIKO TANABE + NORA ALAMI | OCT 15-17", { now: SEPT_NOW, windowDays: 45 }),
+    ["2026-10-15", "2026-10-16", "2026-10-17"],
+  );
+});
+
+test("extractDates: an ordinal date reads like any other", () => {
+  // last-place-on-earth / bin-bin-sake / macha-studio all write dates this way
+  assert.deepEqual(
+    extractDates("Join us September 26th for the launch", { now: SEPT_NOW, windowDays: 30 }),
+    ["2026-09-26"],
+  );
+});
+
+test("extractDates: a dot-separated date is a date", () => {
+  // light-and-sound-design, https://lightandsound.design/ — its whole listing
+  // is this format, and it parsed to nothing while the deck carried 4 cards.
+  assert.deepEqual(
+    extractDates("Sat 09.12.2026\nQUADRAPHONICS [2:30 PM]", { now: SEPT_NOW, windowDays: 30 }),
+    ["2026-09-12"],
+  );
+});
+
+test("extractDates: a range never runs backwards or spills past the month", () => {
+  assert.deepEqual(extractDates("Oct 30-2 nonsense", { now: SEPT_NOW, windowDays: 60 }), ["2026-10-30"],
+    "a descending range is a typo or two unrelated numbers, not 30 days");
+  assert.deepEqual(extractDates("Sep 14-99", { now: SEPT_NOW, windowDays: 30 }), ["2026-09-14"],
+    "99 is not a day");
+});
+
+test("extractDates: a price range is not a date range", () => {
+  assert.deepEqual(extractDates("Workshops $90-125, September 2026", { now: SEPT_NOW, windowDays: 30 }), [],
+    "the month has no day here, and the dollar range must not borrow one");
+});

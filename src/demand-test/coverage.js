@@ -76,6 +76,28 @@ function inferYear(month, day, now) {
 // Google Calendar, WordPress directories and hand-written HTML. A format we
 // cannot parse yields 0 dates, which the report must read as "no signal",
 // NEVER as "no supply".
+
+// Month names are listed in full rather than "three letters plus anything",
+// which is what the two patterns this replaces did. With a bare "Month D" now
+// matching (no year, no weekday required), "anything" turns Marathon 5K into
+// March 5 and Augusta 3 into August 3. Longest form first so September wins
+// over Sept over Sep. Matching is case-insensitive because venues shout their
+// seasons ("SEPT 23-25"), and the loop then requires a leading capital so the
+// verb "may" in prose cannot mint a date. The day carries a negative lookahead
+// so "September 2026" cannot donate its "20". Optional, in order: a weekday
+// prefix, an ordinal suffix, a range end, a year.
+const MONTH_NAMES =
+  "January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|" +
+  "August|Aug|September|Sept|Sep|October|Oct|November|Nov|December|Dec";
+const MONTH_DAY_RE = new RegExp(
+  String.raw`\b(?:(?:mon|tues|wednes|thurs|fri|satur|sun)day,?\s+)?` +
+    `(${MONTH_NAMES})` +
+    String.raw`\.?\s+(\d{1,2})(?:st|nd|rd|th)?` +
+    String.raw`(?:\s*[-\u2013\u2014]\s*(\d{1,2})(?:st|nd|rd|th)?)?` +
+    String.raw`(?:,?\s+(20\d{2}))?(?!\d)`,
+  "gi",
+);
+
 export function extractDates(raw, { now, windowDays = 14 } = {}) {
   const text = stripAnnotationLines(stripEndLines(raw));
   const from = nyDay(now);
@@ -83,13 +105,32 @@ export function extractDates(raw, { now, windowDays = 14 } = {}) {
   const out = new Set();
 
   for (const m of text.matchAll(/\b(20\d{2})-(\d{2})-(\d{2})\b/g)) out.add(iso(+m[1], +m[2], +m[3]));
-  for (const m of text.matchAll(/\b([A-Z][a-z]{2})[a-z]*\.?\s+(\d{1,2}),?\s+(20\d{2})\b/g)) {
-    const mo = MONTHS[m[1].toLowerCase()];
-    if (mo) out.add(iso(+m[3], mo, +m[2]));
+  // One pass for every month-name shape the roster publishes, replacing the two
+  // narrower patterns this had before 2026-09-11. Those required either a
+  // trailing year or a leading weekday, so a venue writing its season as bare
+  // "SEPT 23-25" parsed to NOTHING — and 0 dates reads as "no signal", which is
+  // never flagged. Triskelion Arts' whole fall season sat uncarded in its
+  // snapshot for exactly that reason, and fourteen other sources publish dates
+  // this could not see ("September 26th", "Oct 15-17", "Sept 2").
+  for (const m of text.matchAll(MONTH_DAY_RE)) {
+    if (m[1][0] !== m[1][0].toUpperCase()) continue; // lowercase "may" is the verb
+    const mo = MONTHS[m[1].slice(0, 3).toLowerCase()];
+    if (!mo) continue;
+    const da = +m[2];
+    if (da < 1 || da > 31) continue;
+    const y = m[4] ? +m[4] : inferYear(mo, da, now);
+    out.add(iso(y, mo, da));
+    // "SEPT 23-25" is three nights, the same as a dated range anywhere else.
+    // A range that runs backwards is a typo or two unrelated numbers (a price,
+    // a room number), never a month rollover we should guess at.
+    const end = m[3] ? +m[3] : null;
+    if (end && end > da && end <= 31) for (let d = da + 1; d <= end; d++) out.add(iso(y, mo, d));
   }
-  for (const m of text.matchAll(/\b(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day,?\s+([A-Z][a-z]{2})[a-z]*\.?\s+(\d{1,2})\b/g)) {
-    const mo = MONTHS[m[1].toLowerCase()];
-    if (mo) out.add(iso(inferYear(mo, +m[2], now), mo, +m[2]));
+  // 09.12.2026 — lightandsound.design writes its entire listing this way, and
+  // it parsed to nothing while the deck carried four of its cards.
+  for (const m of text.matchAll(/\b(\d{1,2})\.(\d{1,2})\.(20\d{2})\b/g)) {
+    const mo = +m[1], da = +m[2];
+    if (mo >= 1 && mo <= 12 && da >= 1 && da <= 31) out.add(iso(+m[3], mo, da));
   }
   for (const m of text.matchAll(/\b(\d{1,2})\/(\d{1,2})\b(?!\/)/g)) {
     const mo = +m[1], da = +m[2];

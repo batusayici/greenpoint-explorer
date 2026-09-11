@@ -147,27 +147,43 @@
     {
       "id": "yaro-studios",
       "name": "Yaro Studios workshops",
-      "url": "https://yarostudios.com/workshops-1",
+      "url": "https://www.hisawyer.com/yaro/schedules?schedule_id=camps&widget_tags=adult+workshop",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "76 Kent St; ceramics/fiber/print classes. ⚠ THIS PAGE RENDERS ITS LISTINGS IN JAVASCRIPT (measured 2026-09-10): a plain fetch of yarostudios.com/workshops-1 returns navigation and footer only, no workshop titles, dates or prices. That is why a street-poster batch on 2026-09-10 found two Yaro workshops the roster had never carded — Plate Pals (9/26) and a free kids clay-creature hour (9/15) — both printed on the studio's own board outside the door. Fetch strategy needs to move to browser, or the listings need to be found on a JSON route, or this source keeps looking healthy while returning nothing.",
+      "fetch": "browser",
+      "notes": "76 Kent St; ceramics/fiber/print classes. READ THE SAWYER WIDGET DIRECTLY, NOT THE STUDIO PAGE (2026-09-11). yarostudios.com/workshops-1 renders its listings from a hisawyer.com iframe, so a plain fetch returned 516 chars of Squarespace navigation and footer — sixteen characters over the size floor that would have retried it in a browser, so the source fetched \"clean\" every run for a month while returning no workshop, no date and no price. It surfaced only because Batu photographed the studio's own poster board on 2026-09-10 and it carried two workshops the roster had never seen (Plate Pals 9/26, a free kids clay-creature hour 9/15). Switching to browser alone would NOT have fixed it: the top frame is the same navigation either way. MEASURED 2026-09-11 on this URL: chromium, networkidle + 3s, 2,134 chars, every class with day, clock time, date range, address and price — \"Plate Pals - Hand Build Your Own Ceramic Plate / Sat / 10:00am - 12:00pm EDT / Sep 26, 2026 - Sep 26, 2026 / yaro studios, 76 Kent St, Greenpoint / $95\". Same shape as artudio, play-greenpoint-sawyer and art-101-sawyer. citeHost keeps yarostudios.com so cards linking the studio's own page still credit this source. The adult/kids split is the widget_tags query param; cite the studio page as the reader-facing link.",
       "detail": {
         "urls": [
           "https://yarostudios.com/membership"
         ],
         "limit": 1,
         "fetch": "browser"
-      }
+      },
+      "browser": {
+        "waitUntil": "networkidle",
+        "settleMs": 3000
+      },
+      "citeHost": [
+        "yarostudios.com",
+        "hisawyer.com"
+      ]
     },
     {
       "id": "yaro-kids-clay",
       "name": "Yaro Studios kids clay",
-      "url": "https://yarostudios.com/kidsclayclasses",
+      "url": "https://www.hisawyer.com/yaro/schedules?widget_tags=kids",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Kids-lens events."
+      "fetch": "browser",
+      "notes": "Kids-lens events. Same fix and same reason as yaro-studios (2026-09-11): yarostudios.com/kidsclayclasses renders its schedule from a hisawyer.com iframe, so a plain fetch returned the class description and no dates at all. MEASURED 2026-09-11 on this URL: chromium, networkidle + 3s, the kids view of the same widget — \"Kids Afternoon Clay & Art Lab / 6 – 12 yrs / Wed / 3:00pm - 5:00pm EDT / Sep 16, 2026 - Dec 16, 2026 / yaro studios, 76 Kent St, Greenpoint / $825.50 or $68.50/class\".",
+      "browser": {
+        "waitUntil": "networkidle",
+        "settleMs": 3000
+      },
+      "citeHost": [
+        "yarostudios.com",
+        "hisawyer.com"
+      ]
     },
     {
       "id": "play-kids-greenpoint",
