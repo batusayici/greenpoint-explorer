@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-10T13:30:00-04:00",
+  "lastRunAt": "2026-09-11T13:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1927,6 +1927,22 @@
         "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
         "https://happy-medium.co/art-cafe"
       ]
+    },
+    {
+      "id": "daily-2026-09-11",
+      "at": "2026-09-11",
+      "outcome": "shipped 12 cards, deleted 1, re-verified 5; 1 held (unchanged, already on watchItems)",
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 1 source-blocked"
+    },
+    {
+      "url": "https://greenpointers.com/2026/09/10/new-cocktail-bar-limousine-opens-in-former-home-of-ponyboy/",
+      "at": "2026-09-11",
+      "outcome": "carded as limousine-opens"
+    },
+    {
+      "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te",
+      "at": "2026-09-11",
+      "outcome": "carded as cibone-commune-shop-popup-0918 + two trunk shows"
     }
   ],
   "senderRegistry": [
@@ -2500,9 +2516,11 @@
       "addedAt": "2026-08-26"
     },
     {
-      "name": "Film Noir Cinema — SUPERSHORTS NY FILM FESTIVAL, Sep 25-27 (past the 14-day window)",
-      "note": "Horizon only, nothing blocked. Three programme records with fullUrls /program/2026/9/25/supershorts-ny-film-festival and two variants, all dated from their ISO startDate per the 2026-08-08 slug rule. Web source (Squarespace collection JSON), re-snapshotted every run, so it rolls in on its own.",
-      "addedAt": "2026-08-26"
+      "name": "Film Noir Cinema — SUPERSHORTS NY FILM FESTIVAL, nights two and three (Sep 26 and 27)",
+      "note": "Opening night shipped 2026-09-11 as film-noir-supershorts-0925. The 26th and 27th both start 6:30pm, half an hour later than the opener, so under the 2026-08-26 hours-pattern rule they are a SECOND card, not an extension of the first. Web source (Squarespace collection JSON), re-snapshotted every run.",
+      "addedAt": "2026-08-26",
+      "unblocksOn": "2026-09-13",
+      "updatedAt": "2026-09-11"
     },
     {
       "name": "Greenpointers — shooting on Commercial Street: does the deck card crime and public-safety news at all? [RULE QUESTION for Batu]",
@@ -2924,17 +2942,48 @@
       "item": "light-and-sound-design 9/16 'dance practice: Taia + dominique' — sells through luma.com/p1eliske, which showed both named tiers (8:30pm entry, work trade) SOLD OUT on 2026-09-10, so it was not carded.",
       "condition": "Card it if Luma shows availability, or drop it once the date passes.",
       "addedAt": "2026-09-10"
+    },
+    {
+      "item": "Greenpointers — Greenpoint StoopFest, Saturday 4 October, Lorimer St between Norman and Nassau plus the McCarren Parkhouse. Out of the 14-day horizon on the day it was read.",
+      "condition": "UNBLOCKS 2026-09-20, the first run where 10/4 is inside the 14-day horizon. Re-read the post first — the article also states a 14 September deadline for vendor and volunteer applications, which is an organiser ask and not a card.",
+      "unblocksOn": "2026-09-20",
+      "addedAt": "2026-09-11"
+    },
+    {
+      "item": "ymca-open-house-0919 — lens call flagged, not a hold.",
+      "condition": "The Greenpoint YMCA open house runs adult Zumba and boxing demos alongside youth basketball, karate and family rows, so it shipped as family_kids + wellness on the all-ages reading (the Library and Kingsland Wildflowers precedent). If Batu reads it as one or the other, change it and this entry closes.",
+      "addedAt": "2026-09-11"
+    },
+    {
+      "item": "cibone-ote roster note still says its items carry no lens and show in All only.",
+      "condition": "That wording predates the 2026-08-13 ruling that brought `shopping` back and retired LENS_LESS_BY_DESIGN; the three CIBONE cards shipped today are filed `shopping`, following cibone-restation-showcase-0815. Fix is a one-line note edit in ingest-sources.json, which is a roster change and so needs its own PR.",
+      "addedAt": "2026-09-11"
+    },
+    {
+      "item": "birthsmarter-weekend-childbirth-0912 — deleted 2026-09-11, venue moved out of Greenpoint.",
+      "condition": "The 12-13 September Weekend Childbirth Education sessions now read \"Vivvi DUMBO | Brooklyn | NYC\" where the last-ingested baseline read \"Kuei Luck Greenpoint | Brooklyn | NYC\". Re-card if a later weekend session returns to Kuei Luck at 171 Calyer St. The one-day and newborn/lactation classes on 9/19 and 9/20 are unaffected and still at Kuei Luck.",
+      "addedAt": "2026-09-11"
+    },
+    {
+      "item": "QUOTE GATE — 11 live cards have no committed evidence. FIRST FLAGGED RUN 2026-09-11.",
+      "condition": "Under the 2026-08-30 rule these get one re-verification attempt now and are DELETED on the second flagged run. Three groups, and only one of them is a card problem.\n\n(1) The five Light & Sound Design cards (lsd-quadraphonics-0912-matinee, -evening, lsd-churning-sonic-0913, lsd-echoes-archive-0918, lsd-mess-is-lore-0919) and the three Salsa Pizzeria cards (salsa-adults-pizza-class-0923, salsa-adults-pasta-class-0924, salsa-kids-pizza-0926) all came from the 2026-09-10 poster batch. Their quotes are flyer and poster transcriptions that were written into cards.json and never into a snapshot, and both sources were fetched for the first time today, so there was no baseline to carry anything forward from. Re-verification attempted: Salsa's own events page now states the date, clock and venue for all three classes verbatim (\"BROOKLYN - ADULTS PIZZA CLASS / Wednesday, September 23, 2026 7-10 PM / Salsa Greenpoint\" and the same shape for the pasta and kids classes), so those three are confirmed in substance by a committed snapshot even though the poster text is not in it. The Light & Sound Design index carries date and title only — the time, bill and venue live in per-event flyer images that no fetch has read — so those five are genuinely unverifiable from the repo today. NOT resolvable by writing the card's own quote into the snapshot: that is circular and is exactly what this gate exists to catch.\n\n(2) held-space-mat-pilates-0912, comedy-cysk-wednesdays, happy-medium-art-cafe — pre-existing, unchanged by this run, and already failing against the baselines at f6527f5.\n\nTHE STRUCTURAL FIX, which is a code change and so needs its own PR: the /poster skill writes cards but does not write its transcription into the cited source's snapshot, so every poster-derived card is born failing this gate. Same shape as the newsletter rule of 2026-09-07, one surface over.",
+      "addedAt": "2026-09-11"
+    },
+    {
+      "item": "light-and-sound-design is declared detailsInImages but no fetch reads its flyers.",
+      "condition": "The roster flags the source detailsInImages: true, and the skill says a detailsInImages source gets each event image downloaded, read, and written into the snapshot before cards are extracted. The cloud routine cannot do that — the fetch is done off-box by the GitHub and home fetchers, and neither reads images. So this source will keep producing an index of date+title pairs that cannot become cards, and its five existing cards will keep failing the quote gate. Needs a decision from Batu: either the fetchers learn to persist image reads, or the source is carded only from interactive sessions where a flyer can be read by hand.",
+      "addedAt": "2026-09-11"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-09-06",
-    "greenpointers": "2026-09-08",
-    "greenpoint-comedy-club": "2026-09-09",
-    "film-noir-cinema": "2026-09-09",
+    "greenpointers": "2026-09-10",
+    "greenpoint-comedy-club": "2026-09-10",
+    "film-noir-cinema": "2026-09-10",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
-    "greenpoint-library": "2026-09-09",
-    "bpl-north-brooklyn-calendar": "2026-09-09",
+    "greenpoint-library": "2026-09-10",
+    "bpl-north-brooklyn-calendar": "2026-09-10",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
     "hana-makgeolli-events": "2026-08-27",
@@ -2943,8 +2992,8 @@
     "little-dance-school": "2026-07-24",
     "brooklyn-youth-ballet": "2026-09-06",
     "dance-space-ny": "2026-07-24",
-    "yaro-studios": "2026-08-07",
-    "yaro-kids-clay": "2026-08-07",
+    "yaro-studios": "2026-09-09",
+    "yaro-kids-clay": "2026-09-09",
     "moon-bunny-aerial": "2026-09-08",
     "brooklyn-craft-company": "2026-09-06",
     "last-place-on-earth": "2026-09-06",
@@ -2955,7 +3004,7 @@
     "nycparks-greenpoint": "2026-09-06",
     "troost": "2026-09-09",
     "carcosa-club": "2026-09-06",
-    "good-room": "2026-09-06",
+    "good-room": "2026-09-10",
     "town-square-bk": "2026-08-23",
     "word-bookstore": "2026-09-08",
     "hide-and-seek": "2026-08-06",
@@ -2967,7 +3016,7 @@
     "dreams-on-command": "2026-08-07",
     "kettl-tea": "2026-08-07",
     "leaves-bookstore": "2026-08-24",
-    "greenpoint-ymca": "2026-08-07",
+    "greenpoint-ymca": "2026-09-10",
     "marianella-subscription-box": "2026-08-07",
     "held-space": "2026-08-07",
     "selformer": "2026-09-03",
@@ -2975,7 +3024,7 @@
     "clay-space-workshops": "2026-08-09",
     "clay-space-semester-classes": "2026-08-09",
     "driftaway-subscriptions": "2026-08-07",
-    "cibone-ote": "2026-08-11",
+    "cibone-ote": "2026-09-10",
     "kindred-nyc": "2026-08-09",
     "down-to-earth-markets": "2026-08-09",
     "nyc-open-data-farmers-markets": "2026-09-06",
@@ -3003,78 +3052,81 @@
     "birthsmarter": "2026-09-06",
     "sparsa-union-fit": "2026-09-09",
     "greenpoint-reformed-church": "2026-09-06",
-    "st-stans-academy": "2026-09-06"
+    "st-stans-academy": "2026-09-06",
+    "happy-medium": "2026-09-08",
+    "salsa-pizzeria": "2026-09-09",
+    "light-and-sound-design": "2026-09-09"
   },
   "coverageExplanations": [
     {
       "sourceId": "dashi-okume",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "epa-meeker-plume",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "nyc-dot-mcguinness",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "grownyc-mccarren-greenmarket",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "nyc-open-data-farmers-markets",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "greenpoint-ymca",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "sparrow-nesting",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "brooklyn-hearts-club",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "driftaway-subscriptions",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "marianella-subscription-box",
       "gapKey": "NO SNAPSHOT",
-      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today is Tuesday 2026-08-25; the first Monday was 2026-08-03, so it was not attempted. This run's fetch report lists it under `skipped_monthly` and the run line reads \"71 sources → 23 changed, 0 new, 32 unchanged, 6 error, 10 skipped (monthly)\". No snapshot here is the schedule working, not a coverage loss.",
-      "addedAt": "2026-08-25",
-      "expiresAt": "2026-09-08"
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "greenpoint-comedy-club",
@@ -3114,9 +3166,9 @@
     {
       "sourceId": "cibone-ote",
       "gapKey": "GAP",
-      "reason": "The 8/13 date is the closing day of \"HOZUBAG LIMITED EVENT\", verbatim \"July 11 – August 13, 2026\" — a retail pop-up that opened a month before this edition window. It is HELD on a genuine lens conflict, not missed: SKILL.md's markets/vendor rule says general-goods retail \"carries no lens and shows in All only\", but the repo test `no card is lens-less` asserts zero lens-less cards, so the answer the rule gives cannot ship. Needs Batu to reconcile the two before this class of item can be carded.",
-      "addedAt": "2026-08-11",
-      "expiresAt": "2026-08-25"
+      "reason": "CLOSED, NOT EXPLAINED. The flagged 2026-09-19 date is the Peter Speliopoulos trunk show inside CIBONE's Commune Shop pop-up, which shipped today alongside the pop-up run itself and the 26 September Sri Threads trunk show. All three are filed `shopping` following cibone-restation-showcase-0815 — a store's limited run is retail, per the 2026-08-12 ruling, and the roster note saying otherwise is stale (recorded on watchItems). WHAT WOULD CHANGE IT: nothing outstanding.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     },
     {
       "sourceId": "macha-studio",
@@ -3481,6 +3533,48 @@
       "reason": "THE 9/24 ITEM IS AUTHORED AND HELD FOR A LENS RULING, NOT MISSED. Sparrow's page states it in full — \"Date & Time: Thursday September 24 / 6-8PM\", \"Location: Sparrow Funerals, 161 Driggs Ave, Brooklyn NY 11222\" — and it is \"an exclusive gathering ... dedicated to practicing End of Life Doulas like you\". FILTER_IDS carries no lens for a professional gathering (not civic action or mutual aid, not the movement cluster, not culture you attend or make) and no card ships lens-less, so it is in the review PR with the rule question rather than on the map. WHAT WOULD CHANGE IT: Batu ruling on where a practitioner gathering files.",
       "addedAt": "2026-09-10",
       "expiresAt": "2026-09-24"
+    },
+    {
+      "sourceId": "greenthumb-gardens-11222",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "space-club-greenpoint",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "kingsland-wildflowers",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "NOT FETCHED TODAY BY DESIGN — this source is cadence: monthly, and today is not a first Monday. This run's own changes.json records it as status \"skipped_monthly\" (13 of 94 sources, alongside the 41 changed, 3 new, 34 unchanged and 3 errored). The fetch bundle therefore carries no <id>.txt for it and the coverage script reads that as NO SNAPSHOT, which is the offline/monthly path doing what it is configured to do, not a source going dark — the last-ingested baseline is still on disk and still the evidence base for its cards. WHAT WOULD CHANGE IT: the first Monday of October, when --include-monthly puts these back in play.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "art-101-sawyer",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE HOME FETCHER HIT A TRANSIENT NETWORK ERROR ON THIS ONE PAGE. Verbatim from this run's changes.json: \"runner: page.goto: net::ERR_NETWORK_CHANGED at https://www.hisawyer.com/providers/art-101/17826-art-101\". That is the Mac's own network dropping mid-navigation, not a block and not a bot wall — hisawyer is one of the eight hosts the home fetcher exists to read, and its sibling play-greenpoint-sawyer read clean in the same run (+3/-3). One of three errors out of 81 attempted, 4%, well under the 15% ceiling. WHAT WOULD CHANGE IT: the next fetch; if it errors twice more, the roster entry is the defect.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-18"
+    },
+    {
+      "sourceId": "film-noir-cinema",
+      "gapKey": "GAP",
+      "reason": "CLOSED, NOT EXPLAINED. The flagged 2026-09-23 date is CULT CINEMA, which the calendar has been carrying and no run had carded; it shipped today as film-noir-cult-cinema-0923, along with three more in-window screenings the same feed was already carrying uncarded — YUMEMIRU (9/11 10pm), SNAKE GIRL AND THE WITCH (9/12 5pm) and the SUPERSHORTS opener (9/25 6pm). Every date came from the record's own ISO startDate converted to New York, never from the fullUrl slug, per the 2026-08-08 rule: YUMEMIRU's slug reads /program/2026/1/28/ and CULT CINEMA's reads /program/2020/11/24/. WHAT WOULD CHANGE IT: nothing outstanding — the source now has a card on every in-window date it carries.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "good-room",
+      "gapKey": "GAP",
+      "reason": "CLOSED, NOT EXPLAINED. The flagged 2026-09-25 date is \"FIXED with James Axon b2b JDH (all night), A lana (all night)\", 7:00PM on the doNYC listing, which shipped today as good-room-fixed-0925. It was the venue's last listing inside the window; the next is 1 October. WHAT WOULD CHANGE IT: nothing outstanding.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     }
   ],
   "retiredCards": [
@@ -3551,6 +3645,38 @@
     {
       "id": "weeding-wednesdays-bip-0909",
       "day": "2026-09-10"
+    },
+    {
+      "id": "action-city-one-piece-0910",
+      "day": "2026-09-11"
+    },
+    {
+      "id": "bcc-beginner-embroidery-0910",
+      "day": "2026-09-11"
+    },
+    {
+      "id": "eavesdrop-az-radio-0910",
+      "day": "2026-09-11"
+    },
+    {
+      "id": "film-noir-film-club-0910",
+      "day": "2026-09-11"
+    },
+    {
+      "id": "good-room-skin-on-skin-0910",
+      "day": "2026-09-11"
+    },
+    {
+      "id": "library-thursday-programs-0910",
+      "day": "2026-09-11"
+    },
+    {
+      "id": "transmitter-longevity-stick-0910",
+      "day": "2026-09-11"
+    },
+    {
+      "id": "troost-barba-yiorgi-0910",
+      "day": "2026-09-11"
     }
   ]
 }

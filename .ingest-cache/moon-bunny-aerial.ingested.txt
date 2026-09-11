@@ -1,44 +1,4 @@
 name: Kids Aerial
-start_at: 2026-09-10T20:00:00.000Z
-end_at: 2026-09-10T21:00:00.000Z
-
-name: Kids Aerial
-start_at: 2026-09-10T21:00:00.000Z
-end_at: 2026-09-10T22:00:00.000Z
-
-name: Kids K-Pop Dance
-start_at: 2026-09-10T21:15:00.000Z
-end_at: 2026-09-10T22:15:00.000Z
-
-name: Lyra
-start_at: 2026-09-10T22:15:00.000Z
-end_at: 2026-09-10T23:15:00.000Z
-
-name: Hammock
-start_at: 2026-09-10T22:30:00.000Z
-end_at: 2026-09-10T23:30:00.000Z
-
-name: K-Pop Dance (Loveshot by EXO)
-start_at: 2026-09-10T22:30:00.000Z
-end_at: 2026-09-10T23:30:00.000Z
-
-name: Act Creation
-start_at: 2026-09-10T23:30:00.000Z
-end_at: 2026-09-11T00:30:00.000Z
-
-name: Silks
-start_at: 2026-09-10T23:30:00.000Z
-end_at: 2026-09-11T00:30:00.000Z
-
-name: Aerial Conditioning
-start_at: 2026-09-11T00:30:00.000Z
-end_at: 2026-09-11T01:30:00.000Z
-
-name: Flexibility
-start_at: 2026-09-11T01:30:00.000Z
-end_at: 2026-09-11T02:30:00.000Z
-
-name: Kids Aerial
 start_at: 2026-09-11T20:00:00.000Z
 end_at: 2026-09-11T21:00:00.000Z
 
@@ -105,6 +65,10 @@ end_at: 2026-09-12T20:00:00.000Z
 name: Lyra
 start_at: 2026-09-12T20:00:00.000Z
 end_at: 2026-09-12T21:00:00.000Z
+
+name: Private Hammock Class
+start_at: 2026-09-12T21:00:00.000Z
+end_at: 2026-09-12T22:00:00.000Z
 
 name: Pokeball
 start_at: 2026-09-12T21:00:00.000Z
@@ -397,6 +361,42 @@ end_at: 2026-09-21T22:30:00.000Z
 name: Open Gym
 start_at: 2026-09-21T22:30:00.000Z
 end_at: 2026-09-21T23:30:00.000Z
+
+name: Lyra
+start_at: 2026-09-21T22:30:00.000Z
+end_at: 2026-09-21T23:30:00.000Z
+
+name: Beginner Poi
+start_at: 2026-09-21T22:30:00.000Z
+end_at: 2026-09-21T23:30:00.000Z
+
+name: Flexibility
+start_at: 2026-09-21T23:30:00.000Z
+end_at: 2026-09-22T00:30:00.000Z
+
+name: Hula Hoop 101
+start_at: 2026-09-21T23:30:00.000Z
+end_at: 2026-09-22T00:30:00.000Z
+
+name: Hammock
+start_at: 2026-09-21T23:30:00.000Z
+end_at: 2026-09-22T00:30:00.000Z
+
+name: Lyra
+start_at: 2026-09-22T00:30:00.000Z
+end_at: 2026-09-22T01:30:00.000Z
+
+name: Dance Trapeze
+start_at: 2026-09-22T00:30:00.000Z
+end_at: 2026-09-22T01:30:00.000Z
+
+name: Pokeball
+start_at: 2026-09-22T01:30:00.000Z
+end_at: 2026-09-22T02:30:00.000Z
+
+name: Aerial Conditioning
+start_at: 2026-09-22T20:00:00.000Z
+end_at: 2026-09-22T21:00:00.000Z
 
 ## [DETAIL] https://moonbunnyaerial.com/summer-camps
 Kids Summer Camps — Moon Bunny Aerial

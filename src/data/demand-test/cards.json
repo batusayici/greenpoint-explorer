@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-10",
+  "version": "2026-09-11",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -921,13 +921,14 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
       "lng": -73.958337,
       "relatedCardIds": [
         "comedy-greenpoint-nights-0924",
-        "comedy-do-you-still-like-me-0924"
+        "comedy-do-you-still-like-me-0924",
+        "comedy-cysk-0923"
       ]
     },
     {
@@ -970,12 +971,16 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-monday-0914",
-        "film-noir-film-club-0924"
+        "film-noir-film-club-0924",
+        "film-noir-yumemiru-0911",
+        "film-noir-snake-girl-0912",
+        "film-noir-cult-cinema-0923",
+        "film-noir-supershorts-0925"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1273,7 +1278,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
@@ -1284,7 +1289,8 @@
         "library-sensory-garden-0918",
         "library-bike-clinic-0919",
         "library-monday-programs-0921",
-        "library-tuesday-programs-0922"
+        "library-tuesday-programs-0922",
+        "library-wednesday-programs-0923"
       ],
       "sourceQuote": "ts_title: The Cycle Alliance’s Period Pantry at Greenpoint (Available During ALL Open Branch Hours)\nts_body: Located in the Teen Zone (Eco Lab 3) on the second floor, Monday-Sunday during branch open hours ."
     },
@@ -2656,13 +2662,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-09-04",
+      "updatedAt": "2026-09-11",
       "id": "acme-fish-friday-0814",
       "title": "Fish Friday at Acme Smoked Fish",
       "kicker": "Pre-orders close 11:30am",
       "summary": "The Gem Street smokehouse opens its doors to the neighborhood one morning a week, for pickup in person.",
       "startsAt": "2026-08-14T08:00:00-04:00",
-      "endsAt": "2026-09-18T13:00:00-04:00",
+      "endsAt": "2026-09-25T13:00:00-04:00",
       "recurring": true,
       "filters": [
         "food_drink"
@@ -3067,10 +3073,13 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-11",
       "sourceCampaign": "ymca_onboarding_2026_08_08",
       "lat": 40.727022,
-      "lng": -73.953248
+      "lng": -73.953248,
+      "relatedCardIds": [
+        "ymca-open-house-0919"
+      ]
     },
     {
       "audience": [
@@ -3397,14 +3406,17 @@
         }
       ],
       "relatedCardIds": [
-        "cibone-restation-showcase-0815"
+        "cibone-restation-showcase-0815",
+        "cibone-commune-shop-popup-0918",
+        "cibone-trunk-speliopoulos-0919",
+        "cibone-trunk-sri-threads-0926"
       ],
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-12",
+      "updatedAt": "2026-09-11",
       "lat": 40.724611,
       "lng": -73.95359
     },
@@ -3945,49 +3957,6 @@
       "lng": -73.954531
     },
     {
-      "id": "troost-barba-yiorgi-0910",
-      "title": "DJ Barba Yiorgi at Troost",
-      "category": "event",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "kicker": "World psychedelic groove",
-      "summary": "Troost's own Google Calendar lists the night by name and genre only — no support acts, no door time, no ticket link.",
-      "startsAt": "2026-09-10T00:00:00-04:00",
-      "endsAt": "2026-09-10T23:59:00-04:00",
-      "allDay": true,
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-27"
-        }
-      ],
-      "sourceQuote": "summary: DJ Barba Yiorgi\ndescription: WORLD PSYCHEDELIC GROOVE\nstart.date: 2026-09-10",
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-27",
-      "updatedAt": "2026-08-27"
-    },
-    {
       "audience": [
         "resident"
       ],
@@ -4334,51 +4303,6 @@
       "sourceQuote": "Anahata Sessions: SEPTEMBER\nFriday, September 11, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nFrom this point of clarity and stillness, you will be invited into a ritual of self-devotion: writing a love letter to yourself.\nThese letters will be placed into a communal basket and later redistributed at random, allowing each participant to receive a mysterious message of love and insight\nFrom this place, we will learn a sacred song, weaving our voices together in a devotional practice that harmonizes breath, body, and spirit. No prior singing experience is needed\nWe are limited in space, so please buy your ticket ahead of time. Suggested donation $30 in advance, $40 at the door (no one will be turned away for lack of funds).",
       "lat": 40.733571,
       "lng": -73.957721
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-09-09",
-      "free": false,
-      "id": "library-thursday-programs-0910",
-      "category": "event",
-      "title": "Thursday at Greenpoint Library",
-      "kicker": "Three programmes, ESOL to teens",
-      "summary": "Free beginner ESOL, the notary desk, and video games for 13+.",
-      "startsAt": "2026-09-10T14:00:00-04:00",
-      "endsAt": "2026-09-10T17:00:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "ts_title: Free English Class\nds_event_start_date: 2026-09-10T18:00:00Z\nThe library offers free ESOL classes for beginners learning English.\nts_title: Free Notary Services*\n* New hours are TUES and THUR from 2pm to 4pm.\nts_title: Teen Tech Time 🎮\nds_event_start_date: 2026-09-10T19:00:00Z\nds_event_end_date: 2026-09-10T21:00:00Z\n13+. Join us for Teen Tech Time to hang out with friends and play video games!"
     },
     {
       "audience": [
@@ -4870,49 +4794,6 @@
       "createdAt": "2026-09-02",
       "updatedAt": "2026-09-02",
       "category": "event",
-      "id": "bcc-beginner-embroidery-0910",
-      "title": "Beginner Embroidery at Brooklyn Craft Company",
-      "kicker": "Start from nothing, materials included",
-      "summary": "The entry class in the shop's embroidery ladder, and the one the Floral and Beaded sessions build on. Registration covers everything you sew with.",
-      "startsAt": "2026-09-10T18:30:00-04:00",
-      "endsAt": "2026-09-10T23:59:00-04:00",
-      "free": false,
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY 11222",
-      "sourceQuote": "We’ve added new sessions of our Embroidery Workshops to the calendar for September. Check out Beginner Embroidery to start and then advance to Floral Embroidery and Beaded Embroidery . All materials for class are included with registration!\nBeginner Embroidery\nThurs, 9/10 at 6:30pm\nin Greenpoint\nVISIT OUR STORE IN BROOKLYN\n165 Greenpoint Avenue, located less than one block from the Greenpoint Avenue stop on the G train",
-      "actions": [
-        {
-          "label": "Register",
-          "type": "rsvp",
-          "url": "https://www.brooklyncraftcompany.com/products/beginner-embroidery-workshop"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Get Thready to Embroider with New Workshops & Seasonal Kits!",
-          "url": "https://www.brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-31"
-        }
-      ],
-      "lat": 40.730461,
-      "lng": -73.953114
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-02",
-      "updatedAt": "2026-09-02",
-      "category": "event",
       "id": "bcc-floral-embroidery-0912",
       "title": "Floral Embroidery at Brooklyn Craft Company",
       "kicker": "Florals and texture, step two",
@@ -4985,49 +4866,6 @@
       ],
       "lat": 40.729869,
       "lng": -73.959022
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-03",
-      "updatedAt": "2026-09-03",
-      "free": false,
-      "category": "event",
-      "id": "good-room-skin-on-skin-0910",
-      "title": "Skin On Skin at Good Room",
-      "kicker": "Three names on a Thursday bill",
-      "summary": "Day Cart and Wig-Wam are the other two on the listing, which gives no ticket price.",
-      "startsAt": "2026-09-10T19:00:00-04:00",
-      "endsAt": "2026-09-10T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.726909,
-      "lng": -73.95281,
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room via DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-09-03"
-        }
-      ],
-      "sourceQuote": "Sep 10\nSkin On Skin, Day Cart & Wig-Wam\nGood Room\n7:00PM"
     },
     {
       "audience": [
@@ -5469,50 +5307,6 @@
         }
       ],
       "sourceQuote": "$25\nOpen House\nOne class for you and a guest. Any format, either studio."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "locationName": "eavesdrop",
-      "address": "674 Manhattan Ave",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "eavesdrop",
-          "date": "2026-09-07"
-        }
-      ],
-      "id": "eavesdrop-az-radio-0910",
-      "title": "A––Z Radio residency at eavesdrop",
-      "kicker": "A residency that starts at midnight",
-      "summary": "The venue prints a 12midnight start, so the set belongs to Thursday's date rather than Wednesday night.",
-      "startsAt": "2026-09-10T00:00:00-04:00",
-      "endsAt": "2026-09-10T23:59:00-04:00",
-      "allDay": false,
-      "sourceQuote": "Thursday, Sep 10\n12midnight\nA––Z Radio residency",
-      "lat": 40.724894,
-      "lng": -73.951181
     },
     {
       "audience": [
@@ -6226,49 +6020,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-10",
-      "free": false,
-      "category": "event",
-      "id": "film-noir-film-club-0910",
-      "title": "FILM CLUB at Film Noir Cinema",
-      "kicker": "An evening with moving image",
-      "summary": "A different club member picks the film each time, and nobody else knows the title until it screens. No admission price is stated.",
-      "startsAt": "2026-09-10T19:00:00-04:00",
-      "endsAt": "2026-09-10T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave",
-      "geocodeQuery": "122 Meserole Ave, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema programme",
-          "url": "https://www.filmnoircinema.com/program",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-10"
-        }
-      ],
-      "sourceQuote": "FILM CLUB\nThursday, September 10, 2026\n7:00 PM\n8:00 PM\n…\nFilm Noir Cinema presents: “FILM CLUB” - an evening with moving image.\nThe films are chosen each time by a different member of the club without anybody but the chooser knowing the title.",
-      "lat": 40.727314,
-      "lng": -73.951608
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
       "updatedAt": "2026-09-07",
       "free": false,
       "category": "event",
@@ -6896,49 +6647,6 @@
           "date": "2026-09-07"
         }
       ],
-      "id": "action-city-one-piece-0910",
-      "title": "One Piece Tournament - Thursday! at Action City Comics",
-      "kicker": "The Thursday One Piece table",
-      "summary": "One of two One Piece nights this week. The listing gives a start and no finish.",
-      "startsAt": "2026-09-10T19:00:00-04:00",
-      "endsAt": "2026-09-10T23:59:00-04:00",
-      "sourceQuote": "One Piece Tournament - Thursday!\nTHU, SEP 10 7:00 PM",
-      "lat": 40.722526,
-      "lng": -73.949837
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "locationName": "Action City Comics",
-      "address": "570 Manhattan Ave",
-      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
-      "filters": [
-        "games"
-      ],
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "rsvp",
-          "url": "https://www.actioncitycomics.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Action City Comics events",
-          "url": "https://www.actioncitycomics.com/",
-          "publisher": "Action City Comics",
-          "date": "2026-09-07"
-        }
-      ],
       "id": "action-city-shadow-throne-0918",
       "title": "Usurp the Shadow Throne Sealed Prerelease - Part 1 at Action City Comics",
       "kicker": "Prerelease night one of two",
@@ -7056,49 +6764,6 @@
       "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
       "lat": 40.729855,
       "lng": -73.960729,
-      "id": "transmitter-longevity-stick-0910",
-      "category": "event",
-      "free": true,
-      "title": "Longevity Stick class at WNYC Transmitter Park",
-      "kicker": "Free, 8am, Tai Chi with a stick",
-      "summary": "Tyler Trocinski teaches it; sticks are provided, so bring water and a small towel. Meet at the pier entrance.",
-      "startsAt": "2026-09-10T08:00:00-04:00",
-      "endsAt": "2026-09-10T09:00:00-04:00",
-      "filters": [
-        "wellness"
-      ],
-      "sourceQuote": "Longevity Stick Class (Thursday Morning)9/10/26\nJoin us on select Thursday Mornings as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks. What to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages. Instructor: Tyler Trocinski What to Bring: Sticks are provided. We suggest a water bottle and a small towel. Where to Meet: Pier Entrance Sign up here Registering helps us track participants in the event of a rain delay or reschedule.",
-      "actions": [
-        {
-          "label": "Sign up",
-          "type": "signup",
-          "url": "https://transmitterpark.org/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Longevity Stick Class (Thursday Morning)",
-          "url": "https://transmitterpark.org/events",
-          "publisher": "Friends of WNYC Transmitter Park",
-          "date": "2026-09-07"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave",
-      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
-      "lat": 40.729855,
-      "lng": -73.960729,
       "id": "transmitter-longevity-stick-0911",
       "category": "event",
       "free": true,
@@ -7111,9 +6776,6 @@
         "wellness"
       ],
       "sourceQuote": "Longevity Stick Class (FRIDAY SUNSET) 9/11/26\nJoin us on select Fridays at Sunset, as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks. What to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages. Instructor: Tyler Trocinski What to Bring: Sticks are provided. We suggest a water bottle and a small towel. Where to Meet: Pier Entrance Sign up here Registering helps us track participants in the event of a rain delay or reschedule.",
-      "relatedCardIds": [
-        "transmitter-longevity-stick-0910"
-      ],
       "actions": [
         {
           "label": "Sign up",
@@ -7844,7 +7506,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "subscription",
       "filters": [
@@ -7852,12 +7514,12 @@
       ],
       "id": "artudio-fall-mornings",
       "title": "Toddler and baby art mornings at ARTUDIO",
-      "kicker": "Drop in from $34, or take the term",
-      "summary": "Artudio Minis for 1.5 to 3s on Wednesday 11am and Thursday 9:30am, and Baby's First Art for 6 to 12 months on Thursday 11:15am, running from 9 September to late October.",
+      "kicker": "Drop in from $34, or join mid-term",
+      "summary": "Artudio Minis for 1.5 to 3s on Wednesday 11am and Thursday 9:30am, and Baby’s First Art for 6 to 12 months on Thursday 11:15am, running to late October.",
       "locationName": "ARTUDIO",
       "address": "4 Diamond St",
       "geocodeQuery": "4 Diamond St, Brooklyn, NY 11222",
-      "sourceQuote": "Artudio Minis\n1.5 – 3 yrs\nWed\n11:00am - 12:00pm EDT\nSep 9, 2026 - Oct 28, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$300 or $40/class\nThu\n9:30am - 10:30am EDT\nSep 10, 2026 - Oct 29, 2026\nBaby's First Art\n6 mo – 1 yrs\n11:15am - 12:00pm EDT\n$240 or $34/class",
+      "sourceQuote": "Artudio Minis\n1.5 – 3 yrs\nWed\n11:00am - 12:00pm EDT\nSep 9, 2026 - Oct 28, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n*Prorated\n$262.50 or $40/class\nThu\n9:30am - 10:30am EDT\nSep 10, 2026 - Oct 29, 2026\nBaby's First Art\n6 mo – 1 yrs\n11:15am - 12:00pm EDT\n*Prorated\n$210 or $34/class",
       "actions": [
         {
           "label": "Book on Sawyer",
@@ -7886,7 +7548,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "subscription",
       "filters": [
@@ -7895,14 +7557,14 @@
       "id": "artudio-fall-after-school",
       "title": "After-school art at ARTUDIO, Tuesdays and Thursdays",
       "kicker": "Ages 4 to 9, two spots left on Tuesdays",
-      "summary": "3 to 5:30pm through December. Thursdays start 10 September at $952 for the term, Tuesdays start the 15th at $1,020; either is $80 as a single session.",
+      "summary": "3 to 5:30pm through December. The Thursday term is now prorated to $884 with the Tuesday term at $1,020; either is $80 as a single session.",
       "locationName": "ARTUDIO",
       "address": "4 Diamond St",
       "geocodeQuery": "4 Diamond St, Brooklyn, NY 11222",
       "relatedCardIds": [
         "artudio-fall-mornings"
       ],
-      "sourceQuote": "FALL 2026 - ARTUDIO After School - Thursdays\n4 – 9 yrs\n3:00pm - 5:30pm EDT\nSep 10, 2026 - Dec 17, 2026\n$952 or $80/class\nFALL 2026 - ARTUDIO After School - Tuesdays\nSep 15, 2026 - Dec 22, 2026\n2 spots left!\n$1,020 or $80/class",
+      "sourceQuote": "FALL 2026 - ARTUDIO After School - Thursdays\n4 – 9 yrs\n3:00pm - 5:30pm EDT\nSep 10, 2026 - Dec 17, 2026\n*Prorated\n$884 or $80/class\nFALL 2026 - ARTUDIO After School - Tuesdays\nSep 15, 2026 - Dec 22, 2026\n2 spots left!\n$1,020 or $80/class",
       "actions": [
         {
           "label": "Book on Sawyer",
@@ -8018,51 +7680,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Kuei Luck",
-      "address": "171 Calyer St",
-      "geocodeQuery": "171 Calyer St, Brooklyn, NY 11222",
-      "id": "birthsmarter-weekend-childbirth-0912",
-      "title": "Weekend childbirth education with Birthsmarter",
-      "kicker": "Two mornings, Saturday and Sunday",
-      "summary": "A two-day course for expecting parents, 10am to 3:30pm each day at Kuei Luck on Calyer St. Birthsmarter says to ask about alternative pricing rather than skip it over cost.",
-      "startsAt": "2026-09-12T10:00:00-04:00",
-      "endsAt": "2026-09-13T15:30:00-04:00",
-      "sourceQuote": "September 2026\n12\nWeekend Childbirth Education\n2:00 PM UTC -\n7:30 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC\n13",
-      "actions": [
-        {
-          "label": "Book a class",
-          "type": "signup",
-          "url": "https://birthsmarter.com/schedule"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Weekend Childbirth Education",
-          "url": "https://birthsmarter.com/schedule",
-          "publisher": "Birthsmarter",
-          "date": "2026-09-07"
-        }
-      ],
-      "lat": 40.72802,
-      "lng": -73.953889
-    },
-    {
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "event",
       "filters": [
@@ -8077,9 +7695,6 @@
       "summary": "10am to 4:30pm at Kuei Luck on Calyer St, for expecting parents who can't do the two-day weekend version. Ask about alternative pricing.",
       "startsAt": "2026-09-19T10:00:00-04:00",
       "endsAt": "2026-09-19T16:30:00-04:00",
-      "relatedCardIds": [
-        "birthsmarter-weekend-childbirth-0912"
-      ],
       "sourceQuote": "19\nOne-Day Childbirth Education\n2:00 PM UTC -\n8:30 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC",
       "actions": [
         {
@@ -8109,7 +7724,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "event",
       "filters": [
@@ -8124,9 +7739,6 @@
       "summary": "The Newborn Class runs 10 to 1, then The Lactation Class 2 to 5, both at Kuei Luck on Calyer St. Take one or both. Ask about alternative pricing.",
       "startsAt": "2026-09-20T10:00:00-04:00",
       "endsAt": "2026-09-20T17:00:00-04:00",
-      "relatedCardIds": [
-        "birthsmarter-weekend-childbirth-0912"
-      ],
       "sourceQuote": "20\nThe Newborn Class\n2:00 PM UTC -\n5:00 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC\nThe Lactation Class\n6:00 PM UTC -\n9:00 PM UTC",
       "actions": [
         {
@@ -8201,7 +7813,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "event",
       "filters": [
@@ -8214,15 +7826,15 @@
       "locationName": "Greenpoint Reformed Church",
       "address": "136 Milton St",
       "geocodeQuery": "136 Milton St, Brooklyn, NY 11222",
-      "startsAt": "2026-09-10T16:00:00-04:00",
-      "endsAt": "2026-09-17T19:00:00-04:00",
+      "startsAt": "2026-09-17T16:00:00-04:00",
+      "endsAt": "2026-09-24T19:00:00-04:00",
       "recurring": true,
       "recurrence": {
         "days": [
           "thu"
         ]
       },
-      "sourceQuote": "SUMMARY: Food Pantry\nDTSTART: 2026-09-10T20:00:00.000Z\nDTEND: 2026-09-10T23:00:00.000Z\nLOCATION: 136 Milton St, Brooklyn, NY 11222, USA\nRRULE: FREQ=WEEKLY",
+      "sourceQuote": "SUMMARY: Food Pantry\nDTSTART: 2026-09-17T20:00:00.000Z\nDTEND: 2026-09-17T23:00:00.000Z\nLOCATION: 136 Milton St, Brooklyn, NY 11222, USA\nRRULE: FREQ=WEEKLY",
       "actions": [
         {
           "label": "Hunger program",
@@ -9818,13 +9430,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-10",
-      "updatedAt": "2026-09-10",
+      "updatedAt": "2026-09-11",
       "free": false,
       "category": "subscription",
       "id": "artudio-open-studio-fridays",
       "title": "Friday open studio at ARTUDIO",
       "kicker": "Drop in for an hour, $25, ages 1 up",
-      "summary": "Three back-to-back Friday-morning slots, running from 11 September through 4 December. Book a single slot or take the term.",
+      "summary": "Three back-to-back Friday-morning slots, now listed from 18 September through 4 December. Book a single slot or take the term.",
       "filters": [
         "family_kids"
       ],
@@ -9848,7 +9460,7 @@
           "date": "2026-09-10"
         }
       ],
-      "sourceQuote": "Artudio Open Studio!\n1 – 18+ yrs\nFri\n9:00am - 10:00am EDT\nSep 11, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class\n…\nArtudio Open Studio!\n1 – 18+ yrs\nFri\n10:00am - 11:00am EDT\nSep 11, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class\n…\nArtudio Open Studio!\n1 – 18+ yrs\nFri\n11:00am - 12:00pm EDT\nSep 11, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class"
+      "sourceQuote": "Artudio Open Studio!\n1 – 18+ yrs\nFri\n9:00am - 10:00am EDT\nSep 18, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class\n…\nArtudio Open Studio!\n1 – 18+ yrs\nFri\n10:00am - 11:00am EDT\nSep 18, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class\n…\nArtudio Open Studio!\n1 – 18+ yrs\nFri\n11:00am - 12:00pm EDT\nSep 18, 2026 - Dec 4, 2026\nARTUDIO , 4 Diamond St, Greenpoint\n$25/class"
     },
     {
       "audience": [
@@ -10144,7 +9756,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-11",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave",
       "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
@@ -10174,7 +9786,7 @@
       "title": "The Thursday Showcase at Greenpoint Comedy Club",
       "kicker": "A regular stand-up bill at 8pm",
       "summary": "Twenty dollars. The listing gives a start but no finish.",
-      "startsAt": "2026-09-10T20:00:00-04:00",
+      "startsAt": "2026-09-17T20:00:00-04:00",
       "endsAt": "2026-09-24T20:00:00-04:00",
       "recurring": true,
       "recurrence": {
@@ -10185,7 +9797,7 @@
       "filters": [
         "arts_culture"
       ],
-      "sourceQuote": "Thu Sep 10, 2026, 8:00 PM, Thu Sep 17, 2026, 8:00 PM, Thu Sep 24, 2026, 8:00 PM\nThe Thursday Showcase @ 8:00PM\nUSD $20.00"
+      "sourceQuote": "Thu Sep 17, 2026, 8:00 PM, Thu Sep 24, 2026, 8:00 PM\nThe Thursday Showcase @ 8:00PM\nUSD $20.00"
     },
     {
       "audience": [
@@ -11133,6 +10745,550 @@
       ],
       "lat": 40.726972,
       "lng": -73.95656
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "library-wednesday-programs-0923",
+      "category": "event",
+      "title": "Wednesday at Greenpoint Library",
+      "kicker": "Three programmes, adults and teens",
+      "summary": "The rooftop garden opens for quiet study, a beginners' PC class takes in-person registration, and the Teen Zone screens 10 Things I Hate About You. Toddler storytime is off for the book sale.",
+      "startsAt": "2026-09-23T13:00:00-04:00",
+      "endsAt": "2026-09-23T17:00:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "ts_title: Greenpoint Library Open Roof Hours\nds_event_start_date: 2026-09-23T17:00:00Z\nts_body: Greenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for limited hours for public seating! Pull up a chair, grab a book, and enjoy the surroundings. Garden space will be open for quiet study from 1-4pm on Wednesdays, weather permitting.\nts_title: Computer Basics\nds_event_start_date: 2026-09-23T19:15:00Z\nts_body: Computer Basics training is designed specifically for those who are completely new to computers or who feel they need to have more instruction before confidently using a computer. This lesson introduces new PC users to the hardware, applications and techniques used to navigate a computer. In-person registration is required.\nts_title: Teen Movie: 10 Things I Hate About You\nds_event_end_date: 2026-09-23T21:00:00Z\nts_body: Teens aged 13-19, come to the Teen Zone to watch 10 Things I Hate About You.\nts_body: No storytime this week while we prep for this weekend’s book sale!"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "limousine-opens",
+      "category": "news",
+      "title": "Limousine opens in the former Ponyboy",
+      "kicker": "From the owners of Five Leaves and Goldie's",
+      "summary": "Oysters, deviled eggs and steak Diane alongside martini variations and three spirit-free cocktails. Open daily 3 p.m. to 2 a.m., kitchen until midnight.",
+      "filters": [
+        "news",
+        "food_drink"
+      ],
+      "locationName": "Limousine",
+      "address": "632 Manhattan Ave",
+      "geocodeQuery": "632 Manhattan Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Read more",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/09/10/new-cocktail-bar-limousine-opens-in-former-home-of-ponyboy/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "New Cocktail Bar Limousine Opens in Former Home of Ponyboy",
+          "url": "https://greenpointers.com/2026/09/10/new-cocktail-bar-limousine-opens-in-former-home-of-ponyboy/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "A new bar called Limousine (632 Manhattan Ave.) opened on August 28 in the former home of Ponyboy , a restaurant and nightclub that quietly closed one year ago.\nLimousine is a collaboration between Zander Brezinsky, the owner of Five Leaves (18 Bedford Ave.), and Michael Petersen, the owner of Goldie’s (195 Nassau Ave.).\nLimousine is primarily a cocktail bar, but it also serves a few small bites.\nLimousine is open daily from 3 p.m. to 2 a.m. The kitchen serves food until midnight.",
+      "lat": 40.724014,
+      "lng": -73.950666
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "ymca-open-house-0919",
+      "category": "event",
+      "title": "Open house at the Greenpoint YMCA",
+      "kicker": "Tour the branch and try a class",
+      "summary": "Adult Zumba and boxing demos sit alongside youth basketball, karate and the new fall art, chess and piano programmes, with swim lessons and Y swag on offer.",
+      "startsAt": "2026-09-19T10:00:00-04:00",
+      "endsAt": "2026-09-19T12:00:00-04:00",
+      "filters": [
+        "family_kids",
+        "wellness"
+      ],
+      "locationName": "Greenpoint YMCA",
+      "address": "99 Meserole Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "99 Meserole Avenue, Brooklyn, NY 11222",
+      "lat": 40.727022,
+      "lng": -73.953248,
+      "relatedCardIds": [
+        "ymca-greenpoint-fall-1-registration"
+      ],
+      "actions": [
+        {
+          "label": "See programs",
+          "type": "learn_more",
+          "url": "https://ymcanyc.org/locations/greenpoint-ymca/programs-classes"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Refer a Friend Who Joins the Y, Get One Month Free!",
+          "url": "https://ymcanyc.org/locations/greenpoint-ymca",
+          "publisher": "YMCA of Greater New York",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "OPEN HOUSE AT GREENPOINT YMCA\nSaturday, September 19th 10:00am - 12:00pm\nAdult Zumba 11:00 AM - 12:00 PM\nYouth Learn more about Youth Basketball, Soccer, Karate, Ballet, Tap & More 10:00 AM - 12:00 PM\nAll Your Time to Swim is Now! Explore Lessons, Lap & Rec Swim 10:00 AM - 12:00 PM"
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "cibone-commune-shop-popup-0918",
+      "category": "event",
+      "title": "Commune Shop pop-up at CIBONE O'TE",
+      "kicker": "Ten days of the LA studio's shop",
+      "summary": "Furniture, ceramics, textiles, art and apparel from Commune Design's Los Angeles retail space, plus pop-up-only T-shirts, caps, tote bags and bandanas.",
+      "startsAt": "2026-09-18T11:00:00-04:00",
+      "endsAt": "2026-09-27T20:00:00-04:00",
+      "filters": [
+        "shopping"
+      ],
+      "locationName": "CIBONE O'TE",
+      "address": "50 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.724611,
+      "lng": -73.95359,
+      "relatedCardIds": [
+        "cibone-ote"
+      ],
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Commune Shop POP-UP",
+          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te",
+          "publisher": "CIBONE O'TE",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "Commune Shop POP-UP\nSeptember 18 – 27, 2026\nStore Hours: 11am - 8pm\nSpanning furniture, ceramics, textiles, art, apparel, and everyday items, the curation is not defined by category or style.\nDuring the exhibition, original merchandise including T-shirts, caps, tote bags, and bandanas will be available for purchase."
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "cibone-trunk-speliopoulos-0919",
+      "category": "event",
+      "title": "Peter Speliopoulos trunk show at CIBONE O'TE",
+      "kicker": "Gallery-quality work, brought by the artist",
+      "summary": "One afternoon inside the Commune Shop pop-up, with pieces the artist selects and carries in himself. No admission price is stated.",
+      "startsAt": "2026-09-19T14:00:00-04:00",
+      "endsAt": "2026-09-19T18:00:00-04:00",
+      "filters": [
+        "shopping"
+      ],
+      "locationName": "CIBONE O'TE",
+      "address": "50 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.724611,
+      "lng": -73.95359,
+      "relatedCardIds": [
+        "cibone-ote",
+        "cibone-commune-shop-popup-0918"
+      ],
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Commune Shop POP-UP",
+          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te",
+          "publisher": "CIBONE O'TE",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "Peter Speliopoulos\nSaturday, September 19, 2:00 PM – 6:00 PM\nIn addition to the items typically available at Commune Shop, Peter himself will bring in works of gallery-exhibition quality."
+    },
+    {
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "cibone-trunk-sri-threads-0926",
+      "category": "event",
+      "title": "Sri Threads trunk show at CIBONE O'TE",
+      "kicker": "Antique textiles, normally by appointment",
+      "summary": "Stephen Szepanek brings pillows made from his own vintage fabrics and antique textiles collected around the world. His Brooklyn space is usually appointment-only.",
+      "startsAt": "2026-09-26T14:00:00-04:00",
+      "endsAt": "2026-09-26T18:00:00-04:00",
+      "filters": [
+        "shopping"
+      ],
+      "locationName": "CIBONE O'TE",
+      "address": "50 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.724611,
+      "lng": -73.95359,
+      "relatedCardIds": [
+        "cibone-ote",
+        "cibone-commune-shop-popup-0918"
+      ],
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Commune Shop POP-UP",
+          "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te",
+          "publisher": "CIBONE O'TE",
+          "date": "2026-09-10"
+        }
+      ],
+      "sourceQuote": "Stephen Szepanek / Sri Threads\nSaturday, September 26, 2:00 PM – 6:00 PM\nAlongside special pillows crafted from Stephen’s personal vintage fabrics, a selection of antique and vintage textiles collected from around the world will be showcased.\n*As Stephen’s Brooklyn space is normally appointment-only, this is a special opportunity for a wider audience to view his collection in person."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "good-room-fixed-0925",
+      "category": "event",
+      "title": "FIXED with James Axon b2b JDH at Good Room",
+      "kicker": "Two all-night sets on one bill",
+      "summary": "DoNYC lists a 7pm start for the room and states no ticket price.",
+      "startsAt": "2026-09-25T19:00:00-04:00",
+      "endsAt": "2026-09-25T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "Friday\nSep 25\nFIXED with James Axon b2b JDH (all night), A lana (all night)\nGood Room\n7:00PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "comedy-cysk-0923",
+      "category": "event",
+      "title": "Comedians You Should Know at Greenpoint Comedy Club",
+      "kicker": "The Wednesday room, an hour later",
+      "summary": "The club moves this week’s edition to a 9:15pm start, after its own headline show earlier the same night. Twenty dollars.",
+      "startsAt": "2026-09-23T21:15:00-04:00",
+      "endsAt": "2026-09-23T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club listings",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Jump Comedy",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "Wed Sep 16, 2026, 8:00 PM, Wed Sep 23, 2026, 9:15 PM\nComedians You Should Know @ 8:00 PM\nUSD $20.00"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "film-noir-yumemiru-0911",
+      "category": "event",
+      "title": "YUMEMIRU at Film Noir Cinema",
+      "kicker": "A 1986 Japanese missing-persons tale",
+      "summary": "An aging silent-film actress hires a private eye and his assistant to find her missing daughter. The programme page states no ticket price.",
+      "startsAt": "2026-09-11T22:00:00-04:00",
+      "endsAt": "2026-09-11T23:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/1/28/yumemiru"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/1/28/yumemiru",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "YUMEMIRU\nFriday, September 11, 2026\n10:00 PM\n11:00 PM\nJP. 1986\nAn aging silent film actress hires a private eye and his wacky but helpful assistant to track down her missing daughter, Bellflower."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "film-noir-snake-girl-0912",
+      "category": "event",
+      "title": "SNAKE GIRL AND THE WITCH at Film Noir Cinema",
+      "kicker": "An early-evening title, no synopsis given",
+      "summary": "The programme feed carries the name and the hour and nothing else — no director, no country, no ticket price.",
+      "startsAt": "2026-09-12T17:00:00-04:00",
+      "endsAt": "2026-09-12T18:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/9/12/hebi-musume"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/9/12/hebi-musume",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: SNAKE GIRL AND THE WITCH\nstartDate: 2026-09-12T21:00:00.234Z\nendDate: 2026-09-12T22:00:00.234Z"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "film-noir-cult-cinema-0923",
+      "category": "event",
+      "title": "CULT CINEMA at Film Noir Cinema",
+      "kicker": "The obscure-film night, titles unannounced",
+      "summary": "A standing late-night slot the cinema devotes to the most obscure films it can find. No ticket price is stated.",
+      "startsAt": "2026-09-23T21:00:00-04:00",
+      "endsAt": "2026-09-23T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "CULT CINEMA\nWednesday, September 23, 2026\n9:00 PM\n10:00 PM\nFilm Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made."
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "free": false,
+      "id": "film-noir-supershorts-0925",
+      "category": "event",
+      "title": "SUPERSHORTS NY FILM FESTIVAL at Film Noir Cinema",
+      "kicker": "Opening night of a three-night run",
+      "summary": "The festival runs Friday through Sunday; the later two nights start half an hour later, so this card covers the opener only. No ticket price is stated.",
+      "startsAt": "2026-09-25T18:00:00-04:00",
+      "endsAt": "2026-09-25T19:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/9/25/supershorts-ny-film-festival",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "title: SUPERSHORTS NY FILM FESTIVAL\nstartDate: 2026-09-25T22:00:00.000Z\nendDate: 2026-09-25T23:00:00.000Z\nstartDate: 2026-09-26T22:30:00.722Z\nstartDate: 2026-09-27T22:30:00.287Z"
     }
   ]
 }

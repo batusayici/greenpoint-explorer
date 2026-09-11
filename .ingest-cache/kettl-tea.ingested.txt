@@ -187,9 +187,10 @@ Location
 Kettl Greenpoint
 Kettl Los Feliz
 Kettl Matcha Sen Mon Ten
+Virtual
 Clear
 Clear all
-16 items
+17 items
 Sort
 Featured
 Most relevant
@@ -219,6 +220,7 @@ Location
 Kettl Greenpoint
 Kettl Los Feliz
 Kettl Matcha Sen Mon Ten
+Virtual
 Sort
 Featured
 Most relevant
@@ -241,7 +243,15 @@ Price, high to low
 Date, old to new
 Date, new to old
 Clear all
-See 16 items
+See 17 items
+Virtual Class | An Introduction to Matcha
+Add
+Virtual Class | An Introduction to Matcha
+Virtual Class | An Introduction to Matcha
+$30.00
+A virtual class exploring the fundamentals with matcha, available as a standalone ticket or with bundled tea and tools.
+Location
+Virtual
 Class | Uji: The Home of Matcha, A Guided Tasting of Our Most Premium Offerings
 Choose
 Class | Uji: The Home of Matcha, A Guided Tasting of Our Most Premium Offerings
@@ -519,7 +529,7 @@ Chiran Sencha
 $32.00
 A sencha with an electric green color and expressive grassiness complimented by a high sweetness.
 Houjicha Tea Bags | Pouch
-Sold out
+Choose
 Houjicha Tea Bags | Pouch
 From $18.00
 A perfectly balanced and comforting houjicha, packed in our plant-based tea bags.

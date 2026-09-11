@@ -32,6 +32,7 @@ NEW CLIENTS ONLY · ONE PER PERSON
 Whatever you pay for an intro comes off your first month, up to $50, if you join within 14 days.
 Monthly Memberships
 Month by month, no rollovers
+JOIN
 4 Classes
 $147
 8 Classes
@@ -58,7 +59,6 @@ Guest pass a month
 •
 •
 •
-JOIN
 JOIN
 JOIN
 All memberships: both studios · 12-hour cancellation · cancel anytime · two 30-day freezes a year
@@ -187,6 +187,7 @@ NEW CLIENTS ONLY · ONE PER PERSON
 Whatever you pay for an intro comes off your first month, up to $50, if you join within 14 days.
 Monthly Memberships
 Month by month, no rollovers
+JOIN
 4 Classes
 $147
 8 Classes
@@ -213,7 +214,6 @@ Guest pass a month
 •
 •
 •
-JOIN
 JOIN
 JOIN
 All memberships: both studios · 12-hour cancellation · cancel anytime · two 30-day freezes a year
@@ -306,7 +306,6 @@ Brooklyn, NY 11222
 hello@selformer.com
 © 2026 SELFORMER · BROOKLYN, NY
 INSTAGRAM · FACEBOOK · TIKTOK · APP STORE · GOOGLE PLAY
-l
 
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 # Captured by the new roster `detail` mechanism and merged here so the

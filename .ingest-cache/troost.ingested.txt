@@ -1,9 +1,3 @@
-summary: DJ Barba Yiorgi
-description: WORLD PSYCHEDELIC GROOVE
-start.date: 2026-09-10
-end.date: 2026-09-11
-htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA5MTAgdHJvb3N0bGl2ZUBt
-
 summary: DJ TIMOTHY O'KEEFE
 start.date: 2026-09-11
 end.date: 2026-09-12
@@ -171,6 +165,12 @@ summary: KEN KOBAYASHI
 start.date: 2026-10-13
 end.date: 2026-10-14
 htmlLink: https://www.google.com/calendar/event?eid=MDZnMmU0cXUzNmFrN2k0NW5nOXFrYXRhYmYgdHJvb3N0bGl2ZUBt
+
+summary: STAN ZENKOV
+description: STAN SENKOV with violist Sunjay Jayaram of the Sirius Quartet, drummer Paul Sakai, and bassist Evan Crane
+start.date: 2026-10-14
+end.date: 2026-10-15
+htmlLink: https://www.google.com/calendar/event?eid=M3RlMWRoaTY2c3ZybHNoY29xM3Jqbm1hOXUgdHJvb3N0bGl2ZUBt
 
 summary: DJ Barba Yiorgi
 description: WORLD PSYCHEDELIC GROOVE

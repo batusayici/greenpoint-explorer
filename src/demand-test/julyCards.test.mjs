@@ -893,14 +893,25 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // workshops the roster's own Yaro source could not see because that page
   // renders its listings in JavaScript, and a Sunday all-levels ballet class at
   // Triskelion. Deck 235 -> 242, event 138 -> 142.
-  assert.equal(seed.cards.length, 242);
+  //
+  // 2026-09-11 (daily thin): expiry cleared 8 finished events (242 -> 234), and
+  // the run added 12 and deleted 1. The deletion is Birthsmarter's 12-13
+  // September childbirth weekend: the studio moved it from Kuei Luck on Calyer
+  // St to Vivvi in DUMBO, so it is no longer a Greenpoint event. The adds:
+  // Wednesday 23 September at the library, the Limousine bar opening on
+  // Manhattan Ave, the Greenpoint YMCA open house on the 19th, CIBONE's
+  // ten-day Commune Shop pop-up plus its two named trunk shows, Good Room on
+  // the 25th, the Comedians You Should Know night the club moved to 9:15pm on
+  // the 23rd, and four Film Noir Cinema screenings its calendar was already
+  // carrying uncarded. Deck 234 -> 245, event 134 -> 144.
+  assert.equal(seed.cards.length, 245);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 35, "33 + Santa Chiara opening + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.category === "event"), 142, "138 + the second poster batch: Madeline's trivia, the Le Gamin tasting, Tarot Tuesdays and the Triskelion ballet class (2026-09-10)");
+  assert.equal(count((c) => c.filters.includes("news")), 36, "35 + the Limousine opening (2026-09-11)");
+  assert.equal(count((c) => c.category === "event"), 144, "142, less 8 expired and Birthsmarter's relocated childbirth weekend, plus 11 (2026-09-11)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
-  assert.equal(count((c) => c.category === "news"), 23, "21 + Santa Chiara + the NYC Ferry schedule change (2026-09-09)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 43, "38 + five Light & Sound Design nights (2026-09-10)");
+  assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 41, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
   assert.equal(count((c) => c.category === "subscription"), 38, "37 + The 607 CSA winter veggie share (2026-09-10 posters)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -1080,7 +1091,10 @@ test("news cards name their publisher and sit in the news layer", () => {
   // 2026-09-09: +2 — Santa Chiara Caffè's Greenpoint opening at 227 West St,
   // and NYC Ferry's Fall 2026 schedule, which starts 9/14 and moves East River
   // B to peak-only on weekdays while the local keeps every stop off-peak.
-  assert.equal(news.length, 23);
+  // 2026-09-11: +1 — Limousine, a cocktail bar from the owners of Five Leaves
+  // and Goldie's, open since 28 August in the former Ponyboy on Manhattan Ave
+  // (Greenpointers 9/10). Same shape as the Santa Chiara card two days before.
+  assert.equal(news.length, 24);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -1228,7 +1242,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // is on the EVENT'S OWN detail page, not the listing — "as we flow in our
     // free Longevity Stick Classes" — which is why both detail pages were
     // fetched and persisted into the snapshot before these shipped.
-    "transmitter-longevity-stick-0910",
+    // (transmitter-longevity-stick-0910 expired out 2026-09-11)
     "transmitter-longevity-stick-0911",
     // 2026-09-07: the free Tuesday yoga at Transmitter Park, re-authored after
     // the coverage check flagged 9/8 and 9/15. Go Green states it outright:
@@ -1397,13 +1411,19 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // 2026-09-07, fourth pass: the park's Longevity Stick classes are "a mix
     // of Tai Chi and yoga", so they are movement, not the civic stewardship
     // their organiser's other programming files under.
-    "transmitter-longevity-stick-0910",
+    // (transmitter-longevity-stick-0910 expired out 2026-09-11)
     "transmitter-longevity-stick-0911",
     // 2026-09-07: free Tuesday yoga at Transmitter Park. Wellness, not civic —
     // the 2026-08-30 growing-space rule sends gardening to civic, but this is
     // the movement cluster the lens is defined by.
     "transmitter-park-yoga-tuesdays",
     // (underthek-zumba-0827 expired out 2026-08-28)
+    // 2026-09-11: the Greenpoint YMCA's 19 September open house. It runs adult
+    // Zumba, boxing and personal-training demos next to youth basketball and
+    // karate rows and a family row, so it takes BOTH lenses on the all-ages
+    // reading the Library and Kingsland Wildflowers already sit on, rather
+    // than the run picking one. Flagged on watchItems for Batu to overturn.
+    "ymca-open-house-0919",
   ]);
   // (the trash-club guard that stood here went with the card on 2026-08-30)
 });
@@ -1426,7 +1446,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // the hold pile once Batu approved shipping the first-read sources.
     // (action-city-flesh-blood-0908 expired out 2026-09-09 — it ran 9/8)
     // (action-city-one-piece-0909 expired out 2026-09-10 — it ran 9/9)
-    "action-city-one-piece-0910",
+    // (action-city-one-piece-0910 expired out 2026-09-11 — it ran 9/10)
     "action-city-shadow-throne-0918",
     "action-city-shadow-throne-0919",
     "black-rabbit",
@@ -1539,8 +1559,16 @@ test("the shopping lens holds retail — the store and its dated run (2026-08-13
     // inside a store is the same class as the runs above, so it files here
     // rather than in deals_memberships, which takes standing offers only.
     // (big-night-fifth-birthday-0829 expired out 2026-08-31)
+    "cibone-commune-shop-popup-0918",
     "cibone-ote",
     "cibone-restation-showcase-0815",
+    // 2026-09-11: Commune Design's Los Angeles shop takes over the store for
+    // ten days, with two named trunk shows inside the run. The run is one card
+    // on the store's own 11am-8pm hours; the trunk shows are separate bills
+    // with their own clocks, the same split the gallery rule draws between a
+    // show and the talks inside it.
+    "cibone-trunk-speliopoulos-0919",
+    "cibone-trunk-sri-threads-0926",
     // A kids' store. It keeps `family_kids` — the audience lens it already
     // earned — and ADDS shopping, which is what makes the rule mechanical:
     // every category:shopping card carries the shopping lens. Before this, the
@@ -2010,9 +2038,13 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // 2026-09-10: the club's calendar is readable again and it has linked cards
   // once more — the two named bills it has listed for 9/24. The named one-off
   // shows are still what gets carded; the recurring showcases are not.
+  // 2026-09-11: a third link — the club moved its Wednesday "Comedians You
+  // Should Know" edition to 9:15pm on 23 September, which the recurring card
+  // states it does not cover, so that night is its own card.
   assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
     "comedy-greenpoint-nights-0924",
     "comedy-do-you-still-like-me-0924",
+    "comedy-cysk-0923",
   ]);
   // Scrappleland's club nights all expired 2026-08-06; the prune emptied its
   // link list, so Carcosa now carries the games side of the place graph.

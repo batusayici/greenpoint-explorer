@@ -1,22 +1,27 @@
-title: SINTOMAS
-startDate: 2026-09-10T01:00:00.048Z
-endDate: 2026-09-10T02:00:00.048Z
-fullUrl: /program/2026/7/31/sintomas
-
-title: FILM CLUB
-startDate: 2026-09-10T23:00:00.000Z
-endDate: 2026-09-11T00:00:00.000Z
-fullUrl: /program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
-
 title: BLACK BOX
 startDate: 2026-09-11T23:00:00.000Z
 endDate: 2026-09-12T00:00:00.000Z
 fullUrl: /program/2026/9/11/black-box
 
+title: YUMEMIRU
+startDate: 2026-09-12T02:00:00.000Z
+endDate: 2026-09-12T03:00:00.000Z
+fullUrl: /program/2026/1/28/yumemiru
+
+title: SNAKE GIRL AND THE WITCH
+startDate: 2026-09-12T21:00:00.234Z
+endDate: 2026-09-12T22:00:00.234Z
+fullUrl: /program/2026/9/12/hebi-musume
+
 title: FILM NOIR MONDAY
 startDate: 2026-09-15T00:00:00.000Z
 endDate: 2026-09-15T01:00:00.000Z
 fullUrl: /program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l
+
+title: CULT CINEMA
+startDate: 2026-09-24T01:00:00.765Z
+endDate: 2026-09-24T02:00:00.765Z
+fullUrl: /program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
 
 title: FILM CLUB
 startDate: 2026-09-25T01:00:00.376Z
@@ -94,10 +99,10 @@ Google Calendar
 ICS
 Film Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.
 In Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .
-Earlier Event: September 11
-BLACK BOX
-Later Event: September 24
-FILM CLUB
+Earlier Event: September 12
+SNAKE GIRL AND THE WITCH
+Later Event: September 23
+CULT CINEMA
 Back To Top
 Cart ( 0 )
 
@@ -134,6 +139,38 @@ CULT CINEMA
 Back To Top
 Cart ( 0 )
 
+## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
+CULT CINEMA — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+CULT CINEMA
+Wednesday, September 23, 2026
+9:00 PM
+10:00 PM
+21:00
+22:00
+Google Calendar
+ICS
+Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
+Earlier Event: September 14
+FILM NOIR MONDAY
+Later Event: September 24
+FILM CLUB
+Back To Top
+Cart ( 0 )
+
 ## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn-shpsb
 CULT CINEMA — Film Noir Cinema
 Home
@@ -166,40 +203,6 @@ CLOWNSPIRACY
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
-FILM CLUB — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-FILM CLUB
-Thursday, September 10, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
-The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
-Pure cinematheque fun.
-Earlier Event: September 9
-SINTOMAS
-Later Event: September 11
-BLACK BOX
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e-54ntk
 FILM CLUB — Film Noir Cinema
 Home
@@ -227,8 +230,8 @@ ICS
 Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
 The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
 Pure cinematheque fun.
-Earlier Event: September 14
-FILM NOIR MONDAY
+Earlier Event: September 23
+CULT CINEMA
 Later Event: September 25
 SUPERSHORTS NY FILM FESTIVAL
 Back To Top
@@ -263,6 +266,39 @@ The screening of a secret horror film will follow after the reception.
 “DRESS TO IMPRESS”
 Earlier Event: October 30
 TERROR TERROIR
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2026/1/28/yumemiru
+YUMEMIRU — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+YUMEMIRU
+Friday, September 11, 2026
+10:00 PM
+11:00 PM
+22:00
+23:00
+Google Calendar
+ICS
+JP. 1986
+An aging silent film actress hires a private eye and his wacky but helpful assistant to track down her missing daughter, Bellflower.
+Earlier Event: September 11
+BLACK BOX
+Later Event: September 12
+SNAKE GIRL AND THE WITCH
 Back To Top
 Cart ( 0 )
 
@@ -332,6 +368,71 @@ TERROR TERROIR
 Back To Top
 Cart ( 0 )
 
+## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
+BLACK BOX — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+BLACK BOX
+Friday, September 11, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Earlier Event: September 10
+FILM CLUB
+Later Event: September 11
+YUMEMIRU
+Back To Top
+Cart ( 0 )
+
+## [DETAIL] https://www.filmnoircinema.com/program/2020/3/19/film-club-k59bk-a95nh-fe9j9-988ma-z5agf-ym22l-r3gag-byhhb-mcg2e
+FILM CLUB — Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Film Noir Cinema
+Home
+Calendar
+Welcome
+Program
+Location
+Contact
+Back to All Events
+FILM CLUB
+Thursday, September 10, 2026
+7:00 PM
+8:00 PM
+19:00
+20:00
+Google Calendar
+ICS
+Film Noir Cinema presents: “FILM CLUB” - an evening with moving image.
+The films are chosen each time by a different member of the club without anybody but the chooser knowing the title.
+Pure cinematheque fun.
+Earlier Event: September 9
+SINTOMAS
+Later Event: September 11
+BLACK BOX
+Back To Top
+Cart ( 0 )
+
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/7/31/sintomas
 SINTOMAS — Film Noir Cinema
 Home
@@ -365,37 +466,6 @@ FILM CLUB
 Back To Top
 Cart ( 0 )
 
-## [DETAIL] https://www.filmnoircinema.com/program/2026/9/11/black-box
-BLACK BOX — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-BLACK BOX
-Friday, September 11, 2026
-7:00 PM
-8:00 PM
-19:00
-20:00
-Google Calendar
-ICS
-Earlier Event: September 10
-FILM CLUB
-Later Event: September 14
-FILM NOIR MONDAY
-Back To Top
-Cart ( 0 )
-
 ## [DETAIL] https://www.filmnoircinema.com/program/2026/3/25/runaway-nightmare
 RUNAWAY NIGHTMARE — Film Noir Cinema
 Home
@@ -426,38 +496,6 @@ Earlier Event: September 8
 CULT CINEMA
 Later Event: September 9
 SINTOMAS
-Back To Top
-Cart ( 0 )
-
-## [DETAIL] https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn
-CULT CINEMA — Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Film Noir Cinema
-Home
-Calendar
-Welcome
-Program
-Location
-Contact
-Back to All Events
-CULT CINEMA
-Tuesday, September 8, 2026
-9:00 PM
-10:00 PM
-21:00
-22:00
-Google Calendar
-ICS
-Film Noir Cinema presents “CULT CINEMA”: a night of sheer cinematic madness dedicated to the most obscure films ever made.
-Earlier Event: September 4
-TERROR TERROIR
-Later Event: September 10
-FILM CLUB
 Back To Top
 Cart ( 0 )
 

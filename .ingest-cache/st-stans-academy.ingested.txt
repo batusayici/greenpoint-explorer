@@ -1,8 +1,3 @@
-SUMMARY: 8:15am School Mass For Grades 1st-8th, Parents Welcome To Attend.
-DTSTART: 2026-09-11
-DTEND: 2026-09-12
-STATUS: CONFIRMED
-
 SUMMARY: Parish Picnic
 DTSTART: 2026-09-13
 DTEND: 2026-09-14

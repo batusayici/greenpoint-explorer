@@ -51,9 +51,3 @@ alert.active_period.0.start: 2026-09-12T02:45:00.000Z
 alert.active_period.0.end: 2026-09-14T09:00:00.000Z
 alert.active_period: [{"start":1789181100,"end":1789376400}]
 alert.description_text.translation.0.text: For service to these stations, take the [G] to 7 Av or Church Av and transfer to a Manhattan-bound [F] or Bedford-Nostrand Avs-bound [G]. For service from these stations, take the [F] or [G] to 7 Av or Smith-9 Sts and transfer to a Church Av-bound [G]. Travel tip: From 15 St-Prospect Park or Fort Hamilton Pkwy, consider the B68 bus on Prospect Park Southwest. Note: No [G] between Bedford-Nostrand Avs and Court Sq during this time. What's happening? We're replacing tracks
-
-alert.header_text.translation.0.text: In Brooklyn, Coney Island-bound [F] and Church Av-bound [G] skip 4 Av-9 St, 15 St-Prospect Park and Fort Hamilton Pkwy
-alert.active_period.0.start: 2026-09-09T02:45:00.000Z
-alert.active_period.0.end: 2026-09-09T09:00:00.000Z
-alert.active_period: [{"start":1788921900,"end":1788944400},{"start":1789008300,"end":1789030800},{"start":1789094700,"end":1789117200}]
-alert.description_text.translation.0.text: For service to these stations, take the [F] or [G] to 7 Av or Church Av and transfer to a Manhattan-bound [F] or Court Sq-bound [G]. For service from these stations, take the [F] or [G] to 7 Av or Smith-9 Sts and transfer to a Coney Island-bound [F] or Church Av-bound [G]. What's happening? We're replacing tracks

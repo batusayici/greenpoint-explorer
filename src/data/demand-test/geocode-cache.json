@@ -4543,5 +4543,30 @@
         "-73.9579748"
       ]
     }
+  },
+  "632 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "632 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-11T13:26:06.121Z",
+    "hit": {
+      "place_id": 359160831,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081442,
+      "lat": "40.7240139",
+      "lon": "-73.9506657",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "632, Manhattan Avenue, Greenpoint, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7239391",
+        "40.7240887",
+        "-73.9508116",
+        "-73.9505198"
+      ]
+    }
   }
 }
