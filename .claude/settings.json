@@ -146,7 +146,9 @@
       "WebFetch(domain:www.wordbookstores.com)",
       "WebFetch(domain:www.ymcanyc.org)",
       "WebFetch(domain:yarostudios.com)",
-      "WebFetch(domain:ymcanyc.org)"
+      "WebFetch(domain:ymcanyc.org)",
+      "WebFetch(domain:tunesfortykes.info)",
+      "WebFetch(domain:greenpointshul.org)"
     ]
   }
 }

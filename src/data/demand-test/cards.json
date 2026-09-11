@@ -11378,6 +11378,228 @@
       "trustRisk": "low",
       "createdAt": "2026-09-11",
       "updatedAt": "2026-09-11"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "locationName": "McCarren Park",
+      "address": "855 Lorimer St, Brooklyn, NY 11222",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "id": "tunes-for-tykes-mccarren",
+      "category": "event",
+      "free": false,
+      "title": "Tunes for Tykes at McCarren Park",
+      "kicker": "Music for babies and toddlers, from 10am",
+      "summary": "Brian Stearns's mommy-and-me music circle, outdoors in the park. Three sittings on Thursdays (10, 11 and noon) and two on Saturdays (10 and 11). The site lists no price for the park circles and calls them donation-based.",
+      "startsAt": "2026-09-12T10:00:00-04:00",
+      "endsAt": "2026-10-01T12:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "thu",
+          "sat"
+        ]
+      },
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "Three Classes: 10 AM, 11 AM, 12 NOON\nThursday Music Class / McCarren Park\nMcCarren Park, 855 Lorimer St, Brooklyn, NY 11222, USA\nTwo Classes: 10 AM, 11 AM\nSaturday Music Class / McCarren Park\nMcCarren Park, 855 Lorimer St, Brooklyn, NY 11222, USA\nSing, dance, and play with your little one at Tunes for Tykes — Brooklyn’s favorite mommy and me music class! Designed for babies and toddlers, our joyful sessions build rhythm, confidence, and connection through live music and movement.",
+      "actions": [
+        {
+          "label": "Class schedule",
+          "type": "learn_more",
+          "url": "https://www.tunesfortykes.info/music-classes-brooklyn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Class schedule — Tunes for Tykes",
+          "url": "https://www.tunesfortykes.info/music-classes-brooklyn",
+          "publisher": "Tunes for Tykes",
+          "date": "2026-09-11"
+        }
+      ],
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "locationName": "Greenpoint Shul",
+      "address": "108 Noble St, Brooklyn, NY 11222",
+      "geocodeQuery": "108 Noble St, Brooklyn, NY 11222",
+      "id": "shul-family-shofar-0913",
+      "category": "event",
+      "free": false,
+      "title": "Family shofar blowing workshop at Greenpoint Shul",
+      "kicker": "All ages, 11am in the Social Hall",
+      "summary": "Morah Mikaela Gluck walks children and their grown-ups through what the shofar means, then everyone gets to sound one. No finish time is listed.",
+      "startsAt": "2026-09-13T11:00:00-04:00",
+      "endsAt": "2026-09-13T23:59:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "SUN\nSEP 13\n11:00AM\nFamily Shofar Blowing Workshop (all-ages)\nTikiya! Join us in the Greenpoint Shul Social Hall for a fun and educational family shofar-blowing workshop led by community leader, Morah Mikaela Gluck. Children (all ages), parents and/or caregivers will learn about the meaning of the shofar, practice sounding it themselves, and celebrate the spirit of Rosh HaShanah together.",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://greenpointshul.org/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Programming & Events — Greenpoint Shul",
+          "url": "https://greenpointshul.org/events",
+          "publisher": "Greenpoint Shul",
+          "date": "2026-09-11"
+        }
+      ],
+      "lat": 40.728299,
+      "lng": -73.956362
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "locationName": "WNYC Transmitter Park",
+      "address": "2 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
+      "id": "shul-tashlich-transmitter-0913",
+      "category": "event",
+      "free": false,
+      "title": "Community-wide Tashlich at Transmitter Park",
+      "kicker": "Open to all, 4:30pm by the water",
+      "summary": "Greenpoint Shul's annual gathering at the waterfront to cast off the year's missteps. The listing says it is open to all; no finish time is given.",
+      "startsAt": "2026-09-13T16:30:00-04:00",
+      "endsAt": "2026-09-13T23:59:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "sourceQuote": "SUN\nSEP 13\n4:30PM\nTashlich at Transmitter Park\nJoin friends, neighbors, and loved ones from across North Brooklyn for our annual Community-Wide Tashlich at Transmitter Park. Tashlich (תשליך) is the practice of symbolically casting away our missteps into flowing water as we begin the new year. Together, we will reflect on the justice and compassion we hope to manifest for humanity, and celebrate the sweetness that already fills our lives. Rooted in tradition and open to all, this gathering is a beautiful way to step into 5787 side-by-side.",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://greenpointshul.org/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Programming & Events — Greenpoint Shul",
+          "url": "https://greenpointshul.org/events",
+          "publisher": "Greenpoint Shul",
+          "date": "2026-09-11"
+        }
+      ],
+      "lat": 40.729855,
+      "lng": -73.960729
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "locationName": "Greenpoint Shul",
+      "address": "108 Noble St, Brooklyn, NY 11222",
+      "geocodeQuery": "108 Noble St, Brooklyn, NY 11222",
+      "id": "shul-kids-sukkah-decorating-0924",
+      "category": "event",
+      "free": false,
+      "title": "Kids sukkah decorating and ice cream party at Greenpoint Shul",
+      "kicker": "Grades K-6, ice cream at 4:30pm",
+      "summary": "Kids decorate the sukkah and get ice cream; the listing says there is adult learning running alongside it for the grown-ups. No finish time is stated.",
+      "startsAt": "2026-09-24T16:30:00-04:00",
+      "endsAt": "2026-09-24T23:59:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "sourceQuote": "THU\nSEP 24\n4:30PM\nKids Sukkah Decorating Ice Cream Party (K-6)\nRejoice, o youth! Kids in grades K-6 are invited to decorate the sukkah and celebrate with an ice cream party. Parents and grownups, we've got you covered too, with adult learning and mimosas for all who are interested. Come make our sukkah beautiful for the holiday!",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://greenpointshul.org/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Programming & Events — Greenpoint Shul",
+          "url": "https://greenpointshul.org/events",
+          "publisher": "Greenpoint Shul",
+          "date": "2026-09-11"
+        }
+      ],
+      "lat": 40.728299,
+      "lng": -73.956362
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "locationName": "Greenpoint Shul",
+      "address": "108 Noble St, Brooklyn, NY 11222",
+      "geocodeQuery": "108 Noble St, Brooklyn, NY 11222",
+      "id": "shul-sukkah-film-0928",
+      "category": "event",
+      "free": false,
+      "title": "Sukkah film screening at Greenpoint Shul",
+      "kicker": "All ages, 7:30pm, bring a blanket",
+      "summary": "A screening of Ushpizin, the Israeli film about faith and hospitality, under the sukkah roof. No finish time is listed.",
+      "startsAt": "2026-09-28T19:30:00-04:00",
+      "endsAt": "2026-09-28T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "MON\nSEP 28\n7:30PM\nSukkah Film Screening for All Ages\nJoin us in the Greenpoint Shul Sukkah for a screening of Ushpizin, a heartwarming Israeli film that explores themes of faith, hospitality, and the magic of Sukkot. Bring a blanket, a friend, and an open heart for this meaningful and entertaining evening under the sukkah roof.",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://greenpointshul.org/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Programming & Events — Greenpoint Shul",
+          "url": "https://greenpointshul.org/events",
+          "publisher": "Greenpoint Shul",
+          "date": "2026-09-11"
+        }
+      ],
+      "lat": 40.728299,
+      "lng": -73.956362
     }
   ]
 }

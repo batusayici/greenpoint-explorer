@@ -1417,6 +1417,28 @@
         "delayMs": 400
       },
       "datedListing": true
+    },
+    {
+      "id": "tunes-for-tykes",
+      "name": "Tunes for Tykes",
+      "url": "https://www.tunesfortykes.info/music-classes-brooklyn",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "citeHost": "tunesfortykes.info",
+      "notes": "Toddler music classes at five Williamsburg and Greenpoint locations; the two in the bbox are McCarren Park (855 Lorimer St, Thursdays and Saturdays) and SPARŚA Greenpoint (1006 Manhattan Ave, Friday mornings) — apply the address gate per class, the Graham Ave, Union Ave and Driggs Ave rooms are Williamsburg. MEASURED 2026-09-11 (added this session): plain fetch of https://www.tunesfortykes.info/music-classes-brooklyn, 200, snapshot 3,430 chars after stripping, carrying every location with its day, its class times and its street address — no browser needed despite being a Wix site. robots.txt allows all (blocks PetalBot only, no AI-crawler rule), so test 4 passes. PRICE IS NOT ON THIS PAGE. The only pricing statement anywhere on the site is on /about-tunes-for-tykes: \"our donation-based music circles in McCarren Park became a lifeline… These circles are still a beloved part of what we do\". Donation-based is not free — do NOT set free:true on a Tunes for Tykes card. NO SEASON END IS STATED for the outdoor McCarren classes, so those cards carry a verified-through endsAt that each run pushes out, the same convention as the other standing weeklies; when a fetch stops listing the class, expire it rather than assuming winter.",
+      "standing": true
+    },
+    {
+      "id": "greenpoint-shul",
+      "name": "Greenpoint Shul (Congregation Ahavas Israel)",
+      "url": "https://greenpointshul.org/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "citeHost": "greenpointshul.org",
+      "notes": "108 Noble St. Congregation Ahavas Israel. MEASURED 2026-09-11 (added this session): the site is a JavaScript SPA — every path, including /events and a nonexistent /api/events, returns the same 921-byte shell to plain fetch, which is the Yaro shape. Browser fetch of https://greenpointshul.org/events returns 9,768 chars carrying 22 dated events with day, date, start time and a full paragraph each. Events are baked into the hashed JS bundle rather than served from a feed, so there is no cheaper route and the bundle filename changes on every deploy — this must stay `browser`. There is no robots.txt (the path serves the SPA shell), and nothing on the site refuses automated readers. FAR MORE THAN A SERVICES CALENDAR: the read found a family shofar workshop, a community-wide Tashlich at Transmitter Park, a K-6 sukkah decorating party, an all-ages sukkah film screening and a family-friendly Havdalah concert series. Service times and holiday davening are NOT cards — no lens fits a religious service and that question is still parked in watchItems; what cards here is the programming anyone may attend. NO PRICES are stated on any listing, so no card off this source sets free:true. End times are not stated either — use the 23:59 sentinel. \"View full calendar\" points at greenpointshul.shulcloud.com/calendar, unread as of this measurement; worth probing for an iCal feed later, which would let this drop to a plain fetch.",
+      "datedListing": true
     }
   ],
   "manualSources": [
