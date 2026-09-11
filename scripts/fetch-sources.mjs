@@ -62,6 +62,7 @@ import { icsToText } from "../src/demand-test/sourceIcs.js";
 import { classifyFetchFailure, isPolicyDenial, assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
 import { carryForwardBlocks, writeSnapshotPreservingBlocks } from "../src/demand-test/persistedBlocks.js";
 import { resolveOfflineSource } from "../src/demand-test/snapshotBundle.js";
+import { plainFetchShortfall, looksUnrendered } from "../src/demand-test/fetchEscalation.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -428,6 +429,48 @@ async function preflightBrowser() {
 // membership tiers on scroll, so a straight read captured the page shell and
 // "Cancel renewal at any time." while every tier and price stayed invisible —
 // a snapshot that looks fine and proves nothing.
+// Cross-origin frames are part of the page (2026-09-11). `document.body.innerText`
+// reads the TOP frame only, so a venue whose calendar is an embedded booking
+// widget hands back nav and a footer — which is what Yaro Studios did on both
+// its class pages, where the listings live in a hisawyer.com iframe. Reading
+// the frames means an embedded schedule reaches the snapshot without the roster
+// having to name the widget's own URL, which is a thing nobody can do until
+// after the source has already been silently empty for a while.
+//
+// Third-party frames that are never content: payments, analytics, consent,
+// social embeds, media players. Everything else is read.
+const FRAME_NOISE_RE = /stripe|paypal|braintree|google|gstatic|doubleclick|googletagmanager|facebook|recaptcha|hcaptcha|youtube|vimeo|hotjar|klaviyo|tiktok|intercom|drift|zendesk|onetrust|cookiebot|framer\.com\/edit/i;
+const FRAME_MIN_CHARS = 120;
+
+// The LABEL drops the query string on purpose: Squarespace appends a fresh
+// `_ga_cid` to the widget URL on every load, and a label carrying it would
+// change the snapshot hash every run and report a phantom change forever.
+const frameLabel = (u) => { try { const p = new URL(u); return `${p.origin}${p.pathname}`; } catch { return u; } };
+
+async function readFrames(page, pageUrl) {
+  let host = null;
+  try { host = new URL(pageUrl).hostname.replace(/^www\./, ""); } catch { /* label-only */ }
+  const blocks = [];
+  const seen = new Set();
+  for (const f of page.frames()) {
+    const fu = f.url();
+    if (!fu || fu === "about:blank" || fu.startsWith("about:") || fu.startsWith("data:")) continue;
+    if (FRAME_NOISE_RE.test(fu)) continue;
+    let fhost = null;
+    try { fhost = new URL(fu).hostname.replace(/^www\./, ""); } catch { continue; }
+    if (fhost === host) continue; // same-site frame: its text is already in the top frame's read
+    const label = frameLabel(fu);
+    if (seen.has(label)) continue;
+    seen.add(label);
+    let t = "";
+    try { t = await f.evaluate(() => document.body?.innerText ?? ""); } catch { continue; }
+    t = t.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
+    if (t.length < FRAME_MIN_CHARS) continue;
+    blocks.push(`## [FRAME] ${label}\n${t}`);
+  }
+  return blocks.length ? `\n\n${blocks.join("\n\n")}` : "";
+}
+
 async function browserText(url, opts = {}) {
   if (NO_BROWSER) throw new Error("browser path disabled (--no-browser)");
   if (!pw) throw new Error("playwright not installed (npm i -D playwright && npx playwright install chromium)");
@@ -464,7 +507,7 @@ async function browserText(url, opts = {}) {
       });
       await page.waitForTimeout(1500);
     }
-    let text = await readText();
+    let text = (await readText()) + (await readFrames(page, url));
     // A challenge page is not content (2026-09-07). Sawyer and union.fit serve
     // their landing views to a browser with no challenge, which is why they
     // are on this path at all — but a click into a tab or a second page hits
@@ -484,12 +527,17 @@ async function browserText(url, opts = {}) {
     // downstream as "the source shrank" — the phantom-shrink signal this
     // pipeline is built to avoid. Wait once more, then fail loudly rather than
     // snapshot a page that simply had not loaded yet.
-    if (text.length < MIN_TEXT_CHARS) {
+    // Size alone is the wrong test here too (2026-09-11): Yaro's kids schedule
+    // is a fully rendered 446 characters — two classes with times, dates and
+    // prices, which is everything the studio runs — and the floor rejected it
+    // as unrendered. Ask for schedule-shaped text instead; a real shell has
+    // none, so the comedy-club case above is still caught.
+    if (looksUnrendered(text, { minChars: MIN_TEXT_CHARS })) {
       await page.waitForTimeout(5000);
-      text = await readText();
+      text = (await readText()) + (await readFrames(page, url));
     }
-    if (text.length < MIN_TEXT_CHARS) {
-      throw new Error(`only ${text.length} chars after 7.5s in ${browserEngine} — page never rendered`);
+    if (looksUnrendered(text, { minChars: MIN_TEXT_CHARS })) {
+      throw new Error(`only ${text.length} chars after 7.5s in ${browserEngine}, none of it a date, time or price — page never rendered`);
     }
     return text;
   } finally {
@@ -599,9 +647,17 @@ async function fetchSource(src) {
         lastErr = new Error(`bot-wall page via ${method} fetch`);
         continue;
       }
-      if (method === "plain" && text.length < MIN_TEXT_CHARS && attempts.includes("browser")) {
-        lastErr = new Error(`only ${text.length} chars via plain fetch (JS-thin?)`);
-        continue;
+      // Escalate on SUBSTANCE, not size (2026-09-11). The size floor alone let
+      // Yaro Studios through at 516 chars of Squarespace nav — sixteen over —
+      // so the source fetched clean for a month while returning no workshop,
+      // no date and no price. A page with none of those is not a listing
+      // however much it weighs. Reasoning and cases: fetchEscalation.js.
+      if (method === "plain" && attempts.includes("browser")) {
+        const shortfall = plainFetchShortfall(text, { minChars: MIN_TEXT_CHARS });
+        if (shortfall) {
+          lastErr = new Error(shortfall);
+          continue;
+        }
       }
       return { text, method };
     } catch (e) {

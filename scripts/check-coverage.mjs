@@ -157,7 +157,9 @@ console.log(
   "\n[coverage] A GAP is not automatically wrong — a film's five-night run is one card, a\n" +
     "[coverage] recurring showcase is one recurring card, Williamsburg items are skipped on purpose,\n" +
     "[coverage] and a source whose format this script cannot parse reports 0 dates (no signal, NOT\n" +
-    "[coverage] no supply). Explain each flagged line as a `coverageExplanations` ledger entry\n" +
+    "[coverage] no supply) — though since 2026-09-11 a source that programs events and still reads 0\n" +
+    "[coverage] dates is worth opening, because that is what a nav-only snapshot looks like. Explain\n" +
+    "[coverage] each flagged line as a `coverageExplanations` ledger entry\n" +
     "[coverage] (sourceId + gapKey + reason + expiresAt) or close it — with --gate, an unexplained\n" +
     "[coverage] flagged line disqualifies auto-ship.",
 );

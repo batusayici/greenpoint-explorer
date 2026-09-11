@@ -471,3 +471,110 @@ test("unique coverage: an unsourced card is not unique", () => {
   assert.equal(uniqueCoverage([{ id: "bare", sourceLinks: [] }]).unique, 0);
   assert.equal(uniqueCoverage([{ id: "missing" }]).unique, 0);
 });
+
+// ---- Date formats the roster actually publishes (2026-09-11) ----
+// The Yaro investigation found these reading as "0 dates", which the report
+// treats as NO SIGNAL and never flags. Triskelion Arts' whole fall season sat
+// in its snapshot uncarded for that reason: the venue writes "SEPT 23-25", and
+// the month regex required exactly three letters followed by a comma-and-year
+// or a weekday prefix. Fifteen sources were affected. Each case below is a
+// verbatim line from a live snapshot on 2026-09-11.
+const SEPT_NOW = new Date("2026-09-11T12:00:00-04:00");
+
+test("extractDates: a four-letter month abbreviation is still a month", () => {
+  // triskelion-arts, https://www.triskelionarts.org/happenings-3
+  assert.deepEqual(
+    extractDates("BEYOND THE BLACK BOX | SEPT 23-25", { now: SEPT_NOW, windowDays: 30 }),
+    ["2026-09-23", "2026-09-24", "2026-09-25"],
+    "a run of nights is every night, the same as a dated range elsewhere",
+  );
+});
+
+test("extractDates: a month-name range covers every day in it", () => {
+  // triskelion-arts, same page, one line down
+  assert.deepEqual(
+    extractDates("KIMIKO TANABE + NORA ALAMI | OCT 15-17", { now: SEPT_NOW, windowDays: 45 }),
+    ["2026-10-15", "2026-10-16", "2026-10-17"],
+  );
+});
+
+test("extractDates: an ordinal date reads like any other", () => {
+  // last-place-on-earth / bin-bin-sake / macha-studio all write dates this way
+  assert.deepEqual(
+    extractDates("Join us September 26th for the launch", { now: SEPT_NOW, windowDays: 30 }),
+    ["2026-09-26"],
+  );
+});
+
+test("extractDates: a dot-separated date is a date", () => {
+  // light-and-sound-design, https://lightandsound.design/ — its whole listing
+  // is this format, and it parsed to nothing while the deck carried 4 cards.
+  assert.deepEqual(
+    extractDates("Sat 09.12.2026\nQUADRAPHONICS [2:30 PM]", { now: SEPT_NOW, windowDays: 30 }),
+    ["2026-09-12"],
+  );
+});
+
+test("extractDates: a range never runs backwards or spills past the month", () => {
+  assert.deepEqual(extractDates("Oct 30-2 nonsense", { now: SEPT_NOW, windowDays: 60 }), ["2026-10-30"],
+    "a descending range is a typo or two unrelated numbers, not 30 days");
+  assert.deepEqual(extractDates("Sep 14-99", { now: SEPT_NOW, windowDays: 30 }), ["2026-09-14"],
+    "99 is not a day");
+});
+
+test("extractDates: a price range is not a date range", () => {
+  assert.deepEqual(extractDates("Workshops $90-125, September 2026", { now: SEPT_NOW, windowDays: 30 }), [],
+    "the month has no day here, and the dollar range must not borrow one");
+});
+
+// ---- ISO DATETIMES: the pattern that has never matched a calendar feed ----
+// The trailing \b on the ISO pattern needs a non-word character after the day,
+// and an ISO datetime puts a "T" there — both word characters, so no boundary,
+// so no match. Every source publishing ISO datetimes has therefore reported
+// zero dates since this file was written: the Greenpoint Library API, the
+// Reformed Church and St Stanislaus iCalendar feeds, Polish & Slavic Center,
+// Carcosa, Moon Bunny, Macha, Sparrow and Transmitter Park among them. It read
+// as "a format this script cannot parse", which the report excuses as no
+// signal, so it was never once flagged. Found 2026-09-11 while classifying
+// sources for `datedListing`, because an .ics feed reading zero dates makes no
+// sense on its face.
+test("extractDates: an ISO datetime is a date", () => {
+  assert.deepEqual(
+    extractDates("SUMMARY: Worship\nDTSTART: 2026-08-09T15:00:00.000Z", { now: NOW }),
+    ["2026-08-09"],
+  );
+});
+
+test("extractDates: the Brooklyn Library's start field parses, its end field still does not", () => {
+  const bpl = "ts_title: Sunset Storytime\nds_event_start_date: 2026-08-13T22:00:00Z\nds_event_end_date: 2026-08-14T22:30:00Z";
+  assert.deepEqual(extractDates(bpl, { now: NOW }), ["2026-08-13"], "the exclusive end is still dropped");
+});
+
+test("extractDates: a longer digit run is not an ISO date", () => {
+  assert.deepEqual(extractDates("ref 12026-08-09", { now: NOW }), []);
+  assert.deepEqual(extractDates("2026-08-091", { now: NOW }), []);
+});
+
+// Two roster sources write their dates entirely in lower case — Leaves
+// Bookstore ("thursday september 24, 2026") and Kindred ("august 13, 7pm") —
+// and the capital-letter guard threw both away. It is now applied to "may"
+// alone — the one month name that is also a common word in running prose.
+test("extractDates: a lower-case month reads, when it is not also an English word", () => {
+  assert.deepEqual(
+    extractDates("printed matter ny art book fair\nthursday september 24, 2026", { now: new Date("2026-09-11T12:00:00-04:00"), windowDays: 30 }),
+    ["2026-09-24"],
+  );
+  assert.deepEqual(
+    extractDates("sunset yoga in the park\naugust 13, 7pm", { now: new Date("2026-08-07T12:00:00-04:00") }),
+    ["2026-08-13"],
+    "august is a word, but lower case with a day after it is a date",
+  );
+});
+
+test("extractDates: the lower-case verb still does not mint a date", () => {
+  // "may" is the one month name that is also a common word in running prose,
+  // and the guard costs a real date everywhere else it is applied.
+  const now = new Date("2026-05-01T12:00:00-04:00");
+  assert.deepEqual(extractDates("you may 3 times a week", { now }), []);
+  assert.deepEqual(extractDates("May 3", { now }), ["2026-05-03"], "capitalised, it is the month again");
+});
