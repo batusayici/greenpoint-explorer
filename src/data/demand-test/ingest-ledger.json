@@ -3575,6 +3575,13 @@
       "reason": "CLOSED, NOT EXPLAINED. The flagged 2026-09-25 date is \"FIXED with James Axon b2b JDH (all night), A lana (all night)\", 7:00PM on the doNYC listing, which shipped today as good-room-fixed-0925. It was the venue's last listing inside the window; the next is 1 October. WHAT WOULD CHANGE IT: nothing outstanding.",
       "addedAt": "2026-09-11",
       "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "kindred-nyc",
+      "gapKey": "READS EMPTY",
+      "reason": "THE PAGE IS READABLE AND SAYS THERE IS NOTHING ON. Re-earned against today's snapshot, which is the ENTIRE page at 129 characters: \"more gatherings coming soon / a place for calm & connection / no phones, no pressure / follow us on Instagram / add your name to the list\". Measured three ways on 2026-09-11 — plain fetch, chromium at domcontentloaded+2.5s, chromium at networkidle+6s — all three return a 200 and those same five lines, so this is the venue's own state and not a fetch we are getting wrong. The August sunset-yoga series ended, the same finding that deleted community-yoga-transmitter-thursdays on 2026-08-28. Deliberately NOT marked `datedListing: false`: when Kindred has programming it is dated gatherings, and false would mute the source permanently to silence a fortnight of quiet. WHAT WOULD CHANGE IT: Kindred posting a fall date, which lands as an ordinary diff.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     }
   ],
   "retiredCards": [
