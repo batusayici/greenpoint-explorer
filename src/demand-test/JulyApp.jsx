@@ -7,7 +7,13 @@ import { activeCommunityAlert } from "./communityAlert.js";
 import { bannerSlot } from "./bannerSlot.js";
 import { assessFreshness } from "./freshness.js";
 import stamp from "../data/demand-test/freshness-stamp.json";
-import { resolveDeepLink, deepLinkUrl, lensFromSearch } from "./deepLink.js";
+import {
+  resolveDeepLink,
+  deepLinkUrl,
+  lensFromSearch,
+  lensFromPath,
+  lensPagePath,
+} from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
@@ -32,10 +38,22 @@ function initialDeepLink() {
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
 // page; must never import the 3D runtime.
 export default function JulyApp({ showOrientation = false } = {}) {
-  // ?lens= deep link (2026-08-15): channel links may promise a view — land
-  // on it. lensFromSearch returns null for anything unknown, so "all" stays
-  // the fallback and a bad link can't narrow the page.
-  const [filter, setFilter] = useState(() => lensFromSearch(window.location.search) ?? "all");
+  // Lens deep links: a channel link may promise a view — land on it. Two
+  // shapes, both landing in the same place. `?lens=` (2026-08-15) is what
+  // already-sent links carry and keeps working forever. `/kids` and `/civic`
+  // (2026-09-10) are real prerendered pages, which is what lets them carry
+  // their own share preview and their own crawlable prose — a query string
+  // cannot, because Facebook keys its preview on `og:url`.
+  //
+  // The path wins when both are present: a reader who opened /kids is looking
+  // at a page whose headline says kids, and a stale `?lens=` riding along on a
+  // copied link should not silently show them something else. Either way an
+  // unknown value returns null and "all" stays the fallback, so a bad link can
+  // never narrow the page to nothing.
+  const [filter, setFilter] = useState(
+    () =>
+      lensFromPath(window.location.pathname) ?? lensFromSearch(window.location.search) ?? "all",
+  );
   const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
   const [selectedId, setSelectedId] = useState(initialId);
   const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);
@@ -97,9 +115,15 @@ export default function JulyApp({ showOrientation = false } = {}) {
 
   // Keep the address bar on the card's shareable path (?src= rides along).
   // replaceState, not pushState: back should leave the page, not unwind taps.
+  //
+  // The base is where "no card" goes: the root normally, and the lens page for
+  // a reader who arrived on one. Read once from the pathname the visit STARTED
+  // on, because this effect rewrites that pathname — reading it live would see
+  // its own last write and collapse to the root on the second pass.
+  const [basePath] = useState(() => lensPagePath(window.location.pathname));
   useEffect(() => {
-    window.history.replaceState(null, "", deepLinkUrl(selectedId, window.location.search));
-  }, [selectedId]);
+    window.history.replaceState(null, "", deepLinkUrl(selectedId, window.location.search, basePath));
+  }, [selectedId, basePath]);
 
   // The Follow row is dismissed PER LENS, and only for this visit (Batu,
   // 2026-07-30). Two complaints drove both halves: one dismiss used to spend a

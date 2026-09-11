@@ -22,6 +22,8 @@ import {
   icsText,
   llmsTxt,
   injectNotFoundPage,
+  injectLensPage,
+  lensPagePaths,
 } from "../src/demand-test/aeo.js";
 import { weekSheetHtml, weekSheetGroups } from "../src/demand-test/weekSheet.js";
 
@@ -39,6 +41,18 @@ for (const card of live) {
   const dir = resolve(DIST, "e", card.id);
   mkdirSync(dir, { recursive: true });
   writeFileSync(resolve(dir, "index.html"), injectCardPage(template, card, AEO_ORIGIN));
+}
+
+// Lens landing pages (2026-09-10): /kids and /civic. Written BEFORE the home
+// page is rewritten below, because both read the same untouched `template`.
+// lensPagePaths returns only the lenses stocked above the floor this build, so
+// a thin week publishes nothing rather than an empty page — and the sitemap
+// reads the same function, so it can never announce one that was not written.
+const lensPaths = lensPagePaths(seed.cards, now);
+for (const path of lensPaths) {
+  const dir = resolve(DIST, path);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(resolve(dir, "index.html"), injectLensPage(template, path, seed.cards, AEO_ORIGIN, now));
 }
 
 // Home-page JSON-LD (2026-08-12 pre-seed QA): WebSite + this week's ItemList

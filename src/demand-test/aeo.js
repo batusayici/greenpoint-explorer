@@ -8,10 +8,11 @@
 // and sentinel times are honored — a 00:00 start or 23:59 end is a DATE, and
 // no invented clock time ever reaches a crawler (same contract as
 // calendarLink.js, whose helpers these are).
-import { isExpiredCard } from "./filterCards.js";
+import { isExpiredCard, sortTodayFirst } from "./filterCards.js";
 import { isAllDay, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 import { RECURRENCE_DAYS } from "./cardSchema.js";
 import { editionLabel, isDailySitting } from "./eventWindow.js";
+import { LENS_PAGES } from "./deepLink.js";
 
 // Canonical origin since the 2026-08-06 Stoopwise rename. Two older hosts keep
 // serving and are NOT canonical: greenpoint.life (the Aug 2 cutover origin) and
@@ -558,6 +559,167 @@ export function injectHomePage(template, cards, origin, now) {
     .replace('<div id="root"></div>', `<div id="root">${homeBodyHtml(cards, origin, now)}</div>`);
 }
 
+// ---- lens landing pages (2026-09-10) ---------------------------------------
+// A lens on a query string can never carry its own share preview: Facebook
+// resolves a link to the `og:url` in its head and keys the preview on that
+// object, so `/?lens=family_kids` and `/?lens=civic` both collapse back to the
+// root. Every group post therefore previewed as the same generic headline. The
+// fix has to be a different URL, which is what /kids and /civic are.
+//
+// The share card is the smaller half. Every search query that has found this
+// site was somebody looking up a name they already had; nothing arrives from a
+// general question. A page titled for kids' events in Greenpoint, carrying the
+// week's kids' events as readable text, is the shape that answers one.
+//
+// WHY THIS LISTS CARDS WHERE homeBodyHtml DELIBERATELY DOES NOT. The home
+// page's prose is the header only, because prerendering the feed there changes
+// what the first screen says and collides with product calls already made. No
+// such call exists for a page that did not exist, and the precedent that fits
+// is the card page: it prerenders a card's real details into `#root`, visible
+// only in the moment before `createRoot()` replaces them.
+const LENS_COPY = {
+  family_kids: {
+    title: "Kids' events in Greenpoint, Brooklyn this week",
+    description:
+      "Story times, play groups, classes and family days in Greenpoint, Brooklyn — verified, sourced and mapped, updated every week.",
+    heading: "Family & Kids in Greenpoint, Brooklyn",
+  },
+  civic: {
+    title: "Community meetings and volunteering in Greenpoint, Brooklyn",
+    description:
+      "Community board meetings, park stewardship, cleanups and mutual aid in Greenpoint, Brooklyn — verified, sourced and mapped, updated every week.",
+    heading: "Civic life in Greenpoint, Brooklyn",
+  },
+};
+
+// Below this many live cards a lens page is not written and not announced. A
+// thin page is worse than no page: it teaches a crawler the site has little to
+// say about the thing it is titled for. Nothing is lost by waiting — the deck
+// is rebuilt on every ingest, so the page appears on its own once the lens is
+// stocked again.
+export const LENS_PAGE_FLOOR = 8;
+
+// How many cards the prose lists. Capped because this text flashes for a beat
+// before the app boots, the same as a card page's does — the sitemap carries
+// every card's own URL, so nothing is hidden by stopping here.
+const LENS_PAGE_LIST_MAX = 20;
+
+// Ordered the way the FEED orders it — `sortTodayFirst`, the same function
+// JulyApp calls. Deck order would open a page titled "this week" with undated
+// venue cards, which is both worse to read and not what the reader sees a
+// second later when the app boots.
+const lensCardsFor = (lensId, cards, now) =>
+  sortTodayFirst(
+    liveCards(cards, now).filter((c) => (c.filters ?? []).includes(lensId)),
+    now,
+  );
+
+const lensUrl = (path, origin) => `${origin}/${path}`;
+
+// The paths that HAVE a page this build. Sitemap and prerender both read this,
+// so a URL can never be announced without a file behind it.
+export function lensPagePaths(cards, now) {
+  return Object.entries(LENS_PAGES)
+    .filter(([, lensId]) => lensCardsFor(lensId, cards, now).length >= LENS_PAGE_FLOOR)
+    .map(([path]) => path);
+}
+
+function lensBodyHtml(lensId, cards, origin, now) {
+  const copy = LENS_COPY[lensId];
+  const listed = lensCardsFor(lensId, cards, now).slice(0, LENS_PAGE_LIST_MAX);
+  return [
+    "<main>",
+    `<h1>${escapeHtml(copy.heading)}</h1>`,
+    `<p>${escapeHtml(copy.description)}</p>`,
+    "<ul>",
+    ...listed.map((c) => {
+      const when = windowLine(c);
+      // A venue card's title IS its venue name, so naming it again reads as a
+      // stutter ("Giggles & Wiggles — Giggles & Wiggles · 42 West St").
+      const venue = c.locationName === c.title ? null : c.locationName;
+      const where = [venue, c.locationPrivate ? "address with RSVP" : c.address]
+        .filter(Boolean)
+        .join(" · ");
+      const detail = [when, where].filter(Boolean).join(" — ");
+      return `<li><a href="${escapeHtml(cardUrl(c, origin))}">${escapeHtml(c.title)}</a>${
+        detail ? ` — ${escapeHtml(detail)}` : ""
+      }</li>`;
+    }),
+    "</ul>",
+    `<p><a href="/">Stoopwise Greenpoint — this week's events, openings, deals, and news in Greenpoint, Brooklyn</a></p>`,
+    "</main>",
+  ].join("\n");
+}
+
+export function lensJsonLd(lensId, path, cards, origin, now) {
+  // Same compact shape as the home page's ItemList, and for the same reason:
+  // the entry carries enough to answer "what's on for kids on Saturday" without
+  // a follow-up fetch, and dates come from eventJsonLd so the all-day and
+  // unknown-end sentinels are honoured rather than re-implemented here.
+  const dated = lensCardsFor(lensId, cards, now)
+    .filter((c) => c.startsAt != null && !c.recurring)
+    .sort((a, b) => new Date(a.startsAt) - new Date(b.startsAt))
+    .slice(0, LENS_PAGE_LIST_MAX);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: LENS_COPY[lensId].title,
+    url: lensUrl(path, origin),
+    itemListElement: dated.map((c, i) => {
+      const ev = eventJsonLd(c, origin);
+      const item = {
+        "@type": "Event",
+        name: c.title,
+        startDate: ev.startDate,
+        url: cardUrl(c, origin),
+      };
+      if (ev.endDate) item.endDate = ev.endDate;
+      if (c.locationName) {
+        item.location = { "@type": "Place", name: c.locationName };
+        if (c.address) item.location.address = c.address;
+      }
+      return { "@type": "ListItem", position: i + 1, url: cardUrl(c, origin), item };
+    }),
+  };
+}
+
+export function injectLensPage(template, path, cards, origin, now) {
+  const lensId = LENS_PAGES[path];
+  if (!lensId) throw new Error(`unknown lens page path: ${path}`);
+  const copy = LENS_COPY[lensId];
+  const url = lensUrl(path, origin);
+  const pageTitle = `${copy.title} — Stoopwise`;
+
+  let html = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(pageTitle)}</title>`);
+  html = replaceMeta(html, "name", "description", copy.description);
+  html = replaceMeta(html, "property", "og:title", pageTitle);
+  html = replaceMeta(html, "property", "og:description", copy.description);
+  html = replaceMeta(html, "property", "og:url", url);
+  html = replaceMeta(html, "name", "twitter:title", pageTitle);
+  html = replaceMeta(html, "name", "twitter:description", copy.description);
+
+  // One canonical, pointing at itself. /kids and /?lens=family_kids render the
+  // same view, but the root is not lens-filtered without JS, so these are two
+  // genuinely different documents rather than copies — the case that earned
+  // Google's duplicate-canonical mail on 2026-09-06 was identical BYTES.
+  const canonicalTag = `<link rel="canonical" href="${escapeHtml(url)}" />`;
+  html = /<link\s+rel="canonical"[^>]*>/.test(html)
+    ? html.replace(/<link\s+rel="canonical"[^>]*>/, canonicalTag)
+    : html.replace("</head>", `    ${canonicalTag}\n  </head>`);
+
+  const ld = lensJsonLd(lensId, path, cards, origin, now);
+  html = html.replace(
+    "</head>",
+    `    <script type="application/ld+json">${JSON.stringify(ld, null, 1)}</script>\n  </head>`,
+  );
+
+  return html.replace(
+    '<div id="root"></div>',
+    `<div id="root">${lensBodyHtml(lensId, cards, origin, now)}</div>`,
+  );
+}
+
 // ---- sitemap / rss ---------------------------------------------------------
 
 export function sitemapXml(cards, origin, now) {
@@ -567,6 +729,10 @@ export function sitemapXml(cards, origin, now) {
     `${origin}/`,
     `${origin}/terms`,
     `${origin}/privacy`,
+    // Only the lens pages this build actually wrote — see lensPagePaths. A
+    // sitemap entry with no file behind it teaches a crawler to trust the rest
+    // of the file less, which is the whole reason verify-aeo checks parity.
+    ...lensPagePaths(cards, now).map((p) => `${origin}/${p}`),
     ...liveCards(cards, now).map((c) => cardUrl(c, origin)),
   ];
   return [
