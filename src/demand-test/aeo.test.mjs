@@ -574,3 +574,77 @@ test("the sitemap announces a lens page only when that page is built", () => {
   const thinXml = sitemapXml([kidsCard], ORIGIN, NOW);
   assert.ok(!thinXml.includes("/kids"), "a page that was not built is not announced");
 });
+
+// ---- a recurring card's readable date (2026-09-11) -------------------------
+// Found on the live /kids page the morning it was about to be posted to parents
+// groups: "McGolrick Bird Club — Sat, Aug 8" for a club that meets every
+// Saturday through 19 September. The prose printed `startsAt` — the series
+// START — with nothing saying it repeats, so a page built to answer questions
+// was telling a reader the event was last month.
+//
+// The structured data was right the whole time (recurringEventJsonLd states the
+// schedule), which is why nothing failed. This is the readable half catching up
+// to it, and it says what the APP says: the rhythm, not a date the reader
+// cannot use.
+
+const proseWeekly = {
+  ...timed,
+  id: "bird-club",
+  title: "Bird Club",
+  startsAt: "2026-07-04T09:00:00-04:00",
+  endsAt: "2026-09-19T10:00:00-04:00",
+  recurring: true,
+  recurrence: { days: ["sat"] },
+};
+
+const proseTwiceWeekly = {
+  ...proseWeekly,
+  id: "twice-weekly",
+  recurrence: { days: ["tue", "thu"] },
+};
+
+// A standing offer: repeats, but the source never said which day.
+const proseStanding = {
+  ...timed,
+  id: "standing-offer",
+  recurring: true,
+  recurrence: undefined,
+};
+
+test("a weekly card's prose states the rhythm, never its series start date", () => {
+  const html = injectCardPage(TEMPLATE, proseWeekly, ORIGIN);
+  assert.ok(!html.includes("Jul 4"), "printed the series start date as if it were the sitting");
+  assert.match(html, /Every Saturday/);
+  assert.match(html, /9:00 AM/, "the sitting time is stated and still useful");
+});
+
+test("a card recurring on several days names them all", () => {
+  const html = injectCardPage(TEMPLATE, proseTwiceWeekly, ORIGIN);
+  assert.match(html, /Tuesdays &amp; Thursdays/);
+  assert.ok(!html.includes("Jul 4"));
+});
+
+test("a card that repeats without a stated day claims no day and no date", () => {
+  // The truth rule: the source never named a day, so neither do we. The app
+  // shows nothing here either.
+  const html = injectCardPage(TEMPLATE, proseStanding, ORIGIN);
+  assert.ok(!html.includes("Jul 30"), "printed a date for a card with no stated day");
+  assert.ok(!/Every /.test(html), "invented a rhythm the source never stated");
+});
+
+test("a one-off card is untouched by the recurring fix", () => {
+  const html = injectCardPage(TEMPLATE, timed, ORIGIN);
+  assert.match(html, /Jul 30/);
+  assert.ok(!/Every /.test(html));
+});
+
+test("a lens page states the rhythm too — same function, both surfaces", () => {
+  const kidsWeekly = { ...proseWeekly, filters: ["family_kids"] };
+  const stocked = Array.from({ length: LENS_PAGE_FLOOR }, (_, i) => ({
+    ...kidsWeekly,
+    id: `weekly-${i}`,
+  }));
+  const html = injectLensPage(TEMPLATE, "kids", stocked, ORIGIN, NOW);
+  assert.match(html, /Every Saturday/);
+  assert.ok(!html.includes("Jul 4"), "the lens page printed the series start date");
+});

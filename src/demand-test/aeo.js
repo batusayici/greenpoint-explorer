@@ -11,7 +11,7 @@
 import { isExpiredCard, sortTodayFirst } from "./filterCards.js";
 import { isAllDay, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 import { RECURRENCE_DAYS } from "./cardSchema.js";
-import { editionLabel, isDailySitting } from "./eventWindow.js";
+import { editionLabel, isDailySitting, recurrenceLabel } from "./eventWindow.js";
 import { LENS_PAGES } from "./deepLink.js";
 
 // Canonical origin since the 2026-08-06 Stoopwise rename. Two older hosts keep
@@ -307,6 +307,30 @@ export function cardJsonLd(card, origin) {
 // Human-readable window line for the static body (crawlers read this too).
 function windowLine(card) {
   if (card.startsAt == null) return null;
+
+  // A REPEATING CARD STATES ITS RHYTHM, NEVER ITS SERIES START (2026-09-11).
+  // `startsAt` on a weekly card is the first day of the run, not a sitting a
+  // reader can turn up to, so printing it said the McGolrick Bird Club met on
+  // 8 August — five weeks before the page was read — for a club that meets
+  // every Saturday. Found on the live /kids page, unnoticed for as long as
+  // recurring cards have existed, because the STRUCTURED data was right the
+  // whole time (recurringEventJsonLd states the schedule) and nothing compares
+  // the two halves of a page against each other.
+  //
+  // This is what the app says, deliberately: `CardPanel` prints
+  // `recurrenceLabel` for a card with stated days and nothing at all for one
+  // without. No stated day means the source never named one, so neither do we.
+  const rhythm = recurrenceLabel(card);
+  if (rhythm) {
+    const at = isAllDay(card)
+      ? null
+      : new Intl.DateTimeFormat("en-US", {
+          hour: "numeric", minute: "2-digit", timeZone: "America/New_York",
+        }).format(new Date(card.startsAt));
+    return at ? `${rhythm} · ${at}` : rhythm;
+  }
+  if (card.recurring) return null;
+
   const start = new Date(card.startsAt);
   const day = new Intl.DateTimeFormat("en-US", {
     weekday: "short", month: "short", day: "numeric", timeZone: "America/New_York",
