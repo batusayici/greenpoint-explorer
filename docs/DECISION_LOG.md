@@ -4,6 +4,51 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — the Brooklyn Hearts Club card, a flag corrected within the hour, and five live cards whose quotes cannot be checked
+
+**The card its own roster note had called for since 2026-08-08 finally exists.** `brooklyn-hearts-club-art-night`,
+undated, category `subscription`, at Madeline's, 117 Franklin St. Nothing mechanical was ever going to
+catch that it was missing: the club's linktr.ee carries no second-Wednesday date, so the recurrence is
+stated only in the **Shop Small Greenpoint directory** — a different source — and no signal in this
+codebase compares one source's claim against another's deck. The roster note named that directory as
+"the sourceQuote of record, not the linktree" on the day the source was onboarded, and then nothing
+acted on it for a month.
+
+- **The quote is now checkable.** The directory entry was read from the widget's own public JSON on
+  2026-09-11 (200, 155,873 bytes, 144 listings — the carrd page renders only the first 50) and written
+  into this source's snapshot under `## [R1 PERSISTED 2026-09-11]`, so `ingest:quotes` re-checks it like
+  any other card. It reports OK.
+- **No time and no price ship, because the source states neither.** The card says so in its own summary
+  rather than guessing.
+
+**A flag this same day's earlier work got wrong, corrected within the hour.** An earlier pass marked
+this source `datedListing: false` — "a linktr.ee is a link list" — off a snapshot fetched the night
+before, in which the only dated line belonged to somebody else's event at an out-of-area venue. A live
+fetch the same afternoon shows the linktree **does** carry this club's own dated events as link titles:
+"9/13 Self led Craft Social: Decoupage Vases with Pressed Flowers" and "Fri 10/17 Boo with Brushes:
+Spooky Frames Craft Social". The flag is `true`. **The lesson is the one this whole day has been about:
+a call about what a source publishes has to rest on a fetch made in the session that makes it, not on
+whatever snapshot happens to be lying around.**
+
+⚠ **Neither of those two is cardable on its own** — a link title carries no start time and no venue, and
+neither date falls on a second Wednesday, so neither is the Madeline's night. They need the club asked.
+
+**Light & Sound Design: five live cards are quoting text that is not in any snapshot.** `ingest:quotes`
+has been failing on `lsd-quadraphonics-0912-matinee`, `-evening`, `lsd-churning-sonic-0913`,
+`lsd-echoes-archive-0918` and `lsd-mess-is-lore-0919` — its listing is a bare index, a date line and a
+title, 558 bytes, which cannot hold what its own cards quote. A `detail` block now persists the nine
+`/e/<slug>` event pages, which is a real improvement (12,170 bytes of baseline, purely additive) **and
+it does not fix the five cards**: they quote ALL-CAPS strings like "OLIVIA BLOCK PRESENTS \"BREACH\"
+(4-CHANNEL VERSION)" and "SECRET ADDRESS DM FOR INFO" that appear nowhere on the website. That is
+flyer or Instagram wording, so those cards were authored from something never written down. **They need
+re-reading and re-quoting by a run that can see the source, which is not this change.**
+
+**The run-time truth gate is currently RED on `main`, and was before today.** `node
+scripts/verify-quotes.mjs` exits 1 with 11 mismatches: the five above, three Salsa Pizzeria cards
+quoting "CLASS WEEK AT SALSA" / "SEPTEMBER 21-27" (its snapshot carries the events with dates, but not
+that promo wording), plus Held Space, the comedy club and Happy Medium. None was introduced here.
+**Recommendation: the next refresh re-reads and re-quotes all eleven before it ships anything else.**
+
 ## 2026-09-11 — every roster source now reads, and three of them can produce cards for the first time
 
 **Follow-on from the two entries below**, which fixed what the pipeline could SEE. This one fixes the

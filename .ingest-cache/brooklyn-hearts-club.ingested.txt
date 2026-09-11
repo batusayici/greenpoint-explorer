@@ -13,16 +13,16 @@ Join brooklynheartsclub on Linktree
 Cookie Preferences • Report • Privacy •
 Explore • About this account • More from Linktree
 Explore other Linktrees
-Mythical Kitchen @mythicalkitchen
-TJ Palma @tjpalma
-Halley Kate @halleykmcg
-Dua Lipa @dua.lipa
-Kaitlyn Johnson @missynjohnson
-arianagrande @arianagrande
-jimgaffigan @jimgaffigan
-Billie Eilish @billieeilish
-Aaron Burriss @aaron.burriss
-Hunter Vought @huntervought
+Mykel @dont.chase.your.d
+myfavoritemurder @myfavoritemurder
+elan.media @elan.media
+drMarkHyman @drMarkHyman
+Vienna Skye @viennaskye
+Whitney Port @whitneyport
+Be Fat Be Happy @befatbehappy
+Sofia Tilbury @sofiatilbury
+Charli Andrea @charliandrea
+briansetzer @briansetzer
 previous
 next
 Discover more See all
@@ -104,3 +104,21 @@ Read our blog All the latest tips, tricks and growth strategies
 Success Stories Real people, real results on Linktree
 How to use Linktree
 Linktree Help Centre Get answers, guides and support
+
+## [R1 PERSISTED 2026-09-11] https://embeddirectory.com/api/widget/widget_h8j9mDfYJHdnhu6q/items — Shop Small Greenpoint directory entry
+# Evidence-persistence rule (DECISION_LOG 2026-08-12). This club's own linktr.ee
+# carries no dates for its own night, so the recurrence a card rests on is
+# sourced from the Shop Small Greenpoint directory — which this source's roster
+# note has named as "the sourceQuote of record, not the linktree" since it was
+# onboarded on 2026-08-08. Read from the directory widget's own public JSON on
+# 2026-09-11 (200, 155,873 bytes, 144 listings); the carrd page at
+# shopsmallgreenpoint.carrd.co renders only the first 50 because of a lazy-load.
+# Entry id 63943, last_updated 2025-08-08 21:05:54.
+name: Brooklyn Hearts Club
+description: An art club for adults held at Madeline's every second Wednesday of the month! Create and connect in a judgement free space.
+address: 117 Franklin St, Brooklyn, NY 11222
+location.latitude: 40.729934905793
+location.longitude: -73.957696285413
+custom_fields.1753632961867: https://www.instagram.com/brooklynheartsclub/?hl=en
+custom_fields.1753633324884: https://linktr.ee/brooklynheartsclub
+custom_fields.1753632995878: Woman-owned, Polish-owned, Queer-owned

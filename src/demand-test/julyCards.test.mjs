@@ -904,7 +904,16 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // the 25th, the Comedians You Should Know night the club moved to 9:15pm on
   // the 23rd, and four Film Noir Cinema screenings its calendar was already
   // carrying uncarded. Deck 234 -> 245, event 134 -> 144.
-  assert.equal(seed.cards.length, 245);
+  //
+  // 2026-09-11 (out of band, not a refresh): +1. Brooklyn Hearts Club's undated
+  // art-club card, which its own roster note has called for since the source was
+  // onboarded on 2026-08-08 and which no run ever wrote. Nothing mechanical was
+  // ever going to catch it: the club's linktr.ee carries no dates for its own
+  // night, so the second-Wednesday recurrence is stated only in the Shop Small
+  // Greenpoint directory — a different source — and the directory entry is now
+  // persisted into this source's snapshot so the quote gate can re-check it.
+  // Deck 245 -> 246, subscription 38 -> 39.
+  assert.equal(seed.cards.length, 246);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 36, "35 + the Limousine opening (2026-09-11)");
@@ -912,7 +921,7 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
   assert.equal(count((c) => c.filters.includes("live_music")), 41, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
-  assert.equal(count((c) => c.category === "subscription"), 38, "37 + The 607 CSA winter veggie share (2026-09-10 posters)");
+  assert.equal(count((c) => c.category === "subscription"), 39, "38 + Brooklyn Hearts Club's second-Wednesday art club (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one

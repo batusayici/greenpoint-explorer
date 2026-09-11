@@ -11289,6 +11289,56 @@
         }
       ],
       "sourceQuote": "title: SUPERSHORTS NY FILM FESTIVAL\nstartDate: 2026-09-25T22:00:00.000Z\nendDate: 2026-09-25T23:00:00.000Z\nstartDate: 2026-09-26T22:30:00.722Z\nstartDate: 2026-09-27T22:30:00.287Z"
+    },
+    {
+      "id": "brooklyn-hearts-club-art-night",
+      "title": "Brooklyn Hearts Club at Madeline's",
+      "category": "subscription",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Madeline's",
+      "address": "117 Franklin St, Brooklyn, NY 11222",
+      "kicker": "Adult art club, every second Wednesday",
+      "summary": "A drop-in art club for adults that meets at Madeline's on Franklin St on the second Wednesday of every month. The club states no start time and no price — turn up and ask, or check their Linktree.",
+      "whyItMatters": "The club has no website of its own and its Linktree carries no dates, so the only place this recurrence is written down is the Shop Small Greenpoint directory.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://linktr.ee/brooklynheartsclub"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint directory — Brooklyn Hearts Club",
+          "url": "https://shopsmallgreenpoint.carrd.co/#ssg-directory",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-09-11"
+        },
+        {
+          "title": "Brooklyn Hearts Club",
+          "url": "https://linktr.ee/brooklynheartsclub",
+          "publisher": "Brooklyn Hearts Club",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "An art club for adults held at Madeline's every second Wednesday of the month! Create and connect in a judgement free space.",
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.730301,
+      "lng": -73.957773
     }
   ]
 }
