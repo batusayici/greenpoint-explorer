@@ -52,7 +52,7 @@
         "date": "2026-09-03"
       },
       {
-        "label": "Rana's group list from Batu → one parents-<slug> src row per group, copy finalized",
+        "label": "Rana's group list is in (2026-09-10) — parents groups ride the one parents link; her two non-kids groups have their own rows. Copy still to finalize.",
         "when": "Closer to Sep 8",
         "status": "later",
         "date": "2026-09-05"
@@ -328,7 +328,7 @@
         {
           "label": "Rana's group list — determines how many src rows exist",
           "status": "done",
-          "detail": "CLOSED 2026-09-08 (Batu): the moms groups are ONE source, not one per group. The parents-<slug> scheme is retired — no such row was ever created. Every post carries https://stoopwise.com/?src=parents&lens=family_kids. Q2's decision rule is untouched: it was pre-registered on the POOLED parents family, and a single source is that family."
+          "detail": "CLOSED 2026-09-08 (Batu): the moms groups are ONE source, not one per group. The parents-<slug> scheme is retired — no such row was ever created. Every post carries https://stoopwise.com/?src=parents&lens=family_kids. Q2's decision rule is untouched: it was pre-registered on the POOLED parents family, and a single source is that family. LIST RECEIVED 2026-09-10 (Batu): North Brooklyn Education and Brooklyn Baby Hui are parents groups and carry the parents link, so the one-source ruling stands unchanged. Two of her groups are not about kids — North Brooklyn Civic Crowdsource and Greenpoint Sharing — and those got their own rows, civic-crowdsource (lens=civic) and gp-sharing (no lens), because the parents link would land their readers on the Family & Kids view. Whether Greenpoint Sharing permits outside links is unconfirmed and Rana should check before she posts there."
         }
       ],
       "source": "roster Q2 preconditions"
@@ -1326,7 +1326,7 @@
         "since": "2026-09-03"
       },
       {
-        "label": "Rana's group list from Batu → one parents-<slug> src row per group, copy finalized",
+        "label": "Rana's group list is in (2026-09-10) — parents groups ride the one parents link; her two non-kids groups have their own rows. Copy still to finalize.",
         "since": "2026-09-05"
       },
       {
@@ -1338,26 +1338,14 @@
         "since": "2026-09-08"
       }
     ],
-    "waiting": [
-      {
-        "what": "PR #73 — growth: readout 2026-09-08, rebuilt onto the current main",
-        "age": 0
-      },
-      {
-        "what": "PR #71 — content(track-v): held cards, daily 2026-09-10",
-        "age": 0
-      },
-      {
-        "what": "1 commit on main not pushed",
-        "age": 0
-      }
-    ],
+    "waiting": [],
     "overnight": [
-      "Merge pull request #72 from batusayici/ingest/rebuild-0909-cards",
-      "data: refresh the freshness stamp for the seven recovered cards",
-      "ingest: record the Greenpointers roundup and the Sweet Chick skip in the ledger",
-      "content(track-v): the seven cards the 9/9 run verified but never shipped",
-      "content(track-v): daily refresh 2026-09-10 — eight cards on, and tonight's film time was wrong"
+      "Merge pull request #76 from batusayici/ingest/arto-lindsay-watchitem",
+      "ingest: an unblocked-on date cards itself, starting with Arto Lindsay on 10/3",
+      "Merge pull request #74 from batusayici/feature/poster-ingest",
+      "Merge main — the closed-audience rule and the 9/8 growth readout",
+      "cards: a card can ship without a pin when the venue hides its address",
+      "poster: Calyer ships as September, Light & Sound and Jabberjaw recorded"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1366,12 +1354,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 94,
-      "reservoir": 35,
+      "dated": 98,
+      "reservoir": 38,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 225
+      "cards": 235
     }
   }
 }
