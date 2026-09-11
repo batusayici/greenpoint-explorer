@@ -176,6 +176,58 @@ when revised, and retired ones are struck rather than renumbered.
 
 ## Log
 
+### L2026-09-11 — Rana posted to the parents groups: the biggest day the product has had (analytics pull)
+
+Source: `./scripts/posthog-pull.sh` and `node scripts/tally-pull.mjs`, run
+2026-09-11 ~7:20pm, about seven hours after the post. Rana, a member of the
+groups and Batu's wife, posted the `/kids` link to her parents groups around
+noon; the post named fall registration across seven providers and the McCarren
+pool's last weekend, and said outright that her husband built it.
+
+Facts — arrivals: 203 distinct people and 867 events on 2026-09-11. The best
+day before this was 27 people (2026-09-08); the best before the school-opening
+push was 22. The `parents` tag carries 181 of those people, 156 card opens, 28
+action taps and 10 signup-ask taps. `civic-crowdsource` carries 7 and
+`gp-sharing` 1.
+
+Facts — what they read: the most-opened cards are the Calyer Street block party
+(24), the Goddard School day of fun (22), the McCarren pool's last week (20),
+YMCA fall registration (19), the McGolrick Bird Club (11) and Tunes for Tykes
+(11). The Yaro clay workshop (10), the McCarren bike class (9) and the
+Greenpoint Shul shofar workshop (8) follow. `family_kids` is the most-tapped
+lens of the day at 75 taps by 36 people.
+
+Facts — signups: nine submissions on the day, every one carrying `src=parents`,
+eight of them following `lens:family_kids` and one following `all`. One person
+submitted twice. The list goes from 5 unique respondents to 13.
+
+Facts — the tag broke again: 18 people arrived on tags with a trailing
+backtick — `parents`` 5, `civic-crowdsource`` 8, `gp-sharing`` 5. This is the
+**third** send lost to the same character, after 7 of 15 on 2026-08-25 and 4 of
+13 on 2026-09-01, and the first where the links were handed over in fenced code
+blocks rather than inline code.
+
+Read: the parents groups are, so far, the only channel that has produced
+readers rather than arrivals. Compare the two weekly email sends, which drew 28
+people and zero card opens between them: this drew 181 people and 156 card
+opens, and 9 of them gave an email address. It is one post by one trusted member
+of the group, so it says nothing yet about whether the channel repeats, and
+nothing about whether these people come back — the return rate is the number to
+watch next week, not today's count. What it does settle is that the container
+is not the obstacle for this audience: they opened cards, tapped through to
+sources, and signed up, on a web page, on phones. That is the first direct
+evidence against Q1 from the audience Q1 was raised about, and it came from the
+person whose behaviour raised it.
+
+The card ranking is worth keeping: the two most-opened items are a block party
+and a school open day — both this weekend, both free, neither a class you enrol
+in. The fall-registration cards the post led with came fourth and below. People
+came for what to do on Saturday, not for the sign-up admin.
+
+Also: the R1 trigger is now met on both halves for the first time — 13 signups
+(≥10) with 8 segmented (≥1). That is a decision for Batu, recorded here as a
+fact rather than acted on.
+
 ### L2026-09-08 — Search finds us by name, never by question; ChatGPT became a trickle (analytics pull)
 
 Source: the Tuesday growth routine, 2026-09-08 — `scripts/posthog-pull.sh` and
