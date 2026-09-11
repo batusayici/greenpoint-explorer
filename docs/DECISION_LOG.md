@@ -4,6 +4,31 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — the card you opened always gets its pin, peek or not
+
+**Batu, on a phone: "when I open the family and kids cards, most of them do not show a mapped pin."**
+Measured on production: 51 cards in Family & Kids, 20 pins while the map sits in its compact strip,
+29 once it is expanded. Opening one of the missing ones expanded the card, moved nothing on the map,
+and looked like the place was not mapped.
+
+**The filter was right and stays.** It is a crit decision (round 2, #7): the 203px peek rendered
+every pin at a size where the colour key cannot be read, so it keeps what is on today, what recurs,
+and undated venues — the map's stable geography — and drops dated cards for other days. Expanding the
+map, or any desktop viewport, shows everything.
+
+**What nobody weighed is the opened card.** A card the reader has tapped is not density; it is the
+one pin they asked for. `peekMapCards` now always keeps it, in its feed position. The resting map is
+unchanged — still 20 pins — and it goes to 21 while a card is open.
+
+**Why it read as "most of them".** Kids events are overwhelmingly dated for a day that is not today:
+fall registration runs for weeks, library programmes are Monday through Friday, a shofar workshop is
+on Sunday. Every one of those was pinless on a phone. The same was true of every other lens; it was
+loudest here because the family feed has the fewest things happening on the day you look.
+
+**Worth carrying forward:** a filter judged on the resting state can still be wrong in an interaction
+nobody tried from that state. The crit that set this one was looking at a map nobody had tapped a
+card on.
+
 ## 2026-09-11 — Threes Brewing's calendar was never live; it is now, with fourteen Greenpoint nights
 
 **Batu asked whether the Threes Brewing events calendar was live and producing cards. It was neither,

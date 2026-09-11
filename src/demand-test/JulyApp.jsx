@@ -5,6 +5,7 @@ import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { nextGtrainWindow, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
 import { bannerSlot } from "./bannerSlot.js";
+import { peekMapCards } from "./mapPins.js";
 import { assessFreshness } from "./freshness.js";
 import stamp from "../data/demand-test/freshness-stamp.json";
 import {
@@ -216,12 +217,11 @@ export default function JulyApp({ showOrientation = false } = {}) {
   // at a size where the color key can't be read. In the peek, dated pins
   // narrow to today's; ongoing/recurring cards (the map's stable geography)
   // stay. Expanding the map — or any desktop viewport — shows everything.
+  // The OPENED card is always kept (2026-09-11) — see peekMapCards.
   const mapCards = useMemo(() => {
     if (!smallViewport || mapExpanded) return visible;
-    return visible.filter(
-      (c) => (c.startsAt == null && c.endsAt == null) || c.recurring || isActiveOn(c, now),
-    );
-  }, [visible, smallViewport, mapExpanded, now]);
+    return peekMapCards(visible, selectedId, now);
+  }, [visible, selectedId, smallViewport, mapExpanded, now]);
 
   const onFilter = useCallback((id) => {
     setPinFocus(null); // any chip tap exits location focus
