@@ -42,9 +42,22 @@ second instance cost a month of a venue's programming and was found by a person 
    listing). Month names are listed in full rather than "three letters plus anything", because with a
    bare `Month D` now matching, "anything" turns *Marathon 5K* into March 5.
 
+4. **And the ISO pattern has never matched a calendar feed.** Found the same day while classifying
+   sources for the follow-up work, because an `.ics` feed reporting zero dates makes no sense on its
+   face. The pattern ended in `\b`, which needs a non-word character after the day — and an ISO
+   *datetime* puts a `T` there, so there is no boundary and no match. Bare `2026-08-11` parsed;
+   `2026-08-11T20:00:00Z` did not. Every source publishing ISO datetimes has therefore reported zero
+   dates since coverage.js was written: the Greenpoint Library API, the Reformed Church and St
+   Stanislaus iCalendar feeds, Polish & Slavic Center, Carcosa, Moon Bunny, Macha, Sparrow,
+   Transmitter Park. It read as "a format this script cannot parse", which the report excuses as no
+   signal — so not one of them was ever flagged. The library alone reconciles to 11 dated items
+   against 10 in the deck, a comparison that had never once run.
+
 **What this costs on the next run.** Eighteen sources now parse dates they did not before, and seven
 lines that read `ok` or `quiet` now read `GAP`: Triskelion (3 dates), Light and Sound Design (6),
-Happy Medium (3), Lot Radio (6), BPL North Brooklyn (7), Greenpoint YMCA (2), Archestratus (1). Every
+Happy Medium (3), Lot Radio (6), BPL North Brooklyn (7), Greenpoint YMCA (2), Archestratus (1) — plus
+four more once the ISO fix landed: Greenpoint Library (11 dates), Reformed Church (13), Film Noir
+Cinema (5) and the MTA G alerts feed (5). Every
 one was checked by hand against its snapshot and the dates are real. Under the existing rule each is
 a card owed or a `coverageExplanations` entry, so **the next refresh takes the review-PR path rather
 than auto-shipping until they are closed.** That is the instrument starting to work, not a

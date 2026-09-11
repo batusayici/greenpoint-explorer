@@ -104,7 +104,15 @@ export function extractDates(raw, { now, windowDays = 14 } = {}) {
   const to = nyDay(new Date(now.getTime() + windowDays * 864e5));
   const out = new Set();
 
-  for (const m of text.matchAll(/\b(20\d{2})-(\d{2})-(\d{2})\b/g)) out.add(iso(+m[1], +m[2], +m[3]));
+  // The trailing boundary is a lookahead, not \b (2026-09-11). \b needs a
+  // non-word character after the day, and an ISO DATETIME puts a "T" there —
+  // both word characters, so no boundary, so no match. Every source publishing
+  // ISO datetimes has reported zero dates since this file was written: the
+  // library API, two iCalendar feeds, Polish & Slavic Center, Carcosa, Moon
+  // Bunny, Macha, Sparrow, Transmitter Park. It looked like "a format this
+  // script cannot parse", which the report excuses as no signal, so not one of
+  // them was ever flagged.
+  for (const m of text.matchAll(/(?<!\d)(20\d{2})-(\d{2})-(\d{2})(?!\d)/g)) out.add(iso(+m[1], +m[2], +m[3]));
   // One pass for every month-name shape the roster publishes, replacing the two
   // narrower patterns this had before 2026-09-11. Those required either a
   // trailing year or a leading weekday, so a venue writing its season as bare

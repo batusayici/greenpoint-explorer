@@ -526,3 +526,31 @@ test("extractDates: a price range is not a date range", () => {
   assert.deepEqual(extractDates("Workshops $90-125, September 2026", { now: SEPT_NOW, windowDays: 30 }), [],
     "the month has no day here, and the dollar range must not borrow one");
 });
+
+// ---- ISO DATETIMES: the pattern that has never matched a calendar feed ----
+// The trailing \b on the ISO pattern needs a non-word character after the day,
+// and an ISO datetime puts a "T" there — both word characters, so no boundary,
+// so no match. Every source publishing ISO datetimes has therefore reported
+// zero dates since this file was written: the Greenpoint Library API, the
+// Reformed Church and St Stanislaus iCalendar feeds, Polish & Slavic Center,
+// Carcosa, Moon Bunny, Macha, Sparrow and Transmitter Park among them. It read
+// as "a format this script cannot parse", which the report excuses as no
+// signal, so it was never once flagged. Found 2026-09-11 while classifying
+// sources for `datedListing`, because an .ics feed reading zero dates makes no
+// sense on its face.
+test("extractDates: an ISO datetime is a date", () => {
+  assert.deepEqual(
+    extractDates("SUMMARY: Worship\nDTSTART: 2026-08-09T15:00:00.000Z", { now: NOW }),
+    ["2026-08-09"],
+  );
+});
+
+test("extractDates: the Brooklyn Library's start field parses, its end field still does not", () => {
+  const bpl = "ts_title: Sunset Storytime\nds_event_start_date: 2026-08-13T22:00:00Z\nds_event_end_date: 2026-08-14T22:30:00Z";
+  assert.deepEqual(extractDates(bpl, { now: NOW }), ["2026-08-13"], "the exclusive end is still dropped");
+});
+
+test("extractDates: a longer digit run is not an ISO date", () => {
+  assert.deepEqual(extractDates("ref 12026-08-09", { now: NOW }), []);
+  assert.deepEqual(extractDates("2026-08-091", { now: NOW }), []);
+});
