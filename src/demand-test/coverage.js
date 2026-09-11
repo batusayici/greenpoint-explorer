@@ -89,6 +89,12 @@ function inferYear(month, day, now) {
 const MONTH_NAMES =
   "January|Jan|February|Feb|March|Mar|April|Apr|May|June|Jun|July|Jul|" +
   "August|Aug|September|Sept|Sep|October|Oct|November|Nov|December|Dec";
+// "may" only. It is the one month name that is also a common English word in
+// running prose, and the guard costs a real date every time it is applied more
+// widely: Kindred writes "august 13, 7pm" in lower case, and rejecting that
+// loses the source. "we march 12 blocks" and "an august 9 of a building" are
+// not sentences a venue listing contains.
+const AMBIGUOUS_MONTHS = /^may$/i;
 const MONTH_DAY_RE = new RegExp(
   String.raw`\b(?:(?:mon|tues|wednes|thurs|fri|satur|sun)day,?\s+)?` +
     `(${MONTH_NAMES})` +
@@ -121,7 +127,10 @@ export function extractDates(raw, { now, windowDays = 14 } = {}) {
   // snapshot for exactly that reason, and fourteen other sources publish dates
   // this could not see ("September 26th", "Oct 15-17", "Sept 2").
   for (const m of text.matchAll(MONTH_DAY_RE)) {
-    if (m[1][0] !== m[1][0].toUpperCase()) continue; // lowercase "may" is the verb
+    // The capital-letter guard only ever needed to cover month names that are
+    // also ordinary English words. Applied to all twelve it threw away Leaves
+    // Bookstore and Kindred, which write every date in lower case.
+    if (AMBIGUOUS_MONTHS.test(m[1]) && m[1][0] !== m[1][0].toUpperCase()) continue;
     const mo = MONTHS[m[1].slice(0, 3).toLowerCase()];
     if (!mo) continue;
     const da = +m[2];

@@ -554,3 +554,27 @@ test("extractDates: a longer digit run is not an ISO date", () => {
   assert.deepEqual(extractDates("ref 12026-08-09", { now: NOW }), []);
   assert.deepEqual(extractDates("2026-08-091", { now: NOW }), []);
 });
+
+// Two roster sources write their dates entirely in lower case — Leaves
+// Bookstore ("thursday september 24, 2026") and Kindred ("august 13, 7pm") —
+// and the capital-letter guard threw both away. It is now applied to "may"
+// alone — the one month name that is also a common word in running prose.
+test("extractDates: a lower-case month reads, when it is not also an English word", () => {
+  assert.deepEqual(
+    extractDates("printed matter ny art book fair\nthursday september 24, 2026", { now: new Date("2026-09-11T12:00:00-04:00"), windowDays: 30 }),
+    ["2026-09-24"],
+  );
+  assert.deepEqual(
+    extractDates("sunset yoga in the park\naugust 13, 7pm", { now: new Date("2026-08-07T12:00:00-04:00") }),
+    ["2026-08-13"],
+    "august is a word, but lower case with a day after it is a date",
+  );
+});
+
+test("extractDates: the lower-case verb still does not mint a date", () => {
+  // "may" is the one month name that is also a common word in running prose,
+  // and the guard costs a real date everywhere else it is applied.
+  const now = new Date("2026-05-01T12:00:00-04:00");
+  assert.deepEqual(extractDates("you may 3 times a week", { now }), []);
+  assert.deepEqual(extractDates("May 3", { now }), ["2026-05-03"], "capitalised, it is the month again");
+});

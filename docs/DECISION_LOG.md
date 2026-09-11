@@ -53,6 +53,12 @@ second instance cost a month of a venue's programming and was found by a person 
    signal — so not one of them was ever flagged. The library alone reconciles to 11 dated items
    against 10 in the deck, a comparison that had never once run.
 
+5. **Lower-case months, too.** The widened parser required a leading capital so the verb "may" could
+   not mint a date, and that threw away two sources that write every date in lower case: Leaves
+   Bookstore ("thursday september 24, 2026") and Kindred ("august 13, 7pm"). The guard now covers
+   "may" alone. "we march 12 blocks" and "an august 9 of a building" are not sentences a venue
+   listing contains, and the guard costs a real date everywhere else it is applied.
+
 **What this costs on the next run.** Eighteen sources now parse dates they did not before, and seven
 lines that read `ok` or `quiet` now read `GAP`: Triskelion (3 dates), Light and Sound Design (6),
 Happy Medium (3), Lot Radio (6), BPL North Brooklyn (7), Greenpoint YMCA (2), Archestratus (1) — plus
