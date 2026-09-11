@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-11T13:30:00-04:00",
+  "lastRunAt": "2026-09-11T00:00:00.000Z",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -2999,8 +2999,8 @@
     "little-dance-school": "2026-07-24",
     "brooklyn-youth-ballet": "2026-09-06",
     "dance-space-ny": "2026-07-24",
-    "yaro-studios": "2026-09-09",
-    "yaro-kids-clay": "2026-09-09",
+    "yaro-studios": "2026-09-10",
+    "yaro-kids-clay": "2026-09-10",
     "moon-bunny-aerial": "2026-09-08",
     "brooklyn-craft-company": "2026-09-06",
     "last-place-on-earth": "2026-09-06",
@@ -3050,9 +3050,9 @@
     "kingsland-wildflowers": "2026-09-06",
     "polish-slavic-center": "2026-09-06",
     "gwysl-youth-soccer": "2026-09-06",
-    "artudio": "2026-09-09",
-    "play-greenpoint-sawyer": "2026-09-09",
-    "art-101-sawyer": "2026-09-09",
+    "artudio": "2026-09-10",
+    "play-greenpoint-sawyer": "2026-09-10",
+    "art-101-sawyer": "2026-09-10",
     "greenthumb-gardens-11222": "2026-09-06",
     "msjs-greenpoint": "2026-09-06",
     "space-club-greenpoint": "2026-09-06",
@@ -3062,7 +3062,12 @@
     "st-stans-academy": "2026-09-06",
     "happy-medium": "2026-09-08",
     "salsa-pizzeria": "2026-09-09",
-    "light-and-sound-design": "2026-09-09"
+    "light-and-sound-design": "2026-09-09",
+    "brooklyn-hearts-club": "2026-09-10",
+    "triskelion-arts": "2026-09-10",
+    "threes-brewing-greenpoint": "2026-09-10",
+    "tunes-for-tykes": "2026-09-10",
+    "greenpoint-shul": "2026-09-10"
   },
   "coverageExplanations": [
     {
@@ -3395,13 +3400,6 @@
       "expiresAt": "2026-09-21"
     },
     {
-      "sourceId": "greenpoint-reformed-church",
-      "gapKey": "GAP",
-      "addedAt": "2026-09-07",
-      "expiresAt": "2026-09-21",
-      "reason": "FIRST RUN OF A NEW SOURCE; one card shipped, one held, the rest is not supply. The Food Pantry shipped (greenpoint-church-food-pantry, Thursdays 4-7pm, \"LOCATION: 136 Milton St, Brooklyn, NY 11222, USA\"). The Community Meal is HELD on a source conflict: its DESCRIPTION says \"Each Wednesday afternoon, volunteers cook a meal\" and \"just show up at 6PM\", while its RRULE is BYDAY=TU and its expanded DTSTART is a Tuesday — two different claims about the day, so the 2026-08-26 prose-wins rule does not settle it and the card waits on the church. The remaining in-window rows are Sunday worship and five 12-step meetings (Into Action AA, Drink & Die, Greenpoint Agnostics & Freethinkers…), which are not cardable supply under any lens. WHAT WOULD CHANGE IT: the church fixing the meal's day, or a dated family event appearing."
-    },
-    {
       "sourceId": "st-stans-academy",
       "gapKey": "GAP",
       "addedAt": "2026-09-07",
@@ -3589,6 +3587,76 @@
       "reason": "THE PAGE IS READABLE AND SAYS THERE IS NOTHING ON. Re-earned against today's snapshot, which is the ENTIRE page at 129 characters: \"more gatherings coming soon / a place for calm & connection / no phones, no pressure / follow us on Instagram / add your name to the list\". Measured three ways on 2026-09-11 — plain fetch, chromium at domcontentloaded+2.5s, chromium at networkidle+6s — all three return a 200 and those same five lines, so this is the venue's own state and not a fetch we are getting wrong. The August sunset-yoga series ended, the same finding that deleted community-yoga-transmitter-thursdays on 2026-08-28. Deliberately NOT marked `datedListing: false`: when Kindred has programming it is dated gatherings, and false would mute the source permanently to silence a fortnight of quiet. WHAT WOULD CHANGE IT: Kindred posting a fall date, which lands as an ordinary diff.",
       "addedAt": "2026-09-11",
       "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "lot-radio",
+      "gapKey": "GAP",
+      "reason": "THIS SOURCE PRODUCES ONE STANDING VENUE CARD AND NEVER PER-SET CARDS — Batu's roster ruling of 2026-08-13, and the card it names is live as `the-lot-radio`. It read SILENT until 2026-09-11, when the widened date parser started reading its dot-format dates ('09.11.2026'), so the same unchanged situation now prints as GAP instead. Re-earned against this run's snapshot, 1,077 bytes, plain fetch, clean: the calendar expands only the current day's broadcast lineup and the following days render as bare headings, so it could not support a dated card even if the ruling allowed one. WHAT WOULD CHANGE IT: Batu reversing the per-set ruling, or the station publishing forward-dated in-person programming.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "mta-g-alerts",
+      "gapKey": "GAP",
+      "reason": "THIS SOURCE FEEDS CODE AND A STANDING CARD, NOT DATED CARDS — its output is GTRAIN_WINDOWS in src/demand-test/gtrainBanner.js plus the undated `g-train-closures` card, so it can fetch clean for weeks without producing a new one. It read SILENT until 2026-09-11, when the ISO-datetime parser fix made its timestamps readable for the first time, so the same situation now prints as GAP. Re-earned against this run's snapshot: the G26/G28 header 'No [G] between Bedford-Nostrand Avs and Court Sq' is present and every Greenpoint-closing window it carries is already in the code. WHAT WOULD CHANGE IT: a new G26/G28 window, which is a human-gated code change per the roster note.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "macaroni-kid-brooklyn-nw",
+      "gapKey": "GAP",
+      "reason": "AN AGGREGATOR COVERING GREENPOINT, WILLIAMSBURG AND BUSHWICK — nothing is ever carded from it directly under the aggregator rule; a Greenpoint pick here is a pointer to the organiser's own page, which is where the card comes from. So 'deck covers 0' reads low every week by construction. Re-earned against this run's snapshot: it mentions Greenpoint five times across its weekend-picks articles and the detail block follows five of them. WHAT WOULD CHANGE IT: a Greenpoint item here whose organiser we have NOT carded — that is the signal, and it lands as an ordinary diff.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "greenpoint-library",
+      "gapKey": "GAP",
+      "reason": "THE TWO FLAGGED DAYS CARRY NOTHING CARDABLE, AND THE SOURCE ITSELF SAYS SO. 9/12: its three rows are the Cycle Alliance period pantry — a standing amenity whose own body reads 'Monday-Sunday during branch open hours', so it belongs on the `greenpoint-library` venue card under the 2026-08-14 rule and not on a dated card — plus 'Sustainable Sewing: Sewing Machine Basics' and 'Saturday Family StoryTime', both carrying is_event_canceled: 1. 9/24: the feed's last row is 2026-09-23; the date appears inside a body, not as a programme. Every other day in the window is carded. WHAT WOULD CHANGE IT: the branch publishing further forward, which lands as an ordinary diff.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "greenpoint-reformed-church",
+      "gapKey": "GAP",
+      "reason": "THE UNCARDED ROWS ARE AA MEETINGS, SUNDAY WORSHIP AND ONE ROW THE SOURCE CONTRADICTS ITSELF ON. The AA and 12-step meetings (Into Action Fridays, the men's meeting Sundays, Agnostics & Freethinkers Mondays) are ongoing support groups, not neighbourhood supply, and the men's meeting states a closed audience in its own title. Sunday Worship is the open religious-service question the skill records as unresolved — worship is open to all and FILTER_IDS carries no lens for it, and no card ships lens-less. The Community Meal is HELD, not missed: its own record says 'RRULE: FREQ=WEEKLY;WKST=MO;BYDAY=TU' with DTSTART on a Tuesday while its description reads 'Each Wednesday afternoon' — the clock (6PM) is confirmed by the body but the DAY is not, and a card states a day a reader turns up on. The food pantry IS carded, as greenpoint-church-food-pantry. WHAT WOULD CHANGE IT: the church resolving Tuesday vs Wednesday, or Batu ruling on where worship files.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "greenpoint-ymca",
+      "gapKey": "GAP",
+      "reason": "THE FLAGGED DATE IS A HOLIDAY CLOSURE, NOT PROGRAMMING. The only thing this snapshot says about 23-24 September is one line in the branch's schedule notes: 'Tuesday/Wednesday September 23-24 Rosh Hashanah 2 Days'. That is the Y telling members when it is shut. It appears as a dated item only because the parser was widened on 2026-09-11 to expand month-name ranges ('September 23-24' into both days), which is working correctly and has no supply behind it here. WHAT WOULD CHANGE IT: the Y publishing an actual dated programme, which lands as an ordinary diff.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "archestratus",
+      "gapKey": "GAP",
+      "reason": "THE SHOP IS CLOSED AND THE ONE FLAGGED DATE IS ON ZOOM. Re-earned against this run's snapshot: the banner still reads 'OUR BRICK + MORTAR HAS CLOSED / ALWAYS OPEN ONLINE', which is already carded as the news card archestratus-closed, and the only item in the window is 'SUN SEP 20 / LIPARI ISLAND Book Club (Zoom)'. There is no Greenpoint place to pin a Zoom call to. This source read SILENT until 2026-09-11, when the widened parser began reading its 'SUN SEP 20' format, so the same unchanged situation now prints as GAP. WHAT WOULD CHANGE IT: a reopening, or a dated in-person event.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "light-and-sound-design",
+      "gapKey": "GAP",
+      "reason": "NEITHER FLAGGED DATE CAN CARRY A CARD, AND THE VENUE'S OWN PAGES SAY WHY. 9/16 is 'dance practice: Taia + dominique', which the listing carries with a date and NO TIME, and there is no event page behind it — the site links nine /e/ pages and none is for the 16th, so there is nothing to source a start from. 9/20 carries two items, and both fail on their own terms: 'Biking to Rockaway' states '8:00AM - 1:00PM' at the top and then says in its body 'Exact departure time TBD but will likely be early-ish in morning', so under the 2026-08-26 rule the prose wins and there is no sitting to card; 'Last Sun Day' is at 'the Rockaway Amphitheater (96th and Shorefeont)', which is Queens and out of area. The other six dates this source carries in-window ARE carded, and all five of its cards were re-quoted this run against the event pages now persisted. WHAT WOULD CHANGE IT: the studio publishing a time for the 16th, or a fixed departure for the ride.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "leaves-bookstore",
+      "gapKey": "GAP",
+      "reason": "THE CALENDAR IS A LIST OF FAIRS LEAVES EXHIBITS AT, NOT EVENTS AT ITS SHOP. Measured 2026-09-11 by rendering /events.php in chromium: the page links no per-event pages at all, and its three entries are 'printed matter ny art book fair' (24-27 September), 'rare books la union station' (3-4 October) and 'brooklyn rare book fair' (4-5 December). Rare Books LA at Union Station is Los Angeles, which settles what this list is. So the flagged date is not Greenpoint supply we failed to card, and a `detail` block — proposed and rejected the same day — would have nothing to follow. WHAT WOULD CHANGE IT: Leaves listing an event at 140 Nassau Ave.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "greenpoint-shul",
+      "gapKey": "GAP",
+      "reason": "THE UNCARDED ROWS ARE SERVICES AND ONE INVITED KIDDUSH; THE COMMUNITY EVENTS ARE ALL CARDED. This source was onboarded earlier the same day and its four outward-facing items shipped then — the family shofar workshop and the community-wide Tashlich at Transmitter Park on 9/13, kids sukkah decorating on 9/24 and the sukkah film on 9/28. What remains in the window is worship: 'Rosh HaShanah Birthday of Humanity Dinner (Night 1)' on 9/11 7pm, 'Shabbat Rosh HaShanah Morning Services + Lunch RH Day One + Two' on 9/12 9am, and the Shabbat and holiday services on 9/20, 9/21 and 9/25. Worship is open to all and FILTER_IDS carries no lens for it, and no card ships lens-less — that is the open religious-service question the skill already records as unresolved, not a judgment this run can make. The one non-service row, 'Annual Volunteer Appreciation Kiddush' on 9/12 2pm, states its own closed audience: 'celebrating past and current board and advisory committee members'. WHAT WOULD CHANGE IT: Batu ruling on where worship files.",
+      "addedAt": "2026-09-11",
+      "expiresAt": "2026-09-25"
     }
   ],
   "retiredCards": [
@@ -3691,6 +3759,11 @@
     {
       "id": "troost-barba-yiorgi-0910",
       "day": "2026-09-11"
+    },
+    {
+      "id": "cibone-trunk-sri-threads-0926",
+      "retiredAt": "2026-09-11",
+      "reason": "THE VENUE REMOVED IT FROM ITS OWN ANNOUNCEMENT. `ingest:quotes` failed this card after promotion, so the post was re-read directly on 2026-09-11: CIBONE has edited /blogs/news/commune-shop-pop-up-at-cibone-o-te since the card was written, and Stephen Szepanek / Sri Threads is gone from it entirely — name, description and the appointment-only line. Peter Speliopoulos is still listed with his date and hours, so this is not the whole post being rewritten. The Atom feed no longer carries it either. Deleted rather than held because the card was telling residents to turn up on 26 September to a trunk show the venue has stopped advertising, and that is the error worth avoiding. If it is still on, CIBONE re-announcing it lands as an ordinary diff and the next run cards it again. The re-read is persisted in the source's snapshot under `## [R1 PERSISTED 2026-09-11]`."
     }
   ]
 }

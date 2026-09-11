@@ -306,6 +306,7 @@ Brooklyn, NY 11222
 hello@selformer.com
 © 2026 SELFORMER · BROOKLYN, NY
 INSTAGRAM · FACEBOOK · TIKTOK · APP STORE · GOOGLE PLAY
+l
 
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 # Captured by the new roster `detail` mechanism and merged here so the

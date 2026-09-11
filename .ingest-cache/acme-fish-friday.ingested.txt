@@ -151,7 +151,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Sliced Sablefish (8 oz.)
 Cold Smoked
 Specialty
@@ -411,7 +411,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Smoked Trout (1 lb.)
 Hot Smoked
 Specialty
@@ -785,7 +785,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Herring in Cream (32 oz.)
 Herring
 7 reviews
