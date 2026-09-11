@@ -8,13 +8,13 @@
 // and sentinel times are honored — a 00:00 start or 23:59 end is a DATE, and
 // no invented clock time ever reaches a crawler (same contract as
 // calendarLink.js, whose helpers these are).
-import { isExpiredCard, sortTodayFirst } from "./filterCards.js";
+import { isExpiredCard, sortTodayFirst, isActiveOn } from "./filterCards.js";
 import { isAllDay, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 import { RECURRENCE_DAYS } from "./cardSchema.js";
 // Same source of truth as the feed row (2026-09-11). Both places used to spell
 // out one venue's words, "address with RSVP"; a card now supplies its own.
 import { DEFAULT_LOCATION_NOTE } from "./locationLine.js";
-import { editionLabel, isDailySitting, recurrenceLabel } from "./eventWindow.js";
+import { editionLabel, isDailySitting, recurrenceLabel, nextOccurrence } from "./eventWindow.js";
 import { LENS_PAGES } from "./deepLink.js";
 
 // Canonical origin since the 2026-08-06 Stoopwise rename. Two older hosts keep
@@ -631,15 +631,41 @@ export const LENS_PAGE_FLOOR = 8;
 // every card's own URL, so nothing is hidden by stopping here.
 const LENS_PAGE_LIST_MAX = 20;
 
-// Ordered the way the FEED orders it — `sortTodayFirst`, the same function
-// JulyApp calls. Deck order would open a page titled "this week" with undated
-// venue cards, which is both worse to read and not what the reader sees a
-// second later when the app boots.
-const lensCardsFor = (lensId, cards, now) =>
-  sortTodayFirst(
-    liveCards(cards, now).filter((c) => (c.filters ?? []).includes(lensId)),
-    now,
-  );
+// ORDERED BY WHAT IS COMING UP, SOONEST FIRST (2026-09-11). The feed uses
+// `sortTodayFirst`, which leads with what is live TODAY and gives everything
+// else the SAME score — right for the app, where cards sit under day headers
+// that carry the order, and wrong for a flat list, where deck order then
+// decides. Measured the day the Greenpoint Shul cards landed: they sat at
+// positions 49, 50 and 51 of 51 on /kids, below a dozen undated shops, so the
+// 20-item cut hid a shofar workshop two days away. It strands every newly
+// authored card, because new cards are appended to the deck.
+//
+// A recurring card is placed by its NEXT sitting, never by `startsAt` — the
+// same trap the prose date fell into on the line above, where a weekly club
+// printed a series start five weeks gone.
+const lensDayKey = (card, now) => {
+  if (card.startsAt == null && card.endsAt == null) return null;
+  if (isActiveOn(card, now)) return nyDay(now);
+  // nextOccurrence looks eight days ahead (further if the series skips days),
+  // so anything beyond that falls back to its own stated start.
+  return nextOccurrence(card, now) ?? (card.startsAt ? nyDay(new Date(card.startsAt)) : null);
+};
+
+const lensCardsFor = (lensId, cards, now) => {
+  const live = liveCards(cards, now).filter((c) => (c.filters ?? []).includes(lensId));
+  // sortTodayFirst still runs first, so within one day the most time-specific
+  // card leads and undated cards keep the feed's own order among themselves.
+  const feedOrder = sortTodayFirst(live, now);
+  return feedOrder
+    .map((card, i) => ({ card, i, day: lensDayKey(card, now) }))
+    .sort((a, b) => {
+      if (a.day === b.day) return a.i - b.i;
+      if (a.day == null) return 1;
+      if (b.day == null) return -1;
+      return a.day < b.day ? -1 : 1;
+    })
+    .map(({ card }) => card);
+};
 
 const lensUrl = (path, origin) => `${origin}/${path}`;
 

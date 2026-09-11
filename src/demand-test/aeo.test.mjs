@@ -648,3 +648,63 @@ test("a lens page states the rhythm too — same function, both surfaces", () =>
   assert.match(html, /Every Saturday/);
   assert.ok(!html.includes("Jul 4"), "the lens page printed the series start date");
 });
+
+// ---- what a lens page leads with (2026-09-11) ------------------------------
+// The Greenpoint Shul cards landed at positions 49-51 of 51 on /kids, below
+// undated venue cards, so the 20-item cut hid a shofar workshop two days away
+// while shops with no date made the list. `sortTodayFirst` was doing its job —
+// it leads with what is live TODAY and gives EVERYTHING ELSE the same score,
+// so deck order decides among them. That is right for a feed grouped by day,
+// where the day headers carry the order. On a flat list it scatters next
+// week across the page and strands every newly authored card at the bottom,
+// because new cards are appended to the deck.
+
+const kidsAt = (id, title, startsAt, endsAt) => ({
+  ...timed, id, title, startsAt, endsAt, filters: ["family_kids"],
+});
+
+// Read the ORDER OF THE LIST, not of the document. The JSON-LD sits in the head
+// and carries dated non-recurring cards only, so a plain indexOf over the whole
+// page finds a one-off in the structured data before it finds a recurring card
+// in the body, and reports an ordering bug that is not there.
+const listOrder = (html) =>
+  (html.match(/<li>[\s\S]*?<\/li>/g) ?? []).map((li) => li.replace(/<[^>]+>/g, ""));
+const placeOf = (html, title) => listOrder(html).findIndex((l) => l.includes(title));
+
+test("a lens page leads with what is coming up, soonest first", () => {
+  // Deck order puts the undated shops first and the soonest event last — the
+  // exact shape that hid the shofar workshop.
+  const shops = Array.from({ length: LENS_PAGE_FLOOR }, (_, i) =>
+    kidsAt(`shop-${i}`, `Shop Number ${i}`, null, null));
+  const later = kidsAt("later", "Later Thing", "2026-08-20T11:00:00-04:00", "2026-08-20T12:00:00-04:00");
+  const soon = kidsAt("soon", "Sooner Thing", "2026-07-27T11:00:00-04:00", "2026-07-27T12:00:00-04:00");
+
+  const html = injectLensPage(TEMPLATE, "kids", [...shops, later, soon], ORIGIN, NOW);
+  const at = (t) => placeOf(html, t);
+  assert.ok(at("Sooner Thing") < at("Later Thing"), "sooner must come before later");
+  assert.ok(at("Later Thing") < at("Shop Number 0"), "a dated card must come before an undated one");
+});
+
+test("a recurring card is placed by its NEXT sitting, not its series start", () => {
+  // Same bug as the prose date, one layer up: ordering by `startsAt` would sort
+  // a weekly card by a day five weeks gone and strand it at the top forever.
+  const shops = Array.from({ length: LENS_PAGE_FLOOR }, (_, i) =>
+    kidsAt(`shop-${i}`, `Shop Number ${i}`, null, null));
+  const weekly = { ...kidsAt("weekly", "Weekly Thing",
+    "2026-07-04T09:00:00-04:00", "2026-09-19T10:00:00-04:00"),
+    recurring: true, recurrence: { days: ["mon"] } };
+  const wednesday = kidsAt("wed", "Wednesday Thing",
+    "2026-07-29T20:00:00-04:00", "2026-07-29T21:00:00-04:00");
+
+  // NOW is Sunday 2026-07-26: the weekly's next Monday is the 27th, the one-off
+  // is the 29th. Series start (4 July) would have sorted the weekly first anyway,
+  // so the discriminating case is the reverse — put the one-off sooner.
+  const soonerOneOff = kidsAt("mon-before", "Sunday Thing",
+    "2026-07-26T20:00:00-04:00", "2026-07-26T21:00:00-04:00");
+  const html = injectLensPage(TEMPLATE, "kids", [...shops, weekly, wednesday, soonerOneOff], ORIGIN, NOW);
+  const at = (t) => placeOf(html, t);
+  assert.ok(at("Sunday Thing") < at("Weekly Thing"), "tonight beats tomorrow");
+  assert.ok(at("Weekly Thing") < at("Wednesday Thing"),
+    "the weekly sits on its NEXT Monday, not on its July series start");
+  assert.ok(at("Wednesday Thing") < at("Shop Number 0"), "dated before undated");
+});

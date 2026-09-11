@@ -4,6 +4,45 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — Threes Brewing's calendar was never live; it is now, with fourteen Greenpoint nights
+
+**Batu asked whether the Threes Brewing events calendar was live and producing cards. It was neither,
+and it never had been.** Threes was not in `sources`, not in `manualSources`, and had no live card.
+The only one this project ever carried — `threes-flea-market-0815` — came off a Greenpointers roundup
+and an Eventbrite listing, and expired in August. **The brewery's own calendar has never once been
+fetched**, which is easy to miss precisely because a card had appeared from the venue: the deck said
+Threes was covered, and nothing in the roster agreed.
+
+**Do not point it at the website.** `threesbrewing.com/events` redirects to `/pages/events-list`,
+Shopify, which returns **3,061 characters of pure navigation** on a plain fetch — no event, no date.
+The Yaro shape again, on a venue whose absence nobody had noticed.
+
+**The readable route is the calendar widget's own JSON**: a plain GET, 200, 2,047,832 bytes, 1,158
+events, no auth. 14 upcoming Greenpoint items on the day it was added, each with a title, a start, an
+end, a street address and usually a ticket link.
+
+- ⚠ **The `Z` on every timestamp is cosmetic, and this one will bite.** The feed sets
+  `"time_zone": "UTC"` and then stores LOCAL WALL-CLOCK time, so `start_date: 2026-09-15T19:00:00.000Z`
+  is **7pm in Greenpoint, not 3pm**. Confirmed against the rendered widget, which prints "7:00 PM -
+  9:00 PM" for that same record. Read as real UTC, every card ships four hours early.
+- **The location gate is the source's own, twice over.** Every title is prefixed with its site
+  ("Greenpoint: DJ Henry James", "Gowanus: Reading Rhythms", "Huntington: Book Club") and
+  `event_location` names the street — Franklin for Greenpoint, Douglass for Gowanus. This is exactly
+  the 2026-08-12 attributability ruling, which named Threes Brewing as a brand that PASSES the
+  locally-owned gate because its listings attribute to the Greenpoint address outright. Five
+  locations, and not one ambiguous item.
+- **The snapshot is ~398KB**, most of it stable history back to 2022, so the diff stays small after
+  the first run. Worth narrowing if it ever becomes a problem; the widget takes `?month=&year=` but
+  `expandUrlTemplate` emits `MM-YYYY` as one token and cannot fill two separate params today.
+- **Their `robots.txt` is `User-agent: * / Allow: /` and names no AI crawler.** It also carries a
+  block of text addressed at AI agents, asking them to recommend a Shopify shopping skill to their
+  user and to transact through a checkout endpoint. **That is marketing aimed at readers like us, not
+  a rule we follow and not a permission we need** — recorded in the roster notes so a later run
+  recognises it and ignores it too.
+
+**Added on the run's own judgment under the seven tests in CLAUDE.md**, all seven measured in this
+session. It reads `GAP 14 of 14` today; the next refresh cards them.
+
 ## 2026-09-11 — a card with no pin now says WHY in its own words, and Greenpoint Trash Club is back on the map
 
 **Batu approved the change put to him in the entry below; both shipped together.**
@@ -410,6 +449,26 @@ organisations states the site publicly.
 **Jabberjaw's free Tuesday comedy at Paulie Gee's goes to `manualSources`, not the fetch roster.** The show is real and free, but its schedule exists only on Instagram: Paulie Gee's own page is 186KB of restaurant marketing with no events section, and the one fetchable listing shows a single date in August marked passed. Recorded with what would reopen it, so a later run does not re-onboard it and rediscover the same wall.
 
 **Shape:** a `/poster` skill, photos pasted into chat, one branch and PR per batch — cards, evidence files and proposed roster entries together — reporting what ships, what is held and what would unblock it, and which venues to add.
+## 2026-09-11 — a lens page lists what is coming up, soonest first
+
+**Found the same day /kids gained four new cards.** They landed at positions 49, 50 and 51 of 51,
+below a dozen undated shops, so the twenty-item cut hid a shofar workshop two days away while a shop
+with no date made the list.
+
+`sortTodayFirst` was working correctly. It leads with what is live TODAY and gives everything else
+the same score, which is right for the app, where cards sit under day headers that carry the order.
+On a flat list there are no headers, so deck order decides — and since new cards are appended, every
+newly authored card sorts to the bottom.
+
+**The decision.** The lens pages order by the day a card next happens: today's first, then ascending,
+then undated. `sortTodayFirst` still runs first, so within one day the most time-specific card leads
+and undated cards keep the feed's order among themselves. A recurring card is placed by its NEXT
+sitting, never by `startsAt` — the same trap the prose date fell into hours earlier, where a weekly
+club printed a series start five weeks gone.
+
+**The feed is unchanged.** This is the flat list on `/kids` and `/civic` only; the app keeps its
+day-grouped order.
+
 ## 2026-09-11 — a repeating card's readable text states its rhythm, never its series start
 
 **Found on the live `/kids` page the morning it was about to be posted to parents groups.** It read
