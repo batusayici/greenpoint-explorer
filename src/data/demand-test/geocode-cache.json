@@ -4598,5 +4598,35 @@
     "query": "Greenpoint Trash Club, Greenpoint, Brooklyn, NY",
     "fetchedAt": "2026-09-11T15:32:47.493Z",
     "hit": null
+  },
+  "McCarren Park, 855 Lorimer St, Brooklyn, NY 11222": {
+    "query": "McCarren Park, 855 Lorimer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-11T15:52:58.628Z",
+    "hit": null
+  },
+  "108 Noble St, Brooklyn, NY 11222": {
+    "query": "108 Noble St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-11T15:53:00.068Z",
+    "hit": {
+      "place_id": 360034744,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132060,
+      "lat": "40.7282994",
+      "lon": "-73.9563624",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "108, Noble Street, Greenpoint, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7282346",
+        "40.7284580",
+        "-73.9564296",
+        "-73.9563103"
+      ]
+    }
   }
 }

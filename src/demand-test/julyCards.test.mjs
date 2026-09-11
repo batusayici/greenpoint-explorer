@@ -923,11 +923,22 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // morning — so it ships `locationPrivate` with its own location line rather
   // than inheriting Light & Sound Design's "address with RSVP", which this club
   // has never said. Deck 246 -> 247, subscription 39 -> 40.
-  assert.equal(seed.cards.length, 247);
+  //
+  // 2026-09-11 (Batu named four gaps in Family & Kids): +5. Two of his four —
+  // Java Street Community Garden and 61 Franklin Street Garden — were already
+  // carded and stay in `civic` alone, per his own 2026-08-30 ruling that
+  // tending a shared growing space is stewardship, not a kids lens, unless the
+  // source states the audience. The GreenThumb dataset states hours and nothing
+  // about children. The other two were genuinely missing and brought two new
+  // roster sources with them: Tunes for Tykes (one card, McCarren Thursdays and
+  // Saturdays) and Greenpoint Shul (four — the family shofar workshop, the
+  // community-wide Tashlich, the K-6 sukkah decorating party and the all-ages
+  // sukkah film). Deck 247 -> 252.
+  assert.equal(seed.cards.length, 252);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 36, "35 + the Limousine opening (2026-09-11)");
-  assert.equal(count((c) => c.category === "event"), 144, "142, less 8 expired and Birthsmarter's relocated childbirth weekend, plus 11 (2026-09-11)");
+  assert.equal(count((c) => c.category === "event"), 149, "144 + the Tunes for Tykes park circle and the four Greenpoint Shul programmes (2026-09-11)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
   assert.equal(count((c) => c.filters.includes("live_music")), 41, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
@@ -1838,6 +1849,11 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // volunteer weeding shift at Bushwick Inlet Park, off Go Green Brooklyn,
     // under the same growing-space rule as the two North Brooklyn Parks
     // Alliance sessions at the same park.)
+    // 2026-09-11: Greenpoint Shul's community-wide Tashlich at Transmitter
+    // Park. A neighbourhood gathering at the waterfront that its own listing
+    // says is "open to all" — the civic lens, not a religious service, which
+    // is the separate parked question.
+    "shul-tashlich-transmitter-0913",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {

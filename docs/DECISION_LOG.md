@@ -449,6 +449,26 @@ organisations states the site publicly.
 **Jabberjaw's free Tuesday comedy at Paulie Gee's goes to `manualSources`, not the fetch roster.** The show is real and free, but its schedule exists only on Instagram: Paulie Gee's own page is 186KB of restaurant marketing with no events section, and the one fetchable listing shows a single date in August marked passed. Recorded with what would reopen it, so a later run does not re-onboard it and rediscover the same wall.
 
 **Shape:** a `/poster` skill, photos pasted into chat, one branch and PR per batch — cards, evidence files and proposed roster entries together — reporting what ships, what is held and what would unblock it, and which venues to add.
+## 2026-09-11 — a lens page lists what is coming up, soonest first
+
+**Found the same day /kids gained four new cards.** They landed at positions 49, 50 and 51 of 51,
+below a dozen undated shops, so the twenty-item cut hid a shofar workshop two days away while a shop
+with no date made the list.
+
+`sortTodayFirst` was working correctly. It leads with what is live TODAY and gives everything else
+the same score, which is right for the app, where cards sit under day headers that carry the order.
+On a flat list there are no headers, so deck order decides — and since new cards are appended, every
+newly authored card sorts to the bottom.
+
+**The decision.** The lens pages order by the day a card next happens: today's first, then ascending,
+then undated. `sortTodayFirst` still runs first, so within one day the most time-specific card leads
+and undated cards keep the feed's order among themselves. A recurring card is placed by its NEXT
+sitting, never by `startsAt` — the same trap the prose date fell into hours earlier, where a weekly
+club printed a series start five weeks gone.
+
+**The feed is unchanged.** This is the flat list on `/kids` and `/civic` only; the app keeps its
+day-grouped order.
+
 ## 2026-09-11 — a repeating card's readable text states its rhythm, never its series start
 
 **Found on the live `/kids` page the morning it was about to be posted to parents groups.** It read
