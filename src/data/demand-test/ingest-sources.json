@@ -433,8 +433,13 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Season performances page (verified 2026-08-03 in a real browser). The old URL (/availability-calendar) was the rehearsal-STUDIO rental booker — no public programming, which is why this source produced nothing. Seasons post in blocks (Spring 2026 was the last listed on 8/3); expect a Fall block. Dance performances -> arts_culture.",
-      "datedListing": true
+      "notes": "106 Calyer St; dance/performance theater. THE LISTING PAGE CARRIES TITLES AND DATES ONLY — \"BEYOND THE BLACK BOX | SEPT 23-25\" and four more — with no time, no price and nothing to quote, which is why this source had never produced a card despite being readable. The show pages carry all of it: measured 2026-09-11, /fall-2026-performances/beyond-the-black-box returns \"SEPTEMBER 23-25 DOORS: 6:30PM SHOW: 7:30PM\", \"EARLY BIRDS $22 / $30 SUPERFAN / $50 SUPPORTER $17 HEARTS AT-THE-DOOR $26 / $30 SUPERFAN / $50 SUPPORTER $17 HEARTS\", \"All seating is general admission.\" and a per-night line-up. So the detail block is what makes this source cardable at all. `match` is \"performances/\" rather than the season slug on purpose: /happenings-3 302-redirects to the CURRENT season (/fall-2026-performances today), so the roster URL survives the season change and so does this pattern. A RUN OF NIGHTS IS ONE CARD per the film-run rule; the per-night line-ups are the card body, not five cards.",
+      "datedListing": true,
+      "detail": {
+        "match": "performances/",
+        "limit": 8,
+        "delayMs": 500
+      }
     },
     {
       "id": "brooklyn-youth-ballet",
@@ -491,8 +496,14 @@
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 — monthly check only.",
-      "datedListing": true
+      "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 — monthly check only. DETAIL BLOCK ADDED 2026-09-11. The listing is a Shopify blog index: it carries post TITLES that happen to hold a date — \"Dashi Workshop : Miso Soup 10/25 Fri 3pm\", \"Dashi Izakaya Autumn Omakase Pop Up\", \"UDON OMAKASE POP UP\" — each followed by \"Read more\" and nothing else, so there is no price, no duration and nothing quotable on the index. That is why this source has 2,083 bytes, two dates a year and has never produced a card. The posts live at /blogs/classes-event/<slug> (measured 2026-09-11: dashi-izakaya-autumn-omakase-pop-up, event-misoshiru-workshop, oden-omakase-pop-up-from-12-6). A browser read of the index returns LESS than the plain one (1,840 chars vs 2,083), so do not move this to `fetch: browser` — the index is not JavaScript-thin, it is just thin.",
+      "datedListing": true,
+      "detail": {
+        "match": "/blogs/classes-event/",
+        "limit": 8,
+        "delayMs": 400,
+        "fetch": "browser"
+      }
     },
     {
       "id": "greenpoint-library",
@@ -555,8 +566,9 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Onboarded 2026-08-10 after a street flyer surfaced an August Thursday sunset yoga series (7pm) that gogreenbk.org's own Tuesday-morning listing doesn't carry — the two sources cover different slots of the same Kindred/Friends of Transmitter Park program, so keep both. Single venue (WNYC Transmitter Park, Greenpoint) — no other neighborhood or location mentioned anywhere on the site, so it clears the locally-owned/single-location gate. Static HTML, no feed/JSON; registration is via Google Form links, not a booking widget, so plain fetch (auto) reads the schedule directly — not browser-dependent. Apply the same Brooklyn-only geography gate as any other source if a listing is ever ambiguous.",
-      "datedListing": true
+      "notes": "Onboarded 2026-08-10 after a street flyer surfaced an August Thursday sunset yoga series (7pm) that gogreenbk.org's own Tuesday-morning listing doesn't carry — the two sources cover different slots of the same Kindred/Friends of Transmitter Park program, so keep both. Single venue (WNYC Transmitter Park, Greenpoint) — no other neighborhood or location mentioned anywhere on the site, so it clears the locally-owned/single-location gate. Static HTML, no feed/JSON; registration is via Google Form links, not a booking widget, so plain fetch (auto) reads the schedule directly — not browser-dependent. Apply the same Brooklyn-only geography gate as any other source if a listing is ever ambiguous. minChars LOWERED TO 100 ON 2026-09-11. This source has errored every run since 2026-08-14 with \"page never rendered\", and the page renders fine — it is simply 129 characters long. Measured three ways today (plain, chromium at domcontentloaded+2.5s, chromium at networkidle+6s): all three return a 200 and the same five lines, \"more gatherings coming soon / a place for calm & connection / no phones, no pressure / follow us on Instagram / add your name to the list\". The August sunset-yoga series ended and the venue has posted nothing since, which is the same finding the 2026-08-28 card deletion rested on. So the 500-char floor was reporting a healthy fetch as a failure and burning a slot in the 15% error ceiling every run. WHAT WOULD CHANGE IT: Kindred posting a fall date, which then lands as an ordinary diff.",
+      "datedListing": true,
+      "minChars": 100
     },
     {
       "id": "town-square-bk",
@@ -567,16 +579,6 @@
       "fetch": "auto",
       "notes": "SummerStarz free Friday movies at Transmitter Park through Aug 21 (in season), scouts programs.",
       "datedListing": true
-    },
-    {
-      "id": "greenpoint-trash-club",
-      "name": "Greenpoint Trash Club",
-      "url": "https://greenpointtrashclub.org",
-      "group": "institution",
-      "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup — the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run.",
-      "datedListing": false
     },
     {
       "id": "nycparks-greenpoint",
@@ -797,8 +799,8 @@
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "Hosted at Madeline's, 117 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: adult art club, EVERY SECOND WEDNESDAY of the month — card it undated against that recurrence rule. The club has no site of its own; the linktr.ee is the only public URL and it carries no dates, so the recurrence rule is sourced from the Shop Small Greenpoint directory entry itself (that is the sourceQuote of record, not the linktree). NOTE THE VENUE SPLIT: the club is the organiser, Madeline's is the address — the card belongs at 117 Franklin St.",
-      "datedListing": true
+      "notes": "Hosted at Madeline's, 117 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: adult art club, EVERY SECOND WEDNESDAY of the month — card it undated against that recurrence rule. The club has no site of its own; the linktr.ee is the only public URL and it carries no dates, so the recurrence rule is sourced from the Shop Small Greenpoint directory entry itself (that is the sourceQuote of record, not the linktree). NOTE THE VENUE SPLIT: the club is the organiser, Madeline's is the address — the card belongs at 117 Franklin St. datedListing SET FALSE 2026-09-11: a linktr.ee is a link list, not a dated listing. The dates it does carry belong to other people's events at out-of-area venues (today: \"Tues, 8/18 Shibari Suspension x Figure Drawing at Crystal Lake\" — 647 Grand St, Williamsburg), and this club's own second-Wednesday recurrence is sourced from the Shop Small Greenpoint directory, not from here. So zero dates on this URL is its normal state and READS EMPTY would be the wrong diagnosis. ⚠ THE UNDATED CARD THE NOTE ABOVE CALLS FOR HAS STILL NEVER BEEN WRITTEN — this source has produced nothing since it was onboarded 2026-08-08.",
+      "datedListing": false
     },
     {
       "id": "edys-grocer",
@@ -1062,8 +1064,13 @@
           "fullUrl"
         ]
       },
-      "notes": "Msgr. McGolrick Park, Driggs Ave / Monitor St, 11222. Added 2026-09-07 from the family/kids source audit, where it was the single best find: free all-ages programming year round — Puppetmobile puppet shows and puppet-making, McGolrick Art Club, family bird walks, Earth Day festival with kids' storytime and book swap, the McGhoulrick Halloween trick-or-treat event, monthly park cleanups, Park-to-Park walks. ⚠ THE DOMAIN EVERYONE LINKS TO IS DEAD. `mcgolrickpark.org` is NXDOMAIN — it still ranks in Google and still appears in third-party listings, and it resolves to nothing; two researchers disagreed on this and it was settled by curl on 2026-09-07 (mcgolrick.org 200/466KB, mcgolrickpark.org connection failure). The live domain is `mcgolrick.org`. If a source or a card ever cites mcgolrickpark.org, it is citing a dead host. Squarespace events collection, so ?format=json returns the whole upcoming set in one plain call — verified 2026-09-07, `upcoming` carried 2 dated events (Harvest Moon Walk 9/26, Puppetmobile 10/10) alongside 30 in `past`. READ `upcoming` ONLY: `past` is a live key on the same payload and ingesting it would ship finished events. startDate/endDate are epoch MILLISECONDS, not ISO. fullUrl is site-relative (/calendar/slug) so prefix the host when citing. ⚠ IGNORE THE `location` BLOCK'S COORDINATES — measured 2026-09-07 on the first real fetch, every event on this calendar carries mapLat 40.7207559 / mapLng -74.0007613, which is a Squarespace default sitting in lower Manhattan, 4.8km from McGolrick Park. It is not the venue. Geocode from the park name via the normal ingest:geocode path; taking these numbers would drop pins across the river. The `addressTitle`/`addressLine` fields inside the same block came back EMPTY here, so this source gives no usable address at all — the park is the venue, always. OVERLAP: go-green-bk already carries an organizer page for this group and its pinned detail URLs include mcgolrick-bird-club-2026, so expect some events to arrive twice — dedupe against go-green-bk before carding, don't assume a new id means a new event.",
-      "datedListing": true
+      "notes": "Msgr. McGolrick Park, Driggs Ave / Monitor St, 11222. Added 2026-09-07 from the family/kids source audit, where it was the single best find: free all-ages programming year round — Puppetmobile puppet shows and puppet-making, McGolrick Art Club, family bird walks, Earth Day festival with kids' storytime and book swap, the McGhoulrick Halloween trick-or-treat event, monthly park cleanups, Park-to-Park walks. ⚠ THE DOMAIN EVERYONE LINKS TO IS DEAD. `mcgolrickpark.org` is NXDOMAIN — it still ranks in Google and still appears in third-party listings, and it resolves to nothing; two researchers disagreed on this and it was settled by curl on 2026-09-07 (mcgolrick.org 200/466KB, mcgolrickpark.org connection failure). The live domain is `mcgolrick.org`. If a source or a card ever cites mcgolrickpark.org, it is citing a dead host. Squarespace events collection, so ?format=json returns the whole upcoming set in one plain call — verified 2026-09-07, `upcoming` carried 2 dated events (Harvest Moon Walk 9/26, Puppetmobile 10/10) alongside 30 in `past`. READ `upcoming` ONLY: `past` is a live key on the same payload and ingesting it would ship finished events. startDate/endDate are epoch MILLISECONDS, not ISO. fullUrl is site-relative (/calendar/slug) so prefix the host when citing. ⚠ IGNORE THE `location` BLOCK'S COORDINATES — measured 2026-09-07 on the first real fetch, every event on this calendar carries mapLat 40.7207559 / mapLng -74.0007613, which is a Squarespace default sitting in lower Manhattan, 4.8km from McGolrick Park. It is not the venue. Geocode from the park name via the normal ingest:geocode path; taking these numbers would drop pins across the river. The `addressTitle`/`addressLine` fields inside the same block came back EMPTY here, so this source gives no usable address at all — the park is the venue, always. OVERLAP: go-green-bk already carries an organizer page for this group and its pinned detail URLs include mcgolrick-bird-club-2026, so expect some events to arrive twice — dedupe against go-green-bk before carding, don't assume a new id means a new event. DETAIL BLOCK ADDED 2026-09-11 because the calendar JSON carries no address: its `location` field is {\"mapLat\":40.7207559,\"mapLng\":-74.0007613,...} with addressTitle, addressLine1 and addressLine2 all EMPTY, and those coordinates are lower Manhattan, not McGolrick Park — a card geocoded off them would land in the wrong borough. The event pages carry the readable fact: measured 2026-09-11, /calendar/park-to-park-series-harvest-moon-walk returns \"Park to Park Series: Harvest Moon Walk Saturday, September 26, 2026 6:00 PM 8:00 PM\". So the JSON is the discovery surface and the event page is what a card quotes.",
+      "datedListing": true,
+      "detail": {
+        "match": "/calendar/",
+        "limit": 8,
+        "delayMs": 400
+      }
     },
     {
       "id": "friends-of-transmitter-park",
@@ -1463,6 +1470,14 @@
       "status": "declined-publisher-blocks-ai",
       "reason": "ADDED AND THEN REMOVED THE SAME DAY, 2026-09-10, on Batu's ruling. It is technically fine and it works: the Greenpoint RSS returns 10 items with FULL article text, 3,824-13,036 chars, no paywall, ending on the same closing quote as the same article read through their WordPress API. Nothing in their terms restricts reuse of their articles by others, and what a card would publish is our own summary plus a link (the verbatim `sourceQuote` is internal evidence — only scripts/verify-quotes.mjs reads it, nothing renders it to a reader). WHY IT IS OUT ANYWAY: brooklynpaper.com/robots.txt gives `Disallow: /` to 170 named AI crawlers including `anthropic-ai`, while `User-agent: *` allows everything but /wp-admin/. Our fetcher gets through only because it sends a Chrome user-agent — not because they would say yes. Batu: he does not want a source whose publisher has said they do not want their content taken by AI, even with credit and a link. The cost of declining is small: about three Greenpoint posts a month, and their bigger stories reach the map through Greenpointers anyway.",
       "revisitIf": "Schneps Media is asked and says yes. A neighborhood map that credits and links back is an easy yes for most local publishers, and their reporting genuinely adds what Greenpointers does not — Monitor Point at City Council, the landmark firehouse condo plan, McGuinness Boulevard redesign data, the Sereneco fire GoFundMe. They also ran the St John's cultural center story on 2026-08-26, two weeks before a street poster surfaced the venue. Do NOT re-onboard it on a fresh reading of the feed; the feed was never the problem."
+    },
+    {
+      "id": "greenpoint-trash-club",
+      "name": "Greenpoint Trash Club",
+      "url": "https://greenpointtrashclub.org/",
+      "movedOn": "2026-09-11",
+      "reason": "NOBODY CAN LOAD THIS SITE, not just us. greenpointtrashclub.org serves Netlify's wildcard certificate — measured 2026-09-11 with openssl: subject CN=*.netlify.app, subjectAltName DNS:*.netlify.app, DNS:netlify.app — which does not cover their own domain, so every HTTPS client fails with ERR_CERT_COMMON_NAME_INVALID. http:// 301-redirects straight back to https://, and www. does not resolve at all. The last successful read was 2026-08-08; it has errored every run for over a month, burning a slot in the 15% error ceiling each time. Their card was already deleted 2026-08-30 as unverifiable (its 7:30pm start existed only in an Instagram bio). Moved here rather than deleted because the club and its programming are probably real — the website is broken, and getting past a bad certificate is not something to route around.",
+      "whatWouldReopenIt": "The club provisioning a certificate for their custom domain, which anyone can check in one command: `echo | openssl s_client -connect greenpointtrashclub.org:443 -servername greenpointtrashclub.org 2>/dev/null | openssl x509 -noout -subject`. If that stops saying *.netlify.app, move this entry back into `sources`."
     }
   ]
 }

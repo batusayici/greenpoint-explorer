@@ -4,6 +4,64 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — every roster source now reads, and three of them can produce cards for the first time
+
+**Follow-on from the two entries below**, which fixed what the pipeline could SEE. This one fixes the
+sources that were visibly reaching nothing once it could see them. Each was measured in this session.
+
+1. **Triskelion Arts can produce a card at all, for the first time since it was added.** Its
+   happenings page carries titles and dates and nothing else — "BEYOND THE BLACK BOX | SEPT 23-25"
+   and four more — with no time, no price and nothing to quote, which is why a readable source had
+   never yielded a card. The show pages carry everything: `/fall-2026-performances/beyond-the-black-box`
+   returns "SEPTEMBER 23-25 DOORS: 6:30PM SHOW: 7:30PM", the full ticket ladder, "All seating is
+   general admission." and a per-night line-up. A `detail` block now follows them. **`match` is
+   "performances/", not the season slug** — `/happenings-3` 302-redirects to whichever season is
+   current, so both the roster URL and the pattern survive the turn of the season.
+2. **Friends of McGolrick would have geocoded to Manhattan.** Its calendar JSON publishes
+   `location: {"mapLat":40.7207559,"mapLng":-74.0007613,...}` with addressTitle, addressLine1 and
+   addressLine2 all empty — and those coordinates are lower Manhattan, not McGolrick Park. The event
+   pages carry the real thing ("Park to Park Series: Harvest Moon Walk Saturday, September 26, 2026
+   6:00 PM 8:00 PM", free, RSVP), so a `detail` block now reads them.
+3. **Dashi Okume's listing is an index of titles.** "Dashi Workshop : Miso Soup 10/25 Fri 3pm",
+   "Read more", and nothing else — no price, no duration, nothing quotable, which is 2,083 bytes and
+   two dates a year. The posts are at `/blogs/classes-event/<slug>` and are **JavaScript-rendered**,
+   so the detail block reads them in a browser. ⚠ The INDEX must stay on plain fetch: a browser read
+   of it returns *less* (1,840 chars against 2,083). It is not JavaScript-thin, it is just thin.
+4. **A roster `minChars` override, and Kindred as its first case.** Kindred has errored every run
+   since 2026-08-14 with "page never rendered", and the page renders perfectly — it is 129 characters
+   long. Measured three ways today (plain, chromium at domcontentloaded+2.5s, chromium at
+   networkidle+6s): all three return a 200 and the same five lines, "more gatherings coming soon / a
+   place for calm & connection / no phones, no pressure / follow us on Instagram / add your name to
+   the list". The 500-character floor was reporting a healthy fetch as a failure and burning a slot
+   in the 15% error ceiling every run. An override must carry its measurement in the source's
+   `notes`, the same rule as a new source.
+5. **Greenpoint Trash Club moved to `manualSources`: nobody can load their site, not just us.**
+   `openssl` says the host serves `CN=*.netlify.app` with `subjectAltName DNS:*.netlify.app,
+   DNS:netlify.app`, which does not cover their own domain, so every HTTPS client fails with
+   ERR_CERT_COMMON_NAME_INVALID; `http://` 301s straight back to `https://` and `www.` does not
+   resolve. Last good read 2026-08-08 — it has errored every run for over a month. Their card was
+   already deleted 2026-08-30 as unverifiable. **Moved, not deleted**, because the club is probably
+   real and the website is broken; the entry carries the one command that re-checks it.
+   - **`manualSources` ids now count as roster ids in the ledger tests.** A source moved out of the
+     fetch loop still owns its history: `sourcePulse` is monotone by design, and deleting Trash
+     Club's entry to satisfy a test would throw away the record of when it last produced a card —
+     exactly what has to survive if the site is fixed and the source moves back.
+6. **Brooklyn Hearts Club marked `datedListing: false`.** A linktr.ee is a link list. The dates on it
+   belong to other people's events at out-of-area venues ("Tues, 8/18 Shibari Suspension x Figure
+   Drawing at Crystal Lake" — 647 Grand St, Williamsburg), and this club's own second-Wednesday
+   recurrence is sourced from the Shop Small directory, not from here. ⚠ **The undated card its own
+   roster note has called for since 2026-08-08 has still never been written.**
+
+**Checked and found working, no change needed:** St John's Cultural Center reads its sitemap and all
+29 event pages, and has exactly one 2026 event on it (ETHEL, 3 September, already past) — the fall
+chamber series is not published as event pages yet. Edy's Grocer is carrying 20 October and 8
+November, both outside the coverage window. Troost's only failure was a missing
+`TROOST_CALENDAR_API_KEY` in a local shell; the GitHub and home fetchers have it.
+
+**Where the roster stands: 93 sources, every one of them fetching and returning its own content.**
+Before today one source was reaching nothing (Yaro), one had no snapshot, and eighteen more were
+being read fine while the report could not see their dates.
+
 ## 2026-09-11 — the coverage report now asks whether we can read a source at all
 
 **The half left open by the entry below, closed the same day.** Every signal in the coverage report

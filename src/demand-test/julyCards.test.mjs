@@ -2141,7 +2141,14 @@ test("a recurring card's summary does not restate the rhythm the UI already give
 const roster = JSON.parse(
   readFileSync(fileURLToPath(new URL("../data/demand-test/ingest-sources.json", import.meta.url)), "utf8"),
 );
-const rosterIds = new Set(roster.sources.map((s) => s.id));
+// manualSources counts as a roster id here (2026-09-11). A source moved out of
+// the fetch loop still owns its history: `sourcePulse` is monotone by design —
+// never lowered, never deleted — and a live explanation stays true until it
+// expires. Greenpoint Trash Club moved on 2026-09-11 (their certificate is
+// broken for every visitor), and dropping its pulse entry to satisfy this test
+// would throw away the record of when it last produced a card, which is exactly
+// what has to survive if the site is ever fixed and the source moves back.
+const rosterIds = new Set([...roster.sources, ...(roster.manualSources ?? [])].map((s) => s.id));
 
 test("every sourcePulse key is a roster id", () => {
   const orphans = Object.keys(ledger.sourcePulse ?? {}).filter((id) => !rosterIds.has(id));

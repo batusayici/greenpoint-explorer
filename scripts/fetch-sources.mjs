@@ -89,6 +89,15 @@ const MAX_ERROR_RATE = 0.15;
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 const MIN_TEXT_CHARS = 500; // shorter than this after stripping → page is JS-thin, retry in browser
+// A roster `minChars` overrides that floor for one source (2026-09-11). Kindred
+// is the case: the whole page is 129 characters — "more gatherings coming soon
+// / a place for calm & connection / no phones, no pressure / follow us on
+// Instagram / add your name to the list" — and it reads identically on plain
+// fetch, chromium at domcontentloaded and chromium at networkidle. The floor
+// reported that healthy fetch as "page never rendered" every run since
+// 2026-08-14, burning a slot in the 15% error ceiling. An override must carry
+// the measurement in the source's `notes`, same rule as a new source.
+const minCharsFor = (src) => (Number.isFinite(src?.minChars) ? src.minChars : MIN_TEXT_CHARS);
 // Bot-wall pages return 200 with polite refusal text (e.g. WORD's IndieCommerce
 // 403 cat page) — snapshotting those as content would mask a dead source.
 const BLOCK_RE = /403 Forbidden|Access denied|Verify you are human|Just a moment|Attention Required|unable to access this resource|Pardon Our Interruption/i;
@@ -472,6 +481,7 @@ async function readFrames(page, pageUrl) {
 }
 
 async function browserText(url, opts = {}) {
+  const minChars = opts.minChars ?? MIN_TEXT_CHARS;
   if (NO_BROWSER) throw new Error("browser path disabled (--no-browser)");
   if (!pw) throw new Error("playwright not installed (npm i -D playwright && npx playwright install chromium)");
   // Preflight already diagnosed and reported the cause; don't re-attempt a
@@ -532,11 +542,11 @@ async function browserText(url, opts = {}) {
     // prices, which is everything the studio runs — and the floor rejected it
     // as unrendered. Ask for schedule-shaped text instead; a real shell has
     // none, so the comedy-club case above is still caught.
-    if (looksUnrendered(text, { minChars: MIN_TEXT_CHARS })) {
+    if (looksUnrendered(text, { minChars })) {
       await page.waitForTimeout(5000);
       text = (await readText()) + (await readFrames(page, url));
     }
-    if (looksUnrendered(text, { minChars: MIN_TEXT_CHARS })) {
+    if (looksUnrendered(text, { minChars })) {
       throw new Error(`only ${text.length} chars after 7.5s in ${browserEngine}, none of it a date, time or price — page never rendered`);
     }
     return text;
@@ -592,7 +602,7 @@ const sourceUrls = (src) => (Array.isArray(src.urls) && src.urls.length ? src.ur
 
 const plainText = async (src) => htmlToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"));
 const feedText = async (src) => feedToText(await rawGet(sourceUrls(src)[0], "application/rss+xml,application/xml,text/xml"), src.feed ?? {});
-const browserPage = async (src) => browserText(sourceUrls(src)[0], src.browser ?? {});
+const browserPage = async (src) => browserText(sourceUrls(src)[0], { ...(src.browser ?? {}), minChars: minCharsFor(src) });
 const icsText = async (src) => icsToText(await rawGet(sourceUrls(src)[0], "text/calendar,text/plain"), src.ics ?? {});
 
 async function jsonText(src) {
@@ -653,7 +663,7 @@ async function fetchSource(src) {
       // no date and no price. A page with none of those is not a listing
       // however much it weighs. Reasoning and cases: fetchEscalation.js.
       if (method === "plain" && attempts.includes("browser")) {
-        const shortfall = plainFetchShortfall(text, { minChars: MIN_TEXT_CHARS });
+        const shortfall = plainFetchShortfall(text, { minChars: minCharsFor(src) });
         if (shortfall) {
           lastErr = new Error(shortfall);
           continue;
