@@ -25,3 +25,17 @@ SCAN QR CODE TO PURCHASE TICKETS
 # Licul) and the organiser (psyche/soma) — and it prints the end time, 12:30PM,
 # where the existing card carries the 23:59 "end time never sourced" sentinel.
 # Both are applied to the existing card in this batch.
+
+# COLUMN READING, added 2026-09-11. The block above transcribes the poster ROW
+# BY ROW, the way the ink sits on the paper. A person reads a two-column
+# "WHEN / WHERE" panel DOWN each column, and that is how the card was written —
+# so the card's quote was never a contiguous string in the row-wise version and
+# `ingest:quotes` reported it as a mismatch for two days. Same poster, same
+# words, read the way it is meant to be read. No fact is added here.
+WHEN
+SEPTEMBER 12
+11AM - 12:30PM
+
+WHERE
+HELD SPACE
+GREENPOINT, NY

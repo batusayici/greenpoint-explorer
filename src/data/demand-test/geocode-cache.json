@@ -4598,5 +4598,30 @@
     "query": "Greenpoint Trash Club, Greenpoint, Brooklyn, NY",
     "fetchedAt": "2026-09-11T15:32:47.493Z",
     "hit": null
+  },
+  "76 Kent St, Brooklyn, NY 11222": {
+    "query": "76 Kent St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-11T16:03:43.076Z",
+    "hit": {
+      "place_id": 358980618,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140830,
+      "lat": "40.7303738",
+      "lon": "-73.9581195",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "76, Kent Street, Greenpoint, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7302826",
+        "40.7304650",
+        "-73.9581774",
+        "-73.9580616"
+      ]
+    }
   }
 }

@@ -653,6 +653,21 @@ Are you 21 or older?
 Yes
 No
 
+## [FRAME] https://vinoshipper.com/ui/embed/clubs/2529
+Already a club member?
+Sign In
+Join the Club
+Clear Form
+Club Selection
+Select a Club
+HANA SOOL CLUB (2 Bottles)
+HANA SOOL CLUB (4 Bottles)
+Club
+Next
+Delivery Options
+Payment
+Your Personal Information
+
 ## [DETAIL PAGES MERGED INTO BASELINE 2026-08-12]
 
 ## [DETAIL] https://hanamakgeolli.com/sool-club
