@@ -4,6 +4,43 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — a card with no pin now says WHY in its own words, and Greenpoint Trash Club is back on the map
+
+**Batu approved the change put to him in the entry below; both shipped together.**
+
+`locationPrivate` arrived on 2026-09-10 for Light & Sound Design Studios, which says "RSVP FOR
+LOCATION" on its own posters — and the row hardcoded that venue's language, "address with RSVP".
+Greenpoint Trash Club then turned up withholding nothing: it runs every Wednesday at 7:30 and posts
+where to meet on Instagram that morning. Shipping it under the RSVP phrase would have put a sentence
+on the card the source never wrote, **which is a fabricated claim wearing a different coat.**
+
+- **`locationNote` is optional, so every card written before today reads exactly as it did.** The
+  default stays "address with RSVP" and L&SD is untouched.
+- **The wording moved out of the component into `locationLine.js` so it could be tested.** `npm test`
+  covers `src/**/*.test.mjs`; the DOM runner stays reserved for invariants that genuinely need a DOM.
+- **Three places spelled out that phrase, not one.** The feed row, and TWO copies in `aeo.js` — the
+  card page and the week sheet. Fixing only the row would have left an answer engine reading "address
+  with RSVP" off a club that has no RSVP, which is the fix-the-class rule failing in the way it always
+  fails: the caller in front of you gets fixed and the other two do not.
+- **The geocoder stops chasing pinless cards.** A `locationPrivate` card must not carry coords, so
+  looking its address up is guaranteed to fail — and the miss reads exactly like a real geocoding
+  failure. Six of the eight "unresolved" lines that morning were these.
+
+**The card: `greenpoint-trash-club-wednesdays`**, undated, `civic`, no pin, row reads "Every Wednesday,
+7:30pm · meeting point posted on Instagram that morning". **This reverses the 2026-08-30 deletion**,
+which was right at the time: the 7:30 start existed only in an Instagram bio nobody had written down.
+Batu supplied screenshots of that bio on 2026-09-11 and the read is committed, so the fact is now
+checkable by anyone.
+
+- **No `free` flag, though a litter pick-up plainly costs nothing.** The bio does not say "free", and
+  the rule is that free-ness is designated only where the source states it. The summary says the club
+  states no price instead.
+- **The quote gate can now verify a card with no roster source behind it.** Trash Club cites Instagram,
+  which this project cannot fetch, and rests entirely on committed evidence — so it was being SKIPPED,
+  meaning the one kind of card whose evidence can NEVER be re-fetched was also the one kind nobody
+  checked. Every fragment present now promotes a SKIP to an OK; anything else stays a SKIP, because
+  with no source to re-read this check has no standing to call a card wrong. Unverifiable 20 → 13.
+
 ## 2026-09-11 — the truth gate could not see poster evidence; and a weekly meetup with no fixed place
 
 **Batu was right about where the failing quotes came from.** Of the eleven cards `ingest:quotes` was

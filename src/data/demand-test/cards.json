@@ -11339,6 +11339,45 @@
       "updatedAt": "2026-09-11",
       "lat": 40.730301,
       "lng": -73.957773
+    },
+    {
+      "id": "greenpoint-trash-club-wednesdays",
+      "title": "Greenpoint Trash Club",
+      "category": "subscription",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Greenpoint Trash Club",
+      "locationPrivate": true,
+      "locationNote": "meeting point posted on Instagram that morning",
+      "kicker": "Every Wednesday, 7:30pm",
+      "summary": "A weekly litter pick-up around the neighbourhood — about 45 minutes, then a drink at wherever the group met. All supplies are provided; just turn up. The meeting point changes week to week and goes up on the club's Instagram that day; the club states no price.",
+      "whyItMatters": "3,631 people follow it and their own website has been unreachable since August, so the week's meeting point exists only on Instagram.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "This week's spot",
+          "type": "learn_more",
+          "url": "https://www.instagram.com/greenpointtrashclub/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "@greenpointtrashclub — profile bio and 2026-09-09 post",
+          "url": "https://www.instagram.com/greenpointtrashclub/",
+          "publisher": "Greenpoint Trash Club",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "Come pick up litter with us around Greenpoint!\nEvery Wednesday night at 7:30!\nThe plan is to pick up trash for 45 mins around the neighborhood and then hang at Troost after for drinks\nAll supplies are provided, just show up!!",
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11"
     }
   ]
 }

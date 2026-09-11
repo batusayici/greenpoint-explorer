@@ -210,7 +210,21 @@ for (const card of seed.cards) {
   const hosts = [...new Set((card.sourceLinks ?? []).map((l) => hostOf(l.url)).filter(Boolean))];
   const srcs = [...new Set(hosts.flatMap((h) => byHost.get(h) ?? []))];
   if (srcs.length === 0) {
-    results.skip.push({ id: card.id, why: hosts.length ? `no roster source for ${hosts.join(", ")}` : "no source URL" });
+    // A card can be fully evidenced with no roster source behind it: Greenpoint
+    // Trash Club cites Instagram, which this project cannot fetch, and rests
+    // entirely on a committed transcription of Batu's screenshots. Skipping it
+    // would mean the one kind of card whose evidence CANNOT be re-fetched is
+    // also the one kind nobody ever checks. So try the committed evidence on
+    // its own. Deliberately one-directional: every fragment present promotes a
+    // SKIP to an OK, and anything else stays a SKIP — with no source to
+    // re-read, this check has no standing to call a card wrong.
+    const posterOnly = norm(posterEvidence);
+    const hasIn = (v) => norm(v).length >= FRAGMENT_MIN && posterOnly.includes(norm(v));
+    const covered =
+      posterOnly.length > 0 &&
+      fragments(card.sourceQuote).every((f) => [f, unlabel(f), detrail(f), detrail(unlabel(f))].some(hasIn));
+    if (covered) results.ok.push({ id: card.id, src: "committed evidence (no roster source)" });
+    else results.skip.push({ id: card.id, why: hosts.length ? `no roster source for ${hosts.join(", ")}` : "no source URL" });
     continue;
   }
   const snaps = srcs.map((s) => ({ s, snap: readSnapshot(s.id) })).filter((x) => x.snap);

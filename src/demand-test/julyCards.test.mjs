@@ -913,7 +913,17 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // Greenpoint directory — a different source — and the directory entry is now
   // persisted into this source's snapshot so the quote gate can re-check it.
   // Deck 245 -> 246, subscription 38 -> 39.
-  assert.equal(seed.cards.length, 246);
+  //
+  // 2026-09-11 (same session): +1 again. Greenpoint Trash Club's weekly litter
+  // pick-up, undated, carrying NO PIN. Its card was deleted on 2026-08-30 as
+  // unverifiable because the 7:30 start existed only in an Instagram bio nobody
+  // had written down; Batu supplied screenshots of that bio on 2026-09-11 and
+  // the read is now committed, so the recurrence is sourced. Where it meets
+  // still is not — the spot changes weekly and goes up on Instagram that
+  // morning — so it ships `locationPrivate` with its own location line rather
+  // than inheriting Light & Sound Design's "address with RSVP", which this club
+  // has never said. Deck 246 -> 247, subscription 39 -> 40.
+  assert.equal(seed.cards.length, 247);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 36, "35 + the Limousine opening (2026-09-11)");
@@ -921,7 +931,7 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
   assert.equal(count((c) => c.filters.includes("live_music")), 41, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
-  assert.equal(count((c) => c.category === "subscription"), 39, "38 + Brooklyn Hearts Club's second-Wednesday art club (2026-09-11)");
+  assert.equal(count((c) => c.category === "subscription"), 40, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -1762,6 +1772,12 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // 2026-09-07, seventh pass: the church food pantry — mutual aid, the other
     // half of what this lens is for. First card ever off an iCalendar source.
     "greenpoint-church-food-pantry",
+    // 2026-09-11: Greenpoint Trash Club's weekly Wednesday litter pick-up. A
+    // hands-on neighbourhood work shift, which is the lens rule exactly. Its
+    // card was deleted on 2026-08-30 as unverifiable — the 7:30 start existed
+    // only in an Instagram bio nobody had written down — and Batu supplied
+    // screenshots of that bio on 2026-09-11, so the read is now committed.
+    "greenpoint-trash-club-wednesdays",
     "java-street-community-garden",
     // (kingsland-greenhouse-gang-0901 expired out 2026-09-02)
     // 2026-09-02: Kingsland Wildflowers open hours — four hours on the green
@@ -1979,10 +1995,15 @@ test("a pinless card is deliberate, never an oversight (2026-09-10)", () => {
     assert.equal(c.locationPrivate, true, `${c.id} has no pin and no reason for it`);
     assert.ok(c.locationName, `${c.id} must still name where it is`);
   }
-  // The five Light & Sound Design nights carded from its flyers on 2026-09-10.
-  // If this number moves, a run either onboarded another address-private venue
-  // (fine, say so) or dropped a pin it should have derived (not fine).
-  assert.equal(pinless.length, 5);
+  // The five Light & Sound Design nights carded from its flyers on 2026-09-10,
+  // plus Greenpoint Trash Club from 2026-09-11 — the first pinless card whose
+  // source does NOT withhold its address. The club runs every Wednesday at 7:30
+  // and posts the week's meeting point on Instagram that morning, so there is
+  // no fixed place to derive, and it carries its own `locationNote` rather than
+  // inheriting L&SD's "address with RSVP", which it has never said.
+  // If this number moves, a run either onboarded another venue with no fixed
+  // address (fine, say so) or dropped a pin it should have derived (not fine).
+  assert.equal(pinless.length, 6);
 });
 
 // The World Cup watch-party cluster (world-cup-watch) aged out in the

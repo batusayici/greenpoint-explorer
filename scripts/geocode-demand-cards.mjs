@@ -69,6 +69,11 @@ const seed = JSON.parse(readFileSync(CARDS_PATH, "utf8"));
 const misses = [];
 
 for (const card of seed.cards) {
+  // A `locationPrivate` card must not carry coords — the schema rejects one
+  // that does — so looking its address up is guaranteed to fail, and the miss
+  // it reports reads exactly like a real geocoding failure. Six of the eight
+  // "unresolved" lines on 2026-09-11 were these. Skip them (2026-09-11).
+  if (card.locationPrivate) continue;
   const venues = card.venues ?? [];
   if (venues.length > 0) {
     for (const v of venues) if (!(await fill(v, `${card.id} / ${v.name}`))) misses.push(`${card.id}/${v.name}`);
