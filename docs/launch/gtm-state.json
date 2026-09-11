@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-09-10",
+    "asOf": "2026-09-11",
     "lastDataPull": "2026-09-08",
-    "lastFeedCheck": "2026-09-10",
+    "lastFeedCheck": "2026-09-11",
     "nextReadout": "2026-09-15",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -28,9 +28,9 @@
         "date": "2026-08-28"
       },
       {
-        "label": "Verify the FB in-app webview on real iOS + Android — Q2's highest-stakes open precondition now that Rana posts to multiple groups",
+        "label": "Facebook in-app browser verified on a real iPhone (2026-09-10) — Android app still unchecked, its engine is covered",
         "when": "Before Sep 4",
-        "status": "next",
+        "status": "done",
         "date": "2026-09-03"
       },
       {
@@ -322,8 +322,8 @@
         },
         {
           "label": "Facebook in-app webview verified on real iOS + Android",
-          "status": "open",
-          "detail": "PARTLY CLOSED 2026-09-08. npm run verify:fb-webview now drives the built site with both engines Facebook embeds — WebKit for its iOS app and Chromium for Android — on every run. The app around the engine is still unchecked and still needs a handset once. ~100% of Q2 taps arrive through it, and it is the same hostile-context class as the 8/13 map bug. If it is broken it presents as a low session count, indistinguishable from a post nobody clicked."
+          "status": "done",
+          "detail": "PARTLY CLOSED 2026-09-08. npm run verify:fb-webview now drives the built site with both engines Facebook embeds — WebKit for its iOS app and Chromium for Android — on every run. The app around the engine is still unchecked and still needs a handset once. ~100% of Q2 taps arrive through it, and it is the same hostile-context class as the 8/13 map bug. If it is broken it presents as a low session count, indistinguishable from a post nobody clicked. CLOSED 2026-09-10 (Batu, on his own iPhone): opened the tagged link from a Facebook post in the Facebook app — the map drew, the Family & Kids chip came up already active, and a card opened. The Facebook Sharing Debugger also re-scraped clean: title, description and the map image all render on the card, where the first post had shown a bare domain because Facebook had not finished fetching that URL when the post rendered. The Android app is still unchecked; its engine is not, since verify:fb-webview drives Chromium. Row updated in environmental-dependencies.md."
         },
         {
           "label": "Rana's group list — determines how many src rows exist",
@@ -1091,13 +1091,6 @@
       "source": "readout 2026-09-01 calibration log"
     },
     {
-      "id": "webview",
-      "what": "Check the Facebook in-app browser on a real iOS and Android handset, with a row in environmental-dependencies.md in the same change. The engines are now covered by npm run verify:fb-webview; the app around them is not, and Q2 posts today.",
-      "owner": "Batu",
-      "needBy": "2026-09-08",
-      "source": "roster Q2 preconditions"
-    },
-    {
       "id": "q2-post",
       "what": "Whether Q2 posts today, and whether the Facebook app is checked on a real handset first. Every other precondition is met; the window is Tue 9/8 and Wed 9/9, and Q2 cannot be re-run.",
       "owner": "Batu",
@@ -1301,17 +1294,13 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-09-10",
-    "dayName": "Thursday, September 10",
+    "ranAt": "2026-09-11",
+    "dayName": "Friday, September 11",
     "dueToday": [],
     "overdue": [
       {
         "label": "Fire the channels cleared on 8/17 and still unsent — Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir → WORD → Flower Cat), IG carousel",
         "since": "2026-08-28"
-      },
-      {
-        "label": "Verify the FB in-app webview on real iOS + Android — Q2's highest-stakes open precondition now that Rana posts to multiple groups",
-        "since": "2026-09-03"
       },
       {
         "label": "Add school-year and fall-registration sources to the ingest roster (PTAs, District 14, after-school and class providers) and build out Sep 7-13 family supply",
@@ -1338,14 +1327,19 @@
         "since": "2026-09-08"
       }
     ],
-    "waiting": [],
+    "waiting": [
+      {
+        "what": "PR #79 — docs: the Facebook in-app browser is verified on a real iPhone",
+        "age": 0
+      }
+    ],
     "overnight": [
-      "Merge pull request #76 from batusayici/ingest/arto-lindsay-watchitem",
-      "ingest: an unblocked-on date cards itself, starting with Arto Lindsay on 10/3",
-      "Merge pull request #74 from batusayici/feature/poster-ingest",
-      "Merge main — the closed-audience rule and the 9/8 growth readout",
-      "cards: a card can ship without a pin when the venue hides its address",
-      "poster: Calyer ships as September, Light & Sound and Jabberjaw recorded"
+      "Merge pull request #80 from batusayici/docs/lens-landing-pages-scope",
+      "Merge pull request #82 from batusayici/growth/lens-page-links",
+      "growth: Rana's links point at /kids and /civic",
+      "Merge pull request #81 from batusayici/feat/lens-landing-pages",
+      "Merge pull request #77 from batusayici/growth/rana-group-rows",
+      "content(track-v): daily refresh — 12 cards on, 8 finished, 1 moved out of Greenpoint"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1355,11 +1349,11 @@
     ],
     "feed": {
       "dated": 98,
-      "reservoir": 38,
+      "reservoir": 43,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 235
+      "cards": 245
     }
   }
 }

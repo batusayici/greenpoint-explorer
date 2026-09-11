@@ -56,7 +56,8 @@ or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
 
 1. Link copied from the table above — never hand-typed, never bare.
 2. New channel → add the row here **first** (kebab-case `src`, committed).
-3. Within a day of sending, spot-check the `src` shows up:
+3. **Posting to Facebook — if the card comes up bare, run the link through the [Sharing Debugger](https://developers.facebook.com/tools/debug/) and hit Scrape Again.** Not needed as a routine step: tested 2026-09-10, `?src=verify&lens=civic` was a query string Facebook had never seen and its card rendered complete on the first post. Facebook follows `og:url` and treats every tagged variant of the same page as one object, so one good scrape covers them all. The bare card seen earlier that day was Facebook rendering the post before it had finished fetching, not a per-URL cache miss. `/kids` and `/civic` are their own pages with their own `og:url`, so each gets scraped once in its own right.
+4. Within a day of sending, spot-check the `src` shows up:
    `./scripts/posthog-pull.sh` → Channels table.
 
 ## Rules
