@@ -11289,6 +11289,95 @@
         }
       ],
       "sourceQuote": "title: SUPERSHORTS NY FILM FESTIVAL\nstartDate: 2026-09-25T22:00:00.000Z\nendDate: 2026-09-25T23:00:00.000Z\nstartDate: 2026-09-26T22:30:00.722Z\nstartDate: 2026-09-27T22:30:00.287Z"
+    },
+    {
+      "id": "brooklyn-hearts-club-art-night",
+      "title": "Brooklyn Hearts Club at Madeline's",
+      "category": "subscription",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Madeline's",
+      "address": "117 Franklin St, Brooklyn, NY 11222",
+      "kicker": "Adult art club, every second Wednesday",
+      "summary": "A drop-in art club for adults that meets at Madeline's on Franklin St on the second Wednesday of every month. The club states no start time and no price — turn up and ask, or check their Linktree.",
+      "whyItMatters": "The club has no website of its own and its Linktree carries no dates, so the only place this recurrence is written down is the Shop Small Greenpoint directory.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://linktr.ee/brooklynheartsclub"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint directory — Brooklyn Hearts Club",
+          "url": "https://shopsmallgreenpoint.carrd.co/#ssg-directory",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-09-11"
+        },
+        {
+          "title": "Brooklyn Hearts Club",
+          "url": "https://linktr.ee/brooklynheartsclub",
+          "publisher": "Brooklyn Hearts Club",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "An art club for adults held at Madeline's every second Wednesday of the month! Create and connect in a judgement free space.",
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11",
+      "lat": 40.730301,
+      "lng": -73.957773
+    },
+    {
+      "id": "greenpoint-trash-club-wednesdays",
+      "title": "Greenpoint Trash Club",
+      "category": "subscription",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Greenpoint Trash Club",
+      "locationPrivate": true,
+      "locationNote": "meeting point posted on Instagram that morning",
+      "kicker": "Every Wednesday, 7:30pm",
+      "summary": "A weekly litter pick-up around the neighbourhood — about 45 minutes, then a drink at wherever the group met. All supplies are provided; just turn up. The meeting point changes week to week and goes up on the club's Instagram that day; the club states no price.",
+      "whyItMatters": "3,631 people follow it and their own website has been unreachable since August, so the week's meeting point exists only on Instagram.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "This week's spot",
+          "type": "learn_more",
+          "url": "https://www.instagram.com/greenpointtrashclub/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "@greenpointtrashclub — profile bio and 2026-09-09 post",
+          "url": "https://www.instagram.com/greenpointtrashclub/",
+          "publisher": "Greenpoint Trash Club",
+          "date": "2026-09-11"
+        }
+      ],
+      "sourceQuote": "Come pick up litter with us around Greenpoint!\nEvery Wednesday night at 7:30!\nThe plan is to pick up trash for 45 mins around the neighborhood and then hang at Troost after for drinks\nAll supplies are provided, just show up!!",
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-11",
+      "updatedAt": "2026-09-11"
     }
   ]
 }

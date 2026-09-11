@@ -11,6 +11,9 @@
 import { isExpiredCard, sortTodayFirst } from "./filterCards.js";
 import { isAllDay, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 import { RECURRENCE_DAYS } from "./cardSchema.js";
+// Same source of truth as the feed row (2026-09-11). Both places used to spell
+// out one venue's words, "address with RSVP"; a card now supplies its own.
+import { DEFAULT_LOCATION_NOTE } from "./locationLine.js";
 import { editionLabel, isDailySitting, recurrenceLabel } from "./eventWindow.js";
 import { LENS_PAGES } from "./deepLink.js";
 
@@ -356,7 +359,7 @@ function cardBodyHtml(card, origin) {
   // A venue that deliberately withholds its address (2026-09-10) states that in
   // the crawlable prose too — an answer engine reading "Light & Sound Design
   // Studios" alone would otherwise report a Greenpoint address it invented.
-  const where = [card.locationName, card.locationPrivate ? "address with RSVP" : card.address]
+  const where = [card.locationName, card.locationPrivate ? card.locationNote || DEFAULT_LOCATION_NOTE : card.address]
     .filter(Boolean)
     .join(" · ");
   const sources = (card.sourceLinks ?? [])
@@ -661,7 +664,7 @@ function lensBodyHtml(lensId, cards, origin, now) {
       // A venue card's title IS its venue name, so naming it again reads as a
       // stutter ("Giggles & Wiggles — Giggles & Wiggles · 42 West St").
       const venue = c.locationName === c.title ? null : c.locationName;
-      const where = [venue, c.locationPrivate ? "address with RSVP" : c.address]
+      const where = [venue, c.locationPrivate ? c.locationNote || DEFAULT_LOCATION_NOTE : c.address]
         .filter(Boolean)
         .join(" · ");
       const detail = [when, where].filter(Boolean).join(" — ");

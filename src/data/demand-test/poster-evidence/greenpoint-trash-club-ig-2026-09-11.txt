@@ -1,0 +1,54 @@
+# Instagram screenshots: @greenpointtrashclub profile + the 2026-09-09 post
+# Supplied by Batu, 2026-09-11, from his own Instagram
+# Seen at: instagram.com/greenpointtrashclub (public account, 3,631 followers)
+# WHY THIS IS COMMITTED AND NOT IN .ingest-cache: the club's own website has
+# served a broken certificate since 2026-08-08 (Netlify wildcard, does not cover
+# their domain — see manualSources), and Instagram is not fetchable by the
+# roster at all. So this read is the only record there is, and a gitignored
+# snapshot would leave any card resting on it permanently unverifiable. Same
+# rule as a street poster (DECISION_LOG 2026-09-10).
+
+## PROFILE BIO, read 2026-09-11
+greenpointtrashclub
+Greenpoint Trash Club
+159 posts   3,631 followers   866 following
+✨ Come pick up litter with us around Greenpoint! ✨
+⚛ Every Wednesday night at 7:30! ⚛
+⬇ Donate in link below ⬇
+🔗 greenpointtrashclub.org
+Followed by greenpointers, omgreenpoint + 28 more
+
+## POST, dated "2d" from 2026-09-11 (so posted 2026-09-09), carousel slide 1
+GREENPOINT TRASH CLUB
+Meet at Troost
+Wed, Sept 9
+7:30PM
+@greenpointtrashclub
+
+Meet outside of the entrance of Troost at 7:30PM
+
+The plan is to pick up trash for 45 mins around the neighborhood and then hang
+at Troost after for drinks
+
+All supplies are provided, just show up!!
+
+[slide also carries a Google Map crop with a red rectangle covering roughly
+Freeman St to India St between Manhattan Ave and Franklin St, with a pin on
+Troost]
+
+## POST CAPTION
+greenpointtrashclub: Join us in our epic quest to defeat the trash demons on
+Greenpoint!!!!!!
+
+## BATU, 2026-09-11 (supplied alongside the screenshots)
+The club runs EVERY Wednesday at the same time. Its exact meeting point CHANGES
+week to week and is announced the same day on their Instagram.
+
+# WHAT THIS DOES AND DOES NOT SUPPORT.
+# Supported outright: the weekly recurrence and the 7:30pm start (the bio states
+# both), that it is a litter pick-up around Greenpoint, that supplies are
+# provided, and that a session runs about 45 minutes and is followed by a drink
+# at wherever they met.
+# NOT supported: any FIXED meeting point. Troost is where 9 September met, and
+# that date has passed. Nothing here states where any future Wednesday meets.
+# This is why the card is blocked — see DECISION_LOG 2026-09-11.

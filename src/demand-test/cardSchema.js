@@ -382,6 +382,16 @@ export function validateCard(card) {
   if (card.locationPrivate) {
     if (hasCoords || venues.length > 0) err("locationPrivate card must not carry coords or venues");
     if (str(card.address)) err("locationPrivate card must not carry an address");
+    // `locationNote` is the row's own words for WHY there is no pin, added
+    // 2026-09-11. The flag started life meaning one thing — Light & Sound
+    // Design deliberately withholds its address — and the row hardcoded that
+    // venue's language, "address with RSVP". Greenpoint Trash Club then turned
+    // up withholding nothing: it runs every Wednesday at 7:30 and announces the
+    // meeting point on Instagram that morning. Shipping it under the RSVP
+    // phrase would have put a sentence on the card the source never wrote,
+    // which is a fabricated claim in a different coat. Optional, so every card
+    // written before today reads exactly as it did.
+    if (card.locationNote != null && !str(card.locationNote)) err("locationNote must be a non-empty string");
   } else if (!hasCoords && venues.length === 0) {
     err("needs coords or venues to appear on the map");
   }
