@@ -933,6 +933,12 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // announcement, which is why the quote gate caught it.
   // Deck 247 -> 256, event 144 -> 152, subscription 40 -> 41, live_music 41 -> 42,
   // civic 21 -> 22, pinless 6.
+  //
+  // Then, same day, Batu ruled on Happy Medium's filing: its art-cafe card is a
+  // daily drop-in you book, the same shape as last-place-chess-chill, so it
+  // moves from `arts_culture` to `subscription`. That closes the coverage line
+  // permanently — the check credits an undated card only when it is a
+  // subscription — instead of explaining it every fortnight. subscription 41 -> 42.
   assert.equal(seed.cards.length, 256);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
@@ -941,7 +947,7 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
   assert.equal(count((c) => c.filters.includes("live_music")), 42, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
-  assert.equal(count((c) => c.category === "subscription"), 41, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
+  assert.equal(count((c) => c.category === "subscription"), 42, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one

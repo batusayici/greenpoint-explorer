@@ -3622,13 +3622,6 @@
       "expiresAt": "2026-09-25"
     },
     {
-      "sourceId": "happy-medium",
-      "gapKey": "GAP",
-      "reason": "THE SESSIONS ARE CARDED, AS A STANDING CARD THIS CHECK CANNOT COUNT. `happy-medium-art-cafe` covers the drop-in art sessions and was re-quoted this run against today's listing ('Art Cafe / Fri, Sep 11 · 2:15 PM - 4:15 PM / Greenpoint / $15 deposit'). It is undated, and the coverage check credits an undated card only when its category is `subscription`; this one is filed `arts_culture`, so it reads as zero coverage while representing the venue fully. ⚠ RULE QUESTION FOR BATU rather than a supply problem: a daily drop-in you book is the same shape as `last-place-chess-chill`, which is filed `subscription` — if that is right here too, the card should be refiled and this line closes permanently instead of being explained every fortnight. WHAT WOULD CHANGE IT: that ruling.",
-      "addedAt": "2026-09-11",
-      "expiresAt": "2026-09-25"
-    },
-    {
       "sourceId": "greenpoint-ymca",
       "gapKey": "GAP",
       "reason": "THE FLAGGED DATE IS A HOLIDAY CLOSURE, NOT PROGRAMMING. The only thing this snapshot says about 23-24 September is one line in the branch's schedule notes: 'Tuesday/Wednesday September 23-24 Rosh Hashanah 2 Days'. That is the Y telling members when it is shut. It appears as a dated item only because the parser was widened on 2026-09-11 to expand month-name ranges ('September 23-24' into both days), which is working correctly and has no supply behind it here. WHAT WOULD CHANGE IT: the Y publishing an actual dated programme, which lands as an ordinary diff.",
@@ -3643,16 +3636,16 @@
       "expiresAt": "2026-09-25"
     },
     {
-      "sourceId": "leaves-bookstore",
+      "sourceId": "light-and-sound-design",
       "gapKey": "GAP",
-      "reason": "HELD, NOT MISSED — THE LOCATION CANNOT BE CONFIRMED FROM THE CALENDAR. The one flagged date belongs to 'printed matter ny art book fair / thursday september 24, 2026 - sunday september 27, 2026', and this source's own roster note requires every item to be gated on its detail page for a street address, because the calendar mixes the Greenpoint shop at 140 Nassau Ave with an appointment-only Bushwick room at 350 Harman St. No detail page is in the snapshot, so the Greenpoint half cannot be confirmed and the card would be guessing which borough to pin. ⚠ THE FIX IS A ROSTER CHANGE, NOT A WEEKLY JUDGMENT: this source needs a `detail` block following /pages/events/<id>/<slug>, the same shape added to triskelion-arts and dashi-okume on 2026-09-11. Until then this line returns every time the shop lists anything. WHAT WOULD CHANGE IT: that detail block.",
+      "reason": "NEITHER FLAGGED DATE CAN CARRY A CARD, AND THE VENUE'S OWN PAGES SAY WHY. 9/16 is 'dance practice: Taia + dominique', which the listing carries with a date and NO TIME, and there is no event page behind it — the site links nine /e/ pages and none is for the 16th, so there is nothing to source a start from. 9/20 carries two items, and both fail on their own terms: 'Biking to Rockaway' states '8:00AM - 1:00PM' at the top and then says in its body 'Exact departure time TBD but will likely be early-ish in morning', so under the 2026-08-26 rule the prose wins and there is no sitting to card; 'Last Sun Day' is at 'the Rockaway Amphitheater (96th and Shorefeont)', which is Queens and out of area. The other six dates this source carries in-window ARE carded, and all five of its cards were re-quoted this run against the event pages now persisted. WHAT WOULD CHANGE IT: the studio publishing a time for the 16th, or a fixed departure for the ride.",
       "addedAt": "2026-09-11",
       "expiresAt": "2026-09-25"
     },
     {
-      "sourceId": "light-and-sound-design",
+      "sourceId": "leaves-bookstore",
       "gapKey": "GAP",
-      "reason": "NEITHER FLAGGED DATE CAN CARRY A CARD, AND THE VENUE'S OWN PAGES SAY WHY. 9/16 is 'dance practice: Taia + dominique', which the listing carries with a date and NO TIME, and there is no event page behind it — the site links nine /e/ pages and none is for the 16th, so there is nothing to source a start from. 9/20 carries two items, and both fail on their own terms: 'Biking to Rockaway' states '8:00AM - 1:00PM' at the top and then says in its body 'Exact departure time TBD but will likely be early-ish in morning', so under the 2026-08-26 rule the prose wins and there is no sitting to card; 'Last Sun Day' is at 'the Rockaway Amphitheater (96th and Shorefeont)', which is Queens and out of area. The other six dates this source carries in-window ARE carded, and all five of its cards were re-quoted this run against the event pages now persisted. WHAT WOULD CHANGE IT: the studio publishing a time for the 16th, or a fixed departure for the ride.",
+      "reason": "THE CALENDAR IS A LIST OF FAIRS LEAVES EXHIBITS AT, NOT EVENTS AT ITS SHOP. Measured 2026-09-11 by rendering /events.php in chromium: the page links no per-event pages at all, and its three entries are 'printed matter ny art book fair' (24-27 September), 'rare books la union station' (3-4 October) and 'brooklyn rare book fair' (4-5 December). Rare Books LA at Union Station is Los Angeles, which settles what this list is. So the flagged date is not Greenpoint supply we failed to card, and a `detail` block — proposed and rejected the same day — would have nothing to follow. WHAT WOULD CHANGE IT: Leaves listing an event at 140 Nassau Ave.",
       "addedAt": "2026-09-11",
       "expiresAt": "2026-09-25"
     }
