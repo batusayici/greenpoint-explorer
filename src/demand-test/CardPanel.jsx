@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters, pickRelated, noTodayNotice, publishedOn } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, followHref } from "./cardActions.js";
+import { locationLine } from "./locationLine.js";
 import { followTarget, followRef, followSlotIndex } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
@@ -188,19 +189,14 @@ const DEAL_END_FMT = new Intl.DateTimeFormat("en-US", {
 // explain itself without a tap) plus the street address (sans city boilerplate)
 // or venue name when it adds something the title doesn't.
 function cardSubline(card) {
-  // A venue already named in the title ("Sticker Buffet at Yoseka Land") is
-  // not repeated in the row.
-  const named = (s) => s && card.title.toLowerCase().includes(s.toLowerCase());
-  // A venue that withholds its address (2026-09-10) says so in the row rather
-  // than reading as a card someone forgot to finish. The label is the venue's
-  // own words, not a euphemism we invented for a missing field.
-  const where = card.locationPrivate
-    ? `${named(card.locationName) ? "" : card.locationName + ", "}address with RSVP`
-    : card.address
-      ? card.address.replace(/,\s*Brooklyn.*$/i, "")
-      : !named(card.locationName)
-        ? card.locationName
-        : null;
+  // Moved to locationLine.js on 2026-09-11 so it can be tested: the no-pin
+  // wording used to be hardcoded to one venue's language ("address with RSVP"),
+  // which was right for Light & Sound Design and a sentence Greenpoint Trash
+  // Club has never said. A card now supplies its own note.
+  const where = locationLine(card);
+  // The row never restates what the title already says — an address the title
+  // carries, or a note that repeats it.
+  const named = (t) => !!t && card.title.toLowerCase().includes(t.toLowerCase());
   // Recurring deals (standing happy hours): endsAt is only the verified-through
   // date, so printing "ends Jul 22" would state a deadline the source doesn't.
   const ends =

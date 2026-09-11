@@ -48,13 +48,35 @@
 // and are reported as SKIP, not as pass — they are exactly as unverified as
 // they were before this script existed, and the summary says so.
 const GATE_FROM = "2026-08-12";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = join(root, "src", "data", "demand-test");
 const cacheDir = join(root, ".ingest-cache");
+// Poster transcriptions are COMMITTED EVIDENCE and this gate could not see them
+// (2026-09-11). The /poster skill landed on 2026-09-10 and writes each read into
+// `src/data/demand-test/poster-evidence/<name>.txt`, in the repo, deliberately
+// not into `.ingest-cache` — a poster is gone the day someone tapes another one
+// over it, so a gitignored snapshot would leave the card permanently
+// unverifiable. But this file only ever read `.ingest-cache`, so the first
+// poster batch produced four cards that are correctly sourced against committed
+// evidence and were reported MISMATCH the next morning: three Salsa class-week
+// cards and Held Space's mat pilates. A truth gate that fails honest cards gets
+// widened until it is toothless, which is the one outcome this file exists to
+// avoid.
+//
+// The whole directory joins every card's evidence base rather than matching file
+// names to card ids, because one photo routinely sources several cards
+// (`salsa-class-week-2026-09.txt` carries three) and the names are batch names,
+// not ids. The looseness it buys — a card could match another card's poster —
+// is worth far less than the false failures it removes: every file here was
+// photographed by a person, committed, and reviewed.
+const posterDir = join(root, "src", "data", "demand-test", "poster-evidence");
+const posterEvidence = existsSync(posterDir)
+  ? readdirSync(posterDir).filter((f) => f.endsWith(".txt")).map((f) => readFileSync(join(posterDir, f), "utf8")).join("\n")
+  : "";
 const verbose = process.argv.includes("--verbose");
 const sweepAll = process.argv.includes("--all");
 
@@ -188,7 +210,21 @@ for (const card of seed.cards) {
   const hosts = [...new Set((card.sourceLinks ?? []).map((l) => hostOf(l.url)).filter(Boolean))];
   const srcs = [...new Set(hosts.flatMap((h) => byHost.get(h) ?? []))];
   if (srcs.length === 0) {
-    results.skip.push({ id: card.id, why: hosts.length ? `no roster source for ${hosts.join(", ")}` : "no source URL" });
+    // A card can be fully evidenced with no roster source behind it: Greenpoint
+    // Trash Club cites Instagram, which this project cannot fetch, and rests
+    // entirely on a committed transcription of Batu's screenshots. Skipping it
+    // would mean the one kind of card whose evidence CANNOT be re-fetched is
+    // also the one kind nobody ever checks. So try the committed evidence on
+    // its own. Deliberately one-directional: every fragment present promotes a
+    // SKIP to an OK, and anything else stays a SKIP — with no source to
+    // re-read, this check has no standing to call a card wrong.
+    const posterOnly = norm(posterEvidence);
+    const hasIn = (v) => norm(v).length >= FRAGMENT_MIN && posterOnly.includes(norm(v));
+    const covered =
+      posterOnly.length > 0 &&
+      fragments(card.sourceQuote).every((f) => [f, unlabel(f), detrail(f), detrail(unlabel(f))].some(hasIn));
+    if (covered) results.ok.push({ id: card.id, src: "committed evidence (no roster source)" });
+    else results.skip.push({ id: card.id, why: hosts.length ? `no roster source for ${hosts.join(", ")}` : "no source URL" });
     continue;
   }
   const snaps = srcs.map((s) => ({ s, snap: readSnapshot(s.id) })).filter((x) => x.snap);
@@ -198,7 +234,7 @@ for (const card of seed.cards) {
   }
   const src = snaps[0].s;
   const snap = snaps[0].snap;
-  const hay = norm(snaps.map((x) => x.snap.text).join("\n"));
+  const hay = norm([...snaps.map((x) => x.snap.text), posterEvidence].join("\n"));
   const has = (s) =>
     [s, unlabel(s), detrail(s), detrail(unlabel(s))].some((v) => norm(v).length >= FRAGMENT_MIN && hay.includes(norm(v)));
   const missing = [];

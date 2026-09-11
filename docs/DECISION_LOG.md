@@ -4,6 +4,132 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — a card with no pin now says WHY in its own words, and Greenpoint Trash Club is back on the map
+
+**Batu approved the change put to him in the entry below; both shipped together.**
+
+`locationPrivate` arrived on 2026-09-10 for Light & Sound Design Studios, which says "RSVP FOR
+LOCATION" on its own posters — and the row hardcoded that venue's language, "address with RSVP".
+Greenpoint Trash Club then turned up withholding nothing: it runs every Wednesday at 7:30 and posts
+where to meet on Instagram that morning. Shipping it under the RSVP phrase would have put a sentence
+on the card the source never wrote, **which is a fabricated claim wearing a different coat.**
+
+- **`locationNote` is optional, so every card written before today reads exactly as it did.** The
+  default stays "address with RSVP" and L&SD is untouched.
+- **The wording moved out of the component into `locationLine.js` so it could be tested.** `npm test`
+  covers `src/**/*.test.mjs`; the DOM runner stays reserved for invariants that genuinely need a DOM.
+- **Three places spelled out that phrase, not one.** The feed row, and TWO copies in `aeo.js` — the
+  card page and the week sheet. Fixing only the row would have left an answer engine reading "address
+  with RSVP" off a club that has no RSVP, which is the fix-the-class rule failing in the way it always
+  fails: the caller in front of you gets fixed and the other two do not.
+- **The geocoder stops chasing pinless cards.** A `locationPrivate` card must not carry coords, so
+  looking its address up is guaranteed to fail — and the miss reads exactly like a real geocoding
+  failure. Six of the eight "unresolved" lines that morning were these.
+
+**The card: `greenpoint-trash-club-wednesdays`**, undated, `civic`, no pin, row reads "Every Wednesday,
+7:30pm · meeting point posted on Instagram that morning". **This reverses the 2026-08-30 deletion**,
+which was right at the time: the 7:30 start existed only in an Instagram bio nobody had written down.
+Batu supplied screenshots of that bio on 2026-09-11 and the read is committed, so the fact is now
+checkable by anyone.
+
+- **No `free` flag, though a litter pick-up plainly costs nothing.** The bio does not say "free", and
+  the rule is that free-ness is designated only where the source states it. The summary says the club
+  states no price instead.
+- **The quote gate can now verify a card with no roster source behind it.** Trash Club cites Instagram,
+  which this project cannot fetch, and rests entirely on committed evidence — so it was being SKIPPED,
+  meaning the one kind of card whose evidence can NEVER be re-fetched was also the one kind nobody
+  checked. Every fragment present now promotes a SKIP to an OK; anything else stays a SKIP, because
+  with no source to re-read this check has no standing to call a card wrong. Unverifiable 20 → 13.
+
+## 2026-09-11 — the truth gate could not see poster evidence; and a weekly meetup with no fixed place
+
+**Batu was right about where the failing quotes came from.** Of the eleven cards `ingest:quotes` was
+failing on, four rest on evidence he photographed himself — and the gate was looking in the wrong
+place. The `/poster` skill landed **2026-09-10** and writes each read into
+`src/data/demand-test/poster-evidence/`, in the repo, deliberately not into `.ingest-cache`, because a
+poster is gone the day someone tapes another one over it. `verify-quotes.mjs` only ever read
+`.ingest-cache`. So the first poster batch produced correctly-sourced cards that the gate called
+fabrications the next morning. **Fixed: the whole poster-evidence directory now joins every card's
+evidence base.** Three Salsa class-week cards pass immediately; verified 177 → 180, mismatch 11 → 8.
+
+- **Joined wholesale rather than matched by filename**, because one photo routinely sources several
+  cards (`salsa-class-week-2026-09.txt` carries three) and the filenames are batch names, not card ids.
+  A card could in principle match another card's poster; that is worth far less than the false
+  failures it removes, since every file there was photographed by a person and reviewed.
+- **This is the shape to watch for whenever a new kind of evidence is added.** A truth gate that fails
+  honest cards gets widened until it is toothless — the one outcome that file exists to prevent — and
+  the poster skill was one day old when it happened.
+
+**The remaining eight are real and the next run fixes them first (Batu's instruction, written into
+`SKILL.md` step 5).** Five Light & Sound Design cards were authored from FLYER IMAGES on the venue's
+event pages and the image read was never written down, which the 2026-08-12 rule requires; the source
+needs `detailsInImages: true` and an `## [IMAGE READ …]` block. Held Space's poster is a TWO-COLUMN
+layout the card correctly reads DOWN the columns, which is not a contiguous string in the row-wise
+transcription. The comedy club and Happy Medium quote a 9 September sitting that has rolled off the
+listing since.
+
+**Greenpoint Trash Club: everything is sourced except a place, and the schema has no shape for that.**
+Batu supplied Instagram screenshots on 2026-09-11 — bio and the 9 September post — transcribed into
+`poster-evidence/greenpoint-trash-club-ig-2026-09-11.txt`. The bio states the recurrence outright,
+"Every Wednesday night at 7:30!" and "Come pick up litter with us around Greenpoint!", which is the
+fact the 2026-08-30 deletion said existed only in an Instagram bio nobody had written down. Now it is
+written down. **What is still unsourced is WHERE**, and by design: Batu confirms the meeting point
+changes weekly and is announced on Instagram that day. Troost was 9 September and that date has passed.
+
+- **`locationPrivate` is the wrong flag and using it would put words on the card the club never said.**
+  Its own comment says the flag is a CLAIM that the source *deliberately withholds* the address — this
+  club does not withhold, it has not announced yet — and `CardPanel` prints the hardcoded phrase
+  "address with RSVP", which is Light & Sound Design's language, not theirs.
+- **Held as a `watchItem`, and the rule question goes to Batu.** *Recommended:* let a card with no pin
+  supply its own location line instead of inheriting "address with RSVP", so this one can read
+  "meeting point posted on Instagram that morning" and L&SD keeps saying exactly what it says today.
+  It is a small change to one hardcoded string, and Greenpoint plainly has more than one moving meetup.
+
+## 2026-09-11 — the Brooklyn Hearts Club card, a flag corrected within the hour, and five live cards whose quotes cannot be checked
+
+**The card its own roster note had called for since 2026-08-08 finally exists.** `brooklyn-hearts-club-art-night`,
+undated, category `subscription`, at Madeline's, 117 Franklin St. Nothing mechanical was ever going to
+catch that it was missing: the club's linktr.ee carries no second-Wednesday date, so the recurrence is
+stated only in the **Shop Small Greenpoint directory** — a different source — and no signal in this
+codebase compares one source's claim against another's deck. The roster note named that directory as
+"the sourceQuote of record, not the linktree" on the day the source was onboarded, and then nothing
+acted on it for a month.
+
+- **The quote is now checkable.** The directory entry was read from the widget's own public JSON on
+  2026-09-11 (200, 155,873 bytes, 144 listings — the carrd page renders only the first 50) and written
+  into this source's snapshot under `## [R1 PERSISTED 2026-09-11]`, so `ingest:quotes` re-checks it like
+  any other card. It reports OK.
+- **No time and no price ship, because the source states neither.** The card says so in its own summary
+  rather than guessing.
+
+**A flag this same day's earlier work got wrong, corrected within the hour.** An earlier pass marked
+this source `datedListing: false` — "a linktr.ee is a link list" — off a snapshot fetched the night
+before, in which the only dated line belonged to somebody else's event at an out-of-area venue. A live
+fetch the same afternoon shows the linktree **does** carry this club's own dated events as link titles:
+"9/13 Self led Craft Social: Decoupage Vases with Pressed Flowers" and "Fri 10/17 Boo with Brushes:
+Spooky Frames Craft Social". The flag is `true`. **The lesson is the one this whole day has been about:
+a call about what a source publishes has to rest on a fetch made in the session that makes it, not on
+whatever snapshot happens to be lying around.**
+
+⚠ **Neither of those two is cardable on its own** — a link title carries no start time and no venue, and
+neither date falls on a second Wednesday, so neither is the Madeline's night. They need the club asked.
+
+**Light & Sound Design: five live cards are quoting text that is not in any snapshot.** `ingest:quotes`
+has been failing on `lsd-quadraphonics-0912-matinee`, `-evening`, `lsd-churning-sonic-0913`,
+`lsd-echoes-archive-0918` and `lsd-mess-is-lore-0919` — its listing is a bare index, a date line and a
+title, 558 bytes, which cannot hold what its own cards quote. A `detail` block now persists the nine
+`/e/<slug>` event pages, which is a real improvement (12,170 bytes of baseline, purely additive) **and
+it does not fix the five cards**: they quote ALL-CAPS strings like "OLIVIA BLOCK PRESENTS \"BREACH\"
+(4-CHANNEL VERSION)" and "SECRET ADDRESS DM FOR INFO" that appear nowhere on the website. That is
+flyer or Instagram wording, so those cards were authored from something never written down. **They need
+re-reading and re-quoting by a run that can see the source, which is not this change.**
+
+**The run-time truth gate is currently RED on `main`, and was before today.** `node
+scripts/verify-quotes.mjs` exits 1 with 11 mismatches: the five above, three Salsa Pizzeria cards
+quoting "CLASS WEEK AT SALSA" / "SEPTEMBER 21-27" (its snapshot carries the events with dates, but not
+that promo wording), plus Held Space, the comedy club and Happy Medium. None was introduced here.
+**Recommendation: the next refresh re-reads and re-quotes all eleven before it ships anything else.**
+
 ## 2026-09-11 — every roster source now reads, and three of them can produce cards for the first time
 
 **Follow-on from the two entries below**, which fixed what the pipeline could SEE. This one fixes the
