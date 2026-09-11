@@ -410,6 +410,31 @@ organisations states the site publicly.
 **Jabberjaw's free Tuesday comedy at Paulie Gee's goes to `manualSources`, not the fetch roster.** The show is real and free, but its schedule exists only on Instagram: Paulie Gee's own page is 186KB of restaurant marketing with no events section, and the one fetchable listing shows a single date in August marked passed. Recorded with what would reopen it, so a later run does not re-onboard it and rediscover the same wall.
 
 **Shape:** a `/poster` skill, photos pasted into chat, one branch and PR per batch — cards, evidence files and proposed roster entries together — reporting what ships, what is held and what would unblock it, and which venues to add.
+## 2026-09-11 — a repeating card's readable text states its rhythm, never its series start
+
+**Found on the live `/kids` page the morning it was about to be posted to parents groups.** It read
+*"McGolrick Bird Club — Sat, Aug 8"* for a club that meets every Saturday through 19 September. The
+prose printed `startsAt`, which on a weekly card is the first day of the run rather than a sitting a
+reader can turn up to. **Seventeen of the twenty-four live repeating cards were showing a date that
+had already passed** — the chess night at the Parkhouse, trivia at Black Rabbit, the Scrappleland
+clubs, Wine Down Wednesday, and the rest.
+
+**Why it survived this long.** The structured data was correct the entire time:
+`recurringEventJsonLd` states the weekly schedule properly, and `verify:aeo` checks it. Nothing
+compares the two halves of a page against each other, so a page could say one thing to a parser and
+another to a reader, indefinitely, with every test green. The readable half is the one a person sees
+in the moment before the app boots — and the one an answer engine quotes when it summarises rather
+than parses.
+
+**The fix.** `windowLine` in `aeo.js` now says what `CardPanel` says: `recurrenceLabel` plus the
+sitting time for a card with stated days ("Every Saturday · 9:00 AM"), and nothing at all for one
+that repeats without a stated day, because the source never named a day and neither may we. One
+function, so card pages and lens pages were both wrong and are both fixed — no caller was patched in
+isolation.
+
+**Worth carrying forward:** structured data being right is not evidence the page is right. They are
+written by different code and only the prose is read by a human.
+
 ## 2026-09-10 — two lenses get real pages: /kids and /civic
 
 **Batu, after the Facebook preview test that morning.** Every lens link previewed on Facebook as the
