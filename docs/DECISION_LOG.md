@@ -4,6 +4,46 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-11 — the coverage report now asks whether we can read a source at all
+
+**The half left open by the entry below, closed the same day.** Every signal in the coverage report
+compared the SNAPSHOT to the DECK. Not one asked whether the snapshot contained what the SOURCE
+publishes, so a page handing back navigation instead of listings read `ok` forever — and a card
+arriving by any other route kept even the SILENT check quiet. Yaro Studios' undated Wednesday
+clay-lab card did exactly that: an undated `subscription` card credits its source for every day in
+the window by design, which makes GAP, `quiet` and SILENT all impossible for that source.
+
+**`READS EMPTY`.** A source marked `datedListing: true` whose snapshot parses **no date at all** —
+anywhere, not merely inside the coverage window — and carries no recurring-programming prose either.
+Verified against the pre-fix Yaro snapshot: it fires.
+
+- **It asks about the whole snapshot on purpose.** "Can we read this page" is not "is anything on
+  next fortnight". Clay Space between sessions and Polish & Slavic between concerts both parse a
+  year of dates and nothing inside the window; calling either unread would be a lie that expires by
+  itself a week later.
+- **Recurring prose keeps a page out of it.** "Every Thursday", "Fridays 5:30-8:30pm" is proof the
+  page was read, so Black Rabbit, Brew Inn and PLAY Greenpoint between seasons stay with the
+  `standing` signals, which are the right diagnosis for them. The two states are mutually exclusive
+  rather than ranked — a row whose state changes voids its live explanation, and churning
+  explanations is how a gate becomes a rubber stamp.
+- **`datedListing` is about the PAGE, not the venue's mood.** "Does this venue have programming right
+  now" cannot be read off a snapshot and would make a gallery between shows look broken. "Is this URL
+  a calendar" is a fact about the page that stays true whether or not anything is on.
+- **Three-state, like `standing`** — but the unset case is an **info line, not a flagged state**. 94
+  sources were unset the day this shipped, and 94 flagged lines would have made the report unreadable
+  and the gate a rubber stamp on day one, which is the failure the `--only` fix of 2026-08-12 had to
+  undo.
+
+**Set on all 94 by measurement, not by opinion:** `true` where the snapshot had ever parsed a date in
+either direction, `false` where it never had — 65 and 29. The false side is venue pages, membership
+and pricing pages, Shopify product collections, two city datasets and one news article. **Nothing
+fires today**, which is the correct day-one reading: every source is either readable or reviewed as
+dateless, and the signal is armed for the next one.
+
+**Two more parser holes fell out of doing the classification**, both recorded in the entry below: an
+`.ics` feed reporting zero dates made no sense on its face and led to the ISO-datetime bug, and two
+sources writing their dates in lower case were being thrown away by the capital-letter guard.
+
 ## 2026-09-11 — a source that fetches "clean" and returns nothing, and the three instruments that let it
 
 **What happened.** Batu photographed Yaro Studios' poster board on 2026-09-10 and it carried two
