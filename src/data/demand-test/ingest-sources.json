@@ -1497,6 +1497,16 @@
       "notes": "855 Lorimer Street, Brooklyn NY 11222 — in McCarren Park, and INSIDE the bbox: McCarren Park geocodes to 40.7212, -73.9529 (the house number itself is not in Nominatim, so a card may need the park or a cross-street query). MEASURED 2026-09-12 on a GitHub Actions probe run (run 34700312875): PLAIN fetch, 2,937 bytes / 73 lines, 0 errors. THE URL IS /hello, which is the site's \"Upcoming\" page and is not guessable — Batu supplied it after /events turned out not to exist (146 chars) and the sitemap showed only /home, /parkbar, /hello and /private-events-form. Do not 'fix' this path to something tidier. ROUGHLY 40 DATED LISTINGS, running Sep 10 through Dec 17, each carrying its day, date and time IN THE TITLE STRING ITSELF: \"North Brooklyn Chess Club Thursday September 10th @ 7PM-11PM\", \"Sunday Scoops with Graza and Ogechi Egonu September 13th @ 1PM-3PM\", \"Hobby Con Presents: Trivia Club Monday September 14th @ 7PM-8:30PM\", \"Skip the Small Talk Wednesday September 16th @ 7PM-9PM\". There is no separate date field and no detail page — the title is the whole record, so parse it and quote it verbatim. TWO AUTHORING WARNINGS. (1) Their own typos will trip a parser and must not be silently corrected into a different date: \"September 19rd\", \"Pique Community Hangs Tuesday September Tuesday 22nd\", \"Thursday September 17\" with no suffix. Where a listing's date is genuinely ambiguous, hold the card rather than guessing. (2) NO PRICES ARE STATED anywhere on the page, so no card off this source may set free:true, and end times exist for some listings but not others — use the 23:59 sentinel where an end was never sourced. Much of it is recurring community programming (North Brooklyn Chess Club, New York Philosophy Club, Brooklyn Euchre Club, Songwriter Sundays) plus one-off music bills. Hours, from /home: Bar 11am-midnight Fri-Sat and noon-11pm Sun-Thur, Club Club 11am-8pm, Cafe 7:30am-5pm. ROBOTS CLEAN: Squarespace stock, AI user-agents listed but grouped with `User-agent: *` and no `Disallow: /`; `/*?format=ical` IS disallowed, so no iCal route. Added on Batu's request 2026-09-12.",
       "datedListing": true,
       "citeHost": "mccarrenparkhouse.com"
+    },
+    {
+      "id": "tsc-widget-js",
+      "name": "The Shop Calendar widget.js (mechanism probe, not a source)",
+      "url": "https://cdn.shopify.com/extensions/01a05df1-63d6-715c-9101-539b449ddaac/theshopcalendar-test-6/assets/widget.js",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "datedListing": false,
+      "notes": "PROBE, added 2026-09-12 — Batu supplied this widget URL. The uuid in its path is the SHOPIFY APP EXTENSION id, identical for every shop using the app, so it is not TALEA's account. Reading the script should show how it resolves a shop's events: if it keys on the shop domain rather than an account uuid, no uuid is needed at all. Remove once read."
     }
   ],
   "manualSources": [
