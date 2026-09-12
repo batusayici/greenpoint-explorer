@@ -3,8 +3,8 @@
 Batu asked for these to be investigated as roster additions, and ruled that being
 slightly outside the geography gate is acceptable "since this proves demand."
 
-**Status: MEASURED AND CLOSED for ABC Cirque, 2026-09-12. TALEA is held on one
-question for Batu.** The first pass of this doc said it could not be closed from
+**Status: CLOSED, 2026-09-12. ABC Cirque, TALEA (Williamsburg) and McCarren Park
+House are all in the roster.** The first pass of this doc said it could not be closed from
 a cloud session, because the egress proxy 403s both hosts for `curl` and
 WebFetch alike. That was the wrong conclusion: the fetch does not have to happen
 in this session's sandbox. Batu pointed at the mechanism built on 2026-09-08 for
@@ -97,36 +97,68 @@ One loose end: the ask came from Ali Goldberg, who described herself as helping
 the org rather than owning it. Worth one line of confirmation when Rana replies,
 per the decision-log entry.
 
-## TALEA: held on one question
+## TALEA: added on Batu's ruling, over the recommendation
 
-**Batu's condition is met.** The event a commenter asked us to carry is in their
-calendar: September 12 reads "BYO Baby with CLIXO! WIlliamsburg", with a second
-on September 26 at Cobble Hill. The real path is `/pages/calendar` — the
-`/events` URL guessed first returned a 725-byte Shopify 404 — and it needs a
-browser fetch because of an "ARE YOU OVER 21" age gate.
+He weighed the chain question and ruled it in — the Williamsburg taproom only,
+on the grounds that it is close enough to Greenpoint and it is the event a
+reader actually asked for. It is in the roster as `talea-williamsburg`.
 
-Three things were not in hand when that condition was set, and they are why this
-is back with him rather than added:
+Two constraints live in its `notes` because neither is enforced by anything:
 
-1. **It is not one business.** Six taprooms — Williamsburg, Upper West Side,
-   Cobble Hill, West Village, Bryant Park, Penn District — and none in
-   Greenpoint. The roster's "locally owned and not a chain" test is the one that
-   kept Warsaw off, and this is the same shape. It also touches what the product
-   is *for*: Josh read the exclusion of big business as the identity of the thing
-   (L2026-08-02), not as a coverage gap.
-2. **The calendar cannot support a card as it stands.** The month grid carries
-   event names and days but no start times and no prices, so a card off it could
-   not say when anything begins. Cardable listings would need the detail pages
-   behind each entry — another probe.
-3. **A citywide calendar needs a filter.** Almost every listing is at a
-   non-Greenpoint taproom, so it would need a feed include-filter to stay
-   Williamsburg-only.
+- **"Williamsburg only" is an authoring rule, not a filter.** The page is one
+  citywide month grid covering six taprooms, `feed: {include: []}` is RSS/Atom
+  only (`fetch-sources.mjs` ~line 218), and this is browser-fetched HTML. So
+  every fetch brings back Bryant Park and West Village events too, and only an
+  item whose own text names Williamsburg may be carded.
+- **The grid has no start times and no prices**, so it cannot produce a
+  complete card by itself. An item with no sourced start time does not ship.
 
-**Recommendation: don't add it.** A six-location brewery is not the business the
-roster rules were written to protect, the calendar cannot produce a complete card
-today, and the event that prompted the ask is already past. If the answer is to
-carry it anyway, the honest way in is the detail pages plus a Williamsburg-only
-filter, and the chain question should be settled in the decision log rather than
-inside a roster note. Worth knowing either way: their Sep 21 listing is "Pilates
-& Pints with Greenpoint Pilates Studio" — a Greenpoint business hosting there, so
-some Greenpoint supply does pass through this calendar.
+**The detail pages are still unsolved, and this is how far it got.** Batu says
+the start times live on event detail pages. They are not Shopify pages — the
+pages sitemap lists 17 and none are events — and not in the readable part of
+the products sitemap. A `detail.match` probe built from slug words taken from
+real listing titles harvested nothing: the snapshot came back as the bare grid
+with no detail text appended, which means the entries are not anchors carrying
+those words in their hrefs. That reads as a JavaScript calendar widget opening
+a modal or a JS-routed view rather than a crawlable page.
+
+**What unblocks it: one example detail URL**, copied from the address bar after
+clicking an event — exactly how `/hello` got solved for McCarren. With one
+example the pattern goes straight into `detail.match`.
+
+## McCarren Park House: added
+
+Batu asked for `mccarrenparkhouse.com/events`. **That page does not exist** —
+146 characters in a real browser — and their sitemap lists only four pages, so
+there was no tidier path to substitute. He then supplied `/hello`, which is the
+site's "Upcoming" page and is not guessable from the outside.
+
+It reads clean: **plain fetch, 2,937 bytes, 73 lines, no browser needed**, about
+forty dated listings from Sep 10 to Dec 17 — North Brooklyn Chess Club, New York
+Philosophy Club, Brooklyn Euchre Club, Songwriter Sundays, Skip the Small Talk,
+Hobby Con trivia, and one-off music bills. Each listing carries its day, date
+and time inside the title string itself; there is no separate date field and no
+detail page, so the title is the whole record.
+
+Geography is not in question: **855 Lorimer Street, in McCarren Park**, and the
+park geocodes to 40.7212, −73.9529 — inside the existing bbox. Robots is the
+same Squarespace stock file as ABC Cirque, with no `Disallow: /`.
+
+Two authoring warnings are in its `notes`. **No prices appear anywhere on the
+page**, so no card off this source may claim free. And **their own listings
+carry typos** — "September 19rd", "Pique Community Hangs Tuesday September
+Tuesday 22nd", "Thursday September 17" with no suffix. A parser must not
+silently resolve those into a date; where a listing is genuinely ambiguous, hold
+the card.
+
+## What this round changed about probing
+
+Probe mode was built here and is worth knowing about for the next candidate:
+dispatch `ingest-fetch` with an `only` list against a branch, and the roster
+hopeful gets fetched on a GitHub runner with byte counts and snapshot heads
+printed to the log. It publishes nothing, so the shared bundle is untouched.
+
+One flaw surfaced and was fixed in the same round: with three sources a single
+dead URL is 33% and tripped the 15% roster-unreadable ceiling, reporting a
+healthy roster as broken. Probe mode now passes `--allow-degraded`, since that
+ceiling exists to stop a thin *ingest* shipping and a probe ships nothing.
