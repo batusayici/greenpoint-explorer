@@ -1486,13 +1486,43 @@
       "datedListing": false
     },
     {
-      "id": "talea-taproom",
+      "id": "abc-cirque-contact",
+      "name": "ABC Cirque contact page (address probe, not a content source)",
+      "url": "https://www.abcirque.com/contact",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 — the class page names \"5th Wall Studio in Williamsburg\" with no street number, and the bbox test needs coordinates. Remove once the address is read.",
+      "datedListing": false
+    },
+    {
+      "id": "talea-robots",
+      "name": "TALEA robots.txt (policy probe, not a content source)",
+      "url": "https://www.taleabeer.com/robots.txt",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 — crawler policy. Remove once read.",
+      "datedListing": false
+    },
+    {
+      "id": "talea-sitemap",
+      "name": "TALEA sitemap (URL discovery probe, not a content source)",
+      "url": "https://www.taleabeer.com/sitemap.xml",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 — the guessed /events URL returned a 725-byte Shopify 404 whose nav names a CALENDAR page; this finds its real path. Remove once read.",
+      "datedListing": false
+    },
+    {
+      "id": "talea-calendar",
       "name": "TALEA Beer Co — taproom events calendar",
-      "url": "https://www.taleabeer.com/events",
+      "url": "https://www.taleabeer.com/pages/calendar",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12 UNMEASURED. Batu's condition: add this calendar as a source only if the Clixo x TALEA family event a commenter named (Sep 13, from Rana's post) actually appears in it. URL guessed from the site root and must be confirmed by the fetch. Taproom is Williamsburg per the commenter; held once before as out-of-area in docs/review/held-cards-2026-08-12-greenpointers.md, on a missing address rather than a checked coordinate.",
+      "notes": "PROBE, added 2026-09-12 UNMEASURED — likely Shopify page path for the calendar the 404's nav names. Batu's condition: add only if the Clixo x TALEA family event (Sep 13) actually appears. NEW FACT for that decision: the 404 page's own taproom list names six locations — Williamsburg, Upper West Side, Cobble Hill, West Village, Bryant Park, Penn District — and no Greenpoint, so the roster's not-a-chain test is live and this is Batu's call again.",
       "datedListing": true
     }
   ],

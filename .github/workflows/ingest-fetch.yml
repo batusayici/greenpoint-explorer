@@ -86,7 +86,7 @@ jobs:
           for f in .ingest-cache/*.txt; do
             case "$f" in *.ingested.txt|*.diff.txt) continue ;; esac
             echo "=== $f — $(wc -c < "$f") bytes, $(wc -l < "$f") lines ==="
-            head -c 4000 "$f"
+            head -c 8000 "$f"
             echo
           done
 
