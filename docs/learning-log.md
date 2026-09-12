@@ -65,6 +65,11 @@ section only when evidence answers it — then it becomes a belief.
   all-time and one submit tap ever. We don't know whether the ask is invisible,
   unwanted, or simply premature at this traffic level, and the answer decides
   whether supply can ever be anything but hand-curated. _Evidence: L2026-08-17._
+  **First sign it's "invisible," not "unwanted," 2026-09-12:** a business asked
+  to be added the day after Rana's post went out — but by DMing Rana directly,
+  not through the product's submit form, which nobody would ever see by
+  checking that form's own analytics. One instance doesn't answer the
+  question, but it does narrow it. _Evidence: L2026-09-12._
 
 ## Current beliefs
 
@@ -142,8 +147,13 @@ when revised, and retired ones are struck rather than renumbered.
   Four consecutive readouts published "AI-referrer sessions: 0, all-time —
   zero, not missing" while ChatGPT traffic sat in `utm_source`, because the
   query keyed on `$referring_domain` and assistants strip it. Not a user
-  insight — an operational one, the measurement twin of B13.
-  _Evidence: L2026-09-01._
+  insight — an operational one, the measurement twin of B13. **Recurred
+  2026-09-12 outside analytics:** two Gmail searches reported Perri's meeting
+  email as non-existent while returning the very thread that held it, because
+  a thread search previews only a thread's oldest messages and marks nothing
+  where it cuts off. The rule this earns: before reporting an absence, confirm
+  the query could have returned the thing.
+  _Evidence: L2026-09-01, L2026-09-12._
 - **B15 — An AI assistant has sent real readers, once.** On 2026-08-29 seven
   people arrived carrying `utm_source=chatgpt.com` — all New York, all Mobile
   Safari, and six of the seven opened a card, against 29% for locals overall.
@@ -175,6 +185,68 @@ when revised, and retired ones are struck rather than renumbered.
   _Evidence: L2026-07-21._
 
 ## Log
+
+### L2026-09-12 — Perri set the meeting a day earlier, and two searches reported it as absent (ops)
+
+Source: Gmail screenshot relayed by Batu, 2026-09-12, of the thread "An idea to support the Fall Shop
+Small Crawl."
+
+Facts: Perri wrote on **2026-09-11 at 1:56pm** — "Busy week - sorry I couldn't reply sooner. Are you
+available to swing by the shop on Thursday, the 17th at 1pm for a chat?" Batu accepted at 4:25pm the
+same day. The meeting is **Thu Sep 17, 1pm, at her shop**, which supersedes the 8/25 plan's "week of
+Sep 5" and closes a step that had been sitting overdue on the cockpit since 9/7.
+
+This session searched for that email twice and reported that it did not exist. It did, in the very
+thread both searches returned. The Gmail thread search hands back a **preview containing only the
+oldest messages of each thread, with no marker where it truncates** — so a date-filtered search
+correctly matched the thread on its 9/11 messages and then displayed the 8/17–8/18 ones, and the
+reply was read as the last word in the conversation. The tool's own description says to call
+`get_thread` before answering anything about recent mail. That was not done.
+
+Read: the same failure as B14, on a different instrument — an answer of "there is nothing there"
+delivered by a query that could not have shown the thing. The cheap guard is the one the
+instructions already named: when the question is *what is the latest*, a search preview is never the
+answer, only a pointer to the thread to open. Worth generalizing past Gmail, because the shape
+recurs: a paginated or truncated view that shows a subset without saying so will be read as complete.
+
+### L2026-09-12 — Two unprompted "add us" asks off Rana's post, neither through the submit form (business feedback)
+
+Source: two screenshots relayed by Batu, 2026-09-12 — a Facebook Messenger message request to Rana,
+and the comment thread on Rana's own post.
+
+Fact 1 — Facebook Messenger, Ali Goldberg to Rana, 5:30pm, not yet accepted at the time of relay:
+"Hi Rana! I saw your husband's awesome map - I help a small cirque/arts org, and we are based in
+Williamsburg at 5th Wall Studio! Would you husband be able to add us to the map. We offer Family
+Adventure Play for 0-5 year olds and parents, and also have kids and adult cirque classes:
+https://www.abcirque.com/education-main. Thank you!!" (ABC Cirque.)
+
+Fact 2 — a comment on Rana's post itself, Kathleen Kyllo, 1h: "I LOVE it! Can I add something to it?
+I'm hosting this fun family event at TALEA tomorrow morning," linking an Instagram post for "Clixo x
+TALEA BYO Baby!" at "the @taleabeer Taproom in Williamsburg." Three other commenters were
+enthusiastic without asking for anything; two of them ("Just dropped my email", "Dropped my email")
+say they signed up.
+
+**CORRECTION, same day — this entry first said those two "dropped their email address directly in
+the comments" and that nothing collects them.** Neither half is true: no address appears in either
+comment, and "dropped my email" means they submitted one through the signup ask. They are ordinary
+signups, most likely already inside the nine the post produced. The claim was manufactured by
+reading a plain phrase as a mechanism, and it went into this file and the cockpit before anyone
+checked the screenshot against it. There was no source for it, which is the whole bar this log has.
+
+Read: Rana's 2026-09-11 post (PR #93 — 203 people, nine signups) didn't just move traffic, it produced
+the first two unprompted "add us" asks this project has seen since launch — one DMed privately, one
+posted in the open under her post — and both bypassed the in-product submit form entirely, which
+still stands at zero submissions (Q4, B12). Both askers are Williamsburg, not Greenpoint (TALEA
+specifically was already flagged as Williamsburg when a Greenpointers roundup carried it, see
+`docs/review/held-cards-2026-08-12-greenpointers.md`), so neither clears the roster's geography gate
+— the signal that matters isn't whether these two ship, it's that the ask exists and the built
+mechanism isn't where it's landing. Batu separately named a third, earlier ask — "the Threes Brewing
+rep, before Rana's post" — sourced from an AI-generated autofill reply suggestion on his phone; no
+record of it exists anywhere in this repo or this session, so **it is not logged as a fact here**. An
+AI autofill invented plausible-sounding specifics before; treat it as unconfirmed until a screenshot
+or a name Batu can vouch for surfaces, not as a real third data point. All two confirmed asks are
+logged toward the Supply gate's "asked in" line in `docs/launch/gtm-state.json` (`businessInterest`),
+which the daily cockpit now renders under "Business interest — asks in."
 
 ### L2026-09-11 — Rana posted to the parents groups: the biggest day the product has had (analytics pull)
 

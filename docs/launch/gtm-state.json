@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-09-11",
+    "asOf": "2026-09-12",
     "lastDataPull": "2026-09-11",
-    "lastFeedCheck": "2026-09-11",
+    "lastFeedCheck": "2026-09-12",
     "nextReadout": "2026-09-15",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -58,10 +58,10 @@
         "date": "2026-09-05"
       },
       {
-        "label": "Perri — in person at her shop, week of Sep 5",
-        "when": "Week of Sep 5",
-        "status": "later",
-        "date": "2026-09-07"
+        "label": "Perri — in person at her shop (The WonderMart), 1pm. She proposed the slot on 9/11 and Batu accepted the same day.",
+        "when": "Thu Sep 17, 1pm",
+        "status": "next",
+        "date": "2026-09-17"
       },
       {
         "label": "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
@@ -617,8 +617,8 @@
       "order": 3,
       "bar": "≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter",
       "metric": "Proactive supply actors per month",
-      "actual": "0 submissions. Form has 10 visits, 0 starts.",
-      "readAt": "2026-09-01",
+      "actual": "0 submissions via the in-product form (10 visits, 0 starts). 2 informal asks-in now logged outside it, both arriving off Rana's 2026-09-11 post: ABC Cirque via Facebook DM to Rana, and Kathleen Kyllo (TALEA event host) via a comment on the post itself (see businessInterest below). Both are Williamsburg, so neither clears the roster's geography gate, but both count as unprompted asks. A third, \"Threes Brewing rep,\" was named by an AI autofill reply Batu saw and has no source anywhere in this repo or session — treat as unconfirmed, not logged.",
+      "readAt": "2026-09-12",
       "status": "pending",
       "unlocks": "The only loop that lowers marginal cost — direct submissions displace ingest labor.",
       "why": "Businesses currently have no reason to know the path exists. The missing mechanism is proof of value back to the supplier: submission → publication receipt → measured outcome report. Zero build, starts as soon as there's engagement to report.",
@@ -877,7 +877,7 @@
       "sent": "2026-08-17",
       "firstSession": null,
       "reply": "2026-08-17 — warm, same evening (36 min): wants a call or in-person meeting at her shop",
-      "status": "MEETING SET 2026-08-25 (Batu): in person, week of Sep 5, when he is back in NY. The 8/19 \"Batu owes the reply\" gap is closed. Note it lands in the same week as Labor Day and the families push."
+      "status": "MEETING CONFIRMED: Thursday Sep 17, 1pm, at her shop. She proposed the slot 2026-09-11 1:56pm (\"Busy week - sorry I couldn't reply sooner. Are you available to swing by the shop on Thursday, the 17th at 1pm for a chat?\") and Batu accepted at 4:25pm the same day. Supersedes the 8/25 \"week of Sep 5\" plan, which slipped."
     },
     {
       "src": "action-city-comics",
@@ -1047,6 +1047,28 @@
       "status": "product-generated, never sent by hand"
     }
   ],
+  "businessInterest": [
+    {
+      "id": "abc-cirque-2026-09-12",
+      "date": "2026-09-12",
+      "who": "Ali Goldberg — ABC Cirque (Williamsburg; Family Adventure Play for 0–5s, kids & adult cirque classes, 5th Wall Studio)",
+      "ask": "Add ABC Cirque to the map",
+      "channel": "Facebook Messenger DM to Rana, following her 2026-09-11 parents-group post (PR #93)",
+      "gate": "Based in Williamsburg, not Greenpoint — doesn't clear the roster's geography gate regardless of interest",
+      "countsTowardSupplyGate": true,
+      "source": "Facebook Messenger screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
+    },
+    {
+      "id": "talea-clixo-2026-09-12",
+      "date": "2026-09-12",
+      "who": "Kathleen Kyllo — hosting \"Clixo x TALEA BYO Baby!\", a family event at the TALEA taproom",
+      "ask": "Asked, in a comment on Rana's post, to add her event to the map (\"Can I add something to it?\")",
+      "channel": "Facebook comment on Rana's 2026-09-11 parents-group post",
+      "gate": "The comment names \"the @taleabeer Taproom in Williamsburg\" — Williamsburg, not Greenpoint, already flagged as out-of-bbox for this exact venue in docs/review/held-cards-2026-08-12-greenpointers.md. Doesn't clear the roster's geography gate regardless of interest.",
+      "countsTowardSupplyGate": true,
+      "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
+    }
+  ],
   "openDecisions": [
     {
       "id": "digest-today",
@@ -1103,6 +1125,13 @@
       "owner": "Batu",
       "needBy": "2026-09-15",
       "source": "readout 2026-09-08 Finding 4; roster Tier 2 item 2"
+    },
+    {
+      "id": "fb-comment-signups",
+      "what": "Check the three enthusiastic commenters on Rana's post against the signup list at the next Tally pull. Two of them say they submitted an email (\"Just dropped my email\", \"Dropped my email\") — no address appears in the comments themselves, so there is nothing to hand-collect; the question is only whether those submissions landed. The post produced nine signups against a list that went 5 to 13, so they probably did.",
+      "owner": "Batu",
+      "needBy": "2026-09-15",
+      "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; PR #93"
     }
   ],
   "risks": [
@@ -1294,8 +1323,8 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-09-11",
-    "dayName": "Friday, September 11",
+    "ranAt": "2026-09-12",
+    "dayName": "Saturday, September 12",
     "dueToday": [],
     "overdue": [
       {
@@ -1319,22 +1348,27 @@
         "since": "2026-09-05"
       },
       {
-        "label": "Perri — in person at her shop, week of Sep 5",
-        "since": "2026-09-07"
-      },
-      {
         "label": "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
         "since": "2026-09-08"
       }
     ],
-    "waiting": [],
+    "waiting": [
+      {
+        "what": "PR #93 — growth: Rana's post, day one — 203 people and nine signups",
+        "age": 0
+      },
+      {
+        "what": "1 commit on main not pushed",
+        "age": 0
+      }
+    ],
     "overnight": [
-      "Merge pull request #92 from batusayici/fix/selected-card-always-pinned",
-      "fix: the card you open always gets its pin on a phone",
-      "Merge pull request #91 from batusayici/ingest/refresh-0911",
-      "content(track-v): daily refresh — rebuilt onto main, ten cards on, one off",
-      "Merge pull request #90 from batusayici/content/tunes-tykes-shul",
-      "Merge main, and order the lens pages by what is coming up"
+      "Merge branch 'claude/dashboard-business-interest-log-ce8v4x'",
+      "growth: Perri meeting confirmed for Thu Sep 17, and two corrections",
+      "growth: second inbound ask (TALEA), Perri follow-up, and FB comment emails",
+      "content(track-v): daily refresh 2026-09-12 — four cards on, thirteen off",
+      "growth: log ABC Cirque's inbound ask, surface business interest on the cockpit",
+      "Merge pull request #92 from batusayici/fix/selected-card-always-pinned"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1343,12 +1377,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 110,
-      "reservoir": 44,
+      "dated": 102,
+      "reservoir": 41,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 261
+      "cards": 252
     }
   }
 }

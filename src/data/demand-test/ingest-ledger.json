@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-11T00:00:00.000Z",
+  "lastRunAt": "2026-09-12T00:00:00.000Z",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1943,6 +1943,33 @@
       "url": "https://cibone-us.com/blogs/news/commune-shop-pop-up-at-cibone-o-te",
       "at": "2026-09-11",
       "outcome": "carded as cibone-commune-shop-popup-0918 + two trunk shows"
+    },
+    {
+      "id": "daily-2026-09-12",
+      "at": "2026-09-12",
+      "outcome": "shipped 4 cards, deleted 11 by expiry + 2 that moved out of area, re-quoted 2, re-verified 1 standing deal; 0 held",
+      "holds": "holds: 0 new-judgment · 0 rule-miss · 0 source-blocked"
+    },
+    {
+      "url": "https://greenpointers.com/2026/09/11/voice-your-thoughts-about-transmitter-park-plan-at-upcoming-community-board-meeting/",
+      "at": "2026-09-12",
+      "outcome": "no card — the 9/15 CB1 Parks and Waterfront meeting it announces is already live as cb1-parks-waterfront-0915"
+    },
+    {
+      "url": "https://greenpointers.com/2026/09/11/greenpoint-this-week-stoopfest-tenants-rally-to-rehire-beloved-doormen-and-more/",
+      "at": "2026-09-12",
+      "outcome": "no card — a link digest; every Greenpoint item in it is already carded or already on watchItems, and the Havemeyer St shooting is out under the crime rule"
+    },
+    {
+      "gmailMessageIds": [
+        "1a090bceef19b3be",
+        "1a090735ba771c4b",
+        "1a09080bcfcb3a86",
+        "1a08c9800d84789f",
+        "1a08cc8c78c86dd1"
+      ],
+      "at": "2026-09-12",
+      "outcome": "Brooklyn Craft Company 9/11 newsletter carded (Sew Pajama Pants 9/26) and persisted, nine October sessions to watchItems; YMCA referral offer skipped as a citywide offer with no Greenpoint attribution; Gunkyard is Park Slope; Dandelion tasting had already run; NYC Parks weekly is covered by the roster feed"
     }
   ],
   "senderRegistry": [
@@ -2966,8 +2993,9 @@
     },
     {
       "item": "QUOTE GATE — 11 live cards have no committed evidence. FIRST FLAGGED RUN 2026-09-11.",
-      "condition": "Under the 2026-08-30 rule these get one re-verification attempt now and are DELETED on the second flagged run. Three groups, and only one of them is a card problem.\n\n(1) The five Light & Sound Design cards (lsd-quadraphonics-0912-matinee, -evening, lsd-churning-sonic-0913, lsd-echoes-archive-0918, lsd-mess-is-lore-0919) and the three Salsa Pizzeria cards (salsa-adults-pizza-class-0923, salsa-adults-pasta-class-0924, salsa-kids-pizza-0926) all came from the 2026-09-10 poster batch. Their quotes are flyer and poster transcriptions that were written into cards.json and never into a snapshot, and both sources were fetched for the first time today, so there was no baseline to carry anything forward from. Re-verification attempted: Salsa's own events page now states the date, clock and venue for all three classes verbatim (\"BROOKLYN - ADULTS PIZZA CLASS / Wednesday, September 23, 2026 7-10 PM / Salsa Greenpoint\" and the same shape for the pasta and kids classes), so those three are confirmed in substance by a committed snapshot even though the poster text is not in it. The Light & Sound Design index carries date and title only — the time, bill and venue live in per-event flyer images that no fetch has read — so those five are genuinely unverifiable from the repo today. NOT resolvable by writing the card's own quote into the snapshot: that is circular and is exactly what this gate exists to catch.\n\n(2) held-space-mat-pilates-0912, comedy-cysk-wednesdays, happy-medium-art-cafe — pre-existing, unchanged by this run, and already failing against the baselines at f6527f5.\n\nTHE STRUCTURAL FIX, which is a code change and so needs its own PR: the /poster skill writes cards but does not write its transcription into the cited source's snapshot, so every poster-derived card is born failing this gate. Same shape as the newsletter rule of 2026-09-07, one surface over.",
-      "addedAt": "2026-09-11"
+      "condition": "RESOLVED 2026-09-12 — npm run ingest:quotes exits 0 with mismatch=0, and all eleven cards report OK by name: the five Light & Sound Design flyer cards, the three Salsa Pizzeria classes, held-space-mat-pilates-0912, comedy-cysk-wednesdays and happy-medium-art-cafe. The 2026-09-11 run persisted the flyer reads and re-quoted the rest, so nothing is deleted under the second-flagged-run rule. The structural fix noted below — the /poster skill not writing its transcription into the cited source snapshot — is still open and still a code change.\n\nUnder the 2026-08-30 rule these get one re-verification attempt now and are DELETED on the second flagged run. Three groups, and only one of them is a card problem.\n\n(1) The five Light & Sound Design cards (lsd-quadraphonics-0912-matinee, -evening, lsd-churning-sonic-0913, lsd-echoes-archive-0918, lsd-mess-is-lore-0919) and the three Salsa Pizzeria cards (salsa-adults-pizza-class-0923, salsa-adults-pasta-class-0924, salsa-kids-pizza-0926) all came from the 2026-09-10 poster batch. Their quotes are flyer and poster transcriptions that were written into cards.json and never into a snapshot, and both sources were fetched for the first time today, so there was no baseline to carry anything forward from. Re-verification attempted: Salsa's own events page now states the date, clock and venue for all three classes verbatim (\"BROOKLYN - ADULTS PIZZA CLASS / Wednesday, September 23, 2026 7-10 PM / Salsa Greenpoint\" and the same shape for the pasta and kids classes), so those three are confirmed in substance by a committed snapshot even though the poster text is not in it. The Light & Sound Design index carries date and title only — the time, bill and venue live in per-event flyer images that no fetch has read — so those five are genuinely unverifiable from the repo today. NOT resolvable by writing the card's own quote into the snapshot: that is circular and is exactly what this gate exists to catch.\n\n(2) held-space-mat-pilates-0912, comedy-cysk-wednesdays, happy-medium-art-cafe — pre-existing, unchanged by this run, and already failing against the baselines at f6527f5.\n\nTHE STRUCTURAL FIX, which is a code change and so needs its own PR: the /poster skill writes cards but does not write its transcription into the cited source's snapshot, so every poster-derived card is born failing this gate. Same shape as the newsletter rule of 2026-09-07, one surface over.",
+      "addedAt": "2026-09-11",
+      "resolvedAt": "2026-09-12"
     },
     {
       "item": "light-and-sound-design is declared detailsInImages but no fetch reads its flyers.",
@@ -2980,6 +3008,27 @@
       "what": "Greenpoint Trash Club, every Wednesday 7:30pm, litter pick-up around Greenpoint followed by a drink.",
       "blockedOn": "A CARD SHAPE FOR A MEETUP WHOSE MEETING POINT MOVES. Batu confirmed 2026-09-11 that the club runs every Wednesday at the same time and announces the week's meeting point on Instagram THAT DAY. The recurrence and the 7:30 start are sourced — the bio says \"Every Wednesday night at 7:30!\" and \"Come pick up litter with us around Greenpoint!\", transcribed in poster-evidence/greenpoint-trash-club-ig-2026-09-11.txt. What is not sourced is a place. `locationPrivate` is the only no-pin shape the schema has, and its own comment says it is a CLAIM that the source deliberately WITHHOLDS the address; this club does not withhold, it has not announced yet — and CardPanel prints the hardcoded words \"address with RSVP\", which this club has never said. Using it would put a sentence on the card the source never wrote.",
       "whatWouldUnblockIt": "Batu ruling on how a moving meetup cards. The recommendation put to him on 2026-09-11: let a no-pin card supply its own location line instead of inheriting \"address with RSVP\", so this one can read \"meeting point posted on Instagram that morning\" and Light & Sound Design keeps saying what it says today."
+    },
+    {
+      "item": "Brooklyn Craft Company newsletter of 2026-09-11 — nine Greenpoint sessions past the 14-day horizon. Verbatim, as persisted into .ingest-cache/brooklyn-craft-company.txt under [NEWSLETTER PERSISTED 2026-09-12]: \"Crochet 101: Chunky Cowl / Tues, 10/6 at 6:30pm / In Greenpoint\"; \"Knitting 103: Bria Beret / (2-Parts) / Wed, 10/7 at 6:30pm / In Greenpoint\"; \"Needle Felted Pumpkins / Thurs, 10/8 at 6:30pm / In Greenpoint\"; \"Block Printing 101: Tote Bag / Sun, 10/18 at 3:00pm / In Greenpoint\"; \"Crochet 101: Chunky Cowl / Mon, 10/19 at 11:00am / In Greenpoint\"; \"Knitting 102 - Chunky Seed Stitch Cowl / Wed, 10/21 at 6:30pm / In Greenpoint\"; \"Sew Pajama Pants (1 day) / Sat, 10/24 at 11:00am / In Greenpoint\"; \"Macrame Wall Hangings / 10/24 at 11:00am / In Greenpoint\"; \"Knitting 102: Halle Hood (2 parts) / Wed, 10/28 at 6:30pm / In Greenpoint\". Beaded Embroidery (9/26, 10/13) and Fabric Pocket Altars (9/19) are Lower Manhattan and do not card.",
+      "condition": "Card each on the first run where its date falls inside the 14-day horizon — 10/6 unblocks 2026-09-22, and the rest follow their own dates. Shape is the live bcc-* cards: category event, filters [\"arts_culture\"], 165 Greenpoint Ave, endsAt the same-day 23:59 sentinel, sourceLinks a newsletter citation with no url. The evidence is persisted, so it does not decay the way an unrecorded email would.",
+      "unblocksOn": "2026-09-22",
+      "addedAt": "2026-09-12"
+    },
+    {
+      "item": "town-square-greencycle-swap-0926 — lens call flagged, not a hold.",
+      "condition": "Shipped as civic. Nothing is sold at the swap and the only money named is a suggested $10-a-family donation to Town Square BK and the scouts, so it reads as mutual aid under the 2026-08-30 ruling that the civic lens covers what a resident receives from a neighbourhood system. The deck’s other two swaps, maison-jar-clothing-swap-0912 and peek-inn-book-swap-0913 (both 2026-09-11), file shopping because each is a dated happening at a shop. If Batu reads swaps as one class, the rule to write is which side a non-retail swap falls on, and one of the three cards moves.",
+      "addedAt": "2026-09-12"
+    },
+    {
+      "item": "msjs-yom-kippur-camp-0921 — its evidence stopped coming back in the fetch.",
+      "condition": "The line the card quotes (\"9/21 * GREENPOINT Yom Kippur: School Year Camp 9am-3pm (ages 3- 8yrs)\") lives in the [DETAIL] block for https://portal.iclasspro.com/msjsgreenpoint/camps/2, and the 2026-09-12 GitHub-runner fetch returned the class JSON without it. Non-destructive promotion carries the block forward, so the card keeps its evidence, but if the block is still missing when the camp date passes it means the detail fetch has broken rather than the camp being cancelled. Re-check on a home-fetched bundle before reading anything into it.",
+      "addedAt": "2026-09-12"
+    },
+    {
+      "item": "BirthSmarter has moved its Greenpoint classes to Manhattan — three cards deleted in two days.",
+      "condition": "birthsmarter-weekend-childbirth-0912 went on 2026-09-11, and birthsmarter-one-day-childbirth-0919 and birthsmarter-newborn-lactation-0920 on 2026-09-12, all for the same reason: the listing that read \"Kuei Luck Greenpoint | Brooklyn | NYC\" now reads \"The Loft | Manhattan | NYC\" or \"Kids at Work | Manhattan | NYC\" on those dates, and Kuei Luck appears nowhere in the current fetch. The source stays on the roster because the venue partnership may resume. Card again the first time a session is listed at a Greenpoint address; do not carry a Greenpoint venue over from an older card.",
+      "addedAt": "2026-09-12"
     }
   ],
   "sourcePulse": {
@@ -3002,7 +3051,7 @@
     "yaro-studios": "2026-09-10",
     "yaro-kids-clay": "2026-09-10",
     "moon-bunny-aerial": "2026-09-08",
-    "brooklyn-craft-company": "2026-09-06",
+    "brooklyn-craft-company": "2026-09-11",
     "last-place-on-earth": "2026-09-06",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
@@ -3012,7 +3061,7 @@
     "troost": "2026-09-09",
     "carcosa-club": "2026-09-06",
     "good-room": "2026-09-10",
-    "town-square-bk": "2026-08-23",
+    "town-square-bk": "2026-09-11",
     "word-bookstore": "2026-09-08",
     "hide-and-seek": "2026-08-06",
     "brew-inn-trivia": "2026-08-06",
@@ -3067,7 +3116,8 @@
     "triskelion-arts": "2026-09-10",
     "threes-brewing-greenpoint": "2026-09-10",
     "tunes-for-tykes": "2026-09-10",
-    "greenpoint-shul": "2026-09-10"
+    "greenpoint-shul": "2026-09-10",
+    "friends-of-mcgolrick": "2026-09-11"
   },
   "coverageExplanations": [
     {
@@ -3657,6 +3707,83 @@
       "reason": "THE UNCARDED ROWS ARE SERVICES AND ONE INVITED KIDDUSH; THE COMMUNITY EVENTS ARE ALL CARDED. This source was onboarded earlier the same day and its four outward-facing items shipped then — the family shofar workshop and the community-wide Tashlich at Transmitter Park on 9/13, kids sukkah decorating on 9/24 and the sukkah film on 9/28. What remains in the window is worship: 'Rosh HaShanah Birthday of Humanity Dinner (Night 1)' on 9/11 7pm, 'Shabbat Rosh HaShanah Morning Services + Lunch RH Day One + Two' on 9/12 9am, and the Shabbat and holiday services on 9/20, 9/21 and 9/25. Worship is open to all and FILTER_IDS carries no lens for it, and no card ships lens-less — that is the open religious-service question the skill already records as unresolved, not a judgment this run can make. The one non-service row, 'Annual Volunteer Appreciation Kiddush' on 9/12 2pm, states its own closed audience: 'celebrating past and current board and advisory committee members'. WHAT WOULD CHANGE IT: Batu ruling on where worship files.",
       "addedAt": "2026-09-11",
       "expiresAt": "2026-09-25"
+    },
+    {
+      "sourceId": "yaro-studios",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: page.goto: Timeout 40000ms exceeded. Call log: - navigating to \\\"https://www.hisawyer.com/yaro/schedules?schedule_id=camps&widget_tags=adult+workshop\\\", waiting until \\\"networkidle\\\"\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "yaro-kids-clay",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: page.goto: Timeout 40000ms exceeded. Call log: - navigating to \\\"https://www.hisawyer.com/yaro/schedules?widget_tags=kids\\\", waiting until \\\"networkidle\\\"\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "sunshine-laundromat",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: only 186 chars after 7.5s in chromium, none of it a date, time or price — page never rendered\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "greenpoint-library",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: HTTP 403\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "bpl-north-brooklyn-calendar",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: bot challenge presented by www.bklynlibrary.org — not read, not routed around\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "go-green-bk",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: only 102 chars after 7.5s in chromium, none of it a date, time or price — page never rendered\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "nycparks-greenpoint",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: HTTP 405\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "leaves-bookstore",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: only 115 chars after 7.5s in chromium, none of it a date, time or price — page never rendered\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "sparsa-union-fit",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: page.goto: Timeout 40000ms exceeded. Call log: - navigating to \\\"https://www.union.fit/orgs/sparsa-brooklyn\\\", waiting until \\\"networkidle\\\"\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "play-greenpoint-sawyer",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: page.goto: Timeout 40000ms exceeded. Call log: - navigating to \\\"https://www.hisawyer.com/play-greenpoint/schedules\\\", waiting until \\\"networkidle\\\"\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "salsa-pizzeria",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: bot challenge presented by salsapizzeria.com — not read, not routed around\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
+      "addedAt": "2026-09-12",
+      "expiresAt": "2026-09-19"
     }
   ],
   "retiredCards": [
@@ -3761,9 +3888,48 @@
       "day": "2026-09-11"
     },
     {
-      "id": "cibone-trunk-sri-threads-0926",
-      "retiredAt": "2026-09-11",
-      "reason": "THE VENUE REMOVED IT FROM ITS OWN ANNOUNCEMENT. `ingest:quotes` failed this card after promotion, so the post was re-read directly on 2026-09-11: CIBONE has edited /blogs/news/commune-shop-pop-up-at-cibone-o-te since the card was written, and Stephen Szepanek / Sri Threads is gone from it entirely — name, description and the appointment-only line. Peter Speliopoulos is still listed with his date and hours, so this is not the whole post being rewritten. The Atom feed no longer carries it either. Deleted rather than held because the card was telling residents to turn up on 26 September to a trunk show the venue has stopped advertising, and that is the error worth avoiding. If it is still on, CIBONE re-announcing it lands as an ordinary diff and the next run cards it again. The re-read is persisted in the source's snapshot under `## [R1 PERSISTED 2026-09-11]`."
+      "id": "eavesdrop-dj-pepperazzi-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "film-noir-black-box-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "film-noir-yumemiru-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "flowercat-open-mic-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "golden-drum-anahata-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "good-room-justin-strauss-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "hana-tour-tasting-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "library-garden-hours-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "psc-zapiski-oficera-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "transmitter-longevity-stick-0911",
+      "day": "2026-09-12"
+    },
+    {
+      "id": "troost-timothy-okeefe-0911",
+      "day": "2026-09-12"
     }
   ]
 }
