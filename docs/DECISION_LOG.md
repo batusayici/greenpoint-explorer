@@ -32,6 +32,17 @@ written, the consent has to come from someone who can give it. It is probably fi
 stalling over, but it is worth one line of confirmation when Rana replies rather than being assumed
 silently.
 
+**Measured the same day, and the case that prompted the rule did not need it.** ABC Cirque's
+`robots.txt` turned out not to block us at all. It is Squarespace's stock file: it lists
+`anthropic-ai`, `ClaudeBot`, `GPTBot` and a dozen more as user-agents, but those lines are grouped
+with `User-agent: *` and the only rules are `/config`, `/search`, `/account`, `/api/`, `/static/` and
+some query-string patterns — there is no `Disallow: /` anywhere in it. The class page is not
+disallowed for any agent. So the rule above stands for the next case, but nothing here rests on it.
+Worth keeping as its own small lesson: the block was assumed because the 9/10 rule had primed the
+question, and the file said otherwise. A list of AI user-agents in a `robots.txt` is not the same
+thing as a rule that excludes them, and only reading the rules tells you which one you are looking
+at.
+
 ## 2026-09-11 — the card you opened always gets its pin, peek or not
 
 **Batu, on a phone: "when I open the family and kids cards, most of them do not show a mapped pin."**
