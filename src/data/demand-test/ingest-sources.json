@@ -1490,31 +1490,31 @@
     {
       "id": "mccarren-park-house",
       "name": "McCarren Park House — events",
-      "url": "https://mccarrenparkhouse.com/events",
+      "url": "https://mccarrenparkhouse.com/parkbar",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12, NOT YET READABLE. Batu asked for this source as https://mccarrenparkhouse.com/events. That URL returned only 146 characters in chromium after 7.5s — nothing that looks like an event — so it is either the wrong path or a page that never renders (run 34699770437). ROBOTS IS CLEAN and tells us what the site is: Squarespace's stock robots.txt, 1,510 bytes, which lists anthropic-ai, ClaudeBot and GPTBot as user-agents but groups them with `User-agent: *` and carries NO `Disallow: /` — the same shape as ABC Cirque, so nothing here refuses automated readers. It names a sitemap at https://mccarrenparkhouse.com/sitemap.xml, which is the next probe and the way to find the real events path. `/*?format=ical` is disallowed, so no iCal route.",
+      "notes": "PROBE, added 2026-09-12, STILL NOT READABLE AS AN EVENTS SOURCE. Batu asked for https://mccarrenparkhouse.com/events; THAT PAGE DOES NOT EXIST. It returned 146 characters in chromium (run 34699770437), and their own sitemap — named by their robots.txt and read in run 34700004686 — lists exactly four pages: /home, /parkbar, /hello and /private-events-form. No events page, and no Squarespace event-collection items, which would appear in the sitemap if they existed. This probe now points at /parkbar to find out whether dated events are published anywhere on the site at all. Robots is clean (Squarespace stock, AI agents listed but grouped with * and no `Disallow: /`; /*?format=ical disallowed).",
       "datedListing": true
     },
     {
-      "id": "mccarren-sitemap",
-      "name": "McCarren Park House sitemap (URL discovery probe, not a content source)",
-      "url": "https://mccarrenparkhouse.com/sitemap.xml",
+      "id": "mccarren-home",
+      "name": "McCarren Park House home (content probe, not yet a source)",
+      "url": "https://mccarrenparkhouse.com/home",
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12 — /events renders 146 chars, so this finds the real events path. Named by their own robots.txt. Remove once read.",
+      "notes": "PROBE, added 2026-09-12 — one of only four pages their sitemap lists. Looking for dated events anywhere on the site. Remove once read.",
       "datedListing": false
     },
     {
-      "id": "talea-pages-sitemap",
-      "name": "TALEA pages sitemap (detail-URL discovery probe, not a content source)",
-      "url": "https://www.taleabeer.com/sitemap_pages_1.xml?from=86781198497&to=117944713377",
+      "id": "talea-products-sitemap",
+      "name": "TALEA products sitemap (detail-URL discovery probe, not a content source)",
+      "url": "https://www.taleabeer.com/sitemap_products_1.xml?from=7170953937057&to=8722915721377",
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12, retry — the bare /sitemap_pages_1.xml returned 113 chars; Shopify serves it only with the from/to params the sitemap index supplies. Looks for the per-event detail pages carrying the start times the month grid omits. Remove once read.",
+      "notes": "PROBE, added 2026-09-12 — Batu says TALEA's start times live on event detail pages, and the PAGES sitemap has no event pages (17 pages, only /pages/calendar is calendar-related). Ticketed brewery events are usually Shopify PRODUCTS, so this looks for event-shaped product URLs to use as the `detail` config. Remove once read.",
       "datedListing": false
     }
   ],
