@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-11",
+  "version": "2026-09-12",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -977,7 +977,6 @@
         "film-noir-support",
         "film-noir-monday-0914",
         "film-noir-film-club-0924",
-        "film-noir-yumemiru-0911",
         "film-noir-snake-girl-0912",
         "film-noir-cult-cinema-0923",
         "film-noir-supershorts-0925"
@@ -1282,7 +1281,6 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-garden-hours-0911",
         "library-monday-programs-0914",
         "library-babies-books-0917",
         "library-thursday-programs-0917",
@@ -1484,12 +1482,12 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-08-28",
+      "updatedAt": "2026-09-12",
       "id": "hana-bottomless-makgeolli",
       "title": "Bottomless makgeolli Thursdays & Sundays",
       "kicker": "$30 bottomless makgeolli",
       "recurring": true,
-      "endsAt": "2026-09-11T23:59:00-04:00",
+      "endsAt": "2026-09-26T23:59:00-04:00",
       "locationName": "Hana Makgeolli",
       "address": "201 Dupont St",
       "filters": [
@@ -1509,7 +1507,7 @@
           "title": "Hana Makgeolli events",
           "url": "https://hanamakgeolli.com/events",
           "publisher": "Hana Makgeolli",
-          "date": "2026-08-28"
+          "date": "2026-09-12"
         }
       ],
       "lat": 40.736437,
@@ -4046,271 +4044,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "film-noir-black-box-0911",
-      "category": "event",
-      "title": "BLACK BOX at Film Noir Cinema",
-      "kicker": "One title on the September calendar",
-      "summary": "The programme page carries the name and the hour and nothing else — no synopsis, no director, no ticket price.",
-      "startsAt": "2026-09-11T19:00:00-04:00",
-      "endsAt": "2026-09-11T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/9/11/black-box"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/9/11/black-box",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "BLACK BOX\nFriday, September 11, 2026\n7:00 PM\n8:00 PM"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "troost-timothy-okeefe-0911",
-      "category": "event",
-      "title": "DJ TIMOTHY O'KEEFE at Troost",
-      "kicker": "A DJ night on the Troost calendar",
-      "summary": "The calendar entry carries the name and the date only — no set time, support bill or ticket link.",
-      "startsAt": "2026-09-11T00:00:00-04:00",
-      "endsAt": "2026-09-11T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "summary: DJ TIMOTHY O'KEEFE\nstart.date: 2026-09-11"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "good-room-justin-strauss-0911",
-      "category": "event",
-      "title": "Justin Strauss at Good Room",
-      "kicker": "All night, one DJ",
-      "summary": "Rissa Garcia and Ruez are the other names on the listing; no ticket price is given.",
-      "startsAt": "2026-09-11T19:00:00-04:00",
-      "endsAt": "2026-09-11T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.726909,
-      "lng": -73.95281,
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room via DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "Sep 11\nJustin Strauss (all night), Rissa Garcia, Ruez\nGood Room\n7:00PM"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "flowercat-open-mic-0911",
-      "category": "event",
-      "title": "Open Mic at Flower Cat",
-      "kicker": "Musicians, poets, storytellers, magic",
-      "summary": "Try the new thing or the tried-and-true; sign-up to perform is by a link on the events page. Two drinks are asked of everyone in the room over the evening.",
-      "startsAt": "2026-09-11T20:00:00-04:00",
-      "endsAt": "2026-09-11T22:00:00-04:00",
-      "filters": [
-        "live_music",
-        "food_drink"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "lat": 40.728678,
-      "lng": -73.954258,
-      "relatedCardIds": [
-        "flower-cat"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat events",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "Open Mic\nFriday, September 11, 2026\n8:00 PM\n10:00 PM\nA night of eclectic talents at Flower Cat! Musicians, spoken word poets, storytellers, magic tricks & hidden talent reveals all welcome. Try something new or your tried-and-true favorites- there's no wrong way to show up so long as you do so with love for your craft and open hearts/ears for the rest of the lineup.\nTo sign up to perform, follow this link!\nWe kindly ask that you purchase 2 drinks throughout the evening."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-08-28",
-      "free": false,
-      "id": "hana-tour-tasting-0911",
-      "category": "event",
-      "title": "Tour & tasting at Hana Makgeolli",
-      "kicker": "Walk the brewery, then taste it",
-      "summary": "The production team covers the history of sool and how the wines are made, then pours in the tasting room before it opens for the night. The walk-through runs 45 minutes.",
-      "startsAt": "2026-09-11T17:00:00-04:00",
-      "endsAt": "2026-09-11T18:00:00-04:00",
-      "filters": [
-        "food_drink"
-      ],
-      "locationName": "Hana Makgeolli",
-      "address": "201 Dupont St",
-      "lat": 40.736437,
-      "lng": -73.951511,
-      "relatedCardIds": [
-        "hana-sool-club"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://hanamakgeolli.com/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hana Makgeolli events",
-          "url": "https://hanamakgeolli.com/events",
-          "publisher": "Hana Makgeolli",
-          "date": "2026-08-28"
-        }
-      ],
-      "sourceQuote": "Hana Makgeolli Tour & Tasting\nFriday, September 11, 2026\n5:00 PM\n6:00 PM\nOur production team will take you through our facility and cover everything from the history of sool to how our wines are made followed by a guided tasting in our tasting room prior to opening hours.\nTours are 45 minutes,"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-28",
-      "updatedAt": "2026-09-02",
-      "free": false,
-      "id": "golden-drum-anahata-0911",
-      "category": "event",
-      "title": "Anahata Sessions: September at Golden Drum",
-      "kicker": "Write a letter, learn a song",
-      "summary": "Guided reflection on Virgo season, then a love letter to your future self into a communal basket and redistributed at random, then a sacred song learned together. No singing experience needed.",
-      "startsAt": "2026-09-11T19:00:00-04:00",
-      "endsAt": "2026-09-11T21:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Golden Drum",
-      "address": "97 Green St. G1, Brooklyn, NY 11222",
-      "geocodeQuery": "97 Green St, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.goldendrum.org/calendar-1/anahata-09-11-26-4hnmb"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Golden Drum events",
-          "url": "https://www.goldendrum.org/calendar-1/anahata-09-11-26-4hnmb",
-          "publisher": "Golden Drum",
-          "date": "2026-09-01"
-        }
-      ],
-      "sourceQuote": "Anahata Sessions: SEPTEMBER\nFriday, September 11, 2026\n7:00 PM\n9:30 PM\nGolden Drum\n97 Green St. G1\nBrooklyn, NY, 11222\nFrom this point of clarity and stillness, you will be invited into a ritual of self-devotion: writing a love letter to yourself.\nThese letters will be placed into a communal basket and later redistributed at random, allowing each participant to receive a mysterious message of love and insight\nFrom this place, we will learn a sacred song, weaving our voices together in a devotional practice that harmonizes breath, body, and spirit. No prior singing experience is needed\nWe are limited in space, so please buy your ticket ahead of time. Suggested donation $30 in advance, $40 at the door (no one will be turned away for lack of funds).",
-      "lat": 40.733571,
-      "lng": -73.957721
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
       "createdAt": "2026-08-29",
       "updatedAt": "2026-08-29",
       "free": false,
@@ -4516,52 +4249,6 @@
       "sourceQuote": "summary: NOAH AMICK\ndescription: electric indie jazz\nstart.date: 2026-09-14\nend.date: 2026-09-15",
       "lat": 40.733463,
       "lng": -73.955035
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-31",
-      "updatedAt": "2026-09-11",
-      "free": false,
-      "category": "event",
-      "id": "library-garden-hours-0911",
-      "title": "Friday at Greenpoint Library",
-      "kicker": "Rooftop garden, morning and afternoon",
-      "summary": "A garden-themed storytime and sensory play for the under-fives in the morning, then an experienced garden educator on the roof for plant questions. Called off for rain or high heat.",
-      "startsAt": "2026-09-11T10:30:00-04:00",
-      "endsAt": "2026-09-11T16:00:00-04:00",
-      "filters": [
-        "civic",
-        "family_kids"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-31"
-        }
-      ],
-      "sourceQuote": "Garden Hours with a Garden Educator\nFri, Sep 11 3:00 pm\nGreenpoint, Demonstration Garden\nGreenpoint Library is pleased to open up our Rooftop Demonstration Garden (3rd floor) for conversation with an experienced Garden Educator!",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ]
     },
     {
       "audience": [
@@ -5306,50 +4993,6 @@
         }
       ],
       "sourceQuote": "$25\nOpen House\nOne class for you and a guest. Any format, either studio."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "locationName": "eavesdrop",
-      "address": "674 Manhattan Ave",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "eavesdrop",
-          "date": "2026-09-07"
-        }
-      ],
-      "id": "eavesdrop-dj-pepperazzi-0911",
-      "title": "DJ Pepperazzi at eavesdrop",
-      "kicker": "Midnight set on the Manhattan Ave strip",
-      "summary": "No cover or ticket price is stated on the calendar.",
-      "startsAt": "2026-09-11T00:00:00-04:00",
-      "endsAt": "2026-09-11T23:59:00-04:00",
-      "allDay": false,
-      "sourceQuote": "Friday, Sep 11\n12midnight\nDJ Pepperazzi @eavesdrop",
-      "lat": 40.724894,
-      "lng": -73.951181
     },
     {
       "audience": [
@@ -6758,49 +6401,6 @@
       "trustRisk": "low",
       "createdAt": "2026-09-07",
       "updatedAt": "2026-09-07",
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave",
-      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
-      "lat": 40.729855,
-      "lng": -73.960729,
-      "id": "transmitter-longevity-stick-0911",
-      "category": "event",
-      "free": true,
-      "title": "Longevity Stick class at sunset, WNYC Transmitter Park",
-      "kicker": "Free, 7:30pm, by the water",
-      "summary": "Same class as Thursday mornings, run at sunset. Tyler Trocinski teaches; sticks provided. Meet at the pier entrance.",
-      "startsAt": "2026-09-11T19:30:00-04:00",
-      "endsAt": "2026-09-11T20:30:00-04:00",
-      "filters": [
-        "wellness"
-      ],
-      "sourceQuote": "Longevity Stick Class (FRIDAY SUNSET) 9/11/26\nJoin us on select Fridays at Sunset, as we flow in our free Longevity Stick Classes, sponsored by the Friends of WNYC Transmitter Park and NYC Parks. What to Expect: Longevity Stick is a mix of Tai Chi and yoga, but with the addition of the stick it becomes more accessible for all ages. Instructor: Tyler Trocinski What to Bring: Sticks are provided. We suggest a water bottle and a small towel. Where to Meet: Pier Entrance Sign up here Registering helps us track participants in the event of a rain delay or reschedule.",
-      "actions": [
-        {
-          "label": "Sign up",
-          "type": "signup",
-          "url": "https://transmitterpark.org/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Longevity Stick Class (FRIDAY SUNSET)",
-          "url": "https://transmitterpark.org/events",
-          "publisher": "Friends of WNYC Transmitter Park",
-          "date": "2026-09-07"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
       "locationName": "Under the K Bridge Park",
       "address": "Meeker Ave & Van Dam St",
       "geocodeQuery": "Under the K Bridge Park, Brooklyn, NY",
@@ -7058,49 +6658,6 @@
       "geocodeQuery": "177 Kent St, Brooklyn, NY 11222",
       "lat": 40.731052,
       "lng": -73.953716,
-      "id": "psc-zapiski-oficera-0911",
-      "category": "event",
-      "free": false,
-      "title": "Zapiski Oficera Armii Czerwonej at the Polish & Slavic Center",
-      "kicker": "Polish-language play, 6:30pm",
-      "summary": "A one-man staging of Sergiusz Piasecki's novel about a Soviet officer entering Poland in 1939, performed by Piotr Cyrwus.",
-      "startsAt": "2026-09-11T18:30:00-04:00",
-      "endsAt": "2026-09-11T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "sourceQuote": "Zapraszamy na spektakl : Zapiski Oficera Armii Czerwonej, 11 września, 177 Kent St., 6:30 pm",
-      "actions": [
-        {
-          "label": "Announcement",
-          "type": "learn_more",
-          "url": "https://polishslaviccenter.org/zapraszamy-na-spektakl-zapiski-oficera-armii-czerwonej-11-wrzesnia-177-kent-st-630-pm/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Zapraszamy na spektakl: Zapiski Oficera Armii Czerwonej",
-          "url": "https://polishslaviccenter.org/zapraszamy-na-spektakl-zapiski-oficera-armii-czerwonej-11-wrzesnia-177-kent-st-630-pm/",
-          "publisher": "Centrum Polsko-Słowiańskie",
-          "date": "2026-09-07"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "locationName": "Polish & Slavic Center",
-      "address": "177 Kent St",
-      "geocodeQuery": "177 Kent St, Brooklyn, NY 11222",
-      "lat": 40.731052,
-      "lng": -73.953716,
       "id": "psc-piaseczny-concert-0919",
       "category": "event",
       "free": false,
@@ -7113,9 +6670,6 @@
         "arts_culture"
       ],
       "sourceQuote": "“MUZYKA TO MÓJ OGIEŃ I MOJE ŻYCIE” – rozmowa z Andrzejem Piasecznym, tuż przed koncertem który odbędzie się w Centrum Polsko Słowiańkim – 19 Września, 177 Kent St, 7pm",
-      "relatedCardIds": [
-        "psc-zapiski-oficera-0911"
-      ],
       "actions": [
         {
           "label": "Interview",
@@ -7668,94 +7222,6 @@
       ],
       "lat": 40.721326,
       "lng": -73.947
-    },
-    {
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-11",
-      "free": false,
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Kuei Luck",
-      "address": "171 Calyer St",
-      "geocodeQuery": "171 Calyer St, Brooklyn, NY 11222",
-      "id": "birthsmarter-one-day-childbirth-0919",
-      "title": "One-day childbirth education with Birthsmarter",
-      "kicker": "The whole course in one Saturday",
-      "summary": "10am to 4:30pm at Kuei Luck on Calyer St, for expecting parents who can't do the two-day weekend version. Ask about alternative pricing.",
-      "startsAt": "2026-09-19T10:00:00-04:00",
-      "endsAt": "2026-09-19T16:30:00-04:00",
-      "sourceQuote": "19\nOne-Day Childbirth Education\n2:00 PM UTC -\n8:30 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC",
-      "actions": [
-        {
-          "label": "Book a class",
-          "type": "signup",
-          "url": "https://birthsmarter.com/schedule"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "One-Day Childbirth Education",
-          "url": "https://birthsmarter.com/schedule",
-          "publisher": "Birthsmarter",
-          "date": "2026-09-07"
-        }
-      ],
-      "lat": 40.72802,
-      "lng": -73.953889
-    },
-    {
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-11",
-      "free": false,
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "Kuei Luck",
-      "address": "171 Calyer St",
-      "geocodeQuery": "171 Calyer St, Brooklyn, NY 11222",
-      "id": "birthsmarter-newborn-lactation-0920",
-      "title": "Newborn and lactation classes with Birthsmarter",
-      "kicker": "Two classes, 10am and 2pm",
-      "summary": "The Newborn Class runs 10 to 1, then The Lactation Class 2 to 5, both at Kuei Luck on Calyer St. Take one or both. Ask about alternative pricing.",
-      "startsAt": "2026-09-20T10:00:00-04:00",
-      "endsAt": "2026-09-20T17:00:00-04:00",
-      "sourceQuote": "20\nThe Newborn Class\n2:00 PM UTC -\n5:00 PM UTC\nKuei Luck Greenpoint | Brooklyn | NYC\nThe Lactation Class\n6:00 PM UTC -\n9:00 PM UTC",
-      "actions": [
-        {
-          "label": "Book a class",
-          "type": "signup",
-          "url": "https://birthsmarter.com/schedule"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "The Newborn Class / The Lactation Class",
-          "url": "https://birthsmarter.com/schedule",
-          "publisher": "Birthsmarter",
-          "date": "2026-09-07"
-        }
-      ],
-      "lat": 40.72802,
-      "lng": -73.953889
     },
     {
       "audience": [
@@ -8327,7 +7793,6 @@
       "lat": 40.731052,
       "lng": -73.953716,
       "relatedCardIds": [
-        "psc-zapiski-oficera-0911",
         "psc-piaseczny-concert-0919"
       ],
       "sourceQuote": "Disco Night Vol. 27 @ Polish and Slavic Center, 7 p.m.: The local tradition continues! $25, get tickets here .",
@@ -9807,7 +9272,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-12",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave",
       "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
@@ -9828,7 +9293,7 @@
           "title": "Greenpoint Comedy Club listings",
           "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
           "publisher": "Jump Comedy",
-          "date": "2026-09-09"
+          "date": "2026-09-12"
         }
       ],
       "free": false,
@@ -9837,8 +9302,8 @@
       "title": "The Friday Showcase at Greenpoint Comedy Club",
       "kicker": "Two stand-up bills, 8pm and 10pm",
       "summary": "The club runs its showcase twice over, with a separate later line-up on the same stage. Twenty-five dollars for either.",
-      "startsAt": "2026-09-11T20:00:00-04:00",
-      "endsAt": "2026-09-25T22:00:00-04:00",
+      "startsAt": "2026-09-18T20:00:00-04:00",
+      "endsAt": "2026-10-02T22:00:00-04:00",
       "recurring": true,
       "recurrence": {
         "days": [
@@ -9848,7 +9313,7 @@
       "filters": [
         "arts_culture"
       ],
-      "sourceQuote": "Fri Sep 11, 2026, 8:00 PM, Fri Sep 18, 2026, 8:00 PM, Fri Sep 25, 2026, 8:00 PM and 5 more\nThe Friday Showcase Show @ 8:00 PM\nUSD $25.00\nFri Sep 11, 2026, 10:00 PM, Fri Sep 18, 2026, 10:00 PM, Fri Sep 25, 2026, 10:00 PM and 5 more\nThe (Later) Friday Showcase @ 10:00 PM\nUSD $25.00"
+      "sourceQuote": "Fri Sep 18, 2026, 8:00 PM, Fri Sep 25, 2026, 8:00 PM, Fri Oct 2, 2026, 8:00 PM and 4 more\nThe Friday Showcase Show @ 8:00 PM\nUSD $25.00\nFri Sep 18, 2026, 10:00 PM, Fri Sep 25, 2026, 10:00 PM, Fri Oct 2, 2026, 10:00 PM and 4 more\nThe (Later) Friday Showcase @ 10:00 PM\nUSD $25.00"
     },
     {
       "audience": [
@@ -9911,7 +9376,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-11",
+      "updatedAt": "2026-09-12",
       "free": false,
       "category": "subscription",
       "id": "happy-medium-art-cafe",
@@ -9936,10 +9401,10 @@
           "title": "Happy Medium — Art Cafe",
           "url": "https://happy-medium.co/art-cafe",
           "publisher": "Happy Medium",
-          "date": "2026-09-09"
+          "date": "2026-09-12"
         }
       ],
-      "sourceQuote": "Art Cafe\nFri, Sep 11 · 2:15 PM - 4:15 PM\nGreenpoint\n$15 deposit\nArt Cafe\nFri, Sep 11 · 4:30 PM - 6:30 PM\nGreenpoint\n$15 deposit",
+      "sourceQuote": "Art Cafe\nSat, Sep 12 · 2:15 PM - 4:15 PM\nGreenpoint\n$15 deposit\nArt Cafe\nSat, Sep 12 · 4:30 PM - 6:30 PM\nGreenpoint\n$15 deposit",
       "lat": 40.73327,
       "lng": -73.957578
     },
@@ -11079,51 +10544,6 @@
       "createdAt": "2026-09-11",
       "updatedAt": "2026-09-11",
       "free": false,
-      "id": "film-noir-yumemiru-0911",
-      "category": "event",
-      "title": "YUMEMIRU at Film Noir Cinema",
-      "kicker": "A 1986 Japanese missing-persons tale",
-      "summary": "An aging silent-film actress hires a private eye and his assistant to find her missing daughter. The programme page states no ticket price.",
-      "startsAt": "2026-09-11T22:00:00-04:00",
-      "endsAt": "2026-09-11T23:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/1/28/yumemiru"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/1/28/yumemiru",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-11"
-        }
-      ],
-      "sourceQuote": "YUMEMIRU\nFriday, September 11, 2026\n10:00 PM\n11:00 PM\nJP. 1986\nAn aging silent film actress hires a private eye and his wacky but helpful assistant to track down her missing daughter, Bellflower."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-11",
-      "updatedAt": "2026-09-11",
-      "free": false,
       "id": "film-noir-snake-girl-0912",
       "category": "event",
       "title": "SNAKE GIRL AND THE WITCH at Film Noir Cinema",
@@ -12011,6 +11431,176 @@
       "updatedAt": "2026-09-11",
       "lat": 40.72606,
       "lng": -73.950709
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "free": false,
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
+      "lat": 40.730461,
+      "lng": -73.953114,
+      "actions": [
+        {
+          "label": "Workshops",
+          "type": "learn_more",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
+        }
+      ],
+      "filters": [
+        "arts_culture"
+      ],
+      "category": "event",
+      "id": "bcc-knitting-102-billie-bandana-0923",
+      "title": "Knitting 102: Billie Bandana",
+      "kicker": "Knit a bandana in an evening",
+      "summary": "A workshop in the BCC Shop, the storefront room rather than the Annex.",
+      "startsAt": "2026-09-23T18:30:00-04:00",
+      "endsAt": "2026-09-23T23:59:00-04:00",
+      "sourceQuote": "Knitting 102: Billie Bandana\nWed, 9/23 at 6:30pm\nIn the BCC Shop",
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-14"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "free": false,
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
+      "lat": 40.730461,
+      "lng": -73.953114,
+      "actions": [
+        {
+          "label": "Workshops",
+          "type": "learn_more",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
+        }
+      ],
+      "filters": [
+        "arts_culture"
+      ],
+      "category": "event",
+      "id": "bcc-sew-pajama-pants-0926",
+      "title": "Sew Pajama Pants (1 day)",
+      "kicker": "Sew a pair in one sitting",
+      "summary": "The Greenpoint session. The newsletter of 11 September listed one spot left; no price is stated.",
+      "startsAt": "2026-09-26T11:00:00-04:00",
+      "endsAt": "2026-09-26T23:59:00-04:00",
+      "sourceQuote": "Sew Pajama Pants (1 day)\nSat, 9/26 at 11:00am\n1 SPOT LEFT\nIn Greenpoint",
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-09-11"
+        }
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "free": false,
+      "id": "town-square-greencycle-swap-0926",
+      "category": "event",
+      "title": "Greencycle Back-to-School Swap at John Ericsson MS 126",
+      "kicker": "Bring some, take some",
+      "summary": "Town Square BK runs it with local Brooklyn scouts; a $10 donation per family is suggested to cover costs.",
+      "startsAt": "2026-09-26T12:00:00-04:00",
+      "endsAt": "2026-09-26T15:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "John Ericsson Middle School 126",
+      "address": "424 Leonard St",
+      "geocodeQuery": "424 Leonard Street, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://www.townsquarebk.org"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Town Square BK newsletter, 9 September 2026",
+          "publisher": "Town Square",
+          "date": "2026-09-09"
+        }
+      ],
+      "sourceQuote": "Greencycle Back-to-School Swap 2026\nSaturday, September 26th, 12-3 PM\nJohn Ericsson MS 126, 424 Leonard Street, Brooklyn\nSuggested donation: $10 a family to help cover costs and support local nonprofit Town Square BK and amazing Brooklyn scouts.",
+      "lat": 40.720138,
+      "lng": -73.948153
+    },
+    {
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "free": true,
+      "category": "event",
+      "id": "mcgolrick-harvest-moon-walk-0926",
+      "title": "Park to Park Series: Harvest Moon Walk",
+      "kicker": "Free night walk under the harvest moon",
+      "summary": "Three parts: litter pick-up with Greenpoint Trash Club, songs by Tammy Hsu, then NYC Parks arborist John Kilcullen on the trees. First of a four-park series.",
+      "startsAt": "2026-09-26T18:00:00-04:00",
+      "endsAt": "2026-09-26T20:00:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "locationName": "Msgr McGolrick Park",
+      "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
+      "geocodeQuery": "Monsignor McGolrick Park, Brooklyn, NY",
+      "lat": 40.724458,
+      "lng": -73.943361,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://mcgolrick.org/calendar/park-to-park-series-harvest-moon-walk"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Park to Park Series: Harvest Moon Walk",
+          "url": "https://mcgolrick.org/calendar/park-to-park-series-harvest-moon-walk",
+          "publisher": "Friends of McGolrick Park",
+          "date": "2026-09-12"
+        }
+      ],
+      "sourceQuote": "Park to Park Series: Harvest Moon Walk\nSaturday, September 26, 2026\n6:00 PM\n8:00 PM\nWe’ll gather at 6 PM to kick off the evening with a community cleanup alongside our friends at Greenpoint Trash Club, helping care for the park we all share.\nOur event is free, though we encourage you to RSVP here!"
     }
   ]
 }

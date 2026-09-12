@@ -4628,5 +4628,30 @@
         "-73.9563103"
       ]
     }
+  },
+  "424 Leonard Street, Brooklyn, NY 11222": {
+    "query": "424 Leonard Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-12T13:26:18.039Z",
+    "hit": {
+      "place_id": 358912779,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 665487263,
+      "lat": "40.7201383",
+      "lon": "-73.9481527",
+      "category": "amenity",
+      "type": "school",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "M.S. 126 - John Ericsson Middle School",
+      "display_name": "M.S. 126 - John Ericsson Middle School, 424, Leonard Street, Greenpoint, Williamsburg, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7192671",
+        "40.7207012",
+        "-73.9486617",
+        "-73.9471492"
+      ]
+    }
   }
 }

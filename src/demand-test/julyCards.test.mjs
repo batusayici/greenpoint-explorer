@@ -948,14 +948,36 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // trunk show, which the venue removed from its own announcement.
   // Happy Medium's art cafe also moves arts_culture -> subscription (Batu).
   // Deck 252 -> 261, event 149 -> 157, subscription 40 -> 42, live_music 41 -> 42.
-  assert.equal(seed.cards.length, 261);
+  //
+  // 2026-09-12 (daily refresh): −11, +3. Expiry cleared eleven things that
+  // finished on the 11th — a Film Noir screening, Troost, Good Room, Eavesdrop
+  // and the Polish & Slavic Center's nights, Flower Cat's open mic, Hana's tour
+  // and tasting, Golden Drum's Anahata, the library's garden hour and the free
+  // Longevity Stick class at Transmitter Park. The three adds are all back of
+  // the window: Town Square BK's Greencycle Back-to-School Swap on Saturday the
+  // 26th at John Ericsson MS 126, which the 3 September run correctly deferred
+  // as out of horizon and which is now inside it, and two Brooklyn Craft Company
+  // workshops — Knitting 102: Billie Bandana on the 23rd, and the one-day Sew
+  // Pajama Pants on the 26th from the newsletter of the 11th, now persisted into
+  // that source's snapshot. Plus the McGolrick Park Harvest Moon Walk on the
+  // 26th, which the coverage check flagged as the one in-window date the
+  // Friends of McGolrick calendar carried and the deck did not.
+  //
+  // Same run, −2 more: BirthSmarter's One-Day Childbirth Education on the 19th
+  // and its Newborn and Lactation classes on the 20th. Both were pinned at Kuei
+  // Luck on Calyer St; today's listing puts both at "The Loft | Manhattan |
+  // NYC" and carries no Greenpoint session on either date. Same move, and the
+  // same ruling, as birthsmarter-weekend-childbirth-0912 on 2026-09-11 — the
+  // post-promotion quote check is what surfaced it.
+  // Deck 261 -> 252, event 157 -> 148, live_music 42 -> 38.
+  assert.equal(seed.cards.length, 252);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 36, "35 + the Limousine opening (2026-09-11)");
-  assert.equal(count((c) => c.category === "event"), 157, "144 + the Tunes for Tykes park circle and the four Greenpoint Shul programmes (2026-09-11)");
+  assert.equal(count((c) => c.category === "event"), 148, "157, less eleven that ran on 11 September and two BirthSmarter classes that moved to Manhattan, plus the Greencycle swap, two Brooklyn Craft Company workshops and the McGolrick Harvest Moon walk (2026-09-12)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 42, "43, less two Troost nights that ran, plus Good Room on 25 September (2026-09-11)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 38, "42, less the Troost, Good Room, Eavesdrop and Polish & Slavic Center nights that ran on 11 September (2026-09-12)");
   assert.equal(count((c) => c.category === "subscription"), 42, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -1261,6 +1283,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     "mccarren-sunday-scoops-0913",
     "mccarren-trivia-club-0914",
     "mcgolrick-bird-club-0808",
+    // 2026-09-12: the Harvest Moon Walk's own page says it outright — "Our
+    // event is free, though we encourage you to RSVP here!" — and the ticket
+    // row beside it reads "$0.00".
+    "mcgolrick-harvest-moon-walk-0926",
     // 2026-09-09: the North Brooklyn Community Boathouse's 9/19 paddles, the
     // same free walk-up series as the 8/22 card — BPL's calendar entry is
     // titled "Free canoe rides on Newtown Creek" and says "FREE informal
@@ -1286,8 +1312,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // is on the EVENT'S OWN detail page, not the listing — "as we flow in our
     // free Longevity Stick Classes" — which is why both detail pages were
     // fetched and persisted into the snapshot before these shipped.
-    // (transmitter-longevity-stick-0910 expired out 2026-09-11)
-    "transmitter-longevity-stick-0911",
+    // (transmitter-longevity-stick-0910 expired out 2026-09-11;
+    //  transmitter-longevity-stick-0911 expired out 2026-09-12)
     // 2026-09-07: the free Tuesday yoga at Transmitter Park, re-authored after
     // the coverage check flagged 9/8 and 9/15. Go Green states it outright:
     // "a free outdoor yoga practice at WNYC Transmitter Park".
@@ -1455,8 +1481,8 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // 2026-09-07, fourth pass: the park's Longevity Stick classes are "a mix
     // of Tai Chi and yoga", so they are movement, not the civic stewardship
     // their organiser's other programming files under.
-    // (transmitter-longevity-stick-0910 expired out 2026-09-11)
-    "transmitter-longevity-stick-0911",
+    // (transmitter-longevity-stick-0910 expired out 2026-09-11;
+    //  transmitter-longevity-stick-0911 expired out 2026-09-12)
     // 2026-09-07: free Tuesday yoga at Transmitter Park. Wellness, not civic —
     // the 2026-08-30 growing-space rule sends gardening to civic, but this is
     // the movement cluster the lens is defined by.
@@ -1833,11 +1859,17 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // session with an educator, which is stewardship of a growing space under
     // the 2026-08-30 rule, alongside the kids' sensory hour on the same roof.
     "library-friday-garden-0925",
-    "library-garden-hours-0911",
+    // (library-garden-hours-0911 expired out 2026-09-12)
     // 2026-09-09: the 9/17 day card carries civic alongside family_kids and
     // arts_culture because one of its six programmes is a housing legal clinic
     // running with the office hours of three local elected officials.
     "library-thursday-programs-0917",
+    // 2026-09-12: the Park to Park Harvest Moon Walk at McGolrick Park opens
+    // with "a community cleanup alongside our friends at Greenpoint Trash
+    // Club" before the songs and the tree walk, so the work-shift rule of
+    // 2026-08-06 applies mechanically — the shift earns the lens and the
+    // evening attached to it inherits it.
+    "mcgolrick-harvest-moon-walk-0926",
     // 2026-09-07: the North Brooklyn Parks Alliance native plant giveaway, two
     // cards because the page states different hours on Fridays than at
     // weekends. Civic under the same growing-space rule as the Kingsland line
@@ -1875,6 +1907,17 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // says is "open to all" — the civic lens, not a religious service, which
     // is the separate parked question.
     "shul-tashlich-transmitter-0913",
+    // 2026-09-12: Town Square BK's Greencycle Back-to-School Swap at John
+    // Ericsson MS 126. Nothing is sold — neighbours bring things and take
+    // things, and the only money named is a suggested $10-a-family donation to
+    // the nonprofit running it and to the scouts — so it is mutual aid under
+    // the 2026-08-30 reading that the civic lens covers what a resident
+    // RECEIVES from a neighbourhood system as well as the shift that runs it.
+    // The deck's other two swaps (maison-jar-clothing-swap-0912,
+    // peek-inn-book-swap-0913, both 2026-09-11) file `shopping` because each is
+    // a dated happening AT A SHOP, which is what that lens enumerates. The
+    // shapes differ; this call is on watchItems for Batu to overturn.
+    "town-square-greencycle-swap-0926",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {

@@ -201,7 +201,6 @@ ESSENTIALS PACKAGED FOODS
 Artichoke Hearts
 Beans Canned
 Caramel Goat Milk
-Calabrian Chili Spread
 Chai Concentrate Masala
 Chili Crisp Classic / Garlic / Extra Spicy
 Coconut Milk Regular / Simple (ORG)
@@ -213,9 +212,11 @@ Curry Sauces
 Ghee (ORG)
 Gochujang
 Hazelnut Spread Original
+Honey Creamed
 Jams Fruit
 Nut butters Various
 Mango Puree
+Mayo
 Mustard Smooth / Wholegrain (ORG)
 Paste Tomato
 Pistachio Spread
@@ -337,7 +338,7 @@ Milk 2% (ORG) / Whole (ORG)
 Molten Lava Cake Jar
 Miso Sweet white
 Olives Castelvetrano
-Pickles New / NYC Deli Style
+Pickles New
 Sauerkraut Various (ORG)
 Sea Moss Gel Plain / Mango / Passionfruit (ORG)
 Sodas Various
@@ -347,7 +348,6 @@ Tofu Extra Firm
 Whey Tonic Various
 Yogurt Coconut – Various (V) (ORG)
 SNACK
-Almonds Garlic (ORG)
 Cashews Curry (ORG)
 Cassava Crackers
 Chocolate Caramels
@@ -439,8 +439,8 @@ Speamint (ORG)
 Pu-er (FT) (ORG)
 Yerba Mate (FT) (ORG)
 HOUSEHOLD - BULK
-All-Purpose Cleaner Lemongrass / Unscented
-Bathroom Cleaner Pods / Scented
+All-Purpose Cleaner Lemongrass / Fresh Spring
+Bathroom Cleaner Pods
 Cleaning Vinegar 12%
 Castille Soap Peppermint / Eucalyptus / Citrus / Unscented
 Dish Soap Scented / Unscented
@@ -466,7 +466,7 @@ Brush Pot Scrubber
 Brush Nail
 Candles Scented Soy / Birthday / Tea lights / Votives
 Copper Scrubber
-Coffee Filters Compostable #2 / #4 / Basket
+Coffee Filters Compostable #2 / #4
 Dishcloth Swedish
 Jars Multiple Varieties
 Lint Remover
@@ -510,7 +510,6 @@ Deodorant Block / Cream / Stick
 Dry Brush
 Exfoliating Bars Coffee / Jojoba bead
 Eye Coal Black / Brown / Green / Blue
-Face Cleanser Powder
 Facial Cleansing Bars Charcoal / Tea Tree / Rose
 Face Lotion Sensitive Skin
 Growing Belly Balm
@@ -520,6 +519,7 @@ Hydrosol Spritz
 Lip Balm / Stain / Tint / Paint
 Lotion Aloe
 Lotion Unscented Stick
+Lube
 Menstrual Cup
 Paper Towels Bamboo
 Pads Day / Night / Liners
