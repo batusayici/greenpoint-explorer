@@ -162,6 +162,15 @@ const channels = s.channels.map((c) => `
     <td>${esc(c.status)}</td>
   </tr>`).join('');
 
+const businessInterest = (s.businessInterest ?? []).map((b) => `
+  <li class="up">
+    <span class="up__when mono">${esc(b.date)}</span>
+    <div>
+      <b>${esc(b.who)}</b>
+      <span class="up__line">${esc(b.ask)} — ${esc(b.channel)}${b.gate ? ` · ${esc(b.gate)}` : ''}</span>
+    </div>
+  </li>`).join('');
+
 const risks = s.risks.map((r) => `
   <li><b>${esc(r.title)}.</b> ${esc(r.detail)} <i>${esc(r.response)}</i></li>`).join('');
 
@@ -325,6 +334,12 @@ footer{font:11.5px/1.6 var(--mono);color:var(--mute);border-top:1px solid var(--
     <h2 class="sec">Coming up</h2>
     <ol class="ups">${upcoming}</ol>
   </section>
+
+  ${s.businessInterest?.length ? `
+  <section>
+    <h2 class="sec">Business interest — asks in</h2>
+    <ol class="ups">${businessInterest}</ol>
+  </section>` : ''}
 
   <section>
     <h2 class="sec">The full picture</h2>
