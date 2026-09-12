@@ -1489,33 +1489,30 @@
     },
     {
       "id": "mccarren-park-house",
-      "name": "McCarren Park House — events",
+      "name": "McCarren Park House (ParkHouse) — upcoming events",
       "url": "https://mccarrenparkhouse.com/hello",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12, url on Batu's instruction. He gave /hello after the /events path he first named turned out not to exist (146 chars, run 34699770437) and their sitemap showed only four pages — /home, /parkbar, /hello, /private-events-form. Not verified until this note carries a fetch of /hello. Robots is clean: Squarespace stock, AI agents listed but grouped with `User-agent: *` and no `Disallow: /`; /*?format=ical is disallowed.",
+      "notes": "855 Lorimer Street, Brooklyn NY 11222 — in McCarren Park, and INSIDE the bbox: McCarren Park geocodes to 40.7212, -73.9529 (the house number itself is not in Nominatim, so a card may need the park or a cross-street query). MEASURED 2026-09-12 on a GitHub Actions probe run (run 34700312875): PLAIN fetch, 2,937 bytes / 73 lines, 0 errors. THE URL IS /hello, which is the site's \"Upcoming\" page and is not guessable — Batu supplied it after /events turned out not to exist (146 chars) and the sitemap showed only /home, /parkbar, /hello and /private-events-form. Do not 'fix' this path to something tidier. ROUGHLY 40 DATED LISTINGS, running Sep 10 through Dec 17, each carrying its day, date and time IN THE TITLE STRING ITSELF: \"North Brooklyn Chess Club Thursday September 10th @ 7PM-11PM\", \"Sunday Scoops with Graza and Ogechi Egonu September 13th @ 1PM-3PM\", \"Hobby Con Presents: Trivia Club Monday September 14th @ 7PM-8:30PM\", \"Skip the Small Talk Wednesday September 16th @ 7PM-9PM\". There is no separate date field and no detail page — the title is the whole record, so parse it and quote it verbatim. TWO AUTHORING WARNINGS. (1) Their own typos will trip a parser and must not be silently corrected into a different date: \"September 19rd\", \"Pique Community Hangs Tuesday September Tuesday 22nd\", \"Thursday September 17\" with no suffix. Where a listing's date is genuinely ambiguous, hold the card rather than guessing. (2) NO PRICES ARE STATED anywhere on the page, so no card off this source may set free:true, and end times exist for some listings but not others — use the 23:59 sentinel where an end was never sourced. Much of it is recurring community programming (North Brooklyn Chess Club, New York Philosophy Club, Brooklyn Euchre Club, Songwriter Sundays) plus one-off music bills. Hours, from /home: Bar 11am-midnight Fri-Sat and noon-11pm Sun-Thur, Club Club 11am-8pm, Cafe 7:30am-5pm. ROBOTS CLEAN: Squarespace stock, AI user-agents listed but grouped with `User-agent: *` and no `Disallow: /`; `/*?format=ical` IS disallowed, so no iCal route. Added on Batu's request 2026-09-12.",
+      "datedListing": true,
+      "citeHost": "mccarrenparkhouse.com"
+    },
+    {
+      "id": "talea-detail-probe",
+      "name": "TALEA detail-page probe (not a source)",
+      "url": "https://www.taleabeer.com/pages/calendar",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "browser",
+      "detail": {
+        "match": "(byo-baby|byo|trivia|oktoberfest|bonsai|knitting|braids|clixo)",
+        "limit": 6,
+        "fetch": "browser",
+        "delayMs": 500
+      },
+      "notes": "PROBE, added 2026-09-12 — Batu says TALEA's start times live on event detail pages, and they are neither Shopify pages (17, none events) nor obvious products. `detail.match` harvests listing hrefs, so this DISCOVERS where the detail pages are instead of guessing a URL scheme; the match words come from listing titles actually measured in run 34699029209. Remove once the pattern is known and folded into talea-williamsburg.",
       "datedListing": true
-    },
-    {
-      "id": "mccarren-home",
-      "name": "McCarren Park House home (content probe, not yet a source)",
-      "url": "https://mccarrenparkhouse.com/home",
-      "group": "venue",
-      "cadence": "monthly",
-      "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12 — one of only four pages their sitemap lists. Looking for dated events anywhere on the site. Remove once read.",
-      "datedListing": false
-    },
-    {
-      "id": "talea-products-sitemap",
-      "name": "TALEA products sitemap (detail-URL discovery probe, not a content source)",
-      "url": "https://www.taleabeer.com/sitemap_products_1.xml?from=7170953937057&to=8722915721377",
-      "group": "venue",
-      "cadence": "monthly",
-      "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12 — Batu says TALEA's start times live on event detail pages, and the PAGES sitemap has no event pages (17 pages, only /pages/calendar is calendar-related). Ticketed brewery events are usually Shopify PRODUCTS, so this looks for event-shaped product URLs to use as the `detail` config. Remove once read.",
-      "datedListing": false
     }
   ],
   "manualSources": [
