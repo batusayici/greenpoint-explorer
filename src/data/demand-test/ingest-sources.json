@@ -1494,27 +1494,27 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12 UNMEASURED — Batu asked for this source. Not verified until this note carries a fetch.",
+      "notes": "PROBE, added 2026-09-12, NOT YET READABLE. Batu asked for this source as https://mccarrenparkhouse.com/events. That URL returned only 146 characters in chromium after 7.5s — nothing that looks like an event — so it is either the wrong path or a page that never renders (run 34699770437). ROBOTS IS CLEAN and tells us what the site is: Squarespace's stock robots.txt, 1,510 bytes, which lists anthropic-ai, ClaudeBot and GPTBot as user-agents but groups them with `User-agent: *` and carries NO `Disallow: /` — the same shape as ABC Cirque, so nothing here refuses automated readers. It names a sitemap at https://mccarrenparkhouse.com/sitemap.xml, which is the next probe and the way to find the real events path. `/*?format=ical` is disallowed, so no iCal route.",
       "datedListing": true
     },
     {
-      "id": "mccarren-robots",
-      "name": "McCarren Park House robots.txt (policy probe, not a content source)",
-      "url": "https://mccarrenparkhouse.com/robots.txt",
+      "id": "mccarren-sitemap",
+      "name": "McCarren Park House sitemap (URL discovery probe, not a content source)",
+      "url": "https://mccarrenparkhouse.com/sitemap.xml",
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12 — crawler policy. Remove once read.",
+      "notes": "PROBE, added 2026-09-12 — /events renders 146 chars, so this finds the real events path. Named by their own robots.txt. Remove once read.",
       "datedListing": false
     },
     {
       "id": "talea-pages-sitemap",
       "name": "TALEA pages sitemap (detail-URL discovery probe, not a content source)",
-      "url": "https://www.taleabeer.com/sitemap_pages_1.xml",
+      "url": "https://www.taleabeer.com/sitemap_pages_1.xml?from=86781198497&to=117944713377",
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12 — looks for the per-event detail pages that would carry the start times the month grid omits. Remove once read.",
+      "notes": "PROBE, added 2026-09-12, retry — the bare /sitemap_pages_1.xml returned 113 chars; Shopify serves it only with the from/to params the sitemap index supplies. Looks for the per-event detail pages carrying the start times the month grid omits. Remove once read.",
       "datedListing": false
     }
   ],

@@ -65,7 +65,12 @@ jobs:
       - id: fetch
         run: |
           if [ -n "$ONLY" ]; then
-            npm run ingest:fetch -- --include-monthly --only "$ONLY"
+            # --allow-degraded in probe mode: a probe deliberately tries URLs
+            # that may not exist, and with two or three sources a single 404
+            # blows through the 15% ceiling and reports a healthy roster as
+            # unreadable. The ceiling is there to stop a thin ingest shipping;
+            # a probe ingests nothing.
+            npm run ingest:fetch -- --include-monthly --allow-degraded --only "$ONLY"
           else
             npm run ingest:fetch -- --include-monthly
           fi
