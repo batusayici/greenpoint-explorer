@@ -155,7 +155,9 @@
       "WebFetch(domain:www.abcirque.com)",
       "WebFetch(domain:taleabeer.com)",
       "WebFetch(domain:www.taleabeer.com)",
-      "WebFetch(domain:mccarrenparkhouse.com)"
+      "WebFetch(domain:mccarrenparkhouse.com)",
+      "WebFetch(domain:theshopcalendar.com)",
+      "WebFetch(domain:cdn.shopify.com)"
     ]
   }
 }
