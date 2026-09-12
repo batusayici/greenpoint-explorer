@@ -65,6 +65,11 @@ section only when evidence answers it — then it becomes a belief.
   all-time and one submit tap ever. We don't know whether the ask is invisible,
   unwanted, or simply premature at this traffic level, and the answer decides
   whether supply can ever be anything but hand-curated. _Evidence: L2026-08-17._
+  **First sign it's "invisible," not "unwanted," 2026-09-12:** a business asked
+  to be added the day after Rana's post went out — but by DMing Rana directly,
+  not through the product's submit form, which nobody would ever see by
+  checking that form's own analytics. One instance doesn't answer the
+  question, but it does narrow it. _Evidence: L2026-09-12._
 
 ## Current beliefs
 
@@ -175,6 +180,27 @@ when revised, and retired ones are struck rather than renumbered.
   _Evidence: L2026-07-21._
 
 ## Log
+
+### L2026-09-12 — A business asked to be added, by DMing Rana, not through the submit form (business feedback)
+
+Source: Facebook Messenger screenshot relayed by Batu, 2026-09-12. A message request from Ali
+Goldberg to Rana, timestamped 5:30pm, not yet accepted at the time of relay.
+
+Fact — the message, verbatim: "Hi Rana! I saw your husband's awesome map - I help a small
+cirque/arts org, and we are based in Williamsburg at 5th Wall Studio! Would you husband be able to
+add us to the map. We offer Family Adventure Play for 0-5 year olds and parents, and also have kids
+and adult cirque classes: https://www.abcirque.com/education-main. Thank you!!" (ABC Cirque.)
+
+Read: Rana's 2026-09-11 parents-group post (PR #93 — 203 people, nine signups) didn't just move
+traffic, it produced the first unprompted "add us" ask this project has seen since launch — and it
+arrived as a personal DM to Rana, not through the in-product submit form, which still stands at zero
+submissions (Q4, B12). Batu calls this the second such ask since the post; the first isn't sourced
+into this repo yet, so it isn't recorded here — only this one is. ABC Cirque itself is
+Williamsburg-based, so it doesn't clear the roster's geography gate regardless of interest (CLAUDE.md
+source-allowlist rules); the signal that matters is that a business went looking for a way in and
+found one that bypasses the mechanism built for it. Logged toward the Supply gate's "asked in" line
+in `docs/launch/gtm-state.json` (`businessInterest`), which the daily cockpit now renders under
+"Business interest — asks in."
 
 ### L2026-09-08 — Search finds us by name, never by question; ChatGPT became a trickle (analytics pull)
 

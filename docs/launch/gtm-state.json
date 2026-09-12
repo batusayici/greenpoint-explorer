@@ -617,8 +617,8 @@
       "order": 3,
       "bar": "≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter",
       "metric": "Proactive supply actors per month",
-      "actual": "0 submissions. Form has 10 visits, 0 starts.",
-      "readAt": "2026-09-01",
+      "actual": "0 submissions via the in-product form (10 visits, 0 starts). 1 informal ask-in now logged outside it: ABC Cirque via Facebook DM to Rana after her 2026-09-11 post (see businessInterest below). Batu flags a second such ask around the same window that is not yet sourced into this file.",
+      "readAt": "2026-09-12",
       "status": "pending",
       "unlocks": "The only loop that lowers marginal cost — direct submissions displace ingest labor.",
       "why": "Businesses currently have no reason to know the path exists. The missing mechanism is proof of value back to the supplier: submission → publication receipt → measured outcome report. Zero build, starts as soon as there's engagement to report.",
@@ -1045,6 +1045,18 @@
       "firstSession": "3 people",
       "reply": null,
       "status": "product-generated, never sent by hand"
+    }
+  ],
+  "businessInterest": [
+    {
+      "id": "abc-cirque-2026-09-12",
+      "date": "2026-09-12",
+      "who": "Ali Goldberg — ABC Cirque (Williamsburg; Family Adventure Play for 0–5s, kids & adult cirque classes, 5th Wall Studio)",
+      "ask": "Add ABC Cirque to the map",
+      "channel": "Facebook Messenger DM to Rana, following her 2026-09-11 parents-group post (PR #93)",
+      "gate": "Based in Williamsburg, not Greenpoint — doesn't clear the roster's geography gate regardless of interest",
+      "countsTowardSupplyGate": true,
+      "source": "Facebook Messenger screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     }
   ],
   "openDecisions": [
