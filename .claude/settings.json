@@ -150,7 +150,12 @@
       "WebFetch(domain:tunesfortykes.info)",
       "WebFetch(domain:greenpointshul.org)",
       "WebFetch(domain:www.theshopcalendar.com)",
-      "WebFetch(domain:threesbrewing.com)"
+      "WebFetch(domain:threesbrewing.com)",
+      "WebFetch(domain:abcirque.com)",
+      "WebFetch(domain:www.abcirque.com)",
+      "WebFetch(domain:taleabeer.com)",
+      "WebFetch(domain:www.taleabeer.com)",
+      "WebFetch(domain:mccarrenparkhouse.com)"
     ]
   }
 }

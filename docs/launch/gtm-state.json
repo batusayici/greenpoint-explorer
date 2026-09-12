@@ -617,7 +617,7 @@
       "order": 3,
       "bar": "≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter",
       "metric": "Proactive supply actors per month",
-      "actual": "0 submissions via the in-product form (10 visits, 0 starts). 2 informal asks-in now logged outside it, both arriving off Rana's 2026-09-11 post: ABC Cirque via Facebook DM to Rana, and Kathleen Kyllo (TALEA event host) via a comment on the post itself (see businessInterest below). Both are Williamsburg, so neither clears the roster's geography gate, but both count as unprompted asks. A third, \"Threes Brewing rep,\" was named by an AI autofill reply Batu saw and has no source anywhere in this repo or session — treat as unconfirmed, not logged.",
+      "actual": "0 submissions via the in-product form (10 visits, 0 starts). 2 informal asks-in arrived off Rana's 2026-09-11 post and both were measured 2026-09-12: ABC Cirque (Facebook DM to Rana) is now a roster source, inside the bbox and robots-clean; the TALEA ask is held on the not-a-chain test with a recommendation not to add. Neither came through the path built for submissions.",
       "readAt": "2026-09-12",
       "status": "pending",
       "unlocks": "The only loop that lowers marginal cost — direct submissions displace ingest labor.",
@@ -1054,7 +1054,7 @@
       "who": "Ali Goldberg — ABC Cirque (Williamsburg; Family Adventure Play for 0–5s, kids & adult cirque classes, 5th Wall Studio)",
       "ask": "Add ABC Cirque to the map",
       "channel": "Facebook Messenger DM to Rana, following her 2026-09-11 parents-group post (PR #93)",
-      "gate": "UNDER ROSTER REVIEW (Batu, 2026-09-12: slightly outside the geography gate is acceptable when the ask itself proves demand). Says it operates from 5th Wall Studio, Williamsburg; the street address has not been read, so whether it is even outside the bbox is unmeasured. Blocked on a fetch — this sandbox's egress proxy 403s abcirque.com, and the roster's seventh test requires a same-session fetch. Battery to run: docs/review/2026-09-12-inbound-ask-roster-candidates.md",
+      "gate": "ADDED TO THE ROSTER 2026-09-12 as `abc-cirque`, after a measured fetch on a GitHub runner (probe run 34698842810). The geography worry was unfounded: 5th Wall Studio is at 156 North 4th St and that street geocodes to 40.7152, -73.9585, INSIDE the existing bbox — no relaxation needed. Robots does not block us either, so the consent ruling was not load-bearing. Cardable: Family Adventure Play, Sundays 11am-12:30pm on Sep 27, Oct 18 and Nov 15, $30 early bird. Loose end: the asker described herself as helping the org, not owning it — worth one line of confirmation.",
       "countsTowardSupplyGate": true,
       "source": "Facebook Messenger screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     },
@@ -1064,7 +1064,7 @@
       "who": "Kathleen Kyllo — hosting \"Clixo x TALEA BYO Baby!\", a family event at the TALEA taproom",
       "ask": "Asked, in a comment on Rana's post, to add her event to the map (\"Can I add something to it?\")",
       "channel": "Facebook comment on Rana's 2026-09-11 parents-group post",
-      "gate": "NOT A ROSTER CANDIDATE AS ASKED — this is a card submission for one event (Clixo x TALEA, Sep 13), evidenced only by an Instagram post this project's fetcher cannot read, and it expires before it could be verified. Separable from it: TALEA's own taproom events calendar may be a fair venue source on its own merits, evaluated like any other venue rather than because a customer asked. See docs/review/2026-09-12-inbound-ask-roster-candidates.md",
+      "gate": "HELD FOR BATU 2026-09-12. His condition was met — the Clixo event IS in TALEA's calendar (Sep 12, Williamsburg; real path /pages/calendar, browser fetch, 2,557 bytes) — but three facts arrived with the measurement: the footer lists SIX taprooms and none in Greenpoint, so the not-a-chain test is live; the month grid carries no start times and no prices, so it cannot support a complete card today; and a citywide calendar would need a Williamsburg-only filter. Recommendation on file: don't add it. docs/review/2026-09-12-inbound-ask-roster-candidates.md",
       "countsTowardSupplyGate": true,
       "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     }

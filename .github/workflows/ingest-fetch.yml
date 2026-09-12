@@ -10,7 +10,17 @@ name: ingest-fetch
 on:
   schedule:
     - cron: "30 10 * * *" # 6:30am New York in summer (5:30 in winter); the home Mac follows at 7:15, the routine at 8:30
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      only:
+        # PROBE MODE. A candidate source has to be fetched before it can be
+        # judged, and the sandbox cannot reach most hosts — this is how a
+        # roster hopeful gets measured (2026-09-12). Nothing is published when
+        # it is set: a 2-source run would otherwise replace the whole bundle
+        # in the snapshots repo with two sources' worth of snapshots.
+        description: "Comma-separated source ids to fetch instead of the whole roster. Probe mode — measures and prints, publishes nothing."
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -27,6 +37,9 @@ jobs:
       # A secret cannot be tested in a step `if:` directly; surface its presence here.
       HAS_KEY: ${{ secrets.SNAPSHOTS_DEPLOY_KEY != '' }}
       SNAPSHOTS_REPO: git@github.com:batusayici/stoopwise-snapshots.git
+      # `inputs` is null on a schedule, so coerce here rather than comparing a
+      # null property in a step `if:`. Empty = normal full-roster run.
+      ONLY: ${{ inputs.only || '' }}
     steps:
       # Nothing in this job uses the workflow token, and the job reads untrusted
       # pages: don't leave a credential for this repo in the checkout's git config.
@@ -46,11 +59,41 @@ jobs:
       # Exit 1 here means the roster was not readable (>15% errored). The
       # report still has to be published so the routine halts on the same
       # evidence, so do not fail the job yet.
+      # ONLY goes through the environment, never interpolated into the command:
+      # a dispatch input is caller-controlled text and this job runs with a
+      # deploy key in reach.
       - id: fetch
-        run: npm run ingest:fetch -- --include-monthly
+        run: |
+          if [ -n "$ONLY" ]; then
+            # --allow-degraded in probe mode: a probe deliberately tries URLs
+            # that may not exist, and with two or three sources a single 404
+            # blows through the 15% ceiling and reports a healthy roster as
+            # unreadable. The ceiling is there to stop a thin ingest shipping;
+            # a probe ingests nothing.
+            npm run ingest:fetch -- --include-monthly --allow-degraded --only "$ONLY"
+          else
+            npm run ingest:fetch -- --include-monthly
+          fi
         continue-on-error: true
         env:
           TROOST_CALENDAR_API_KEY: ${{ secrets.TROOST_CALENDAR_API_KEY }}
+
+      # Probe mode's whole output is what it prints. The per-source log line
+      # carries no size, and a brand-new source has no diff to read, so print
+      # the byte count and the head of each snapshot — that is what tells a
+      # real listing apart from a page of navigation (the Threes Brewing shape:
+      # 3,061 characters, none of it an event).
+      - name: Print the probe measurement
+        if: always() && env.ONLY != ''
+        run: |
+          echo "=== changes.json ==="
+          cat .ingest-cache/changes.json || echo "(no report written)"
+          for f in .ingest-cache/*.txt; do
+            case "$f" in *.ingested.txt|*.diff.txt) continue ;; esac
+            echo "=== $f — $(wc -c < "$f") bytes, $(wc -l < "$f") lines ==="
+            head -c 8000 "$f"
+            echo
+          done
 
       # Always available, key or no key — this is what the dry run compares.
       - uses: actions/upload-artifact@v4
@@ -62,7 +105,7 @@ jobs:
           if-no-files-found: error
 
       - name: Publish the bundle to the snapshots repo
-        if: env.HAS_KEY == 'true'
+        if: env.HAS_KEY == 'true' && env.ONLY == ''
         env:
           DEPLOY_KEY: ${{ secrets.SNAPSHOTS_DEPLOY_KEY }}
         run: |

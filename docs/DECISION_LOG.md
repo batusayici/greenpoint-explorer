@@ -4,6 +4,45 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-12 — a business that asks to be listed has consented, whatever its robots.txt says
+
+**Batu's ruling:** when the owner of a business asks us to include them, that is explicit consent,
+and it overrides a `robots.txt` that tells crawlers to stay out. The 2026-09-10 rule — a publisher
+that blocks AI crawlers is a NO, not a question — stands for every source we go and find. It does
+not apply to a source that came to us and asked.
+
+The reasoning is that the two signals are not the same kind of thing. A `robots.txt` block is a
+blanket instruction written for strangers, usually years earlier by whoever built the site. A person
+asking "can you add us" is a specific permission for a specific use, given now, by the party the
+blanket rule exists to protect. Where they conflict, the specific one is the better evidence of what
+the business actually wants.
+
+Three limits, so this doesn't quietly become a way around the rule:
+
+- **It covers their own content, not everything on their site.** A business can consent to us
+  carrying its classes and hours. It cannot consent on behalf of a newspaper it quotes.
+- **A stated terms-of-service prohibition is a separate question from `robots.txt`.** If the terms
+  forbid reuse, one person's ask may not be the company's permission — read the terms too.
+- **It does not reopen Brooklyn Paper.** They never asked; they said they don't want AI taking their
+  journalism. The way to reopen a source like that is still to ask them.
+
+**One gap worth naming now, on the case that prompted this.** ABC Cirque's ask came from Ali
+Goldberg, who described herself as someone who "helps" the org, not as its owner. Under the rule as
+written, the consent has to come from someone who can give it. It is probably fine and not worth
+stalling over, but it is worth one line of confirmation when Rana replies rather than being assumed
+silently.
+
+**Measured the same day, and the case that prompted the rule did not need it.** ABC Cirque's
+`robots.txt` turned out not to block us at all. It is Squarespace's stock file: it lists
+`anthropic-ai`, `ClaudeBot`, `GPTBot` and a dozen more as user-agents, but those lines are grouped
+with `User-agent: *` and the only rules are `/config`, `/search`, `/account`, `/api/`, `/static/` and
+some query-string patterns — there is no `Disallow: /` anywhere in it. The class page is not
+disallowed for any agent. So the rule above stands for the next case, but nothing here rests on it.
+Worth keeping as its own small lesson: the block was assumed because the 9/10 rule had primed the
+question, and the file said otherwise. A list of AI user-agents in a `robots.txt` is not the same
+thing as a rule that excludes them, and only reading the rules tells you which one you are looking
+at.
+
 ## 2026-09-11 — the card you opened always gets its pin, peek or not
 
 **Batu, on a phone: "when I open the family and kids cards, most of them do not show a mapped pin."**
