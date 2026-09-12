@@ -155,6 +155,18 @@ export function expandUrlTemplate(url, now = new Date()) {
       const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + offset, 1));
       return `${String(d.getUTCMonth() + 1).padStart(2, "0")}-${d.getUTCFullYear()}`;
     }
+    // Separate month-number and year tokens, for an API that wants them as two
+    // params rather than one string (theshopcalendar's widget call asks for
+    // `month=9&year=2026`). BOTH take a MONTH offset, deliberately: pairing
+    // {{monthnum:+1}} with {{year:+1}} then rolls the year correctly in
+    // December, where a plain "this year" token would fetch January of the year
+    // that just ended and report a real month as empty.
+    if (kind === "monthnum" || kind === "year") {
+      const offset = Number.parseInt(arg, 10);
+      if (Number.isNaN(offset)) throw new Error(`bad month offset in ${match}`);
+      const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + offset, 1));
+      return String(kind === "monthnum" ? d.getUTCMonth() + 1 : d.getUTCFullYear());
+    }
     if (kind === "env") {
       const value = process.env[arg];
       if (!value) throw new Error(`missing env var ${arg} for URL template ${match}`);

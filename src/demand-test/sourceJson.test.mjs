@@ -158,3 +158,29 @@ test("env template pulls from process.env and fails loudly when unset", () => {
   delete process.env.TEST_TEMPLATE_VAR;
   assert.throws(() => expandUrlTemplate("key={{env:TEST_TEMPLATE_VAR}}", now), /missing env var TEST_TEMPLATE_VAR/);
 });
+
+test("monthnum and year tokens split a month into two params", () => {
+  const june = new Date(Date.UTC(2026, 5, 15));
+  assert.equal(
+    expandUrlTemplate("?month={{monthnum:+0}}&year={{year:+0}}", june),
+    "?month=6&year=2026",
+  );
+  assert.equal(
+    expandUrlTemplate("?month={{monthnum:+1}}&year={{year:+1}}", june),
+    "?month=7&year=2026",
+  );
+});
+
+// December is where a naive "current year" token fetches January of the year
+// that just ended and reports a real month as empty.
+test("the year token rolls with the month offset in December", () => {
+  const december = new Date(Date.UTC(2026, 11, 28));
+  assert.equal(
+    expandUrlTemplate("?month={{monthnum:+1}}&year={{year:+1}}", december),
+    "?month=1&year=2027",
+  );
+});
+
+test("a non-numeric month offset is an error, not a silent zero", () => {
+  assert.throws(() => expandUrlTemplate("?m={{monthnum:+x}}"), /bad month offset/);
+});

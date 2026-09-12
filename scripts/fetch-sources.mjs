@@ -58,6 +58,7 @@ import { createHash } from "node:crypto";
 import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
 import { decode, htmlToText } from "../src/demand-test/sourceText.js";
 import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
+import { attrRecordsToText, markupFrom } from "../src/demand-test/sourceAttrs.js";
 import { icsToText } from "../src/demand-test/sourceIcs.js";
 import { classifyFetchFailure, isPolicyDenial, assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
 import { carryForwardBlocks, writeSnapshotPreservingBlocks } from "../src/demand-test/persistedBlocks.js";
@@ -621,6 +622,22 @@ async function jsonText(src) {
   return blocks.join("\n\n");
 }
 
+// "attrs": the facts are in data attributes on rendered markup, which may
+// arrive wrapped in a JSON field. The mirror image of "embedded" (JSON inside
+// an HTML attribute); see sourceAttrs.js for why the markup cannot simply be
+// read as text. Like "json" it honours `urls`, so a one-month-per-request
+// calendar can ask for {{month:+0}} and {{month:+1}} in the same source.
+async function attrsText(src) {
+  const opts = src.attrs ?? {};
+  const blocks = [];
+  for (const url of sourceUrls(src)) {
+    const body = await rawGet(url, "application/json,text/html,*/*");
+    const text = attrRecordsToText(markupFrom(body, opts.field ?? ""), opts);
+    if (text) blocks.push(text);
+  }
+  return blocks.join("\n\n");
+}
+
 const embeddedText = async (src) =>
   embeddedToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"), src.embedded ?? {});
 
@@ -637,8 +654,8 @@ async function probeHostDenial(src) {
   }
 }
 
-const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"], embedded: ["embedded"], ics: ["ics"] }; // default: plain, then browser
-const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, embedded: embeddedText, browser: browserPage, ics: icsText };
+const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"], embedded: ["embedded"], ics: ["ics"], attrs: ["attrs"] }; // default: plain, then browser
+const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, embedded: embeddedText, browser: browserPage, ics: icsText, attrs: attrsText };
 
 async function fetchSource(src) {
   const attempts = ATTEMPTS[src.fetch] ?? ["plain", "browser"];
