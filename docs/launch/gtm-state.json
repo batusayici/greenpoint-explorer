@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-09-11",
-    "lastDataPull": "2026-09-08",
-    "lastFeedCheck": "2026-09-11",
+    "asOf": "2026-09-12",
+    "lastDataPull": "2026-09-11",
+    "lastFeedCheck": "2026-09-12",
     "nextReadout": "2026-09-15",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -441,14 +441,14 @@
       "id": "Q2",
       "name": "Parents-wedge post",
       "loop": "A",
-      "status": "scheduled",
+      "status": "live",
       "slot": true,
       "hypothesis": "Parents/camps is the sharpest unmet need in the neighborhood (the Sawyer gap). A member-share in a parent group reaches them where they already ask 'what do we do this weekend'.",
-      "smallestTest": "Rana posts in her own words to the parents groups, every post carrying the same link: https://stoopwise.com/?src=parents&lens=family_kids. One source for all groups (Batu, 2026-09-08).",
+      "smallestTest": "Rana posts in her own words to the parents groups, every post carrying the same link. Link changed 2026-09-11 to https://stoopwise.com/kids?src=parents — a real prerendered page, so the post previews as \"Kids events in Greenpoint, Brooklyn this week\" rather than the generic site headline. One source for all groups (Batu, 2026-09-08).",
       "rule": "Pooled parents sessions + week-2 return vs the other srcs. Double down only if it beats them. PRE-REGISTERED 2026-08-25 and unaffected by the 2026-09-08 one-source ruling: the decision always read the pooled parents family, and a single src is that family. What is given up is the per-group diagnostic, which could never fire the rule on its own at n≈3.",
       "target": "Week-2 return beats other srcs",
-      "actual": "Not yet posted as of 2026-09-08 morning. Every precondition cycle 8 listed is now met: Sep 7–13 carries 8 dated family/kids items across 6 venues (3 library days, the McCarren pool s last free week, Music with Shana at Giggles & Wiggles, SPARSA prenatal yoga, Birthsmarter, the St. Stans parish picnic) plus 22 undated, against 3 at one venue a week ago; the one-source link was ruled this morning; the Follow link now carries its arrival channel and the Tally form has a matching src field; verify:fb-webview drives the built site in both engines Facebook embeds. The src has 0 events all-time, so this is a clean first read.",
-      "readAt": "2026-09-08",
+      "actual": "POSTED 2026-09-11 around noon. Seven hours later: 203 distinct people on the day against a previous best of 27, with 181 of them on the parents tag, 156 card opens, 28 action taps and 10 signup-ask taps. Nine signups, all tagged parents, eight following the family_kids lens — the list goes 5 -> 13. Most-opened cards are the Calyer Street block party (24), the Goddard day of fun (22) and the McCarren pool last week (20); fall registration, which the post led with, comes fourth. NO VERDICT YET: the rule is pooled parents sessions plus WEEK-2 RETURN against the other srcs, and week 2 has not happened. 18 people arrived on backtick-suffixed tags and are not counted above.",
+      "readAt": null,
       "verdict": "not yet read",
       "scheduledFor": "Tue Sep 8 (ratified 2026-08-15; scope widened 2026-08-25 — Sep 7-8 is now the start of ALL parents-facing awareness, not just this post. Sep 7 is Labor Day and school opens Thu Sep 10, so the usable days are Tue 9/8 and Wed 9/9.)",
       "implication": "Supply is no longer a reason to hold. ONE precondition remains open: the Facebook app itself on a real handset — the engines are checked, the app around them is not, and nearly every arrival from this post lands there. If it is broken it presents as a low session count, indistinguishable from a post nobody clicked. Window is Tue 9/8 and Wed 9/9; Monday was Labor Day and school opens Thursday. First read Sep 15, week-2 return ~Sep 22.",
@@ -1323,8 +1323,8 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-09-11",
-    "dayName": "Friday, September 11",
+    "ranAt": "2026-09-12",
+    "dayName": "Saturday, September 12",
     "dueToday": [],
     "overdue": [
       {
@@ -1352,14 +1352,23 @@
         "since": "2026-09-08"
       }
     ],
-    "waiting": [],
+    "waiting": [
+      {
+        "what": "PR #93 — growth: Rana's post, day one — 203 people and nine signups",
+        "age": 0
+      },
+      {
+        "what": "1 commit on main not pushed",
+        "age": 0
+      }
+    ],
     "overnight": [
-      "Merge pull request #85 from batusayici/fix/source-reads-empty",
-      "Merge pull request #84 from batusayici/fix/fetch-health",
-      "feat(ingest): the coverage report now asks whether a source can be read at all",
-      "fix(ingest): read lower-case months too — two sources write dates that way",
-      "fix(ingest): the ISO date pattern has never matched a calendar feed",
-      "fix(ingest): a source that returns navigation is no longer read as healthy"
+      "Merge branch 'claude/dashboard-business-interest-log-ce8v4x'",
+      "growth: Perri meeting confirmed for Thu Sep 17, and two corrections",
+      "growth: second inbound ask (TALEA), Perri follow-up, and FB comment emails",
+      "content(track-v): daily refresh 2026-09-12 — four cards on, thirteen off",
+      "growth: log ABC Cirque's inbound ask, surface business interest on the cockpit",
+      "Merge pull request #92 from batusayici/fix/selected-card-always-pinned"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1368,12 +1377,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 98,
-      "reservoir": 43,
+      "dated": 102,
+      "reservoir": 41,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 245
+      "cards": 252
     }
   }
 }
