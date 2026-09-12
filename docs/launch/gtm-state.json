@@ -1054,7 +1054,7 @@
       "who": "Ali Goldberg — ABC Cirque (Williamsburg; Family Adventure Play for 0–5s, kids & adult cirque classes, 5th Wall Studio)",
       "ask": "Add ABC Cirque to the map",
       "channel": "Facebook Messenger DM to Rana, following her 2026-09-11 parents-group post (PR #93)",
-      "gate": "Based in Williamsburg, not Greenpoint — doesn't clear the roster's geography gate regardless of interest",
+      "gate": "UNDER ROSTER REVIEW (Batu, 2026-09-12: slightly outside the geography gate is acceptable when the ask itself proves demand). Says it operates from 5th Wall Studio, Williamsburg; the street address has not been read, so whether it is even outside the bbox is unmeasured. Blocked on a fetch — this sandbox's egress proxy 403s abcirque.com, and the roster's seventh test requires a same-session fetch. Battery to run: docs/review/2026-09-12-inbound-ask-roster-candidates.md",
       "countsTowardSupplyGate": true,
       "source": "Facebook Messenger screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     },
@@ -1064,7 +1064,7 @@
       "who": "Kathleen Kyllo — hosting \"Clixo x TALEA BYO Baby!\", a family event at the TALEA taproom",
       "ask": "Asked, in a comment on Rana's post, to add her event to the map (\"Can I add something to it?\")",
       "channel": "Facebook comment on Rana's 2026-09-11 parents-group post",
-      "gate": "The comment names \"the @taleabeer Taproom in Williamsburg\" — Williamsburg, not Greenpoint, already flagged as out-of-bbox for this exact venue in docs/review/held-cards-2026-08-12-greenpointers.md. Doesn't clear the roster's geography gate regardless of interest.",
+      "gate": "NOT A ROSTER CANDIDATE AS ASKED — this is a card submission for one event (Clixo x TALEA, Sep 13), evidenced only by an Instagram post this project's fetcher cannot read, and it expires before it could be verified. Separable from it: TALEA's own taproom events calendar may be a fair venue source on its own merits, evaluated like any other venue rather than because a customer asked. See docs/review/2026-09-12-inbound-ask-roster-candidates.md",
       "countsTowardSupplyGate": true,
       "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     }
