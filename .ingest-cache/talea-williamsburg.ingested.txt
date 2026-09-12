@@ -1,0 +1,228 @@
+data-event-title: Mosaic Coasters Workshop with On the Easel
+data-atc-event-start: 2026-10-25 13:30
+data-atc-event-end: 2026-10-25 15:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: https://www.eventbrite.com/e/mosaic-workshop-coasters-talea-bk-tickets-1999408479585?aff=oddtdtcreator
+data-event-description: <div> <div> <p> Create your own mosaic drink coaster using colorful glass tiles. No experience needed—just come, relax, and make something beautiful!</p> </div> </div> <div> <div> <p>Join us for a creative evening at Talea Williamsburg from 1:30–3:30pm! In this hands-on mosaic workshop, you’ll design and create <span>TWO</span><span> custom drink coasters</span> using colorful glass tiles—no experience needed.</p> <p>All materials are provided, and you’ll be guided step-by-step as you bring your design to life. Enjoy a relaxed, social atmosphere while sipping and snacking—guests will have full access to the Greats of Craft menu throughout the event.</p> <p>Come solo or with friends, unwind, and leave with something beautiful (and functional) you made yourself! 🎨🍻</p> <p>Cancellations and Return policy: Although we DO NOT issue refunds you may transfer your ticket to someone who can participate.</p> </div> </div>
+
+data-event-title: · BYO Baby! Family Time at Williamsburg
+data-atc-event-start: 2026-09-05 10:00
+data-atc-event-end: 2026-09-05 13:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/19/2026
+data-external-url: #
+data-event-description: <p>Join us for PLAY! Bring your own baby, toddler, or young child and enjoy our toys, blocks, coloring books in our taproom our outdoor courtyard (weather permitting). We'll have chalk and a water table if the weather is nice. All ages welcome and a special menu for kids and parents :) Free! Every Saturday, 10A-1P</p>
+
+data-event-title: · BYO Baby! Family Time at Williamsburg
+data-atc-event-start: 2026-09-19 10:00
+data-atc-event-end: 2026-09-19 13:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/19/2026
+data-external-url: #
+data-event-description: <p>Join us for PLAY! Bring your own baby, toddler, or young child and enjoy our toys, blocks, coloring books in our taproom our outdoor courtyard (weather permitting). We'll have chalk and a water table if the weather is nice. All ages welcome and a special menu for kids and parents :) Free! Every Saturday, 10A-1P</p>
+
+data-event-title: · Beers & Braids, by Freestyle - Williamsburg - SOLD OUT
+data-atc-event-start: 2026-09-16 18:30
+data-atc-event-end: 2026-09-16 20:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: https://www.taleabeer.com/products/beer-braids-by-freestyle-x-talea
+data-event-description: <p>You asked, we listened. We had so much fun braiding hair and beer'ing with dads this summer that we decided to do it again! </p> <p>This time, TALEA and Freestyle are hosting an evening just for dads. (Yep—leave the kids at home.) Everyone should have the skills to jump in and help get your kids ready for the day. </p> <p>Here's what we have lined up:</p> <p>🍺 Food & Open Beer Bar</p> <p>Cold TALEA brews, hot pizza, and good company.</p> <p>🎀 Braids & Ponytails 101</p> <p>Get coached by a real professional. (Your kid's next picture day will thank you.) </p> <p>💧 The Freestyle Absorbency Test</p> <p>Put diapers to the test and settle the debate once and for all, trust us, you have to see it to believe it.</p> <p>Every dad will head home with a gift bag, a few new tricks, and a few new friends who get it.</p> <p>Spots are limited, grab yours!</p> <p>September 16, TALEA Williamsburg </p> <p>September 23, TALEA Upper West Side - SOLD OUT</p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-09-06 11:30
+data-atc-event-end: 2027-06-08 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-09-13 11:30
+data-atc-event-end: 2027-06-15 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-09-20 11:30
+data-atc-event-end: 2027-06-22 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-09-27 11:30
+data-atc-event-end: 2027-06-29 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-10-04 11:30
+data-atc-event-end: 2027-07-06 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-10-11 11:30
+data-atc-event-end: 2027-07-13 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-10-18 11:30
+data-atc-event-end: 2027-07-20 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-10-25 11:30
+data-atc-event-end: 2027-07-27 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Family Music Class with Jazz Baby
+data-atc-event-start: 2026-11-01 11:30
+data-atc-event-end: 2027-08-03 12:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
+data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
+
+data-event-title: · Kiwi Bird Creamery Pop-Up
+data-atc-event-start: 2026-09-20 15:00
+data-atc-event-end: 2026-09-20 18:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: #
+data-event-description: <p>Kiwi Bird Creamery is a Brooklyn small-batch pop-up making New Zealand–style real fruit ice cream: whole frozen fruit blended into hard-packed ice cream on a machine imported from NZ, so it’s fruit-forward and not too sweet. Founded by two friends who fell for it on a trip and couldn’t find it anywhere in NYC.</p>
+
+data-event-title: · Linus & Friends Adoption & Fundraising Event: Williamsburg
+data-atc-event-start: 2026-09-13 15:00
+data-atc-event-end: 2026-09-13 18:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: #
+data-event-description: <p>Our Williamsburg location is collaborating with local non-profit animal rescue, Linus & Friends, to host an adoption and fundraising event! There will be themed cocktails, a raffle, and a bunch of furry friends looking for a new home. Come by TALEA Williamsburg at 87 Richardson St. on September 13th from 3-6pm and show your support, and maybe even take home your new best friend!</p> <p>YAPPY HOUR MENU</p> <p>The Good Boy ~ Mezcal, Bitters, Pineapple & Lime </p> <p>The Whiskey Sour ~ Whiskey, Pomegranate & Lemon</p> <p>20% of all proceeds go back to Linus & Friends </p>
+
+data-event-title: · Lust, Love & Lit: SheKnows Book Reading - Williamsburg
+data-atc-event-start: 2026-09-09 18:00
+data-atc-event-end: 2026-09-09 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: https://events.shemedia.com/sklovelustlit/begin?ref=talea
+
+data-event-title: · Pilates & Pints with Greenpoint Pilates Studio
+data-atc-event-start: 2026-09-21 18:00
+data-atc-event-end: 2026-09-21 19:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: https://www.taleabeer.com/products/pilates-pints-with-greenpoint-pilates-studio?utm_source=copyToPasteBoard&utm_medium=product-links&utm_content=web
+data-event-description: <p>Join Allyn Wong, owner of Greenpoint Pilates Studio, Greenpoint’s premier Classical Pilates studio, at Talea Brewery for their signature fun and athletic full-body mat class - followed by a fun hang out with drinks by Talea! This session will follow classical Pilates principles while blending contemporary movement concepts in a way that empowers all practitioners to feel strong, knowledgeable, and joyful in their bodies and movement. You can expect full-body mobility, controlled abdominal strengthening, and feel-good stretch and lengthening work! Please note that this class will be suitable for all levels, with variations and challenges offered along the way - but it will not be suitable for those who are pre/postnatal or dealing with an injury and haven’t been cleared by their doctor.</p>
+
+data-event-title: · Prospect Park Knitting Club - WillIamsburg
+data-atc-event-start: 2026-09-14 18:30
+data-atc-event-end: 2026-09-14 20:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: https://getpie.app/plans/7a5b5bd0-2033-4740-9ee9-f46556ad1282?utm_campaign=event&utm_link_source=pie&utm_platform=ios
+data-event-description: <p>Let’s gather for an end of summer soirée at the TALEA Beer Co. taproom in Williamsburg! Grab your current WIP and join for a meetup of other fiber artists at NYC’s first and only women-owned brewery on September 14 at 6:30pm. All fiber artists are welcome, whether you crochet, knit, embroider, etc.</p> <p>What to expect: </p> <p>Lots of knitting, delicious drinks, and new fiber friends! There will be a raffle with prizes from Yarnalia and Lykke Crafts, and everyone gets to take home a gift bag with goodies from AllStitch Studio and Soak Wash.</p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-09-01 19:00
+data-atc-event-end: 2026-09-01 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-09-08 19:00
+data-atc-event-end: 2026-09-08 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-09-15 19:00
+data-atc-event-end: 2026-09-15 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-09-22 19:00
+data-atc-event-end: 2026-09-22 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-09-29 19:00
+data-atc-event-end: 2026-09-29 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-10-06 19:00
+data-atc-event-end: 2026-10-06 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-10-13 19:00
+data-atc-event-end: 2026-10-13 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-10-20 19:00
+data-atc-event-end: 2026-10-20 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Trivia in Williamsburg
+data-atc-event-start: 2026-10-27 19:00
+data-atc-event-end: 2026-10-27 20:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/15/2026,09/22/2026,09/29/2026,10/06/2026,10/13/2026,10/20/2026,10/27/2026,11/03/2026,11/10/2026,11/17/2026,11/24/2026,12/01/2026,12/08/2026,12/15/2026,12/22/2026,12/29/2026
+data-external-url: https://www.taleabeer.com/pages/visit-us#williamsburg-taproom
+data-event-description: <p><span>Grab your crew and put your knowledge to the test with <a href="https://nyctrivialeague.com/?_kx" target="_blank" rel="noopener">NYC Trivia League</a>! </span><span>Join us at 7pm every Tuesday at TALEA Williamsburg. </span><span>Walk-ins and teams of up to 6 people are welcome to play. </span><span>Make sure to bring a charged smartphone (one per team) as trivia is 100% digital. </span><span>Your trivia host, Mary, will give you instructions on how to sign up when you arrive. See you there!</span></p>
+
+data-event-title: · Williamsburg - Bonsai Bar
+data-atc-event-start: 2026-09-17 18:30
+data-atc-event-end: 2026-09-17 20:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-event-recurring-event-dates: 09/17/2026
+data-external-url: https://bonsaibar.com/?gad_source=1&gad_campaignid=22987373003&gbraid=0AAAAA-Wah43a2O0MKxLdSBmEZCouVqqUs&gclid=Cj0KCQjw9-PNBhDfARIsABHN6-05WnquLWtD8kigB55m44vQMOS55t_1_S-Lnj_Xhc2kXp3-Dx9fIccaAliDEALw_wcB
+data-event-description: About the Event <p>Bonsai Bar is a night of fun at a local venue near you that you don’t want to miss! Beginner workshops are perfect for you to learn everything you need to know to walk away with your very own tiny tree. So grab a friend, your beverage of choice, and get ready for a great 2 hours of everything bonsai.</p>
+
+data-event-title: · Williamsburg - Closed for a Private Event at 7PM
+data-atc-event-start: 2026-09-25 19:00
+data-atc-event-end: 2026-09-25 22:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: #
+
+data-event-title: • BYO Baby with CLIXO! WIlliamsburg
+data-atc-event-start: 2026-09-12 10:00
+data-atc-event-end: 2026-09-12 13:00
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: #
+data-event-description: <p>Clixo is coming to the TALEA taproom in Williamsburg! Join us on 9/12 at TALEA's BYO- Baby event for some builds and brews! Families can discover the magnetic magic of hands-on building with Clixo while enjoying a nice cold beer on a Saturday afternoon.</p>

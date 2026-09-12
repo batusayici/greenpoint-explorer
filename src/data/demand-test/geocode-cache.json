@@ -4653,5 +4653,30 @@
         "-73.9471492"
       ]
     }
+  },
+  "Richardson Street, Brooklyn, NY": {
+    "query": "Richardson Street, Brooklyn, NY",
+    "fetchedAt": "2026-09-12T15:37:34.458Z",
+    "hit": {
+      "place_id": 359459490,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 419363225,
+      "lat": "40.7185759",
+      "lon": "-73.9451412",
+      "category": "highway",
+      "type": "bus_stop",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "highway",
+      "name": "Graham Avenue & Richardson Street",
+      "display_name": "Graham Avenue & Richardson Street, Graham Avenue, Williamsburg, New York, 11211, United States",
+      "boundingbox": [
+        "40.7185259",
+        "40.7186259",
+        "-73.9451912",
+        "-73.9450912"
+      ]
+    }
   }
 }

@@ -113,3 +113,28 @@ test("markupFrom is loud when the shape moves", () => {
   assert.throws(() => markupFrom(JSON.stringify({}), "html"), /missing/);
   assert.throws(() => markupFrom("<html>not json</html>", "html"), /was not JSON/);
 });
+
+// A record that simply lacks an attribute must NOT inherit the next record's
+// value. This is how TALEA's Sep 12 CLIXO session came back carrying the
+// Sunday music class's recurrence list — a wrong recurring date on a card,
+// sourced from a neighbouring event.
+test("a record does not inherit a following record's attributes", () => {
+  const withoutRecurrence = trigger({
+    "data-event-title": "BYO Baby with CLIXO!",
+    "data-atc-event-start": "2026-09-12 10:00",
+    "data-atc-event-end": "2026-09-12 13:00",
+    "data-event-address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA",
+  });
+  const withRecurrence = trigger({
+    "data-event-title": "Family Music Class with Jazz Baby",
+    "data-atc-event-start": "2026-09-13 11:30",
+    "data-atc-event-end": "2026-09-13 12:30",
+    "data-event-address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA",
+    "data-event-recurring-event-dates": "09/13/2026,09/20/2026,09/27/2026",
+  });
+  const keys = [...KEYS, "data-event-recurring-event-dates"];
+  const blocks = attrRecordsToText(withoutRecurrence + withRecurrence, { ...opts, keys }).split("\n\n");
+  const clixo = blocks.find((b) => b.includes("CLIXO"));
+  assert.doesNotMatch(clixo, /recurring-event-dates/);
+  assert.match(blocks.find((b) => b.includes("Jazz Baby")), /09\/13\/2026,09\/20\/2026,09\/27\/2026/);
+});

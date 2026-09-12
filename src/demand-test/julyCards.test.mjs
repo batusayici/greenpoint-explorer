@@ -970,11 +970,14 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // same ruling, as birthsmarter-weekend-childbirth-0912 on 2026-09-11 — the
   // post-promotion quote check is what surfaced it.
   // Deck 261 -> 252, event 157 -> 148, live_music 42 -> 38.
-  assert.equal(seed.cards.length, 252);
+  // 2026-09-12, TALEA Williamsburg onboarded (Batu's ruling): +7 events off the
+  // taproom's theshopcalendar widget, read through the new `attrs` strategy.
+  // Deck 252 -> 259, event 148 -> 155.
+  assert.equal(seed.cards.length, 259);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 36, "35 + the Limousine opening (2026-09-11)");
-  assert.equal(count((c) => c.category === "event"), 148, "157, less eleven that ran on 11 September and two BirthSmarter classes that moved to Manhattan, plus the Greencycle swap, two Brooklyn Craft Company workshops and the McGolrick Harvest Moon walk (2026-09-12)");
+  assert.equal(count((c) => c.category === "event"), 155, "148 + seven TALEA Williamsburg events (2026-09-12); before that 157, less eleven that ran on 11 September and two BirthSmarter classes that moved to Manhattan, plus the Greencycle swap, two Brooklyn Craft Company workshops and the McGolrick Harvest Moon walk (2026-09-12)");
   assert.equal(count((c) => c.category === "discount"), 6, "7 − Bellocq's end-of-summer code, deleted when the shop pulled it (2026-09-09)");
   assert.equal(count((c) => c.category === "news"), 24, "23 + the Limousine opening (2026-09-11)");
   assert.equal(count((c) => c.filters.includes("live_music")), 38, "42, less the Troost, Good Room, Eavesdrop and Polish & Slavic Center nights that ran on 11 September (2026-09-12)");
@@ -1301,6 +1304,10 @@ test("free-ness is designated only where the source states it (tester feedback #
     "nbk-plant-giveaway-weekends",
     "newtown-creek-planting-day-0915",
     "peek-inn-book-swap-0913",
+    // 2026-09-12: BYO Baby! Family Time — TALEA's own listing ends "All ages
+    // welcome and a special menu for kids and parents :) Free!", so free-ness
+    // is stated by the source, not inferred from a taproom being free to enter.
+    "talea-byo-baby-family-time-0919",
     // NOT here, deliberately: the two Bushwick Inlet events added in the sixth
     // pass. Both are volunteer sessions and both are almost certainly free, but
     // the North Brooklyn Parks Alliance page says so for the Zumba and the
@@ -1478,6 +1485,9 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // Baby & Me card the run before it. (The same class runs Thursday evening
     // and Saturday morning at SPARŚA Williamsburg, which is out of area.)
     "sparsa-prenatal-gentle-yoga-0913",
+    // 2026-09-12: Pilates & Pints, taught by the owner of Greenpoint Pilates
+    // Studio at the TALEA taproom — the movement cluster this lens names.
+    "talea-pilates-pints-0921",
     // 2026-09-07, fourth pass: the park's Longevity Stick classes are "a mix
     // of Tai Chi and yoga", so they are movement, not the civic stewardship
     // their organiser's other programming files under.
@@ -1553,6 +1563,9 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // 2026-09-11: Quirk Events' board-game speed dating at Threes Brewing
     // Greenpoint. A speed-dating night played across board games is play, and
     // the games rule names board/tabletop events outright.
+    // 2026-09-12: TALEA's Tuesday trivia, run by NYC Trivia League. Trivia is
+    // play, so it files games and NOT arts_culture (2026-08-02 split).
+    "talea-trivia-williamsburg",
     "threes-board-game-speed-dating-0914",
   ]);
   // The whole point of the cut: play and culture no longer share a shelf.

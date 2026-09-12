@@ -11601,6 +11601,321 @@
         }
       ],
       "sourceQuote": "Park to Park Series: Harvest Moon Walk\nSaturday, September 26, 2026\n6:00 PM\n8:00 PM\nWe’ll gather at 6 PM to kick off the evening with a community cleanup alongside our friends at Greenpoint Trash Club, helping care for the park we all share.\nOur event is free, though we encourage you to RSVP here!"
+    },
+    {
+      "id": "talea-trivia-williamsburg",
+      "category": "event",
+      "title": "Trivia at TALEA Williamsburg",
+      "kicker": "Run by NYC Trivia League",
+      "startsAt": "2026-09-15T19:00:00-04:00",
+      "endsAt": "2026-09-29T20:00:00-04:00",
+      "locationName": "TALEA Beer Co — Williamsburg",
+      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
+      "geocodeQuery": "Richardson Street, Brooklyn, NY",
+      "filters": [
+        "games"
+      ],
+      "summary": "Walk-ins welcome and teams go up to six; the whole thing runs on a phone app, so bring one charged.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.taleabeer.com/pages/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
+          "url": "https://www.taleabeer.com/pages/calendar",
+          "publisher": "TALEA Beer Co",
+          "date": "2026-09-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "sourceQuote": "data-atc-event-start: 2026-09-15 19:00\ndata-atc-event-end: 2026-09-15 20:00\nJoin us at 7pm every Tuesday at TALEA Williamsburg.",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "tue"
+        ]
+      },
+      "lat": 40.718576,
+      "lng": -73.945141
+    },
+    {
+      "id": "talea-family-music-jazz-baby",
+      "category": "event",
+      "title": "Family Music Class with Jazz Baby",
+      "kicker": "Coffee for you, music for them",
+      "startsAt": "2026-09-13T11:30:00-04:00",
+      "endsAt": "2026-09-27T12:30:00-04:00",
+      "locationName": "TALEA Beer Co — Williamsburg",
+      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
+      "geocodeQuery": "Richardson Street, Brooklyn, NY",
+      "filters": [
+        "family_kids"
+      ],
+      "summary": "Jazz Baby's Mariella leads the little ones while the grown-ups sit with a coffee, beer or a snack.",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.taleabeer.com/pages/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
+          "url": "https://www.taleabeer.com/pages/calendar",
+          "publisher": "TALEA Beer Co",
+          "date": "2026-09-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "sourceQuote": "data-atc-event-start: 2026-09-13 11:30\nSunday mornings 11:30am - 12:30pm",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sun"
+        ]
+      },
+      "lat": 40.718576,
+      "lng": -73.945141
+    },
+    {
+      "id": "talea-byo-baby-family-time-0919",
+      "category": "event",
+      "title": "BYO Baby! Family Time",
+      "kicker": "Toys, blocks and a water table",
+      "startsAt": "2026-09-19T10:00:00-04:00",
+      "endsAt": "2026-09-19T13:00:00-04:00",
+      "locationName": "TALEA Beer Co — Williamsburg",
+      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
+      "geocodeQuery": "Richardson Street, Brooklyn, NY",
+      "filters": [
+        "family_kids"
+      ],
+      "summary": "Taproom and outdoor courtyard given over to under-fives, with a menu for kids and parents.",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "free": true,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.taleabeer.com/pages/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
+          "url": "https://www.taleabeer.com/pages/calendar",
+          "publisher": "TALEA Beer Co",
+          "date": "2026-09-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "sourceQuote": "data-atc-event-start: 2026-09-19 10:00\ndata-atc-event-end: 2026-09-19 13:00\nAll ages welcome and a special menu for kids and parents :) Free!",
+      "lat": 40.718576,
+      "lng": -73.945141
+    },
+    {
+      "id": "talea-knitting-club-0914",
+      "category": "event",
+      "title": "Prospect Park Knitting Club meetup",
+      "kicker": "Bring your work in progress",
+      "startsAt": "2026-09-14T18:30:00-04:00",
+      "endsAt": "2026-09-14T20:30:00-04:00",
+      "locationName": "TALEA Beer Co — Williamsburg",
+      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
+      "geocodeQuery": "Richardson Street, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
+      "summary": "Open to anyone who crochets, knits or embroiders — an end-of-summer gathering of fiber artists.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.taleabeer.com/pages/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
+          "url": "https://www.taleabeer.com/pages/calendar",
+          "publisher": "TALEA Beer Co",
+          "date": "2026-09-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "sourceQuote": "data-atc-event-start: 2026-09-14 18:30\ndata-atc-event-end: 2026-09-14 20:30\nAll fiber artists are welcome, whether you crochet, knit, embroider",
+      "lat": 40.718576,
+      "lng": -73.945141
+    },
+    {
+      "id": "talea-bonsai-bar-0917",
+      "category": "event",
+      "title": "Bonsai Bar workshop",
+      "kicker": "Leave with your own tiny tree",
+      "startsAt": "2026-09-17T18:30:00-04:00",
+      "endsAt": "2026-09-17T20:30:00-04:00",
+      "locationName": "TALEA Beer Co — Williamsburg",
+      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
+      "geocodeQuery": "Richardson Street, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
+      "summary": "A beginner workshop — no experience needed, and everything you need is provided.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.taleabeer.com/pages/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
+          "url": "https://www.taleabeer.com/pages/calendar",
+          "publisher": "TALEA Beer Co",
+          "date": "2026-09-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "sourceQuote": "data-atc-event-start: 2026-09-17 18:30\ndata-atc-event-end: 2026-09-17 20:30\nBeginner workshops are perfect for you to learn everything you need to know to walk away with your very own tiny tree.",
+      "lat": 40.718576,
+      "lng": -73.945141
+    },
+    {
+      "id": "talea-kiwi-bird-creamery-0920",
+      "category": "event",
+      "title": "Kiwi Bird Creamery pop-up",
+      "kicker": "New Zealand-style real fruit ice cream",
+      "startsAt": "2026-09-20T15:00:00-04:00",
+      "endsAt": "2026-09-20T18:00:00-04:00",
+      "locationName": "TALEA Beer Co — Williamsburg",
+      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
+      "geocodeQuery": "Richardson Street, Brooklyn, NY",
+      "filters": [
+        "food_drink"
+      ],
+      "summary": "Whole frozen fruit blended into hard-packed ice cream on a machine brought over from New Zealand.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.taleabeer.com/pages/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
+          "url": "https://www.taleabeer.com/pages/calendar",
+          "publisher": "TALEA Beer Co",
+          "date": "2026-09-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "sourceQuote": "data-atc-event-start: 2026-09-20 15:00\ndata-atc-event-end: 2026-09-20 18:00\nKiwi Bird Creamery is a Brooklyn small-batch pop-up making New Zealand–style real fruit ice cream",
+      "lat": 40.718576,
+      "lng": -73.945141
+    },
+    {
+      "id": "talea-pilates-pints-0921",
+      "category": "event",
+      "title": "Pilates & Pints with Greenpoint Pilates Studio",
+      "kicker": "Mat class, then drinks",
+      "startsAt": "2026-09-21T18:00:00-04:00",
+      "endsAt": "2026-09-21T19:00:00-04:00",
+      "locationName": "TALEA Beer Co — Williamsburg",
+      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
+      "geocodeQuery": "Richardson Street, Brooklyn, NY",
+      "filters": [
+        "wellness"
+      ],
+      "summary": "Allyn Wong, who owns the Greenpoint studio, teaches a classical full-body mat class before the hang.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.taleabeer.com/pages/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
+          "url": "https://www.taleabeer.com/pages/calendar",
+          "publisher": "TALEA Beer Co",
+          "date": "2026-09-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-09-12",
+      "updatedAt": "2026-09-12",
+      "sourceQuote": "data-atc-event-start: 2026-09-21 18:00\ndata-atc-event-end: 2026-09-21 19:00\nJoin Allyn Wong, owner of Greenpoint Pilates Studio",
+      "lat": 40.718576,
+      "lng": -73.945141
     }
   ]
 }

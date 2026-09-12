@@ -629,13 +629,18 @@ async function jsonText(src) {
 // calendar can ask for {{month:+0}} and {{month:+1}} in the same source.
 async function attrsText(src) {
   const opts = src.attrs ?? {};
-  const blocks = [];
+  const markups = [];
   for (const url of sourceUrls(src)) {
     const body = await rawGet(url, "application/json,text/html,*/*");
-    const text = attrRecordsToText(markupFrom(body, opts.field ?? ""), opts);
-    if (text) blocks.push(text);
+    markups.push(markupFrom(body, opts.field ?? ""));
   }
-  return blocks.join("\n\n");
+  // ONE extraction over all the markup, not one per URL. A month grid prints
+  // the adjacent months' boundary days too, so {{monthnum:+0}} and +1 both
+  // carry those events — extracting per URL and concatenating let the
+  // duplicates through, which is the exact churn the dedupe exists to stop
+  // (seen on TALEA: Sep 12 and Sep 20 arrived twice). Joining first means the
+  // dedupe and sort in attrRecordsToText apply across every URL.
+  return attrRecordsToText(markups.join("\n"), opts);
 }
 
 const embeddedText = async (src) =>

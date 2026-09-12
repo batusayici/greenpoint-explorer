@@ -63,7 +63,15 @@ export function attrRecordsToText(html, { marker = "", keys = [], include = null
   const records = [];
   let at = source.indexOf(marker);
   while (at !== -1) {
-    const window = source.slice(at, at + WINDOW);
+    // Bound each record at the NEXT marker, not at a fixed offset. A fixed
+    // window reaches into the following event, so a record that simply lacks
+    // an attribute inherits its neighbour's value — TALEA's Sep 12 CLIXO
+    // session came back carrying the Sunday music class's whole recurrence
+    // list, which would have put a wrong recurring date on a card. WINDOW
+    // stays as a safety cap for a page with one marker and megabytes after it.
+    const next = source.indexOf(marker, at + marker.length);
+    const end = Math.min(next === -1 ? source.length : next, at + WINDOW);
+    const window = source.slice(at, end);
     const lines = [];
     for (const key of keys) {
       const hit = new RegExp(`${key}="(.*?)"`, "s").exec(window);
@@ -71,7 +79,7 @@ export function attrRecordsToText(html, { marker = "", keys = [], include = null
       if (value) lines.push(`${key}: ${value}`);
     }
     if (lines.length) records.push(lines.join("\n"));
-    at = source.indexOf(marker, at + marker.length);
+    at = next;
   }
 
   let blocks = [...new Set(records)];
