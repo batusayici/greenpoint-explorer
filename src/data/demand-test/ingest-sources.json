@@ -1506,12 +1506,14 @@
       "cadence": "monthly",
       "fetch": "browser",
       "detail": {
-        "match": "tsc_event",
-        "limit": 6,
+        "urls": [
+          "https://www.taleabeer.com/pages/calendar#tsc_event=1fcbeb38-39c4-4440-99c1-41d5d85d51e9&date=2026-09-01"
+        ],
+        "limit": 1,
         "fetch": "browser",
         "delayMs": 600
       },
-      "notes": "PROBE, added 2026-09-12 — Batu supplied a real detail URL: https://www.taleabeer.com/pages/calendar#tsc_event=<uuid>&date=<YYYY-MM-DD>. It is a FRAGMENT, so the server never sees it and a plain fetch of it returns the bare grid; only a browser renders the panel. This tests whether the grid's entries are anchors carrying #tsc_event in their href, which is the only way detail.match can harvest them.",
+      "notes": "PROBE round 2, 2026-09-12 — harvesting failed (detail: 0 pages persisted, snapshot unchanged at 2,557 bytes), so the grid's entries are not anchors the fetcher can see. This test skips harvesting and points detail.urls straight at the exact fragment URL Batu supplied for TRIVIA IN WILLIAMSBURG. It answers the remaining question: does a BROWSER fetch of a hash URL render the panel and persist its text, or does the fetcher land on the bare grid because a fragment never reaches the server?",
       "datedListing": true
     }
   ],
