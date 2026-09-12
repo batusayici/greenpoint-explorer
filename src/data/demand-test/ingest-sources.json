@@ -1466,17 +1466,6 @@
       "datedListing": true
     },
     {
-      "id": "talea-calendar",
-      "name": "TALEA Beer Co — taproom events calendar",
-      "url": "https://www.taleabeer.com/pages/calendar",
-      "group": "venue",
-      "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "HELD, NOT ADDED — awaiting Batu's ruling on the chain test (2026-09-12). MEASURED on a GitHub Actions probe run (run 34699029209). The real path is /pages/calendar; the /events URL guessed first returned a 725-byte Shopify 404. BROWSER required — the plain fetch is thin and the site puts an \"ARE YOU OVER 21\" age gate in front of the page. 2,557 bytes / 101 lines, a month grid. BATU'S CONDITION IS MET: the event a commenter asked us to carry is in it — September 12 reads \"BYO Baby with CLIXO! WIlliamsburg\" (their spelling), with a second on September 26 at Cobble Hill. THREE FACTS THAT WERE NOT IN HAND WHEN THE CONDITION WAS SET. (1) NOT ONE BUSINESS: the footer lists six taprooms — Williamsburg, Upper West Side, Cobble Hill, West Village, Bryant Park, Penn District — and none in Greenpoint, so the roster's locally-owned-and-not-a-chain test is live, the same test that kept Warsaw off. (2) The grid carries event names and days but NO start times and NO prices, so a card off this source could not state when anything begins; cardable listings would need the detail pages behind each entry, which is another probe. (3) Every listing sits at a non-Greenpoint taproom, and a citywide calendar would need a feed include-filter to stay Williamsburg-only. Worth knowing: the Sep 21 entry is \"Pilates & Pints with Greenpoint Pilates Studio\", a Greenpoint business hosting there. Robots is clean — Shopify stock, User-agent: * / Allow: /, with an agents.md and a UCP/MCP endpoint; nothing refuses automated readers.",
-      "datedListing": true,
-      "citeHost": "taleabeer.com"
-    },
-    {
       "id": "abc-cirque",
       "name": "ABC Cirque (Family Adventure Play + kids/adult cirque classes)",
       "url": "https://www.abcirque.com/education-main",
@@ -1486,6 +1475,47 @@
       "citeHost": "abcirque.com",
       "notes": "156 North 4th St #7 (5th Wall Studio), Williamsburg. MEASURED 2026-09-12 on a GitHub Actions probe run (the cloud sandbox egress-denies this host; dispatched ingest-fetch with --only against a branch, run 34698842810). PLAIN fetch, no browser needed: 7,822 bytes / 148 lines carrying real listings, not navigation — \"Fall 2026 Trimester / Weekly September 13 through December 7, 2026\", a day-by-day schedule with times and sold-out flags (Sundays 2-3pm Kids Cirque Level 2 sold out, 3-4:30pm ABCirque Kids Club sold out; Mondays 4-5pm Kids Cirque Open Level almost sold out, 5-6:30pm Kids Club, 6:30-8pm Adult Partner Acro), and exact tuitions ($206/month or $618/semester for one Kids Cirque class a week; adults $630 or $65 drop-in). FAMILY ADVENTURE PLAY is the dated, cardable part: ages 5 and under with an adult, Sundays 11am-12:30pm on September 27, October 18 and November 15, $30 early bird for one adult/child combo ($10 per extra family member), $40 late. ROBOTS CHECKED, and the assumption going in was wrong: the file is Squarespace's stock robots.txt, and although it lists anthropic-ai, ClaudeBot, GPTBot and others as user-agents, those lines are grouped with `User-agent: *` and there is NO `Disallow: /` anywhere — only /config, /search, /account, /api/, /static/ and query-string patterns. This page is not disallowed for any agent, so Batu's 2026-09-12 consent ruling is not load-bearing here. DO NOT use `?format=ical` — that IS disallowed. Their /contact path 404s; the footer carries only \"Brooklyn, NY\" plus a business email and phone, and no street address appears anywhere on the site, so the address above comes from 5thwallstudio.com and Yelp. GEOGRAPHY: inside the bbox, not outside it — North 4th Street geocodes to 40.7152, -73.9585 against a box that reaches 40.712. Nominatim has no entry for \"156 North 4th Street\" itself (street-level match only), so a card may need its coords from a cross-street query or it will land pinless. ORIGIN: Ali Goldberg asked Rana to add the org, by Facebook DM, the day after Rana's 9/11 parents-group post; she described herself as helping the org rather than owning it (docs/review/2026-09-12-inbound-ask-roster-candidates.md).",
       "datedListing": true
+    },
+    {
+      "id": "talea-williamsburg",
+      "name": "TALEA Beer Co — Williamsburg taproom events",
+      "url": "https://www.taleabeer.com/pages/calendar",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "citeHost": "taleabeer.com",
+      "notes": "WILLIAMSBURG ITEMS ONLY — this is the whole point of the entry, and NOTHING ENFORCES IT AT FETCH TIME. The page is one citywide month grid covering six taprooms (Williamsburg, Upper West Side, Cobble Hill, West Village, Bryant Park, Penn District); `feed: {include: []}` is RSS/Atom-only (fetch-sources.mjs ~line 218) and this is a browser-fetched HTML page, so the snapshot carries all six and the scoping is a rule for whoever cards it: card an item only if its own text names Williamsburg. ADDED ON BATU'S RULING 2026-09-12, over a recommendation not to: he judged the Williamsburg taproom close enough to Greenpoint and wanted the event a reader asked for. That recommendation rested on the not-a-chain test — six locations — which he has now weighed; see docs/review/2026-09-12-inbound-ask-roster-candidates.md. MEASURED 2026-09-12 on a GitHub Actions probe run (run 34699029209): /pages/calendar, BROWSER REQUIRED (the plain fetch is thin and an \"ARE YOU OVER 21\" age gate sits in front), 2,557 bytes / 101 lines. The grid yields event name + day + which taproom, and confirmed the asked-for listing: September 12 \"BYO Baby with CLIXO! WIlliamsburg\", September 26 the same at Cobble Hill. KNOWN GAP, READ THIS BEFORE CARDING: the grid carries NO START TIMES and NO PRICES, so it cannot produce a complete card on its own — every card off this source needs the time from the event's own detail page, and a `detail` config has not been worked out yet (the first attempt at /events 404'd; the pages sitemap is the route to the detail paths). Until that exists, treat this source as a lead generator, not a card factory: an item with no sourced start time does not ship. Robots is clean — Shopify stock, User-agent: * / Allow: /, plus an agents.md and a UCP/MCP endpoint; their only prohibition is automated checkout, which we never do. Worth knowing the calendar also carries Greenpoint businesses hosting there, e.g. Sep 21 \"Pilates & Pints with Greenpoint Pilates Studio\".",
+      "datedListing": true
+    },
+    {
+      "id": "mccarren-park-house",
+      "name": "McCarren Park House — events",
+      "url": "https://mccarrenparkhouse.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 UNMEASURED — Batu asked for this source. Not verified until this note carries a fetch.",
+      "datedListing": true
+    },
+    {
+      "id": "mccarren-robots",
+      "name": "McCarren Park House robots.txt (policy probe, not a content source)",
+      "url": "https://mccarrenparkhouse.com/robots.txt",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 — crawler policy. Remove once read.",
+      "datedListing": false
+    },
+    {
+      "id": "talea-pages-sitemap",
+      "name": "TALEA pages sitemap (detail-URL discovery probe, not a content source)",
+      "url": "https://www.taleabeer.com/sitemap_pages_1.xml",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 — looks for the per-event detail pages that would carry the start times the month grid omits. Remove once read.",
+      "datedListing": false
     }
   ],
   "manualSources": [
