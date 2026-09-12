@@ -1490,11 +1490,11 @@
     {
       "id": "mccarren-park-house",
       "name": "McCarren Park House — events",
-      "url": "https://mccarrenparkhouse.com/parkbar",
+      "url": "https://mccarrenparkhouse.com/hello",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "PROBE, added 2026-09-12, STILL NOT READABLE AS AN EVENTS SOURCE. Batu asked for https://mccarrenparkhouse.com/events; THAT PAGE DOES NOT EXIST. It returned 146 characters in chromium (run 34699770437), and their own sitemap — named by their robots.txt and read in run 34700004686 — lists exactly four pages: /home, /parkbar, /hello and /private-events-form. No events page, and no Squarespace event-collection items, which would appear in the sitemap if they existed. This probe now points at /parkbar to find out whether dated events are published anywhere on the site at all. Robots is clean (Squarespace stock, AI agents listed but grouped with * and no `Disallow: /`; /*?format=ical disallowed).",
+      "notes": "PROBE, added 2026-09-12, url on Batu's instruction. He gave /hello after the /events path he first named turned out not to exist (146 chars, run 34699770437) and their sitemap showed only four pages — /home, /parkbar, /hello, /private-events-form. Not verified until this note carries a fetch of /hello. Robots is clean: Squarespace stock, AI agents listed but grouped with `User-agent: *` and no `Disallow: /`; /*?format=ical is disallowed.",
       "datedListing": true
     },
     {
