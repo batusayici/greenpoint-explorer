@@ -1499,14 +1499,34 @@
       "citeHost": "mccarrenparkhouse.com"
     },
     {
-      "id": "tsc-widget-js",
-      "name": "The Shop Calendar widget.js (mechanism probe, not a source)",
-      "url": "https://cdn.shopify.com/extensions/01a05df1-63d6-715c-9101-539b449ddaac/theshopcalendar-test-6/assets/widget.js",
+      "id": "tsc-shop-probe-0",
+      "name": "TSC endpoint probe — taleabeer.myshopify.com (not a source)",
+      "url": "https://www.theshopcalendar.com/theme-ext/embed/cal/js_widget?shop=taleabeer.myshopify.com",
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
       "datedListing": false,
-      "notes": "PROBE, added 2026-09-12 — Batu supplied this widget URL. The uuid in its path is the SHOPIFY APP EXTENSION id, identical for every shop using the app, so it is not TALEA's account. Reading the script should show how it resolves a shop's events: if it keys on the shop domain rather than an account uuid, no uuid is needed at all. Remove once read."
+      "notes": "PROBE, 2026-09-12 — widget.js resolves a shop's calendar by SHOP DOMAIN (Shopify.shop), not an account uuid: hostUrl + \"/theme-ext/embed/cal/js_widget?shop=\" + Shopify.shop. This guesses the myshopify domain as taleabeer.myshopify.com. A hit returns JSON with an `html` field whose markup carries data-event-start / data-event-end / data-event-address / data-event-description / data-event-recurring-event-dates — the times the month grid omits. Remove once the real shop domain is known."
+    },
+    {
+      "id": "tsc-shop-probe-1",
+      "name": "TSC endpoint probe — talea-beer.myshopify.com (not a source)",
+      "url": "https://www.theshopcalendar.com/theme-ext/embed/cal/js_widget?shop=talea-beer.myshopify.com",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "datedListing": false,
+      "notes": "PROBE, 2026-09-12 — widget.js resolves a shop's calendar by SHOP DOMAIN (Shopify.shop), not an account uuid: hostUrl + \"/theme-ext/embed/cal/js_widget?shop=\" + Shopify.shop. This guesses the myshopify domain as talea-beer.myshopify.com. A hit returns JSON with an `html` field whose markup carries data-event-start / data-event-end / data-event-address / data-event-description / data-event-recurring-event-dates — the times the month grid omits. Remove once the real shop domain is known."
+    },
+    {
+      "id": "tsc-shop-probe-2",
+      "name": "TSC endpoint probe — talea-beer-co.myshopify.com (not a source)",
+      "url": "https://www.theshopcalendar.com/theme-ext/embed/cal/js_widget?shop=talea-beer-co.myshopify.com",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "datedListing": false,
+      "notes": "PROBE, 2026-09-12 — widget.js resolves a shop's calendar by SHOP DOMAIN (Shopify.shop), not an account uuid: hostUrl + \"/theme-ext/embed/cal/js_widget?shop=\" + Shopify.shop. This guesses the myshopify domain as talea-beer-co.myshopify.com. A hit returns JSON with an `html` field whose markup carries data-event-start / data-event-end / data-event-address / data-event-description / data-event-recurring-event-dates — the times the month grid omits. Remove once the real shop domain is known."
     }
   ],
   "manualSources": [
