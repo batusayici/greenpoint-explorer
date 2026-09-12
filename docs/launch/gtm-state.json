@@ -58,10 +58,10 @@
         "date": "2026-09-05"
       },
       {
-        "label": "Perri — in person at her shop, week of Sep 5",
-        "when": "Week of Sep 5",
-        "status": "later",
-        "date": "2026-09-07"
+        "label": "Perri — in person at her shop (The WonderMart), 1pm. She proposed the slot on 9/11 and Batu accepted the same day.",
+        "when": "Thu Sep 17, 1pm",
+        "status": "next",
+        "date": "2026-09-17"
       },
       {
         "label": "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
@@ -877,7 +877,7 @@
       "sent": "2026-08-17",
       "firstSession": null,
       "reply": "2026-08-17 — warm, same evening (36 min): wants a call or in-person meeting at her shop",
-      "status": "MEETING SET 2026-08-25 (Batu): in person, week of Sep 5, when he is back in NY. The 8/19 \"Batu owes the reply\" gap is closed. Note it lands in the same week as Labor Day and the families push."
+      "status": "MEETING CONFIRMED: Thursday Sep 17, 1pm, at her shop. She proposed the slot 2026-09-11 1:56pm (\"Busy week - sorry I couldn't reply sooner. Are you available to swing by the shop on Thursday, the 17th at 1pm for a chat?\") and Batu accepted at 4:25pm the same day. Supersedes the 8/25 \"week of Sep 5\" plan, which slipped."
     },
     {
       "src": "action-city-comics",
@@ -1127,18 +1127,11 @@
       "source": "readout 2026-09-08 Finding 4; roster Tier 2 item 2"
     },
     {
-      "id": "perri-meeting",
-      "what": "Schedule the in-person meeting/call with Perri (Shop Small Greenpoint). She replied warm in 36 minutes on 8/17 offering a call or a shop visit; Batu said he was travelling two weeks and asked to schedule a call, and she replied \"let's just wait to chat in person when you're back in town.\" The 8/25 plan (DECISION_LOG, fourth entry) targeted week of Sep 5; that slipped. Batu says next week.",
-      "owner": "Batu",
-      "needBy": "2026-09-19",
-      "source": "Gmail thread \"An idea to support the Fall Shop Small Crawl\" (8/17–8/18); DECISION_LOG 2026-08-25 (fourth entry)"
-    },
-    {
-      "id": "fb-comment-emails",
-      "what": "Two people dropped their email address directly in the comments on Rana's post (Eva Tsoureka, Lyzette Figueroa) rather than through the Tally signup form — they won't show up in any signup-count pull unless someone copies them in by hand. Decide who collects them and adds them to the signup list.",
+      "id": "fb-comment-signups",
+      "what": "Check the three enthusiastic commenters on Rana's post against the signup list at the next Tally pull. Two of them say they submitted an email (\"Just dropped my email\", \"Dropped my email\") — no address appears in the comments themselves, so there is nothing to hand-collect; the question is only whether those submissions landed. The post produced nine signups against a list that went 5 to 13, so they probably did.",
       "owner": "Batu",
       "needBy": "2026-09-15",
-      "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12"
+      "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; PR #93"
     }
   ],
   "risks": [
@@ -1353,10 +1346,6 @@
       {
         "label": "Rana's group list is in (2026-09-10) — parents groups ride the one parents link; her two non-kids groups have their own rows. Copy still to finalize.",
         "since": "2026-09-05"
-      },
-      {
-        "label": "Perri — in person at her shop, week of Sep 5",
-        "since": "2026-09-07"
       },
       {
         "label": "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
