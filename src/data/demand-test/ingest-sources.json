@@ -1464,6 +1464,36 @@
       "citeHost": "greenpointshul.org",
       "notes": "108 Noble St. Congregation Ahavas Israel. MEASURED 2026-09-11 (added this session): the site is a JavaScript SPA — every path, including /events and a nonexistent /api/events, returns the same 921-byte shell to plain fetch, which is the Yaro shape. Browser fetch of https://greenpointshul.org/events returns 9,768 chars carrying 22 dated events with day, date, start time and a full paragraph each. Events are baked into the hashed JS bundle rather than served from a feed, so there is no cheaper route and the bundle filename changes on every deploy — this must stay `browser`. There is no robots.txt (the path serves the SPA shell), and nothing on the site refuses automated readers. FAR MORE THAN A SERVICES CALENDAR: the read found a family shofar workshop, a community-wide Tashlich at Transmitter Park, a K-6 sukkah decorating party, an all-ages sukkah film screening and a family-friendly Havdalah concert series. Service times and holiday davening are NOT cards — no lens fits a religious service and that question is still parked in watchItems; what cards here is the programming anyone may attend. NO PRICES are stated on any listing, so no card off this source sets free:true. End times are not stated either — use the 23:59 sentinel. \"View full calendar\" points at greenpointshul.shulcloud.com/calendar, unread as of this measurement; worth probing for an iCal feed later, which would let this drop to a plain fetch.",
       "datedListing": true
+    },
+    {
+      "id": "abc-cirque",
+      "name": "ABC Cirque (Family Adventure Play + kids/adult cirque classes)",
+      "url": "https://www.abcirque.com/education-main",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 UNMEASURED — do not treat as a verified source until this note carries a fetch. Origin: Ali Goldberg asked Rana on Facebook to add the org to the map (docs/review/2026-09-12-inbound-ask-roster-candidates.md). Says it operates from 5th Wall Studio, Williamsburg; street address not yet read, so the bbox question is open. Batu ruled 2026-09-12 that an owner's explicit ask overrides a robots.txt crawler block.",
+      "datedListing": true
+    },
+    {
+      "id": "abc-cirque-robots",
+      "name": "ABC Cirque robots.txt (policy probe, not a content source)",
+      "url": "https://www.abcirque.com/robots.txt",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 — reads the crawler policy we are overriding on explicit consent, so the override is recorded rather than assumed. Remove once read; this is not a content source and must never produce a card.",
+      "datedListing": false
+    },
+    {
+      "id": "talea-taproom",
+      "name": "TALEA Beer Co — taproom events calendar",
+      "url": "https://www.taleabeer.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "PROBE, added 2026-09-12 UNMEASURED. Batu's condition: add this calendar as a source only if the Clixo x TALEA family event a commenter named (Sep 13, from Rana's post) actually appears in it. URL guessed from the site root and must be confirmed by the fetch. Taproom is Williamsburg per the commenter; held once before as out-of-area in docs/review/held-cards-2026-08-12-greenpointers.md, on a missing address rather than a checked coordinate.",
+      "datedListing": true
     }
   ],
   "manualSources": [
