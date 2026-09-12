@@ -617,7 +617,7 @@
       "order": 3,
       "bar": "≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter",
       "metric": "Proactive supply actors per month",
-      "actual": "0 submissions via the in-product form (10 visits, 0 starts). 1 informal ask-in now logged outside it: ABC Cirque via Facebook DM to Rana after her 2026-09-11 post (see businessInterest below). Batu flags a second such ask around the same window that is not yet sourced into this file.",
+      "actual": "0 submissions via the in-product form (10 visits, 0 starts). 2 informal asks-in now logged outside it, both arriving off Rana's 2026-09-11 post: ABC Cirque via Facebook DM to Rana, and Kathleen Kyllo (TALEA event host) via a comment on the post itself (see businessInterest below). Both are Williamsburg, so neither clears the roster's geography gate, but both count as unprompted asks. A third, \"Threes Brewing rep,\" was named by an AI autofill reply Batu saw and has no source anywhere in this repo or session — treat as unconfirmed, not logged.",
       "readAt": "2026-09-12",
       "status": "pending",
       "unlocks": "The only loop that lowers marginal cost — direct submissions displace ingest labor.",
@@ -1057,6 +1057,16 @@
       "gate": "Based in Williamsburg, not Greenpoint — doesn't clear the roster's geography gate regardless of interest",
       "countsTowardSupplyGate": true,
       "source": "Facebook Messenger screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
+    },
+    {
+      "id": "talea-clixo-2026-09-12",
+      "date": "2026-09-12",
+      "who": "Kathleen Kyllo — hosting \"Clixo x TALEA BYO Baby!\", a family event at the TALEA taproom",
+      "ask": "Asked, in a comment on Rana's post, to add her event to the map (\"Can I add something to it?\")",
+      "channel": "Facebook comment on Rana's 2026-09-11 parents-group post",
+      "gate": "The comment names \"the @taleabeer Taproom in Williamsburg\" — Williamsburg, not Greenpoint, already flagged as out-of-bbox for this exact venue in docs/review/held-cards-2026-08-12-greenpointers.md. Doesn't clear the roster's geography gate regardless of interest.",
+      "countsTowardSupplyGate": true,
+      "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     }
   ],
   "openDecisions": [
@@ -1115,6 +1125,20 @@
       "owner": "Batu",
       "needBy": "2026-09-15",
       "source": "readout 2026-09-08 Finding 4; roster Tier 2 item 2"
+    },
+    {
+      "id": "perri-meeting",
+      "what": "Schedule the in-person meeting/call with Perri (Shop Small Greenpoint). She replied warm in 36 minutes on 8/17 offering a call or a shop visit; Batu said he was travelling two weeks and asked to schedule a call, and she replied \"let's just wait to chat in person when you're back in town.\" The 8/25 plan (DECISION_LOG, fourth entry) targeted week of Sep 5; that slipped. Batu says next week.",
+      "owner": "Batu",
+      "needBy": "2026-09-19",
+      "source": "Gmail thread \"An idea to support the Fall Shop Small Crawl\" (8/17–8/18); DECISION_LOG 2026-08-25 (fourth entry)"
+    },
+    {
+      "id": "fb-comment-emails",
+      "what": "Two people dropped their email address directly in the comments on Rana's post (Eva Tsoureka, Lyzette Figueroa) rather than through the Tally signup form — they won't show up in any signup-count pull unless someone copies them in by hand. Decide who collects them and adds them to the signup list.",
+      "owner": "Batu",
+      "needBy": "2026-09-15",
+      "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12"
     }
   ],
   "risks": [

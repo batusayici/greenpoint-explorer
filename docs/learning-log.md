@@ -181,26 +181,37 @@ when revised, and retired ones are struck rather than renumbered.
 
 ## Log
 
-### L2026-09-12 — A business asked to be added, by DMing Rana, not through the submit form (business feedback)
+### L2026-09-12 — Two unprompted "add us" asks off Rana's post, neither through the submit form (business feedback)
 
-Source: Facebook Messenger screenshot relayed by Batu, 2026-09-12. A message request from Ali
-Goldberg to Rana, timestamped 5:30pm, not yet accepted at the time of relay.
+Source: two screenshots relayed by Batu, 2026-09-12 — a Facebook Messenger message request to Rana,
+and the comment thread on Rana's own post.
 
-Fact — the message, verbatim: "Hi Rana! I saw your husband's awesome map - I help a small
-cirque/arts org, and we are based in Williamsburg at 5th Wall Studio! Would you husband be able to
-add us to the map. We offer Family Adventure Play for 0-5 year olds and parents, and also have kids
-and adult cirque classes: https://www.abcirque.com/education-main. Thank you!!" (ABC Cirque.)
+Fact 1 — Facebook Messenger, Ali Goldberg to Rana, 5:30pm, not yet accepted at the time of relay:
+"Hi Rana! I saw your husband's awesome map - I help a small cirque/arts org, and we are based in
+Williamsburg at 5th Wall Studio! Would you husband be able to add us to the map. We offer Family
+Adventure Play for 0-5 year olds and parents, and also have kids and adult cirque classes:
+https://www.abcirque.com/education-main. Thank you!!" (ABC Cirque.)
 
-Read: Rana's 2026-09-11 parents-group post (PR #93 — 203 people, nine signups) didn't just move
-traffic, it produced the first unprompted "add us" ask this project has seen since launch — and it
-arrived as a personal DM to Rana, not through the in-product submit form, which still stands at zero
-submissions (Q4, B12). Batu calls this the second such ask since the post; the first isn't sourced
-into this repo yet, so it isn't recorded here — only this one is. ABC Cirque itself is
-Williamsburg-based, so it doesn't clear the roster's geography gate regardless of interest (CLAUDE.md
-source-allowlist rules); the signal that matters is that a business went looking for a way in and
-found one that bypasses the mechanism built for it. Logged toward the Supply gate's "asked in" line
-in `docs/launch/gtm-state.json` (`businessInterest`), which the daily cockpit now renders under
-"Business interest — asks in."
+Fact 2 — a comment on Rana's post itself, Kathleen Kyllo, 1h: "I LOVE it! Can I add something to it?
+I'm hosting this fun family event at TALEA tomorrow morning," linking an Instagram post for "Clixo x
+TALEA BYO Baby!" at "the @taleabeer Taproom in Williamsburg." Two other commenters (Eva Tsoureka,
+Lyzette Figueroa) wrote "dropped my email" — a signup outside the Tally form that nothing currently
+collects.
+
+Read: Rana's 2026-09-11 post (PR #93 — 203 people, nine signups) didn't just move traffic, it produced
+the first two unprompted "add us" asks this project has seen since launch — one DMed privately, one
+posted in the open under her post — and both bypassed the in-product submit form entirely, which
+still stands at zero submissions (Q4, B12). Both askers are Williamsburg, not Greenpoint (TALEA
+specifically was already flagged as Williamsburg when a Greenpointers roundup carried it, see
+`docs/review/held-cards-2026-08-12-greenpointers.md`), so neither clears the roster's geography gate
+— the signal that matters isn't whether these two ship, it's that the ask exists and the built
+mechanism isn't where it's landing. Batu separately named a third, earlier ask — "the Threes Brewing
+rep, before Rana's post" — sourced from an AI-generated autofill reply suggestion on his phone; no
+record of it exists anywhere in this repo or this session, so **it is not logged as a fact here**. An
+AI autofill invented plausible-sounding specifics before; treat it as unconfirmed until a screenshot
+or a name Batu can vouch for surfaces, not as a real third data point. All two confirmed asks are
+logged toward the Supply gate's "asked in" line in `docs/launch/gtm-state.json` (`businessInterest`),
+which the daily cockpit now renders under "Business interest — asks in."
 
 ### L2026-09-08 — Search finds us by name, never by question; ChatGPT became a trickle (analytics pull)
 
