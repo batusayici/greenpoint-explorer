@@ -1,8 +1,8 @@
 {
   "meta": {
-    "asOf": "2026-09-11",
+    "asOf": "2026-09-12",
     "lastDataPull": "2026-09-08",
-    "lastFeedCheck": "2026-09-11",
+    "lastFeedCheck": "2026-09-12",
     "nextReadout": "2026-09-15",
     "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
@@ -1323,8 +1323,8 @@
     }
   ],
   "daily": {
-    "ranAt": "2026-09-11",
-    "dayName": "Friday, September 11",
+    "ranAt": "2026-09-12",
+    "dayName": "Saturday, September 12",
     "dueToday": [],
     "overdue": [
       {
@@ -1352,14 +1352,19 @@
         "since": "2026-09-08"
       }
     ],
-    "waiting": [],
+    "waiting": [
+      {
+        "what": "PR #93 — growth: Rana's post, day one — 203 people and nine signups",
+        "age": 0
+      }
+    ],
     "overnight": [
-      "Merge pull request #85 from batusayici/fix/source-reads-empty",
-      "Merge pull request #84 from batusayici/fix/fetch-health",
-      "feat(ingest): the coverage report now asks whether a source can be read at all",
-      "fix(ingest): read lower-case months too — two sources write dates that way",
-      "fix(ingest): the ISO date pattern has never matched a calendar feed",
-      "fix(ingest): a source that returns navigation is no longer read as healthy"
+      "Merge branch 'claude/dashboard-business-interest-log-ce8v4x'",
+      "growth: Perri meeting confirmed for Thu Sep 17, and two corrections",
+      "growth: second inbound ask (TALEA), Perri follow-up, and FB comment emails",
+      "content(track-v): daily refresh 2026-09-12 — four cards on, thirteen off",
+      "growth: log ABC Cirque's inbound ask, surface business interest on the cockpit",
+      "Merge pull request #92 from batusayici/fix/selected-card-always-pinned"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1368,12 +1373,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 98,
-      "reservoir": 43,
+      "dated": 102,
+      "reservoir": 41,
       "stale": false,
       "thin": false,
       "fresh": true,
-      "cards": 245
+      "cards": 252
     }
   }
 }
