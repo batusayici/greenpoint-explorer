@@ -18,14 +18,45 @@ import { uniqueCoverage } from "../demand-test/coverage.js";
 // today_toggle; calendar adds ride action_tap".
 export const HIGH_INTENT = ["actionTaps", "ctaTaps", "todayToggles"];
 
-// NY/NJ/CT. Doubles as the data-centre filter: the Sep 11-13 wave carried ~50
-// people resolving to AWS regions in Oregon, Georgia and Ireland, which are not
-// readers and must never reach a rate's denominator.
-export const LOCAL_REGIONS = new Set(["New York", "New Jersey", "Connecticut"]);
+// Batu, 2026-09-13: it does not matter whether a reader is local, only whether
+// they are a real person. Counting NY/NJ/CT was the wrong cut — locals engage at
+// 45% and everyone else at 11%, but the five people in Istanbul engage at 80%
+// and are obviously real.
+//
+// Geography was doing one useful job though: keeping machines out. So this list
+// replaces it, and it names TOWNS THAT ARE ESSENTIALLY DATA CENTRES rather than
+// anywhere far away. Boardman, Oregon has a population around 3,500 and sent 51
+// "people" who have never tapped anything; Council Bluffs is Google, Clonee and
+// Luleå and Forest City are Facebook, Falkenstein is Hetzner.
+//
+// Real cities stay in even when they look quiet — Paris sent 27 people at 0%
+// and Ashburn sent 7 at 43%, and excluding a real place to tidy up a rate would
+// be a worse error than counting a few machines. The bias is deliberate: keep a
+// bot rather than drop a person.
+//
+// The pull prints how many people this removes each day, so the list going
+// stale is visible rather than silent.
+export const DATA_CENTRE_CITIES = new Set([
+  "Boardman", // AWS us-west-2
+  "Prineville", // Facebook / Apple
+  "Eatonton", // AWS
+  "Council Bluffs", // Google
+  "Forest City", // Facebook
+  "Clonee", // Facebook, Ireland
+  "Luleå", // Facebook, Sweden
+  "Falkenstein", // Hetzner
+]);
 
 const acts = (s) => HIGH_INTENT.reduce((t, k) => t + (s[k] ?? 0), 0);
 
-export const isLocal = (s) => LOCAL_REGIONS.has(s.region);
+export const isMachine = (s) => DATA_CENTRE_CITIES.has(s.city);
+
+// Drop machines before anything is counted. Never filter on whether someone
+// interacted: card-open rate and activation are measures OF interaction, so a
+// denominator defined by interacting would make them true by construction.
+export function realPeople(sessions) {
+  return sessions.filter((s) => !isMachine(s));
+}
 
 const pct = (num, den) => (den ? num / den : 0);
 
@@ -113,14 +144,11 @@ export function organicShare(sessions) {
   return rate(organic.length, first.length, "new sessions");
 }
 
-// Unique people, and the local subset. The headline reach number.
+// Unique people. Machines are already gone by the time this runs; where someone
+// is does not change whether they count.
 export function reach(sessions) {
   const people = new Set(sessions.map((s) => s.personId));
-  const locals = new Set(sessions.filter(isLocal).map((s) => s.personId));
-  return {
-    n: people.size,
-    display: `${people.size} people · ${locals.size} in NY/NJ/CT`,
-  };
+  return { n: people.size, display: `${people.size} people` };
 }
 
 // People and card opens per New York day. Feeds the `counts` block in the

@@ -4,6 +4,40 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-13 — count real people, not local people; the gate's wording stands
+
+**Batu: "I don't think you're tracking who is local and who is not, and frankly it doesn't matter
+as long as it's a real human."** The first half was wrong — geo off the IP was being used, and 713
+of 1,021 people were NY/NJ/CT. The second half was right, and the data agrees: locals engage at 45%
+and everyone else at 11%, but the five people in Istanbul engage at 80% and are obviously real.
+Where someone is does not tell you whether they are a person.
+
+**What geography was actually doing was keeping machines out**, which is why removing it needed a
+replacement rather than a deletion. The non-local traffic is mostly Amazon and Google: Boardman and
+Prineville Oregon, Eatonton Georgia, Council Bluffs Iowa, plus Facebook's Clonee, Luleå and Forest
+City and Hetzner's Falkenstein. 169 "people" across those, essentially none of whom has ever tapped
+anything.
+
+**So: count every person, and exclude a named list of towns that are essentially data centres.**
+Real cities stay in however quiet they look — Paris sent 27 people at 0% and Ashburn 7 at 43%, and
+dropping a real place to tidy up a rate is a worse error than counting a few machines. The bias is
+deliberate: keep a bot rather than lose a person. The pull prints what it dropped, by city, so the
+list going stale is visible instead of silent.
+
+**What could not be used as the filter: whether someone did anything.** Card-open rate and
+activation are measures *of* doing something, so a denominator defined by having done something
+makes them true by construction. There is no clean device or browser tell either — 602 of the 907
+silent sessions are mobile, on Facebook's in-app browser and Safari, which is what a real person
+who bounced looks like.
+
+Removing the machines moved every rate: activation 6.4% → 7.2%, card-open 32.3% → 36.7%,
+qualified-action 13.0% → 14.3%, reach 1,012 → 852 people.
+
+**The demand gate's wording is unchanged** (Batu, this date). `growth-engine.md` still reads "of
+locals who visit twice, ≥25% return in ≥3 of any 4 consecutive weeks" and the gate stays hand-read.
+Amending a pre-registered bar mid-data is what pre-registration forbids; the everyday metrics
+changing how they count is a separate matter from the bar they are eventually judged against.
+
 ## 2026-09-13 — every growth number comes from one command, and three of them were wrong
 
 **Batu asked for analytics that stop being pulled and retyped in several places.** The machine

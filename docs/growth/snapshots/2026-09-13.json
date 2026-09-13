@@ -2,33 +2,33 @@
   "date": "2026-09-13",
   "tz": "America/New_York",
   "queryUpperBound": "2026-09-14 04:00:00Z",
-  "generatedAt": "2026-09-13T17:05:15.577Z",
+  "generatedAt": "2026-09-13T18:21:28.866Z",
   "backfilled": false,
   "sources": {
     "posthog": {
       "status": "ok",
-      "pulledAt": "2026-09-13T17:05:14.929Z"
+      "pulledAt": "2026-09-13T18:21:28.246Z"
     },
     "tally": {
       "status": "ok",
-      "pulledAt": "2026-09-13T17:05:15.558Z"
+      "pulledAt": "2026-09-13T18:21:28.848Z"
     },
     "repo": {
       "status": "ok",
-      "pulledAt": "2026-09-13T17:05:15.563Z"
+      "pulledAt": "2026-09-13T18:21:28.853Z"
     }
   },
   "metrics": {
     "reach": {
-      "n": 1012,
-      "display": "1012 people · 709 in NY/NJ/CT",
+      "n": 852,
+      "display": "852 people",
       "status": "ok",
-      "defVersion": "96906790",
+      "defVersion": "014ba3b6",
       "window": null
     },
     "activation": {
-      "n": 0.06428571428571428,
-      "display": "6.4% (45 of 700)",
+      "n": 0.07246376811594203,
+      "display": "7.2% (45 of 621)",
       "status": "ok",
       "defVersion": "68bb5397",
       "window": {
@@ -38,8 +38,8 @@
       }
     },
     "cardopen": {
-      "n": 0.32285714285714284,
-      "display": "32.3% (226 of 700)",
+      "n": 0.3671497584541063,
+      "display": "36.7% (228 of 621)",
       "status": "ok",
       "defVersion": "5898885f",
       "window": {
@@ -49,8 +49,8 @@
       }
     },
     "qar": {
-      "n": 0.13043478260869565,
-      "display": "13.0% (111 of 851)",
+      "n": 0.1432258064516129,
+      "display": "14.3% (111 of 775)",
       "status": "ok",
       "defVersion": "43e56d0d",
       "window": {
@@ -60,8 +60,8 @@
       }
     },
     "organic": {
-      "n": 0.2814285714285714,
-      "display": "28.1% (197 of 700)",
+      "n": 0.2834138486312399,
+      "display": "28.3% (176 of 621)",
       "status": "ok",
       "defVersion": "13942cae",
       "window": {
@@ -71,8 +71,8 @@
       }
     },
     "safaribias": {
-      "n": 0.014271139202707415,
-      "display": "Safari 15 of 283 (5%) · other 22 of 568 (4%)",
+      "n": 0.011576907384740924,
+      "display": "Safari 16 of 258 (6%) · other 23 of 456 (5%)",
       "status": "ok",
       "defVersion": "8efe88d8",
       "window": {
@@ -93,8 +93,8 @@
       }
     },
     "signups": {
-      "n": 25,
-      "display": "25 people · 16 chose a lens",
+      "n": 26,
+      "display": "26 people · 16 chose a lens",
       "status": "ok",
       "defVersion": "2810cd97",
       "window": null
@@ -222,43 +222,43 @@
     },
     {
       "day": "2026-08-04",
-      "people": 3,
-      "sessions": 3,
+      "people": 2,
+      "sessions": 2,
       "cardOpens": 0,
       "acts": 0
     },
     {
       "day": "2026-08-05",
-      "people": 9,
-      "sessions": 10,
+      "people": 8,
+      "sessions": 9,
       "cardOpens": 3,
       "acts": 1
     },
     {
       "day": "2026-08-06",
-      "people": 3,
-      "sessions": 4,
+      "people": 2,
+      "sessions": 3,
       "cardOpens": 0,
       "acts": 0
     },
     {
       "day": "2026-08-07",
-      "people": 26,
-      "sessions": 26,
+      "people": 21,
+      "sessions": 21,
       "cardOpens": 0,
       "acts": 0
     },
     {
       "day": "2026-08-08",
-      "people": 9,
-      "sessions": 14,
+      "people": 8,
+      "sessions": 13,
       "cardOpens": 2,
       "acts": 0
     },
     {
       "day": "2026-08-09",
-      "people": 11,
-      "sessions": 12,
+      "people": 10,
+      "sessions": 11,
       "cardOpens": 1,
       "acts": 0
     },
@@ -271,162 +271,162 @@
     },
     {
       "day": "2026-08-11",
-      "people": 9,
-      "sessions": 10,
+      "people": 8,
+      "sessions": 9,
       "cardOpens": 0,
       "acts": 1
     },
     {
       "day": "2026-08-12",
-      "people": 16,
-      "sessions": 18,
-      "cardOpens": 0,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-13",
-      "people": 28,
-      "sessions": 37,
-      "cardOpens": 46,
-      "acts": 5
-    },
-    {
-      "day": "2026-08-14",
-      "people": 16,
-      "sessions": 20,
-      "cardOpens": 29,
-      "acts": 1
-    },
-    {
-      "day": "2026-08-15",
-      "people": 12,
-      "sessions": 13,
-      "cardOpens": 11,
-      "acts": 3
-    },
-    {
-      "day": "2026-08-16",
-      "people": 7,
-      "sessions": 10,
-      "cardOpens": 0,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-17",
-      "people": 9,
-      "sessions": 10,
-      "cardOpens": 0,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-18",
-      "people": 24,
-      "sessions": 25,
-      "cardOpens": 2,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-19",
-      "people": 9,
-      "sessions": 9,
-      "cardOpens": 2,
-      "acts": 1
-    },
-    {
-      "day": "2026-08-20",
-      "people": 7,
-      "sessions": 7,
-      "cardOpens": 0,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-21",
-      "people": 7,
-      "sessions": 9,
-      "cardOpens": 0,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-22",
-      "people": 5,
-      "sessions": 5,
-      "cardOpens": 1,
-      "acts": 1
-    },
-    {
-      "day": "2026-08-23",
-      "people": 3,
-      "sessions": 3,
-      "cardOpens": 2,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-24",
-      "people": 8,
-      "sessions": 8,
-      "cardOpens": 1,
-      "acts": 0
-    },
-    {
-      "day": "2026-08-25",
-      "people": 17,
+      "people": 15,
       "sessions": 17,
       "cardOpens": 0,
       "acts": 0
     },
     {
+      "day": "2026-08-13",
+      "people": 24,
+      "sessions": 33,
+      "cardOpens": 46,
+      "acts": 5
+    },
+    {
+      "day": "2026-08-14",
+      "people": 14,
+      "sessions": 18,
+      "cardOpens": 28,
+      "acts": 1
+    },
+    {
+      "day": "2026-08-15",
+      "people": 9,
+      "sessions": 10,
+      "cardOpens": 11,
+      "acts": 3
+    },
+    {
+      "day": "2026-08-16",
+      "people": 5,
+      "sessions": 8,
+      "cardOpens": 0,
+      "acts": 0
+    },
+    {
+      "day": "2026-08-17",
+      "people": 8,
+      "sessions": 9,
+      "cardOpens": 0,
+      "acts": 0
+    },
+    {
+      "day": "2026-08-18",
+      "people": 15,
+      "sessions": 16,
+      "cardOpens": 0,
+      "acts": 0
+    },
+    {
+      "day": "2026-08-19",
+      "people": 7,
+      "sessions": 7,
+      "cardOpens": 2,
+      "acts": 1
+    },
+    {
+      "day": "2026-08-20",
+      "people": 5,
+      "sessions": 5,
+      "cardOpens": 0,
+      "acts": 0
+    },
+    {
+      "day": "2026-08-21",
+      "people": 6,
+      "sessions": 8,
+      "cardOpens": 0,
+      "acts": 0
+    },
+    {
+      "day": "2026-08-22",
+      "people": 4,
+      "sessions": 4,
+      "cardOpens": 1,
+      "acts": 1
+    },
+    {
+      "day": "2026-08-23",
+      "people": 1,
+      "sessions": 1,
+      "cardOpens": 1,
+      "acts": 0
+    },
+    {
+      "day": "2026-08-24",
+      "people": 5,
+      "sessions": 5,
+      "cardOpens": 1,
+      "acts": 0
+    },
+    {
+      "day": "2026-08-25",
+      "people": 3,
+      "sessions": 3,
+      "cardOpens": 0,
+      "acts": 0
+    },
+    {
       "day": "2026-08-26",
-      "people": 2,
-      "sessions": 2,
+      "people": 1,
+      "sessions": 1,
       "cardOpens": 0,
       "acts": 0
     },
     {
       "day": "2026-08-27",
-      "people": 2,
-      "sessions": 2,
+      "people": 1,
+      "sessions": 1,
       "cardOpens": 0,
       "acts": 0
     },
     {
       "day": "2026-08-28",
-      "people": 3,
-      "sessions": 3,
-      "cardOpens": 1,
+      "people": 1,
+      "sessions": 1,
+      "cardOpens": 0,
       "acts": 1
     },
     {
       "day": "2026-08-29",
-      "people": 13,
-      "sessions": 15,
+      "people": 11,
+      "sessions": 13,
       "cardOpens": 24,
       "acts": 1
     },
     {
       "day": "2026-08-30",
-      "people": 10,
-      "sessions": 10,
+      "people": 8,
+      "sessions": 8,
       "cardOpens": 1,
       "acts": 1
     },
     {
       "day": "2026-08-31",
-      "people": 11,
-      "sessions": 13,
+      "people": 10,
+      "sessions": 12,
       "cardOpens": 0,
       "acts": 1
     },
     {
       "day": "2026-09-01",
-      "people": 18,
-      "sessions": 19,
+      "people": 6,
+      "sessions": 7,
       "cardOpens": 8,
       "acts": 0
     },
     {
       "day": "2026-09-02",
-      "people": 5,
-      "sessions": 5,
+      "people": 4,
+      "sessions": 4,
       "cardOpens": 0,
       "acts": 1
     },
@@ -439,8 +439,8 @@
     },
     {
       "day": "2026-09-04",
-      "people": 7,
-      "sessions": 10,
+      "people": 6,
+      "sessions": 9,
       "cardOpens": 16,
       "acts": 4
     },
@@ -460,15 +460,15 @@
     },
     {
       "day": "2026-09-07",
-      "people": 13,
-      "sessions": 16,
+      "people": 7,
+      "sessions": 10,
       "cardOpens": 16,
       "acts": 1
     },
     {
       "day": "2026-09-08",
-      "people": 24,
-      "sessions": 27,
+      "people": 8,
+      "sessions": 11,
       "cardOpens": 0,
       "acts": 0
     },
@@ -481,30 +481,30 @@
     },
     {
       "day": "2026-09-10",
-      "people": 19,
-      "sessions": 21,
+      "people": 9,
+      "sessions": 11,
       "cardOpens": 2,
       "acts": 1
     },
     {
       "day": "2026-09-11",
-      "people": 260,
-      "sessions": 282,
+      "people": 232,
+      "sessions": 254,
       "cardOpens": 320,
       "acts": 58
     },
     {
       "day": "2026-09-12",
-      "people": 341,
-      "sessions": 411,
+      "people": 333,
+      "sessions": 403,
       "cardOpens": 335,
       "acts": 70
     },
     {
       "day": "2026-09-13",
-      "people": 78,
-      "sessions": 88,
-      "cardOpens": 60,
+      "people": 70,
+      "sessions": 80,
+      "cardOpens": 67,
       "acts": 16
     }
   ]

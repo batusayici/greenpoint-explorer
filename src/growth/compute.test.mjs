@@ -14,7 +14,8 @@ import {
   lensPull,
   signups,
   firstSessions,
-  isLocal,
+  isMachine,
+  realPeople,
 } from "./compute.js";
 
 const session = (over = {}) => ({
@@ -141,24 +142,44 @@ test("organic excludes both tagged links and social referrers", () => {
   assert.equal(organicShare(sessions).display, "40.0% (2 of 5)");
 });
 
-test("locals are NY/NJ/CT, which is also what keeps data centres out", () => {
-  assert.ok(isLocal(session({ region: "New York" })));
-  assert.ok(isLocal(session({ region: "New Jersey" })));
-  // Boardman OR and Clonee, Leinster are AWS regions — ~50 of the 638 in the
-  // Sep 11-13 wave. They are not readers and must not reach a denominator.
-  assert.ok(!isLocal(session({ region: "Oregon" })));
-  assert.ok(!isLocal(session({ region: "Leinster" })));
-  assert.ok(!isLocal(session({ region: null })));
+test("machines are excluded by data-centre town, not by being far away", () => {
+  // Batu's ruling 2026-09-13: it does not matter whether a reader is local,
+  // only whether they are a real person.
+  assert.ok(isMachine(session({ city: "Boardman", region: "Oregon" })));
+  assert.ok(isMachine(session({ city: "Council Bluffs", region: "Iowa" })));
+  assert.ok(isMachine(session({ city: "Clonee", region: "Leinster" })));
+
+  // Real places stay in, however quiet or however far. Paris sent 27 people who
+  // tapped nothing and Istanbul sent 5 who engaged at 80%; both are people.
+  assert.ok(!isMachine(session({ city: "Paris", region: "Île-de-France" })));
+  assert.ok(!isMachine(session({ city: "Istanbul", region: "Istanbul" })));
+  assert.ok(!isMachine(session({ city: "Ashburn", region: "Virginia" })));
+  assert.ok(!isMachine(session({ city: "Brooklyn", region: "New York" })));
+  // An unknown city is a person until shown otherwise — the bias is deliberate.
+  assert.ok(!isMachine(session({ city: null, region: null })));
 });
 
-test("reach reports people and the local subset", () => {
+test("realPeople drops machines and never filters on behaviour", () => {
+  const rows = [
+    session({ personId: "human", city: "Brooklyn", cardOpens: 0 }),
+    session({ personId: "quiet", city: "Paris", cardOpens: 0 }),
+    session({ personId: "bot", city: "Boardman", cardOpens: 0 }),
+  ];
+  const kept = realPeople(rows).map((s) => s.personId);
+  assert.deepEqual(kept, ["human", "quiet"]);
+  // Filtering on "did they interact" would make card-open rate true by
+  // construction, so a reader who opened nothing must survive the filter.
+  assert.equal(cardOpenRate(realPeople(rows)).display, "0.0% (0 of 2)");
+});
+
+test("reach counts people, wherever they are", () => {
   const sessions = [
-    session({ personId: "a", region: "New York" }),
-    session({ personId: "a", sessionId: "2", region: "New York" }),
-    session({ personId: "b", region: "Oregon" }),
+    session({ personId: "a", city: "Brooklyn" }),
+    session({ personId: "a", sessionId: "2", city: "Brooklyn" }),
+    session({ personId: "b", city: "Istanbul" }),
   ];
   assert.equal(reach(sessions).n, 2);
-  assert.equal(reach(sessions).display, "2 people · 1 in NY/NJ/CT");
+  assert.equal(reach(sessions).display, "2 people");
 });
 
 test("daily counts bucket by New York day, not UTC", () => {

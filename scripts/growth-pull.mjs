@@ -20,7 +20,7 @@ import { resolve } from "node:path";
 import { assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
 import { METRIC_DEFS, QUERIES, bindQuery } from "../src/growth/metricDefs.js";
 import { nyDayStart, nextDay, todayNY, windowStart, nyDay } from "../src/growth/days.js";
-import { dailyCounts } from "../src/growth/compute.js";
+import { dailyCounts, realPeople, isMachine } from "../src/growth/compute.js";
 import { ROOT, loadEnvLocal, STATUS, SourceError, EXIT } from "./growth/env.mjs";
 import { pullPostHog, toSessions } from "./growth/sources/posthog.mjs";
 import { pullTally } from "./growth/sources/tally.mjs";
@@ -87,8 +87,27 @@ const boundedQueries = Object.fromEntries(
 
 const posthog = await attempt("posthog", () => pullPostHog(boundedQueries, { upperBound }));
 
-const sessions = posthog?.rows?.sessions ? toSessions(posthog.rows.sessions) : null;
+// Machines come out before any metric is computed, so every rate below shares
+// one denominator. Excluded counts are printed, not swallowed — a data-centre
+// list nobody can see going stale is the same trap as a silently dropped host.
+const allSessions = posthog?.rows?.sessions ? toSessions(posthog.rows.sessions) : null;
+const sessions = allSessions ? realPeople(allSessions) : null;
 if (sessions) counts = dailyCounts(sessions);
+
+if (allSessions) {
+  const dropped = allSessions.filter(isMachine);
+  const people = new Set(dropped.map((s) => s.personId)).size;
+  if (people) {
+    const byCity = {};
+    for (const s of dropped) byCity[s.city] = (byCity[s.city] ?? new Set()).add(s.personId);
+    console.error(
+      `  dropped (data centre): ${people} people — ` +
+        Object.entries(byCity)
+          .map(([c, set]) => `${c} ${set.size}`)
+          .join(", "),
+    );
+  }
+}
 
 // The non-production audit is printed, never stored as a metric. It is how we
 // learned that other hosts were 34% of all events on 2026-07-28.

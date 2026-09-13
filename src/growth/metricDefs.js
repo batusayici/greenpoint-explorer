@@ -165,7 +165,7 @@ export const METRIC_DEFS = [
     compute: compute.reach,
     role: "cumulative reach",
     docRef: null, // a count, not a defined metric
-    defVersion: "96906790",
+    defVersion: "014ba3b6",
   },
   {
     id: "activation",
