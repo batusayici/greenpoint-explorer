@@ -4,6 +4,32 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-13 — launch is 2026-09-10, and nothing before it is a baseline
+
+**Batu's ruling, two parts.** The product launched **2026-09-10** — the first day people who are not
+his friends found it. Everything before that was a friends-only beta. And **no metric from before
+2026-09-10 may be used as a baseline**, because the people in it were friends, most were away for
+the summer, and none of them arrived wanting the thing the product does.
+
+The analytics agree on the date. Sep 10 at ~4pm New York is the first inflow this project has ever
+had from strangers: six people from Facebook in one hour, plus the first arrivals tagged
+`gp-sharing` and `civic-crowdsource`. Every prior day is direct traffic on a handful of ids. The 27
+people on Sep 8 are not a counterexample — all desktop-and-Bing, zero card opens between them, which
+is a crawler signature, not readers.
+
+**What this costs, and it is worth naming.** The strongest claim in the 9/13 analysis — that the
+Facebook wave opened cards at 34.9% against a 13.8% baseline — loses its comparator. The finding
+survives on its own numbers (a third of cold arrivals opening a card, 7.9% clearing the activation
+bar) but it can no longer be stated as a lift over anything. **Weeks 1–4 after 9/10 are the
+baseline.** Until roughly 2026-10-08 there is nothing legitimate to compare against, so no readout
+in that window should say a number is up or down; it should say what the number is.
+
+Related: the pre-registered demand gate and the ~Sep 15 provisional readout date in
+`docs/growth/growth-engine.md` were both written against an Aug 1–8 launch. With launch at 9/10 the
+first mature 4-week cohort closes ~2026-10-08 and the two-cohort verdict moves to ~November. The
+gate's bar itself is unchanged — re-registered 2026-07-28 and 2026-08-17, and amending a bar
+mid-data is what pre-registration forbids.
+
 ## 2026-09-11 — the card you opened always gets its pin, peek or not
 
 **Batu, on a phone: "when I open the family and kids cards, most of them do not show a mapped pin."**
