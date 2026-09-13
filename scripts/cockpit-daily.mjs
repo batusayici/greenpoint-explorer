@@ -78,6 +78,23 @@ const daily = { ranAt: today, dayName, dueToday, overdue, waiting, overnight, un
 
 if (dry) { console.log(JSON.stringify(daily, null, 2)); process.exit(0); }
 
+// Pull the analytics before rendering, so the page is never a day behind the
+// data. This is still mechanical: it writes a snapshot and nothing else, and
+// every judgement about what the numbers mean stays in the Tuesday readout.
+//
+// A failed pull is not a failed morning. The snapshot records which sensor is
+// down and the cockpit renders those tiles as down — which is the point. Before
+// this ran daily the page showed 198 cards against a deck of 252 for five days,
+// because nothing re-pulled and nothing said the number was old.
+let pulled = 'skipped';
+try {
+  execFileSync('npm', ['run', '--silent', 'growth:pull'], { cwd: root, stdio: 'inherit' });
+  state.meta.lastDataPull = today;
+  pulled = 'ok';
+} catch (error) {
+  pulled = `failed (exit ${error.status ?? '?'}) — see the snapshot's sources block`;
+}
+
 // Merge — assign one key. Everything else in the file is left exactly as it was.
 state.daily = daily;
 state.meta.asOf = today;
@@ -85,4 +102,5 @@ state.meta.lastFeedCheck = today;
 writeFileSync(statePath, JSON.stringify(state, null, 2) + '\n');
 
 execFileSync('node', ['scripts/build-cockpit.mjs'], { cwd: root, stdio: 'inherit' });
+console.log(`[daily] analytics pull ${pulled}`);
 console.log(`[daily] ${dayName} — ${dueToday.length} due, ${overdue.length} overdue, ${waiting.length} waiting, feed ${feed.dated ?? '?'} dated`);

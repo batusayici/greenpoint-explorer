@@ -55,7 +55,13 @@ const PROD_ONLY = `JSONExtractString(properties,'$host') IN (${quoted(PROD_HOSTS
 // hour they ran, so a rerun disagrees with the run it was meant to reproduce.
 const BOUND = `timestamp < toDateTime('{{upperBound}}')`;
 
+// Queries whose metric declares a window carry a lower bound too. A metric that
+// says it reads 7 days and quietly reads all of time is the same class of
+// mistake as activation's: a label that does not describe the number under it.
+const WINDOW = `timestamp >= toDateTime('{{lowerBound}}')`;
+
 const WHERE = `${SRC_EXCL} AND ${PROD_ONLY} AND ${BOUND}`;
+const WHERE_WINDOWED = `${WHERE} AND ${WINDOW}`;
 
 // HogQL applies its own LIMIT when a query omits one, and the default is 100
 // rows. Measured 2026-09-13: the session roll-up returned 95 rows unlimited and
@@ -110,7 +116,7 @@ export const QUERIES = {
       count() AS taps,
       count(DISTINCT distinct_id) AS people
     FROM events
-    WHERE event='filter_tap' AND ${WHERE}
+    WHERE event='filter_tap' AND ${WHERE_WINDOWED}
     GROUP BY lens
     ORDER BY people DESC
     ${LIMIT}`,
@@ -129,9 +135,20 @@ export const QUERIES = {
     ${LIMIT}`,
 };
 
-export function bindQuery(sql, upperBound) {
+export function bindQuery(sql, upperBound, lowerBound = null) {
   if (!sql.includes("{{upperBound}}")) throw new Error("query has no upper bound");
+  if (sql.includes("{{lowerBound}}")) {
+    if (!lowerBound) throw new Error("query needs a lower bound and none was given");
+    sql = sql.replaceAll("{{lowerBound}}", lowerBound);
+  }
   return sql.replaceAll("{{upperBound}}", upperBound);
+}
+
+// Which query a metric reads, and over what window. Exported so the puller
+// never has to guess and the test can check the two agree.
+export function queryWindow(def) {
+  const sql = def.query ? QUERIES[def.query] : null;
+  return { needsLowerBound: Boolean(sql?.includes("{{lowerBound}}")), windowDays: def.windowDays ?? null };
 }
 
 // ---------------------------------------------------------------------------
@@ -219,7 +236,7 @@ export const METRIC_DEFS = [
     compute: compute.lensPull,
     role: "which lens people actually pull",
     docRef: null,
-    defVersion: "8ad7e64e",
+    defVersion: "0cdc7f21",
   },
   {
     id: "signups",

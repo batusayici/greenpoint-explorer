@@ -46,3 +46,10 @@ docs/private/
 # Google service-account keys (Search Console pull) — a private key in the repo
 # is a live credential leak; the key lives beside .env.local, never in git
 *service-account*.json
+
+# The GTM cockpit page is generated from docs/launch/gtm-state.json plus the
+# newest snapshot (scripts/build-cockpit.mjs). It was committed and rebuilt
+# every morning on every branch, which made it one of the three files that
+# conflicted cycle 7's readout PR into being closed unmerged (readout 2026-09-08).
+# Regenerate it instead: node scripts/build-cockpit.mjs
+docs/launch/cockpit.html

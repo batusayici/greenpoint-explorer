@@ -199,12 +199,20 @@ Source: PostHog HogQL pull and Tally pull, both run 2026-09-13, production hosts
 src tags excluded. Activation uses the growth-engine §3 definition (≥2 `card_open` + ≥1
 high-intent act).
 
-Facts — volume. 638 distinct people Sep 11–13, against 1,005 all-time. Sep 12 drew 355 people;
-the previous best day ever was 27 (Sep 8). 541 of them landed directly on `/kids`, the page
-Rana linked; only 54 landed on `/`. Referrers were Facebook in every spelling (facebook.com,
-l.facebook.com, m.facebook.com, lm.facebook.com) plus l.instagram.com from Sep 12, which is
-the PS31 story repost. 560 mobile, 78 desktop. No errors under load beyond 11 untyped
-exceptions across 7 people. Traffic is decaying: 211 → 355 → 110.
+Facts — volume. 638 distinct people Sep 11–13, against 1,005 all-time. 541 of them landed
+directly on `/kids`, the page Rana linked; only 54 landed on `/`. Referrers were Facebook in
+every spelling (facebook.com, l.facebook.com, m.facebook.com, lm.facebook.com) plus
+l.instagram.com from Sep 12, which is the PS31 story repost. 560 mobile, 78 desktop. No errors
+under load beyond 11 untyped exceptions across 7 people.
+
+**Correction, 2026-09-13 (the daily split only).** The per-day figures first recorded here —
+211 on Friday, 355 on Saturday, 110 on Sunday — were counted in UTC days, because PostHog's
+`toDate()` resolves in the project timezone and this product's busiest hours run 8pm to
+midnight New York, which is the next day in UTC. Counted in New York days: **Friday 260,
+Saturday 341, Sunday 78 so far.** The three-day total and every rate in this entry are
+unaffected, since those span the whole window. Every daily figure quoted anywhere in this
+project before this date carries the same shift. Fixed in `src/growth/days.js`; see
+DECISION_LOG 2026-09-13.
 
 Facts — quality. Of the 634 people who first appeared Sep 11–13, 221 (34.9%) opened at least
 one card and 50 (7.9%) met the activation definition. The `src=parents`-tagged subset did

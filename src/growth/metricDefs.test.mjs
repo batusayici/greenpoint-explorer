@@ -12,6 +12,7 @@ import {
   hashDef,
   bindQuery,
   ROW_LIMIT,
+  queryWindow,
 } from "./metricDefs.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -82,10 +83,43 @@ test("every query carries the production-host filter and the test-tag exclusion"
 test("every query is bounded above, and refuses to run unbound", () => {
   for (const [name, sql] of Object.entries(QUERIES)) {
     assert.ok(sql.includes("{{upperBound}}"), `${name} has no upper bound`);
-    const bound = bindQuery(sql, "2026-09-14 04:00:00");
+    const bound = bindQuery(sql, "2026-09-14 04:00:00", "2026-09-07 04:00:00");
     assert.ok(!bound.includes("{{upperBound}}"), `${name} left a placeholder behind`);
     assert.ok(bound.includes("2026-09-14 04:00:00"));
     assert.throws(() => bindQuery(bound, "x"), /no upper bound/, `${name} bound twice`);
+  }
+});
+
+// A metric that says it reads 7 days and quietly reads all of time is the same
+// mistake as activation's: a label that does not describe the number under it.
+// lenspull declared a 7-day window for a while and its query had no lower
+// bound, so it reported all-time under a weekly label.
+test("a windowed query refuses to bind without its lower bound", () => {
+  for (const [name, sql] of Object.entries(QUERIES)) {
+    if (!sql.includes("{{lowerBound}}")) continue;
+    assert.throws(
+      () => bindQuery(sql, "2026-09-14 04:00:00"),
+      /needs a lower bound/,
+      `${name} would have run over all of time`,
+    );
+  }
+});
+
+test("a metric's declared window matches whether its query can take one", () => {
+  for (const def of METRIC_DEFS) {
+    const { needsLowerBound, windowDays } = queryWindow(def);
+    if (needsLowerBound) {
+      assert.ok(windowDays, `${def.id} reads a windowed query but declares no window`);
+    }
+    // The session roll-up is the deliberate exception: it is pulled whole and
+    // windowed in JS, because several metrics read it over different spans.
+    if (windowDays && !needsLowerBound) {
+      assert.equal(
+        def.query,
+        "sessions",
+        `${def.id} declares a ${windowDays}-day window its query cannot apply`,
+      );
+    }
   }
 });
 

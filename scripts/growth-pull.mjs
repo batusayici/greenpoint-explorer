@@ -70,14 +70,22 @@ async function attempt(name, fn) {
 
 // --- PostHog ----------------------------------------------------------------
 
-const posthog = await attempt("posthog", () =>
-  pullPostHog(
-    Object.fromEntries(
-      Object.entries(QUERIES).map(([name, sql]) => [name, bindQuery(sql, upperBound)]),
-    ),
-    { upperBound },
-  ),
+// A query that takes a lower bound gets it from the window of the metric that
+// reads it, so a declared window is always the window actually queried.
+const windowFor = (queryName) =>
+  METRIC_DEFS.find((d) => d.query === queryName && d.windowDays)?.windowDays ?? null;
+
+const boundedQueries = Object.fromEntries(
+  Object.entries(QUERIES).map(([name, sql]) => {
+    const days = windowFor(name);
+    const lower = days
+      ? nyDayStart(windowStart(day, days)).toISOString().replace("T", " ").slice(0, 19)
+      : null;
+    return [name, bindQuery(sql, upperBound, lower)];
+  }),
 );
+
+const posthog = await attempt("posthog", () => pullPostHog(boundedQueries, { upperBound }));
 
 const sessions = posthog?.rows?.sessions ? toSessions(posthog.rows.sessions) : null;
 if (sessions) counts = dailyCounts(sessions);
@@ -131,11 +139,11 @@ for (const def of METRIC_DEFS) {
     // dominated by however much history there is and stops responding to
     // anything — and an all-time count only ever rises, so every trend arrow on
     // it would point up forever regardless of what happened.
-    let window = null;
+    let window = def.windowDays ? { from: windowStart(day, def.windowDays), to: day, days: def.windowDays } : null;
     if (def.windowDays && def.source === "posthog" && def.query === "sessions") {
-      const from = windowStart(day, def.windowDays);
-      input = input.filter((s) => nyDay(s.startedAt) >= from);
-      window = { from, to: day, days: def.windowDays };
+      // The session roll-up is pulled whole and windowed here, because several
+      // metrics read it over different spans from one query.
+      input = input.filter((s) => nyDay(s.startedAt) >= window.from);
     }
 
     const { n, display } = def.compute(input, { now: nyDayStart(nextDay(day)) });
