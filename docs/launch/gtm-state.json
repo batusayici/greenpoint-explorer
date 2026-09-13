@@ -1,10 +1,10 @@
 {
   "meta": {
     "asOf": "2026-09-12",
-    "lastDataPull": "2026-09-11",
+    "lastDataPull": "2026-09-13",
     "lastFeedCheck": "2026-09-12",
     "nextReadout": "2026-09-15",
-    "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file — those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
+    "note": "Source of truth for the GTM cockpit. Backfilled 2026-08-15, refreshed 2026-08-17 from the docs listed in `sources`. The Tuesday /growth-weekly run updates `actual`, `verdict`, `readAt` and the send log as part of its normal cycle. No dollar figures, revenue targets, or prospect assessments belong in this file \u2014 those live in gitignored docs/private/ (DECISION_LOG 2026-07-28).",
     "sources": {
       "ops": "docs/launch/2026-07-21-pmf-ops-plan.md",
       "runbook": "docs/launch/2026-07-27-launch-plan.md",
@@ -14,21 +14,22 @@
       "links": "docs/launch/channel-links.md",
       "readout": "docs/growth/readouts/2026-09-08.md (this cycle). Cycle 8 merged as PR #57 on 2026-09-07; cycle 7 (PR #50) was CLOSED UNMERGED the same day, 26 commits behind main and conflicting on this file, the cockpit and the learning log.",
       "log": "docs/DECISION_LOG.md"
-    }
+    },
+    "metricsNote": "Values are computed by `npm run growth:pull` into docs/growth/snapshots/ and joined here at render time. Entries marked computed carry no value in this file; entries with typedOn were last entered by hand on that date and are not fresh."
   },
   "focus": {
-    "goal": "Make the week school opens the densest family week the map has had — and fire every channel that does not need parents in the meantime",
-    "why": "Batu ruled 2026-08-25 that parents- and families-facing awareness starts Sep 8: families are away through Labor Day, school opens Thu Sep 10, and that week is when parents are back and reading school comms. Q2 was already scheduled for Sep 8, so the date does not move — the scope does. Aug 25 - Sep 6 is now a prep window with hard dates, and October depends on the non-parent channels carrying it, because cohort entry closes ~Sep 25 and the denominator has to go 17 → ~48.",
-    "doneWhen": "Sep 7-13 has real dated family cards · school-year sources on the roster · FB webview verified on real iOS + Android · Rana's group list in hand with src rows created · signup-ask rebuild live by ~Sep 4 · redistributor asks out ~Sep 1-3 · Reddit/FB groups/Nextdoor/arts wave/IG all fired before Sep 6",
+    "goal": "Make the week school opens the densest family week the map has had \u2014 and fire every channel that does not need parents in the meantime",
+    "why": "Batu ruled 2026-08-25 that parents- and families-facing awareness starts Sep 8: families are away through Labor Day, school opens Thu Sep 10, and that week is when parents are back and reading school comms. Q2 was already scheduled for Sep 8, so the date does not move \u2014 the scope does. Aug 25 - Sep 6 is now a prep window with hard dates, and October depends on the non-parent channels carrying it, because cohort entry closes ~Sep 25 and the denominator has to go 17 \u2192 ~48.",
+    "doneWhen": "Sep 7-13 has real dated family cards \u00b7 school-year sources on the roster \u00b7 FB webview verified on real iOS + Android \u00b7 Rana's group list in hand with src rows created \u00b7 signup-ask rebuild live by ~Sep 4 \u00b7 redistributor asks out ~Sep 1-3 \u00b7 Reddit/FB groups/Nextdoor/arts wave/IG all fired before Sep 6",
     "steps": [
       {
-        "label": "Fire the channels cleared on 8/17 and still unsent — Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir → WORD → Flower Cat), IG carousel",
+        "label": "Fire the channels cleared on 8/17 and still unsent \u2014 Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir \u2192 WORD \u2192 Flower Cat), IG carousel",
         "when": "This week",
         "status": "next",
         "date": "2026-08-28"
       },
       {
-        "label": "Facebook in-app browser verified on a real iPhone (2026-09-10) — Android app still unchecked, its engine is covered",
+        "label": "Facebook in-app browser verified on a real iPhone (2026-09-10) \u2014 Android app still unchecked, its engine is covered",
         "when": "Before Sep 4",
         "status": "done",
         "date": "2026-09-03"
@@ -46,25 +47,25 @@
         "date": "2026-09-04"
       },
       {
-        "label": "Redistributor asks — library children's librarian, PS 31/34/110 PTAs, Town Square, class providers — so they carry us in first-week comms",
+        "label": "Redistributor asks \u2014 library children's librarian, PS 31/34/110 PTAs, Town Square, class providers \u2014 so they carry us in first-week comms",
         "when": "~Sep 1-3",
         "status": "later",
         "date": "2026-09-03"
       },
       {
-        "label": "Rana's group list is in (2026-09-10) — parents groups ride the one parents link; her two non-kids groups have their own rows. Copy still to finalize.",
+        "label": "Rana's group list is in (2026-09-10) \u2014 parents groups ride the one parents link; her two non-kids groups have their own rows. Copy still to finalize.",
         "when": "Closer to Sep 8",
         "status": "later",
         "date": "2026-09-05"
       },
       {
-        "label": "Perri — in person at her shop (The WonderMart), 1pm. She proposed the slot on 9/11 and Batu accepted the same day.",
+        "label": "Perri \u2014 in person at her shop (The WonderMart), 1pm. She proposed the slot on 9/11 and Batu accepted the same day.",
         "when": "Thu Sep 17, 1pm",
         "status": "next",
         "date": "2026-09-17"
       },
       {
-        "label": "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
+        "label": "Families morning \u2014 Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
         "when": "Tue Sep 8",
         "status": "later",
         "date": "2026-09-08"
@@ -75,28 +76,28 @@
     {
       "id": "ready",
       "title": "Launch readiness",
-      "window": "Jul 21 – Aug 2",
+      "window": "Jul 21 \u2013 Aug 2",
       "status": "done",
-      "oneLine": "Build everything a launch needs, then close it — L1 through L11."
+      "oneLine": "Build everything a launch needs, then close it \u2014 L1 through L11."
     },
     {
       "id": "cutover",
       "title": "Cutover + rename",
-      "window": "Aug 2 – Aug 6",
+      "window": "Aug 2 \u2013 Aug 6",
       "status": "done",
       "oneLine": "Domain live, brand settled on Stoopwise, analytics following the move."
     },
     {
       "id": "supply",
       "title": "Supply build",
-      "window": "Aug 6 – Aug 11",
+      "window": "Aug 6 \u2013 Aug 11",
       "status": "done",
       "oneLine": "Get the feed strong enough that seeding is worth spending."
     },
     {
       "id": "wave1",
       "title": "Wave 1 seeding",
-      "window": "Aug 13 – Aug 19",
+      "window": "Aug 13 \u2013 Aug 19",
       "status": "live",
       "oneLine": "Three org notes plus warm re-invites and a first outreach into one trust network: parents."
     },
@@ -105,12 +106,12 @@
       "title": "First attribution read",
       "window": "Aug 25",
       "status": "next",
-      "oneLine": "Did the tagged links land? Read as a result — it no longer gates anything (D3 deleted the gate)."
+      "oneLine": "Did the tagged links land? Read as a result \u2014 it no longer gates anything (D3 deleted the gate)."
     },
     {
       "id": "wave2",
       "title": "Parallel reach + the weekly send",
-      "window": "Aug 17 – Sep 8",
+      "window": "Aug 17 \u2013 Sep 8",
       "status": "live",
       "oneLine": "Every channel fires on its own src, the Monday send starts Aug 24, and the parents post lands at back-to-school."
     },
@@ -119,7 +120,7 @@
       "title": "Provisional demand readout",
       "window": "~Sep 15",
       "status": "later",
-      "oneLine": "First look at the demand gate — flagged as provisional, not a verdict."
+      "oneLine": "First look at the demand gate \u2014 flagged as provisional, not a verdict."
     },
     {
       "id": "verdict",
@@ -140,17 +141,17 @@
     {
       "id": "L1-L11",
       "phase": "ready",
-      "title": "Launch readiness items L1–L11",
+      "title": "Launch readiness items L1\u2013L11",
       "status": "done",
       "date": "2026-08-02",
       "goal": "Close every prerequisite before any public exposure: tagged links, share infra, AEO surface, error monitoring, submission path, correction link, freshness alarm, retention sensor, growth operator.",
       "why": "Each one protects a promise the product makes. L10 (correction link) and L11 (freshness alarm) came straight out of the pressure test as the two fatal risks to the word 'verified'.",
-      "source": "runbook §1"
+      "source": "runbook \u00a71"
     },
     {
       "id": "cutover",
       "phase": "cutover",
-      "title": "Domain cutover — launch moment",
+      "title": "Domain cutover \u2014 launch moment",
       "status": "done",
       "date": "2026-08-02",
       "goal": "greenpoint.life serving, apex primary, AEO origin flipped, src tags surviving the redirect hop.",
@@ -164,7 +165,7 @@
       "status": "done",
       "date": "2026-08-06",
       "goal": "Parent brand that survives the next neighborhood; greenpoint.life 308s here.",
-      "why": "'Greenpoint' left the brand, so every title and machine surface now has to carry it explicitly — that keyword is what search and answer engines match on.",
+      "why": "'Greenpoint' left the brand, so every title and machine surface now has to carry it explicitly \u2014 that keyword is what search and answer engines match on.",
       "consequence": "The analytics host list had to be corrected on 8/6. stoopwise.com now carries 57% of all people ever recorded; the pre-correction rule would have dropped them.",
       "source": "log 2026-08-06"
     },
@@ -174,7 +175,7 @@
       "title": "Wave 1 supply gate passed",
       "status": "done",
       "date": "2026-08-07",
-      "goal": "≥35 dated items upcoming in the next 7 days before spending the seeding.",
+      "goal": "\u226535 dated items upcoming in the next 7 days before spending the seeding.",
       "why": "Seeding a trust network is one-shot. An org note that says 'your events are live here' has to be true, and the feed has to reward the click.",
       "outcome": "56 on 8/11 against a bar of 35. Held above the bar since 8/7. Highest ever recorded on every feed measure.",
       "source": "readout Finding 1"
@@ -182,45 +183,45 @@
     {
       "id": "send-ff",
       "phase": "wave1",
-      "title": "First outbound send — friends & family",
+      "title": "First outbound send \u2014 friends & family",
       "status": "done",
       "date": "2026-08-13",
       "goal": "Break the deferred-send streak with the lowest-stakes group, on a tagged link.",
       "why": "Wave 1 had been deferred three times (8/6, 8/11, 8/12). The sneak-peek group is a real send with no cold-outreach risk, and it proves the attribution plumbing on a live audience.",
-      "outcome": "Sent ~6:30pm over WhatsApp on ?src=friends-family. It landed: 15 people, 39 card opens, 4 high-intent actions — the first campaign link in the project's history to produce sessions, and proof the attribution plumbing works before the org notes go out.",
+      "outcome": "Sent ~6:30pm over WhatsApp on ?src=friends-family. It landed: 15 people, 39 card opens, 4 high-intent actions \u2014 the first campaign link in the project's history to produce sessions, and proof the attribution plumbing works before the org notes go out.",
       "source": "log 2026-08-13 (ninth)"
     },
     {
       "id": "advreview",
       "phase": "wave1",
-      "title": "Adversarial review of the seeding motion; P1–P6 ratified",
+      "title": "Adversarial review of the seeding motion; P1\u2013P6 ratified",
       "status": "done",
       "date": "2026-08-15",
       "goal": "Two independent hostile passes over the wave before sending, then pre-register every rule pre-data.",
       "why": "Pre-registration is only legitimate before the data exists. Both passes converged on the same finding: the org notes are low-risk, Q2 is the fragile item.",
-      "outcome": "Wave splits — org notes go now, Q2 moves to back-to-school. Six pre-registrations ratified. Two code items shipped same day.",
+      "outcome": "Wave splits \u2014 org notes go now, Q2 moves to back-to-school. Six pre-registrations ratified. Two code items shipped same day.",
       "source": "roster; log 2026-08-15"
     },
     {
       "id": "strategy-review",
       "phase": "wave1",
-      "title": "Full-stack strategy review; P7–P11 ratified",
+      "title": "Full-stack strategy review; P7\u2013P11 ratified",
       "status": "done",
       "date": "2026-08-15",
       "goal": "Two independent passes (adversarial + 2026 best-practices research) plus a category scan of the deck, the weekend before Wave 1.",
-      "why": "The plan's rules all guarded against wrong readings; the likeliest fall failure was nothing starting — no signups, no R1, no submissions, no medium test. P7–P11 give that case dates, numbers, and agreed meanings, set while pre-data ratification was still legitimate.",
-      "outcome": "P7–P11 ratified; Q2 dated Tue Sep 8; kids roster adds enter the 8/24 ingest; gtm-state became the primary send log with the shared? field. Send kit finalized in the roster. Both reviews endorsed the plan's shape.",
+      "why": "The plan's rules all guarded against wrong readings; the likeliest fall failure was nothing starting \u2014 no signups, no R1, no submissions, no medium test. P7\u2013P11 give that case dates, numbers, and agreed meanings, set while pre-data ratification was still legitimate.",
+      "outcome": "P7\u2013P11 ratified; Q2 dated Tue Sep 8; kids roster adds enter the 8/24 ingest; gtm-state became the primary send log with the shared? field. Send kit finalized in the roster. Both reviews endorsed the plan's shape.",
       "source": "docs/launch/2026-08-15-strategy-review.md; log 2026-08-15 third"
     },
     {
       "id": "strategy-review-817",
       "phase": "wave1",
-      "title": "Full-angle launch review; D1–D6 ratified",
+      "title": "Full-angle launch review; D1\u2013D6 ratified",
       "status": "done",
       "date": "2026-08-17",
-      "goal": "Answer 'have we considered every angle' before spending the seeding — three independent passes plus a live ground-truth sweep of Greenpoint's attention infrastructure.",
+      "goal": "Answer 'have we considered every angle' before spending the seeding \u2014 three independent passes plus a live ground-truth sweep of Greenpoint's attention infrastructure.",
       "why": "Batu asked for blindspots before poking a question and finding one. Passes: a first-principles design blind to our docs, an adversarial review judged only on speed-to-signal, and outside research on how hyperlocal products reached habit. All three converged: the plan acquired visitors and nothing retained them.",
-      "outcome": "D1 re-registered the demand gate as a rate with a floor (pre-Wave-1-data, the last legitimate moment). D2–D6 approved as one act: weekly Monday send from 8/24, parallel reach with the 8/25 gate deleted, legal-only physical channel, five product return/measurement fixes, September supply pulled forward. Four factual claims verified in code first.",
+      "outcome": "D1 re-registered the demand gate as a rate with a floor (pre-Wave-1-data, the last legitimate moment). D2\u2013D6 approved as one act: weekly Monday send from 8/24, parallel reach with the 8/25 gate deleted, legal-only physical channel, five product return/measurement fixes, September supply pulled forward. Four factual claims verified in code first.",
       "source": "docs/launch/2026-08-17-launch-strategy-review.md; docs/launch/2026-08-17-greenpoint-attention-map.md; log 2026-08-17 fifth + sixth"
     },
     {
@@ -230,8 +231,8 @@
       "status": "done",
       "date": "2026-08-18",
       "goal": "Five tagged notes out across the parents trust network plus two warm doors.",
-      "why": "Seeding a trust network is one-shot, so it was spent while the feed was at its best — 70 dated items against a send bar of 35.",
-      "outcome": "friends-family 8/13 · Perri + Action City Comics + Town Square 8/17 · Library + Brooklyn Craft 8/18. One reply so far (Perri, within 36 minutes). Michael and Laura & Edmond are the two warm re-invites still unsent.",
+      "why": "Seeding a trust network is one-shot, so it was spent while the feed was at its best \u2014 70 dated items against a send bar of 35.",
+      "outcome": "friends-family 8/13 \u00b7 Perri + Action City Comics + Town Square 8/17 \u00b7 Library + Brooklyn Craft 8/18. One reply so far (Perri, within 36 minutes). Michael and Laura & Edmond are the two warm re-invites still unsent.",
       "source": "docs/launch/channel-links.md; readout 2026-08-18"
     },
     {
@@ -241,9 +242,9 @@
       "status": "done",
       "date": "2026-08-17",
       "dateLabel": "built 8/17, awaiting review",
-      "goal": "Give the product the re-entry edge it has never had — D5's product week.",
+      "goal": "Give the product the re-entry edge it has never had \u2014 D5's product week.",
       "why": "Every pass on 8/17 said the same thing: the plan acquired visitors and nothing brought them back. No hyperlocal product in the researched record held a weekly habit without a scheduled send.",
-      "outcome": "Merged to main 2026-08-19 (837e7c6). The Follow ask now renders for every visitor and the weekly cadence and /week sheet are live. Thirteen days on, it has produced zero Follow taps — the last tap of any kind was 2026-08-13.",
+      "outcome": "Merged to main 2026-08-19 (837e7c6). The Follow ask now renders for every visitor and the weekly cadence and /week sheet are live. Thirteen days on, it has produced zero Follow taps \u2014 the last tap of any kind was 2026-08-13.",
       "blockedOn": null,
       "source": "log 2026-08-17 sixth (D5)"
     },
@@ -259,10 +260,10 @@
       "owner": "Batu",
       "checks": [
         "npm run preflight:send re-derives counts the morning of send",
-        "link copied verbatim from channel-links.md — never composed by hand"
+        "link copied verbatim from channel-links.md \u2014 never composed by hand"
       ],
       "source": "roster, revised Wave-1 plan",
-      "outcome": "Town Square out 8:53pm — produced one tagged return_visit the same evening. Perri out 4:41pm and replied at 5:17pm. Action City Comics out 4:16pm, no reply. Michael and Laura & Edmond re-invites still not logged as sent."
+      "outcome": "Town Square out 8:53pm \u2014 produced one tagged return_visit the same evening. Perri out 4:41pm and replied at 5:17pm. Action City Comics out 4:16pm, no reply. Michael and Laura & Edmond re-invites still not logged as sent."
     },
     {
       "id": "send-orgs",
@@ -270,9 +271,9 @@
       "title": "Greenpoint Library + Brooklyn Craft notes",
       "status": "done",
       "date": "2026-08-18",
-      "dateLabel": "Tue–Wed 8/18",
+      "dateLabel": "Tue\u2013Wed 8/18",
       "goal": "The two strongest on-map orgs in the parents network get a personal 'your events are live here' note.",
-      "why": "Both score 2·2·2·2 — proven redistribution, real on-map truth, kids programming. Each note now carries the share line, because criterion 1 says the org sharing is the growth event, and two of three drafts previously asked for nothing.",
+      "why": "Both score 2\u00b72\u00b72\u00b72 \u2014 proven redistribution, real on-map truth, kids programming. Each note now carries the share line, because criterion 1 says the org sharing is the growth event, and two of three drafts previously asked for nothing.",
       "owner": "Batu",
       "source": "roster Tier 1",
       "outcome": "Library sent 8/18 via the website contact form (no listed email). Brooklyn Craft sent 8/18 10:36am. Counts regenerated the morning of send: Library 11 cards, Brooklyn Craft 2. Wave 1's org notes are now all out."
@@ -280,7 +281,7 @@
     {
       "id": "readout-818",
       "phase": "wave1",
-      "title": "Tue 8/18 readout — mid-wave, no-read instruction",
+      "title": "Tue 8/18 readout \u2014 mid-wave, no-read instruction",
       "status": "done",
       "date": "2026-08-18",
       "goal": "Pick up the friends-family send. Explicitly do not read Q1/Q2.",
@@ -292,14 +293,14 @@
     {
       "id": "readout-825",
       "phase": "read1",
-      "title": "Tue 8/25 readout — Wave 2 gate",
+      "title": "Tue 8/25 readout \u2014 Wave 2 gate",
       "status": "done",
       "date": "2026-08-25",
       "goal": "Read what Wave 1 produced per src. D3 deleted the gate this readout used to hold, so it reads results and blocks nothing.",
-      "why": "P3 defines 'attribution confirms' as a plumbing test, not a performance test — it is the thing 8/25 can actually measure at this n. Channel performance explicitly does not gate Wave 2.",
-      "branch": "P4 — if all three org srcs show 0 sessions and 0 replies: one follow-up per org that week, and the org-type question goes to Batu with Film Noir as the next test. The org-type kill clock stays suspended for August.",
+      "why": "P3 defines 'attribution confirms' as a plumbing test, not a performance test \u2014 it is the thing 8/25 can actually measure at this n. Channel performance explicitly does not gate Wave 2.",
+      "branch": "P4 \u2014 if all three org srcs show 0 sessions and 0 replies: one follow-up per org that week, and the org-type question goes to Batu with Film Noir as the next test. The org-type kill clock stays suspended for August.",
       "source": "roster P3, P4",
-      "outcome": "Ran on schedule and drafted cycle 7. Its one actioned proposal — send the weekly note — was taken the same day. The readout itself was CLOSED UNMERGED on 2026-09-07 after thirteen days open: 26 commits behind main, conflicting on the cockpit, the GTM state and the learning log, with every finding either restated in cycle 8 or overtaken. Its findings survived; the cycle did not."
+      "outcome": "Ran on schedule and drafted cycle 7. Its one actioned proposal \u2014 send the weekly note \u2014 was taken the same day. The readout itself was CLOSED UNMERGED on 2026-09-07 after thirteen days open: 26 commits behind main, conflicting on the cockpit, the GTM state and the learning log, with every finding either restated in cycle 8 or overtaken. Its findings survived; the cycle did not."
     },
     {
       "id": "q2-preconditions",
@@ -313,22 +314,22 @@
         {
           "label": "Messenger verified as an embedded member",
           "status": "done",
-          "detail": "Closed 2026-08-15 — Rana confirmed as a member of a target group and personally willing. Own words, exact tagged link. AMENDED 2026-08-25: the one-group-only term is lifted — Rana posts to MULTIPLE groups, list from Batu closer to the date. Laura stays the fallback messenger."
+          "detail": "Closed 2026-08-15 \u2014 Rana confirmed as a member of a target group and personally willing. Own words, exact tagged link. AMENDED 2026-08-25: the one-group-only term is lifted \u2014 Rana posts to MULTIPLE groups, list from Batu closer to the date. Laura stays the fallback messenger."
         },
         {
           "label": "?lens=family_kids deep link shipped",
           "status": "done",
-          "detail": "Shipped 2026-08-15 TDD. lensFromSearch in deepLink.js; unknown lens → null → 'all', so a bad link can never narrow the page."
+          "detail": "Shipped 2026-08-15 TDD. lensFromSearch in deepLink.js; unknown lens \u2192 null \u2192 'all', so a bad link can never narrow the page."
         },
         {
           "label": "Facebook in-app webview verified on real iOS + Android",
           "status": "done",
-          "detail": "PARTLY CLOSED 2026-09-08. npm run verify:fb-webview now drives the built site with both engines Facebook embeds — WebKit for its iOS app and Chromium for Android — on every run. The app around the engine is still unchecked and still needs a handset once. ~100% of Q2 taps arrive through it, and it is the same hostile-context class as the 8/13 map bug. If it is broken it presents as a low session count, indistinguishable from a post nobody clicked. CLOSED 2026-09-10 (Batu, on his own iPhone): opened the tagged link from a Facebook post in the Facebook app — the map drew, the Family & Kids chip came up already active, and a card opened. The Facebook Sharing Debugger also re-scraped clean: title, description and the map image all render on the card, where the first post had shown a bare domain because Facebook had not finished fetching that URL when the post rendered. The Android app is still unchecked; its engine is not, since verify:fb-webview drives Chromium. Row updated in environmental-dependencies.md."
+          "detail": "PARTLY CLOSED 2026-09-08. npm run verify:fb-webview now drives the built site with both engines Facebook embeds \u2014 WebKit for its iOS app and Chromium for Android \u2014 on every run. The app around the engine is still unchecked and still needs a handset once. ~100% of Q2 taps arrive through it, and it is the same hostile-context class as the 8/13 map bug. If it is broken it presents as a low session count, indistinguishable from a post nobody clicked. CLOSED 2026-09-10 (Batu, on his own iPhone): opened the tagged link from a Facebook post in the Facebook app \u2014 the map drew, the Family & Kids chip came up already active, and a card opened. The Facebook Sharing Debugger also re-scraped clean: title, description and the map image all render on the card, where the first post had shown a bare domain because Facebook had not finished fetching that URL when the post rendered. The Android app is still unchecked; its engine is not, since verify:fb-webview drives Chromium. Row updated in environmental-dependencies.md."
         },
         {
-          "label": "Rana's group list — determines how many src rows exist",
+          "label": "Rana's group list \u2014 determines how many src rows exist",
           "status": "done",
-          "detail": "CLOSED 2026-09-08 (Batu): the moms groups are ONE source, not one per group. The parents-<slug> scheme is retired — no such row was ever created. Every post carries https://stoopwise.com/?src=parents&lens=family_kids. Q2's decision rule is untouched: it was pre-registered on the POOLED parents family, and a single source is that family. LIST RECEIVED 2026-09-10 (Batu): North Brooklyn Education and Brooklyn Baby Hui are parents groups and carry the parents link, so the one-source ruling stands unchanged. Two of her groups are not about kids — North Brooklyn Civic Crowdsource and Greenpoint Sharing — and those got their own rows, civic-crowdsource (lens=civic) and gp-sharing (no lens), because the parents link would land their readers on the Family & Kids view. Whether Greenpoint Sharing permits outside links is unconfirmed and Rana should check before she posts there."
+          "detail": "CLOSED 2026-09-08 (Batu): the moms groups are ONE source, not one per group. The parents-<slug> scheme is retired \u2014 no such row was ever created. Every post carries https://stoopwise.com/?src=parents&lens=family_kids. Q2's decision rule is untouched: it was pre-registered on the POOLED parents family, and a single source is that family. LIST RECEIVED 2026-09-10 (Batu): North Brooklyn Education and Brooklyn Baby Hui are parents groups and carry the parents link, so the one-source ruling stands unchanged. Two of her groups are not about kids \u2014 North Brooklyn Civic Crowdsource and Greenpoint Sharing \u2014 and those got their own rows, civic-crowdsource (lens=civic) and gp-sharing (no lens), because the parents link would land their readers on the Family & Kids view. Whether Greenpoint Sharing permits outside links is unconfirmed and Rana should check before she posts there."
         }
       ],
       "source": "roster Q2 preconditions"
@@ -341,30 +342,30 @@
       "date": "2026-08-24",
       "dateLabel": "roster adds at the Mon 8/24 ingest",
       "goal": "Four volunteer email lists that collectively reach most 11222 elementary families.",
-      "why": "Schools and youth sports were a total blind spot — zero presence in the docs or on the map. Highest-density parent channels in the neighborhood.",
-      "blockedOn": "PARTLY LANDED 2026-09-07. The roster went 72 -> 91 sources and now carries GWYSL, PLAY Greenpoint and St. Stans Academy, which is what fixed the Sep 7-13 family week (3 dated items at one venue -> 8 across six). STILL ABSENT: PS 110 / PS 34 / PS 31 PTAs, GAMA and District 14 — the school-comms channels specifically, the ones that would carry us into first-week emails. NY Society of Play is carded but is not a roster source, so its listings will go stale rather than refresh. Not a Q2 blocker; a Wave-2 item.",
+      "why": "Schools and youth sports were a total blind spot \u2014 zero presence in the docs or on the map. Highest-density parent channels in the neighborhood.",
+      "blockedOn": "PARTLY LANDED 2026-09-07. The roster went 72 -> 91 sources and now carries GWYSL, PLAY Greenpoint and St. Stans Academy, which is what fixed the Sep 7-13 family week (3 dated items at one venue -> 8 across six). STILL ABSENT: PS 110 / PS 34 / PS 31 PTAs, GAMA and District 14 \u2014 the school-comms channels specifically, the ones that would carry us into first-week emails. NY Society of Play is carded but is not a roster source, so its listings will go stale rather than refresh. Not a Q2 blocker; a Wave-2 item.",
       "source": "roster Tier 2 item 2; strategy review decision 3"
     },
     {
       "id": "readout-901",
       "phase": "wave2",
-      "title": "Tue 9/1 readout — the week before Q2",
+      "title": "Tue 9/1 readout \u2014 the week before Q2",
       "status": "done",
       "date": "2026-09-01",
       "goal": "Read what the first weekly send produced, and what supply the Sep 8 parents post will have to point at.",
       "why": "Q2 posts in seven days and cannot be re-run. This is the last readout that can still change what that week looks like.",
-      "outcome": "ChatGPT sent 7 local readers on 8/29 and every prior readout had reported AI referrals as zero — an instrument defect, now named. The weekly send went 8/25 with a mis-copied link (7 of 15 arrivals on a broken tag) and mostly scanner traffic; the 8/31 send did not go. The feed lost 41% of its dated items in seven days. The demand gate rose to 5 of 22 (23%).",
+      "outcome": "ChatGPT sent 7 local readers on 8/29 and every prior readout had reported AI referrals as zero \u2014 an instrument defect, now named. The weekly send went 8/25 with a mis-copied link (7 of 15 arrivals on a broken tag) and mostly scanner traffic; the 8/31 send did not go. The feed lost 41% of its dated items in seven days. The demand gate rose to 5 of 22 (23%).",
       "source": "docs/growth/readouts/2026-09-01.md"
     },
     {
       "id": "readout-908",
       "phase": "wave2",
-      "title": "Tue 9/8 readout — the morning Q2 posts",
+      "title": "Tue 9/8 readout \u2014 the morning Q2 posts",
       "status": "live",
       "date": "2026-09-08",
       "goal": "Read whether Q2 s preconditions closed, and what the first live Search Console window says.",
       "why": "Q2 posts today and cannot be re-run. Q1 closes at the next readout. This is the cycle where both of Wave 1 s experiments come due.",
-      "outcome": "Search Console readable for the first time — clicks 8 -> 20, position 13.7 -> 10.5, and ZERO generic-intent queries: people find us by name, never by question. ChatGPT grew from one Saturday to 16 people over six days, 9 of them opening a card. The kids-supply problem closed: Sep 7-13 went from 3 dated family items at one venue to 8 across six, deck 133 -> 198. The weekly note sent a second time and carried the same broken link, and two sends have now produced 30 clicks and zero readers. Demand gate 5 of 24 (21%), down two points on a growing denominator.",
+      "outcome": "Search Console readable for the first time \u2014 clicks 8 -> 20, position 13.7 -> 10.5, and ZERO generic-intent queries: people find us by name, never by question. ChatGPT grew from one Saturday to 16 people over six days, 9 of them opening a card. The kids-supply problem closed: Sep 7-13 went from 3 dated family items at one venue to 8 across six, deck 133 -> 198. The weekly note sent a second time and carried the same broken link, and two sends have now produced 30 clicks and zero readers. Demand gate 5 of 24 (21%), down two points on a growing denominator.",
       "source": "docs/growth/readouts/2026-09-08.md"
     }
   ],
@@ -375,64 +376,64 @@
       "loop": "A",
       "status": "shipped",
       "slot": false,
-      "hypothesis": "Not an experiment — the prerequisite. Without it there is no way to see whether anyone comes back, and the demand gate is unreadable.",
+      "hypothesis": "Not an experiment \u2014 the prerequisite. Without it there is no way to see whether anyone comes back, and the demand gate is unreadable.",
       "smallestTest": "localStorage first-seen + visit count. No fingerprinting, no accounts.",
       "rule": "n/a",
       "target": null,
       "actual": "Live since 2026-07-26",
       "readAt": "2026-08-11",
       "verdict": "shipped",
-      "implication": "Unlocks R1, R2 and the demand gate itself. The baseline is still young — nothing before 7/26 is recoverable.",
-      "source": "growth §2"
+      "implication": "Unlocks R1, R2 and the demand gate itself. The baseline is still young \u2014 nothing before 7/26 is recoverable.",
+      "source": "growth \u00a72"
     },
     {
       "id": "R1",
-      "name": "Follow — personalized alert vs broadcast digest",
+      "name": "Follow \u2014 personalized alert vs broadcast digest",
       "loop": "A",
       "status": "not-started",
       "slot": true,
-      "hypothesis": "Re-entry is the weakest edge of the content loop — nothing tells a resident it's a new week. A followed lens or place beats a broadcast digest at bringing them back.",
-      "smallestTest": "Manual segments, 4–5 coarse ones. No backend, no automation build. Batu sends only when something matches.",
-      "rule": "Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 → personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.",
+      "hypothesis": "Re-entry is the weakest edge of the content loop \u2014 nothing tells a resident it's a new week. A followed lens or place beats a broadcast digest at bringing them back.",
+      "smallestTest": "Manual segments, 4\u20135 coarse ones. No backend, no automation build. Batu sends only when something matches.",
+      "rule": "Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 \u2192 personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.",
       "target": "Segmented > broadcast by week 3",
       "actual": "5 signups (+1 on 9/4), 0 segmented. Control arm has now sent twice: 8/25 and 9/1. Across both sends 28 arrivals, 0 card opens, 0 events beyond pageview/return_visit, 27 of 28 out of region.",
       "readAt": "2026-09-08",
       "verdict": "hold",
-      "trigger": "R1's COMPARISON still starts the first Monday after ≥10 signups with ≥1 segmented, 3-week clock from then (P5). D2 (2026-08-17) decoupled the digest itself: it sends weekly from Mon Aug 24 as the retention spine whether or not R1 arms. P7 fallback stands for the comparison.",
-      "implication": "Trigger still unmet on both halves; R1's own 3-week clock untouched and should stay so. The broken tag recurred on the second send — 4 of 13 arrivals (31%) after 7 of 15 (47%) — because the 9/1 email was composed from the 8/25 one, which still carried the bad URL. The fix has to land in the sent email, not only in the readout draft. On two sends' evidence the count of clicks that produced a second in-product event is zero out of thirty, so D9's clicks-vs-list-size rule still cannot be read off it. The deeper constraint is list size: at five subscribers this channel cannot answer D9's question however well it is written.",
-      "source": "growth §2; readout 2026-08-11"
+      "trigger": "R1's COMPARISON still starts the first Monday after \u226510 signups with \u22651 segmented, 3-week clock from then (P5). D2 (2026-08-17) decoupled the digest itself: it sends weekly from Mon Aug 24 as the retention spine whether or not R1 arms. P7 fallback stands for the comparison.",
+      "implication": "Trigger still unmet on both halves; R1's own 3-week clock untouched and should stay so. The broken tag recurred on the second send \u2014 4 of 13 arrivals (31%) after 7 of 15 (47%) \u2014 because the 9/1 email was composed from the 8/25 one, which still carried the bad URL. The fix has to land in the sent email, not only in the readout draft. On two sends' evidence the count of clicks that produced a second in-product event is zero out of thirty, so D9's clicks-vs-list-size rule still cannot be read off it. The deeper constraint is list size: at five subscribers this channel cannot answer D9's question however well it is written.",
+      "source": "growth \u00a72; readout 2026-08-11"
     },
     {
       "id": "Q1",
-      "name": "Org seeding — 3 orgs already on the map",
+      "name": "Org seeding \u2014 3 orgs already on the map",
       "loop": "A/B",
       "status": "sent",
       "slot": true,
       "hypothesis": "A recommendation from inside a small trust network converts where broadcast can't, and costs nothing. An org that shares is a Loop B ignition.",
       "smallestTest": "Three emails. Per-org src row added first.",
       "rule": "Sessions and activation rate per src. Kill an org-type after 2 non-responses.",
-      "target": "≥1 session per sent src within 7 days (P3 mechanism check)",
-      "actual": "All 3 Wave-1 org srcs sent and now silent 18–22 days: Town Square 8/17 (1 person, last event 8/17), Library 8/18 (7 people, 3 card opens, 1 action, last 8/19), Brooklyn Craft 8/18 (8 people, 1 card open, last 8/21). No replies. Nothing has moved in seven days.",
+      "target": "\u22651 session per sent src within 7 days (P3 mechanism check)",
+      "actual": "All 3 Wave-1 org srcs sent and now silent 18\u201322 days: Town Square 8/17 (1 person, last event 8/17), Library 8/18 (7 people, 3 card opens, 1 action, last 8/19), Brooklyn Craft 8/18 (8 people, 1 card open, last 8/21). No replies. Nothing has moved in seven days.",
       "readAt": "2026-09-08",
       "verdict": "continue",
-      "implication": "Mechanism check still passes for all three. Kill rule still does not fire: institution 1, volunteer-org 1, business 1 counted, with Action City Comics excluded by cycle 7's ruling and Perri having replied. Q1 CLOSES AT THE SEP 15 READOUT by the four-week clock from the 8/17 first send, which makes cycle 8's two counting questions load-bearing for the first time — they have been open seven days and decide how Q1 closes. Town Square BK still has zero cards on the map, so preflight:send refuses that target and no follow-up should repeat 'your events are live here'. Q1's slot frees on 9/15, the first honest opening for R4 or per-lens .ics feeds.",
-      "notes": "Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org. D3 (2026-08-17) supersedes P11's trigger: the arts wave no longer waits for Q1 to close — Film Noir sends this week alongside Wave 1, WORD and Flower Cat behind it. Sends consume no experiment slot.",
-      "source": "growth §4; roster P4; strategy review P11; D3"
+      "implication": "Mechanism check still passes for all three. Kill rule still does not fire: institution 1, volunteer-org 1, business 1 counted, with Action City Comics excluded by cycle 7's ruling and Perri having replied. Q1 CLOSES AT THE SEP 15 READOUT by the four-week clock from the 8/17 first send, which makes cycle 8's two counting questions load-bearing for the first time \u2014 they have been open seven days and decide how Q1 closes. Town Square BK still has zero cards on the map, so preflight:send refuses that target and no follow-up should repeat 'your events are live here'. Q1's slot frees on 9/15, the first honest opening for R4 or per-lens .ics feeds.",
+      "notes": "Org-type kill clock suspended for August (silence in vacation season is noise). Taxonomy: institution / business / volunteer-org. D3 (2026-08-17) supersedes P11's trigger: the arts wave no longer waits for Q1 to close \u2014 Film Noir sends this week alongside Wave 1, WORD and Flower Cat behind it. Sends consume no experiment slot.",
+      "source": "growth \u00a74; roster P4; strategy review P11; D3"
     },
     {
       "id": "P9-ig",
-      "name": "Instagram carousel — the medium test",
+      "name": "Instagram carousel \u2014 the medium test",
       "loop": "A",
       "status": "starting",
       "slot": false,
-      "hypothesis": "The neighborhood's attention lives on Instagram, not in browsers (Rana: 'people don't open browsers'). An auto-generated weekly carousel of the week's cards tests whether the CONTENT lands when the CONTAINER changes — the one open question that can invalidate the product's form rather than a feature.",
-      "smallestTest": "Auto-generated from existing cards, 4 weeks, src=ig. No account grinding — that stays banned.",
+      "hypothesis": "The neighborhood's attention lives on Instagram, not in browsers (Rana: 'people don't open browsers'). An auto-generated weekly carousel of the week's cards tests whether the CONTENT lands when the CONTAINER changes \u2014 the one open question that can invalidate the product's form rather than a feature.",
+      "smallestTest": "Auto-generated from existing cards, 4 weeks, src=ig. No account grinding \u2014 that stays banned.",
       "rule": "In-feed engagement vs. tagged sessions. A carousel that engages while the site stays flat is evidence about the container, not the content.",
       "target": null,
       "actual": null,
       "readAt": null,
       "verdict": "not yet read",
-      "implication": "D3 moved this off P9's trigger ('Oct 6, only if tagged sessions are under 50'), which had scheduled our biggest open question as a consolation prize for failure — and would have suppressed it permanently on a merely-mediocre result. Its answer is worth most while it can still shape September.",
+      "implication": "D3 moved this off P9's trigger ('Oct 6, only if tagged sessions are under 50'), which had scheduled our biggest open question as a consolation prize for failure \u2014 and would have suppressed it permanently on a merely-mediocre result. Its answer is worth most while it can still shape September.",
       "caveat": "A carousel measures in-feed engagement, not whether anyone would return to anything. Pair its read with the digest's open-vs-click, which is the cleaner medium instrument.",
       "source": "strategy review D3; growth 'Explicitly not doing'; learning-log Q1",
       "notes": "D9 (2026-08-19) pre-registered how this instrument reads alongside the digest: its in-feed-engagement-vs-tagged-sessions rule now feeds the container trigger, and its result can close learning-log Q1 either way. See rules.medium-pivot-preregistered."
@@ -444,21 +445,21 @@
       "status": "live",
       "slot": true,
       "hypothesis": "Parents/camps is the sharpest unmet need in the neighborhood (the Sawyer gap). A member-share in a parent group reaches them where they already ask 'what do we do this weekend'.",
-      "smallestTest": "Rana posts in her own words to the parents groups, every post carrying the same link. Link changed 2026-09-11 to https://stoopwise.com/kids?src=parents — a real prerendered page, so the post previews as \"Kids events in Greenpoint, Brooklyn this week\" rather than the generic site headline. One source for all groups (Batu, 2026-09-08).",
-      "rule": "Pooled parents sessions + week-2 return vs the other srcs. Double down only if it beats them. PRE-REGISTERED 2026-08-25 and unaffected by the 2026-09-08 one-source ruling: the decision always read the pooled parents family, and a single src is that family. What is given up is the per-group diagnostic, which could never fire the rule on its own at n≈3.",
+      "smallestTest": "Rana posts in her own words to the parents groups, every post carrying the same link. Link changed 2026-09-11 to https://stoopwise.com/kids?src=parents \u2014 a real prerendered page, so the post previews as \"Kids events in Greenpoint, Brooklyn this week\" rather than the generic site headline. One source for all groups (Batu, 2026-09-08).",
+      "rule": "Pooled parents sessions + week-2 return vs the other srcs. Double down only if it beats them. PRE-REGISTERED 2026-08-25 and unaffected by the 2026-09-08 one-source ruling: the decision always read the pooled parents family, and a single src is that family. What is given up is the per-group diagnostic, which could never fire the rule on its own at n\u22483.",
       "target": "Week-2 return beats other srcs",
-      "actual": "POSTED 2026-09-11 around noon. Seven hours later: 203 distinct people on the day against a previous best of 27, with 181 of them on the parents tag, 156 card opens, 28 action taps and 10 signup-ask taps. Nine signups, all tagged parents, eight following the family_kids lens — the list goes 5 -> 13. Most-opened cards are the Calyer Street block party (24), the Goddard day of fun (22) and the McCarren pool last week (20); fall registration, which the post led with, comes fourth. NO VERDICT YET: the rule is pooled parents sessions plus WEEK-2 RETURN against the other srcs, and week 2 has not happened. 18 people arrived on backtick-suffixed tags and are not counted above.",
+      "actual": "POSTED 2026-09-11 around noon. Seven hours later: 203 distinct people on the day against a previous best of 27, with 181 of them on the parents tag, 156 card opens, 28 action taps and 10 signup-ask taps. Nine signups, all tagged parents, eight following the family_kids lens \u2014 the list goes 5 -> 13. Most-opened cards are the Calyer Street block party (24), the Goddard day of fun (22) and the McCarren pool last week (20); fall registration, which the post led with, comes fourth. NO VERDICT YET: the rule is pooled parents sessions plus WEEK-2 RETURN against the other srcs, and week 2 has not happened. 18 people arrived on backtick-suffixed tags and are not counted above.",
       "readAt": null,
       "verdict": "not yet read",
-      "scheduledFor": "Tue Sep 8 (ratified 2026-08-15; scope widened 2026-08-25 — Sep 7-8 is now the start of ALL parents-facing awareness, not just this post. Sep 7 is Labor Day and school opens Thu Sep 10, so the usable days are Tue 9/8 and Wed 9/9.)",
-      "implication": "Supply is no longer a reason to hold. ONE precondition remains open: the Facebook app itself on a real handset — the engines are checked, the app around them is not, and nearly every arrival from this post lands there. If it is broken it presents as a low session count, indistinguishable from a post nobody clicked. Window is Tue 9/8 and Wed 9/9; Monday was Labor Day and school opens Thursday. First read Sep 15, week-2 return ~Sep 22.",
-      "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels (P1). Multiple groups make that worse, not better: a larger share of the October cohort now arrives through one webview, so a measurement artifact could depress the demand gate itself rather than just one channel's read. Groups also overlap in membership — the same parent may see the post several times, which is a cost to Rana's standing, not ours to spend. Cohorts entering Sep 8 also sit at the top of the September rebound, which flatters return against a year-round baseline; the two effects pull opposite ways on the same people.",
-      "source": "growth §4; roster",
+      "scheduledFor": "Tue Sep 8 (ratified 2026-08-15; scope widened 2026-08-25 \u2014 Sep 7-8 is now the start of ALL parents-facing awareness, not just this post. Sep 7 is Labor Day and school opens Thu Sep 10, so the usable days are Tue 9/8 and Wed 9/9.)",
+      "implication": "Supply is no longer a reason to hold. ONE precondition remains open: the Facebook app itself on a real handset \u2014 the engines are checked, the app around them is not, and nearly every arrival from this post lands there. If it is broken it presents as a low session count, indistinguishable from a post nobody clicked. Window is Tue 9/8 and Wed 9/9; Monday was Labor Day and school opens Thursday. First read Sep 15, week-2 return ~Sep 22.",
+      "caveat": "Facebook webview localStorage fragmentation systematically deflates Q2's return metric relative to email-borne org channels (P1). Multiple groups make that worse, not better: a larger share of the October cohort now arrives through one webview, so a measurement artifact could depress the demand gate itself rather than just one channel's read. Groups also overlap in membership \u2014 the same parent may see the post several times, which is a cost to Rana's standing, not ours to spend. Cohorts entering Sep 8 also sit at the top of the September rebound, which flatters return against a year-round baseline; the two effects pull opposite ways on the same people.",
+      "source": "growth \u00a74; roster",
       "preconditions": [
-        "Facebook in-app browser — engine level DONE 2026-09-08 (npm run verify:fb-webview, both engines, in the verify chain). App-level behaviour still open: open the link in Messenger on a real handset once.",
-        "Dated family/kids cards live for Sep 7-13 — DONE 2026-09-08, 8 dated in Sep 8-13",
-        "School-year sources on the ingest roster — eight family/kids sources added 2026-09-07",
-        "Group list and src rows — RESOLVED 2026-09-08 by the one-source ruling; the link is in channel-links.md and needs nothing from Rana but her own words",
+        "Facebook in-app browser \u2014 engine level DONE 2026-09-08 (npm run verify:fb-webview, both engines, in the verify chain). App-level behaviour still open: open the link in Messenger on a real handset once.",
+        "Dated family/kids cards live for Sep 7-13 \u2014 DONE 2026-09-08, 8 dated in Sep 8-13",
+        "School-year sources on the ingest roster \u2014 eight family/kids sources added 2026-09-07",
+        "Group list and src rows \u2014 RESOLVED 2026-09-08 by the one-source ruling; the link is in channel-links.md and needs nothing from Rana but her own words",
         "Signup-ask rebuild merged and live by ~Sep 4, soaked on smaller traffic first",
         "Redistributor asks out ~Sep 1-3 (library children's librarian, three PTAs, Town Square, class providers)"
       ]
@@ -471,14 +472,14 @@
       "slot": false,
       "hypothesis": "Cards published as static structured HTML get cited by search engines and AI assistants, bringing residents at zero cost to acquire.",
       "smallestTest": "Already shipped. Watch organic sessions monthly.",
-      "rule": "No kill rule — owned infrastructure.",
+      "rule": "No kill rule \u2014 owned infrastructure.",
       "target": "Organic sessions trending up",
-      "actual": "ChatGPT 16 people over six days (8/29–9/7), 9 of 16 opening a card, 22 opens. Search: 20 clicks and 425 impressions in the 8/30–9/5 window against 8 and 248 the week before, average position 13.7 -> 10.5. Google 45 people, 91% local.",
+      "actual": "ChatGPT 16 people over six days (8/29\u20139/7), 9 of 16 opening a card, 22 opens. Search: 20 clicks and 425 impressions in the 8/30\u20139/5 window against 8 and 248 the week before, average position 13.7 -> 10.5. Google 45 people, 91% local.",
       "readAt": "2026-09-08",
       "verdict": "not yet read",
-      "implication": "Fifth positive read, and the first that survives its own caveat — the assistant traffic is no longer one day. Against that, the first live Search Console read says ZERO generic-intent queries: all 13 are place-name or event lookups, so Google is not sending us 'what's happening in Greenpoint' traffic, it is sending people who already have a name in their head. Loop C is working, but through the corpus rather than through the question the loop was drawn around. Recorded, not graduated; no kill rule by design.",
-      "notes": "Crawl latency measured at ~4 days — survivable for a card dated a week out, fatal for one posted the morning of. That is an ingest lead-time fact. P10 (2026-08-15): citations and AI-referrer sessions get their own readout lines — citations up with sessions flat is the loop working zero-click, never a fail read; llms.txt booked at zero.",
-      "source": "growth §4; readout Finding 2; strategy review P10"
+      "implication": "Fifth positive read, and the first that survives its own caveat \u2014 the assistant traffic is no longer one day. Against that, the first live Search Console read says ZERO generic-intent queries: all 13 are place-name or event lookups, so Google is not sending us 'what's happening in Greenpoint' traffic, it is sending people who already have a name in their head. Loop C is working, but through the corpus rather than through the question the loop was drawn around. Recorded, not graduated; no kill rule by design.",
+      "notes": "Crawl latency measured at ~4 days \u2014 survivable for a card dated a week out, fatal for one posted the morning of. That is an ingest lead-time fact. P10 (2026-08-15): citations and AI-referrer sessions get their own readout lines \u2014 citations up with sessions flat is the loop working zero-click, never a fail read; llms.txt booked at zero.",
+      "source": "growth \u00a74; readout Finding 2; strategy review P10"
     },
     {
       "id": "A1",
@@ -486,7 +487,7 @@
       "loop": "A",
       "status": "analysis",
       "slot": false,
-      "hypothesis": "Where do first sessions stall — before the first card open, or between open and act?",
+      "hypothesis": "Where do first sessions stall \u2014 before the first card open, or between open and act?",
       "smallestTest": "Analysis only, inside the readouts. No build until this is read.",
       "rule": "Produces the target for A2.",
       "target": null,
@@ -494,7 +495,7 @@
       "readAt": "2026-09-08",
       "verdict": "provisional",
       "implication": "Eighth reading at growing n, all eight agree: the stall is before the first card open. Locals have now held at 29% card-open conversion for three consecutive cycles while the population grew by 54, which makes it a property of the product rather than of a cohort. The two populations that do not stall there are assistant arrivals (9 of 16) and search arrivals.",
-      "source": "growth §3; readout"
+      "source": "growth \u00a73; readout"
     },
     {
       "id": "A2",
@@ -510,7 +511,7 @@
       "readAt": null,
       "verdict": "not yet read",
       "implication": "Waits for a free slot. All three are spoken for the moment Wave 1 fires.",
-      "source": "growth §3"
+      "source": "growth \u00a73"
     },
     {
       "id": "A3",
@@ -525,8 +526,8 @@
       "actual": null,
       "readAt": null,
       "verdict": "deferred",
-      "implication": "Deferred until ≥50 sessions/week. Below that it's noise.",
-      "source": "growth §3"
+      "implication": "Deferred until \u226550 sessions/week. Below that it's noise.",
+      "source": "growth \u00a73"
     },
     {
       "id": "R2",
@@ -542,7 +543,7 @@
       "readAt": null,
       "verdict": "not yet read",
       "implication": "Needs a returner population to exist first. Today's WRL proxy is 2 people.",
-      "source": "growth §2"
+      "source": "growth \u00a72"
     },
     {
       "id": "R3",
@@ -558,7 +559,7 @@
       "readAt": null,
       "verdict": "standing instrument",
       "implication": "The causal question is the demand-side twin of the unique-coverage count, and verbatim the strongest line pilot evidence can carry.",
-      "source": "growth §2"
+      "source": "growth \u00a72"
     },
     {
       "id": "R4",
@@ -574,7 +575,7 @@
       "readAt": null,
       "verdict": "registered, not live",
       "implication": "Enters via a Tuesday proposal when a max-3 slot opens; Batu ratifies.",
-      "source": "growth §2, registered 2026-08-13"
+      "source": "growth \u00a72, registered 2026-08-13"
     }
   ],
   "gates": [
@@ -582,47 +583,47 @@
       "id": "demand",
       "name": "Demand",
       "order": 1,
-      "bar": "PMF gate (re-registered 2026-08-17, D1): of locals who visit twice, ≥25% return in ≥3 of any 4 consecutive weeks, floor 12 people. Business-viability line, retained: ≥30 weekly returning locals. A tagged email click counts as a return; site-direct returns reported separately. 'Majority unprompted' removed from the gate clause — organic share stays a watched line under P1.",
+      "bar": "PMF gate (re-registered 2026-08-17, D1): of locals who visit twice, \u226525% return in \u22653 of any 4 consecutive weeks, floor 12 people. Business-viability line, retained: \u226530 weekly returning locals. A tagged email click counts as a return; site-direct returns reported separately. 'Majority unprompted' removed from the gate clause \u2014 organic share stays a watched line under P1.",
       "metric": "Return rate among twice-visiting locals (gate) + weekly returning locals (viability line)",
-      "actual": "5 of 24 locals (21%) against >=25%; floor 5 against >=12. WRL proxy 8 people, distance −22.",
+      "actual": "5 of 24 locals (21%) against >=25%; floor 5 against >=12. WRL proxy 8 people, distance \u221222.",
       "readAt": "2026-09-08",
       "status": "pending",
       "readsOn": "~Sep 15 provisional; firm verdict ~late Oct after two mature 4-week cohorts",
       "unlocks": "Permission to ship any paid surface. Nothing paid goes live before this passes.",
-      "why": "This is the number the whole business prices off — Layer 1 renewals and all of Layer 2. It's the tightest coupling between the growth plan and the business model.",
-      "notes": "Rate slipped two points on a denominator that grew by two while the numerator held at five. Both parts still unmet. Structurally immune to the automated traffic in the shallow-shaped split — a stateless fetcher can never produce a return_visit with weekIndex >= 1. Safari label applies and widened this week: the true rate is at or above this, never below.",
+      "why": "This is the number the whole business prices off \u2014 Layer 1 renewals and all of Layer 2. It's the tightest coupling between the growth plan and the business model.",
+      "notes": "Rate slipped two points on a denominator that grew by two while the numerator held at five. Both parts still unmet. Structurally immune to the automated traffic in the shallow-shaped split \u2014 a stateless fetcher can never produce a return_visit with weekIndex >= 1. Safari label applies and widened this week: the true rate is at or above this, never below.",
       "labels": [
-        "Broadcast-seed contamination (P1) — now applies to the organic-share watched line, not the gate clause (D1 removed 'majority unprompted' from the gate)",
+        "Broadcast-seed contamination (P1) \u2014 now applies to the organic-share watched line, not the gate clause (D1 removed 'majority unprompted' from the gate)",
         "September rebound confound",
-        "No gate read on raw Dec–Feb numbers"
+        "No gate read on raw Dec\u2013Feb numbers"
       ],
-      "source": "model §4; growth §1"
+      "source": "model \u00a74; growth \u00a71"
     },
     {
       "id": "distribution",
       "name": "Distribution",
       "order": 2,
-      "bar": "≥2 channels repeatedly producing activated users without founder-intensive outreach",
+      "bar": "\u22652 channels repeatedly producing activated users without founder-intensive outreach",
       "metric": "Per-src sessions and activation, by channel over time",
-      "actual": "6 srcs sent, 5 have produced a session (friends-family, org-town-square, org-gp-library, org-brooklyn-craft, digest — though every digest arrival is a scanner). Non-founder channels: Google 45 people, Bing 14, DuckDuckGo 1, Ecosia 1, and ChatGPT 16 across six days. Search Console readable for the first time: 20 clicks, 425 impressions, position 10.5.",
+      "actual": "6 srcs sent, 5 have produced a session (friends-family, org-town-square, org-gp-library, org-brooklyn-craft, digest \u2014 though every digest arrival is a scanner). Non-founder channels: Google 45 people, Bing 14, DuckDuckGo 1, Ecosia 1, and ChatGPT 16 across six days. Search Console readable for the first time: 20 clicks, 425 impressions, position 10.5.",
       "readAt": "2026-09-08",
       "status": "pending",
       "unlocks": "Confidence that growth isn't Batu's inbox. Feeds the distribution deliverable every pilot has to carry.",
       "why": "'Repeatedly, without founder-intensive outreach' is the whole test. Batu sending three emails is not a channel.",
-      "source": "model §4"
+      "source": "model \u00a74"
     },
     {
       "id": "supply",
       "name": "Supply",
       "order": 3,
-      "bar": "≥5 businesses or orgs proactively submitted or asked in; ≥1 recurring submitter",
+      "bar": "\u22655 businesses or orgs proactively submitted or asked in; \u22651 recurring submitter",
       "metric": "Proactive supply actors per month",
       "actual": "0 submissions via the in-product form (10 visits, 0 starts). 2 informal asks-in arrived off Rana's 2026-09-11 post and both were measured 2026-09-12: ABC Cirque (Facebook DM to Rana) is now a roster source, inside the bbox and robots-clean; the TALEA ask is held on the not-a-chain test with a recommendation not to add. Neither came through the path built for submissions.",
       "readAt": "2026-09-12",
       "status": "pending",
-      "unlocks": "The only loop that lowers marginal cost — direct submissions displace ingest labor.",
-      "why": "Businesses currently have no reason to know the path exists. The missing mechanism is proof of value back to the supplier: submission → publication receipt → measured outcome report. Zero build, starts as soon as there's engagement to report.",
-      "source": "model §4; growth §1 Loop B"
+      "unlocks": "The only loop that lowers marginal cost \u2014 direct submissions displace ingest labor.",
+      "why": "Businesses currently have no reason to know the path exists. The missing mechanism is proof of value back to the supplier: submission \u2192 publication receipt \u2192 measured outcome report. Zero build, starts as soon as there's engagement to report.",
+      "source": "model \u00a74; growth \u00a71 Loop B"
     },
     {
       "id": "commercial",
@@ -630,166 +631,162 @@
       "order": 4,
       "bar": "3 paid pilots or signed LOIs from a defined buyer profile",
       "metric": "Signed pilots / LOIs",
-      "actual": "Parked. All monetization decisions parked 2026-07-28 — sole priority is launch → learn → PMF.",
+      "actual": "Parked. All monetization decisions parked 2026-07-28 \u2014 sole priority is launch \u2192 learn \u2192 PMF.",
       "readAt": "2026-07-28",
       "status": "parked",
       "killDate": "2027-02-15",
-      "unlocks": "The paid layers, in order: Founding Pilots → Founding Partners → self-serve business layer → spatial intelligence.",
+      "unlocks": "The paid layers, in order: Founding Pilots \u2192 Founding Partners \u2192 self-serve business layer \u2192 spatial intelligence.",
       "why": "Resident counts never open this gate; only paying buyers do. 30 returning residents prove someone values the product, not that anyone will pay for it.",
-      "notes": "Kill date is Feb 15 2027, not December — institutional budgets set in Q4 activate in January, so a December 'no' is most likely 'not this budget year'. The kill is reason-conditional: budget-timing deferrals don't count as rejections.",
-      "source": "model §4"
+      "notes": "Kill date is Feb 15 2027, not December \u2014 institutional budgets set in Q4 activate in January, so a December 'no' is most likely 'not this budget year'. The kill is reason-conditional: budget-timing deferrals don't count as rejections.",
+      "source": "model \u00a74"
     }
   ],
   "metrics": [
+    {
+      "id": "reach",
+      "label": "People reached",
+      "computed": true,
+      "role": "cumulative reach",
+      "target": null,
+      "caveat": "All-time, production hosts only, data-centre traffic excluded (DECISION_LOG 2026-09-13)."
+    },
     {
       "id": "demandgate",
       "label": "Demand gate (D1 rate)",
       "value": "5 of 24 locals (21%)",
       "prior": "5 of 22 (23%) on 9/1",
-      "target": "≥25%, floor ≥12 people",
+      "target": "\u226525%, floor \u226512 people",
       "trend": "down",
       "role": "the gate itself",
-      "caveat": "Rate slipped two points because the denominator grew by two and the numerator held at five. At n=24 one person is four points, so this is a denominator story, not decay. Floor 5 against 12, so the gate as a whole stays unmet on both parts. 6.9 weeks of data. 'Locals' = $geoip_subdivision_1_name in NY/NJ/CT. Carry the Safari label: the true rate is at or above this, never below."
+      "caveat": "Rate slipped two points because the denominator grew by two and the numerator held at five. At n=24 one person is four points, so this is a denominator story, not decay. Floor 5 against 12, so the gate as a whole stays unmet on both parts. 6.9 weeks of data. 'Locals' = $geoip_subdivision_1_name in NY/NJ/CT. Carry the Safari label: the true rate is at or above this, never below.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "wrl",
       "label": "WRL proxy (viability line)",
-      "value": "8 people · 20 events",
-      "prior": "7 people · 17 events",
-      "target": "≥30",
+      "value": "8 people \u00b7 20 events",
+      "prior": "7 people \u00b7 17 events",
+      "target": "\u226530",
       "trend": "up",
       "role": "distance to viability",
-      "caveat": "Distance to 30: −22. Immune to automated traffic — a stateless fetcher cannot produce a return_visit at weekIndex >= 1."
+      "caveat": "Distance to 30: \u221222. Immune to automated traffic \u2014 a stateless fetcher cannot produce a return_visit at weekIndex >= 1.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "ffcohort",
       "label": "friends-family cohort",
-      "value": "18 people · 68 card opens · 8 action taps + 1 CTA · 3 return-week events from 2 people",
-      "prior": "16 people · 44 card opens · 4 actions · 1 return at week 2",
+      "value": "18 people \u00b7 68 card opens \u00b7 8 action taps + 1 CTA \u00b7 3 return-week events from 2 people",
+      "prior": "16 people \u00b7 44 card opens \u00b7 4 actions \u00b7 1 return at week 2",
       "target": "return in week 1",
       "trend": "up",
       "role": "the first cohort we can watch",
-      "caveat": "Two of eighteen have now produced a return-week event, up from one; card opens rose 44 to 68. Still a miss against cycle 7 s read, but no longer a single person. Last cohort event 2026-09-04."
+      "caveat": "Two of eighteen have now produced a return-week event, up from one; card opens rose 44 to 68. Still a miss against cycle 7 s read, but no longer a single person. Last cohort event 2026-09-04.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "qar",
       "label": "Qualified-action rate",
-      "value": "35 of 482 sessions (7.3%)",
-      "prior": "29 of 405 (7.2%)",
       "target": null,
-      "trend": "flat",
       "role": "the action lens",
-      "caveat": "Session-level, so not comparable to the per-person activation row."
+      "caveat": "Session-level, so not comparable to the per-person activation row.",
+      "computed": true
     },
     {
       "id": "activation",
       "label": "Activation rate",
-      "value": "9% locals (12 of 139)",
-      "prior": "9% locals (10 of 112) on 9/1",
       "target": null,
-      "trend": "flat",
       "role": "aha proxy",
-      "caveat": "All-production reads 5% (17 of 329). First cycle since 8/25 where the numerator moved as well as the denominator. Directional only pre-Wave-1 per the 8/6 ruling. 236 of 329 people are shallow-shaped, so every all-production rate is a floor."
+      "caveat": "All-production reads 5% (17 of 329). First cycle since 8/25 where the numerator moved as well as the denominator. Directional only pre-Wave-1 per the 8/6 ruling. 236 of 329 people are shallow-shaped, so every all-production rate is a floor.",
+      "computed": true
     },
     {
       "id": "cardopen",
       "label": "Card-open conversion",
-      "value": "29% locals (41 of 139)",
-      "prior": "29% locals (32 of 112)",
       "target": null,
-      "trend": "flat",
       "role": "funnel read (A1)",
-      "caveat": "All-production 58 of 329 (18%). Eighth reading; all eight agree the stall is before the first card open. Locals flat at 29% across three cycles. Assistant and search arrivals are the two populations that do not stall there — 9 of 16 ChatGPT arrivals opened a card."
+      "caveat": "All-production 58 of 329 (18%). Eighth reading; all eight agree the stall is before the first card open. Locals flat at 29% across three cycles. Assistant and search arrivals are the two populations that do not stall there \u2014 9 of 16 ChatGPT arrivals opened a card.",
+      "computed": true
     },
     {
       "id": "organic",
       "label": "Organic sessions (Loop C)",
-      "value": "45 people from Google · 41 local (91%) · Bing 14 · DuckDuckGo 1 · Ecosia 1 — 61 on a search referrer",
-      "prior": "38 people from Google · 35 local · Bing 8 · Ecosia 1",
       "target": ">50% of acquisition",
-      "trend": "up",
       "role": "Loop C compounding metric",
-      "caveat": "Fifth consecutive rise, 91% local. DuckDuckGo appears for the first time: one person, 22 events, 19 card opens — the deepest single session in the data. Search Console is now readable (see the search metric); the citation check is 22 days overdue but its search half is now a script."
+      "caveat": "Fifth consecutive rise, 91% local. DuckDuckGo appears for the first time: one person, 22 events, 19 card opens \u2014 the deepest single session in the data. Search Console is now readable (see the search metric); the citation check is 22 days overdue but its search half is now a script.",
+      "computed": true
     },
     {
       "id": "search",
-      "label": "Search Console — clicks / impressions / CTR / position",
-      "value": "20 clicks · 425 impressions · 4.7% CTR · position 10.5",
-      "prior": "8 · 248 · 3.2% · 13.7 (the prior GSC window, 8/23–8/29)",
+      "label": "Search Console \u2014 clicks / impressions / CTR / position",
+      "value": "20 clicks \u00b7 425 impressions \u00b7 4.7% CTR \u00b7 position 10.5",
+      "prior": "8 \u00b7 248 \u00b7 3.2% \u00b7 13.7 (the prior GSC window, 8/23\u20138/29)",
       "target": null,
       "trend": "up",
-      "role": "Loop C — the search half, readable for the first time",
-      "caveat": "First live read: GSC_SITE_URL and GSC_SERVICE_ACCOUNT_JSON are now in the routine's environment, so two cycles of [data pending: search] end here. Window 8/30–9/5 against 8/23–8/29 (the script ends 3 days back because GSC finalises on a lag). Query split: 13 place-name/other, ZERO generic-intent, zero brand — nobody reaches us by asking a general question; they look up a place or event they already have a name for. 12 of the 20 clicks land on two news cards, /e/sereneco-franklin-st-fire and /e/kirbees-opening, in the lens that has 33 cards and has never carried a dated item. No high-impression zero-click pages."
+      "role": "Loop C \u2014 the search half, readable for the first time",
+      "caveat": "First live read: GSC_SITE_URL and GSC_SERVICE_ACCOUNT_JSON are now in the routine's environment, so two cycles of [data pending: search] end here. Window 8/30\u20139/5 against 8/23\u20138/29 (the script ends 3 days back because GSC finalises on a lag). Query split: 13 place-name/other, ZERO generic-intent, zero brand \u2014 nobody reaches us by asking a general question; they look up a place or event they already have a name for. 12 of the 20 clicks land on two news cards, /e/sereneco-franklin-st-fire and /e/kirbees-opening, in the lens that has 33 cards and has never carried a dated item. No high-impression zero-click pages.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "airef",
       "label": "AI-assistant referrals (P10)",
-      "value": "16 people · 78 events · 19 pages · six days, 8/29–9/7 — all ChatGPT",
-      "prior": "7 people · 43 events · 13 pages — all 2026-08-29",
+      "value": "16 people \u00b7 78 events \u00b7 19 pages \u00b7 six days, 8/29\u20139/7 \u2014 all ChatGPT",
+      "prior": "7 people \u00b7 43 events \u00b7 13 pages \u2014 all 2026-08-29",
       "target": null,
       "trend": "up",
-      "role": "P10 line — the zero-click half of Loop C",
-      "caveat": "No longer one day. 15 of 16 are New York, 14 on Mobile Safari; 9 of 16 opened a card (22 opens) against 29% for locals overall, so the conversion advantage held as the population doubled. Counted on utm_source=chatgpt.com OR $referring_domain=chatgpt.com — both keys are needed, two arrivals now carry a real referrer and fourteen do not. Still hand-queried: the one-line instrument fix to posthog-pull.sh is unmerged."
+      "role": "P10 line \u2014 the zero-click half of Loop C",
+      "caveat": "No longer one day. 15 of 16 are New York, 14 on Mobile Safari; 9 of 16 opened a card (22 opens) against 29% for locals overall, so the conversion advantage held as the population doubled. Counted on utm_source=chatgpt.com OR $referring_domain=chatgpt.com \u2014 both keys are needed, two arrivals now carry a real referrer and fourteen do not. Still hand-queried: the one-line instrument fix to posthog-pull.sh is unmerged.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "feed",
       "label": "Dated items, next 7 days",
-      "value": "74",
-      "prior": "41",
-      "target": "≥35 to send",
-      "trend": "up",
+      "target": "\u226535 to send",
       "role": "supply-side leading indicator",
-      "caveat": "check-freshness.mjs reads FRESH and the decline warning has cleared (trend 70 -> 74 over 14d, -6%). Two short of the restated 76 baseline; well above the >=35 send bar. Caveat: today's ingest run halted on an unreadable roster (PR #64), so this is last night's feed."
+      "caveat": "check-freshness.mjs reads FRESH and the decline warning has cleared (trend 70 -> 74 over 14d, -6%). Two short of the restated 76 baseline; well above the >=35 send bar. Caveat: today's ingest run halted on an unreadable roster (PR #64), so this is last night's feed.",
+      "computed": true
     },
     {
       "id": "reservoir",
-      "label": "Reservoir, 7–14 days out",
-      "value": "32",
-      "prior": "18",
+      "label": "Reservoir, 7\u201314 days out",
       "target": null,
-      "trend": "up",
       "role": "says whether the peak survives",
-      "caveat": "Nearly doubled on the week alongside a dated-upcoming count that rose 80%. The far end of the window is filled to 2026-09-30 on the family lens."
+      "caveat": "Nearly doubled on the week alongside a dated-upcoming count that rose 80%. The far end of the window is filled to 2026-09-30 on the family lens.",
+      "computed": true
     },
     {
       "id": "cards",
       "label": "Cards on the map",
-      "value": "198",
-      "prior": "133",
       "target": null,
-      "trend": "up",
       "role": "coverage",
-      "caveat": "Up 36 on the restated 162 baseline and up 65 in a week, from the 9/7 school-opening push (19 new roster sources, iCalendar ingest, Bushwick Inlet Park ruled in scope). Every lens grew or held; civic more than doubled and is out of the thin band it sat in for five cycles."
+      "caveat": "Up 36 on the restated 162 baseline and up 65 in a week, from the 9/7 school-opening push (19 new roster sources, iCalendar ingest, Bushwick Inlet Park ruled in scope). Every lens grew or held; civic more than doubled and is out of the thin band it sat in for five cycles.",
+      "computed": true
     },
     {
       "id": "unique",
       "label": "Unique coverage",
-      "value": "159 of 198 (80%)",
-      "prior": "100 of 133 (75%)",
       "target": null,
-      "trend": "up",
       "role": "the differentiation proof",
-      "caveat": "Quoted from uniqueCoverage() via npm run ingest:coverage, not re-derived (ratified 2026-08-19). Rose with the deck: the new family/kids sources are mostly venues and organisers, not aggregators."
+      "caveat": "Quoted from uniqueCoverage() via npm run ingest:coverage, not re-derived (ratified 2026-08-19). Rose with the deck: the new family/kids sources are mostly venues and organisers, not aggregators.",
+      "computed": true
     },
     {
       "id": "signups",
       "label": "Signup list (R1 denominator)",
-      "value": "5 completions · 0 segmented",
-      "prior": "4 · 0",
-      "target": "≥10 with ≥1 segmented",
-      "trend": "up",
+      "target": "\u226510 with \u22651 segmented",
       "role": "R1 trigger",
-      "caveat": "First new signup since 8/13, on 2026-09-04, the same day as the first Follow tap in three weeks (from the feed placement, where no previous tap came from). 33 form visits. All three follow values read {\"follow\":\"all\"}, so segmented stays zero and the R1 trigger (>=10 with >=1 segmented) is unmet on both halves."
+      "caveat": "First new signup since 8/13, on 2026-09-04, the same day as the first Follow tap in three weeks (from the feed placement, where no previous tap came from). 33 form visits. All three follow values read {\"follow\":\"all\"}, so segmented stays zero and the R1 trigger (>=10 with >=1 segmented) is unmet on both halves.",
+      "computed": true
     },
     {
       "id": "supplyasks",
       "label": "Supply-side asks",
       "value": "0",
       "prior": "0",
-      "target": "≥5, ≥1 recurring",
+      "target": "\u22655, \u22651 recurring",
       "trend": "flat",
       "role": "supply gate",
-      "caveat": "Form has 10 visits, 0 starts. Supply gate unmoved, five weeks running."
+      "caveat": "Form has 10 visits, 0 starts. Supply gate unmoved, five weeks running.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "exceptions",
@@ -799,37 +796,35 @@
       "target": "0",
       "trend": "flat",
       "role": "error monitoring (L4)",
-      "caveat": "Unchanged: the single 2026-08-29 \"Script error.\" on /e/bedford-slip-weekend-0829, Mobile Safari / iOS, from a ChatGPT visitor. No new exception in nine days."
+      "caveat": "Unchanged: the single 2026-08-29 \"Script error.\" on /e/bedford-slip-weekend-0829, Mobile Safari / iOS, from a ChatGPT visitor. No new exception in nine days.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "lenspull",
       "label": "Strongest lens by reach",
-      "value": "Food & Drink 24 people · Family & Kids 23",
-      "prior": "Food & Drink 23 · Family & Kids 21",
       "target": null,
-      "trend": "flat",
       "role": "which lens people actually pull",
-      "caveat": "Lifetime distinct filter-tappers: food_drink 24, family_kids 23, arts_culture 20, live_music 20, all 15. The top two are within one person of each other and neither is load-bearing at this n."
+      "caveat": "Lifetime distinct filter-tappers: food_drink 24, family_kids 23, arts_culture 20, live_music 20, all 15. The top two are within one person of each other and neither is load-bearing at this n.",
+      "computed": true
     },
     {
       "id": "queuelatency",
       "label": "Oldest open queue item",
-      "value": "11 days — \"fire the D3 channels\", overdue since 8/28",
-      "prior": "7 days — PR #50",
+      "value": "11 days \u2014 \"fire the D3 channels\", overdue since 8/28",
+      "prior": "7 days \u2014 PR #50",
       "target": "< 1 day",
       "trend": "down",
-      "role": "D7 instrument — our own decision latency",
-      "caveat": "The PR half of the queue is clear, but not the way cycle 8 expected: #57 merged 2026-09-07 and #50 was CLOSED UNMERGED the same day — 26 commits behind main, conflicting on the cockpit, the GTM state and the learning log. A cycle's work was discarded because it aged. The only open PR is #64, opened this morning. What is old now is a ruling, not a merge. Target < 1 day."
+      "role": "D7 instrument \u2014 our own decision latency",
+      "caveat": "The PR half of the queue is clear, but not the way cycle 8 expected: #57 merged 2026-09-07 and #50 was CLOSED UNMERGED the same day \u2014 26 commits behind main, conflicting on the cockpit, the GTM state and the learning log. A cycle's work was discarded because it aged. The only open PR is #64, opened this morning. What is old now is a ruling, not a merge. Target < 1 day.",
+      "typedOn": "2026-09-11"
     },
     {
       "id": "safaribias",
       "label": "Return rate by browser family",
-      "value": "Safari 5 of 52 (10%) · other 19 of 87 (22%)",
-      "prior": "Safari 6 of 41 (15%) · other 16 of 71 (23%)",
       "target": null,
-      "trend": "down",
       "role": "sizes the Safari eviction undercount we chose to measure rather than fix",
-      "caveat": "Gap widened from 1.5x back to 2.2x, roughly where it sat on 8/19: Safari's returner count fell by one while its population grew by eleven. Still one-directional — eviction can only depress the gate. Note the interaction with the AI-referral line: all but two assistant arrivals are on Mobile Safari, so the best-converting arrival path is the one whose returns we measure worst."
+      "caveat": "Gap widened from 1.5x back to 2.2x, roughly where it sat on 8/19: Safari's returner count fell by one while its population grew by eleven. Still one-directional \u2014 eviction can only depress the gate. Note the interaction with the AI-referral line: all but two assistant arrivals are on Mobile Safari, so the best-converting arrival path is the one whose returns we measure worst.",
+      "computed": true
     }
   ],
   "channels": [
@@ -841,7 +836,7 @@
       "firstSession": "2026-08-25",
       "shared": null,
       "reply": null,
-      "status": "TWO SENDS, ZERO READERS. 8/25 drew 15 arrivals (8 tagged digest, 7 on a BROKEN TAG — digest with a trailing backtick); 9/1 drew 13 (9 tagged, 4 broken). The broken tag recurred because the 9/1 email was composed from the 8/25 one, which still carried the bad URL — the corrected draft in the readout never reached the send. Across both sends: 28 people, 0 card opens, 0 events beyond pageview/return_visit, 27 of 28 out of region (Georgia 13, Iowa 7, Oregon 6, Nevada 2, Texas 1, New York 1). Mail-security scanners, not readers. Do not read D9 off either send. Mon 8/24 and Mon 8/31 were both missed; Mon 9/7 was Labor Day and moves to Tue 9/8."
+      "status": "TWO SENDS, ZERO READERS. 8/25 drew 15 arrivals (8 tagged digest, 7 on a BROKEN TAG \u2014 digest with a trailing backtick); 9/1 drew 13 (9 tagged, 4 broken). The broken tag recurred because the 9/1 email was composed from the 8/25 one, which still carried the bad URL \u2014 the corrected draft in the readout never reached the send. Across both sends: 28 people, 0 card opens, 0 events beyond pageview/return_visit, 27 of 28 out of region (Georgia 13, Iowa 7, Oregon 6, Nevada 2, Texas 1, New York 1). Mail-security scanners, not readers. Do not read D9 off either send. Mon 8/24 and Mon 8/31 were both missed; Mon 9/7 was Labor Day and moves to Tue 9/8."
     },
     {
       "src": "friends-family",
@@ -850,7 +845,7 @@
       "sent": "2026-08-13",
       "firstSession": "2026-08-13",
       "reply": null,
-      "status": "landed — 18 people, 185 events, 68 card opens, 8 action taps + 1 CTA. TWO people have now produced a return-week event (3 events at weekIndex >= 1), up from one; last cohort activity 2026-09-04. Two of eighteen is 11% — still a miss against cycle 7 s read, no longer a single person."
+      "status": "landed \u2014 18 people, 185 events, 68 card opens, 8 action taps + 1 CTA. TWO people have now produced a return-week event (3 events at weekIndex >= 1), up from one; last cohort activity 2026-09-04. Two of eighteen is 11% \u2014 still a miss against cycle 7 s read, no longer a single person."
     },
     {
       "src": "michael",
@@ -859,7 +854,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "RETIRED UNSENT 2026-08-25 (Batu) — already reached by the friends-family WhatsApp on 8/13. A separate re-invite would be the third contact in total, and Batu will not spend a personal relationship that way. This src will never carry data; his activity, if any, sits inside friends-family."
+      "status": "RETIRED UNSENT 2026-08-25 (Batu) \u2014 already reached by the friends-family WhatsApp on 8/13. A separate re-invite would be the third contact in total, and Batu will not spend a personal relationship that way. This src will never carry data; his activity, if any, sits inside friends-family."
     },
     {
       "src": "laura-edmond",
@@ -868,25 +863,25 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "RETIRED UNSENT 2026-08-25 (Batu) — same reason as michael: already reached by the friends-family WhatsApp on 8/13, a re-invite would be contact three. Laura remains available as the Q2 fallback messenger — a different kind of ask, not a re-invite."
+      "status": "RETIRED UNSENT 2026-08-25 (Batu) \u2014 same reason as michael: already reached by the friends-family WhatsApp on 8/13, a re-invite would be contact three. Laura remains available as the Q2 fallback messenger \u2014 a different kind of ask, not a re-invite."
     },
     {
       "src": "perri",
-      "label": "Perri / Shop Small — first outreach, not a re-invite (never contacted before)",
+      "label": "Perri / Shop Small \u2014 first outreach, not a re-invite (never contacted before)",
       "wave": "1",
       "sent": "2026-08-17",
       "firstSession": null,
-      "reply": "2026-08-17 — warm, same evening (36 min): wants a call or in-person meeting at her shop",
+      "reply": "2026-08-17 \u2014 warm, same evening (36 min): wants a call or in-person meeting at her shop",
       "status": "MEETING CONFIRMED: Thursday Sep 17, 1pm, at her shop. She proposed the slot 2026-09-11 1:56pm (\"Busy week - sorry I couldn't reply sooner. Are you available to swing by the shop on Thursday, the 17th at 1pm for a chat?\") and Batu accepted at 4:25pm the same day. Supersedes the 8/25 \"week of Sep 5\" plan, which slipped."
     },
     {
       "src": "action-city-comics",
-      "label": "Action City Comics (Eric) — in-person visit follow-up, outside the Wave-1 plan",
+      "label": "Action City Comics (Eric) \u2014 in-person visit follow-up, outside the Wave-1 plan",
       "wave": "n/a",
       "sent": "2026-08-17",
       "firstSession": null,
       "reply": null,
-      "status": "sent 8/17 4:16pm — no reply"
+      "status": "sent 8/17 4:16pm \u2014 no reply"
     },
     {
       "src": "org-town-square",
@@ -896,7 +891,7 @@
       "firstSession": "2026-08-17",
       "shared": null,
       "reply": null,
-      "status": "sent 8/17 8:53pm — 1 person, 1 return_visit the same evening; no reply, silent 15 days. preflight:send reports 0 cards on the map for this org today, so \"your events are live here\" is not true for them now."
+      "status": "sent 8/17 8:53pm \u2014 1 person, 1 return_visit the same evening; no reply, silent 15 days. preflight:send reports 0 cards on the map for this org today, so \"your events are live here\" is not true for them now."
     },
     {
       "src": "org-gp-library",
@@ -906,7 +901,7 @@
       "firstSession": "2026-08-18",
       "shared": null,
       "reply": null,
-      "status": "sent 8/18 via website contact form — 7 people, 3 card opens, 1 action, last seen 8/19; no reply, silent 14 days."
+      "status": "sent 8/18 via website contact form \u2014 7 people, 3 card opens, 1 action, last seen 8/19; no reply, silent 14 days."
     },
     {
       "src": "org-brooklyn-craft",
@@ -916,12 +911,12 @@
       "firstSession": "2026-08-18",
       "shared": null,
       "reply": null,
-      "status": "sent 8/18 10:36am — 8 people, 1 card open, last seen 8/21; no reply, silent 14 days."
+      "status": "sent 8/18 10:36am \u2014 8 people, 1 card open, last seen 8/21; no reply, silent 14 days."
     },
     {
       "src": "parents",
-      "label": "Parents-group posts (Q2) — Rana, all groups, one source",
-      "wave": "1→moved",
+      "label": "Parents-group posts (Q2) \u2014 Rana, all groups, one source",
+      "wave": "1\u2192moved",
       "sent": null,
       "firstSession": null,
       "shared": null,
@@ -930,8 +925,8 @@
     },
     {
       "src": "parents-<group-slug>",
-      "label": "Q2 per-group rows — RETIRED 2026-09-08",
-      "wave": "1→moved",
+      "label": "Q2 per-group rows \u2014 RETIRED 2026-09-08",
+      "wave": "1\u2192moved",
       "sent": null,
       "firstSession": null,
       "shared": null,
@@ -945,7 +940,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "due this week — D3 un-gated it from Q1 closing; draft ready"
+      "status": "due this week \u2014 D3 un-gated it from Q1 closing; draft ready"
     },
     {
       "src": "org-word",
@@ -954,7 +949,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "behind Film Noir. Note: their own calendar showed no August events despite running one — their programming isn't discoverable on their own site, which is the pitch"
+      "status": "behind Film Noir. Note: their own calendar showed no August events despite running one \u2014 their programming isn't discoverable on their own site, which is the pitch"
     },
     {
       "src": "org-flower-cat",
@@ -972,7 +967,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "due this week — gate deleted (D3)"
+      "status": "due this week \u2014 gate deleted (D3)"
     },
     {
       "src": "fbgroups",
@@ -981,7 +976,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "due this week — gate deleted (D3). Entry: Greenpoint & Williamsburg Community Group (16K, 'free community events are always allowed') and Greenpoint Neighbors! NYC (7K, public, no posted rules). Never 11222 group (no links) or Buy Nothing (rule 8)"
+      "status": "due this week \u2014 gate deleted (D3). Entry: Greenpoint & Williamsburg Community Group (16K, 'free community events are always allowed') and Greenpoint Neighbors! NYC (7K, public, no posted rules). Never 11222 group (no links) or Buy Nothing (rule 8)"
     },
     {
       "src": "nextdoor",
@@ -999,16 +994,16 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "starting now — D3 moved it off the Oct 6 trigger"
+      "status": "starting now \u2014 D3 moved it off the Oct 6 trigger"
     },
     {
       "src": "market",
-      "label": "Market hand-outs (McCarren Sat 8–3 / McGolrick Sun 9–2)",
+      "label": "Market hand-outs (McCarren Sat 8\u20133 / McGolrick Sun 9\u20132)",
       "wave": "physical",
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "first morning this weekend (D4). Hand-to-hand only — poles and parks are per-flyer offences"
+      "status": "first morning this weekend (D4). Hand-to-hand only \u2014 poles and parks are per-flyer offences"
     },
     {
       "src": "greenline",
@@ -1017,7 +1012,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "contact for the September issue (D4) — greenline@stnicksalliance.org"
+      "status": "contact for the September issue (D4) \u2014 greenline@stnicksalliance.org"
     },
     {
       "src": "qr",
@@ -1026,7 +1021,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "unblocked — gate deleted (D3); rides the /week sheet"
+      "status": "unblocked \u2014 gate deleted (D3); rides the /week sheet"
     },
     {
       "src": "gpters",
@@ -1035,7 +1030,7 @@
       "sent": null,
       "firstSession": null,
       "reply": null,
-      "status": "strategic hold — the embed-swap play, once retention data exists"
+      "status": "strategic hold \u2014 the embed-swap play, once retention data exists"
     },
     {
       "src": "share",
@@ -1051,20 +1046,20 @@
     {
       "id": "abc-cirque-2026-09-12",
       "date": "2026-09-12",
-      "who": "Ali Goldberg — ABC Cirque (Williamsburg; Family Adventure Play for 0–5s, kids & adult cirque classes, 5th Wall Studio)",
+      "who": "Ali Goldberg \u2014 ABC Cirque (Williamsburg; Family Adventure Play for 0\u20135s, kids & adult cirque classes, 5th Wall Studio)",
       "ask": "Add ABC Cirque to the map",
       "channel": "Facebook Messenger DM to Rana, following her 2026-09-11 parents-group post (PR #93)",
-      "gate": "ADDED TO THE ROSTER 2026-09-12 as `abc-cirque`, after a measured fetch on a GitHub runner (probe run 34698842810). The geography worry was unfounded: 5th Wall Studio is at 156 North 4th St and that street geocodes to 40.7152, -73.9585, INSIDE the existing bbox — no relaxation needed. Robots does not block us either, so the consent ruling was not load-bearing. Cardable: Family Adventure Play, Sundays 11am-12:30pm on Sep 27, Oct 18 and Nov 15, $30 early bird. Loose end: the asker described herself as helping the org, not owning it — worth one line of confirmation.",
+      "gate": "ADDED TO THE ROSTER 2026-09-12 as `abc-cirque`, after a measured fetch on a GitHub runner (probe run 34698842810). The geography worry was unfounded: 5th Wall Studio is at 156 North 4th St and that street geocodes to 40.7152, -73.9585, INSIDE the existing bbox \u2014 no relaxation needed. Robots does not block us either, so the consent ruling was not load-bearing. Cardable: Family Adventure Play, Sundays 11am-12:30pm on Sep 27, Oct 18 and Nov 15, $30 early bird. Loose end: the asker described herself as helping the org, not owning it \u2014 worth one line of confirmation.",
       "countsTowardSupplyGate": true,
       "source": "Facebook Messenger screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     },
     {
       "id": "talea-clixo-2026-09-12",
       "date": "2026-09-12",
-      "who": "Kathleen Kyllo — hosting \"Clixo x TALEA BYO Baby!\", a family event at the TALEA taproom",
+      "who": "Kathleen Kyllo \u2014 hosting \"Clixo x TALEA BYO Baby!\", a family event at the TALEA taproom",
       "ask": "Asked, in a comment on Rana's post, to add her event to the map (\"Can I add something to it?\")",
       "channel": "Facebook comment on Rana's 2026-09-11 parents-group post",
-      "gate": "HELD FOR BATU 2026-09-12. His condition was met — the Clixo event IS in TALEA's calendar (Sep 12, Williamsburg; real path /pages/calendar, browser fetch, 2,557 bytes) — but three facts arrived with the measurement: the footer lists SIX taprooms and none in Greenpoint, so the not-a-chain test is live; the month grid carries no start times and no prices, so it cannot support a complete card today; and a citywide calendar would need a Williamsburg-only filter. Recommendation on file: don't add it. docs/review/2026-09-12-inbound-ask-roster-candidates.md",
+      "gate": "HELD FOR BATU 2026-09-12. His condition was met \u2014 the Clixo event IS in TALEA's calendar (Sep 12, Williamsburg; real path /pages/calendar, browser fetch, 2,557 bytes) \u2014 but three facts arrived with the measurement: the footer lists SIX taprooms and none in Greenpoint, so the not-a-chain test is live; the month grid carries no start times and no prices, so it cannot support a complete card today; and a citywide calendar would need a Williamsburg-only filter. Recommendation on file: don't add it. docs/review/2026-09-12-inbound-ask-roster-candidates.md",
       "countsTowardSupplyGate": true,
       "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; also recorded in docs/learning-log.md L2026-09-12"
     }
@@ -1072,21 +1067,21 @@
   "openDecisions": [
     {
       "id": "digest-today",
-      "what": "Send today's weekly note as a NEW message composed from the readout draft — not a reply or forward of the 8/25 or 9/1 emails, which both carry the broken link. Then resume Mondays Sep 14. Re-run npm run preflight:send the morning it goes and replace the count.",
+      "what": "Send today's weekly note as a NEW message composed from the readout draft \u2014 not a reply or forward of the 8/25 or 9/1 emails, which both carry the broken link. Then resume Mondays Sep 14. Re-run npm run preflight:send the morning it goes and replace the count.",
       "owner": "Batu",
       "needBy": "2026-09-08",
       "source": "readout 2026-09-08 Proposal 2"
     },
     {
       "id": "d3-channels",
-      "what": "Fire at least one D3 channel this week (Film Noir is cheapest — 6 cards, 4 dated, clear to send), or apply the founder-hours cut order and record which channels are cut. Fourth consecutive readout at zero events across all ten, 22 days after they were cleared; the Aug 25 – Sep 6 window they were meant to carry closed on Saturday.",
+      "what": "Fire at least one D3 channel this week (Film Noir is cheapest \u2014 6 cards, 4 dated, clear to send), or apply the founder-hours cut order and record which channels are cut. Fourth consecutive readout at zero events across all ten, 22 days after they were cleared; the Aug 25 \u2013 Sep 6 window they were meant to carry closed on Saturday.",
       "owner": "Batu",
       "needBy": "2026-09-06",
       "source": "readout 2026-09-01 Proposal 3; rules.families-start-sep-8"
     },
     {
       "id": "citation-check",
-      "what": "Run the monthly citation check — 22 days since the last one. Its search half is now a script (npm run growth:gsc), so what remains manual is asking assistants directly whether they cite us.",
+      "what": "Run the monthly citation check \u2014 22 days since the last one. Its search half is now a script (npm run growth:gsc), so what remains manual is asking assistants directly whether they cite us.",
       "owner": "Batu",
       "needBy": "2026-09-08",
       "source": "P10"
@@ -1107,7 +1102,7 @@
     },
     {
       "id": "standing-instructions",
-      "what": "Ratify or reject eight proposed standing instructions: cycle 7's (name every population filter in a headline number — never ruled on, because its readout was closed rather than merged), cycle 8's three (check a zero is measurable before publishing it; bare links in drafts; an email click is not a reader until a second event), and cycle 9's four (a fix that lives only in the readout is not a fix; a miscounted metric gets its correction in the line that reports it; a readout PR is a same-day artifact or it goes stale; a missing-credential error is a symptom with two causes).",
+      "what": "Ratify or reject eight proposed standing instructions: cycle 7's (name every population filter in a headline number \u2014 never ruled on, because its readout was closed rather than merged), cycle 8's three (check a zero is measurable before publishing it; bare links in drafts; an email click is not a reader until a second event), and cycle 9's four (a fix that lives only in the readout is not a fix; a miscounted metric gets its correction in the line that reports it; a readout PR is a same-day artifact or it goes stale; a missing-credential error is a symptom with two causes).",
       "owner": "Batu",
       "needBy": "2026-09-15",
       "source": "readout 2026-09-01 calibration log"
@@ -1121,14 +1116,14 @@
     },
     {
       "id": "school-roster-remainder",
-      "what": "Approve the remaining school-comms roster adds — PS 110 / PS 34 / PS 31 PTAs, GAMA, District 14 — and make NY Society of Play a roster source rather than a one-off card. Not a Q2 blocker: the family week is covered. These are the channels that would carry us into first-week school emails.",
+      "what": "Approve the remaining school-comms roster adds \u2014 PS 110 / PS 34 / PS 31 PTAs, GAMA, District 14 \u2014 and make NY Society of Play a roster source rather than a one-off card. Not a Q2 blocker: the family week is covered. These are the channels that would carry us into first-week school emails.",
       "owner": "Batu",
       "needBy": "2026-09-15",
       "source": "readout 2026-09-08 Finding 4; roster Tier 2 item 2"
     },
     {
       "id": "fb-comment-signups",
-      "what": "Check the three enthusiastic commenters on Rana's post against the signup list at the next Tally pull. Two of them say they submitted an email (\"Just dropped my email\", \"Dropped my email\") — no address appears in the comments themselves, so there is nothing to hand-collect; the question is only whether those submissions landed. The post produced nine signups against a list that went 5 to 13, so they probably did.",
+      "what": "Check the three enthusiastic commenters on Rana's post against the signup list at the next Tally pull. Two of them say they submitted an email (\"Just dropped my email\", \"Dropped my email\") \u2014 no address appears in the comments themselves, so there is nothing to hand-collect; the question is only whether those submissions landed. The post produced nine signups against a list that went 5 to 13, so they probably did.",
       "owner": "Batu",
       "needBy": "2026-09-15",
       "source": "Facebook comment-thread screenshot relayed by Batu, 2026-09-12; PR #93"
@@ -1139,15 +1134,15 @@
       "id": "no-return",
       "title": "The first cohort we could watch went quiet after two days",
       "severity": "the live question",
-      "detail": "friends-family produced 16 people, 44 card opens and 4 high-intent actions from 8/13. One of the sixteen returned on 8/29 at weekIndex 2 — 6%, eleven days after the return week opened.",
-      "response": "D5 merged 8/19 (837e7c6) and the Follow ask now renders for every visitor. Thirteen days on it has been tapped zero times; the last Follow tap of any kind was 2026-08-13. The weekly note — the other half of the fix — has sent once in two scheduled weeks. Neither mechanism has yet been given a fair test.",
+      "detail": "friends-family produced 16 people, 44 card opens and 4 high-intent actions from 8/13. One of the sixteen returned on 8/29 at weekIndex 2 \u2014 6%, eleven days after the return week opened.",
+      "response": "D5 merged 8/19 (837e7c6) and the Follow ask now renders for every visitor. Thirteen days on it has been tapped zero times; the last Follow tap of any kind was 2026-08-13. The weekly note \u2014 the other half of the fix \u2014 has sent once in two scheduled weeks. Neither mechanism has yet been given a fair test.",
       "source": "readout 2026-08-18 Finding 2"
     },
     {
       "id": "routine-clobber",
       "title": "The Tuesday routine rewrites the state file rather than merging into it",
       "severity": "structural",
-      "detail": "Any decision that lands between the routine's branch point and its run gets silently reverted by its PR. It happened this week with D1–D6, twenty minutes apart.",
+      "detail": "Any decision that lands between the routine's branch point and its run gets silently reverted by its PR. It happened this week with D1\u2013D6, twenty minutes apart.",
       "response": "Fixed 2026-08-19 and holding: step 4.5 now reads the current file on main and diffs before writing, and cycles 7 and 8 both branched from a verified-current main with nothing to reconcile.",
       "source": "PR #42"
     },
@@ -1155,30 +1150,30 @@
       "id": "bots",
       "title": "62 of 103 recorded 'people' are automated",
       "severity": "known, bounded",
-      "detail": "As of 8/11, 62 of 103 recorded 'people' were automated — datacenter cities, one pageview each, not a single card open. The population has since grown to 173 and has not been re-split by geography.",
+      "detail": "As of 8/11, 62 of 103 recorded 'people' were automated \u2014 datacenter cities, one pageview each, not a single card open. The population has since grown to 173 and has not been re-split by geography.",
       "response": "Wave 1 is the fix and it is working: friends-family traffic reads per-src and untagged noise can't touch it. The demand gate's own metric was never affected. Tuesday's readout re-runs the geo split.",
       "source": "readout Finding 3"
     },
     {
       "id": "safari-eviction",
       "title": "Safari deletes the retention sensor's storage at exactly our cadence",
-      "severity": "accepted and measured — one-directional, can only depress the gate",
-      "detail": "returnVisit.js is localStorage-only. Safari (ITP) clears script-written storage after ~7 days of browser use without a first-party visit — a weekly-check product sits precisely on that edge, so an iPhone user returning on day 8 can re-register as brand new with weekIndex 0, forever. Verified as unenumerated: no ITP or eviction row exists in environmental-dependencies.md. Consistent with our own data — the July round saw 7 of 24 return inside a 5-day window, while cross-week WRL shows 2.",
-      "response": "RULED 2026-08-19 (Batu): the server-set cookie mirror is DROPPED, not deferred — privacy.html promises no cookies in three places and the bias only runs one way (an evicted reader re-registers as new, inflating the denominator and deflating the numerator, so it can produce a false fail but never a false pass). Replaced by a return-rate-by-browser-family line in the Tuesday readout plus a labeled October read. Home-screen install still exempts a user; a tagged digest click counts as a return under D1 regardless of storage. DECISION_LOG 2026-08-19 sixth entry.",
+      "severity": "accepted and measured \u2014 one-directional, can only depress the gate",
+      "detail": "returnVisit.js is localStorage-only. Safari (ITP) clears script-written storage after ~7 days of browser use without a first-party visit \u2014 a weekly-check product sits precisely on that edge, so an iPhone user returning on day 8 can re-register as brand new with weekIndex 0, forever. Verified as unenumerated: no ITP or eviction row exists in environmental-dependencies.md. Consistent with our own data \u2014 the July round saw 7 of 24 return inside a 5-day window, while cross-week WRL shows 2.",
+      "response": "RULED 2026-08-19 (Batu): the server-set cookie mirror is DROPPED, not deferred \u2014 privacy.html promises no cookies in three places and the bias only runs one way (an evicted reader re-registers as new, inflating the denominator and deflating the numerator, so it can produce a false fail but never a false pass). Replaced by a return-rate-by-browser-family line in the Tuesday readout plus a labeled October read. Home-screen install still exempts a user; a tagged digest click counts as a return under D1 regardless of storage. DECISION_LOG 2026-08-19 sixth entry.",
       "source": "strategy review, verified-in-code section"
     },
     {
       "id": "founder-capacity",
-      "title": "The approved slate costs ~12–15 founder-hours/week",
+      "title": "The approved slate costs ~12\u201315 founder-hours/week",
       "severity": "named; budget confirmed available",
-      "detail": "Sends ~2h, group answers ~3h, physical ~4–5h, the weekly send ~1h, conversations ~2h. Every researched hyperlocal success ran on years of unpaid founder labor, and the most repeated failure was exhaustion before the curve turned.",
-      "response": "Batu confirmed 2026-08-19 that 12–15 hours/week is realistic, so the cut order stays unused unless a week is actually skipped. Earliest warning sign is still a skipped week — watch it as a metric on ourselves. Cut order if the budget turns out to be 8: fewer group-answer posts, one market morning, Greenline deferred. Note this is a stated budget, not H6 evidence — H6's test is 8 consecutive weeks tracked.",
+      "detail": "Sends ~2h, group answers ~3h, physical ~4\u20135h, the weekly send ~1h, conversations ~2h. Every researched hyperlocal success ran on years of unpaid founder labor, and the most repeated failure was exhaustion before the curve turned.",
+      "response": "Batu confirmed 2026-08-19 that 12\u201315 hours/week is realistic, so the cut order stays unused unless a week is actually skipped. Earliest warning sign is still a skipped week \u2014 watch it as a metric on ourselves. Cut order if the budget turns out to be 8: fewer group-answer posts, one market morning, Greenline deferred. Note this is a stated budget, not H6 evidence \u2014 H6's test is 8 consecutive weeks tracked.",
       "source": "strategy review, founder-hours section; confirmed by Batu 2026-08-19"
     },
     {
       "id": "webview",
       "title": "Facebook in-app webview unverified",
-      "severity": "open — raised 2026-08-25",
+      "severity": "open \u2014 raised 2026-08-25",
       "detail": "~100% of Q2 taps arrive through it, and it is the same hostile-context class that produced the 8/13 map bug. Rana now posts to multiple groups, so this is no longer one channel's risk: a large share of the October cohort enters through the FB webview, where localStorage fragmentation can also make real returns read as new visits.",
       "response": "Q2 precondition 3. Verify on real iOS and Android devices, add the row to environmental-dependencies.md in the same change.",
       "source": "roster Q2 preconditions"
@@ -1195,8 +1190,8 @@
       "id": "perishable",
       "title": "The feed peak is perishable",
       "severity": "firing",
-      "detail": "check-freshness.mjs fired its decline warning for the first time on 2026-09-01: 70 → 41 dated-upcoming over 7 days, a 41% drop against a 20% bar. Deck 133 cards, down from 162 at the restated baseline. Family & Kids fell 26 → 20 cards and 10 → 6 dated; Sep 7-13 has 3 dated kids cards, all at the library.",
-      "response": "The supply build ruled on 2026-08-25 for exactly this window has not started — the school-year roster adds are eight days past their date. Q2 posts Sep 8 into whatever this week produces.",
+      "detail": "check-freshness.mjs fired its decline warning for the first time on 2026-09-01: 70 \u2192 41 dated-upcoming over 7 days, a 41% drop against a 20% bar. Deck 133 cards, down from 162 at the restated baseline. Family & Kids fell 26 \u2192 20 cards and 10 \u2192 6 dated; Sep 7-13 has 3 dated kids cards, all at the library.",
+      "response": "The supply build ruled on 2026-08-25 for exactly this window has not started \u2014 the school-year roster adds are eight days past their date. Q2 posts Sep 8 into whatever this week produces.",
       "source": "readout Finding 1"
     }
   ],
@@ -1204,22 +1199,22 @@
     {
       "id": "max3",
       "text": "Max 3 live experiments. Attribution dies past that.",
-      "source": "growth §6 rule 3"
+      "source": "growth \u00a76 rule 3"
     },
     {
       "id": "killfirst",
-      "text": "Every experiment ships with hypothesis → smallest test → one metric → decision rule → kill criteria written before launch. No kill criteria, no launch.",
-      "source": "growth §6 rule 1"
+      "text": "Every experiment ships with hypothesis \u2192 smallest test \u2192 one metric \u2192 decision rule \u2192 kill criteria written before launch. No kill criteria, no launch.",
+      "source": "growth \u00a76 rule 1"
     },
     {
       "id": "prepost",
-      "text": "Pre/post and small-n qualitative only. No A/B infrastructure, no significance theater — at this traffic it's noise cosplay.",
-      "source": "growth §6 rule 2"
+      "text": "Pre/post and small-n qualitative only. No A/B infrastructure, no significance theater \u2014 at this traffic it's noise cosplay.",
+      "source": "growth \u00a76 rule 2"
     },
     {
       "id": "season",
-      "text": "September reads carry the autumn-rebound confound and nothing graduates on a Sep–Oct read alone. Carve-out: contemporaneous-control designs (R1, Q2) are exempt — 2a governs pre/post reads.",
-      "source": "growth §6 rule 2a; P2"
+      "text": "September reads carry the autumn-rebound confound and nothing graduates on a Sep\u2013Oct read alone. Carve-out: contemporaneous-control designs (R1, Q2) are exempt \u2014 2a governs pre/post reads.",
+      "source": "growth \u00a76 rule 2a; P2"
     },
     {
       "id": "clock",
@@ -1229,7 +1224,7 @@
     {
       "id": "echo",
       "text": "The unit of seeding is a small trust network, not reach. Saturate one network before opening the next.",
-      "source": "growth §4"
+      "source": "growth \u00a74"
     },
     {
       "id": "sends",
@@ -1238,23 +1233,23 @@
     },
     {
       "id": "paid",
-      "text": "Paid acquisition is dead permanently, not deferred — revenue per user is $0, so only near-zero-CAC channels can ever fit.",
-      "source": "growth §4"
+      "text": "Paid acquisition is dead permanently, not deferred \u2014 revenue per user is $0, so only near-zero-CAC channels can ever fit.",
+      "source": "growth \u00a74"
     },
     {
       "id": "coverage",
       "text": "Coverage is never for sale. Every verified business is on the map free.",
-      "source": "model §2"
+      "source": "model \u00a72"
     },
     {
       "id": "r1-fallback",
-      "text": "P7: if R1 hasn't armed by the Mon Oct 5 readout, the next free slot goes to a no-list re-entry mechanism (R4 or per-lens .ics), and the late-Oct demand read is labeled 'measured without a re-entry mechanism' — a miss under it is never read as product failure alone.",
+      "text": "P7: if R1 hasn't armed by the Mon Oct 5 readout, the next free slot goes to a no-list re-entry mechanism (R4 or per-lens .ics), and the late-Oct demand read is labeled 'measured without a re-entry mechanism' \u2014 a miss under it is never read as product failure alone.",
       "source": "strategy review; log 2026-08-15 third"
     },
     {
       "id": "peak-pass",
-      "text": "P8: a demand-gate pass on cohorts wholly inside Sep–Oct is provisional until a Nov-or-later cohort clears the same bar — or it's accepted explicitly as a peak-season pass and disclosed in pilot conversations. Counterpart to the Dec–Feb no-read rule.",
-      "source": "strategy review; growth §1; model §4"
+      "text": "P8: a demand-gate pass on cohorts wholly inside Sep\u2013Oct is provisional until a Nov-or-later cohort clears the same bar \u2014 or it's accepted explicitly as a peak-season pass and disclosed in pilot conversations. Counterpart to the Dec\u2013Feb no-read rule.",
+      "source": "strategy review; growth \u00a71; model \u00a74"
     },
     {
       "id": "carousel-trigger",
@@ -1263,47 +1258,47 @@
     },
     {
       "id": "weekly-send",
-      "text": "D2: the Monday digest ships weekly from Aug 24 — drafted by the routine, sent by Batu, three picks + 'the other N are on the map' + link. DENSITY FLOOR: a thin week is skipped, never sent thin. No hyperlocal product in the researched record ever held weekly habit without a scheduled send. ONE-WEEK EXCEPTION (2026-08-25, Batu): the Sep 7 send moves to Tue Sep 8 — Sep 7 is Labor Day — so the digest, both parent-group posts and any PTA shares land the same morning. Cadence slips one day, once, and resumes Mon Sep 14.",
-      "source": "strategy review D2; growth §0/§2; log 2026-08-17 sixth"
+      "text": "D2: the Monday digest ships weekly from Aug 24 \u2014 drafted by the routine, sent by Batu, three picks + 'the other N are on the map' + link. DENSITY FLOOR: a thin week is skipped, never sent thin. No hyperlocal product in the researched record ever held weekly habit without a scheduled send. ONE-WEEK EXCEPTION (2026-08-25, Batu): the Sep 7 send moves to Tue Sep 8 \u2014 Sep 7 is Labor Day \u2014 so the digest, both parent-group posts and any PTA shares land the same morning. Cadence slips one day, once, and resumes Mon Sep 14.",
+      "source": "strategy review D2; growth \u00a70/\u00a72; log 2026-08-17 sixth"
     },
     {
       "id": "no-gates-on-proven-plumbing",
-      "text": "D3: the 8/25 Wave-2 gate is deleted. P3's check survives as a readout line — different srcs cannot contaminate each other, and friends-family proved the plumbing on 8/13. A send is not an experiment and consumes no slot; neither is a product fix that repairs a broken mechanism.",
-      "source": "strategy review D3; growth §6 rules 6–7"
+      "text": "D3: the 8/25 Wave-2 gate is deleted. P3's check survives as a readout line \u2014 different srcs cannot contaminate each other, and friends-family proved the plumbing on 8/13. A send is not an experiment and consumes no slot; neither is a product fix that repairs a broken mechanism.",
+      "source": "strategy review D3; growth \u00a76 rules 6\u20137"
     },
     {
       "id": "physical-legal-only",
-      "text": "D4: physical means hand-to-hand at markets, permission-based placement inside venues, The Greenline, and being present at events. NEVER poles, parks, or scaffolding — §10-119 makes each flyer a separate $75–150 offence with the name on it presumed liable; 56 RCNY §1-05(c) requires a permit in parks.",
-      "source": "strategy review D4; attention map §8"
+      "text": "D4: physical means hand-to-hand at markets, permission-based placement inside venues, The Greenline, and being present at events. NEVER poles, parks, or scaffolding \u2014 \u00a710-119 makes each flyer a separate $75\u2013150 offence with the name on it presumed liable; 56 RCNY \u00a71-05(c) requires a permit in parks.",
+      "source": "strategy review D4; attention map \u00a78"
     },
     {
       "id": "zero-click",
-      "text": "P10: citations and AI-referrer sessions get their own readout lines. Citations up with sessions flat = Loop C working zero-click — H5's fail branch can't fire on it. llms.txt stays up, zero value booked.",
-      "source": "strategy review; growth §1 Loop C"
+      "text": "P10: citations and AI-referrer sessions get their own readout lines. Citations up with sessions flat = Loop C working zero-click \u2014 H5's fail branch can't fire on it. llms.txt stays up, zero value booked.",
+      "source": "strategy review; growth \u00a71 Loop C"
     },
     {
       "id": "wedge2",
-      "text": "P11's ORDER stands (Film Noir → WORD → Flower Cat) but D3 dropped its trigger and its 'never two networks at once' clause: the arts wave sends this week alongside Wave 1. Echo-chamber doctrine is about density INSIDE a network; per-src tagging already separates unrelated ones. Founder hours still point at parents.",
-      "source": "strategy review D3; growth §4"
+      "text": "P11's ORDER stands (Film Noir \u2192 WORD \u2192 Flower Cat) but D3 dropped its trigger and its 'never two networks at once' clause: the arts wave sends this week alongside Wave 1. Echo-chamber doctrine is about density INSIDE a network; per-src tagging already separates unrelated ones. Founder hours still point at parents.",
+      "source": "strategy review D3; growth \u00a74"
     },
     {
       "id": "founder-hours",
-      "text": "The approved slate costs ~12–15 founder-hours/week through mid-September, and Batu confirmed that budget is realistic (2026-08-19) — so the slate runs as approved. The researched failure pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped week. Cut order, held in reserve if the real budget drops to 8 hours: fewer group-answer posts, one market morning instead of two, Greenline deferred.",
+      "text": "The approved slate costs ~12\u201315 founder-hours/week through mid-September, and Batu confirmed that budget is realistic (2026-08-19) \u2014 so the slate runs as approved. The researched failure pattern most likely to end this is solo-operator exhaustion, and its earliest sign is a skipped week. Cut order, held in reserve if the real budget drops to 8 hours: fewer group-answer posts, one market morning instead of two, Greenline deferred.",
       "source": "strategy review, founder-hours section; confirmed by Batu 2026-08-19"
     },
     {
       "id": "medium-pivot-preregistered",
-      "text": "D9 (ratified 2026-08-19, pre-data): the medium test is judged on tagged clicks, never opens. Three consecutive sends with ?src=digest clicks <10% of list size, carousel engaging while src=ig sessions stay flat, OPENS the container ruling (email-first vs status quo) — it never executes a pivot. Container evidence never resets the demand clock (D1 counts tagged email clicks as returns). Three sends with clicks ≥25% of list closes learning-log Q1 in the site's favor and retires 'wrong container' as an explanation for a demand miss.",
+      "text": "D9 (ratified 2026-08-19, pre-data): the medium test is judged on tagged clicks, never opens. Three consecutive sends with ?src=digest clicks <10% of list size, carousel engaging while src=ig sessions stay flat, OPENS the container ruling (email-first vs status quo) \u2014 it never executes a pivot. Container evidence never resets the demand clock (D1 counts tagged email clicks as returns). Three sends with clicks \u226525% of list closes learning-log Q1 in the site's favor and retires 'wrong container' as an explanation for a demand miss.",
       "source": "DECISION_LOG 2026-08-19 fourth entry; october-verdict-review D9"
     },
     {
       "id": "daily-decision-window",
-      "text": "D7 (ratified 2026-08-19): Batu clears the queue once a day in a ~15-minute window — sends to approve-and-paste, branches to merge, rulings due. The queue is this file's `daily` + `needBy` fields, rendered in the cockpit; the operator keeps it current across sessions and chases items rather than waiting to be asked. The Tuesday readout reports the age of the oldest open queue item, target under 1 day. Supervision is unchanged — same approvals, daily clock.",
+      "text": "D7 (ratified 2026-08-19): Batu clears the queue once a day in a ~15-minute window \u2014 sends to approve-and-paste, branches to merge, rulings due. The queue is this file's `daily` + `needBy` fields, rendered in the cockpit; the operator keeps it current across sessions and chases items rather than waiting to be asked. The Tuesday readout reports the age of the oldest open queue item, target under 1 day. Supervision is unchanged \u2014 same approvals, daily clock.",
       "source": "DECISION_LOG 2026-08-19 fifth entry; october-verdict-review D7"
     },
     {
       "id": "default-merge-class",
-      "text": "D8 (ratified 2026-08-19): a build item that is already ratified in the DECISION_LOG, has NO visual surface, and carries test coverage merges by default 24h after its preview lands in the daily queue unless vetoed. Initial class, now: FB webview instrumentation and GSC plumbing (the routine-clobber fix already landed 2026-08-19; the gl_first_seen cookie mirror was DROPPED the same day — it would have falsified privacy.html's 'no cookies' promise, which is exactly the boundary this class draws). Anything visual keeps preview review (2026-08-08 design-batch rule). Named exception to growth-engine §7's 'code merges stay human'; one-strike demotion applies. Venue/category pages ratified in the same ruling as owned Loop C infrastructure — outside the max-3 cap, no kill rule, normal preview review, sequenced after the measurement repairs and the signup-ask redesign.",
+      "text": "D8 (ratified 2026-08-19): a build item that is already ratified in the DECISION_LOG, has NO visual surface, and carries test coverage merges by default 24h after its preview lands in the daily queue unless vetoed. Initial class, now: FB webview instrumentation and GSC plumbing (the routine-clobber fix already landed 2026-08-19; the gl_first_seen cookie mirror was DROPPED the same day \u2014 it would have falsified privacy.html's 'no cookies' promise, which is exactly the boundary this class draws). Anything visual keeps preview review (2026-08-08 design-batch rule). Named exception to growth-engine \u00a77's 'code merges stay human'; one-strike demotion applies. Venue/category pages ratified in the same ruling as owned Loop C infrastructure \u2014 outside the max-3 cap, no kill rule, normal preview review, sequenced after the measurement repairs and the signup-ask redesign.",
       "source": "DECISION_LOG 2026-08-19 fifth entry; october-verdict-review D8"
     },
     {
@@ -1313,12 +1308,12 @@
     },
     {
       "id": "families-start-sep-8",
-      "text": "Ruled 2026-08-25 (Batu): all parents- and families-facing awareness starts Tue Sep 8 — families are away through Labor Day (Sep 7) and school opens Thu Sep 10, so the planning days are 9/8-9/9. Scope is every parents-facing action, not just Q2. Two consequences carry: (a) supply-side and redistributor asks go BEFORE the wave (~Sep 1-3), because PTA newsletters and first-week comms are written the week of Aug 31; (b) Aug 25 - Sep 6 belongs entirely to channels the school calendar does not touch (Reddit, Greenpoint Neighbors, the 16K free-events doorway, Nextdoor, arts wave, IG) — if those slip again the delay is unpaid and the October read comes back thin. Named exception to the echo-chamber rule for these two weeks: parents/camps is still the declared first network, but arts and general-neighborhood go first by season, not by choice; density-inside-a-network resumes Sep 8. AMENDED same day: Rana posts to MULTIPLE parent groups, not one — list from Batu closer to Sep 8, one src per group, and Q2's decision reads the pooled parents-* family because a single group would read n≈3.",
+      "text": "Ruled 2026-08-25 (Batu): all parents- and families-facing awareness starts Tue Sep 8 \u2014 families are away through Labor Day (Sep 7) and school opens Thu Sep 10, so the planning days are 9/8-9/9. Scope is every parents-facing action, not just Q2. Two consequences carry: (a) supply-side and redistributor asks go BEFORE the wave (~Sep 1-3), because PTA newsletters and first-week comms are written the week of Aug 31; (b) Aug 25 - Sep 6 belongs entirely to channels the school calendar does not touch (Reddit, Greenpoint Neighbors, the 16K free-events doorway, Nextdoor, arts wave, IG) \u2014 if those slip again the delay is unpaid and the October read comes back thin. Named exception to the echo-chamber rule for these two weeks: parents/camps is still the declared first network, but arts and general-neighborhood go first by season, not by choice; density-inside-a-network resumes Sep 8. AMENDED same day: Rana posts to MULTIPLE parent groups, not one \u2014 list from Batu closer to Sep 8, one src per group, and Q2's decision reads the pooled parents-* family because a single group would read n\u22483.",
       "source": "DECISION_LOG 2026-08-25 third entry"
     },
     {
       "id": "personal-contact-cap",
-      "text": "Ruled 2026-08-25 (Batu): warm personal contacts get a contact cap. Michael and Laura & Edmond were already reached twice — the July round and the 8/13 friends-family WhatsApp — so their planned re-invites are retired unsent; a third touch is spamming a personal relationship, and the relationship outlasts the experiment. Consequence for the record: the michael and laura-edmond srcs will never carry data, so the distribution gate must not count them as pending channels. A different kind of ask (Laura as Q2 fallback messenger, Perri meeting in person) is not a re-invite and is not capped.",
+      "text": "Ruled 2026-08-25 (Batu): warm personal contacts get a contact cap. Michael and Laura & Edmond were already reached twice \u2014 the July round and the 8/13 friends-family WhatsApp \u2014 so their planned re-invites are retired unsent; a third touch is spamming a personal relationship, and the relationship outlasts the experiment. Consequence for the record: the michael and laura-edmond srcs will never carry data, so the distribution gate must not count them as pending channels. A different kind of ask (Laura as Q2 fallback messenger, Perri meeting in person) is not a re-invite and is not capped.",
       "source": "DECISION_LOG 2026-08-25 fourth entry"
     }
   ],
@@ -1328,7 +1323,7 @@
     "dueToday": [],
     "overdue": [
       {
-        "label": "Fire the channels cleared on 8/17 and still unsent — Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir → WORD → Flower Cat), IG carousel",
+        "label": "Fire the channels cleared on 8/17 and still unsent \u2014 Reddit, FB-group answer posts, Nextdoor, arts wave (Film Noir \u2192 WORD \u2192 Flower Cat), IG carousel",
         "since": "2026-08-28"
       },
       {
@@ -1340,21 +1335,21 @@
         "since": "2026-09-04"
       },
       {
-        "label": "Redistributor asks — library children's librarian, PS 31/34/110 PTAs, Town Square, class providers — so they carry us in first-week comms",
+        "label": "Redistributor asks \u2014 library children's librarian, PS 31/34/110 PTAs, Town Square, class providers \u2014 so they carry us in first-week comms",
         "since": "2026-09-03"
       },
       {
-        "label": "Rana's group list is in (2026-09-10) — parents groups ride the one parents link; her two non-kids groups have their own rows. Copy still to finalize.",
+        "label": "Rana's group list is in (2026-09-10) \u2014 parents groups ride the one parents link; her two non-kids groups have their own rows. Copy still to finalize.",
         "since": "2026-09-05"
       },
       {
-        "label": "Families morning — Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
+        "label": "Families morning \u2014 Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
         "since": "2026-09-08"
       }
     ],
     "waiting": [
       {
-        "what": "PR #93 — growth: Rana's post, day one — 203 people and nine signups",
+        "what": "PR #93 \u2014 growth: Rana's post, day one \u2014 203 people and nine signups",
         "age": 0
       },
       {
@@ -1366,7 +1361,7 @@
       "Merge branch 'claude/dashboard-business-interest-log-ce8v4x'",
       "growth: Perri meeting confirmed for Thu Sep 17, and two corrections",
       "growth: second inbound ask (TALEA), Perri follow-up, and FB comment emails",
-      "content(track-v): daily refresh 2026-09-12 — four cards on, thirteen off",
+      "content(track-v): daily refresh 2026-09-12 \u2014 four cards on, thirteen off",
       "growth: log ABC Cirque's inbound ask, surface business interest on the cockpit",
       "Merge pull request #92 from batusayici/fix/selected-card-always-pinned"
     ],

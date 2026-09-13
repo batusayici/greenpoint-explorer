@@ -35,12 +35,19 @@ gate: **merging is the only way any of its output becomes real.**
 - Strategy + rules of record: `docs/growth/growth-engine.md` (§2–4 hold each
   experiment's pre-registered decision rule; §6 the system; §7 the ladder)
 - Launch runbook: `docs/launch/2026-07-27-launch-plan.md`
-- Analytics: `./scripts/posthog-pull.sh` (needs `POSTHOG_READ_KEY` +
-  `POSTHOG_PROJECT_ID` from `.env.local` or environment — scoped read key;
-  never `VITE_`-prefixed)
+- Analytics: `npm run growth:pull` — one command for PostHog, Tally and the
+  repo's own supply numbers. Writes `docs/growth/snapshots/YYYY-MM-DD.json` and
+  updates the cockpit. Needs `POSTHOG_READ_KEY`, `POSTHOG_PROJECT_ID` and
+  `TALLY_API_KEY` from `.env.local` or the environment; none of them may ever be
+  `VITE_`-prefixed, and it must run through `npm run` for the proxy guard.
+  Definitions live in `src/growth/metricDefs.js` — **read a number from the
+  snapshot, never re-derive it with your own HogQL.** Cycle 9 wrote eighteen
+  one-off queries whose definitions nobody could check afterwards.
 - Search: `npm run growth:gsc` (needs `GSC_SITE_URL` +
   `GSC_SERVICE_ACCOUNT_JSON`; setup in `docs/growth/search-console-setup.md`).
-  Same rule — never `VITE_`-prefixed, and always through `npm run`.
+  Still separate and still weekly — its window lags three days, so two
+  consecutive days share six of seven. Same rule — never `VITE_`-prefixed, and
+  always through `npm run`.
 - Links: `docs/launch/channel-links.md` (copy, never compose)
 - Readouts: `docs/growth/readouts/YYYY-MM-DD.md` (this run's output; the
   previous one is this run's state — it lists what's live)
@@ -65,30 +72,25 @@ gate: **merging is the only way any of its output becomes real.**
 
 ### 1. Sense (deterministic first)
 
-1. Run `./scripts/posthog-pull.sh` and capture the full output: funnel,
-   channels (`?src=`), filter taps, top cards, retention days, repeat visitors.
-2. The script filters to production hosts and computes the WRL and activation
-   proxies itself (2026-07-28) — read them from its output rather than
-   hand-rolling queries, which is how the first cycle's funnel numbers went
-   wrong. It also prints a `DROPPED` table of non-production traffic: skim it,
-   and if a *production* host ever appears there, fix `GL_PROD_HOSTS` before
-   reading anything else. Still computed by hand: per-`src` week-2 return, and
-   organic share (sessions with no `?src=` net of known direct — the >50%
-   word-of-mouth signal, monthly read).
-3. **Cloud fallback:** if the pull fails, do not fabricate — mark every
-   quantitative section `⚠ analytics pending: run ./scripts/posthog-pull.sh
-   locally and paste`, finish the qualitative half, and flag the PR title with
-   `[data pending]`. **Diagnose which failure it is before reporting** — there
-   are two, with different fixes (2026-07-28):
-   - *Missing secrets:* `POSTHOG_READ_KEY` / `POSTHOG_PROJECT_ID` absent. Fix:
-     add them to the routine's environment at claude.ai/code. (The script's
-     `. ./.env.local` line fails in cloud regardless — `.env.local` is local
-     only; when the vars are already exported, run the queries without it.)
-   - *Egress denial:* vars present but `curl` returns `CONNECT tunnel failed,
-     response 403`. Confirm with `curl -sS "$HTTPS_PROXY/__agentproxy/status"` →
-     `recentRelayFailures` naming `us.posthog.com:443`. This is an org
-     network-policy block; **never route around it** — report the blocked host.
-     Fix: allowlist `us.posthog.com` in the routine's environment.
+1. Run `npm run growth:pull`. It writes today's snapshot to
+   `docs/growth/snapshots/` and prints every metric. Read the numbers from
+   there.
+2. **Check the snapshot's `sources` block before reading any metric.** Each
+   source carries a status: `ok`, `partial`, or one of `env` / `network` /
+   `auth` / `api`. A metric whose source failed reads `sensor-down` and is never
+   filled in from an older day — say it is down, never estimate it. `partial`
+   means some queries returned and some did not; the failed ones are named.
+   The exit codes are unchanged: 3 env, 4 network, 5 auth, 6 api. Egress
+   denials name the blocked host — allowlist it, never route around it.
+   Also skim the dropped-host lines it prints: if a *production* host ever
+   appears there, fix `PROD_HOSTS` in `src/growth/metricDefs.js` before reading
+   anything else.
+3. Two things the snapshot does not compute, still done by hand: per-`src`
+   week-2 return, and the trend against last week. For trends, compare the
+   **same weekday** a week back — traffic sawtooths, and 2026-09-12, the biggest
+   day on record, was a Saturday. Never compare two snapshots whose
+   `defVersion` for that metric differs; that means the definition changed and
+   the readings are not comparable.
 4. Run `npm run growth:gsc` and capture the full output: totals this window vs
    prior, the query list, pages, and the high-impression zero-click table. It
    defaults to a 7-day window ending 3 days back — GSC finalises on a lag, and
@@ -173,8 +175,12 @@ as the readout — same rule as a new source domain in `.claude/settings.json`.
 
 Write only what this cycle actually established:
 
-- `meta.asOf`, `meta.lastDataPull`, `meta.nextReadout`
-- `metrics[].value` / `.prior` / `.trend` / `.caveat` from this run's pull
+- `meta.asOf`, `meta.nextReadout` (`meta.lastDataPull` is written by the pull)
+- **Not `metrics[].value`.** Values live in `docs/growth/snapshots/` and are
+  joined in at render time. An entry marked `computed` carries no value in the
+  state file; one with `typedOn` was last entered by hand on that date and the
+  cockpit says so. To change what a metric *means*, edit
+  `src/growth/metricDefs.js` and bump its `defVersion` — a test enforces it.
 - `experiments[].actual` / `.readAt` / `.verdict` / `.implication` — the read you
   computed in step 2, against the rule you copied verbatim, never a softened one
 - `gates[].actual` / `.readAt`

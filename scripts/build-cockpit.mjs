@@ -116,14 +116,58 @@ const gates = s.gates.map((g) => `
     <p class="gate__unl"><span class="lbl">Unlocks</span> ${esc(g.unlocks)}</p>
   </article>`).join('');
 
+// Values come from the newest snapshot in docs/growth/snapshots/, written by
+// `npm run growth:pull`. gtm-state.json says what we measure and why; the
+// snapshot says what it was on a day. They were one file until 2026-09-13, and
+// the cost was a page that read 198 cards against a deck of 252 for five days
+// with nothing anywhere saying the number was old.
+//
+// A metric with no fresh reading renders "sensor down", never the last good
+// value: a stale number that looks current is worse than an obvious gap.
+const snapshot = (() => {
+  try {
+    const dir = resolve(root, 'docs/growth/snapshots');
+    const newest = readdirSync(dir).filter((f) => f.endsWith('.json')).sort().at(-1);
+    return newest ? JSON.parse(readFileSync(resolve(dir, newest), 'utf8')) : null;
+  } catch {
+    return null; // no snapshots yet — every computed tile reads as missing
+  }
+})();
+
 const ARROW = { up: '↗', down: '↘', flat: '→' };
-const metrics = s.metrics.map((m) => `
-  <article class="tile">
+const metrics = s.metrics.map((m) => {
+  const read = snapshot?.metrics?.[m.id];
+  const value = read?.status === 'ok' ? read.display : m.value;
+  const down = read && read.status !== 'ok';
+  const window = read?.window ? `${read.window.days}d to ${read.window.to}` : null;
+  // A metric with no snapshot reading and no typed value is missing, not blank:
+  // esc(undefined) renders an empty tile that looks like a design choice.
+  const shown = down ? `— sensor down since ${read.since ?? snapshot.date}` : (value ?? '—');
+  // A number entered by hand months ago and one pulled this morning must not
+  // look alike. Saying which is which is the whole reason the cockpit read 198
+  // cards against a deck of 252 without anyone noticing.
+  const provenance = down
+    ? esc(read.why ?? read.source ?? '')
+    : m.typedOn
+      ? `typed ${esc(m.typedOn)}, not pulled`
+      : window
+        ? `${esc(window)}`
+        : 'all-time';
+  const meta = down
+    ? provenance
+    : [
+        `${esc(ARROW[m.trend] || '')} ${m.prior ? `was ${esc(m.prior)}` : ''}`.trim(),
+        m.target ? `target ${esc(m.target)}` : '',
+        provenance,
+      ].filter(Boolean).join(' · ');
+  return `
+  <article class="tile${down ? ' tile--down' : ''}">
     <span class="tile__lbl">${esc(m.label)}</span>
-    <span class="tile__val mono">${esc(m.value)}</span>
-    <span class="tile__meta mono">${esc(ARROW[m.trend] || '')} was ${esc(m.prior)}${m.target ? ` · target ${esc(m.target)}` : ''}</span>
+    <span class="tile__val mono">${esc(shown)}</span>
+    <span class="tile__meta mono">${meta.trim()}</span>
     ${m.caveat ? `<span class="tile__cav">${esc(m.caveat)}</span>` : ''}
-  </article>`).join('');
+  </article>`;
+}).join('');
 
 // Citation-check freshness is computed, not stored: the check is monthly, manual
 // and unscheduled, so a hand-maintained tile would go stale in exactly the weeks

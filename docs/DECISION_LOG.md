@@ -4,6 +4,116 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-13 — count real people, not local people; the gate's wording stands
+
+**Batu: "I don't think you're tracking who is local and who is not, and frankly it doesn't matter
+as long as it's a real human."** The first half was wrong — geo off the IP was being used, and 713
+of 1,021 people were NY/NJ/CT. The second half was right, and the data agrees: locals engage at 45%
+and everyone else at 11%, but the five people in Istanbul engage at 80% and are obviously real.
+Where someone is does not tell you whether they are a person.
+
+**What geography was actually doing was keeping machines out**, which is why removing it needed a
+replacement rather than a deletion. The non-local traffic is mostly Amazon and Google: Boardman and
+Prineville Oregon, Eatonton Georgia, Council Bluffs Iowa, plus Facebook's Clonee, Luleå and Forest
+City and Hetzner's Falkenstein. 169 "people" across those, essentially none of whom has ever tapped
+anything.
+
+**So: count every person, and exclude a named list of towns that are essentially data centres.**
+Real cities stay in however quiet they look — Paris sent 27 people at 0% and Ashburn 7 at 43%, and
+dropping a real place to tidy up a rate is a worse error than counting a few machines. The bias is
+deliberate: keep a bot rather than lose a person. The pull prints what it dropped, by city, so the
+list going stale is visible instead of silent.
+
+**What could not be used as the filter: whether someone did anything.** Card-open rate and
+activation are measures *of* doing something, so a denominator defined by having done something
+makes them true by construction. There is no clean device or browser tell either — 602 of the 907
+silent sessions are mobile, on Facebook's in-app browser and Safari, which is what a real person
+who bounced looks like.
+
+Removing the machines moved every rate: activation 6.4% → 7.2%, card-open 32.3% → 36.7%,
+qualified-action 13.0% → 14.3%, reach 1,012 → 852 people.
+
+**The demand gate's wording is unchanged** (Batu, this date). `growth-engine.md` still reads "of
+locals who visit twice, ≥25% return in ≥3 of any 4 consecutive weeks" and the gate stays hand-read.
+Amending a pre-registered bar mid-data is what pre-registration forbids; the everyday metrics
+changing how they count is a separate matter from the bar they are eventually judged against.
+
+## 2026-09-13 — every growth number comes from one command, and three of them were wrong
+
+**Batu asked for analytics that stop being pulled and retyped in several places.** The machine
+already existed — `docs/launch/gtm-state.json` is the source of truth and the cockpit renders it —
+but nothing wrote the analytics into it. Three scripts printed to a terminal and a person typed the
+results in, so the cockpit read 198 cards against a deck of 252 for five days and the state file
+said the last data pull was 9/8 while the biggest three days on record were 9/11–9/13.
+
+**Now: `npm run growth:pull`.** It computes every metric from definitions in `src/growth/` and writes
+`docs/growth/snapshots/YYYY-MM-DD.json`. The state file keeps what we measure and why; the snapshot
+keeps what it was on a day; `build-cockpit.mjs` joins them. Batu ruled on three questions before any
+code was written: encode the doc's definition of activation rather than the code's, keep values in
+snapshots rather than in the state file, and run it daily with the weekly readout still interpreting.
+
+**Building it surfaced three live bugs, all of which had been producing wrong numbers.**
+
+*Day boundaries were UTC.* HogQL's `toDate()` resolves in the PostHog project timezone, which is UTC,
+so the product's busiest hours — 8pm to midnight New York — counted toward the following day. Friday
+2026-09-11 was 260 people, not the 211 reported; Saturday was 341, not 355. Every daily figure this
+project has ever quoted carries that shift. Day arithmetic now lives in `src/growth/days.js`, in JS,
+because `npm test` can reach JS and cannot reach ClickHouse.
+
+*HogQL silently truncates.* A query that omits its own `LIMIT` is capped at 100 rows with nothing in
+the response saying so. The session roll-up returned 95 rows of 1,418, so every rate computed off it
+would have described the most recent hundred sessions while reading like all of them. Limits are now
+explicit and a full page is treated as an error rather than an answer.
+
+*Activation never matched its own definition.* `growth-engine.md` §3 says first session;
+`posthog-pull.sh` computed it lifetime per person, for two months, under the doc's label. For the
+Sep 11–13 arrivals the two are 44 of 641 and 50 of 641. The doc wins (Batu, this date), and the prior
+readings are relabelled as a lifetime rate rather than restated.
+
+**What keeps it from drifting again.** Each definition quotes the phrase in `growth-engine.md` that
+defines it and a test asserts the phrase is still there. Each carries a hash of its own query and
+compute function, so editing either without bumping it fails `npm test` — that guard caught two
+changes while this was being written, including one where a metric declared a 7-day window its query
+did not apply. The definitions live under `src/` rather than `scripts/` because `npm test` is
+`node --test "src/**/*.test.mjs"`, and untested code is how the first drift lasted two months.
+
+**`docs/launch/cockpit.html` is no longer committed.** It is generated, it was rebuilt every morning
+on every branch, and it was one of the three files that conflicted cycle 7's readout PR into being
+closed unmerged. Regenerate it with `node scripts/build-cockpit.mjs`.
+
+**Deliberately not built:** automatic trend and prior. Cumulative counts only ever rise, so every
+arrow would point up forever; the comparison has to be same-weekday because traffic sawtooths the way
+the feed does; and a definition change renders as a fall that means nothing. Snapshots accumulate the
+history that makes it safe to automate later. Search Console stays weekly — its window lags three
+days and two consecutive days share six of seven. The three old pull scripts stay until a full weekly
+cycle has run on the new one.
+
+## 2026-09-13 — launch is 2026-09-10, and nothing before it is a baseline
+
+**Batu's ruling, two parts.** The product launched **2026-09-10** — the first day people who are not
+his friends found it. Everything before that was a friends-only beta. And **no metric from before
+2026-09-10 may be used as a baseline**, because the people in it were friends, most were away for
+the summer, and none of them arrived wanting the thing the product does.
+
+The analytics agree on the date. Sep 10 at ~4pm New York is the first inflow this project has ever
+had from strangers: six people from Facebook in one hour, plus the first arrivals tagged
+`gp-sharing` and `civic-crowdsource`. Every prior day is direct traffic on a handful of ids. The 27
+people on Sep 8 are not a counterexample — all desktop-and-Bing, zero card opens between them, which
+is a crawler signature, not readers.
+
+**What this costs, and it is worth naming.** The strongest claim in the 9/13 analysis — that the
+Facebook wave opened cards at 34.9% against a 13.8% baseline — loses its comparator. The finding
+survives on its own numbers (a third of cold arrivals opening a card, 7.9% clearing the activation
+bar) but it can no longer be stated as a lift over anything. **Weeks 1–4 after 9/10 are the
+baseline.** Until roughly 2026-10-08 there is nothing legitimate to compare against, so no readout
+in that window should say a number is up or down; it should say what the number is.
+
+Related: the pre-registered demand gate and the ~Sep 15 provisional readout date in
+`docs/growth/growth-engine.md` were both written against an Aug 1–8 launch. With launch at 9/10 the
+first mature 4-week cohort closes ~2026-10-08 and the two-cohort verdict moves to ~November. The
+gate's bar itself is unchanged — re-registered 2026-07-28 and 2026-08-17, and amending a bar
+mid-data is what pre-registration forbids.
+
 ## 2026-09-12 — a business that asks to be listed has consented, whatever its robots.txt says
 
 **Batu's ruling:** when the owner of a business asks us to include them, that is explicit consent,

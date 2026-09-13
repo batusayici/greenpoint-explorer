@@ -173,6 +173,18 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
 → more demand signal → sharper ingest & coverage → (back to top)
 ```
 
+**Where these numbers come from (2026-09-13).** Every metric below that can be
+computed is computed by `npm run growth:pull`, from definitions in
+`src/growth/metricDefs.js`, into a dated snapshot under
+`docs/growth/snapshots/`. Each definition quotes the phrase in THIS document
+that defines it, and a test fails if the phrase stops appearing here — so
+editing a definition in this file without editing the code is caught, and so is
+the reverse. That test exists because activation was defined here as a
+first-session measure and computed lifetime for two months, under this
+document's own label. If you change a metric's meaning here, change
+`metricDefs.js` in the same edit and bump its `defVersion`, which forces the
+history the change breaks to be restated rather than silently re-baselined.
+
 - **Compounding metric:** weekly returning locals (WRL). **The gate and this
   metric split 2026-08-17 (D1, pre-Wave-1-data).** The **PMF demand gate** is
   now a rate with a floor: *of locals who visit twice, **≥25% return in ≥3 of

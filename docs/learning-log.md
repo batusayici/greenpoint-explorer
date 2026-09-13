@@ -60,7 +60,14 @@ section only when evidence answers it — then it becomes a belief.
   friends round, 7 of 24 ids came back on a second day within a 5-day window.
   Until a return path exists, every demand read carries the label "measured
   without a way to return." _Evidence: L2026-08-17, L2026-07-29, 2026-08-15
-  strategy review P7._
+  strategy review P7._ **First real measurement, 2026-09-13:** Rana's posts
+  brought 638 people in three days, enough to finally measure return instead of
+  guessing at it. About 4–8% come back the next day. The email list is the only
+  return path that exists and 19 of them took it unprompted — a higher signup
+  rate than anything previously seen — and nothing has been sent to that list
+  yet. A reader also asked, in public, how to save the map. The question is no
+  longer "has anyone been asked"; they have, weakly, and a meaningful minority
+  said yes. _Evidence: L2026-09-13 (analytics)._
 - **Q4 — Will businesses ever supply anything themselves?** Zero submissions
   all-time and one submit tap ever. We don't know whether the ask is invisible,
   unwanted, or simply premature at this traffic level, and the answer decides
@@ -186,6 +193,86 @@ when revised, and retired ones are struck rather than renumbered.
 
 ## Log
 
+### L2026-09-13 — Rana's posts are the largest thing that has happened to this product, and the visitors were better than baseline, not worse (analytics)
+
+Source: PostHog HogQL pull and Tally pull, both run 2026-09-13, production hosts only, test
+src tags excluded. Activation uses the growth-engine §3 definition (≥2 `card_open` + ≥1
+high-intent act).
+
+Facts — volume. 638 distinct people Sep 11–13, against 1,005 all-time. 541 of them landed
+directly on `/kids`, the page Rana linked; only 54 landed on `/`. Referrers were Facebook in
+every spelling (facebook.com, l.facebook.com, m.facebook.com, lm.facebook.com) plus
+l.instagram.com from Sep 12, which is the PS31 story repost. 560 mobile, 78 desktop. No errors
+under load beyond 11 untyped exceptions across 7 people.
+
+**Correction, 2026-09-13 (the daily split only).** The per-day figures first recorded here —
+211 on Friday, 355 on Saturday, 110 on Sunday — were counted in UTC days, because PostHog's
+`toDate()` resolves in the project timezone and this product's busiest hours run 8pm to
+midnight New York, which is the next day in UTC. Counted in New York days: **Friday 260,
+Saturday 341, Sunday 78 so far.** The three-day total and every rate in this entry are
+unaffected, since those span the whole window. Every daily figure quoted anywhere in this
+project before this date carries the same shift. Fixed in `src/growth/days.js`; see
+DECISION_LOG 2026-09-13.
+
+Facts — quality. Of the 634 people who first appeared Sep 11–13, 221 (34.9%) opened at least
+one card and 50 (7.9%) met the activation definition. The `src=parents`-tagged subset did
+better than the untagged remainder on both measures (39.2% / 8.9% vs 25.1% / 5.6%). Family &
+Kids was the most-tapped lens (59 taps, 44 people), then Food & Drink (42/34).
+
+**Correction, same day (Batu's ruling — DECISION_LOG 2026-09-13).** This entry first stated
+these rates as a lift over an Aug 1 – Sep 10 cohort (13.8% / 2.9%). That comparison is
+withdrawn. Pre-9/10 traffic was friends, largely away for the summer, and arrived without
+wanting what the product does, so it is not a baseline. The 34.9% and 7.9% stand on their own
+as the first measurement of cold traffic; they are not evidence of improvement over anything,
+because there is nothing yet to improve over. Weeks 1–4 after 9/10 are the baseline.
+
+Facts — who they were. Geo resolves 534 of the 638 to the NYC metro (Brooklyn 250, Queens 163,
+Manhattan 113, Bronx 8); Queens is high because mobile carriers place much of north Brooklyn
+there. Roughly 50–60 resolve to AWS regions (Boardman and Prineville Oregon, Eatonton Georgia,
+Clonee Ireland) and are data-center traffic, not readers — about 8–9% of the headline count.
+
+Facts — the email list. Tally signups went from 5 all-time to 25, 20 of them Sep 11–13 (19
+unique people, one duplicate submission). Almost all chose the Family & Kids lens rather than
+the broadcast option. Every wave signup carries `"src":"parents"`.
+
+Facts — return. Of the 209 people who first arrived Sep 11, 16 came back Sep 12 and 6 on Sep
+13. Of the 337 who first arrived Sep 12, 13 came back Sep 13. 413 of the 634 arrivals opened
+zero cards. One submit_tap and one feedback_tap across the whole wave.
+
+Read: this settles the question the demand numbers could never answer at 20 visitors a day —
+the product works on people who did not already know Batu. A third of cold arrivals opened a
+card and 8% cleared the activation bar, which rules out "the traffic was junk" without needing
+a comparison to the friends-era numbers. It does not settle Q1: these people arrived through a
+Facebook post,
+which is the messenger-not-medium confound the carousel test was designed to break, though it
+is evidence that a web page is a fine destination once someone has a reason to tap.
+
+The gap it exposes is Q3, now measurable for the first time. Roughly 4–8% come back the next
+day, and nothing in the product asks them to. The email list is the one return path that
+exists and 19 people took it unprompted, which is a ~4.3% signup rate off the tagged cohort —
+far above anything we've seen. Nothing has been sent to that list. Marc's "how do you save the
+map?" (same-day, same post) and R4 (anonymous save, registered 2026-08-13, not live) are the
+same finding arriving from two directions.
+
+### L2026-09-13 — Rana's map posts in three parenting Facebook groups: real engagement, a save-it ask, and another unprompted "add us" (growth/business feedback)
+
+Source: four screenshots relayed by Batu, 2026-09-13 — Rana Sayıcı's posts in "Brooklyn Baby Hui -
+Classifieds," "North Brooklyn Education," and "Brooklyn Baby Hui - Williamsburg/Greenpoint Families,"
+plus a PS31 Instagram story reposting the map with "This is Awesome!"
+
+Facts: the three posts drew 14, 15, and 49 likes and several comments each. In the 49-like thread,
+Kathleen Kyllo (who runs a Clixo family event at TALEA) asked to add her own event and pasted an
+Instagram link to it; Lyzette Figueroa commented "Dropped my email"; Ingrid Young and Shirley Du
+thanked Rana for compiling it. In the Classifieds thread, Marc Mordoh asked "How do you save the
+map?" — the product has no bookmark or save feature today.
+
+Read: this is the same pattern as the 9/12 entry — people who see the map ask to be added or ask how
+to keep using it, not through any form we built, but by asking Rana directly or commenting in the
+open. That's a second, independent instance narrowing Q4 (submission ask may be invisible, not
+unwanted) rather than a first. Marc's question is a plain, unprompted signal that saving/returning to
+the map is something people want and don't see a way to do, which speaks to Q3 (no return path exists
+yet). Kathleen's ask is a live, dated event and a candidate card if it clears the usual source bar.
+
 ### L2026-09-12 — Perri set the meeting a day earlier, and two searches reported it as absent (ops)
 
 Source: Gmail screenshot relayed by Batu, 2026-09-12, of the thread "An idea to support the Fall Shop
@@ -258,7 +345,15 @@ pool's last weekend, and said outright that her husband built it.
 
 Facts — arrivals: 203 distinct people and 867 events on 2026-09-11. The best
 day before this was 27 people (2026-09-08); the best before the school-opening
-push was 22. The `parents` tag carries 181 of those people, 156 card opens, 28
+push was 22.
+
+**Two corrections to that count, added 2026-09-13, neither of which changes what
+this entry concluded.** It was pulled seven hours into the day, so it is a
+partial day, not a total. And it counted a UTC day: `toDate()` in HogQL resolves
+in the PostHog project timezone, so the evening — this product's busiest hours —
+fell into the next bucket. Counted in New York days and complete, **2026-09-11
+was 260 people**. Every daily figure quoted in this log before 2026-09-13 carries
+the same shift. See L2026-09-13 (analytics) and DECISION_LOG 2026-09-13. The `parents` tag carries 181 of those people, 156 card opens, 28
 action taps and 10 signup-ask taps. `civic-crowdsource` carries 7 and
 `gp-sharing` 1.
 
