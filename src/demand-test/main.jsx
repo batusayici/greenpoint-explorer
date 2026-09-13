@@ -5,6 +5,7 @@ import { EVENTS, bindTransport, setEventContext, trackEvent } from "./trackEvent
 import { createCaptureTransport, initPostHog } from "./posthogTransport.js";
 import { recordReturnVisit } from "./returnVisit.js";
 import { shouldShowOrientation } from "./firstVisitOrientation.js";
+import { webviewEventContext } from "./webviewContext.js";
 import JulyApp from "./JulyApp.jsx";
 import ErrorBoundary from "./ErrorBoundary.jsx";
 import { safeStorage, bootSafely } from "./boot.js";
@@ -58,9 +59,18 @@ bootSafely("posthog", () => {
 
 // Limited launch (2026-07-15): invite links carry ?src=<channel> (wave1,
 // perri, …) so every event separates by acquisition channel in the dashboard.
+//
+// The in-app-browser tag rides the SAME call on purpose (2026-08-19).
+// setEventContext REPLACES the context rather than merging into it, so a
+// second call would silently drop the channel tag — the one property every
+// experiment read depends on. One call, one object, both properties.
 bootSafely("channel tag", () => {
   const src = new URLSearchParams(window.location.search).get("src");
-  if (src) setEventContext({ src });
+  const context = {
+    ...(src ? { src } : {}),
+    ...webviewEventContext(navigator.userAgent),
+  };
+  if (Object.keys(context).length > 0) setEventContext(context);
 });
 
 createRoot(document.getElementById("root")).render(
