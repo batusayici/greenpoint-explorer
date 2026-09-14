@@ -1343,14 +1343,23 @@
         "since": "2026-09-05"
       }
     ],
-    "waiting": [],
+    "waiting": [
+      {
+        "what": "PR #94 — content(track-v): held cards, weekly 2026-09-14",
+        "age": 0
+      },
+      {
+        "what": "1 commit on main not pushed",
+        "age": 0
+      }
+    ],
     "overnight": [
+      "content(track-v): Monday refresh — 14 cards on, 35 off, two Greenpoint openings finally covered",
       "growth: no weekly email was ever sent — correct the two readouts that said it was",
       "Merge growth/weekly-digest — the weekly digest: Thursday, two editions, Gmail drafts",
       "growth: the digest template, voice rules, Thursday checklist, and the Sep 17 drafts",
       "growth: who gets which digest edition, and a reader count per edition",
-      "decision: the weekly digest — Thursday 7am, two editions, Gmail drafts, sent by Batu",
-      "Merge feat/webview-instrumentation — tag in-app-browser sessions"
+      "decision: the weekly digest — Thursday 7am, two editions, Gmail drafts, sent by Batu"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1359,9 +1368,9 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": null,
-      "reservoir": null,
-      "stale": false,
+      "dated": 92,
+      "reservoir": 28,
+      "stale": true,
       "thin": false,
       "fresh": false,
       "cards": 259

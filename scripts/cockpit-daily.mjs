@@ -20,13 +20,23 @@ const sh = (cmd, args) => {
   catch { return null; }
 };
 
+// Same, but keeps what the command printed when it exits non-zero. check-freshness
+// exits 1 to raise an alarm and still prints the counts on the way out; throwing
+// that away blanked the feed number on exactly the mornings something was wrong
+// (2026-09-14, ingest stale two days). The alarm belongs on the page, not instead
+// of it — the page already renders a non-fresh count in warning colour.
+const shKeepOutput = (cmd, args) => {
+  try { return execFileSync(cmd, args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); }
+  catch (error) { return (error.stdout ?? '').toString().trim() || null; }
+};
+
 // Local calendar day — never UTC. The feed is a New York product and an
 // overnight run must not roll the date forward an extra day.
 const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
 const dayName = new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'long', month: 'long', day: 'numeric' });
 
 // ---- feed, from the instrument of record ----------------------------------
-const freshness = sh('node', ['scripts/check-freshness.mjs']) ?? '';
+const freshness = shKeepOutput('node', ['scripts/check-freshness.mjs']) ?? '';
 const num = (k) => { const m = freshness.match(new RegExp(`${k}=(\\d+)`)); return m ? Number(m[1]) : null; };
 const feed = {
   dated: num('datedUpcoming7d'),
