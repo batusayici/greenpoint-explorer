@@ -4,6 +4,46 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-14 — how the repo is worked: two lanes, same-day branches, routines start from GitHub's main
+
+Batu asked for an audit of how the Mac sessions and the cloud routines share this repo, because
+commits were conflicting, branches were being forgotten, and it was getting hard to tell what was
+live. The audit covered Jul 15 to Sep 14.
+
+**What it found.** Eight of the last forty PRs were closed without merging, every one a branch cut
+from `main` and left for days while the daily ingest rewrote the same files under it; three growth
+readouts (#50, #65, #79) died this way on the cockpit page, the state file and the learning log.
+The 9/9 "main went backwards" alarm in PR #69 was false: GitHub's push log shows `main` moved
+forward in one unbroken chain that day, and the routine had been reading a stale clone in its
+sandbox. That false alarm cost two closed PRs and a full rebuild (#72). Two writers were pushing to
+`main` with no coordination, the routine at its scheduled hour and Batu all day (38 direct commits
+and 28 merges in the week of 9/7), and `main` had no protection at all. Sessions sharing one
+checkout had a commit land on another session's branch on 9/10. Two dead worktrees, four stale
+local branches and seven stale remote branches were left over, one from June.
+
+**Rulings (Batu, this date), recorded in `CLAUDE.md` under "Working the repo":**
+
+- Content files belong to the routines and go straight to `main`; code and docs belong to people and
+  go through a branch, a PR and a same-day merge. Nobody hand-edits content files on `main` during
+  the routine window.
+- Every human change is made in its own worktree; the shared checkout stays parked on `main`.
+  A branch older than two days is rebuilt or closed, never merged, which generalises the
+  2026-08-30 `cards.json` rule to every branch.
+- Routines begin with `git fetch origin && git reset --hard origin/main`; a rejected push is retried
+  after a rebase, never turned into a PR; a claim that `main` moved backwards is checked against
+  GitHub's push events first.
+- `main` is protected against force-push and deletion by a GitHub ruleset (`protect-main`), and
+  nothing more: the routines still push to it directly.
+- Regenerated files are not committed; the cockpit page already left on 2026-09-13.
+
+**Done in the same session:** worktrees pruned, the eleven stale branches deleted with their tips
+kept under `archive/*` tags, the ruleset created, and `pull.rebase` / `push.autoSetupRemote` /
+`push.default=current` set on the Mac. The three author identities in the log ("Batu", "Batu
+Sayici", "Claude") are GitHub's merge button, the Mac and the cloud respectively; harmless, left
+alone.
+
+Owner: Batu.
+
 ## 2026-09-14 — the morning fetch moves to 9:00, both ingest routines to 10:00
 
 Batu said the Mac is generally not on before 8:45. The home fetch was set for 7:15, so it only

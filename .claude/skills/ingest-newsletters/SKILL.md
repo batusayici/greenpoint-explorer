@@ -36,6 +36,7 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
 
 ### 0. Scripts first (no model judgment needed)
 
+0. **Start from GitHub's `main`, not the checkout you were handed (2026-09-14):** `git fetch origin && git reset --hard origin/main`. The 9/9 run read a sandbox clone four commits stale, reported that `main` had gone backwards, and put a clean refresh into a PR that then had to be rebuilt. If a later push is rejected, fetch and `git pull --rebase` again and retry; a rejected push is never a reason to open a PR. Before writing that `main` moved backwards, check `gh api repos/batusayici/greenpoint-explorer/events` for the push events on `refs/heads/main`.
 1. `npm run ingest:expire` — deletes past events and dated deals, prunes dangling `relatedCardIds` (auto-delete is pre-approved, Batu 2026-07-16). Capture its report: the printed contract counts feed step 5, and any FLAGGED recurring deal joins the re-verify queue.
 
    **This runs on EVERY path, including a scoped mini-ingest (2026-08-06).** The 8/5 Wednesday pull declared "Expiry did not run — this is a scoped mini-ingest" and skipped both this step and the `--record` in step 4. Result: 13 dead cards sat in `cards.json` inflating the deck to 85 when it was really 74, and the trend alarm lost a data point on the very day a run shipped 10 cards. Both steps are deterministic scripts costing seconds — there is no run small enough to skip them. **"Scoped" describes which sources you read, never which gates you run.**
@@ -412,7 +413,7 @@ review cycle and, on a same-week item, usually the card itself.
    - **`comedy-cysk-wednesdays`, `happy-medium-art-cafe`** — both quote a 9 September sitting that has since rolled
      off the listing, so the snapshot no longer carries it. Re-quote against the current listing.
 
-5. Run the step-3 run-level gates, **including `npm run ingest:coverage -- --gate`** (this pre-ship invocation is also what stamps the just-authored cards into `sourcePulse`). All green → commit the **shipping** cards (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
+5. Run the step-3 run-level gates, **including `npm run ingest:coverage -- --gate`** (this pre-ship invocation is also what stamps the just-authored cards into `sourcePulse`). All green → commit the **shipping** cards (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). If the push is rejected because `main` moved, pull with rebase again and push again; do not fall back to a PR (2026-09-14). Touch only the content-only file set from step 3 gate 5; `main` is the routines' lane for those files and no other. Then spot-check the live page (pins render, no expired deals, new cards open).
 6. **Held cards go to a PR** (`ingest/review-<date>`) with a one-line reason each and what would resolve it. Ship first, then PR — a doubtful card must never delay the clean ones.
 7. **Report every run in the summary**, whether or not it shipped: what shipped, what was held and why, and the gate results. Autonomy without a log is not autonomy, it's drift.
 
