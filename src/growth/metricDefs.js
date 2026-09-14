@@ -239,6 +239,18 @@ export const METRIC_DEFS = [
     defVersion: "0cdc7f21",
   },
   {
+    id: "digestreaders",
+    windowDays: 7,
+    label: "Digest readers by edition",
+    source: "posthog",
+    query: "sessions",
+    compute: compute.digestReaders,
+    role: "R1 numerator — segmented vs broadcast",
+    docRef: "a reader is an arrival that produced at least one event beyond a pageview",
+    caveat: "Recipients per edition come from `npm run digest:recipients`, not PostHog; the readout divides.",
+    defVersion: "7ec63352",
+  },
+  {
     id: "signups",
     windowDays: null,
     label: "Signup list",

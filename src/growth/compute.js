@@ -258,3 +258,29 @@ export function signups(submissions) {
     display: `${emails.size} people · ${segmented} chose a lens`,
   };
 }
+
+// Weekly digest readers, per edition (DECISION_LOG 2026-09-13). An email click is
+// not a reader until a second event proves it: the first `?src=digest` arrivals
+// on record were mail-security scanners — one pageview each, out of region, no
+// card open — and no email had even been sent. So a reader is a session on an
+// edition's `src` that did something beyond the pageview. Reported as a count
+// per src, never as a rate here: the denominator (recipients) lives in the
+// sender's terminal, not in PostHog, and the Tuesday readout joins the two.
+export const DIGEST_SRCS = ["follow-family-kids", "digest"];
+export function digestReaders(sessions) {
+  const readers = new Map(DIGEST_SRCS.map((src) => [src, new Set()]));
+  const arrivals = new Map(DIGEST_SRCS.map((src) => [src, new Set()]));
+  for (const s of sessions) {
+    if (!readers.has(s.src)) continue;
+    arrivals.get(s.src).add(s.personId);
+    const acted =
+      s.cardOpens + s.actionTaps + s.ctaTaps + s.todayToggles + s.filterTaps + s.pinTaps > 0;
+    if (acted) readers.get(s.src).add(s.personId);
+  }
+  const total = [...readers.values()].reduce((n, set) => n + set.size, 0);
+  const display = DIGEST_SRCS.map(
+    (src) => `${src} ${readers.get(src).size} of ${arrivals.get(src).size} arrivals`,
+  ).join(" · ");
+  return { n: total, display };
+}
+

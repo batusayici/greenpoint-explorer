@@ -231,7 +231,9 @@ Manhattan 113, Bronx 8); Queens is high because mobile carriers place much of no
 there. Roughly 50–60 resolve to AWS regions (Boardman and Prineville Oregon, Eatonton Georgia,
 Clonee Ireland) and are data-center traffic, not readers — about 8–9% of the headline count.
 
-Facts — the email list. Tally signups went from 5 all-time to 25, 20 of them Sep 11–13 (19
+Facts — the email list. *(Re-pulled 2026-09-13 evening by `npm run digest:recipients`: 30 submissions, 29 people
+— 18 chose Family & Kids, 8 chose Greenpoint, 1 chose Deals & Memberships, one person submitted
+twice, and the two July signups predate the follow field.)* Tally signups went from 5 all-time to 25, 20 of them Sep 11–13 (19
 unique people, one duplicate submission). Almost all chose the Family & Kids lens rather than
 the broadcast option. Every wave signup carries `"src":"parents"`.
 

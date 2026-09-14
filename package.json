@@ -31,7 +31,8 @@
     "ingest:coverage": "node scripts/check-coverage.mjs",
     "ingest:quotes": "node scripts/verify-quotes.mjs",
     "growth:gsc": "NODE_USE_ENV_PROXY=1 node scripts/gsc-pull.mjs",
-    "growth:pull": "NODE_USE_ENV_PROXY=1 node scripts/growth-pull.mjs"
+    "growth:pull": "NODE_USE_ENV_PROXY=1 node scripts/growth-pull.mjs",
+    "digest:recipients": "NODE_USE_ENV_PROXY=1 node scripts/digest-recipients.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
