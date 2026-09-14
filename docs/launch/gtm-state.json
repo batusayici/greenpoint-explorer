@@ -1343,23 +1343,14 @@
         "since": "2026-09-05"
       }
     ],
-    "waiting": [
-      {
-        "what": "PR #94 — content(track-v): held cards, weekly 2026-09-14",
-        "age": 0
-      },
-      {
-        "what": "1 commit on main not pushed",
-        "age": 0
-      }
-    ],
+    "waiting": [],
     "overnight": [
-      "content(track-v): Monday refresh — 14 cards on, 35 off, two Greenpoint openings finally covered",
-      "growth: no weekly email was ever sent — correct the two readouts that said it was",
-      "Merge growth/weekly-digest — the weekly digest: Thursday, two editions, Gmail drafts",
-      "growth: the digest template, voice rules, Thursday checklist, and the Sep 17 drafts",
-      "growth: who gets which digest edition, and a reader count per edition",
-      "decision: the weekly digest — Thursday 7am, two editions, Gmail drafts, sent by Batu"
+      "cockpit: keep the feed numbers when check-freshness raises an alarm",
+      "cockpit: morning refresh 2026-09-14",
+      "Merge pull request #94 from batusayici/ingest/weekly-2026-09-14",
+      "content(track-v): sold-out nights card, and ABC Cirque cites the studio for its address",
+      "content(track-v): held cards, weekly 2026-09-14",
+      "content(track-v): Monday refresh — 14 cards on, 35 off, two Greenpoint openings finally covered"
     ],
     "unanswered": [
       "action-city-comics",
@@ -1368,12 +1359,12 @@
       "org-brooklyn-craft"
     ],
     "feed": {
-      "dated": 92,
-      "reservoir": 28,
-      "stale": true,
+      "dated": 101,
+      "reservoir": 40,
+      "stale": false,
       "thin": false,
-      "fresh": false,
-      "cards": 259
+      "fresh": true,
+      "cards": 248
     }
   }
 }
