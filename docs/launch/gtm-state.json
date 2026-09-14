@@ -1044,6 +1044,22 @@
   ],
   "businessInterest": [
     {
+      "id": "lic-parents-suzanna-2026-09-12",
+      "date": "2026-09-12",
+      "who": "Suzanna — organizer in a Long Island City parents group that keeps a hand-maintained spreadsheet of kids' activities",
+      "ask": "Expand the map to LIC, or coach them on building their own",
+      "channel": "Email to Batu, after a local mom shared the map with the group",
+      "gate": "OUT OF SCOPE as coverage — LIC is outside the bbox and a second neighborhood means a second source roster, not a config change. Recommended: decline the expansion, accept the coaching call, and use it to learn who maintains their spreadsheet, what it costs them weekly, and what people do with it. First inbound ask for a whole neighborhood and the first evidence the form travels beyond Greenpoint. Reply drafted 2026-09-14, not sent."
+    },
+    {
+      "id": "sparsa-adele-2026-09-12",
+      "date": "2026-09-12",
+      "who": "Adele — prenatal and baby-and-me yoga instructor at SPARŚA (Greenpoint and Williamsburg locations); cc'd the studio owner",
+      "ask": "Add SPARŚA's classes to the map",
+      "channel": "Email to Batu, found the map through the Brooklyn Baby Hui parents group",
+      "gate": "ALREADY COVERED. sparsa-union-fit has been on the roster since 2026-09-07 and the Greenpoint venue card sparsa-greenpoint (1006 Manhattan Ave) is live; dated prenatal and Baby & Me cards shipped 9/08 and 9/13 off the union.fit schedule. Williamsburg rows stay out of scope per the existing GAP note. No roster change needed. The open ask back to her: the kids' music classes (Musicraftory, Strawberry Tunes, Tunes for Tykes) are said to run but appear on no fetchable page — she can point us at where the dates are published. Reply drafted 2026-09-14, not sent."
+    },
+    {
       "id": "abc-cirque-2026-09-12",
       "date": "2026-09-12",
       "who": "Ali Goldberg — ABC Cirque (Williamsburg; Family Adventure Play for 0–5s, kids & adult cirque classes, 5th Wall Studio)",

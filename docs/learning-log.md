@@ -193,6 +193,46 @@ when revised, and retired ones are struck rather than renumbered.
 
 ## Log
 
+### L2026-09-14 — Two more unprompted asks, both by email, and one is a neighborhood we don't cover (business feedback)
+
+Source: two emails to Batu dated 2026-09-12, relayed as screenshots 2026-09-14.
+
+Fact 1 — Suzanna, an organizer in a Long Island City parents group, 9:17am: a
+local mom shared the map with her group and "everyone was saying how amazing it
+was and how we need something like that for LIC." Her group already keeps "a
+spreadsheet of activities" and has "always wanted to put it into map form." She
+asks whether Batu would expand to LIC, or coach them on getting started.
+
+Fact 2 — Adele, a prenatal and baby-and-me yoga instructor who teaches at
+SPARŚA, 3:46pm: found the map "through Brooklyn baby hui," teaches at both the
+Greenpoint and Williamsburg locations, and asks to be added. She cc'd the studio
+owner and flagged that the owner is slow to reply. SPARŚA Greenpoint was already
+on the map — a venue card plus dated prenatal and Baby & Me listings shipping off
+its union.fit schedule since 2026-09-07 — so the ask was already satisfied and
+she did not know.
+
+Read: this brings the confirmed unprompted "add us / cover us" asks to four in
+three days (ABC Cirque and TALEA on 9/12, these two), and all four arrived
+through a person rather than the in-product submit form, which still stands at
+zero (Q4, B12). The form isn't where demand lands; a parent posting to a parents
+group is.
+
+Two things are new. First, Adele's email is the first case of someone asking for
+something the map already does — evidence that being listed is invisible to the
+business being listed, and that nothing tells a venue it's been covered. Second,
+Suzanna is the first inbound ask for a whole neighborhood, from a group that has
+already done the collection work by hand and hit the same wall the product was
+built to solve (a spreadsheet nobody can read spatially). That is the strongest
+evidence to date that the thing being wanted is the form, not the Greenpoint
+content — and it arrived from outside the neighborhood without any outreach.
+It doesn't resolve Q1 (whether a website is the right medium) but it does say the
+job is real beyond one neighborhood. Recommended handling, both drafted
+2026-09-14: decline LIC, accept the coaching call and use it to learn who
+maintains their spreadsheet and what it costs them; tell Adele she's already
+listed and ask her for the kids' music class schedules, which are a known gap
+(the roster's sparsa-union-fit GAP note: Musicraftory and Tunes for Tykes are
+said to run but appear nowhere fetchable).
+
 ### L2026-09-13 — No weekly email was ever sent; two readouts said otherwise (correction)
 
 Source: Batu, 2026-09-13, on being shown cycle 9's digest finding. Checked the
