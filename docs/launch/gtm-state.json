@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-09-12",
+    "asOf": "2026-09-13",
     "lastDataPull": "2026-09-13",
     "lastFeedCheck": "2026-09-12",
     "nextReadout": "2026-09-15",
@@ -65,10 +65,10 @@
         "date": "2026-09-17"
       },
       {
-        "label": "Families morning \u2014 Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
-        "when": "Tue Sep 8",
-        "status": "later",
-        "date": "2026-09-08"
+        "label": "First weekly digest goes out \u2014 Family & Kids edition to 18, Greenpoint edition to 11; R1 clock started Mon Sep 14",
+        "when": "Thu Sep 17, 7am",
+        "status": "next",
+        "date": "2026-09-17"
       }
     ]
   },
@@ -390,16 +390,16 @@
       "id": "R1",
       "name": "Follow \u2014 personalized alert vs broadcast digest",
       "loop": "A",
-      "status": "not-started",
+      "status": "armed",
       "slot": true,
       "hypothesis": "Re-entry is the weakest edge of the content loop \u2014 nothing tells a resident it's a new week. A followed lens or place beats a broadcast digest at bringing them back.",
       "smallestTest": "Manual segments, 4\u20135 coarse ones. No backend, no automation build. Batu sends only when something matches.",
       "rule": "Segment click-through vs broadcast click-through over 3 weeks. Kill if segmented doesn't beat broadcast by week 3 \u2192 personalization isn't worth a backend, fall back to the digest and close the question. Time-boxed to 3 weeks either way.",
       "target": "Segmented > broadcast by week 3",
-      "actual": "5 signups (+1 on 9/4), 0 segmented. Control arm has now sent twice: 8/25 and 9/1. Across both sends 28 arrivals, 0 card opens, 0 events beyond pageview/return_visit, 27 of 28 out of region.",
+      "actual": "ARMED 2026-09-14. 29 signups, 19 segmented (18 Family & Kids, 1 Deals & Memberships), 10 broadcast; the Family & Kids followers arrived Sep 11\u201313 off Rana's posts. Nothing has ever been sent to the list (learning log L2026-09-13 \u2014 the two earlier 'sends' were inferred from ?src=digest events and did not happen). First send Thu Sep 17, 7am: Family & Kids edition (src=follow-family-kids, 18 people) vs Greenpoint edition (src=digest, 11 people — 8 chose Greenpoint, 2 predate the follow field, 1 chose Deals & Memberships and rides Greenpoint under the 5-subscriber rule).",
       "readAt": "2026-09-08",
-      "verdict": "hold",
-      "trigger": "R1's COMPARISON still starts the first Monday after \u226510 signups with \u22651 segmented, 3-week clock from then (P5). D2 (2026-08-17) decoupled the digest itself: it sends weekly from Mon Aug 24 as the retention spine whether or not R1 arms. P7 fallback stands for the comparison.",
+      "verdict": "armed",
+      "trigger": "R1's COMPARISON still starts the first Monday after \u226510 signups with \u22651 segmented, 3-week clock from then (P5). D2 (2026-08-17) decoupled the digest itself: it sends weekly from Mon Aug 24 as the retention spine whether or not R1 arms. P7 fallback stands for the comparison. MET 2026-09-13; clock starts Mon Sep 14, sends Thu Sep 17 / 24 / Oct 1 (Batu moved the day to Thursday 2026-09-13), read at the Oct 6 readout.",
       "implication": "Trigger still unmet on both halves; R1's own 3-week clock untouched and should stay so. The broken tag recurred on the second send \u2014 4 of 13 arrivals (31%) after 7 of 15 (47%) \u2014 because the 9/1 email was composed from the 8/25 one, which still carried the bad URL. The fix has to land in the sent email, not only in the readout draft. On two sends' evidence the count of clicks that produced a second in-product event is zero out of thirty, so D9's clicks-vs-list-size rule still cannot be read off it. The deeper constraint is list size: at five subscribers this channel cannot answer D9's question however well it is written.",
       "source": "growth \u00a72; readout 2026-08-11"
     },
@@ -832,11 +832,11 @@
       "src": "digest",
       "label": "Weekly digest (D2 retention spine / R1 control arm)",
       "wave": "recurring",
-      "sent": "2026-09-01 (second send; first 2026-08-25)",
-      "firstSession": "2026-08-25",
+      "sent": null,
+      "firstSession": null,
       "shared": null,
       "reply": null,
-      "status": "TWO SENDS, ZERO READERS. 8/25 drew 15 arrivals (8 tagged digest, 7 on a BROKEN TAG \u2014 digest with a trailing backtick); 9/1 drew 13 (9 tagged, 4 broken). The broken tag recurred because the 9/1 email was composed from the 8/25 one, which still carried the bad URL \u2014 the corrected draft in the readout never reached the send. Across both sends: 28 people, 0 card opens, 0 events beyond pageview/return_visit, 27 of 28 out of region (Georgia 13, Iowa 7, Oregon 6, Nevada 2, Texas 1, New York 1). Mail-security scanners, not readers. Do not read D9 off either send. Mon 8/24 and Mon 8/31 were both missed; Mon 9/7 was Labor Day and moves to Tue 9/8."
+      "status": "NEVER SENT before Thu Sep 17 (learning log L2026-09-13 \u2014 the 8/25 and 9/1 sends were inferred from ?src=digest events, not confirmed). From Sep 17: the Greenpoint edition, Thursday 7am, Gmail draft built by the operator, sent by Batu. The Family & Kids edition rides src=follow-family-kids. Mechanism and template: docs/growth/digest.md."
     },
     {
       "src": "friends-family",
@@ -1343,8 +1343,8 @@
         "since": "2026-09-05"
       },
       {
-        "label": "Families morning \u2014 Rana's posts, the weekly digest moved off Labor Day, and any PTA shares, all the same morning",
-        "since": "2026-09-08"
+        "label": "First weekly digest \u2014 two Gmail drafts (Family & Kids, Greenpoint) built Thu Sep 17 6:30am, Batu sends by 7:30 and confirms in chat. Checklist in docs/growth/digest.md.",
+        "since": "2026-09-13"
       }
     ],
     "waiting": [

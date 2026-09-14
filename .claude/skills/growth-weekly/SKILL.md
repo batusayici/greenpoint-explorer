@@ -111,7 +111,13 @@ gate: **merging is the only way any of its output becomes real.**
 
 One line per experiment, mechanical against its pre-registered rule:
 
-> `R1 digest — metric: src=digest return sessions … — read: <numbers, pre vs post> — rule says: <continue | kill | graduate> — recommendation + confidence note`
+> `R1 digest — metric: readers per recipient, Family & Kids edition (src=follow-family-kids) vs Greenpoint edition (src=digest) — read: <readers of recipients, per edition, this send and cumulative> — rule says: <continue | kill | graduate> — recommendation + confidence note`
+>
+> Readers come from the `digestreaders` line of the latest `docs/growth/snapshots/*.json`
+> (`npm run growth:pull`); recipients per edition are what `npm run digest:recipients` printed
+> the morning of the send, which Batu's send confirmation in chat carries. A send that Batu has
+> not confirmed did not happen — never infer one from `?src=` events (L2026-09-13). Mechanism
+> and template: `docs/growth/digest.md`.
 
 The rule's verdict is computed; the **recommendation is labeled as a
 recommendation**. Kill/graduate is Batu's call at merge (ladder V1).
@@ -412,3 +418,12 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   **"env vars absent" is a symptom with at least two causes — nobody set them,
   or there is nothing to set them to** — and the setup doc's own steps are where
   you check which.
+- **(2026-09-13, Batu — from the digest ruling, DECISION_LOG that date.)** **The
+  weekly digest goes out Thursday 7am as two editions, and the Thursday draft is a
+  local session, not this routine, until R1 reads.** The Gmail connector that
+  builds the drafts is not reachable from a cloud routine, and a send is real only
+  when Batu confirms it in chat. This routine's job on the digest is the Tuesday
+  read: two lines per edition (readers ÷ recipients, returners), and a note of
+  any edition skipped under the density floor. Everything the send needs — who
+  gets which edition, the picks rule, the template, the checklist — lives in
+  `docs/growth/digest.md`; do not restate it here.

@@ -4,6 +4,51 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-13 — the weekly digest: Thursday, two editions, Gmail drafts, sent by Batu
+
+**Nothing had ever gone to the signup list**, and after Rana's posts the list is 29 people, 18 of
+them following Family & Kids. That met R1's trigger (≥10 signups, ≥1 segmented) for the first
+time, so the segment-vs-broadcast comparison arms **Mon Sep 14** and its three-week clock runs from
+there. Batu ruled on the mechanism the same day, three calls:
+
+**Thursday, 7:00am New York, first send Thu Sep 17.** D2 said Monday. The list is parents-majority,
+the two most-opened cards in the wave were both weekend events, and family cards cluster on Saturday
+and Monday, so the email leads with the weekend and lands when the weekend is being planned. Content
+is also freshest after the Wednesday pull. Only D2's day changes; its substance (weekly, sent by
+Batu, density floor, judged on tagged clicks) stands. The 8/19 review had left Thursday-vs-Monday
+open "to test on the send that exists" — no send existed, so the first one sets the day rather
+than forking a rhythm.
+
+**Two editions now; a lens earns its own edition at 5 subscribers.** Family & Kids
+(`src=follow-family-kids`, the segmented arm) and Greenpoint (`src=digest`, the broadcast arm, for
+everyone who followed Greenpoint plus any lens under the threshold). The single Deals & Memberships
+subscriber rides Greenpoint, and when their lens has a dated item that week it leads that edition.
+This is a rule, not a one-off: 5 subscribers and 3 dated items in the window, and a lens gets its own
+edition and its own `follow-<lens>` row in `channel-links.md` before the first send. Below 3 dated
+items an edition is skipped, never padded (D2's floor), and the skip is noted in the next readout.
+
+**Gmail drafts built by the operator, sent by Batu.** Nothing in the repo sends mail and
+growth-engine rules out tools beyond PostHog's free tier. The operator prints the per-edition BCC
+lists from Tally (`npm run digest:recipients`, terminal only — addresses never enter the repo),
+composes each edition as a fresh Gmail draft through the Gmail connector with links bare on their
+own lines, and Batu opens, reads and sends. This removes the copy-paste step that put a broken
+link into two drafts. A send is recorded only when Batu confirms it in chat (L2026-09-13). The
+Thursday draft is a local session for R1's three sends, because the Gmail connector is not
+reachable from a cloud routine; whether it moves into a routine is decided by R1's read.
+
+**What counts.** A reader is an arrival on the edition's `src` that produced at least one event
+beyond a pageview (cycle 8's definition). R1 reads Family & Kids readers-per-recipient against
+Greenpoint readers-per-recipient over the three sends; contemporaneous, so exempt from the
+seasonal-confound rule. Kill rule unchanged. Read at the Tue Oct 6 readout.
+
+**Compliance, and one gap for Batu.** Each edition's footer says why the reader got it, offers
+"reply stop" to leave, and names Stoopwise LLC. CAN-SPAM also expects a physical mailing address;
+the privacy page carries only `hello@stoopwise.com`. Recommendation: add the LLC's registered
+address to the footer before the first send. At 28 recipients on a personal Gmail the practical
+risk is nil, but the rule is the rule.
+
+The mechanism, the template and the Thursday checklist live in `docs/growth/digest.md`.
+
 ## 2026-09-13 — count real people, not local people; the gate's wording stands
 
 **Batu: "I don't think you're tracking who is local and who is not, and frankly it doesn't matter
