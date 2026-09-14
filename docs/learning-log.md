@@ -193,6 +193,29 @@ when revised, and retired ones are struck rather than renumbered.
 
 ## Log
 
+### L2026-09-13 — No weekly email was ever sent; two readouts said otherwise (correction)
+
+Source: Batu, 2026-09-13, on being shown cycle 9's digest finding. Checked the
+same session: his Gmail has no such email sent or received, and the repo has no
+mail provider, API key or send script — the growth skill drafts and never sends.
+
+Facts: Batu never approved or sent a weekly email to the signup list. The
+claims in the 2026-09-01 and 2026-09-08 readouts that "the weekly note went
+out" on 2026-08-25 and 2026-09-01 were inferred from `?src=digest` events in
+PostHog, not from a confirmed send. Entries L2026-09-01 (the weekly send) and
+L2026-09-08 read those same events as a send. The five people on the Tally
+signup list have never received anything. Where the `?src=digest` clicks came
+from is unknown; the link exists in `channel-links.md` and in the readouts
+themselves.
+
+Read: the arrival pattern those entries described — Georgia, Iowa and Oregon,
+one event each, zero card opens — is what it looked like all along, automated
+fetches, and with no send behind it there is no channel there at all. Nothing
+about the weekly email has been tested. D9 and R1's control arm have no data,
+not bad data. The process failure is that a growth cycle wrote an inference as
+a fact and the next cycle built on it; a send is only real when Batu confirms
+he sent it.
+
 ### L2026-09-13 — Rana's posts are the largest thing that has happened to this product, and the visitors were better than baseline, not worse (analytics)
 
 Source: PostHog HogQL pull and Tally pull, both run 2026-09-13, production hosts only, test
@@ -580,11 +603,16 @@ whether people would return to a site, which is the harder half of Q1, and it
 does not displace the Instagram carousel as the test that separates medium
 from messenger.
 
-### L2026-09-01 — The first weekly send: a broken tag, and mostly scanners (analytics pull)
+### L2026-09-01 — The first weekly send: a broken tag, and mostly scanners (analytics pull) — RETRACTED 2026-09-13
+
+**Retracted in part 2026-09-13.** No weekly email was ever sent; the send this
+entry reports was inferred from `?src=digest` events, not confirmed. See
+L2026-09-13. The form and Follow-tap numbers below stand; everything about a
+send does not.
 
 Source: same pull; Tally pulled live for all three forms the same session.
 
-Facts: the first weekly note went out 2026-08-25 and produced 15 arrivals
+Facts: 2026-08-25 produced 15 arrivals
 across two `src` values — 8 on `digest` and 7 on `digest` with a trailing
 backtick, a tag that does not exist in `channel-links.md`. Fourteen of the
 fifteen geolocated to Oregon, Iowa, Georgia and Texas; each produced exactly

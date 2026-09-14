@@ -354,7 +354,7 @@
       "date": "2026-09-01",
       "goal": "Read what the first weekly send produced, and what supply the Sep 8 parents post will have to point at.",
       "why": "Q2 posts in seven days and cannot be re-run. This is the last readout that can still change what that week looks like.",
-      "outcome": "ChatGPT sent 7 local readers on 8/29 and every prior readout had reported AI referrals as zero \u2014 an instrument defect, now named. The weekly send went 8/25 with a mis-copied link (7 of 15 arrivals on a broken tag) and mostly scanner traffic; the 8/31 send did not go. The feed lost 41% of its dated items in seven days. The demand gate rose to 5 of 22 (23%).",
+      "outcome": "ChatGPT sent 7 local readers on 8/29 and every prior readout had reported AI referrals as zero \u2014 an instrument defect, now named. The weekly send was reported as having gone 8/25 with a mis-copied link and mostly scanner traffic. [CORRECTED 2026-09-13: no weekly email was ever sent; these sends were inferred from ?src=digest events, not confirmed by Batu. See learning log L2026-09-13.] The feed lost 41% of its dated items in seven days. The demand gate rose to 5 of 22 (23%).",
       "source": "docs/growth/readouts/2026-09-01.md"
     },
     {
@@ -365,7 +365,7 @@
       "date": "2026-09-08",
       "goal": "Read whether Q2 s preconditions closed, and what the first live Search Console window says.",
       "why": "Q2 posts today and cannot be re-run. Q1 closes at the next readout. This is the cycle where both of Wave 1 s experiments come due.",
-      "outcome": "Search Console readable for the first time \u2014 clicks 8 -> 20, position 13.7 -> 10.5, and ZERO generic-intent queries: people find us by name, never by question. ChatGPT grew from one Saturday to 16 people over six days, 9 of them opening a card. The kids-supply problem closed: Sep 7-13 went from 3 dated family items at one venue to 8 across six, deck 133 -> 198. The weekly note sent a second time and carried the same broken link, and two sends have now produced 30 clicks and zero readers. Demand gate 5 of 24 (21%), down two points on a growing denominator.",
+      "outcome": "Search Console readable for the first time \u2014 clicks 8 -> 20, position 13.7 -> 10.5, and ZERO generic-intent queries: people find us by name, never by question. ChatGPT grew from one Saturday to 16 people over six days, 9 of them opening a card. The kids-supply problem closed: Sep 7-13 went from 3 dated family items at one venue to 8 across six, deck 133 -> 198. The weekly note was reported as having sent a second time with the same broken link, 30 clicks and zero readers. [CORRECTED 2026-09-13: no weekly email was ever sent; these sends were inferred from ?src=digest events, not confirmed by Batu. See learning log L2026-09-13.] Demand gate 5 of 24 (21%), down two points on a growing denominator.",
       "source": "docs/growth/readouts/2026-09-08.md"
     }
   ],
