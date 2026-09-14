@@ -60,7 +60,7 @@ gate: **merging is the only way any of its output becomes real.**
 
 ### 0. Orient (state, no judgment)
 
-1. `git checkout -b growth/readout-<YYYY-MM-DD>` off up-to-date `main`.
+1. `git fetch origin && git reset --hard origin/main`, then `git checkout -b growth/readout-<YYYY-MM-DD>`. **Open the PR the same day and expect it merged the same day (2026-09-14):** three readouts (#50, #65, #79) were closed unmerged because they sat for days while the ingest rewrote the state file and the learning log underneath them. A readout branch older than two days is rebuilt on current `main`, not merged.
 2. Read the **latest file in `docs/growth/readouts/`** — it lists the live
    experiments, their start dates, and last week's reads. First run ever:
    bootstrap the live list from the launch plan §4 slate (R1, Q1, Q2 — only
