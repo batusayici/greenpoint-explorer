@@ -7,7 +7,6 @@ about
 shop
 shop
 Back to School Collection
-Summer Collection
 Toys
 Shoes
 Gifting
@@ -15,13 +14,13 @@ Kids Decor
 Accessories
 events
 relove hub
+join our team
 contact
 Log in
 home
 about
 shop
 Back to School Collection
-Summer Collection
 Toys
 Shoes
 Gifting
@@ -29,6 +28,7 @@ Kids Decor
 Accessories
 events
 relove hub
+join our team
 contact
 Log in
 0 items
@@ -87,6 +87,8 @@ Instagram
 Powered by Shopify
 |
 Search
+|
+Your Privacy Choices
 |
 Privacy policy
 |

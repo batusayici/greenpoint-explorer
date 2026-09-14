@@ -4678,5 +4678,30 @@
         "-73.9450912"
       ]
     }
+  },
+  "470 Scott Ave, Brooklyn, NY 11222": {
+    "query": "470 Scott Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-09-14T13:31:52.864Z",
+    "hit": {
+      "place_id": 359108133,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2839872703,
+      "lat": "40.7270658",
+      "lon": "-73.9305181",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "470, Scott Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7270158",
+        "40.7271158",
+        "-73.9305681",
+        "-73.9304681"
+      ]
+    }
   }
 }

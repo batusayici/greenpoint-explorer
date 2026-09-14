@@ -32,7 +32,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-09-06 11:30
 data-atc-event-end: 2027-06-08 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -40,7 +40,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-09-13 11:30
 data-atc-event-end: 2027-06-15 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -48,7 +48,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-09-20 11:30
 data-atc-event-end: 2027-06-22 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -56,7 +56,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-09-27 11:30
 data-atc-event-end: 2027-06-29 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -64,7 +64,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-10-04 11:30
 data-atc-event-end: 2027-07-06 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -72,7 +72,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-10-11 11:30
 data-atc-event-end: 2027-07-13 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -80,7 +80,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-10-18 11:30
 data-atc-event-end: 2027-07-20 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -88,7 +88,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-10-25 11:30
 data-atc-event-end: 2027-07-27 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 
@@ -96,7 +96,7 @@ data-event-title: · Family Music Class with Jazz Baby
 data-atc-event-start: 2026-11-01 11:30
 data-atc-event-end: 2027-08-03 12:30
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Williamsburg, Brooklyn, NY, USA
-data-event-recurring-event-dates: 09/13/2026,09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
+data-event-recurring-event-dates: 09/20/2026,09/27/2026,10/04/2026,10/11/2026,10/18/2026,10/25/2026,11/01/2026,11/08/2026,11/15/2026,11/22/2026,11/29/2026,12/06/2026,12/13/2026,12/20/2026,12/27/2026
 data-external-url: https://www.taleabeer.com/products/jazz-baby-kid-singalong-at-talea-williamsburg
 data-event-description: <p><span>Kick-off Sundays with a little something for the whole family! Join us for a family-friendly music class from <a href="https://www.jazzbabymusic.com/">Jazz Baby</a>! Sunday mornings 11:30am - 12:30pm, enjoy a coffee, beer, or a snack while your little ones join Mariella for a joyful and engaging music class! Recommended for kids ages 6 months - 4 years.</span></p> <p><span><strong>Please Note:</strong></span> <span>We want to create as much space as possible for your little ones to enjoy our taproom. Parents will be asked to self-park their strollers in our courtyard or leave them folded in our retail lobby in the case of rain!</span></p> <p><span><strong>Refund Policy:</strong></span> <span>All refunds for TALEA taproom events must be requested at least one week in advance of the event. To request a refund, please email taproom@taleabeer.com</span></p>
 

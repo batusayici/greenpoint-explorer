@@ -223,81 +223,11 @@ Workshop
 Vendor
 Brooklyn Craft Company
 (120)
-Beginner Patchwork
-Regular Price
-$95.00
-Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Knitting 101
+Fabric Pocket Altars
 Regular Price
 $45.00
 Sale Price
 $45.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Crochet 101 - Lil' Bag
-Regular Price
-$45.00
-Sale Price
-$45.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Sewing 101 - Tote Bag
-Regular Price
-$95.00
-Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Sewing 101 - Make a Skirt
-Regular Price
-$95.00
-Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Watercolor Nebulas + Galaxies
-Regular Price
-$55.00
-Sale Price
-$55.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Beaded Embroidery
-Regular Price
-$55.00
-Sale Price
-$55.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Natural Bundle Dye Workshop
-Regular Price
-$75.00
-Sale Price
-$75.00
 Regular Price
 Unit Price
 / per
@@ -308,26 +238,6 @@ Regular Price
 $350.00
 Sale Price
 $350.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-5-Week Sewing Course - Ilford Jacket
-Regular Price
-$350.00
-Sale Price
-$350.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Knitting 104: Sock Knitting
-Regular Price
-$125.00
-Sale Price
-$125.00
 Regular Price
 Unit Price
 / per
@@ -363,11 +273,11 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Beginner Embroidery
+Knitting 101
 Regular Price
-$50.00
+$45.00
 Sale Price
-$50.00
+$45.00
 Regular Price
 Unit Price
 / per
@@ -383,13 +293,21 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Ticket for One
-Ticket for Two (Save $10!)
-Pressed Flower Coasters
+Knitting 104: Sock Knitting
 Regular Price
-from $50.00
+$125.00
 Sale Price
-from $50.00
+$125.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Summer in the City Craft Circle
+Regular Price
+$0.00
+Sale Price
+$0.00
 Regular Price
 Unit Price
 / per
@@ -400,6 +318,28 @@ Regular Price
 $65.00
 Sale Price
 $65.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Sewing 101 - Make a Skirt
+Regular Price
+$95.00
+Sale Price
+$95.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Ticket for One
+Ticket for Two (Save $10!)
+Pressed Flower Coasters
+Regular Price
+from $50.00
+Sale Price
+from $50.00
 Regular Price
 Unit Price
 / per
@@ -447,6 +387,26 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+Sewing 101 - Tote Bag
+Regular Price
+$95.00
+Sale Price
+$95.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Beginner Embroidery
+Regular Price
+$50.00
+Sale Price
+$50.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 Knitting 102: Billie Bandana
 Regular Price
 $55.00
@@ -472,6 +432,36 @@ Regular Price
 $95.00
 Sale Price
 $95.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Crochet 101 - Lil' Bag
+Regular Price
+$45.00
+Sale Price
+$45.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Beaded Embroidery
+Regular Price
+$55.00
+Sale Price
+$55.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Filet Crochet
+Regular Price
+$55.00
+Sale Price
+$55.00
 Regular Price
 Unit Price
 / per
@@ -507,6 +497,16 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+Beginner Cross Stitch
+Regular Price
+$50.00
+Sale Price
+$50.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 Crochet 102: Tom-a-tote!
 Regular Price
 $45.00
@@ -517,11 +517,11 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
-Community Craft Night: Embroidery w/ Plus BLKYN
+5-Week Sewing Course - Ilford Jacket
 Regular Price
-$25.00
+$350.00
 Sale Price
-$25.00
+$350.00
 Regular Price
 Unit Price
 / per
@@ -548,6 +548,7 @@ Blog
 Private Events
 Search
 Accessibility Statement
+Your privacy choices
 Copyright © 2026 Brooklyn Craft Company .
 Made With ❤️ By Proactivo Commerce
 Search

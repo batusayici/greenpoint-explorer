@@ -1,18 +1,3 @@
-SUMMARY: Parish Picnic
-DTSTART: 2026-09-13
-DTEND: 2026-09-14
-STATUS: CONFIRMED
-
-SUMMARY: First Full Day For Private Pre-K, 3K & UPK4
-DTSTART: 2026-09-14
-DTEND: 2026-09-15
-STATUS: CONFIRMED
-
-SUMMARY: Full Day Classes Begin For Kinder -8th Grade
-DTSTART: 2026-09-14
-DTEND: 2026-09-15
-STATUS: CONFIRMED
-
 SUMMARY: 6:30pm Back To School Parent Meeting -Kinder-8th Grade Families Only.
 DTSTART: 2026-09-17
 DTEND: 2026-09-18

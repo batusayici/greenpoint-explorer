@@ -160,7 +160,7 @@ Quantity
 Add to cart
 Korean BBQ Cold Smoked Salmon - Gary's Special (1 lb.)
 Gary's Special
-5 reviews
+6 reviews
 Regular price
 $23.99
 Sale price
@@ -177,7 +177,7 @@ Add to cart
 Sliced Sablefish (8 oz.)
 Cold Smoked
 Specialty
-25 reviews
+26 reviews
 Regular price
 $25.99
 Sale price
@@ -337,7 +337,7 @@ Quantity
 Add to cart
 Pre-Sliced Royal Cut Smoked Salmon (1 lb.)
 Cold Smoked
-47 reviews
+48 reviews
 Regular price
 $25.99
 Sale price
@@ -369,7 +369,7 @@ Quantity
 Sold out
 Salmon Candy (12 oz.)
 Hot Smoked
-20 reviews
+21 reviews
 Regular price
 $16.49
 Sale price
@@ -416,7 +416,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Kippered Salmon (1 lb.)
 Hot Smoked
 Specialty
@@ -467,7 +467,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Smoked Whitefish Salad (7 oz.)
 Salads
 17 reviews
@@ -935,7 +935,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Lemon Garlic Smoked Salmon (4 oz.)
 Hot Smoked
 4 reviews
@@ -1264,6 +1264,7 @@ All Products
 Fish Friday
 Where to Buy
 Merch
+Your privacy choices
 © 2026 Acme Smoked Fish
 Account Login
 Credit Application

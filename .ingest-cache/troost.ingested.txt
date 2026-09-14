@@ -1,15 +1,3 @@
-summary: DJ THE HEFKER GIRL
-description: Decirculated Dub, Mariachi, Pirate Radio and Everything in between
-start.date: 2026-09-12
-end.date: 2026-09-13
-htmlLink: https://www.google.com/calendar/event?eid=ZnV1anE4cnNramg1ZWZpbDRkZTRzMGhwcTdfMjAyNjA5MTIgdHJvb3N0bGl2ZUBt
-
-summary: SPAGHETTI EASTERN ELECTRO DUB
-description: Dub Meets Raga Meets Psychedelia
-start.date: 2026-09-13
-end.date: 2026-09-14
-htmlLink: https://www.google.com/calendar/event?eid=XzhwMWtjZ3EzNm9vMzJiYTQ2Z3BqNGI5azZ0MmsyYmEyNnNzMzRiYTI2OHBrOGQ5bDY4cDM4ZzlwNjAgdHJvb3N0bGl2ZUBt
-
 summary: NOAH AMICK
 description: electric indie jazz
 start.date: 2026-09-14
@@ -222,3 +210,15 @@ description: Reinvented jazz/pop Standards & Originals
 start.date: 2026-10-25
 end.date: 2026-10-26
 htmlLink: https://www.google.com/calendar/event?eid=XzZwMWs4ZDFrNmtzamdiYTU4cDEzY2I5azhrcjNjYmExNnQwajZiOWk4NHNqZWM5aThnc2pjaDFpNmMgdHJvb3N0bGl2ZUBt
+
+summary: ROB HEATH / NICE TRY KID
+description: Rob Heath's Nice Try, Kid!: a monthly night of unapproved and experimental music
+start.date: 2026-10-26
+end.date: 2026-10-27
+htmlLink: https://www.google.com/calendar/event?eid=dmptMGtnZ2Y0aDMwMGNvM2ptbGkxNGJsYW5fMjAyNjEwMjYgdHJvb3N0bGl2ZUBt
+
+summary: LUMENS
+description: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone
+start.date: 2026-10-27
+end.date: 2026-10-28
+htmlLink: https://www.google.com/calendar/event?eid=XzhoMmtjZGkxNzEyazhiOWg3NHI0NmI5azg0c2owYjlvOGdxMzZiOWo2Y29qZWRhMjZoMWoyaGE1NjRfMjAyNjEwMjcgdHJvb3N0bGl2ZUBt

@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-12T00:00:00.000Z",
+  "lastRunAt": "2026-09-14T00:00:00.000Z",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1970,6 +1970,48 @@
       ],
       "at": "2026-09-12",
       "outcome": "Brooklyn Craft Company 9/11 newsletter carded (Sew Pajama Pants 9/26) and persisted, nine October sessions to watchItems; YMCA referral offer skipped as a citywide offer with no Greenpoint attribution; Gunkyard is Park Slope; Dandelion tasting had already run; NYC Parks weekly is covered by the roster feed"
+    },
+    "https://greenpointers.com/2026/09/04/wasabi-owners-open-new-hand-roll-bar-ayune-in-greenpoint/",
+    {
+      "gmailMessageIds": [
+        "1a0963b296d3afe9",
+        "1a09c8dbace15266",
+        "1a09af9548ba20e1",
+        "1a095e1134a4eb85",
+        "1a092ecd9360c970",
+        "1a0875d8fdf7e353",
+        "1a09fcad82fe8ca8"
+      ],
+      "at": "2026-09-14",
+      "outcome": "Marianella's 40%-off sitewide sale carded (marianella-birthday-sale). McGolrick Bird Club's 9/13 letter is an essay with no dated walk — nothing cardable. Brooklyn Craft Company's 9/12 note repeats the 9/11 subject already processed. The Commune pop-up was already carded from CIBONE's own page on 9/11. Space Club's afterschool note went to enrolled families only (closed-audience rule). PRESS stays out under the attributability gate."
+    },
+    {
+      "runAt": "2026-09-14",
+      "cadence": "monday-full",
+      "shipped": [
+        "comedy-new-material-0922",
+        "comedy-goo-goo-0926",
+        "action-city-flesh-blood-0915",
+        "ayune-opens",
+        "film-noir-supershorts-0926",
+        "film-noir-monday-0928",
+        "troost-lupe-loop-mela-0926",
+        "troost-louis-prince-0927",
+        "troost-rob-heath-0928",
+        "hana-pocha89-brunch-0920",
+        "hana-msg-jhal-0927",
+        "nbk-reggae-under-bridge-0920",
+        "nbk-garden-club-0920",
+        "marianella-birthday-sale"
+      ],
+      "updated": [
+        "transmitter-park-yoga-tuesdays",
+        "mcgolrick-bird-club-0808",
+        "happy-medium-art-cafe",
+        "bk-youth-ballet-enrollment"
+      ],
+      "holds": "holds: 1 new-judgment · 0 rule-miss · 0 source-blocked",
+      "outcome": "Monday full. Expiry cleared 35 cards that ran over the weekend, then 14 shipped: 224 -> 238. Held to the review PR: every card off abc-cirque and mccarren-park-house, both fetching for the first time (first-time-source hold), and a rule question about whether a sold-out ticket listing cards at all."
     }
   ],
   "senderRegistry": [
@@ -2543,13 +2585,6 @@
       "addedAt": "2026-08-26"
     },
     {
-      "name": "Film Noir Cinema — SUPERSHORTS NY FILM FESTIVAL, nights two and three (Sep 26 and 27)",
-      "note": "Opening night shipped 2026-09-11 as film-noir-supershorts-0925. The 26th and 27th both start 6:30pm, half an hour later than the opener, so under the 2026-08-26 hours-pattern rule they are a SECOND card, not an extension of the first. Web source (Squarespace collection JSON), re-snapshotted every run.",
-      "addedAt": "2026-08-26",
-      "unblocksOn": "2026-09-13",
-      "updatedAt": "2026-09-11"
-    },
-    {
       "name": "Greenpointers — shooting on Commercial Street: does the deck card crime and public-safety news at all? [RULE QUESTION for Batu]",
       "note": "HELD 2026-08-26 (new-judgment), PR ingest/daily-2026-08-26. The item is fully sourced and squarely in Greenpoint — greenpointers.com/2026/08/25/32-year-old-man-in-stable-condition-after-shooting-on-commercial-street/, verbatim: \"A 32-year-old man is recovering after an early morning shooting near 77 Commercial Street in Greenpoint.\" Nothing about the sourcing is in doubt. What is in doubt is the class: all 18 live news cards are openings, closings, land use, transit and civic process, and the deck has never carded a crime story. That is a category the map has no precedent for, so it is a decision, not a mechanical filing. WHAT WOULD RESOLVE IT: Batu ruling once on whether public-safety incidents belong in the news lens — and if so, with what bar (injury/fatality, ongoing risk, arrest) so it does not become a police blotter.",
       "addedAt": "2026-08-26"
@@ -3029,21 +3064,66 @@
       "item": "BirthSmarter has moved its Greenpoint classes to Manhattan — three cards deleted in two days.",
       "condition": "birthsmarter-weekend-childbirth-0912 went on 2026-09-11, and birthsmarter-one-day-childbirth-0919 and birthsmarter-newborn-lactation-0920 on 2026-09-12, all for the same reason: the listing that read \"Kuei Luck Greenpoint | Brooklyn | NYC\" now reads \"The Loft | Manhattan | NYC\" or \"Kids at Work | Manhattan | NYC\" on those dates, and Kuei Luck appears nowhere in the current fetch. The source stays on the roster because the venue partnership may resume. Card again the first time a session is listed at a Greenpoint address; do not carry a Greenpoint venue over from an older card.",
       "addedAt": "2026-09-12"
+    },
+    {
+      "name": "Greenpoint Comedy Club — eight named shows past the 14-day horizon",
+      "note": "Thu Oct 1 8:00 PM Cartoon Strips with Hilary Campbell ($20); Sat Oct 3 6:00 PM Off Menu Comedy ($20); Sat Oct 10 6:00 PM Erin Maguire ($20); Thu Oct 22 7:30 PM Joe Zimmerman ($25); Sat Oct 24 6:00 PM Carolina Montesquieu ($25); Sat Nov 7 6:00 PM New York Comedy Festival Presents: Ariel Elias ($25); Sun Nov 8 7:00 PM NYCF Presents: Cartoon Strips with Hilary Campbell ($25); Tue Nov 10 7:00 PM NYCF Presents: Thunder Davis and Friends ($25); Thu Nov 12 7:30 PM NYCF Presents: Casey and Friends Named Casey ($20). Web source, re-snapshotted every run.",
+      "addedAt": "2026-09-14",
+      "unblocksOn": "2026-09-17"
+    },
+    {
+      "name": "Troost — three nights past the horizon",
+      "note": "Hajime Yoshida Trio 10/25 (\"Reinvented jazz/pop Standards & Originals\"), ROB HEATH / NICE TRY KID 10/26, LUMENS 10/27. Google Calendar feed, re-snapshotted every run.",
+      "addedAt": "2026-09-14",
+      "unblocksOn": "2026-10-11"
+    },
+    {
+      "name": "Film Noir Cinema — Psychic Reader Film Festival 10/9 and HALLOWEEN SHORTS 10/31",
+      "note": "Psychic Reader Film Festival, Friday October 9, 6:00 PM: \"The Forbidden Door + Atelier: 6 - 8 PM / Pengabdi Setan + short: 8 - 10 PM\" with an Eventbrite ticket link — note the two billed blocks, which may be two sittings rather than one. HALLOWEEN SHORTS 10/31 5:00 PM.",
+      "addedAt": "2026-09-14",
+      "unblocksOn": "2026-09-25"
+    },
+    {
+      "name": "Town Square BK — Greenpoint Children's Spooktacular and Halloween Parade, Sat 31 October",
+      "note": "From the 9 September newsletter's community calendar: \"Saturday, October 31, 2026, 10 AM ~ Town Square BK's Greenpoint Children's Spooktacular Party. More info to come\" and \"Saturday, October 31, 2026, 12 PM ~ Town Square BK's Greenpoint Children's Halloween Parade. More info to come\". Newsletter is one-shot — recorded here because no venue is stated yet.",
+      "addedAt": "2026-09-14",
+      "unblocksOn": "2026-10-17"
+    },
+    {
+      "name": "Greenpoint Shul — Post Kiddush Shiur on Kislev and Chanukah, Fri Nov 13 6:00PM",
+      "note": "\"FRI\nNOV 13\n6:00PM\nPost Kiddush Shuir on the Hebrew Month of Kislev and Chanukah\" (venue's own spelling). Web source, re-snapshotted every run.",
+      "addedAt": "2026-09-14",
+      "unblocksOn": "2026-10-30"
+    },
+    {
+      "name": "Hana Makgeolli — the Bottomless Makgeolli page states two different closing times",
+      "note": "The same snapshot carries both \"Thursdays, 5PM—9PM (last seating) and Sundays, 2PM–6PM (last seating)\" and \"Thursdays, 5PM—11PM and Sundays, 2PM–8PM\". The live card hana-bottomless-makgeolli quotes the second, which still verifies, so it was left alone rather than adjudicated. Resolve against the venue before the next verified-through bump; if the shorter hours are current the card is telling readers the kitchen is open two hours later than it is.",
+      "addedAt": "2026-09-14"
+    },
+    {
+      "name": "Action City Comics — One Piece Tournament, Thu Sep 17 7:00 PM, tickets Out of stock",
+      "note": "\"One Piece Tournament - Thursday!\nTHU, SEP 17 7:00 PM\" with \"Out of stock\" beside it. Not carded this run pending the rule question in the review PR: does a sold-out ticket listing card at all? The deck already carries two Action City nights that now read Out of stock, so the answer decides both directions.",
+      "addedAt": "2026-09-14"
+    },
+    {
+      "name": "Moon Bunny Aerial — song-titled K-Pop Dance sessions recur weekly, which bears on the open question",
+      "note": "The 2026-09-04 watchItem treated \"K-Pop Dance (Loveshot by EXO)\" as a one-off. It has now reappeared at the identical Thursday 22:30Z slot a week later (2026-09-17), alongside \"K-Pop Dance (Icky by Kard)\" on 9/15. That looks like a rotating weekly theme inside the standing timetable rather than a one-off, which points the open question toward 'not cardable'. Recorded for whoever puts it to Batu.",
+      "addedAt": "2026-09-14"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-09-06",
-    "greenpointers": "2026-09-10",
-    "greenpoint-comedy-club": "2026-09-10",
-    "film-noir-cinema": "2026-09-10",
+    "greenpointers": "2026-09-13",
+    "greenpoint-comedy-club": "2026-09-13",
+    "film-noir-cinema": "2026-09-13",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-27",
     "greenpoint-library": "2026-09-10",
     "bpl-north-brooklyn-calendar": "2026-09-10",
     "greenpoint-trash-club": "2026-07-21",
     "black-rabbit": "2026-08-06",
-    "hana-makgeolli-events": "2026-08-27",
-    "hana-makgeolli-soolschool": "2026-08-27",
+    "hana-makgeolli-events": "2026-09-13",
+    "hana-makgeolli-soolschool": "2026-09-13",
     "archestratus": "2026-07-24",
     "little-dance-school": "2026-07-24",
     "brooklyn-youth-ballet": "2026-09-06",
@@ -3058,7 +3138,7 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-09-08",
     "nycparks-greenpoint": "2026-09-06",
-    "troost": "2026-09-09",
+    "troost": "2026-09-13",
     "carcosa-club": "2026-09-06",
     "good-room": "2026-09-10",
     "town-square-bk": "2026-09-11",
@@ -3073,7 +3153,7 @@
     "kettl-tea": "2026-08-07",
     "leaves-bookstore": "2026-08-24",
     "greenpoint-ymca": "2026-09-10",
-    "marianella-subscription-box": "2026-08-07",
+    "marianella-subscription-box": "2026-09-13",
     "held-space": "2026-08-07",
     "selformer": "2026-09-03",
     "clay-space-membership": "2026-08-09",
@@ -3088,13 +3168,13 @@
     "macha-studio": "2026-08-11",
     "mta-g-alerts": "2026-08-13",
     "lot-radio": "2026-08-13",
-    "action-city-comics": "2026-09-06",
+    "action-city-comics": "2026-09-13",
     "golden-drum": "2026-09-03",
     "nbk-open-streets": "2026-09-01",
     "bellocq-tea": "2026-09-03",
     "lockwood": "2026-09-06",
     "friends-of-transmitter-park": "2026-09-06",
-    "nbk-parks-alliance": "2026-09-06",
+    "nbk-parks-alliance": "2026-09-13",
     "giggles-and-wiggles-events": "2026-09-06",
     "kingsland-wildflowers": "2026-09-06",
     "polish-slavic-center": "2026-09-06",
@@ -3117,7 +3197,8 @@
     "threes-brewing-greenpoint": "2026-09-10",
     "tunes-for-tykes": "2026-09-10",
     "greenpoint-shul": "2026-09-10",
-    "friends-of-mcgolrick": "2026-09-11"
+    "friends-of-mcgolrick": "2026-09-11",
+    "talea-williamsburg": "2026-09-11"
   },
   "coverageExplanations": [
     {
@@ -3784,6 +3865,153 @@
       "reason": "THE GITHUB RUNNER COULD NOT READ IT THIS MORNING, SO THE BUNDLE CARRIES NO SNAPSHOT — this is the known residential-only floor (SKILL.md 2026-09-08), not a source going dark. Neither fetcher ran on schedule today: the last bundle was 25.1h old, so this run dispatched ingest-fetch.yml by hand and pulled what the GitHub runner produced. A GitHub address is challenged by Cloudflare/Imperva and timed out by hisawyer/union.fit where a residential one reads all three fine; the whole roster still read 71 of 83, inside the 15% ceiling. The runner reported: \"runner: bot challenge presented by salsapizzeria.com — not read, not routed around\". WHAT WOULD CHANGE IT: the next bundle published from the home Mac, where these same URLs have been reading clean, or the roster moving this source onto an endpoint a datacentre address can reach.",
       "addedAt": "2026-09-12",
       "expiresAt": "2026-09-19"
+    },
+    {
+      "sourceId": "otis-and-finn",
+      "gapKey": "STANDING DARK",
+      "reason": "The page publishes no date anywhere. Its whole events section reads \"Throughout the year, we host a variety of community-centered events designed to uplift, connect, and celebrate. From our annual free Back-to-School Haircutting Event, to our Pride Party\" followed by a \"SIGN UP FOR FUTURE EVENTS\" form — a mailing-list signup, not a schedule. The only hours on the page are for 11-16 44th Avenue, which is Long Island City, not the Greenpoint shop. Proposing standing:false in the review PR: the recurring phrase is incidental, the bin-bin-sake case.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "nbk-open-streets",
+      "gapKey": "GAP",
+      "reason": "The Partiful page lists only \"Past Events\" — the newest is \"Bedford Slip Weekend Fri 8/28 at 5pm\". The four names under \"Trending This Week\" (Work & Brew, Social No. 001, DIY Herb Garden in McCarren, Fall Equinox Hikeish) are Partiful's own promos behind \"Restricted Access / Verify your phone number to view event details\", not this organiser's events. Nothing upcoming to card.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "word-bookstore",
+      "gapKey": "GAP",
+      "reason": "The browser path returned the shell again: the diff is four bare \"September 15, 2026\" lines and two \"Typically replies in a few minutes\" chat-widget lines, with no event titles attached. Known state — WORD pushes its listings over a WebSocket (Withfriends) and has no plain-fetchable endpoint scoped to this store.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "brooklyn-craft-company",
+      "gapKey": "GAP",
+      "reason": "The collection page carries names and prices and no dates, as it always has — this run's diff is \"Summer in the City Craft Circle / $0.00 / Filet Crochet / Beginner Cross Stitch / $45.00\". The source's dates live in its newsletters, which are persisted in the baseline; the 9/11 letter was carded on 9/12 and the 9/12 letter repeats its subject.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "macaroni-kid-brooklyn-nw",
+      "gapKey": "GAP",
+      "reason": "The only event change in the diff is a corrected time on \"Play in the Square in Domino Park in Williamsburg / Sunday 2-3pm singalong + community artwork | FREE\" — Domino Park, out of scope by the 2026-08-06 ruling. The three other new lines are evergreen printables (school calendar, fall activities, height calculator) with no date or address.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "st-stans-academy",
+      "gapKey": "GAP",
+      "reason": "The diff is one entry, \"SUMMARY: Diocese Fall Conference / DTSTART: 2026-09-29 / DTEND: 2026-09-30\" — a diocesan staff conference, past the 14-day horizon and closed-audience under the 2026-09-10 rule.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "archestratus",
+      "gapKey": "GAP",
+      "reason": "The diff is one entry, \"SUN NOV 8 / IMAGINAL ISLAND Book Club (Zoom)\" — past the horizon, and held over Zoom rather than in the shop.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "nbk-parks-alliance",
+      "gapKey": "GAP",
+      "reason": "The fetch captured only page 1 of the site's own paginated listing — the snapshot ends \"1\\n2\\n3\\n4\\nNext »\" — so nothing dated 9/21 to 9/28 was read at all. Everything page 1 carries in-window is either already carded (Fit Club 9/17, both plant giveaways, the 9/16 Pollinator Project) or shipped today (Reggae Under the Bridge 9/20, Garden Club 9/20). The pagination is a roster defect, not a quiet source; it is named in the review PR.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "greenpoint-reformed-church",
+      "gapKey": "GAP",
+      "reason": "Food Pantry 9/17 and 9/24 are already carded as greenpoint-church-food-pantry. The two Community Meal occurrences are held: the calendar's own description says \"Each Wednesday afternoon\" while its RRULE says BYDAY=TU and DTSTART lands on a Tuesday, so the day itself is unresolved. Worship has no lens in FILTER_IDS and no card ships lens-less. Everything else on the calendar is a 12-step meeting or a consistory meeting.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "lot-radio",
+      "gapKey": "GAP",
+      "reason": "The diff is the day's DJ timetable — \"TODAY 09.14.2026 / 10am — 11am / Bottom Of The Deck with Druggy Paul\" and so on. A radio schedule rolls over daily and is represented by the standing the-lot-radio card, not by a card per slot.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "greenpoint-library",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "The runner got HTTP 403 from bklynlibrary.org and the North Brooklyn calendar got an explicit bot challenge, both declined rather than routed around. The branch is still covered: seven library day-cards run 9/14 to 9/25 off the last clean read, and Brooklyn Bridge Parents independently listed the same 9/14 D&D and 9/16 Toddler Time sittings this morning.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "bpl-north-brooklyn-calendar",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "\"bot challenge presented by www.bklynlibrary.org — not read, not routed around.\" Same source family as greenpoint-library; covered by the live library day-cards.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "nycparks-greenpoint",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "The runner got HTTP 405 from the NYC Parks events endpoint. The citywide Parks newsletter for 9/10-9/16 was read through Gmail instead and carried no Greenpoint-dated item the deck lacks.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "sparsa-union-fit",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "union.fit timed out at 40s on the runner — one of the eight hosts a datacenter address is challenged on and a residential one reads fine (2026-09-08). Known floor, not a new failure; the home fetcher covers it when Batu's Mac is awake.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "art-101-sawyer",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "hisawyer.com timed out at 40s on the runner — the same datacenter-versus-residential split as sparsa-union-fit. Known floor.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "leaves-bookstore",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "\"only 115 chars after 7.5s in chromium, none of it a date, time or price — page never rendered.\" Browser-dependent by construction and re-probed 2026-08-10 with no plain-fetchable endpoint found.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "salsa-pizzeria",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "\"bot challenge presented by salsapizzeria.com — not read, not routed around.\" A bot block rather than an egress block, so no allowlist entry fixes it.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "threes-brewing-greenpoint",
+      "gapKey": "GAP",
+      "reason": "BOTH MISSING DATES ARE THE GOWANUS TAPROOM, NOT GREENPOINT. The feed labels every record, and these two read `event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA` — 9/27 \"Gowanus: Live Music: Slow Tiger with Mother Octapus\" and 9/28 \"Gowanus: Scott Free Trivia with Owen Scott\". The Greenpoint records name Franklin Street outright (e.g. \"Greenpoint: DJ Henry James ... Threes Brewing Greenpoint, Threes Brewing, Franklin Street\"), which is the attributability the 2026-08-12 rule asks for. Skipped on purpose. WHAT WOULD CHANGE IT: a Franklin Street record on one of those days.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "mccarren-park-house",
+      "gapKey": "GAP",
+      "reason": "HELD, NOT MISSED — this is the source's FIRST fetch, so every card off it goes to the review PR under the first-time-source hold. All eight dates were read and written up: Trivia Club 9/14, Skip the Small Talk 9/16, Brooklyn Euchre Club 9/17, Pretty Box 9/19, Pique Community Hangs 9/22, New York Philosophy Club 9/23, North Brooklyn Chess Club 9/24, a five-act music bill 9/26 and BIPOC Therapist Social 9/28. Two authoring traps also need Batu: the page states NO price anywhere, so nothing off it may claim free, and its own date strings carry typos (\"September 19rd\", \"Pique Community Hangs Tuesday September Tuesday 22nd\") that a parser must not silently resolve. WHAT WOULD CHANGE IT: the review PR merging.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "abc-cirque",
+      "gapKey": "GAP",
+      "reason": "HELD, NOT MISSED — first fetch of this source, so its cards go to the review PR. The one in-window date is Family Adventure Play on 9/27, 11am-12:30pm, ages 5 and under with an adult, $30 early bird. It also needs a Batu call the other sources do not: the street address appears NOWHERE on the site (the page says only \"5th Wall Studios in Williamsburg, Brooklyn\"), so 156 North 4th St comes from the roster note rather than the source, and a card cannot state a venue the source never states. WHAT WOULD CHANGE IT: the review PR merging, or the venue publishing its address.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
+    },
+    {
+      "sourceId": "action-city-comics",
+      "gapKey": "GAP",
+      "reason": "THE ONE MISSING DATE IS SOLD OUT, AND WHETHER THAT CARDS IS AN OPEN RULE QUESTION. The listing reads \"One Piece Tournament - Thursday!\" / \"THU, SEP 17 7:00 PM\" with \"Out of stock\" beside it. The TALEA precedent (2026-09-12) skipped Beers & Braids because its own title said SOLD OUT; here the marker is a ticket-inventory label next to a live \"Get tickets\" button, and the deck already carries two Action City nights that now read Out of stock too. Not carded pending Batu's ruling, which is in the review PR. The other three dates are carded. WHAT WOULD CHANGE IT: the ruling.",
+      "addedAt": "2026-09-14",
+      "expiresAt": "2026-09-28"
     }
   ],
   "retiredCards": [
@@ -3930,6 +4158,146 @@
     {
       "id": "troost-timothy-okeefe-0911",
       "day": "2026-09-12"
+    },
+    {
+      "id": "bcc-floral-embroidery-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "bcc-macrame-plant-hanger-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "bcc-sew-a-jumpsuit-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "brooklyn-beer-mile-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "calyer-street-block-party-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "carcosa-malifaux-monthly-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "comedy-chris-condren-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "comedy-stuart-laws-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "dance-cleanup-transmitter-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "eavesdrop-charolastra-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "eavesdrop-dialectic-disco-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "eavesdrop-henry-solomon-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "eavesdrop-timo-lee-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "film-noir-snake-girl-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "goddard-day-of-fun-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "golden-drum-virgo-new-moon-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "good-room-felipe-gordon-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "held-space-mat-pilates-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "java-st-garden-plant-medicine-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "lsd-churning-sonic-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "lsd-quadraphonics-0912-evening",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "lsd-quadraphonics-0912-matinee",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "maison-jar-clothing-swap-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "mccarren-bike-skills-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "mccarren-pool-last-week-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "mccarren-sunday-scoops-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "nbk-garden-club-bip-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "peek-inn-book-swap-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "psc-disco-night-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "shul-family-shofar-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "shul-tashlich-transmitter-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "sparsa-prenatal-gentle-yoga-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "st-stans-parish-picnic-0913",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "troost-hefker-girl-0912",
+      "day": "2026-09-14"
+    },
+    {
+      "id": "troost-spaghetti-eastern-0913",
+      "day": "2026-09-14"
     }
   ]
 }

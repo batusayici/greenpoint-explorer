@@ -11,26 +11,6 @@ NY, US
 Upcoming
 Past
 Calendar
-Sat Sep 12, 2026, 6:00 PM
-Chris Condren and Friends
-NY, US
-USD $20.00
-In Stock
-Sat Sep 12, 2026, 8:00 PM, Sat Sep 19, 2026, 8:00 PM, Sat Sep 26, 2026, 8:00 PM and 5 more
-The Saturday Showcase @ 8:00 PM
-NY, US
-USD $25.00
-In Stock
-Sat Sep 12, 2026, 10:00 PM, Sat Sep 19, 2026, 10:00 PM, Sat Sep 26, 2026, 10:00 PM and 4 more
-The Late Saturday Showcase @ 10:00 PM
-NY, US
-USD $25.00
-In Stock
-Sun Sep 13, 2026, 6:00 PM
-Stuart Laws & His Funnier Friends
-NY, US
-USD $20.00
-In Stock
 Tue Sep 15, 2026, 7:30 PM
 The Lineup
 NY, US
@@ -66,10 +46,25 @@ Y'all Gay with Ali Clayton + Ever Mainard
 NY, US
 USD $20.00
 In Stock
+Sat Sep 19, 2026, 8:00 PM, Sat Sep 26, 2026, 8:00 PM, Sat Oct 3, 2026, 8:00 PM and 4 more
+The Saturday Showcase @ 8:00 PM
+NY, US
+USD $25.00
+In Stock
+Sat Sep 19, 2026, 10:00 PM, Sat Sep 26, 2026, 10:00 PM, Sat Oct 3, 2026, 10:00 PM and 3 more
+The Late Saturday Showcase @ 10:00 PM
+NY, US
+USD $25.00
+In Stock
 Sun Sep 20, 2026, 7:30 PM
 Jenny Zigrino and Friends
 NY, US
 USD $20.00
+In Stock
+Tue Sep 22, 2026, 7:30 PM
+New Material Tuesday
+NY, US
+USD $10.00
 In Stock
 Wed Sep 23, 2026, 8:00 PM
 Greenpoint Comedy Club Presents: Heather Shaw
@@ -130,6 +125,11 @@ Tue Nov 10, 2026, 7:00 PM
 New York Comedy Festival Presents: Thunder Davis and Friends
 NY, US
 USD $25.00
+In Stock
+Thu Nov 12, 2026, 7:30 PM
+New York Comedy Festival Presents: Casey and Friends Named Casey
+NY, US
+USD $20.00
 In Stock
 Load More Events
 Powered by
