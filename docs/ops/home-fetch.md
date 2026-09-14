@@ -2,7 +2,7 @@
 
 The daily ingest no longer fetches from inside the claude.ai sandbox. Two machines read the
 source roster every morning and publish what they read to a small public repo,
-`batusayici/stoopwise-snapshots`; the routine pulls that bundle at 9:30 and diffs it.
+`batusayici/stoopwise-snapshots`; the routine pulls that bundle at 10:00 and diffs it.
 
 - **GitHub Actions** (`.github/workflows/ingest-fetch.yml`) runs at **6:30 local in summer, 5:30 in winter** (the cron is 10:30 UTC) and reads most
   of the roster.
@@ -110,17 +110,20 @@ why.
 launchctl bootout gui/$(id -u)/com.stoopwise.home-fetch
 ```
 
-If the Mac was asleep at 9:00, launchd fires the run once at wake; if it never woke before 9:30,
+If the Mac was asleep at 9:00, launchd fires the run once at wake; if it never woke before 10:00,
 the routine simply uses GitHub's bundle. That reads as: the routine's bundle line says
 `by github`, and the eight residential-only sources come through as `runner:` errors (about 9%
 of the roster, under the 15% ceiling). That is the known floor, not a new failure — the fix is
 to dispatch `ingest-fetch` again only if those sources matter that day.
 
-**Why 9:00 and not 7:15 (2026-09-14).** The job sat at 7:15 and the routine read at 8:30, but
-the Mac is generally not awake before 8:45 — so on a typical morning the home half either never
-ran in time or fired at wake with the network still coming up and died resolving github.com
-after ten minutes (9/12 and 9/14 both failed exactly that way; 9/9–9/11 and 9/13 succeeded).
-Both halves moved back an hour: the home job to 9:00, the cloud routine to 9:30. Cards land
-about an hour later in the morning and the eight residential-only sources come through again.
-The script also retries its git steps five times a minute apart, so one bad name lookup at wake
-no longer ends the morning.
+**Why 9:00 and not 7:15 (2026-09-14).** The Mac is generally not awake before 8:45, so a job at
+7:15 only ever ran at wake, with the network still coming up — and twice it died resolving
+github.com after ten minutes (9/12 and 9/14; 9/9–9/11 and 9/13 succeeded). Moved to 9:00, with
+the routines moved to 10:00 so the home half has an hour of room; the home run has taken
+anywhere from four to fifty minutes. The script also retries its git steps five times a minute
+apart, so one bad name lookup at wake no longer ends the morning.
+
+Note the times above are the real ones, checked in the routines list on 2026-09-14. This doc
+previously said the routine read at 8:30; it never did — Daily Refresh was at 9:07 and Monday
+Full Ingest at 9:02. A stale number here sent a morning's diagnosis down the wrong path, so
+check the routines list rather than this file when the timing matters.

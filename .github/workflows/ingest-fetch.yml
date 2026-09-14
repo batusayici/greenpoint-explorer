@@ -9,7 +9,7 @@ name: ingest-fetch
 
 on:
   schedule:
-    - cron: "30 10 * * *" # 6:30am New York in summer (5:30 in winter); the home Mac follows at 9:00, the routine at 9:30
+    - cron: "30 10 * * *" # 6:30am New York in summer (5:30 in winter); the home Mac follows at 9:00, the routine at 10:00
   workflow_dispatch:
     inputs:
       only:

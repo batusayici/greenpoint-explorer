@@ -4,26 +4,28 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-09-14 — the morning fetch moves to 9:00 and the routine to 9:30
+## 2026-09-14 — the morning fetch moves to 9:00, both ingest routines to 10:00
 
-Batu said the Mac is generally not on before 8:45. The home fetch ran at 7:15 and the cloud
-routine read the bundle at 8:30, so on a typical morning the home half could not land in time
-at all — and when launchd did fire it at wake, the network was still coming up and git died
-resolving github.com after ten minutes. 9/12 and 9/14 both failed that way; 9/9 through 9/11
-and 9/13 succeeded. What looked like flaky networking was a job scheduled an hour and a half
-before its machine exists.
+Batu said the Mac is generally not on before 8:45. The home fetch was set for 7:15, so it only
+ever ran at wake with the network still coming up, and twice it died resolving github.com after
+ten minutes. 9/12 and 9/14 both failed that way; 9/9 through 9/11 and 9/13 succeeded.
 
-**Both halves move back an hour: the home job to 9:00, the cloud routine to 9:30.** The GitHub
-workflow stays at 6:30. Cards land about an hour later in the morning, and the eight sources
-that only a residential address can read come through again instead of erroring roughly every
-other day. The alternative considered was dropping the home job and living at ~91% of the roster
-permanently — under the 15% reach ceiling, but it gives up those eight sources for good.
+**The home job moves to 9:00 and both ingest routines to 10:00** (Daily Refresh, Tuesday to
+Saturday; Monday Full Ingest). The GitHub workflow stays at 6:30. That gives the home run a full
+hour, which it needs — it has taken anywhere from four to fifty minutes. Cards land about an hour
+later in the morning, and the eight sources only a residential address can read come through
+again instead of erroring roughly every other day. The alternative considered was dropping the
+home job and living at ~91% of the roster permanently, under the 15% reach ceiling but giving up
+those eight sources for good.
 
 The fetch script now retries its git steps five times a minute apart, capped so five attempts
-cannot run past the routine's read. One bad name lookup at wake no longer ends the morning.
+cannot run past the routine's read.
 
-Batu moves the routine's own schedule on claude.ai; the launchd job, the script and the ops doc
-are in this change.
+**Check the routines list, not a doc, for routine times.** `docs/ops/home-fetch.md` said the
+routine read the bundle at 8:30. It never did — Daily Refresh ran at 9:07 and Monday Full Ingest
+at 9:02. The wrong number was repeated back to Batu as the reason the fetch was failing and
+produced a first fix that would have started the home run two minutes before the Monday routine.
+The real times were only found by opening the routines page.
 
 ## 2026-09-14 — a sold-out night still cards, and a venue may borrow its landlord's address
 
