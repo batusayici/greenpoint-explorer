@@ -25,6 +25,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { assessSend, SEND_TARGETS } from "../src/demand-test/sendPreflight.js";
 import { assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
+import { LENS_PAGES } from "../src/demand-test/deepLink.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const offline = process.argv.includes("--offline");
@@ -62,7 +63,11 @@ for (const t of report.targets) {
 
 // ---- 2. every src has a canonical row, and the row's link is the one used ---
 // Copy-never-compose (channel-links.md preamble): a send that composes its own
-// URL is how the Jul 15 round lost channel attribution outright.
+// URL is how the Jul 15 round lost channel attribution outright. A row may
+// point at the home page or at a lens page (/kids, /civic — deepLink.js), and
+// whichever it is, step 3 fetches that exact link, not a recomposed one.
+const rowLinks = new Map();
+const allowedPaths = ["/", ...Object.keys(LENS_PAGES).map((p) => `/${p}`)];
 for (const t of SEND_TARGETS) {
   const row = linksDoc
     .split("\n")
@@ -71,16 +76,24 @@ for (const t of SEND_TARGETS) {
     failures.push(`${t.src}: no row in channel-links.md — add the row before sending`);
     continue;
   }
-  const url = row.match(/https?:\/\/\S+/)?.[0];
-  if (!url?.startsWith(`${ORIGIN}/?src=${t.src}`)) {
-    failures.push(`${t.src}: channel-links row points at ${url} — not ${ORIGIN}/?src=${t.src}`);
+  // Strip markdown that a table cell may wrap the link in — a stray `**` or
+  // backtick on the end of a copied link is exactly the 2026-08-25 defect.
+  const url = row.match(/https?:\/\/[^\s|]+/)?.[0]?.replace(/[*`]+$/, "");
+  const ok = allowedPaths.some((p) => url === `${ORIGIN}${p}?src=${t.src}`);
+  if (!ok) {
+    failures.push(
+      `${t.src}: channel-links row points at ${url} — expected ${ORIGIN}<${allowedPaths.join("|")}>?src=${t.src}`,
+    );
+    continue;
   }
+  rowLinks.set(t.src, url);
 }
 
 // ---- 3. the links resolve, and the redirect chain keeps the src ------------
 if (!offline) {
   for (const t of SEND_TARGETS) {
-    const url = `${ORIGIN}/?src=${t.src}`;
+    const url = rowLinks.get(t.src);
+    if (!url) continue; // already failed in step 2
     try {
       const res = await fetch(url, { redirect: "follow" });
       const kept = new URL(res.url).searchParams.get("src") === t.src;

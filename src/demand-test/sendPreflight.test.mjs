@@ -160,3 +160,15 @@ test("liveDeckSize excludes news cards past their 30-day shelf life; deckSize do
   assert.equal(report.deckSize, 3);
   assert.equal(report.liveDeckSize, 2);
 });
+
+
+// The Greenpoint edition of the weekly digest has no lens (DECISION_LOG
+// 2026-09-13): its closing count is the whole deck's dated items in the window.
+test("the `all` lens counts every card, so the Greenpoint edition gets a count", () => {
+  const cards = [
+    card("kids", { filters: ["family_kids"], startsAt: "2026-08-14T10:00:00-04:00" }),
+    card("music", { filters: ["live_music"], startsAt: "2026-08-15T20:00:00-04:00" }),
+  ];
+  assert.equal(countForLens(cards, "all", NOW).inWindow, 2);
+  assert.equal(countForLens(cards, "family_kids", NOW).inWindow, 1);
+});

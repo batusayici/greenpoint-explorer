@@ -21,7 +21,7 @@
 // Consumed by scripts/send-preflight.mjs (which adds the network checks —
 // links resolve, `src` survives, prod is serving the current deck).
 import { upcomingWithin7Days } from "./freshness.js";
-import { isExpiredCard } from "./filterCards.js";
+import { isExpiredCard, matchesFilter } from "./filterCards.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -52,6 +52,22 @@ export const SEND_TARGETS = [
     label: "Family & Kids lens (Q2 parents post)",
     kind: "lens",
     lens: "family_kids",
+  },
+  // The weekly digest's two editions (DECISION_LOG 2026-09-13). The closing
+  // line of each email is a count of dated items in its window, so both get
+  // the same Thursday-morning preflight as an org note. `all` counts the whole
+  // deck — the Greenpoint edition's lens is no lens.
+  {
+    src: "follow-family-kids",
+    label: "Weekly digest — Family & Kids edition",
+    kind: "lens",
+    lens: "family_kids",
+  },
+  {
+    src: "digest",
+    label: "Weekly digest — Greenpoint edition",
+    kind: "lens",
+    lens: "all",
   },
   // Town Square BK produces at other orgs' venues (SummerStarz runs at
   // Transmitter Park), so a locationName match would count unrelated cards
@@ -106,7 +122,7 @@ export function countForVenue(cards, locationName, now) {
 
 export function countForLens(cards, lens, now) {
   return summarise(
-    cards.filter((c) => (c.filters ?? []).includes(lens)),
+    cards.filter((c) => matchesFilter(c, lens)),
     now,
   );
 }
