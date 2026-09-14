@@ -984,11 +984,15 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // 2026-09-14 review branch: +8 held cards — seven off McCarren Park House and
   // the ABC Cirque Family Adventure Play session, both sources fetching for the
   // first time, so nothing off them auto-shipped. Deck 238 -> 246.
-  assert.equal(seed.cards.length, 246);
+  // 2026-09-14, Batu's ruling: a sold-out advance sale does not cancel the
+  // night, so the two Action City One Piece tournaments whose tickets read
+  // "Out of stock" are carded like the two shadow-throne nights already on the
+  // map. Deck 246 -> 248, event 140 -> 142.
+  assert.equal(seed.cards.length, 248);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 37, "36 + the Ayune opening (2026-09-14)");
-  assert.equal(count((c) => c.category === "event"), 140, "155, less the 35 that ran over the weekend of 12-13 September, plus the 12 events authored on 2026-09-14 (2026-09-14)");
+  assert.equal(count((c) => c.category === "event"), 142, "155, less the 35 that ran over the weekend of 12-13 September, plus the 12 events authored on 2026-09-14 and the two sold-out Action City One Piece nights (2026-09-14)");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Marianella's 40%-off sitewide sale, recurring/verified-through because the newsletter states no closing date (2026-09-14)");
   assert.equal(count((c) => c.category === "news"), 25, "24 + the Ayune opening (2026-09-14)");
   assert.equal(count((c) => c.filters.includes("live_music")), 34, "38, less the Troost, Good Room and Eavesdrop nights that ran over the weekend, plus three new Troost nights and Reggae Under the Bridge (2026-09-14)");
@@ -1546,6 +1550,12 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // (action-city-one-piece-0909 expired out 2026-09-10 — it ran 9/9)
     // (action-city-one-piece-0910 expired out 2026-09-11 — it ran 9/10)
     "action-city-flesh-blood-0915", // Flesh & Blood Armory night, 2026-09-14
+    // 2026-09-14, Batu's ruling: "Out of stock" on the advance sale does not
+    // cancel the night — a reader can still walk up — so a sold-out listing
+    // cards like any other. The two shadow-throne nights below were already on
+    // the map reading sold out, which is what made the omission inconsistent.
+    "action-city-one-piece-0917",
+    "action-city-one-piece-1001",
     "action-city-shadow-throne-0918",
     "action-city-shadow-throne-0919",
     "black-rabbit",

@@ -10514,6 +10514,92 @@
       "createdAt": "2026-09-14",
       "updatedAt": "2026-09-14",
       "free": false,
+      "category": "event",
+      "filters": [
+        "games"
+      ],
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave",
+      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.722526,
+      "lng": -73.949837,
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "action-city-one-piece-0917",
+      "title": "One Piece Tournament - Thursday! at Action City Comics",
+      "kicker": "One Piece cards, Thursday night",
+      "summary": "A One Piece tournament night. Advance tickets read out of stock; the shop lists a start and no finish, and states no entry price.",
+      "startsAt": "2026-09-17T19:00:00-04:00",
+      "endsAt": "2026-09-17T23:59:00-04:00",
+      "sourceQuote": "One Piece Tournament - Thursday!\nTHU, SEP 17 7:00 PM\nOut of stock"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "filters": [
+        "games"
+      ],
+      "locationName": "Action City Comics",
+      "address": "570 Manhattan Ave",
+      "geocodeQuery": "570 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.722526,
+      "lng": -73.949837,
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "rsvp",
+          "url": "https://www.actioncitycomics.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Action City Comics events",
+          "url": "https://www.actioncitycomics.com/",
+          "publisher": "Action City Comics",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "action-city-one-piece-1001",
+      "title": "One Piece - Extra Grand Battle! at Action City Comics",
+      "kicker": "Extra Grand Battle, Thursday night",
+      "summary": "A One Piece Extra Grand Battle night. Advance tickets read out of stock; the shop lists a start and no finish, and states no entry price.",
+      "startsAt": "2026-10-01T19:00:00-04:00",
+      "endsAt": "2026-10-01T23:59:00-04:00",
+      "sourceQuote": "One Piece - Extra Grand Battle!\nTHU, OCT 1 7:00 PM\nOut of stock"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
       "id": "ayune-opens",
       "category": "news",
       "title": "Ayune opens on Manhattan Ave, from the Wasabi team",
@@ -11320,7 +11406,7 @@
       "id": "abc-cirque-family-adventure-play-0927",
       "title": "Family Adventure Play at ABC Cirque",
       "kicker": "Circus play for under-fives and a grown-up",
-      "summary": "Ninety minutes of guided play; an adult must come along. Thirty dollars early bird for one adult-child pair, ten dollars for each extra family member.",
+      "summary": "Ninety minutes of guided play; an adult must come along. Thirty dollars early bird for one adult-child pair, ten dollars for each extra family member. ABC Cirque names the studio but not the street; the address comes from 5th Wall Studio.",
       "startsAt": "2026-09-27T11:00:00-04:00",
       "endsAt": "2026-09-27T12:30:00-04:00",
       "filters": [
@@ -11341,6 +11427,12 @@
           "title": "ABC Cirque education",
           "url": "https://www.abcirque.com/education-main",
           "publisher": "ABC Cirque",
+          "date": "2026-09-14"
+        },
+        {
+          "title": "5th Wall Studio",
+          "url": "https://www.5thwallstudio.com/",
+          "publisher": "5th Wall Studio",
           "date": "2026-09-14"
         }
       ],

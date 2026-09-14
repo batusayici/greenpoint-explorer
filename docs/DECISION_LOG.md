@@ -4,6 +4,26 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-14 — a sold-out night still cards, and a venue may borrow its landlord's address
+
+Two rulings from Batu on the held-card branch, both of them rules rather than one-off calls.
+
+**A listing whose advance tickets read "Out of stock" is still carded.** The sale being closed does
+not cancel the event, a reader can walk up, and the map's job is to say what is happening in the
+neighborhood. This came up because Action City Comics' One Piece tournament on 17 September was
+skipped for being out of stock while two shadow-throne nights carded a week earlier were sitting on
+the map reading out of stock, so the deck disagreed with itself. Both One Piece nights (17 Sep, 1
+Oct) are now carded. The TALEA precedent from 12 September still stands and is a different case: the
+venue wrote SOLD OUT into the event's own title, which is the venue saying the night is closed, not
+a ticketing widget reporting inventory.
+
+**A card may state an address its own venue never prints, if a second cited source prints it.**
+ABC Cirque's page says only "all sessions will be hosted at 5th Wall Studios in Williamsburg,
+Brooklyn". 5th Wall Studio's own site prints "156 North 4th St #7 | Williamsburg, Brooklyn 11211",
+so that site is now cited on the card alongside ABC Cirque and added to the fetch allowlist. The
+card's summary says where the address came from. The alternative — pinning at a venue name with no
+street — would have made the card unmappable, and the address is not inferred, it is published.
+
 ## 2026-09-13 — the weekly digest: Thursday, two editions, Gmail drafts, sent by Batu
 
 **Nothing had ever gone to the signup list**, and after Rana's posts the list is 29 people, 18 of
