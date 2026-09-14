@@ -133,18 +133,19 @@ describe("MapView survives what MapLibre throws at it", () => {
   // failure arrives as a state change rather than as an exception in a mount
   // effect.
   const renderMapView = async (MapCtor) => {
+    // Named exports, not a `default` object: MapLibre 6 is ESM-only and has no
+    // default export, so MapView imports the namespace. A mock shaped like the
+    // 5.x default would make every test here fail open on "No Map export".
     vi.doMock("maplibre-gl", () => ({
-      default: {
-        Map: MapCtor,
-        NavigationControl: class {},
-        Marker: class {
-          setLngLat() { return this; }
-          addTo() { return this; }
-          remove() {}
-        },
-        LngLatBounds: class {
-          extend() { return this; }
-        },
+      Map: MapCtor,
+      NavigationControl: class {},
+      Marker: class {
+        setLngLat() { return this; }
+        addTo() { return this; }
+        remove() {}
+      },
+      LngLatBounds: class {
+        extend() { return this; }
       },
     }));
     const { default: MapView } = await import("./MapView.jsx");
