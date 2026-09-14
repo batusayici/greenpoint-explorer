@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import maplibregl from "maplibre-gl";
+// Namespace import, not default: MapLibre 6 is ESM-only and publishes no
+// default export (the 5.x UMD bundle did). A default import builds clean in
+// dev and fails only at `npm run build`.
+import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { buildIIMapStyle, GREENPOINT_CENTER, GREENPOINT_MAX_BOUNDS } from "./iiMapStyle.js";
 import { pinKind } from "./filterCards.js";
@@ -47,7 +50,7 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
 
   // Init is the one line here that can throw SYNCHRONOUSLY: MapLibre's
   // _setupPainter throws "Failed to initialize WebGL" when the canvas won't
-  // hand back a webgl2/webgl context (2026-08-13 bug report — a reader's
+  // hand back a webgl2 context (2026-08-13 bug report — a reader's
   // browser had none, and an uncaught throw from a mount effect walked up to
   // the app-wide boundary and blanked the whole product). Caught here so a
   // missing map is a STATE the app can lay out around, not an exception; the
