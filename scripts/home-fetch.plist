@@ -8,13 +8,17 @@
     <string>/bin/bash</string>
     <string>/Users/batusayici/.stoopwise-fetch/greenpoint-explorer/scripts/home-fetch.sh</string>
   </array>
-  <!-- 7:15 local, after the GitHub runner (6:30) and before the routine (8:30).
-       A run missed while asleep fires once at wake. The clone must exist
-       before the first run: git clone https://github.com/batusayici/greenpoint-explorer.git
+  <!-- 9:00 local, after the GitHub runner (6:30) and before the routine (9:30).
+       Moved off 7:15 on 2026-09-14: the Mac is generally not awake before
+       8:45, so the run either missed the routine's 8:30 read entirely or
+       fired at wake with the network still coming up and died resolving
+       github.com (9/12 and 9/14 both failed that way). The script retries
+       the git steps for the same reason. The clone must exist before the
+       first run: git clone https://github.com/batusayici/greenpoint-explorer.git
        ~/.stoopwise-fetch/greenpoint-explorer — after that the script keeps
        it current itself. -->
   <key>StartCalendarInterval</key>
-  <dict><key>Hour</key><integer>7</integer><key>Minute</key><integer>15</integer></dict>
+  <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
   <key>StandardOutPath</key><string>/tmp/com.stoopwise.home-fetch.out</string>
   <key>StandardErrorPath</key><string>/tmp/com.stoopwise.home-fetch.err</string>
 </dict>

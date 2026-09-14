@@ -22,8 +22,23 @@ set +a
 export GIT_SSH_COMMAND="ssh -i ${SNAPSHOTS_DEPLOY_KEY_PATH:-$HOME/.ssh/stoopwise-snapshots} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
-if [ ! -d "$PRODUCT/.git" ]; then git clone --quiet https://github.com/batusayici/greenpoint-explorer.git "$PRODUCT"; fi
-git -C "$PRODUCT" fetch --quiet origin main
+# The Mac often reaches this point with the network still coming up, and a
+# single failed name lookup used to end the whole morning (9/12 and 9/14 both
+# died on "Resolving timed out" after ten minutes). Retry the network steps
+# instead. GIT_HTTP_LOW_SPEED_* caps each attempt so five tries cannot run
+# past the routine's read.
+export GIT_HTTP_LOW_SPEED_LIMIT=1000 GIT_HTTP_LOW_SPEED_TIME=60
+retry() {
+  local n=1
+  until "$@"; do
+    if [ "$n" -ge 5 ]; then echo "giving up after $n attempts: $*"; return 1; fi
+    echo "attempt $n failed, retrying in 60s: $*"
+    n=$((n + 1)); sleep 60
+  done
+}
+
+if [ ! -d "$PRODUCT/.git" ]; then retry git clone --quiet https://github.com/batusayici/greenpoint-explorer.git "$PRODUCT"; fi
+retry git -C "$PRODUCT" fetch --quiet origin main
 git -C "$PRODUCT" reset --quiet --hard origin/main
 (
   cd "$PRODUCT"
@@ -46,8 +61,8 @@ if [ "$FETCH_EXIT" -ne 0 ]; then
   echo "ingest:fetch exited $FETCH_EXIT — over the 15% ceiling, or the run crashed; publishing whatever report exists so the routine halts on the same evidence"
 fi
 
-if [ ! -d "$SNAPS/.git" ]; then git clone --quiet git@github.com:batusayici/stoopwise-snapshots.git "$SNAPS"; fi
-git -C "$SNAPS" fetch --quiet origin
+if [ ! -d "$SNAPS/.git" ]; then retry git clone --quiet git@github.com:batusayici/stoopwise-snapshots.git "$SNAPS"; fi
+retry git -C "$SNAPS" fetch --quiet origin
 git -C "$SNAPS" reset --quiet --hard origin/HEAD
 (
   cd "$PRODUCT"

@@ -4,6 +4,27 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-09-14 — the morning fetch moves to 9:00 and the routine to 9:30
+
+Batu said the Mac is generally not on before 8:45. The home fetch ran at 7:15 and the cloud
+routine read the bundle at 8:30, so on a typical morning the home half could not land in time
+at all — and when launchd did fire it at wake, the network was still coming up and git died
+resolving github.com after ten minutes. 9/12 and 9/14 both failed that way; 9/9 through 9/11
+and 9/13 succeeded. What looked like flaky networking was a job scheduled an hour and a half
+before its machine exists.
+
+**Both halves move back an hour: the home job to 9:00, the cloud routine to 9:30.** The GitHub
+workflow stays at 6:30. Cards land about an hour later in the morning, and the eight sources
+that only a residential address can read come through again instead of erroring roughly every
+other day. The alternative considered was dropping the home job and living at ~91% of the roster
+permanently — under the 15% reach ceiling, but it gives up those eight sources for good.
+
+The fetch script now retries its git steps five times a minute apart, capped so five attempts
+cannot run past the routine's read. One bad name lookup at wake no longer ends the morning.
+
+Batu moves the routine's own schedule on claude.ai; the launchd job, the script and the ops doc
+are in this change.
+
 ## 2026-09-14 — a sold-out night still cards, and a venue may borrow its landlord's address
 
 Two rulings from Batu on the held-card branch, both of them rules rather than one-off calls.
