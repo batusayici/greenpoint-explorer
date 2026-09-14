@@ -137,7 +137,7 @@ card's Sep 23 date is an authored expiry, not a quoted closing date), so neither
 a deadline line. The one Deals & Memberships subscriber is in the Greenpoint edition; the only
 deals card is undated, so nothing leads for them this week.
 
-### Family & Kids — 20 recipients — BCC from `npm run digest:recipients`
+### Family & Kids — 18 recipients — BCC from `npm run digest:recipients`
 
 Subject: Greenpoint kids this week: free canoe rides, the Y open house, Yom Kippur camps
 
@@ -179,7 +179,7 @@ equipment. First come, first served … family-friendly." YMCA — "Saturday, Se
 Kippur", 13:00–19:00Z, card summary states no price. Count: 10 dated family items in window
 minus the 4 cards linked = 6.*
 
-### Greenpoint — 9 recipients — BCC from `npm run digest:recipients`
+### Greenpoint — 11 recipients — BCC from `npm run digest:recipients`
 
 Subject: Greenpoint this week: canoes on the creek, a pizza pilsner, dance at Triskelion
 
