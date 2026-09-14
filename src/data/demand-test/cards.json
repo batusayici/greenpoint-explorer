@@ -11000,6 +11000,353 @@
       ],
       "lat": 40.729398,
       "lng": -73.959338
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "mccarren-skip-small-talk-0916",
+      "title": "Skip the Small Talk at McCarren Park House",
+      "kicker": "Structured conversation, two hours",
+      "summary": "A guided conversation night rather than a mixer. The listing names no price, so none is claimed here.",
+      "startsAt": "2026-09-16T19:00:00-04:00",
+      "endsAt": "2026-09-16T21:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Skip the Small Talk Wednesday September 16th @ 7PM-9PM",
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "mccarren-euchre-club-0917",
+      "title": "Brooklyn Euchre Club pickup games at McCarren Park House",
+      "kicker": "Pickup euchre, every other Thursday",
+      "summary": "The club runs roughly fortnightly through December. The listing gives a start and no finish, and names no price.",
+      "startsAt": "2026-09-17T19:30:00-04:00",
+      "endsAt": "2026-09-17T23:59:00-04:00",
+      "filters": [
+        "games"
+      ],
+      "sourceQuote": "Brooklyn Euchre Club Pickup Games Thursday September 17 @ 7:30PM",
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "mccarren-pretty-box-0919",
+      "title": "Pretty Box Presents: Shady Broker and Fire at Midnight at McCarren Park House",
+      "kicker": "Two bands, Saturday night",
+      "summary": "A Pretty Box bill in the park house. The listing gives a start and no finish, and names no price.",
+      "startsAt": "2026-09-19T19:30:00-04:00",
+      "endsAt": "2026-09-19T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "Pretty Box Presents: Shady Broker, Fire at Midnight September 19rd @ 7:30PM",
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "mccarren-pique-hangs-0922",
+      "title": "Pique Community Hangs at McCarren Park House",
+      "kicker": "A community hang, ninety minutes",
+      "summary": "Runs again the following Tuesday. The listing names no price, so none is claimed here.",
+      "startsAt": "2026-09-22T19:30:00-04:00",
+      "endsAt": "2026-09-22T21:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Pique Community Hangs Tuesday September Tuesday 22nd @ 7:30PM-9PM",
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "mccarren-philosophy-club-0923",
+      "title": "New York Philosophy Club at McCarren Park House",
+      "kicker": "Weekly philosophy, Wednesday nights",
+      "summary": "Listed almost every Wednesday through December. The listing gives a start and no finish, and names no price.",
+      "startsAt": "2026-09-23T19:00:00-04:00",
+      "endsAt": "2026-09-23T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "New York Philosophy Club Wednesday September 23rd @ 7PM",
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "mccarren-chess-club-0924",
+      "title": "North Brooklyn Chess Club at McCarren Park House",
+      "kicker": "Four hours of chess, every other Thursday",
+      "summary": "The club runs fortnightly into November. The listing names no price, so none is claimed here.",
+      "startsAt": "2026-09-24T19:00:00-04:00",
+      "endsAt": "2026-09-24T23:00:00-04:00",
+      "filters": [
+        "games"
+      ],
+      "relatedCardIds": [
+        "nb-chess-parkhouse-0806"
+      ],
+      "sourceQuote": "North Brooklyn Chess Club Thursday September 24th @ 7PM-11PM",
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-14"
+        }
+      ],
+      "id": "mccarren-five-act-bill-0926",
+      "title": "John Swanson, Luv Dot Gov, Alouette Batteau, Nite Music and Nihiloceros at McCarren Park House",
+      "kicker": "Five acts across five and a half hours",
+      "summary": "A long Saturday bill starting in the afternoon. The listing names no price, so none is claimed here.",
+      "startsAt": "2026-09-26T16:30:00-04:00",
+      "endsAt": "2026-09-26T22:00:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "John Swanson, Luv Dot Gov, Alouette Batteau, Nite Music, Nihiloceros (solo) September 26th @ 4:30PM-10PM",
+      "lat": 40.722039,
+      "lng": -73.951795
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "category": "event",
+      "id": "abc-cirque-family-adventure-play-0927",
+      "title": "Family Adventure Play at ABC Cirque",
+      "kicker": "Circus play for under-fives and a grown-up",
+      "summary": "Ninety minutes of guided play; an adult must come along. Thirty dollars early bird for one adult-child pair, ten dollars for each extra family member.",
+      "startsAt": "2026-09-27T11:00:00-04:00",
+      "endsAt": "2026-09-27T12:30:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "ABC Cirque at 5th Wall Studio",
+      "address": "156 North 4th St #7",
+      "geocodeQuery": "North 4th Street, Brooklyn, NY 11249",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "rsvp",
+          "url": "https://www.abcirque.com/education-main"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "ABC Cirque education",
+          "url": "https://www.abcirque.com/education-main",
+          "publisher": "ABC Cirque",
+          "date": "2026-09-14"
+        }
+      ],
+      "sourceQuote": "Family Adventure Play\nAges 5 & Under with Adult\nSundays\n11am-12:30pm\nSeptember 27, October 18, or November 15\nEarly bird reservations:\n$30 (one adult/youth combo)\nAdditional family member $10",
+      "lat": 40.719067,
+      "lng": -73.964255
     }
   ]
 }

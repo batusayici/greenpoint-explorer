@@ -4703,5 +4703,30 @@
         "-73.9304681"
       ]
     }
+  },
+  "North 4th Street, Brooklyn, NY 11249": {
+    "query": "North 4th Street, Brooklyn, NY 11249",
+    "fetchedAt": "2026-09-14T13:39:20.441Z",
+    "hit": {
+      "place_id": 356871538,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 129002934,
+      "lat": "40.7190665",
+      "lon": "-73.9642547",
+      "category": "highway",
+      "type": "residential",
+      "place_rank": 26,
+      "importance": 0.05342509269855799,
+      "addresstype": "road",
+      "name": "North 4th Street",
+      "display_name": "North 4th Street, Williamsburg, Brooklyn, Kings County, New York, 11249, United States",
+      "boundingbox": [
+        "40.7186525",
+        "40.7196969",
+        "-73.9642713",
+        "-73.9634800"
+      ]
+    }
   }
 }

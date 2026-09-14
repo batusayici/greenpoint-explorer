@@ -981,14 +981,17 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // three Troost nights at the back of the window, two Hana Makgeolli dinners,
   // Reggae Under the Bridge and a Native Nursery Garden Club, plus Marianella's
   // sitewide sale. Deck 224 -> 238, event 120 -> 132.
-  assert.equal(seed.cards.length, 238);
+  // 2026-09-14 review branch: +8 held cards — seven off McCarren Park House and
+  // the ABC Cirque Family Adventure Play session, both sources fetching for the
+  // first time, so nothing off them auto-shipped. Deck 238 -> 246.
+  assert.equal(seed.cards.length, 246);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 37, "36 + the Ayune opening (2026-09-14)");
-  assert.equal(count((c) => c.category === "event"), 132, "155, less the 35 that ran over the weekend of 12-13 September, plus the 12 events authored on 2026-09-14 (2026-09-14)");
+  assert.equal(count((c) => c.category === "event"), 140, "155, less the 35 that ran over the weekend of 12-13 September, plus the 12 events authored on 2026-09-14 (2026-09-14)");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Marianella's 40%-off sitewide sale, recurring/verified-through because the newsletter states no closing date (2026-09-14)");
   assert.equal(count((c) => c.category === "news"), 25, "24 + the Ayune opening (2026-09-14)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 32, "38, less the Troost, Good Room and Eavesdrop nights that ran over the weekend, plus three new Troost nights and Reggae Under the Bridge (2026-09-14)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 34, "38, less the Troost, Good Room and Eavesdrop nights that ran over the weekend, plus three new Troost nights and Reggae Under the Bridge (2026-09-14)");
   assert.equal(count((c) => c.category === "subscription"), 42, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -1571,6 +1574,8 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // 2026-09-10 poster batch: the window sign at Madeline's, corroborated by
     // the bar's own site ("Our recurring Trivia Night is Wednesday at 7:30pm").
     "madelines-trivia-wednesdays",
+    "mccarren-chess-club-0924", // held, McCarren Park House first fetch 2026-09-14
+    "mccarren-euchre-club-0917", // held, McCarren Park House first fetch 2026-09-14
     "mccarren-trivia-club-0914",
     "nb-chess-parkhouse-0806",
     "scrappleland",
