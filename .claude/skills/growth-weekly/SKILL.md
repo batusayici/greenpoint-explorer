@@ -427,3 +427,24 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   any edition skipped under the density floor. Everything the send needs — who
   gets which edition, the picks rule, the template, the checklist — lives in
   `docs/growth/digest.md`; do not restate it here.
+- **(proposed 2026-09-15, cycle 10 — pending ratification.)** **When a wave
+  lands, report how old a rate's denominator is beside the rate.** The demand
+  gate fell 21% → 7% in the week of Rana's posts without a single person
+  behaving worse: the denominator tripled with people who had existed for four
+  days and could not yet satisfy a numerator that requires presence in three
+  separate weeks. Any rate whose numerator needs N weeks of history gets the age
+  of its denominator stated next to it, plus the same rule computed on the
+  population old enough to qualify, labelled as a diagnostic — that is not
+  softening a pre-registered rule, it is the same rule on the only people it can
+  describe. Without it, a cohort arriving reads as a product decaying.
+- **(proposed 2026-09-15, cycle 10 — pending ratification.)** **A number that
+  changed because its definition changed is reported as a definition change in
+  the row that reports it, and a prior column it cannot be compared to is left
+  out rather than filled in.** The 2026-09-13 instrument rewrite moved
+  activation from lifetime to first-session, windowed the rates to 7 days and
+  dropped data-centre traffic before any rate is computed; three metrics and two
+  channel rows in cycle 10 would otherwise have shown large movements that were
+  entirely the switch (`org-brooklyn-craft` 8 → 4 people, having lost nobody).
+  This extends cycle 9's correction instruction from mis-counted numbers to
+  re-defined ones, and it applies to prose figures carried across readouts, not
+  only to snapshot metrics that carry a `defVersion`.
