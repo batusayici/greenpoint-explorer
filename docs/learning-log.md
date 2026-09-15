@@ -67,7 +67,13 @@ section only when evidence answers it — then it becomes a belief.
   rate than anything previously seen — and nothing has been sent to that list
   yet. A reader also asked, in public, how to save the map. The question is no
   longer "has anyone been asked"; they have, weakly, and a meaningful minority
-  said yes. _Evidence: L2026-09-13 (analytics)._
+  said yes. _Evidence: L2026-09-13 (analytics)._ **And the cost of having no
+  return path is now a number, 2026-09-15:** the demand gate reads 7% against a
+  bar of 25% because most of the 75 twice-visiting locals in its denominator
+  arrived four days ago and cannot enter its numerator until the week of 9/28.
+  Whether they do is almost entirely a question of whether anything reaches them
+  before then. The first email in the product's life goes Thursday 9/17.
+  _Evidence: L2026-09-15._
 - **Q4 — Will businesses ever supply anything themselves?** Zero submissions
   all-time and one submit tap ever. We don't know whether the ask is invisible,
   unwanted, or simply premature at this traffic level, and the answer decides
@@ -148,7 +154,15 @@ when revised, and retired ones are struck rather than renumbered.
   visitors did something, against 0 of 20 untagged direct arrivals — and they
   come from neither a link Batu sent nor the share button. Caveat: both top
   pages are news-shaped, a category the product carries but does not lead with.
-  _Evidence: L2026-09-07, L2026-09-01, L2026-08-17, L2026-08-11._
+  **Revised 2026-09-15 — the "growing" clause is withdrawn, the rest stands.**
+  Clicks fell 20 → 5 and impressions 425 → 169 for 9/6–9/12, because the two
+  news cards carrying that volume stopped being searched for: `sereneco fire`
+  went from 65 impressions to 1. Average position improved 10.5 → 8.6 over the
+  same window, so the corpus's standing rose while the story decayed. Search
+  volume is therefore **story-driven and perishable**, not compounding yet — the
+  caveat in the line above turned out to be the main finding. The name-not-
+  question half is now confirmed across three windows.
+  _Evidence: L2026-09-15, L2026-09-07, L2026-09-01, L2026-08-17, L2026-08-11._
 - **B14 — A metric can read zero because nothing is there, or because the
   query cannot see it, and the readout cannot tell those apart on its own.**
   Four consecutive readouts published "AI-referrer sessions: 0, all-time —
@@ -192,6 +206,54 @@ when revised, and retired ones are struck rather than renumbered.
   _Evidence: L2026-07-21._
 
 ## Log
+
+### L2026-09-15 — The demand gate fell because the product grew: a wave of new people cannot satisfy a rule that needs three weeks (analytics pull)
+
+Source: `npm run growth:pull` (snapshot `docs/growth/snapshots/2026-09-15.json`,
+all three sources `ok`), `npm run growth:gsc`, `npm run digest:recipients`,
+`npm run preflight:send`, and four hand-run HogQL queries through the
+instrument's own query and day bucketing. Production hosts only, test `src` tags
+excluded, data-centre cities removed before any rate. Full cycle-10 readout:
+`docs/growth/readouts/2026-09-15.md`.
+
+**Fact — the gate.** Locals with at least two distinct visit days: 75, up from
+24 a week ago. Of those, in at least three of any four consecutive weeks: 5, the
+same five as a week ago. The gate rate is therefore 7% against a bar of 25%, and
+the floor reads 5 against a bar of 12. Restricting the *same rule* to people
+whose first visit was on or before 2026-08-18 — the only people who have existed
+long enough to satisfy it — gives 5 of 18 locals, 28%, with the floor still at 5.
+
+**Fact — the wave.** 675 of the product's 933 all-time people first appeared on
+or after 2026-09-11. 255 of them (38%) opened a card, against 53 of 258 (21%)
+for everyone who arrived before. 55 came back on a second day within five days.
+The email list went from 5 people to 31, 20 of whom chose a lens; Follow taps
+went from 3 in the product's history to 28, 18 of them carrying a lens.
+
+**Fact — search.** For 9/6–9/12, 5 clicks and 169 impressions, against 20 and
+425 the week before, while average position improved from 10.5 to 8.6. The query
+`sereneco fire` produced 65 impressions in the prior window and 1 in this one.
+Third consecutive window with zero generic-intent queries.
+
+**Fact — errors.** Production exceptions went from 1 event all-time to 16 across
+12 people, 14 of them between 9/11 and 9/15 and 10 of those inside the Facebook
+or Chrome in-app browser on `/kids`. All are untyped: `$exception_message` and
+`$exception_type` are empty.
+
+Read: the gate's two-point slip last week and its fourteen-point fall this week
+are the same non-event — the denominator grew and the numerator could not,
+because entering the numerator requires having existed for three weeks and 72%
+of the population is four days old. The first date any of the wave can appear in
+it is the week of 9/28. **The rule as pre-registered does not say whose history
+counts, and until 9/11 it never had to**; that question now decides whether the
+number reads 7% or 28% and is open for Batu. What is not ambiguous is the floor:
+five people have returned across three separate weeks, against a bar of twelve,
+and the email that would bring the wave back has not gone out yet.
+
+The search fall is the mirror of the same effect on the supply side: last
+window's clicks were two news stories, and a news story stops being searched for.
+Position improving while clicks fell is what a corpus accruing under a decaying
+story looks like — and it is more evidence for B9 (search finds us by name,
+never by question), now on three windows.
 
 ### L2026-09-14 — Two more unprompted asks, both by email, and one is a neighborhood we don't cover (business feedback)
 
