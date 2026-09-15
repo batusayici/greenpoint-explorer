@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-09-14T00:00:00.000Z",
+  "lastRunAt": "2026-09-15T00:00:00.000Z",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -2012,6 +2012,13 @@
       ],
       "holds": "holds: 1 new-judgment · 0 rule-miss · 0 source-blocked",
       "outcome": "Monday full. Expiry cleared 35 cards that ran over the weekend, then 14 shipped: 224 -> 238. Held to the review PR: every card off abc-cirque and mccarren-park-house, both fetching for the first time (first-time-source hold), and a rule question about whether a sold-out ticket listing cards at all."
+    },
+    {
+      "id": "daily-refresh-2026-09-15",
+      "at": "2026-09-15",
+      "outcome": "shipped 11 cards, re-verified 5 recurring cards, 3 held",
+      "holds": "holds: 1 new-judgment · 0 rule-miss · 2 source-blocked",
+      "note": "Daily thin run. Neither fetcher ran on schedule: the bundle was 21.6h old, so the run dispatched ingest-fetch.yml by hand and pulled the GitHub runner's bundle (fetchedAt 2026-09-15T14:23:06.242Z, fetcher github, productCommit 2564517). Fetch exit 0, 74/86 sources read, 14% error against a 15% ceiling. Gmail pass ran; nothing new to card."
     }
   ],
   "senderRegistry": [
@@ -3109,15 +3116,131 @@
       "name": "Moon Bunny Aerial — song-titled K-Pop Dance sessions recur weekly, which bears on the open question",
       "note": "The 2026-09-04 watchItem treated \"K-Pop Dance (Loveshot by EXO)\" as a one-off. It has now reappeared at the identical Thursday 22:30Z slot a week later (2026-09-17), alongside \"K-Pop Dance (Icky by Kard)\" on 9/15. That looks like a rotating weekly theme inside the standing timetable rather than a one-off, which points the open question toward 'not cardable'. Recorded for whoever puts it to Batu.",
       "addedAt": "2026-09-14"
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "TALEA Williamsburg — Plant Bingo with the Sill, Mon 10/5 6:30-8:30pm",
+      "note": "Horizon only. Verbatim: \"data-event-title: • Plant Bingo with the Sill / data-atc-event-start: 2026-10-05 18:30 / data-atc-event-end: 2026-10-05 20:30 / data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA\". Tickets via Eventbrite.",
+      "unblocksOn": "2026-09-21",
+      "condition": "UNBLOCKS 2026-09-21, the first run where 10/5 is inside the 14-day horizon."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Threes Brewing Greenpoint — Threes Flea Market: Fall Edition, Sun 10/18 12-7pm",
+      "note": "Horizon only. Verbatim: \"title: Greenpoint: Threes Flea Market: Fall Edition / start_date: 2026-10-18T12:00:00.000Z / end_date: 2026-10-18T19:00:00.000Z\"; description \"Fall flea market Threes Brewing Greenpoint, curated by Fig Shop. Sunday, October 18, 12–7PM.\" A general-goods flea files shopping.",
+      "unblocksOn": "2026-10-04",
+      "condition": "UNBLOCKS 2026-10-04, the first run where 10/18 is inside the 14-day horizon."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Greenpointers — Filmshow Festival at Rollin Studios, Sat 10/3",
+      "note": "Horizon only. Verbatim: \"Audiences can attend the October 3 festival at Rollin Studios (259 Green Street) where they will be more participant than spectator: the crowd votes on a favorite film, which is then awarded a $1,000 cash prize.\" No time of day stated; tickets on sale, price not stated.",
+      "unblocksOn": "2026-09-19",
+      "condition": "UNBLOCKS 2026-09-19. Re-read the post for a start time before carding; with none, the card is allDay."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Troost — LUMENS 10/27 and TRUE EAST 10/28",
+      "note": "Horizon only. Verbatim: \"summary: LUMENS / description: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone / start.date: 2026-10-27\" and \"summary: TRUE EAST / start.date: 2026-10-28\".",
+      "unblocksOn": "2026-10-13",
+      "condition": "UNBLOCKS 2026-10-13, the first run where 10/27 is inside the 14-day horizon."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Light & Sound Design — Toribio will Present Sounds / Biking to Last Sun Day, Thu 10/1",
+      "note": "Horizon only. Verbatim from the fresh snapshot and its [DETAIL] block for https://lightandsound.design/e/100126-1: \"Toribio will Present Sounds\", \"Thu 10.01.2026\", \"Biking to Last Sun Day\", and the route line \"WNYC Transmitter Park → Brooklyn Bridge Park → Erie Basin Park → Owl’s Head Park → Calvert Vaux Park → Tashkent Supermarket → RIIS → Rockaway Beach Amphitheater\". No time stated.",
+      "unblocksOn": "2026-09-17",
+      "condition": "UNBLOCKS 2026-09-17, the first run where 10/1 is inside the 14-day horizon."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "McCarren Park House — nine dated nights past the horizon",
+      "note": "Horizon only, all verbatim from https://mccarrenparkhouse.com/hello: \"New York Philosophy Club Wednesday September 30th @ 7PM\"; \"Brooklyn Euchre Club Pickup Games Thursday October 1 @ 7:30PM\"; \"New York Philosophy Club Wednesday October 7 @ 7PM\"; \"North Brooklyn Chess Club Thursday October 8th @ 7PM-11PM\"; \"Songwriter Sundays October 11th @ 7PM\"; \"Hobby Con Presents Junk Journaling Monday October 12th @ 7PM-8:30PM\"; \"New York Philosophy Club Wednesday October 14 @ 7PM\"; \"Brooklyn Euchre Club Pickup Games Thursday October 15 @ 7:30PM\"; \"Jazz and Journaling Friday October 16 @ 6PM-8PM\" and \"Jazz at McCarren Friday October 16 @ 8PM-11PM\".",
+      "unblocksOn": "2026-09-16",
+      "condition": "UNBLOCKS 2026-09-16 for the 9/30 philosophy club, then each later date as it enters the 14-day horizon. This venue re-publishes the same page every run, so these are re-readable rather than one-shot."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "WORD Bookstore — ACOTAR Midnight Release Party, Mon 10/26 9:30pm, $41.45",
+      "note": "Horizon only. Verbatim: \"Monday, October 26 at 9:30 PM / ACOTAR Midnight Release Party! / 126 Franklin Street, Brooklyn, NY 11222, US / $41.45 / incl. fees\".",
+      "unblocksOn": "2026-10-12",
+      "condition": "UNBLOCKS 2026-10-12. A 9:30pm start is a real stated clock, so this is not an allDay card."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Flower Cat — Advanced Astrology 7-week course from 9/30, and Open Mic 10/9",
+      "note": "Horizon only. Verbatim: \"Introduction to Advanced Astrology with E Wray (7 Week Course) / Wednesday, September 30, 2026 / 6:00 PM / 8:30 PM\" with per-week times listed (\"Oct 28 - off\"), and \"Open Mic / Friday, October 9, 2026 / 8:00 PM / 10:00 PM\". The course is a term enrollment, so it files subscription on its audience lens, not deals_memberships.",
+      "unblocksOn": "2026-09-16",
+      "condition": "UNBLOCKS 2026-09-16 for the course, 2026-09-25 for the open mic."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Bandit Running — banditrunning.com/pages/gpr now 404s, and a live card rests on it",
+      "note": "FIRST FLAGGED RUN 2026-09-15. The page returns Bandit's generic \"DID YOU TAKE A WRONG TURN? / PAGE NOT FOUND\" shell plus nav and a leaderboard widget; the schedule text the card quotes (\"GREENPOINT RUNNERS / Join for more information about our weekly runs, events and more. / Saturdays at 9:30 am / 37 Noble Street, Brooklyn NY\") survives only in .ingest-cache/bandit-running-gpr.ingested.txt. The 1530-line diff is the 404 page, not new content. This run did NOT promote that baseline, so the evidence is intact. bandit-running-greenpoint-runners is verified through 2026-09-19 and was not bumped.",
+      "condition": "SECOND FLAGGED RUN DELETES THE CARD (rule of 2026-08-30). To keep it: find the GPR page's new URL on banditrunning.com and fix the roster entry, or confirm the Saturday run from another first-party surface. An interactive session can fetch the site directly."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Action City Comics — the morning fetch returned a Cloudflare rate-limit page, not the shop's listings",
+      "note": "Verbatim from .ingest-cache/action-city-comics.txt: \"Error 1015 Ray ID: a3b8439eab5a258c • 2026-09-15 14:19:02 UTC / You are being rate limited / The owner of this website (www.actioncitycomics.com) has banned you temporarily from accessing this website.\" 491 chars against a 1131-char baseline of real content. This run deliberately did NOT promote that baseline — promoting it would have replaced the evidence behind the live Action City cards with an error page. Not an egress denial and not a bot wall to allowlist around: the GitHub runner was rate-limited.",
+      "condition": "Closes on the next fetch that returns listings. If it recurs, the fetcher should back off on this host or the roster should carry a slower cadence for it."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Ms. J's Gymnastics — the School Year Camps block is missing from the fetch again",
+      "note": "The fresh snapshot ends at the recurring-class schedule; the camps block (dated days from 2026-09-21 through 2027-06-10) exists only in the baseline, under \"## [DETAIL] https://portal.iclasspro.com/msjsgreenpoint/camps/2\". Because it is a marked block, promotion carries it forward, so msjs-yom-kippur-camp-0921's evidence survives this run. Same shape as the 2026-09-11 note, now seen twice.",
+      "condition": "Two sightings is the signal that the detail fetch for this source is unreliable, not that the camps ended. If it misses a third time, the roster entry is the defect."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Greenpointers — the Goddard School piece is sponsored content, and Goddard is a franchise",
+      "note": "Not carded, on two independent gates. The post is labelled \"Sponsored by The Goddard School of Greenpoint (85 Commercial St.)\", and coverage is never for sale; The Goddard School is also a national franchise, which the locally-owned gate excludes. The offer it carries was \"Mention Greenpointers for 20% off registration fee! Valid for registrations before November 1, 2026.\"",
+      "condition": "Closed. Do not re-argue this per instance — a sponsored post is not supply."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Greenpoint Reformed Church — the ICS feed publishes weekly AA meetings, and there is no rule for them",
+      "note": "NEW JUDGMENT FOR BATU. The feed added \"SUMMARY: Drink & Die AA Men's Meeting / DTSTART: 2026-10-04T17:30:00.000Z / LOCATION: Upstairs in the Manse / RRULE: FREQ=WEEKLY;BYDAY=SU\" and \"SUMMARY: Greenpoint Agnostics & Freethinkers AA Meeting / DTSTART: 2026-10-05T00:00:00.000Z / RRULE: FREQ=WEEKLY;BYDAY=MO\". Both are real, dated, in Greenpoint and free. Not carded: twelve-step meetings rest on anonymity, one is stated men-only, and no lens in FILTER_IDS fits. This is the same family as the open religious-service question.",
+      "condition": "Batu's call: do recovery meetings belong on the map at all? If yes, they need a lens. Until he rules, no AA or NA meeting cards."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Down to Earth Markets — the 9/27 closure notice is Battery Park City's, not McGolrick's",
+      "note": "The diff's single added line, \"The farmers market will be closed on Sunday, September 27th due to the Tunnel to Towers Run\", sits under the MANHATTAN / Battery Park City block (\"River Terrace between Murray St & North End Ave\"), not the Brooklyn / McGolrick Park block. McGolrick's own line is unchanged: \"Market open Sundays, 09:00AM – 2:00PM, year-round\". mcgolrick-farmers-market was re-verified through 2026-09-27 with no except.",
+      "condition": "Closed — recorded so a future run reading the same line does not put a false closure on a Greenpoint card."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Brooklyn Bridge Parents — free kayaking at Bushwick Inlet Park, Sat 9/19 1-3pm",
+      "note": "NOT CARDED: aggregator-only. Verbatim: \"Free Kayaking with North Brooklyn Community Boathouse | Williamsburg Saturday, September 19 | 1–3pm | Bushwick Inlet Park, 1 Franklin Street at North 15th Street | Free, walk up, no registration\". Bushwick Inlet Park is in scope, so geography is not the problem — the aggregator rule is. The same roundup's canoe session is already carded from the library's calendar (nbcb-canoe-newtown-creek-0919), which is the primary surface.",
+      "condition": "Card it if the North Brooklyn Community Boathouse's own page or the library calendar carries the 9/19 kayak session. NBCB is not on the roster; adding it would cover this class of item first-hand."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Polish & Slavic Center — \"250 from Kosciuszko and Pułaski to Today – Polonia Celebrates America\", Sun 9/20 12pm",
+      "note": "HELD 2026-09-15, source-blocked. The WP REST item came back as title/link/date only — \"250 from Kosciuszko and Pułaski to Today – Polonia Celebrates America – 20 września, 12pm\" — with no content body, so no venue and no address. PSC runs two buildings (177 Kent St and 176 Java St) and assuming either would be inventing the venue.",
+      "condition": "Resolves when the post body returns in a fetch, or an interactive session reads https://polishslaviccenter.org/250-from-kosciuszko-and-pulaski-to-today-polonia-celebrates-america/ directly."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "Polish & Slavic Center — photographic miniatures exhibition, 14 Sept – 15 Oct",
+      "note": "HELD 2026-09-15, source-blocked. Verbatim: \"Wystawa miniatur fotograficznych. Zaproszenie. 14 września – 15 października 2026\". Title/link/date only again, so no venue and no viewing hours. It is also an ongoing exhibition, which under the 2026-08-12 rule belongs on the venue's card rather than a dated event — and the deck has no Polish & Slavic Center venue card to carry it.",
+      "condition": "Two things resolve it: the post body (for venue and hours), and a decision on whether PSC gets a venue card. The second is the one that matters — this source will keep producing standing facts with nowhere to put them."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "name": "McCarren Park House — Karaoke Tuesdays at 7PM",
+      "note": "HELD 2026-09-15, a field the source does not state. Verbatim, and this is the whole line: \"(Cancelled Sept. 15th) Karaoke Tuesdays @ 7PM Starting September\". The night, the time and the venue are stated; the start date is not, and \"Starting September\" plus a cancellation notice for one Tuesday is not enough to say the series is running. The venue's other standing night, Skintag's Monday open mic, states no such qualifier and shipped.",
+      "condition": "Resolves the moment the page states a date, or drops the \"Starting September\" wording, or an uncancelled Tuesday goes by. If it is still ambiguous next run, the rule question for Batu is whether a cancellation notice for one date is itself evidence the series is live."
     }
   ],
   "sourcePulse": {
-    "eavesdrop": "2026-09-06",
+    "eavesdrop": "2026-09-14",
     "greenpointers": "2026-09-13",
     "greenpoint-comedy-club": "2026-09-13",
     "film-noir-cinema": "2026-09-13",
     "scrappleland": "2026-08-06",
-    "flower-cat": "2026-08-27",
+    "flower-cat": "2026-09-14",
     "greenpoint-library": "2026-09-10",
     "bpl-north-brooklyn-calendar": "2026-09-10",
     "greenpoint-trash-club": "2026-07-21",
@@ -3130,7 +3253,7 @@
     "dance-space-ny": "2026-07-24",
     "yaro-studios": "2026-09-10",
     "yaro-kids-clay": "2026-09-10",
-    "moon-bunny-aerial": "2026-09-08",
+    "moon-bunny-aerial": "2026-09-14",
     "brooklyn-craft-company": "2026-09-11",
     "last-place-on-earth": "2026-09-06",
     "greenpoint-star": "2026-07-26",
@@ -3138,11 +3261,11 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-09-08",
     "nycparks-greenpoint": "2026-09-06",
-    "troost": "2026-09-13",
+    "troost": "2026-09-14",
     "carcosa-club": "2026-09-06",
-    "good-room": "2026-09-10",
+    "good-room": "2026-09-14",
     "town-square-bk": "2026-09-11",
-    "word-bookstore": "2026-09-08",
+    "word-bookstore": "2026-09-14",
     "hide-and-seek": "2026-08-06",
     "brew-inn-trivia": "2026-08-06",
     "play-kids-greenpoint": "2026-08-06",
@@ -3174,7 +3297,7 @@
     "bellocq-tea": "2026-09-03",
     "lockwood": "2026-09-06",
     "friends-of-transmitter-park": "2026-09-06",
-    "nbk-parks-alliance": "2026-09-13",
+    "nbk-parks-alliance": "2026-09-14",
     "giggles-and-wiggles-events": "2026-09-06",
     "kingsland-wildflowers": "2026-09-06",
     "polish-slavic-center": "2026-09-06",
@@ -3194,11 +3317,13 @@
     "light-and-sound-design": "2026-09-09",
     "brooklyn-hearts-club": "2026-09-10",
     "triskelion-arts": "2026-09-10",
-    "threes-brewing-greenpoint": "2026-09-10",
+    "threes-brewing-greenpoint": "2026-09-14",
     "tunes-for-tykes": "2026-09-10",
     "greenpoint-shul": "2026-09-10",
     "friends-of-mcgolrick": "2026-09-11",
-    "talea-williamsburg": "2026-09-11"
+    "talea-williamsburg": "2026-09-11",
+    "mccarren-park-house": "2026-09-14",
+    "abc-cirque": "2026-09-13"
   },
   "coverageExplanations": [
     {
@@ -4012,6 +4137,55 @@
       "reason": "THE ONE MISSING DATE IS SOLD OUT, AND WHETHER THAT CARDS IS AN OPEN RULE QUESTION. The listing reads \"One Piece Tournament - Thursday!\" / \"THU, SEP 17 7:00 PM\" with \"Out of stock\" beside it. The TALEA precedent (2026-09-12) skipped Beers & Braids because its own title said SOLD OUT; here the marker is a ticket-inventory label next to a live \"Get tickets\" button, and the deck already carries two Action City nights that now read Out of stock too. Not carded pending Batu's ruling, which is in the review PR. The other three dates are carded. WHAT WOULD CHANGE IT: the ruling.",
       "addedAt": "2026-09-14",
       "expiresAt": "2026-09-28"
+    },
+    {
+      "addedAt": "2026-09-15",
+      "expiresAt": "2026-09-29",
+      "sourceId": "kindred-nyc",
+      "gapKey": "READS EMPTY",
+      "reason": "NOT A NAV-ONLY SNAPSHOT — the page really is between seasons, and it says so. The whole fetched body is 130 characters and reads, verbatim and in full: \"more gatherings coming soon / a place for calm & connection / no phones, no pressure / follow us on Instagram / add your name to the list\". There is no listing being withheld behind JavaScript: \"more gatherings coming soon\" is the content. Kindred also still runs the Tuesday yoga in Transmitter Park, which is carded from Go Green (transmitter-park-yoga-tuesdays), so the host is not dark, only this page. WHAT WOULD CHANGE IT: a dated gathering appearing on the page, which is what the fetch is watching for."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "expiresAt": "2026-09-29",
+      "sourceId": "greenpoint-star",
+      "gapKey": "SILENT",
+      "reason": "THE PAPER HAS NOT POSTED SINCE JUNE. The snapshot is 72KB and healthy, and its newest item is \"Posted on June 28, 2026 June 28, 2026 / Who Inherits When Family Records Are Lost / By Dan Rose,\" — a syndicated legal-advice column, not neighborhood supply. Nothing dated, nothing local, nothing to card; the silence is the source's, not the fetch's. WHAT WOULD CHANGE IT: a dated Greenpoint item appearing on the front page. If the next two runs read the same June post, the roster entry is the thing to decide about, and that is a PR."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "expiresAt": "2026-09-29",
+      "sourceId": "dreams-on-command",
+      "gapKey": "SILENT",
+      "reason": "THE GALLERY IS BETWEEN SHOWS AND THE DECK ALREADY SAYS SO. Its own page files the last exhibition under \"Past Exhibition / There Are People Here / July 11 – September 8, 2026\" and announces nothing after it. The venue card (dreams-on-command) was corrected on 2026-09-10 and now reads \"Its summer show closed on 8 September and nothing has been announced in its place\", so the state of the place is on the map correctly; there is simply no dated happening to card. Under the 2026-08-12 exhibition rule a run here belongs to the venue card anyway. WHAT WOULD CHANGE IT: an opening, a closing reception or an artist talk, each of which is a real dated happening."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "expiresAt": "2026-09-29",
+      "sourceId": "happy-medium",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE PAGE NEVER RENDERED ON THE RUNNER, SO THE BUNDLE CARRIES NO SNAPSHOT. Verbatim from this run's changes.json: \"runner: only 344 chars after 7.5s in chromium, none of it a date, time or price — page never rendered\". That is the JS-thin group SKILL.md names alongside sunshine-laundromat and brooklyn-youth-ballet, not a source going dark and not an egress denial — nothing to allowlist. The last-ingested baseline is still on disk and is still the evidence base for happy-medium-art-cafe. WHAT WOULD CHANGE IT: a bundle published from the home Mac, or the roster pointing at whatever JSON the booking widget hydrates from."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "expiresAt": "2026-09-29",
+      "sourceId": "artudio",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "THE GITHUB RUNNER TIMED OUT ON HISAWYER, WHICH IS THE KNOWN RESIDENTIAL-ONLY FLOOR (SKILL.md 2026-09-08). Verbatim: \"runner: page.goto: Timeout 40000ms exceeded. Call log: - navigating to \\\"https://www.hisawyer.com/artudio-1/schedules\\\", waiting until \\\"networkidle\\\"\". Four hisawyer/union.fit sources timed out the same way in the same bundle. Neither fetcher ran on schedule today — the bundle was 21.6h old, so this run dispatched ingest-fetch.yml by hand and got the GitHub runner rather than the home Mac, where these URLs read clean. WHAT WOULD CHANGE IT: the next bundle published from home."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "expiresAt": "2026-09-29",
+      "sourceId": "macha-studio",
+      "gapKey": "UNMARKED STANDING?",
+      "reason": "SEASONAL, AND THE SEASON IS OVER — the 2026-08-30 rule applies. Macha's only recurring programming is its poster series \"Summer Fridays / July - August / From 3pm\", which ended with August, so `standing` was unset rather than left to fire STANDING DARK every run; UNMARKED STANDING? is the same signal from the other side. The page still carries the summer wording, which is why the parser keeps reading recurring prose off it. This source also publishes its dates inside event images (`detailsInImages: true`), so a run must read the flyers before concluding it publishes nothing — three consecutive runs once proposed marking it `standing: false` and would have muted one of the roster's more productive sources. WHAT WOULD CHANGE IT: a new dated series posted for the fall, at which point `standing` goes back to true. That is a roster edit and therefore a PR, not a content push; no roster change rides this run."
+    },
+    {
+      "addedAt": "2026-09-15",
+      "expiresAt": "2026-09-29",
+      "sourceId": "polish-slavic-center",
+      "gapKey": "GAP",
+      "reason": "THE MISSING DATE IS THE POST'S OWN PUBLICATION DATE, NOT AN EVENT. The 2026-09-15 the parser flags comes from the day's news item, \"Monika Bolkun-Robert, dyrektor operacyjna w Schaefer Enterprises. została Marszałkiem Parady Pułaskiego 2026, reprezentującym Centrum Polsko-Słowiańskie.\" — a profile of the Pulaski Day Parade marshal, which names no dated Greenpoint happening and so has nothing to card. The source's one real in-window event, \"250 from Kosciuszko and Pułaski to Today – Polonia Celebrates America – 20 września, 12pm\", IS held this run: the WP REST item came back as title/link/date with no body, so it states no venue. WHAT WOULD CHANGE IT: the post bodies returning in a fetch."
     }
   ],
   "retiredCards": [
@@ -4298,6 +4472,42 @@
     {
       "id": "troost-spaghetti-eastern-0913",
       "day": "2026-09-14"
+    },
+    {
+      "id": "bcc-garment-sewing-slacks-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "eavesdrop-miles-robbins-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "film-noir-monday-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "library-monday-programs-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "mccarren-trivia-club-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "talea-knitting-club-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "threes-board-game-speed-dating-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "troost-noah-amick-0914",
+      "day": "2026-09-15"
+    },
+    {
+      "id": "word-journal-club-preteens-0914",
+      "day": "2026-09-15"
     }
   ]
 }

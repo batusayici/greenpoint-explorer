@@ -83,7 +83,7 @@ Orders Close - Friday 11:30AM
 In-person Pick-up
 Friday 8AM - 1PM
 All Fish Friday Products
-68
+67
 Filters
 Product Category
 Cold Smoked
@@ -213,23 +213,6 @@ Regular price
 $16.49
 Sale price
 $16.49
-Regular price
-Sale
-Sold out
-Unit price
-/
-Quantity
--
-+
-Add to cart
-Smoked Whitefish Head
-Hot Smoked
-Specialty
-No reviews
-Regular price
-$5.49
-Sale price
-$5.49
 Regular price
 Sale
 Sold out
@@ -416,7 +399,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Kippered Salmon (1 lb.)
 Hot Smoked
 Specialty
@@ -433,7 +416,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Trout (1 lb.)
 Hot Smoked
 Specialty
@@ -467,7 +450,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Whitefish Salad (7 oz.)
 Salads
 17 reviews
@@ -596,7 +579,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Salty Lox (3 oz.)
 Specialty
 3 reviews

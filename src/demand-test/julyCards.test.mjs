@@ -988,14 +988,31 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // night, so the two Action City One Piece tournaments whose tickets read
   // "Out of stock" are carded like the two shadow-throne nights already on the
   // map. Deck 246 -> 248, event 140 -> 142.
-  assert.equal(seed.cards.length, 248);
+  // 2026-09-15, daily thin refresh: expiry cleared the nine Monday events
+  // (248 -> 239), then 12 cards were authored — a Genevieve Plunkett evening at
+  // WORD, Off the G Comedy at Threes, a four-name Saturday bill at Good Room,
+  // two more Tuesdays at McCarren Park House plus the venue's standing Monday
+  // open mic, the Community Board 1 parks committee and a second Brooklyn
+  // Pollinator Project morning at Bushwick Inlet Park, three Flower Cat nights
+  // (an astrology workshop and the two halves of their Bistro Cat fundraiser
+  // weekend) and Moon Bunny's Avatar circus retelling. Deck 239 -> 250,
+  // event 133 -> 144. A twelfth card, a Community Board 1 parks committee
+  // meeting off Go Green, turned out to duplicate one the library calendar had
+  // already produced; its sourced 8pm end and its "Free" were folded into the
+  // existing card instead. The Ayune opening was then HELD: its Greenpointers
+  // post had rolled out of the feed's 15-item window, so no committed snapshot
+  // could still verify its quote. Deck 250 -> 249. Then the coverage gate
+  // named two sources carrying dates the deck had nothing for, and both were
+  // real supply rather than explainable gaps: Troost's 29 September booking,
+  // and seven eavesdrop sets across 24-28 September. Deck 249 -> 257.
+  assert.equal(seed.cards.length, 257);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 37, "36 + the Ayune opening (2026-09-14)");
-  assert.equal(count((c) => c.category === "event"), 142, "155, less the 35 that ran over the weekend of 12-13 September, plus the 12 events authored on 2026-09-14 and the two sold-out Action City One Piece nights (2026-09-14)");
+  assert.equal(count((c) => c.filters.includes("news")), 36, "37, less the Ayune opening, held 2026-09-15 when its Greenpointers post rolled out of the feed's 15-item window and nothing committed could still verify the card's quote");
+  assert.equal(count((c) => c.category === "event"), 152, "142, less the nine that ran on Monday 14 September, plus the 19 events authored on 2026-09-15");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Marianella's 40%-off sitewide sale, recurring/verified-through because the newsletter states no closing date (2026-09-14)");
-  assert.equal(count((c) => c.category === "news"), 25, "24 + the Ayune opening (2026-09-14)");
-  assert.equal(count((c) => c.filters.includes("live_music")), 34, "38, less the Troost, Good Room and Eavesdrop nights that ran over the weekend, plus three new Troost nights and Reggae Under the Bridge (2026-09-14)");
+  assert.equal(count((c) => c.category === "news"), 24, "25, less the Ayune opening, held 2026-09-15 (see the news-filter count above)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 41, "34, less the Troost and eavesdrop nights that ran on 14 September, plus the Good Room bill of 26 September, a Troost night and seven eavesdrop sets the coverage gate found uncarded (2026-09-15)");
   assert.equal(count((c) => c.category === "subscription"), 42, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -1185,7 +1202,11 @@ test("news cards name their publisher and sit in the news layer", () => {
   // 2026-09-14: +1 — Ayune, the hand-roll bar the Wasabi owners opened six
   // weeks after closing Wasabi, in the old Botbar space at 664 Manhattan Ave
   // (Greenpointers 9/4). Cross-linked to wasabi-closing, which it answers.
-  assert.equal(news.length, 25);
+  // 2026-09-15: -1 — the Ayune card is HELD. Its Greenpointers post dropped out
+  // of the feed's 15-item window, so after promotion no committed snapshot
+  // carried the lines the card quotes and `ingest:quotes` failed it. The card
+  // is almost certainly right; what it has lost is the ability to be re-checked.
+  assert.equal(news.length, 24);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -1252,6 +1273,11 @@ test("free-ness is designated only where the source states it (tester feedback #
     // is stated on its own line in the listing this card quotes ("Free"), and
     // it is a single programme, so there is nothing for it to leak onto.
     "bip-weeding-wednesdays",
+    // 2026-09-15: Community Board 1's parks and waterfront committee. The card
+    // already existed off the library's community calendar, which never says
+    // free; Go Green's own listing for the same meeting prints "Free" and an
+    // 8pm end, so both were folded into it rather than carding it twice.
+    "cb1-parks-waterfront-0915",
     // (dance-cleanup-transmitter-0912 expired out 2026-09-14)
     "dreams-on-command",
     // (goddard-day-of-fun-0912 expired out 2026-09-14)
@@ -1306,7 +1332,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     // get the flag even though a community garden charges nothing.
     // (mccarren-pool-last-week-0913 expired out 2026-09-14)
     // (mccarren-sunday-scoops-0913 expired out 2026-09-14)
-    "mccarren-trivia-club-0914",
+    // (mccarren-trivia-club-0914 expired out 2026-09-15)
     "mcgolrick-bird-club-0808",
     // 2026-09-12: the Harvest Moon Walk's own page says it outright — "Our
     // event is free, though we encourage you to RSVP here!" — and the ticket
@@ -1481,7 +1507,7 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     // (longevity-stick-transmitter-0814 expired out 2026-08-15)
     // (library-chair-yoga-0824, the branch's Monday chair-yoga hour, expired
     // out 2026-08-25)
-    "library-monday-programs-0914",
+    // (library-monday-programs-0914 expired out 2026-09-15)
     // (longevity-stick-transmitter-0830 expired out 2026-08-31)
     // (longevity-stick-transmitter-thursdays deleted 2026-08-28 — the series
     //  schedule runs Fri 8/28, Sun 8/30, then Sun 9/27; no Thursday remains)
@@ -1586,7 +1612,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     "madelines-trivia-wednesdays",
     "mccarren-chess-club-0924", // held, McCarren Park House first fetch 2026-09-14
     "mccarren-euchre-club-0917", // held, McCarren Park House first fetch 2026-09-14
-    "mccarren-trivia-club-0914",
+    // (mccarren-trivia-club-0914 expired out 2026-09-15)
     "nb-chess-parkhouse-0806",
     "scrappleland",
     "scrappleland-backgammon-club",
@@ -1597,7 +1623,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // 2026-09-12: TALEA's Tuesday trivia, run by NYC Trivia League. Trivia is
     // play, so it files games and NOT arts_culture (2026-08-02 split).
     "talea-trivia-williamsburg",
-    "threes-board-game-speed-dating-0914",
+    // (threes-board-game-speed-dating-0914 expired out 2026-09-15)
   ]);
   // The whole point of the cut: play and culture no longer share a shelf.
   for (const id of games) {
@@ -1866,6 +1892,11 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     // founding case; the fact that artists organise it does not make it culture.
     // (dance-cleanup-transmitter-0912 expired out 2026-09-14)
     "film-noir-support",
+    // 2026-09-15: Flower Cat's all-day fundraiser for Bistro Cat, the bigger
+    // room they are opening next door. "A business asking for help" is what
+    // this lens names, so it files civic; it also carries arts_culture,
+    // because astrology readings are among the things on offer.
+    "flowercat-water-the-flower-cat-0926",
     "g-advocacy-mta",
     // 2026-09-07, seventh pass: the church food pantry — mutual aid, the other
     // half of what this lens is for. First card ever off an iCalendar source.
@@ -1928,6 +1959,9 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "nbk-plant-giveaway-fridays",
     "nbk-plant-giveaway-weekends",
     "nbk-pollinator-project-bip-0916",
+    // 2026-09-15: the 23 September morning of the same volunteer series. The
+    // listing gives the date and no clock, so the card is allDay.
+    "nbk-pollinator-project-bip-0923",
     // 2026-09-09: 400 native perennials going into the Newtown Creek Nature
     // Walk, plus weeding — the growing-space rule, unchanged.
     "newtown-creek-planting-day-0915",

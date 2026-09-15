@@ -226,3 +226,10 @@ data-atc-event-end: 2026-09-12 13:00
 data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
 data-external-url: #
 data-event-description: <p>Clixo is coming to the TALEA taproom in Williamsburg! Join us on 9/12 at TALEA's BYO- Baby event for some builds and brews! Families can discover the magnetic magic of hands-on building with Clixo while enjoying a nice cold beer on a Saturday afternoon.</p>
+
+data-event-title: • Plant Bingo with the Sill
+data-atc-event-start: 2026-10-05 18:30
+data-atc-event-end: 2026-10-05 20:30
+data-event-address: TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY, USA
+data-external-url: https://www.eventbrite.com/e/plant-bingo-tickets-2000992365029?aff=ebdsoporgprofile
+data-event-description: <p><span>Plants, bingo, and beer! Join The Sill at TALEA Williamsburg and get 13 chances to win fun plant prizes. Everyone leaves with a new plant!</span></p>

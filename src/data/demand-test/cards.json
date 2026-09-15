@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-14",
+  "version": "2026-09-15",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -975,7 +975,6 @@
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-monday-0914",
         "film-noir-film-club-0924",
         "film-noir-cult-cinema-0923",
         "film-noir-supershorts-0925"
@@ -1280,7 +1279,6 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-monday-programs-0914",
         "library-babies-books-0917",
         "library-thursday-programs-0917",
         "library-sensory-garden-0918",
@@ -3119,7 +3117,6 @@
       "lat": 40.729072,
       "lng": -73.957317,
       "relatedCardIds": [
-        "word-journal-club-preteens-0914",
         "word-journal-club-adults-0921",
         "word-maya-kornberg-0922"
       ]
@@ -3479,7 +3476,7 @@
         ]
       },
       "startsAt": "2026-08-16T09:00:00-04:00",
-      "endsAt": "2026-09-20T14:00:00-04:00",
+      "endsAt": "2026-09-27T14:00:00-04:00",
       "actions": [
         {
           "label": "Market info",
@@ -3511,7 +3508,7 @@
       "partnerRelevance": "low",
       "trustRisk": "low",
       "createdAt": "2026-08-10",
-      "updatedAt": "2026-09-07"
+      "updatedAt": "2026-09-15"
     },
     {
       "audience": [
@@ -4074,49 +4071,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "createdAt": "2026-08-31",
-      "updatedAt": "2026-08-31",
-      "free": false,
-      "category": "event",
-      "id": "troost-noah-amick-0914",
-      "title": "NOAH AMICK at Troost",
-      "kicker": "Electric indie jazz",
-      "summary": "The venue calendar carries the name and that one genre line — no set time, no support bill and no ticket link.",
-      "startsAt": "2026-09-14T00:00:00-04:00",
-      "endsAt": "2026-09-14T23:59:00-04:00",
-      "allDay": true,
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-31"
-        }
-      ],
-      "sourceQuote": "summary: NOAH AMICK\ndescription: electric indie jazz\nstart.date: 2026-09-14\nend.date: 2026-09-15",
-      "lat": 40.733463,
-      "lng": -73.955035
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
       "createdAt": "2026-09-01",
       "updatedAt": "2026-09-01",
       "free": false,
@@ -4192,98 +4146,6 @@
       "sourceQuote": "This September, Chez Ma Tante alum Chef Gabriel Borges is opening his own restaurant called 148 Noble Street.\nChef Borges’ new restaurant will be located in the former home of The Noble , a wine bar from Itir Aloba and Rick Curi that closed this past winter.\nChef Borges is aiming to open 148 Noble Street in “mid-September.” When it first opens, the restaurant will welcome guests five days a week, Thursday through Monday.\nChef Borges’ menu at 148 Noble Street will lean European, incorporating influences and techniques from French and Italian cuisine.\nThe restaurant will only have a wine and beer license, but Chef Borges said he and his team will get creative with vermouth and other non-grain alcohols for cocktails.",
       "lat": 40.72862,
       "lng": -73.95442
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-02",
-      "updatedAt": "2026-09-02",
-      "category": "event",
-      "id": "film-noir-monday-0914",
-      "title": "Film Noir Monday at Film Noir Cinema",
-      "kicker": "Title kept secret until it rolls",
-      "summary": "The Monday series digs out lesser-known and obscure noir, international titles included, and never announces what is screening.",
-      "startsAt": "2026-09-14T20:00:00-04:00",
-      "endsAt": "2026-09-14T21:00:00-04:00",
-      "free": false,
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "122 Meserole Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "sourceQuote": "Film Noir Mondays\nMonday, September 14, 2026\n8:00 PM\n9:00 PM\nFilm Noir Mondays are dedicated to bring to light lesser known as well as very obscure films that fit Film Noir cinema, including international titles.\nIn Noir fashion the movie titles are not revealed beforehand, keeping the audience in total darkness. . .",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Mondays",
-          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-09-02"
-        }
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-02",
-      "updatedAt": "2026-09-02",
-      "category": "event",
-      "id": "library-monday-programs-0914",
-      "title": "Monday at Greenpoint Library",
-      "kicker": "Chair yoga, then teen D&D",
-      "summary": "An accessible chair-and-mindfulness class with Stefanie Mihoulides for adults of any age and ability, then a teen-run Dungeons & Dragons table for 13s and up.",
-      "startsAt": "2026-09-14T13:30:00-04:00",
-      "endsAt": "2026-09-14T17:30:00-04:00",
-      "free": false,
-      "filters": [
-        "family_kids",
-        "wellness"
-      ],
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "sourceQuote": "ts_title: Chair Yoga for Adults\nds_event_start_date: 2026-09-14T17:30:00Z\nds_event_end_date: 2026-09-14T18:30:00Z\nJoin us for Chair Yoga + Mindfulness with Stefanie Mihoulides! This is an accessible yoga class suitable for adults of all ages and abilities.\nts_title: Gaming for Teens: Dungeons & Dragons\nds_event_start_date: 2026-09-14T20:00:00Z\nds_event_end_date: 2026-09-14T21:30:00Z\nTeens 13+, join us for Dungeons & Dragons! This is a teen run program led by a teen volunteer .",
-      "actions": [
-        {
-          "label": "Branch calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-09-02"
-        }
-      ],
-      "lat": 40.72606,
-      "lng": -73.950709
     },
     {
       "audience": [
@@ -4766,50 +4628,6 @@
         }
       ],
       "sourceQuote": "$25\nOpen House\nOne class for you and a guest. Any format, either studio."
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "locationName": "eavesdrop",
-      "address": "674 Manhattan Ave",
-      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "eavesdrop",
-          "date": "2026-09-07"
-        }
-      ],
-      "id": "eavesdrop-miles-robbins-0914",
-      "title": "Miles Robbins at eavesdrop",
-      "kicker": "A Monday midnight set",
-      "summary": "No cover or ticket price is stated on the calendar.",
-      "startsAt": "2026-09-14T00:00:00-04:00",
-      "endsAt": "2026-09-14T23:59:00-04:00",
-      "allDay": false,
-      "sourceQuote": "Monday, Sep 14\n12midnight\nMiles Robbins @eavesdrop",
-      "lat": 40.724894,
-      "lng": -73.951181
     },
     {
       "audience": [
@@ -5451,48 +5269,6 @@
       "filters": [
         "arts_culture"
       ],
-      "locationName": "Brooklyn Craft Company Annex",
-      "address": "37 Greenpoint Ave, Suite 105",
-      "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
-      "id": "bcc-garment-sewing-slacks-0914",
-      "title": "Intro to Garment Sewing - Free Range Slacks",
-      "kicker": "Three weeknights to a pair of trousers",
-      "summary": "The newsletter states only the first session's date; the course runs across three.",
-      "startsAt": "2026-09-14T18:30:00-04:00",
-      "endsAt": "2026-09-14T23:59:00-04:00",
-      "sourceQuote": "Intro to Garment Sewing - Free Range Slacks (Weeknights, 3 parts)\nStarts Mon, 9/14 at 6:30pm\nIn the BCC Annex",
-      "lat": 40.729869,
-      "lng": -73.959022
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
-      "free": false,
-      "category": "event",
-      "actions": [
-        {
-          "label": "Workshops",
-          "type": "learn_more",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Brooklyn Craft Company newsletter",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-09-02"
-        }
-      ],
-      "filters": [
-        "arts_culture"
-      ],
       "locationName": "Brooklyn Craft Company",
       "address": "165 Greenpoint Ave",
       "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
@@ -5557,7 +5333,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-15",
       "free": true,
       "category": "event",
       "id": "transmitter-park-yoga-tuesdays",
@@ -5565,7 +5341,7 @@
       "kicker": "Free, 7am, on the shoreline lawn",
       "summary": "Kindred runs it with the Friends of Transmitter Park; bring a mat, or a towel if you have not got one.",
       "startsAt": "2026-09-08T07:00:00-04:00",
-      "endsAt": "2026-09-22T08:00:00-04:00",
+      "endsAt": "2026-09-29T08:00:00-04:00",
       "recurring": true,
       "recurrence": {
         "days": [
@@ -5593,7 +5369,7 @@
           "date": "2026-09-07"
         }
       ],
-      "sourceQuote": "Join us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park. … Tuesday, September 15, 7:00 AM to 8:00 AM\nTuesday, September 22, 7:00 AM to 8:00 AM",
+      "sourceQuote": "Join us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park. … Tuesday, September 22, 7:00 AM to 8:00 AM\nTuesday, September 29, 7:00 AM to 8:00 AM",
       "lat": 40.729855,
       "lng": -73.960729
     },
@@ -5784,7 +5560,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-15",
       "locationName": "Under the K Bridge Park",
       "address": "Meeker Ave & Van Dam St",
       "geocodeQuery": "Under the K Bridge Park, Brooklyn, NY",
@@ -5797,7 +5573,7 @@
       "kicker": "Free Zumba, 7pm, all abilities",
       "summary": "Vivian Megias teaches an hour of it at the Welcome Plaza. No booking mentioned beyond the sign-up link.",
       "startsAt": "2026-09-10T19:00:00-04:00",
-      "endsAt": "2026-09-17T20:00:00-04:00",
+      "endsAt": "2026-09-24T20:00:00-04:00",
       "recurring": true,
       "recurrence": {
         "days": [
@@ -5833,7 +5609,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-15",
       "locationName": "NBK Parks Native Nursery",
       "address": "465 Scott Ave",
       "geocodeQuery": "465 Scott Ave, Brooklyn, NY 11222",
@@ -5846,7 +5622,7 @@
       "kicker": "Free natives, 10am-5pm",
       "summary": "Hard-to-find native species from the nursery's own stock, given away through 30 October. Weekend hours are shorter.",
       "startsAt": "2026-09-11T10:00:00-04:00",
-      "endsAt": "2026-09-18T17:00:00-04:00",
+      "endsAt": "2026-09-25T17:00:00-04:00",
       "recurring": true,
       "recurrence": {
         "days": [
@@ -5882,7 +5658,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-07",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-15",
       "locationName": "NBK Parks Native Nursery",
       "address": "465 Scott Ave",
       "geocodeQuery": "465 Scott Ave, Brooklyn, NY 11222",
@@ -5895,7 +5671,7 @@
       "kicker": "Free natives, 10am-2pm",
       "summary": "The same giveaway as the longer Friday session, on a shorter day. Both run through 30 October.",
       "startsAt": "2026-09-12T10:00:00-04:00",
-      "endsAt": "2026-09-20T14:00:00-04:00",
+      "endsAt": "2026-09-27T14:00:00-04:00",
       "recurring": true,
       "recurrence": {
         "days": [
@@ -6750,49 +6526,6 @@
       "trustRisk": "low",
       "createdAt": "2026-09-09",
       "updatedAt": "2026-09-09",
-      "id": "mccarren-trivia-club-0914",
-      "category": "event",
-      "free": true,
-      "title": "Trivia Club at McCarren Parkhouse",
-      "kicker": "Random hobbies, random teams",
-      "summary": "Free with an RSVP, and you get sorted onto a team when you arrive.",
-      "startsAt": "2026-09-14T19:00:00-04:00",
-      "endsAt": "2026-09-14T23:59:00-04:00",
-      "filters": [
-        "games"
-      ],
-      "locationName": "McCarren Parkhouse",
-      "address": "855 Lorimer St",
-      "geocodeQuery": "855 Lorimer St, Brooklyn, NY 11222",
-      "lat": 40.722304,
-      "lng": -73.9511,
-      "sourceQuote": "Trivia Club @ McCarren Parkhouse, 7 p.m.: Test your knowledge of random hobbies on a randomly-selected team. Free, RSVP here .",
-      "actions": [
-        {
-          "label": "Read more",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/09/09/swap-clothes-and-books-clean-up-parks-and-more-whats-happening-greenpoint-9-10-16/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Swap clothes and books, clean up parks, and more — What’s Happening, Greenpoint? (9/10-16)",
-          "url": "https://greenpointers.com/2026/09/09/swap-clothes-and-books-clean-up-parks-and-more-whats-happening-greenpoint-9-10-16/",
-          "publisher": "Greenpointers",
-          "date": "2026-09-09"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
       "id": "la-contenta-mexico-independence-0915",
       "category": "event",
       "free": false,
@@ -7008,52 +6741,6 @@
       "trustRisk": "low",
       "createdAt": "2026-09-09",
       "updatedAt": "2026-09-09",
-      "id": "word-journal-club-preteens-0914",
-      "category": "event",
-      "free": false,
-      "title": "Journal Club for Preteens at WORD Bookstore",
-      "kicker": "Bring a notebook, meet other kids",
-      "summary": "WORD lists it for the evening with no closing time and no price stated.",
-      "startsAt": "2026-09-14T19:15:00-04:00",
-      "endsAt": "2026-09-14T23:59:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "locationName": "WORD Bookstore",
-      "address": "126 Franklin St",
-      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
-      "lat": 40.729072,
-      "lng": -73.957317,
-      "relatedCardIds": [
-        "word-membership"
-      ],
-      "sourceQuote": "Monday, September 14 at 7:15 PM\nJournal Club for Preteens\n126 Franklin Street, Brooklyn, NY 11222, US",
-      "actions": [
-        {
-          "label": "Event listing",
-          "type": "learn_more",
-          "url": "https://withfriends.co/word/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "WORD Bookstore events",
-          "url": "https://withfriends.co/word/events",
-          "publisher": "WORD Bookstore",
-          "date": "2026-09-09"
-        }
-      ]
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
       "id": "word-journal-club-adults-0921",
       "category": "event",
       "free": false,
@@ -7071,8 +6758,7 @@
       "lat": 40.729072,
       "lng": -73.957317,
       "relatedCardIds": [
-        "word-membership",
-        "word-journal-club-preteens-0914"
+        "word-membership"
       ],
       "sourceQuote": "Monday, September 21 at 7:15 PM\nJournal Club for Adults\n126 Franklin Street, Brooklyn, NY 11222, US",
       "actions": [
@@ -7872,20 +7558,20 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-09",
+      "updatedAt": "2026-09-15",
       "locationName": "Bushwick Inlet Park",
       "address": "86 Kent Ave",
       "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
       "lat": 40.722349,
       "lng": -73.961382,
-      "free": false,
+      "free": true,
       "category": "event",
       "id": "cb1-parks-waterfront-0915",
       "title": "CB1 Parks and Waterfront Committee at Bushwick Inlet Park",
       "kicker": "Community Board 1 committee meeting",
       "summary": "On the agenda: concessions at Transmitter Park, the Renew Crew from NYC Parks, a Metropolitan Pool update and Steinberg Park issues. No finish time is listed.",
       "startsAt": "2026-09-15T18:00:00-04:00",
-      "endsAt": "2026-09-15T23:59:00-04:00",
+      "endsAt": "2026-09-15T20:00:00-04:00",
       "filters": [
         "civic"
       ],
@@ -7902,9 +7588,15 @@
           "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
           "publisher": "Brooklyn Public Library",
           "date": "2026-09-09"
+        },
+        {
+          "title": "BK CB1 Parks and Waterfront Committee Meeting",
+          "url": "https://gogreenbk.org/event/bk-cb1-waterfront-9-15-2026/",
+          "publisher": "Go Green BK",
+          "date": "2026-09-15"
         }
       ],
-      "sourceQuote": "CB1 Parks and Waterfront Committee\nTue, Sep 15 6:00 pm\n86 Kent Avenue Brooklyn, NY 11249\nAudience: All Ages Type: Community Meeting\nAGENDA\n1. Transmitter Park: Presenting Parks Concessions\n2. Renew Crew: Presenting – From NYC Parks, Mary Salig-Husain, Park Administrator\n3. Metropolitan Pool Update (Discussion)\n4. Steinberg Park Issues"
+      "sourceQuote": "CB1 Parks and Waterfront Committee\nTue, Sep 15 6:00 pm\n86 Kent Avenue Brooklyn, NY 11249\nAudience: All Ages Type: Community Meeting\nAGENDA\n1. Transmitter Park: Presenting Parks Concessions\n2. Renew Crew: Presenting – From NYC Parks, Mary Salig-Husain, Park Administrator\n3. Metropolitan Pool Update (Discussion)\n4. Steinberg Park Issues\nBK CB1 Parks and Waterfront Committee Meeting\nTuesday, September 15th at 6:00 PM - 8:00 PM\nFree"
     },
     {
       "audience": [
@@ -7967,7 +7659,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-09-09",
-      "updatedAt": "2026-09-11",
+      "updatedAt": "2026-09-15",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave",
       "geocodeQuery": "66 Greenpoint Ave, Brooklyn, NY 11222",
@@ -7995,20 +7687,14 @@
       "category": "event",
       "id": "comedy-thursday-showcase",
       "title": "The Thursday Showcase at Greenpoint Comedy Club",
-      "kicker": "A regular stand-up bill at 8pm",
-      "summary": "Twenty dollars. The listing gives a start but no finish.",
-      "startsAt": "2026-09-17T20:00:00-04:00",
-      "endsAt": "2026-09-24T20:00:00-04:00",
-      "recurring": true,
-      "recurrence": {
-        "days": [
-          "thu"
-        ]
-      },
+      "kicker": "The club's own Thursday showcase bill",
+      "summary": "Twenty dollars. The listing gives a start but no finish, and now names only this one Thursday.",
+      "startsAt": "2026-09-17T19:30:00-04:00",
+      "endsAt": "2026-09-17T23:59:00-04:00",
       "filters": [
         "arts_culture"
       ],
-      "sourceQuote": "Thu Sep 17, 2026, 8:00 PM, Thu Sep 24, 2026, 8:00 PM\nThe Thursday Showcase @ 8:00PM\nUSD $20.00"
+      "sourceQuote": "Thu Sep 17, 2026, 7:30 PM\nThe Thursday Showcase\nNY, US\nUSD $20.00"
     },
     {
       "audience": [
@@ -9614,53 +9300,6 @@
       "lng": -73.957805
     },
     {
-      "id": "threes-board-game-speed-dating-0914",
-      "category": "event",
-      "title": "Board Game Speed Dating at Threes Brewing Greenpoint",
-      "kicker": "Ages 25 to 39, ticketed",
-      "summary": "Quirk Events runs a speed-dating night across board games in the taproom. Two hours on a Monday evening; the ticket page carries the price, which the calendar does not state.",
-      "startsAt": "2026-09-14T19:00:00-04:00",
-      "endsAt": "2026-09-14T21:00:00-04:00",
-      "filters": [
-        "games"
-      ],
-      "free": false,
-      "audience": [
-        "resident"
-      ],
-      "locationName": "Threes Brewing Greenpoint",
-      "address": "113 Franklin St, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.eventbrite.com/e/board-game-speed-dating-threes-brewing-greenpoint-nyc-ages-25-39-tickets-1998023993550?aff=oddtdtcreator&keep_tld=true"
-        },
-        {
-          "label": "Calendar",
-          "type": "learn_more",
-          "url": "https://threesbrewing.com/pages/public-events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Threes Brewing public events calendar",
-          "url": "https://threesbrewing.com/pages/public-events",
-          "publisher": "Threes Brewing",
-          "date": "2026-09-11"
-        }
-      ],
-      "sourceQuote": "title: Greenpoint: Quirk Events: Board Game Speed Dating\nstart_date: 2026-09-14T19:00:00.000Z\nend_date: 2026-09-14T21:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA\ndescription: Board Game Speed Dating - Threes Brewing - Greenpoint NYC (Ages 25-39)",
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-11",
-      "updatedAt": "2026-09-11",
-      "lat": 40.73024,
-      "lng": -73.957805
-    },
-    {
       "id": "threes-amelia-ritthaler-0916",
       "category": "event",
       "title": "Amelia Ritthaler at Threes Brewing Greenpoint",
@@ -10197,49 +9836,6 @@
       "lng": -73.945141
     },
     {
-      "id": "talea-knitting-club-0914",
-      "category": "event",
-      "title": "Prospect Park Knitting Club meetup",
-      "kicker": "Bring your work in progress",
-      "startsAt": "2026-09-14T18:30:00-04:00",
-      "endsAt": "2026-09-14T20:30:00-04:00",
-      "locationName": "TALEA Beer Co — Williamsburg",
-      "address": "TALEA Beer Co - Williamsburg, Richardson Street, Brooklyn, NY",
-      "geocodeQuery": "Richardson Street, Brooklyn, NY",
-      "filters": [
-        "arts_culture"
-      ],
-      "summary": "Open to anyone who crochets, knits or embroiders — an end-of-summer gathering of fiber artists.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.taleabeer.com/pages/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "TALEA Beer Co — Williamsburg taproom events calendar",
-          "url": "https://www.taleabeer.com/pages/calendar",
-          "publisher": "TALEA Beer Co",
-          "date": "2026-09-12"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-09-12",
-      "updatedAt": "2026-09-12",
-      "sourceQuote": "data-atc-event-start: 2026-09-14 18:30\ndata-atc-event-end: 2026-09-14 20:30\nAll fiber artists are welcome, whether you crochet, knit, embroider",
-      "lat": 40.718576,
-      "lng": -73.945141
-    },
-    {
       "id": "talea-bonsai-bar-0917",
       "category": "event",
       "title": "Bonsai Bar workshop",
@@ -10588,51 +10184,6 @@
       "startsAt": "2026-10-01T19:00:00-04:00",
       "endsAt": "2026-10-01T23:59:00-04:00",
       "sourceQuote": "One Piece - Extra Grand Battle!\nTHU, OCT 1 7:00 PM\nOut of stock"
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-09-14",
-      "updatedAt": "2026-09-14",
-      "free": false,
-      "id": "ayune-opens",
-      "category": "news",
-      "title": "Ayune opens on Manhattan Ave, from the Wasabi team",
-      "kicker": "Hand rolls where Botbar used to be",
-      "summary": "Robby and Cristin Wijaya reopened six weeks after closing Wasabi, in the old Botbar space. Hand roll sets run $19 to $38; a beer and wine licence is still pending.",
-      "filters": [
-        "news",
-        "food_drink"
-      ],
-      "locationName": "Ayune",
-      "address": "664 Manhattan Ave",
-      "geocodeQuery": "664 Manhattan Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "wasabi-closing"
-      ],
-      "sourceQuote": "Their new concept is called Ayune and is located at 664 Manhattan Avenue, the former home of Botbar.\nIts menu offers a variety of rolls with everything from tuna and salmon to shiitake mushrooms and Japanese pumpkin. The menu includes hand roll sets with three, four, five, or six rolls for $19 to $38.\nAyune recently applied for a beer and wine liquor license, which will hopefully be approved in a few months.",
-      "actions": [
-        {
-          "label": "Read more",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/09/04/wasabi-owners-open-new-hand-roll-bar-ayune-in-greenpoint/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Wasabi Owners Open New Hand Roll Bar Ayune in Greenpoint",
-          "url": "https://greenpointers.com/2026/09/04/wasabi-owners-open-new-hand-roll-bar-ayune-in-greenpoint/",
-          "publisher": "Greenpointers",
-          "date": "2026-09-04"
-        }
-      ],
-      "lat": 40.724707,
-      "lng": -73.951071
     },
     {
       "audience": [
@@ -11439,6 +10990,848 @@
       "sourceQuote": "Family Adventure Play\nAges 5 & Under with Adult\nSundays\n11am-12:30pm\nSeptember 27, October 18, or November 15\nEarly bird reservations:\n$30 (one adult/youth combo)\nAdditional family member $10",
       "lat": 40.719067,
       "lng": -73.964255
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "id": "word-genevieve-plunkett-0928",
+      "category": "event",
+      "free": false,
+      "title": "Genevieve Plunkett at WORD Bookstore",
+      "kicker": "One name on the bill, no details yet",
+      "summary": "The shop's calendar carries only who and when — no description, no price.",
+      "startsAt": "2026-09-28T19:00:00-04:00",
+      "endsAt": "2026-09-28T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St",
+      "lat": 40.729072,
+      "lng": -73.957317,
+      "sourceQuote": "Monday, September 28 at 7:00 PM\nGenevieve Plunkett\nWORD, 126 Franklin St, Brooklyn, NY 11222, USA - Greenpoint, Brooklyn, NY",
+      "actions": [
+        {
+          "label": "Event listing",
+          "type": "learn_more",
+          "url": "https://withfriends.co/word/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "WORD Bookstore events",
+          "url": "https://withfriends.co/word/events",
+          "publisher": "WORD Bookstore",
+          "date": "2026-09-15"
+        }
+      ],
+      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "word-membership"
+      ]
+    },
+    {
+      "id": "threes-off-the-g-comedy-0918",
+      "category": "event",
+      "title": "Off the G Comedy at Threes Brewing Greenpoint",
+      "kicker": "Stand-up in the taproom, two hours",
+      "summary": "A returning comedy strand run by Off the G. The brewery's calendar names no line-up and no price.",
+      "startsAt": "2026-09-18T17:00:00-04:00",
+      "endsAt": "2026-09-18T19:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident"
+      ],
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Calendar",
+          "type": "learn_more",
+          "url": "https://threesbrewing.com/pages/public-events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Threes Brewing public events calendar",
+          "url": "https://threesbrewing.com/pages/public-events",
+          "publisher": "Threes Brewing",
+          "date": "2026-09-15"
+        }
+      ],
+      "sourceQuote": "title: Greenpoint: Off the G Comedy\nstart_date: 2026-09-18T21:00:00.000Z\nend_date: 2026-09-18T23:00:00.000Z\nevent_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "id": "good-room-denham-audio-0926",
+      "category": "event",
+      "title": "Denham Audio, Kellam Matthews, Arina Krondeva and Rebekah Abdeen at Good Room",
+      "kicker": "Four names, one all-night bill",
+      "summary": "DoNYC lists a 7pm start for the room and states no ticket price.",
+      "startsAt": "2026-09-26T19:00:00-04:00",
+      "endsAt": "2026-09-26T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "lat": 40.726909,
+      "lng": -73.95281,
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room via DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-09-15"
+        }
+      ],
+      "sourceQuote": "Saturday\nSep 26\nDenham Audio, Kellam Matthews, Arina Krondeva & Rebekah Abdeen (all night)\nGood Room\n7:00PM"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "mccarren-millennial-small-talk-0929",
+      "title": "Millennial Skip the Small Talk at McCarren Park House",
+      "kicker": "Guided conversation, for millennials",
+      "summary": "The same structured-conversation format the ParkHouse runs on Wednesdays, this time pitched at one generation. The listing names no price.",
+      "startsAt": "2026-09-29T19:00:00-04:00",
+      "endsAt": "2026-09-29T21:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Millennial Skip the Small Talk Tuesday September 29th @ 7PM-9PM",
+      "lat": 40.722039,
+      "lng": -73.951795,
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "mccarren-pique-hangs-0929",
+      "title": "Pique Community Hangs at McCarren Park House",
+      "kicker": "A community hang, ninety minutes",
+      "summary": "The last of the September sittings on the ParkHouse calendar. The listing names no price, so none is claimed here.",
+      "startsAt": "2026-09-29T19:30:00-04:00",
+      "endsAt": "2026-09-29T21:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Pique Community Hangs Tuesday September Tuesday 29th@ 7:30PM-9PM",
+      "lat": 40.722039,
+      "lng": -73.951795,
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "McCarren Park House",
+      "address": "855 Lorimer St",
+      "actions": [
+        {
+          "label": "Upcoming at ParkHouse",
+          "type": "learn_more",
+          "url": "https://mccarrenparkhouse.com/hello"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park House — Upcoming",
+          "url": "https://mccarrenparkhouse.com/hello",
+          "publisher": "McCarren Park House",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "mccarren-open-mic-mondays",
+      "title": "Skintag Open Mic Mondays at McCarren Park House",
+      "kicker": "An open mic run by Skintag",
+      "summary": "Skintag runs it. The ParkHouse listing gives the night and the start and nothing else — no sign-up details, no price, no closing time.",
+      "startsAt": "2026-09-21T19:30:00-04:00",
+      "endsAt": "2026-09-28T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Skintag Open Mic Mondays @ 7:30PM",
+      "lat": 40.722039,
+      "lng": -73.951795,
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "mon"
+        ]
+      },
+      "geocodeQuery": "McCarren Park, Brooklyn, NY 11222"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "locationName": "Bushwick Inlet Park",
+      "address": "86 Kent Ave",
+      "id": "nbk-pollinator-project-bip-0923",
+      "category": "event",
+      "title": "Brooklyn Pollinator Project at Bushwick Inlet Park",
+      "kicker": "Volunteer day in the pollinator planting",
+      "summary": "Horticulturalist Jeff Hewitt founded and leads it, working on the plants the local ecosystem depends on. No start time is published.",
+      "startsAt": "2026-09-23T00:00:00-04:00",
+      "endsAt": "2026-09-23T23:59:00-04:00",
+      "filters": [
+        "civic"
+      ],
+      "sourceQuote": "09/23/2026\nBrooklyn Pollinator Project – Bushwick Inlet Park\nThe Brooklyn Pollinator Project is a volunteer initiative founded and led by horticulturalist Jeff Hewitt, focused on supporting crucial pollinator plants that support our local ecosystem!",
+      "actions": [
+        {
+          "label": "More info",
+          "type": "learn_more",
+          "url": "https://nbkparks.org/programs-events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Pollinator Project – Bushwick Inlet Park",
+          "url": "https://nbkparks.org/programs-events/",
+          "publisher": "North Brooklyn Parks Alliance",
+          "date": "2026-09-15"
+        }
+      ],
+      "lat": 40.722349,
+      "lng": -73.961382,
+      "allDay": true,
+      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Events",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat events",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "flowercat-venus-retrograde-0923",
+      "title": "Venus in Retrograde Workshop at Flower Cat",
+      "kicker": "An astrology workshop, two hours",
+      "summary": "Venus stations retrograde on 3 October; the session covers what that retreat looks like chart by chart. Space is limited and registration is in advance.",
+      "startsAt": "2026-09-23T18:30:00-04:00",
+      "endsAt": "2026-09-23T20:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Venus in Retrograde Workshop\nWednesday, September 23, 2026\n6:30 PM\n8:30 PM\nSpace is limited - register in advance.",
+      "lat": 40.728678,
+      "lng": -73.954258,
+      "geocodeQuery": "162 Noble St, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "flower-cat"
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Events",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat events",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "flowercat-live-band-karaoke-0925",
+      "title": "Live Band Karaoke: Water The Flower Cat Edition",
+      "kicker": "Sing with a live band, $10 to $50",
+      "summary": "The opening night of a fundraiser weekend for Bistro Cat, the bar's bigger room opening next door this fall. All proceeds go to the expansion.",
+      "startsAt": "2026-09-25T20:00:00-04:00",
+      "endsAt": "2026-09-25T23:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "sourceQuote": "Live Band Karaoke: Water The Flower Cat Edition\nFriday, September 25, 2026\n8:00 PM\n11:00 PM\nPay $35 for any song you desire, $25 for top tier classics and $10 for the rest.\nAll proceeds pour into the expansion of Bistro Cat, Flower Cat’s new venture opening this Fall next door.",
+      "lat": 40.728678,
+      "lng": -73.954258,
+      "geocodeQuery": "162 Noble St, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "flower-cat"
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Events",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat events",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "flowercat-water-the-flower-cat-0926",
+      "title": "Water The Flower Cat Fundraiser Festival",
+      "kicker": "An all-day fundraiser for Bistro Cat",
+      "summary": "Raffles and auctions from community members, tarot and astrology readings, astrology wine flights, live music and DJs, running into the evening of the Harvest Moon.",
+      "startsAt": "2026-09-26T09:30:00-04:00",
+      "endsAt": "2026-09-26T22:30:00-04:00",
+      "filters": [
+        "civic",
+        "arts_culture"
+      ],
+      "sourceQuote": "Water The Flower Cat Fundraiser Festival\nSaturday, September 26, 2026\n9:30 AM\n10:30 PM\nSaturday, September 26th we’ll be having an all day fundraiser filled with raffles and auctions from our community members, tarot and astrology readings, astrology wine flights, live music + dj",
+      "lat": 40.728678,
+      "lng": -73.954258,
+      "geocodeQuery": "162 Noble St, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "flower-cat"
+      ]
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "id": "moonbunny-avatar-circus-0926",
+      "category": "event",
+      "free": false,
+      "title": "Avatar the Last Airbender: A Circus Retelling at Moon Bunny Aerial",
+      "kicker": "A circus retelling, one night only",
+      "summary": "Moon Bunny's feed carries the name and the hour and nothing else — no cast, no ticket price.",
+      "startsAt": "2026-09-26T20:30:00-04:00",
+      "endsAt": "2026-09-26T21:30:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "lat": 40.736575,
+      "lng": -73.952327,
+      "sourceQuote": "name: Avatar the Last Airbender - A Circus Retelling\nstart_at: 2026-09-27T00:30:00.000Z\nend_at: 2026-09-27T01:30:00.000Z",
+      "actions": [
+        {
+          "label": "Book",
+          "type": "signup",
+          "url": "https://moonbunnyaerial.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial events",
+          "url": "https://moonbunnyaerial.com",
+          "publisher": "Moon Bunny Aerial",
+          "date": "2026-09-15"
+        }
+      ],
+      "geocodeQuery": "394 McGuinness Blvd, Brooklyn, NY 11222"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "id": "troost-travis-johnson-jess-rees-0929",
+      "category": "event",
+      "title": "TRAVIS JOHNSON // JESS REES at Troost",
+      "kicker": "Two names on the venue calendar",
+      "summary": "Troost's own Google Calendar carries the booking and nothing else — no genre line, no set time, no support bill and no ticket link.",
+      "startsAt": "2026-09-29T00:00:00-04:00",
+      "endsAt": "2026-09-29T23:59:00-04:00",
+      "allDay": true,
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-09-15"
+        }
+      ],
+      "sourceQuote": "summary: TRAVIS JOHNSON // JESS REES\nstart.date: 2026-09-29\nend.date: 2026-09-30"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "eavesdrop",
+      "address": "674 Manhattan Ave",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "eavesdrop",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "eavesdrop-nap-0924",
+      "title": "NAP at eavesdrop",
+      "kicker": "Thursday, on at midnight",
+      "summary": "No cover or ticket price is stated on the calendar.",
+      "startsAt": "2026-09-24T00:00:00-04:00",
+      "endsAt": "2026-09-24T23:59:00-04:00",
+      "allDay": false,
+      "sourceQuote": "Thursday, Sep 24\n12midnight\nNAP @eavesdrop",
+      "lat": 40.724894,
+      "lng": -73.951181
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "eavesdrop",
+      "address": "674 Manhattan Ave",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "eavesdrop",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "eavesdrop-marjorine-0925",
+      "title": "Marjorine at eavesdrop",
+      "kicker": "Friday, on at midnight",
+      "summary": "No cover or ticket price is stated on the calendar.",
+      "startsAt": "2026-09-25T00:00:00-04:00",
+      "endsAt": "2026-09-25T23:59:00-04:00",
+      "allDay": false,
+      "sourceQuote": "Friday, Sep 25\n12midnight\nMarjorine @eavesdrop",
+      "lat": 40.724894,
+      "lng": -73.951181
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "eavesdrop",
+      "address": "674 Manhattan Ave",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "eavesdrop",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "eavesdrop-miss-hap-0926",
+      "title": "Miss Hap at eavesdrop",
+      "kicker": "Saturday, on at midnight",
+      "summary": "No cover or ticket price is stated on the calendar.",
+      "startsAt": "2026-09-26T00:00:00-04:00",
+      "endsAt": "2026-09-26T23:59:00-04:00",
+      "allDay": false,
+      "sourceQuote": "Saturday, Sep 26\n12midnight\nMiss Hap @eavesdrop",
+      "lat": 40.724894,
+      "lng": -73.951181
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "eavesdrop",
+      "address": "674 Manhattan Ave",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "eavesdrop",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "eavesdrop-shane-doss-0926",
+      "title": "Shane Doss at eavesdrop",
+      "kicker": "Saturday, on at six",
+      "summary": "No cover or ticket price is stated on the calendar.",
+      "startsAt": "2026-09-26T18:00:00-04:00",
+      "endsAt": "2026-09-26T23:59:00-04:00",
+      "allDay": false,
+      "sourceQuote": "Saturday, Sep 26\n6PM\nShane Doss @eavesdrop",
+      "lat": 40.724894,
+      "lng": -73.951181
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "eavesdrop",
+      "address": "674 Manhattan Ave",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "eavesdrop",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "eavesdrop-jeff-mendoza-0927",
+      "title": "Jeff Mendoza (Soul Summit) at eavesdrop",
+      "kicker": "Sunday, on at two in the morning",
+      "summary": "No cover or ticket price is stated on the calendar.",
+      "startsAt": "2026-09-27T02:00:00-04:00",
+      "endsAt": "2026-09-27T23:59:00-04:00",
+      "allDay": false,
+      "sourceQuote": "Sunday, Sep 27\n2AM\nJeff Mendoza (Soul Summit) @eavesdrop",
+      "lat": 40.724894,
+      "lng": -73.951181
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "eavesdrop",
+      "address": "674 Manhattan Ave",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "eavesdrop",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "eavesdrop-naomi-shamble-0927",
+      "title": "Naomi Shamble at eavesdrop",
+      "kicker": "Sunday, on at six",
+      "summary": "No cover or ticket price is stated on the calendar.",
+      "startsAt": "2026-09-27T18:00:00-04:00",
+      "endsAt": "2026-09-27T23:59:00-04:00",
+      "allDay": false,
+      "sourceQuote": "Sunday, Sep 27\n6PM\nNaomi Shamble @eavesdrop",
+      "lat": 40.724894,
+      "lng": -73.951181
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-15",
+      "updatedAt": "2026-09-15",
+      "free": false,
+      "category": "event",
+      "locationName": "eavesdrop",
+      "address": "674 Manhattan Ave",
+      "geocodeQuery": "674 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Listing",
+          "type": "learn_more",
+          "url": "https://eavesdrop.nyc/calendar"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "eavesdrop calendar",
+          "url": "https://eavesdrop.nyc/calendar",
+          "publisher": "eavesdrop",
+          "date": "2026-09-15"
+        }
+      ],
+      "id": "eavesdrop-manny-steelo-0928",
+      "title": "Manny Steelo at eavesdrop",
+      "kicker": "Monday, on at midnight",
+      "summary": "No cover or ticket price is stated on the calendar.",
+      "startsAt": "2026-09-28T00:00:00-04:00",
+      "endsAt": "2026-09-28T23:59:00-04:00",
+      "allDay": false,
+      "sourceQuote": "Monday, Sep 28\n12midnight\nManny Steelo @eavesdrop",
+      "lat": 40.724894,
+      "lng": -73.951181
     }
   ]
 }

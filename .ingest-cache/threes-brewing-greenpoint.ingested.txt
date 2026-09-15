@@ -596,17 +596,17 @@ start_date: 2023-02-09T19:00:00.000Z
 end_date: 2023-02-09T20:00:00.000Z
 event_location: Threes Brewing Huntington, Clinton Avenue, Huntington, NY, USA
 
-title: Gowanus: Superbowl Sunday
-start_date: 2023-02-12T18:00:00.000Z
-end_date: 2023-02-12T23:30:00.000Z
-event_location: Threes Brewing Co., Douglass Street, Brooklyn, NY, USA
-description: Showing the Rihanna Halftime show in the Main Bar... and some football (Sound ON!). First come, first-served. No reservations.
-
 title: Greenpoint: Superbowl Sunday
 start_date: 2023-02-12T18:00:00.000Z
 end_date: 2023-02-12T23:00:00.000Z
 event_location: Threes Brewing Greenpoint Bar & Beer Shop, Franklin Street, Brooklyn, NY, USA
 description: We'll be playing the big game with sound in both the main dining room/bar as well as upstairs (The Studio). Some reservations are available through Resy for the main dining room. We'll have select cans on special for $7, and of course, wings.
+
+title: Gowanus: Superbowl Sunday
+start_date: 2023-02-12T18:00:00.000Z
+end_date: 2023-02-12T23:30:00.000Z
+event_location: Threes Brewing Co., Douglass Street, Brooklyn, NY, USA
+description: Showing the Rihanna Halftime show in the Main Bar... and some football (Sound ON!). First come, first-served. No reservations.
 
 title: Greenpoint: Sofar Sounds Live Music Show
 start_date: 2023-02-12T20:00:00.000Z
@@ -1673,19 +1673,19 @@ event_location: Dickson's Farmstand Meats, 9th Avenue, New York, NY, USA
 external_url: https://resy.com/cities/ny/venues/dicksons-farmstand-meats/events/oktoberfest-celebration-w-threes-brewing-2023-09-28?date=2023-09-21&seats=2
 description: Located inside Chelsea Market. Head Brewer Ben Petersen will guide you through a pairing of six seasonal beers with six seasonal courses provided by Dickson's.
 
-title: Bales & Ales at New York Botanical Garden
-start_date: 2023-09-30T12:00:00.000Z
-end_date: 2023-09-30T17:00:00.000Z
-event_location: New York Botanical Garden, Southern Boulevard, The Bronx, NY, USA
-external_url: https://www.nybg.org/event/fall-o-ween/bales-and-ales/
-description: This much-loved fall event is back! Celebrate the fall season at NYBG with a wide selection of local breweries. Receive a souvenir sampling cup with your ticket to explore what’s on tap, with unlimited samples of craft beers, ciders, and spiked seltzers available, then join in on lawn games, relax to live music, and grab a bite to eat. While you’re here, don’t miss harvesting and fermentation demos with our visiting brewers—making for the perfect autumn afternoon out!
-
 title: NYC Brewers Guild's Blocktoberfest
 start_date: 2023-09-30T12:00:00.000Z
 end_date: 2023-09-30T17:00:00.000Z
 event_location: Industry City, 36th Street, Brooklyn, NY, USA
 external_url: View https://www.eventbrite.com/e/blocktoberfest-2023-nyc-brewers-guild-annual-fall-beer-festival-tickets-684831658927?aff=oddtdtcreatorLink
 description: The only fest featuring all-NYC Brewers Guild member breweries in one location. Interact directly with the teams who work at the breweries and drink the best beers the city has to offer. VIP Tickets get early entry at 12:00PM, GA at 1:00PM.
+
+title: Bales & Ales at New York Botanical Garden
+start_date: 2023-09-30T12:00:00.000Z
+end_date: 2023-09-30T17:00:00.000Z
+event_location: New York Botanical Garden, Southern Boulevard, The Bronx, NY, USA
+external_url: https://www.nybg.org/event/fall-o-ween/bales-and-ales/
+description: This much-loved fall event is back! Celebrate the fall season at NYBG with a wide selection of local breweries. Receive a souvenir sampling cup with your ticket to explore what’s on tap, with unlimited samples of craft beers, ciders, and spiked seltzers available, then join in on lawn games, relax to live music, and grab a bite to eat. While you’re here, don’t miss harvesting and fermentation demos with our visiting brewers—making for the perfect autumn afternoon out!
 
 title: Huntington, LI: Cask Event featuring Tiny Montgomery Autumn Seasonal English Bitter
 start_date: 2023-09-30T14:00:00.000Z
@@ -1901,14 +1901,14 @@ start_date: 2023-11-15T17:30:00.000Z
 end_date: 2023-11-15T20:00:00.000Z
 event_location: Threes Brewing Huntington, Clinton Avenue, Huntington, NY, USA
 
+title: Moynihan Station: OPEN on Thanksgiving
+start_date: 2023-11-23T11:00:00.000Z
+end_date: 2023-11-23T16:00:00.000Z
+
 title: Huntington, LI: OPEN on Thanksgiving
 start_date: 2023-11-23T11:00:00.000Z
 end_date: 2023-11-23T15:00:00.000Z
 event_location: Threes Brewing Huntington, Clinton Avenue, Huntington, NY, USA
-
-title: Moynihan Station: OPEN on Thanksgiving
-start_date: 2023-11-23T11:00:00.000Z
-end_date: 2023-11-23T16:00:00.000Z
 
 title: Gowanus & Greenpoint: CLOSED for Thanksgiving
 start_date: 2023-11-23T12:00:00.000Z
@@ -2757,18 +2757,18 @@ event_location: 333 Douglass Street, Brooklyn, NY, USA
 external_url: https://threesbrewing.com/pages/gowanus
 description: Semifinals 3PM: Teams TBD
 
+title: Gowanus: Live Music: Mr Sassy and the Backup Plans w LumbeRob
+start_date: 2024-07-10T20:00:00.000Z
+end_date: 2024-07-10T23:00:00.000Z
+event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
+description: Live Music in Tiny Montgomery featuring: Mr. Sassy and the Backup Plans - @mrsassyandthebackupplans with LumbeRob - @lumberob
+
 title: Gowanus: Copa America 2024 Screening
 start_date: 2024-07-10T20:00:00.000Z
 end_date: 2024-07-10T22:00:00.000Z
 event_location: Threes Brewing Greenpoint Bar & Beer Shop, Franklin Street, Brooklyn, NY, USA
 external_url: https://threesbrewing.com/pages/greenpoint
 description: 8PM COLOMBIA V URUGUAY
-
-title: Gowanus: Live Music: Mr Sassy and the Backup Plans w LumbeRob
-start_date: 2024-07-10T20:00:00.000Z
-end_date: 2024-07-10T23:00:00.000Z
-event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
-description: Live Music in Tiny Montgomery featuring: Mr. Sassy and the Backup Plans - @mrsassyandthebackupplans with LumbeRob - @lumberob
 
 title: Huntington: Book Club - "Just Kids" by Patti Smith.
 start_date: 2024-07-11T19:00:00.000Z
@@ -2917,18 +2917,18 @@ end_date: 2024-08-15T20:00:00.000Z
 event_location: Threes Brewing Huntington, Clinton Avenue, Huntington, NY, USA
 description: Book Club at the Huntington tasting room featuring "Fool Me Once" by Harlan Cohen. As with every book club we pair a small beer taster to tie into the book as well as $1 off any on-premise offerings for book club attendees. Hosted by our very own @sours_and_sass who is a book and beer lover herself. Read up and join the discussion which begins at 7pm and ends around 8pm, 8/15.
 
-title: Gowanus: Live Music: Roy Bashat w McMurray & Yael Copeland
-start_date: 2024-08-18T20:00:00.000Z
-end_date: 2024-08-18T23:00:00.000Z
-event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
-description: Live Music in Tiny Montgomery featuring: Roy Bashat - @roybbmusic Grey McMurray - @muchgrey Yael Copeland - @yaels.copeland
-
 title: Greenpoint: Live Music with Trae Sheehan
 start_date: 2024-08-18T20:00:00.000Z
 end_date: 2024-08-18T22:00:00.000Z
 event_location: Threes Brewing Greenpoint Bar & Beer Shop, Franklin Street, Brooklyn, NY, USA
 external_url: https://traesheehan.com/shows
 description: Live music featuring Trae Sheehan.
+
+title: Gowanus: Live Music: Roy Bashat w McMurray & Yael Copeland
+start_date: 2024-08-18T20:00:00.000Z
+end_date: 2024-08-18T23:00:00.000Z
+event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
+description: Live Music in Tiny Montgomery featuring: Roy Bashat - @roybbmusic Grey McMurray - @muchgrey Yael Copeland - @yaels.copeland
 
 title: Gowanus: Live Music: Jon Starks w Lesley Mok & Matt Evans
 start_date: 2024-08-21T20:00:00.000Z
@@ -3980,18 +3980,18 @@ end_date: 2025-05-06T20:00:00.000Z
 external_url: https://bonsaibar.com/products/threes-brewing-gowanus?variant=51896456118640
 description: Join us in Tiny Montgomery for Bonsai Bar, a night of fun you don’t want to miss. Learn the fundamental skills and techniques behind the art of bonsai while enjoying a night out with friends! Teachers will introduce core concepts and guide your experience as you pot, prune, and design your very own bonsai tree. Beginner workshops are perfect for you to grab your friends, grab a drink, and come make tiny trees!
 
-title: Gowanus: Live Music: Perigean with Behaviorist
-start_date: 2025-05-07T20:00:00.000Z
-end_date: 2025-05-07T22:30:00.000Z
-event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
-description: Live Music in Tiny Montgomery featuring: Perigean with Behaviorist
-
 title: Greenpoint: Live Music: Jon Madof Trio & Frank London Salomé Quartet
 start_date: 2025-05-07T20:00:00.000Z
 end_date: 2025-05-07T22:00:00.000Z
 event_location: Threes Brewing Greenpoint, Franklin Street, Brooklyn, NY, USA
 external_url: https://www.facebook.com/events/1405649487429963/
 description: Live Music in Greenpoint Studio featuring Jon Madof Trio and Frank London Salom&eacute; Quartet.
+
+title: Gowanus: Live Music: Perigean with Behaviorist
+start_date: 2025-05-07T20:00:00.000Z
+end_date: 2025-05-07T22:30:00.000Z
+event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
+description: Live Music in Tiny Montgomery featuring: Perigean with Behaviorist
 
 title: Huntington: Book Club
 start_date: 2025-05-08T19:00:00.000Z
@@ -4570,17 +4570,17 @@ end_date: 2025-08-13T22:30:00.000Z
 event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
 description: Live Music in Tiny Montgomery featuring: Nathan Reisling with Altus
 
-title: Gowanus: LGBTQIA+ Mixer presented by Queer Mixtape
-start_date: 2025-08-14T19:00:00.000Z
-end_date: 2025-08-14T23:00:00.000Z
-event_location: 333 Douglass Street, Brooklyn, NY, USA
-description: Join us in Tiny Montgomery for a LGBTQIA+ Mixer presented by Queer Mixtape. There will be opportunities to win free drafts and mix tapes while making new connections in the community. Suggest donation $10
-
 title: Huntington: Book Club
 start_date: 2025-08-14T19:00:00.000Z
 end_date: 2025-08-14T20:00:00.000Z
 event_location: Threes Brewing Huntington, Clinton Avenue, Huntington, NY, USA
 description: Book Club at the Huntington tasting room featuring "The Thursday Murder Club" by Richard Osmen. Hosted by our very own @sours_and_sass who is a book and beer lover herself. Read up and join the discussion. We'll choose August's book at the end of the meet up.
+
+title: Gowanus: LGBTQIA+ Mixer presented by Queer Mixtape
+start_date: 2025-08-14T19:00:00.000Z
+end_date: 2025-08-14T23:00:00.000Z
+event_location: 333 Douglass Street, Brooklyn, NY, USA
+description: Join us in Tiny Montgomery for a LGBTQIA+ Mixer presented by Queer Mixtape. There will be opportunities to win free drafts and mix tapes while making new connections in the community. Suggest donation $10
 
 title: Huntington: Djead Night
 start_date: 2025-08-15T17:00:00.000Z
@@ -5417,18 +5417,18 @@ end_date: 2026-02-06T20:00:00.000Z
 event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
 description: Make us your official viewing headquarters for all winter olympic games - starting with the opening ceremonies!
 
-title: Gowanus: Live Music: Bricks and Bones Album Release Listening Party
-start_date: 2026-02-08T13:00:00.000Z
-end_date: 2026-02-08T16:00:00.000Z
-event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
-description: Live Music in Tiny Montgomery featuring: Bricks and Bones Album Release Listening Party
-
 title: Gowanus: Puppy Bowl Watch Party w Badass Animal Rescue
 start_date: 2026-02-08T13:00:00.000Z
 end_date: 2026-02-08T16:00:00.000Z
 event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
 external_url: https://www.eventbrite.com/e/puppy-bowl-watch-party-tickets-1981348126583
 description: Cheers to pups & pints! 🐶🍻 We’ve teamed up with Badass Animal Rescue to bring you a Puppy Bowl Watch Party you won’t want to miss. Come hang out with adorable, adoptable pups, watch the Puppy Bowl live on the big screen, and support an amazing mission. Even better, $1 from every flagship pint sold will be donated directly to Badass Animal Rescue , helping them continue their lifesaving work. Whether you’re here for the puppies, the game, or the beer (or all three), this is a feel-good Sunday afternoon you can really get behind. See you there!
+
+title: Gowanus: Live Music: Bricks and Bones Album Release Listening Party
+start_date: 2026-02-08T13:00:00.000Z
+end_date: 2026-02-08T16:00:00.000Z
+event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
+description: Live Music in Tiny Montgomery featuring: Bricks and Bones Album Release Listening Party
 
 title: Gowanus: Big Game at Threes!
 start_date: 2026-02-08T18:00:00.000Z
@@ -5644,16 +5644,16 @@ end_date: 2026-03-23T23:00:00.000Z
 event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
 description: Live Music in Tiny Montgomery featuring: Yuma Uesaka / Simon Kanzler Duo with Mat Muntz
 
-title: Greenpoint: Sofar Sounds
-start_date: 2026-03-25T20:00:00.000Z
-end_date: 2026-03-25T22:00:00.000Z
-event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
-
 title: Gowanus: Live Music: Jack Adams with Chelsea Crabtree and Selena Tibert
 start_date: 2026-03-25T20:00:00.000Z
 end_date: 2026-03-25T23:00:00.000Z
 event_location: Threes Brewing Gowanus, 333 Douglass St., Brooklyn, NY 11217
 description: Live Music in Tiny Montgomery featuring: Jack Adams with Chelsea Crabtree and Selena Tibert
+
+title: Greenpoint: Sofar Sounds
+start_date: 2026-03-25T20:00:00.000Z
+end_date: 2026-03-25T22:00:00.000Z
+event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
 
 title: Moynihan Station: Free Beer Tasting
 start_date: 2026-03-27T16:00:00.000Z
@@ -5988,18 +5988,18 @@ event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Broo
 external_url: https://partiful.com/u/08spytlIIahn5ODAviRN
 description: Join us for our weekly Tuesday night Friends w/ Benefits show, where Brooklyn's funniest stand-up & improv comedians collaborate for our neighbors' entertainment on the topic of dating & meeting IRL. We feel your pain. Come laugh at ours. Tuesday, May 26 6:30pm hang • 7:00pm show • 8:15 social 5 stand-up comedians give their best 5-minute set. Then a team of improvisers build on them, inventing new plot lines and unique worlds. Live, unpredictable, and a little chaotic. Hosted by Greenpoint Social Club. Free to attend. Good people, good beer, and food Come early, grab a drink. Stay after if you want to meet folks in the neighborhood
 
-title: Gowanus: Quirk Events Board Game Speed Dating
-start_date: 2026-06-09T19:00:00.000Z
-end_date: 2026-06-09T22:00:00.000Z
-event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
-external_url: https://www.eventbrite.com/e/board-game-speed-dating-threes-brewing-gowanus-nyc-ages-25-39-tickets-1989106910314?aff=oddtdtcreator
-
 title: Greenpoint: WORD Bookstore: Culinary
 start_date: 2026-06-09T19:00:00.000Z
 end_date: 2026-06-09T22:00:00.000Z
 event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
 external_url: https://withfriends.co/event/27619384/adam_roberts_at_threes_brewing_greenpoint
 description: A delectable comedy of manners about cooking, ambition, and friendship set in the food world as a young and socially awkward writer takes a job ghostwriting the cookbook for a famous (and famously chaotic) Hollywood starlet. Adam Roberts is the author of The Amateur Gourmet, Secrets of the Best Chefs, and Give My Swiss Chards to Broadway. He started his food blog The Amateur Gourmet in 2004. Roberts has also written for The Washington Post and The Los Angeles Times, and for film and television. He lives in Brooklyn with his husband and their dog Winston. Food Person is his first novel. In conversation with Jenny Rosenstrach is the creator of the “Dinner: A Love Story” newsletter and book series, and a New York Times bestselling cookbook author.
+
+title: Gowanus: Quirk Events Board Game Speed Dating
+start_date: 2026-06-09T19:00:00.000Z
+end_date: 2026-06-09T22:00:00.000Z
+event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
+external_url: https://www.eventbrite.com/e/board-game-speed-dating-threes-brewing-gowanus-nyc-ages-25-39-tickets-1989106910314?aff=oddtdtcreator
 
 title: Gowanus: Live Music: Tim Fenton Group with Jakob Ebers' 'Hydra
 start_date: 2026-06-10T20:00:00.000Z
@@ -6333,17 +6333,17 @@ end_date: 2026-08-03T22:00:00.000Z
 event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
 description: Triva in The Main Bar featuring: Tuff Enuff Trivia with Owen Scott
 
-title: Gowanus: Brewsberry Jam Variety Show
-start_date: 2026-08-04T19:00:00.000Z
-end_date: 2026-08-04T21:00:00.000Z
-event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
-description: Gowanus - Tiny Montgomery Brewsberry Jam Variety Show with Michael Strauss
-
 title: Greenpoint: Greenpoint Social Club
 start_date: 2026-08-04T19:00:00.000Z
 end_date: 2026-08-04T21:00:00.000Z
 event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
 description: Greenpoint, in the Studio (upstairs) Greenpoint Social Club
+
+title: Gowanus: Brewsberry Jam Variety Show
+start_date: 2026-08-04T19:00:00.000Z
+end_date: 2026-08-04T21:00:00.000Z
+event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
+description: Gowanus - Tiny Montgomery Brewsberry Jam Variety Show with Michael Strauss
 
 title: Gowanus: Paint & Sip Hosted by Danielle Martin
 start_date: 2026-08-05T18:00:00.000Z
@@ -6597,12 +6597,6 @@ event_location: Threes Brewing, Douglass Street, Brooklyn, NY, USA
 external_url: https://www.eventbrite.com/e/coaster-painting-at-threes-brewing-in-gowanus-tickets-1998793613504?aff=erelpanelorg
 description: Gowanus - Coaster Painting with Danielle Martin
 
-title: Greenpoint: Off the G Comedy
-start_date: 2026-09-04T20:00:00.000Z
-end_date: 2026-09-04T22:00:00.000Z
-event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
-external_url: https://www.instagram.com/offthegcomedy/
-
 title: Gowanus: Good Time Pilates in the Yard
 start_date: 2026-09-06T11:00:00.000Z
 end_date: 2026-09-06T12:00:00.000Z
@@ -6703,13 +6697,6 @@ start_date: 2026-09-15T19:00:00.000Z
 end_date: 2026-09-15T21:00:00.000Z
 event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
 
-title: Greenpoint: Amelia Ritthaler (Comedy Show)
-start_date: 2026-09-16T20:00:00.000Z
-end_date: 2026-09-16T22:00:00.000Z
-event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
-external_url: https://www.instagram.com/ameliaplease/?hl=en
-description: Live Comedy in the Studio: Amelia Ritthaler
-
 title: Gowanus: Live Music: SNEAL
 start_date: 2026-09-16T20:00:00.000Z
 end_date: 2026-09-16T22:00:00.000Z
@@ -6727,11 +6714,11 @@ end_date: 2026-09-18T23:59:00.000Z
 event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
 description: Greenpoint: Dj Henry James in the main bar
 
-title: Greenpont: DJ Vinyl Tap
-start_date: 2026-09-19T18:00:00.000Z
-end_date: 2026-09-19T21:00:00.000Z
+title: Greenpoint: Off the G Comedy
+start_date: 2026-09-18T21:00:00.000Z
+end_date: 2026-09-18T23:00:00.000Z
 event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
-description: GreenpointL: DJ Vinyl Tap in the main bar
+external_url: https://www.instagram.com/offthegcomedy/
 
 title: Greenpoint: NYC Slice + Pint Launch Party
 start_date: 2026-09-19T18:00:00.000Z
@@ -6739,6 +6726,12 @@ end_date: 2026-09-19T21:00:00.000Z
 event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
 external_url: https://www.eventbrite.com/e/nyc-slice-pint-crawl-launch-party-tickets-1997051075526?aff=oddtdtcreator
 description: GREENPOINT: Try the pilsner made for NY pizza. Slices, a DJ, and the start of our month-long Slice + Pint Crawl. 6–9pm.
+
+title: Greenpont: DJ Vinyl Tap
+start_date: 2026-09-19T18:00:00.000Z
+end_date: 2026-09-19T21:00:00.000Z
+event_location: Threes Brewing Greenpoint, Threes Brewing, Franklin Street, Brooklyn, NY, USA
+description: GreenpointL: DJ Vinyl Tap in the main bar
 
 title: Gowanus: Paint & Sip NICU Fundraiser Hosted by Danielle Martin
 start_date: 2026-09-20T12:00:00.000Z
