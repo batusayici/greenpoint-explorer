@@ -1005,13 +1005,13 @@ test("deck size and per-layer counts are pinned — update on every ingest", () 
   // named two sources carrying dates the deck had nothing for, and both were
   // real supply rather than explainable gaps: Troost's 29 September booking,
   // and seven eavesdrop sets across 24-28 September. Deck 249 -> 257.
-  assert.equal(seed.cards.length, 257);
+  assert.equal(seed.cards.length, 258);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 36, "37, less the Ayune opening, held 2026-09-15 when its Greenpointers post rolled out of the feed's 15-item window and nothing committed could still verify the card's quote");
+  assert.equal(count((c) => c.filters.includes("news")), 37, "37, less the Ayune opening, held 2026-09-15 when its Greenpointers post rolled out of the feed's 15-item window and nothing committed could still verify the card's quote");
   assert.equal(count((c) => c.category === "event"), 152, "142, less the nine that ran on Monday 14 September, plus the 19 events authored on 2026-09-15");
   assert.equal(count((c) => c.category === "discount"), 7, "6 + Marianella's 40%-off sitewide sale, recurring/verified-through because the newsletter states no closing date (2026-09-14)");
-  assert.equal(count((c) => c.category === "news"), 24, "25, less the Ayune opening, held 2026-09-15 (see the news-filter count above)");
+  assert.equal(count((c) => c.category === "news"), 25, "25, less the Ayune opening, held 2026-09-15 (see the news-filter count above)");
   assert.equal(count((c) => c.filters.includes("live_music")), 41, "34, less the Troost and eavesdrop nights that ran on 14 September, plus the Good Room bill of 26 September, a Troost night and seven eavesdrop sets the coverage gate found uncarded (2026-09-15)");
   assert.equal(count((c) => c.category === "subscription"), 42, "38 + Brooklyn Hearts Club's art club + Greenpoint Trash Club's Wednesdays (2026-09-11)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
@@ -1206,7 +1206,7 @@ test("news cards name their publisher and sit in the news layer", () => {
   // of the feed's 15-item window, so after promotion no committed snapshot
   // carried the lines the card quotes and `ingest:quotes` failed it. The card
   // is almost certainly right; what it has lost is the ability to be re-checked.
-  assert.equal(news.length, 24);
+  assert.equal(news.length, 25);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
