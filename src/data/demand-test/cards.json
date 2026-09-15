@@ -11832,6 +11832,51 @@
       "sourceQuote": "Monday, Sep 28\n12midnight\nManny Steelo @eavesdrop",
       "lat": 40.724894,
       "lng": -73.951181
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-09-14",
+      "updatedAt": "2026-09-14",
+      "free": false,
+      "id": "ayune-opens",
+      "category": "news",
+      "title": "Ayune opens on Manhattan Ave, from the Wasabi team",
+      "kicker": "Hand rolls where Botbar used to be",
+      "summary": "Robby and Cristin Wijaya reopened six weeks after closing Wasabi, in the old Botbar space. Hand roll sets run $19 to $38; a beer and wine licence is still pending.",
+      "filters": [
+        "news",
+        "food_drink"
+      ],
+      "locationName": "Ayune",
+      "address": "664 Manhattan Ave",
+      "geocodeQuery": "664 Manhattan Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "wasabi-closing"
+      ],
+      "sourceQuote": "Their new concept is called Ayune and is located at 664 Manhattan Avenue, the former home of Botbar.\nIts menu offers a variety of rolls with everything from tuna and salmon to shiitake mushrooms and Japanese pumpkin. The menu includes hand roll sets with three, four, five, or six rolls for $19 to $38.\nAyune recently applied for a beer and wine liquor license, which will hopefully be approved in a few months.",
+      "actions": [
+        {
+          "label": "Read more",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/09/04/wasabi-owners-open-new-hand-roll-bar-ayune-in-greenpoint/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Wasabi Owners Open New Hand Roll Bar Ayune in Greenpoint",
+          "url": "https://greenpointers.com/2026/09/04/wasabi-owners-open-new-hand-roll-bar-ayune-in-greenpoint/",
+          "publisher": "Greenpointers",
+          "date": "2026-09-04"
+        }
+      ],
+      "lat": 40.724707,
+      "lng": -73.951071
     }
   ]
 }
